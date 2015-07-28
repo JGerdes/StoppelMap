@@ -13,16 +13,17 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.TileOverlayOptions;
 
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    public static final double LAT_MAX = 52.75067702042563;
-    public static final double LONG_MIN = 8.291684053838253;
-    public static final double LAT_MIN = 52.744443959019534;
-    public static final double LOT_MAX = 8.301458023488522;
+    public static final double LAT_MIN = 52.745;
+    public static final double LAT_MAX = 52.750;
+    public static final double LONG_MIN = 8.292;
+    public static final double LOT_MAX = 8.299;
     public static final float ZOOM_MAX = 15;
-    public static final float ZOOM_MIN = 18;
+    public static final float ZOOM_MIN = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,9 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(final GoogleMap map) {
+        map.setMapType(GoogleMap.MAP_TYPE_NONE);
+        map.addTileOverlay(new TileOverlayOptions().tileProvider(new CustomMapTileProvider(getResources().getAssets())));
+        map.setMyLocationEnabled(true);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));
         map.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
 

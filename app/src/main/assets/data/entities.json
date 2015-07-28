@@ -1,0 +1,26 @@
+{
+  "attractions": [
+    {
+      "title": "Wilhelm's Riesenrad",
+      "position": {
+        "lon": 52.748670,
+        "lat": 8.295872
+      },
+      "tags": []
+    }
+  ],
+  "houses": [
+    {
+      "title": "Schmedes",
+      "position": {
+        "lon": 52.747340,
+        "lat": 8.293910
+      },
+      "tags":[
+        "Bier",
+        "Bratkartoffeln",
+        "Spiegelei"
+      ]
+    }
+  ]
+}
