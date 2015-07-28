@@ -1,19 +1,28 @@
 package com.jonasgerdes.stoppelmap;
 
+import android.graphics.Bitmap;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import static  android.view.View.MeasureSpec;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlayOptions;
+import com.jonasgerdes.stoppelmap.data.DataController;
+import com.jonasgerdes.stoppelmap.data.entity.Entity;
 
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -41,28 +50,38 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         map.addTileOverlay(new TileOverlayOptions().tileProvider(new CustomMapTileProvider(getResources().getAssets())));
         map.setMyLocationEnabled(true);
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));
+
+        final DataController data = new DataController(getResources().getAssets());
+        data.readData();
+        data.createLabels(this.getLayoutInflater());
+        data.placeRelevantMarkers(map);
+
         map.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
 
             @Override
             public void onCameraChange(CameraPosition cameraPosition) {
-                Log.d("camera", "lon:" + cameraPosition.target.longitude + "; lat:" + cameraPosition.target.latitude+"; z:"+cameraPosition.zoom);
+                Log.d("camera", "lon:" + cameraPosition.target.longitude + "; lat:" + cameraPosition.target.latitude + "; z:" + cameraPosition.zoom);
                 LatLng newPos = new LatLng(cameraPosition.target.latitude, cameraPosition.target.longitude);
                 float zoom = cameraPosition.zoom;
-                if (cameraPosition.target.latitude > LAT_MAX){
+                if (cameraPosition.target.latitude > LAT_MAX) {
                     newPos = new LatLng(LAT_MAX, newPos.longitude);
                 }
-                if (cameraPosition.target.longitude < LONG_MIN){
+                if (cameraPosition.target.longitude < LONG_MIN) {
                     newPos = new LatLng(newPos.latitude, LONG_MIN);
                 }
-                if (cameraPosition.target.latitude < LAT_MIN){
+                if (cameraPosition.target.latitude < LAT_MIN) {
                     newPos = new LatLng(LAT_MIN, newPos.longitude);
                 }
-                if (cameraPosition.target.longitude > LOT_MAX){
+                if (cameraPosition.target.longitude > LOT_MAX) {
                     newPos = new LatLng(newPos.latitude, LOT_MAX);
                 }
                 zoom = Math.max(Math.min(zoom, ZOOM_MIN), ZOOM_MAX);
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(newPos, zoom));
+                data.placeRelevantMarkers(map);
             }
         });
+
+
     }
+
 }

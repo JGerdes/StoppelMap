@@ -1,11 +1,21 @@
 {
   "attractions": [
     {
-      "title": "Wilhelm's Riesenrad",
+      "title": "Riesenrad",
       "position": {
-        "lon": 52.748670,
-        "lat": 8.295872
+        "lat": 52.748670,
+        "lon": 8.295872
       },
+      "labels":["attraction"],
+      "tags": []
+    },
+    {
+      "title": "Musikexpress",
+      "position": {
+        "lat": 52.746792,
+        "lon": 8.296084
+      },
+      "labels":["attraction"],
       "tags": []
     }
   ],
@@ -13,13 +23,28 @@
     {
       "title": "Schmedes",
       "position": {
-        "lon": 52.747340,
-        "lat": 8.293910
+        "lat": 52.747340,
+        "lon": 8.293910
       },
+      "labels":["food", "beer", "wc"],
       "tags":[
         "Bier",
         "Bratkartoffeln",
         "Spiegelei"
+      ]
+    },
+    {
+      "title": "Oldehus",
+      "position": {
+        "lat": 52.746742,
+        "lon": 8.295343
+      },
+      "labels":["food", "beer", "wc"],
+      "tags":[
+        "Bier",
+        "Pissrinne",
+        "Bratwurst",
+        "Pommes"
       ]
     }
   ]
