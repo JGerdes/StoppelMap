@@ -63,20 +63,30 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("camera", "lon:" + cameraPosition.target.longitude + "; lat:" + cameraPosition.target.latitude + "; z:" + cameraPosition.zoom);
                 LatLng newPos = new LatLng(cameraPosition.target.latitude, cameraPosition.target.longitude);
                 float zoom = cameraPosition.zoom;
+                boolean dirty = false;
                 if (cameraPosition.target.latitude > LAT_MAX) {
                     newPos = new LatLng(LAT_MAX, newPos.longitude);
+                    dirty = true;
                 }
                 if (cameraPosition.target.longitude < LONG_MIN) {
                     newPos = new LatLng(newPos.latitude, LONG_MIN);
+                    dirty = true;
                 }
                 if (cameraPosition.target.latitude < LAT_MIN) {
                     newPos = new LatLng(LAT_MIN, newPos.longitude);
+                    dirty = true;
                 }
                 if (cameraPosition.target.longitude > LOT_MAX) {
                     newPos = new LatLng(newPos.latitude, LOT_MAX);
+                    dirty = true;
                 }
-                zoom = Math.max(Math.min(zoom, ZOOM_MIN), ZOOM_MAX);
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(newPos, zoom));
+                if(zoom < ZOOM_MIN && zoom > ZOOM_MAX){
+                    zoom = Math.max(Math.min(zoom, ZOOM_MIN), ZOOM_MAX);
+                    dirty = true;
+                }
+                if (dirty) {
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(newPos, zoom));
+                }
                 data.placeRelevantMarkers(map);
             }
         });

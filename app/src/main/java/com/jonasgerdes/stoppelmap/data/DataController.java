@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.data;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -100,8 +103,24 @@ public class DataController {
     }
 
     public void placeRelevantMarkers(GoogleMap map){
+        LatLngBounds originalBounds = map.getProjection().getVisibleRegion().latLngBounds;
+        //make bounds slightly bigger so we don't see label dis-/appear
+        LatLngBounds bounds = new LatLngBounds(
+                new LatLng(
+                        originalBounds.southwest.latitude - 0.0001,
+                        originalBounds.southwest.longitude - 0.0001
+                ),
+                new LatLng(
+                        originalBounds.northeast.latitude + 0.0001,
+                        originalBounds.northeast.longitude + 0.0001
+                ));
+
+        float zoom = map.getCameraPosition().zoom;
+        int debugCount = 0;
         for(Entity e : entities){
-            if(map.getProjection().getVisibleRegion().latLngBounds.contains(e.position.latLng())){
+            //bounds.contains(e.position.latLng())
+            if(zoom >= e.minZoom){
+                debugCount++;
                 if(e.currentMarker == null){
                     e.currentMarker = map.addMarker(e.markerOptions);
                 }
@@ -112,6 +131,7 @@ public class DataController {
                 }
             }
         }
+        Log.d("data", "#new Entities: " + debugCount);
     }
 
     public List<Entity> getEntites(){

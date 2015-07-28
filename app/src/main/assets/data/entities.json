@@ -6,6 +6,7 @@
         "lat": 52.748670,
         "lon": 8.295872
       },
+      "minZoom": 16.5,
       "labels":["attraction"],
       "tags": []
     },
@@ -15,6 +16,7 @@
         "lat": 52.746792,
         "lon": 8.296084
       },
+      "minZoom": 18.75,
       "labels":["attraction"],
       "tags": []
     }
@@ -26,6 +28,7 @@
         "lat": 52.747340,
         "lon": 8.293910
       },
+      "minZoom": 16.5,
       "labels":["food", "beer", "wc"],
       "tags":[
         "Bier",
@@ -39,6 +42,7 @@
         "lat": 52.746742,
         "lon": 8.295343
       },
+      "minZoom": 16.5,
       "labels":["food", "beer", "wc"],
       "tags":[
         "Bier",
