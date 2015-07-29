@@ -12,6 +12,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.data.DataController;
+import com.jonasgerdes.stoppelmap.data.SearchResult;
+import com.jonasgerdes.stoppelmap.data.entity.Entity;
 
 
 public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChangeListener {
@@ -25,7 +27,7 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
 
     private GoogleMap map;
     private Context context;
-    DataController data;
+    private DataController data;
 
     public MapController(Context context){
         this.context = context;
@@ -84,5 +86,15 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(newPos, zoom));
         }
         data.placeRelevantMarkers(map);
+    }
+
+    public DataController getData(){
+        return data;
+    }
+
+    public void highlight(SearchResult result){
+        Entity entity = result.getEntity();
+        Log.d("MC", "highlight:"+entity.title);
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(entity.position.latLng(), entity.minZoom));
     }
 }

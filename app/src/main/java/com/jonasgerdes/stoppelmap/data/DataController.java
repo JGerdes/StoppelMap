@@ -28,6 +28,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 public class DataController {
 
@@ -143,5 +144,16 @@ public class DataController {
 
     public List<Entity> getEntites(){
         return entities;
+    }
+
+    public List<SearchResult> query(String query){
+        List<SearchResult> result = new Vector<>();
+        for(Entity e : entities){
+            if(e.title.toLowerCase().contains(query.toLowerCase())){
+                result.add(new SearchResult(e.title, e));
+            }
+        }
+        Log.d("DC", "query for:'"+query+"', "+result.size()+" results");
+        return result;
     }
 }
