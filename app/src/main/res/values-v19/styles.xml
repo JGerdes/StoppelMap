@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="NavigationTinter">
+        <item name="android:visibility">visible</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/color_primary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@*android:dimen/navigation_bar_height</item>
+    </style>
+</resources>

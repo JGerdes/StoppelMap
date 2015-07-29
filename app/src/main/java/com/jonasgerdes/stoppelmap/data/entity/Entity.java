@@ -8,6 +8,7 @@ public class Entity {
     public String title;
     public Position position;
     public float minZoom;
+    public float maxZoom;
     public String[] labels;
     public String[] tags;
 

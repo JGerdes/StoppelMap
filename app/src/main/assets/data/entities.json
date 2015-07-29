@@ -51,5 +51,159 @@
         "Pommes"
       ]
     }
+  ],
+  "parkinglots": [
+  {
+      "title": "Bahnhof Stoppelmarkt",
+      "position": {
+        "lat": 52.748365,
+        "lon": 8.291868
+      },
+      "minZoom": 15,
+      "labels":["train"],
+      "tags": []
+    },
+    {
+      "title": "Busbahnhof",
+      "position": {
+        "lat": 52.743749,
+        "lon": 8.299385
+      },
+      "minZoom": 15,
+      "labels":["bus"],
+      "tags": []
+    },
+   {
+      "title": "Oldehus/Meyer",
+      "position": {
+        "lat": 52.743994,
+        "lon": 8.293113
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Riesenbeck",
+      "position": {
+        "lat": 52.745554,
+        "lon": 8.297139
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking","bike"],
+      "tags": []
+    },
+    {
+      "title": "Hanken",
+      "position": {
+        "lat": 52.745019,
+        "lon": 8.296914
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Lübbers",
+      "position": {
+        "lat": 52.744819,
+        "lon": 8.299819
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Pulsfort",
+      "position": {
+        "lat": 52.745846,
+        "lon": 8.300721
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Riesenbeck",
+      "position": {
+        "lat": 52.747018,
+        "lon": 8.299229
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Sievke",
+      "position": {
+        "lat": 52.748287,
+        "lon": 8.299269
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Thöle",
+      "position": {
+        "lat": 52.749634,
+        "lon": 8.298078
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Abeling",
+      "position": {
+        "lat": 52.749106,
+        "lon": 8.291274
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking","bike"],
+      "tags": []
+    },
+    {
+      "title": "Korf",
+      "position": {
+        "lat": 52.749237,
+        "lon": 8.289741
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Tabke-Jost",
+      "position": {
+        "lat": 52.746146,
+        "lon": 8.289510
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    },
+    {
+      "title": "Nerkamp",
+      "position": {
+        "lat": 52.747230,
+        "lon": 8.288761
+      },
+      "minZoom": 15,
+      "maxZoom":17,
+      "labels":["parking"],
+      "tags": []
+    }
   ]
 }

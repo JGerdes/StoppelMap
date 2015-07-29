@@ -15,24 +15,31 @@ public class CustomMapTileProvider implements TileProvider {
     private static final int BUFFER_SIZE = 16 * 1024;
 
     private AssetManager mAssets;
+    private Tile empty;
 
     public CustomMapTileProvider(AssetManager assets) {
         mAssets = assets;
+        byte[] image = readImage("map/none.png");
+        empty = image == null ? null : new Tile(TILE_WIDTH, TILE_HEIGHT, image);
     }
 
     @Override
     public Tile getTile(int x, int y, int zoom) {
         y = fixYCoordinate(y, zoom);
         byte[] image = readTileImage(x, y, zoom);
-        return image == null ? null : new Tile(TILE_WIDTH, TILE_HEIGHT, image);
+        return image == null ? empty : new Tile(TILE_WIDTH, TILE_HEIGHT, image);
     }
 
     private byte[] readTileImage(int x, int y, int zoom) {
+        return readImage(getTileFilename(x, y, zoom));
+    }
+
+    private byte[] readImage(String path){
         InputStream in = null;
         ByteArrayOutputStream buffer = null;
 
         try {
-            in = mAssets.open(getTileFilename(x, y, zoom));
+            in = mAssets.open(path);
             buffer = new ByteArrayOutputStream();
 
             int nRead;

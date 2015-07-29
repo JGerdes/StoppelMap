@@ -39,6 +39,13 @@ public class DataController {
         map.put("wc", R.drawable.icon_toilet);
         map.put("beer", R.drawable.icon_beer);
         map.put("attraction", R.drawable.icon_attraction);
+        map.put("parking", R.drawable.icon_parking);
+        map.put("train", R.drawable.icon_train);
+        map.put("bike", R.drawable.icon_bike);
+        map.put("taxi", R.drawable.icon_taxi);
+        map.put("bus", R.drawable.icon_bus);
+        map.put("doctor", R.drawable.icon_doctor);
+
         LABEL_MAP = Collections.unmodifiableMap(map);
     }
 
@@ -119,7 +126,7 @@ public class DataController {
         int debugCount = 0;
         for(Entity e : entities){
             //bounds.contains(e.position.latLng())
-            if(zoom >= e.minZoom){
+            if(zoom >= e.minZoom && (e.maxZoom == 0 || zoom <= e.maxZoom)){
                 debugCount++;
                 if(e.currentMarker == null){
                     e.currentMarker = map.addMarker(e.markerOptions);
