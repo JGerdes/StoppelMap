@@ -8,7 +8,7 @@
       },
       "minZoom": 16.5,
       "labels":["attraction"],
-      "tags": []
+      "tags": ["Fahrgeschäft", "Attraktion"]
     },
     {
       "title": "Musikexpress",
@@ -18,10 +18,25 @@
       },
       "minZoom": 18.75,
       "labels":["attraction"],
-      "tags": []
+      "tags": ["Fahrgeschäft", "Attraktion"]
     }
   ],
   "houses": [
+    {
+      "title": "Amtmannsbult",
+      "position": {
+        "lat": 52.748659,
+        "lon": 8.295388
+      },
+      "minZoom": 15,
+      "labels":["info", "atm", "doctor"],
+      "tags":[
+        "Info",
+        "Geldautomat",
+        "Arzt",
+        "Rotes Kreuz"
+      ]
+    },
     {
       "title": "Schmedes",
       "position": {
@@ -33,7 +48,10 @@
       "tags":[
         "Bier",
         "Bratkartoffeln",
-        "Spiegelei"
+        "Spiegeleier",
+        "WC",
+        "Toilette",
+        "Klo"
       ]
     },
     {
@@ -46,9 +64,11 @@
       "labels":["food", "beer", "wc"],
       "tags":[
         "Bier",
-        "Pissrinne",
         "Bratwurst",
-        "Pommes"
+        "Pommes",
+        "WC",
+        "Toilette",
+        "Klo"
       ]
     }
   ],
@@ -61,7 +81,7 @@
       },
       "minZoom": 15,
       "labels":["train"],
-      "tags": []
+      "tags": ["Zug", "NordWestBahn"]
     },
     {
       "title": "Busbahnhof",
@@ -71,10 +91,11 @@
       },
       "minZoom": 15,
       "labels":["bus"],
-      "tags": []
+      "tags": ["Bus"]
     },
    {
-      "title": "Oldehus/Meyer",
+      "title": "P11",
+      "subtitle": "Oldehus/Meyer",
       "position": {
         "lat": 52.743994,
         "lon": 8.293113
@@ -82,10 +103,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Riesenbeck",
+      "title": "P9",
+      "subtitle": "Riesenbeck",
       "position": {
         "lat": 52.745554,
         "lon": 8.297139
@@ -93,10 +115,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking","bike"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Hanken",
+      "title": "P10",
+      "subtitle": "Hanken",
       "position": {
         "lat": 52.745019,
         "lon": 8.296914
@@ -104,10 +127,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Lübbers",
+      "title": "P8",
+      "subtitle": "Lübbers",
       "position": {
         "lat": 52.744819,
         "lon": 8.299819
@@ -115,10 +139,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Pulsfort",
+      "title": "P6",
+      "subtitle": "Pulsfort",
       "position": {
         "lat": 52.745846,
         "lon": 8.300721
@@ -126,10 +151,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Riesenbeck",
+      "title": "P5",
+      "subtitle": "Riesenbeck",
       "position": {
         "lat": 52.747018,
         "lon": 8.299229
@@ -137,10 +163,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Sievke",
+      "title": "P3",
+      "subtitle": "Sievke",
       "position": {
         "lat": 52.748287,
         "lon": 8.299269
@@ -148,10 +175,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Thöle",
+      "title": "P2",
+      "subtitle": "Thöle",
       "position": {
         "lat": 52.749634,
         "lon": 8.298078
@@ -159,10 +187,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Abeling",
+      "title": "P19",
+      "subtitle": "Abeling",
       "position": {
         "lat": 52.749106,
         "lon": 8.291274
@@ -170,10 +199,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking","bike"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Korf",
+      "title": "P18",
+      "subtitle": "Korf",
       "position": {
         "lat": 52.749237,
         "lon": 8.289741
@@ -181,10 +211,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Tabke-Jost",
+      "title": "P14",
+      "subtitle": "Tabke-Jost",
       "position": {
         "lat": 52.746146,
         "lon": 8.289510
@@ -192,10 +223,11 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     },
     {
-      "title": "Nerkamp",
+      "title": "P13",
+      "subtitle": "Nerkamp",
       "position": {
         "lat": 52.747230,
         "lon": 8.288761
@@ -203,7 +235,7 @@
       "minZoom": 15,
       "maxZoom":17,
       "labels":["parking"],
-      "tags": []
+      "tags": ["Parkplatz"]
     }
   ]
 }

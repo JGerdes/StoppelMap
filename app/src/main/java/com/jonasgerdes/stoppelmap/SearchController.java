@@ -21,10 +21,10 @@ public class SearchController implements SearchView.OnQueryTextListener {
 
     public SearchController(DataController data, Context context){
         this.data = data;
-        final String[] from = new String[] {"title"};
-        final int[] to = new int[] {android.R.id.text1};
+        final String[] from = new String[] {"title", "icon"};
+        final int[] to = new int[] {R.id.title, R.id.icon};
         adapter = new SimpleCursorAdapter(context,
-                android.R.layout.simple_list_item_1,
+                R.layout.search_result,
                 null,
                 from,
                 to,
@@ -38,11 +38,11 @@ public class SearchController implements SearchView.OnQueryTextListener {
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        final MatrixCursor c = new MatrixCursor(new String[]{ BaseColumns._ID, "title" });
+        final MatrixCursor c = new MatrixCursor(new String[]{ BaseColumns._ID, "title", "icon" });
         List<SearchResult> result = data.query(newText);
         currentResults = result;
         for (int i = 0; i <result.size(); i++) {
-                c.addRow(new Object[] {i, result.get(i).getTitle()});
+                c.addRow(new Object[] {i, result.get(i).getTitle(), result.get(i).getIconDrawable()});
         }
         adapter.changeCursor(c);
         return true;

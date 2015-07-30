@@ -2,7 +2,6 @@ package com.jonasgerdes.stoppelmap.data;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -37,17 +35,59 @@ public class DataController {
     static {
         Map<String, Integer> map = new HashMap<>();
         map.put("food", R.drawable.icon_dining);
-        map.put("wc", R.drawable.icon_toilet);
-        map.put("beer", R.drawable.icon_beer);
-        map.put("attraction", R.drawable.icon_attraction);
-        map.put("parking", R.drawable.icon_parking);
-        map.put("train", R.drawable.icon_train);
-        map.put("bike", R.drawable.icon_bike);
-        map.put("taxi", R.drawable.icon_taxi);
-        map.put("bus", R.drawable.icon_bus);
-        map.put("doctor", R.drawable.icon_doctor);
+        map.put("wc", R.drawable.icon_toilet_12);
+        map.put("beer", R.drawable.icon_beer_12);
+        map.put("attraction", R.drawable.icon_attraction_12);
+        map.put("parking", R.drawable.icon_parking_12);
+        map.put("train", R.drawable.icon_train_12);
+        map.put("bike", R.drawable.icon_bike_12);
+        map.put("taxi", R.drawable.icon_taxi_12);
+        map.put("bus", R.drawable.icon_bus_12);
+        map.put("doctor", R.drawable.icon_doctor_12);
+        map.put("info", R.drawable.icon_info_12);
+        map.put("atm", R.drawable.icon_atm_12);
+        map.put("tent", R.drawable.icon_tent_12);
+        map.put("candy", R.drawable.icon_candy_12);
 
         LABEL_MAP = Collections.unmodifiableMap(map);
+    }
+
+    private static final Map<String, Integer> TAG_ICONS;
+    static {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Fahrgeschäft", R.drawable.icon_attraction_24);
+        map.put("Attraktion", R.drawable.icon_attraction_24);
+        map.put("Zelt", R.drawable.icon_tent_24);
+        map.put("Essen", R.drawable.icon_dining_24);
+        map.put("Parkplatz", R.drawable.icon_parking_24);
+        map.put("Zug", R.drawable.icon_train_24);
+        map.put("NordWestBahn", R.drawable.icon_train_24);
+        map.put("Bus", R.drawable.icon_bus_24);
+        map.put("Info", R.drawable.icon_info_24);
+        map.put("Geldautomat", R.drawable.icon_atm_24);
+        map.put("Arzt", R.drawable.icon_doctor_24);
+        map.put("Rotes Kreuz", R.drawable.icon_doctor_24);
+
+        //Essen
+        map.put("Pommes", R.drawable.icon_dining_24);
+        map.put("Pizza", R.drawable.icon_dining_24);
+        map.put("Brezel", R.drawable.icon_dining_24);
+        map.put("Hamburger", R.drawable.icon_dining_24);
+        map.put("HotDog", R.drawable.icon_dining_24);
+        map.put("Bratwurst", R.drawable.icon_dining_24);
+        map.put("Currywurst", R.drawable.icon_dining_24);
+        map.put("Bratkartoffeln", R.drawable.icon_dining_24);
+        map.put("Spiegeleier", R.drawable.icon_dining_24);
+        map.put("Döner", R.drawable.icon_dining_24);
+        map.put("Champions", R.drawable.icon_dining_24);
+        map.put("Crépes", R.drawable.icon_dining_24);
+        map.put("Eis", R.drawable.icon_dining_24);
+
+
+        //Getränke
+        map.put("Bier", R.drawable.icon_beer_24);
+
+        TAG_ICONS = Collections.unmodifiableMap(map);
     }
 
 
@@ -149,10 +189,35 @@ public class DataController {
 
     public List<SearchResult> query(String query){
         List<SearchResult> result = new Vector<>();
+        HashMap<String, SearchResult> tags = new HashMap<>();
         for(Entity e : entities){
             if(e.title.toLowerCase().contains(query.toLowerCase())){
-                result.add(new SearchResult(e.title, e));
+                SearchResult entityResult = new SearchResult(e.title, e);
+                for(String tag : e.tags){
+                    if(TAG_ICONS.containsKey(tag)){
+                        entityResult.setIconDrawable(TAG_ICONS.get(tag));
+                        break;
+                    }
+                }
+                result.add(entityResult);
             }
+            for(String tag : e.tags){
+                if(tag.toLowerCase().contains(query.toLowerCase())) {
+                    if (tags.containsKey(tag)) {
+                        tags.get(tag).addEntity(e);
+                    } else {
+                        tags.put(tag, new SearchResult(tag, e));
+                    }
+                }
+            }
+        }
+        for(String tag : tags.keySet()){
+            SearchResult tagResult = tags.get(tag);
+            if(TAG_ICONS.containsKey(tagResult.getTitle())){
+                tagResult.setIconDrawable(TAG_ICONS.get(tagResult.getTitle()));
+            }
+            tagResult.setTitle("#"+tagResult.getTitle());
+            result.add(tagResult);
         }
         return result;
     }
