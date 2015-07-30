@@ -129,17 +129,18 @@ public class DataController {
             //bounds.contains(e.position.latLng())
             if(zoom >= e.minZoom && (e.maxZoom == 0 || zoom <= e.maxZoom)){
                 debugCount++;
-                if(e.currentMarker == null){
-                    e.currentMarker = map.addMarker(e.markerOptions);
-                }
+                e.addMarkerTo(map);
             }else{
-                if(e.currentMarker != null){
-                    e.currentMarker.remove();
-                    e.currentMarker = null;
-                }
+                e.removeMarkerFrom(map);
             }
         }
         Log.d("data", "#new Entities: " + debugCount);
+    }
+
+    public void removeAllMarkers(GoogleMap map){
+        for(Entity e : entities){
+            e.removeMarkerFrom(map);
+        }
     }
 
     public List<Entity> getEntites(){
@@ -153,7 +154,6 @@ public class DataController {
                 result.add(new SearchResult(e.title, e));
             }
         }
-        Log.d("DC", "query for:'"+query+"', "+result.size()+" results");
         return result;
     }
 }

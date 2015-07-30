@@ -41,12 +41,10 @@ public class SearchController implements SearchView.OnQueryTextListener {
         final MatrixCursor c = new MatrixCursor(new String[]{ BaseColumns._ID, "title" });
         List<SearchResult> result = data.query(newText);
         currentResults = result;
-        Log.d("SC", "currentresult length:" + currentResults.size());
         for (int i = 0; i <result.size(); i++) {
                 c.addRow(new Object[] {i, result.get(i).getTitle()});
         }
         adapter.changeCursor(c);
-        Log.d("SC", "currentresult 0 is:" + currentResults.get(0).getEntity().title);
         return true;
     }
 
@@ -56,7 +54,6 @@ public class SearchController implements SearchView.OnQueryTextListener {
     }
 
     public SearchResult getSelectedById(int id){
-        Log.d("SC", "selectById:" + id+", is:"+currentResults.get(id).getEntity().title);
         return currentResults == null ? null : currentResults.get(id);
     }
 }

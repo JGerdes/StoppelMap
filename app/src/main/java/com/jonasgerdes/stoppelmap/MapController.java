@@ -28,6 +28,7 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
     private GoogleMap map;
     private Context context;
     private DataController data;
+    private SearchResult currentSelection;
 
     public MapController(Context context){
         this.context = context;
@@ -85,16 +86,36 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
         if (dirty) {
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(newPos, zoom));
         }
-        data.placeRelevantMarkers(map);
+        if(currentSelection == null){
+            data.placeRelevantMarkers(map);
+        }
+
     }
 
     public DataController getData(){
         return data;
     }
 
-    public void highlight(SearchResult result){
-        Entity entity = result.getEntity();
-        Log.d("MC", "highlight:"+entity.title);
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(entity.position.latLng(), entity.minZoom));
+    public void present(SearchResult result){
+        currentSelection = result;
+        if(currentSelection != null){
+            data.removeAllMarkers(map);
+            currentSelection.placeRelevantMarker(map);
+            map.animateCamera(currentSelection.getCameraUpdate(null));
+        }else{
+            data.placeRelevantMarkers(map);
+            //zoom in/out a bit
+   /*         CameraPosition pos = map.getCameraPosition();
+            LatLng latlng = new LatLng(pos.target.latitude, pos.target.longitude);
+            float zoom =  pos.zoom;
+            if(zoom >= 19){
+                zoom -= 0.5f;
+            }else{
+                zoom += 0.5;
+            }
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng,zoom));
+            */
+        }
+
     }
 }

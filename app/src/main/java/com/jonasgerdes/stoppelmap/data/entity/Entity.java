@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.data.entity;
 
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -13,5 +14,18 @@ public class Entity {
     public String[] tags;
 
     public MarkerOptions markerOptions;
-    public Marker currentMarker;
+    private Marker currentMarker;
+
+    public void addMarkerTo(GoogleMap map){
+        if(currentMarker == null){
+            currentMarker = map.addMarker(markerOptions);
+        }
+    }
+
+    public void removeMarkerFrom(GoogleMap map){
+        if(currentMarker != null){
+            currentMarker.remove();
+            currentMarker = null;
+        }
+    }
 }
