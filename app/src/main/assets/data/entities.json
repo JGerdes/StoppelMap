@@ -465,8 +465,8 @@
     {
       "title": "Amtmannsbult",
       "position": {
-        "lat": 52.748659,
-        "lon": 8.295388
+        "lat": 52.74857476151944,
+        "lon": 8.295400499237639
       },
       "minZoom": 18,
       "labels":["info", "atm", "doctor"],

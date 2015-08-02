@@ -61,12 +61,22 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
         map.setMyLocationEnabled(true);
 
         map.getUiSettings().setTiltGesturesEnabled(false);
+        map.getUiSettings().setMyLocationButtonEnabled(false);
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));
         map.setOnCameraChangeListener(this);
 
         data.placeRelevantMarkers(map);
 
+    }
+
+    public boolean targetCurrentLocation(){
+        LatLng pos = getPositionInBoundsOrNull();
+        if(pos != null){
+            map.animateCamera(CameraUpdateFactory.newLatLng(pos));
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -111,6 +121,9 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
 
     private LatLng getPositionInBoundsOrNull(){
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if(location == null){
+            return null;
+        }
         LatLng pos = new LatLng(location.getLatitude(), location.getLongitude());
         if(bounds.contains(pos)){
             Log.d("MC", "pos in bounds:"+pos.toString());

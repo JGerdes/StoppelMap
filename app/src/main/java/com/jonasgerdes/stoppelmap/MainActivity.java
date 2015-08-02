@@ -3,20 +3,29 @@ package com.jonasgerdes.stoppelmap;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.jonasgerdes.stoppelmap.data.SearchResult;
+
+import java.io.UnsupportedEncodingException;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private MapController mapController;
+
     private enum State{DEFAULT, SEARCH};
     private State state = State.DEFAULT;
 
@@ -29,9 +38,23 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
 
         mapController = new MapController(this);
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
+        final MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(mapController);
+
+        final CoordinatorLayout root = (CoordinatorLayout) findViewById(R.id.rootLayout);
+
+        FloatingActionButton fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
+        fabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!mapController.targetCurrentLocation()){
+                    String message = getString(R.string.message_not_in_area);
+                    Snackbar.make(root, message, Snackbar.LENGTH_LONG).show();
+                }
+
+            }
+        });
 
     }
 
