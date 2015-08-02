@@ -62,6 +62,9 @@ public class SearchResult {
         for(Entity e : entities){
             bounds.include(e.position.latLng());
         }
+        if(currentPosition != null){
+            bounds.include(currentPosition);
+        }
         return CameraUpdateFactory.newLatLngBounds(bounds.build(), 200);
     }
 }

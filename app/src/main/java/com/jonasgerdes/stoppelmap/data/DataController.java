@@ -55,7 +55,7 @@ public class DataController {
     private static final Map<String, Integer> TAG_ICONS;
     static {
         Map<String, Integer> map = new HashMap<>();
-        map.put("Fahrgeschäft", R.drawable.icon_attraction_24);
+        map.put("Fahrgesch<äft", R.drawable.icon_attraction_24);
         map.put("Attraktion", R.drawable.icon_attraction_24);
         map.put("Zelt", R.drawable.icon_tent_24);
         map.put("Essen", R.drawable.icon_dining_24);
@@ -67,6 +67,9 @@ public class DataController {
         map.put("Geldautomat", R.drawable.icon_atm_24);
         map.put("Arzt", R.drawable.icon_doctor_24);
         map.put("Rotes Kreuz", R.drawable.icon_doctor_24);
+        map.put("Toilette", R.drawable.icon_toilet_24);
+        map.put("WC", R.drawable.icon_toilet_24);
+        map.put("Klo", R.drawable.icon_toilet_24);
 
         //Essen
         map.put("Pommes", R.drawable.icon_dining_24);
@@ -124,9 +127,12 @@ public class DataController {
     public void createLabels(LayoutInflater inflater){
         for(Entity e : entities){
             Bitmap icon = createLabel(inflater, e.title,e.labels);
+            int w = icon.getWidth(),
+                h = icon.getHeight();
             e.markerOptions = new MarkerOptions()
                     .position(e.position.latLng())
                     .icon(BitmapDescriptorFactory.fromBitmap(icon));
+            e.markerOptions.anchor(0.5f, 0.5f);
         }
     }
 

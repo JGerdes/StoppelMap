@@ -1,26 +1,466 @@
 {
   "attractions": [
-    {
-      "title": "Riesenrad",
-      "position": {
-        "lat": 52.748670,
-        "lon": 8.295872
-      },
-      "minZoom": 16.5,
-      "labels":["attraction"],
-      "tags": ["Fahrgeschäft", "Attraktion"]
+  {
+    "title": "Musikexpress",
+    "position": {
+      "lat": 52.7468118727804,
+      "lon": 8.296060107166195
     },
-    {
-      "title": "Musikexpress",
-      "position": {
-        "lat": 52.746792,
-        "lon": 8.296084
-      },
-      "minZoom": 18.75,
-      "labels":["attraction"],
-      "tags": ["Fahrgeschäft", "Attraktion"]
-    }
-  ],
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Wilde Maus",
+    "position": {
+      "lat": 52.74696283839065,
+      "lon": 8.297306927031148
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Achterbahn"
+    ]
+  },
+  {
+    "title": "Frisbee",
+    "position": {
+      "lat": 52.74723717374691,
+      "lon": 8.297540203005882
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Commander",
+    "position": {
+      "lat": 52.74713003686222,
+      "lon": 8.296802836419081
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Piratenrutsche",
+    "position": {
+      "lat": 52.746733955046075,
+      "lon": 8.297320333696362
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Kinder"
+    ]
+  },
+  {
+    "title": "Wellenflug",
+    "position": {
+      "lat": 52.74782480332659,
+      "lon": 8.296223668481812
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Formel1",
+    "position": {
+      "lat": 52.74839457675882,
+      "lon": 8.295156497930734
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Autoscooter"
+    ]
+  },
+  {
+    "title": "Top In",
+    "position": {
+      "lat": 52.74757319397617,
+      "lon": 8.296290701807886
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Autoscooter"
+    ]
+  },
+  {
+    "title": "Breakdancer",
+    "position": {
+      "lat": 52.74874520656327,
+      "lon": 8.296164679154868
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Poseidon",
+    "position": {
+      "lat": 52.747954666217126,
+      "lon": 8.292483208886953
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Wasserbahn"
+    ]
+  },
+  {
+    "title": "Revue der Illusionen",
+    "position": {
+      "lat": 52.748125111260954,
+      "lon": 8.292507340884338
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Show"
+    ]
+  },
+  {
+    "title": "Best XXL Exclusiv",
+    "position": {
+      "lat": 52.7485828779501,
+      "lon": 8.29465508865171
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Schloss Dracula",
+    "position": {
+      "lat": 52.74847736435154,
+      "lon": 8.293180355478109
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Geisterbahn"
+    ]
+  },
+  {
+    "title": "Dschungel Reise",
+    "position": {
+      "lat": 52.748464378062486,
+      "lon": 8.293518203441517
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Kinder"
+    ]
+  },
+  {
+    "title": "Gladiator",
+    "position": {
+      "lat": 52.74778584445943,
+      "lon": 8.293866776737094
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Disco Swing",
+    "position": {
+      "lat": 52.747751755450665,
+      "lon": 8.2948481446308
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Transformer",
+    "position": {
+      "lat": 52.74801310451787,
+      "lon": 8.294663132650838
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Octopussy",
+    "position": {
+      "lat": 52.74774039244774,
+      "lon": 8.295371004574166
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Looping the Loop",
+    "position": {
+      "lat": 52.74814459069454,
+      "lon": 8.296092283162709
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Kinder"
+    ]
+  },
+  {
+    "title": "Down Town",
+    "position": {
+      "lat": 52.748256597437624,
+      "lon": 8.294770385972555
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Chaos Airport",
+    "position": {
+      "lat": 52.7483215288829,
+      "lon": 8.296411361794815
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Kinder Karousell",
+    "position": {
+      "lat": 52.74856826837492,
+      "lon": 8.296392592463516
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Kinder"
+    ]
+  },
+  {
+    "title": "Zirkuswelt",
+    "position": {
+      "lat": 52.74875981613846,
+      "lon": 8.296446219124373
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Kinder"
+    ]
+  },
+  {
+    "title": "Riesenrad",
+    "position": {
+      "lat": 52.748607227242076,
+      "lon": 8.295770523197561
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "The King",
+    "position": {
+      "lat": 52.74659597572488,
+      "lon": 8.296186129819212
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Pirate's Adventure",
+    "position": {
+      "lat": 52.74657000314677,
+      "lon": 8.296706308429536
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  },
+  {
+    "title": "Märchenwald",
+    "position": {
+      "lat": 52.74733781748707,
+      "lon": 8.295526521890656
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion",
+      "Kinder"
+    ]
+  },
+  {
+    "title": "1001 Nacht",
+    "position": {
+      "lat": 52.74717386558777,
+      "lon": 8.295652544543673
+    },
+    "minZoom": "19",
+    "maxZoom": "22",
+    "labels": [
+      "attraction"
+    ],
+    "tags": [
+      "Fahrgeschäft",
+      "Attraktion"
+    ]
+  }
+],
   "houses": [
     {
       "title": "Amtmannsbult",
@@ -28,7 +468,7 @@
         "lat": 52.748659,
         "lon": 8.295388
       },
-      "minZoom": 15,
+      "minZoom": 18,
       "labels":["info", "atm", "doctor"],
       "tags":[
         "Info",
@@ -43,7 +483,7 @@
         "lat": 52.747340,
         "lon": 8.293910
       },
-      "minZoom": 16.5,
+      "minZoom": 18,
       "labels":["food", "beer", "wc"],
       "tags":[
         "Bier",
@@ -60,7 +500,7 @@
         "lat": 52.746742,
         "lon": 8.295343
       },
-      "minZoom": 16.5,
+      "minZoom": 18,
       "labels":["food", "beer", "wc"],
       "tags":[
         "Bier",
@@ -79,7 +519,7 @@
         "lat": 52.748365,
         "lon": 8.291868
       },
-      "minZoom": 15,
+      "minZoom": 17,
       "labels":["train"],
       "tags": ["Zug", "NordWestBahn"]
     },
@@ -89,7 +529,7 @@
         "lat": 52.743749,
         "lon": 8.299385
       },
-      "minZoom": 15,
+      "minZoom": 17,
       "labels":["bus"],
       "tags": ["Bus"]
     },
@@ -101,7 +541,7 @@
         "lon": 8.293113
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -113,7 +553,7 @@
         "lon": 8.297139
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking","bike"],
       "tags": ["Parkplatz"]
     },
@@ -125,7 +565,7 @@
         "lon": 8.296914
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -137,7 +577,7 @@
         "lon": 8.299819
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -149,7 +589,7 @@
         "lon": 8.300721
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -161,7 +601,7 @@
         "lon": 8.299229
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -173,7 +613,7 @@
         "lon": 8.299269
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -185,7 +625,7 @@
         "lon": 8.298078
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -197,7 +637,7 @@
         "lon": 8.291274
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking","bike"],
       "tags": ["Parkplatz"]
     },
@@ -209,7 +649,7 @@
         "lon": 8.289741
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -221,7 +661,7 @@
         "lon": 8.289510
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     },
@@ -233,7 +673,7 @@
         "lon": 8.288761
       },
       "minZoom": 15,
-      "maxZoom":17,
+      "maxZoom":18,
       "labels":["parking"],
       "tags": ["Parkplatz"]
     }
