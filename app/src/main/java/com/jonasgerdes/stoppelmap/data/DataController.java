@@ -30,7 +30,11 @@ import java.util.Vector;
 
 public class DataController {
 
-    private static final String DATA_PATH = "data/entities.json";
+    private static final String PATH_HOUSES_PARKING = "data/houses_parking.json";
+    private static final String PATH_ATTRACTIONS = "data/attractions.json";
+    private static final String PATH_TENTS = "data/tents.json";
+    private static final String PATH_STALLS = "data/stalls.json";
+    private static final String PATH_MISC = "data/misc.json";
     private static final Map<String, Integer> LABEL_MAP;
     static {
         Map<String, Integer> map = new HashMap<>();
@@ -48,14 +52,16 @@ public class DataController {
         map.put("atm", R.drawable.icon_atm_12);
         map.put("tent", R.drawable.icon_tent_12);
         map.put("candy", R.drawable.icon_candy_12);
+        map.put("candy", R.drawable.icon_candy_12);
 
         LABEL_MAP = Collections.unmodifiableMap(map);
+
     }
 
     private static final Map<String, Integer> TAG_ICONS;
     static {
         Map<String, Integer> map = new HashMap<>();
-        map.put("Fahrgesch<äft", R.drawable.icon_attraction_24);
+        map.put("Fahrgeschäft", R.drawable.icon_attraction_24);
         map.put("Attraktion", R.drawable.icon_attraction_24);
         map.put("Zelt", R.drawable.icon_tent_24);
         map.put("Essen", R.drawable.icon_dining_24);
@@ -104,9 +110,15 @@ public class DataController {
     public void readData(){
         Gson reader = new GsonBuilder().create();
         //TODO: check null
-        String json = readFileAsString(DATA_PATH);
+        String json = readFileAsString(PATH_HOUSES_PARKING);
         //TODO: catch exception?
-        entities = reader.fromJson(json, EntityHolder.class).all();
+        EntityHolder data = reader.fromJson(json, EntityHolder.class);
+        data.attractions = reader.fromJson(readFileAsString(PATH_ATTRACTIONS), EntityHolder.class).attractions;
+        data.tents = reader.fromJson(readFileAsString(PATH_TENTS), EntityHolder.class).tents;
+        data.stalls = reader.fromJson(readFileAsString(PATH_STALLS), EntityHolder.class).stalls;
+        data.misc = reader.fromJson(readFileAsString(PATH_MISC), EntityHolder.class).misc;
+
+        entities = data.all();
     }
 
 
@@ -197,7 +209,7 @@ public class DataController {
         List<SearchResult> result = new Vector<>();
         HashMap<String, SearchResult> tags = new HashMap<>();
         for(Entity e : entities){
-            if(e.title.toLowerCase().contains(query.toLowerCase())){
+            if(!e.title.equals("WC") && e.title.toLowerCase().contains(query.toLowerCase())){
                 SearchResult entityResult = new SearchResult(e.title, e);
                 for(String tag : e.tags){
                     if(TAG_ICONS.containsKey(tag)){
