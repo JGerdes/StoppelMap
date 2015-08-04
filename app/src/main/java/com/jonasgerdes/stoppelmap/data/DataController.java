@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.data;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -150,7 +151,7 @@ public class DataController {
 
     private Bitmap createLabel(LayoutInflater inflater, String title, String[] labelIcons){
         LinearLayout tv = (LinearLayout) inflater.inflate(R.layout.marker_default, null, false);
-        ((TextView)tv.findViewById(R.id.title)).setText(title);
+        ((TextView)tv.findViewById(R.id.title)).setText(Html.fromHtml(title));
 
         LinearLayout icons = (LinearLayout)tv.findViewById(R.id.icons);
         for(String icon : labelIcons){
