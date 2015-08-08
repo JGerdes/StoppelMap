@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -26,7 +27,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.jonasgerdes.stoppelmap.data.SearchResult;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private static Context context;
@@ -35,6 +36,17 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navDrawer;
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        switch(menuItem.getItemId()){
+            case R.id.drawer_about:
+                startActivity(new Intent(this, AboutActivity.class));
+                break;
+        }
+
+        return true;
+    }
 
     private enum State{DEFAULT, SEARCH};
     private State state = State.DEFAULT;
@@ -75,6 +87,7 @@ public class MainActivity extends ActionBarActivity {
 
         navDrawer = (NavigationView)findViewById(R.id.navigation);
         navDrawer.setItemIconTintList(null);
+        navDrawer.setNavigationItemSelectedListener(this);
 
     }
 
@@ -171,6 +184,10 @@ public class MainActivity extends ActionBarActivity {
         }
         return true;
     }
+
+
+
+
 
     public static Context getContext(){
         return context;
