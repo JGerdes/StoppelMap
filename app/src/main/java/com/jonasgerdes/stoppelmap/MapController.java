@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.data.DataController;
+import com.jonasgerdes.stoppelmap.data.LabelCreationTask;
 import com.jonasgerdes.stoppelmap.data.SearchResult;
 
 
@@ -35,6 +37,8 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
 
     private LatLngBounds bounds;
 
+    private Handler mapHandler;
+
     public MapController(Context context){
         this.context = context;
 
@@ -42,12 +46,14 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
         data = new DataController(assets);
         data.readData();
 
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        data.createLabels(inflater);
+        //data.createLabels(inflater);
 
         locationManager = (LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
 
         bounds = new LatLngBounds(new LatLng(LAT_MIN, LON_MIN), new LatLng(LAT_MAX, LON_MAX));
+        mapHandler = new Handler();
+
+
     }
 
     @Override
@@ -63,10 +69,28 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
         map.getUiSettings().setTiltGesturesEnabled(false);
         map.getUiSettings().setMyLocationButtonEnabled(false);
 
+
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));
         map.setOnCameraChangeListener(this);
 
-        data.placeRelevantMarkers(map);
+
+        final LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        //data.createLabels(inflater);
+        //data.placeRelevantMarkers(map);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                data.createLabels(inflater);
+                mapHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        data.placeRelevantMarkers(map);
+                    }
+                });
+            }
+        }).start();
+
 
     }
 

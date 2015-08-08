@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap;
 
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import com.google.android.gms.maps.model.Tile;
 import com.google.android.gms.maps.model.TileProvider;
@@ -10,16 +11,19 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class CustomMapTileProvider implements TileProvider {
-    private static final int TILE_WIDTH = 512;
-    private static final int TILE_HEIGHT = 512;
+    private static final int TILE_WIDTH = R.integer.tile_size;
+    private static final int TILE_HEIGHT = R.integer.tile_size;
     private static final int BUFFER_SIZE = 16 * 1024;
 
     private AssetManager mAssets;
     private Tile empty;
+    private String path;
 
     public CustomMapTileProvider(AssetManager assets) {
         mAssets = assets;
-        byte[] image = readImage("map/none.png");
+        path = "map/"+MainActivity.getContext().getString(R.string.tile_path)+"/";
+        Log.d("TP", "loading tiles for " + MainActivity.getContext().getString(R.string.tile_path));
+        byte[] image = readImage(path+"none.png");
         empty = image == null ? null : new Tile(TILE_WIDTH, TILE_HEIGHT, image);
     }
 
@@ -64,7 +68,7 @@ public class CustomMapTileProvider implements TileProvider {
     }
 
     private String getTileFilename(int x, int y, int zoom) {
-        return "map/" + zoom + '/' + x + '_' + y + ".png";
+        return path + zoom + '/' + x + '_' + y + ".png";
     }
 
     private int fixYCoordinate(int y, int zoom) {

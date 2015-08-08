@@ -17,7 +17,7 @@ public class Entity {
     private Marker currentMarker;
 
     public void addMarkerTo(GoogleMap map){
-        if(currentMarker == null){
+        if(currentMarker == null && markerOptions != null){
             currentMarker = map.addMarker(markerOptions);
         }
     }

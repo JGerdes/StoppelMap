@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="search_hint">Suche</string>
     <string name="message_not_in_area">Du befindest dich nicht auf dem Festgelände!</string>
+    <string name="open">Öffnen</string>
+    <string name="close">Schließen</string>
 </resources>

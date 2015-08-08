@@ -8,6 +8,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.data.entity.Entity;
 
@@ -80,7 +81,7 @@ public class SearchResult {
         if(currentPosition != null){
             bounds.include(currentPosition);
         }
-        return CameraUpdateFactory.newLatLngBounds(bounds.build(), 200);
+        return CameraUpdateFactory.newLatLngBounds(bounds.build(), MainActivity.convertDpToPixel(64));
     }
 
     private void sortEntities(final LatLng pos) {
