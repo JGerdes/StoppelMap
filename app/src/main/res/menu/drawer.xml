@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- group with single selected item so only one item is highlighted in the nav menu -->
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none"  android:id="@+id/key">
         <item
-            android:id="@+id/drawer_item_1"
-            android:icon="@drawable/icon_attraction_24"
-            android:title="Lorem"/>
+            android:id="@+id/drawer_attraction"
+            android:icon="@drawable/ic_attraction"
+            android:title="@string/menu_attraction"
+            android:enabled="false"/>
         <item
-            android:id="@+id/drawer_item_2"
-            android:icon="@drawable/icon_tent_24"
-            android:title="Ipsum"/>
+            android:id="@+id/drawer_tent"
+            android:icon="@drawable/ic_tent"
+            android:title="@string/menu_tent"/>
+        <item
+            android:id="@+id/drawer_stall_food"
+            android:icon="@drawable/ic_food"
+            android:title="@string/menu_stall_food"/>
+        <item
+            android:id="@+id/drawer_stall_sweets"
+            android:icon="@drawable/ic_sweets"
+            android:title="@string/menu_stall_sweets"/>
+        <item
+            android:id="@+id/drawer_stall_candy"
+            android:icon="@drawable/ic_candy"
+            android:title="@string/menu_stall_candy"/>
+        <item
+            android:id="@+id/drawer_game"
+            android:icon="@drawable/ic_game"
+            android:title="@string/menu_game"/>
+        <item
+            android:id="@+id/drawer_wc"
+            android:icon="@drawable/ic_toilet"
+            android:title="@string/menu_wc"/>
+        <item
+            android:id="@+id/drawer_shop"
+            android:icon="@drawable/ic_shop"
+            android:title="@string/menu_shop"/>
+        <item
+            android:id="@+id/drawer_biz"
+            android:icon="@drawable/ic_biz"
+            android:title="@string/menu_biz"/>
+    </group>
+
+    <group android:checkableBehavior="single"  android:id="@+id/misc">
+        <item
+            android:id="@+id/drawer_about"
+            android:icon="@drawable/icon_info_24"
+            android:title="@string/menu_about"/>
     </group>
 </menu>

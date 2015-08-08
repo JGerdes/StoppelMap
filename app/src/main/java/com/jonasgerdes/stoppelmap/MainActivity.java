@@ -2,9 +2,11 @@ package com.jonasgerdes.stoppelmap;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -32,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+    private NavigationView navDrawer;
 
     private enum State{DEFAULT, SEARCH};
     private State state = State.DEFAULT;
@@ -70,6 +73,9 @@ public class MainActivity extends ActionBarActivity {
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
+        navDrawer = (NavigationView)findViewById(R.id.navigation);
+        navDrawer.setItemIconTintList(null);
+
     }
 
     @Override
@@ -104,10 +110,15 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public boolean onSuggestionClick(int position) {
                     SearchResult result = search.getSelectedById(position);
-                    state = State.SEARCH;
+
                     mapController.present(result);
-                    invalidateOptionsMenu();
+
+                    setState(State.SEARCH);
                     getSupportActionBar().setTitle(result.getTitle());
+                    //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+                    //getSupportActionBar().setDisplayShowHomeEnabled(false);
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                     return true;
                 }
 
@@ -119,11 +130,19 @@ public class MainActivity extends ActionBarActivity {
             searchView.setOnQueryTextListener(search);
             menu.findItem(R.id.search).setVisible(true);
             getSupportActionBar().setTitle(R.string.app_name);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            //getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        }else{
+            drawerToggle.syncState();
+
+            //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
+        } else {
             menu.findItem(R.id.search).setVisible(false);
+
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+            //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         }
         return true;
@@ -133,9 +152,9 @@ public class MainActivity extends ActionBarActivity {
     private void setState(State state){
         this.state = state;
         if(state == State.SEARCH){
-            drawerLayout.setDrawerListener(null);
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }else{
-            drawerLayout.setDrawerListener(drawerToggle);
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
             mapController.present(null);
         }
         invalidateOptionsMenu();

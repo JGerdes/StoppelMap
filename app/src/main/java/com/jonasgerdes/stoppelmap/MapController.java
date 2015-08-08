@@ -68,6 +68,8 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
 
         map.getUiSettings().setTiltGesturesEnabled(false);
         map.getUiSettings().setMyLocationButtonEnabled(false);
+        map.getUiSettings().setMapToolbarEnabled(false);
+        map.getUiSettings().setZoomControlsEnabled(false);
 
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));

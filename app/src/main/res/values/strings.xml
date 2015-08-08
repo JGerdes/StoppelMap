@@ -7,4 +7,15 @@
     <string name="message_not_in_area">Du befindest dich nicht auf dem Festgelände!</string>
     <string name="open">Öffnen</string>
     <string name="close">Schließen</string>
+    <string name="menu_attraction">Fahrgeschäft</string>
+    <string name="menu_tent">Festzelt/Aussschank</string>
+    <string name="menu_stall">Bude/Stand</string>
+    <string name="menu_stall_food">Essen</string>
+    <string name="menu_stall_sweets">Eis/Süßes</string>
+    <string name="menu_stall_candy">Mandeln, Lebkuchen etc</string>
+    <string name="menu_wc">Toilette</string>
+    <string name="menu_about">Über</string>
+    <string name="menu_shop">Verkausstand</string>
+    <string name="menu_biz">Gewerbezelt</string>
+    <string name="menu_game">Lose/Automat/Spielstand</string>
 </resources>

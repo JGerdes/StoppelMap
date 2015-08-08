@@ -15,7 +15,6 @@
         android:id="@+id/rootLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/navigationbar_margin"
         >
 
         <android.support.design.widget.AppBarLayout
@@ -68,7 +67,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"/>
     </android.support.design.widget.CoordinatorLayout>
-    <View style="@style/NavigationTinter" />
+    <!--<View style="@style/NavigationTinter" />-->
 
 
     </RelativeLayout>
@@ -80,10 +79,10 @@
         android:layout_gravity="start"
         android:background="@color/color_drawer_background"
         app:headerLayout="@layout/drawer_header"
-        app:itemIconTint="@color/color_text_secondary"
+        app:itemIconTint="@color/color_transparent"
         app:itemTextColor="@color/color_text"
         app:menu="@menu/drawer"
-        android:layout_marginTop="-26dp"
+        android:layout_marginTop="@dimen/drawer_margin"
         />
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="toolbar_top_padding">24dp</dimen>
-    <dimen name="navigationbar_margin">0dp</dimen>
     <dimen name="map_margin_top">56dp</dimen>
+    <dimen name="drawer_margin">0dp</dimen>
 </resources>
