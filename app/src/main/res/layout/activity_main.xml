@@ -83,12 +83,7 @@
         app:itemTextColor="@color/color_text"
         app:menu="@menu/drawer"
         android:layout_marginTop="@dimen/drawer_margin"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/menu_key"/>
-    </android.support.design.widget.NavigationView>
+        />
 
 
 

@@ -3,13 +3,14 @@ package com.jonasgerdes.stoppelmap;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,10 +20,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.support.v4.view.MenuCompat;
-import android.support.v4.view.MenuItemCompat;
 
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.jonasgerdes.stoppelmap.data.SearchResult;
 
@@ -36,12 +34,16 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navDrawer;
+    private Toolbar toolbar;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         switch(menuItem.getItemId()){
             case R.id.drawer_about:
                 startActivity(new Intent(this, AboutActivity.class));
+                break;
+            case R.id.drawer_intro:
+                startActivity(new Intent(this, IntroActivity.class));
                 break;
         }
 
@@ -57,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         context = this;
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mapController = new MapController(this);
@@ -71,7 +73,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!mapController.targetCurrentLocation()){
+                if (!mapController.targetCurrentLocation()) {
                     String message = getString(R.string.message_not_in_area);
                     Snackbar.make(root, message, Snackbar.LENGTH_LONG).show();
                 }
@@ -79,16 +81,24 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             }
         });
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open,
-                R.string.close);
-        drawerLayout.setDrawerListener(drawerToggle);
-        drawerToggle.syncState();
 
         navDrawer = (NavigationView)findViewById(R.id.navigation);
         navDrawer.setItemIconTintList(null);
         navDrawer.setNavigationItemSelectedListener(this);
 
+        showTutorial();
+
+    }
+
+    private void showTutorial() {
+        SharedPreferences prefs = getSharedPreferences("stoppelmap", MODE_PRIVATE);
+        boolean tutShown = prefs.getBoolean("tutorialShown", false);
+        if(!tutShown){
+            SharedPreferences.Editor editor = getSharedPreferences("stoppelmap", MODE_PRIVATE).edit();
+            editor.putBoolean("tutorialShown", true);
+            editor.commit();
+            startActivity(new Intent(this, IntroActivity.class));
+        }
     }
 
     @Override
@@ -131,7 +141,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                     //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
                     //getSupportActionBar().setDisplayShowHomeEnabled(false);
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
                     return true;
                 }
 
@@ -139,20 +150,30 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 public boolean onSuggestionSelect(int position) {
                     return true;
                 }
+
             });
+
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
             searchView.setOnQueryTextListener(search);
             menu.findItem(R.id.search).setVisible(true);
             getSupportActionBar().setTitle(R.string.app_name);
             //getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+            drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open,
+                    R.string.close);
+            drawerLayout.setDrawerListener(drawerToggle);
             drawerToggle.syncState();
 
+            menu.findItem(R.id.back).setVisible(false);
             //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
 
         } else {
             menu.findItem(R.id.search).setVisible(false);
+            menu.findItem(R.id.back).setVisible(true);
 
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            ;
 
 
             //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -165,19 +186,42 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private void setState(State state){
         this.state = state;
         if(state == State.SEARCH){
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            setDrawerState(false);
+            //drawerToggle.setDrawerIndicatorEnabled(false);
         }else{
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
             mapController.present(null);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            setDrawerState(true);
+            //drawerToggle.setDrawerIndicatorEnabled(true);
+            //getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         invalidateOptionsMenu();
+    }
+
+    public void setDrawerState(boolean isEnabled) {
+        if ( isEnabled ) {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            //drawerToggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_UNLOCKED);
+            drawerToggle.setDrawerIndicatorEnabled(true);
+            drawerToggle.syncState();
+
+        }
+        else {
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            //drawerToggle.onDrawerStateChanged(DrawerLayout.);
+            drawerToggle.setDrawerIndicatorEnabled(false);
+            drawerToggle.syncState();
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()){
-            case android.R.id.home:
+            case R.id.back:
                 if(state == State.SEARCH){
                    setState(State.DEFAULT);
                 }

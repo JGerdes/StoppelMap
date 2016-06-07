@@ -28,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="v1.0" />
+            android:id="@+id/version"
+            android:text="" />
 
         <!--<ImageView
             android:layout_width="64dp"
@@ -65,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Icons (Info, Karousell, Bier, Zelt, WC)"
+            android:text="Icons (Info, Karusell, Bier, Zelt, WC)"
             android:textStyle="bold"
             android:layout_marginTop="32dp" />
 
@@ -120,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="https://github.com/google/material-design-icons/"
+            android:text="https://www.google.com/design/icons/"
             android:autoLink="web"
             android:clickable="false"/>
 

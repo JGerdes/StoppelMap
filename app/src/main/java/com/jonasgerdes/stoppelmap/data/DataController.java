@@ -37,6 +37,7 @@ public class DataController {
     private static final String PATH_STALLS = "data/stalls.json";
     private static final String PATH_MISC = "data/misc.json";
     private static final Map<String, Integer> LABEL_MAP;
+    private static final List<String> IGNORED_TITLES;
     static {
         Map<String, Integer> map = new HashMap<>();
         map.put("food", R.drawable.icon_dining);
@@ -53,16 +54,52 @@ public class DataController {
         map.put("atm", R.drawable.icon_atm_12);
         map.put("tent", R.drawable.icon_tent_12);
         map.put("candy", R.drawable.icon_candy_12);
-        map.put("candy", R.drawable.icon_candy_12);
 
         LABEL_MAP = Collections.unmodifiableMap(map);
+
+
+
+        List<String> ignore = new Vector<>();
+        ignore.add("WC");
+        ignore.add("Süßwaren");
+        ignore.add("Crêpes");
+        ignore.add("Mais");
+        ignore.add("Blumenkohl");
+        ignore.add("Imbiss");
+        ignore.add("Pommes");
+        ignore.add("Pilze");
+        ignore.add("Brezel");
+        ignore.add("Pizza");
+        ignore.add("Hotdog");
+        ignore.add("Bratwurst");
+        ignore.add("Poffertje");
+        ignore.add("Reibekuchen");
+        ignore.add("Chinesisch");
+        ignore.add("Pasta");
+        ignore.add("Fisch");
+        ignore.add("Lachs");
+        ignore.add("Käse");
+        ignore.add("Gyros");
+        ignore.add("Flammkuchen");
+        ignore.add("Schinken");
+        ignore.add("Grillschinken");
+        ignore.add("Spießbraten");
+        ignore.add("Spieße");
+        ignore.add("Slush");
+        ignore.add("Eis");
+        ignore.add("Gurken");
+        ignore.add("Frozen Yoghurt");
+        ignore.add("Schoko Früchte");
+
+        IGNORED_TITLES = ignore;
+
 
     }
 
     private static final Map<String, Integer> TAG_ICONS;
     static {
         Map<String, Integer> map = new HashMap<>();
-        map.put("Fahrgesch�ft", R.drawable.icon_attraction_24);
+        map.put("Fahrgeschäft", R.drawable.icon_attraction_24);
         map.put("Attraktion", R.drawable.icon_attraction_24);
         map.put("Zelt", R.drawable.icon_tent_24);
         map.put("Essen", R.drawable.icon_dining_24);
@@ -88,13 +125,13 @@ public class DataController {
         map.put("Currywurst", R.drawable.icon_dining_24);
         map.put("Bratkartoffeln", R.drawable.icon_dining_24);
         map.put("Spiegeleier", R.drawable.icon_dining_24);
-        map.put("D�ner", R.drawable.icon_dining_24);
+        map.put("Döner", R.drawable.icon_dining_24);
         map.put("Champions", R.drawable.icon_dining_24);
-        map.put("Cr�pes", R.drawable.icon_dining_24);
+        map.put("Crépes", R.drawable.icon_dining_24);
         map.put("Eis", R.drawable.icon_dining_24);
 
 
-        //Getr�nke
+        //Getr�nke
         map.put("Bier", R.drawable.icon_beer_24);
 
         TAG_ICONS = Collections.unmodifiableMap(map);
@@ -210,7 +247,7 @@ public class DataController {
         List<SearchResult> result = new Vector<>();
         HashMap<String, SearchResult> tags = new HashMap<>();
         for(Entity e : entities){
-            if(!e.title.equals("WC") && e.title.toLowerCase().contains(query.toLowerCase())){
+            if(!IGNORED_TITLES.contains(e.title) && e.title.toLowerCase().contains(query.toLowerCase())){
                 SearchResult entityResult = new SearchResult(e.title, e);
                 for(String tag : e.tags){
                     if(TAG_ICONS.containsKey(tag)){

@@ -13,7 +13,8 @@
         "tent"
       ],
       "tags": [
-        "Bier"
+        "Bier",
+        "Zelt"
       ]
     },
     {
@@ -28,7 +29,8 @@
         "tent"
       ],
       "tags": [
-        "Bier"
+        "Bier",
+        "Zelt"
       ]
     },
     {
@@ -255,7 +257,7 @@
       ]
     },
     {
-      "title": "K�hlings Niedersachsenhalle",
+      "title": "Kühlings Niedersachsenhalle",
       "position": {
         "lat": 52.74819328927849,
         "lon": 8.296987848399041
@@ -288,7 +290,7 @@
       ]
     },
     {
-      "title": "Stierbr�u",
+      "title": "Stierbräu",
       "position": {
         "lat": 52.74632164036862,
         "lon": 8.296017205837508
@@ -315,7 +317,9 @@
         "tent"
       ],
       "tags": [
-        "Zelt"
+        "Zelt",
+        "Wein",
+        "Karaoke"
       ]
     },
     {
@@ -348,6 +352,381 @@
       ],
       "tags": [
         "Zelt",
+        "Bier"
+      ]
+    },
+    {
+      "title": "Trumpf",
+      "position": {
+        "lat": 52.747840115583536,
+        "lon": 8.296782372630203
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food",
+        "beer"
+      ],
+      "tags": [
+        "Bier",
+        "Pommes",
+        "Bratwurst",
+        "Burger"
+      ]
+    },
+    {
+      "title": "Stratmann",
+      "position": {
+        "lat": 52.74808371801214,
+        "lon": 8.29651412246677
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "tent"
+      ],
+      "tags": [
+        "Zelt",
+        "Bier",
+        "Café"
+      ]
+    },
+    {
+      "title": "Winter",
+      "position": {
+        "lat": 52.74840202518552,
+        "lon": 8.294740988886467
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
+        "Bier",
+        "Cocktails"
+      ]
+    },
+    {
+      "title": "Meyer",
+      "position": {
+        "lat": 52.74839715313694,
+        "lon": 8.292737160165613
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
+        "Bier"
+      ]
+    },
+    {
+      "title": "Browatzki",
+      "position": {
+        "lat": 52.7480902140769,
+        "lon": 8.292168469819133
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
+        "Bier"
+      ]
+    },
+    {
+      "title": "Landwehr",
+      "position": {
+        "lat": 52.74803583052371,
+        "lon": 8.293445807449357
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food",
+        "beer"
+      ],
+      "tags": [
+        "Bier",
+        "Pommes",
+        "Bratwurst",
+        "Steak"
+      ]
+    },
+    {
+      "title": "Da Enzo",
+      "position": {
+        "lat": 52.74767771396447,
+        "lon": 8.29444591370669
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer",
+        "food"
+      ],
+      "tags": [
+        "Bier"
+      ]
+    },
+    {
+      "title": "Bokern",
+      "position": {
+        "lat": 52.74733667056442,
+        "lon": 8.296355854870342
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food",
+        "beer"
+      ],
+      "tags": [
+        "Bier",
+        "Pommes",
+        "Bratwurst"
+      ]
+    },
+    {
+      "title": "Hanse Kogge",
+      "position": {
+        "lat": 52.747380519001574,
+        "lon": 8.297302777947266
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "tent"
+      ],
+      "tags": [
+        "Zelt",
+        "Bier"
+      ]
+    },
+    {
+      "title": "Wittler",
+      "position": {
+        "lat": 52.74664808769957,
+        "lon": 8.29754688559599
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
+        "Bier"
+      ]
+    },
+    {
+      "title": "Banane",
+      "position": {
+        "lat": 52.74701511535867,
+        "lon": 8.295677181956853
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "tent"
+      ],
+      "tags": [
+        "Bier",
+        "Zelt"
+      ]
+    },
+    {
+      "title": "Fischer",
+      "position": {
+        "lat": 52.74776216280639,
+        "lon": 8.295771069514055
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "tent"
+      ],
+      "tags": [
+        "Bier",
+        "Zelt"
+      ]
+    },
+    {
+      "title": "Twistringer Zelt",
+      "position": {
+        "lat": 52.74746983989206,
+        "lon": 8.295449169317934
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "tent"
+      ],
+      "tags": [
+        "Bier",
+        "Zelt"
+      ]
+    },
+    {
+      "title": "Ostermann",
+      "position": {
+        "lat": 52.74797739222297,
+        "lon": 8.295019749945546
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food",
+        "beer"
+      ],
+      "tags": [
+        "Bratwurst",
+        "Pommes",
+        "Bier"
+      ]
+    },
+    {
+      "title": "Benecke",
+      "position": {
+        "lat": 52.7482095221398,
+        "lon": 8.2956418192115
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food",
+        "beer"
+      ],
+      "tags": [
+        "Spießbraten",
+        "Bier"
+      ]
+    },
+    {
+      "title": "Feldkamp",
+      "position": {
+        "lat": 52.74850009035738,
+        "lon": 8.296070832498366
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food",
+        "beer"
+      ],
+      "tags": [
+        "Bratwurst",
+        "Bier"
+      ]
+    },
+    {
+      "title": "Schinderhannes",
+      "position": {
+        "lat": 52.746949852101594,
+        "lon": 8.296033293835766
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food",
+        "beer"
+      ],
+      "tags": [
+        "Spießbraten",
+        "Bier"
+      ]
+    },
+    {
+      "title": "Feldkamp",
+      "position": {
+        "lat": 52.74665766059788,
+        "lon": 8.297382004356349
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "food"
+      ],
+      "tags": [
+        "Bratwurst"
+      ]
+    },
+    {
+      "title": "Heitmann",
+      "position": {
+        "lat": 52.74801063728356,
+        "lon": 8.293802113314447
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
+        "Bier",
+        "Bierstube"
+      ]
+    },
+    {
+      "title": "Eurocafè",
+      "position": {
+        "lat": 52.74661545515846,
+        "lon": 8.296432812459159
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
+        "Bier"
+      ]
+    },
+    {
+      "title": "Treffpunkt",
+      "position": {
+        "lat": 52.74672421532929,
+        "lon": 8.297100464386844
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "tent"
+      ],
+      "tags": [
+        "Zelt",
+        "Bier"
+      ]
+    },
+    {
+      "title": "Wittler Wein",
+      "position": {
+        "lat": 52.74656513328838,
+        "lon": 8.29805501895012
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
+        "Wein"
+      ]
+    },
+    {
+      "title": "Büssing",
+      "position": {
+        "lat": 52.7439305398966,
+        "lon": 8.299181178828142
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "beer"
+      ],
+      "tags": [
         "Bier"
       ]
     }

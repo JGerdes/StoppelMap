@@ -16,16 +16,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.data.DataController;
-import com.jonasgerdes.stoppelmap.data.LabelCreationTask;
 import com.jonasgerdes.stoppelmap.data.SearchResult;
 
 
 public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChangeListener {
 
-    public static final double LAT_MIN = 52.745;
-    public static final double LAT_MAX = 52.750;
-    public static final double LON_MIN = 8.292;
-    public static final double LON_MAX = 8.299;
+    public static final double LAT_MIN = 52.743;    //SOUTH
+    public static final double LAT_MAX = 52.750;    //NORTH
+    public static final double LON_MIN = 8.290;     //WEST
+    public static final double LON_MAX = 8.299;     //EAST
     public static final float ZOOM_MAX = 15;
     public static final float ZOOM_MIN = 20;
 
@@ -116,7 +115,7 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
             newPos = new LatLng(LAT_MAX, newPos.longitude);
             dirty = true;
         }
-        if ((cameraPosition.target.longitude - LON_MIN) < -0.01) {
+        if ((cameraPosition.target.longitude - LON_MIN) < -0.001) {
             Log.i("MC", "deltaLon:"+(cameraPosition.target.longitude - LON_MIN));
             newPos = new LatLng(newPos.latitude, LON_MIN);
             dirty = true;
@@ -126,7 +125,7 @@ public class MapController implements OnMapReadyCallback, GoogleMap.OnCameraChan
             newPos = new LatLng(LAT_MIN, newPos.longitude);
             dirty = true;
         }
-        if ((cameraPosition.target.longitude - LON_MAX) > 0.01) {
+        if ((cameraPosition.target.longitude - LON_MAX) > 0.001) {
             Log.i("MC", "deltaLon:"+(cameraPosition.target.longitude - LON_MAX));
             newPos = new LatLng(newPos.latitude, LON_MAX);
             dirty = true;

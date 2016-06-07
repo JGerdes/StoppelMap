@@ -15,9 +15,10 @@
     <string name="menu_stall_candy">Mandeln, Lebkuchen etc</string>
     <string name="menu_wc">Toilette</string>
     <string name="menu_about">Über</string>
-    <string name="menu_shop">Verkausstand</string>
+    <string name="menu_shop">Verkaufsstand</string>
     <string name="menu_biz">Gewerbezelt</string>
     <string name="menu_game">Lose/Automat/Spielstand</string>
     <string name="settings_about">Über</string>
     <string name="menu_key">Legende</string>
+    <string name="menu_intro">Wie benutzen?</string>
 </resources>

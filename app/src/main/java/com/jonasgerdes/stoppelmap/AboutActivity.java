@@ -1,8 +1,11 @@
 package com.jonasgerdes.stoppelmap;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 public class AboutActivity extends ActionBarActivity {
 
@@ -16,6 +19,16 @@ public class AboutActivity extends ActionBarActivity {
         getSupportActionBar().setTitle(R.string.settings_about);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        TextView versionText = (TextView) findViewById(R.id.version);
+        try{
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            String version = pInfo.versionName;
+            versionText.setText("v"+version);
+        }catch (PackageManager.NameNotFoundException nnf){
+
+        }
+
     }
 
 }

@@ -12,7 +12,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -28,7 +28,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Achterbahn"
       ]
@@ -45,7 +45,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -61,7 +61,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -77,7 +77,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Kinder"
       ]
@@ -94,8 +94,9 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
-        "Attraktion"
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kettenflieger"
       ]
     },
     {
@@ -110,7 +111,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Autoscooter"
       ]
@@ -127,7 +128,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Autoscooter"
       ]
@@ -144,7 +145,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -160,7 +161,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Wasserbahn"
       ]
@@ -177,7 +178,6 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
         "Attraktion",
         "Show"
       ]
@@ -194,7 +194,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -210,7 +210,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Geisterbahn"
       ]
@@ -227,7 +227,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Kinder"
       ]
@@ -244,7 +244,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -260,7 +260,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -276,7 +276,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -292,8 +292,9 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
-        "Attraktion"
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Krake"
       ]
     },
     {
@@ -308,13 +309,13 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Kinder"
       ]
     },
     {
-      "title": "Down Town",
+      "title": "Glaswerk",
       "position": {
         "lat": 52.748256597437624,
         "lon": 8.294770385972555
@@ -325,7 +326,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -341,12 +342,12 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
     {
-      "title": "Kinder Karousell",
+      "title": "Kinderkarusell",
       "position": {
         "lat": 52.74856826837492,
         "lon": 8.296392592463516
@@ -357,7 +358,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Kinder"
       ]
@@ -374,7 +375,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Kinder"
       ]
@@ -391,7 +392,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -407,7 +408,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
@@ -423,12 +424,12 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
       ]
     },
     {
-      "title": "M‰rchenwald",
+      "title": "M√§rchenwald",
       "position": {
         "lat": 52.74733781748707,
         "lon": 8.295526521890656
@@ -439,7 +440,7 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion",
         "Kinder"
       ]
@@ -456,8 +457,178 @@
         "attraction"
       ],
       "tags": [
-        "Fahrgesch‰ft",
+        "Fahrgesch√§ft",
         "Attraktion"
+      ]
+    },
+    {
+      "title": "Kinderautoscooter",
+      "position": {
+        "lat": 52.74739950236008,
+        "lon": 8.295092145937705
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "World of Fantasy",
+      "position": {
+        "lat": 52.74781181703754,
+        "lon": 8.294451307340449
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "Kinderkettenflieger",
+      "position": {
+        "lat": 52.747461187233085,
+        "lon": 8.29450761533435
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "Kasperl-Theater",
+      "position": {
+        "lat": 52.74743846122724,
+        "lon": 8.294697989980396
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Attraktion",
+        "Kinder",
+        "Show"
+      ]
+    },
+    {
+      "title": "Pferdekarusell",
+      "position": {
+        "lat": 52.74797739222297,
+        "lon": 8.295427312568068
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "Kinderkarusell",
+      "position": {
+        "lat": 52.747907590919304,
+        "lon": 8.29297925549989
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "Ponyreiten",
+      "position": {
+        "lat": 52.74795141964486,
+        "lon": 8.292062239599215
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "Kinderkarusell",
+      "position": {
+        "lat": 52.74802122094853,
+        "lon": 8.296242437813113
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "Babyflug",
+      "position": {
+        "lat": 52.74791570734997,
+        "lon": 8.297258663036375
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
+      ]
+    },
+    {
+      "title": "Jumboflug",
+      "position": {
+        "lat": 52.74675830433805,
+        "lon": 8.296532021781747
+      },
+      "minZoom": "19",
+      "maxZoom": "22",
+      "labels": [
+        "attraction"
+      ],
+      "tags": [
+        "Fahrgesch√§ft",
+        "Attraktion",
+        "Kinder"
       ]
     }
   ]

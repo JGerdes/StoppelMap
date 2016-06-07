@@ -492,6 +492,40 @@
         "Toilette",
         "Klo"
       ]
+    },
+    {
+      "title": "WC",
+      "position": {
+        "lat": 52.74814705464358,
+        "lon": 8.289354525604706
+      },
+      "minZoom": "19.6",
+      "maxZoom": "22",
+      "labels": [
+        "wc"
+      ],
+      "tags": [
+        "WC",
+        "Toilette",
+        "Klo"
+      ]
+    },
+    {
+      "title": "WC",
+      "position": {
+        "lat": 52.743806059365866,
+        "lon": 8.299408541730225
+      },
+      "minZoom": "19.6",
+      "maxZoom": "22",
+      "labels": [
+        "wc"
+      ],
+      "tags": [
+        "WC",
+        "Toilette",
+        "Klo"
+      ]
     }
   ]
 }
