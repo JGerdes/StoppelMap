@@ -16,10 +16,17 @@ import android.widget.RemoteViews;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
 
+import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Jonas on 07.06.2016.
  */
 public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
+
+    private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
+    private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
 
     private final Rect textBounds = new Rect();
 
@@ -55,12 +62,13 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
                 R.layout.widget_layout_gingerbread_heart);
 
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
-        views.setImageViewBitmap(R.id.widget_countdown, createCountdownBitmap(context, "64 Tage, 23 Stunden", size));
+        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownString(), size);
+        views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
-    public Bitmap createCountdownBitmap(Context context, String text, Point size) {
+    private Bitmap createCountdownBitmap(Context context, String text, Point size) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
 
@@ -77,4 +85,42 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
         return bitmap;
     }
+
+    private String getCountDownString() {
+        Date now = new Date();
+        Date stomaStart = new Date(116, 7, 11, 18, 30);
+
+        long delta = stomaStart.getTime() - now.getTime();
+        if (delta <= TimeUnit.HOURS.toMillis(1) && delta >= 0) {
+            return "Wenige Augenblicke";
+        } else if (delta <= 0) {
+            return "Viel Spaß!";
+        } else {
+            long days = delta / TimeUnit.DAYS.toMillis(1);
+            delta %= TimeUnit.DAYS.toMillis(1);
+
+            long hours = delta / TimeUnit.HOURS.toMillis(1);
+            delta %= TimeUnit.HOURS.toMillis(1);
+
+            long minutes = delta / TimeUnit.MINUTES.toMillis(1);
+            delta %= TimeUnit.MINUTES.toMillis(1);
+
+            return getFormatedUnitString(days, UNIT_DESC_DAY)
+                    + ", "
+                    + getFormatedUnitString(hours, UNIT_DESC_HOUR);
+        }
+
+    }
+
+    private String getFormatedUnitString(long amount, String[] unitDescriptor) {
+        String unit;
+        if (amount == 1) {
+            unit = unitDescriptor[0];
+        } else {
+            unit = unitDescriptor[1];
+        }
+        return String.format(Locale.GERMAN, "%d %s", amount, unit);
+    }
+
+
 }
