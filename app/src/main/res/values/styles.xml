@@ -18,4 +18,9 @@
         <item name="android:layout_height">0dp</item>
     </style>
 
+    <style name="StoppelMapAlert" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/color_primary</item>
+    </style>
+
+
 </resources>

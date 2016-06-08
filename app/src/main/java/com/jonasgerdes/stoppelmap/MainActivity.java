@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -38,7 +40,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        switch(menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.drawer_about:
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
@@ -50,7 +52,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return true;
     }
 
-    private enum State{DEFAULT, SEARCH};
+    private enum State {DEFAULT, SEARCH}
+
+    ;
     private State state = State.DEFAULT;
 
     @Override
@@ -59,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         context = this;
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mapController = new MapController(this);
@@ -82,7 +86,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         });
 
 
-        navDrawer = (NavigationView)findViewById(R.id.navigation);
+        navDrawer = (NavigationView) findViewById(R.id.navigation);
         navDrawer.setItemIconTintList(null);
         navDrawer.setNavigationItemSelectedListener(this);
 
@@ -90,10 +94,20 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     }
 
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        new AlertDialog.Builder(this, R.style.StoppelMapAlert)
+                .setTitle("StoppelMap 2016")
+                .setMessage("Zur Zeit ist StoppelMap noch nicht für 2016 aktualisiert und zeigt noch Daten vom Stoppelmarkt 2015 an. Die neuen Daten werden gerade eingepflegt - eine neue, kompett überarbeitete Version von StoppelMap wird bald erscheinen.\n\nProbiere solange doch mal das Countdown-Widget aus!")
+                .setPositiveButton("Alles klar!", null)
+                .show();
+    }
+
     private void showTutorial() {
         SharedPreferences prefs = getSharedPreferences("stoppelmap", MODE_PRIVATE);
         boolean tutShown = prefs.getBoolean("tutorialShown", false);
-        if(!tutShown){
+        if (!tutShown) {
             SharedPreferences.Editor editor = getSharedPreferences("stoppelmap", MODE_PRIVATE).edit();
             editor.putBoolean("tutorialShown", true);
             editor.commit();
@@ -103,13 +117,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else if(state == State.SEARCH){
+        } else if (state == State.SEARCH) {
             state = State.DEFAULT;
             invalidateOptionsMenu();
             mapController.present(null);
-        }else{
+        } else {
             super.onBackPressed();
         }
     }
@@ -119,7 +133,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
-        if(state == state.DEFAULT) {
+        if (state == state.DEFAULT) {
             SearchManager searchManager =
                     (SearchManager) getSystemService(Context.SEARCH_SERVICE);
             final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
@@ -183,14 +197,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
-    private void setState(State state){
+    private void setState(State state) {
         this.state = state;
-        if(state == State.SEARCH){
+        if (state == State.SEARCH) {
             //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             setDrawerState(false);
             //drawerToggle.setDrawerIndicatorEnabled(false);
-        }else{
+        } else {
             //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
             mapController.present(null);
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -202,14 +216,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
     public void setDrawerState(boolean isEnabled) {
-        if ( isEnabled ) {
+        if (isEnabled) {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
             //drawerToggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_UNLOCKED);
             drawerToggle.setDrawerIndicatorEnabled(true);
             drawerToggle.syncState();
 
-        }
-        else {
+        } else {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             //drawerToggle.onDrawerStateChanged(DrawerLayout.);
             drawerToggle.setDrawerIndicatorEnabled(false);
@@ -220,20 +233,17 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.back:
-                if(state == State.SEARCH){
-                   setState(State.DEFAULT);
+                if (state == State.SEARCH) {
+                    setState(State.DEFAULT);
                 }
         }
         return true;
     }
 
 
-
-
-
-    public static Context getContext(){
+    public static Context getContext() {
         return context;
     }
 
