@@ -30,6 +30,14 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
+    private static final Date[] NEXT_DATES = {
+            new Date(116, 7, 11, 18, 0),
+            new Date(117, 7, 10, 18, 0),
+            new Date(118, 7, 16, 18, 0),
+            new Date(119, 7, 15, 18, 0),
+            new Date(120, 7, 13, 18, 0)
+    };
+    private static final long STOMA_DURATION = TimeUnit.DAYS.toMillis(5) + TimeUnit.HOURS.toMillis(4);
 
     private final Rect textBounds = new Rect();
 
@@ -65,43 +73,69 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
                 R.layout.widget_layout_gingerbread_heart);
 
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
-        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownString(), size);
+        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         views.setOnClickPendingIntent(R.id.widget_countdown, pendingIntent);
-        
+
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
-    private Bitmap createCountdownBitmap(Context context, String text, Point size) {
+    private Bitmap createCountdownBitmap(Context context, String[] texts, Point size) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
 
         Paint paint = new Paint();
-        Typeface clock = Typeface.createFromAsset(context.getAssets(), "font/Damion-Regular.ttf");
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "font/Damion-Regular.ttf");
         paint.setAntiAlias(true);
         paint.setSubpixelText(true);
-        paint.setTypeface(clock);
+        paint.setTypeface(font);
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.rgb(244, 244, 244));
         paint.setTextSize(size.y / 8f);
-        paint.getTextBounds(text, 0, text.length(), textBounds);
-        canvas.drawText(text, size.x / 2f - textBounds.exactCenterX(), size.y * 0.4f, paint);
+        paint.getTextBounds(texts[0], 0, texts[0].length(), textBounds);
+        canvas.drawText(texts[0], size.x / 2f - textBounds.exactCenterX(), size.y * 0.4f, paint);
+
+        paint.setTextSize(size.y / 14f);
+        paint.setTextAlign(Paint.Align.RIGHT);
+        canvas.drawText(texts[1], size.x / 2f, size.y * 0.55f, paint);
+
+        paint.setTextSize(size.y / 14f);
+        paint.setTextAlign(Paint.Align.LEFT);
+        canvas.drawText(texts[2], size.x * 0.53f, size.y * 0.7f, paint);
 
         return bitmap;
     }
 
-    private String getCountDownString() {
+    private String[] getCountDownStrings() {
         Date now = new Date();
-        Date stomaStart = new Date(116, 7, 11, 18, 30);
-
+        Date stomaStart = NEXT_DATES[0];
         long delta = stomaStart.getTime() - now.getTime();
+        //find next stoma date
+        for (int i = 1; i < NEXT_DATES.length && delta < -1 * STOMA_DURATION; i++) {
+            stomaStart = NEXT_DATES[i];
+            delta = stomaStart.getTime() - now.getTime();
+        }
+
+        //past the list
+        if (delta < -1 * STOMA_DURATION) {
+            String year = String.valueOf(now.getYear() + 1900);
+            //after august, take next year
+            if (now.getMonth() > 7) {
+                year = String.valueOf(stomaStart.getYear() + 1901);
+            }
+            return new String[]{"Wir sehn' uns", "auf dem", year};
+        }
+
+
+        String year = String.valueOf(stomaStart.getYear() + 1900);
+
         if (delta <= TimeUnit.HOURS.toMillis(1) && delta >= 0) {
-            return "Wenige Augenblicke";
+            return new String[]{"Wenige Augenblicke", "bis zum", year};
         } else if (delta <= 0) {
-            return "Viel Spaß!";
+            return new String[]{"Viel Spaß", "auf dem", year};
         } else {
             long days = delta / TimeUnit.DAYS.toMillis(1);
             delta %= TimeUnit.DAYS.toMillis(1);
@@ -112,9 +146,17 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
             long minutes = delta / TimeUnit.MINUTES.toMillis(1);
             delta %= TimeUnit.MINUTES.toMillis(1);
 
-            return getFormatedUnitString(days, UNIT_DESC_DAY)
-                    + ", "
-                    + getFormatedUnitString(hours, UNIT_DESC_HOUR);
+
+            String timeLeft;
+            if (days > 0) {
+                timeLeft = getFormatedUnitString(days, UNIT_DESC_DAY)
+                        + ", "
+                        + getFormatedUnitString(hours, UNIT_DESC_HOUR);
+            } else {
+                timeLeft = getFormatedUnitString(hours, UNIT_DESC_HOUR);
+            }
+
+            return new String[]{timeLeft, "bis zum", year};
         }
 
     }
