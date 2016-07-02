@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="tile_path">xhdpi</string>
-    <integer name="tile_size">512</integer>
-</resources>

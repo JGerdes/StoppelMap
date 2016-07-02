@@ -1,24 +1,8 @@
 <resources>
     <string name="app_name">StoppelMap</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="action_settings">Settings</string>
-    <string name="search_hint">Suche</string>
-    <string name="message_not_in_area">Du befindest dich nicht auf dem Festgelände!</string>
-    <string name="open">Öffnen</string>
-    <string name="close">Schließen</string>
-    <string name="menu_attraction">Fahrgeschäft</string>
-    <string name="menu_tent">Festzelt/Aussschank</string>
-    <string name="menu_stall">Bude/Stand</string>
-    <string name="menu_stall_food">Essen</string>
-    <string name="menu_stall_sweets">Eis/Süßes</string>
-    <string name="menu_stall_candy">Mandeln, Lebkuchen etc</string>
-    <string name="menu_wc">Toilette</string>
-    <string name="menu_about">Über</string>
-    <string name="menu_shop">Verkaufsstand</string>
-    <string name="menu_biz">Gewerbezelt</string>
-    <string name="menu_game">Lose/Automat/Spielstand</string>
-    <string name="settings_about">Über</string>
-    <string name="menu_key">Legende</string>
-    <string name="menu_intro">Wie benutzen?</string>
 </resources>
