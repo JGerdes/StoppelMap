@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         mNavigationView.setNavigationItemSelectedListener(this);
         mNavigationView.getMenu().performIdentifierAction(R.id.nav_map, 0);
+        mNavigationView.setCheckedItem(R.id.nav_map);
     }
 
     @Override
