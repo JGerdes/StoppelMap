@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
+import com.jonasgerdes.stoppelmap.usecases.schedule.ScheduleFragment;
+import com.jonasgerdes.stoppelmap.usecases.transportation.TransportationFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity
 
 
         mNavigationView.setNavigationItemSelectedListener(this);
+        mNavigationView.getMenu().performIdentifierAction(R.id.nav_map, 0);
     }
 
     @Override
@@ -62,6 +65,12 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.nav_map:
                 loadFragment(MapFragment.newInstance());
+                break;
+            case R.id.nav_schedule:
+                loadFragment(ScheduleFragment.newInstance());
+                break;
+            case R.id.nav_transportation:
+                loadFragment(TransportationFragment.newInstance());
                 break;
         }
 

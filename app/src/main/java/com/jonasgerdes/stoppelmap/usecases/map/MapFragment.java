@@ -20,12 +20,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.jonasgerdes.stoppelmap.R;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by Jonas on 03.07.2016.
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Unbinder mUnbinder;
 
     @Nullable
     @Override
@@ -37,6 +41,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mUnbinder = ButterKnife.bind(this, view);
         new Handler().postDelayed(new Runnable() {
 
             @Override
@@ -49,6 +54,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         }, 400);
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
+        super.onDestroyView();
     }
 
     public static MapFragment newInstance() {
