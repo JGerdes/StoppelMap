@@ -35,7 +35,10 @@ public class FontTextView extends TextView {
     }
 
     private void setFont() {
-        Typeface typeface = ((StoppelMapApp) getContext().getApplicationContext()).getMainTypeface();
-        setTypeface(typeface);
+        if (getContext().getApplicationContext() instanceof StoppelMapApp) {
+            Typeface typeface = ((StoppelMapApp) getContext().getApplicationContext())
+                    .getMainTypeface();
+            setTypeface(typeface);
+        }
     }
 }
