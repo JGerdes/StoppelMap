@@ -44,17 +44,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
-        new Handler().postDelayed(new Runnable() {
+        if (savedInstanceState == null) {
+            new Handler().postDelayed(new Runnable() {
 
-            @Override
-            public void run() {
-                FragmentManager fm = getChildFragmentManager();
-                SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-                fm.beginTransaction()
-                        .replace(R.id.map_placeholder, mapFragment).commit();
-                mapFragment.getMapAsync(MapFragment.this);
-            }
-        }, 400);
+                @Override
+                public void run() {
+                    FragmentManager fm = getChildFragmentManager();
+                    SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+                    fm.beginTransaction()
+                            .replace(R.id.map_placeholder, mapFragment).commit();
+                    mapFragment.getMapAsync(MapFragment.this);
+                }
+            }, 400);
+        }
 
     }
 
