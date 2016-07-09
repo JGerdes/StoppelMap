@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 
@@ -33,6 +34,17 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
     public void onBindViewHolder(RouteHolder holder, int position) {
         Route route = mRoutes.get(position);
         holder.onBind(route);
+        if (holder.mGoogleMap != null) {
+            holder.onMapReady(holder.mGoogleMap);
+        }
+    }
+
+    @Override
+    public void onViewRecycled(RouteHolder holder) {
+        if (holder.mGoogleMap != null) {
+            holder.mGoogleMap.clear();
+            holder.mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+        }
     }
 
     @Override

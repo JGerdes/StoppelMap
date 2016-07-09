@@ -48,14 +48,21 @@ public class TransportationFragment extends Fragment {
         mRouteList.setAdapter(mRoutesAdapter);
         mRouteList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        RealmResults<Route> results = StoppelMapApp.getViaActivity(getActivity())
-                .getRealm().where(Route.class).findAllAsync();
-        results.addChangeListener(new RealmChangeListener<RealmResults<Route>>() {
+        view.postDelayed(new Runnable() {
             @Override
-            public void onChange(RealmResults<Route> routes) {
-                mRoutesAdapter.addRoutes(routes);
+            public void run() {
+
+                RealmResults<Route> results = StoppelMapApp.getViaActivity(getActivity())
+                        .getRealm().where(Route.class).findAllAsync();
+                results.addChangeListener(new RealmChangeListener<RealmResults<Route>>() {
+                    @Override
+                    public void onChange(RealmResults<Route> routes) {
+                        mRoutesAdapter.addRoutes(routes);
+                    }
+                });
+
             }
-        });
+        }, 200);
     }
 
     @Override

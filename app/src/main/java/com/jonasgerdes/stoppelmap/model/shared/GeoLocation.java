@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.model.shared;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import io.realm.RealmObject;
 
 /**
@@ -7,6 +9,19 @@ import io.realm.RealmObject;
  */
 
 public class GeoLocation extends RealmObject {
+
+    public GeoLocation() {
+    }
+
+    public GeoLocation(double lat, double lon) {
+        this.lat = lat;
+        this.lon = lon;
+    }
+
     private double lat;
     private double lon;
+
+    public LatLng toLatLng() {
+        return new LatLng(lat, lon);
+    }
 }

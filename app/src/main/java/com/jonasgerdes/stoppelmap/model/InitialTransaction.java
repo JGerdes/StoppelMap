@@ -36,37 +36,89 @@ public class InitialTransaction implements Realm.Transaction {
         vechtaWest.setId(routeId++);
         vechtaWest.setName("Vechta West");
         vechtaWest.setStations(new RealmList<>(
-                new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(), new RealmList<>(
-                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
-                )),
-                new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(), new RealmList<>(
-                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
-                )),
-                new Station(stationId++, "Achtern Diek", new GeoLocation(), new RealmList<>(
-                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
-                ))
+                new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
+                        new RealmList<>(
+                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                        )),
+                new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
+                        new RealmList<>(
+                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                        )),
+                new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
+                        new RealmList<>(
+                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                        ))
         ));
 
         Route vechtaStadt = new Route();
         vechtaStadt.setId(routeId++);
-        vechtaStadt.setName("Vechta West");
+        vechtaStadt.setName("Vechta Stadt");
         vechtaStadt.setStations(new RealmList<>(
-                new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(), new RealmList<>(
-                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
-                )),
-                new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(), new RealmList<>(
-                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
-                )),
-                new Station(stationId++, "Achtern Diek", new GeoLocation(), new RealmList<>(
-                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
-                ))
+                new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
+                        new RealmList<>(
+                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                        )),
+                new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
+                        new RealmList<>(
+                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                        )),
+                new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
+                        new RealmList<>(
+                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                        ))
         ));
+
+        realm.copyToRealm(new Route(
+                routeId++,
+                "Vechta Flugplatz",
+                new RealmList<>(
+                        new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
+                                new RealmList<>(
+                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                )),
+                        new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
+                                new RealmList<>(
+                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                )),
+                        new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
+                                new RealmList<>(
+                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                ))
+                ),
+                null)
+        );
+
+        realm.copyToRealm(new Route(
+                routeId++,
+                "Vechta Süd",
+                new RealmList<>(
+                        new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
+                                new RealmList<>(
+                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                )),
+                        new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
+                                new RealmList<>(
+                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                )),
+                        new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
+                                new RealmList<>(
+                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                ))
+                ),
+                null)
+        );
 
         realm.copyToRealmOrUpdate(vechtaWest);
         realm.copyToRealmOrUpdate(vechtaStadt);
