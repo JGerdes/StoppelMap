@@ -50,7 +50,26 @@ public class InitialTransaction implements Realm.Transaction {
                 ))
         ));
 
+        Route vechtaStadt = new Route();
+        vechtaStadt.setId(routeId++);
+        vechtaStadt.setName("Vechta West");
+        vechtaStadt.setStations(new RealmList<>(
+                new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(), new RealmList<>(
+                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                )),
+                new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(), new RealmList<>(
+                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                )),
+                new Station(stationId++, "Achtern Diek", new GeoLocation(), new RealmList<>(
+                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
+                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                ))
+        ));
+
         realm.copyToRealmOrUpdate(vechtaWest);
+        realm.copyToRealmOrUpdate(vechtaStadt);
 
     }
 
