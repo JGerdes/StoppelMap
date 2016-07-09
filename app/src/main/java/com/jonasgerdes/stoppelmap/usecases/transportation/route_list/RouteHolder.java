@@ -11,8 +11,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.transportation.Depature;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
@@ -31,6 +33,7 @@ import butterknife.ButterKnife;
 public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback {
 
     private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("hh:MM");
+    private static LatLng GEO_POSITION_STOPPELMARKT = new LatLng(52.743618, 8.299542);
 
     @BindView(R.id.name)
     TextView mName;
@@ -82,16 +85,21 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        //initialize the Google Maps Android API if features need to be used before obtaining a map
-        MapsInitializer.initialize(itemView.getContext().getApplicationContext());
-        mGoogleMap = googleMap;
-
-        mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
+        if (mGoogleMap == null) {
+            MapsInitializer.initialize(itemView.getContext().getApplicationContext());
+            mGoogleMap = googleMap;
+            mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
+        }
 
         if (mStationLocations.size() > 0) {
             LatLngBounds.Builder boundBuilder = LatLngBounds.builder();
+            boundBuilder.include(GEO_POSITION_STOPPELMARKT);
+            MarkerOptions options = new MarkerOptions();
+            options.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_directions_bus_black_9dp));
             for (LatLng stationLocation : mStationLocations) {
                 boundBuilder.include(stationLocation);
+                options.position(stationLocation);
+                mGoogleMap.addMarker(options);
             }
             mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(boundBuilder.build(), 5));
         }

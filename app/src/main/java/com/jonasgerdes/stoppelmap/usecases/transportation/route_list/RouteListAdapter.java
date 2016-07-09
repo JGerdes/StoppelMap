@@ -4,8 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
-import com.google.android.gms.maps.GoogleMap;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 
@@ -18,6 +19,7 @@ import java.util.List;
 public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
 
     private List<Route> mRoutes;
+    private int mLastPositionShown;
 
     public RouteListAdapter() {
         mRoutes = new ArrayList<>();
@@ -37,14 +39,20 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
         if (holder.mGoogleMap != null) {
             holder.onMapReady(holder.mGoogleMap);
         }
+        setAnimation(holder.itemView, position);
     }
 
     @Override
     public void onViewRecycled(RouteHolder holder) {
         if (holder.mGoogleMap != null) {
             holder.mGoogleMap.clear();
-            holder.mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NONE);
         }
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(RouteHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        holder.itemView.clearAnimation();
     }
 
     @Override
@@ -52,10 +60,18 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
         return mRoutes.size();
     }
 
-    public void addRoutes(List<Route> routes) {
-        for (Route route : routes) {
-            mRoutes.add(route);
-            notifyItemInserted(mRoutes.size() - 1);
+    public void setRoutes(List<Route> routes) {
+        mRoutes.clear();
+        mRoutes.addAll(routes);
+        notifyItemRangeInserted(0, mRoutes.size());
+    }
+
+    private void setAnimation(View viewToAnimate, int position) {
+        if (position > mLastPositionShown) {
+            Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(),
+                    R.anim.card_slide_in);
+            viewToAnimate.startAnimation(animation);
+            mLastPositionShown = position;
         }
     }
 }
