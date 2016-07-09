@@ -45,16 +45,24 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
             holder.onMapReady(holder.mGoogleMap);
         }
         setAnimation(holder.itemView, position);
-        View.OnClickListener clickListener = new View.OnClickListener() {
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mRouteSelectedListener != null) {
                     mRouteSelectedListener.onRouteSelected(route);
                 }
             }
-        };
-        holder.itemView.setOnClickListener(clickListener);
-        holder.mDetailsButton.setOnClickListener(clickListener);
+        });
+
+        holder.mDetailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mRouteSelectedListener != null) {
+                    mRouteSelectedListener.onRouteSelected(route);
+                }
+            }
+        });
     }
 
     @Override
