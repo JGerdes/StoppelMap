@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap;
 
+import android.app.Activity;
 import android.app.Application;
 import android.graphics.Typeface;
 
@@ -33,5 +34,9 @@ public class StoppelMapApp extends Application {
 
     public Realm getRealm() {
         return mRealm;
+    }
+
+    public static StoppelMapApp getViaActivity(Activity activity) {
+        return (StoppelMapApp) activity.getApplication();
     }
 }

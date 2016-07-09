@@ -54,11 +54,10 @@ public class CustomMapTileProvider implements TileProvider {
             buffer.flush();
 
             return buffer.toByteArray();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignored) {
             return null;
-        } catch (OutOfMemoryError e) {
-            e.printStackTrace();
+        } catch (OutOfMemoryError ignored) {
+            // TODO: 09.07.2016 handle
             return null;
         } finally {
             if (in != null) try {

@@ -4,17 +4,28 @@ import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Jonas on 08.07.2016.
  */
 public class Station extends RealmObject {
 
+    @PrimaryKey
     private int id;
     private String name;
     private GeoLocation geoLoation;
     private RealmList<DepatureDay> depatures;
 
+    public Station() {
+    }
+
+    public Station(int id, String name, GeoLocation geoLoation, RealmList<DepatureDay> depatures) {
+        this.id = id;
+        this.name = name;
+        this.geoLoation = geoLoation;
+        this.depatures = depatures;
+    }
 
     public int getId() {
         return id;

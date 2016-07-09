@@ -3,16 +3,28 @@ package com.jonasgerdes.stoppelmap.model.transportation;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Jonas on 08.07.2016.
  */
 public class Route extends RealmObject {
 
+    @PrimaryKey
     private int id;
     private String name;
     private RealmList<Station> stations;
     private RealmList<DepatureDay> returnTimes;
+
+    public Route() {
+    }
+
+    public Route(int id, String name, RealmList<Station> stations, RealmList<DepatureDay> returnTimes) {
+        this.id = id;
+        this.name = name;
+        this.stations = stations;
+        this.returnTimes = returnTimes;
+    }
 
     public int getId() {
         return id;
