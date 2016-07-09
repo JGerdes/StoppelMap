@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecases.transportation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
+import com.jonasgerdes.stoppelmap.usecases.transportation.route_detail.RouteDetailActivity;
 import com.jonasgerdes.stoppelmap.usecases.transportation.route_list.RouteListAdapter;
 
 import butterknife.BindView;
@@ -47,6 +49,13 @@ public class TransportationFragment extends Fragment {
         mRoutesAdapter = new RouteListAdapter();
         mRouteList.setAdapter(mRoutesAdapter);
         mRouteList.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRoutesAdapter.setRouteSelectedListener(new RouteListAdapter.RouteSelectedListener() {
+            @Override
+            public void onRouteSelected(Route route) {
+                Intent intent = RouteDetailActivity.createIntent(getContext(), route);
+                startActivity(intent);
+            }
+        });
 
 
         RealmResults<Route> results = StoppelMapApp.getViaActivity(getActivity())
@@ -59,7 +68,6 @@ public class TransportationFragment extends Fragment {
         });
 
     }
-
 
 
     @Override

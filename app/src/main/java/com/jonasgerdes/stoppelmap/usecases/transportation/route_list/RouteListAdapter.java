@@ -18,8 +18,13 @@ import java.util.List;
  */
 public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
 
+    public interface RouteSelectedListener {
+        void onRouteSelected(Route route);
+    }
+
     private List<Route> mRoutes;
     private int mLastPositionShown;
+    private RouteSelectedListener mRouteSelectedListener;
 
     public RouteListAdapter() {
         mRoutes = new ArrayList<>();
@@ -34,12 +39,22 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
 
     @Override
     public void onBindViewHolder(RouteHolder holder, int position) {
-        Route route = mRoutes.get(position);
+        final Route route = mRoutes.get(position);
         holder.onBind(route);
         if (holder.mGoogleMap != null) {
             holder.onMapReady(holder.mGoogleMap);
         }
         setAnimation(holder.itemView, position);
+        View.OnClickListener clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mRouteSelectedListener != null) {
+                    mRouteSelectedListener.onRouteSelected(route);
+                }
+            }
+        };
+        holder.itemView.setOnClickListener(clickListener);
+        holder.mDetailsButton.setOnClickListener(clickListener);
     }
 
     @Override
@@ -60,12 +75,6 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
         return mRoutes.size();
     }
 
-    public void setRoutes(List<Route> routes) {
-        mRoutes.clear();
-        mRoutes.addAll(routes);
-        notifyItemRangeInserted(0, mRoutes.size());
-    }
-
     private void setAnimation(View viewToAnimate, int position) {
         if (position > mLastPositionShown) {
             Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(),
@@ -73,5 +82,15 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
             viewToAnimate.startAnimation(animation);
             mLastPositionShown = position;
         }
+    }
+
+    public void setRoutes(List<Route> routes) {
+        mRoutes.clear();
+        mRoutes.addAll(routes);
+        notifyItemRangeInserted(0, mRoutes.size());
+    }
+
+    public void setRouteSelectedListener(RouteSelectedListener routeSelectedListener) {
+        mRouteSelectedListener = routeSelectedListener;
     }
 }
