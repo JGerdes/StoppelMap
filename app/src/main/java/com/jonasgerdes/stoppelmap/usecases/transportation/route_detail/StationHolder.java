@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.usecases.transportation.route_detail;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,7 +17,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Jonas on 10.07.2016.
  */
-public class StationHolder extends RecyclerView.ViewHolder {
+public class StationHolder extends AbstractStationHolder {
 
     private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("kk:MM");
 
@@ -46,12 +45,18 @@ public class StationHolder extends RecyclerView.ViewHolder {
         mDepatures.add(mDepature3);
     }
 
-    public void onBind(Station station) {
+
+
+    public void onBind(Station station, boolean showTopNode, boolean showBottomNode) {
+
+        onBind(showTopNode, showBottomNode);
+
         mName.setText(station.getName());
 
         mDepature1.setVisibility(View.GONE);
         mDepature2.setVisibility(View.GONE);
         mDepature3.setVisibility(View.GONE);
+
 
         List<Depature> nextDepatures = station.getDepatures().get(0).getDepatures();
         String timeString;
