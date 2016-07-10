@@ -3,44 +3,56 @@ package com.jonasgerdes.stoppelmap.usecases.transportation.route_detail;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class RouteDetailActivity extends AppCompatActivity {
 
     private static final String EXTRA_ROUTE_ID = "EXTRA_ROUTE_ID";
     private static final String EXTRA_ROUTE_NAME = "EXTRA_ROUTE_NAME";
 
+    @BindView(R.id.station_list)
+    RecyclerView mStationList;
+    private StationListAdapter mStationAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route_detail);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (getIntent() != null && getIntent().getExtras() != null) {
-            setTitle(getIntent().getStringExtra(EXTRA_ROUTE_NAME));
+
+        if (getIntent() == null || getIntent().getExtras() == null) {
+            // TODO: 10.07.2016 handle
         }
+
+        setTitle(getIntent().getStringExtra(EXTRA_ROUTE_NAME));
+        int routeId = getIntent().getIntExtra(EXTRA_ROUTE_ID, -1);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        mStationList.setLayoutManager(new LinearLayoutManager(this));
+        mStationAdapter = new StationListAdapter();
+        mStationList.setAdapter(mStationAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Route route = StoppelMapApp.getViaActivity(this)
+                .getRealm().where(Route.class).equalTo("id", routeId).findFirst();
+
+        mStationAdapter.setStations(route.getStations());
+
     }
 
 

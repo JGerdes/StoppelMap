@@ -33,7 +33,10 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_route_detail"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/station_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
