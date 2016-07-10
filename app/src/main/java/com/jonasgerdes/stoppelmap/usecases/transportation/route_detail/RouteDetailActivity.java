@@ -22,7 +22,9 @@ public class RouteDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.station_list)
     RecyclerView mStationList;
+
     private StationListAdapter mStationAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

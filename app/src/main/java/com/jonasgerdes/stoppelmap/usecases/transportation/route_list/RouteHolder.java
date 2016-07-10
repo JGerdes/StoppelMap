@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
  */
 public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback {
 
-    private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("hh:MM");
+    private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("kk:MM");
     private static LatLng GEO_POSITION_STOPPELMARKT = new LatLng(52.743618, 8.299542);
 
     @BindView(R.id.name)
