@@ -1,0 +1,64 @@
+{
+  "routes": [
+    {
+      "id": 0,
+      "name": "Vechta West",
+      "stations": [
+        {
+          "id": 0,
+          "name": "Dersastr./Lohner Str.",
+          "geoLocation": {
+            "lat": 52.713417,
+            "lon": 8.284717
+          },
+          "comment": "",
+          "days": [
+            {
+              "id": 0,
+              "day": 0,
+              "depatures": [
+                {
+                  "id": 0,
+                  "time": "2016-08-11 18:30:00",
+                  "comment": ""
+                },
+                {
+                  "id": 1,
+                  "time": "2016-08-11 19:00:00",
+                  "comment": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Dersastr./Gerbert Str.",
+          "geoLocation": {
+            "lat": 52.713882,
+            "lon": 8.281387
+          },
+          "comment": "",
+          "day": [
+            {
+              "id": 1,
+              "day": 0,
+              "depatures": [
+                {
+                  "id": 2,
+                  "time": "2016-08-11 18:32:00",
+                  "comment": ""
+                },
+                {
+                  "id": 3,
+                  "time": "2016-08-11 19:02:00",
+                  "comment": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

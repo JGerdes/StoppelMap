@@ -58,7 +58,7 @@ public class StationHolder extends AbstractStationHolder {
         mDepature3.setVisibility(View.GONE);
 
 
-        List<Depature> nextDepatures = station.getDepatures().get(0).getDepatures();
+        List<Depature> nextDepatures = station.getDays().get(0).getDepatures();
         String timeString;
         for (int i = 0; i < nextDepatures.size() && i < mDepatures.size(); i++) {
             timeString = FORMAT_NEXT_TIME.format(nextDepatures.get(i).getTime());

@@ -1,12 +1,17 @@
 package com.jonasgerdes.stoppelmap.model;
 
+import android.content.res.AssetManager;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
 import com.jonasgerdes.stoppelmap.model.transportation.Depature;
 import com.jonasgerdes.stoppelmap.model.transportation.DepatureDay;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
+import com.jonasgerdes.stoppelmap.model.transportation.Transportation;
+import com.jonasgerdes.stoppelmap.util.FileUtil;
 
 import java.util.Date;
 
@@ -22,10 +27,36 @@ public class InitialTransaction implements Realm.Transaction {
             stationId = 0,
             depatureDayId = 0,
             depatureId = 0;
+    private AssetManager mAssets;
+
+    public InitialTransaction(AssetManager assets) {
+
+        mAssets = assets;
+    }
 
     @Override
     public void execute(Realm realm) {
-        initTransportation(realm);
+        Log.d(TAG, "execute: start");
+        String transportationJson = FileUtil.readAssetAsString(mAssets, "data/transportation.json");
+        Log.d(TAG, "execute: read json successfully");
+        if (transportationJson != null) {
+            Log.d(TAG, "execute: json is not null");
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                    .create();
+            Log.d(TAG, "execute: build gson");
+            Transportation data = gson.fromJson(transportationJson, Transportation.class);
+            Log.d(TAG, "execute: transformed json to pojo");
+            for (Route route : data.routes) {
+                realm.copyToRealm(route);
+            }
+            Log.d(TAG, "execute: wrote everything in realm");
+
+        } else {
+            Log.e(TAG, "execute: error reading asset to realm");
+        }
+
+        //initTransportation(realm);
     }
 
     @SuppressWarnings("UnusedAssignment")

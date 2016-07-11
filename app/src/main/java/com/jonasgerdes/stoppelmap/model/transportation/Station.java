@@ -14,17 +14,17 @@ public class Station extends RealmObject {
     @PrimaryKey
     private int id;
     private String name;
-    private GeoLocation geoLoation;
-    private RealmList<DepatureDay> depatures;
+    private GeoLocation geoLocation;
+    private RealmList<DepatureDay> days;
 
     public Station() {
     }
 
-    public Station(int id, String name, GeoLocation geoLoation, RealmList<DepatureDay> depatures) {
+    public Station(int id, String name, GeoLocation geoLocation, RealmList<DepatureDay> days) {
         this.id = id;
         this.name = name;
-        this.geoLoation = geoLoation;
-        this.depatures = depatures;
+        this.geoLocation = geoLocation;
+        this.days = days;
     }
 
     public int getId() {
@@ -43,20 +43,20 @@ public class Station extends RealmObject {
         this.name = name;
     }
 
-    public GeoLocation getGeoLoation() {
-        return geoLoation;
+    public GeoLocation getGeoLocation() {
+        return geoLocation;
     }
 
-    public void setGeoLoation(GeoLocation geoLoation) {
-        this.geoLoation = geoLoation;
+    public void setGeoLocation(GeoLocation geoLocation) {
+        this.geoLocation = geoLocation;
     }
 
-    public RealmList<DepatureDay> getDepatures() {
-        return depatures;
+    public RealmList<DepatureDay> getDays() {
+        return days;
     }
 
-    public void setDepatures(RealmList<DepatureDay> depatures) {
-        this.depatures = depatures;
+    public void setDays(RealmList<DepatureDay> days) {
+        this.days = days;
     }
 
     @Override
@@ -64,8 +64,8 @@ public class Station extends RealmObject {
         return "Station{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", geoLoation=" + geoLoation +
-                ", depatures=" + depatures +
+                ", geoLocation=" + geoLocation +
+                ", days=" + days +
                 '}';
     }
 }

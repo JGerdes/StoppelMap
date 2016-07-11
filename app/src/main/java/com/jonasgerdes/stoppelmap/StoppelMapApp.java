@@ -23,7 +23,7 @@ public class StoppelMapApp extends Application {
         mMainType = Typeface.createFromAsset(getAssets(), "font/Damion-Regular.ttf");
         RealmConfiguration config = new RealmConfiguration.Builder(this)
                 .deleteRealmIfMigrationNeeded()
-                .initialData(new InitialTransaction())
+                .initialData(new InitialTransaction(getAssets()))
                 .build();
         mRealm = Realm.getInstance(config);
     }

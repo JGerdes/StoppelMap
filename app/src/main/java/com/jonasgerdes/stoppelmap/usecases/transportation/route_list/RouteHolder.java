@@ -72,14 +72,14 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
         mName.setText(route.getName());
         Station nextStation = route.getStations().first();
         mNextStation.setText(nextStation.getName());
-        Depature depature = nextStation.getDepatures().first().getDepatures().first();
+        Depature depature = nextStation.getDays().first().getDepatures().first();
         String timeString = FORMAT_NEXT_TIME.format(depature.getTime());
         String depatureString = String.format("um %s Uhr ab", timeString);
         mNextTime.setText(depatureString);
 
         mStationLocations.clear();
         for (Station station : route.getStations()) {
-            mStationLocations.add(station.getGeoLoation().toLatLng());
+            mStationLocations.add(station.getGeoLocation().toLatLng());
         }
     }
 
