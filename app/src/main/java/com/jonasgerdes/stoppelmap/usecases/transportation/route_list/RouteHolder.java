@@ -16,7 +16,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jonasgerdes.stoppelmap.R;
-import com.jonasgerdes.stoppelmap.model.transportation.Depature;
+import com.jonasgerdes.stoppelmap.model.transportation.Departure;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
 
@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
  */
 public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback {
 
-    private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("kk:MM");
+    private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("kk:mm");
     private static LatLng GEO_POSITION_STOPPELMARKT = new LatLng(52.743618, 8.299542);
 
     @BindView(R.id.name)
@@ -72,8 +72,8 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
         mName.setText(route.getName());
         Station nextStation = route.getStations().first();
         mNextStation.setText(nextStation.getName());
-        Depature depature = nextStation.getDays().first().getDepatures().first();
-        String timeString = FORMAT_NEXT_TIME.format(depature.getTime());
+        Departure departure = nextStation.getDays().first().getDepartures().first();
+        String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
         String depatureString = String.format("um %s Uhr ab", timeString);
         mNextTime.setText(depatureString);
 

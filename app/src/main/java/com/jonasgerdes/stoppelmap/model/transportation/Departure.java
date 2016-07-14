@@ -8,17 +8,17 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by Jonas on 08.07.2016.
  */
-public class Depature extends RealmObject {
+public class Departure extends RealmObject {
 
     @PrimaryKey
     private int id;
     private Date time;
     private String comment;
 
-    public Depature() {
+    public Departure() {
     }
 
-    public Depature(int id, Date time, String comment) {
+    public Departure(int id, Date time, String comment) {
         this.id = id;
         this.time = time;
         this.comment = comment;

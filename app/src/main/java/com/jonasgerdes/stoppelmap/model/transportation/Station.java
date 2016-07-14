@@ -15,12 +15,12 @@ public class Station extends RealmObject {
     private int id;
     private String name;
     private GeoLocation geoLocation;
-    private RealmList<DepatureDay> days;
+    private RealmList<DepartureDay> days;
 
     public Station() {
     }
 
-    public Station(int id, String name, GeoLocation geoLocation, RealmList<DepatureDay> days) {
+    public Station(int id, String name, GeoLocation geoLocation, RealmList<DepartureDay> days) {
         this.id = id;
         this.name = name;
         this.geoLocation = geoLocation;
@@ -51,11 +51,11 @@ public class Station extends RealmObject {
         this.geoLocation = geoLocation;
     }
 
-    public RealmList<DepatureDay> getDays() {
+    public RealmList<DepartureDay> getDays() {
         return days;
     }
 
-    public void setDays(RealmList<DepatureDay> days) {
+    public void setDays(RealmList<DepartureDay> days) {
         this.days = days;
     }
 

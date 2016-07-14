@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
-import com.jonasgerdes.stoppelmap.model.transportation.Depature;
+import com.jonasgerdes.stoppelmap.model.transportation.Departure;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
 
 import java.text.SimpleDateFormat;
@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
  */
 public class StationHolder extends AbstractStationHolder {
 
-    private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("kk:MM");
+    private static SimpleDateFormat FORMAT_NEXT_TIME = new SimpleDateFormat("kk:mm");
 
     @BindView(R.id.name)
     TextView mName;
@@ -46,7 +46,6 @@ public class StationHolder extends AbstractStationHolder {
     }
 
 
-
     public void onBind(Station station, boolean showTopNode, boolean showBottomNode) {
 
         onBind(showTopNode, showBottomNode);
@@ -58,10 +57,10 @@ public class StationHolder extends AbstractStationHolder {
         mDepature3.setVisibility(View.GONE);
 
 
-        List<Depature> nextDepatures = station.getDays().get(0).getDepatures();
+        List<Departure> nextDepartures = station.getDays().get(0).getDepartures();
         String timeString;
-        for (int i = 0; i < nextDepatures.size() && i < mDepatures.size(); i++) {
-            timeString = FORMAT_NEXT_TIME.format(nextDepatures.get(i).getTime());
+        for (int i = 0; i < nextDepartures.size() && i < mDepatures.size(); i++) {
+            timeString = FORMAT_NEXT_TIME.format(nextDepartures.get(i).getTime());
             mDepatures.get(i).setText(String.format("%s Uhr", timeString));
             mDepatures.get(i).setVisibility(View.VISIBLE);
         }

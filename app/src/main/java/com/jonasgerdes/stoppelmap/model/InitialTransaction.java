@@ -6,8 +6,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
-import com.jonasgerdes.stoppelmap.model.transportation.Depature;
-import com.jonasgerdes.stoppelmap.model.transportation.DepatureDay;
+import com.jonasgerdes.stoppelmap.model.transportation.Departure;
+import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
 import com.jonasgerdes.stoppelmap.model.transportation.Transportation;
@@ -69,23 +69,23 @@ public class InitialTransaction implements Realm.Transaction {
         vechtaWest.setStations(new RealmList<>(
                 new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
                         new RealmList<>(
-                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                        generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                         )),
                 new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
                         new RealmList<>(
-                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                        generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                         )),
                 new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
                         new RealmList<>(
-                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                        generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                         )),
                 new Station(stationId++, "Romberg Str./Finanzamt", new GeoLocation(52.720968, 8.279297),
                         new RealmList<>(
-                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 36, 2, 36, 30), null)
+                                new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                        generateDepatures(DepartureDay.DAY_THURSDAY, 18, 36, 2, 36, 30), null)
                         ))
         ));
 
@@ -95,18 +95,18 @@ public class InitialTransaction implements Realm.Transaction {
         vechtaStadt.setStations(new RealmList<>(
                 new Station(stationId++, "Sgundek", new GeoLocation(52.704820, 8.298044),
                         new RealmList<>(
-                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                        generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                         )),
                 new Station(stationId++, "Am Schützenplatz", new GeoLocation(52.713650, 8.291864),
                         new RealmList<>(
-                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 31, 2, 31, 30), null)
+                                new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                        generateDepatures(DepartureDay.DAY_THURSDAY, 18, 31, 2, 31, 30), null)
                         )),
                 new Station(stationId++, "Münsterstr., Wessel", new GeoLocation(52.717931, 8.286829),
                         new RealmList<>(
-                                new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                        generateDepatures(DepatureDay.DAY_THURSDAY, 18, 33, 2, 33, 30), null)
+                                new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                        generateDepatures(DepartureDay.DAY_THURSDAY, 18, 33, 2, 33, 30), null)
                         ))
         ));
         realm.copyToRealmOrUpdate(vechtaWest);
@@ -118,18 +118,18 @@ public class InitialTransaction implements Realm.Transaction {
                 new RealmList<>(
                         new Station(stationId++, "Vechtaer Marsch/Straßburger Str.", new GeoLocation(52.725289, 8.266709),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                                 )),
                         new Station(stationId++, "Vechtaer Marsch/Dornier Str.", new GeoLocation(52.728275, 8.269377),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                                 )),
                         new Station(stationId++, "Vechtaer Marsch/Famila Markt", new GeoLocation(52.730041, 8.267408),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                                 ))
                 ),
                 null)
@@ -141,18 +141,18 @@ public class InitialTransaction implements Realm.Transaction {
                 new RealmList<>(
                         new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                                 )),
                         new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                                 )),
                         new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                                 ))
                 ),
                 null)
@@ -164,18 +164,18 @@ public class InitialTransaction implements Realm.Transaction {
                 new RealmList<>(
                         new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                                 )),
                         new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                                 )),
                         new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                                 ))
                 ),
                 null)
@@ -187,18 +187,18 @@ public class InitialTransaction implements Realm.Transaction {
                 new RealmList<>(
                         new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                                 )),
                         new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                                 )),
                         new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                                 ))
                 ),
                 null)
@@ -210,18 +210,18 @@ public class InitialTransaction implements Realm.Transaction {
                 new RealmList<>(
                         new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                                 )),
                         new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                                 )),
                         new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                                 ))
                 ),
                 null)
@@ -233,18 +233,18 @@ public class InitialTransaction implements Realm.Transaction {
                 new RealmList<>(
                         new Station(stationId++, "Dersastr./Lohner Str.", new GeoLocation(52.713417, 8.284717),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 30, 2, 30, 30), null)
                                 )),
                         new Station(stationId++, "Dersastr./Gerbert Str.", new GeoLocation(52.713882, 8.281387),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                                 )),
                         new Station(stationId++, "Achtern Diek", new GeoLocation(52.717482, 8.279499),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                                 ))
                 ),
                 null)
@@ -256,18 +256,18 @@ public class InitialTransaction implements Realm.Transaction {
                 new RealmList<>(
                         new Station(stationId++, "Hagstedt, Mittlere Siedlungsstr.", new GeoLocation(52.811557, 8.255042),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 17, 19, 17, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 17, 19, 17, 30), null)
                                 )),
                         new Station(stationId++, "Erlte, Schule", new GeoLocation(52.827184, 8.284968),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 32, 2, 32, 30), null)
                                 )),
                         new Station(stationId++, "Visbek, Uhlenkamp", new GeoLocation(52.837477, 8.305528),
                                 new RealmList<>(
-                                        new DepatureDay(depatureDayId++, DepatureDay.DAY_THURSDAY,
-                                                generateDepatures(DepatureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
+                                        new DepartureDay(depatureDayId++, DepartureDay.DAY_THURSDAY,
+                                                generateDepatures(DepartureDay.DAY_THURSDAY, 18, 34, 2, 34, 30), null)
                                 ))
                 ),
                 null)
@@ -275,11 +275,11 @@ public class InitialTransaction implements Realm.Transaction {
 
     }
 
-    private RealmList<Depature> generateDepatures(int day, int startH, int startM, int endH, int endM, int deltaM) {
-        RealmList<Depature> result = new RealmList<>();
+    private RealmList<Departure> generateDepatures(int day, int startH, int startM, int endH, int endM, int deltaM) {
+        RealmList<Departure> result = new RealmList<>();
         int wrappedDays = 0;
         do {
-            result.add(new Depature(depatureId++, new Date(2016, 7, day + 11, startH, startM), null));
+            result.add(new Departure(depatureId++, new Date(2016, 7, day + 11, startH, startM), null));
             startM += deltaM;
             if (startM >= 60) {
                 startH += startM / 60;

@@ -9,7 +9,7 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by Jonas on 08.07.2016.
  */
-public class DepatureDay extends RealmObject {
+public class DepartureDay extends RealmObject {
 
 
     public static final int DAY_THURSDAY = 0;
@@ -33,16 +33,16 @@ public class DepatureDay extends RealmObject {
     @PrimaryKey
     private int id;
     private @Day int day;
-    private RealmList<Depature> depatures;
+    private RealmList<Departure> mDepartures;
     private String comment;
 
-    public DepatureDay() {
+    public DepartureDay() {
     }
 
-    public DepatureDay(int id, @Day int day, RealmList<Depature> depatures, String comment) {
+    public DepartureDay(int id, @Day int day, RealmList<Departure> departures, String comment) {
         this.id = id;
         this.day = day;
-        this.depatures = depatures;
+        this.mDepartures = departures;
         this.comment = comment;
     }
 
@@ -62,12 +62,12 @@ public class DepatureDay extends RealmObject {
         this.day = day;
     }
 
-    public RealmList<Depature> getDepatures() {
-        return depatures;
+    public RealmList<Departure> getDepartures() {
+        return mDepartures;
     }
 
-    public void setDepatures(RealmList<Depature> depatures) {
-        this.depatures = depatures;
+    public void setDepartures(RealmList<Departure> departures) {
+        this.mDepartures = departures;
     }
 
     public String getComment() {
@@ -83,7 +83,7 @@ public class DepatureDay extends RealmObject {
         return "DepatureDay{" +
                 "id=" + id +
                 ", day=" + day +
-                ", depatures=" + depatures +
+                ", depatures=" + mDepartures +
                 ", comment='" + comment + '\'' +
                 '}';
     }

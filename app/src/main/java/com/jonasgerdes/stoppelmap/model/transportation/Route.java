@@ -14,12 +14,12 @@ public class Route extends RealmObject {
     private int id;
     private String name;
     private RealmList<Station> stations;
-    private RealmList<DepatureDay> returnTimes;
+    private RealmList<DepartureDay> returnTimes;
 
     public Route() {
     }
 
-    public Route(int id, String name, RealmList<Station> stations, RealmList<DepatureDay> returnTimes) {
+    public Route(int id, String name, RealmList<Station> stations, RealmList<DepartureDay> returnTimes) {
         this.id = id;
         this.name = name;
         this.stations = stations;
@@ -50,11 +50,11 @@ public class Route extends RealmObject {
         this.stations = stations;
     }
 
-    public RealmList<DepatureDay> getReturnTimes() {
+    public RealmList<DepartureDay> getReturnTimes() {
         return returnTimes;
     }
 
-    public void setReturnTimes(RealmList<DepatureDay> returnTimes) {
+    public void setReturnTimes(RealmList<DepartureDay> returnTimes) {
         this.returnTimes = returnTimes;
     }
 
