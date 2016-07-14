@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecases.transportation.route_detail;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
@@ -32,6 +33,9 @@ public class StationHolder extends AbstractStationHolder {
 
     @BindView(R.id.depature_3)
     TextView mDepature3;
+
+    @BindView(R.id.details)
+    Button mDetailsButton;
 
     List<TextView> mDepatures;
 

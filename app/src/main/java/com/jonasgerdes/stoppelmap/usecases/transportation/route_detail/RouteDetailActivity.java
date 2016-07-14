@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
+import com.jonasgerdes.stoppelmap.model.transportation.Station;
+import com.jonasgerdes.stoppelmap.usecases.transportation.station_detail.StationDetailActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,6 +52,13 @@ public class RouteDetailActivity extends AppCompatActivity {
         mStationList.setLayoutManager(new LinearLayoutManager(this));
         mStationAdapter = new StationListAdapter();
         mStationList.setAdapter(mStationAdapter);
+        mStationAdapter.setStationSelectedListener(new StationListAdapter.StationSelectedListener() {
+            @Override
+            public void onStationSelected(Station station) {
+                Intent intent = StationDetailActivity.createIntent(RouteDetailActivity.this, station);
+                startActivity(intent);
+            }
+        });
 
         Route route = StoppelMapApp.getViaActivity(this)
                 .getRealm().where(Route.class).equalTo("uuid", routeUuid).findFirst();

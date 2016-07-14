@@ -16,9 +16,14 @@ import java.util.List;
  */
 public class StationListAdapter extends RecyclerView.Adapter<AbstractStationHolder> {
 
+    public interface StationSelectedListener {
+        void onStationSelected(Station station);
+    }
+
     private static final int TYPE_DESTINATION = 0;
     private static final int TYPE_DEFAULT_NODE = 1;
     private List<Station> mStations;
+    private StationSelectedListener mStationSelectedListener;
 
     public StationListAdapter() {
         mStations = new ArrayList<>();
@@ -55,8 +60,24 @@ public class StationListAdapter extends RecyclerView.Adapter<AbstractStationHold
                 holder.onBind(position != 0, false);
                 break;
             default:
-                Station station = mStations.get(position);
+                final Station station = mStations.get(position);
                 ((StationHolder) holder).onBind(station, position != 0, true);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mStationSelectedListener != null) {
+                            mStationSelectedListener.onStationSelected(station);
+                        }
+                    }
+                });
+                ((StationHolder) holder).mDetailsButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mStationSelectedListener != null) {
+                            mStationSelectedListener.onStationSelected(station);
+                        }
+                    }
+                });
                 break;
         }
     }
@@ -69,5 +90,9 @@ public class StationListAdapter extends RecyclerView.Adapter<AbstractStationHold
     public void setStations(List<Station> stations) {
         mStations.clear();
         mStations.addAll(stations);
+    }
+
+    public void setStationSelectedListener(StationSelectedListener stationSelectedListener) {
+        mStationSelectedListener = stationSelectedListener;
     }
 }
