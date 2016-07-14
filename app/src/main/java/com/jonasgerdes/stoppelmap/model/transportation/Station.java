@@ -12,7 +12,7 @@ import io.realm.annotations.PrimaryKey;
 public class Station extends RealmObject {
 
     @PrimaryKey
-    private int id;
+    private String uuid;
     private String name;
     private GeoLocation geoLocation;
     private RealmList<DepartureDay> days;
@@ -20,19 +20,19 @@ public class Station extends RealmObject {
     public Station() {
     }
 
-    public Station(int id, String name, GeoLocation geoLocation, RealmList<DepartureDay> days) {
-        this.id = id;
+    public Station(String uuid, String name, GeoLocation geoLocation, RealmList<DepartureDay> days) {
+        this.uuid = uuid;
         this.name = name;
         this.geoLocation = geoLocation;
         this.days = days;
     }
 
-    public int getId() {
-        return id;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getName() {
@@ -62,7 +62,7 @@ public class Station extends RealmObject {
     @Override
     public String toString() {
         return "Station{" +
-                "id=" + id +
+                "uuid=" + uuid +
                 ", name='" + name + '\'' +
                 ", geoLocation=" + geoLocation +
                 ", days=" + days +

@@ -11,7 +11,7 @@ import io.realm.annotations.PrimaryKey;
 public class Route extends RealmObject {
 
     @PrimaryKey
-    private int id;
+    private String uuid;
     private String name;
     private RealmList<Station> stations;
     private RealmList<DepartureDay> returnTimes;
@@ -19,19 +19,19 @@ public class Route extends RealmObject {
     public Route() {
     }
 
-    public Route(int id, String name, RealmList<Station> stations, RealmList<DepartureDay> returnTimes) {
-        this.id = id;
+    public Route(String uuid, String name, RealmList<Station> stations, RealmList<DepartureDay> returnTimes) {
+        this.uuid = uuid;
         this.name = name;
         this.stations = stations;
         this.returnTimes = returnTimes;
     }
 
-    public int getId() {
-        return id;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getName() {
@@ -61,7 +61,7 @@ public class Route extends RealmObject {
     @Override
     public String toString() {
         return "Route{" +
-                "id=" + id +
+                "uuid=" + uuid +
                 ", name='" + name + '\'' +
                 ", stations=" + stations +
                 ", returnTimes=" + returnTimes +

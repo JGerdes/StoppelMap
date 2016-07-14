@@ -41,7 +41,7 @@ public class RouteDetailActivity extends AppCompatActivity {
         }
 
         setTitle(getIntent().getStringExtra(EXTRA_ROUTE_NAME));
-        int routeId = getIntent().getIntExtra(EXTRA_ROUTE_ID, -1);
+        String routeUuid = getIntent().getStringExtra(EXTRA_ROUTE_ID);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -52,7 +52,7 @@ public class RouteDetailActivity extends AppCompatActivity {
         mStationList.setAdapter(mStationAdapter);
 
         Route route = StoppelMapApp.getViaActivity(this)
-                .getRealm().where(Route.class).equalTo("id", routeId).findFirst();
+                .getRealm().where(Route.class).equalTo("uuid", routeUuid).findFirst();
 
         mStationAdapter.setStations(route.getStations());
 
@@ -73,7 +73,7 @@ public class RouteDetailActivity extends AppCompatActivity {
     public static Intent createIntent(Context conntext, Route route) {
         Intent intent = new Intent(conntext, RouteDetailActivity.class);
         Bundle extras = new Bundle();
-        extras.putInt(EXTRA_ROUTE_ID, route.getId());
+        extras.putString(EXTRA_ROUTE_ID, route.getUuid());
         extras.putString(EXTRA_ROUTE_NAME, route.getName());
         intent.putExtras(extras);
         return intent;

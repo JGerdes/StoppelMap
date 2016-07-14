@@ -4,7 +4,6 @@ import android.support.annotation.IntDef;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Jonas on 08.07.2016.
@@ -30,31 +29,24 @@ public class DepartureDay extends RealmObject {
     public @interface Day {
     }
 
-    @PrimaryKey
-    private int id;
-    private @Day int day;
-    private RealmList<Departure> mDepartures;
+    private
+    @Day
+    int day;
+    private RealmList<Departure> departures;
     private String comment;
 
     public DepartureDay() {
     }
 
-    public DepartureDay(int id, @Day int day, RealmList<Departure> departures, String comment) {
-        this.id = id;
+    public DepartureDay(@Day int day, RealmList<Departure> departures, String comment) {
         this.day = day;
-        this.mDepartures = departures;
+        this.departures = departures;
         this.comment = comment;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public @Day int getDay() {
+    public
+    @Day
+    int getDay() {
         return day;
     }
 
@@ -63,11 +55,11 @@ public class DepartureDay extends RealmObject {
     }
 
     public RealmList<Departure> getDepartures() {
-        return mDepartures;
+        return departures;
     }
 
     public void setDepartures(RealmList<Departure> departures) {
-        this.mDepartures = departures;
+        this.departures = departures;
     }
 
     public String getComment() {
@@ -81,9 +73,8 @@ public class DepartureDay extends RealmObject {
     @Override
     public String toString() {
         return "DepatureDay{" +
-                "id=" + id +
-                ", day=" + day +
-                ", depatures=" + mDepartures +
+                "day=" + day +
+                ", depatures=" + departures +
                 ", comment='" + comment + '\'' +
                 '}';
     }
