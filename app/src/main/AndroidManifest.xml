@@ -32,7 +32,10 @@
         </activity>
         <activity
             android:name=".usecases.transportation.route_detail.RouteDetailActivity"
-            android:label="@string/title_activity_route_detail"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".usecases.transportation.station_detail.StationDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

@@ -15,6 +15,7 @@ public class Station extends RealmObject {
     private String uuid;
     private String name;
     private GeoLocation geoLocation;
+    private RealmList<Price> prices;
     private RealmList<DepartureDay> days;
 
     public Station() {
@@ -57,6 +58,14 @@ public class Station extends RealmObject {
 
     public void setDays(RealmList<DepartureDay> days) {
         this.days = days;
+    }
+
+    public RealmList<Price> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(RealmList<Price> prices) {
+        this.prices = prices;
     }
 
     @Override
