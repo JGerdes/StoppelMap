@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="tools_depatures">
-        <item>18:05</item>
-        <item>18:35</item>
-        <item>19:05</item>
+    <string-array name="days">
+        <item>Do</item>
+        <item>Fr</item>
+        <item>Sa</item>
+        <item>So</item>
+        <item>Mo</item>
+        <item>Di</item>
     </string-array>
 </resources>

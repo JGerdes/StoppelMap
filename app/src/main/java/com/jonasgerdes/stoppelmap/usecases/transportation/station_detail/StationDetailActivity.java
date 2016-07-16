@@ -3,6 +3,8 @@ package com.jonasgerdes.stoppelmap.usecases.transportation.station_detail;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -11,12 +13,21 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StationDetailActivity extends AppCompatActivity {
 
     private static final String EXTRA_STATION_ID = "EXTRA_STATION_ID";
     private static final String EXTRA_STATION_NAME = "EXTRA_STATION_NAME";
+
+    @BindView(R.id.tabs)
+    TabLayout mTabs;
+
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
+
+    private DepartureDayFragmentAdapter mDayPageAdapter;
 
 
     @Override
@@ -43,8 +54,11 @@ public class StationDetailActivity extends AppCompatActivity {
         Station station = StoppelMapApp.getViaActivity(this)
                 .getRealm().where(Station.class).equalTo("uuid", stationUuid).findFirst();
 
-
+        mDayPageAdapter = new DepartureDayFragmentAdapter(this, getSupportFragmentManager(), station);
+        mViewPager.setAdapter(mDayPageAdapter);
+        mTabs.setupWithViewPager(mViewPager);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
