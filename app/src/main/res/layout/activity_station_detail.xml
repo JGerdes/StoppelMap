@@ -15,12 +15,11 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:fitsSystemWindows="true"
+            android:layout_height="256dp"
+            app:collapsedTitleGravity="top"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleGravity="top"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:titleEnabled="false">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <!--<ImageView-->
             <!--android:id="@+id/header"-->
@@ -38,7 +37,8 @@
                 android:gravity="top"
                 android:minHeight="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleMarginTop="16dp"/>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"
