@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,10 +27,12 @@ import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
+import com.jonasgerdes.stoppelmap.util.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -39,6 +44,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Unbinder mUnbinder;
+    private BottomSheetBehavior<View> mBottomSheetBehavior;
+
+    @BindView(R.id.bottom_sheet_image)
+    ImageView mSheetImage;
+
+    @BindView(R.id.bottom_sheet_title)
+    TextView mBottomTitle;
 
     @Nullable
     @Override
@@ -65,19 +77,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }, 400);
         }
 
+        mBottomSheetBehavior = BottomSheetBehavior.from(view.findViewById(R.id.bottom_sheet));
 
-//        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-//            @Override
-//            public void onStateChanged(View bottomSheet, int newState) {
-//                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-//                    mBottomSheetBehavior.setPeekHeight(0);
-//                }
-//            }
-//
-//            @Override
-//            public void onSlide(View bottomSheet, float slideOffset) {
-//            }
-//        });
+        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    mBottomSheetBehavior.setPeekHeight(0);
+                }
+            }
+
+            @Override
+            public void onSlide(View bottomSheet, float slideOffset) {
+                Log.d(TAG, "onSlide " + slideOffset);
+            }
+        });
 
     }
 
@@ -149,7 +163,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         if (MapUtil.isPointInPolygon(latLng, amtmansbult)) {
             Log.d(TAG, "onMapClicked: amtmanssbult");
-            getMainActivity().peekBottomSheet(300);
+            mBottomTitle.setText("Amtmannsbult");
+            peekBottomSheet(128);
+        } else {
+            hideBottomSheet();
         }
     }
 
@@ -158,5 +175,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             return (MainActivity) getActivity();
         }
         return null;
+    }
+
+    public void peekBottomSheet(int heightInDp) {
+        mBottomSheetBehavior.setPeekHeight(ViewUtil.dpToPx(getContext(), heightInDp));
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
+    public void hideBottomSheet() {
+        mBottomSheetBehavior.setPeekHeight(0);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 }
