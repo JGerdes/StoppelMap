@@ -9,21 +9,24 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="wrap_content"
         android:layout_margin="4dp"
         app:cardUseCompatPadding="true">
 
         <RelativeLayout
+            android:id="@+id/bottom_sheet_content"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:padding="16dp">
+            android:layout_height="128dp"
+            android:background="?attr/selectableItemBackground">
 
             <ImageView
                 android:id="@+id/bottom_sheet_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
+                android:layout_margin="16dp"
                 android:scaleType="centerCrop"
-                android:src="@color/colorPrimary"/>
+                android:src="@color/colorPrimary"
+                android:transitionName="entity_image"/>
 
             <TextView
                 android:id="@+id/bottom_sheet_title"
@@ -32,10 +35,22 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_toRightOf="@id/bottom_sheet_image"
                 android:fontFamily="sans-serif-light"
                 android:textSize="@dimen/card_title_size"
+                android:transitionName="entity_title"
                 tools:text="Amtmannsbult"/>
+
+            <Button
+                android:id="@+id/details"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:text="Mehr"
+                android:textColor="@color/colorPrimary"/>
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

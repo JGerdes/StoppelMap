@@ -11,12 +11,15 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.util.Pair;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,11 +30,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlayOptions;
-import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
-import com.jonasgerdes.stoppelmap.util.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @BindView(R.id.bottom_sheet_title)
     TextView mSheetTitle;
+
+    @BindView(R.id.details)
+    Button mSheetDetailButton;
+
+    @BindView(R.id.bottom_sheet)
+    View mBottomSheet;
+
+    @BindView(R.id.bottom_sheet_content)
+    View mBottomSheetContent;
 
     @Nullable
     @Override
@@ -81,26 +91,33 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }, 400);
         }
 
-        mBottomSheetBehavior = BottomSheetBehavior.from(view.findViewById(R.id.bottom_sheet));
+        mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
 
-        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(View bottomSheet, int newState) {
-                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                    mBottomSheetBehavior.setPeekHeight(0);
-                }
-            }
 
+        mSheetDetailButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSlide(View bottomSheet, float slideOffset) {
-                Log.d(TAG, "onSlide " + slideOffset);
-                if (slideOffset == 1) {
-                    Intent intent = EntityDetailActivity.createIntent(getContext());
-                    startActivity(intent);
-                }
+            public void onClick(View v) {
+                showEntityDetail();
             }
         });
 
+        mBottomSheetContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEntityDetail();
+            }
+        });
+
+    }
+
+    private void showEntityDetail() {
+
+        Intent intent = EntityDetailActivity.createIntent(getContext());
+
+        Pair<View, String> sharedImage = Pair.create((View) mSheetImage, "entity_image");
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(getActivity(), sharedImage);
+        startActivity(intent, options.toBundle());
     }
 
     @Override
@@ -175,28 +192,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             Glide.with(this)
                     .load(Uri.parse("file:///android_asset/headers/amtmannsbult.jpg"))
                     .into(mSheetImage);
-            peekBottomSheet(128);
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         } else {
-            hideBottomSheet();
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         }
     }
 
-    private MainActivity getMainActivity() {
-        if (getActivity() instanceof MainActivity) {
-            return (MainActivity) getActivity();
-        }
-        return null;
-    }
 
-    public void peekBottomSheet(int heightInDp) {
-        mBottomSheetBehavior.setPeekHeight(ViewUtil.dpToPx(getContext(), heightInDp));
-        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-    }
-
-    public void hideBottomSheet() {
-        mBottomSheetBehavior.setPeekHeight(0);
-        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-    }
 }
