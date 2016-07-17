@@ -38,6 +38,10 @@
             android:name=".usecases.transportation.station_detail.StationDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".usecases.map.entity_detail.EntityDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

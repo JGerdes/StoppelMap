@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.usecases.map;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.net.Uri;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
 
@@ -92,6 +94,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onSlide(View bottomSheet, float slideOffset) {
                 Log.d(TAG, "onSlide " + slideOffset);
+                if (slideOffset == 1) {
+                    Intent intent = EntityDetailActivity.createIntent(getContext());
+                    startActivity(intent);
+                }
             }
         });
 
