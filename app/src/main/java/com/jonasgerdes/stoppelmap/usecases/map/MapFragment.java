@@ -4,6 +4,7 @@ package com.jonasgerdes.stoppelmap.usecases.map;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -50,7 +52,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     ImageView mSheetImage;
 
     @BindView(R.id.bottom_sheet_title)
-    TextView mBottomTitle;
+    TextView mSheetTitle;
 
     @Nullable
     @Override
@@ -163,7 +165,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         if (MapUtil.isPointInPolygon(latLng, amtmansbult)) {
             Log.d(TAG, "onMapClicked: amtmanssbult");
-            mBottomTitle.setText("Amtmannsbult");
+            mSheetTitle.setText("Amtmannsbult");
+            Glide.with(this)
+                    .load(Uri.parse("file:///android_asset/headers/amtmannsbult.jpg"))
+                    .into(mSheetImage);
             peekBottomSheet(128);
         } else {
             hideBottomSheet();
