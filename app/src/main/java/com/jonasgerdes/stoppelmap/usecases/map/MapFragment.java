@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlayOptions;
+import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.util.MapUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -29,6 +35,7 @@ import butterknife.Unbinder;
  * Created by Jonas on 03.07.2016.
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
+    private static final String TAG = "MapFragment";
 
     private GoogleMap mMap;
     private Unbinder mUnbinder;
@@ -52,11 +59,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     FragmentManager fm = getChildFragmentManager();
                     SupportMapFragment mapFragment = SupportMapFragment.newInstance();
                     fm.beginTransaction()
-                            .replace(R.id.map_placeholder, mapFragment).commit();
+                            .replace(R.id.map_placeholder, mapFragment).commitAllowingStateLoss();
                     mapFragment.getMapAsync(MapFragment.this);
                 }
             }, 400);
         }
+
+
+//        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(View bottomSheet, int newState) {
+//                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+//                    mBottomSheetBehavior.setPeekHeight(0);
+//                }
+//            }
+//
+//            @Override
+//            public void onSlide(View bottomSheet, float slideOffset) {
+//            }
+//        });
 
     }
 
@@ -102,5 +123,40 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));
 
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                onMapClicked(latLng);
+            }
+        });
+
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                onMapClicked(latLng);
+            }
+        });
+
+    }
+
+    private void onMapClicked(LatLng latLng) {
+        final List<LatLng> amtmansbult = new ArrayList<>();
+        amtmansbult.add(new LatLng(52.748714570890684, 8.295282572507858));
+        amtmansbult.add(new LatLng(52.74875110126543, 8.295550793409348));
+        amtmansbult.add(new LatLng(52.74858793202118, 8.2955963909626));
+        amtmansbult.add(new LatLng(52.74856520192871, 8.295294642448425));
+
+        if (MapUtil.isPointInPolygon(latLng, amtmansbult)) {
+            Log.d(TAG, "onMapClicked: amtmanssbult");
+            getMainActivity().peekBottomSheet(300);
+        }
+    }
+
+    private MainActivity getMainActivity() {
+        if (getActivity() instanceof MainActivity) {
+            return (MainActivity) getActivity();
+        }
+        return null;
     }
 }

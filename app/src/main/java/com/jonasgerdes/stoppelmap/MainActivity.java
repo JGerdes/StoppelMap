@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap;
 
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
 import com.jonasgerdes.stoppelmap.usecases.schedule.ScheduleFragment;
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity
     protected DrawerLayout mDrawer;
     @BindView(R.id.nav_view)
     protected NavigationView mNavigationView;
+
+
+    private BottomSheetBehavior<View> mBottomSheetBehavior;
 
 
     @Override
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity
         mNavigationView.setNavigationItemSelectedListener(this);
         mNavigationView.getMenu().performIdentifierAction(R.id.nav_map, 0);
         mNavigationView.setCheckedItem(R.id.nav_map);
+
+        mBottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet));
     }
 
     @Override
@@ -86,5 +93,11 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public void peekBottomSheet(int height) {
+        mBottomSheetBehavior.setPeekHeight(height);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 }
