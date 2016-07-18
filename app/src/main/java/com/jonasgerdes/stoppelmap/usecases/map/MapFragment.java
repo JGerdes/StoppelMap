@@ -31,15 +31,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmResults;
 
 /**
  * Created by Jonas on 03.07.2016.
@@ -50,6 +50,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
     private Unbinder mUnbinder;
     private BottomSheetBehavior<View> mBottomSheetBehavior;
+    private RealmResults<MapEntity> mMapEntities;
 
     @BindView(R.id.bottom_sheet_image)
     ImageView mSheetImage;
@@ -107,6 +108,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 showEntityDetail();
             }
         });
+
+        mMapEntities = StoppelMapApp.getViaActivity(getActivity()).getRealm()
+                .where(MapEntity.class).findAllAsync();
 
     }
 
@@ -180,21 +184,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     private void onMapClicked(LatLng latLng) {
-        final List<LatLng> amtmansbult = new ArrayList<>();
-        amtmansbult.add(new LatLng(52.748714570890684, 8.295282572507858));
-        amtmansbult.add(new LatLng(52.74875110126543, 8.295550793409348));
-        amtmansbult.add(new LatLng(52.74858793202118, 8.2955963909626));
-        amtmansbult.add(new LatLng(52.74856520192871, 8.295294642448425));
 
-        if (MapUtil.isPointInPolygon(latLng, amtmansbult)) {
-            Log.d(TAG, "onMapClicked: amtmanssbult");
-            mSheetTitle.setText("Amtmannsbult");
-            Glide.with(this)
-                    .load(Uri.parse("file:///android_asset/headers/amtmannsbult.jpg"))
-                    .into(mSheetImage);
-            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        } else {
-            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        for (MapEntity mapEntity : mMapEntities) {
+            if (mapEntity.getBounds() == null) {
+                continue;
+            }
+            if (MapUtil.isPointInGeoPolygon(latLng, mapEntity.getBounds())) {
+                Log.d(TAG, "onMapClicked: amtmanssbult");
+                mSheetTitle.setText(mapEntity.getName());
+                String headerFile = mapEntity.getHeaderImageFile();
+                String headerPath = String.format("file:///android_asset/headers/%s", headerFile);
+                Glide.with(this)
+                        .load(Uri.parse(headerPath))
+                        .into(mSheetImage);
+                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            } else {
+                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+
         }
     }
 

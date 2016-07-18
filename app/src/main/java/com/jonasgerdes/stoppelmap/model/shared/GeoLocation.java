@@ -24,4 +24,12 @@ public class GeoLocation extends RealmObject {
     public LatLng toLatLng() {
         return new LatLng(lat, lon);
     }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
 }
