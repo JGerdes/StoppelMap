@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="112dp"
+                android:layout_marginTop="120dp"
                 android:src="@drawable/logo_color_144dp"/>
 
         </FrameLayout>
@@ -95,6 +95,23 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:paddingTop="16dp"
+            android:text="Disclaimer"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/disclaimer"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:paddingTop="16dp"
             android:text="Lizenzen"
             android:textSize="16sp"/>
 
@@ -109,18 +126,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/license_support_body"/>
-
-        <TextView
-            style="@style/AboutTextTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/license_google_maps_title"/>
-
-        <TextView
-            style="@style/AboutTextBody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/license_google_maps_body"/>
 
         <TextView
             style="@style/AboutTextTitle"
@@ -158,6 +163,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/license_gson_body"/>
+
+
+        <TextView
+            style="@style/AboutTextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/license_realm_title"/>
+
+        <TextView
+            style="@style/AboutTextBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/license_realm_body"/>
 
         <TextView
             style="@style/AboutTextTitle"
