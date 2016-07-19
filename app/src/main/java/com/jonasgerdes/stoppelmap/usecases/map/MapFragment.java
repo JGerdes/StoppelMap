@@ -32,6 +32,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
+import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
@@ -67,6 +68,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @BindView(R.id.bottom_sheet_content)
     View mBottomSheetContent;
+
+    @BindView(R.id.bottom_sheet_icons)
+    ViewGroup mBottomSheetIcons;
 
     @Nullable
     @Override
@@ -197,6 +201,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
             if (MapUtil.isPointInGeoPolygon(latLng, mapEntity.getBounds())) {
                 Log.d(TAG, "onMapClicked:" + mapEntity.getUuid());
+                mCurrentMapEntity = mapEntity;
                 mSheetTitle.setText(mapEntity.getName());
                 String headerFile = mapEntity.getHeaderImageFile();
 
@@ -205,7 +210,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         .load(Uri.parse(headerPath))
                         .into(mSheetImage);
                 mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                mCurrentMapEntity = mapEntity;
+
+                for (int i = 0; i < mBottomSheetIcons.getChildCount(); i++) {
+                    ImageView iconView = (ImageView) mBottomSheetIcons.getChildAt(i);
+                    if (mapEntity.getIcons() != null
+                            && mapEntity.getIcons().size() - 1 >= i) {
+                        Icon icon = Icon.ICONS.get(mapEntity.getIcons().get(i).getVal());
+                        if (icon != null) {
+                            iconView.setImageResource(icon.drawable);
+                            continue;
+                        }
+                    }
+                    iconView.setImageDrawable(null);
+                }
+
                 return;
             }
 

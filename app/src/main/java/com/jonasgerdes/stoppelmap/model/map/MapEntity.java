@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model.map;
 
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
+import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -19,6 +20,10 @@ public class MapEntity extends RealmObject {
     private RealmList<GeoLocation> bounds;
     private GeoLocation origin;
     private String headerImageFile;
+    private RealmList<RealmString> icons;
+
+    public MapEntity() {
+    }
 
     public String getUuid() {
         return uuid;
@@ -66,5 +71,13 @@ public class MapEntity extends RealmObject {
 
     public void setHeaderImageFile(String headerImageFile) {
         this.headerImageFile = headerImageFile;
+    }
+
+    public RealmList<RealmString> getIcons() {
+        return icons;
+    }
+
+    public void setIcons(RealmList<RealmString> icons) {
+        this.icons = icons;
     }
 }

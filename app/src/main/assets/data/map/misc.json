@@ -5,6 +5,11 @@
       "type": 0,
       "name": "Amtmannsbult",
       "headerImageFile": "amtmannsbult.jpg",
+      "icons": [
+        "first-aid",
+        "info",
+        "atm"
+      ],
       "origin": {
         "lat": 52.74856520192871,
         "lon": 8.295294642448425
