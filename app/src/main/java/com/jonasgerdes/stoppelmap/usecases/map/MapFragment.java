@@ -190,7 +190,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 continue;
             }
             if (MapUtil.isPointInGeoPolygon(latLng, mapEntity.getBounds())) {
-                Log.d(TAG, "onMapClicked: amtmanssbult");
+                Log.d(TAG, "onMapClicked:" + mapEntity.getUuid());
                 mSheetTitle.setText(mapEntity.getName());
                 String headerFile = mapEntity.getHeaderImageFile();
                 String headerPath = String.format("file:///android_asset/headers/%s", headerFile);
