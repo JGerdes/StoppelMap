@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
 import com.jonasgerdes.stoppelmap.usecases.schedule.ScheduleFragment;
 import com.jonasgerdes.stoppelmap.usecases.transportation.TransportationFragment;
@@ -75,6 +76,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_transportation:
                 loadFragment(TransportationFragment.newInstance());
+                break;
+            case R.id.nav_about:
+                loadFragment(AboutFragment.newInstance());
                 break;
         }
 
