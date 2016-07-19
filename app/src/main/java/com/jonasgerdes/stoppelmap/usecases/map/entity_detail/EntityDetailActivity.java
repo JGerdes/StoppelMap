@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +29,9 @@ public class EntityDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.header)
     ImageView mHeaderImage;
+
+    @BindView(R.id.card_list)
+    RecyclerView mCardList;
 
     private MapEntity mEntity;
 
@@ -54,6 +60,15 @@ public class EntityDetailActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(Uri.parse(headerPath))
                 .into(mHeaderImage);
+
+
+        EntityCardAdapter adapter = new EntityCardAdapter();
+        mCardList.setAdapter(adapter);
+        mCardList.setLayoutManager(new LinearLayoutManager(this));
+
+        if (mEntity.getIcons() != null && mEntity.getIcons().size() > 0) {
+            adapter.addEntityCard(new EntityCard(IconsEntityCardHolder.LAYOUT, mEntity));
+        }
     }
 
     @Override
