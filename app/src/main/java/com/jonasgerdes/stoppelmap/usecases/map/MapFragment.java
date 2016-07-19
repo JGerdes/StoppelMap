@@ -51,6 +51,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private Unbinder mUnbinder;
     private BottomSheetBehavior<View> mBottomSheetBehavior;
     private RealmResults<MapEntity> mMapEntities;
+    private MapEntity mCurrentMapEntity;
 
     @BindView(R.id.bottom_sheet_image)
     ImageView mSheetImage;
@@ -116,12 +117,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private void showEntityDetail() {
 
-        Intent intent = EntityDetailActivity.createIntent(getContext());
+        if (mCurrentMapEntity != null) {
+            Intent intent = EntityDetailActivity.createIntent(getContext(), mCurrentMapEntity);
 
-        Pair<View, String> sharedImage = Pair.create((View) mSheetImage, "entity_image");
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(getActivity(), sharedImage);
-        startActivity(intent, options.toBundle());
+            Pair<View, String> sharedImage = Pair.create((View) mSheetImage, "entity_image");
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation(getActivity(), sharedImage);
+            startActivity(intent, options.toBundle());
+        } else {
+            //inconsistent state, hide bottom sheet
+            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
     }
 
     @Override
@@ -193,16 +199,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 Log.d(TAG, "onMapClicked:" + mapEntity.getUuid());
                 mSheetTitle.setText(mapEntity.getName());
                 String headerFile = mapEntity.getHeaderImageFile();
-                String headerPath = String.format("file:///android_asset/headers/%s", headerFile);
+
+                String headerPath = getString(R.string.asset_map_entity_header_dir, headerFile);
                 Glide.with(this)
                         .load(Uri.parse(headerPath))
                         .into(mSheetImage);
                 mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            } else {
-                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                mCurrentMapEntity = mapEntity;
+                return;
             }
 
         }
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        mCurrentMapEntity = null;
     }
 
 

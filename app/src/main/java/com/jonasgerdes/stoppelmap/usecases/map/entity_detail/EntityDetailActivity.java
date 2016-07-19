@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,9 +22,12 @@ import butterknife.ButterKnife;
  */
 public class EntityDetailActivity extends AppCompatActivity {
     private static final String TAG = "EntityDetailActivity";
+    private static final String ENTITY_UUID = "ENTITY_UUID";
 
     @BindView(R.id.header)
     ImageView mHeaderImage;
+
+    private MapEntity mEntity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,14 +37,22 @@ public class EntityDetailActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
+
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        String entityUuid = getIntent().getExtras().getString(ENTITY_UUID);
+        mEntity = StoppelMapApp.getViaActivity(this).getRealm()
+                .where(MapEntity.class).equalTo("uuid", entityUuid).findFirst();
+
+        setTitle(mEntity.getName());
+
+        String headerFile = mEntity.getHeaderImageFile();
+        String headerPath = getString(R.string.asset_map_entity_header_dir, headerFile);
         Glide.with(this)
-                .load(Uri.parse("file:///android_asset/headers/amtmannsbult.jpg"))
+                .load(Uri.parse(headerPath))
                 .into(mHeaderImage);
     }
 
@@ -58,9 +71,10 @@ public class EntityDetailActivity extends AppCompatActivity {
         supportFinishAfterTransition();
     }
 
-    public static Intent createIntent(Context context) {
+    public static Intent createIntent(Context context, MapEntity entity) {
         Intent intent = new Intent(context, EntityDetailActivity.class);
         Bundle extras = new Bundle();
+        extras.putString(ENTITY_UUID, entity.getUuid());
         intent.putExtras(extras);
         return intent;
     }
