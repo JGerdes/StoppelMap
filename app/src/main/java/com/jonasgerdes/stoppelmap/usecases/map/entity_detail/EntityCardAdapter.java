@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +25,8 @@ public class EntityCardAdapter extends RecyclerView.Adapter<EntityCardHolder> {
         switch (viewType) {
             case IconsEntityCardHolder.LAYOUT:
                 return new IconsEntityCardHolder(view);
+            case InfoEntityCardHolder.LAYOUT:
+                return new InfoEntityCardHolder(view);
         }
 
         return new EntityCardHolder(view);

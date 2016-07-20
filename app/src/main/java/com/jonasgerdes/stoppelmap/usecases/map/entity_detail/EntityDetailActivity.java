@@ -16,6 +16,7 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,6 +69,10 @@ public class EntityDetailActivity extends AppCompatActivity {
 
         if (mEntity.getIcons() != null && mEntity.getIcons().size() > 0) {
             adapter.addEntityCard(new EntityCard(IconsEntityCardHolder.LAYOUT, mEntity));
+        }
+
+        if (mEntity.getInfo() != null && mEntity.getInfo().getText() != null) {
+            adapter.addEntityCard(new EntityCard(InfoEntityCardHolder.LAYOUT, mEntity));
         }
     }
 

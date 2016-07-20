@@ -21,6 +21,7 @@ public class MapEntity extends RealmObject {
     private GeoLocation origin;
     private String headerImageFile;
     private RealmList<RealmString> icons;
+    private Info info;
 
     public MapEntity() {
     }
@@ -79,5 +80,13 @@ public class MapEntity extends RealmObject {
 
     public void setIcons(RealmList<RealmString> icons) {
         this.icons = icons;
+    }
+
+    public Info getInfo() {
+        return info;
+    }
+
+    public void setInfo(Info info) {
+        this.info = info;
     }
 }
