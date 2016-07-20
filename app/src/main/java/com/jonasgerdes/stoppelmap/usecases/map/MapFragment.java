@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
@@ -85,17 +84,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
         if (savedInstanceState == null) {
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
+//            new Handler().postDelayed(new Runnable() {
+//
+//                @Override
+//                public void run() {
                     FragmentManager fm = getChildFragmentManager();
                     SupportMapFragment mapFragment = SupportMapFragment.newInstance();
                     fm.beginTransaction()
                             .replace(R.id.map_placeholder, mapFragment).commitAllowingStateLoss();
                     mapFragment.getMapAsync(MapFragment.this);
-                }
-            }, 400);
+//                }
+//            }, 400);
         }
 
         mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);

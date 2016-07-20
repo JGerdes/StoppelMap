@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.nav_map:
                 loadFragment(MapFragment.newInstance());
-                setTitle(item.getTitle());
+                setTitle(getString(R.string.app_name));
                 break;
 //            case R.id.nav_schedule:
 //                loadFragment(ScheduleFragment.newInstance());
