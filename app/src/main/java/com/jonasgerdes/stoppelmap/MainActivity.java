@@ -1,5 +1,9 @@
 package com.jonasgerdes.stoppelmap;
 
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -7,13 +11,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.jonasgerdes.stoppelmap.model.version.Version;
 import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
 import com.jonasgerdes.stoppelmap.usecases.transportation.TransportationFragment;
+import com.jonasgerdes.stoppelmap.versioning.VersionHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +65,38 @@ public class MainActivity extends AppCompatActivity
         loadFragment(MapFragment.newInstance(), false);
         mNavigationView.setCheckedItem(R.id.nav_map);
 
+        checkVersion();
+
+    }
+
+    private void checkVersion() {
+        VersionHelper.requestVersionInfo(this, new VersionHelper.OnVersionAvailableListener() {
+            @Override
+            public void onVersionAvailable(Version version) {
+                if (version != null) {
+                    int currentVersion = VersionHelper.getVersionCode(MainActivity.this);
+                    Log.d(TAG, "onVersionAvailable: " + currentVersion + ", " + version.code);
+                    if (currentVersion != -1 && currentVersion < version.code) {
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setTitle(getString(R.string.dialog_update_title))
+                                .setMessage(getString(R.string.dialog_update_message, currentVersion))
+                                .setPositiveButton("Herunterladen", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        final String appPackageName = getPackageName();
+                                        try {
+                                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                                        } catch (ActivityNotFoundException anfe) {
+                                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+                                        }
+                                    }
+                                })
+                                .setNegativeButton("Später", null)
+                                .show();
+                    }
+                }
+            }
+        });
     }
 
     @Override
