@@ -238,6 +238,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     public boolean onBackPressed() {
         if (mCurrentMapEntity != null) {
             mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            mCurrentMapEntity = null;
             return true;
         }
         return false;
