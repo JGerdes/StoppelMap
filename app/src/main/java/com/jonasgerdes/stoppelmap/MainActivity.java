@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity
 
 
         mNavigationView.setNavigationItemSelectedListener(this);
-        mNavigationView.getMenu().performIdentifierAction(R.id.nav_map, 0);
+        loadFragment(MapFragment.newInstance(), false);
         mNavigationView.setCheckedItem(R.id.nav_map);
 
     }
@@ -97,14 +98,19 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void loadFragment(Fragment fragment) {
+        loadFragment(fragment, true);
+    }
+
+    private void loadFragment(Fragment fragment, boolean addToBackStack) {
         if (fragment instanceof BackPressListener) {
             mBackPressListener = (BackPressListener) fragment;
         }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, fragment)
-                .addToBackStack(null)
-                .commit();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
     }
 
 }
