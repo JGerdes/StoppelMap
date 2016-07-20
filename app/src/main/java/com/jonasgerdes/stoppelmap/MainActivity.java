@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.nav_view)
     protected NavigationView mNavigationView;
 
+    private BackPressListener mBackPressListener;
+
+    public interface BackPressListener {
+        boolean onBackPressed();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,11 @@ public class MainActivity extends AppCompatActivity
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawer(GravityCompat.START);
         } else {
+            if (mBackPressListener != null) {
+                if (mBackPressListener.onBackPressed()) {
+                    return;
+                }
+            }
             super.onBackPressed();
         }
     }
@@ -86,6 +97,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void loadFragment(Fragment fragment) {
+        if (fragment instanceof BackPressListener) {
+            mBackPressListener = (BackPressListener) fragment;
+        }
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, fragment)
