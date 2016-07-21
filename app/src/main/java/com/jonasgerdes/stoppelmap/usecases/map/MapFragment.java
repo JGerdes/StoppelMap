@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -211,6 +212,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             if (MapUtil.isPointInGeoPolygon(latLng, mapEntity.getBounds())) {
                 Log.d(TAG, "onMapClicked:" + mapEntity.getUuid());
                 showBottomBarWith(mapEntity);
+                if (mapEntity.getOrigin() != null) {
+                    CameraUpdate update =
+                            CameraUpdateFactory.newLatLng(mapEntity.getOrigin().toLatLng());
+                    mMap.animateCamera(update);
+                }
 
                 return;
             }
