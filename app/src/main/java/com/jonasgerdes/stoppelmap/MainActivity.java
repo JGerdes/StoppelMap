@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity
     protected NavigationView mNavigationView;
 
     private BackPressListener mBackPressListener;
+    private AlertDialog mUpdateHint;
 
     public interface BackPressListener {
         boolean onBackPressed();
@@ -69,6 +70,14 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    protected void onDestroy() {
+        if (mUpdateHint != null) {
+            mUpdateHint.dismiss();
+        }
+        super.onDestroy();
+    }
+
     public void checkVersion() {
         VersionHelper.requestVersionInfo(this, new VersionHelper.OnVersionAvailableListener() {
             @Override
@@ -80,7 +89,7 @@ public class MainActivity extends AppCompatActivity
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                new AlertDialog.Builder(MainActivity.this, R.style.StoppelMapAlert)
+                                mUpdateHint = new AlertDialog.Builder(MainActivity.this, R.style.StoppelMapAlert)
                                         .setTitle(getString(R.string.dialog_update_title))
                                         .setMessage(getString(R.string.dialog_update_message, version.name))
                                         .setPositiveButton("Aktualisieren", new DialogInterface.OnClickListener() {
@@ -95,6 +104,12 @@ public class MainActivity extends AppCompatActivity
                                             }
                                         })
                                         .setNegativeButton("Später", null)
+                                        .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                            @Override
+                                            public void onDismiss(DialogInterface dialog) {
+                                                mUpdateHint = null;
+                                            }
+                                        })
                                         .show();
 
                             }
