@@ -1,10 +1,12 @@
 package com.jonasgerdes.stoppelmap.model.map;
 
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -22,6 +24,9 @@ public class MapEntity extends RealmObject {
     private String headerImageFile;
     private RealmList<RealmString> icons;
     private Info info;
+
+    @Ignore
+    MarkerOptions mMarkerOptions;
 
     public MapEntity() {
     }
@@ -88,5 +93,13 @@ public class MapEntity extends RealmObject {
 
     public void setInfo(Info info) {
         this.info = info;
+    }
+
+    public MarkerOptions getMarkerOptions() {
+        return mMarkerOptions;
+    }
+
+    public void setMarkerOptions(MarkerOptions markerOptions) {
+        mMarkerOptions = markerOptions;
     }
 }

@@ -192,6 +192,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             }
         });
 
+        new LabelCreationTask(getContext())
+                .onReady(new LabelCreationTask.OnReadyListener() {
+                    @Override
+                    public void onReady() {
+                        placeMarkers();
+                    }
+                })
+                .execute(mMapEntities);
+
+    }
+
+    private void placeMarkers() {
+        for (MapEntity mapEntity : mMapEntities) {
+            if (mapEntity.getMarkerOptions() != null) {
+                mMap.addMarker(mapEntity.getMarkerOptions());
+            }
+        }
     }
 
     private void onMapClicked(LatLng latLng) {
