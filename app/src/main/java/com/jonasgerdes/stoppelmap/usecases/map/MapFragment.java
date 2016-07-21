@@ -37,10 +37,12 @@ import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.realm.RealmResults;
+import io.realm.Realm;
 
 /**
  * Created by Jonas on 03.07.2016.
@@ -51,7 +53,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     private GoogleMap mMap;
     private Unbinder mUnbinder;
     private BottomSheetBehavior<View> mBottomSheetBehavior;
-    private RealmResults<MapEntity> mMapEntities;
+    private List<MapEntity> mMapEntities;
     private MapEntity mCurrentMapEntity;
 
     @BindView(R.id.bottom_sheet_image)
@@ -115,8 +117,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             }
         });
 
-        mMapEntities = StoppelMapApp.getViaActivity(getActivity()).getRealm()
-                .where(MapEntity.class).findAllAsync();
+        final Realm realm = StoppelMapApp.getViaActivity(getActivity()).getRealm();
+
+        Log.d(TAG, "copy entities from realm");
+        long t = System.currentTimeMillis();
+        mMapEntities = realm.copyFromRealm(realm.where(MapEntity.class).findAll());
+        t = System.currentTimeMillis() - t;
+        Log.d(TAG, "copy from realm took " + t + "ms");
 
     }
 
@@ -192,6 +199,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             }
         });
 
+        generateMarkers();
+
+    }
+
+    private void generateMarkers() {
+        if (mMap == null || mMapEntities == null) {
+            return;
+        }
         new LabelCreationTask(getContext())
                 .onReady(new LabelCreationTask.OnReadyListener() {
                     @Override
@@ -200,7 +215,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                     }
                 })
                 .execute(mMapEntities);
-
     }
 
     private void placeMarkers() {
