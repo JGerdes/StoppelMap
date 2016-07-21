@@ -14,7 +14,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.jonasgerdes.stoppelmap.model.version.Version;
@@ -79,12 +78,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void checkVersion() {
+        //don't check while debugging
+        if(getResources().getBoolean(R.bool.is_debug)) {
+            return;
+        }
         VersionHelper.requestVersionInfo(this, new VersionHelper.OnVersionAvailableListener() {
             @Override
             public void onVersionAvailable(final Version version) {
                 if (version != null) {
                     final int currentVersion = VersionHelper.getVersionCode(MainActivity.this);
-                    Log.d(TAG, "onVersionAvailable: " + currentVersion + ", " + version.code);
                     if (currentVersion != -1 && currentVersion < version.code) {
                         runOnUiThread(new Runnable() {
                             @Override

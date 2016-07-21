@@ -16,6 +16,7 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
+import com.jonasgerdes.stoppelmap.util.ViewUtil;
 
 import java.util.List;
 
@@ -41,8 +42,6 @@ public class LabelCreationTask extends AsyncTask<List<MapEntity>, Void, Void> {
         Bitmap icon;
         for (MapEntity entity : params[0]) {
             icon = createLabel(inflater, entity.getName(), entity.getIcons());
-            int w = icon.getWidth(),
-                    h = icon.getHeight();
             MarkerOptions markerOptions = new MarkerOptions()
                     .position(entity.getOrigin().toLatLng())
                     .icon(BitmapDescriptorFactory.fromBitmap(icon));
@@ -67,9 +66,11 @@ public class LabelCreationTask extends AsyncTask<List<MapEntity>, Void, Void> {
         LinearLayout icons = (LinearLayout) tv.findViewById(R.id.icons);
         String iconName;
         Icon icon;
+        int iconSize = ViewUtil.dpToPx(inflater.getContext(), 14);
         for (RealmString iconString : entityIcons) {
             iconName = iconString.getVal();
             ImageView view = new ImageView(inflater.getContext());
+            view.setLayoutParams(new LinearLayout.LayoutParams(iconSize, iconSize));
             icon = Icon.ICONS.get(iconName);
             if (icon != null) {
                 view.setImageResource(icon.drawable);

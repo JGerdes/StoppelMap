@@ -28,6 +28,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
@@ -55,6 +56,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     private BottomSheetBehavior<View> mBottomSheetBehavior;
     private List<MapEntity> mMapEntities;
     private MapEntity mCurrentMapEntity;
+    private MarkerManager mMarkerManager;
 
     @BindView(R.id.bottom_sheet_image)
     ImageView mSheetImage;
@@ -86,17 +88,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
         if (savedInstanceState == null) {
-//            new Handler().postDelayed(new Runnable() {
-//
-//                @Override
-//                public void run() {
             FragmentManager fm = getChildFragmentManager();
             SupportMapFragment mapFragment = SupportMapFragment.newInstance();
             fm.beginTransaction()
                     .replace(R.id.map_placeholder, mapFragment).commitAllowingStateLoss();
             mapFragment.getMapAsync(MapFragment.this);
-//                }
-//            }, 400);
         }
 
         mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
@@ -150,15 +146,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         super.onDestroyView();
     }
 
-    public static MapFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        MapFragment fragment = new MapFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -199,30 +186,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             }
         });
 
-        generateMarkers();
-
-    }
-
-    private void generateMarkers() {
-        if (mMap == null || mMapEntities == null) {
-            return;
-        }
-        new LabelCreationTask(getContext())
-                .onReady(new LabelCreationTask.OnReadyListener() {
-                    @Override
-                    public void onReady() {
-                        placeMarkers();
-                    }
-                })
-                .execute(mMapEntities);
-    }
-
-    private void placeMarkers() {
-        for (MapEntity mapEntity : mMapEntities) {
-            if (mapEntity.getMarkerOptions() != null) {
-                mMap.addMarker(mapEntity.getMarkerOptions());
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                MapEntity entity = mMarkerManager.getEntityForMarker(marker);
+                if (entity != null) {
+                    showBottomBarWith(entity);
+                }
+                return false;
             }
-        }
+        });
+
+        mMarkerManager = new MarkerManager(getContext(), mMap);
+        mMarkerManager.generateMarkers(mMapEntities);
+
     }
 
     private void onMapClicked(LatLng latLng) {
@@ -233,28 +210,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             }
             if (MapUtil.isPointInGeoPolygon(latLng, mapEntity.getBounds())) {
                 Log.d(TAG, "onMapClicked:" + mapEntity.getUuid());
-                mCurrentMapEntity = mapEntity;
-                mSheetTitle.setText(mapEntity.getName());
-                String headerFile = mapEntity.getHeaderImageFile();
-
-                String headerPath = getString(R.string.asset_map_entity_header_dir, headerFile);
-                Glide.with(this)
-                        .load(Uri.parse(headerPath))
-                        .into(mSheetImage);
-                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-
-                for (int i = 0; i < mBottomSheetIcons.getChildCount(); i++) {
-                    ImageView iconView = (ImageView) mBottomSheetIcons.getChildAt(i);
-                    if (mapEntity.getIcons() != null
-                            && mapEntity.getIcons().size() - 1 >= i) {
-                        Icon icon = Icon.ICONS.get(mapEntity.getIcons().get(i).getVal());
-                        if (icon != null) {
-                            iconView.setImageResource(icon.drawable);
-                            continue;
-                        }
-                    }
-                    iconView.setImageDrawable(null);
-                }
+                showBottomBarWith(mapEntity);
 
                 return;
             }
@@ -262,6 +218,31 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         }
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         mCurrentMapEntity = null;
+    }
+
+    private void showBottomBarWith(MapEntity mapEntity) {
+        mCurrentMapEntity = mapEntity;
+        mSheetTitle.setText(mapEntity.getName());
+        String headerFile = mapEntity.getHeaderImageFile();
+
+        String headerPath = getString(R.string.asset_map_entity_header_dir, headerFile);
+        Glide.with(this)
+                .load(Uri.parse(headerPath))
+                .into(mSheetImage);
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+        for (int i = 0; i < mBottomSheetIcons.getChildCount(); i++) {
+            ImageView iconView = (ImageView) mBottomSheetIcons.getChildAt(i);
+            if (mapEntity.getIcons() != null
+                    && mapEntity.getIcons().size() - 1 >= i) {
+                Icon icon = Icon.ICONS.get(mapEntity.getIcons().get(i).getVal());
+                if (icon != null) {
+                    iconView.setImageResource(icon.drawable);
+                    continue;
+                }
+            }
+            iconView.setImageDrawable(null);
+        }
     }
 
 
@@ -274,4 +255,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         }
         return false;
     }
+
+    public static MapFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        MapFragment fragment = new MapFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 }
