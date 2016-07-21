@@ -17,6 +17,6 @@
 
     <string name="disclaimer">StoppelMap ist eine inoffizielle App für den Stoppelmarkt und steht in keinem direkten Bezug zu diesem oder der Stadt Vechta.
         Alle Angaben sind ohne Gewähr, es wird keine Garantie für die Richtig- und Vollständigkeit der dargestellten Informationen gegeben und keine Haftung für eventuell verursachte Schäden übernommen.</string>
-    <string name="dialog_update_message">Eine neue Version (%1$d) der StoppelMap ist verfügbar!</string>
+    <string name="dialog_update_message">Eine neue Version (%1$s) der StoppelMap ist verfügbar!</string>
     <string name="dialog_update_title">Neue Version verfügbar</string>
 </resources>

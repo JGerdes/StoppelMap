@@ -88,11 +88,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 //
 //                @Override
 //                public void run() {
-                    FragmentManager fm = getChildFragmentManager();
-                    SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-                    fm.beginTransaction()
-                            .replace(R.id.map_placeholder, mapFragment).commitAllowingStateLoss();
-                    mapFragment.getMapAsync(MapFragment.this);
+            FragmentManager fm = getChildFragmentManager();
+            SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+            fm.beginTransaction()
+                    .replace(R.id.map_placeholder, mapFragment).commitAllowingStateLoss();
+            mapFragment.getMapAsync(MapFragment.this);
 //                }
 //            }, 400);
         }
@@ -108,6 +108,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         });
 
         mBottomSheetContent.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 showEntityDetail();

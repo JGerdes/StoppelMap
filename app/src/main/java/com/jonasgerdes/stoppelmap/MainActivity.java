@@ -69,30 +69,38 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void checkVersion() {
+    public void checkVersion() {
         VersionHelper.requestVersionInfo(this, new VersionHelper.OnVersionAvailableListener() {
             @Override
-            public void onVersionAvailable(Version version) {
+            public void onVersionAvailable(final Version version) {
                 if (version != null) {
-                    int currentVersion = VersionHelper.getVersionCode(MainActivity.this);
+                    final int currentVersion = VersionHelper.getVersionCode(MainActivity.this);
                     Log.d(TAG, "onVersionAvailable: " + currentVersion + ", " + version.code);
                     if (currentVersion != -1 && currentVersion < version.code) {
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setTitle(getString(R.string.dialog_update_title))
-                                .setMessage(getString(R.string.dialog_update_message, currentVersion))
-                                .setPositiveButton("Herunterladen", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        final String appPackageName = getPackageName();
-                                        try {
-                                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-                                        } catch (ActivityNotFoundException anfe) {
-                                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
-                                        }
-                                    }
-                                })
-                                .setNegativeButton("Später", null)
-                                .show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                new AlertDialog.Builder(MainActivity.this, R.style.StoppelMapAlert)
+                                        .setTitle(getString(R.string.dialog_update_title))
+                                        .setMessage(getString(R.string.dialog_update_message, version.name))
+                                        .setPositiveButton("Aktualisieren", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                final String appPackageName = getPackageName();
+                                                try {
+                                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                                                } catch (ActivityNotFoundException anfe) {
+                                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+                                                }
+                                            }
+                                        })
+                                        .setNegativeButton("Später", null)
+                                        .show();
+
+                            }
+                        });
+
+
                     }
                 }
             }
