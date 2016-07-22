@@ -8,6 +8,8 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -37,9 +39,14 @@ public class SearchCardView extends CardView {
 
     @BindView(R.id.search_field)
     EditText mSearchField;
+
+    @BindView(R.id.result_list)
+    RecyclerView mResultList;
+
     private Toolbar mToolbar;
     private int mItemId;
     private Activity mActivity;
+    private ResultAdapter mResultAdapter;
 
     public SearchCardView(Context context) {
         super(context);
@@ -53,11 +60,12 @@ public class SearchCardView extends CardView {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setUpWith(Activity activity, Toolbar toolbar, @IdRes int itemId) {
+    public void setUpWith(Activity activity, ResultAdapter resultAdapter, Toolbar toolbar, @IdRes int itemId) {
         setVisibility(INVISIBLE);
+        mResultAdapter = resultAdapter;
+        mActivity = activity;
         mToolbar = toolbar;
         mItemId = itemId;
-        mActivity = activity;
 
         View content = LayoutInflater.from(getContext()).inflate(R.layout.search_card, this);
         ButterKnife.bind(this, content);
@@ -75,6 +83,9 @@ public class SearchCardView extends CardView {
                 clearField();
             }
         });
+
+        mResultList.setLayoutManager(new LinearLayoutManager(getContext()));
+        mResultList.setAdapter(resultAdapter);
 
     }
 
@@ -139,5 +150,10 @@ public class SearchCardView extends CardView {
 
     public boolean isVisible() {
         return mIsVisible;
+    }
+
+
+    public abstract class ResultAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+        public abstract void onQueryChanged(String query);
     }
 }
