@@ -11,6 +11,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,9 +62,8 @@ public class SearchCardView extends CardView {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setUpWith(Activity activity, ResultAdapter resultAdapter, Toolbar toolbar, @IdRes int itemId) {
+    public void setUpWith(Activity activity, Toolbar toolbar, @IdRes int itemId) {
         setVisibility(INVISIBLE);
-        mResultAdapter = resultAdapter;
         mActivity = activity;
         mToolbar = toolbar;
         mItemId = itemId;
@@ -85,7 +86,25 @@ public class SearchCardView extends CardView {
         });
 
         mResultList.setLayoutManager(new LinearLayoutManager(getContext()));
-        mResultList.setAdapter(resultAdapter);
+
+        mSearchField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (mResultAdapter != null && mIsVisible) {
+                    mResultAdapter.onQueryChanged(s.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -153,7 +172,12 @@ public class SearchCardView extends CardView {
     }
 
 
-    public abstract class ResultAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+    public static abstract class ResultAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
         public abstract void onQueryChanged(String query);
+    }
+
+    public void setResultAdapter(ResultAdapter resultAdapter) {
+        mResultAdapter = resultAdapter;
+        mResultList.setAdapter(resultAdapter);
     }
 }

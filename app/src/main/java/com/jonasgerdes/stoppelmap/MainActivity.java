@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity
         loadFragment(MapFragment.newInstance(), false);
         mNavigationView.setCheckedItem(R.id.nav_map);
 
+
         mSearchView.setUpWith(this, mToolbar, R.id.options_search);
         checkVersion();
 

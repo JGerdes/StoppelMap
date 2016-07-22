@@ -40,6 +40,7 @@ import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
+import com.jonasgerdes.stoppelmap.usecases.map.search.MapEntitySearchAdapter;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
 
@@ -126,6 +127,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         mMapEntities = realm.copyFromRealm(realm.where(MapEntity.class).findAll());
         t = System.currentTimeMillis() - t;
         Log.d(TAG, "copy from realm took " + t + "ms");
+
+        if (getActivity() instanceof MainActivity) {
+            MapEntitySearchAdapter searchAdapter = new MapEntitySearchAdapter(mMapEntities);
+            ((MainActivity) getActivity()).getSearchView().setResultAdapter(searchAdapter);
+        }
 
     }
 
