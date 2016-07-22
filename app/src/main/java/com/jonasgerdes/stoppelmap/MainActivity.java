@@ -21,6 +21,7 @@ import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
 import com.jonasgerdes.stoppelmap.usecases.transportation.TransportationFragment;
 import com.jonasgerdes.stoppelmap.versioning.VersionHelper;
+import com.jonasgerdes.stoppelmap.views.SearchCardView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,14 +29,19 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
+    private static final long ANIMATION_DURATION = 300;
 
     @BindView(R.id.drawer_layout)
     protected DrawerLayout mDrawer;
     @BindView(R.id.nav_view)
     protected NavigationView mNavigationView;
+    @BindView(R.id.search_container)
+    protected SearchCardView mSearchView;
 
     private BackPressListener mBackPressListener;
     private AlertDialog mUpdateHint;
+    private Toolbar mToolbar;
+
 
     public interface BackPressListener {
         boolean onBackPressed();
@@ -50,13 +56,13 @@ public class MainActivity extends AppCompatActivity
 
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity
         loadFragment(MapFragment.newInstance(), false);
         mNavigationView.setCheckedItem(R.id.nav_map);
 
+        mSearchView.setUpWith(this, mToolbar, R.id.options_search);
         checkVersion();
 
     }
@@ -79,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 
     public void checkVersion() {
         //don't check while debugging
-        if(getResources().getBoolean(R.bool.is_debug)) {
+        if (getResources().getBoolean(R.bool.is_debug)) {
             return;
         }
         VersionHelper.requestVersionInfo(this, new VersionHelper.OnVersionAvailableListener() {
@@ -128,6 +135,8 @@ public class MainActivity extends AppCompatActivity
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {
             mDrawer.closeDrawer(GravityCompat.START);
+        } else if (mSearchView.isVisible()) {
+            mSearchView.hide();
         } else {
             if (mBackPressListener != null) {
                 if (mBackPressListener.onBackPressed()) {
@@ -180,6 +189,10 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
         }
         transaction.commit();
+    }
+
+    public SearchCardView getSearchView() {
+        return mSearchView;
     }
 
 }

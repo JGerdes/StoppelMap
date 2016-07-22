@@ -16,6 +16,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.util.Pair;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -38,6 +41,7 @@ import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
+import com.jonasgerdes.stoppelmap.views.SearchCardView;
 
 import java.util.List;
 
@@ -87,6 +91,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
         mUnbinder = ButterKnife.bind(this, view);
         if (savedInstanceState == null) {
             FragmentManager fm = getChildFragmentManager();
@@ -122,6 +127,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         t = System.currentTimeMillis() - t;
         Log.d(TAG, "copy from realm took " + t + "ms");
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_map_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.options_search:
+                getSearchView().show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private SearchCardView getSearchView() {
+        return ((MainActivity) getActivity()).getSearchView();
     }
 
     private void showEntityDetail() {
@@ -270,5 +295,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         fragment.setArguments(args);
         return fragment;
     }
+
 
 }
