@@ -19,6 +19,11 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
 
     private List<SearchResult> mSearchResults;
     private List<MapEntity> mMapEntities;
+    private OnResultSelectedListener mSelectedListener;
+
+    public interface OnResultSelectedListener {
+        void onResultSelected(SearchResult result);
+    }
 
     public MapEntitySearchAdapter(List<MapEntity> mapEntities) {
         mMapEntities = mapEntities;
@@ -33,7 +38,7 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
             for (MapEntity mapEntity : mMapEntities) {
                 if (mapEntity.getName().toLowerCase().contains(query)) {
                     SearchResult result = new SearchResult();
-                    result.title = mapEntity.getName();
+                    result.mapEntity = mapEntity;
                     mSearchResults.add(result);
                 }
             }
@@ -50,11 +55,24 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
 
     @Override
     public void onBindViewHolder(SearchResultHolder holder, int position) {
-        holder.onBind(mSearchResults.get(position));
+        final SearchResult result = mSearchResults.get(position);
+        holder.onBind(result);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mSelectedListener != null) {
+                    mSelectedListener.onResultSelected(result);
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mSearchResults.size();
+    }
+
+    public void setSelectedListener(OnResultSelectedListener selectedListener) {
+        mSelectedListener = selectedListener;
     }
 }

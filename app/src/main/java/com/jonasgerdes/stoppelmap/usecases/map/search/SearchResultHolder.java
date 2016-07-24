@@ -24,6 +24,6 @@ public class SearchResultHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(SearchResult result) {
-        mTitle.setText(result.title);
+        mTitle.setText(result.mapEntity.getName());
     }
 }

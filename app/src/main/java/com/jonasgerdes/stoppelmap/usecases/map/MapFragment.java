@@ -39,6 +39,7 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.map.search.SearchResult;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.usecases.map.search.MapEntitySearchAdapter;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
@@ -130,7 +131,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
         if (getActivity() instanceof MainActivity) {
             MapEntitySearchAdapter searchAdapter = new MapEntitySearchAdapter(mMapEntities);
-            ((MainActivity) getActivity()).getSearchView().setResultAdapter(searchAdapter);
+            final SearchCardView searchCardView = ((MainActivity) getActivity()).getSearchView();
+            searchCardView.setResultAdapter(searchAdapter);
+            searchAdapter.setSelectedListener(new MapEntitySearchAdapter.OnResultSelectedListener() {
+                @Override
+                public void onResultSelected(SearchResult result) {
+                    searchCardView.hide();
+                    showBottomBarWith(result.mapEntity);
+                }
+            });
         }
 
     }
