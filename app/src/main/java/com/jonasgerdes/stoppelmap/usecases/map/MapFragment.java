@@ -135,9 +135,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             searchCardView.setResultAdapter(searchAdapter);
             searchAdapter.setSelectedListener(new MapEntitySearchAdapter.OnResultSelectedListener() {
                 @Override
-                public void onResultSelected(SearchResult result) {
+                public void onResultSelected(final SearchResult result) {
                     searchCardView.hide();
-                    showBottomBarWith(result.mapEntity);
+                    mBottomSheet.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            showBottomBarWith(result.mapEntity);
+                        }
+                    }, 100);
+
                 }
             });
         }
@@ -153,6 +159,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.options_search:
+                hideBottomSheet();
                 getSearchView().show();
                 return true;
             default:
@@ -262,6 +269,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             }
 
         }
+        hideBottomSheet();
+    }
+
+    private void hideBottomSheet() {
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         mCurrentMapEntity = null;
     }
@@ -295,8 +306,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     @Override
     public boolean onBackPressed() {
         if (mCurrentMapEntity != null) {
-            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            mCurrentMapEntity = null;
+            hideBottomSheet();
             return true;
         }
         return false;

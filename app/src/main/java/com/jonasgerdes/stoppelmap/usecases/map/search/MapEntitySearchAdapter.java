@@ -32,18 +32,18 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
 
     @Override
     public void onQueryChanged(String query) {
-        mSearchResults.clear();
+        List<SearchResult> mTempResults = new ArrayList<>();
         if (!query.trim().isEmpty()) {
             query = query.toLowerCase();
             for (MapEntity mapEntity : mMapEntities) {
                 if (mapEntity.getName().toLowerCase().contains(query)) {
                     SearchResult result = new SearchResult();
                     result.mapEntity = mapEntity;
-                    mSearchResults.add(result);
+                    mTempResults.add(result);
                 }
             }
         }
-        notifyDataSetChanged();
+        animateTo(mTempResults);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mSelectedListener != null) {
+                if (mSelectedListener != null) {
                     mSelectedListener.onResultSelected(result);
                 }
             }
@@ -74,5 +74,56 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
 
     public void setSelectedListener(OnResultSelectedListener selectedListener) {
         mSelectedListener = selectedListener;
+    }
+
+    public void animateTo(List<SearchResult> models) {
+        applyAndAnimateRemovals(models);
+        applyAndAnimateAdditions(models);
+        applyAndAnimateMovedItems(models);
+    }
+
+    public SearchResult removeItem(int position) {
+        final SearchResult model = mSearchResults.remove(position);
+        notifyItemRemoved(position);
+        return model;
+    }
+
+    public void addItem(int position, SearchResult model) {
+        mSearchResults.add(position, model);
+        notifyItemInserted(position);
+    }
+
+    public void moveItem(int fromPosition, int toPosition) {
+        final SearchResult model = mSearchResults.remove(fromPosition);
+        mSearchResults.add(toPosition, model);
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
+    private void applyAndAnimateRemovals(List<SearchResult> newModels) {
+        for (int i = mSearchResults.size() - 1; i >= 0; i--) {
+            final SearchResult model = mSearchResults.get(i);
+            if (!newModels.contains(model)) {
+                removeItem(i);
+            }
+        }
+    }
+
+    private void applyAndAnimateAdditions(List<SearchResult> newModels) {
+        for (int i = 0, count = newModels.size(); i < count; i++) {
+            final SearchResult model = newModels.get(i);
+            if (!mSearchResults.contains(model)) {
+                addItem(i, model);
+            }
+        }
+    }
+
+    private void applyAndAnimateMovedItems(List<SearchResult> newModels) {
+        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
+            final SearchResult model = newModels.get(toPosition);
+            final int fromPosition = mSearchResults.indexOf(model);
+            if (fromPosition >= 0 && fromPosition != toPosition) {
+                moveItem(fromPosition, toPosition);
+            }
+        }
     }
 }
