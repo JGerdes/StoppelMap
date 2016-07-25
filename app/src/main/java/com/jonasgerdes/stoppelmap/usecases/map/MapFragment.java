@@ -239,7 +239,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             public boolean onMarkerClick(Marker marker) {
                 MapEntity entity = mMarkerManager.getEntityForMarker(marker);
                 if (entity != null) {
-                    showBottomBarWith(entity);
+                    showEntitySearchResult(entity);
                 }
                 return false;
             }
@@ -248,6 +248,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         mMarkerManager = new MarkerManager(getContext(), mMap);
         mMarkerManager.generateMarkers(mMapEntities);
 
+    }
+
+    private void showEntitySearchResult(MapEntity entity) {
+        if (entity.getOrigin() != null) {
+            CameraUpdate update =
+                    CameraUpdateFactory.newLatLng(entity.getOrigin().toLatLng());
+            mMap.animateCamera(update);
+        }
+        showBottomBarWith(entity);
     }
 
     private void onMapClicked(LatLng latLng) {

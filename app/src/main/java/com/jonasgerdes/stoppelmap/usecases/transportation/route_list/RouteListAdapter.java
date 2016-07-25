@@ -44,7 +44,7 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
         if (holder.mGoogleMap != null) {
             holder.onMapReady(holder.mGoogleMap);
         }
-        setAnimation(holder.itemView, position);
+        startAnimation(holder.itemView, position);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,7 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
         return mRoutes.size();
     }
 
-    private void setAnimation(View viewToAnimate, int position) {
+    private void startAnimation(View viewToAnimate, int position) {
         if (position > mLastPositionShown) {
             Animation animation = AnimationUtils.loadAnimation(viewToAnimate.getContext(),
                     R.anim.card_slide_in);

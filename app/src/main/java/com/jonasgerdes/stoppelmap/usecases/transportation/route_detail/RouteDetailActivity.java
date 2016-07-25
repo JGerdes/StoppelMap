@@ -2,13 +2,16 @@ package com.jonasgerdes.stoppelmap.usecases.transportation.route_detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
@@ -25,6 +28,9 @@ public class RouteDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.station_list)
     RecyclerView mStationList;
+
+    @BindView(R.id.header)
+    ImageView mHeaderImage;
 
     private StationListAdapter mStationAdapter;
 
@@ -64,6 +70,11 @@ public class RouteDetailActivity extends AppCompatActivity {
                 .getRealm().where(Route.class).equalTo("uuid", routeUuid).findFirst();
 
         mStationAdapter.setStations(route.getStations());
+
+        String headerPath = getString(R.string.asset_map_entity_header_dir, "route.png");
+        Glide.with(this)
+                .load(Uri.parse(headerPath))
+                .into(mHeaderImage);
 
     }
 
