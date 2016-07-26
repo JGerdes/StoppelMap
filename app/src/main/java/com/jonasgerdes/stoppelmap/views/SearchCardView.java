@@ -139,12 +139,18 @@ public class SearchCardView extends CardView {
     }
 
     public void hide() {
+        if (!mIsVisible) {
+            return;
+        }
         mIsVisible = false;
         ViewUtil.hideKeyboard(mActivity);
         Animator anim = null;
         clearField();
         if (Build.VERSION.SDK_INT >= 21) {
             View menuItem = ViewUtil.getMenuItemViewFromToolbar(mToolbar, mItemId);
+            if (menuItem == null) {
+                return;
+            }
             int[] location = new int[2];
             menuItem.getLocationInWindow(location);
             int cx = location[0] + menuItem.getWidth() / 2;

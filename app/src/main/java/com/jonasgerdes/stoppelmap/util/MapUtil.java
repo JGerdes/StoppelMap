@@ -59,8 +59,8 @@ public class MapUtil {
 
         double aY = vertA.getLat();
         double bY = vertB.getLat();
-        double aX = vertA.getLon();
-        double bX = vertB.getLon();
+        double aX = vertA.getLng();
+        double bX = vertB.getLng();
         double pY = tap.latitude;
         double pX = tap.longitude;
 

@@ -74,6 +74,7 @@ public class RouteDetailActivity extends AppCompatActivity {
         String headerPath = getString(R.string.asset_map_entity_header_dir, "route.png");
         Glide.with(this)
                 .load(Uri.parse(headerPath))
+                .centerCrop()
                 .into(mHeaderImage);
 
     }

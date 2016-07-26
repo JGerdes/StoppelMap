@@ -32,7 +32,8 @@ public class InitialTransaction implements Realm.Transaction {
     private static final String TAG = "InitialTransaction";
 
     private static final String[] MAP_FILES = new String[]{
-            "map/misc"
+            "map/misc",
+            "map/buildings"
     };
 
     private AssetManager mAssets;

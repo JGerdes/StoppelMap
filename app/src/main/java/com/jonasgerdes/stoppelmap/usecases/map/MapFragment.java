@@ -142,7 +142,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                         public void run() {
                             showBottomBarWith(result.mapEntity);
                         }
-                    }, 100);
+                    }, 200);
 
                 }
             });

@@ -13,23 +13,23 @@ public class GeoLocation extends RealmObject {
     public GeoLocation() {
     }
 
-    public GeoLocation(double lat, double lon) {
+    public GeoLocation(double lat, double lng) {
         this.lat = lat;
-        this.lon = lon;
+        this.lng = lng;
     }
 
     private double lat;
-    private double lon;
+    private double lng;
 
     public LatLng toLatLng() {
-        return new LatLng(lat, lon);
+        return new LatLng(lat, lng);
     }
 
     public double getLat() {
         return lat;
     }
 
-    public double getLon() {
-        return lon;
+    public double getLng() {
+        return lng;
     }
 }

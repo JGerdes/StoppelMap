@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.jonasgerdes.stoppelmap.model.version.Version;
 import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
@@ -61,9 +62,30 @@ public class MainActivity extends AppCompatActivity
 
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawer.setDrawerListener(toggle);
+        mDrawer.setDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                toggle.onDrawerSlide(drawerView, slideOffset);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                toggle.onDrawerOpened(drawerView);
+                mSearchView.hide();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                toggle.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                toggle.onDrawerStateChanged(newState);
+            }
+        });
         toggle.syncState();
 
 
