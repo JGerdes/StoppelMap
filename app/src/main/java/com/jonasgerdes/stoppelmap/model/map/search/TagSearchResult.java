@@ -26,7 +26,14 @@ public class TagSearchResult extends SearchResult {
 
     @Override
     public CameraUpdate getCameraUpdate() {
-        return getCameraUpdate(null);
+        if (mMapEntities.size() > 1) {
+            return getCameraUpdate(null);
+        } else if (mMapEntities.size() == 1) {
+            return CameraUpdateFactory
+                    .newLatLngZoom(mMapEntities.get(0).getOrigin().toLatLng(), DEFAULT_SEARCH_ZOOM);
+        } else {
+            return null;
+        }
     }
 
     @Override
