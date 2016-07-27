@@ -6,17 +6,21 @@ import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.map.search.EntitySearchResult;
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult;
+import com.jonasgerdes.stoppelmap.model.map.search.TagSearchResult;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Jonas on 22.07.2016.
  */
-public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<EntityResultHolder> {
+public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchResultHolder> {
 
     private List<SearchResult> mSearchResults;
     private List<MapEntity> mMapEntities;
@@ -33,26 +37,47 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<EntityR
 
     @Override
     public void onQueryChanged(String query) {
-        List<SearchResult> mTempResults = new ArrayList<>();
+        List<SearchResult> tempResults = new ArrayList<>();
+        Map<String, TagSearchResult> tagResults = new HashMap<>();
         if (!query.trim().isEmpty()) {
             query = query.toLowerCase();
             for (MapEntity mapEntity : mMapEntities) {
+
+                //name search
                 if (mapEntity.getName().toLowerCase().contains(query)) {
                     SearchResult result = new EntitySearchResult(mapEntity);
-                    mTempResults.add(result);
+                    tempResults.add(result);
+                }
+
+                //tag search
+                for (Tag tag : mapEntity.getTags()) {
+                    if (tag.getName().toLowerCase().contains(query)) {
+                        TagSearchResult result;
+                        if (!tagResults.containsKey(tag.getName())) {
+                            result = new TagSearchResult(tag);
+                            tagResults.put(tag.getName(), result);
+                        } else {
+                            result = tagResults.get(tag.getName());
+                        }
+                        result.addEntity(mapEntity);
+                    }
                 }
             }
+
+            tempResults.addAll(tagResults.values());
         }
-        animateTo(mTempResults);
+        animateTo(tempResults);
     }
 
     @Override
-    public EntityResultHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SearchResultHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(viewType, parent, false);
         switch (viewType) {
             case R.layout.map_search_entity_result_item:
                 return new EntityResultHolder(view);
+            case R.layout.map_search_tag_result_item:
+                return new TagResultHolder(view);
 
         }
         return null;
@@ -64,7 +89,7 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<EntityR
     }
 
     @Override
-    public void onBindViewHolder(EntityResultHolder holder, int position) {
+    public void onBindViewHolder(SearchResultHolder holder, int position) {
         final SearchResult result = mSearchResults.get(position);
         holder.onBind(result);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
