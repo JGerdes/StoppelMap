@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.usecases.map.EntityHelper;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
 
@@ -56,7 +57,7 @@ public class EntityDetailActivity extends AppCompatActivity {
 
         setTitle(mEntity.getName());
 
-        String headerFile = mEntity.getHeaderImageFile();
+        String headerFile = EntityHelper.getHeaderFile(this, mEntity);
         String headerPath = getString(R.string.asset_map_entity_header_dir, headerFile);
         Glide.with(this)
                 .load(Uri.parse(headerPath))

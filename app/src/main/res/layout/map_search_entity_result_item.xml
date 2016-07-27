@@ -30,6 +30,7 @@
             tools:text="Amtmannsbult"/>
 
         <LinearLayout
+            android:id="@+id/icon_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0.54"
@@ -39,19 +40,19 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_local_hospital_black_24dp"/>
+                android:visibility="gone"/>
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_info_outline_black_24dp"/>
+                android:visibility="gone"/>
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/ic_local_atm_black_24dp"/>
+                android:visibility="gone"/>
         </LinearLayout>
 
     </LinearLayout>

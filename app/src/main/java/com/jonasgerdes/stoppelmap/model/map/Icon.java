@@ -28,6 +28,9 @@ public class Icon {
         icons.put("first-aid", new Icon(R.drawable.ic_local_hospital_black_24dp, "Erste Hilfe"));
         icons.put("atm", new Icon(R.drawable.ic_local_atm_black_24dp, "Geldautomat"));
         icons.put("info", new Icon(R.drawable.ic_info_outline_black_24dp, "Information"));
+        icons.put("beer", new Icon(R.drawable.ic_beer_black_24dp, "Ausschank"));
+        icons.put("food", new Icon(R.drawable.ic_local_dining_black_24dp, "Speisen"));
+        icons.put("wc", new Icon(R.drawable.ic_wc_black_24dp, "Toiletten"));
 
         ICONS = icons;
     }

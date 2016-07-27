@@ -298,7 +298,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     private void showBottomBarWith(MapEntity mapEntity) {
         mCurrentMapEntity = mapEntity;
         mSheetTitle.setText(mapEntity.getName());
-        String headerFile = mapEntity.getHeaderImageFile();
+        String headerFile = EntityHelper.getHeaderFile(getContext(), mapEntity);
 
         String headerPath = getString(R.string.asset_map_entity_header_dir, headerFile);
         Glide.with(this)

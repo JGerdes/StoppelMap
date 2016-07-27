@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="asset_map_entity_header_dir">file:///android_asset/headers/%1$s</string>
+    <string-array name="asset_header_placeholders">
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item>
+    </string-array>
 </resources>
