@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.model.map;
 
+import android.support.annotation.DrawableRes;
+
 import io.realm.RealmObject;
 
 /**
@@ -7,7 +9,12 @@ import io.realm.RealmObject;
  */
 public class Tag extends RealmObject {
 
+    public static final int ICON_NONE = -1;
+
     private String name;
+    private
+    @DrawableRes
+    int icon = ICON_NONE;
 
     public Tag() {
     }
@@ -30,5 +37,13 @@ public class Tag extends RealmObject {
             return ((Tag) o).getName().equals(name);
         }
         return false;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+    public int getIcon() {
+        return icon;
     }
 }

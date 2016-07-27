@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model;
 
 import android.content.res.AssetManager;
+import android.support.annotation.DrawableRes;
 import android.util.Log;
 
 import com.google.gson.ExclusionStrategy;
@@ -11,6 +12,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.map.MapEntities;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.map.Tag;
@@ -22,7 +24,6 @@ import com.jonasgerdes.stoppelmap.util.FileUtil;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import io.realm.Realm;
@@ -96,26 +97,15 @@ public class InitialTransaction implements Realm.Transaction {
                         RealmList<Tag> list = new RealmList<>();
                         in.beginArray();
                         while (in.hasNext()) {
-                            list.add(new Tag(in.nextString()));
+                            String tagName = in.nextString();
+                            List<Tag> tags = createTagsFromName(tagName);
+                            if (tags != null) {
+                                list.addAll(tags);
+                            } else {
+                                list.add(new Tag(tagName));
+                            }
                         }
                         in.endArray();
-                        List<String> synonyms = new ArrayList<>();
-                        for (Tag tag : list) {
-                            for (String[] tagSynonym : TAG_SYNONYMS) {
-                                for (String name : tagSynonym) {
-                                    if (name.toLowerCase().equals(tag.getName().toLowerCase())) {
-                                        synonyms.addAll(Arrays.asList(tagSynonym));
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        for (String synonym : synonyms) {
-                            Tag tag = new Tag(synonym);
-                            if (!list.contains(tag)) {
-                                list.add(tag);
-                            }
-                        }
                         return list;
                     }
                 })
@@ -152,10 +142,59 @@ public class InitialTransaction implements Realm.Transaction {
         return null;
     }
 
+
+    private List<Tag> createTagsFromName(String name) {
+        name = name.toLowerCase().trim();
+        for (AdvancedTag tagSynonym : TAG_SYNONYMS) {
+            boolean matches = false;
+            for (String synonym : tagSynonym.synonyms) {
+                if (name.equals(synonym.toLowerCase())) {
+                    matches = true;
+                    break;
+                }
+            }
+            if (matches) {
+                List<Tag> tags = new ArrayList<>(tagSynonym.synonyms.length);
+                for (String synonym : tagSynonym.synonyms) {
+                    Tag tag = new Tag(synonym);
+                    tag.setIcon(tagSynonym.icon);
+                    tags.add(tag);
+                }
+                return tags;
+            }
+        }
+        return null;
+    }
+
+    private static class AdvancedTag {
+        public String[] synonyms;
+        public
+        @DrawableRes
+        int icon = Tag.ICON_NONE;
+
+        public AdvancedTag(int icon, String... synonyms) {
+            this.synonyms = synonyms;
+            this.icon = icon;
+        }
+
+        public AdvancedTag(String... synonyms) {
+            this.synonyms = synonyms;
+        }
+    }
+
     // @formatter: off
-    public static String[][] TAG_SYNONYMS = new String[][]{
-            {"WC", "Toilette", "Klo"},
-            {"Pommes", "Fries", "Fritten"}
+    public static AdvancedTag[] TAG_SYNONYMS = new AdvancedTag[]{
+            //Misc
+            new AdvancedTag(R.drawable.ic_wc_black_24dp, "WC", "Toilette", "Klo"),
+
+            //Food
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pommes", "Fries", "Fritten"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Bratwurst"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Bratkartoffeln"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Spiegeleier"),
+
+            //Drinks
+            new AdvancedTag(R.drawable.ic_beer_black_24dp, "Bier"),
     };
 
     // @formatter: on

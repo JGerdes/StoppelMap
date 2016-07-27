@@ -97,7 +97,7 @@ public class SearchCardView extends CardView {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (mResultAdapter != null && mIsVisible) {
                     mResultAdapter.onQueryChanged(s.toString());
-                    mResultList.smoothScrollToPosition(0);
+                    mResultList.scrollToPosition(0);
                 }
             }
 

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult;
 import com.jonasgerdes.stoppelmap.model.map.search.TagSearchResult;
 
@@ -32,6 +33,11 @@ public class TagResultHolder extends SearchResultHolder {
     public void onBind(SearchResult result) {
         TagSearchResult tagResult = (TagSearchResult) result;
         mTitle.setText(tagResult.getTag().getName());
+        if (tagResult.getTag().getIcon() == Tag.ICON_NONE) {
+            mIconView.setImageDrawable(null);
+        } else {
+            mIconView.setImageResource(tagResult.getTag().getIcon());
+        }
         Context context = itemView.getContext();
     }
 }
