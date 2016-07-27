@@ -33,6 +33,11 @@ public class EntitySearchResult extends SearchResult {
     }
 
     @Override
+    public String getIdentifier() {
+        return mMapEntity.getName();
+    }
+
+    @Override
     public int getLayout() {
         return R.layout.map_search_entity_result_item;
     }

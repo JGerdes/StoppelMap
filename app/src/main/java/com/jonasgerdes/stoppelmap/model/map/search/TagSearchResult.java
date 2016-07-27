@@ -42,6 +42,11 @@ public class TagSearchResult extends SearchResult {
     }
 
     @Override
+    public String getIdentifier() {
+        return mTag.getName();
+    }
+
+    @Override
     public int getLayout() {
         return R.layout.map_search_tag_result_item;
     }

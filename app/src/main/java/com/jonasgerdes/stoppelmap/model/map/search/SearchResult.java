@@ -26,6 +26,16 @@ public abstract class SearchResult {
         mMatchingFactor = matchingFactor;
     }
 
+    public abstract String getIdentifier();
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof SearchResult) {
+            return ((SearchResult) o).getIdentifier().equals(this.getIdentifier());
+        }
+        return false;
+    }
+
     public abstract
     @LayoutRes
     int getLayout();
