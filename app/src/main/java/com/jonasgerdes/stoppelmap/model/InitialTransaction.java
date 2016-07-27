@@ -13,6 +13,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.jonasgerdes.stoppelmap.model.map.MapEntities;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.model.transportation.Transportation;
@@ -20,6 +21,9 @@ import com.jonasgerdes.stoppelmap.util.FileUtil;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -45,7 +49,9 @@ public class InitialTransaction implements Realm.Transaction {
 
     @Override
     public void execute(Realm realm) {
-        Type token = new TypeToken<RealmList<RealmString>>() {
+        Type stringListToken = new TypeToken<RealmList<RealmString>>() {
+        }.getType();
+        Type tagListToken = new TypeToken<RealmList<Tag>>() {
         }.getType();
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -60,7 +66,7 @@ public class InitialTransaction implements Realm.Transaction {
                         return false;
                     }
                 })
-                .registerTypeAdapter(token, new TypeAdapter<RealmList<RealmString>>() {
+                .registerTypeAdapter(stringListToken, new TypeAdapter<RealmList<RealmString>>() {
 
                     @Override
                     public void write(JsonWriter out, RealmList<RealmString> value) throws IOException {
@@ -75,6 +81,41 @@ public class InitialTransaction implements Realm.Transaction {
                             list.add(new RealmString(in.nextString()));
                         }
                         in.endArray();
+                        return list;
+                    }
+                })
+                .registerTypeAdapter(tagListToken, new TypeAdapter<RealmList<Tag>>() {
+
+                    @Override
+                    public void write(JsonWriter out, RealmList<Tag> value) throws IOException {
+                        // Ignore
+                    }
+
+                    @Override
+                    public RealmList<Tag> read(JsonReader in) throws IOException {
+                        RealmList<Tag> list = new RealmList<>();
+                        in.beginArray();
+                        while (in.hasNext()) {
+                            list.add(new Tag(in.nextString()));
+                        }
+                        in.endArray();
+                        List<String> synonyms = new ArrayList<>();
+                        for (Tag tag : list) {
+                            for (String[] tagSynonym : TAG_SYNONYMS) {
+                                for (String name : tagSynonym) {
+                                    if (name.toLowerCase().equals(tag.getName().toLowerCase())) {
+                                        synonyms.addAll(Arrays.asList(tagSynonym));
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        for (String synonym : synonyms) {
+                            Tag tag = new Tag(synonym);
+                            if (!list.contains(tag)) {
+                                list.add(tag);
+                            }
+                        }
                         return list;
                     }
                 })
@@ -111,4 +152,11 @@ public class InitialTransaction implements Realm.Transaction {
         return null;
     }
 
+    // @formatter: off
+    public static String[][] TAG_SYNONYMS = new String[][]{
+            {"WC", "Toilette", "Klo"},
+            {"Pommes", "Fries", "Fritten"}
+    };
+
+    // @formatter: on
 }

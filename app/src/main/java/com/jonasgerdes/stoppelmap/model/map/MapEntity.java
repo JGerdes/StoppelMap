@@ -24,6 +24,7 @@ public class MapEntity extends RealmObject {
     private String headerImageFile;
     private RealmList<RealmString> icons;
     private Info info;
+    private RealmList<Tag> tags;
 
     @Ignore
     MarkerOptions mMarkerOptions;
@@ -101,5 +102,13 @@ public class MapEntity extends RealmObject {
 
     public void setMarkerOptions(MarkerOptions markerOptions) {
         mMarkerOptions = markerOptions;
+    }
+
+    public RealmList<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(RealmList<Tag> tags) {
+        this.tags = tags;
     }
 }
