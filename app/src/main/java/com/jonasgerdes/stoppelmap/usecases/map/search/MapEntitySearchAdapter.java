@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.map.search.EntitySearchResult;
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
 
@@ -15,7 +16,7 @@ import java.util.List;
 /**
  * Created by Jonas on 22.07.2016.
  */
-public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchResultHolder> {
+public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<EntityResultHolder> {
 
     private List<SearchResult> mSearchResults;
     private List<MapEntity> mMapEntities;
@@ -37,8 +38,7 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
             query = query.toLowerCase();
             for (MapEntity mapEntity : mMapEntities) {
                 if (mapEntity.getName().toLowerCase().contains(query)) {
-                    SearchResult result = new SearchResult();
-                    result.mapEntity = mapEntity;
+                    SearchResult result = new EntitySearchResult(mapEntity);
                     mTempResults.add(result);
                 }
             }
@@ -47,14 +47,24 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
     }
 
     @Override
-    public SearchResultHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EntityResultHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.map_search_result_item, parent, false);
-        return new SearchResultHolder(view);
+                .inflate(viewType, parent, false);
+        switch (viewType) {
+            case R.layout.map_search_entity_result_item:
+                return new EntityResultHolder(view);
+
+        }
+        return null;
     }
 
     @Override
-    public void onBindViewHolder(SearchResultHolder holder, int position) {
+    public int getItemViewType(int position) {
+        return mSearchResults.get(position).getLayout();
+    }
+
+    @Override
+    public void onBindViewHolder(EntityResultHolder holder, int position) {
         final SearchResult result = mSearchResults.get(position);
         holder.onBind(result);
         holder.itemView.setOnClickListener(new View.OnClickListener() {

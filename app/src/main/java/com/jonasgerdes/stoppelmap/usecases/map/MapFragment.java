@@ -39,6 +39,7 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.map.search.EntitySearchResult;
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.usecases.map.search.MapEntitySearchAdapter;
@@ -137,12 +138,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                 @Override
                 public void onResultSelected(final SearchResult result) {
                     searchCardView.hide();
-                    mBottomSheet.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            showBottomBarWith(result.mapEntity);
-                        }
-                    }, 200);
+
+                    if (result instanceof EntitySearchResult) {
+                        mBottomSheet.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                showBottomBarWith(((EntitySearchResult) result).getMapEntity());
+                            }
+                        }, 200);
+                    }
+
+                    CameraUpdate update = result.getCameraUpdate();
+                    if (update != null) {
+                        mMap.animateCamera(update);
+                    }
 
                 }
             });
