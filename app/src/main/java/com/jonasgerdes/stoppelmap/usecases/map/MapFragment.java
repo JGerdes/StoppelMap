@@ -225,6 +225,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.getUiSettings().setZoomControlsEnabled(false);
 
+        mMap.setOnCameraChangeListener(new CameraRestrictor(mMap));
+
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));
 
