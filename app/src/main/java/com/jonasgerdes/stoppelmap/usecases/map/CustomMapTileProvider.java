@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class CustomMapTileProvider implements TileProvider {
+    private static final String TAG = "CustomMapTileProvider";
     private static final int TILE_WIDTH = 512;
     private static final int TILE_HEIGHT = 512;
     private static final int BUFFER_SIZE = 16 * 1024;

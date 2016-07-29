@@ -11,16 +11,19 @@ android {
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 6
-        versionName "2.0.0"
+        versionName "2.0.0 Beta"
     }
     buildTypes {
         debug {
             resValue "string", "google_maps_api_key", "AIzaSyCbSmosWtHRniAI5RWtibDoMtNJSNb9XX4"
+            resValue "bool", "is_debug", "true"
         }
         release {
             resValue "string", "google_maps_api_key", "AIzaSyDFsIuAl2XKzi0Lk5MbTvqqJgCOne801t4"
+            resValue "bool", "is_debug", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
         }
     }
 
@@ -39,6 +42,9 @@ dependencies {
 
     compile 'com.google.android.gms:play-services-maps:9.0.0'
 
+    compile 'com.google.code.gson:gson:2.4'
     compile 'com.jakewharton:butterknife:8.1.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
 }
