@@ -14,8 +14,8 @@
         "text": "Das Amtmannsbult ist ein zentraler Punkt auf dem Stoppelmarkt. Hier wird traditionell am Donnerstag der Markt nach Ansprachen von Gastrednern feierlich vom Bürgermeister eröffnet.<br><br> Neben einem Marktplan und weiteren Informationen hat hier auch die Polizei und die Feuerwehr ihren Sitz auf dem Marktgelände. Für ärtliche Hilfe sorgt das Deutsche Rote Kreuz, das hinter dem Amtmannsbult ihre Zelte aufgeschlagen hat."
       },
       "origin": {
-        "lat": 52.74856520192871,
-        "lng": 8.295294642448425
+        "lat": 52.74860213832296,
+        "lng": 8.29541601240635
       },
       "bounds": [
         {
@@ -34,7 +34,11 @@
           "lat": 52.74856520192871,
           "lng": 8.295294642448425
         }
-      ]
+      ],
+      "zoom": {
+        "min": 17,
+        "max": -1
+      }
     }
   ]
 }

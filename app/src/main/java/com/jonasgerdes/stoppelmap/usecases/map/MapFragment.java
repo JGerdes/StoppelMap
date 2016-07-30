@@ -41,6 +41,7 @@ import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.map.search.EntitySearchResult;
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult;
+import com.jonasgerdes.stoppelmap.model.map.search.TagSearchResult;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityDetailActivity;
 import com.jonasgerdes.stoppelmap.usecases.map.search.MapEntitySearchAdapter;
 import com.jonasgerdes.stoppelmap.util.MapUtil;
@@ -65,6 +66,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     private List<MapEntity> mMapEntities;
     private MapEntity mCurrentMapEntity;
     private MarkerManager mMarkerManager;
+    private SearchResult mCurrentSearchResult;
 
     @BindView(R.id.bottom_sheet_image)
     ImageView mSheetImage;
@@ -132,7 +134,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
         if (getActivity() instanceof MainActivity) {
             MapEntitySearchAdapter searchAdapter = new MapEntitySearchAdapter(mMapEntities);
-            final SearchCardView searchCardView = ((MainActivity) getActivity()).getSearchView();
+            final SearchCardView searchCardView = getSearchView();
             searchCardView.setResultAdapter(searchAdapter);
             searchAdapter.setSelectedListener(new MapEntitySearchAdapter.OnResultSelectedListener() {
                 @Override
@@ -140,18 +142,30 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                     searchCardView.hide();
 
                     if (result instanceof EntitySearchResult) {
+                        final MapEntity entity = ((EntitySearchResult) result).getMapEntity();
                         mBottomSheet.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                showBottomBarWith(((EntitySearchResult) result).getMapEntity());
+                                showBottomBarWith(entity);
                             }
                         }, 200);
+                        mMarkerManager.setVisibleEntities(entity);
+                        mMarkerManager.setIgnoreZoom(true);
+                    }
+
+                    if (result instanceof TagSearchResult) {
+                        TagSearchResult tagResult = (TagSearchResult) result;
+                        mMarkerManager.setVisibleEntities(tagResult.getMapEntities());
+                        mMarkerManager.setIgnoreZoom(true);
                     }
 
                     CameraUpdate update = result.getCameraUpdate();
                     if (update != null) {
                         mMap.animateCamera(update);
                     }
+
+                    mCurrentSearchResult = result;
+                    mMarkerManager.placeRelevantMarkers();
 
                 }
             });
@@ -225,8 +239,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.getUiSettings().setZoomControlsEnabled(false);
 
-        mMap.setOnCameraChangeListener(new CameraRestrictor(mMap));
-
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.747995, 8.295607), 16));
 
@@ -250,18 +262,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             public boolean onMarkerClick(Marker marker) {
                 MapEntity entity = mMarkerManager.getEntityForMarker(marker);
                 if (entity != null) {
-                    showEntitySearchResult(entity);
+                    highlightEntity(entity);
                 }
                 return false;
             }
         });
 
+        MapUtil.CameraChangeMultiplexer cameraChangeMultiplexer
+                = new MapUtil.CameraChangeMultiplexer();
+        mMap.setOnCameraChangeListener(cameraChangeMultiplexer);
+
+        cameraChangeMultiplexer.add(new CameraRestrictor(mMap));
+
         mMarkerManager = new MarkerManager(getContext(), mMap);
         mMarkerManager.generateMarkers(mMapEntities);
+        cameraChangeMultiplexer.add(mMarkerManager);
 
     }
 
-    private void showEntitySearchResult(MapEntity entity) {
+    private void highlightEntity(MapEntity entity) {
         if (entity.getOrigin() != null) {
             CameraUpdate update =
                     CameraUpdateFactory.newLatLng(entity.getOrigin().toLatLng());
@@ -327,9 +346,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     public boolean onBackPressed() {
         if (mCurrentMapEntity != null) {
             hideBottomSheet();
+            if (mCurrentSearchResult != null && mCurrentSearchResult instanceof EntitySearchResult) {
+                closeSearch();
+            }
+            return true;
+        }
+        if (mCurrentSearchResult != null) {
+            closeSearch();
             return true;
         }
         return false;
+    }
+
+    private void closeSearch() {
+        mCurrentSearchResult = null;
+        mMarkerManager.setVisibleEntities(mMapEntities);
+        mMarkerManager.setIgnoreZoom(false);
+        mMarkerManager.placeRelevantMarkers();
     }
 
     public static MapFragment newInstance() {

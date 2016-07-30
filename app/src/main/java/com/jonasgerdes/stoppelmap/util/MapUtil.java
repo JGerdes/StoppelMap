@@ -1,8 +1,11 @@
 package com.jonasgerdes.stoppelmap.util;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,5 +78,29 @@ public class MapUtil {
         double x = (pY - bee) / m; // algebra is neat!
 
         return x > pX;
+    }
+
+
+    public static class CameraChangeMultiplexer implements GoogleMap.OnCameraChangeListener {
+        private List<GoogleMap.OnCameraChangeListener> mListener;
+
+        public CameraChangeMultiplexer() {
+            mListener = new ArrayList<>();
+        }
+
+        public void add(GoogleMap.OnCameraChangeListener listener) {
+            mListener.add(listener);
+        }
+
+        public void remove(GoogleMap.OnCameraChangeListener listener) {
+            mListener.remove(listener);
+        }
+
+        @Override
+        public void onCameraChange(CameraPosition cameraPosition) {
+            for (GoogleMap.OnCameraChangeListener onCameraChangeListener : mListener) {
+                onCameraChangeListener.onCameraChange(cameraPosition);
+            }
+        }
     }
 }

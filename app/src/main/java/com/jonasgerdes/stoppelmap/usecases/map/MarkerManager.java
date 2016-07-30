@@ -3,8 +3,10 @@ package com.jonasgerdes.stoppelmap.usecases.map;
 import android.content.Context;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Marker;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.map.Zoom;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,18 +16,22 @@ import java.util.Map;
 /**
  * Created by Jonas on 21.07.2016.
  */
-public class MarkerManager {
+public class MarkerManager implements GoogleMap.OnCameraChangeListener {
 
     private Context mContext;
     private GoogleMap mMap;
     private Map<String, MapEntity> mMarkerEntityMap;
     private List<Marker> mMarkers;
+    private List<MapEntity> mVisibleEntities;
+    private CameraPosition mCurrentCameraPosition;
+    private boolean mIgnoreZoom;
 
     public MarkerManager(Context context, GoogleMap map) {
         mContext = context;
         mMap = map;
         mMarkers = new ArrayList<>();
         mMarkerEntityMap = new HashMap<>();
+        mVisibleEntities = new ArrayList<>();
     }
 
     @SuppressWarnings("unchecked")
@@ -34,28 +40,65 @@ public class MarkerManager {
                 .onReady(new LabelCreationTask.OnReadyListener() {
                     @Override
                     public void onReady() {
-                        placeRelevantMarkers(entities);
+                        mVisibleEntities = entities;
+                        placeRelevantMarkers();
                     }
                 })
                 .execute(entities);
     }
 
-    public void placeRelevantMarkers(List<MapEntity> entities) {
+
+    public void placeRelevantMarkers() {
         for (Marker marker : mMarkers) {
             marker.remove();
         }
         mMarkers.clear();
         mMarkerEntityMap.clear();
-        for (MapEntity mapEntity : entities) {
+        for (MapEntity mapEntity : mVisibleEntities) {
             if (mapEntity.getMarkerOptions() != null) {
-                Marker temp = mMap.addMarker(mapEntity.getMarkerOptions());
-                mMarkers.add(temp);
-                mMarkerEntityMap.put(temp.getId(), mapEntity);
+                if (isEntityVisible(mapEntity)) {
+                    Marker temp = mMap.addMarker(mapEntity.getMarkerOptions());
+                    mMarkers.add(temp);
+                    mMarkerEntityMap.put(temp.getId(), mapEntity);
+                }
             }
+        }
+    }
+
+    private boolean isEntityVisible(MapEntity mapEntity) {
+        if (mCurrentCameraPosition == null) {
+            return false;
+        } else if (mIgnoreZoom) {
+            return true;
+        } else {
+            Zoom zoom = mapEntity.getZoom();
+            return zoom.getMin() <= mCurrentCameraPosition.zoom
+                    && (zoom.getMax() == Zoom.NONE || zoom.getMax() <= mCurrentCameraPosition.zoom);
         }
     }
 
     public MapEntity getEntityForMarker(Marker marker) {
         return mMarkerEntityMap.get(marker.getId());
+    }
+
+    @Override
+    public void onCameraChange(CameraPosition cameraPosition) {
+        mCurrentCameraPosition = cameraPosition;
+        placeRelevantMarkers();
+    }
+
+    public void setVisibleEntities(List<MapEntity> visibleEntities) {
+        mVisibleEntities = visibleEntities;
+    }
+
+    public void setVisibleEntities(MapEntity... visibleEntities) {
+        mVisibleEntities = new ArrayList<>();
+        for (MapEntity visibleEntity : visibleEntities) {
+            mVisibleEntities.add(visibleEntity);
+        }
+    }
+
+    public void setIgnoreZoom(boolean ignoreZoom) {
+        mIgnoreZoom = ignoreZoom;
     }
 }
