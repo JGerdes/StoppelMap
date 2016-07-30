@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity
     private BackPressListener mBackPressListener;
     private AlertDialog mUpdateHint;
     private Toolbar mToolbar;
+    private ActionBarDrawerToggle mDrawerToggle;
 
 
     public interface BackPressListener {
@@ -62,31 +63,31 @@ public class MainActivity extends AppCompatActivity
 
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        mDrawerToggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.setDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
-                toggle.onDrawerSlide(drawerView, slideOffset);
+                mDrawerToggle.onDrawerSlide(drawerView, slideOffset);
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                toggle.onDrawerOpened(drawerView);
+                mDrawerToggle.onDrawerOpened(drawerView);
                 mSearchView.hide();
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
-                toggle.onDrawerClosed(drawerView);
+                mDrawerToggle.onDrawerClosed(drawerView);
             }
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                toggle.onDrawerStateChanged(newState);
+                mDrawerToggle.onDrawerStateChanged(newState);
             }
         });
-        toggle.syncState();
+        mDrawerToggle.syncState();
 
 
         mNavigationView.setNavigationItemSelectedListener(this);
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         checkVersion();
 
     }
+
 
     @Override
     protected void onDestroy() {
@@ -216,6 +218,39 @@ public class MainActivity extends AppCompatActivity
 
     public SearchCardView getSearchView() {
         return mSearchView;
+    }
+
+
+    public void setDrawerState(boolean isEnabled) {
+        if (isEnabled) {
+            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            mDrawerToggle.setDrawerIndicatorEnabled(true);
+            mDrawerToggle.syncState();
+            mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
+            invalidateOptionsMenu();
+
+        } else {
+            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            mDrawerToggle.setDrawerIndicatorEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            mDrawerToggle.syncState();
+            mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+            invalidateOptionsMenu();
+        }
+    }
+
+    public void setTitle(String title) {
+        mToolbar.setTitle(title);
     }
 
 }

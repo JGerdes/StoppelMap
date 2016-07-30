@@ -157,6 +157,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                         TagSearchResult tagResult = (TagSearchResult) result;
                         mMarkerManager.setVisibleEntities(tagResult.getMapEntities());
                         mMarkerManager.setIgnoreZoom(true);
+                        MainActivity activity = (MainActivity) getActivity();
+                        String title = String.format("%s%s",
+                                getString(R.string.search_prefix),
+                                tagResult.getTag().getName());
+                        activity.setTitle(title);
+                        activity.setDrawerState(false);
                     }
 
                     CameraUpdate update = result.getCameraUpdate();
@@ -175,7 +181,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_map_fragment, menu);
+        if (mCurrentSearchResult == null) {
+            inflater.inflate(R.menu.menu_map_fragment, menu);
+        }
     }
 
     @Override
@@ -363,6 +371,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         mMarkerManager.setVisibleEntities(mMapEntities);
         mMarkerManager.setIgnoreZoom(false);
         mMarkerManager.placeRelevantMarkers();
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setTitle(R.string.app_name);
+        activity.setDrawerState(true);
     }
 
     public static MapFragment newInstance() {
