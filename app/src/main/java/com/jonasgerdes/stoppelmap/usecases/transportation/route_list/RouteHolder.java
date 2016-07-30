@@ -63,6 +63,7 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
         ButterKnife.bind(this, itemView);
         mMapView.onCreate(null);
         mMapView.onResume();
+        mMapView.setClickable(false);
         mMapView.getMapAsync(this);
 
         mStationLocations = new ArrayList<>();
@@ -89,6 +90,12 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
             MapsInitializer.initialize(itemView.getContext().getApplicationContext());
             mGoogleMap = googleMap;
             mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
+            mGoogleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(LatLng latLng) {
+                    //prevent google maps top open
+                }
+            });
         }
 
         if (mStationLocations.size() > 0) {
