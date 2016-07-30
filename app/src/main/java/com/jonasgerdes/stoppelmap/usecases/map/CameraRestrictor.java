@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecases.map;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -24,6 +26,7 @@ public class CameraRestrictor implements GoogleMap.OnCameraChangeListener {
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
+        Log.d("CameraUpdate", "current zoom:" + cameraPosition.zoom);
         LatLng newPos = new LatLng(cameraPosition.target.latitude, cameraPosition.target.longitude);
         float zoom = cameraPosition.zoom;
         boolean dirty = false;

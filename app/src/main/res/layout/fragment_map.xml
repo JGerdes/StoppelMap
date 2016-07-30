@@ -14,7 +14,8 @@
     <!--/>-->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#607D8B">
 
         <FrameLayout
             android:id="@+id/map_placeholder"

@@ -25,6 +25,7 @@ public class MapEntity extends RealmObject {
     private RealmList<RealmString> icons;
     private Info info;
     private RealmList<Tag> tags;
+    private Zoom zoom;
 
     @Ignore
     MarkerOptions mMarkerOptions;
@@ -110,5 +111,13 @@ public class MapEntity extends RealmObject {
 
     public void setTags(RealmList<Tag> tags) {
         this.tags = tags;
+    }
+
+    public Zoom getZoom() {
+        return zoom;
+    }
+
+    public void setZoom(Zoom zoom) {
+        this.zoom = zoom;
     }
 }
