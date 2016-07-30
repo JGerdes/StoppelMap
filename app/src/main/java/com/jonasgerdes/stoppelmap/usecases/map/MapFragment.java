@@ -158,7 +158,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                         mMarkerManager.setVisibleEntities(tagResult.getMapEntities());
                         mMarkerManager.setIgnoreZoom(true);
                         MainActivity activity = (MainActivity) getActivity();
-                        String title = String.format("%s%s",
+                        String title = String.format("%s %s",
                                 getString(R.string.search_prefix),
                                 tagResult.getTag().getName());
                         activity.setTitle(title);
