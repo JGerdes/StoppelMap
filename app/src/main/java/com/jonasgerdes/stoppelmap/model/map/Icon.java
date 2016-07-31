@@ -31,6 +31,8 @@ public class Icon {
         icons.put("beer", new Icon(R.drawable.ic_beer_black_24dp, "Ausschank"));
         icons.put("food", new Icon(R.drawable.ic_local_dining_black_24dp, "Speisen"));
         icons.put("wc", new Icon(R.drawable.ic_wc_black_24dp, "Toiletten"));
+        icons.put("tent", new Icon(R.drawable.ic_tent_black_24dp, "Festzelt"));
+        icons.put("coffee", new Icon(R.drawable.ic_local_cafe_black_24dp, "Café"));
 
         ICONS = icons;
     }

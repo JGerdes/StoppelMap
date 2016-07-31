@@ -38,7 +38,8 @@ public class InitialTransaction implements Realm.Transaction {
 
     private static final String[] MAP_FILES = new String[]{
             "map/misc",
-            "map/buildings"
+            "map/buildings",
+            "map/bars",
     };
 
     private AssetManager mAssets;
@@ -125,12 +126,22 @@ public class InitialTransaction implements Realm.Transaction {
             MapEntities entities = readJsonFile(gson, file, MapEntities.class);
             if (entities != null) {
                 for (MapEntity mapEntity : entities.entities) {
+                    checkForNull(mapEntity, mapEntity.getName(), "Name");
+                    checkForNull(mapEntity, mapEntity.getBounds(), "Bounds");
+                    checkForNull(mapEntity, mapEntity.getOrigin(), "Origin");
+                    checkForNull(mapEntity, mapEntity.getType(), "Type");
+                    checkForNull(mapEntity, mapEntity.getTags(), "Tags");
+                    checkForNull(mapEntity, mapEntity.getIcons(), "Icons");
                     realm.copyToRealm(mapEntity);
                 }
             }
         }
+    }
 
-
+    private void checkForNull(MapEntity entity, Object field, String fieldName) {
+        if (field == null) {
+            Log.e(TAG, "checkForNull: " + fieldName + " is/are null on" + entity.getUuid());
+        }
     }
 
     private <T> T readJsonFile(Gson gson, String name, Class<T> classOfT) {
@@ -186,15 +197,21 @@ public class InitialTransaction implements Realm.Transaction {
     public static AdvancedTag[] TAG_SYNONYMS = new AdvancedTag[]{
             //Misc
             new AdvancedTag(R.drawable.ic_wc_black_24dp, "WC", "Toilette", "Klo"),
+            new AdvancedTag(R.drawable.ic_tent_black_24dp, "Zelt", "Festzelt"),
 
             //Food
-            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pommes", "Fries", "Fritten"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pommes", "Fritten"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Bratwurst"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Bratkartoffeln"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Spiegeleier"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Spießbraten"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Italiener"),
 
             //Drinks
             new AdvancedTag(R.drawable.ic_beer_black_24dp, "Bier"),
+            new AdvancedTag(R.drawable.ic_local_cafe_black_24dp, "Kaffee", "Café"),
+            new AdvancedTag(R.drawable.ic_local_bar_black_24dp, "Ausschank"),
+            new AdvancedTag(R.drawable.ic_local_bar_black_24dp, "Cocktails")
     };
 
     // @formatter: on

@@ -388,7 +388,7 @@
       }
     },
     {
-      "uuid": "meyer",
+      "uuid": "meyer1",
       "name": "Meyer",
       "type": 2,
       "synonyms": [
@@ -693,6 +693,10 @@
           "lng": 8.296656534075737
         }
       ],
+      "origin": {
+        "lat": 52.74783661500477,
+        "lng": 8.296790644526482
+      },
       "zoom": {
         "min": 19,
         "max": -1
@@ -1978,7 +1982,7 @@
       }
     },
     {
-      "uuid": "meyer",
+      "uuid": "meyer2",
       "name": "Meyer",
       "type": 2,
       "synonyms": [
@@ -2126,7 +2130,7 @@
       }
     },
     {
-      "uuid": "meyer",
+      "uuid": "meyer3",
       "name": "Meyer",
       "type": 2,
       "synonyms": [
