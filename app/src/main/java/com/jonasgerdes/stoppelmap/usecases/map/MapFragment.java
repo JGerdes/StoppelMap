@@ -322,6 +322,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     private void hideBottomSheet() {
         mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         mCurrentMapEntity = null;
+        if (mCurrentSearchResult == null) {
+            mMarkerManager.setIgnoreZoom(false);
+            mMarkerManager.setVisibleEntities(mMapEntities);
+            mMarkerManager.placeRelevantMarkers();
+        }
     }
 
     private void showBottomBarWith(MapEntity mapEntity) {
@@ -346,6 +351,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                 }
             }
             iconView.setImageDrawable(null);
+        }
+
+        //show marker for selected item when not in search mode
+        if (mCurrentSearchResult == null) {
+            mMarkerManager.setIgnoreZoom(true);
+            mMarkerManager.setVisibleEntities(mapEntity);
+            mMarkerManager.placeRelevantMarkers();
         }
     }
 
