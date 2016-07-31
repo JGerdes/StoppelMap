@@ -34,6 +34,9 @@ public class Icon {
         icons.put("tent", new Icon(R.drawable.ic_tent_black_24dp, "Festzelt"));
         icons.put("coffee", new Icon(R.drawable.ic_local_cafe_black_24dp, "Café"));
 
+        icons.put("attraction", new Icon(R.drawable.ic_fairground_black_24dp, "Fahrgeschäft"));
+        icons.put("kidsride", new Icon(R.drawable.ic_child_care_black_24dp, "Für Kinder"));
+
         ICONS = icons;
     }
 }

@@ -40,6 +40,7 @@ public class InitialTransaction implements Realm.Transaction {
             "map/misc",
             "map/buildings",
             "map/bars",
+            "map/attractions"
     };
 
     private AssetManager mAssets;
@@ -218,7 +219,18 @@ public class InitialTransaction implements Realm.Transaction {
             new AdvancedTag(R.drawable.ic_beer_black_24dp, "Bier"),
             new AdvancedTag(R.drawable.ic_local_cafe_black_24dp, "Kaffee", "Café"),
             new AdvancedTag(R.drawable.ic_local_bar_black_24dp, "Ausschank"),
-            new AdvancedTag(R.drawable.ic_local_bar_black_24dp, "Cocktails")
+            new AdvancedTag(R.drawable.ic_local_bar_black_24dp, "Cocktails"),
+
+            //Rides
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Fahrgeschäft"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp,
+                    "Laufgeschäft", "FunHouse", "Spaßhaus"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Autoskooter", "Autoscooter"),
+            new AdvancedTag(R.drawable.ic_child_care_black_24dp, "Für Kinder"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp,
+                    "Wasserbahn", "Wildwasserbahn", "Baumstammkanal"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Kettenflieger"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Kinderkarussell")
     };
 
     // @formatter: on
