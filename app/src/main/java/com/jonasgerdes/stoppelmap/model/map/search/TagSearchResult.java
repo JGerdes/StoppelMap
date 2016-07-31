@@ -49,6 +49,16 @@ public class TagSearchResult extends SearchResult {
     }
 
     @Override
+    public boolean containsEntity(MapEntity entity) {
+        for (MapEntity mapEntity : mMapEntities) {
+            if (mapEntity.getUuid().equals(entity.getUuid())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public String getIdentifier() {
         return mTag.getName();
     }

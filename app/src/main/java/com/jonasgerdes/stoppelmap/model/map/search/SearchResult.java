@@ -4,6 +4,7 @@ import android.support.annotation.LayoutRes;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.model.LatLng;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 
 /**
  * Created by Jonas on 22.07.2016.
@@ -17,6 +18,8 @@ public abstract class SearchResult {
     public abstract CameraUpdate getCameraUpdate();
 
     public abstract CameraUpdate getCameraUpdate(LatLng userLocation);
+
+    public abstract boolean containsEntity(MapEntity entity);
 
     public float getMatchingFactor() {
         return mMatchingFactor;

@@ -33,6 +33,11 @@ public class EntitySearchResult extends SearchResult {
     }
 
     @Override
+    public boolean containsEntity(MapEntity entity) {
+        return mMapEntity.getUuid().equals(entity.getUuid());
+    }
+
+    @Override
     public String getIdentifier() {
         return mMapEntity.getUuid();
     }

@@ -270,7 +270,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             public boolean onMarkerClick(Marker marker) {
                 MapEntity entity = mMarkerManager.getEntityForMarker(marker);
                 if (entity != null) {
-                    highlightEntity(entity);
+                    //if in search mode, only items in result are clickable
+                    if (mCurrentSearchResult == null
+                            || mCurrentSearchResult.containsEntity(entity)) {
+                        highlightEntity(entity);
+                    }
                 }
                 return false;
             }
@@ -304,12 +308,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                 continue;
             }
             if (MapUtil.isPointInGeoPolygon(latLng, mapEntity.getBounds())) {
-                Log.d(TAG, "onMapClicked:" + mapEntity.getUuid());
-                showBottomBarWith(mapEntity);
-                if (mapEntity.getOrigin() != null) {
-                    CameraUpdate update =
-                            CameraUpdateFactory.newLatLng(mapEntity.getOrigin().toLatLng());
-                    mMap.animateCamera(update);
+                //if in search mode, only items in result are clickable
+                if (mCurrentSearchResult == null
+                        || mCurrentSearchResult.containsEntity(mapEntity)) {
+                    showBottomBarWith(mapEntity);
+                    if (mapEntity.getOrigin() != null) {
+                        CameraUpdate update =
+                                CameraUpdateFactory.newLatLng(mapEntity.getOrigin().toLatLng());
+                        mMap.animateCamera(update);
+                    }
                 }
 
                 return;
