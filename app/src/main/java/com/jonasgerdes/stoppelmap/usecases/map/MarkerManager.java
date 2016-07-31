@@ -83,8 +83,12 @@ public class MarkerManager implements GoogleMap.OnCameraChangeListener {
 
     @Override
     public void onCameraChange(CameraPosition cameraPosition) {
+        boolean doUpdate = mCurrentCameraPosition == null ||
+                cameraPosition.zoom != mCurrentCameraPosition.zoom;
         mCurrentCameraPosition = cameraPosition;
-        placeRelevantMarkers();
+        if (doUpdate) {
+            placeRelevantMarkers();
+        }
     }
 
     public void setVisibleEntities(List<MapEntity> visibleEntities) {
