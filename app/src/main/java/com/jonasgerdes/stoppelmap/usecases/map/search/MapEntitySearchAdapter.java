@@ -112,9 +112,11 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
     }
 
     public void animateTo(List<SearchResult> models) {
-        applyAndAnimateRemovals(models);
-        applyAndAnimateAdditions(models);
-        applyAndAnimateMovedItems(models);
+//        applyAndAnimateRemovals(models);
+//        applyAndAnimateAdditions(models);
+//        applyAndAnimateMovedItems(models);
+        mSearchResults = models;
+        notifyDataSetChanged();
     }
 
     public SearchResult removeItem(int position) {

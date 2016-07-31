@@ -132,6 +132,13 @@ public class InitialTransaction implements Realm.Transaction {
                     checkForNull(mapEntity, mapEntity.getType(), "Type");
                     checkForNull(mapEntity, mapEntity.getTags(), "Tags");
                     checkForNull(mapEntity, mapEntity.getIcons(), "Icons");
+
+
+                    //add first coordinate as last to close polygon
+                    if (mapEntity.getBounds() != null && mapEntity.getBounds().size() > 0) {
+                        mapEntity.getBounds().add(mapEntity.getBounds().get(0));
+                    }
+
                     realm.copyToRealm(mapEntity);
                 }
             }
