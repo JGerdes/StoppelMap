@@ -19,6 +19,7 @@ public class MapEntity extends RealmObject {
     private int type;
 
     private String name;
+    private RealmList<RealmString> synonyms;
     private RealmList<GeoLocation> bounds;
     private GeoLocation origin;
     private String headerImageFile;
@@ -55,6 +56,14 @@ public class MapEntity extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public RealmList<RealmString> getSynonyms() {
+        return synonyms;
+    }
+
+    public void setSynonyms(RealmList<RealmString> synonyms) {
+        this.synonyms = synonyms;
     }
 
     public RealmList<GeoLocation> getBounds() {

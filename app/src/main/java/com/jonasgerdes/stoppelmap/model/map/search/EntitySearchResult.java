@@ -34,7 +34,7 @@ public class EntitySearchResult extends SearchResult {
 
     @Override
     public String getIdentifier() {
-        return mMapEntity.getName();
+        return mMapEntity.getUuid();
     }
 
     @Override

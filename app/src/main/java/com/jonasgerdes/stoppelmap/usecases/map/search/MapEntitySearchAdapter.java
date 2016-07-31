@@ -9,7 +9,9 @@ import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.map.search.EntitySearchResult;
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult;
+import com.jonasgerdes.stoppelmap.model.map.search.SynoynmSearchResult;
 import com.jonasgerdes.stoppelmap.model.map.search.TagSearchResult;
+import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
 
 import java.util.ArrayList;
@@ -49,6 +51,17 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
                     tempResults.add(result);
                 }
 
+                //synonym search
+                if (mapEntity.getSynonyms() != null) {
+                    for (RealmString synonym : mapEntity.getSynonyms()) {
+                        if (synonym.getVal().toLowerCase().contains(query)) {
+                            SearchResult result
+                                    = new SynoynmSearchResult(synonym.getVal(), mapEntity);
+                            tempResults.add(result);
+                        }
+                    }
+                }
+
                 //tag search
                 for (Tag tag : mapEntity.getTags()) {
                     if (tag.getName().toLowerCase().contains(query)) {
@@ -76,8 +89,11 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
         switch (viewType) {
             case R.layout.map_search_entity_result_item:
                 return new EntityResultHolder(view);
+            case R.layout.map_search_synonym_result_item:
+                return new SynonymResultHolder(view);
             case R.layout.map_search_tag_result_item:
                 return new TagResultHolder(view);
+
 
         }
         return null;
@@ -112,11 +128,11 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
     }
 
     public void animateTo(List<SearchResult> models) {
-//        applyAndAnimateRemovals(models);
-//        applyAndAnimateAdditions(models);
-//        applyAndAnimateMovedItems(models);
-        mSearchResults = models;
-        notifyDataSetChanged();
+        applyAndAnimateRemovals(models);
+        applyAndAnimateAdditions(models);
+        applyAndAnimateMovedItems(models);
+//        mSearchResults = models;
+//        notifyDataSetChanged();
     }
 
     public SearchResult removeItem(int position) {

@@ -391,9 +391,6 @@
       "uuid": "meyer1",
       "name": "Meyer",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "beer"
       ],
@@ -440,9 +437,6 @@
       "uuid": "k_hlings_niedersachsenhalle",
       "name": "Kühlings Niedersachsenhalle",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -515,9 +509,6 @@
       "uuid": "stratmann_s_caf",
       "name": "Stratmann's Café",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer",
@@ -560,9 +551,6 @@
       "uuid": "overmeyer",
       "name": "Overmeyer",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -611,9 +599,6 @@
       "uuid": "die_flotte",
       "name": "Die Flotte",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -662,9 +647,6 @@
       "uuid": "trumpf",
       "name": "Trumpf",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -706,9 +688,6 @@
       "uuid": "feldkamp",
       "name": "Feldkamp",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -750,9 +729,6 @@
       "uuid": "bokern",
       "name": "Bokern",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -794,9 +770,6 @@
       "uuid": "benecke",
       "name": "Benecke",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -837,9 +810,6 @@
       "uuid": "ostermann",
       "name": "Ostermann",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -881,9 +851,6 @@
       "uuid": "schinderhannes",
       "name": "Schinderhannes",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -924,9 +891,6 @@
       "uuid": "landwehr",
       "name": "Landwehr",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -976,9 +940,6 @@
       "uuid": "da_enzo",
       "name": "Da Enzo",
       "type": 4,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "food",
         "beer"
@@ -1070,9 +1031,6 @@
       "uuid": "banane",
       "name": "Banane",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1113,9 +1071,6 @@
       "uuid": "brackmann",
       "name": "Brackmann",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1172,9 +1127,6 @@
       "uuid": "anton_linnemann",
       "name": "Anton Linnemann",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "beer"
       ],
@@ -1213,9 +1165,6 @@
       "uuid": "fischer",
       "name": "Fischer",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1256,9 +1205,6 @@
       "uuid": "sch_fers",
       "name": "Schäfers",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1299,9 +1245,6 @@
       "uuid": "grieshop",
       "name": "Grieshop",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer",
@@ -1454,9 +1397,6 @@
       "uuid": "elmendorffburg",
       "name": "Elmendorffburg",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1497,9 +1437,6 @@
       "uuid": "twistringer_zelt",
       "name": "Twistringer Zelt",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1540,9 +1477,6 @@
       "uuid": "alkoholfreies_zelt",
       "name": "Alkoholfreies Zelt",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "coffee"
@@ -1582,9 +1516,6 @@
       "uuid": "alt_berlin",
       "name": "Alt Berlin",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "beer"
       ],
@@ -1623,9 +1554,6 @@
       "uuid": "stierbr_u",
       "name": "Stierbräu",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1666,9 +1594,6 @@
       "uuid": "winter",
       "name": "Winter",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1726,9 +1651,6 @@
       "uuid": "borgerding",
       "name": "Borgerding",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1769,9 +1691,6 @@
       "uuid": "hogeback",
       "name": "Hogeback",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1824,9 +1743,6 @@
       "uuid": "heitmann_bierstube",
       "name": "Heitmann Bierstube",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1867,9 +1783,6 @@
       "uuid": "beckmann",
       "name": "Beckmann",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1918,9 +1831,6 @@
       "uuid": "bl_mer",
       "name": "Blömer",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -1985,9 +1895,6 @@
       "uuid": "meyer2",
       "name": "Meyer",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "beer"
       ],
@@ -2026,9 +1933,6 @@
       "uuid": "r_n_r_caf",
       "name": "R'n'R Café",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "coffee"
       ],
@@ -2066,9 +1970,6 @@
       "uuid": "party_park",
       "name": "Party Park",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "tent",
         "beer"
@@ -2133,9 +2034,6 @@
       "uuid": "meyer3",
       "name": "Meyer",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "beer"
       ],
@@ -2174,9 +2072,6 @@
       "uuid": "ellert",
       "name": "Ellert",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "beer"
       ],
@@ -2215,9 +2110,6 @@
       "uuid": "b_ssing",
       "name": "Büssing",
       "type": 2,
-      "synonyms": [
-        ""
-      ],
       "icons": [
         "beer"
       ],
