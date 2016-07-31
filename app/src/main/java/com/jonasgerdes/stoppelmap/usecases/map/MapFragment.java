@@ -143,12 +143,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
                     if (result instanceof EntitySearchResult) {
                         final MapEntity entity = ((EntitySearchResult) result).getMapEntity();
-                        mBottomSheet.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                showBottomBarWith(entity);
-                            }
-                        }, 200);
+                        showBottomBarWith(entity);
                         mMarkerManager.setVisibleEntities(entity);
                         mMarkerManager.setIgnoreZoom(true);
                     }
@@ -337,6 +332,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     }
 
     private void showBottomBarWith(MapEntity mapEntity) {
+
+        getSearchView().hide();
+
         mCurrentMapEntity = mapEntity;
         mSheetTitle.setText(mapEntity.getName());
         String headerFile = EntityHelper.getHeaderFile(getContext(), mapEntity);
@@ -366,6 +364,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             mMarkerManager.setVisibleEntities(mapEntity);
             mMarkerManager.placeRelevantMarkers();
         }
+
+//        mBottomSheet.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//            }
+//        }, 500);
     }
 
 
