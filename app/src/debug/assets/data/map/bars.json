@@ -121,7 +121,7 @@
       ],
       "tags": [
         "Bier",
-        "Aussschank"
+        "Ausschank"
       ],
       "bounds": [
         {
@@ -161,7 +161,7 @@
       "tags": [
         "Bier",
         "Zelt",
-        "Aussschank"
+        "Ausschank"
       ],
       "bounds": [
         {
@@ -281,7 +281,8 @@
       ],
       "tags": [
         "Zelt",
-        "Bier,Ausschank"
+        "Bier",
+        "Ausschank"
       ],
       "bounds": [
         {

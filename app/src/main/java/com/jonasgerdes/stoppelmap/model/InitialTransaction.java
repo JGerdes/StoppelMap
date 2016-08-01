@@ -230,7 +230,10 @@ public class InitialTransaction implements Realm.Transaction {
             new AdvancedTag(R.drawable.ic_fairground_black_24dp,
                     "Wasserbahn", "Wildwasserbahn", "Baumstammkanal"),
             new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Kettenflieger"),
-            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Kinderkarussell")
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Kinderkarussell"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Achterbahn"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "GoKarts"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Geisterbahn")
     };
 
     // @formatter: on
