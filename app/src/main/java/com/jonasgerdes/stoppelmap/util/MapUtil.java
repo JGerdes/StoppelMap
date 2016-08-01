@@ -1,11 +1,15 @@
 package com.jonasgerdes.stoppelmap.util;
 
+import android.location.Location;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -102,5 +106,20 @@ public class MapUtil {
                 onCameraChangeListener.onCameraChange(cameraPosition);
             }
         }
+    }
+
+    public static Comparator<MapEntity> getMapEntityDistanceComparator(final LatLng center) {
+        final float ldist[] = new float[1];
+        final float rdist[] = new float[1];
+        return new Comparator<MapEntity>() {
+            @Override
+            public int compare(MapEntity lhs, MapEntity rhs) {
+                GeoLocation left = lhs.getOrigin();
+                GeoLocation right = rhs.getOrigin();
+                Location.distanceBetween(left.getLat(), left.getLng(), center.latitude, center.longitude, ldist);
+                Location.distanceBetween(right.getLat(), right.getLng(), center.latitude, center.longitude, rdist);
+                return (int) Math.signum(ldist[0] - rdist[0]);
+            }
+        };
     }
 }

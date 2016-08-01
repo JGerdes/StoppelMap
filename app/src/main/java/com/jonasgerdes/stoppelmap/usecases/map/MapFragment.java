@@ -163,7 +163,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                         activity.setDrawerState(false);
                     }
 
-                    CameraUpdate update = result.getCameraUpdate();
+                    CameraUpdate update;
+                    LatLng currentPos = StoppelMapApp.getViaActivity(getActivity()).getLastPosition();
+                    if (currentPos != null) {
+                        update = result.getCameraUpdate(currentPos);
+                    } else {
+                        update = result.getCameraUpdate();
+                    }
                     if (update != null) {
                         mMap.animateCamera(update);
                     }
@@ -188,6 +194,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                             CameraUpdate update = CameraUpdateFactory.newCameraPosition(pos);
                             mMap.animateCamera(update);
                             mMap.setMyLocationEnabled(true);
+                        } else {
+
                         }
                     }
                 });
