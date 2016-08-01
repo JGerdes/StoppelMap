@@ -46,7 +46,8 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
             for (MapEntity mapEntity : mMapEntities) {
 
                 //name search
-                if (mapEntity.getName().toLowerCase().contains(query)) {
+                if (mapEntity.getName().toLowerCase().contains(query)
+                        && !mapEntity.isHiddenFromSearch()) {
                     SearchResult result = new EntitySearchResult(mapEntity);
                     tempResults.add(result);
                 }

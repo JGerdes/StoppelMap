@@ -3,6 +3,7 @@
     {
       "uuid": "wc1",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -40,6 +41,7 @@
     {
       "uuid": "wc2",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -77,6 +79,7 @@
     {
       "uuid": "wc3",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -114,6 +117,7 @@
     {
       "uuid": "wc4",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -151,6 +155,7 @@
     {
       "uuid": "wc5",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -188,6 +193,7 @@
     {
       "uuid": "wc6",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -225,6 +231,7 @@
     {
       "uuid": "wc7",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -262,6 +269,7 @@
     {
       "uuid": "wc8",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -299,6 +307,7 @@
     {
       "uuid": "wc9",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -336,6 +345,7 @@
     {
       "uuid": "wc10",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -373,6 +383,7 @@
     {
       "uuid": "wc11",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -418,6 +429,7 @@
     {
       "uuid": "wc12",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -455,6 +467,7 @@
     {
       "uuid": "wc13",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -492,6 +505,7 @@
     {
       "uuid": "wc14",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -529,6 +543,7 @@
     {
       "uuid": "wc15",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -566,6 +581,7 @@
     {
       "uuid": "wc16",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -603,6 +619,7 @@
     {
       "uuid": "wc17",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -640,6 +657,7 @@
     {
       "uuid": "wc18",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -681,6 +699,7 @@
     {
       "uuid": "wc19",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -718,6 +737,7 @@
     {
       "uuid": "wc20",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -755,6 +775,7 @@
     {
       "uuid": "wc22",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -792,6 +813,7 @@
     {
       "uuid": "wc23",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -829,6 +851,7 @@
     {
       "uuid": "wc24",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -866,6 +889,7 @@
     {
       "uuid": "wc25",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -903,6 +927,7 @@
     {
       "uuid": "wc26",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -940,6 +965,7 @@
     {
       "uuid": "wc27",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -977,6 +1003,7 @@
     {
       "uuid": "wc28",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -1014,6 +1041,7 @@
     {
       "uuid": "wc29",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -1051,6 +1079,7 @@
     {
       "uuid": "wc30",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -1088,6 +1117,7 @@
     {
       "uuid": "wc31",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"
@@ -1129,6 +1159,7 @@
     {
       "uuid": "wc32",
       "name": "WC",
+      "hiddenFromSearch": true,
       "type": 7,
       "icons": [
         "wc"

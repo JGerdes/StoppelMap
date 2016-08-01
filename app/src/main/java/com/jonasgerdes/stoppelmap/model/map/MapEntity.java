@@ -27,6 +27,7 @@ public class MapEntity extends RealmObject {
     private Info info;
     private RealmList<Tag> tags;
     private Zoom zoom;
+    private boolean hiddenFromSearch;
 
     @Ignore
     MarkerOptions mMarkerOptions;
@@ -128,5 +129,13 @@ public class MapEntity extends RealmObject {
 
     public void setZoom(Zoom zoom) {
         this.zoom = zoom;
+    }
+
+    public boolean isHiddenFromSearch() {
+        return hiddenFromSearch;
+    }
+
+    public void setHiddenFromSearch(boolean hiddenFromSearch) {
+        this.hiddenFromSearch = hiddenFromSearch;
     }
 }
