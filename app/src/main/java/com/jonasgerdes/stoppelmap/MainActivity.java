@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -253,4 +254,8 @@ public class MainActivity extends AppCompatActivity
         mToolbar.setTitle(title);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        StoppelMapApp.getViaActivity(this).onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

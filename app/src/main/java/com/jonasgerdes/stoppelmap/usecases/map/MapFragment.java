@@ -1,15 +1,14 @@
 package com.jonasgerdes.stoppelmap.usecases.map;
 
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.v4.app.ActivityCompat;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -31,6 +30,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.TileOverlayOptions;
@@ -85,6 +85,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
     @BindView(R.id.bottom_sheet_icons)
     ViewGroup mBottomSheetIcons;
+
+    @BindView(R.id.fab)
+    FloatingActionButton mFloatingActionButton;
 
     @Nullable
     @Override
@@ -172,6 +175,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             });
         }
 
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StoppelMapApp.getViaActivity(getActivity()).executeWithLocation(getActivity(), new StoppelMapApp.LocationRunnable() {
+                    @SuppressWarnings("MissingPermission")
+                    @Override
+                    public void run(Location location) {
+                        if (mMap != null && location != null) {
+                            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+                            CameraPosition pos = CameraPosition.fromLatLngZoom(loc, 18);
+                            CameraUpdate update = CameraUpdateFactory.newCameraPosition(pos);
+                            mMap.animateCamera(update);
+                            mMap.setMyLocationEnabled(true);
+                        }
+                    }
+                });
+            }
+        });
+
     }
 
     @Override
@@ -223,12 +245,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: 03.07.2016
-        } else {
-            mMap.setMyLocationEnabled(true);
-        }
+
+        StoppelMapApp.getViaActivity(getActivity()).executeWithLocation(getActivity(), new StoppelMapApp.LocationRunnable() {
+            @SuppressWarnings("MissingPermission")
+            @Override
+            public void run(Location location) {
+                if (mMap != null) {
+                    mMap.setMyLocationEnabled(true);
+                }
+            }
+        });
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
         AssetManager assets = getContext().getAssets();
