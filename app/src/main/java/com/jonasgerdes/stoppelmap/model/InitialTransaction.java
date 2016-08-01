@@ -20,6 +20,7 @@ import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.model.transportation.Transportation;
 import com.jonasgerdes.stoppelmap.util.FileUtil;
+import com.jonasgerdes.stoppelmap.util.StringUtil;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -207,6 +208,8 @@ public class InitialTransaction implements Realm.Transaction {
             //Misc
             new AdvancedTag(R.drawable.ic_wc_black_24dp, "WC", "Toilette", "Klo"),
             new AdvancedTag(R.drawable.ic_tent_black_24dp, "Zelt", "Festzelt"),
+            new AdvancedTag(R.drawable.ic_directions_bus_black_24dp, "Busse",
+                    StringUtil.getEmojiByUnicode(StringUtil.EMOJI_BUS)),
 
             //Food
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pommes", "Fritten"),
@@ -232,7 +235,8 @@ public class InitialTransaction implements Realm.Transaction {
                     "Wasserbahn", "Wildwasserbahn", "Baumstammkanal"),
             new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Kettenflieger"),
             new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Kinderkarussell"),
-            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Achterbahn"),
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Achterbahn",
+                    StringUtil.getEmojiByUnicode(StringUtil.EMOJI_ROLLERCOASTER)),
             new AdvancedTag(R.drawable.ic_fairground_black_24dp, "GoKarts"),
             new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Geisterbahn")
     };
