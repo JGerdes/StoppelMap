@@ -45,7 +45,7 @@ public class TagSearchResult extends SearchResult {
         for (MapEntity entity : mMapEntities) {
             boundBuilder.include(entity.getOrigin().toLatLng());
         }
-        return CameraUpdateFactory.newLatLngBounds(boundBuilder.build(), 128);
+        return CameraUpdateFactory.newLatLngBounds(boundBuilder.build(), 160);
     }
 
     @Override

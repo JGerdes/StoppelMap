@@ -40,7 +40,8 @@ public class InitialTransaction implements Realm.Transaction {
             "map/misc",
             "map/buildings",
             "map/bars",
-            "map/attractions"
+            "map/attractions",
+            "map/wcs"
     };
 
     private AssetManager mAssets;
