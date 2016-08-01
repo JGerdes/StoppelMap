@@ -20,4 +20,6 @@
     <string name="dialog_update_message">Eine neue Version (%1$s) der StoppelMap ist verfügbar!</string>
     <string name="dialog_update_title">Neue Version verfügbar</string>
     <string name="search_prefix">Suche:</string>
+    <string name="not_in_area">Du befindest dich nicht auf dem Festgelände</string>
+    <string name="no_gps">Kein GPS-Signal verfügbar</string>
 </resources>

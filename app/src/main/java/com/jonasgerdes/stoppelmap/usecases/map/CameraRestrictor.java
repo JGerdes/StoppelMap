@@ -54,4 +54,14 @@ public class CameraRestrictor implements GoogleMap.OnCameraChangeListener {
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(newPos, zoom));
         }
     }
+
+    public static boolean isInBounds(LatLng location) {
+        if (location.latitude > LAT_MAX || location.latitude < LAT_MIN) {
+            return false;
+        }
+        if (location.longitude > LON_MAX || location.longitude < LON_MIN) {
+            return false;
+        }
+        return true;
+    }
 }

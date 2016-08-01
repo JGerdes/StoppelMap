@@ -8,7 +8,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -67,6 +69,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     private MapEntity mCurrentMapEntity;
     private MarkerManager mMarkerManager;
     private SearchResult mCurrentSearchResult;
+
+    @BindView(R.id.coordinator)
+    CoordinatorLayout mCoordinatorLayout;
 
     @BindView(R.id.bottom_sheet_image)
     ImageView mSheetImage;
@@ -165,7 +170,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
                     CameraUpdate update;
                     LatLng currentPos = StoppelMapApp.getViaActivity(getActivity()).getLastPosition();
-                    if (currentPos != null) {
+                    if (currentPos != null && CameraRestrictor.isInBounds(currentPos)) {
                         update = result.getCameraUpdate(currentPos);
                     } else {
                         update = result.getCameraUpdate();
@@ -190,12 +195,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                     public void run(Location location) {
                         if (mMap != null && location != null) {
                             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-                            CameraPosition pos = CameraPosition.fromLatLngZoom(loc, 18);
-                            CameraUpdate update = CameraUpdateFactory.newCameraPosition(pos);
-                            mMap.animateCamera(update);
                             mMap.setMyLocationEnabled(true);
-                        } else {
+                            if (CameraRestrictor.isInBounds(loc)) {
+                                CameraPosition pos = CameraPosition.fromLatLngZoom(loc, 18);
+                                CameraUpdate update = CameraUpdateFactory.newCameraPosition(pos);
+                                mMap.animateCamera(update);
+                            } else {
+                                Snackbar.make(mCoordinatorLayout, R.string.not_in_area, Snackbar.LENGTH_LONG).show();
+                            }
 
+                        } else {
+                            Snackbar.make(mCoordinatorLayout, R.string.no_gps, Snackbar.LENGTH_LONG).show();
                         }
                     }
                 });

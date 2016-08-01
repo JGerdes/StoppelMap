@@ -42,6 +42,7 @@ public class TagSearchResult extends SearchResult {
     public CameraUpdate getCameraUpdate(LatLng userLocation) {
         LatLngBounds.Builder boundBuilder = new LatLngBounds.Builder();
         List<MapEntity> includedEntities = null;
+
         if (userLocation != null) {
             boundBuilder.include(userLocation);
             includedEntities = getNearestEntities(mMapEntities, userLocation, 2);
