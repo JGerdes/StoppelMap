@@ -272,7 +272,7 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
 ]]></string>
-<string name="license_okhttp_title">OkHttp</string>
+    <string name="license_okhttp_title">OkHttp</string>
 <string name="license_okhttp_body">Copyright 2016 Square, Inc.
 \n\n
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -288,8 +288,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     limitations under the License.
 </string>
 
-<string name="license_icons_title">Weitere Icons</string>
-<string name="license_icons_subtitle">(Bier)</string>
+    <string name="license_icons_title">Weitere Icons</string>
+    <string name="license_icons_subtitle">(Bier)</string>
 <string name="license_icons_body"><![CDATA[Copyright © 2014, Austin Andrews (http://materialdesignicons.com/),
 with Reserved Font Name Material Design Icons.\n
 Copyright © 2014, Google (http://www.google.com/design/)
@@ -387,6 +387,12 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
 ]]></string>
+
+    <string name="license_flaticon_title">Weitere Icons</string>
+    <string name="license_flaticon_subtitle">(Kettenflieger)</string>
+<string name="license_flaticon_body">Icons made by Freepik
+    from www.flaticon.com is licensed by CC 3.0 BY
+</string>
 
 
 </resources>
