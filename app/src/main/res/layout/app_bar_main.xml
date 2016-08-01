@@ -59,6 +59,7 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
+
     <com.jonasgerdes.stoppelmap.views.SearchCardView
         android:id="@+id/search_container"
         android:layout_width="match_parent"
