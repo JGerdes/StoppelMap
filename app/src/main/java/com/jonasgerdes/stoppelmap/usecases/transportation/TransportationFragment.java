@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
@@ -45,6 +46,10 @@ public class TransportationFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setTitle(getString(R.string.navigation_transportation));
+        activity.setCheckedDrawerIcon(R.id.nav_transportation);
 
         mRoutesAdapter = new RouteListAdapter();
         mRouteList.setAdapter(mRoutesAdapter);

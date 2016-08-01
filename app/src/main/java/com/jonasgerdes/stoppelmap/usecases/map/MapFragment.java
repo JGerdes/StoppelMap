@@ -114,6 +114,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             mapFragment.getMapAsync(MapFragment.this);
         }
 
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setTitle(getString(R.string.app_name));
+        activity.setCheckedDrawerIcon(R.id.nav_map);
+
         mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
 
 

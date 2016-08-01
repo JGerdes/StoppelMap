@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 
@@ -40,6 +41,10 @@ public class AboutFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setTitle(getString(R.string.navigation_about));
+        activity.setCheckedDrawerIcon(R.id.nav_about);
 
         Typeface typeface = StoppelMapApp.getViaActivity(getActivity()).getMainTypeface();
         mAppNameText.setTypeface(typeface);

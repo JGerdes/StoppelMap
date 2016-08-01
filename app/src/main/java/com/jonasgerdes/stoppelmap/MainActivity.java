@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -252,6 +253,10 @@ public class MainActivity extends AppCompatActivity
 
     public void setTitle(String title) {
         mToolbar.setTitle(title);
+    }
+
+    public void setCheckedDrawerIcon(@IdRes int id) {
+        mNavigationView.setCheckedItem(id);
     }
 
     @Override
