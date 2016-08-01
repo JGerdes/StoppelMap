@@ -15,12 +15,15 @@ import com.bumptech.glide.Glide;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.usecases.map.EntityHelper;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.DepatureCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 
 /**
  * Created by Jonas on 17.07.2016.
@@ -28,6 +31,8 @@ import butterknife.ButterKnife;
 public class EntityDetailActivity extends AppCompatActivity {
     private static final String TAG = "EntityDetailActivity";
     private static final String ENTITY_UUID = "ENTITY_UUID";
+
+    private static final String UUID_BUS_STOP = "busbahnhof";
 
     @BindView(R.id.header)
     ImageView mHeaderImage;
@@ -74,6 +79,13 @@ public class EntityDetailActivity extends AppCompatActivity {
 
         if (mEntity.getInfo() != null && mEntity.getInfo().getText() != null) {
             adapter.addEntityCard(new EntityCard(InfoEntityCardHolder.LAYOUT, mEntity));
+        }
+
+        if (UUID_BUS_STOP.equals(mEntity.getUuid())) {
+            EntityCard card = new EntityCard(DepatureCardHolder.LAYOUT, mEntity);
+            Realm realm = StoppelMapApp.getViaActivity(this).getRealm();
+            card.setExtraData(realm.where(Route.class).findAll());
+            adapter.addEntityCard(card);
         }
     }
 

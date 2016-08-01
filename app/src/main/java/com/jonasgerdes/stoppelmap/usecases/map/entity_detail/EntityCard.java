@@ -8,6 +8,7 @@ import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 public class EntityCard {
     private int type;
     private MapEntity mapEntity;
+    private Object extraData;
 
     public EntityCard(int type, MapEntity mapEntity) {
         this.type = type;
@@ -28,5 +29,13 @@ public class EntityCard {
 
     public void setMapEntity(MapEntity mapEntity) {
         this.mapEntity = mapEntity;
+    }
+
+    public <T>T getExtraData() {
+        return (T) extraData;
+    }
+
+    public void setExtraData(Object extraData) {
+        this.extraData = extraData;
     }
 }

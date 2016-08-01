@@ -44,10 +44,7 @@
       "uuid": "busbahnhof",
       "name": "Busbahnhof",
       "type": 0,
-      "synonyms": [
-        "Busse",
-        "Bushaltestelle"
-      ],
+      "headerImageFile": "bus_stop.png",
       "icons": [
         "bus"
       ],
