@@ -18,6 +18,7 @@ import com.jonasgerdes.stoppelmap.model.InitialTransaction;
 import com.jonasgerdes.stoppelmap.versioning.RealmUpdateManager;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import io.realm.Realm;
@@ -169,5 +170,13 @@ public class StoppelMapApp extends Application {
         }
         return null;
 
+    }
+
+
+    public static Calendar getCurrentCalendar() {
+        Calendar now = Calendar.getInstance();
+        now.set(Calendar.DAY_OF_MONTH, 13);
+        now.set(Calendar.HOUR_OF_DAY, 19);
+        return now;
     }
 }

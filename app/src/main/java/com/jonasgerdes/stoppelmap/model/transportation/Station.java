@@ -2,6 +2,8 @@ package com.jonasgerdes.stoppelmap.model.transportation;
 
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
 
+import java.util.Calendar;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -76,5 +78,18 @@ public class Station extends RealmObject {
                 ", geoLocation=" + geoLocation +
                 ", days=" + days +
                 '}';
+    }
+
+    public Departure getNextDepature(Calendar date) {
+        Calendar departureTime = Calendar.getInstance();
+        for (DepartureDay day : days) {
+            for (Departure departure : day.getDepartures()) {
+                departureTime.setTime(departure.getTime());
+                if (departureTime.after(date)) {
+                    return departure;
+                }
+            }
+        }
+        return null;
     }
 }

@@ -6,6 +6,7 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Departure;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityCard;
@@ -13,6 +14,7 @@ import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityCardHolder;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,15 +46,19 @@ public class DepatureCardHolder extends EntityCardHolder {
         Departure departure;
         int padBottom = ViewUtil.dpToPx(context, 4);
         int padRight = ViewUtil.dpToPx(context, 32);
+        Calendar now = StoppelMapApp.getCurrentCalendar();
         for (Route route : routes) {
-            //Todo: select corret one according to time
-            departure = route.getStations().first().getDays().first().getDepartures().first();
+            departure = route.getReturnStation().getNextDepature(now);
             title = new TextView(context);
             title.setText(route.getName());
             title.setPadding(0, 0, padRight, padBottom);
             time = new TextView(context);
-            String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
-            time.setText(String.format("%s Uhr", timeString));
+            if (departure != null) {
+                String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
+                time.setText(String.format("%s Uhr", timeString));
+            } else {
+                time.setText("keine");
+            }
 
             mDepatures.addView(title);
             mDepatures.addView(time);
