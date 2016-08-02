@@ -41,7 +41,7 @@
                 android:maxLines="2"
                 android:textSize="@dimen/card_title_size"
                 android:transitionName="entity_title"
-                tools:text="Amtmannsbult\nLanger Name und Sohn inc."/>
+                tools:text="Amtmannsbult Langer Name und Sohn inc."/>
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_icons"

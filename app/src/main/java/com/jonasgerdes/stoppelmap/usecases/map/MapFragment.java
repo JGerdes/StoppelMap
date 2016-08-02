@@ -22,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -151,13 +152,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             searchAdapter.setSelectedListener(new MapEntitySearchAdapter.OnResultSelectedListener() {
                 @Override
                 public void onResultSelected(final SearchResult result) {
-                    searchCardView.hide();
 
                     if (result instanceof EntitySearchResult) {
                         final MapEntity entity = ((EntitySearchResult) result).getMapEntity();
-                        showBottomBarWith(entity);
                         mMarkerManager.setVisibleEntities(entity);
                         mMarkerManager.setIgnoreZoom(true);
+                        showBottomBarWith(entity);
+
                     }
 
                     if (result instanceof TagSearchResult) {
@@ -185,7 +186,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
                     mCurrentSearchResult = result;
                     mMarkerManager.placeRelevantMarkers();
+                    searchCardView.hide();
 
+                }
+            });
+
+            //fixme: Very hacky: hiding keyboard and showing bottomsheet leads to bottom
+            //bar in center of screen, re-expand on layout-change kinda fixes this
+            view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    if (mCurrentMapEntity != null) {
+                        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    }
                 }
             });
         }
@@ -230,6 +244,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         switch (item.getItemId()) {
             case R.id.options_search:
                 hideBottomSheet();
+                closeSearch();
                 getSearchView().show();
                 return true;
             default:
@@ -313,11 +328,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             public boolean onMarkerClick(Marker marker) {
                 MapEntity entity = mMarkerManager.getEntityForMarker(marker);
                 if (entity != null) {
-                    //if in search mode, only items in result are clickable
-                    if (mCurrentSearchResult == null
-                            || mCurrentSearchResult.containsEntity(entity)) {
-                        highlightEntity(entity);
-                    }
+                    highlightEntity(entity);
                 }
                 return false;
             }
@@ -351,17 +362,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                 continue;
             }
             if (MapUtil.isPointInGeoPolygon(latLng, mapEntity.getBounds())) {
-                //if in search mode, only items in result are clickable
-                if (mCurrentSearchResult == null
-                        || mCurrentSearchResult.containsEntity(mapEntity)) {
-                    showBottomBarWith(mapEntity);
-                    if (mapEntity.getOrigin() != null) {
-                        CameraUpdate update =
-                                CameraUpdateFactory.newLatLng(mapEntity.getOrigin().toLatLng());
-                        mMap.animateCamera(update);
+                //if in search mode and something other is selected, close search
+                if (mCurrentSearchResult != null
+                        && mCurrentSearchResult instanceof TagSearchResult) {
+                    if (!mCurrentSearchResult.containsEntity(mapEntity)) {
+                        closeSearch();
                     }
                 }
-
+                showBottomBarWith(mapEntity);
+                if (mapEntity.getOrigin() != null) {
+                    CameraUpdate update =
+                            CameraUpdateFactory.newLatLng(mapEntity.getOrigin().toLatLng());
+                    mMap.animateCamera(update);
+                }
                 return;
             }
 
@@ -370,11 +383,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     }
 
     private void hideBottomSheet() {
-        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         mCurrentMapEntity = null;
+        mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         if (mCurrentSearchResult == null) {
             mMarkerManager.setIgnoreZoom(false);
             mMarkerManager.setVisibleEntities(mMapEntities);
+            mMarkerManager.placeRelevantMarkers();
+        } else if (mCurrentSearchResult instanceof TagSearchResult) {
+            TagSearchResult tagResult = (TagSearchResult) mCurrentSearchResult;
+            mMarkerManager.setVisibleEntities(tagResult.getMapEntities());
             mMarkerManager.placeRelevantMarkers();
         }
     }
@@ -406,25 +423,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             iconView.setImageDrawable(null);
         }
 
-        //show marker for selected item when not in search mode
-        if (mCurrentSearchResult == null) {
-            mMarkerManager.setIgnoreZoom(true);
-            mMarkerManager.setVisibleEntities(mapEntity);
-            mMarkerManager.placeRelevantMarkers();
-        }
-
-//        mBottomSheet.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-//            }
-//        }, 500);
+        mMarkerManager.setIgnoreZoom(true);
+        mMarkerManager.setVisibleEntities(mapEntity);
+        mMarkerManager.placeRelevantMarkers();
     }
 
 
     @Override
     public boolean onBackPressed() {
+        Log.d(TAG, "onBackPressed: " + mCurrentMapEntity);
         if (mCurrentMapEntity != null) {
             hideBottomSheet();
             if (mCurrentSearchResult != null && mCurrentSearchResult instanceof EntitySearchResult) {

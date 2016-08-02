@@ -187,4 +187,8 @@ public class SearchCardView extends CardView {
         mResultAdapter = resultAdapter;
         mResultList.setAdapter(resultAdapter);
     }
+
+    public void setSearchFieldOnFocusChangedListener(OnFocusChangeListener listener) {
+        mSearchField.setOnFocusChangeListener(listener);
+    }
 }
