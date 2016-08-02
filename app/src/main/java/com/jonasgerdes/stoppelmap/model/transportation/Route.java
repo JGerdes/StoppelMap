@@ -14,16 +14,16 @@ public class Route extends RealmObject {
     private String uuid;
     private String name;
     private RealmList<Station> stations;
-    private RealmList<DepartureDay> returnTimes;
+    private Station returnStation;
 
     public Route() {
     }
 
-    public Route(String uuid, String name, RealmList<Station> stations, RealmList<DepartureDay> returnTimes) {
+    public Route(String uuid, String name, RealmList<Station> stations, Station returnStation) {
         this.uuid = uuid;
         this.name = name;
         this.stations = stations;
-        this.returnTimes = returnTimes;
+        this.returnStation = returnStation;
     }
 
     public String getUuid() {
@@ -50,12 +50,12 @@ public class Route extends RealmObject {
         this.stations = stations;
     }
 
-    public RealmList<DepartureDay> getReturnTimes() {
-        return returnTimes;
+    public Station getReturnStation() {
+        return returnStation;
     }
 
-    public void setReturnTimes(RealmList<DepartureDay> returnTimes) {
-        this.returnTimes = returnTimes;
+    public void setReturnStation(Station returnStation) {
+        this.returnStation = returnStation;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Route extends RealmObject {
                 "uuid=" + uuid +
                 ", name='" + name + '\'' +
                 ", stations=" + stations +
-                ", returnTimes=" + returnTimes +
+                ", returnStation=" + returnStation +
                 '}';
     }
 }
