@@ -1,8 +1,15 @@
 package com.jonasgerdes.stoppelmap.model.transportation;
 
 
+import android.location.Location;
+import android.support.v4.util.Pair;
+
+import com.google.android.gms.maps.model.LatLng;
+import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -15,6 +22,9 @@ public class Route extends RealmObject {
     private String name;
     private RealmList<Station> stations;
     private Station returnStation;
+
+    @Ignore
+    private Pair<Station, Float> mNearestStation;
 
     public Route() {
     }
@@ -66,5 +76,45 @@ public class Route extends RealmObject {
                 ", stations=" + stations +
                 ", returnStation=" + returnStation +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Route && ((Route) o).getUuid().equals(uuid);
+    }
+
+    public Station getNearestStation(LatLng location) {
+        if (mNearestStation == null) {
+            updateNearestStation(location);
+        }
+        return mNearestStation.first;
+    }
+
+    public float getNearestStationDistance(LatLng location) {
+        if (mNearestStation == null) {
+            updateNearestStation(location);
+        }
+        return mNearestStation.second;
+    }
+
+    public void updateNearestStation(LatLng location) {
+        Station nearest = null;
+        float nearestDistance = 0;
+        float[] distance = new float[1];
+        for (Station station : getStations()) {
+            GeoLocation stationLoc = station.getGeoLocation();
+            Location.distanceBetween(
+                    stationLoc.getLat(),
+                    stationLoc.getLng(),
+                    location.latitude,
+                    location.longitude,
+                    distance
+            );
+            if (nearest == null || distance[0] < nearestDistance) {
+                nearest = station;
+                nearestDistance = distance[0];
+            }
+        }
+        mNearestStation = new Pair<>(nearest, nearestDistance);
     }
 }

@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecases.transportation.route_list;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Departure;
+import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
 
@@ -73,12 +76,29 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
     }
 
     public void onBind(Route route) {
+        Context context = itemView.getContext();
         mName.setText(route.getName());
-        Station nextStation = route.getStations().first();
-        mNextStation.setText(nextStation.getName());
-        Departure departure = nextStation.getDays().first().getDepartures().first();
+        Station nextStation = null;
+        StoppelMapApp app = StoppelMapApp.getViaContext(context);
+        if (app != null) {
+            nextStation = route.getNearestStation(app.getLastPosition());
+        }
+        if (nextStation == null) {
+            route.getStations().first();
+        }
+        mNextStation.setText(String.format("ab %s", nextStation.getName()));
+        Departure departure = nextStation.getNextDepature(StoppelMapApp.getCurrentCalendar());
         String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
-        String depatureString = String.format("um %s Uhr ab", timeString);
+        int departureDay = departure.getDay();
+        int todaysDay = DepartureDay.getDayFromCalendar(StoppelMapApp.getCurrentCalendar());
+        String depatureString;
+        if (departureDay == todaysDay) {
+            depatureString = String.format("um %s Uhr ab", timeString);
+        } else {
+            String dayPrefix =
+                    context.getResources().getStringArray(R.array.days)[departureDay];
+            depatureString = String.format("%s um %s Uhr", dayPrefix, timeString);
+        }
         mNextTime.setText(depatureString);
 
         mStationLocations.clear();

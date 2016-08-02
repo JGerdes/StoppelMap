@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
@@ -18,11 +19,15 @@ import com.jonasgerdes.stoppelmap.usecases.transportation.route_detail.RouteDeta
 import com.jonasgerdes.stoppelmap.usecases.transportation.route_list.RouteListAdapter;
 import com.jonasgerdes.stoppelmap.usecases.transportation.station_detail.StationDetailActivity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
+import io.realm.Realm;
 
 /**
  * Created by Jonas on 03.07.2016.
@@ -70,15 +75,23 @@ public class TransportationFragment extends Fragment {
             }
         });
 
+        Realm realm = StoppelMapApp.getViaActivity(getActivity())
+                .getRealm();
 
-        RealmResults<Route> results = StoppelMapApp.getViaActivity(getActivity())
-                .getRealm().where(Route.class).findAllAsync();
-        results.addChangeListener(new RealmChangeListener<RealmResults<Route>>() {
+        List<Route> routes = new ArrayList<>();
+        for (Route route : realm.where(Route.class).findAll()) {
+            routes.add(route);
+        }
+        final LatLng location = StoppelMapApp.getViaActivity(getActivity()).getLastPosition();
+
+        Collections.sort(routes, new Comparator<Route>() {
             @Override
-            public void onChange(RealmResults<Route> routes) {
-                mRoutesAdapter.setRoutes(routes);
+            public int compare(Route lhs, Route rhs) {
+                return (int) Math.signum(lhs.getNearestStationDistance(location)
+                        - rhs.getNearestStationDistance(location));
             }
         });
+        mRoutesAdapter.setRoutes(routes);
 
     }
 

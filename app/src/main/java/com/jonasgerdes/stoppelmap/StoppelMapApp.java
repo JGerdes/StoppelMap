@@ -88,6 +88,13 @@ public class StoppelMapApp extends Application {
         return (StoppelMapApp) activity.getApplication();
     }
 
+    public static StoppelMapApp getViaContext(Context context) {
+        if (!(context.getApplicationContext() instanceof StoppelMapApp)) {
+            return null;
+        }
+        return (StoppelMapApp) context.getApplicationContext();
+    }
+
     public interface LocationRunnable {
         void run(Location location);
     }
@@ -176,7 +183,7 @@ public class StoppelMapApp extends Application {
     public static Calendar getCurrentCalendar() {
         Calendar now = Calendar.getInstance();
         now.set(Calendar.DAY_OF_MONTH, 13);
-        now.set(Calendar.HOUR_OF_DAY, 3);
+        now.set(Calendar.HOUR_OF_DAY, 19);
         return now;
     }
 }
