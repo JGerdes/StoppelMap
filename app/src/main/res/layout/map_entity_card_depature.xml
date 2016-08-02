@@ -21,8 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif light"
-            android:textSize="@dimen/card_title_size"
-            android:text="Nächste Abfahrten"/>
+            android:text="Nächste Abfahrten"
+            android:textSize="@dimen/card_title_size"/>
 
         <GridLayout
             android:id="@+id/depatures"

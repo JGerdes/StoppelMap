@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
@@ -62,8 +63,6 @@ public class DepatureCardHolder extends EntityCardHolder {
                     departure = route.getReturnStation().getDays().get(today).getDepartures().last();
                 }
                 String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
-                time.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                time.setLines(1);
                 if (departure.getComment() != null && !departure.getComment().isEmpty()) {
                     time.setText(String.format("%s Uhr (%s)", timeString, departure.getComment()));
                 } else {
@@ -72,6 +71,15 @@ public class DepatureCardHolder extends EntityCardHolder {
             } else {
                 time.setText("keine");
             }
+            time.setLayoutParams(new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            time.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            time.setLines(1);
+            time.setHorizontallyScrolling(true);
+            time.setSelected(true);
+            time.setSingleLine(true);
+            time.setMarqueeRepeatLimit(-1);
 
             mDepatures.addView(title);
             mDepatures.addView(time);
