@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Departure;
+import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityCard;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.EntityCardHolder;
@@ -54,7 +56,14 @@ public class DepatureCardHolder extends EntityCardHolder {
             title.setPadding(0, 0, padRight, padBottom);
             time = new TextView(context);
             if (departure != null) {
+                int today = DepartureDay.getDayFromCalendar(now);
+                //never show depature of next day
+                if (departure.getDay() != today) {
+                    departure = route.getReturnStation().getDays().get(today).getDepartures().last();
+                }
                 String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
+                time.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                time.setLines(1);
                 if (departure.getComment() != null && !departure.getComment().isEmpty()) {
                     time.setText(String.format("%s Uhr (%s)", timeString, departure.getComment()));
                 } else {
