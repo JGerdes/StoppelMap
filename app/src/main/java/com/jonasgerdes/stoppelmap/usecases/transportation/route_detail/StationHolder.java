@@ -5,11 +5,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Departure;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,7 +63,8 @@ public class StationHolder extends AbstractStationHolder {
         mDepature3.setVisibility(View.GONE);
 
 
-        List<Departure> nextDepartures = station.getDays().get(0).getDepartures();
+        Calendar now = StoppelMapApp.getCurrentCalendar();
+        List<Departure> nextDepartures = station.getNextDepatures(now, 3);
         String timeString;
         for (int i = 0; i < nextDepartures.size() && i < mDepatures.size(); i++) {
             timeString = FORMAT_NEXT_TIME.format(nextDepartures.get(i).getTime());

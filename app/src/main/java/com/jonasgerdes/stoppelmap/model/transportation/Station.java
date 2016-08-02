@@ -2,7 +2,9 @@ package com.jonasgerdes.stoppelmap.model.transportation;
 
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
@@ -91,5 +93,29 @@ public class Station extends RealmObject {
             }
         }
         return null;
+    }
+
+    public List<Departure> getNextDepatures(Calendar date, int count) {
+        List<Departure> nextDepatures = new ArrayList<>(count);
+        Calendar departureTime = Calendar.getInstance();
+        for (DepartureDay day : days) {
+            boolean addNext = false;
+            for (Departure departure : day.getDepartures()) {
+                departureTime.setTime(departure.getTime());
+                if (departureTime.after(date)) {
+                    addNext = true;
+                }
+                if (addNext) {
+                    nextDepatures.add(departure);
+                }
+                if (nextDepatures.size() == count) {
+                    break;
+                }
+            }
+            if (nextDepatures.size() > 0) {
+                break;
+            }
+        }
+        return nextDepatures;
     }
 }
