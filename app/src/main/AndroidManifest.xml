@@ -47,6 +47,10 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <activity
+            android:name=".usecases.tutorial.TutorialActivity"
+            android:theme="@style/TutorialTheme"/>
+
         <receiver android:name=".widget.heart.GingerbreadHeartWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>

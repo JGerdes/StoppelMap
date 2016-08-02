@@ -50,4 +50,8 @@
     </style>
 
 
+    <style name="TutorialTheme" parent="WelcomeScreenTheme">
+        <item name="welcomeButtonDoneText">Weiter</item>
+    </style>
+
 </resources>

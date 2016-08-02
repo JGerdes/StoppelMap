@@ -23,8 +23,10 @@ import com.jonasgerdes.stoppelmap.model.version.Version;
 import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
 import com.jonasgerdes.stoppelmap.usecases.transportation.TransportationFragment;
+import com.jonasgerdes.stoppelmap.usecases.tutorial.TutorialActivity;
 import com.jonasgerdes.stoppelmap.versioning.VersionHelper;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
+import com.stephentuso.welcome.WelcomeScreenHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.search_container)
     protected SearchCardView mSearchView;
 
+    private WelcomeScreenHelper mWelcomeScreenHelper;
     private BackPressListener mBackPressListener;
     private AlertDialog mUpdateHint;
     private Toolbar mToolbar;
@@ -59,6 +62,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+        mWelcomeScreenHelper = new WelcomeScreenHelper(this, TutorialActivity.class);
+        mWelcomeScreenHelper.show(savedInstanceState);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -100,6 +106,12 @@ public class MainActivity extends AppCompatActivity
         mSearchView.setUpWith(this, mToolbar, R.id.options_search);
         checkVersion();
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mWelcomeScreenHelper.onSaveInstanceState(outState);
     }
 
 
