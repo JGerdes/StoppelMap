@@ -5010,7 +5010,7 @@
         }
       ],
       "returnStation": {
-        "name": "Stoppelmarkt",
+        "name": "Vechta West: Rückfahrt",
         "uuid": "vechta_west_stoppelmarkt",
         "comment": "",
         "geoLocation": {
@@ -10010,7 +10010,7 @@
         }
       ],
       "returnStation": {
-        "name": "Stoppelmarkt",
+        "name": "Vechta Flugplatz: Rückfahrt",
         "uuid": "vechta_flugplatz_stoppelmarkt",
         "comment": "",
         "geoLocation": {
@@ -16123,7 +16123,7 @@
         }
       ],
       "returnStation": {
-        "name": "Stoppelmarkt",
+        "name": "Vechta Stadt: Rückfahrt",
         "uuid": "vechta_stadt_stoppelmarkt",
         "comment": "",
         "geoLocation": {
@@ -18357,7 +18357,7 @@
         }
       ],
       "returnStation": {
-        "name": "Stoppelmarkt",
+        "name": "Vechta Süd: Rückfahrt",
         "uuid": "vechta_sued_stoppelmarkt",
         "comment": "",
         "geoLocation": {

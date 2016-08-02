@@ -16,6 +16,7 @@ import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.usecases.transportation.route_detail.RouteDetailActivity;
 import com.jonasgerdes.stoppelmap.usecases.transportation.route_list.RouteListAdapter;
+import com.jonasgerdes.stoppelmap.usecases.transportation.station_detail.StationDetailActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +59,13 @@ public class TransportationFragment extends Fragment {
             @Override
             public void onRouteSelected(Route route) {
                 Intent intent = RouteDetailActivity.createIntent(getContext(), route);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onReturnsSelected(Route route) {
+                Intent intent =
+                        StationDetailActivity.createIntent(getContext(), route.getReturnStation());
                 startActivity(intent);
             }
         });

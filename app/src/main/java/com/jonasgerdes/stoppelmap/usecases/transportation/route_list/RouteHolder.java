@@ -53,6 +53,9 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
     @BindView(R.id.details)
     Button mDetailsButton;
 
+    @BindView(R.id.returns)
+    Button mReturnButtons;
+
     GoogleMap mGoogleMap;
 
     private List<LatLng> mStationLocations;

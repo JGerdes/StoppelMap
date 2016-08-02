@@ -20,6 +20,7 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
 
     public interface RouteSelectedListener {
         void onRouteSelected(Route route);
+        void onReturnsSelected(Route route);
     }
 
     private List<Route> mRoutes;
@@ -60,6 +61,15 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteHolder> {
             public void onClick(View v) {
                 if (mRouteSelectedListener != null) {
                     mRouteSelectedListener.onRouteSelected(route);
+                }
+            }
+        });
+
+        holder.mReturnButtons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mRouteSelectedListener != null) {
+                    mRouteSelectedListener.onReturnsSelected(route);
                 }
             }
         });
