@@ -171,7 +171,14 @@ public class StoppelMapApp extends Application {
             mLocationManager
                     = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         }
-        Location loc = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location loc;
+        if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            loc = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        } else if (mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            loc = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        } else {
+            loc = mLocationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+        }
         if (loc != null) {
             return new LatLng(loc.getLatitude(), loc.getLongitude());
         }
