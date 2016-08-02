@@ -95,6 +95,7 @@ public class Station extends RealmObject {
         return null;
     }
 
+
     public List<Departure> getNextDepatures(Calendar date, int count) {
         List<Departure> nextDepatures = new ArrayList<>(count);
         Calendar departureTime = Calendar.getInstance();
@@ -111,9 +112,6 @@ public class Station extends RealmObject {
                 if (nextDepatures.size() == count) {
                     break;
                 }
-            }
-            if (nextDepatures.size() > 0) {
-                break;
             }
         }
         return nextDepatures;

@@ -55,7 +55,11 @@ public class DepatureCardHolder extends EntityCardHolder {
             time = new TextView(context);
             if (departure != null) {
                 String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
-                time.setText(String.format("%s Uhr", timeString));
+                if (departure.getComment() != null && !departure.getComment().isEmpty()) {
+                    time.setText(String.format("%s Uhr (%s)", timeString, departure.getComment()));
+                } else {
+                    time.setText(String.format("%s Uhr", timeString));
+                }
             } else {
                 time.setText("keine");
             }

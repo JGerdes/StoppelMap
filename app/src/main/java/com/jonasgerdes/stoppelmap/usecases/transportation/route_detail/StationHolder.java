@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecases.transportation.route_detail;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.transportation.Departure;
+import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 import com.jonasgerdes.stoppelmap.model.transportation.Station;
 
 import java.text.SimpleDateFormat;
@@ -55,6 +57,7 @@ public class StationHolder extends AbstractStationHolder {
     public void onBind(Station station, boolean showTopNode, boolean showBottomNode) {
 
         onBind(showTopNode, showBottomNode);
+        Context context = itemView.getContext();
 
         mName.setText(station.getName());
 
@@ -64,11 +67,20 @@ public class StationHolder extends AbstractStationHolder {
 
 
         Calendar now = StoppelMapApp.getCurrentCalendar();
+        int todaysDay = DepartureDay.getDayFromCalendar(now);
         List<Departure> nextDepartures = station.getNextDepatures(now, 3);
         String timeString;
         for (int i = 0; i < nextDepartures.size() && i < mDepatures.size(); i++) {
-            timeString = FORMAT_NEXT_TIME.format(nextDepartures.get(i).getTime());
-            mDepatures.get(i).setText(String.format("%s Uhr", timeString));
+            Departure departure = nextDepartures.get(i);
+            timeString = FORMAT_NEXT_TIME.format(departure.getTime());
+            int departureDay = departure.getDay();
+            if (departureDay == todaysDay) {
+                mDepatures.get(i).setText(String.format("%s Uhr", timeString));
+            } else {
+                String dayPrefix =
+                        context.getResources().getStringArray(R.array.days)[departureDay];
+                mDepatures.get(i).setText(String.format("%s, %s Uhr", dayPrefix, timeString));
+            }
             mDepatures.get(i).setVisibility(View.VISIBLE);
         }
 

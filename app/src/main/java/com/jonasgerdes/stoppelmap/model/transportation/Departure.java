@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.model.transportation;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.RealmObject;
@@ -42,5 +43,13 @@ public class Departure extends RealmObject {
                 "time=" + time +
                 ", comment='" + comment + '\'' +
                 '}';
+    }
+
+    public
+    @DepartureDay.Day
+    int getDay() {
+        Calendar date = Calendar.getInstance();
+        date.setTime(getTime());
+        return DepartureDay.getDayFromCalendar(date);
     }
 }
