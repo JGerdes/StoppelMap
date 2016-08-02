@@ -60,8 +60,15 @@ public class DepatureCardHolder extends EntityCardHolder {
                 int today = DepartureDay.getDayFromCalendar(now);
                 //never show depature of next day
                 if (departure.getDay() != today) {
-                    departure = route.getReturnStation().getDays().get(today).getDepartures().last();
+                    if (today != DepartureDay.DAY_INVALID) {
+                        departure = route.getReturnStation().getDays().get(today).getDepartures().last();
+                    } else {
+                        departure = null;
+                    }
                 }
+            }
+
+            if (departure != null) {
                 String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
                 if (departure.getComment() != null && !departure.getComment().isEmpty()) {
                     time.setText(String.format("%s Uhr (%s)", timeString, departure.getComment()));

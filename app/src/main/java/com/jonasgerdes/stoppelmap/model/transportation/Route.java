@@ -98,6 +98,10 @@ public class Route extends RealmObject {
     }
 
     public void updateNearestStation(LatLng location) {
+        if (location == null) {
+            mNearestStation = new Pair<>(getStations().first(), -1f);
+            return;
+        }
         Station nearest = null;
         float nearestDistance = 0;
         float[] distance = new float[1];
