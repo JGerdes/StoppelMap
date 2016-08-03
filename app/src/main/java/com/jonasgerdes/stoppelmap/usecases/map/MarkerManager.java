@@ -105,4 +105,11 @@ public class MarkerManager implements GoogleMap.OnCameraChangeListener {
     public void setIgnoreZoom(boolean ignoreZoom) {
         mIgnoreZoom = ignoreZoom;
     }
+
+    public void destroy() {
+        mMarkers.clear();
+        mVisibleEntities.clear();
+        mMarkerEntityMap.clear();
+        mMap = null;
+    }
 }
