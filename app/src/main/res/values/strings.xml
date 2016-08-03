@@ -22,4 +22,6 @@
     <string name="search_prefix">Suche:</string>
     <string name="not_in_area">Du befindest dich nicht auf dem Festgelände</string>
     <string name="no_gps">Kein GPS-Signal verfügbar</string>
+    <string name="station_detail_price">Fahrpreis</string>
+    <string name="station_detail_directions">Navigieren</string>
 </resources>
