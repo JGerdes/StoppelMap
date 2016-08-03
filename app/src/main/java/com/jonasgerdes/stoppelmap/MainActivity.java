@@ -208,6 +208,9 @@ public class MainActivity extends AppCompatActivity
                 loadFragment(AboutFragment.newInstance());
                 setTitle(item.getTitle());
                 break;
+            case R.id.nav_tutorial:
+                mWelcomeScreenHelper.forceShow();
+                break;
         }
 
         mDrawer.closeDrawer(GravityCompat.START);

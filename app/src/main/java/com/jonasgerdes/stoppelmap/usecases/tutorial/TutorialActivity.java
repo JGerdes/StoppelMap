@@ -20,7 +20,6 @@ public class TutorialActivity extends com.stephentuso.welcome.ui.WelcomeActivity
                 .basicPage(R.drawable.tutorial_page4, "Fahrpläne", "Dieses Jahr neu: Busfahrpläne! Öffne diese über das Menü auf der linken Seite und schaue, wann an einer Haltestelle in Deiner Nähe der nächste Bus fährt.", R.color.colorPrimary, true)
                 .basicPage(R.drawable.tutorial_page1, "Viel Spaß!", "Los geht's. Man sieht sich auf dem Stoppelmarkt!", R.color.colorPrimary, true)
                 .swipeToDismiss(true)
-                .canSkip(false)
                 .build();
     }
 

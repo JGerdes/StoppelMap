@@ -52,6 +52,7 @@
 
     <style name="TutorialTheme" parent="WelcomeScreenTheme">
         <item name="welcomeButtonDoneText">Weiter</item>
+        <item name="welcomeButtonSkipText">Überspringen</item>
     </style>
 
 </resources>
