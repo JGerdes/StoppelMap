@@ -3,7 +3,7 @@
     <string name="asset_map_entity_header_dir">file:///android_asset/headers/%1$s</string>
     <string-array name="asset_header_placeholders">
         <item>placeholder/beer.png</item>
-        <item>placeholder/rides.png</item>
+        <item>placeholder/ride.png</item>
         <item>placeholder/beer.png</item>
         <item>placeholder/beer.png</item>
         <item>placeholder/hybrid.png</item>
