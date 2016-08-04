@@ -230,6 +230,8 @@ public class MainActivity extends AppCompatActivity
     private void loadFragment(Fragment fragment, boolean addToBackStack) {
         if (fragment instanceof BackPressListener) {
             mBackPressListener = (BackPressListener) fragment;
+        } else {
+            mBackPressListener = null;
         }
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
