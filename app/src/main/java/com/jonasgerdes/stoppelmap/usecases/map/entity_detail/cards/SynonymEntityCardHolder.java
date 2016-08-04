@@ -38,7 +38,7 @@ public class SynonymEntityCardHolder extends EntityCardHolder {
             textView.setText(name.getVal());
             int padding = ViewUtil.dpToPx(context, 4);
             textView.setPadding(padding, padding, padding, padding);
-            textView.setGravity(Gravity.CENTER_VERTICAL);
+            textView.setGravity(Gravity.CENTER);
             mContainer.addView(textView);
         }
     }

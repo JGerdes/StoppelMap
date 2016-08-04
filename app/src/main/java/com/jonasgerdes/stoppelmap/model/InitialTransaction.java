@@ -16,6 +16,8 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.map.MapEntities;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.map.Tag;
+import com.jonasgerdes.stoppelmap.model.schedule.Event;
+import com.jonasgerdes.stoppelmap.model.schedule.Events;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.model.transportation.Transportation;
@@ -43,6 +45,11 @@ public class InitialTransaction implements Realm.Transaction {
             "map/bars",
             "map/attractions",
             "map/wcs"
+    };
+
+    private static final String[] EVENT_FILES = new String[]{
+            "schedule/official",
+            "schedule/tents"
     };
 
     private AssetManager mAssets;
@@ -146,11 +153,31 @@ public class InitialTransaction implements Realm.Transaction {
                 }
             }
         }
+
+        for (String file : EVENT_FILES) {
+            Events events = readJsonFile(gson, file, Events.class);
+            if (events != null) {
+                for (Event event : events.getEvents()) {
+                    checkForNull(event, event.getUuid(), "uuid");
+                    checkForNull(event, event.getName(), "name");
+                    checkForNull(event, event.getStart(), "start");
+                    checkForNull(event, event.getLocationUuid(), "locationUuid");
+
+                    realm.copyToRealm(event);
+                }
+            }
+        }
     }
 
     private void checkForNull(MapEntity entity, Object field, String fieldName) {
         if (field == null) {
             Log.e(TAG, "checkForNull: " + fieldName + " is/are null on" + entity.getUuid());
+        }
+    }
+
+    private void checkForNull(Event event, Object field, String fieldName) {
+        if (field == null) {
+            Log.e(TAG, "checkForNull: " + fieldName + " is/are null on" + event.getUuid());
         }
     }
 
