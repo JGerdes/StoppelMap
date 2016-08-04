@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.version.Version;
 import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
@@ -287,5 +288,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public TabLayout getTabLayout() {
         return mTabLayout;
+    }
+
+    public void showMapWithEntity(MapEntity mapEntity) {
+        Fragment fragment = MapFragment.newInstance(mapEntity);
+        loadFragment(fragment, true);
     }
 }

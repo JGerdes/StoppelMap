@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecases.schedule;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 
@@ -22,7 +26,7 @@ import io.realm.RealmResults;
 /**
  * Created by Jonas on 04.08.2016.
  */
-public class EventDayFragment extends Fragment {
+public class EventDayFragment extends Fragment implements EventAdapter.EventActionListener {
 
     private static final String ARGUMENT_DAY = "ARGUMENT_DAY";
 
@@ -50,6 +54,8 @@ public class EventDayFragment extends Fragment {
         mEventList.setAdapter(mEventAdapter);
         mEventList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        mEventAdapter.setActionListener(this);
+
     }
 
     @Override
@@ -66,5 +72,19 @@ public class EventDayFragment extends Fragment {
         EventDayFragment fragment = new EventDayFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onFacebookAction(String url) {
+        Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+        facebookIntent.setData(Uri.parse(url));
+        startActivity(facebookIntent);
+    }
+
+    @Override
+    public void onLocationAction(MapEntity location) {
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).showMapWithEntity(location);
+        }
     }
 }

@@ -62,6 +62,8 @@ import io.realm.Realm;
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback, MainActivity.BackPressListener {
     private static final String TAG = "MapFragment";
+    private static final String ARGUMENT_ENTITY_TO_SHOW = "ARGUMENT_ENTITY_TO_SHOW";
+    private static final float ZOOM_PROVIDED_ENTITY = 18;
 
     private GoogleMap mMap;
     private Unbinder mUnbinder;
@@ -229,7 +231,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                 });
             }
         });
-
     }
 
     @Override
@@ -342,15 +343,39 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         cameraChangeMultiplexer.add(new CameraRestrictor(mMap));
 
         mMarkerManager = new MarkerManager(getContext(), mMap);
-        mMarkerManager.generateMarkers(mMapEntities);
         cameraChangeMultiplexer.add(mMarkerManager);
+        mMarkerManager.generateMarkers(mMapEntities, new LabelCreationTask.OnReadyListener() {
+            @Override
+            public void onReady() {
+                //show/highlight map entity provided by arguments
+                if (getArguments() != null) {
+                    Realm realm = StoppelMapApp.getViaActivity(getActivity()).getRealm();
+                    String uuid = getArguments().getString(ARGUMENT_ENTITY_TO_SHOW);
+                    if (uuid != null) {
+                        final MapEntity entity = realm.where(MapEntity.class).equalTo("uuid", uuid).findFirst();
+                        if (entity != null) {
+                            highlightEntity(entity, ZOOM_PROVIDED_ENTITY);
+                        }
+                    }
+                }
+            }
+        });
+
 
     }
 
     private void highlightEntity(MapEntity entity) {
+        highlightEntity(entity, -1);
+    }
+
+    private void highlightEntity(MapEntity entity, float zoom) {
         if (entity.getOrigin() != null) {
-            CameraUpdate update =
-                    CameraUpdateFactory.newLatLng(entity.getOrigin().toLatLng());
+            CameraUpdate update;
+            if (zoom == -1) {
+                update = CameraUpdateFactory.newLatLng(entity.getOrigin().toLatLng());
+            } else {
+                update = CameraUpdateFactory.newLatLngZoom(entity.getOrigin().toLatLng(), zoom);
+            }
             mMap.animateCamera(update);
         }
         showBottomBarWith(entity);
@@ -461,6 +486,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
         Bundle args = new Bundle();
 
+        MapFragment fragment = new MapFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static MapFragment newInstance(MapEntity entityToShow) {
+        Bundle args = new Bundle();
+        args.putString(ARGUMENT_ENTITY_TO_SHOW, entityToShow.getUuid());
         MapFragment fragment = new MapFragment();
         fragment.setArguments(args);
         return fragment;

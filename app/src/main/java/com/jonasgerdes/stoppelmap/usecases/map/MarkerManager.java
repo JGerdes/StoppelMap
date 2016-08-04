@@ -18,6 +18,7 @@ import java.util.Map;
  */
 public class MarkerManager implements GoogleMap.OnCameraChangeListener {
 
+
     private Context mContext;
     private GoogleMap mMap;
     private Map<String, MapEntity> mMarkerEntityMap;
@@ -36,12 +37,20 @@ public class MarkerManager implements GoogleMap.OnCameraChangeListener {
 
     @SuppressWarnings("unchecked")
     public void generateMarkers(final List<MapEntity> entities) {
+        generateMarkers(entities, null);
+    }
+
+    public void generateMarkers(final List<MapEntity> entities,
+                                final LabelCreationTask.OnReadyListener listener) {
         new LabelCreationTask(mContext)
                 .onReady(new LabelCreationTask.OnReadyListener() {
                     @Override
                     public void onReady() {
                         mVisibleEntities = entities;
                         placeRelevantMarkers();
+                        if (listener != null) {
+                            listener.onReady();
+                        }
                     }
                 })
                 .execute(entities);

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
 
 import java.util.List;
@@ -18,7 +19,14 @@ import io.realm.RealmResults;
  */
 public class EventAdapter extends RecyclerView.Adapter<EventHolder> {
 
+    interface EventActionListener {
+        void onFacebookAction(String url);
+
+        void onLocationAction(MapEntity location);
+    }
+
     private List<Event> mEvents;
+    private EventActionListener mActionListener;
 
     public EventAdapter(RealmResults<Event> events) {
         mEvents = events;
@@ -39,12 +47,32 @@ public class EventAdapter extends RecyclerView.Adapter<EventHolder> {
 
     @Override
     public void onBindViewHolder(EventHolder holder, int position) {
-        Event event = mEvents.get(position);
+        final Event event = mEvents.get(position);
         holder.onBind(event);
+        holder.mFacebookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mActionListener != null) {
+                    mActionListener.onFacebookAction(event.getFacebookUrl());
+                }
+            }
+        });
+        holder.mLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mActionListener != null) {
+                    mActionListener.onLocationAction(event.getLocation());
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return mEvents.size();
+    }
+
+    public void setActionListener(EventActionListener actionListener) {
+        mActionListener = actionListener;
     }
 }

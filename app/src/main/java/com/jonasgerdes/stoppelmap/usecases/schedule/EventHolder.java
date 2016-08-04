@@ -61,7 +61,7 @@ public class EventHolder extends RecyclerView.ViewHolder {
             mLocationButton.setVisibility(View.GONE);
         }
 
-        if (event.getFacebookUrl() != null) {
+        if (event.getFacebookUrl() != null && !event.getFacebookUrl().trim().isEmpty()) {
             mFacebookButton.setVisibility(View.VISIBLE);
         } else {
             mFacebookButton.setVisibility(View.GONE);
