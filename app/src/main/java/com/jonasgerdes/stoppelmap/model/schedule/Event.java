@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.model.schedule;
 
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 
@@ -22,6 +23,7 @@ public class Event extends RealmObject {
     private Date end;
 
     private String locationUuid;
+    private MapEntity mMapEntity;
 
     private String description;
     private String facebookUrl;
@@ -80,8 +82,12 @@ public class Event extends RealmObject {
         return locationUuid;
     }
 
-    public void setLocationUuid(String locationUuid) {
-        this.locationUuid = locationUuid;
+    public MapEntity getLocation() {
+        return mMapEntity;
+    }
+
+    public void setLocation(MapEntity mapEntity) {
+        mMapEntity = mapEntity;
     }
 
     public String getDescription() {
@@ -115,6 +121,8 @@ public class Event extends RealmObject {
     public void setTags(RealmList<Tag> tags) {
         this.tags = tags;
     }
+
+
 
 
 }

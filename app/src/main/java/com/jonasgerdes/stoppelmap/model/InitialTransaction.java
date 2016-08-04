@@ -161,7 +161,13 @@ public class InitialTransaction implements Realm.Transaction {
                     checkForNull(event, event.getUuid(), "uuid");
                     checkForNull(event, event.getName(), "name");
                     checkForNull(event, event.getStart(), "start");
-                    checkForNull(event, event.getLocationUuid(), "locationUuid");
+                    if (event.getLocationUuid() != null) {
+                        event.setLocation(
+                                realm.where(MapEntity.class)
+                                        .equalTo("uuid", event.getLocationUuid())
+                                        .findFirst()
+                        );
+                    }
 
                     realm.copyToRealm(event);
                 }
