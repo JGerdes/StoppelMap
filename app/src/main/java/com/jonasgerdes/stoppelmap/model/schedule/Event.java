@@ -17,6 +17,7 @@ public class Event extends RealmObject {
     private String name;
     private int type;
 
+    private int day;
     private Date start;
     private Date end;
 
@@ -49,6 +50,14 @@ public class Event extends RealmObject {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 
     public Date getStart() {

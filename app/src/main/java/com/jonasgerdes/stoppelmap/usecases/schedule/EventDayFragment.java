@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
+import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmResults;
 
 /**
  * Created by Jonas on 04.08.2016.
@@ -26,12 +29,13 @@ public class EventDayFragment extends Fragment {
     private Unbinder mUnbinder;
     @BindView(R.id.depatures)
     RecyclerView mEventList;
+    EventAdapter mEventAdapter;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.transportation_fragment_depature_day, container, false);
+        View view = inflater.inflate(R.layout.schedule_fragment_event_day, container, false);
         return view;
     }
 
@@ -40,7 +44,10 @@ public class EventDayFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
         final int dayId = getArguments().getInt(ARGUMENT_DAY);
-
+        RealmResults<Event> events = StoppelMapApp.getViaActivity(getActivity()).getRealm()
+                .where(Event.class).equalTo("day", dayId).findAllAsync();
+        mEventAdapter = new EventAdapter(events);
+        mEventList.setAdapter(mEventAdapter);
         mEventList.setLayoutManager(new LinearLayoutManager(getContext()));
 
     }

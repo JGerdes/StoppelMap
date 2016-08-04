@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
-import com.jonasgerdes.stoppelmap.usecases.transportation.station_detail.DepartureDayFragmentAdapter;
 import com.jonasgerdes.stoppelmap.views.interfaces.TabLayoutProvider;
 
 import butterknife.BindView;
@@ -35,11 +34,11 @@ public class ScheduleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         if (getActivity() instanceof TabLayoutProvider) {
             mTabLayout = ((TabLayoutProvider) getActivity()).getTabLayout();
             mTabLayout.setVisibility(View.VISIBLE);
         }
+        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         return view;
     }
 
