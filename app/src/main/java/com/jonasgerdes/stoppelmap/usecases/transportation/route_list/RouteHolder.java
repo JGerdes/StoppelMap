@@ -86,21 +86,28 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
         if (nextStation == null) {
             route.getStations().first();
         }
-        mNextStation.setText(String.format("ab %s", nextStation.getName()));
         Departure departure = nextStation.getNextDepature(StoppelMapApp.getCurrentCalendar());
-        String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
-        int departureDay = departure.getDay();
-        int todaysDay = DepartureDay.getDayFromCalendar(StoppelMapApp.getCurrentCalendar());
-        String depatureString;
-        if (departureDay == todaysDay) {
-            depatureString = String.format("um %s Uhr ab", timeString);
-        } else {
-            String dayPrefix =
-                    context.getResources().getStringArray(R.array.days)[departureDay];
-            depatureString = String.format("%s um %s Uhr", dayPrefix, timeString);
-        }
-        mNextTime.setText(depatureString);
+        if (departure != null) {
+            mNextStation.setText(String.format("ab %s", nextStation.getName()));
+            mNextStation.setVisibility(View.VISIBLE);
+            mNextTime.setVisibility(View.VISIBLE);
+            String timeString = FORMAT_NEXT_TIME.format(departure.getTime());
+            int departureDay = departure.getDay();
+            int todaysDay = DepartureDay.getDayFromCalendar(StoppelMapApp.getCurrentCalendar());
+            String depatureString;
+            if (departureDay == todaysDay) {
+                depatureString = String.format("um %s Uhr ab", timeString);
+            } else {
+                String dayPrefix =
+                        context.getResources().getStringArray(R.array.days)[departureDay];
+                depatureString = String.format("%s um %s Uhr", dayPrefix, timeString);
+            }
+            mNextTime.setText(depatureString);
 
+        } else {
+            mNextStation.setVisibility(View.INVISIBLE);
+            mNextTime.setText(R.string.transportation_hint_no_more_depatures);
+        }
         mStationLocations.clear();
         for (Station station : route.getStations()) {
             mStationLocations.add(station.getGeoLocation().toLatLng());

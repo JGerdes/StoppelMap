@@ -84,5 +84,10 @@ public class StationHolder extends AbstractStationHolder {
             mDepatures.get(i).setVisibility(View.VISIBLE);
         }
 
+        if (nextDepartures.size() == 0) {
+            mDepature1.setVisibility(View.VISIBLE);
+            mDepature1.setText(R.string.transportation_hint_no_more_depatures);
+        }
+
     }
 }

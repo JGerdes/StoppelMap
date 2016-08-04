@@ -24,4 +24,5 @@
     <string name="no_gps">Kein GPS-Signal verfügbar</string>
     <string name="station_detail_price">Fahrpreis</string>
     <string name="station_detail_directions">Navigieren</string>
+    <string name="transportation_hint_no_more_depatures">keine weitere Abfahrten</string>
 </resources>
