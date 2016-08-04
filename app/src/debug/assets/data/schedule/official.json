@@ -23,7 +23,6 @@
       "tags": [
       ]
     },
-
     // Freitag
     {
       "uuid": "stoppelmarkt_marktbeginn_freitag",
@@ -49,7 +48,6 @@
         "Für Kinder"
       ]
     },
-
     // Samstag
     {
       "uuid": "stoppelmarkt_marktbeginn_samstag",
@@ -57,7 +55,6 @@
       "type": 0,
       "start": "2016-08-13 13:00:00"
     },
-
     // Sonntag
     {
       "uuid": "stoppelmarkt_gottesdienst",
@@ -66,9 +63,11 @@
       "start": "2016-08-14 10:00:00",
       "end": "2016-08-14 12:00:00",
       "locationUuid": "kuehlings_niedersachsenhalle",
-      "description": "Gottesdienst in der Niedersachsenhalle mit anschließendem Marktbeginn"
+      "description": "Gottesdienst in der Niedersachsenhalle mit anschließendem Marktbeginn",
+      "artists": [
+        "Pfarrer Ellinghaus"
+      ]
     },
-
     // Montag
     {
       "uuid": "stoppelmarkt_viehmarkt",
@@ -84,7 +83,6 @@
       "start": "2016-08-15 11:00:00",
       "description": "Traditioneller Empfang der Gäste der Stadt Vechta"
     },
-
     // Dienstag
     {
       "uuid": "stoppelmarkt_marktbeginn_dienstag",
@@ -104,6 +102,7 @@
       "uuid": "stoppelmarkt_feuerwerk",
       "name": "Brillant-Feuerwerk",
       "type": 0,
+      "start": "2016-08-16 22:00:00",
       "description": "Großes Brillant-Feuerwerk, zu sehen in Richtung Osten des Marktgeländes"
     }
   ]

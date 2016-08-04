@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -22,17 +23,19 @@ import android.view.View;
 import com.jonasgerdes.stoppelmap.model.version.Version;
 import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
+import com.jonasgerdes.stoppelmap.usecases.schedule.ScheduleFragment;
 import com.jonasgerdes.stoppelmap.usecases.transportation.TransportationFragment;
 import com.jonasgerdes.stoppelmap.usecases.tutorial.TutorialActivity;
 import com.jonasgerdes.stoppelmap.versioning.VersionHelper;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
+import com.jonasgerdes.stoppelmap.views.interfaces.TabLayoutProvider;
 import com.stephentuso.welcome.WelcomeScreenHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, TabLayoutProvider {
     private static final String TAG = "MainActivity";
     private static final long ANIMATION_DURATION = 300;
 
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity
     protected NavigationView mNavigationView;
     @BindView(R.id.search_container)
     protected SearchCardView mSearchView;
+    @BindView(R.id.tabs)
+    protected TabLayout mTabLayout;
 
     private WelcomeScreenHelper mWelcomeScreenHelper;
     private BackPressListener mBackPressListener;
@@ -196,10 +201,10 @@ public class MainActivity extends AppCompatActivity
                 loadFragment(MapFragment.newInstance());
                 setTitle(getString(R.string.app_name));
                 break;
-//            case R.id.nav_schedule:
-//                loadFragment(ScheduleFragment.newInstance());
-//                setTitle(item.getTitle());
-//                break;
+            case R.id.nav_schedule:
+                loadFragment(ScheduleFragment.newInstance());
+                setTitle(item.getTitle());
+                break;
             case R.id.nav_transportation:
                 loadFragment(TransportationFragment.newInstance());
                 setTitle(item.getTitle());
@@ -277,5 +282,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         StoppelMapApp.getViaActivity(this).onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public TabLayout getTabLayout() {
+        return mTabLayout;
     }
 }
