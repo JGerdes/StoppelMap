@@ -15,16 +15,22 @@ import com.bumptech.glide.Glide;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
 import com.jonasgerdes.stoppelmap.usecases.map.EntityHelper;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.DepatureCardHolder;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.EventEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.SynonymEntityCardHolder;
 
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
 
 /**
  * Created by Jonas on 17.07.2016.
@@ -42,6 +48,7 @@ public class EntityDetailActivity extends AppCompatActivity {
     RecyclerView mCardList;
 
     private MapEntity mEntity;
+    private EntityCardAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +64,7 @@ public class EntityDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        String entityUuid = getIntent().getExtras().getString(ENTITY_UUID);
+        final String entityUuid = getIntent().getExtras().getString(ENTITY_UUID);
         mEntity = StoppelMapApp.getViaActivity(this).getRealm()
                 .where(MapEntity.class).equalTo("uuid", entityUuid).findFirst();
 
@@ -70,28 +77,58 @@ public class EntityDetailActivity extends AppCompatActivity {
                 .into(mHeaderImage);
 
 
-        EntityCardAdapter adapter = new EntityCardAdapter();
-        mCardList.setAdapter(adapter);
+        Realm realm = StoppelMapApp.getViaActivity(this).getRealm();
+
+        mAdapter = new EntityCardAdapter();
+        mCardList.setAdapter(mAdapter);
         mCardList.setLayoutManager(new LinearLayoutManager(this));
 
         if (mEntity.getIcons() != null && mEntity.getIcons().size() > 0) {
-            adapter.addEntityCard(new EntityCard(IconsEntityCardHolder.LAYOUT, mEntity));
+            mAdapter.addEntityCard(new EntityCard(IconsEntityCardHolder.LAYOUT, mEntity));
         }
 
         if (mEntity.getSynonyms() != null && mEntity.getSynonyms().size() > 0) {
-            adapter.addEntityCard(new EntityCard(SynonymEntityCardHolder.LAYOUT, mEntity));
+            mAdapter.addEntityCard(new EntityCard(SynonymEntityCardHolder.LAYOUT, mEntity));
         }
 
         if (mEntity.getInfo() != null && mEntity.getInfo().getText() != null) {
-            adapter.addEntityCard(new EntityCard(InfoEntityCardHolder.LAYOUT, mEntity));
+            mAdapter.addEntityCard(new EntityCard(InfoEntityCardHolder.LAYOUT, mEntity));
         }
+
+        addEventCard(realm);
 
         if (UUID_BUS_STOP.equals(mEntity.getUuid())) {
             EntityCard card = new EntityCard(DepatureCardHolder.LAYOUT, mEntity);
-            Realm realm = StoppelMapApp.getViaActivity(this).getRealm();
             card.setExtraData(realm.where(Route.class).findAll());
-            adapter.addEntityCard(card);
+            mAdapter.addEntityCard(card);
         }
+    }
+
+    private void addEventCard(Realm realm) {
+        realm.where(Event.class).equalTo("locationUuid", mEntity.getUuid())
+                .findAllSortedAsync("start")
+                .addChangeListener(new RealmChangeListener<RealmResults<Event>>() {
+                    @Override
+                    public void onChange(RealmResults<Event> events) {
+                        if (events != null && events.size() > 0) {
+                            Event nextEvent = null;
+                            Calendar eventTime = Calendar.getInstance();
+                            for (Event event : events) {
+                                eventTime.setTime(event.getStart());
+                                if (eventTime.after(StoppelMapApp.getCurrentCalendar())) {
+                                    nextEvent = event;
+                                    break;
+                                }
+                            }
+                            if (nextEvent != null) {
+                                EntityCard card = new EntityCard(EventEntityCardHolder.LAYOUT, mEntity);
+                                card.setExtraData(nextEvent);
+                                mAdapter.addEntityCard(card);
+                                mAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                });
     }
 
     @Override

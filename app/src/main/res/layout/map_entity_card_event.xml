@@ -14,6 +14,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Nächste Veranstaltung"/>
+
         <include layout="@layout/schedule_event_item_content"/>
 
         <LinearLayout

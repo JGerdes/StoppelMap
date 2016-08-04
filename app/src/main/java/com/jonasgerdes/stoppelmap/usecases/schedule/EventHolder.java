@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.util.StringUtil;
 
@@ -47,26 +48,36 @@ public class EventHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(Event event) {
+        bindContent(event);
+        bindLocation(event.getLocation());
+        bindFacebookLink(event.getFacebookUrl());
+
+    }
+
+    public void bindContent(Event event) {
         mName.setText(event.getName());
         setTextOrHide(mDescription, event.getDescription());
         setTextOrHide(mPeople, StringUtil.concat(event.getArtists(), ", "));
         mTime.setText(getTimeString(event));
+    }
 
-        if (event.getLocation() != null) {
-            mLocations.setVisibility(View.VISIBLE);
-            mLocationButton.setVisibility(View.VISIBLE);
-            mLocations.setText(event.getLocation().getName());
-        } else {
-            mLocations.setVisibility(View.GONE);
-            mLocationButton.setVisibility(View.GONE);
-        }
-
-        if (event.getFacebookUrl() != null && !event.getFacebookUrl().trim().isEmpty()) {
+    public void bindFacebookLink(String facebookUrl) {
+        if (facebookUrl != null && !facebookUrl.trim().isEmpty()) {
             mFacebookButton.setVisibility(View.VISIBLE);
         } else {
             mFacebookButton.setVisibility(View.GONE);
         }
+    }
 
+    public void bindLocation(MapEntity location) {
+        if (location != null) {
+            mLocations.setVisibility(View.VISIBLE);
+            mLocationButton.setVisibility(View.VISIBLE);
+            mLocations.setText(location.getName());
+        } else {
+            mLocations.setVisibility(View.GONE);
+            mLocationButton.setVisibility(View.GONE);
+        }
     }
 
     private String getTimeString(Event event) {

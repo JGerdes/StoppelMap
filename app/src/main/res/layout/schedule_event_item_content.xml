@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="16dp"
+    android:orientation="vertical"
+    tools:showIn="@layout/schedule_event_list_item">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="2"
+        android:textSize="@dimen/card_title_size"
+        tools:text="KAFFEERAUSCH goes STOPPELMARKT"/>
+
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        tools:text="Über Stoppelmarkt bleibt das KAFFEERAUSCH geschlossen und zieht für einen Tag ins Hotel am Kaponier Zelt, um mit euch steil zu gehen.\nWeils letztes Jahr so geil war bleibt alles wie beim Alten.\nIhr kommt mit guter Laune, wir liefern die Bässe und das Drumherum.\nSeid pünktlich um 20:00 Uhr am Start, um ja nichts zu verpassen, wir haben richtig Bock :)"/>
+
+    <TextView
+        android:id="@+id/people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_group_black_24dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        tools:text="Inway, Dansir, Louis Dinkgrefe, Thomas Bolte"/>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/people"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_schedule_black_24dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        tools:text="20:00 - 02:00"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        tools:text="Kaponier"/>
+
+
+</RelativeLayout>
