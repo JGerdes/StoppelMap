@@ -1,0 +1,102 @@
+{
+  "events": [
+    {
+      "uuid": "beckmann_do_cadillac_dj_schabba_heinz",
+      "name": "Cadillac & DJ Schabba Heinz",
+      "type": 2,
+      "day": 0,
+      "start": "2016-11-08 20:00:00",
+      "locationUuid": "beckmann",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Cadillac",
+        "DJ Schabba Heinz"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "beckmann_fr_holy_moly_dj_schabba_heinz",
+      "name": "Holy Moly & DJ Schabba Heinz",
+      "type": 2,
+      "day": 1,
+      "start": "2016-12-08 20:00:00",
+      "locationUuid": "beckmann",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Holy Moly",
+        "DJ Schabba Heinz"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "beckmann_sa_casablanca_dj_schabba_heinz",
+      "name": "Casablanca & DJ Schabba Heinz",
+      "type": 2,
+      "day": 2,
+      "start": "2016-13-08 20:00:00",
+      "locationUuid": "beckmann",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Casablanca",
+        "DJ Schabba Heinz"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "beckmann_so_bakumer_musikverein",
+      "name": "Bakumer Musikverein",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 14:00:00",
+      "locationUuid": "beckmann",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Bakumer Musikverein"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "beckmann_so_dj_schabba_heinz",
+      "name": "DJ Schabba Heinz",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 18:00:00",
+      "locationUuid": "beckmann",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "beckmann_mo_casablanca_dj_schabba_heinz",
+      "name": "Casablanca & DJ Schabba Heinz",
+      "type": 2,
+      "day": 4,
+      "start": "2016-15-08 11:00:00",
+      "locationUuid": "beckmann",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Casablanca",
+        "DJ Schabba Heinz"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "beckmann_di_dj_schabba_heinz",
+      "name": "DJ Schabba Heinz",
+      "type": 2,
+      "day": 5,
+      "start": "2016-16-08 18:00:00",
+      "locationUuid": "beckmann",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}

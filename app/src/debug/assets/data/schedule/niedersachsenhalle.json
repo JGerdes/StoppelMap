@@ -1,0 +1,88 @@
+{
+  "events": [
+    {
+      "uuid": "kuehlings_niedersachsenhalle_stamping_feed",
+      "name": "Stamping Feet & Live Sensation",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 18:01:00",
+      "locationUuid": "kuehlings_niedersachsenhalle",
+      "description": "",
+      "artists": [
+        "Stamping Feet",
+        "Live Sensation",
+        "DJ Mr. XXL"
+      ]
+    },
+    {
+      "uuid": "kuehlings_niedersachsenhalle_free_steps",
+      "name": "Free Steps Orchestra",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 13:00:00",
+      "locationUuid": "kuehlings_niedersachsenhalle",
+      "description": "",
+      "artists": [
+        "Free Steps Orchestra",
+        "DJ Mr. XXL"
+      ]
+    },
+    {
+      "uuid": "kuehlings_niedersachsenhalle_live_sensation",
+      "name": "Live Sensation",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 13:00:00",
+      "locationUuid": "kuehlings_niedersachsenhalle",
+      "description": "",
+      "artists": [
+        "Live Sensation",
+        "DJ Mr. XXL"
+      ]
+    },
+    {
+      "uuid": "kuehlings_niedersachsenhalle_biergartenfest",
+      "name": "Biergartenfest",
+      "type": 2,
+      "day": 3,
+      "start": "2016-08-13 14:00:00",
+      "locationUuid": "kuehlings_niedersachsenhalle",
+      "description": "",
+      "artists": [
+        "Spritten Sisters",
+        "DJ Mr. XXL"
+      ]
+    },
+    {
+      "uuid": "kuehlings_niedersachsenhalle_live_sensation_mickie_krause",
+      "name": "Live Sensation & Mickie Krause",
+      "type": 2,
+      "day": 4,
+      "start": "2016-15-08 14:00:00",
+      "locationUuid": "kuehlings_niedersachsenhalle",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Live Sensation",
+        "Mickie Krause",
+        "DJ Mr. XXL"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "kuehlings_niedersachsenhalle_grosse_abschlussparty",
+      "name": "Große Abschlußparty",
+      "type": 2,
+      "day": 5,
+      "start": "2016-16-08 18:00:00",
+      "locationUuid": "kuehlings_niedersachsenhalle",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Black Lake",
+        "DJ Mr. XXL"
+      ],
+      "tags": []
+    }
+  ]
+}
