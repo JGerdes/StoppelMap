@@ -68,6 +68,9 @@ public class EventDayFragment extends Fragment implements EventAdapter.EventActi
         mEventList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mEventAdapter.setActionListener(this);
+        if (getArguments().getString(ARGUMENT_ENTITY_UUID) != null) {
+            mEventAdapter.setHideLocationButton(true);
+        }
 
     }
 

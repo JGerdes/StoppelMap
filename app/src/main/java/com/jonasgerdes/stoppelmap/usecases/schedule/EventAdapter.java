@@ -26,6 +26,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventHolder> {
     }
 
     private List<Event> mEvents;
+    private boolean mHideLocationButton;
     private EventActionListener mActionListener;
 
     public EventAdapter(RealmResults<Event> events) {
@@ -65,6 +66,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventHolder> {
                 }
             }
         });
+        if (mHideLocationButton) {
+            holder.mLocationButton.setVisibility(View.GONE);
+        } else {
+            holder.mLocationButton.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -74,5 +80,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventHolder> {
 
     public void setActionListener(EventActionListener actionListener) {
         mActionListener = actionListener;
+    }
+
+    public void setHideLocationButton(boolean hideLocationButton) {
+        mHideLocationButton = hideLocationButton;
     }
 }
