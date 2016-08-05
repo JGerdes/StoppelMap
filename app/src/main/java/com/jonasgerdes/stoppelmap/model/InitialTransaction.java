@@ -195,6 +195,7 @@ public class InitialTransaction implements Realm.Transaction {
     }
 
     private <T> T readJsonFile(Gson gson, String path, Class<T> classOfT) {
+        Log.d(TAG, "readJsonFile: path = [" + path + "], class = [" + classOfT + "]");
         String json = FileUtil.readAssetAsString(mAssets, path);
         if (json != null) {
             T data = gson.fromJson(json, classOfT);
