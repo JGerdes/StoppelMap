@@ -30,6 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 /**
@@ -105,8 +106,11 @@ public class EntityDetailActivity extends AppCompatActivity {
     }
 
     private void addEventCard(Realm realm) {
-        realm.where(Event.class).equalTo("locationUuid", mEntity.getUuid())
-                .findAllSortedAsync("start")
+        RealmQuery<Event> query = realm.where(Event.class).equalTo("locationUuid", mEntity.getUuid());
+        if (mEntity.getType() == MapEntity.TYPE_RIDE) {
+            query = query.or().equalTo("type", Event.TYPE_GLOBAL_RIDE);
+        }
+        query.findAllSortedAsync("start")
                 .addChangeListener(new RealmChangeListener<RealmResults<Event>>() {
                     @Override
                     public void onChange(RealmResults<Event> events) {

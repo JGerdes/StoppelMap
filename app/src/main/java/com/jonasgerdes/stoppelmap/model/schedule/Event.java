@@ -14,6 +14,8 @@ import io.realm.RealmObject;
  */
 public class Event extends RealmObject {
 
+    public static final int TYPE_GLOBAL_RIDE = 1;
+
     private String uuid;
     private String name;
     private int type;

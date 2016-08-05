@@ -14,6 +14,8 @@ import io.realm.annotations.PrimaryKey;
  */
 public class MapEntity extends RealmObject {
 
+    public static final int TYPE_RIDE = 1;
+
     @PrimaryKey
     private String uuid;
     private int type;
