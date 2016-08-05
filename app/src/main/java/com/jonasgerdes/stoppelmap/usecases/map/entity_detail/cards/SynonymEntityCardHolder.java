@@ -33,6 +33,7 @@ public class SynonymEntityCardHolder extends EntityCardHolder {
     @Override
     public void onBind(EntityCard entityCard) {
         Context context = itemView.getContext();
+        mContainer.removeAllViews();
         for (RealmString name : entityCard.getMapEntity().getSynonyms()) {
             TextView textView = new TextView(itemView.getContext());
             textView.setText(name.getVal());
