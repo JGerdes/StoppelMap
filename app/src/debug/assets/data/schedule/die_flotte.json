@@ -1,0 +1,130 @@
+{
+  "events": [
+    {
+      "uuid": "die_flotte_do_schluck_ahoi",
+      "name": "SCHLUCK AHOI",
+      "type": 2,
+      "day": 0,
+      "start": "2016-11-08 18:01:00",
+      "locationUuid": "die_flotte",
+      "description": "Die Ganze Nacht SCHLUCK AHOI für 1€ und Cola Korn nur 1,50 €",
+      "facebookUrl": "",
+      "artists": [
+        "6th Avenue",
+      ],
+      "tags": [
+        "Live"
+      ]
+    },
+    {
+      "uuid": "die_flotte_fr_alle_mann_an_bord",
+      "name": "ALLE MANN AN BORD",
+      "type": 2,
+      "day": 1,
+      "start": "2016-12-08 20:00:00",
+      "locationUuid": "die_flotte",
+      "description": "80er, 90er und Schlager",
+      "facebookUrl": "",
+      "artists": [
+        "DJ-THOM-K"
+      ],
+      "tags": [
+        "80er",
+        "90er",
+        "Schlager"
+      ]
+    },
+    {
+      "uuid": "die_flotte_sa_alle_mann_an_bord",
+      "name": "ALLE MANN AN BORD",
+      "type": 2,
+      "day": 2,
+      "start": "2016-13-08 20:00:00",
+      "locationUuid": "die_flotte",
+      "description": "80er, 90er und Schlager",
+      "facebookUrl": "",
+      "artists": [
+        "DJ-THOM-K"
+      ],
+      "tags": [
+        "80er",
+        "90er",
+        "Schlager"
+      ]
+    },
+    {
+      "uuid": "die_flotte_so_2_schlagerfruehschoppen",
+      "name": "2. Schlagerfrühschoppen",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 12:00:00",
+      "locationUuid": "die_flotte",
+      "description": "Mit den besten Schlagersongs",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": [
+        "Schlager"
+      ]
+    },
+    {
+      "uuid": "die_flotte_so_the_king_carl",
+      "name": "The King & Carl",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 17:00:00",
+      "locationUuid": "die_flotte",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "The King & Carl"
+      ],
+      "tags": [
+        "Live"
+      ]
+    },
+    {
+      "uuid": "die_flotte_so_geier_sturzflug",
+      "name": "GEIER STURZFLUG",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 20:00:00",
+      "locationUuid": "die_flotte",
+      "description": "Live mit ihren Songs „Bruttosozialprodukt “ und „Pure Lust am Leben“",
+      "facebookUrl": "",
+      "artists": [
+        "Geier Sturzflug"
+      ],
+      "tags": [
+        "Live"
+      ]
+    },
+    {
+      "uuid": "die_flotte_mo_volle_fahrt_voraus",
+      "name": "VOLLE FAHRT VORAUS!",
+      "type": 2,
+      "day": 4,
+      "start": "2016-15-08 10:00:00",
+      "locationUuid": "die_flotte",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "6th Avenue"
+      ],
+      "tags": [
+        "Live"
+      ]
+    },
+    {
+      "uuid": "die_flotte_di_wir_verlassen_den_hafen",
+      "name": "Wir verlassen den Hafen.",
+      "type": 2,
+      "day": 5,
+      "start": "2016-16-08 10:00:00",
+      "locationUuid": "die_flotte",
+      "description": "Der Kapitän schenkt den ganzen Tag Bier für 1,00 € aus.",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}

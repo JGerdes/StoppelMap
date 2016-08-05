@@ -1,0 +1,123 @@
+{
+  "events": [
+    {
+      "uuid": "schaefers_do_happy_hour",
+      "name": "Happy Hour",
+      "type": 2,
+      "day": 0,
+      "start": "2016-11-08 18:30:00",
+      "start": "2016-11-08 21:00:00",
+      "locationUuid": "schaefers",
+      "description": "2 Bier 0,2l gezapft oder 2 Sprite 0,2l gezapft zum Preis von Einem",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "schaefers_do_dj_obi",
+      "name": "DJ Obi",
+      "type": 2,
+      "day": 0,
+      "start": "2016-11-08 20:00:00",
+      "locationUuid": "schaefers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Obi"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "schaefers_fr_cocktailtag",
+      "name": "Cocktailtag",
+      "type": 2,
+      "day": 1,
+      "start": "2016-12-08 20:00:00",
+      "start": "2016-12-08 23:59:00",
+      "locationUuid": "schaefers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "schaefers_fr_dj_obi",
+      "name": "DJ Obi",
+      "type": 2,
+      "day": 1,
+      "start": "2016-12-08 20:00:00",
+      "locationUuid": "schaefers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Obi"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "schaefers_sa_boggie_pimps_two4beats",
+      "name": "Boggie Pimps + two4beats",
+      "type": 2,
+      "day": 2,
+      "start": "2016-13-08 20:00:00",
+      "locationUuid": "schaefers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Boggie Pimps",
+        "two4beats"
+      ],
+      "tags": [
+        "House",
+        "EDM",
+        "Future House",
+        "Progressive House"
+      ]
+    },
+    {
+      "uuid": "schaefers_so_stammtisch_tag",
+      "name": "Stammtisch Tag",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 14:00:00",
+      "end": "2016-14-08 21:00:00",
+      "locationUuid": "schaefers",
+      "description": "keine Musik, einfach nur Ruhe und gemütlich reden.\nHappy Hour den ganzen Tag, 2 Bier 0,2l gezapft oder 2 Sprite 0,2l gezapft zum Preis von Einem",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "schaefers_mo_two4beats_superdude",
+      "name": "two4beats + Superdude",
+      "type": 2,
+      "day": 4,
+      "start": "2016-15-08 20:00:00",
+      "locationUuid": "schaefers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "two4beats",
+        "Superdude"
+      ],
+      "tags": [
+        "House",
+        "EDM",
+        "Future House",
+        "Progressive House"
+      ]
+    },
+    {
+      "uuid": "schaefers_di_happy_hour",
+      "name": "Happy Hour",
+      "type": 2,
+      "day": 5,
+      "start": "2016-16-08 14:00:00",
+      "locationUuid": "schaefers",
+      "description": "2 Bier 0,2l gezapft oder 2 Sprite 0,2l gezapft zum Preis von Einem",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}

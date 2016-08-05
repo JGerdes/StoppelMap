@@ -1,0 +1,86 @@
+{
+  "events": [
+    {
+      "uuid": "wunderbar_do_best_residenz",
+      "name": "Best Residenz",
+      "type": 2,
+      "day": 0,
+      "start": "2016-11-08 18:00:00",
+      "locationUuid": "wunderbar",
+      "description": "",
+      "facebookUrl": "https://www.facebook.com/events/178702982545459/",
+      "artists": [
+        "DJ Patrick"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "wunderbar_fr_clubnight",
+      "name": "Clubnight",
+      "type": 2,
+      "day": 1,
+      "start": "2016-12-08 13:00:00",
+      "locationUuid": "wunderbar",
+      "description": "",
+      "facebookUrl": "https://www.facebook.com/events/178702982545459/",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "wunderbar_sa_best_residenz",
+      "name": "Best Residenz",
+      "type": 2,
+      "day": 2,
+      "start": "2016-13-08 20:00:00",
+      "locationUuid": "wunderbar",
+      "description": "",
+      "facebookUrl": "https://www.facebook.com/events/178702982545459/",
+      "artists": [],
+      "tags": [
+        "DJ Alex"
+      ]
+    },
+    {
+      "uuid": "wunderbar_so_beat_bugz_mark_50",
+      "name": "Beat Bugz & Mark 50",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 20:00:00",
+      "locationUuid": "wunderbar",
+      "description": "",
+      "facebookUrl": "https://www.facebook.com/events/178702982545459/",
+      "artists": [
+        "Beat Bugz",
+        "Mark 50"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "wunderbar_mo_housedestroyer_live_percussion",
+      "name": "Housedestroyer & Live Percussion",
+      "type": 2,
+      "day": 4,
+      "start": "2016-15-08 20:00:00",
+      "locationUuid": "wunderbar",
+      "description": "",
+      "facebookUrl": "https://www.facebook.com/events/178702982545459/",
+      "artists": [
+        "Housedestroyer",
+        "Live Percussion"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "wunderbar_di_cocktail_happyhour_party",
+      "name": "Cocktail-HappyHour-Party",
+      "type": 2,
+      "day": 5,
+      "start": "2016-16-08 20:00:00",
+      "locationUuid": "wunderbar",
+      "description": "",
+      "facebookUrl": "https://www.facebook.com/events/178702982545459/",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}

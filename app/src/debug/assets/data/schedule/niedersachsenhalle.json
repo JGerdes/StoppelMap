@@ -12,6 +12,9 @@
         "Stamping Feet",
         "Live Sensation",
         "DJ Mr. XXL"
+      ],
+      "tags": [
+        "Live"
       ]
     },
     {
@@ -25,6 +28,9 @@
       "artists": [
         "Free Steps Orchestra",
         "DJ Mr. XXL"
+      ],
+      "tags": [
+        "Live"
       ]
     },
     {
@@ -38,6 +44,9 @@
       "artists": [
         "Live Sensation",
         "DJ Mr. XXL"
+      ],
+      "tags": [
+        "Live"
       ]
     },
     {
@@ -67,7 +76,9 @@
         "Mickie Krause",
         "DJ Mr. XXL"
       ],
-      "tags": []
+      "tags": [
+        "Live"
+      ]
     },
     {
       "uuid": "kuehlings_niedersachsenhalle_grosse_abschlussparty",

@@ -600,6 +600,9 @@
       "uuid": "die_flotte",
       "name": "Die Flotte",
       "type": 2,
+      "synonyms": [
+        "Das Partyschiff"
+      ],
       "icons": [
         "tent",
         "beer"
@@ -1203,8 +1206,11 @@
       }
     },
     {
-      "uuid": "sch_fers",
+      "uuid": "schaefers",
       "name": "Schäfers",
+      "synonyms": [
+        "Festzelt No.1"
+      ],
       "type": 2,
       "icons": [
         "tent",
@@ -1398,6 +1404,9 @@
       "uuid": "elmendorffburg",
       "name": "Elmendorffburg",
       "type": 2,
+      "synonyms": [
+        "E1 Clubzelt"
+      ],
       "icons": [
         "tent",
         "beer"
@@ -1971,6 +1980,9 @@
       "uuid": "party_park",
       "name": "Party Park",
       "type": 2,
+      "synonyms": [
+        "Siggi & Rainer"
+      ],
       "icons": [
         "tent",
         "beer"

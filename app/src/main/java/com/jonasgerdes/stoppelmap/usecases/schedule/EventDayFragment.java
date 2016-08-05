@@ -62,7 +62,7 @@ public class EventDayFragment extends Fragment implements EventAdapter.EventActi
                     .equalTo("day", dayId)
                     .equalTo("type", Event.TYPE_GLOBAL_RIDE);
         }
-        RealmResults<Event> events = query.findAllAsync();
+        RealmResults<Event> events = query.findAllSortedAsync("start");
         mEventAdapter = new EventAdapter(events);
         mEventList.setAdapter(mEventAdapter);
         mEventList.setLayoutManager(new LinearLayoutManager(getContext()));
