@@ -39,19 +39,6 @@ import io.realm.RealmObject;
 public class InitialTransaction implements Realm.Transaction {
     private static final String TAG = "InitialTransaction";
 
-    private static final String[] MAP_FILES = new String[]{
-            "map/misc",
-            "map/buildings",
-            "map/bars",
-            "map/attractions",
-            "map/wcs"
-    };
-
-    private static final String[] EVENT_FILES = new String[]{
-            "schedule/official",
-            "schedule/tents"
-    };
-
     private AssetManager mAssets;
 
     public InitialTransaction(AssetManager assets) {
@@ -123,7 +110,7 @@ public class InitialTransaction implements Realm.Transaction {
                 .create();
 
 
-        Transportation transp = readJsonFile(gson, "transportation", Transportation.class);
+        Transportation transp = readJsonFile(gson, "data/transportation.json", Transportation.class);
         if (transp != null) {
             for (Route route : transp.routes) {
                 realm.copyToRealm(route);
@@ -132,8 +119,18 @@ public class InitialTransaction implements Realm.Transaction {
             Log.e(TAG, "execute: error reading asset to realm");
         }
 
-        for (String file : MAP_FILES) {
-            MapEntities entities = readJsonFile(gson, file, MapEntities.class);
+
+        String[] files = new String[0];
+        try {
+            files = mAssets.list("data/map");
+            for (String file : files) {
+                Log.d(TAG, "execute: " + file);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String file : files) {
+            MapEntities entities = readJsonFile(gson, "data/map/" + file, MapEntities.class);
             if (entities != null) {
                 for (MapEntity mapEntity : entities.entities) {
                     checkForNull(mapEntity, mapEntity.getName(), "Name");
@@ -153,9 +150,19 @@ public class InitialTransaction implements Realm.Transaction {
                 }
             }
         }
-
-        for (String file : EVENT_FILES) {
-            Events events = readJsonFile(gson, file, Events.class);
+        try {
+            files = mAssets.list("data/schedule");
+            for (String file : files) {
+                Log.d(TAG, "execute: " + file);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String file : files) {
+            if (file.contains("template")) {
+                continue;
+            }
+            Events events = readJsonFile(gson, "data/schedule/" + file, Events.class);
             if (events != null) {
                 for (Event event : events.getEvents()) {
                     checkForNull(event, event.getUuid(), "uuid");
@@ -187,8 +194,8 @@ public class InitialTransaction implements Realm.Transaction {
         }
     }
 
-    private <T> T readJsonFile(Gson gson, String name, Class<T> classOfT) {
-        String json = FileUtil.readAssetAsString(mAssets, "data/" + name + ".json");
+    private <T> T readJsonFile(Gson gson, String path, Class<T> classOfT) {
+        String json = FileUtil.readAssetAsString(mAssets, path);
         if (json != null) {
             T data = gson.fromJson(json, classOfT);
             return data;
