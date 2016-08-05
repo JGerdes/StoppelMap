@@ -11,6 +11,7 @@ import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.util.StringUtil;
 
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
  */
 public class EventHolder extends RecyclerView.ViewHolder {
     private static SimpleDateFormat FORMAT_TIME = new SimpleDateFormat("kk:mm");
+    private static SimpleDateFormat FORMAT_TIME_WITH_DAY = new SimpleDateFormat("EE, kk:mm", Locale.GERMAN);
 
     @BindView(R.id.name)
     TextView mName;
@@ -55,10 +57,14 @@ public class EventHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindContent(Event event) {
+        bindContent(event, false);
+    }
+
+    public void bindContent(Event event, boolean showDateOnStart) {
         mName.setText(event.getName());
         setTextOrHide(mDescription, event.getDescription());
         setTextOrHide(mPeople, StringUtil.concat(event.getArtists(), ", "));
-        mTime.setText(getTimeString(event));
+        mTime.setText(getTimeString(event, showDateOnStart ? FORMAT_TIME_WITH_DAY : FORMAT_TIME));
     }
 
     public void bindFacebookLink(String facebookUrl) {
@@ -80,18 +86,18 @@ public class EventHolder extends RecyclerView.ViewHolder {
         }
     }
 
-    private String getTimeString(Event event) {
+    private String getTimeString(Event event, SimpleDateFormat startFormat) {
         String time;
         if (event.getEnd() != null) {
             time = String.format(
                     "%s - %s Uhr",
-                    FORMAT_TIME.format(event.getStart()),
+                    startFormat.format(event.getStart()),
                     FORMAT_TIME.format(event.getEnd())
             );
         } else {
             time = String.format(
                     "%s Uhr",
-                    FORMAT_TIME.format(event.getStart())
+                    startFormat.format(event.getStart())
             );
         }
         return time;

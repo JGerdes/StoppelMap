@@ -28,7 +28,8 @@ public class EventEntityCardHolder extends EntityCardHolder {
     @Override
     public void onBind(EntityCard entityCard) {
         Event event = entityCard.getExtraData();
-        mEventHolder.bindContent(event);
+        boolean showDayInStart = true;
+        mEventHolder.bindContent(event, showDayInStart);
         mEventHolder.bindLocation(null);
         mEventHolder.bindFacebookLink(event.getFacebookUrl());
     }
