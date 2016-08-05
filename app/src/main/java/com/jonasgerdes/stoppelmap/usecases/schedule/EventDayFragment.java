@@ -21,6 +21,7 @@ import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 /**
@@ -29,6 +30,8 @@ import io.realm.RealmResults;
 public class EventDayFragment extends Fragment implements EventAdapter.EventActionListener {
 
     private static final String ARGUMENT_DAY = "ARGUMENT_DAY";
+    private static final String ARGUMENT_ENTITY_UUID = "ARGUMENT_ENTITY_UUID";
+    private static final String ARGUMENT_ENTITY_TYPE = "ARGUMENT_ENTITY_TYPE";
 
     private Unbinder mUnbinder;
     @BindView(R.id.depatures)
@@ -48,8 +51,18 @@ public class EventDayFragment extends Fragment implements EventAdapter.EventActi
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
         final int dayId = getArguments().getInt(ARGUMENT_DAY);
-        RealmResults<Event> events = StoppelMapApp.getViaActivity(getActivity()).getRealm()
-                .where(Event.class).equalTo("day", dayId).findAllAsync();
+
+        RealmQuery<Event> query = StoppelMapApp.getViaActivity(getActivity()).getRealm()
+                .where(Event.class).equalTo("day", dayId);
+        if (getArguments().getString(ARGUMENT_ENTITY_UUID) != null) {
+            query.equalTo("locationUuid", getArguments().getString(ARGUMENT_ENTITY_UUID));
+        }
+        if (getArguments().getInt(ARGUMENT_ENTITY_TYPE, -1) == MapEntity.TYPE_RIDE) {
+            query.or()
+                    .equalTo("day", dayId)
+                    .equalTo("type", Event.TYPE_GLOBAL_RIDE);
+        }
+        RealmResults<Event> events = query.findAllAsync();
         mEventAdapter = new EventAdapter(events);
         mEventList.setAdapter(mEventAdapter);
         mEventList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -66,9 +79,13 @@ public class EventDayFragment extends Fragment implements EventAdapter.EventActi
         super.onDestroyView();
     }
 
-    public static EventDayFragment newInstance(@DepartureDay.Day int day) {
+    public static EventDayFragment newInstance(@DepartureDay.Day int day, MapEntity entity) {
         Bundle args = new Bundle();
         args.putInt(ARGUMENT_DAY, day);
+        if (entity != null) {
+            args.putString(ARGUMENT_ENTITY_UUID, entity.getUuid());
+            args.putInt(ARGUMENT_ENTITY_TYPE, entity.getType());
+        }
         EventDayFragment fragment = new EventDayFragment();
         fragment.setArguments(args);
         return fragment;

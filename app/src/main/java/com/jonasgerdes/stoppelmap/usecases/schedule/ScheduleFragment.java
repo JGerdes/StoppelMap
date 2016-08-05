@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.StoppelMapApp;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.views.interfaces.TabLayoutProvider;
 
 import butterknife.BindView;
@@ -23,6 +25,7 @@ import butterknife.Unbinder;
 public class ScheduleFragment extends Fragment {
 
     private static final String TAG = "ScheduleFragment";
+    private static final String ARGUMENT_ENTITY_ID = "ARGUMENT_ENTITY_ID";
 
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
@@ -47,11 +50,21 @@ public class ScheduleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mUnbinder = ButterKnife.bind(this, view);
 
-        MainActivity activity = (MainActivity) getActivity();
-        activity.setTitle(getString(R.string.navigation_schedule));
-        activity.setCheckedDrawerIcon(R.id.nav_schedule);
+        if (getActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) getActivity();
+            activity.setTitle(getString(R.string.navigation_schedule));
+            activity.setCheckedDrawerIcon(R.id.nav_schedule);
+        }
 
         mDayPageAdapter = new EventDayFragmentAdapter(getContext(), getChildFragmentManager());
+        if (getArguments() != null) {
+            String entityId = getArguments().getString(ARGUMENT_ENTITY_ID);
+            if (entityId != null) {
+                MapEntity entity = StoppelMapApp.getViaActivity(getActivity()).getRealm()
+                        .where(MapEntity.class).equalTo("uuid", entityId).findFirst();
+                mDayPageAdapter.setEntity(entity);
+            }
+        }
         mViewPager.setAdapter(mDayPageAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
     }
@@ -70,8 +83,15 @@ public class ScheduleFragment extends Fragment {
 
 
     public static ScheduleFragment newInstance() {
+        return newInstance(null);
+    }
+
+    public static ScheduleFragment newInstance(String entityId) {
 
         Bundle args = new Bundle();
+        if (entityId != null) {
+            args.putString(ARGUMENT_ENTITY_ID, entityId);
+        }
 
         ScheduleFragment fragment = new ScheduleFragment();
         fragment.setArguments(args);

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 
 /**
  * Created by Jonas on 04.08.2016.
@@ -13,6 +14,7 @@ import com.jonasgerdes.stoppelmap.R;
 public class EventDayFragmentAdapter extends FragmentPagerAdapter {
 
     private final String[] mPageTitles;
+    private MapEntity mEntity = null;
 
     public EventDayFragmentAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -21,7 +23,7 @@ public class EventDayFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return EventDayFragment.newInstance(position);
+        return EventDayFragment.newInstance(position, mEntity);
     }
 
     @Override
@@ -32,5 +34,9 @@ public class EventDayFragmentAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return mPageTitles[position];
+    }
+
+    public void setEntity(MapEntity entity) {
+        mEntity = entity;
     }
 }
