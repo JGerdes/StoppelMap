@@ -68,8 +68,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventHolder> {
         });
         if (mHideLocationButton) {
             holder.mLocationButton.setVisibility(View.GONE);
+            holder.mLocations.setVisibility(View.GONE);
         } else {
             holder.mLocationButton.setVisibility(View.VISIBLE);
+            holder.mLocations.setVisibility(View.VISIBLE);
         }
     }
 
