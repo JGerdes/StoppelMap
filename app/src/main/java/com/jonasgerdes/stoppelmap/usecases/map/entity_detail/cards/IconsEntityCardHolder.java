@@ -37,6 +37,7 @@ public class IconsEntityCardHolder extends EntityCardHolder {
     public void onBind(EntityCard entityCard) {
         Icon icon;
         Context context = itemView.getContext();
+        mContainer.removeAllViews();
         for (RealmString realmString : entityCard.getMapEntity().getIcons()) {
             icon = Icon.ICONS.get(realmString.getVal());
             if (icon == null) {
