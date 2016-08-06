@@ -42,13 +42,15 @@ public class EventEntityCardHolder extends EntityCardHolder {
         mEventHolder.bindLocation(null);
         mEventHolder.bindFacebookLink(event.getFacebookUrl());
 
-        mDetailButton.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener showDetailClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =
                         EntityScheduleActivity.createIntent(context, entityCard.getMapEntity());
                 context.startActivity(intent);
             }
-        });
+        };
+        mDetailButton.setOnClickListener(showDetailClickListener);
+        itemView.setOnClickListener(showDetailClickListener);
     }
 }
