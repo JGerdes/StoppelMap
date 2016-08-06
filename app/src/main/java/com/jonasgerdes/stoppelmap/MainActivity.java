@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity
 
 
     public interface BackPressListener {
+        /**
+         *
+         * @return true if event was consumed and shouldn't trigger any other actions anymore
+         */
         boolean onBackPressed();
     }
 

@@ -6,6 +6,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,11 +16,16 @@ import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.schedule.Event;
+import com.jonasgerdes.stoppelmap.usecases.schedule.search.ScheduleSearchAdapter;
+import com.jonasgerdes.stoppelmap.model.schedule.search.ScheduleSearchResult;
+import com.jonasgerdes.stoppelmap.views.SearchCardView;
 import com.jonasgerdes.stoppelmap.views.interfaces.TabLayoutProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmResults;
 
 /**
  * Created by Jonas on 03.07.2016.
@@ -41,6 +49,7 @@ public class ScheduleFragment extends Fragment {
             mTabLayout = ((TabLayoutProvider) getActivity()).getTabLayout();
             mTabLayout.setVisibility(View.VISIBLE);
         }
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         return view;
     }
@@ -67,6 +76,55 @@ public class ScheduleFragment extends Fragment {
         }
         mViewPager.setAdapter(mDayPageAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+        setupSearchView();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        if (getSearchView() != null) {
+            inflater.inflate(R.menu.menu_map_fragment, menu);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.options_search:
+                SearchCardView searchView = getSearchView();
+                if (searchView != null) {
+                    searchView.show();
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void setupSearchView() {
+        if (getActivity() instanceof MainActivity) {
+            final SearchCardView searchCardView = getSearchView();
+            if (searchCardView != null) {
+                RealmResults<Event> events = StoppelMapApp.getViaActivity(getActivity()).getRealm()
+                        .where(Event.class).findAllAsync();
+                ScheduleSearchAdapter searchAdapter = new ScheduleSearchAdapter(events);
+                searchCardView.setResultAdapter(searchAdapter);
+                searchCardView.setPlaceholderText("Suche in Programm");
+                searchAdapter.setSelectedListener(new ScheduleSearchAdapter.OnResultSelectedListener() {
+                    @Override
+                    public void onResultSelected(ScheduleSearchResult result) {
+                        searchCardView.hide();
+                        // TODO: 06.08.2016 open
+                    }
+                });
+            }
+        }
+    }
+
+    private SearchCardView getSearchView() {
+        if (getActivity() instanceof MainActivity) {
+            return ((MainActivity) getActivity()).getSearchView();
+        }
+        return null;
     }
 
 
@@ -97,4 +155,5 @@ public class ScheduleFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 }

@@ -191,4 +191,8 @@ public class SearchCardView extends CardView {
     public void setSearchFieldOnFocusChangedListener(OnFocusChangeListener listener) {
         mSearchField.setOnFocusChangeListener(listener);
     }
+
+    public void setPlaceholderText(String placeholderText) {
+        mSearchField.setHint(placeholderText);
+    }
 }

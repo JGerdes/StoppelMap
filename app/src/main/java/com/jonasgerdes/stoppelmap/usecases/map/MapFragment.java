@@ -150,6 +150,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         if (getActivity() instanceof MainActivity) {
             MapEntitySearchAdapter searchAdapter = new MapEntitySearchAdapter(mMapEntities);
             final SearchCardView searchCardView = getSearchView();
+            searchCardView.setPlaceholderText("Suche auf Karte");
             searchCardView.setResultAdapter(searchAdapter);
             searchAdapter.setSelectedListener(new MapEntitySearchAdapter.OnResultSelectedListener() {
                 @Override
