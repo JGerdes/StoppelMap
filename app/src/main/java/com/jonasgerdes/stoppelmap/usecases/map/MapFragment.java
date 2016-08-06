@@ -274,7 +274,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
 
     @Override
     public void onDestroyView() {
-        mMarkerManager.destroy();
+        if (mMarkerManager != null) {
+            mMarkerManager.destroy();
+            mMarkerManager = null;
+        }
         if (mUnbinder != null) {
             mUnbinder.unbind();
         }
