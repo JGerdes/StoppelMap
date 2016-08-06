@@ -39,13 +39,14 @@
     },
     {
       "uuid": "ellendorf",
-      "name": "Ellendorf",
+      "name": "Wein Ellendorf",
       "type": 2,
       "icons": [
-        "beer"
+        "bar"
       ],
       "tags": [
-        "Bier"
+        "Bier",
+        "Wein"
       ],
       "bounds": [
         {
@@ -1303,7 +1304,8 @@
       "name": "Stratmann",
       "type": 2,
       "synonyms": [
-        "Lohner Zelt"
+        "Lohner Zelt",
+        "Echt Stoppelmarkt!"
       ],
       "icons": [
         "tent",
@@ -1561,7 +1563,7 @@
       }
     },
     {
-      "uuid": "stierbr_u",
+      "uuid": "stierbraeu",
       "name": "Stierbräu",
       "type": 2,
       "icons": [
@@ -1838,7 +1840,7 @@
       }
     },
     {
-      "uuid": "bl_mer",
+      "uuid": "bloemer",
       "name": "Blömer",
       "type": 2,
       "icons": [
@@ -2120,7 +2122,7 @@
       }
     },
     {
-      "uuid": "b_ssing",
+      "uuid": "buessing",
       "name": "Büssing",
       "type": 2,
       "icons": [
@@ -2151,6 +2153,47 @@
       "origin": {
         "lat": 52.7439272032398,
         "lng": 8.299177139997482
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "",
+      "name": "Zauberbar",
+      "owner": "",
+      "type": 2,
+      "icons": [
+        "tent",
+        "beer"
+      ],
+      "tags": [
+        "Zelt",
+        "Bier",
+        "Ausschank"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74689288402655,
+          "lng": 8.296413123607635
+        },
+        {
+          "lat": 52.746733766940444,
+          "lng": 8.296454697847366
+        },
+        {
+          "lat": 52.74672240141207,
+          "lng": 8.296362161636353
+        },
+        {
+          "lat": 52.74688314218081,
+          "lng": 8.296325951814651
+        }
+      ],
+      "origin": {
+        "lat": 52.74681494919982,
+        "lng": 8.296386301517487
       },
       "zoom": {
         "min": 19,

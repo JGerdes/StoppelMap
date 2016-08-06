@@ -1,0 +1,149 @@
+{
+  "events": [
+    {
+      "uuid": "grieshop_do_markteroeffnung",
+      "name": "Markteröffnung",
+      "type": 2,
+      "day": 0,
+      "start": "2016-11-08 18:01:00",
+      "locationUuid": "grieshop",
+      "description": "mit Kurzauftritten verschiedener Musikvereine",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "grieshop_do_honky_tom_biggy_lee",
+      "name": "Honky Tom & Biggy Lee",
+      "type": 2,
+      "day": 0,
+      "start": "2016-11-08 21:00:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Honky Tom",
+        "Biggy Lee"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "grieshop_fr_die_howie_show",
+      "name": "Die \"Howie\"-Show",
+      "type": 2,
+      "day": 1,
+      "start": "2016-12-08 21:00:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Carpendale-Double"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "grieshop_sa_jugendgottesdienst",
+      "name": "Jugendgottesdienst",
+      "type": 2,
+      "day": 2,
+      "start": "2016-13-08 17:30:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Kaplan Jan Kröger"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "grieshop_sa_dj_amazing",
+      "name": "DJ Amazing",
+      "type": 2,
+      "day": 2,
+      "start": "2016-13-08 19:00:00",
+      "locationUuid": "grieshop",
+      "description": "Gratis-Getränk für alle Junggesellen,- innen-Abschiede",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Amazing"
+      ],
+      "tags": [
+        "Rock",
+        "Pop",
+        "Oldies",
+        "Schlager"
+      ]
+    },
+    {
+      "uuid": "grieshop_so_familienfruehschoppen",
+      "name": "Familienfrühschoppen",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 11:00:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "Kolping-Orchester Vechta"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "grieshop_so_hotlips_project",
+      "name": "HotLips Project",
+      "type": 2,
+      "day": 3,
+      "start": "2016-14-08 20:00:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "HotLips Project"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "grieshop_mo_grieshop_fruehstueck",
+      "name": "Grieshop-Frühstück",
+      "type": 2,
+      "day": 4,
+      "start": "2016-15-08 09:00:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "grieshop_mo_dj_amazing",
+      "name": "DJ Amazing",
+      "type": 2,
+      "day": 4,
+      "start": "2016-15-08 14:00:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Amazing"
+      ],
+      "tags": [
+        "Rock",
+        "Pop",
+        "Oldies",
+        "Schlager"
+      ]
+    },
+    {
+      "uuid": "grieshop_di_familientag_und_marktausklang",
+      "name": "Familientag und Marktausklang",
+      "type": 2,
+      "day": 5,
+      "start": "2016-16-08 13:00:00",
+      "locationUuid": "grieshop",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}
