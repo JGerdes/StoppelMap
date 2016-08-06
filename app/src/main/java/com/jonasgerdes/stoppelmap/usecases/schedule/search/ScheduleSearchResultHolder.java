@@ -58,7 +58,11 @@ public class ScheduleSearchResultHolder extends RecyclerView.ViewHolder {
                     drawable = R.drawable.ic_group_black54_16dp;
                     break;
                 case ScheduleSearchResult.REASON_TAG:
-                    drawable = R.drawable.ic_audiotrack_black54_16dp;
+                    if (result.getReasonString().toLowerCase().contains("kinder")) {
+                        drawable = R.drawable.ic_child_care_black54_16dp;
+                    } else {
+                        drawable = R.drawable.ic_audiotrack_black54_16dp;
+                    }
                     break;
             }
             mReason.setCompoundDrawablesWithIntrinsicBounds(
@@ -66,7 +70,10 @@ public class ScheduleSearchResultHolder extends RecyclerView.ViewHolder {
             );
         }
 
-        if (result.getEvent().getLocation() != null) {
+        if (result.getEvent().getLocation() == null) {
+            mLocation.setVisibility(View.GONE);
+        } else {
+            mLocation.setVisibility(View.VISIBLE);
             mLocation.setText(result.getEvent().getLocation().getName());
         }
 

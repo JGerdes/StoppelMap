@@ -1,12 +1,14 @@
 package com.jonasgerdes.stoppelmap.usecases.schedule;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.util.StringUtil;
 
@@ -15,6 +17,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.RealmList;
 
 /**
  * Created by Jonas on 04.08.2016.
@@ -69,8 +72,21 @@ public class EventHolder extends RecyclerView.ViewHolder {
         mName.setText(event.getName());
         setTextOrHide(mDescription, event.getDescription());
         setTextOrHide(mPeople, StringUtil.concat(event.getArtists(), ", "));
-        setTextOrHide(mMusic, StringUtil.concatTags(event.getTags(), ", "));
+        bindTags(event.getTags());
         mTime.setText(getTimeString(event, showDateOnStart ? FORMAT_TIME_WITH_DAY : FORMAT_TIME));
+    }
+
+    private void bindTags(RealmList<Tag> tags) {
+        // FIXME: 06.08.2016 actually use music-field for this...
+        String tagString = null;
+        tagString = StringUtil.concatTags(tags, ", ");
+        for (Tag tag : tags) {
+            if (tag.getName().toLowerCase().contains("kinder")) {
+                tagString = null;
+            }
+        }
+        setTextOrHide(mMusic, tagString);
+
     }
 
     public void bindFacebookLink(String facebookUrl) {
@@ -94,6 +110,7 @@ public class EventHolder extends RecyclerView.ViewHolder {
 
     private String getTimeString(Event event, SimpleDateFormat startFormat) {
         String time;
+        Log.d(TAG, "getTimeString:" + event.getStart().toString());
         if (event.getEnd() != null) {
             time = String.format(
                     "%s - %s Uhr",
