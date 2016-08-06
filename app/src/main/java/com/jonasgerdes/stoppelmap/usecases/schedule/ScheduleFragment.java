@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecases.schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -17,8 +18,8 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
-import com.jonasgerdes.stoppelmap.usecases.schedule.search.ScheduleSearchAdapter;
 import com.jonasgerdes.stoppelmap.model.schedule.search.ScheduleSearchResult;
+import com.jonasgerdes.stoppelmap.usecases.schedule.search.ScheduleSearchAdapter;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
 import com.jonasgerdes.stoppelmap.views.interfaces.TabLayoutProvider;
 
@@ -34,6 +35,8 @@ public class ScheduleFragment extends Fragment {
 
     private static final String TAG = "ScheduleFragment";
     private static final String ARGUMENT_ENTITY_ID = "ARGUMENT_ENTITY_ID";
+    private static final String ARGUMENT_START_DAY = "ARGUMENT_START_DAY";
+    private static final String ARGUMENT_START_EVENT = "ARGUMENT_START_EVENT";
 
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
@@ -73,10 +76,20 @@ public class ScheduleFragment extends Fragment {
                         .where(MapEntity.class).equalTo("uuid", entityId).findFirst();
                 mDayPageAdapter.setEntity(entity);
             }
+            String eventUuid = getArguments().getString(ARGUMENT_START_EVENT);
+            if (eventUuid != null) {
+                mDayPageAdapter.setStartEventUuid(eventUuid);
+            }
         }
         mViewPager.setAdapter(mDayPageAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         setupSearchView();
+        if (getArguments() != null) {
+            int day = getArguments().getInt(ARGUMENT_START_DAY, -1);
+            if (day != -1) {
+                mViewPager.setCurrentItem(day);
+            }
+        }
     }
 
     @Override
@@ -113,7 +126,16 @@ public class ScheduleFragment extends Fragment {
                     @Override
                     public void onResultSelected(ScheduleSearchResult result) {
                         searchCardView.hide();
-                        // TODO: 06.08.2016 open
+                        if (result.getEvent().getLocation() != null) {
+                            Intent intent = EntityScheduleActivity
+                                    .createIntent(getContext(), result.getEvent());
+                            startActivity(intent);
+                        } else {
+                            mDayPageAdapter = new EventDayFragmentAdapter(getContext(), getChildFragmentManager());
+                            mDayPageAdapter.setStartEventUuid(result.getEvent().getUuid());
+                            mViewPager.setAdapter(mDayPageAdapter);
+                            mViewPager.setCurrentItem(result.getEvent().getDay());
+                        }
                     }
                 });
             }
@@ -145,10 +167,24 @@ public class ScheduleFragment extends Fragment {
     }
 
     public static ScheduleFragment newInstance(String entityId) {
+        return newInstance(entityId, -1, null);
+    }
+
+    public static ScheduleFragment newInstance(String entityId, int startDay) {
+        return newInstance(entityId, startDay, null);
+    }
+
+    public static ScheduleFragment newInstance(String entityId, int startDay, String startEventId) {
 
         Bundle args = new Bundle();
         if (entityId != null) {
             args.putString(ARGUMENT_ENTITY_ID, entityId);
+        }
+        if (startDay != -1) {
+            args.putInt(ARGUMENT_START_DAY, startDay);
+        }
+        if (startEventId != null) {
+            args.putString(ARGUMENT_START_EVENT, startEventId);
         }
 
         ScheduleFragment fragment = new ScheduleFragment();

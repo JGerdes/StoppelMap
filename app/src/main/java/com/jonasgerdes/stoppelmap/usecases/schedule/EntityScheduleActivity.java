@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.views.interfaces.TabLayoutProvider;
 
 import butterknife.BindView;
@@ -21,6 +22,8 @@ public class EntityScheduleActivity extends AppCompatActivity implements TabLayo
 
     private static final String EXTRA_ENTITY_ID = "EXTRA_ENTITY_ID";
     private static final String EXTRA_ENTITY_NAME = "EXTRA_ENTITY_NAME";
+    private static final String EXTRA_START_EVENT = "EXTRA_START_EVENT";
+    private static final String EXTRA_START_DAY = "EXTRA_START_DAY";
 
     @BindView(R.id.tabs)
     TabLayout mTabs;
@@ -38,14 +41,20 @@ public class EntityScheduleActivity extends AppCompatActivity implements TabLayo
         String entityUuid = getIntent().getStringExtra(EXTRA_ENTITY_ID);
         String entityName = getIntent().getStringExtra(EXTRA_ENTITY_NAME);
 
-        setTitle("Programm: " + entityName);
+        if (entityName != null) {
+            setTitle("Programm: " + entityName);
+        } else {
+            setTitle("Programm");
+        }
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
-        Fragment fragment = ScheduleFragment.newInstance(entityUuid);
+        int day = getIntent().getIntExtra(EXTRA_START_DAY, -1);
+        String event = getIntent().getStringExtra(EXTRA_START_EVENT);
+        Fragment fragment = ScheduleFragment.newInstance(entityUuid, day, event);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -72,6 +81,24 @@ public class EntityScheduleActivity extends AppCompatActivity implements TabLayo
         Bundle extras = new Bundle();
         extras.putString(EXTRA_ENTITY_ID, entity.getUuid());
         extras.putString(EXTRA_ENTITY_NAME, entity.getName());
+        intent.putExtras(extras);
+        return intent;
+    }
+
+    public static Intent createIntent(Context context, Event event) {
+        MapEntity entity = event.getLocation();
+        Intent intent;
+        Bundle extras;
+        if (entity == null) {
+            intent = new Intent(context, EntityScheduleActivity.class);
+            extras = new Bundle();
+        } else {
+            intent = createIntent(context, entity);
+            extras = intent.getExtras();
+        }
+        extras.putInt(EXTRA_START_DAY, event.getDay());
+        extras.putString(EXTRA_START_EVENT, event.getUuid());
+
         intent.putExtras(extras);
         return intent;
     }

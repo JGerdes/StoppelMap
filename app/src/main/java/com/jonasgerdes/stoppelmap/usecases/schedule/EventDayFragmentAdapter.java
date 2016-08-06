@@ -15,6 +15,7 @@ public class EventDayFragmentAdapter extends FragmentPagerAdapter {
 
     private final String[] mPageTitles;
     private MapEntity mEntity = null;
+    private String mStartEventUuid = null;
 
     public EventDayFragmentAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -23,7 +24,7 @@ public class EventDayFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return EventDayFragment.newInstance(position, mEntity);
+        return EventDayFragment.newInstance(position, mEntity, mStartEventUuid);
     }
 
     @Override
@@ -38,5 +39,9 @@ public class EventDayFragmentAdapter extends FragmentPagerAdapter {
 
     public void setEntity(MapEntity entity) {
         mEntity = entity;
+    }
+
+    public void setStartEventUuid(String startEventUuid) {
+        mStartEventUuid = startEventUuid;
     }
 }

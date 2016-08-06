@@ -18,9 +18,12 @@ import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.model.transportation.DepartureDay;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmChangeListener;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
@@ -32,6 +35,7 @@ public class EventDayFragment extends Fragment implements EventAdapter.EventActi
     private static final String ARGUMENT_DAY = "ARGUMENT_DAY";
     private static final String ARGUMENT_ENTITY_UUID = "ARGUMENT_ENTITY_UUID";
     private static final String ARGUMENT_ENTITY_TYPE = "ARGUMENT_ENTITY_TYPE";
+    private static final String ARGUMENT_START_EVENT = "ARGUMENT_START_EVENT";
 
     private Unbinder mUnbinder;
     @BindView(R.id.depatures)
@@ -67,11 +71,35 @@ public class EventDayFragment extends Fragment implements EventAdapter.EventActi
         mEventList.setAdapter(mEventAdapter);
         mEventList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        events.addChangeListener(new RealmChangeListener<RealmResults<Event>>() {
+            @Override
+            public void onChange(RealmResults<Event> updatedEvents) {
+                int startIndex = getIndexOfEvent(getArguments().getString(ARGUMENT_START_EVENT), updatedEvents);
+                if (startIndex != -1) {
+                    mEventList.scrollToPosition(startIndex);
+                }
+            }
+        });
+
+
         mEventAdapter.setActionListener(this);
         if (getArguments().getString(ARGUMENT_ENTITY_UUID) != null) {
             mEventAdapter.setHideLocationButton(true);
         }
 
+    }
+
+    private int getIndexOfEvent(String uuid, List<Event> events) {
+        int startIndex = -1;
+        if (uuid != null) {
+            for (int i = 0; i < events.size(); i++) {
+                if (events.get(i).getUuid().equals(uuid)) {
+                    startIndex = i;
+                    break;
+                }
+            }
+        }
+        return startIndex;
     }
 
     @Override
@@ -83,11 +111,19 @@ public class EventDayFragment extends Fragment implements EventAdapter.EventActi
     }
 
     public static EventDayFragment newInstance(@DepartureDay.Day int day, MapEntity entity) {
+        return newInstance(day, entity, null);
+    }
+
+    public static EventDayFragment newInstance(@DepartureDay.Day int day, MapEntity entity,
+                                               String startEvent) {
         Bundle args = new Bundle();
         args.putInt(ARGUMENT_DAY, day);
         if (entity != null) {
             args.putString(ARGUMENT_ENTITY_UUID, entity.getUuid());
             args.putInt(ARGUMENT_ENTITY_TYPE, entity.getType());
+        }
+        if (startEvent != null) {
+            args.putString(ARGUMENT_START_EVENT, startEvent);
         }
         EventDayFragment fragment = new EventDayFragment();
         fragment.setArguments(args);
