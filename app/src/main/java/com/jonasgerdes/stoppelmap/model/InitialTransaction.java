@@ -248,6 +248,10 @@ public class InitialTransaction implements Realm.Transaction {
     public static AdvancedTag[] TAG_SYNONYMS = new AdvancedTag[]{
             //Misc
             new AdvancedTag(R.drawable.ic_wc_black_24dp, "WC", "Toilette", "Klo"),
+            new AdvancedTag(R.drawable.ic_local_hospital_black_24dp, "DRK", "Rotes Kreuz", "Erste Hilfe"),
+            new AdvancedTag("Polizei"),
+            new AdvancedTag("Feuerwehr"),
+            new AdvancedTag(R.drawable.ic_local_atm_black_24dp, "Geldautomat"),
             new AdvancedTag(R.drawable.ic_tent_black_24dp, "Zelt", "Festzelt"),
             new AdvancedTag(R.drawable.ic_directions_bus_black_24dp, "Busse",
                     StringUtil.getEmojiByUnicode(StringUtil.EMOJI_BUS)),
