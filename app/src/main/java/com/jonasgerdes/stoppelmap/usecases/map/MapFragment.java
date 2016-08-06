@@ -352,10 +352,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             public void onReady() {
                 //show/highlight map entity provided by arguments
                 if (getArguments() != null) {
-                    Realm realm = StoppelMapApp.getViaActivity(getActivity()).getRealm();
                     String uuid = getArguments().getString(ARGUMENT_ENTITY_TO_SHOW);
                     if (uuid != null) {
-                        final MapEntity entity = realm.where(MapEntity.class).equalTo("uuid", uuid).findFirst();
+                        MapEntity entity = null;
+                        for (MapEntity mapEntity : mMapEntities) {
+                            if (mapEntity.getUuid().equals(uuid)) {
+                                entity = mapEntity;
+                                break;
+                            }
+                        }
                         if (entity != null) {
                             highlightEntity(entity, ZOOM_PROVIDED_ENTITY);
                         }
