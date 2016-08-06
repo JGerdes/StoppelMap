@@ -47,7 +47,8 @@ public class ScheduleSearchResultHolder extends RecyclerView.ViewHolder {
         Context context = itemView.getContext();
         mTitle.setText(result.getEvent().getName());
 
-        if (result.getReason() == ScheduleSearchResult.REASON_NAME) {
+        if (result.getReason() == ScheduleSearchResult.REASON_NAME
+                || result.getReason() == ScheduleSearchResult.REASON_LOCATION) {
             mReason.setVisibility(View.GONE);
         } else {
             mReason.setVisibility(View.VISIBLE);

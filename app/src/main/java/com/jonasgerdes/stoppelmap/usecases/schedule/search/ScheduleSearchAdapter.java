@@ -100,6 +100,18 @@ public class ScheduleSearchAdapter extends SearchCardView.ResultAdapter<Schedule
                     continue;
                 }
 
+                //location search
+                if (event.getLocation() != null
+                        && event.getLocation().getName().toLowerCase().contains(query)) {
+                    tempResults.add(
+                            new ScheduleSearchResult(
+                                    event,
+                                    ScheduleSearchResult.REASON_LOCATION,
+                                    event.getLocation().getName())
+                    );
+                    continue;
+                }
+
             }
         }
 

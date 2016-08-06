@@ -11,6 +11,7 @@ public class ScheduleSearchResult {
     public static final int REASON_NAME = 0;
     public static final int REASON_ARTIST = 1;
     public static final int REASON_TAG = 2;
+    public static final int REASON_LOCATION = 3;
 
     private Event mEvent;
     private int mReason;
