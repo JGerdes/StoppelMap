@@ -34,6 +34,10 @@ public class EventHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.people)
     TextView mPeople;
 
+
+    @BindView(R.id.music)
+    TextView mMusic;
+
     @BindView(R.id.time)
     TextView mTime;
 
@@ -66,6 +70,7 @@ public class EventHolder extends RecyclerView.ViewHolder {
         mName.setText(event.getName());
         setTextOrHide(mDescription, event.getDescription());
         setTextOrHide(mPeople, StringUtil.concat(event.getArtists(), ", "));
+        setTextOrHide(mMusic, StringUtil.concatTags(event.getTags(), ", "));
         mTime.setText(getTimeString(event, showDateOnStart ? FORMAT_TIME_WITH_DAY : FORMAT_TIME));
     }
 

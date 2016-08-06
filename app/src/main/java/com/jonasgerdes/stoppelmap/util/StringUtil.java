@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.util;
 
+import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 
 import java.util.List;
@@ -31,6 +32,22 @@ public class StringUtil {
             result.append(glue);
         }
         result.append(parts.get(parts.size() - 1).getVal());
+        return result.toString();
+    }
+
+    public static String concatTags(List<Tag> parts, String glue) {
+        if (parts == null) {
+            return null;
+        }
+        if (parts.size() == 0) {
+            return "";
+        }
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < parts.size() - 1; i++) {
+            result.append(parts.get(i).getName());
+            result.append(glue);
+        }
+        result.append(parts.get(parts.size() - 1).getName());
         return result.toString();
     }
 }

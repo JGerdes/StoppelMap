@@ -42,10 +42,22 @@
         tools:text="Inway, Dansir, Louis Dinkgrefe, Thomas Bolte"/>
 
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/people"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_audiotrack_black_24dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        tools:text="House, Tech-House, Techno"/>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/music"
         android:layout_marginTop="8dp"
         android:drawableLeft="@drawable/ic_schedule_black_24dp"
         android:drawablePadding="8dp"
