@@ -75,7 +75,12 @@ public class ScheduleSearchResultHolder extends RecyclerView.ViewHolder {
             mLocation.setVisibility(View.GONE);
         } else {
             mLocation.setVisibility(View.VISIBLE);
-            mLocation.setText(result.getEvent().getLocation().getName());
+            String locationString = result.getEvent().getLocation().getName();
+            if (result.getReason() == ScheduleSearchResult.REASON_LOCATION
+                    && !locationString.equals(result.getReasonString())) {
+                locationString += String.format(" (%s)", result.getReasonString());
+            }
+            mLocation.setText(locationString);
         }
 
         mDay.setText(FORMAT_DAY.format(result.getEvent().getStart()));

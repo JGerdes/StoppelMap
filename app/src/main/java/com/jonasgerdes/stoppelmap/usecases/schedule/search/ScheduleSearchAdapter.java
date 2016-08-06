@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.model.schedule.search.ScheduleSearchResult;
@@ -101,21 +102,37 @@ public class ScheduleSearchAdapter extends SearchCardView.ResultAdapter<Schedule
                 }
 
                 //location search
-                if (event.getLocation() != null
-                        && event.getLocation().getName().toLowerCase().contains(query)) {
-                    tempResults.add(
-                            new ScheduleSearchResult(
-                                    event,
-                                    ScheduleSearchResult.REASON_LOCATION,
-                                    event.getLocation().getName())
-                    );
-                    continue;
+                if (event.getLocation() != null) {
+                    String match = getLocationMatch(event.getLocation(), query);
+                    if (match != null) {
+                        tempResults.add(
+                                new ScheduleSearchResult(
+                                        event,
+                                        ScheduleSearchResult.REASON_LOCATION,
+                                        match)
+                        );
+                        continue;
+                    }
                 }
 
             }
         }
 
         animateTo(tempResults);
+    }
+
+    private String getLocationMatch(MapEntity entity, String query) {
+        if (entity.getName().toLowerCase().contains(query)) {
+            return entity.getName();
+        }
+        if (entity.getSynonyms() != null) {
+            for (RealmString synonym : entity.getSynonyms()) {
+                if (synonym.getVal().toLowerCase().contains(query)) {
+                    return synonym.getVal();
+                }
+            }
+        }
+        return null;
     }
 
     @Override
