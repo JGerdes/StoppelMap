@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,6 +20,7 @@ import butterknife.ButterKnife;
  * Created by Jonas on 19.07.2016.
  */
 public class EventEntityCardHolder extends EntityCardHolder {
+    private static final String TAG = "EventEntityCardHolder";
 
     public static final int LAYOUT = R.layout.map_entity_card_event;
 
@@ -51,6 +53,14 @@ public class EventEntityCardHolder extends EntityCardHolder {
             }
         };
         mDetailButton.setOnClickListener(showDetailClickListener);
-        itemView.setOnClickListener(showDetailClickListener);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick itemView");
+                Intent intent =
+                        EntityScheduleActivity.createIntent(context, entityCard.getMapEntity());
+                context.startActivity(intent);
+            }
+        });
     }
 }
