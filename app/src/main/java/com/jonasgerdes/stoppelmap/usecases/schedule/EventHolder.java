@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecases.schedule;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
  * Created by Jonas on 04.08.2016.
  */
 public class EventHolder extends RecyclerView.ViewHolder {
+    private static final String TAG = "EventHolder";
     private static SimpleDateFormat FORMAT_TIME = new SimpleDateFormat("kk:mm");
     private static SimpleDateFormat FORMAT_TIME_WITH_DAY = new SimpleDateFormat("EE, kk:mm", Locale.GERMAN);
 
@@ -88,6 +90,7 @@ public class EventHolder extends RecyclerView.ViewHolder {
 
     private String getTimeString(Event event, SimpleDateFormat startFormat) {
         String time;
+        Log.d(TAG, "getTimeString:" + event.getStart().toString());
         if (event.getEnd() != null) {
             time = String.format(
                     "%s - %s Uhr",
