@@ -20,6 +20,7 @@ import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.model.schedule.Events;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
+import com.jonasgerdes.stoppelmap.model.transportation.Taxi;
 import com.jonasgerdes.stoppelmap.model.transportation.Transportation;
 import com.jonasgerdes.stoppelmap.util.FileUtil;
 import com.jonasgerdes.stoppelmap.util.StringUtil;
@@ -110,7 +111,7 @@ public class InitialTransaction implements Realm.Transaction {
                 .create();
 
 
-        Transportation transp = readJsonFile(gson, "data/transportation.json", Transportation.class);
+        Transportation transp = readJsonFile(gson, "data/transportation/busses.json", Transportation.class);
         if (transp != null) {
             for (Route route : transp.routes) {
                 realm.copyToRealm(route);
@@ -118,6 +119,9 @@ public class InitialTransaction implements Realm.Transaction {
         } else {
             Log.e(TAG, "execute: error reading asset to realm");
         }
+
+        Taxi.Taxis taxis = readJsonFile(gson, "data/transportation/taxi.json", Taxi.Taxis.class);
+        realm.copyToRealm(taxis.taxis);
 
 
         String[] files = new String[0];

@@ -17,14 +17,17 @@ import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.schedule.Event;
 import com.jonasgerdes.stoppelmap.model.transportation.Route;
+import com.jonasgerdes.stoppelmap.model.transportation.Taxi;
 import com.jonasgerdes.stoppelmap.usecases.map.EntityHelper;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.DepatureCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.EventEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.SynonymEntityCardHolder;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.TaxiEntityCardHolder;
 
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -101,6 +104,13 @@ public class EntityDetailActivity extends AppCompatActivity {
         if (UUID_BUS_STOP.equals(mEntity.getUuid())) {
             EntityCard card = new EntityCard(DepatureCardHolder.LAYOUT, mEntity);
             card.setExtraData(realm.where(Route.class).findAll());
+            mAdapter.addEntityCard(card);
+        }
+
+        if (mEntity.getType() == MapEntity.TYPE_TAXI) {
+            List<Taxi> taxis = realm.where(Taxi.class).findAll();
+            EntityCard card = new EntityCard(TaxiEntityCardHolder.LAYOUT, mEntity);
+            card.setExtraData(taxis);
             mAdapter.addEntityCard(card);
         }
     }

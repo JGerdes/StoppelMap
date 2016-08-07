@@ -11,6 +11,7 @@
         <item>placeholder/beer.png</item>
         <item>placeholder/wc.png</item>
         <item>placeholder/beer.png</item>
-        <item>placeholder/beer.png</item>
+        <item>placeholder/beer.png</item> <!--Parking-->
+        <item>placeholder/beer.png</item> <!--Taxi-->
     </string-array>
 </resources>

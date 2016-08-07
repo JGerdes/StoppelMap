@@ -10,6 +10,7 @@ import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.EventEntityCa
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.SynonymEntityCardHolder;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.TaxiEntityCardHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +37,8 @@ public class EntityCardAdapter extends RecyclerView.Adapter<EntityCardHolder> {
                 return new SynonymEntityCardHolder(view);
             case EventEntityCardHolder.LAYOUT:
                 return new EventEntityCardHolder(view);
+            case TaxiEntityCardHolder.LAYOUT:
+                return new TaxiEntityCardHolder(view);
         }
 
         return new EntityCardHolder(view);

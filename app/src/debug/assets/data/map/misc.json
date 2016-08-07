@@ -85,7 +85,7 @@
       "uuid": "taxistand_no",
       "name": "Taxistand",
       "owner": "",
-      "type": 0,
+      "type": 10,
       "icons": [
         "taxi"
       ],
@@ -131,7 +131,7 @@
       "uuid": "taxi_nw",
       "name": "Taxistand",
       "owner": "",
-      "type": 0,
+      "type": 10,
       "icons": [
         "taxi"
       ],
