@@ -253,8 +253,12 @@ public class InitialTransaction implements Realm.Transaction {
             new AdvancedTag("Feuerwehr"),
             new AdvancedTag(R.drawable.ic_local_atm_black_24dp, "Geldautomat"),
             new AdvancedTag(R.drawable.ic_tent_black_24dp, "Zelt", "Festzelt"),
+
             new AdvancedTag(R.drawable.ic_directions_bus_black_24dp, "Busse",
                     StringUtil.getEmojiByUnicode(StringUtil.EMOJI_BUS)),
+
+            new AdvancedTag(R.drawable.ic_directions_car_black_24dp, "Parkplatz"),
+            new AdvancedTag(R.drawable.ic_local_taxi_black_24dp, "Taxi"),
 
             //Food
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pommes", "Fritten"),

@@ -60,7 +60,7 @@ public class MarkerManager implements GoogleMap.OnCameraChangeListener {
 
     public void placeRelevantMarkers() {
         if(mMap == null) {
-            Log.e(TAG, "GoogleMap is null, ignoring marker placement");
+            Log.e(TAG, " GoogleMap is null, ignoring marker placement");
             return;
         }
         for (Marker marker : mMarkers) {

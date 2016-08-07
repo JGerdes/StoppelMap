@@ -17,10 +17,10 @@
       "day": 0,
       "start": "2016-08-11 18:30:00",
       "locationUuid": "amtmannsbult",
-      "description": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet. Als Festrednerin darf dieses Jahr die Bundesministerin der Verteidigung, Ursula von der Leyen, begrüßt werden.",
+      "description": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet. Als Ehrengast darf dieses Jahr der Lohner Bürgermeister Tobias Gerdesmeyer begrüßt werden.",
       "artists": [
         "Helmut Gels",
-        "Ursula von der Leyen"
+        "Tobias Gerdesmeyer"
       ],
       "tags": [
       ]
@@ -90,7 +90,10 @@
       "type": 0,
       "day": 4,
       "start": "2016-08-15 11:00:00",
-      "description": "Traditioneller Empfang der Gäste der Stadt Vechta"
+      "description": "Traditioneller Empfang der Gäste der Stadt Vechta. Als Festrednerin darf dieses Jahr die Bundesministerin der Verteidigung, Ursula von der Leyen, begrüßt werden.",
+      "artists": [
+        "Ursula von der Leyen"
+      ]
     },
     // Dienstag
     {

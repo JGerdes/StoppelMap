@@ -29,6 +29,8 @@ public class Icon {
         icons.put("atm", new Icon(R.drawable.ic_local_atm_black_24dp, "Geldautomat"));
         icons.put("info", new Icon(R.drawable.ic_info_outline_black_24dp, "Information"));
         icons.put("bus", new Icon(R.drawable.ic_directions_bus_black_24dp, "Bushaltestelle"));
+        icons.put("taxi", new Icon(R.drawable.ic_local_taxi_black_24dp, "Taxistand"));
+        icons.put("parking", new Icon(R.drawable.ic_directions_car_black_24dp, "Parkplatz"));
         icons.put("beer", new Icon(R.drawable.ic_beer_black_24dp, "Ausschank"));
         icons.put("food", new Icon(R.drawable.ic_local_dining_black_24dp, "Speisen"));
         icons.put("wc", new Icon(R.drawable.ic_wc_black_24dp, "Toiletten"));
