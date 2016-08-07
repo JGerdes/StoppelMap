@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecases.map;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -17,7 +18,7 @@ import java.util.Map;
  * Created by Jonas on 21.07.2016.
  */
 public class MarkerManager implements GoogleMap.OnCameraChangeListener {
-
+    private static final String TAG = "MarkerManager";
 
     private Context mContext;
     private GoogleMap mMap;
@@ -58,6 +59,10 @@ public class MarkerManager implements GoogleMap.OnCameraChangeListener {
 
 
     public void placeRelevantMarkers() {
+        if(mMap == null) {
+            Log.e(TAG, "GoogleMap is null, ignoring marker placement");
+            return;
+        }
         for (Marker marker : mMarkers) {
             marker.remove();
         }
