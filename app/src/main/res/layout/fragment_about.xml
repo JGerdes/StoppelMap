@@ -91,6 +91,38 @@
             android:text="Soweit nicht anders gekennzeichnet, alle Grafiken und Bilder © 2016 Jonas Gerdes "/>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="sans-serif light"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:text="Zusätzliche Illustrationen"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="sans-serif light"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:text="(Süßigkeiten)"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:autoLink="web"
+            android:gravity="center"
+            android:text="© 2016 Sara Fraas \nwww.fraas-home.de"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

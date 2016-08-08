@@ -283,6 +283,13 @@ public class InitialTransaction implements Realm.Transaction {
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Spiegeleier"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Spießbraten"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Italiener"),
+            new AdvancedTag(R.drawable.ic_ice_cream_black_24dp, "Eis"),
+            new AdvancedTag(R.drawable.ic_ice_cream_black_24dp, "Slush"),
+            new AdvancedTag(R.drawable.ic_candy_black_24dp, "Süßigkeiten", "Bonbons"),
+            new AdvancedTag(R.drawable.ic_candy_black_24dp, "Zuckerwatte"),
+            new AdvancedTag(R.drawable.ic_candy_black_24dp, "Lebkuchen"),
+            new AdvancedTag(R.drawable.ic_candy_black_24dp, "Backwaren"),
+            new AdvancedTag(R.drawable.ic_candy_black_24dp, "Gebrannte Mandeln"),
 
             //Drinks
             new AdvancedTag(R.drawable.ic_beer_black_24dp, "Bier"),
