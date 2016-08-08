@@ -2,15 +2,15 @@
 <resources>
     <string name="asset_map_entity_header_dir">file:///android_asset/headers/%1$s</string>
     <string-array name="asset_header_placeholders">
-        <item>placeholder/default.png</item>
+        <item>placeholder/default.png</item> <!-- Misc -->
         <item>placeholder/ride.png</item>
         <item>placeholder/beer.png</item>
-        <item>placeholder/default.png</item>
+        <item>placeholder/default.png</item> <!-- Food -->
         <item>placeholder/hybrid.png</item>
-        <item>placeholder/default.png</item>
-        <item>placeholder/default.png</item>
+        <item>placeholder/sweets.png</item>
+        <item>placeholder/default.png</item> <!--Games-->
         <item>placeholder/wc.png</item>
-        <item>placeholder/default.png</item>
+        <item>placeholder/default.png</item> <!-- Shop -->
         <item>placeholder/default.png</item> <!--Parking-->
         <item>placeholder/taxi.png</item> <!--Taxi-->
     </string-array>

@@ -37,7 +37,7 @@
             <View
                 android:id="@+id/skrim_top"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="48dp"
                 android:layout_gravity="top"
                 android:background="@drawable/scrim_gradient_black_top"
                 android:fitsSystemWindows="true"
