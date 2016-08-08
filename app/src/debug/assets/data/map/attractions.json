@@ -47,6 +47,7 @@
       "uuid": "spinning_racer",
       "name": "Spinning Racer",
       "type": 1,
+      "headerImageFile": "rides/spinning_racer.jpg",
       "icons": [
         "attraction"
       ],

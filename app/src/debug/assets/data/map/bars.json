@@ -155,6 +155,7 @@
       "uuid": "die_2_dinklager",
       "name": "Die 2 Dinklager",
       "type": 2,
+      "headerImageFile": "tents/die2dinklager.jpg",
       "icons": [
         "tent",
         "beer"
@@ -195,6 +196,7 @@
       "uuid": "western_saloon",
       "name": "Western Saloon",
       "type": 2,
+      "headerImageFile": "tents/saloon.jpg",
       "icons": [
         "beer"
       ],
@@ -232,6 +234,7 @@
       "uuid": "jansen",
       "name": "Jansen",
       "type": 2,
+      "headerImageFile": "tents/jansen.jpg",
       "icons": [
         "tent",
         "beer"
@@ -276,6 +279,7 @@
       "uuid": "hanse_kogge",
       "name": "Hanse Kogge",
       "type": 2,
+      "headerImageFile": "tents/hanse_kogge.jpg",
       "icons": [
         "tent",
         "beer"
@@ -439,6 +443,7 @@
       "uuid": "kuehlings_niedersachsenhalle",
       "name": "Kühlings Niedersachsenhalle",
       "type": 2,
+      "headerImageFile": "tents/kuehling.jpg",
       "icons": [
         "tent",
         "beer"
@@ -601,6 +606,7 @@
       "uuid": "die_flotte",
       "name": "Die Flotte",
       "type": 2,
+      "headerImageFile": "tents/flotte.jpg",
       "synonyms": [
         "Das Partyschiff"
       ],
@@ -692,6 +698,7 @@
     {
       "uuid": "feldkamp",
       "name": "Feldkamp",
+      "headerImageFile": "hybrids/feldkamp.jpg",
       "type": 4,
       "icons": [
         "food",
@@ -993,6 +1000,7 @@
       "uuid": "pickers",
       "name": "Pickers",
       "type": 2,
+      "headerImageFile": "tents/pickers.jpg",
       "synonyms": [
         "Luttener Zelt"
       ],
@@ -1132,6 +1140,7 @@
       "uuid": "anton_linnemann",
       "name": "Anton Linnemann",
       "type": 2,
+      "headerImageFile": "tents/linnemann.jpg",
       "icons": [
         "beer"
       ],
@@ -1253,6 +1262,7 @@
       "uuid": "grieshop",
       "name": "Grieshop",
       "type": 2,
+      "headerImageFile": "tents/grieshop.jpg",
       "icons": [
         "tent",
         "beer",
@@ -1303,6 +1313,7 @@
       "uuid": "stratmann",
       "name": "Stratmann",
       "type": 2,
+      "headerImageFile": "tents/stratmann.jpg",
       "synonyms": [
         "Lohner Zelt",
         "Echt Stoppelmarkt!"
@@ -1489,6 +1500,7 @@
       "uuid": "alkoholfreies_zelt",
       "name": "Alkoholfreies Zelt",
       "type": 2,
+      "headerImageFile": "tents/alkoholfrei.jpg",
       "icons": [
         "tent",
         "coffee"
@@ -1703,6 +1715,7 @@
       "uuid": "hogeback",
       "name": "Hogeback",
       "type": 2,
+      "headerImageFile": "tents/hogeback.jpg",
       "icons": [
         "tent",
         "beer"
@@ -1841,8 +1854,9 @@
     },
     {
       "uuid": "bloemer",
-      "name": "Blömer",
+      "name": "Blömer's",
       "type": 2,
+      "headerImageFile": "tents/bloemers.jpg",
       "icons": [
         "tent",
         "beer"
@@ -1982,6 +1996,7 @@
       "uuid": "party_park",
       "name": "Party Park",
       "type": 2,
+      "headerImageFile": "tents/partypark.jpg",
       "synonyms": [
         "Siggi & Rainer"
       ],
