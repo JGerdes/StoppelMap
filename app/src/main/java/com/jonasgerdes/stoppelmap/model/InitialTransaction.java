@@ -111,20 +111,32 @@ public class InitialTransaction implements Realm.Transaction {
                 .create();
 
 
-        Transportation transp = readJsonFile(gson, "data/transportation/busses.json", Transportation.class);
-        if (transp != null) {
-            for (Route route : transp.routes) {
-                realm.copyToRealm(route);
-            }
-        } else {
-            Log.e(TAG, "execute: error reading asset to realm");
+        String[] files = new String[0];
+        try {
+            files = mAssets.list("data/transportation/bus");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        for (String file : files) {
+            if (file.contains("template")) {
+                continue;
+            }
+            Transportation transp = readJsonFile(gson, "data/transportation/bus/" + file, Transportation.class);
+            if (transp != null) {
+                for (Route route : transp.routes) {
+                    realm.copyToRealm(route);
+                }
+            } else {
+                Log.e(TAG, "execute: error reading asset to realm");
+            }
+        }
+
 
         Taxi.Taxis taxis = readJsonFile(gson, "data/transportation/taxi.json", Taxi.Taxis.class);
         realm.copyToRealm(taxis.taxis);
 
 
-        String[] files = new String[0];
+        files = new String[0];
         try {
             files = mAssets.list("data/map");
             for (String file : files) {
