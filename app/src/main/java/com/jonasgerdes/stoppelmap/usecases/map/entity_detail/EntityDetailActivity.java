@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.usecases.map.entity_detail;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
@@ -78,7 +80,14 @@ public class EntityDetailActivity extends AppCompatActivity {
         String headerPath = getString(R.string.asset_map_entity_header_dir, headerFile);
         Glide.with(this)
                 .load(Uri.parse(headerPath))
-                .into(mHeaderImage);
+                .asBitmap()
+                .into(new BitmapImageViewTarget(mHeaderImage) {
+                    @Override
+                    protected void setResource(Bitmap resource) {
+
+                        super.setResource(resource);
+                    }
+                });
 
 
         Realm realm = StoppelMapApp.getViaActivity(this).getRealm();
