@@ -117,6 +117,7 @@
       "uuid": "treffpunkt",
       "name": "Treffpunkt",
       "type": 2,
+      "headerImageFile": "tents/treffpunkt.jpg",
       "icons": [
         "beer"
       ],
@@ -327,6 +328,7 @@
     {
       "uuid": "wunderbar",
       "name": "Wunderbar",
+      "headerImageFile": "tents/wunderbar.jpg",
       "type": 2,
       "synonyms": [
         "Waldhof",
@@ -397,6 +399,7 @@
       "uuid": "meyerei",
       "name": "Zur Neuen Meyerei",
       "type": 2,
+      "headerImageFile": "tents/zur_neuen_meyerei.jpg",
       "icons": [
         "beer"
       ],
@@ -863,6 +866,7 @@
       "uuid": "schinderhannes",
       "name": "Schinderhannes",
       "type": 4,
+      "headerImageFile": "hybrids/schinderhannes.jpg",
       "icons": [
         "food",
         "beer"
@@ -1044,6 +1048,7 @@
       "uuid": "banane",
       "name": "Banane",
       "type": 2,
+      "headerImageFile": "tents/banane.jpg",
       "icons": [
         "tent",
         "beer"
@@ -1084,6 +1089,7 @@
       "uuid": "brackmann",
       "name": "Brackmann",
       "type": 2,
+      "headerImageFile": "tents/brackmann.jpg",
       "icons": [
         "tent",
         "beer"
@@ -1218,10 +1224,11 @@
     {
       "uuid": "schaefers",
       "name": "Schäfers",
+      "type": 2,
+      "headerImageFile": "tents/schaefers.jpg",
       "synonyms": [
         "Festzelt No.1"
       ],
-      "type": 2,
       "icons": [
         "tent",
         "beer"
@@ -1374,6 +1381,7 @@
       "uuid": "kaponier",
       "name": "Kaponier",
       "type": 2,
+      "headerImageFile": "tents/kaponier.jpg",
       "synonyms": [
         "Kapobier"
       ],
@@ -1578,6 +1586,7 @@
       "uuid": "stierbraeu",
       "name": "Stierbräu",
       "type": 2,
+      "headerImageFile": "tents/stierbraeu.jpg",
       "icons": [
         "tent",
         "beer"
@@ -1766,8 +1775,12 @@
     },
     {
       "uuid": "heitmann_bierstube",
-      "name": "Heitmann Bierstube",
+      "name": "Heitmann's Biergarten",
       "type": 2,
+      "headerImageFile": "tents/heitmann.jpg",
+      "synonyms": [
+        "Heitmann's Bierstube"
+      ],
       "icons": [
         "tent",
         "beer"

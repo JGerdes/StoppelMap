@@ -86,6 +86,7 @@
       "uuid": "villa_wahnsinn",
       "name": "Villa Wahnsinn",
       "type": 1,
+      "headerImageFile": "rides/villa_wahnsinn.jpg",
       "icons": [
         "attraction"
       ],
@@ -215,6 +216,7 @@
       "uuid": "black_out",
       "name": "Black Out",
       "type": 1,
+      "headerImageFile": "rides/blackout.jpg",
       "icons": [
         "attraction"
       ],
@@ -252,6 +254,7 @@
       "uuid": "musik_express",
       "name": "Musik-Express",
       "type": 1,
+      "headerImageFile": "rides/musikexpress.jpg",
       "icons": [
         "attraction"
       ],
@@ -289,6 +292,7 @@
       "uuid": "disco_dance",
       "name": "Disco Dance",
       "type": 1,
+      "headerImageFile": "rides/discodance.jpg",
       "icons": [
         "attraction"
       ],
@@ -939,6 +943,7 @@
       "uuid": "wellenflug",
       "name": "Wellenflug",
       "type": 1,
+      "headerImageFile": "rides/wellenflug.jpg",
       "icons": [
         "attraction"
       ],
@@ -977,6 +982,7 @@
       "uuid": "topin",
       "name": "TopIn",
       "type": 1,
+      "headerImageFile": "rides/topin.jpg",
       "icons": [
         "attraction"
       ],
@@ -1091,6 +1097,7 @@
       "uuid": "looping_the_loop",
       "name": "Looping The Loop",
       "type": 1,
+      "headerImageFile": "rides/looping_the_loop.jpg",
       "icons": [
         "attraction"
       ],
@@ -1213,6 +1220,7 @@
       "uuid": "riesenrad",
       "name": "Riesenrad",
       "type": 1,
+      "headerImageFile": "rides/riesenrad.jpg",
       "icons": [
         "attraction"
       ],
@@ -1336,6 +1344,7 @@
       "uuid": "power_tower_2",
       "name": "Power Tower 2",
       "type": 1,
+      "headerImageFile": "rides/power_tower.jpg",
       "icons": [
         "attraction"
       ],

@@ -4,6 +4,7 @@
       "uuid": "schmedes",
       "name": "Schmedes",
       "type": 4,
+      "headerImageFile": "hybrids/schmedes.jpg",
       "icons": [
         "beer",
         "food",
@@ -54,6 +55,7 @@
       "uuid": "oldehus",
       "name": "Oldehus",
       "type": 4,
+      "headerImageFile": "hybrids/oldehus.jpg",
       "icons": [
         "beer",
         "wc"
