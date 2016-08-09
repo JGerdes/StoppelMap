@@ -130,7 +130,7 @@ public class RouteHolder extends RecyclerView.ViewHolder implements OnMapReadyCa
 
         if (mStationLocations.size() > 0) {
             LatLngBounds.Builder boundBuilder = LatLngBounds.builder();
-            boundBuilder.include(GEO_POSITION_STOPPELMARKT);
+            //boundBuilder.include(GEO_POSITION_STOPPELMARKT);
             MarkerOptions options = new MarkerOptions();
             options.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_directions_bus_black_9dp));
             for (LatLng stationLocation : mStationLocations) {
