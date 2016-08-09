@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.Pair;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -249,9 +251,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
                 closeSearch();
                 getSearchView().show();
                 return true;
+            case R.id.options_help:
+                showKeyDialog();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void showKeyDialog() {
+        GridLayout key = (GridLayout) LayoutInflater.from(getContext())
+                .inflate(R.layout.map_key_dialog, null);
+
+
+        new AlertDialog.Builder(getContext(), R.style.StoppelMapAlert)
+                .setTitle("Legende")
+                .setView(key)
+                .setPositiveButton("Ok", null)
+                .show();
     }
 
     private SearchCardView getSearchView() {

@@ -95,7 +95,7 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         if (getSearchView() != null) {
-            inflater.inflate(R.menu.menu_map_fragment, menu);
+            inflater.inflate(R.menu.menu_schedule_fragment, menu);
         }
     }
 
