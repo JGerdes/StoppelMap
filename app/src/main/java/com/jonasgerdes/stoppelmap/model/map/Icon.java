@@ -41,6 +41,9 @@ public class Icon {
 
         icons.put("attraction", new Icon(R.drawable.ic_fairground_black_24dp, "Fahrgeschäft"));
         icons.put("kidsride", new Icon(R.drawable.ic_child_care_black_24dp, "Für Kinder"));
+        icons.put("games", new Icon(R.drawable.ic_trophy_black_24dp, "Spielstand"));
+        icons.put("shooting_games", new Icon(R.drawable.ic_shooting_black_24dp, "Schießbude"));
+        icons.put("lottery", new Icon(R.drawable.ic_local_activity_black_24dp, "Verlosung"));
 
         ICONS = icons;
     }

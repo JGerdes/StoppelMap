@@ -1,0 +1,1489 @@
+{
+  "entities": [
+    {
+      "uuid": "gahlen_kamelrennen",
+      "name": "Kamelrennen",
+      "owner": "gahlen",
+      "type": 6,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74711288679562,
+          "lng": 8.296543210744858
+        },
+        {
+          "lat": 52.74702115145868,
+          "lng": 8.296570032835007
+        },
+        {
+          "lat": 52.7470122214598,
+          "lng": 8.29648956656456
+        },
+        {
+          "lat": 52.74710639226486,
+          "lng": 8.296465426683426
+        }
+      ],
+      "origin": {
+        "lat": 52.747063365974,
+        "lng": 8.296516388654709
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "beine_dosenwerfen",
+      "name": "Dosenwerfen",
+      "owner": "Beine",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Ballwerfen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74721030464112,
+          "lng": 8.29646810889244
+        },
+        {
+          "lat": 52.7471867620151,
+          "lng": 8.296477496623993
+        },
+        {
+          "lat": 52.74717214934425,
+          "lng": 8.296317905187607
+        },
+        {
+          "lat": 52.74719812742235,
+          "lng": 8.296313881874084
+        }
+      ],
+      "origin": {
+        "lat": 52.74719082108947,
+        "lng": 8.296387642621994
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "parpalioni_kentucky_derby",
+      "name": "Kentucky Derby",
+      "owner": "Parpalioni",
+      "type": 6,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74709259138374,
+          "lng": 8.296344727277756
+        },
+        {
+          "lat": 52.74700166782242,
+          "lng": 8.296371549367905
+        },
+        {
+          "lat": 52.746998420548856,
+          "lng": 8.296303153038025
+        },
+        {
+          "lat": 52.747087720483485,
+          "lng": 8.296280354261398
+        }
+      ],
+      "origin": {
+        "lat": 52.74704469417419,
+        "lng": 8.296320587396622
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "stange_schiessstand",
+      "name": "Schießbude",
+      "owner": "Stange",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.746993549638084,
+          "lng": 8.296346068382263
+        },
+        {
+          "lat": 52.74689531948763,
+          "lng": 8.296366184949875
+        },
+        {
+          "lat": 52.746888824924426,
+          "lng": 8.296323269605637
+        },
+        {
+          "lat": 52.746989490545324,
+          "lng": 8.296301811933517
+        }
+      ],
+      "origin": {
+        "lat": 52.74694240504193,
+        "lng": 8.296332657337189
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "fischer_faden_ziehen",
+      "name": "Faden ziehen",
+      "owner": "Fischer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Faden ziehen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74690627906085,
+          "lng": 8.296588808298111
+        },
+        {
+          "lat": 52.74683443291957,
+          "lng": 8.296607583761215
+        },
+        {
+          "lat": 52.74683037381203,
+          "lng": 8.296561315655708
+        },
+        {
+          "lat": 52.74690221995998,
+          "lng": 8.296546563506126
+        }
+      ],
+      "origin": {
+        "lat": 52.74687096487062,
+        "lng": 8.29657606780529
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "fischer_automaten",
+      "name": "Automaten",
+      "owner": "Fischer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Automaten"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74679952458219,
+          "lng": 8.29679399728775
+        },
+        {
+          "lat": 52.74668546342434,
+          "lng": 8.296826183795929
+        },
+        {
+          "lat": 52.7466777510933,
+          "lng": 8.296766504645348
+        },
+        {
+          "lat": 52.746793435915826,
+          "lng": 8.296735659241676
+        }
+      ],
+      "origin": {
+        "lat": 52.74673823196864,
+        "lng": 8.296777233481407
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "fischer_sportschiessen",
+      "name": "Sportschießen",
+      "owner": "Fischer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74692413910016,
+          "lng": 8.296747729182243
+        },
+        {
+          "lat": 52.74680114822642,
+          "lng": 8.29678125679493
+        },
+        {
+          "lat": 52.74679668320465,
+          "lng": 8.296734988689423
+        },
+        {
+          "lat": 52.746918456361186,
+          "lng": 8.296704813838005
+        }
+      ],
+      "origin": {
+        "lat": 52.74686325257239,
+        "lng": 8.296741023659706
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "john_ab_in_die_falle",
+      "name": "Ab in die Falle!",
+      "owner": "John",
+      "type": 6,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand"
+      ],
+      "bounds": [
+        {
+          "lat": 52.7472500835321,
+          "lng": 8.297075629234314
+        },
+        {
+          "lat": 52.7471867620151,
+          "lng": 8.297091722488403
+        },
+        {
+          "lat": 52.74718351475533,
+          "lng": 8.296984434127808
+        },
+        {
+          "lat": 52.74724277720791,
+          "lng": 8.29697236418724
+        }
+      ],
+      "origin": {
+        "lat": 52.74721679915643,
+        "lng": 8.297028690576553
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "slummer_ballschiessen",
+      "name": "Ballschießen",
+      "owner": "Slummer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Ballschießen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.747197721515,
+          "lng": 8.297246620059013
+        },
+        {
+          "lat": 52.74712912311835,
+          "lng": 8.297260701656342
+        },
+        {
+          "lat": 52.747125469946276,
+          "lng": 8.297221139073372
+        },
+        {
+          "lat": 52.74719650379292,
+          "lng": 8.297205045819283
+        }
+      ],
+      "origin": {
+        "lat": 52.747165248914676,
+        "lng": 8.297231197357178
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "kleuser_blumenspiel",
+      "name": "Blumenspiel",
+      "owner": "Kleuser",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74717580251242,
+          "lng": 8.29592227935791
+        },
+        {
+          "lat": 52.74714901260543,
+          "lng": 8.295930996537209
+        },
+        {
+          "lat": 52.74714414171145,
+          "lng": 8.295853212475777
+        },
+        {
+          "lat": 52.74716849617579,
+          "lng": 8.295844495296478
+        }
+      ],
+      "origin": {
+        "lat": 52.747161595745624,
+        "lng": 8.295884057879448
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "schmidt_high_chaparal_shooting_saloon",
+      "name": "High Chaparal Shooting Saloon",
+      "owner": "Schmidt",
+      "type": 6,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74692535682987,
+          "lng": 8.295556157827377
+        },
+        {
+          "lat": 52.746771110798555,
+          "lng": 8.295764029026031
+        },
+        {
+          "lat": 52.74675162705048,
+          "lng": 8.295715749263763
+        },
+        {
+          "lat": 52.746899378589134,
+          "lng": 8.295511901378632
+        }
+      ],
+      "origin": {
+        "lat": 52.74684011566952,
+        "lng": 8.295632600784302
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "meyer_hercules_bogenschiessen",
+      "name": "Hercules Bogenschießen",
+      "owner": "Meyer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74759956794155,
+          "lng": 8.296982422471046
+        },
+        {
+          "lat": 52.74753056427328,
+          "lng": 8.296999856829643
+        },
+        {
+          "lat": 52.747521228474476,
+          "lng": 8.296911343932152
+        },
+        {
+          "lat": 52.74759226167596,
+          "lng": 8.296895921230316
+        }
+      ],
+      "origin": {
+        "lat": 52.747565472024995,
+        "lng": 8.296944200992584
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "schmidt_geschicklichkeitsspiele",
+      "name": "Geschicklichkeitsspiele",
+      "owner": "Schmidt",
+      "type": 6,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand"
+      ],
+      "bounds": [
+        {
+          "lat": 52.747705102752256,
+          "lng": 8.297158777713776
+        },
+        {
+          "lat": 52.74757318419895,
+          "lng": 8.297189623117447
+        },
+        {
+          "lat": 52.747568313352396,
+          "lng": 8.297118544578552
+        },
+        {
+          "lat": 52.74769982601777,
+          "lng": 8.297086358070374
+        }
+      ],
+      "origin": {
+        "lat": 52.747640564186845,
+        "lng": 8.29713061451912
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "schmidt_dosenschiessen",
+      "name": "Dosenschießen",
+      "owner": "Schmidt",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74744004753095,
+          "lng": 8.295831754803658
+        },
+        {
+          "lat": 52.74737550857293,
+          "lng": 8.29584851861
+        },
+        {
+          "lat": 52.747367796364024,
+          "lng": 8.295788168907166
+        },
+        {
+          "lat": 52.747433958954105,
+          "lng": 8.295772075653076
+        }
+      ],
+      "origin": {
+        "lat": 52.74740554558418,
+        "lng": 8.29580694437027
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "boegeholz_automaten",
+      "name": "Automaten",
+      "owner": "Bögeholz",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Automaten"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74702764600216,
+          "lng": 8.295403271913528
+        },
+        {
+          "lat": 52.7469834019055,
+          "lng": 8.295470997691154
+        },
+        {
+          "lat": 52.74696351234286,
+          "lng": 8.295442834496498
+        },
+        {
+          "lat": 52.74701100373254,
+          "lng": 8.29537108540535
+        }
+      ],
+      "origin": {
+        "lat": 52.746997202821206,
+        "lng": 8.295424059033394
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "wiemert_schiessstand",
+      "name": "Schießbude",
+      "owner": "Wiemert",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74716687254525,
+          "lng": 8.29541802406311
+        },
+        {
+          "lat": 52.74709137365871,
+          "lng": 8.295529335737228
+        },
+        {
+          "lat": 52.74707270187091,
+          "lng": 8.295496478676796
+        },
+        {
+          "lat": 52.74714860669759,
+          "lng": 8.295387178659439
+        }
+      ],
+      "origin": {
+        "lat": 52.74711856950929,
+        "lng": 8.295456245541573
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "bossel_dosenwerfen",
+      "name": "Dosenwerfen",
+      "owner": "Bossel",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Dosenwerfen",
+        "Ballwerfen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74719609788557,
+          "lng": 8.295164555311203
+        },
+        {
+          "lat": 52.747149824421015,
+          "lng": 8.295232281088829
+        },
+        {
+          "lat": 52.74713155856624,
+          "lng": 8.295196071267128
+        },
+        {
+          "lat": 52.74717661432753,
+          "lng": 8.295133039355278
+        }
+      ],
+      "origin": {
+        "lat": 52.747163625284024,
+        "lng": 8.295182660222054
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "schmedes_pfeilwerfen",
+      "name": "Pfeilwerfen",
+      "owner": "Schmedes",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74749078563838,
+          "lng": 8.294916450977325
+        },
+        {
+          "lat": 52.74744126524624,
+          "lng": 8.294991552829742
+        },
+        {
+          "lat": 52.74742421722936,
+          "lng": 8.294962048530579
+        },
+        {
+          "lat": 52.74747536125999,
+          "lng": 8.294886276125908
+        }
+      ],
+      "origin": {
+        "lat": 52.747459125066285,
+        "lng": 8.294938579201698
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "kleuser_verlosung",
+      "name": "Verlosung",
+      "owner": "Kleuser",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "lottery"
+      ],
+      "tags": [
+        "Verlosung"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74741041644889,
+          "lng": 8.294829279184341
+        },
+        {
+          "lat": 52.7473369475147,
+          "lng": 8.29493723809719
+        },
+        {
+          "lat": 52.74732030536322,
+          "lng": 8.294904381036758
+        },
+        {
+          "lat": 52.74739215070335,
+          "lng": 8.294797092676163
+        }
+      ],
+      "origin": {
+        "lat": 52.74736130187125,
+        "lng": 8.294867500662804
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "hempen_geschicklichkeitsspiele",
+      "name": "Geschicklichkeitsspiele",
+      "owner": "Hempen",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Geschicklichkeitsspiele"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74789141165951,
+          "lng": 8.293712809681892
+        },
+        {
+          "lat": 52.74786462219247,
+          "lng": 8.293711468577385
+        },
+        {
+          "lat": 52.747872740214525,
+          "lng": 8.293559923768044
+        },
+        {
+          "lat": 52.747899529676594,
+          "lng": 8.293560594320297
+        }
+      ],
+      "origin": {
+        "lat": 52.74788248183899,
+        "lng": 8.293631002306938
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "hau_den_lukas_1",
+      "name": "Hau den Lukas",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Hau den Lukas"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74806635459229,
+          "lng": 8.292643949389458
+        },
+        {
+          "lat": 52.748031447241836,
+          "lng": 8.292639255523682
+        },
+        {
+          "lat": 52.748031447241836,
+          "lng": 8.29259030520916
+        },
+        {
+          "lat": 52.74806838408856,
+          "lng": 8.292596340179443
+        }
+      ],
+      "origin": {
+        "lat": 52.74804930681999,
+        "lng": 8.292617797851562
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "enders_verlosung",
+      "name": "Verlosung",
+      "owner": "Enders",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "lottery"
+      ],
+      "tags": [
+        "Verlosung"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74818365932089,
+          "lng": 8.292281180620193
+        },
+        {
+          "lat": 52.74811871556553,
+          "lng": 8.292242288589478
+        },
+        {
+          "lat": 52.74813251612165,
+          "lng": 8.292187303304672
+        },
+        {
+          "lat": 52.748197865754456,
+          "lng": 8.292229548096657
+        }
+      ],
+      "origin": {
+        "lat": 52.74815808772878,
+        "lng": 8.29223357141018
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "kellner_silbermine",
+      "name": "Silbermine",
+      "owner": "Kellner",
+      "type": 6,
+      "icons": [
+        "lottery"
+      ],
+      "tags": [
+        "Verlosung"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74851405917733,
+          "lng": 8.29428881406784
+        },
+        {
+          "lat": 52.74848077576718,
+          "lng": 8.294298201799393
+        },
+        {
+          "lat": 52.74846453994815,
+          "lng": 8.294043391942978
+        },
+        {
+          "lat": 52.74849944695162,
+          "lng": 8.294035345315933
+        }
+      ],
+      "origin": {
+        "lat": 52.74848889367444,
+        "lng": 8.294166773557663
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "meyer_verlosung",
+      "name": "Verlosung",
+      "owner": "Meyer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "lottery"
+      ],
+      "tags": [
+        "Verlosung"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74821044859177,
+          "lng": 8.29627901315689
+        },
+        {
+          "lat": 52.74806351329738,
+          "lng": 8.296317905187607
+        },
+        {
+          "lat": 52.74805295991462,
+          "lng": 8.29625889658928
+        },
+        {
+          "lat": 52.7482080132042,
+          "lng": 8.296215981245041
+        }
+      ],
+      "origin": {
+        "lat": 52.74813413971619,
+        "lng": 8.296265602111816
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "bruder_dosenwerfen",
+      "name": "Dosenwerfen",
+      "owner": "Bruder",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Ballwerfen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74825185015983,
+          "lng": 8.292564824223518
+        },
+        {
+          "lat": 52.74821572526439,
+          "lng": 8.292501792311668
+        },
+        {
+          "lat": 52.748236426050845,
+          "lng": 8.29247161746025
+        },
+        {
+          "lat": 52.74827092733973,
+          "lng": 8.292535319924355
+        }
+      ],
+      "origin": {
+        "lat": 52.748244138106024,
+        "lng": 8.292513862252235
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "winter_bogenschiessen",
+      "name": "Bogenschießen",
+      "owner": "Winter",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude",
+        "Bogenschießen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74829934014535,
+          "lng": 8.292657360434532
+        },
+        {
+          "lat": 52.74825144426231,
+          "lng": 8.292692229151726
+        },
+        {
+          "lat": 52.74822465501661,
+          "lng": 8.29259566962719
+        },
+        {
+          "lat": 52.748272145031756,
+          "lng": 8.29256147146225
+        }
+      ],
+      "origin": {
+        "lat": 52.74826280939186,
+        "lng": 8.292623162269592
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "osthold_fadenziehen",
+      "name": "Fadenziehen",
+      "owner": "Osthold",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Fadenziehen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.748333841384394,
+          "lng": 8.292993977665901
+        },
+        {
+          "lat": 52.748308675777444,
+          "lng": 8.292999342083931
+        },
+        {
+          "lat": 52.74830136963075,
+          "lng": 8.292892724275589
+        },
+        {
+          "lat": 52.74832653524194,
+          "lng": 8.292884677648544
+        }
+      ],
+      "origin": {
+        "lat": 52.74831719961369,
+        "lng": 8.292940333485603
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "lemon_skeeball",
+      "name": "Skeeball",
+      "owner": "Lemon",
+      "type": 6,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Skeeball"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74842313858218,
+          "lng": 8.294518142938614
+        },
+        {
+          "lat": 52.74838417255476,
+          "lng": 8.294524848461151
+        },
+        {
+          "lat": 52.74836550132091,
+          "lng": 8.294339776039124
+        },
+        {
+          "lat": 52.74841339707858,
+          "lng": 8.294327706098557
+        }
+      ],
+      "origin": {
+        "lat": 52.748398784819116,
+        "lng": 8.294424265623093
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "keep_pfeilwerfen",
+      "name": "Pfeilwerfen",
+      "owner": "Keep",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Pfeilwerfen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.748166205696144,
+          "lng": 8.294823914766312
+        },
+        {
+          "lat": 52.748109785791605,
+          "lng": 8.294830620288849
+        },
+        {
+          "lat": 52.74810816219615,
+          "lng": 8.294783681631088
+        },
+        {
+          "lat": 52.7481645821028,
+          "lng": 8.29478032886982
+        }
+      ],
+      "origin": {
+        "lat": 52.74813982229666,
+        "lng": 8.294801786541939
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "meyer_schiessstand_2",
+      "name": "Schießbude",
+      "owner": "Meyer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74813982229666,
+          "lng": 8.294976130127907
+        },
+        {
+          "lat": 52.748046059624514,
+          "lng": 8.294982835650444
+        },
+        {
+          "lat": 52.74804768322229,
+          "lng": 8.294941261410713
+        },
+        {
+          "lat": 52.748140228195226,
+          "lng": 8.294930532574654
+        }
+      ],
+      "origin": {
+        "lat": 52.748098420622135,
+        "lng": 8.294952660799026
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "slummer_hollywood_casino",
+      "name": "Hollywood Casino",
+      "owner": "Slummer",
+      "type": 6,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Automaten"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74831679371675,
+          "lng": 8.295447528362274
+        },
+        {
+          "lat": 52.74822506091442,
+          "lng": 8.2954703271389
+        },
+        {
+          "lat": 52.748219378345084,
+          "lng": 8.295364379882812
+        },
+        {
+          "lat": 52.74831192295335,
+          "lng": 8.295334875583649
+        }
+      ],
+      "origin": {
+        "lat": 52.74826970964763,
+        "lng": 8.29540729522705
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "mueller_dosenwerfen",
+      "name": "Dosenwerfen",
+      "owner": "Müller",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Ballwerfen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74807893746759,
+          "lng": 8.295495808124542
+        },
+        {
+          "lat": 52.748074066677574,
+          "lng": 8.295452892780304
+        },
+        {
+          "lat": 52.748135763310685,
+          "lng": 8.295435458421707
+        },
+        {
+          "lat": 52.748139010499486,
+          "lng": 8.295478373765945
+        }
+      ],
+      "origin": {
+        "lat": 52.7481073503984,
+        "lng": 8.295464962720871
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "fischer_schiessstand_2",
+      "name": "Schießbude",
+      "owner": "Fischer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.748181223931816,
+          "lng": 8.295908868312836
+        },
+        {
+          "lat": 52.74805783070699,
+          "lng": 8.295935690402985
+        },
+        {
+          "lat": 52.74805783070699,
+          "lng": 8.295892775058746
+        },
+        {
+          "lat": 52.74817797674618,
+          "lng": 8.295865952968597
+        }
+      ],
+      "origin": {
+        "lat": 52.74812277455308,
+        "lng": 8.295895457267761
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "vespermann_fussball",
+      "name": "Fußball",
+      "owner": "Vespermann",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Fußball"
+      ],
+      "bounds": [
+        {
+          "lat": 52.748444245165814,
+          "lng": 8.296067118644714
+        },
+        {
+          "lat": 52.74840933811812,
+          "lng": 8.296084553003311
+        },
+        {
+          "lat": 52.748398784819116,
+          "lng": 8.29597994685173
+        },
+        {
+          "lat": 52.74843044470844,
+          "lng": 8.295970559120178
+        }
+      ],
+      "origin": {
+        "lat": 52.74842070320648,
+        "lng": 8.296018838882446
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "osthold_jr_las_vegas",
+      "name": "Las Vegas",
+      "owner": "Osthold jr.",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Automaten"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74831760551061,
+          "lng": 8.296065777540207
+        },
+        {
+          "lat": 52.74822262552765,
+          "lng": 8.296092599630356
+        },
+        {
+          "lat": 52.748216942957995,
+          "lng": 8.296028226613998
+        },
+        {
+          "lat": 52.74831192295335,
+          "lng": 8.295997381210327
+        }
+      ],
+      "origin": {
+        "lat": 52.74826402708413,
+        "lng": 8.29604297876358
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "cornelius_automaten",
+      "name": "Automaten",
+      "owner": "Cornelius",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Automaten"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74834845366565,
+          "lng": 8.29624280333519
+        },
+        {
+          "lat": 52.74822019014074,
+          "lng": 8.296283036470413
+        },
+        {
+          "lat": 52.74820882500007,
+          "lng": 8.296213299036026
+        },
+        {
+          "lat": 52.74834033573223,
+          "lng": 8.29616904258728
+        }
+      ],
+      "origin": {
+        "lat": 52.74828594553927,
+        "lng": 8.2962267100811
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "cornelius_schiessstand",
+      "name": "Schießbude",
+      "owner": "Cornelius",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "shooting_games"
+      ],
+      "tags": [
+        "Schießbude"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74845966920124,
+          "lng": 8.296220004558563
+        },
+        {
+          "lat": 52.748351700838604,
+          "lng": 8.296249508857727
+        },
+        {
+          "lat": 52.74834764187237,
+          "lng": 8.296202570199966
+        },
+        {
+          "lat": 52.74845236307987,
+          "lng": 8.296171724796295
+        }
+      ],
+      "origin": {
+        "lat": 52.74840852632597,
+        "lng": 8.296209275722504
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "meyer_dosenwerfen_3",
+      "name": "Dosenwerfen",
+      "owner": "Meyer",
+      "type": 6,
+      "hiddenFromSearch": true,
+      "icons": [
+        "games"
+      ],
+      "tags": [
+        "Spielstand",
+        "Ballwerfen"
+      ],
+      "bounds": [
+        {
+          "lat": 52.74866221063351,
+          "lng": 8.296070471405983
+        },
+        {
+          "lat": 52.74863866879193,
+          "lng": 8.296085223555565
+        },
+        {
+          "lat": 52.74861877998483,
+          "lng": 8.2959745824337
+        },
+        {
+          "lat": 52.74864272773104,
+          "lng": 8.295962512493134
+        }
+      ],
+      "origin": {
+        "lat": 52.7486394805798,
+        "lng": 8.296021521091461
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    }
+  ]
+}

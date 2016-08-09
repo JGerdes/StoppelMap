@@ -282,8 +282,8 @@ public class InitialTransaction implements Realm.Transaction {
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Currywurst"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "HotDogs"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pizza"),
-            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pasta"),
-            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Chinesisch"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Pasta", "Nudeln"),
+            new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Chinesisch", "China-Imbiss"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Schinken"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Brezeln"),
             new AdvancedTag(R.drawable.ic_local_dining_black_24dp, "Imbiss"),
@@ -324,7 +324,17 @@ public class InitialTransaction implements Realm.Transaction {
             new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Achterbahn",
                     StringUtil.getEmojiByUnicode(StringUtil.EMOJI_ROLLERCOASTER)),
             new AdvancedTag(R.drawable.ic_fairground_black_24dp, "GoKarts"),
-            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Geisterbahn")
+            new AdvancedTag(R.drawable.ic_fairground_black_24dp, "Geisterbahn"),
+
+            //stuff
+            new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Spielstand"),
+            new AdvancedTag(R.drawable.ic_shooting_black_24dp, "Schießstand", "Schießbude"),
+            new AdvancedTag(R.drawable.ic_shooting_black_24dp, "Bogenschießen"),
+            new AdvancedTag(R.drawable.ic_shooting_black_24dp, "Ballschießen"),
+            new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Ballwerfen", "Dosenwerfen"),
+            new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Faden ziehen"),
+            new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Automaten"),
+            new AdvancedTag(R.drawable.ic_local_activity_black_24dp, "Verlosung", "Losbude"),
     };
 
     // @formatter: on
