@@ -125,6 +125,7 @@
       "uuid": "take_off",
       "name": "Take Off",
       "type": 1,
+      "headerImageFile": "rides/takeoff.jpg",
       "icons": [
         "attraction"
       ],
@@ -410,9 +411,10 @@
       }
     },
     {
-      "uuid": "kasperltheater",
-      "name": "Kasperltheater",
+      "uuid": "kasperletheater",
+      "name": "Kasperletheater",
       "type": 1,
+      "headerImageFile": "rides/kasperle_theater.jpg",
       "icons": [
         "attraction",
         "kidsride"
@@ -452,6 +454,7 @@
       "uuid": "kinderflieger",
       "name": "Kinderflieger",
       "type": 1,
+      "headerImageFile": "rides/kinder_kettenflieger.jpg",
       "synonyms": [
         "Kinderkettenflieger"
       ],
@@ -1023,6 +1026,7 @@
       "uuid": "formel_1",
       "name": "Formel 1",
       "type": 1,
+      "headerImageFile": "rides/formel1.jpg",
       "icons": [
         "attraction"
       ],
@@ -1137,6 +1141,7 @@
       "uuid": "octopussy",
       "name": "Octopussy",
       "type": 1,
+      "headerImageFile": "rides/octopussy.jpg",
       "synonyms": [
         "Krake"
       ],
@@ -1181,6 +1186,7 @@
       "uuid": "break_dancer",
       "name": "Break Dancer",
       "type": 1,
+      "headerImageFile": "rides/breakdancer.jpg",
       "icons": [
         "attraction"
       ],
@@ -1268,6 +1274,7 @@
       "uuid": "turbo_force",
       "name": "Turbo Force",
       "type": 1,
+      "headerImageFile": "rides/turboforce.jpg",
       "icons": [
         "attraction"
       ],
@@ -1381,9 +1388,10 @@
       }
     },
     {
-      "uuid": "infitity",
-      "name": "Infitity",
+      "uuid": "infinity",
+      "name": "Infinity",
       "type": 1,
+      "headerImageFile": "rides/infinity.jpg",
       "icons": [
         "attraction"
       ],
@@ -1500,6 +1508,7 @@
       "uuid": "piratenfluss",
       "name": "Piratenfluss",
       "type": 1,
+      "headerImageFile": "rides/piratenfluss.jpg",
       "icons": [
         "attraction"
       ],

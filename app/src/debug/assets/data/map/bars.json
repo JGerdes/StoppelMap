@@ -561,6 +561,7 @@
       "uuid": "overmeyer",
       "name": "Overmeyer",
       "type": 2,
+      "headerImageFile": "tents/overmeyer.jpg",
       "icons": [
         "tent",
         "beer"
@@ -825,6 +826,7 @@
       "uuid": "ostermann",
       "name": "Ostermann",
       "type": 4,
+      "headerImageFile": "tents/ostermann.jpg",
       "icons": [
         "food",
         "beer"
@@ -1468,6 +1470,7 @@
       "uuid": "twistringer_zelt",
       "name": "Twistringer Zelt",
       "type": 2,
+      "headerImageFile": "tents/twistringer_zelt.jpg",
       "icons": [
         "tent",
         "beer"
@@ -2193,6 +2196,7 @@
       "name": "Zauberbar",
       "owner": "",
       "type": 2,
+      "headerImageFile": "tents/zauberbar.jpg",
       "icons": [
         "tent",
         "beer"
@@ -2223,6 +2227,48 @@
       "origin": {
         "lat": 52.74681494919982,
         "lng": 8.296386301517487
+      },
+      "zoom": {
+        "min": 19,
+        "max": -1
+      }
+    },
+    {
+      "uuid": "fala_treff",
+      "name": "Fala-Treff",
+      "owner": "",
+      "type": 2,
+      "headerImageFile": "tents/fala_treff.jpg",
+      "icons": [
+        "tent",
+        "beer"
+      ],
+      "tags": [
+        "Ausschank",
+        "Zelt",
+        "Bier"
+      ],
+      "bounds": [
+        {
+          "lat": 52.747826061567075,
+          "lng": 8.29304426908493
+        },
+        {
+          "lat": 52.74774203987561,
+          "lng": 8.29301543533802
+        },
+        {
+          "lat": 52.74776030547449,
+          "lng": 8.29287126660347
+        },
+        {
+          "lat": 52.747845544834696,
+          "lng": 8.292902112007141
+        }
+      ],
+      "origin": {
+        "lat": 52.74779683664927,
+        "lng": 8.29295240342617
       },
       "zoom": {
         "min": 19,
