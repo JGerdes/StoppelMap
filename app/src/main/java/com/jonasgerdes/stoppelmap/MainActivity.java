@@ -20,6 +20,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.jonasgerdes.stoppelmap.deeplink.DeeplinkHandler;
+import com.jonasgerdes.stoppelmap.deeplink.action.Action;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.version.Version;
 import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity
 
     public interface BackPressListener {
         /**
-         *
          * @return true if event was consumed and shouldn't trigger any other actions anymore
          */
         boolean onBackPressed();
@@ -107,16 +108,28 @@ public class MainActivity extends AppCompatActivity
         });
         mDrawerToggle.syncState();
 
-
         mNavigationView.setNavigationItemSelectedListener(this);
-        loadFragment(MapFragment.newInstance(), false);
-        mNavigationView.setCheckedItem(R.id.nav_map);
-
-
         mSearchView.setUpWith(this, mToolbar, R.id.options_search);
         checkVersion();
 
+
+        DeeplinkHandler deeplinkHandler = new DeeplinkHandler();
+        Action action = deeplinkHandler.handleIntent(getIntent());
+        if (action != null) {
+            if (!action.execute(this)) {
+                showDefaultFragment();
+            }
+        } else {
+            showDefaultFragment();
+        }
+
     }
+
+    private void showDefaultFragment() {
+        loadFragment(MapFragment.newInstance(), false);
+        mNavigationView.setCheckedItem(R.id.nav_map);
+    }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -297,7 +310,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void showMapWithEntity(MapEntity mapEntity) {
+        showMapWithEntity(mapEntity, true);
+    }
+
+    public void showMapWithEntity(MapEntity mapEntity, boolean addToBackstack) {
         Fragment fragment = MapFragment.newInstance(mapEntity);
-        loadFragment(fragment, true);
+        loadFragment(fragment, addToBackstack);
     }
 }

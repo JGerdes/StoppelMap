@@ -2078,7 +2078,7 @@
       }
     },
     {
-      "uuid": "meyer3",
+      "uuid": "meyers_pony_bar",
       "name": "Meyers Pony Bar",
       "type": 2,
       "icons": [
@@ -2192,7 +2192,7 @@
       }
     },
     {
-      "uuid": "",
+      "uuid": "zauberbar",
       "name": "Zauberbar",
       "owner": "",
       "type": 2,
