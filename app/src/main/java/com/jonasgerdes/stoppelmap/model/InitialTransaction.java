@@ -333,6 +333,7 @@ public class InitialTransaction implements Realm.Transaction {
             new AdvancedTag(R.drawable.ic_shooting_black_24dp, "Ballschießen"),
             new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Ballwerfen", "Dosenwerfen"),
             new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Faden ziehen"),
+            new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Geschicklichkeitsspiele"),
             new AdvancedTag(R.drawable.ic_trophy_black_24dp, "Automaten"),
             new AdvancedTag(R.drawable.ic_local_activity_black_24dp, "Verlosung", "Losbude"),
     };

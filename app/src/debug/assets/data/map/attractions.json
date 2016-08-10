@@ -329,6 +329,7 @@
     {
       "uuid": "m_rchenland",
       "name": "Märchenland",
+      "headerImageFile": "rides/maerchenland.jpg",
       "type": 1,
       "icons": [
         "attraction",
@@ -825,6 +826,7 @@
       "uuid": "dschungelreise",
       "name": "Dschungelreise",
       "type": 1,
+      "headerImageFile": "rides/dschungelreise.jpg",
       "icons": [
         "attraction",
         "kidsride"
@@ -1419,6 +1421,7 @@
       "uuid": "go_cart_bahn",
       "name": "Go-Cart-Bahn",
       "type": 1,
+      "headerImageFile": "rides/karts.jpg",
       "icons": [
         "attraction"
       ],

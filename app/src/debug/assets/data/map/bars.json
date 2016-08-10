@@ -1934,6 +1934,7 @@
       "uuid": "meyer2",
       "name": "Meyer",
       "type": 2,
+      "headerImageFile": "tents/meyer.jpg",
       "icons": [
         "beer"
       ],
