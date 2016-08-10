@@ -42,6 +42,7 @@ import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.StoppelMapApp;
+import com.jonasgerdes.stoppelmap.deeplink.action.MapAction;
 import com.jonasgerdes.stoppelmap.model.map.Icon;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
 import com.jonasgerdes.stoppelmap.model.map.search.EntitySearchResult;
@@ -96,8 +97,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
     @BindView(R.id.bottom_sheet_icons)
     ViewGroup mBottomSheetIcons;
 
-    @BindView(R.id.fab)
-    FloatingActionButton mFloatingActionButton;
+    @BindView(R.id.fab_location)
+    FloatingActionButton mLocationFab;
+
+    @BindView(R.id.fab_share)
+    FloatingActionButton mShareFab;
 
     @Nullable
     @Override
@@ -209,29 +213,51 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             });
         }
 
-        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+        mLocationFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StoppelMapApp.getViaActivity(getActivity()).executeWithLocation(getActivity(), new StoppelMapApp.LocationRunnable() {
-                    @SuppressWarnings("MissingPermission")
-                    @Override
-                    public void run(Location location) {
-                        if (mMap != null && location != null) {
-                            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-                            mMap.setMyLocationEnabled(true);
-                            if (CameraRestrictor.isInBounds(loc)) {
-                                CameraPosition pos = CameraPosition.fromLatLngZoom(loc, 18);
-                                CameraUpdate update = CameraUpdateFactory.newCameraPosition(pos);
-                                mMap.animateCamera(update);
-                            } else {
-                                Snackbar.make(mCoordinatorLayout, R.string.not_in_area, Snackbar.LENGTH_LONG).show();
-                            }
+                moveMapToUserLocation();
+            }
+        });
 
-                        } else {
-                            Snackbar.make(mCoordinatorLayout, R.string.no_gps, Snackbar.LENGTH_LONG).show();
-                        }
+        mShareFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCurrentMapEntity != null) {
+                    String url = MapAction.createShareUrl(mCurrentMapEntity);
+                    String subject = "Schau dir mal \"%s\" auf der StoppelMap an!";
+                    subject = String.format(subject, mCurrentMapEntity.getName());
+                    String chooserText = "\"%s\" teilen";
+                    chooserText = String.format(chooserText, mCurrentMapEntity.getName());
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, url);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                    startActivity(Intent.createChooser(intent, chooserText));
+                }
+            }
+        });
+    }
+
+    private void moveMapToUserLocation() {
+        StoppelMapApp.getViaActivity(getActivity()).executeWithLocation(getActivity(), new StoppelMapApp.LocationRunnable() {
+            @SuppressWarnings("MissingPermission")
+            @Override
+            public void run(Location location) {
+                if (mMap != null && location != null) {
+                    LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+                    mMap.setMyLocationEnabled(true);
+                    if (CameraRestrictor.isInBounds(loc)) {
+                        CameraPosition pos = CameraPosition.fromLatLngZoom(loc, 18);
+                        CameraUpdate update = CameraUpdateFactory.newCameraPosition(pos);
+                        mMap.animateCamera(update);
+                    } else {
+                        Snackbar.make(mCoordinatorLayout, R.string.not_in_area, Snackbar.LENGTH_LONG).show();
                     }
-                });
+
+                } else {
+                    Snackbar.make(mCoordinatorLayout, R.string.no_gps, Snackbar.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -446,7 +472,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
             mMarkerManager.setVisibleEntities(tagResult.getMapEntities());
             mMarkerManager.placeRelevantMarkers();
         }
+        mShareFab.hide();
+        mLocationFab.show();
     }
+
 
     private void showBottomBarWith(MapEntity mapEntity) {
 
@@ -478,6 +507,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MainAct
         mMarkerManager.setIgnoreZoom(true);
         mMarkerManager.setVisibleEntities(mapEntity);
         mMarkerManager.placeRelevantMarkers();
+
+        mLocationFab.hide();
+        mShareFab.show();
+
+
     }
 
 
