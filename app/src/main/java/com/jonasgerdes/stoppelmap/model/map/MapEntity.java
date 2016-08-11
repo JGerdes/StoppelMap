@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.model.map;
 
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jonasgerdes.stoppelmap.model.shared.GeoLocation;
+import com.jonasgerdes.stoppelmap.model.shared.PhoneNumber;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 
 import io.realm.RealmList;
@@ -28,6 +29,7 @@ public class MapEntity extends RealmObject {
     private String headerImageFile;
     private RealmList<RealmString> icons;
     private Info info;
+    private RealmList<PhoneNumber> phoneNumbers;
     private RealmList<Tag> tags;
     private Zoom zoom;
     private boolean hiddenFromSearch;
@@ -108,6 +110,14 @@ public class MapEntity extends RealmObject {
 
     public void setInfo(Info info) {
         this.info = info;
+    }
+
+    public RealmList<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(RealmList<PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 
     public MarkerOptions getMarkerOptions() {

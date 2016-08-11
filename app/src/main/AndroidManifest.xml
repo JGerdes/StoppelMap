@@ -29,13 +29,13 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
 
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
-                      android:host="share.stoppelmap.de"
-                      android:pathPrefix="/" />
+                <data
+                    android:host="share.stoppelmap.de"
+                    android:pathPrefix="/"
+                    android:scheme="https"/>
             </intent-filter>
         </activity>
         <activity

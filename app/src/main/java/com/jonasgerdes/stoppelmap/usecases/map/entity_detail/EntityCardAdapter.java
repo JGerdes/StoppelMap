@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.DepatureCardH
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.EventEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.PhoneEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.SynonymEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.TaxiEntityCardHolder;
 
@@ -39,6 +40,8 @@ public class EntityCardAdapter extends RecyclerView.Adapter<EntityCardHolder> {
                 return new EventEntityCardHolder(view);
             case TaxiEntityCardHolder.LAYOUT:
                 return new TaxiEntityCardHolder(view);
+            case PhoneEntityCardHolder.LAYOUT:
+                return new PhoneEntityCardHolder(view);
         }
 
         return new EntityCardHolder(view);

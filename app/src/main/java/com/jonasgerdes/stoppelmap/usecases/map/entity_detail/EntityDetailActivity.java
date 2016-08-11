@@ -25,6 +25,7 @@ import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.DepatureCardH
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.EventEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.IconsEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.InfoEntityCardHolder;
+import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.PhoneEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.SynonymEntityCardHolder;
 import com.jonasgerdes.stoppelmap.usecases.map.entity_detail.cards.TaxiEntityCardHolder;
 
@@ -106,6 +107,10 @@ public class EntityDetailActivity extends AppCompatActivity {
 
         if (mEntity.getInfo() != null && mEntity.getInfo().getText() != null) {
             mAdapter.addEntityCard(new EntityCard(InfoEntityCardHolder.LAYOUT, mEntity));
+        }
+
+        if (mEntity.getPhoneNumbers() != null && mEntity.getPhoneNumbers().size() > 0) {
+            mAdapter.addEntityCard(new EntityCard(PhoneEntityCardHolder.LAYOUT, mEntity));
         }
 
         addEventCard(realm);
