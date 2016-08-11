@@ -105,12 +105,12 @@ public class EntityDetailActivity extends AppCompatActivity {
             mAdapter.addEntityCard(new EntityCard(SynonymEntityCardHolder.LAYOUT, mEntity));
         }
 
-        if (mEntity.getInfo() != null && mEntity.getInfo().getText() != null) {
-            mAdapter.addEntityCard(new EntityCard(InfoEntityCardHolder.LAYOUT, mEntity));
-        }
-
         if (mEntity.getPhoneNumbers() != null && mEntity.getPhoneNumbers().size() > 0) {
             mAdapter.addEntityCard(new EntityCard(PhoneEntityCardHolder.LAYOUT, mEntity));
+        }
+
+        if (mEntity.getInfo() != null && mEntity.getInfo().getText() != null) {
+            mAdapter.addEntityCard(new EntityCard(InfoEntityCardHolder.LAYOUT, mEntity));
         }
 
         addEventCard(realm);

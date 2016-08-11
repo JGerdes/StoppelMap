@@ -41,7 +41,7 @@ public class PhoneEntityCardHolder extends EntityCardHolder {
         mContainer.removeAllViews();
         List<View> phoneViews = new ArrayList<>();
         for (final PhoneNumber phoneNumber : entityCard.getMapEntity().getPhoneNumbers()) {
-            View taxiView = inflater.inflate(R.layout.transportation_taxi_item, mContainer, false);
+            View taxiView = inflater.inflate(R.layout.transportation_phone_item, mContainer, false);
 
             ((TextView) taxiView.findViewById(R.id.title)).setText(phoneNumber.getName());
             ((TextView) taxiView.findViewById(R.id.description)).setText(phoneNumber.getDescription());
