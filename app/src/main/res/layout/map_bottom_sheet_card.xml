@@ -38,7 +38,7 @@
                 android:layout_toRightOf="@id/bottom_sheet_image"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-light"
-                android:maxLines="2"
+                android:lines="2"
                 android:textSize="@dimen/card_title_size"
                 android:transitionName="entity_title"
                 tools:text="Amtmannsbult Langer Name und Sohn inc."/>
