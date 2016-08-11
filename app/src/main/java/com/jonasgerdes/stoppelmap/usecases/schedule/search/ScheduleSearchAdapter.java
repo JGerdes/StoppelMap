@@ -121,6 +121,13 @@ public class ScheduleSearchAdapter extends SearchCardView.ResultAdapter<Schedule
         animateTo(tempResults);
     }
 
+    @Override
+    public void onSearch(String query) {
+        if (mSelectedListener != null && mSearchResults != null && mSearchResults.size() > 0) {
+            mSelectedListener.onResultSelected(mSearchResults.get(0));
+        }
+    }
+
     private String getLocationMatch(MapEntity entity, String query) {
         if (entity.getName().toLowerCase().contains(query)) {
             return entity.getName();

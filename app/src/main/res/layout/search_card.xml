@@ -29,6 +29,9 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:hint="Suche"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lines="1"
             android:padding="8dp"/>
 
         <ImageView

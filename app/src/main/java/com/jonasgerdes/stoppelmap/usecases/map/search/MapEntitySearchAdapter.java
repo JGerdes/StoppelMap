@@ -42,7 +42,7 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
         List<SearchResult> tempResults = new ArrayList<>();
         Map<String, TagSearchResult> tagResults = new HashMap<>();
         if (!query.trim().isEmpty()) {
-            query = query.toLowerCase();
+            query = query.toLowerCase().trim();
             for (MapEntity mapEntity : mMapEntities) {
 
                 //name search
@@ -81,6 +81,13 @@ public class MapEntitySearchAdapter extends SearchCardView.ResultAdapter<SearchR
             tempResults.addAll(tagResults.values());
         }
         animateTo(tempResults);
+    }
+
+    @Override
+    public void onSearch(String query) {
+        if (mSelectedListener != null && mSearchResults != null && mSearchResults.size() > 0) {
+            mSelectedListener.onResultSelected(mSearchResults.get(0));
+        }
     }
 
     @Override
