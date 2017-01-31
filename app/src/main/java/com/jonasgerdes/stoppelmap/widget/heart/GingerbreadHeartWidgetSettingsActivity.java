@@ -79,8 +79,8 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
             Color.colorToHSV(color, hsv1);
             float[] hsv2 = new float[]{hsv1[0], hsv1[1], hsv1[2]};
 
-            hsv1[1] = Math.max(0.3f, hsv1[1] - 0.3f);
-            hsv1[2] = 0.9f;
+            hsv1[1] = Math.max(0.1f, hsv1[1] - 0.4f);
+            hsv1[2] = 0.75f;
             mSelectedColors[0] = Color.HSVToColor(hsv1);
 
             mSelectedColors[1] = color;
