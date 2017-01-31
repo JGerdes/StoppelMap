@@ -30,12 +30,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
 
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
-                      android:host="share.stoppelmap.de"
-                      android:pathPrefix="/" />
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:host="share.stoppelmap.de"
+                    android:pathPrefix="/"
+                    android:scheme="https"/>
             </intent-filter>
         </activity>
         <activity
@@ -62,6 +65,17 @@
         <activity
             android:name=".usecases.tutorial.TutorialActivity"
             android:theme="@style/TutorialTheme"/>
+
+        <!-- widgets -->
+        <activity
+            android:name=".widget.heart.GingerbreadHeartWidgetSettingsActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
 
         <receiver android:name=".widget.heart.GingerbreadHeartWidgetProvider">
             <intent-filter>

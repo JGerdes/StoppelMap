@@ -72,10 +72,6 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_gingerbread_heart);
 
-        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", Color.BLUE);
-        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", Color.GREEN);
-        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", Color.CYAN);
-
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
         Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
