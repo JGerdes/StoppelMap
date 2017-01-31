@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.widget.heart;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -41,7 +42,7 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
     ImageView mPreviewLayer3;
 
 
-    private int mCurrentColor;
+    private int[] mSelectedColors = new int[3];
     private int mAppWidgetId;
 
 
@@ -74,11 +75,23 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
             CardView colorCard = (CardView) view;
             int color = colorCard.getCardBackgroundColor().getDefaultColor();
             Log.d(TAG, "onClick: " + color);
-            mCurrentColor = color;
+            float[] hsv1 = new float[3];
+            Color.colorToHSV(color, hsv1);
+            float[] hsv2 = new float[]{hsv1[0], hsv1[1], hsv1[2]};
 
-            mPreviewLayer1.setColorFilter(mCurrentColor);
-            mPreviewLayer2.setColorFilter(mCurrentColor);
-            mPreviewLayer3.setColorFilter(mCurrentColor);
+            hsv1[1] = Math.max(0.3f, hsv1[1] - 0.3f);
+            hsv1[2] = 0.9f;
+            mSelectedColors[0] = Color.HSVToColor(hsv1);
+
+            mSelectedColors[1] = color;
+
+            hsv2[1] += 0.3f;
+            hsv2[2] = Math.max(0.4f, hsv2[2] - 0.3f);
+            mSelectedColors[2] = Color.HSVToColor(hsv2);
+
+            mPreviewLayer1.setColorFilter(mSelectedColors[0]);
+            mPreviewLayer2.setColorFilter(mSelectedColors[1]);
+            mPreviewLayer3.setColorFilter(mSelectedColors[2]);
         }
     }
 
@@ -90,9 +103,9 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
         RemoteViews views = new RemoteViews(getPackageName(),
                 R.layout.widget_layout_gingerbread_heart);
 
-        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", mCurrentColor);
-        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", mCurrentColor);
-        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", mCurrentColor);
+        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", mSelectedColors[0]);
+        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", mSelectedColors[1]);
+        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", mSelectedColors[2]);
 
         // Tell the AppWidgetManager to perform an update on the app widget
         appWidgetManager.updateAppWidget(mAppWidgetId, views);
