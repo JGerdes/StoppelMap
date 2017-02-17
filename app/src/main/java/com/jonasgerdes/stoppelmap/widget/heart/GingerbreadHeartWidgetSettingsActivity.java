@@ -3,11 +3,13 @@ package com.jonasgerdes.stoppelmap.widget.heart;
 import android.app.WallpaperManager;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,6 +48,15 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
 
     @BindView(R.id.previewBackground)
     ImageView mPreviewBackground;
+
+    @BindView(R.id.color_secection_dominant)
+    CardView mColorSelectionDominant;
+
+    @BindView(R.id.color_secection_vibrant)
+    CardView mColorSelectionVibrant;
+
+    @BindView(R.id.color_secection_muted)
+    CardView mColorSelectionMuted;
 
 
     private int[] mSelectedColors = new int[3];
@@ -76,7 +88,44 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
         Drawable wallpaperDrawable = wallpaperManager.getDrawable();
         mPreviewBackground.setImageDrawable(wallpaperDrawable);
-        
+
+        Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(wallpaperDrawable);
+        Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
+            public void onGenerated(final Palette palette) {
+                mColorSelectionDominant
+                        .setCardBackgroundColor(palette.getDominantColor(Color.BLACK));
+                mColorSelectionVibrant
+                        .setCardBackgroundColor(palette.getVibrantColor(Color.BLACK));
+                mColorSelectionMuted
+                        .setCardBackgroundColor(palette.getMutedColor(Color.BLACK));
+
+                mColorSelectionDominant.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setColorsBy(palette.getDominantColor(Color.BLACK));
+                        updatePreview();
+                    }
+                });
+                mColorSelectionVibrant.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mSelectedColors[0] = palette.getLightVibrantColor(Color.BLACK);
+                        mSelectedColors[1] = palette.getVibrantColor(Color.BLACK);
+                        mSelectedColors[2] = palette.getDarkVibrantColor(Color.BLACK);
+                        updatePreview();
+                    }
+                });
+                mColorSelectionMuted.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mSelectedColors[0] = palette.getLightMutedColor(Color.BLACK);
+                        mSelectedColors[1] = palette.getMutedColor(Color.BLACK);
+                        mSelectedColors[2] = palette.getDarkMutedColor(Color.BLACK);
+                        updatePreview();
+                    }
+                });
+            }
+        });
 
     }
 
@@ -86,24 +135,32 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
             CardView colorCard = (CardView) view;
             int color = colorCard.getCardBackgroundColor().getDefaultColor();
             Log.d(TAG, "onClick: " + color);
-            float[] hsv1 = new float[3];
-            Color.colorToHSV(color, hsv1);
-            float[] hsv2 = new float[]{hsv1[0], hsv1[1], hsv1[2]};
+            setColorsBy(color);
 
-            hsv1[1] = Math.max(0.1f, hsv1[1] - 0.4f);
-            hsv1[2] = 0.75f;
-            mSelectedColors[0] = Color.HSVToColor(hsv1);
-
-            mSelectedColors[1] = color;
-
-            hsv2[1] += 0.3f;
-            hsv2[2] = Math.max(0.4f, hsv2[2] - 0.3f);
-            mSelectedColors[2] = Color.HSVToColor(hsv2);
-
-            mPreviewLayer1.setColorFilter(mSelectedColors[0]);
-            mPreviewLayer2.setColorFilter(mSelectedColors[1]);
-            mPreviewLayer3.setColorFilter(mSelectedColors[2]);
+            updatePreview();
         }
+    }
+
+    private void setColorsBy(int color) {
+        float[] hsv1 = new float[3];
+        Color.colorToHSV(color, hsv1);
+        float[] hsv2 = new float[]{hsv1[0], hsv1[1], hsv1[2]};
+
+        hsv1[1] = Math.max(0.1f, hsv1[1] - 0.4f);
+        hsv1[2] = 0.75f;
+        mSelectedColors[0] = Color.HSVToColor(hsv1);
+
+        mSelectedColors[1] = color;
+
+        hsv2[1] += 0.3f;
+        hsv2[2] = Math.max(0.4f, hsv2[2] - 0.3f);
+        mSelectedColors[2] = Color.HSVToColor(hsv2);
+    }
+
+    private void updatePreview() {
+        mPreviewLayer1.setColorFilter(mSelectedColors[0]);
+        mPreviewLayer2.setColorFilter(mSelectedColors[1]);
+        mPreviewLayer3.setColorFilter(mSelectedColors[2]);
     }
 
     @OnClick(R.id.fab)

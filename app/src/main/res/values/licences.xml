@@ -15,7 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
     </string>
 
-    <string name="license_support_title">AppCompat, DesignSupport, CardView, Google Play Services (Google Maps)</string>
+    <string name="license_support_title">AppCompat, DesignSupport, CardView, Palette, Google Play Services (Google Maps)</string>
     <string name="license_support_body"> Copyright © 2011 The Android Open Source Project \n
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 \n\n
