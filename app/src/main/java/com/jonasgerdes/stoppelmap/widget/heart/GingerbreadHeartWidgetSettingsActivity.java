@@ -1,8 +1,10 @@
 package com.jonasgerdes.stoppelmap.widget.heart;
 
+import android.app.WallpaperManager;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +43,9 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
     @BindView(R.id.widget_gingerbread_heart_layer3)
     ImageView mPreviewLayer3;
 
+    @BindView(R.id.previewBackground)
+    ImageView mPreviewBackground;
+
 
     private int[] mSelectedColors = new int[3];
     private int mAppWidgetId;
@@ -67,6 +72,12 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
         for (int i = 0; i < mColorList.getChildCount(); i++) {
             mColorList.getChildAt(i).setOnClickListener(this);
         }
+
+        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+        Drawable wallpaperDrawable = wallpaperManager.getDrawable();
+        mPreviewBackground.setImageDrawable(wallpaperDrawable);
+        
+
     }
 
     @Override
