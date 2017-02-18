@@ -5,6 +5,8 @@ import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +22,7 @@ import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
+import com.jonasgerdes.stoppelmap.util.ViewUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +39,9 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
 
     @BindView(R.id.widget_color_selection_list)
     ViewGroup mColorList;
+
+    @BindView(R.id.widget_countdown)
+    ImageView mPreviewFontLayer;
 
     @BindView(R.id.widget_gingerbread_heart_layer1)
     ImageView mPreviewLayer1;
@@ -61,6 +67,7 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
 
     private int[] mSelectedColors = new int[3];
     private int mAppWidgetId;
+    private Rect mTextBounds = new Rect();
 
 
     @Override
@@ -128,6 +135,9 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
             }
         });
 
+        setColorsBy(Color.parseColor("#7d56c2"));
+        updatePreview();
+
     }
 
     @Override
@@ -162,6 +172,15 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
         mPreviewLayer1.setColorFilter(mSelectedColors[0]);
         mPreviewLayer2.setColorFilter(mSelectedColors[1]);
         mPreviewLayer3.setColorFilter(mSelectedColors[2]);
+
+        Point size = new Point(ViewUtil.dpToPx(this, 256), ViewUtil.dpToPx(this, 206));
+        Bitmap countdownBitmap = GingerbreadHeartWidgetProvider.createCountdownBitmap(
+                this,
+                GingerbreadHeartWidgetProvider.getCountDownStrings(),
+                size,
+                mTextBounds
+        );
+        mPreviewFontLayer.setImageBitmap(countdownBitmap);
     }
 
     @OnClick(R.id.fab)

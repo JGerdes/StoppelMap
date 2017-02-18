@@ -39,7 +39,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
     };
     private static final long STOMA_DURATION = TimeUnit.DAYS.toMillis(5) + TimeUnit.HOURS.toMillis(4);
 
-    private final Rect textBounds = new Rect();
+    private final Rect mTextBounds = new Rect();
 
     @Override
     public void onEnabled(Context context) {
@@ -73,7 +73,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
                 R.layout.widget_layout_gingerbread_heart);
 
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
-        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size);
+        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size, mTextBounds);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -83,7 +83,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
-    private Bitmap createCountdownBitmap(Context context, String[] texts, Point size) {
+    public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size, Rect textBounds) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
 
@@ -109,7 +109,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         return bitmap;
     }
 
-    private String[] getCountDownStrings() {
+    public static String[] getCountDownStrings() {
         Date now = new Date();
         Date stomaStart = NEXT_DATES[0];
         long delta = stomaStart.getTime() - now.getTime();
@@ -161,7 +161,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
     }
 
-    private String getFormatedUnitString(long amount, String[] unitDescriptor) {
+    private static String getFormatedUnitString(long amount, String[] unitDescriptor) {
         String unit;
         if (amount == 1) {
             unit = unitDescriptor[0];
