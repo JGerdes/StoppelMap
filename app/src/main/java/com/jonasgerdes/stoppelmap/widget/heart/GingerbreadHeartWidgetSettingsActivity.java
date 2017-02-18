@@ -80,6 +80,7 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("StoppelMap");
+        getSupportActionBar().setSubtitle("Countdown-Widget konfigurieren");
 
         for (int i = 0; i < mColorList.getChildCount(); i++) {
             mColorList.getChildAt(i).setOnClickListener(this);
