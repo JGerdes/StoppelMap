@@ -15,6 +15,7 @@ import com.jonasgerdes.stoppelmap.R;
 
 
 public abstract class AbstractSlider extends View {
+    private static final String TAG = "AbstractSlider";
 
     public interface OnValueChangedListener {
         void onValueChanged(float value);
@@ -104,7 +105,7 @@ public abstract class AbstractSlider extends View {
     protected abstract void drawBar(Canvas barCanvas);
 
     protected void drawHandle(Canvas canvas, float x, float y) {
-        solid.setColor(modifyColorWithValue(color, value));
+        solid.setColor(getHandleColor(color, value));
         canvas.drawCircle(x, y, handleRadius, clearingStroke);
         canvas.drawCircle(x, y, handleRadius * 0.75f, solid);
     }
@@ -119,7 +120,8 @@ public abstract class AbstractSlider extends View {
         }
     }
 
-    abstract int modifyColorWithValue(float[] color, float value);
+    abstract int getHandleColor(float[] color, float value);
+
     abstract float getValueForColor(float[] color);
 
     @Override
@@ -167,8 +169,6 @@ public abstract class AbstractSlider extends View {
             }
             case MotionEvent.ACTION_UP: {
                 onValueChanged(value);
-                if (onValueChangedListener != null)
-                    onValueChangedListener.onValueChanged(value);
                 invalidate();
             }
         }

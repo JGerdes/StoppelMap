@@ -41,7 +41,7 @@ public class LightnessSlider extends AbstractSlider {
     }
 
     @Override
-    int modifyColorWithValue(float[] color, float value) {
+    int getHandleColor(float[] color, float value) {
         float[] hsl = new float[]{
                 color[0],
                 color[1],

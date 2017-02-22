@@ -29,7 +29,7 @@ public class SaturationSlider extends AbstractSlider {
         float[] hsl = new float[]{
                 color[0],
                 color[1],
-                color[2]
+                0.5f
         };
         int l = Math.max(2, width / 256);
         for (int x = 0; x <= width; x += l) {
@@ -40,11 +40,11 @@ public class SaturationSlider extends AbstractSlider {
     }
 
     @Override
-    int modifyColorWithValue(float[] color, float value) {
+    int getHandleColor(float[] color, float value) {
         float[] hsl = new float[]{
                 color[0],
                 color[1],
-                color[2]
+                0.5f
         };
         hsl[1] = value;
         return ColorUtils.HSLToColor(hsl);

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.support.v4.graphics.ColorUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 
 
 public class HueSlider extends AbstractSlider {
@@ -30,8 +29,8 @@ public class HueSlider extends AbstractSlider {
 
         float[] hsl = new float[]{
                 color[0],
-                color[1],
-                color[2]
+                1f,
+                0.5f
         };
         int l = Math.max(2, width / 256);
         for (int x = 0; x <= width; x += l) {
@@ -49,12 +48,12 @@ public class HueSlider extends AbstractSlider {
     }
 
     @Override
-    int modifyColorWithValue(float[] color, float value) {
+    int getHandleColor(float[] color, float value) {
         value *= 360;
         return ColorUtils.HSLToColor(new float[]{
                 value,
-                color[1],
-                color[2]
+                1f,
+                0.5f
         });
     }
 
