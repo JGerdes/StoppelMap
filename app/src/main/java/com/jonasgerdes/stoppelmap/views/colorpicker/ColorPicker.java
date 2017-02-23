@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.util.MathUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +18,9 @@ import butterknife.ButterKnife;
  */
 
 public class ColorPicker extends LinearLayout {
+
+    public static final float LOWER_LIMIT = 1f / 200f;
+    public static final float UPPER_LIMIT = 1f - LOWER_LIMIT;
 
     public interface ColorChangeListener {
         void onColorChanged(int newColor);
@@ -32,6 +36,7 @@ public class ColorPicker extends LinearLayout {
     LightnessSlider mLightnessSlider;
 
     private float[] mColor = new float[3];
+    private boolean mPreventZeroValues;
 
     private ColorChangeListener mChangeListener;
 
@@ -91,7 +96,15 @@ public class ColorPicker extends LinearLayout {
 
     private void triggerListener() {
         if (mChangeListener != null) {
-            int newColor = ColorUtils.HSLToColor(mColor);
+            float[] newValues = mColor;
+            if (mPreventZeroValues) {
+                newValues = new float[]{
+                        mColor[0],
+                        MathUtil.limit(LOWER_LIMIT, UPPER_LIMIT, mColor[1]),
+                        MathUtil.limit(LOWER_LIMIT, UPPER_LIMIT, mColor[2])
+                };
+            }
+            int newColor = ColorUtils.HSLToColor(newValues);
             mChangeListener.onColorChanged(newColor);
         }
     }
@@ -105,6 +118,11 @@ public class ColorPicker extends LinearLayout {
 
     public ColorPicker setChangeListener(ColorChangeListener changeListener) {
         mChangeListener = changeListener;
+        return this;
+    }
+
+    public ColorPicker setPreventZeroValues(boolean preventZeroValues) {
+        mPreventZeroValues = preventZeroValues;
         return this;
     }
 }

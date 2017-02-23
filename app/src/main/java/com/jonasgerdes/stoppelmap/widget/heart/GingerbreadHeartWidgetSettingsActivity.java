@@ -145,13 +145,15 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
         setColorsBy(Color.parseColor("#7d56c2"));
         updatePreview();
 
-        mColorPicker.setChangeListener(new ColorPicker.ColorChangeListener() {
-            @Override
-            public void onColorChanged(int newColor) {
-                setColorsBy(newColor);
-                updatePreview();
-            }
-        }).setColor(mCurrentColors[1]);
+        mColorPicker.setPreventZeroValues(true)
+                .setChangeListener(new ColorPicker.ColorChangeListener() {
+                    @Override
+                    public void onColorChanged(int newColor) {
+                        setColorsBy(newColor);
+                        updatePreview();
+                    }
+                })
+                .setColor(mCurrentColors[1]);
 
 
     }
