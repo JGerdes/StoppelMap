@@ -7,6 +7,7 @@ import android.support.v7.graphics.Palette;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
+import com.jonasgerdes.stoppelmap.widget.options.HourOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
         });
 
         pages.add(colorOptionPage);
+        pages.add(new HourOptionPage());
         return pages;
     }
 

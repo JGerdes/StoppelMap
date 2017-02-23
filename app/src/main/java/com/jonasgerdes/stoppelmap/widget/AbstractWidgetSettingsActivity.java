@@ -41,6 +41,8 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     private GingerbreadHeartPreview mPreview;
     private boolean mIsFabVisible = true;
     private int mAppWidgetId;
+    private int mCurrentItem;
+    private OptionsPagerAdapter mOptionsAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,13 +69,12 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         mPreviewBackground.setImageDrawable(wallpaperDrawable);
 
 
-        List<OptionPage> mOptionsPages = getOptionPages();
-        mOptionsPager.setAdapter(
-                new OptionsPagerAdapter(
-                        getSupportFragmentManager(),
-                        mOptionsPages
-                )
+        final List<OptionPage> mOptionsPages = getOptionPages();
+        mOptionsAdapter = new OptionsPagerAdapter(
+                getSupportFragmentManager(),
+                mOptionsPages
         );
+        mOptionsPager.setAdapter(mOptionsAdapter);
 
         mOptionsPager.setOffscreenPageLimit(mOptionsPages.size());
 
@@ -86,6 +87,11 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
                     mFab.hide();
                 }
                 if (positionOffsetPixels < 5 && !mIsFabVisible) {
+                    if (position < mOptionsAdapter.getCount() - 1) {
+                        mFab.setImageResource(R.drawable.ic_arrow_forward_white_24dp);
+                    } else {
+                        mFab.setImageResource(R.drawable.ic_check_white_24dp);
+                    }
                     mIsFabVisible = true;
                     mFab.show();
                 }
@@ -93,6 +99,7 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                mCurrentItem = position;
             }
 
             @Override
@@ -117,19 +124,24 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.fab)
-    void saveSettings() {
+    void onFabClicked() {
 
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getBaseContext());
-        RemoteViews views = new GingerbreadHeartWidgetProvider().initWidget(getBaseContext());
+        if (mCurrentItem < mOptionsAdapter.getCount() - 1) {
+            mOptionsPager.setCurrentItem(mCurrentItem + 1);
+        } else {
+            //save widget
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getBaseContext());
+            RemoteViews views = new GingerbreadHeartWidgetProvider().initWidget(getBaseContext());
 
-        mPreview.applyToWidget(views);
+            mPreview.applyToWidget(views);
 
-        appWidgetManager.updateAppWidget(mAppWidgetId, views);
+            appWidgetManager.updateAppWidget(mAppWidgetId, views);
 
-        Intent resultValue = new Intent();
-        resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
-        setResult(RESULT_OK, resultValue);
-        finish();
+            Intent resultValue = new Intent();
+            resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+            setResult(RESULT_OK, resultValue);
+            finish();
+        }
     }
 
     public WidgetPreview getWidgetPreview() {
