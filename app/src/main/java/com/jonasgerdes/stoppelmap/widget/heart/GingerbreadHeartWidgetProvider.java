@@ -19,6 +19,7 @@ import android.widget.RemoteViews;
 import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 
 import java.util.Date;
 import java.util.Locale;
@@ -28,6 +29,8 @@ import java.util.concurrent.TimeUnit;
  * Created by Jonas on 07.06.2016.
  */
 public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
+
+    public static final String SETTING_SHOW_HOUR = "Setting_show_hour";
 
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
@@ -70,18 +73,21 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
 
     private void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews views = initWidget(context);
+        RemoteViews views = initWidget(
+                context,
+                WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true)
+                );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @NonNull
-    public RemoteViews initWidget(Context context) {
+    public RemoteViews initWidget(Context context, boolean showHours) {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_gingerbread_heart);
 
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
-        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(true), size, mTextBounds, true);
+        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(showHours), size, mTextBounds, showHours);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -95,7 +101,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         Canvas canvas = new Canvas(bitmap);
 
         float countDownSize = size.y / 8f;
-        if(showHours) {
+        if(!showHours) {
             countDownSize = size.y / 6f;
         }
 

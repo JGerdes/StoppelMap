@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.R;
-import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartPreview;
-import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider;
 import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
 
 import java.util.List;
@@ -38,7 +36,8 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     ViewPager mOptionsPager;
     @BindView(R.id.fab)
     FloatingActionButton mFab;
-    private GingerbreadHeartPreview mPreview;
+
+    private WidgetPreview mPreview;
     private boolean mIsFabVisible = true;
     private int mAppWidgetId;
     private int mCurrentItem;
@@ -131,9 +130,8 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         } else {
             //save widget
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getBaseContext());
-            RemoteViews views = new GingerbreadHeartWidgetProvider().initWidget(getBaseContext());
-
-            mPreview.applyToWidget(views);
+            mPreview.saveSettings(new WidgetSettingsHelper(getBaseContext(), mAppWidgetId));
+            RemoteViews views = mPreview.createWidget();
 
             appWidgetManager.updateAppWidget(mAppWidgetId, views);
 
@@ -152,5 +150,6 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
 
     protected abstract List<OptionPage> getOptionPages();
 
-    protected abstract GingerbreadHeartPreview createPreview();
+    protected abstract WidgetPreview createPreview();
+
 }

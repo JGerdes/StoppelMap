@@ -17,6 +17,7 @@ import com.jonasgerdes.stoppelmap.util.ViewUtil;
 import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.HourTogglableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
+import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 
 import butterknife.BindView;
 
@@ -42,7 +43,7 @@ public class GingerbreadHeartPreview extends WidgetPreview
 
     private int[] mCurrentColors = new int[3];
     private Rect mTextBounds = new Rect();
-    private boolean mShowHours = true;
+    private boolean mShowHours = false;
 
     public GingerbreadHeartPreview(Context context) {
         super(context);
@@ -111,10 +112,17 @@ public class GingerbreadHeartPreview extends WidgetPreview
     }
 
     @Override
-    public void applyToWidget(RemoteViews views) {
+    public void saveSettings(WidgetSettingsHelper settingsHelper) {
+        settingsHelper.putBoolean(GingerbreadHeartWidgetProvider.SETTING_SHOW_HOUR, mShowHours);
+    }
+
+    @Override
+    public RemoteViews createWidget() {
+        RemoteViews views = new GingerbreadHeartWidgetProvider().initWidget(getContext(), mShowHours);
         views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", mCurrentColors[0]);
         views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", mCurrentColors[1]);
         views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", mCurrentColors[2]);
+        return views;
     }
 
     @Override

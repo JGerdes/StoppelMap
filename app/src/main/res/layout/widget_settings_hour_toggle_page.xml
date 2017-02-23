@@ -27,13 +27,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Layout konfigurieren"/>
+                    android:text="Darstellung anpassen"/>
 
                 <CheckBox
                     android:id="@+id/toggle_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
+                    android:checked="false"
                     android:text="Stunden anzeigen"/>
 
                 <TextView

@@ -45,7 +45,9 @@ public abstract class WidgetPreview extends FrameLayout {
     @LayoutRes
     protected abstract int getLayout();
 
-    public abstract void applyToWidget(RemoteViews views);
+    public abstract RemoteViews createWidget();
 
     public abstract void update();
+
+    public abstract void saveSettings(WidgetSettingsHelper appWidgetId);
 }
