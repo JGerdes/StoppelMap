@@ -7,23 +7,23 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.LayoutRes;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
+import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by jonas on 23.02.2017.
  */
 
-public class GingerbreadHeartPreview extends FrameLayout implements ColorableWidgetPreview {
+public class GingerbreadHeartPreview extends WidgetPreview implements ColorableWidgetPreview {
 
 
     @BindView(R.id.widget_countdown)
@@ -43,34 +43,27 @@ public class GingerbreadHeartPreview extends FrameLayout implements ColorableWid
 
     public GingerbreadHeartPreview(Context context) {
         super(context);
-        init();
     }
 
     public GingerbreadHeartPreview(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
     public GingerbreadHeartPreview(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public GingerbreadHeartPreview(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init();
-    }
-
-    private void init() {
-        LayoutInflater.from(getContext()).inflate(R.layout.widget_layout_gingerbread_heart, this);
     }
 
     @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        ButterKnife.bind(this);
+    @LayoutRes
+    protected int getLayout() {
+        return R.layout.widget_layout_gingerbread_heart;
     }
+
 
     @Override
     public void update() {
@@ -113,6 +106,7 @@ public class GingerbreadHeartPreview extends FrameLayout implements ColorableWid
         mCurrentColors = colors;
     }
 
+    @Override
     public void applyToWidget(RemoteViews views) {
         views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", mCurrentColors[0]);
         views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", mCurrentColors[1]);

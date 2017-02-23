@@ -34,7 +34,7 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartPreview
+        <FrameLayout
             android:id="@+id/preview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

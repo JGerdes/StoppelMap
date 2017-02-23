@@ -1,10 +1,11 @@
-package com.jonasgerdes.stoppelmap.widget.heart;
+package com.jonasgerdes.stoppelmap.widget;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.Arrays;
+import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
+
 import java.util.List;
 
 /**
@@ -13,11 +14,11 @@ import java.util.List;
 
 public class OptionsPagerAdapter extends FragmentPagerAdapter {
 
-    private List<Fragment> mPages;
+    private List<OptionPage> mPages;
 
-    public OptionsPagerAdapter(FragmentManager fm, Fragment... pages) {
+    public OptionsPagerAdapter(FragmentManager fm, List<OptionPage> pages) {
         super(fm);
-        mPages = Arrays.asList(pages);
+        mPages = pages;
     }
 
     @Override

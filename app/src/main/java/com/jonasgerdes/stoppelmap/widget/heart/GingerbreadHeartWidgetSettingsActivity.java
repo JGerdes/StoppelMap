@@ -1,120 +1,37 @@
 package com.jonasgerdes.stoppelmap.widget.heart;
 
-import android.app.WallpaperManager;
-import android.appwidget.AppWidgetManager;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.widget.ImageView;
-import android.widget.RemoteViews;
 
-import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
+import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
+import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
+import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jonas on 31.01.2017.
  */
 
-public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity {
+public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettingsActivity {
 
-    private static final String TAG = "GingerbreadHeartWidgetS";
-
-
-    @BindView(R.id.previewBackground)
-    ImageView mPreviewBackground;
-
-    @BindView(R.id.preview)
-    GingerbreadHeartPreview mPreview;
-
-    @BindView(R.id.options_pager)
-    ViewPager mOptionsPager;
-
-    @BindView(R.id.fab)
-    FloatingActionButton mFab;
-
-    private boolean mIsFabVisible = true;
-
-
-    private int mAppWidgetId;
+    private static final int DEFAULT_COLOR = Color.parseColor("#7d56c2");
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.widget_settings_gingerbread_heart);
-        ButterKnife.bind(this);
+    protected String getWidgetName() {
+        return "Countdown-Widget";
+    }
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            mAppWidgetId = extras.getInt(
-                    AppWidgetManager.EXTRA_APPWIDGET_ID,
-                    AppWidgetManager.INVALID_APPWIDGET_ID);
-        }
+    @Override
+    protected List<OptionPage> getOptionPages() {
+        List<OptionPage> pages = new ArrayList<>();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setTitle("StoppelMap");
-        getSupportActionBar().setSubtitle("Countdown-Widget konfigurieren");
-
-
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-        Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-        mPreviewBackground.setImageDrawable(wallpaperDrawable);
-
-        int defaultColor = Color.parseColor("#7d56c2");
-
-        final ColorOptionPage colorOptionPage = new ColorOptionPage().setDefaultColor(defaultColor);
-
-        mOptionsPager.setAdapter(
-                new OptionsPagerAdapter(
-                        getSupportFragmentManager(),
-                        colorOptionPage
-                )
-        );
-
-        mOptionsPager.setOffscreenPageLimit(5);
-
-        mPreview.setColorsBy(defaultColor);
-        mPreview.update();
-
-        mOptionsPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d(TAG, "onPageScrolled() called with: position = [" + position + "], positionOffset = [" + positionOffset + "], positionOffsetPixels = [" + positionOffsetPixels + "]");
-                if (positionOffsetPixels > 5 && mIsFabVisible) {
-                    mIsFabVisible = false;
-                    mFab.hide();
-                }
-                if (positionOffsetPixels < 5 && !mIsFabVisible) {
-                    mIsFabVisible = true;
-                    mFab.show();
-                }
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
-
-        Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(wallpaperDrawable);
+        final ColorOptionPage colorOptionPage = new ColorOptionPage().setDefaultColor(DEFAULT_COLOR);
+        Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
         Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
 
             @Override
@@ -123,26 +40,14 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity {
             }
         });
 
+        pages.add(colorOptionPage);
+        return pages;
     }
 
-
-    @OnClick(R.id.fab)
-    void saveSettings() {
-
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getBaseContext());
-        RemoteViews views = new GingerbreadHeartWidgetProvider().initWidget(getBaseContext());
-
-        mPreview.applyToWidget(views);
-
-        appWidgetManager.updateAppWidget(mAppWidgetId, views);
-
-        Intent resultValue = new Intent();
-        resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
-        setResult(RESULT_OK, resultValue);
-        finish();
-    }
-
-    public WidgetPreview getWidgetPreview() {
-        return mPreview;
+    @Override
+    protected GingerbreadHeartPreview createPreview() {
+        GingerbreadHeartPreview preview = new GingerbreadHeartPreview(this);
+        preview.setColorsBy(DEFAULT_COLOR);
+        return preview;
     }
 }

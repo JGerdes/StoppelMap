@@ -1,10 +1,8 @@
-package com.jonasgerdes.stoppelmap.widget.heart;
+package com.jonasgerdes.stoppelmap.widget.options;
 
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -13,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.views.colorpicker.ColorPicker;
+import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +20,8 @@ import butterknife.ButterKnife;
  * Created by jonas on 23.02.2017.
  */
 
-public class ColorOptionPage extends Fragment implements View.OnClickListener {
+public class ColorOptionPage extends OptionPage<ColorableWidgetPreview>
+        implements View.OnClickListener {
 
     @BindView(R.id.widget_color_selection_list)
     ViewGroup mColorList;
@@ -39,7 +39,6 @@ public class ColorOptionPage extends Fragment implements View.OnClickListener {
     ColorPicker mColorPicker;
 
     private int mDefaultColor;
-    private Bitmap mWallpaperBitmap;
     private Palette mPalette;
 
 
@@ -61,7 +60,7 @@ public class ColorOptionPage extends Fragment implements View.OnClickListener {
                 .setChangeListener(new ColorPicker.ColorChangeListener() {
                     @Override
                     public void onColorChanged(int newColor) {
-                        getWidgetPreview().setColorsBy(newColor);
+                        getEditableWidgetPreview().setColorsBy(newColor);
                         getWidgetPreview().update();
                     }
                 })
@@ -90,7 +89,7 @@ public class ColorOptionPage extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 int color = mPalette.getDominantColor(Color.BLACK);
-                getWidgetPreview().setColorsBy(color);
+                getEditableWidgetPreview().setColorsBy(color);
                 mColorPicker.setColor(color);
                 getWidgetPreview().update();
             }
@@ -104,6 +103,7 @@ public class ColorOptionPage extends Fragment implements View.OnClickListener {
                         mPalette.getDarkVibrantColor(Color.BLACK)
                 };
                 mColorPicker.setColor(colors[1]);
+                getEditableWidgetPreview().setColors(colors);
                 getWidgetPreview().update();
             }
         });
@@ -116,6 +116,7 @@ public class ColorOptionPage extends Fragment implements View.OnClickListener {
                         mPalette.getDarkMutedColor(Color.BLACK)
                 };
                 mColorPicker.setColor(colors[1]);
+                getEditableWidgetPreview().setColors(colors);
                 getWidgetPreview().update();
             }
         });
@@ -127,16 +128,10 @@ public class ColorOptionPage extends Fragment implements View.OnClickListener {
         if (view instanceof CardView) {
             CardView colorCard = (CardView) view;
             int color = colorCard.getCardBackgroundColor().getDefaultColor();
-            getWidgetPreview().setColorsBy(color);
+            getEditableWidgetPreview().setColorsBy(color);
             mColorPicker.setColor(color);
             getWidgetPreview().update();
         }
-    }
-
-    public ColorableWidgetPreview getWidgetPreview() {
-        WidgetPreview preview = ((GingerbreadHeartWidgetSettingsActivity) getActivity())
-                .getWidgetPreview();
-        return (ColorableWidgetPreview) preview;
     }
 
 
