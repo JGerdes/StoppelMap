@@ -204,19 +204,15 @@ public class GingerbreadHeartWidgetSettingsActivity extends AppCompatActivity im
     @OnClick(R.id.fab)
     void saveSettings() {
 
-        // Getting an instance of WidgetManager
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getBaseContext());
-        RemoteViews views = new RemoteViews(getPackageName(),
-                R.layout.widget_layout_gingerbread_heart);
+        RemoteViews views = new GingerbreadHeartWidgetProvider().initWidget(getBaseContext());
 
         views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", mCurrentColors[0]);
         views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", mCurrentColors[1]);
         views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", mCurrentColors[2]);
 
-        // Tell the AppWidgetManager to perform an update on the app widget
         appWidgetManager.updateAppWidget(mAppWidgetId, views);
 
-        // Return RESULT_OK from this activity
         Intent resultValue = new Intent();
         resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
         setResult(RESULT_OK, resultValue);

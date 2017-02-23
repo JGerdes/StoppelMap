@@ -13,6 +13,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.MainActivity;
@@ -69,6 +70,13 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
 
     private void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+        RemoteViews views = initWidget(context);
+
+        appWidgetManager.updateAppWidget(appWidgetId, views);
+    }
+
+    @NonNull
+    public RemoteViews initWidget(Context context) {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_gingerbread_heart);
 
@@ -79,8 +87,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         views.setOnClickPendingIntent(R.id.widget_countdown, pendingIntent);
-
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+        return views;
     }
 
     public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size, Rect textBounds) {
