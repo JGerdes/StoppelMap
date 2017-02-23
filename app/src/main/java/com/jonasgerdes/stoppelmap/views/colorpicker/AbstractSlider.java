@@ -56,6 +56,12 @@ public abstract class AbstractSlider extends View {
         barPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         solid.setFlags(Paint.ANTI_ALIAS_FLAG);
         clearingStroke.setFlags(Paint.ANTI_ALIAS_FLAG);
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
     }
 
     protected void updateBar() {
@@ -165,15 +171,18 @@ public abstract class AbstractSlider extends View {
                     onValueChanged(value);
                     invalidate();
                 }
+                getParent().requestDisallowInterceptTouchEvent(true);
                 break;
             }
-            case MotionEvent.ACTION_UP: {
+            case MotionEvent.ACTION_UP:
                 onValueChanged(value);
                 invalidate();
-            }
+            case MotionEvent.ACTION_CANCEL:
+                getParent().requestDisallowInterceptTouchEvent(false);
         }
         return true;
     }
+
 
     protected int getDimension(@DimenRes int id) {
         return getResources().getDimensionPixelSize(id);

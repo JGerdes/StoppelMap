@@ -42,12 +42,11 @@
             android:layout_margin="16dp"
             android:layout_weight="1"/>
 
-        <com.jonasgerdes.stoppelmap.widget.heart.ColorOptionPageFragment
+        <com.jonasgerdes.stoppelmap.views.WrappableViewPager
             android:id="@+id/options_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:layout_margin="16dp"
             android:layout_weight="0"/>
 
 
