@@ -15,6 +15,7 @@ import android.widget.RemoteViews;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
 import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
+import com.jonasgerdes.stoppelmap.widget.HourTogglableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
 
 import butterknife.BindView;
@@ -23,7 +24,8 @@ import butterknife.BindView;
  * Created by jonas on 23.02.2017.
  */
 
-public class GingerbreadHeartPreview extends WidgetPreview implements ColorableWidgetPreview {
+public class GingerbreadHeartPreview extends WidgetPreview
+        implements ColorableWidgetPreview, HourTogglableWidgetPreview {
 
 
     @BindView(R.id.widget_countdown)
@@ -40,6 +42,7 @@ public class GingerbreadHeartPreview extends WidgetPreview implements ColorableW
 
     private int[] mCurrentColors = new int[3];
     private Rect mTextBounds = new Rect();
+    private boolean mShowHours = true;
 
     public GingerbreadHeartPreview(Context context) {
         super(context);
@@ -77,9 +80,10 @@ public class GingerbreadHeartPreview extends WidgetPreview implements ColorableW
         );
         Bitmap countdownBitmap = GingerbreadHeartWidgetProvider.createCountdownBitmap(
                 getContext(),
-                GingerbreadHeartWidgetProvider.getCountDownStrings(),
+                GingerbreadHeartWidgetProvider.getCountDownStrings(mShowHours),
                 size,
-                mTextBounds
+                mTextBounds,
+                mShowHours
         );
         mPreviewFontLayer.setImageBitmap(countdownBitmap);
     }
@@ -111,5 +115,10 @@ public class GingerbreadHeartPreview extends WidgetPreview implements ColorableW
         views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", mCurrentColors[0]);
         views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", mCurrentColors[1]);
         views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", mCurrentColors[2]);
+    }
+
+    @Override
+    public void setShowHours(boolean showHours) {
+        mShowHours = showHours;
     }
 }

@@ -81,7 +81,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
                 R.layout.widget_layout_gingerbread_heart);
 
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
-        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size, mTextBounds);
+        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(true), size, mTextBounds, true);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -90,9 +90,14 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         return views;
     }
 
-    public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size, Rect textBounds) {
+    public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size, Rect textBounds, boolean showHours) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
+
+        float countDownSize = size.y / 8f;
+        if(showHours) {
+            countDownSize = size.y / 6f;
+        }
 
         Paint paint = new Paint();
         Typeface font = Typeface.createFromAsset(context.getAssets(), "font/Damion-Regular.ttf");
@@ -101,7 +106,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         paint.setTypeface(font);
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.rgb(244, 244, 244));
-        paint.setTextSize(size.y / 8f);
+        paint.setTextSize(countDownSize);
         paint.getTextBounds(texts[0], 0, texts[0].length(), textBounds);
         canvas.drawText(texts[0], size.x / 2f - textBounds.exactCenterX(), size.y * 0.4f, paint);
 
@@ -116,7 +121,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         return bitmap;
     }
 
-    public static String[] getCountDownStrings() {
+    public static String[] getCountDownStrings(boolean withHours) {
         Date now = new Date();
         Date stomaStart = NEXT_DATES[0];
         long delta = stomaStart.getTime() - now.getTime();
@@ -156,9 +161,10 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
             String timeLeft;
             if (days > 0) {
-                timeLeft = getFormatedUnitString(days, UNIT_DESC_DAY)
-                        + ", "
-                        + getFormatedUnitString(hours, UNIT_DESC_HOUR);
+                timeLeft = getFormatedUnitString(days, UNIT_DESC_DAY);
+                if (withHours) {
+                    timeLeft += ", " + getFormatedUnitString(hours, UNIT_DESC_HOUR);
+                }
             } else {
                 timeLeft = getFormatedUnitString(hours, UNIT_DESC_HOUR);
             }
