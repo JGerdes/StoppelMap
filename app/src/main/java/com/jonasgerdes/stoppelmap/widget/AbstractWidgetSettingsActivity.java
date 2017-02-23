@@ -106,6 +106,11 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
             }
         });
 
+        if (mOptionsAdapter.getCount() > 1) {
+            mFab.setImageResource(R.drawable.ic_arrow_forward_white_24dp);
+        } else {
+            mFab.setImageResource(R.drawable.ic_check_white_24dp);
+        }
 
         mPreview = createPreview();
         mPreview.setLayoutParams(new FrameLayout.LayoutParams(
@@ -113,7 +118,6 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT)
         );
         mPreviewHolder.addView(mPreview);
-        // TODO: 23.02.2017 remove this line
         mPreview.update();
 
     }
