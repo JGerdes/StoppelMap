@@ -114,15 +114,18 @@ public class GingerbreadHeartPreview extends WidgetPreview
     @Override
     public void saveSettings(WidgetSettingsHelper settingsHelper) {
         settingsHelper.putBoolean(GingerbreadHeartWidgetProvider.SETTING_SHOW_HOUR, mShowHours);
+        settingsHelper.putInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_1, mCurrentColors[0]);
+        settingsHelper.putInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_2, mCurrentColors[1]);
+        settingsHelper.putInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_3, mCurrentColors[2]);
     }
 
     @Override
     public RemoteViews createWidget() {
-        RemoteViews views = new GingerbreadHeartWidgetProvider().initWidget(getContext(), mShowHours);
-        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", mCurrentColors[0]);
-        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", mCurrentColors[1]);
-        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", mCurrentColors[2]);
-        return views;
+        return new GingerbreadHeartWidgetProvider().initWidget(
+                getContext(),
+                mShowHours,
+                mCurrentColors
+        );
     }
 
     @Override

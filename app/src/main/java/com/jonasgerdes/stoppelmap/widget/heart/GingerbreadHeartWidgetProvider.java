@@ -30,7 +30,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
-    public static final String SETTING_SHOW_HOUR = "Setting_show_hour";
+    public static final String SETTING_SHOW_HOUR = "setting_show_hour";
+    public static final String SETTING_COLOR_1 = "setting_color_1";
+    public static final String SETTING_COLOR_2 = "setting_color_2";
+    public static final String SETTING_COLOR_3 = "setting_color_3";
 
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
@@ -73,16 +76,23 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
 
     private void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+        int[] colors = new int[]{
+                WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_1, 0xD1C4E9),
+                WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_2, 0x7E57C2),
+                WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_3, 0x311B92)
+        };
+
         RemoteViews views = initWidget(
                 context,
-                WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true)
+                WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true),
+                colors
                 );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @NonNull
-    public RemoteViews initWidget(Context context, boolean showHours) {
+    public RemoteViews initWidget(Context context, boolean showHours, int[] colors) {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_gingerbread_heart);
 
@@ -93,6 +103,10 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         views.setOnClickPendingIntent(R.id.widget_countdown, pendingIntent);
+
+        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", colors[0]);
+        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", colors[1]);
+        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", colors[2]);
         return views;
     }
 
