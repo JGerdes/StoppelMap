@@ -36,17 +36,47 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <FrameLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/old_data_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="4dp">
+
+                <ImageView
+                    android:id="@+id/old_data_hint_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|right"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close_white_16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_info_white_24dp"
+                    android:drawablePadding="16dp"
+                    android:gravity=""
+                    android:padding="16dp"
+                    android:text="Die gezeigten Daten sind von 2016.\nEine neue Version für den Stoppelmarkt 2017 ist in Arbeit."
+                    android:textColor="#f4f4f4"
+                    android:textSize="12sp"/>
+            </android.support.v7.widget.CardView>
 
             <FrameLayout
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-        </FrameLayout>
+        </LinearLayout>
 
 
     </android.support.design.widget.CoordinatorLayout>
