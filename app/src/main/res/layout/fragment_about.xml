@@ -275,6 +275,17 @@
             android:layout_height="wrap_content"
             android:text="@string/license_icons_body"/>
 
+        <TextView
+            style="@style/AboutTextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/license_roboto_title"/>
+
+        <TextView
+            style="@style/AboutTextBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/license_roboto_body"/>
 
         <TextView
             style="@style/AboutTextTitle"

@@ -115,6 +115,8 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
         }
 
         Paint paint = new Paint();
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "font/RobotoSlab-Light.ttf");
+        paint.setTypeface(font);
         paint.setAntiAlias(true);
         paint.setSubpixelText(true);
         paint.setStyle(Paint.Style.FILL);
