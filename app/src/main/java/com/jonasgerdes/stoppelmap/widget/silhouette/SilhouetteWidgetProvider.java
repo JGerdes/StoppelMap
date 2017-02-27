@@ -32,6 +32,11 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
 
     public static final String SETTING_SHOW_HOUR = "setting_show_hour";
     public static final String SETTING_COLOR = "setting_color";
+    public static final String SETTING_FONT = "setting_font";
+
+    public static final String FONT_ROBOTO = "Roboto-Thin.ttf";
+    public static final String FONT_ROBOTO_SLAB = "RobotoSlab-Light.ttf";
+    public static final String FONT_DAMION = "Damion-Regular.ttf";
 
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
@@ -75,23 +80,27 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
 
     private void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         int color = WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR, Color.BLACK);
+        String fontFile = WidgetSettingsHelper.getString(context, appWidgetId,
+                SETTING_FONT, FONT_ROBOTO_SLAB);
 
         RemoteViews views = initWidget(
                 context,
                 WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true),
-                color
+                color,
+                fontFile
         );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @NonNull
-    public RemoteViews initWidget(Context context, boolean showHours, int color) {
+    public RemoteViews initWidget(Context context, boolean showHours, int color, String fontFile) {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_silhouette);
 
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
-        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size, mTextBounds, showHours);
+        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size,
+                mTextBounds, showHours, fontFile);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -102,11 +111,12 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
         return views;
     }
 
-    public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size, Rect textBounds, boolean showHours) {
+    public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size,
+                                               Rect textBounds, boolean showHours, String fontFile) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
 
-        float centerOffset = 0.075f * size.y;
+        float centerOffset = 0.065f * size.y;
         float countDownSize = size.y / 10f;
         float daysYPosition = size.y * 0.7f;
         if (!showHours) {
@@ -114,8 +124,12 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
             countDownSize = size.y / 6.5f;
         }
 
+        if (FONT_DAMION.equals(fontFile)) {
+            countDownSize *= 1.2f;
+        }
+
         Paint paint = new Paint();
-        Typeface font = Typeface.createFromAsset(context.getAssets(), "font/RobotoSlab-Light.ttf");
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "font/" + fontFile);
         paint.setTypeface(font);
         paint.setAntiAlias(true);
         paint.setSubpixelText(true);

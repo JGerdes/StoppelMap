@@ -13,8 +13,8 @@ import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.widget.ChangeableFontWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
-import com.jonasgerdes.stoppelmap.widget.HourTogglableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 
@@ -25,7 +25,7 @@ import butterknife.BindView;
  */
 
 public class SilhouettePreview extends WidgetPreview
-        implements ColorableWidgetPreview, HourTogglableWidgetPreview {
+        implements ColorableWidgetPreview, ChangeableFontWidgetPreview {
 
 
     @BindView(R.id.widget_countdown)
@@ -37,6 +37,7 @@ public class SilhouettePreview extends WidgetPreview
     private int mCurrentColor;
     private Rect mTextBounds = new Rect();
     private boolean mShowHours = false;
+    private String mFontFile = SilhouetteWidgetProvider.FONT_ROBOTO_SLAB;
 
     public SilhouettePreview(Context context) {
         super(context);
@@ -75,7 +76,8 @@ public class SilhouettePreview extends WidgetPreview
                 SilhouetteWidgetProvider.getCountDownStrings(),
                 size,
                 mTextBounds,
-                mShowHours
+                mShowHours,
+                mFontFile
         );
         mPreviewFontLayer.setImageBitmap(countdownBitmap);
     }
@@ -94,6 +96,7 @@ public class SilhouettePreview extends WidgetPreview
     public void saveSettings(WidgetSettingsHelper settingsHelper) {
         settingsHelper.putBoolean(SilhouetteWidgetProvider.SETTING_SHOW_HOUR, mShowHours);
         settingsHelper.putInt(SilhouetteWidgetProvider.SETTING_COLOR, mCurrentColor);
+        settingsHelper.putString(SilhouetteWidgetProvider.SETTING_FONT, mFontFile);
     }
 
     @Override
@@ -101,12 +104,18 @@ public class SilhouettePreview extends WidgetPreview
         return new SilhouetteWidgetProvider().initWidget(
                 getContext(),
                 mShowHours,
-                mCurrentColor
+                mCurrentColor,
+                mFontFile
         );
     }
 
     @Override
     public void setShowHours(boolean showHours) {
         mShowHours = showHours;
+    }
+
+    @Override
+    public void setFont(String fontFile) {
+        mFontFile = fontFile;
     }
 }

@@ -7,8 +7,8 @@ import android.support.v7.graphics.Palette;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
-import com.jonasgerdes.stoppelmap.widget.options.HourOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
+import com.jonasgerdes.stoppelmap.widget.options.TextOptionPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
         });
 
         pages.add(colorOptionPage);
-        pages.add(new HourOptionPage());
+        pages.add(new TextOptionPage());
         return pages;
     }
 

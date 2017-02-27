@@ -47,6 +47,12 @@ public class WidgetSettingsHelper {
         return this;
     }
 
+    public WidgetSettingsHelper putString(String name, String value) {
+        mEditor.putString(name + "_" + mWidgetId, value);
+        mEditor.apply();
+        return this;
+    }
+
     private static SharedPreferences getPreferences(Context context) {
         return context.getSharedPreferences("prefs_widgets", Context.MODE_PRIVATE);
     }
