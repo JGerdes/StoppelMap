@@ -21,7 +21,9 @@ import java.util.List;
 
 public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettingsActivity {
 
+    public static final float MAX_LIGHTNESS = 0.8f;
     private static final int DEFAULT_COLOR = Color.parseColor("#7d56c2");
+    public static final float MIN_LIGHTNESS = 0.2f;
 
 
     @Override
@@ -42,7 +44,8 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
                         0xff279056,
                         0xfff57f17,
                         ContextCompat.getColor(this, R.color.colorAccent)
-                );
+                )
+                .setLimits(MIN_LIGHTNESS, MAX_LIGHTNESS);
         Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
         Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
 

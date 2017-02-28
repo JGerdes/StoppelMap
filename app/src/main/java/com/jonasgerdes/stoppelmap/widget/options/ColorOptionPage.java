@@ -28,8 +28,6 @@ import butterknife.ButterKnife;
 
 public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
 
-    private static final float MIN_LIGHTNESS = 0.2f;
-    private static final float MAX_LIGHTNESS = 0.8f;
     @BindView(R.id.widget_color_selection_list)
     ViewGroup mColorList;
 
@@ -51,6 +49,9 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
     private int mDefaultColor;
     private Palette mPalette;
     private int[] mSelectableColors;
+
+    private float mMinLightness = 0f;
+    private float mMaxLightness = 1f;
 
 
     @Nullable
@@ -113,7 +114,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
         boolean atLeastOneWallpaperColorUsable = false;
 
         final int dominantColor = getDominantColor(mPalette.getSwatches());//Color.BLACK;//mPalette.getDominantColor(Color.BLACK);
-        if (isLightnessIsBetween(dominantColor, MIN_LIGHTNESS, MAX_LIGHTNESS)) {
+        if (isLightnessIsBetween(dominantColor, mMinLightness, mMaxLightness)) {
             mColorSelectionDominant.setCardBackgroundColor(dominantColor);
             mColorSelectionDominant.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -130,7 +131,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
         }
 
         final int vibrantColor = mPalette.getVibrantColor(Color.BLACK);
-        if (isLightnessIsBetween(vibrantColor, MIN_LIGHTNESS, MAX_LIGHTNESS)) {
+        if (isLightnessIsBetween(vibrantColor, mMinLightness, mMaxLightness)) {
             mColorSelectionVibrant.setCardBackgroundColor(vibrantColor);
             mColorSelectionVibrant.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -151,7 +152,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
         }
 
         final int mutedColor = mPalette.getMutedColor(Color.BLACK);
-        if (isLightnessIsBetween(mutedColor, MIN_LIGHTNESS, MAX_LIGHTNESS)) {
+        if (isLightnessIsBetween(mutedColor, mMinLightness, mMaxLightness)) {
             mColorSelectionMuted.setCardBackgroundColor(mutedColor);
             mColorSelectionMuted.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -195,6 +196,12 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
 
     public ColorOptionPage setSelectableColors(int... colors) {
         mSelectableColors = colors;
+        return this;
+    }
+
+    public ColorOptionPage setLimits(float minLightness, float maxLightness) {
+        mMinLightness = minLightness;
+        mMaxLightness = maxLightness;
         return this;
     }
 
