@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
+import com.jonasgerdes.stoppelmap.widget.options.FontColorOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.TextOptionPage;
 
@@ -40,18 +41,29 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
                                 0xff000000,
                                 ContextCompat.getColor(this, R.color.colorPrimaryDarker),
                                 0xff10525e,
-                                0xff311005
+                                0xff311005,
+                                0xfff4f4f4
                         );
+        final FontColorOptionPage fontColorOptionPage =
+                new FontColorOptionPage()
+                        .setDefaultColor(SilhouetteWidgetProvider.DEFAULT_FONT_COLOR)
+                        .setSelectableColors(
+                                0xfff4f4f4,
+                                0xff000000
+                        );
+
         Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
         Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
 
             @Override
             public void onGenerated(Palette palette) {
                 colorOptionPage.setPalette(palette);
+                fontColorOptionPage.setPalette(palette);
             }
         });
 
         pages.add(colorOptionPage);
+        pages.add(fontColorOptionPage);
         pages.add(new TextOptionPage());
         return pages;
     }

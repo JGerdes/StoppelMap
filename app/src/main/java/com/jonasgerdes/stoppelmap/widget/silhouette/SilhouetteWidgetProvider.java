@@ -32,12 +32,14 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
 
     public static final String SETTING_SHOW_HOUR = "setting_show_hour";
     public static final String SETTING_COLOR = "setting_color";
+    public static final String SETTING_FONT_COLOR = "setting_font_color";
     public static final String SETTING_FONT = "setting_font";
 
     public static final String FONT_ROBOTO = "Roboto-Thin.ttf";
     public static final String FONT_ROBOTO_SLAB = "RobotoSlab-Light.ttf";
-    public static final String FONT_DAMION = "Damion-Regular.ttf";
+    public static final int DEFAULT_FONT_COLOR = 0xfff4f4f4;
 
+    public static final String FONT_DAMION = "Damion-Regular.ttf";
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
     private static final Date[] NEXT_DATES = {
@@ -80,6 +82,8 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
 
     private void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         int color = WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR, Color.BLACK);
+        int fontColor = WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_FONT_COLOR,
+                DEFAULT_FONT_COLOR);
         String fontFile = WidgetSettingsHelper.getString(context, appWidgetId,
                 SETTING_FONT, FONT_ROBOTO_SLAB);
 
@@ -87,20 +91,22 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
                 context,
                 WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true),
                 color,
-                fontFile
+                fontFile,
+                fontColor
         );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @NonNull
-    public RemoteViews initWidget(Context context, boolean showHours, int color, String fontFile) {
+    public RemoteViews initWidget(Context context, boolean showHours, int color, String fontFile,
+                                  int fontColor) {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_silhouette);
 
         Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
         Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size,
-                mTextBounds, showHours, fontFile);
+                mTextBounds, showHours, fontFile, fontColor);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
         Intent intent = new Intent(context, MainActivity.class);
@@ -112,7 +118,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
     }
 
     public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size,
-                                               Rect textBounds, boolean showHours, String fontFile) {
+                                               Rect textBounds, boolean showHours, String fontFile, int fontColor) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
 
@@ -134,7 +140,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
         paint.setAntiAlias(true);
         paint.setSubpixelText(true);
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.rgb(244, 244, 244));
+        paint.setColor(fontColor);
 
         paint.setTextSize(size.y / 15f);
         String remain = "noch";

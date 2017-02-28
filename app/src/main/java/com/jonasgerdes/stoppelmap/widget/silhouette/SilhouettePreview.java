@@ -14,6 +14,7 @@ import android.widget.RemoteViews;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
 import com.jonasgerdes.stoppelmap.widget.ChangeableFontWidgetPreview;
+import com.jonasgerdes.stoppelmap.widget.ColorableFontWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
@@ -25,7 +26,7 @@ import butterknife.BindView;
  */
 
 public class SilhouettePreview extends WidgetPreview
-        implements ColorableWidgetPreview, ChangeableFontWidgetPreview {
+        implements ColorableWidgetPreview, ChangeableFontWidgetPreview, ColorableFontWidgetPreview {
 
 
     @BindView(R.id.widget_countdown)
@@ -38,6 +39,7 @@ public class SilhouettePreview extends WidgetPreview
     private Rect mTextBounds = new Rect();
     private boolean mShowHours = false;
     private String mFontFile = SilhouetteWidgetProvider.FONT_ROBOTO_SLAB;
+    private int mFontColor = SilhouetteWidgetProvider.DEFAULT_FONT_COLOR;
 
     public SilhouettePreview(Context context) {
         super(context);
@@ -77,7 +79,8 @@ public class SilhouettePreview extends WidgetPreview
                 size,
                 mTextBounds,
                 mShowHours,
-                mFontFile
+                mFontFile,
+                mFontColor
         );
         mPreviewFontLayer.setImageBitmap(countdownBitmap);
     }
@@ -97,6 +100,7 @@ public class SilhouettePreview extends WidgetPreview
         settingsHelper.putBoolean(SilhouetteWidgetProvider.SETTING_SHOW_HOUR, mShowHours);
         settingsHelper.putInt(SilhouetteWidgetProvider.SETTING_COLOR, mCurrentColor);
         settingsHelper.putString(SilhouetteWidgetProvider.SETTING_FONT, mFontFile);
+        settingsHelper.putInt(SilhouetteWidgetProvider.SETTING_FONT_COLOR, mFontColor);
     }
 
     @Override
@@ -105,7 +109,8 @@ public class SilhouettePreview extends WidgetPreview
                 getContext(),
                 mShowHours,
                 mCurrentColor,
-                mFontFile
+                mFontFile,
+                mFontColor
         );
     }
 
@@ -117,5 +122,10 @@ public class SilhouettePreview extends WidgetPreview
     @Override
     public void setFont(String fontFile) {
         mFontFile = fontFile;
+    }
+
+    @Override
+    public void setFontColor(int color) {
+        mFontColor = color;
     }
 }
