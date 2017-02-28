@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,7 @@ import butterknife.ButterKnife;
  * Created by jonas on 23.02.2017.
  */
 
-public class ColorOptionPage extends OptionPage<ColorableWidgetPreview>
-        implements View.OnClickListener {
+public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
 
     private static final float MIN_LIGHTNESS = 0.2f;
     private static final float MAX_LIGHTNESS = 0.8f;
@@ -45,12 +45,12 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview>
     @BindView(R.id.color_picker)
     ColorPicker mColorPicker;
 
-    @BindViews({ R.id.from_wallpaper_list, R.id.from_wallpaper_text})
+    @BindViews({R.id.from_wallpaper_list, R.id.from_wallpaper_text})
     List<View> mFromWallpaper;
 
     private int mDefaultColor;
     private Palette mPalette;
-
+    private int[] mSelectableColors;
 
 
     @Nullable
@@ -63,9 +63,6 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview>
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        for (int i = 0; i < mColorList.getChildCount(); i++) {
-            mColorList.getChildAt(i).setOnClickListener(this);
-        }
 
         mColorPicker.setPreventZeroValues(true)
                 .setChangeListener(new ColorPicker.ColorChangeListener() {
@@ -78,8 +75,31 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview>
                 .setColor(mDefaultColor);
 
 
+        setUpColorCards();
         setUpPalette();
 
+    }
+
+    private void setUpColorCards() {
+        int cardSize = ViewUtil.dpToPx(getContext(), 32);
+        int margin = ViewUtil.dpToPx(getContext(), 4);
+        for (int i = 0; i < mSelectableColors.length; i++) {
+            final int color = mSelectableColors[i];
+            CardView colorCard = new CardView(getContext());
+            LinearLayoutCompat.LayoutParams layout = new LinearLayoutCompat.LayoutParams(
+                    cardSize, cardSize
+            );
+            layout.setMargins(margin, margin, margin, margin);
+            colorCard.setLayoutParams(layout);
+            colorCard.setCardBackgroundColor(color);
+            colorCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onColorSelected(color);
+                }
+            });
+            mColorList.addView(colorCard);
+        }
     }
 
     private void setUpPalette() {
@@ -157,15 +177,15 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview>
     }
 
 
-    @Override
-    public void onClick(View view) {
-        if (view instanceof CardView) {
-            CardView colorCard = (CardView) view;
-            int color = colorCard.getCardBackgroundColor().getDefaultColor();
-            getEditableWidgetPreview().setColorsBy(color);
-            mColorPicker.setColor(color);
-            getWidgetPreview().update();
-        }
+    public ColorOptionPage setSelectableColors(int... colors) {
+        mSelectableColors = colors;
+        return this;
+    }
+
+    public void onColorSelected(int color) {
+        mColorPicker.setColor(color);
+        getEditableWidgetPreview().setColorsBy(color);
+        getWidgetPreview().update();
     }
 
 

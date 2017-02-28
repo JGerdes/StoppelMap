@@ -2,8 +2,10 @@ package com.jonasgerdes.stoppelmap.widget.silhouette;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 
+import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
@@ -31,7 +33,15 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
     protected List<OptionPage> getOptionPages() {
         List<OptionPage> pages = new ArrayList<>();
 
-        final ColorOptionPage colorOptionPage = new ColorOptionPage().setDefaultColor(DEFAULT_COLOR);
+        final ColorOptionPage colorOptionPage =
+                new ColorOptionPage()
+                        .setDefaultColor(DEFAULT_COLOR)
+                        .setSelectableColors(
+                                0xff000000,
+                                ContextCompat.getColor(this, R.color.colorPrimaryDarker),
+                                0xff10525e,
+                                0xff311005
+                        );
         Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
         Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
 

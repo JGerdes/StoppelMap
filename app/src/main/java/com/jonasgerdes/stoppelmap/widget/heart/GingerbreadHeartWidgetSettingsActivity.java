@@ -2,8 +2,10 @@ package com.jonasgerdes.stoppelmap.widget.heart;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 
+import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
@@ -31,7 +33,16 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
     protected List<OptionPage> getOptionPages() {
         List<OptionPage> pages = new ArrayList<>();
 
-        final ColorOptionPage colorOptionPage = new ColorOptionPage().setDefaultColor(DEFAULT_COLOR);
+        final ColorOptionPage colorOptionPage = new ColorOptionPage()
+                .setDefaultColor(DEFAULT_COLOR)
+                .setSelectableColors(
+                        0xff7d56c2,
+                        ContextCompat.getColor(this, R.color.colorPrimary),
+                        0xff2196f3,
+                        0xff279056,
+                        0xfff57f17,
+                        ContextCompat.getColor(this, R.color.colorAccent)
+                );
         Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
         Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
 
