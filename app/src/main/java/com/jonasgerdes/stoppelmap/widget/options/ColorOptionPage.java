@@ -112,7 +112,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
 
         boolean atLeastOneWallpaperColorUsable = false;
 
-        final int dominantColor = mPalette.getDominantColor(Color.BLACK);
+        final int dominantColor = getDominantColor(mPalette.getSwatches());//Color.BLACK;//mPalette.getDominantColor(Color.BLACK);
         if (isLightnessIsBetween(dominantColor, MIN_LIGHTNESS, MAX_LIGHTNESS)) {
             mColorSelectionDominant.setCardBackgroundColor(dominantColor);
             mColorSelectionDominant.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +174,22 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
         if (!atLeastOneWallpaperColorUsable) {
             ButterKnife.apply(mFromWallpaper, ViewUtil.HIDE);
         }
+    }
+
+    private int getDominantColor(List<Palette.Swatch> swatches) {
+        int maxPop = Integer.MIN_VALUE;
+        Palette.Swatch maxSwatch = null;
+        for (int i = 0, count = swatches.size(); i < count; i++) {
+            Palette.Swatch swatch = swatches.get(i);
+            if (swatch.getPopulation() > maxPop) {
+                maxSwatch = swatch;
+                maxPop = swatch.getPopulation();
+            }
+        }
+        if (maxSwatch == null) {
+            return Color.BLACK;
+        }
+        return maxSwatch.getRgb();
     }
 
 
