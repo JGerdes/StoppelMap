@@ -36,7 +36,6 @@ import com.stephentuso.welcome.WelcomeScreenHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, TabLayoutProvider {
@@ -51,9 +50,6 @@ public class MainActivity extends AppCompatActivity
     protected SearchCardView mSearchView;
     @BindView(R.id.tabs)
     protected TabLayout mTabLayout;
-
-    @BindView(R.id.old_data_hint)
-    View mOldDataHint;
 
     private WelcomeScreenHelper mWelcomeScreenHelper;
     private BackPressListener mBackPressListener;
@@ -322,9 +318,4 @@ public class MainActivity extends AppCompatActivity
         loadFragment(fragment, addToBackstack);
     }
 
-
-    @OnClick(R.id.old_data_hint_close)
-    public void hideOldDataHint() {
-        mOldDataHint.setVisibility(View.GONE);
-    }
 }
