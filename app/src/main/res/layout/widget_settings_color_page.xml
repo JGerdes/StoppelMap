@@ -28,7 +28,7 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Farbe auswählen"/>
+                    android:text="@string/widget_settings_color_select_title"/>
 
 
                 <LinearLayout
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="8dp"
-                    android:text="aus Deinem Wallpaper:"
+                    android:text="@string/widget_settings_color_select_from_wallpaper"
                     android:textSize="12sp"/>
 
                 <LinearLayout
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="8dp"
-                    android:text="Farbe modifizieren:"
+                    android:text="@string/widget_settings_color_select_modify"
                     android:textSize="12sp"/>
 
                 <com.jonasgerdes.stoppelmap.views.colorpicker.ColorPicker

@@ -69,7 +69,7 @@ public class FontColorOptionPage extends OptionPage<ColorableFontWidgetPreview> 
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        mTitle.setText("Textfarbe wählen");
+        mTitle.setText(R.string.widget_settings_font_color_select_title);
 
         mColorPicker.setPreventZeroValues(true)
                 .setChangeListener(new ColorPicker.ColorChangeListener() {

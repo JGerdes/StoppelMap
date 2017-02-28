@@ -27,27 +27,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Darstellung anpassen"/>
+                    android:text="@string/widget_settings_layout_title"/>
 
                 <CheckBox
                     android:id="@+id/toggle_hours"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="false"
-                    android:text="Stunden anzeigen"/>
+                    android:text="@string/widget_settings_show_hours"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="32dp"
-                    android:text="Wenn es weniger als 24 Stunden bis zum Stoppelmarkt dauert, wird automatisch auf Stunden gewechselt."
+                    android:text="@string/widget_settings_show_hours_hint"
                     android:textSize="12sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:text="Schriftart wählen"/>
+                    android:text="@string/widget_settings_font_select_title"/>
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -57,23 +57,23 @@
                         android:id="@+id/font_roboto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:text="Roboto"/>
+                        android:text="@string/widget_settings_font_select_roboto"
+                        android:textSize="18sp"/>
 
                     <RadioButton
                         android:id="@+id/font_roboto_slab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
                         android:checked="true"
-                        android:text="Roboto Slab"/>
+                        android:text="@string/widget_settings_font_select_roboto_slab"
+                        android:textSize="18sp"/>
 
                     <RadioButton
                         android:id="@+id/font_damion"
                         android:layout_width="wrap_content"
-                        android:textSize="22sp"
                         android:layout_height="wrap_content"
-                        android:text="Damion"/>
+                        android:text="@string/widget_settings_font_select_damion"
+                        android:textSize="22sp"/>
                 </RadioGroup>
 
             </LinearLayout>

@@ -40,6 +40,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
     public static final int DEFAULT_FONT_COLOR = 0xfff4f4f4;
 
     public static final String FONT_DAMION = "Damion-Regular.ttf";
+    // TODO: 28.02.2017 use string ressources
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
     private static final Date[] NEXT_DATES = {
@@ -117,6 +118,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
         return views;
     }
 
+
     public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size,
                                                Rect textBounds, boolean showHours, String fontFile, int fontColor) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
@@ -163,6 +165,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
         return bitmap;
     }
 
+    // TODO: 28.02.2017 extract common code for countdown creation
     public static String[] getCountDownStrings() {
         Date now = new Date();
         Date stomaStart = NEXT_DATES[0];
@@ -187,6 +190,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
         String year = String.valueOf(stomaStart.getYear() + 1900);
 
         if (delta <= TimeUnit.HOURS.toMillis(1) && delta >= 0) {
+            // TODO: 28.02.2017 extract string ressources 
             return new String[]{"Ganz bald", ""};
         } else if (delta <= 0) {
             return new String[]{"Viel Spaß!", ""};
