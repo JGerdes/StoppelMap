@@ -23,6 +23,9 @@ import java.util.List;
 public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActivity {
 
     private static final int DEFAULT_COLOR = Color.BLACK;
+    //Don't show pure black as suggestion from wallaper (since black is return if no color found)
+    public static final float MIN_LIGHTNESS = 0.1f;
+    public static final float MAX_LIGHTNESS = 1f;
 
 
     @Override
@@ -43,14 +46,17 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
                                 0xff10525e,
                                 0xff311005,
                                 0xfff4f4f4
-                        );
+                        )
+                        .setLimits(MIN_LIGHTNESS, MAX_LIGHTNESS);
+
         final FontColorOptionPage fontColorOptionPage =
                 new FontColorOptionPage()
                         .setDefaultColor(SilhouetteWidgetProvider.DEFAULT_FONT_COLOR)
                         .setSelectableColors(
                                 0xfff4f4f4,
                                 0xff000000
-                        );
+                        )
+                        .setLimits(MIN_LIGHTNESS, MAX_LIGHTNESS);
 
         Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
         Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
