@@ -14,6 +14,9 @@ import butterknife.ButterKnife;
  */
 
 public class OldDataNotice extends CardView implements View.OnClickListener {
+
+    public static boolean sWasClosed = false;
+
     public OldDataNotice(Context context) {
         super(context);
     }
@@ -29,19 +32,27 @@ public class OldDataNotice extends CardView implements View.OnClickListener {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        init();
-    }
-
-    private void init() {
+        if (sWasClosed) {
+            setVisibility(GONE);
+            return;
+        }
         View close = ButterKnife.findById(this, R.id.old_data_hint_close);
         if (close != null) {
             close.setOnClickListener(this);
         }
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasWindowFocus) {
+        super.onWindowFocusChanged(hasWindowFocus);
+        if (hasWindowFocus && sWasClosed) {
+            setVisibility(GONE);
+        }
+    }
 
     @Override
     public void onClick(View v) {
         setVisibility(View.GONE);
+        sWasClosed = true;
     }
 }
