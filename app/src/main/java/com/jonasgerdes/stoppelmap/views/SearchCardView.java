@@ -14,10 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
@@ -107,6 +110,19 @@ public class SearchCardView extends CardView {
             }
         });
 
+        mSearchField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    if (mResultAdapter != null) {
+                        mResultAdapter.onSearch(mSearchField.getText().toString());
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     private void clearField() {
@@ -181,6 +197,8 @@ public class SearchCardView extends CardView {
 
     public static abstract class ResultAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
         public abstract void onQueryChanged(String query);
+
+        public abstract void onSearch(String query);
     }
 
     public void setResultAdapter(ResultAdapter resultAdapter) {

@@ -879,7 +879,7 @@
     },
     {
       "uuid": "osterhold_hotdog",
-      "name": "HotDog",
+      "name": "HotDogs",
       "owner": "Osterhold",
       "type": 3,
       "hiddenFromSearch": true,
@@ -887,7 +887,7 @@
         "food"
       ],
       "tags": [
-        "HotDog"
+        "HotDogs"
       ],
       "bounds": [
         {
@@ -3009,7 +3009,8 @@
       ],
       "tags": [
         "Imbiss",
-        "Pommes,Bratwurst",
+        "Pommes",
+        "Bratwurst",
         "Currywurst"
       ],
       "bounds": [
