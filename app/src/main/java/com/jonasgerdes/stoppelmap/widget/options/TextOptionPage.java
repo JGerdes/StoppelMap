@@ -24,6 +24,8 @@ import butterknife.ButterKnife;
 public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
 
 
+    public static final String PARAM_DEFAULT_FONT = "PARAM_DEFAULT_FONT";
+    public static final String PARAM_SHOW_HOURS = "PARAM_SHOW_HOURS";
     @BindView(R.id.toggle_hours)
     CheckBox mHourToggle;
 
@@ -56,13 +58,22 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
             }
         });
 
-        setUpRadioButton(mFontSelectionRoboto, SilhouetteWidgetProvider.FONT_ROBOTO);
-        setUpRadioButton(mFontSelectionRobotoSlab, SilhouetteWidgetProvider.FONT_ROBOTO_SLAB);
-        setUpRadioButton(mFontSelectionDamion, SilhouetteWidgetProvider.FONT_DAMION);
+        mHourToggle.setChecked(
+                getArguments() != null && getArguments().getBoolean(PARAM_SHOW_HOURS, false)
+        );
+
+        String defaultFont = null;
+        if (getArguments() != null && getArguments().containsKey(PARAM_DEFAULT_FONT)) {
+            defaultFont = getArguments().getString(PARAM_DEFAULT_FONT);
+        }
+
+        setUpRadioButton(mFontSelectionRoboto, SilhouetteWidgetProvider.FONT_ROBOTO, defaultFont);
+        setUpRadioButton(mFontSelectionRobotoSlab, SilhouetteWidgetProvider.FONT_ROBOTO_SLAB, defaultFont);
+        setUpRadioButton(mFontSelectionDamion, SilhouetteWidgetProvider.FONT_DAMION, defaultFont);
 
     }
 
-    private void setUpRadioButton(RadioButton button, final String fontFile) {
+    private void setUpRadioButton(RadioButton button, final String fontFile, final String defaultFont) {
         button.setTypeface(Typeface.createFromAsset(getContext().getAssets(),
                 "font/" + fontFile)
         );
@@ -75,6 +86,18 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
                 }
             }
         });
+
+        button.setChecked(fontFile.equals(defaultFont));
+    }
+
+    public static TextOptionPage newInstance(String defaultFont, boolean showHours) {
+
+        Bundle args = new Bundle();
+        args.putString(PARAM_DEFAULT_FONT, defaultFont);
+        args.putBoolean(PARAM_SHOW_HOURS, showHours);
+        TextOptionPage fragment = new TextOptionPage();
+        fragment.setArguments(args);
+        return fragment;
     }
 
 }

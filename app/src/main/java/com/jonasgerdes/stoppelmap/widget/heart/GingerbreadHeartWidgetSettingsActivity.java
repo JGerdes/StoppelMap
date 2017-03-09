@@ -66,4 +66,9 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
         preview.setColorsBy(DEFAULT_COLOR);
         return preview;
     }
+
+    @Override
+    protected void initWithWidgetId(int appWidgetId) {
+
+    }
 }

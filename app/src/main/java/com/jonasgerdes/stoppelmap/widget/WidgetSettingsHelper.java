@@ -12,10 +12,12 @@ public class WidgetSettingsHelper {
 
     private final int mWidgetId;
     private final SharedPreferences.Editor mEditor;
+    private final Context mContext;
 
     @SuppressLint("CommitPrefEdits")
     public WidgetSettingsHelper(Context context, int widgetId) {
         mWidgetId = widgetId;
+        mContext = context;
         mEditor = getPreferences(context).edit();
     }
 
@@ -25,14 +27,26 @@ public class WidgetSettingsHelper {
         return prefs.getBoolean(name + "_" + widgetId, defaultValue);
     }
 
+    public boolean getBoolean(String name, boolean defaultValue) {
+        return WidgetSettingsHelper.getBoolean(mContext, mWidgetId, name, defaultValue);
+    }
+
     public static int getInt(Context context, int widgetId, String name, int defaultValue) {
         SharedPreferences prefs = getPreferences(context);
         return prefs.getInt(name + "_" + widgetId, defaultValue);
     }
 
+    public int getInt(String name, int defaultValue) {
+        return WidgetSettingsHelper.getInt(mContext, mWidgetId, name, defaultValue);
+    }
+
     public static String getString(Context context, int widgetId, String name, String defaultValue) {
         SharedPreferences prefs = getPreferences(context);
         return prefs.getString(name + "_" + widgetId, defaultValue);
+    }
+
+    public String getString(String name, String defaultValue) {
+        return WidgetSettingsHelper.getString(mContext, mWidgetId, name, defaultValue);
     }
 
     public WidgetSettingsHelper putBoolean(String name, boolean value) {

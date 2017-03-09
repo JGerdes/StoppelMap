@@ -39,7 +39,7 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
 
     private WidgetPreview mPreview;
     private boolean mIsFabVisible = true;
-    private int mAppWidgetId;
+    protected int mAppWidgetId;
     private int mCurrentItem;
     private OptionsPagerAdapter mOptionsAdapter;
 
@@ -67,6 +67,7 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         Drawable wallpaperDrawable = wallpaperManager.getDrawable();
         mPreviewBackground.setImageDrawable(wallpaperDrawable);
 
+        initWithWidgetId(mAppWidgetId);
 
         final List<OptionPage> mOptionsPages = getOptionPages();
         mOptionsAdapter = new OptionsPagerAdapter(
@@ -112,6 +113,11 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
             mFab.setImageResource(R.drawable.ic_check_white_24dp);
         }
 
+        initPreview();
+
+    }
+
+    private void initPreview() {
         mPreview = createPreview();
         mPreview.setLayoutParams(new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -120,7 +126,6 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         mPreviewHolder.addView(mPreview);
         mPreview.setWidgetId(mAppWidgetId);
         mPreview.update();
-
     }
 
     protected Drawable getWallpaperDrawable() {
@@ -156,5 +161,7 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     protected abstract List<OptionPage> getOptionPages();
 
     protected abstract WidgetPreview createPreview();
+
+    protected abstract void initWithWidgetId(int appWidgetId);
 
 }

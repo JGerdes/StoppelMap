@@ -8,6 +8,7 @@ import android.support.v7.graphics.Palette;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
+import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 import com.jonasgerdes.stoppelmap.widget.options.ActionOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.FontColorOptionPage;
@@ -27,6 +28,11 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
     //Don't show pure black as suggestion from wallaper (since black is return if no color found)
     public static final float MIN_LIGHTNESS = 0.1f;
     public static final float MAX_LIGHTNESS = 1f;
+    private int mDefaultColor;
+    private int mDefaultFontColor;
+    private boolean mDefaultShowHours;
+    private String mDefaultFont;
+    private int mDefaultAction;
 
 
     @Override
@@ -34,13 +40,14 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
         return "Countdown-Widget";
     }
 
+
     @Override
     protected List<OptionPage> getOptionPages() {
         List<OptionPage> pages = new ArrayList<>();
 
         final ColorOptionPage colorOptionPage =
                 new ColorOptionPage()
-                        .setDefaultColor(DEFAULT_COLOR)
+                        .setDefaultColor(mDefaultColor)
                         .setSelectableColors(
                                 0xff000000,
                                 ContextCompat.getColor(this, R.color.colorPrimaryDarker),
@@ -52,7 +59,7 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
 
         final FontColorOptionPage fontColorOptionPage =
                 new FontColorOptionPage()
-                        .setDefaultColor(SilhouetteWidgetProvider.DEFAULT_FONT_COLOR)
+                        .setDefaultColor(mDefaultFontColor)
                         .setSelectableColors(
                                 0xfff4f4f4,
                                 0xff000000
@@ -71,15 +78,33 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
 
         pages.add(colorOptionPage);
         pages.add(fontColorOptionPage);
-        pages.add(new TextOptionPage());
-        pages.add(new ActionOptionPage());
+        pages.add(TextOptionPage.newInstance(mDefaultFont, mDefaultShowHours));
+        pages.add(ActionOptionPage.newInstance(mDefaultAction));
         return pages;
+    }
+
+
+    @Override
+    protected void initWithWidgetId(int appWidgetId) {
+        WidgetSettingsHelper settings = new WidgetSettingsHelper(this, appWidgetId);
+        mDefaultColor = settings.getInt(SilhouetteWidgetProvider.SETTING_COLOR, DEFAULT_COLOR);
+        mDefaultFontColor = settings.getInt(
+                SilhouetteWidgetProvider.SETTING_FONT_COLOR,
+                SilhouetteWidgetProvider.DEFAULT_FONT_COLOR
+        );
+        mDefaultFont = settings.getString(SilhouetteWidgetProvider.SETTING_FONT,
+                SilhouetteWidgetProvider.FONT_ROBOTO_SLAB);
+        mDefaultShowHours = settings.getBoolean(SilhouetteWidgetProvider.SETTING_SHOW_HOUR, false);
+        mDefaultAction = settings.getInt(SilhouetteWidgetProvider.SETTING_ACTION, R.id.action_edit_widget);
     }
 
     @Override
     protected SilhouettePreview createPreview() {
         SilhouettePreview preview = new SilhouettePreview(this);
-        preview.setColorsBy(DEFAULT_COLOR);
+        preview.setColorsBy(mDefaultColor);
+        preview.setFontColor(mDefaultFontColor);
+        preview.setFont(mDefaultFont);
+        preview.setShowHours(mDefaultShowHours);
         return preview;
     }
 }

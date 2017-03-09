@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.widget.options;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import butterknife.ButterKnife;
 
 public class ActionOptionPage extends OptionPage<ActionWidgetPreview> {
 
+    public static final String PARAM_DEFAUT_ACTION = "PARAM_DEFAUT_ACTION";
     @BindViews({
             R.id.action_none,
             R.id.action_edit_widget,
@@ -41,6 +43,10 @@ public class ActionOptionPage extends OptionPage<ActionWidgetPreview> {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        int defaultAction = R.id.action_edit_widget;
+        if (getArguments() != null && getArguments().containsKey(PARAM_DEFAUT_ACTION)) {
+            defaultAction = getArguments().getInt(PARAM_DEFAUT_ACTION);
+        }
         for (final RadioButton actionRadioButton : mActionRadioButtons) {
             actionRadioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -51,8 +57,18 @@ public class ActionOptionPage extends OptionPage<ActionWidgetPreview> {
                     }
                 }
             });
+            actionRadioButton.setChecked(actionRadioButton.getId() == defaultAction);
         }
 
+    }
+
+    public static ActionOptionPage newInstance(@IdRes int actionId) {
+
+        Bundle args = new Bundle();
+        args.putInt(PARAM_DEFAUT_ACTION, actionId);
+        ActionOptionPage fragment = new ActionOptionPage();
+        fragment.setArguments(args);
+        return fragment;
     }
 
 }
