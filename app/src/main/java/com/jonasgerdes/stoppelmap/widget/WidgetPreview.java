@@ -15,10 +15,12 @@ import butterknife.ButterKnife;
  * Created by jonas on 23.02.2017.
  */
 public abstract class WidgetPreview extends FrameLayout {
+
+    protected int mWidgetId;
+
     public WidgetPreview(Context context) {
         super(context);
         init();
-
     }
 
     public WidgetPreview(Context context, AttributeSet attrs) {
@@ -42,6 +44,14 @@ public abstract class WidgetPreview extends FrameLayout {
         ButterKnife.bind(this);
     }
 
+    public void setWidgetId(int widgetId) {
+        mWidgetId = widgetId;
+    }
+
+    public int getWidgetId() {
+        return mWidgetId;
+    }
+
     @LayoutRes
     protected abstract int getLayout();
 
@@ -50,4 +60,5 @@ public abstract class WidgetPreview extends FrameLayout {
     public abstract void update();
 
     public abstract void saveSettings(WidgetSettingsHelper appWidgetId);
+
 }

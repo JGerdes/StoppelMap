@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,12 +12,13 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 
-import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.widget.ActionIntentFactory;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 
 import java.util.Date;
@@ -34,6 +34,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
     public static final String SETTING_COLOR = "setting_color";
     public static final String SETTING_FONT_COLOR = "setting_font_color";
     public static final String SETTING_FONT = "setting_font";
+    public static final String SETTING_ACTION = "setting_action";
 
     public static final String FONT_ROBOTO = "Roboto-Thin.ttf";
     public static final String FONT_ROBOTO_SLAB = "RobotoSlab-Light.ttf";
@@ -87,21 +88,25 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
                 DEFAULT_FONT_COLOR);
         String fontFile = WidgetSettingsHelper.getString(context, appWidgetId,
                 SETTING_FONT, FONT_ROBOTO_SLAB);
+        int action = WidgetSettingsHelper.getInt(context, appWidgetId,
+                SETTING_ACTION, R.id.action_open_map);
 
         RemoteViews views = initWidget(
                 context,
+                appWidgetId,
                 WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true),
                 color,
                 fontFile,
-                fontColor
+                fontColor,
+                action
         );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @NonNull
-    public RemoteViews initWidget(Context context, boolean showHours, int color, String fontFile,
-                                  int fontColor) {
+    public RemoteViews initWidget(Context context, int appWidgetId, boolean showHours, int color, String fontFile,
+                                  int fontColor, @IdRes int actionId) {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_silhouette);
 
@@ -110,9 +115,12 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
                 mTextBounds, showHours, fontFile, fontColor);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
-        Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        views.setOnClickPendingIntent(R.id.widget_countdown, pendingIntent);
+        PendingIntent intent = ActionIntentFactory.createActionIntent(
+                context, actionId, appWidgetId, SilhouetteWidgetSettingsActivity.class
+        );
+        if (intent != null) {
+            views.setOnClickPendingIntent(R.id.widget_countdown, intent);
+        }
 
         views.setInt(R.id.widget_silhouette, "setColorFilter", color);
         return views;

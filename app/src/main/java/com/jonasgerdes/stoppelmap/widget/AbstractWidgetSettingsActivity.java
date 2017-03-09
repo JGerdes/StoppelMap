@@ -118,6 +118,7 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT)
         );
         mPreviewHolder.addView(mPreview);
+        mPreview.setWidgetId(mAppWidgetId);
         mPreview.update();
 
     }

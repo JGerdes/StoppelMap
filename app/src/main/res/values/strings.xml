@@ -25,4 +25,9 @@
     <string name="station_detail_price">Fahrpreis</string>
     <string name="station_detail_directions">Navigieren</string>
     <string name="transportation_hint_no_more_depatures">keine weitere Abfahrten</string>
+    <string name="widget_settings_action_select_map">Karte öffnen</string>
+    <string name="widget_settings_action_select_title">Aktion beim Klicken wählen</string>
+    <string name="widget_settings_action_select_bus">Busfahrplan öffnen</string>
+    <string name="widget_settings_action_select_edit_widget">Widget bearbeiten</string>
+    <string name="widget_settings_action_select_none">Nichts tun</string>
 </resources>

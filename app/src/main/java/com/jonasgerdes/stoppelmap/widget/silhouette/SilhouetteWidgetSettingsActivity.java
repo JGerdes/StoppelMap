@@ -8,6 +8,7 @@ import android.support.v7.graphics.Palette;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
+import com.jonasgerdes.stoppelmap.widget.options.ActionOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.FontColorOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
@@ -71,6 +72,7 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
         pages.add(colorOptionPage);
         pages.add(fontColorOptionPage);
         pages.add(new TextOptionPage());
+        pages.add(new ActionOptionPage());
         return pages;
     }
 
