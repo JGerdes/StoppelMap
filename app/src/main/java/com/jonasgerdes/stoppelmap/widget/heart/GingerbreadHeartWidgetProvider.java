@@ -121,9 +121,9 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
 
-        float countDownSize = size.y / 8f;
+        float countDownSize = size.y / 9f;
         if (!showHours) {
-            countDownSize = size.y / 6f;
+            countDownSize = size.y / 5f;
         }
 
         Paint paint = new Paint();

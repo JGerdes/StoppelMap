@@ -129,12 +129,6 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() called");
-    }
-
     private void initPreview() {
         mPreview = createPreview();
         mPreview.setLayoutParams(new FrameLayout.LayoutParams(
