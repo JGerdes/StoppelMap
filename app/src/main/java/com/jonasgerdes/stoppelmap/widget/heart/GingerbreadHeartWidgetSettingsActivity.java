@@ -8,6 +8,8 @@ import android.support.v7.graphics.Palette;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.BitmapUtil;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
+import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
+import com.jonasgerdes.stoppelmap.widget.options.ActionOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.ColorOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.HourOptionPage;
 import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
@@ -24,6 +26,9 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
     public static final float MAX_LIGHTNESS = 0.8f;
     private static final int DEFAULT_COLOR = Color.parseColor("#7d56c2");
     public static final float MIN_LIGHTNESS = 0.2f;
+    private boolean mDefaultShowHours;
+    private int mDefaultAction;
+    private int[] mDefaultColors;
 
 
     @Override
@@ -36,7 +41,7 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
         List<OptionPage> pages = new ArrayList<>();
 
         final ColorOptionPage colorOptionPage = new ColorOptionPage()
-                .setDefaultColor(DEFAULT_COLOR)
+                .setDefaultColor(mDefaultColors[1])
                 .setSelectableColors(
                         0xff7d56c2,
                         ContextCompat.getColor(this, R.color.colorPrimary),
@@ -56,19 +61,33 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
         });
 
         pages.add(colorOptionPage);
-        pages.add(new HourOptionPage());
+        pages.add(HourOptionPage.newInstance(mDefaultShowHours));
+        pages.add(ActionOptionPage.newInstance(mDefaultAction));
         return pages;
     }
 
     @Override
     protected GingerbreadHeartPreview createPreview() {
         GingerbreadHeartPreview preview = new GingerbreadHeartPreview(this);
-        preview.setColorsBy(DEFAULT_COLOR);
+        if (mDefaultColors[0] == -1) {
+            preview.setColorsBy(mDefaultColors[1]);
+        } else {
+            preview.setColors(mDefaultColors);
+        }
+        preview.setShowHours(mDefaultShowHours);
+        preview.setAction(mDefaultAction);
         return preview;
     }
 
     @Override
     protected void initWithWidgetId(int appWidgetId) {
-
+        WidgetSettingsHelper settings = new WidgetSettingsHelper(this, appWidgetId);
+        mDefaultColors = new int[]{
+                settings.getInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_1, -1),
+                settings.getInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_2, DEFAULT_COLOR),
+                settings.getInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_3, -1)
+        };
+        mDefaultShowHours = settings.getBoolean(GingerbreadHeartWidgetProvider.SETTING_SHOW_HOUR, false);
+        mDefaultAction = settings.getInt(GingerbreadHeartWidgetProvider.SETTING_ACTION, R.id.action_edit_widget);
     }
 }

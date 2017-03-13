@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,12 +12,13 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 
-import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.widget.ActionIntentFactory;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 
 import java.util.Date;
@@ -34,6 +34,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
     public static final String SETTING_COLOR_1 = "setting_color_1";
     public static final String SETTING_COLOR_2 = "setting_color_2";
     public static final String SETTING_COLOR_3 = "setting_color_3";
+    public static final String SETTING_ACTION = "setting_action";
 
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
@@ -81,18 +82,23 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
                 WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_2, 0x7E57C2),
                 WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_3, 0x311B92)
         };
+        int action = WidgetSettingsHelper.getInt(context, appWidgetId,
+                SETTING_ACTION, R.id.action_open_map);
 
         RemoteViews views = initWidget(
                 context,
+                appWidgetId,
                 WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true),
-                colors
-                );
+                colors,
+                action
+        );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @NonNull
-    public RemoteViews initWidget(Context context, boolean showHours, int[] colors) {
+    public RemoteViews initWidget(Context context, int appWidgetId, boolean showHours, int[] colors,
+                                  @IdRes int actionId) {
         RemoteViews views = new RemoteViews(context.getPackageName(),
                 R.layout.widget_layout_gingerbread_heart);
 
@@ -100,9 +106,10 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(showHours), size, mTextBounds, showHours);
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
 
-        Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        views.setOnClickPendingIntent(R.id.widget_countdown, pendingIntent);
+        PendingIntent intent = ActionIntentFactory.createActionIntent(
+                context, actionId, appWidgetId, GingerbreadHeartWidgetSettingsActivity.class
+        );
+        views.setOnClickPendingIntent(R.id.widget_countdown, intent);
 
         views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", colors[0]);
         views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", colors[1]);
@@ -115,7 +122,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         Canvas canvas = new Canvas(bitmap);
 
         float countDownSize = size.y / 8f;
-        if(!showHours) {
+        if (!showHours) {
             countDownSize = size.y / 6f;
         }
 

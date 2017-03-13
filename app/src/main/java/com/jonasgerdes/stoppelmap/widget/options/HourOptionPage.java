@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 
 public class HourOptionPage extends OptionPage<HourTogglableWidgetPreview> {
 
+    public static final String PARAM_SHOW_HOURS = "PARAM_SHOW_HOURS";
 
     @BindView(R.id.toggle_hours)
     CheckBox mHourToggle;
@@ -44,6 +45,22 @@ public class HourOptionPage extends OptionPage<HourTogglableWidgetPreview> {
             }
         });
 
+
+        mHourToggle.setChecked(
+                getArguments() != null && getArguments().getBoolean(PARAM_SHOW_HOURS, false)
+        );
+
+
+    }
+
+    public static HourOptionPage newInstance(boolean showHours) {
+
+        Bundle args = new Bundle();
+        args.putBoolean(PARAM_SHOW_HOURS, showHours);
+
+        HourOptionPage fragment = new HourOptionPage();
+        fragment.setArguments(args);
+        return fragment;
     }
 
 }

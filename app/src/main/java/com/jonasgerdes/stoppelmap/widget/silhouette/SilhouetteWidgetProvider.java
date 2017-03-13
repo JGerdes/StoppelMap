@@ -118,9 +118,7 @@ public class SilhouetteWidgetProvider extends AppWidgetProvider {
         PendingIntent intent = ActionIntentFactory.createActionIntent(
                 context, actionId, appWidgetId, SilhouetteWidgetSettingsActivity.class
         );
-        if (intent != null) {
-            views.setOnClickPendingIntent(R.id.widget_countdown, intent);
-        }
+        views.setOnClickPendingIntent(R.id.widget_countdown, intent);
 
         views.setInt(R.id.widget_silhouette, "setColorFilter", color);
         return views;

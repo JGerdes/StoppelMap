@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ import butterknife.OnClick;
  * Created by jonas on 23.02.2017.
  */
 public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
+    private static final String TAG = "AbstractWidgetSettingsA";
     @BindView(R.id.previewBackground)
     ImageView mPreviewBackground;
     @BindView(R.id.preview)
@@ -55,6 +57,9 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
                     AppWidgetManager.EXTRA_APPWIDGET_ID,
                     AppWidgetManager.INVALID_APPWIDGET_ID);
         }
+
+        Log.d(TAG, "onCreate: " + mAppWidgetId);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -115,6 +120,19 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
 
         initPreview();
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //finish so clicking another widget doesn't just reopen this activity
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
     }
 
     private void initPreview() {

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.widget.ActionWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.HourTogglableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
@@ -26,7 +28,7 @@ import butterknife.BindView;
  */
 
 public class GingerbreadHeartPreview extends WidgetPreview
-        implements ColorableWidgetPreview, HourTogglableWidgetPreview {
+        implements ColorableWidgetPreview, HourTogglableWidgetPreview, ActionWidgetPreview {
 
 
     @BindView(R.id.widget_countdown)
@@ -44,6 +46,8 @@ public class GingerbreadHeartPreview extends WidgetPreview
     private int[] mCurrentColors = new int[3];
     private Rect mTextBounds = new Rect();
     private boolean mShowHours = false;
+    @IdRes
+    private int mAction;
 
     public GingerbreadHeartPreview(Context context) {
         super(context);
@@ -117,19 +121,27 @@ public class GingerbreadHeartPreview extends WidgetPreview
         settingsHelper.putInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_1, mCurrentColors[0]);
         settingsHelper.putInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_2, mCurrentColors[1]);
         settingsHelper.putInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_3, mCurrentColors[2]);
+        settingsHelper.putInt(GingerbreadHeartWidgetProvider.SETTING_ACTION, mAction);
     }
 
     @Override
     public RemoteViews createWidget() {
         return new GingerbreadHeartWidgetProvider().initWidget(
                 getContext(),
+                mWidgetId,
                 mShowHours,
-                mCurrentColors
+                mCurrentColors,
+                mAction
         );
     }
 
     @Override
     public void setShowHours(boolean showHours) {
         mShowHours = showHours;
+    }
+
+    @Override
+    public void setAction(@IdRes int actionId) {
+        mAction = actionId;
     }
 }
