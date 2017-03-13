@@ -80,15 +80,18 @@
             android:gravity="center"
             android:text="Jonas Gerdes \nwww.jonasgerdes.com"/>
 
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
             android:autoLink="web"
-            android:gravity="center"
-            android:paddingTop="16dp"
-            android:text="Soweit nicht anders gekennzeichnet, alle Grafiken, und Bilder © 2016 Jonas Gerdes "/>
+            android:gravity="left"
+            android:text="Soweit nicht anders gekennzeichnet: alle Grafiken und Bilder © Jonas Gerdes "/>
 
         <TextView
             android:layout_width="match_parent"
@@ -97,37 +100,66 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif light"
-            android:gravity="center"
-            android:paddingTop="16dp"
-            android:text="Zusätzliche Illustrationen"
-            android:textSize="18sp"/>
+            android:gravity="left"
+            android:text="Illustrationen: Süßigkeiten, Dosenwerfen"
+            android:textSize="12sp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:fontFamily="sans-serif light"
-            android:gravity="center"
-            android:paddingTop="4dp"
-            android:text="(Süßigkeiten, Dosenwerfen)"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
             android:autoLink="web"
-            android:gravity="center"
-            android:text="© 2016 Sara Fraas \nwww.fraas-home.de"/>
+            android:gravity="left"
+            android:text="© Sara Fraas \nwww.fraas-home.de"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif light"
+            android:gravity="left"
+            android:text="Jan und Libett"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:autoLink="web"
+            android:gravity="left"
+            android:text="© Stadt Vechta"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif light"
+            android:gravity="left"
+            android:text="Titelbild: Anton Linnemann"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:autoLink="web"
+            android:gravity="left"
+            android:text="© Linnemann"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:paddingTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
             android:text="Disclaimer"
             android:textSize="16sp"/>
 
@@ -143,9 +175,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:paddingTop="16dp"
-            android:text="Lizenzen"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Software-Lizenzen"
             android:textSize="16sp"/>
 
         <TextView
