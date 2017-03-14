@@ -88,15 +88,16 @@ public class FontColorOptionPage extends OptionPage<ColorableFontWidgetPreview> 
     }
 
     private void setUpColorCards() {
-        int cardSize = ViewUtil.dpToPx(getContext(), 32);
-        int margin = ViewUtil.dpToPx(getContext(), 4);
+        int cardSize = ViewUtil.dpToPx(getContext(), 38);
+        int margin = ViewUtil.dpToPx(getContext(), 2);
         for (int i = 0; i < mSelectableColors.length; i++) {
             final int color = mSelectableColors[i];
             CardView colorCard = new CardView(getContext());
             LinearLayoutCompat.LayoutParams layout = new LinearLayoutCompat.LayoutParams(
-                    cardSize, cardSize
+                    cardSize, cardSize + margin
             );
-            layout.setMargins(margin, margin, margin, margin);
+            layout.setMargins(margin, 0, 0, 0);
+            colorCard.setUseCompatPadding(true);
             colorCard.setLayoutParams(layout);
             colorCard.setCardBackgroundColor(color);
             colorCard.setOnClickListener(new View.OnClickListener() {
