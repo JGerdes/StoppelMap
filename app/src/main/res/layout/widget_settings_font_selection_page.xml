@@ -64,7 +64,6 @@
                         android:id="@+id/font_roboto_slab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
                         android:text="@string/widget_settings_font_select_roboto_slab"
                         android:textSize="18sp"/>
 
