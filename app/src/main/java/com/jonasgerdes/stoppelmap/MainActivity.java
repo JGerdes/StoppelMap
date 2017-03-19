@@ -17,12 +17,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.jonasgerdes.stoppelmap.deeplink.DeeplinkHandler;
 import com.jonasgerdes.stoppelmap.deeplink.action.Action;
 import com.jonasgerdes.stoppelmap.model.map.MapEntity;
+import com.jonasgerdes.stoppelmap.model.version.Message;
 import com.jonasgerdes.stoppelmap.model.version.Version;
 import com.jonasgerdes.stoppelmap.usecases.about.AboutFragment;
 import com.jonasgerdes.stoppelmap.usecases.map.MapFragment;
@@ -33,6 +35,8 @@ import com.jonasgerdes.stoppelmap.versioning.VersionHelper;
 import com.jonasgerdes.stoppelmap.views.SearchCardView;
 import com.jonasgerdes.stoppelmap.views.interfaces.TabLayoutProvider;
 import com.stephentuso.welcome.WelcomeScreenHelper;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -148,14 +152,14 @@ public class MainActivity extends AppCompatActivity
 
     public void checkVersion() {
         //don't check while debugging
-        if (getResources().getBoolean(R.bool.is_debug)) {
+        /*if (getResources().getBoolean(R.bool.is_debug)) {
             return;
-        }
+        }*/
+        final int currentVersion = VersionHelper.getVersionCode(MainActivity.this);
         VersionHelper.requestVersionInfo(this, new VersionHelper.OnVersionAvailableListener() {
             @Override
-            public void onVersionAvailable(final Version version) {
+            public void onVersionAvailable(final Version version, List<Message> messages) {
                 if (version != null) {
-                    final int currentVersion = VersionHelper.getVersionCode(MainActivity.this);
                     if (currentVersion != -1 && currentVersion < version.code) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -186,7 +190,34 @@ public class MainActivity extends AppCompatActivity
                             }
                         });
 
-
+                    } else {
+                        //it's current version, time for some messages!
+                        for (final Message message : messages) {
+                            if (message.version == currentVersion) {
+                                boolean messageWasShown
+                                        = VersionHelper.getHasMessageBeShown(MainActivity.this, message);
+                                if (message.showAlways || !messageWasShown) {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            mUpdateHint = new AlertDialog.Builder(MainActivity.this, R.style.StoppelMapAlert)
+                                                    .setTitle(message.title)
+                                                    .setMessage(Html.fromHtml(message.message))
+                                                    .setPositiveButton("Ok", null)
+                                                    .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                                        @Override
+                                                        public void onDismiss(DialogInterface dialog) {
+                                                            mUpdateHint = null;
+                                                            VersionHelper.setHasMessageBeShown(MainActivity.this, message);
+                                                        }
+                                                    })
+                                                    .show();
+                                        }
+                                    });
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
             }
