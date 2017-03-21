@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Jonas on 17.07.2016.
  */
@@ -71,4 +73,21 @@ public class ViewUtil {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
+
+
+    //Butterknife actions
+
+    public static final ButterKnife.Action<View> HIDE = new ButterKnife.Action<View>() {
+        @Override
+        public void apply(View view, int index) {
+            view.setVisibility(View.GONE);
+        }
+    };
+
+    public static final ButterKnife.Action<View> SHOW = new ButterKnife.Action<View>() {
+        @Override
+        public void apply(View view, int index) {
+            view.setVisibility(View.VISIBLE);
+        }
+    };
 }

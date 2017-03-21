@@ -27,7 +27,6 @@
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
             <intent-filter>
@@ -67,6 +66,20 @@
             android:name=".usecases.tutorial.TutorialActivity"
             android:theme="@style/TutorialTheme"/>
 
+        <!-- widgets -->
+
+
+        <!-- gingerbread heart -->
+        <activity
+            android:name=".widget.heart.GingerbreadHeartWidgetSettingsActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+
         <receiver android:name=".widget.heart.GingerbreadHeartWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -74,6 +87,26 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info_gingerbreadheart"/>
+        </receiver>
+
+        <!-- silhouette -->
+        <activity
+            android:name=".widget.silhouette.SilhouetteWidgetSettingsActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".widget.silhouette.SilhouetteWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_silhouette"/>
         </receiver>
     </application>
 

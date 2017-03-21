@@ -4,7 +4,6 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,11 +12,14 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 
-import com.jonasgerdes.stoppelmap.MainActivity;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.widget.ActionIntentFactory;
+import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 
 import java.util.Date;
 import java.util.Locale;
@@ -27,6 +29,12 @@ import java.util.concurrent.TimeUnit;
  * Created by Jonas on 07.06.2016.
  */
 public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
+
+    public static final String SETTING_SHOW_HOUR = "setting_show_hour";
+    public static final String SETTING_COLOR_1 = "setting_color_1";
+    public static final String SETTING_COLOR_2 = "setting_color_2";
+    public static final String SETTING_COLOR_3 = "setting_color_3";
+    public static final String SETTING_ACTION = "setting_action";
 
     private static final String[] UNIT_DESC_DAY = {"Tag", "Tage"};
     private static final String[] UNIT_DESC_HOUR = {"Stunde", "Stunden"};
@@ -39,7 +47,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
     };
     private static final long STOMA_DURATION = TimeUnit.DAYS.toMillis(5) + TimeUnit.HOURS.toMillis(4);
 
-    private final Rect textBounds = new Rect();
+    private final Rect mTextBounds = new Rect();
 
     @Override
     public void onEnabled(Context context) {
@@ -69,23 +77,54 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
 
     private void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews views = new RemoteViews(context.getPackageName(),
-                R.layout.widget_layout_gingerbread_heart);
+        int[] colors = new int[]{
+                WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_1, 0xD1C4E9),
+                WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_2, 0x7E57C2),
+                WidgetSettingsHelper.getInt(context, appWidgetId, SETTING_COLOR_3, 0x311B92)
+        };
+        int action = WidgetSettingsHelper.getInt(context, appWidgetId,
+                SETTING_ACTION, R.id.action_open_map);
 
-        Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
-        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(), size);
-        views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
-
-        Intent intent = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-        views.setOnClickPendingIntent(R.id.widget_countdown, pendingIntent);
+        RemoteViews views = initWidget(
+                context,
+                appWidgetId,
+                WidgetSettingsHelper.getBoolean(context, appWidgetId, SETTING_SHOW_HOUR, true),
+                colors,
+                action
+        );
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
-    private Bitmap createCountdownBitmap(Context context, String[] texts, Point size) {
+    @NonNull
+    public RemoteViews initWidget(Context context, int appWidgetId, boolean showHours, int[] colors,
+                                  @IdRes int actionId) {
+        RemoteViews views = new RemoteViews(context.getPackageName(),
+                R.layout.widget_layout_gingerbread_heart);
+
+        Point size = new Point(ViewUtil.dpToPx(context, 256), ViewUtil.dpToPx(context, 206));
+        Bitmap countdownBitmap = createCountdownBitmap(context, getCountDownStrings(showHours), size, mTextBounds, showHours);
+        views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap);
+
+        PendingIntent intent = ActionIntentFactory.createActionIntent(
+                context, actionId, appWidgetId, GingerbreadHeartWidgetSettingsActivity.class
+        );
+        views.setOnClickPendingIntent(R.id.widget_countdown, intent);
+
+        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", colors[0]);
+        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", colors[1]);
+        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", colors[2]);
+        return views;
+    }
+
+    public static Bitmap createCountdownBitmap(Context context, String[] texts, Point size, Rect textBounds, boolean showHours) {
         Bitmap bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(bitmap);
+
+        float countDownSize = size.y / 9f;
+        if (!showHours) {
+            countDownSize = size.y / 5f;
+        }
 
         Paint paint = new Paint();
         Typeface font = Typeface.createFromAsset(context.getAssets(), "font/Damion-Regular.ttf");
@@ -94,7 +133,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         paint.setTypeface(font);
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.rgb(244, 244, 244));
-        paint.setTextSize(size.y / 8f);
+        paint.setTextSize(countDownSize);
         paint.getTextBounds(texts[0], 0, texts[0].length(), textBounds);
         canvas.drawText(texts[0], size.x / 2f - textBounds.exactCenterX(), size.y * 0.4f, paint);
 
@@ -109,7 +148,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
         return bitmap;
     }
 
-    private String[] getCountDownStrings() {
+    public static String[] getCountDownStrings(boolean withHours) {
         Date now = new Date();
         Date stomaStart = NEXT_DATES[0];
         long delta = stomaStart.getTime() - now.getTime();
@@ -149,9 +188,10 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
             String timeLeft;
             if (days > 0) {
-                timeLeft = getFormatedUnitString(days, UNIT_DESC_DAY)
-                        + ", "
-                        + getFormatedUnitString(hours, UNIT_DESC_HOUR);
+                timeLeft = getFormatedUnitString(days, UNIT_DESC_DAY);
+                if (withHours) {
+                    timeLeft += ", " + getFormatedUnitString(hours, UNIT_DESC_HOUR);
+                }
             } else {
                 timeLeft = getFormatedUnitString(hours, UNIT_DESC_HOUR);
             }
@@ -161,7 +201,7 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
 
     }
 
-    private String getFormatedUnitString(long amount, String[] unitDescriptor) {
+    private static String getFormatedUnitString(long amount, String[] unitDescriptor) {
         String unit;
         if (amount == 1) {
             unit = unitDescriptor[0];

@@ -36,7 +36,6 @@ public class DeeplinkHandler {
             return null;
         }
 
-
         switch (parts[1]) {
             case MapAction.IDENTIFIER:
                 return new MapAction(parts);

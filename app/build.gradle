@@ -10,8 +10,8 @@ android {
         applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 17
-        versionName "2.5.0"
+        versionCode 19
+        versionName "2.6.1"
     }
     buildTypes {
         debug {
@@ -38,6 +38,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:palette-v7:23.4.0'
     compile 'com.android.support:cardview-v7:23.4.0'
 
     compile 'com.google.android.gms:play-services-maps:9.0.0'

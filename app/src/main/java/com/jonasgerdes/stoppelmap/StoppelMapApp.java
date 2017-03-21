@@ -189,7 +189,9 @@ public class StoppelMapApp extends Application {
 
     public static Calendar getCurrentCalendar() {
         Calendar now = Calendar.getInstance();
-//        now.set(Calendar.DAY_OF_MONTH, 13);
+        now.set(Calendar.YEAR, 2016);
+        now.set(Calendar.DAY_OF_MONTH, 13);
+        now.set(Calendar.MONTH, Calendar.AUGUST);
 //        now.set(Calendar.HOUR_OF_DAY, 19);
         return now;
     }
