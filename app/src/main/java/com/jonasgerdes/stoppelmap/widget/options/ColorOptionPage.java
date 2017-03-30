@@ -1,9 +1,11 @@
 package com.jonasgerdes.stoppelmap.widget.options;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.graphics.ColorUtils;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.ViewUtil;
+import com.jonasgerdes.stoppelmap.views.colorpicker.ColorEditText;
 import com.jonasgerdes.stoppelmap.views.colorpicker.ColorPicker;
 import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
 
@@ -21,6 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by jonas on 23.02.2017.
@@ -52,11 +56,13 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
 
     private float mMinLightness = 0f;
     private float mMaxLightness = 1f;
+    private int mColor;
 
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
         return inflater.inflate(R.layout.widget_settings_color_page, container, false);
     }
 
@@ -71,6 +77,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
                     public void onColorChanged(int newColor) {
                         getEditableWidgetPreview().setColorsBy(newColor);
                         getWidgetPreview().update();
+                        mColor = newColor;
                     }
                 })
                 .setColor(mDefaultColor);
@@ -114,16 +121,14 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
 
         boolean atLeastOneWallpaperColorUsable = false;
 
-        final int dominantColor = getDominantColor(mPalette.getSwatches());//Color.BLACK;//mPalette.getDominantColor(Color.BLACK);
+        final int dominantColor = getDominantColor(mPalette.getSwatches());//Color.BLACK;
+        // mPalette.getDominantColor(Color.BLACK);
         if (isLightnessIsBetween(dominantColor, mMinLightness, mMaxLightness)) {
             mColorSelectionDominant.setCardBackgroundColor(dominantColor);
             mColorSelectionDominant.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int color = dominantColor;
-                    getEditableWidgetPreview().setColorsBy(color);
-                    mColorPicker.setColor(color);
-                    getWidgetPreview().update();
+                    onColorSelected(dominantColor);
                 }
             });
             atLeastOneWallpaperColorUsable = true;
@@ -142,9 +147,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
                             vibrantColor,
                             mPalette.getDarkVibrantColor(vibrantColor)
                     };
-                    mColorPicker.setColor(vibrantColor);
-                    getEditableWidgetPreview().setColors(colors);
-                    getWidgetPreview().update();
+                    onColorSelected(vibrantColor);
                 }
             });
             atLeastOneWallpaperColorUsable = true;
@@ -163,9 +166,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
                             mutedColor,
                             mPalette.getDarkMutedColor(mutedColor)
                     };
-                    mColorPicker.setColor(mutedColor);
-                    getEditableWidgetPreview().setColors(colors);
-                    getWidgetPreview().update();
+                    onColorSelected(mutedColor);
                 }
             });
             atLeastOneWallpaperColorUsable = true;
@@ -207,6 +208,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
     }
 
     public void onColorSelected(int color) {
+        mColor = color;
         mColorPicker.setColor(color);
         getEditableWidgetPreview().setColorsBy(color);
         getWidgetPreview().update();
@@ -215,6 +217,7 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
 
     public ColorOptionPage setDefaultColor(int color) {
         mDefaultColor = color;
+        mColor = mDefaultColor;
         return this;
     }
 
@@ -224,10 +227,26 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
         return this;
     }
 
-
     private static boolean isLightnessIsBetween(int color, float lowerBound, float upperBound) {
         float[] hsl = new float[3];
         ColorUtils.colorToHSL(color, hsl);
         return hsl[2] >= lowerBound && hsl[2] <= upperBound;
+    }
+
+    @OnClick(R.id.hex_input)
+    void chooseHex() {
+        final ColorEditText colorEditText = new ColorEditText(getContext());
+        colorEditText.setColor(mColor);
+        new AlertDialog.Builder(getContext())
+                .setTitle("Farbe eingeben")
+                .setView(colorEditText)
+                .setPositiveButton("Übernehmen", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onColorSelected(colorEditText.getColor());
+                    }
+                })
+                .setNegativeButton("Abbrechen", null)
+                .show();
     }
 }

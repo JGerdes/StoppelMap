@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.util;
 
+import android.support.annotation.ColorInt;
+
 import com.jonasgerdes.stoppelmap.model.map.Tag;
 import com.jonasgerdes.stoppelmap.model.shared.RealmString;
 
@@ -49,5 +51,9 @@ public class StringUtil {
         }
         result.append(parts.get(parts.size() - 1).getName());
         return result.toString();
+    }
+
+    public static String getHexFromColor(@ColorInt int color) {
+        return String.format("%06X", (0xFFFFFF & color));
     }
 }
