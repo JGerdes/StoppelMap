@@ -2,7 +2,7 @@
 <resources>
 
     <bool name="is_beta">false</bool>
-    <integer name="versioning_realm_version">12</integer>
+    <integer name="versioning_realm_version">13</integer>
     <string name="versioning_provided_realm_file_path">data.realm</string>
     <string name="versioning_internal_realm_file_path">data.realm</string>
     <string name="versioning_check_url">https://app.stoppelmap.de/version</string>

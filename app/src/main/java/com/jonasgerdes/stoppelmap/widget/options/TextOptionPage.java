@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.widget.ChangeableFontWidgetPreview;
@@ -29,6 +30,9 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
     @BindView(R.id.toggle_hours)
     CheckBox mHourToggle;
 
+    @BindView(R.id.font_selection)
+    RadioGroup mFontSelection;
+
     @BindView(R.id.font_roboto)
     RadioButton mFontSelectionRoboto;
 
@@ -41,7 +45,8 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
         return inflater.inflate(R.layout.widget_settings_font_selection_page, container, false);
     }
 
@@ -68,12 +73,15 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
         }
 
         setUpRadioButton(mFontSelectionRoboto, SilhouetteWidgetProvider.FONT_ROBOTO, defaultFont);
-        setUpRadioButton(mFontSelectionRobotoSlab, SilhouetteWidgetProvider.FONT_ROBOTO_SLAB, defaultFont);
+        setUpRadioButton(mFontSelectionRobotoSlab, SilhouetteWidgetProvider.FONT_ROBOTO_SLAB,
+                defaultFont);
         setUpRadioButton(mFontSelectionDamion, SilhouetteWidgetProvider.FONT_DAMION, defaultFont);
+
 
     }
 
-    private void setUpRadioButton(RadioButton button, final String fontFile, final String defaultFont) {
+    private void setUpRadioButton(RadioButton button, final String fontFile, final String
+            defaultFont) {
         button.setTypeface(Typeface.createFromAsset(getContext().getAssets(),
                 "font/" + fontFile)
         );
@@ -87,7 +95,9 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
             }
         });
 
-        button.setChecked(fontFile.equals(defaultFont));
+        if (fontFile.equals(defaultFont)) {
+            mFontSelection.check(button.getId());
+        }
     }
 
     public static TextOptionPage newInstance(String defaultFont, boolean showHours) {

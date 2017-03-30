@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity
                     } else {
                         //it's current version, time for some messages!
                         for (final Message message : messages) {
-                            if (message.version == currentVersion) {
+                            if (message.versions.contains(currentVersion)) {
                                 boolean messageWasShown
                                         = VersionHelper.getHasMessageBeShown(MainActivity.this, message);
                                 if (message.showAlways || !messageWasShown) {

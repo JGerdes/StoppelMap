@@ -95,7 +95,8 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
         mDefaultFont = settings.getString(SilhouetteWidgetProvider.SETTING_FONT,
                 SilhouetteWidgetProvider.FONT_ROBOTO_SLAB);
         mDefaultShowHours = settings.getBoolean(SilhouetteWidgetProvider.SETTING_SHOW_HOUR, false);
-        mDefaultAction = settings.getInt(SilhouetteWidgetProvider.SETTING_ACTION, R.id.action_edit_widget);
+        mDefaultAction = settings.getInt(SilhouetteWidgetProvider.SETTING_ACTION,
+                ActionOptionPage.ACTION_EDIT_WIDGET);
     }
 
     @Override

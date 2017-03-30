@@ -41,11 +41,11 @@ public class StoppelMapApp extends Application {
         super.onCreate();
         RealmUpdateManager updateManager = new RealmUpdateManager(this);
         if (!updateManager.isUptodate()) {
-            Log.d(TAG, "start realm update...");
+            Log.e(TAG, "start realm update...");
             long t = System.currentTimeMillis();
             updateManager.update();
             t = System.currentTimeMillis() - t;
-            Log.d(TAG, "realm update took " + t + "ms");
+            Log.e(TAG, "realm update took " + t + "ms");
         }
 
         long t = System.currentTimeMillis();

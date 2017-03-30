@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.model.version;
 
+import java.util.List;
+
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
  * @since 19.03.2017
@@ -7,7 +9,7 @@ package com.jonasgerdes.stoppelmap.model.version;
 
 public class Message {
     public String slug;
-    public long version;
+    public List<Long> versions;
     public boolean showAlways;
     public String title;
     public String message;

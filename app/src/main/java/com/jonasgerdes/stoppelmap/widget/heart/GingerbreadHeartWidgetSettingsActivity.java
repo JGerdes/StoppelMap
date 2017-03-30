@@ -88,6 +88,7 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
                 settings.getInt(GingerbreadHeartWidgetProvider.SETTING_COLOR_3, -1)
         };
         mDefaultShowHours = settings.getBoolean(GingerbreadHeartWidgetProvider.SETTING_SHOW_HOUR, false);
-        mDefaultAction = settings.getInt(GingerbreadHeartWidgetProvider.SETTING_ACTION, R.id.action_edit_widget);
+        mDefaultAction = settings.getInt(GingerbreadHeartWidgetProvider.SETTING_ACTION,
+                ActionOptionPage.ACTION_EDIT_WIDGET);
     }
 }

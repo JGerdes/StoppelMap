@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.support.annotation.IdRes;
 
 import com.jonasgerdes.stoppelmap.MainActivity;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.options.ActionOptionPage;
 
 /**
  * Created by jonas on 09.03.2017.
@@ -23,10 +23,10 @@ public class ActionIntentFactory {
 
         Intent intent;
         switch (actionId) {
-            case R.id.action_none:
+            case ActionOptionPage.ACTION_NONE:
                 return null;
 
-            case R.id.action_open_map:
+            case ActionOptionPage.ACTION_OPEN_MAP:
                 intent = new Intent(context, MainActivity.class);
                 break;
 
@@ -34,7 +34,7 @@ public class ActionIntentFactory {
                 intent = new Intent(context, MainActivity.class);
                 break;*/
 
-            case R.id.action_edit_widget:
+            case ActionOptionPage.ACTION_EDIT_WIDGET:
                 intent = new Intent(context, settingActivityClass);
                 intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
                 intent.setData(Uri.withAppendedPath(Uri.parse("abc" + "://widget/id/"), String.valueOf(appWidgetId)));

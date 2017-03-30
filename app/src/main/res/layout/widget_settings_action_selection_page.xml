@@ -30,6 +30,7 @@
                     android:text="@string/widget_settings_action_select_title"/>
 
                 <RadioGroup
+                    android:id="@+id/action_selection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
