@@ -1,0 +1,50 @@
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+out/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+
+# Windows thumbnail db
+.DS_Store
+
+# IDEA/Android Studio project files, because
+# the project can be imported from settings.gradle
+*.iml
+.idea/*
+.idea/
+# Forcibly including certain files we want propagated.
+!\.idea/codeStyleSettings.xml
+
+# Gradle cache
+.gradle
+
+# Sandbox stuff
+_sandbox
+
+# Keystore files
+*.jks
+
+# Log Files
+*.log
+
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+
+captures/
