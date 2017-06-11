@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0-rc2"
     defaultConfig {
-        applicationId "com.jonasgerdes.stoppelmap"
+        //different appId for now to enable parallel installation with old version
+        applicationId "com.jonasgerdes.stoppelmap17"
         minSdkVersion 18
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 26
+        versionCode 20
+        versionName "3.0.0-Alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -27,6 +27,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:support-vector-drawable:$support_version"
+    implementation "com.android.support:design:$support_version"
     testImplementation 'junit:junit:4.12'
 }
