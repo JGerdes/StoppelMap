@@ -1,0 +1,817 @@
+[
+  {
+    "slug": "Fisch-Kruse-Wilder-ZTIxNj",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747750663448,
+      "lon": 8.297984733385999
+    },
+    "bounds": [
+      {
+        "lat": 52.74777288925,
+        "lon": 8.29793259367
+      },
+      {
+        "lat": 52.74774285249,
+        "lon": 8.29807743296
+      },
+      {
+        "lat": 52.74771733257,
+        "lon": 8.29806290519
+      },
+      {
+        "lat": 52.74774735368,
+        "lon": 8.29791814144
+      },
+      {
+        "lat": 52.74777288925,
+        "lon": 8.29793259367
+      }
+    ],
+    "name": "Fisch",
+    "alias": [],
+    "operator": "Kruse, Wilder",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "fish"
+      ]
+    }
+  },
+  {
+    "slug": "Meyer-ZTRlMG",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747896892680004,
+      "lon": 8.297546882010002
+    },
+    "bounds": [
+      {
+        "lat": 52.74794255595,
+        "lon": 8.29742967948
+      },
+      {
+        "lat": 52.74795310936,
+        "lon": 8.29770997033
+      },
+      {
+        "lat": 52.74779673747,
+        "lon": 8.29772603856
+      },
+      {
+        "lat": 52.74784950467,
+        "lon": 8.2974390422
+      },
+      {
+        "lat": 52.74794255595,
+        "lon": 8.29742967948
+      }
+    ],
+    "name": "Meyer",
+    "alias": [],
+    "operator": "Meyer",
+    "pictures": [],
+    "foodStall": {
+      "isBar": true,
+      "isTent": false,
+      "dishes": [
+        "fries",
+        "sausauge"
+      ]
+    }
+  },
+  {
+    "slug": "Hot-Dog-Steiger-NTE2N2",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747739936606,
+      "lon": 8.29747932341
+    },
+    "bounds": [
+      {
+        "lat": 52.74775340595,
+        "lon": 8.29746186599
+      },
+      {
+        "lat": 52.74774122888,
+        "lon": 8.29751819238
+      },
+      {
+        "lat": 52.74771973259,
+        "lon": 8.29750550954
+      },
+      {
+        "lat": 52.74773190966,
+        "lon": 8.29744918315
+      },
+      {
+        "lat": 52.74775340595,
+        "lon": 8.29746186599
+      }
+    ],
+    "name": "Hot Dog",
+    "alias": [],
+    "operator": "Steiger",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "hotdog"
+      ]
+    }
+  },
+  {
+    "slug": "Pilze-Bronzil-N2JkMj",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.74769401429601,
+      "lon": 8.297667430492
+    },
+    "bounds": [
+      {
+        "lat": 52.74771281571,
+        "lon": 8.29765096173
+      },
+      {
+        "lat": 52.74770063863,
+        "lon": 8.29771131143
+      },
+      {
+        "lat": 52.74766581217,
+        "lon": 8.29769213364
+      },
+      {
+        "lat": 52.74767798926,
+        "lon": 8.29763178393
+      },
+      {
+        "lat": 52.74771281571,
+        "lon": 8.29765096173
+      }
+    ],
+    "name": "Pilze",
+    "alias": [],
+    "operator": "Bronzil",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "mushrooms"
+      ]
+    }
+  },
+  {
+    "slug": "Pizza-Wiemert-MmZhN2",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747685933694,
+      "lon": 8.297485359138001
+    },
+    "bounds": [
+      {
+        "lat": 52.7477103803,
+        "lon": 8.29745516047
+      },
+      {
+        "lat": 52.74771502005,
+        "lon": 8.2975172461
+      },
+      {
+        "lat": 52.74764926379,
+        "lon": 8.29753065714
+      },
+      {
+        "lat": 52.74764462403,
+        "lon": 8.29746857151
+      },
+      {
+        "lat": 52.7477103803,
+        "lon": 8.29745516047
+      }
+    ],
+    "name": "Pizza",
+    "alias": [],
+    "operator": "Wiemert",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "pizza"
+      ]
+    }
+  },
+  {
+    "slug": "Spiesse-Winter-ZmYxZW",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.74775878698199,
+      "lon": 8.297315911366
+    },
+    "bounds": [
+      {
+        "lat": 52.74775502956,
+        "lon": 8.29734787211
+      },
+      {
+        "lat": 52.74773600997,
+        "lon": 8.29731893222
+      },
+      {
+        "lat": 52.74776442312,
+        "lon": 8.29726797025
+      },
+      {
+        "lat": 52.7477834427,
+        "lon": 8.29729691014
+      },
+      {
+        "lat": 52.74775502956,
+        "lon": 8.29734787211
+      }
+    ],
+    "name": "Spieße",
+    "alias": [],
+    "operator": "Winter",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "steak"
+      ]
+    }
+  },
+  {
+    "slug": "Pasta-Ahrend-YTFjZj",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747719310148,
+      "lon": 8.297325341552
+    },
+    "bounds": [
+      {
+        "lat": 52.74773716986,
+        "lon": 8.29733982548
+      },
+      {
+        "lat": 52.74769585628,
+        "lon": 8.29734825143
+      },
+      {
+        "lat": 52.74769252058,
+        "lon": 8.29730361566
+      },
+      {
+        "lat": 52.74773383416,
+        "lon": 8.29729518971
+      },
+      {
+        "lat": 52.74773716986,
+        "lon": 8.29733982548
+      }
+    ],
+    "name": "Pasta",
+    "alias": [],
+    "operator": "Ahrend",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "paste"
+      ]
+    }
+  },
+  {
+    "slug": "Pommes-Robbahn-YTlkNm",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747496511201994,
+      "lon": 8.297369960288
+    },
+    "bounds": [
+      {
+        "lat": 52.74753036466,
+        "lon": 8.29738200353
+      },
+      {
+        "lat": 52.74744921786,
+        "lon": 8.29739855342
+      },
+      {
+        "lat": 52.74744573101,
+        "lon": 8.29735189542
+      },
+      {
+        "lat": 52.74752687782,
+        "lon": 8.29733534554
+      },
+      {
+        "lat": 52.74753036466,
+        "lon": 8.29738200353
+      }
+    ],
+    "name": "Pommes",
+    "alias": [],
+    "operator": "Robbahn",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "fries"
+      ]
+    }
+  },
+  {
+    "slug": "Landhauskueche-YjgyYz",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747551753272,
+      "lon": 8.297099767776
+    },
+    "bounds": [
+      {
+        "lat": 52.74753097099,
+        "lon": 8.29712122545
+      },
+      {
+        "lat": 52.74752780224,
+        "lon": 8.29707882391
+      },
+      {
+        "lat": 52.7475829267,
+        "lon": 8.29706758127
+      },
+      {
+        "lat": 52.74758609544,
+        "lon": 8.2971099828
+      },
+      {
+        "lat": 52.74753097099,
+        "lon": 8.29712122545
+      }
+    ],
+    "name": "Landhausküche",
+    "alias": [],
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "hotdog",
+        "sausauge"
+      ]
+    }
+  },
+  {
+    "slug": "Bokern-Imbiss-OTMzOT",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747761686324,
+      "lon": 8.297075091452
+    },
+    "bounds": [
+      {
+        "lat": 52.74772174557,
+        "lon": 8.29711317882
+      },
+      {
+        "lat": 52.74771623563,
+        "lon": 8.29703944908
+      },
+      {
+        "lat": 52.74782159746,
+        "lon": 8.2970179604
+      },
+      {
+        "lat": 52.74782710739,
+        "lon": 8.29709169014
+      },
+      {
+        "lat": 52.74772174557,
+        "lon": 8.29711317882
+      }
+    ],
+    "name": "Bokern Imbiss",
+    "alias": [],
+    "operator": "Bokern",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "fries",
+        "hamburger",
+        "hotdog",
+        "sausauge"
+      ]
+    }
+  },
+  {
+    "slug": "China-M2ExZm",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.746840820260005,
+      "lon": 8.297237242108
+    },
+    "bounds": [
+      {
+        "lat": 52.7468181973,
+        "lon": 8.29722314939
+      },
+      {
+        "lat": 52.74687015386,
+        "lon": 8.29720973834
+      },
+      {
+        "lat": 52.7468747547,
+        "lon": 8.29725838119
+      },
+      {
+        "lat": 52.74682279814,
+        "lon": 8.29727179223
+      },
+      {
+        "lat": 52.7468181973,
+        "lon": 8.29722314939
+      }
+    ],
+    "name": "China",
+    "alias": [],
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": []
+    }
+  },
+  {
+    "slug": "Pizza-MTcyYm",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747278149173994,
+      "lon": 8.297213529219999
+    },
+    "bounds": [
+      {
+        "lat": 52.74729392226,
+        "lon": 8.29723387823
+      },
+      {
+        "lat": 52.74725854861,
+        "lon": 8.2972406732
+      },
+      {
+        "lat": 52.74725448954,
+        "lon": 8.29718300571
+      },
+      {
+        "lat": 52.7472898632,
+        "lon": 8.29717621073
+      },
+      {
+        "lat": 52.74729392226,
+        "lon": 8.29723387823
+      }
+    ],
+    "name": "Pizza",
+    "alias": [],
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "pizza"
+      ]
+    }
+  },
+  {
+    "slug": "Hot-Dog-NzE2MW",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747254850482,
+      "lon": 8.297163373947999
+    },
+    "bounds": [
+      {
+        "lat": 52.74723303625,
+        "lon": 8.29718425736
+      },
+      {
+        "lat": 52.74723074488,
+        "lon": 8.29714009546
+      },
+      {
+        "lat": 52.74728757183,
+        "lon": 8.29713204883
+      },
+      {
+        "lat": 52.7472898632,
+        "lon": 8.29717621073
+      },
+      {
+        "lat": 52.74723303625,
+        "lon": 8.29718425736
+      }
+    ],
+    "name": "Hot Dog",
+    "alias": [],
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "hotdog"
+      ]
+    }
+  },
+  {
+    "slug": "Wiemetl-MjBhOT",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747513598278,
+      "lon": 8.296937494128
+    },
+    "bounds": [
+      {
+        "lat": 52.74749443959,
+        "lon": 8.2969589518
+      },
+      {
+        "lat": 52.74749119458,
+        "lon": 8.29691580435
+      },
+      {
+        "lat": 52.74754233631,
+        "lon": 8.29690530762
+      },
+      {
+        "lat": 52.74754558132,
+        "lon": 8.29694845507
+      },
+      {
+        "lat": 52.74749443959,
+        "lon": 8.2969589518
+      }
+    ],
+    "alias": [],
+    "operator": "Wiemetl",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "pretzel"
+      ]
+    }
+  },
+  {
+    "slug": "Bokern-NWI4Zm",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747385250684,
+      "lon": 8.296325951144
+    },
+    "bounds": [
+      {
+        "lat": 52.74743477117,
+        "lon": 8.29641714625
+      },
+      {
+        "lat": 52.74732973771,
+        "lon": 8.29643870409
+      },
+      {
+        "lat": 52.74731096993,
+        "lon": 8.29618915848
+      },
+      {
+        "lat": 52.74741600344,
+        "lon": 8.29616760065
+      },
+      {
+        "lat": 52.74743477117,
+        "lon": 8.29641714625
+      }
+    ],
+    "name": "Bokern",
+    "alias": [],
+    "operator": "Bokern",
+    "pictures": [],
+    "foodStall": {
+      "isBar": true,
+      "isTent": false,
+      "dishes": [
+        "fries",
+        "sausauge"
+      ]
+    }
+  },
+  {
+    "slug": "Stohmann-MmIwZT",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747713465139995,
+      "lon": 8.295955537405998
+    },
+    "bounds": [
+      {
+        "lat": 52.74768521433,
+        "lon": 8.29598396882
+      },
+      {
+        "lat": 52.74768102361,
+        "lon": 8.29592824654
+      },
+      {
+        "lat": 52.74775584136,
+        "lon": 8.29591289029
+      },
+      {
+        "lat": 52.74776003207,
+        "lon": 8.29596861256
+      },
+      {
+        "lat": 52.74768521433,
+        "lon": 8.29598396882
+      }
+    ],
+    "alias": [],
+    "operator": "Stohmann",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "pretzel"
+      ]
+    }
+  },
+  {
+    "slug": "Barber-ZDg3Y2",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747300263628006,
+      "lon": 8.295834790592
+    },
+    "bounds": [
+      {
+        "lat": 52.74729148682,
+        "lon": 8.29587668046
+      },
+      {
+        "lat": 52.74728406399,
+        "lon": 8.29577798283
+      },
+      {
+        "lat": 52.74731342884,
+        "lon": 8.29577195579
+      },
+      {
+        "lat": 52.74732085167,
+        "lon": 8.29587065342
+      },
+      {
+        "lat": 52.74729148682,
+        "lon": 8.29587668046
+      }
+    ],
+    "alias": [],
+    "operator": "Barber",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "fish"
+      ]
+    }
+  },
+  {
+    "slug": "Snackbar-Nowak-ZWI1ZT",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747550129653995,
+      "lon": 8.295743911116
+    },
+    "bounds": [
+      {
+        "lat": 52.7475228529,
+        "lon": 8.29572781786
+      },
+      {
+        "lat": 52.74758702833,
+        "lon": 8.29571464598
+      },
+      {
+        "lat": 52.74759104478,
+        "lon": 8.295768051
+      },
+      {
+        "lat": 52.74752686936,
+        "lon": 8.29578122288
+      },
+      {
+        "lat": 52.7475228529,
+        "lon": 8.29572781786
+      }
+    ],
+    "name": "Snackbar",
+    "alias": [],
+    "operator": "Nowak",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": []
+    }
+  },
+  {
+    "slug": "Wiemerl-NGVkZG",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.747619945094,
+      "lon": 8.295740156026
+    },
+    "bounds": [
+      {
+        "lat": 52.74759104478,
+        "lon": 8.295768051
+      },
+      {
+        "lat": 52.74758697806,
+        "lon": 8.29571397762
+      },
+      {
+        "lat": 52.74766329557,
+        "lon": 8.29569831356
+      },
+      {
+        "lat": 52.74766736228,
+        "lon": 8.29575238695
+      },
+      {
+        "lat": 52.74759104478,
+        "lon": 8.295768051
+      }
+    ],
+    "alias": [],
+    "operator": "Wiemerl",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "fish"
+      ]
+    }
+  },
+  {
+    "slug": "Fischer-ZDQ1Mj",
+    "type": "foodStall",
+    "center": {
+      "lat": 52.74788475553,
+      "lon": 8.295725404144
+    },
+    "bounds": [
+      {
+        "lat": 52.74786705841,
+        "lon": 8.29564601049
+      },
+      {
+        "lat": 52.74789592821,
+        "lon": 8.29564008497
+      },
+      {
+        "lat": 52.7479113012,
+        "lon": 8.29584449463
+      },
+      {
+        "lat": 52.74788243142,
+        "lon": 8.29585042014
+      },
+      {
+        "lat": 52.74786705841,
+        "lon": 8.29564601049
+      }
+    ],
+    "name": "Fischer",
+    "alias": [],
+    "operator": "Fischer",
+    "pictures": [],
+    "foodStall": {
+      "isBar": false,
+      "isTent": false,
+      "dishes": [
+        "fries",
+        "sausauge"
+      ]
+    }
+  }
+]
