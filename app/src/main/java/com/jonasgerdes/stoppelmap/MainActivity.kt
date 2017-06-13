@@ -6,6 +6,10 @@ import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * @author Jonas Gerdes <dev@jonasgerdes.com>
+ * @since 11.06.2017
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
