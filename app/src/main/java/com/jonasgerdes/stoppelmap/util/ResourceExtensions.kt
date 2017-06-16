@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap.util
 
 import android.content.res.AssetManager
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.charset.Charset
 
@@ -11,14 +13,26 @@ import java.nio.charset.Charset
 
 fun AssetManager.readAsString(path: String): String {
     try {
-        val inputStream = open(path)
-        val buffer = ByteArray(inputStream.available())
-        inputStream.read(buffer)
-        inputStream.close()
+        val sourceStream = open(path)
+        val buffer = ByteArray(sourceStream.available())
+        sourceStream.read(buffer)
+        sourceStream.close()
         return buffer.toString(Charset.forName("UTF-8"))
     } catch (ex: IOException) {
         ex.printStackTrace()
         return ""
     }
 
+}
+
+fun AssetManager.copyToFile(path: String, destination: File) {
+    val sourceStream = open(path)
+    val destinationStream = FileOutputStream(destination)
+    val buf = ByteArray(1024)
+    var bytes = sourceStream.read(buf)
+    while (bytes > 0) {
+        destinationStream.write(buf, 0, bytes)
+        bytes = sourceStream.read(buf)
+    }
+    sourceStream.close()
 }
