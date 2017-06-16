@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
 
@@ -40,17 +41,27 @@ android {
     flavorSelection 'mode', 'store'
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //support libs
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:support-vector-drawable:$support_version"
     implementation "com.android.support:design:$support_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
+    //serializing
     implementation 'com.google.code.gson:gson:2.8.0'
 
+    //dependency injection
+    implementation 'com.google.dagger:dagger:2.11'
+    kapt 'com.google.dagger:dagger-compiler:2.11'
+
+    //realm
     debugImplementation 'com.github.jonasrottmann.realm-browser:realm-browser:0.0.14'
     testImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
     releaseImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
