@@ -10,7 +10,6 @@ import de.jonasrottmann.realmbrowser.RealmBrowser
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import javax.inject.Inject
 
 /**
@@ -37,18 +36,19 @@ class App : Application(), AnkoLogger {
         graph.inject(this)
 
         Realm.init(this)
-        Realm.setDefaultConfiguration(RealmConfiguration.Builder()
-                .deleteRealmIfMigrationNeeded()
-                .build())
+        Realm.setDefaultConfiguration(createRealmConfig())
 
         Administration.init(this)
         RealmBrowser.addFilesShortcut(this)
+    }
 
-
-        //todo: put somewhere else
-        if (version.installedDatabaseVersion < version.providedDatabaseVersion) {
-            info("updating database from ${version.installedDatabaseVersion}" +
-                    " to ${version.providedDatabaseVersion}")
+    private fun createRealmConfig(): RealmConfiguration {
+        val builder = RealmConfiguration.Builder()
+        if (version.isStoreBuild) {
+            builder.assetFile("data.realm")
+        } else {
+            builder.deleteRealmIfMigrationNeeded()
         }
+        return builder.build()
     }
 }
