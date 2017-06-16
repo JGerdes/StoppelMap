@@ -1,6 +1,6 @@
 [
   {
-    "slug": "tent_niedersachsenhalle",
+    "slug": "kuehlings-niedersachsenhalle-yjllyt",
     "type": "bar",
     "center": {
       "lat": 52.74831299479333,
@@ -73,11 +73,25 @@
     "operator": "Kühling",
     "pictures": [],
     "bar": {
-      "isTent": false
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
     }
   },
   {
-    "slug": "Wunderbar-Grieshop-ZmQwM2",
+    "slug": "wunderbar-zmqwm2",
     "type": "bar",
     "center": {
       "lat": 52.74758219521728,
@@ -137,47 +151,29 @@
     "operator": "Grieshop",
     "pictures": [],
     "bar": {
-      "isTent": false
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_cocktails",
+          "prices": []
+        }
+      ],
+      "isTent": true
     }
   },
   {
-    "slug": "Bowle-ZjVmN2",
-    "type": "bar",
-    "center": {
-      "lat": 52.747547990856006,
-      "lon": 8.297359646446
-    },
-    "bounds": [
-      {
-        "lat": 52.74756204346,
-        "lon": 8.29737554263
-      },
-      {
-        "lat": 52.74753036466,
-        "lon": 8.29738200353
-      },
-      {
-        "lat": 52.74752691195,
-        "lon": 8.29733580217
-      },
-      {
-        "lat": 52.74755859075,
-        "lon": 8.29732934127
-      },
-      {
-        "lat": 52.74756204346,
-        "lon": 8.29737554263
-      }
-    ],
-    "name": "Bowle",
-    "alias": [],
-    "pictures": [],
-    "bar": {
-      "isTent": false
-    }
-  },
-  {
-    "slug": "Hanse-Kogge-Hange-Kogge-OWE5ZD",
+    "slug": "hanse-kogge-owe5zd",
     "type": "bar",
     "center": {
       "lat": 52.747423003024444,
@@ -223,208 +219,28 @@
     ],
     "name": "Hanse Kogge",
     "alias": [],
-    "operator": "Hange, Kogge",
+    "operator": "Hanse/Kogge",
     "pictures": [],
     "bar": {
-      "isTent": false
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
     }
   },
   {
-    "slug": "Overmeyer-NDkwYW",
-    "type": "bar",
-    "center": {
-      "lat": 52.747863835784834,
-      "lon": 8.296535284695151
-    },
-    "bounds": [
-      {
-        "lat": 52.74782565648,
-        "lon": 8.29647481307
-      },
-      {
-        "lat": 52.74781904857,
-        "lon": 8.2964887007
-      },
-      {
-        "lat": 52.74781420767,
-        "lon": 8.29650445115
-      },
-      {
-        "lat": 52.7478113198,
-        "lon": 8.29652145913
-      },
-      {
-        "lat": 52.74781049594,
-        "lon": 8.29653907104
-      },
-      {
-        "lat": 52.74781176775,
-        "lon": 8.29655661007
-      },
-      {
-        "lat": 52.74781508636,
-        "lon": 8.2965734022
-      },
-      {
-        "lat": 52.74782032423,
-        "lon": 8.29658880211
-      },
-      {
-        "lat": 52.74782728008,
-        "lon": 8.296602218
-      },
-      {
-        "lat": 52.7478356866,
-        "lon": 8.29661313431
-      },
-      {
-        "lat": 52.74784522072,
-        "lon": 8.29662113151
-      },
-      {
-        "lat": 52.74785551606,
-        "lon": 8.2966259023
-      },
-      {
-        "lat": 52.74786617697,
-        "lon": 8.29662726332
-      },
-      {
-        "lat": 52.74787679375,
-        "lon": 8.29662516228
-      },
-      {
-        "lat": 52.74788695842,
-        "lon": 8.29661967991
-      },
-      {
-        "lat": 52.74789628035,
-        "lon": 8.29661102691
-      },
-      {
-        "lat": 52.7479044013,
-        "lon": 8.29659953579
-      },
-      {
-        "lat": 52.74791100919,
-        "lon": 8.29658564817
-      },
-      {
-        "lat": 52.74791585008,
-        "lon": 8.29656989772
-      },
-      {
-        "lat": 52.74791873795,
-        "lon": 8.29655288974
-      },
-      {
-        "lat": 52.74791956181,
-        "lon": 8.29653527783
-      },
-      {
-        "lat": 52.74791829,
-        "lon": 8.2965177388
-      },
-      {
-        "lat": 52.74791497139,
-        "lon": 8.29650094667
-      },
-      {
-        "lat": 52.74790973353,
-        "lon": 8.29648554676
-      },
-      {
-        "lat": 52.74790277769,
-        "lon": 8.29647213086
-      },
-      {
-        "lat": 52.74789437119,
-        "lon": 8.29646121456
-      },
-      {
-        "lat": 52.74788483708,
-        "lon": 8.29645321735
-      },
-      {
-        "lat": 52.74787454175,
-        "lon": 8.29644844657
-      },
-      {
-        "lat": 52.74786388084,
-        "lon": 8.29644708554
-      },
-      {
-        "lat": 52.74785326405,
-        "lon": 8.29644918659
-      },
-      {
-        "lat": 52.74784309938,
-        "lon": 8.29645466895
-      },
-      {
-        "lat": 52.74783377744,
-        "lon": 8.29646332196
-      },
-      {
-        "lat": 52.74782565648,
-        "lon": 8.29647481307
-      }
-    ],
-    "name": "Overmeyer",
-    "alias": [],
-    "operator": "Overmeyer",
-    "pictures": [],
-    "bar": {
-      "isTent": false
-    }
-  },
-  {
-    "slug": "Kroeger-ZmY0OW",
-    "type": "bar",
-    "center": {
-      "lat": 52.74773934585286,
-      "lon": 8.296647269061427
-    },
-    "bounds": [
-      {
-        "lat": 52.74779180806,
-        "lon": 8.29646423261
-      },
-      {
-        "lat": 52.74780318012,
-        "lon": 8.29661544278
-      },
-      {
-        "lat": 52.74777776689,
-        "lon": 8.29662065882
-      },
-      {
-        "lat": 52.74779967877,
-        "lon": 8.29691201314
-      },
-      {
-        "lat": 52.74762223158,
-        "lon": 8.29694843398
-      },
-      {
-        "lat": 52.74758894749,
-        "lon": 8.29650586949
-      },
-      {
-        "lat": 52.74779180806,
-        "lon": 8.29646423261
-      }
-    ],
-    "name": "Kröger",
-    "alias": [],
-    "operator": "Kröger",
-    "pictures": [],
-    "bar": {
-      "isTent": false
-    }
-  },
-  {
-    "slug": "Anton-Linnemann-OTNlYz",
+    "slug": "anton-linnemann-otnlyz",
     "type": "bar",
     "center": {
       "lat": 52.747849198698,
@@ -457,11 +273,25 @@
     "operator": "Linnemann",
     "pictures": [],
     "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
       "isTent": false
     }
   },
   {
-    "slug": "Fischer-ZWViNj",
+    "slug": "fischer-zwvinj",
     "type": "bar",
     "center": {
       "lat": 52.747741406022,
@@ -514,11 +344,17 @@
     "operator": "Fischer",
     "pictures": [],
     "bar": {
-      "isTent": false
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        }
+      ],
+      "isTent": true
     }
   },
   {
-    "slug": "Brackmann-NTg0MT",
+    "slug": "brackmann-ntg0mt",
     "type": "bar",
     "center": {
       "lat": 52.74745445970777,
@@ -567,11 +403,25 @@
     "operator": "Brackmann",
     "pictures": [],
     "bar": {
-      "isTent": false
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
     }
   },
   {
-    "slug": "Jansen-NDFjMT",
+    "slug": "jansen-ndfjmt",
     "type": "bar",
     "center": {
       "lat": 52.74740235081889,
@@ -620,7 +470,21 @@
     "operator": "Jansen",
     "pictures": [],
     "bar": {
-      "isTent": false
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
     }
   }
 ]

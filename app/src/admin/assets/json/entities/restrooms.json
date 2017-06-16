@@ -1,7 +1,45 @@
 [
   {
-    "slug": "wc-YzBjN2",
-    "type": "wc",
+    "slug": "restroom-keese-zjm1og",
+    "type": "restroom",
+    "center": {
+      "lat": 52.747925557778004,
+      "lon": 8.297843273158
+    },
+    "bounds": [
+      {
+        "lat": 52.74796122737,
+        "lon": 8.29782396421
+      },
+      {
+        "lat": 52.74796216334,
+        "lon": 8.29786687216
+      },
+      {
+        "lat": 52.74787205339,
+        "lon": 8.29787223658
+      },
+      {
+        "lat": 52.74787111742,
+        "lon": 8.29782932863
+      },
+      {
+        "lat": 52.74796122737,
+        "lon": 8.29782396421
+      }
+    ],
+    "alias": [],
+    "operator": "Keese",
+    "pictures": [],
+    "mRestroom": {
+      "forMen": true,
+      "forWomen": true,
+      "forDisabled": false
+    }
+  },
+  {
+    "slug": "restroom-keese-yzbjn2",
+    "type": "restroom",
     "center": {
       "lat": 52.747929554702,
       "lon": 8.297941177480002
@@ -29,16 +67,17 @@
       }
     ],
     "alias": [],
+    "operator": "Keese",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
     }
   },
   {
-    "slug": "wc-Grieshop-YWNmNz",
-    "type": "wc",
+    "slug": "restroom-grieshop-ywnmnz",
+    "type": "restroom",
     "center": {
       "lat": 52.747514116594004,
       "lon": 8.297608806088
@@ -68,15 +107,15 @@
     "alias": [],
     "operator": "Grieshop",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
     }
   },
   {
-    "slug": "wc-Neuhaus-NDlkOT",
-    "type": "wc",
+    "slug": "restroom-neuhaus-ndlkot",
+    "type": "restroom",
     "center": {
       "lat": 52.747535354736,
       "lon": 8.297182916253998
@@ -106,15 +145,15 @@
     "alias": [],
     "operator": "Neuhaus",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
     }
   },
   {
-    "slug": "wc-Kröger/Overmeyer-NTBhMm",
-    "type": "wc",
+    "slug": "restroom-kröger-ntbhmm",
+    "type": "restroom",
     "center": {
       "lat": 52.747571838060004,
       "lon": 8.296547306792002
@@ -142,55 +181,17 @@
       }
     ],
     "alias": [],
-    "operator": "Kröger/Overmeyer",
+    "operator": "Kröger",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
     }
   },
   {
-    "slug": "wc-Bokern-YjI0Nz",
-    "type": "wc",
-    "center": {
-      "lat": 52.747449464932004,
-      "lon": 8.296359881088
-    },
-    "bounds": [
-      {
-        "lat": 52.74746277862,
-        "lon": 8.29639233582
-      },
-      {
-        "lat": 52.74743600972,
-        "lon": 8.29639783007
-      },
-      {
-        "lat": 52.7474294944,
-        "lon": 8.29631119899
-      },
-      {
-        "lat": 52.7474562633,
-        "lon": 8.29630570474
-      },
-      {
-        "lat": 52.74746277862,
-        "lon": 8.29639233582
-      }
-    ],
-    "alias": [],
-    "operator": "Bokern",
-    "pictures": [],
-    "wc": {
-      "forMen": true,
-      "forWomen": true,
-      "forDisabled": false
-    }
-  },
-  {
-    "slug": "wc-Keese-MzIxNz",
-    "type": "wc",
+    "slug": "restroom-keese-mzixnz",
+    "type": "restroom",
     "center": {
       "lat": 52.747668653492,
       "lon": 8.295899747461998
@@ -220,15 +221,15 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
     }
   },
   {
-    "slug": "wc-Keese-YTdlYz",
-    "type": "wc",
+    "slug": "restroom-keese-ytdlyz",
+    "type": "restroom",
     "center": {
       "lat": 52.747604196024,
       "lon": 8.295813916773998
@@ -258,15 +259,15 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": true
     }
   },
   {
-    "slug": "wc-Keese-ZTkwYz",
-    "type": "wc",
+    "slug": "restroom-keese-ztkwyz",
+    "type": "restroom",
     "center": {
       "lat": 52.7475618197,
       "lon": 8.295914767832
@@ -296,15 +297,15 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
     }
   },
   {
-    "slug": "wc-Jansen-N2RhMz",
-    "type": "wc",
+    "slug": "restroom-jansen-n2rhmz",
+    "type": "restroom",
     "center": {
       "lat": 52.74751189323334,
       "lon": 8.296628717058889
@@ -350,7 +351,7 @@
     "alias": [],
     "operator": "Jansen",
     "pictures": [],
-    "wc": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
