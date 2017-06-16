@@ -1,0 +1,2 @@
+ext.api_key_google_maps_debug = "YOU_KEY_HERE"
+ext.api_key_google_maps_release = "YOU_KEY_HERE"
