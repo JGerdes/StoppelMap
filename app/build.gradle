@@ -4,6 +4,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
 
+apply from: 'api_keys.gradle'
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
@@ -17,12 +19,17 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
-        buildConfigField "int", "providedDatabaseVersion", "14"
     }
     buildTypes {
+        debug {
+            resValue "string", "api_key_google_maps", "$api_key_google_maps_debug"
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            resValue "string", "api_key_google_maps", "$api_key_google_maps_release"
         }
     }
 
@@ -62,6 +69,9 @@ dependencies {
     implementation "android.arch.lifecycle:runtime:$arch_version"
     implementation "android.arch.lifecycle:extensions:$arch_version"
     annotationProcessor "android.arch.lifecycle:compiler:$arch_version"
+
+    //play-services/maps
+    implementation 'com.google.android.gms:play-services-maps:11.0.0'
 
     //serializing
     implementation 'com.google.code.gson:gson:2.8.0'
