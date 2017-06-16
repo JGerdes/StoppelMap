@@ -13,4 +13,9 @@ import javax.inject.Singleton
 @Module
 class AppModule(private val app: App) {
 
+    @Provides
+    @Singleton
+    fun provideVersionHelper(): VersionHelper {
+        return VersionHelper(app)
+    }
 }
