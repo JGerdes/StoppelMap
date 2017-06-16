@@ -1,7 +1,7 @@
 [
   {
-    "slug": "Fisch-Kruse-Wilder-ZTIxNj",
-    "type": "foodStall",
+    "slug": "fish-kruse-wilder-ztixnj",
+    "type": "food-stall",
     "center": {
       "lat": 52.747750663448,
       "lon": 8.297984733385999
@@ -28,21 +28,24 @@
         "lon": 8.29793259367
       }
     ],
-    "name": "Fisch",
     "alias": [],
-    "operator": "Kruse, Wilder",
+    "operator": "Kruse/Wilder",
     "pictures": [],
     "foodStall": {
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "fish"
-      ]
+        {
+          "name": "dish_type_fish",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Meyer-ZTRlMG",
-    "type": "foodStall",
+    "slug": "meyer-ztrlmg",
+    "type": "food-stall",
     "center": {
       "lat": 52.747896892680004,
       "lon": 8.297546882010002
@@ -77,14 +80,30 @@
       "isBar": true,
       "isTent": false,
       "dishes": [
-        "fries",
-        "sausauge"
+        {
+          "name": "dish_type_fries",
+          "prices": []
+        },
+        {
+          "name": "dish_type_sausauge",
+          "prices": []
+        },
+        {
+          "name": "dish_type_currywurst",
+          "prices": []
+        }
+      ],
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        }
       ]
     }
   },
   {
-    "slug": "Hot-Dog-Steiger-NTE2N2",
-    "type": "foodStall",
+    "slug": "hotdog-steiger-nte2n2",
+    "type": "food-stall",
     "center": {
       "lat": 52.747739936606,
       "lon": 8.29747932341
@@ -111,7 +130,6 @@
         "lon": 8.29746186599
       }
     ],
-    "name": "Hot Dog",
     "alias": [],
     "operator": "Steiger",
     "pictures": [],
@@ -119,13 +137,17 @@
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "hotdog"
-      ]
+        {
+          "name": "dish_type_hotdog",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Pilze-Bronzil-N2JkMj",
-    "type": "foodStall",
+    "slug": "mushrooms-prondil-n2jkmj",
+    "type": "food-stall",
     "center": {
       "lat": 52.74769401429601,
       "lon": 8.297667430492
@@ -152,21 +174,24 @@
         "lon": 8.29765096173
       }
     ],
-    "name": "Pilze",
     "alias": [],
-    "operator": "Bronzil",
+    "operator": "Prondil",
     "pictures": [],
     "foodStall": {
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "mushrooms"
-      ]
+        {
+          "name": "dish_type_mushrooms",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Pizza-Wiemert-MmZhN2",
-    "type": "foodStall",
+    "slug": "pizza-wiemert-mmzhn2",
+    "type": "food-stall",
     "center": {
       "lat": 52.747685933694,
       "lon": 8.297485359138001
@@ -193,7 +218,6 @@
         "lon": 8.29745516047
       }
     ],
-    "name": "Pizza",
     "alias": [],
     "operator": "Wiemert",
     "pictures": [],
@@ -201,13 +225,17 @@
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "pizza"
-      ]
+        {
+          "name": "dish_type_pizza",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Spiesse-Winter-ZmYxZW",
-    "type": "foodStall",
+    "slug": "spit-roast-winter-zmyxzw",
+    "type": "food-stall",
     "center": {
       "lat": 52.74775878698199,
       "lon": 8.297315911366
@@ -234,7 +262,6 @@
         "lon": 8.29734787211
       }
     ],
-    "name": "Spieße",
     "alias": [],
     "operator": "Winter",
     "pictures": [],
@@ -242,13 +269,17 @@
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "steak"
-      ]
+        {
+          "name": "dish_type_spit_roast",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Pasta-Ahrend-YTFjZj",
-    "type": "foodStall",
+    "slug": "paste-ahrend-ytfjzj",
+    "type": "food-stall",
     "center": {
       "lat": 52.747719310148,
       "lon": 8.297325341552
@@ -275,7 +306,6 @@
         "lon": 8.29733982548
       }
     ],
-    "name": "Pasta",
     "alias": [],
     "operator": "Ahrend",
     "pictures": [],
@@ -283,13 +313,17 @@
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "paste"
-      ]
+        {
+          "name": "dish_type_paste",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Pommes-Robbahn-YTlkNm",
-    "type": "foodStall",
+    "slug": "fries-robbran-ytlknm",
+    "type": "food-stall",
     "center": {
       "lat": 52.747496511201994,
       "lon": 8.297369960288
@@ -316,62 +350,24 @@
         "lon": 8.29738200353
       }
     ],
-    "name": "Pommes",
     "alias": [],
-    "operator": "Robbahn",
+    "operator": "Robbran",
     "pictures": [],
     "foodStall": {
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "fries"
-      ]
+        {
+          "name": "dish_type_fries",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Landhauskueche-YjgyYz",
-    "type": "foodStall",
-    "center": {
-      "lat": 52.747551753272,
-      "lon": 8.297099767776
-    },
-    "bounds": [
-      {
-        "lat": 52.74753097099,
-        "lon": 8.29712122545
-      },
-      {
-        "lat": 52.74752780224,
-        "lon": 8.29707882391
-      },
-      {
-        "lat": 52.7475829267,
-        "lon": 8.29706758127
-      },
-      {
-        "lat": 52.74758609544,
-        "lon": 8.2971099828
-      },
-      {
-        "lat": 52.74753097099,
-        "lon": 8.29712122545
-      }
-    ],
-    "name": "Landhausküche",
-    "alias": [],
-    "pictures": [],
-    "foodStall": {
-      "isBar": false,
-      "isTent": false,
-      "dishes": [
-        "hotdog",
-        "sausauge"
-      ]
-    }
-  },
-  {
-    "slug": "Bokern-Imbiss-OTMzOT",
-    "type": "foodStall",
+    "slug": "fries-bokern-otmzot",
+    "type": "food-stall",
     "center": {
       "lat": 52.747761686324,
       "lon": 8.297075091452
@@ -398,7 +394,6 @@
         "lon": 8.29711317882
       }
     ],
-    "name": "Bokern Imbiss",
     "alias": [],
     "operator": "Bokern",
     "pictures": [],
@@ -406,54 +401,25 @@
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "fries",
-        "hamburger",
-        "hotdog",
-        "sausauge"
-      ]
+        {
+          "name": "dish_type_fries",
+          "prices": []
+        },
+        {
+          "name": "dish_type_sausauge",
+          "prices": []
+        },
+        {
+          "name": "dish_type_currywurst",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "China-M2ExZm",
-    "type": "foodStall",
-    "center": {
-      "lat": 52.746840820260005,
-      "lon": 8.297237242108
-    },
-    "bounds": [
-      {
-        "lat": 52.7468181973,
-        "lon": 8.29722314939
-      },
-      {
-        "lat": 52.74687015386,
-        "lon": 8.29720973834
-      },
-      {
-        "lat": 52.7468747547,
-        "lon": 8.29725838119
-      },
-      {
-        "lat": 52.74682279814,
-        "lon": 8.29727179223
-      },
-      {
-        "lat": 52.7468181973,
-        "lon": 8.29722314939
-      }
-    ],
-    "name": "China",
-    "alias": [],
-    "pictures": [],
-    "foodStall": {
-      "isBar": false,
-      "isTent": false,
-      "dishes": []
-    }
-  },
-  {
-    "slug": "Pizza-MTcyYm",
-    "type": "foodStall",
+    "slug": "pizza-schmidt-mtcyym",
+    "type": "food-stall",
     "center": {
       "lat": 52.747278149173994,
       "lon": 8.297213529219999
@@ -480,60 +446,24 @@
         "lon": 8.29723387823
       }
     ],
-    "name": "Pizza",
     "alias": [],
+    "operator": "Schmidt",
     "pictures": [],
     "foodStall": {
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "pizza"
-      ]
+        {
+          "name": "dish_type_pizza",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Hot-Dog-NzE2MW",
-    "type": "foodStall",
-    "center": {
-      "lat": 52.747254850482,
-      "lon": 8.297163373947999
-    },
-    "bounds": [
-      {
-        "lat": 52.74723303625,
-        "lon": 8.29718425736
-      },
-      {
-        "lat": 52.74723074488,
-        "lon": 8.29714009546
-      },
-      {
-        "lat": 52.74728757183,
-        "lon": 8.29713204883
-      },
-      {
-        "lat": 52.7472898632,
-        "lon": 8.29717621073
-      },
-      {
-        "lat": 52.74723303625,
-        "lon": 8.29718425736
-      }
-    ],
-    "name": "Hot Dog",
-    "alias": [],
-    "pictures": [],
-    "foodStall": {
-      "isBar": false,
-      "isTent": false,
-      "dishes": [
-        "hotdog"
-      ]
-    }
-  },
-  {
-    "slug": "Wiemetl-MjBhOT",
-    "type": "foodStall",
+    "slug": "pretzel-wiemerl-mjbhot",
+    "type": "food-stall",
     "center": {
       "lat": 52.747513598278,
       "lon": 8.296937494128
@@ -561,101 +491,23 @@
       }
     ],
     "alias": [],
-    "operator": "Wiemetl",
+    "operator": "Wiemerl",
     "pictures": [],
     "foodStall": {
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "pretzel"
-      ]
+        {
+          "name": "dish_type_pretzel",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Bokern-NWI4Zm",
-    "type": "foodStall",
-    "center": {
-      "lat": 52.747385250684,
-      "lon": 8.296325951144
-    },
-    "bounds": [
-      {
-        "lat": 52.74743477117,
-        "lon": 8.29641714625
-      },
-      {
-        "lat": 52.74732973771,
-        "lon": 8.29643870409
-      },
-      {
-        "lat": 52.74731096993,
-        "lon": 8.29618915848
-      },
-      {
-        "lat": 52.74741600344,
-        "lon": 8.29616760065
-      },
-      {
-        "lat": 52.74743477117,
-        "lon": 8.29641714625
-      }
-    ],
-    "name": "Bokern",
-    "alias": [],
-    "operator": "Bokern",
-    "pictures": [],
-    "foodStall": {
-      "isBar": true,
-      "isTent": false,
-      "dishes": [
-        "fries",
-        "sausauge"
-      ]
-    }
-  },
-  {
-    "slug": "Stohmann-MmIwZT",
-    "type": "foodStall",
-    "center": {
-      "lat": 52.747713465139995,
-      "lon": 8.295955537405998
-    },
-    "bounds": [
-      {
-        "lat": 52.74768521433,
-        "lon": 8.29598396882
-      },
-      {
-        "lat": 52.74768102361,
-        "lon": 8.29592824654
-      },
-      {
-        "lat": 52.74775584136,
-        "lon": 8.29591289029
-      },
-      {
-        "lat": 52.74776003207,
-        "lon": 8.29596861256
-      },
-      {
-        "lat": 52.74768521433,
-        "lon": 8.29598396882
-      }
-    ],
-    "alias": [],
-    "operator": "Stohmann",
-    "pictures": [],
-    "foodStall": {
-      "isBar": false,
-      "isTent": false,
-      "dishes": [
-        "pretzel"
-      ]
-    }
-  },
-  {
-    "slug": "Barber-ZDg3Y2",
-    "type": "foodStall",
+    "slug": "salmon-brarber-zdg3y2",
+    "type": "food-stall",
     "center": {
       "lat": 52.747300263628006,
       "lon": 8.295834790592
@@ -683,98 +535,23 @@
       }
     ],
     "alias": [],
-    "operator": "Barber",
+    "operator": "Brarber",
     "pictures": [],
     "foodStall": {
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "fish"
-      ]
+        {
+          "name": "dish_type_salmon",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   },
   {
-    "slug": "Snackbar-Nowak-ZWI1ZT",
-    "type": "foodStall",
-    "center": {
-      "lat": 52.747550129653995,
-      "lon": 8.295743911116
-    },
-    "bounds": [
-      {
-        "lat": 52.7475228529,
-        "lon": 8.29572781786
-      },
-      {
-        "lat": 52.74758702833,
-        "lon": 8.29571464598
-      },
-      {
-        "lat": 52.74759104478,
-        "lon": 8.295768051
-      },
-      {
-        "lat": 52.74752686936,
-        "lon": 8.29578122288
-      },
-      {
-        "lat": 52.7475228529,
-        "lon": 8.29572781786
-      }
-    ],
-    "name": "Snackbar",
-    "alias": [],
-    "operator": "Nowak",
-    "pictures": [],
-    "foodStall": {
-      "isBar": false,
-      "isTent": false,
-      "dishes": []
-    }
-  },
-  {
-    "slug": "Wiemerl-NGVkZG",
-    "type": "foodStall",
-    "center": {
-      "lat": 52.747619945094,
-      "lon": 8.295740156026
-    },
-    "bounds": [
-      {
-        "lat": 52.74759104478,
-        "lon": 8.295768051
-      },
-      {
-        "lat": 52.74758697806,
-        "lon": 8.29571397762
-      },
-      {
-        "lat": 52.74766329557,
-        "lon": 8.29569831356
-      },
-      {
-        "lat": 52.74766736228,
-        "lon": 8.29575238695
-      },
-      {
-        "lat": 52.74759104478,
-        "lon": 8.295768051
-      }
-    ],
-    "alias": [],
-    "operator": "Wiemerl",
-    "pictures": [],
-    "foodStall": {
-      "isBar": false,
-      "isTent": false,
-      "dishes": [
-        "fish"
-      ]
-    }
-  },
-  {
-    "slug": "Fischer-ZDQ1Mj",
-    "type": "foodStall",
+    "slug": "fischer-zdq1mj",
+    "type": "food-stall",
     "center": {
       "lat": 52.74788475553,
       "lon": 8.295725404144
@@ -803,15 +580,25 @@
     ],
     "name": "Fischer",
     "alias": [],
-    "operator": "Fischer",
     "pictures": [],
     "foodStall": {
       "isBar": false,
       "isTent": false,
       "dishes": [
-        "fries",
-        "sausauge"
-      ]
+        {
+          "name": "dish_type_fries",
+          "prices": []
+        },
+        {
+          "name": "dish_type_sausauge",
+          "prices": []
+        },
+        {
+          "name": "dish_type_currywurst",
+          "prices": []
+        }
+      ],
+      "drinks": []
     }
   }
 ]

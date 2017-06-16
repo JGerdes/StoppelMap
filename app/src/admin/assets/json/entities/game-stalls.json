@@ -1,0 +1,121 @@
+[
+  {
+    "slug": "games-schmidt-ymy4ng",
+    "type": "game-stall",
+    "center": {
+      "lat": 52.747638454252,
+      "lon": 8.29708582029
+    },
+    "bounds": [
+      {
+        "lat": 52.7475829267,
+        "lon": 8.29706758127
+      },
+      {
+        "lat": 52.7477163051,
+        "lon": 8.29704037865
+      },
+      {
+        "lat": 52.74772174557,
+        "lon": 8.29711317882
+      },
+      {
+        "lat": 52.74758836719,
+        "lon": 8.29714038144
+      },
+      {
+        "lat": 52.7475829267,
+        "lon": 8.29706758127
+      }
+    ],
+    "alias": [],
+    "operator": "Schmidt",
+    "pictures": [],
+    "gameStall": {
+      "games": []
+    }
+  },
+  {
+    "slug": "hercules-nddlng",
+    "type": "game-stall",
+    "center": {
+      "lat": 52.747572535552,
+      "lon": 8.29690477118
+    },
+    "bounds": [
+      {
+        "lat": 52.74754720716,
+        "lon": 8.29694554076
+      },
+      {
+        "lat": 52.74754062082,
+        "lon": 8.29685796517
+      },
+      {
+        "lat": 52.74761052815,
+        "lon": 8.29684361681
+      },
+      {
+        "lat": 52.74761711447,
+        "lon": 8.2969311924
+      },
+      {
+        "lat": 52.74754720716,
+        "lon": 8.29694554076
+      }
+    ],
+    "name": "Hercules",
+    "alias": [],
+    "operator": "Meyer",
+    "pictures": [],
+    "gameStall": {
+      "games": [
+        {
+          "name": "game_type_archery",
+          "prices": []
+        }
+      ]
+    }
+  },
+  {
+    "slug": "can-knockdown-papelonie-ndqxmz",
+    "type": "game-stall",
+    "center": {
+      "lat": 52.747434852742,
+      "lon": 8.295770464988001
+    },
+    "bounds": [
+      {
+        "lat": 52.74740432868,
+        "lon": 8.29575329885
+      },
+      {
+        "lat": 52.74747630031,
+        "lon": 8.29573852685
+      },
+      {
+        "lat": 52.74748063883,
+        "lon": 8.29579621419
+      },
+      {
+        "lat": 52.74740866721,
+        "lon": 8.2958109862
+      },
+      {
+        "lat": 52.74740432868,
+        "lon": 8.29575329885
+      }
+    ],
+    "alias": [],
+    "operator": "Papelonie",
+    "pictures": [],
+    "gameStall": {
+      "games": [
+        {
+          "name": "game_type_can_knockdown",
+          "prices": []
+        }
+      ]
+    }
+  }
+]

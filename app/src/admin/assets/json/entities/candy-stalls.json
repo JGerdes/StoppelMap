@@ -1,7 +1,7 @@
 [
   {
-    "slug": "Lebkuchen-Landermann-OTc5Nz",
-    "type": "candyStall",
+    "slug": "gingerbread-londermann-otc5nz",
+    "type": "candy-stall",
     "center": {
       "lat": 52.747716083696005,
       "lon": 8.29815101524
@@ -28,19 +28,21 @@
         "lon": 8.29807743296
       }
     ],
-    "name": "Lebkuchen",
     "alias": [],
-    "operator": "Landermann",
+    "operator": "Londermann",
     "pictures": [],
     "candyStall": {
       "products": [
-        "gingerbread"
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
       ]
     }
   },
   {
-    "slug": "Eis-Ahrens-ZTBhNj",
-    "type": "candyStall",
+    "slug": "candy-ahrens-ztbhnj",
+    "type": "candy-stall",
     "center": {
       "lat": 52.747789663816,
       "lon": 8.297802163642
@@ -67,19 +69,16 @@
         "lon": 8.29774618015
       }
     ],
-    "name": "Eis",
     "alias": [],
     "operator": "Ahrens",
     "pictures": [],
     "candyStall": {
-      "products": [
-        "iceCream"
-      ]
+      "products": []
     }
   },
   {
-    "slug": "Lebkuchen-Hoenemann-YTE0Nz",
-    "type": "candyStall",
+    "slug": "gingerbread-hoehnemann-yte0nz",
+    "type": "candy-stall",
     "center": {
       "lat": 52.747719793108004,
       "lon": 8.297565418526
@@ -106,19 +105,21 @@
         "lon": 8.29751819238
       }
     ],
-    "name": "Lebkuchen",
     "alias": [],
-    "operator": "Hönemann",
+    "operator": "Höhnemann",
     "pictures": [],
     "candyStall": {
       "products": [
-        "gingerbread"
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
       ]
     }
   },
   {
-    "slug": "Lebkuchen-Marx-NTZkYz",
-    "type": "candyStall",
+    "slug": "gingerbread-marx-ntzkyz",
+    "type": "candy-stall",
     "center": {
       "lat": 52.747802993506,
       "lon": 8.297176042662
@@ -145,19 +146,21 @@
         "lon": 8.29711586103
       }
     ],
-    "name": "Lebkuchen",
     "alias": [],
     "operator": "Marx",
     "pictures": [],
     "candyStall": {
       "products": [
-        "gingerbread"
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
       ]
     }
   },
   {
-    "slug": "Crepase-YjJlOG",
-    "type": "candyStall",
+    "slug": "crepe-bronzil-yjjlog",
+    "type": "candy-stall",
     "center": {
       "lat": 52.7475790641,
       "lon": 8.297353209708001
@@ -184,128 +187,21 @@
         "lon": 8.29736928508
       }
     ],
-    "name": "Crepase",
     "alias": [],
-    "pictures": [],
-    "candyStall": {
-      "products": []
-    }
-  },
-  {
-    "slug": "Slush-MzM3Mz",
-    "type": "candyStall",
-    "center": {
-      "lat": 52.747285214234,
-      "lon": 8.297260365331999
-    },
-    "bounds": [
-      {
-        "lat": 52.74729716951,
-        "lon": 8.29727411136
-      },
-      {
-        "lat": 52.74727052857,
-        "lon": 8.29727997942
-      },
-      {
-        "lat": 52.74726728132,
-        "lon": 8.29723974629
-      },
-      {
-        "lat": 52.74729392226,
-        "lon": 8.29723387823
-      },
-      {
-        "lat": 52.74729716951,
-        "lon": 8.29727411136
-      }
-    ],
-    "name": "Slush",
-    "alias": [],
+    "operator": "Bronzil",
     "pictures": [],
     "candyStall": {
       "products": [
-        "slush"
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
       ]
     }
   },
   {
-    "slug": "Boeker-ZDlhND",
-    "type": "candyStall",
-    "center": {
-      "lat": 52.747590557684,
-      "lon": 8.295982627719999
-    },
-    "bounds": [
-      {
-        "lat": 52.74760971634,
-        "lon": 8.29596117005
-      },
-      {
-        "lat": 52.74761296135,
-        "lon": 8.29600431749
-      },
-      {
-        "lat": 52.7475618197,
-        "lon": 8.29601481423
-      },
-      {
-        "lat": 52.74755857469,
-        "lon": 8.29597166678
-      },
-      {
-        "lat": 52.74760971634,
-        "lon": 8.29596117005
-      }
-    ],
-    "name": "Böker",
-    "alias": [],
-    "pictures": [],
-    "candyStall": {
-      "products": [
-        "poffertje"
-      ]
-    }
-  },
-  {
-    "slug": "Reif-YzFlNm",
-    "type": "candyStall",
-    "center": {
-      "lat": 52.747311132689994,
-      "lon": 8.296007304041998
-    },
-    "bounds": [
-      {
-        "lat": 52.74730204039,
-        "lon": 8.29603895411
-      },
-      {
-        "lat": 52.74729652556,
-        "lon": 8.29596562626
-      },
-      {
-        "lat": 52.74732477114,
-        "lon": 8.29595982894
-      },
-      {
-        "lat": 52.74733028597,
-        "lon": 8.29603315679
-      },
-      {
-        "lat": 52.74730204039,
-        "lon": 8.29603895411
-      }
-    ],
-    "alias": [],
-    "operator": "Reif",
-    "pictures": [],
-    "candyStall": {
-      "products": []
-    }
-  },
-  {
-    "slug": "Vormeyer-NGZjOD",
-    "type": "candyStall",
+    "slug": "candy-vormeyer-ngzjod",
+    "type": "candy-stall",
     "center": {
       "lat": 52.747509701596,
       "lon": 8.29575356707
@@ -336,9 +232,7 @@
     "operator": "Vormeyer",
     "pictures": [],
     "candyStall": {
-      "products": [
-        "cottonCandy"
-      ]
+      "products": []
     }
   }
 ]
