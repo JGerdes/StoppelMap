@@ -10,9 +10,10 @@
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -24,11 +25,12 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         app:itemBackground="@color/primary"
-        app:itemIconTint="@android:color/primary_text_dark"
-        app:itemTextColor="@android:color/primary_text_dark"
+        app:itemIconTint="@drawable/csl_bottom_navigation_icons"
+        app:itemTextColor="@drawable/csl_bottom_navigation_icons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+
         app:menu="@menu/main_navigation"/>
 
 </android.support.constraint.ConstraintLayout>
