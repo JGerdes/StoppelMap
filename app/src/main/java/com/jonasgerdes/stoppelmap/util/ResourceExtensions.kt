@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.util
 
 import android.content.res.AssetManager
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -35,4 +36,21 @@ fun AssetManager.copyToFile(path: String, destination: File) {
         bytes = sourceStream.read(buf)
     }
     sourceStream.close()
+}
+
+fun AssetManager.read(path: String): ByteArray? {
+    try {
+        val sourceStream = open(path)
+        val destinationStream = ByteArrayOutputStream()
+        val buf = ByteArray(1024)
+        var bytes = sourceStream.read(buf)
+        while (bytes > 0) {
+            destinationStream.write(buf, 0, bytes)
+            bytes = sourceStream.read(buf)
+        }
+        sourceStream.close()
+        return destinationStream.toByteArray()
+    } catch (ex: IOException) {
+        return null
+    }
 }

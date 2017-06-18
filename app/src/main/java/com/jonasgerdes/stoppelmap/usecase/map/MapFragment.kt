@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.TileOverlayOptions
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
 import kotlin.properties.Delegates
+
+
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -43,6 +46,10 @@ class MapFragment : LifecycleFragment() {
             map.setMaxZoomPreference(Settings.maxZoom)
             map.setMinZoomPreference(Settings.minZoom)
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(Settings.cameraBounds.center, 16f))
+            //map.mapType = GoogleMap.MAP_TYPE_NONE
+            map.addTileOverlay(
+                    TileOverlayOptions().tileProvider(CustomMapTileProvider(resources.assets))
+            )
         })
     }
 }
