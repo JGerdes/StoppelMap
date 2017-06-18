@@ -73,18 +73,23 @@ dependencies {
     //play-services/maps
     implementation 'com.google.android.gms:play-services-maps:11.0.0'
 
-    //serializing
-    implementation 'com.google.code.gson:gson:2.8.0'
+    //rx
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
 
     //dependency injection
     implementation 'com.google.dagger:dagger:2.11'
     kapt 'com.google.dagger:dagger-compiler:2.11'
+
+    //serializing
+    implementation 'com.google.code.gson:gson:2.8.0'
 
     //realm
     debugImplementation 'com.github.jonasrottmann.realm-browser:realm-browser:0.0.14'
     testImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
     releaseImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
 
+    //testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
