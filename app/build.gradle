@@ -48,7 +48,12 @@ android {
     }
 
     flavorSelection 'mode', 'store'
+
+    packagingOptions{
+        exclude 'META-INF/rxjava.properties'
+    }
 }
+
 
 
 dependencies {
