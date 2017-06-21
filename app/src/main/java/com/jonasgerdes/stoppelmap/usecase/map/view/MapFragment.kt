@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.TileOverlayOptions
@@ -17,6 +18,8 @@ import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapView
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
+import com.jonasgerdes.stoppelmap.util.map.idles
+import io.reactivex.Observable
 import kotlin.properties.Delegates
 
 
@@ -37,6 +40,7 @@ class MapFragment : LifecycleFragment(), MapView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = SupportMapFragment.newInstance()
+        val interactor = ViewModelProviders.of(activity).get(MapInteractor::class.java)
         childFragmentManager
                 .beginTransaction()
                 .replace(R.id.mapPlaceholder, mapFragment)
@@ -47,7 +51,6 @@ class MapFragment : LifecycleFragment(), MapView {
                     TileOverlayOptions().tileProvider(CustomMapTileProvider(resources.assets))
             )
             map.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style))
-            val interactor = ViewModelProviders.of(this).get(MapInteractor::class.java)
             MapPresenter(this, interactor)
         })
     }
@@ -60,5 +63,9 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun setMapCamera(center: LatLng, zoom: Float) {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
+    }
+
+    override fun getMapMoveEvents(): Observable<CameraPosition> {
+        return map.idles()
     }
 }
