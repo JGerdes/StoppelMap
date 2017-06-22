@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.usecase.main.presenter
 
 import android.support.annotation.IdRes
+import android.view.MenuItem
 import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainViewState
+import io.reactivex.Observable
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -9,5 +11,7 @@ import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainViewState
  */
 interface MainView {
     fun showView(state: MainViewState)
-    fun selectBottomNavigation(@IdRes selectedItemId: Int)
+    fun selectNavigation(@IdRes selectedItemId: Int)
+
+    fun getNavigationEvents(): Observable<MenuItem>
 }
