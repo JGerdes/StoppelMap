@@ -4,6 +4,8 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
+import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.usecase.main.presenter.MainPresenter
 import com.jonasgerdes.stoppelmap.usecase.main.presenter.MainView
@@ -12,6 +14,7 @@ import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainViewState
 import com.jonasgerdes.stoppelmap.usecase.map.view.MapFragment
 import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -32,7 +35,7 @@ class MainActivity : AppCompatActivity(), MainView {
     private fun showFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, fragment)
-        transaction.commit()
+        transaction.commitAllowingStateLoss()
     }
 
     override fun showView(state: MainViewState) {
@@ -41,8 +44,13 @@ class MainActivity : AppCompatActivity(), MainView {
         }
     }
 
-    override fun selectBottomNavigation(selectedItemId: Int) {
+    override fun selectNavigation(selectedItemId: Int) {
         navigation.selectedItemId = selectedItemId
     }
+
+    override fun getNavigationEvents(): Observable<MenuItem> {
+        return navigation.itemSelections()
+    }
+
 
 }
