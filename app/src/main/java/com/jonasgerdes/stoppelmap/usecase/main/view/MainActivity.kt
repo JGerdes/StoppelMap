@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.usecase.event.overview.view.EventOverviewFragment
+import com.jonasgerdes.stoppelmap.usecase.information.view.InformationFragment
 import com.jonasgerdes.stoppelmap.usecase.main.presenter.MainPresenter
 import com.jonasgerdes.stoppelmap.usecase.main.presenter.MainView
 import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainInteractor
 import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainViewState
 import com.jonasgerdes.stoppelmap.usecase.map.view.MapFragment
+import com.jonasgerdes.stoppelmap.usecase.transportation.overview.view.TransportOverviewFragment
 import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
 import io.reactivex.Observable
@@ -24,6 +27,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), MainView {
 
     val mapFragment = MapFragment()
+    val eventScheduleFragment = EventOverviewFragment()
+    val busScheduleFragment = TransportOverviewFragment()
+    val informationFragment = InformationFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +51,9 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun showView(state: MainViewState) {
         when (state) {
             is MainViewState.Map -> showFragment(mapFragment)
+            is MainViewState.EventSchedule -> showFragment(eventScheduleFragment)
+            is MainViewState.BusSchedule -> showFragment(busScheduleFragment)
+            is MainViewState.Information -> showFragment(informationFragment)
         }
     }
 
