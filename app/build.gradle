@@ -82,6 +82,10 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
 
+    //rx view bindings
+    compile 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-design-kotlin:2.0.0'
+
     //dependency injection
     implementation 'com.google.dagger:dagger:2.11'
     kapt 'com.google.dagger:dagger-compiler:2.11'
