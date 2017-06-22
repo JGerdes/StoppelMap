@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.activity_main.*
  * @since 11.06.2017
  */
 class MainActivity : AppCompatActivity(), MainView {
+
+    val mapFragment = MapFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     private fun showFragment(fragment: Fragment) {
+        fragment.retainInstance = true
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, fragment)
         transaction.commitAllowingStateLoss()
@@ -40,7 +44,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun showView(state: MainViewState) {
         when (state) {
-            is MainViewState.Map -> showFragment(MapFragment())
+            is MainViewState.Map -> showFragment(mapFragment)
         }
     }
 

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -40,6 +41,15 @@ class MapFragment : LifecycleFragment(), MapView {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val interactor = ViewModelProviders.of(activity).get(MapInteractor::class.java)
+        val presenter = MapPresenter(this, interactor)
+
+        //todo: check if google play services are installed
+        MapsInitializer.initialize(context)
+        initMap(presenter)
+
+    }
+
+    private fun initMap(presenter: MapPresenter) {
         val mapFragment = SupportMapFragment.newInstance()
         childFragmentManager
                 .beginTransaction()
@@ -51,7 +61,7 @@ class MapFragment : LifecycleFragment(), MapView {
                     TileOverlayOptions().tileProvider(CustomMapTileProvider(resources.assets))
             )
             map.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style))
-            MapPresenter(this, interactor)
+            presenter.bind()
         })
     }
 

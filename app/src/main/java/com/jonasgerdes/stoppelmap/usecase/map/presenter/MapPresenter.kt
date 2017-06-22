@@ -10,9 +10,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
  */
 class MapPresenter(
         private val view: MapView,
-        interactor: MapInteractor) {
+        private val interactor: MapInteractor) {
 
-    init {
+    fun bind() {
         interactor.state
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::render)
