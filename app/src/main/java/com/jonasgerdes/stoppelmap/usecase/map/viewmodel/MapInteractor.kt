@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import com.google.android.gms.maps.model.CameraPosition
 import com.jonasgerdes.stoppelmap.Settings
 import io.reactivex.subjects.BehaviorSubject
@@ -12,9 +11,6 @@ import io.reactivex.subjects.BehaviorSubject
  */
 class MapInteractor : ViewModel() {
 
-    init {
-        Log.d("Mapinteractor", "create Viewmodel")
-    }
     private val stateSubject = BehaviorSubject.createDefault(MapViewState.Exploring(
             Settings.cameraBounds.center,
             16f,

@@ -39,8 +39,8 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = SupportMapFragment.newInstance()
         val interactor = ViewModelProviders.of(activity).get(MapInteractor::class.java)
+        val mapFragment = SupportMapFragment.newInstance()
         childFragmentManager
                 .beginTransaction()
                 .replace(R.id.mapPlaceholder, mapFragment)
