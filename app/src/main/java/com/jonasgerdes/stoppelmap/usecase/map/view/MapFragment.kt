@@ -61,6 +61,7 @@ class MapFragment : LifecycleFragment(), MapView {
                     TileOverlayOptions().tileProvider(CustomMapTileProvider(resources.assets))
             )
             map.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style))
+            map.setPadding(0, resources.getDimensionPixelSize(R.dimen.map_padding_top), 0, 0)
             presenter.bind()
         })
     }
