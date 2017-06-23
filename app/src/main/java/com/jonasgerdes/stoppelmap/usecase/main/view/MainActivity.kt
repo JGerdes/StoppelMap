@@ -18,7 +18,10 @@ import com.jonasgerdes.stoppelmap.usecase.transportation.overview.view.Transport
 import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
 import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -30,6 +33,7 @@ class MainActivity : AppCompatActivity(), MainView {
     val eventScheduleFragment = EventOverviewFragment()
     val busScheduleFragment = TransportOverviewFragment()
     val informationFragment = InformationFragment()
+    var currentFragment = BehaviorSubject.create<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +43,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
         MainPresenter(this, interactor)
+
+        currentFragment.observeOn(Schedulers.io())
+                .delay(100, TimeUnit.MILLISECONDS)
+                .subscribe(this::showFragment)
     }
 
     private fun showFragment(fragment: Fragment) {
@@ -50,10 +58,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun showView(state: MainViewState) {
         when (state) {
-            is MainViewState.Map -> showFragment(mapFragment)
-            is MainViewState.EventSchedule -> showFragment(eventScheduleFragment)
-            is MainViewState.BusSchedule -> showFragment(busScheduleFragment)
-            is MainViewState.Information -> showFragment(informationFragment)
+            is MainViewState.Map -> currentFragment.onNext(mapFragment)
+            is MainViewState.EventSchedule -> currentFragment.onNext(eventScheduleFragment)
+            is MainViewState.BusSchedule -> currentFragment.onNext(busScheduleFragment)
+            is MainViewState.Information -> currentFragment.onNext(informationFragment)
         }
     }
 
