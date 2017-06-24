@@ -2,6 +2,8 @@ package com.jonasgerdes.stoppelmap.di
 
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.di.module.AppModule
+import com.jonasgerdes.stoppelmap.di.module.DataModule
+import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import dagger.Component
 import javax.inject.Singleton
 
@@ -10,7 +12,8 @@ import javax.inject.Singleton
  * @since 16.06.2017
  */
 @Singleton
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = arrayOf(AppModule::class, DataModule::class))
 interface AppComponent {
     fun inject(app: App)
+    fun inject(interactor: MapInteractor)
 }
