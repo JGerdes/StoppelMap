@@ -1,8 +1,8 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import com.google.android.gms.maps.model.LatLng
-import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
-import io.realm.RealmResults
+import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
+import io.reactivex.Observable
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -25,6 +25,6 @@ sealed class MapViewState(
             zoom: Float,
             bounds: MapBounds,
             val searchTerm: String,
-            val results: RealmResults<MapEntity>
+            val results: Observable<List<MapSearchResult>>
     ) : MapViewState(center, zoom, bounds)
 }
