@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import com.google.android.gms.maps.model.CameraPosition
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.Settings
@@ -43,7 +42,6 @@ class MapInteractor : ViewModel() {
     }
 
     fun onSearchChanged(term: String) {
-        Log.d("MapInteractor", "Start search for '$term'")
         stateSubject.onNext(MapViewState.Searching(
                 stateSubject.value.center,
                 stateSubject.value.zoom,

@@ -7,7 +7,6 @@ import com.jonasgerdes.stoppelmap.util.plusAssign
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.realm.RealmChangeListener
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -51,12 +50,12 @@ class MapPresenter(
 
     private fun renderSearch(state: MapViewState.Searching) {
         view.setSearchField(state.searchTerm)
-        state.results.addChangeListener(RealmChangeListener {
+        disposables += state.results.subscribe {
             Log.d("MapPresenter", "\n\nresults:")
             it.forEach {
-                Log.d("MapPresenter", it.slug)
+                Log.d("MapPresenter", it.title)
             }
-        })
+        }
     }
 
     override fun isDisposed(): Boolean {
