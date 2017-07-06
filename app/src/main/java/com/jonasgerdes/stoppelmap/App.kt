@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.admin.Administration
 import com.jonasgerdes.stoppelmap.di.AppComponent
 import com.jonasgerdes.stoppelmap.di.DaggerAppComponent
 import com.jonasgerdes.stoppelmap.di.module.AppModule
+import com.jonasgerdes.stoppelmap.di.module.DataModule
 import com.jonasgerdes.stoppelmap.util.versioning.VersionHelper
 import de.jonasrottmann.realmbrowser.RealmBrowser
 import io.realm.Realm
@@ -31,6 +32,7 @@ class App : Application(), AnkoLogger {
         graph = DaggerAppComponent
                 .builder()
                 .appModule(AppModule(this))
+                .dataModule(DataModule())
                 .build()
 
         graph.inject(this)

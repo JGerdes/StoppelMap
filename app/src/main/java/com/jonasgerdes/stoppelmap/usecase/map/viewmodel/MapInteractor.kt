@@ -1,12 +1,13 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
+import android.util.Log
 import com.google.android.gms.maps.model.CameraPosition
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import io.reactivex.subjects.BehaviorSubject
-import kotlin.properties.Delegates
+import javax.inject.Inject
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -14,13 +15,14 @@ import kotlin.properties.Delegates
  */
 class MapInteractor : ViewModel() {
 
-    private var repository by Delegates.notNull<MapEntityRepository>()
+    @Inject
+    protected lateinit var repository:MapEntityRepository
 
     init {
         App.graph.inject(this)
     }
 
-    private val stateSubject = BehaviorSubject.createDefault(MapViewState.Exploring(
+    private val stateSubject = BehaviorSubject.createDefault<MapViewState>(MapViewState.Exploring(
             Settings.cameraBounds.center,
             16f,
             MapBounds(
@@ -38,6 +40,17 @@ class MapInteractor : ViewModel() {
                 position.zoom,
                 stateSubject.value.bounds)
         )
+    }
+
+    fun onSearchChanged(term: String) {
+        Log.d("MapInteractor", "Start search for '$term'")
+        stateSubject.onNext(MapViewState.Searching(
+                stateSubject.value.center,
+                stateSubject.value.zoom,
+                stateSubject.value.bounds,
+                term,
+                repository.searchFor(term)
+        ))
     }
 
     override fun onCleared() {
