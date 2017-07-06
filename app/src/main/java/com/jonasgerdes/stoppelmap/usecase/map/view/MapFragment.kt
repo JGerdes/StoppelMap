@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.TileOverlayOptions
+import com.jakewharton.rxbinding2.widget.textChanges
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapView
@@ -21,6 +22,7 @@ import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.util.map.idles
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.map_fragment.*
 import kotlin.properties.Delegates
 
 
@@ -29,8 +31,8 @@ import kotlin.properties.Delegates
  * @since 16.06.2017
  */
 class MapFragment : LifecycleFragment(), MapView {
-
     private var map by Delegates.notNull<GoogleMap>()
+    private lateinit var presenter: MapPresenter
 
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
@@ -40,13 +42,20 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val interactor = ViewModelProviders.of(activity).get(MapInteractor::class.java)
-        val presenter = MapPresenter(this, interactor)
+        presenter = MapPresenter(this, interactor)
 
         //todo: check if google play services are installed
         MapsInitializer.initialize(context)
         initMap(presenter)
 
+
+    }
+
+    override fun onDestroyView() {
+        presenter.dispose()
+        super.onDestroyView()
     }
 
     private fun initMap(presenter: MapPresenter) {
@@ -76,7 +85,17 @@ class MapFragment : LifecycleFragment(), MapView {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
     }
 
+    override fun setSearchField(term: String) {
+        if (search.text.toString() != term) {
+            search.setText(term)
+        }
+    }
+
     override fun getMapMoveEvents(): Observable<CameraPosition> {
         return map.idles()
+    }
+
+    override fun getSearchEvents(): Observable<CharSequence> {
+        return search.textChanges()
     }
 }

@@ -13,5 +13,8 @@ interface MapView {
     fun setMapBounds(bounds: MapBounds)
     fun setMapCamera(center: LatLng, zoom: Float)
 
+    fun setSearchField(term: String)
+
     fun getMapMoveEvents(): Observable<CameraPosition>
+    fun getSearchEvents(): Observable<CharSequence>
 }
