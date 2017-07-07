@@ -16,6 +16,7 @@ interface MapView {
 
     fun setSearchField(term: String)
     fun setSearchResults(results: List<MapSearchResult>)
+    fun toggleSearchResults(show: Boolean)
 
     fun getMapMoveEvents(): Observable<CameraPosition>
     fun getSearchEvents(): Observable<CharSequence>

@@ -39,7 +39,12 @@ class MapPresenter(
         updateMap(state)
         when (state) {
             is MapViewState.Searching -> renderSearch(state)
+            else -> renderDefault(state)
         }
+    }
+
+    private fun renderDefault(state: MapViewState) {
+        view.toggleSearchResults(false)
     }
 
     private fun updateMap(state: MapViewState) {
@@ -54,6 +59,7 @@ class MapPresenter(
             it.forEach {
                 Log.d("MapPresenter", it.title)
             }
+            view.toggleSearchResults(!it.isEmpty())
             view.setSearchResults(it)
         }
     }
