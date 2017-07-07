@@ -33,7 +33,6 @@ import kotlin.properties.Delegates
  * @since 16.06.2017
  */
 class MapFragment : LifecycleFragment(), MapView {
-
     private var map by Delegates.notNull<GoogleMap>()
     private lateinit var presenter: MapPresenter
 
@@ -98,6 +97,14 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun setSearchResults(results: List<MapSearchResult>) {
         searchAdapter.results = results
+    }
+
+    override fun toggleSearchResults(show: Boolean) {
+        if (show) {
+            searchResult.visibility = View.VISIBLE
+        } else {
+            searchResult.visibility = View.GONE
+        }
     }
 
     override fun getMapMoveEvents(): Observable<CameraPosition> {
