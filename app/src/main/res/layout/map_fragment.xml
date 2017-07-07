@@ -50,7 +50,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="88dp"
-        app:cardElevation="6dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true">
 
         <android.support.v7.widget.RecyclerView
