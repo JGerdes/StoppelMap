@@ -17,6 +17,7 @@ import com.jonasgerdes.stoppelmap.usecase.map.view.MapFragment
 import com.jonasgerdes.stoppelmap.usecase.transportation.overview.view.TransportOverviewFragment
 import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
+import com.jonasgerdes.stoppelmap.util.view.KeyboardUtil
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
@@ -40,6 +41,9 @@ class MainActivity : AppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
         navigation.enableItemShifting(false)
         navigation.enableItemTextHiding(true)
+
+        val extraMarginBottom = resources.getDimensionPixelSize(R.dimen.bottom_navigation_height)
+        KeyboardUtil(this, fragmentContainer, extraMarginBottom).enable()
 
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
         MainPresenter(this, interactor)
