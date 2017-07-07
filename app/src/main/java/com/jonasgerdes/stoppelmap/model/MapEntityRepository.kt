@@ -19,11 +19,15 @@ class MapEntityRepository : Disposable {
     val realm: Realm = Realm.getDefaultInstance()
 
     fun searchFor(term: String): Observable<List<MapSearchResult>> {
-        return realm.where(MapEntity::class.java)
-                .like("name", "*$term*", Case.INSENSITIVE)
-                .findAllAsync()
-                .asRxObservable()
-                .map { entities -> createEntityResult(entities, term) }
+        return if (term.isEmpty()) {
+            Observable.just(ArrayList())
+        } else {
+            realm.where(MapEntity::class.java)
+                    .like("name", "*$term*", Case.INSENSITIVE)
+                    .findAllAsync()
+                    .asRxObservable()
+                    .map { entities -> createEntityResult(entities, term) }
+        }
     }
 
     private fun createEntityResult(entities: RealmResults<MapEntity>?, term: String)
