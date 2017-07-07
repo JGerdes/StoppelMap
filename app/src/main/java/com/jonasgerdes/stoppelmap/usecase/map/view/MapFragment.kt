@@ -16,8 +16,10 @@ import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.TileOverlayOptions
 import com.jakewharton.rxbinding2.widget.textChanges
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapView
+import com.jonasgerdes.stoppelmap.usecase.map.view.search.SearchResultAdapter
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.util.map.idles
@@ -31,8 +33,11 @@ import kotlin.properties.Delegates
  * @since 16.06.2017
  */
 class MapFragment : LifecycleFragment(), MapView {
+
     private var map by Delegates.notNull<GoogleMap>()
     private lateinit var presenter: MapPresenter
+
+    private val searchAdapter = SearchResultAdapter()
 
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
@@ -50,7 +55,7 @@ class MapFragment : LifecycleFragment(), MapView {
         MapsInitializer.initialize(context)
         initMap(presenter)
 
-
+        searchResultList.adapter = searchAdapter
     }
 
     override fun onDestroyView() {
@@ -89,6 +94,10 @@ class MapFragment : LifecycleFragment(), MapView {
         if (search.text.toString() != term) {
             search.setText(term)
         }
+    }
+
+    override fun setSearchResults(results: List<MapSearchResult>) {
+        searchAdapter.results = results
     }
 
     override fun getMapMoveEvents(): Observable<CameraPosition> {

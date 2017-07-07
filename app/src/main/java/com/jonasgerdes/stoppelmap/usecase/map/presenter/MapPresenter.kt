@@ -55,6 +55,7 @@ class MapPresenter(
             it.forEach {
                 Log.d("MapPresenter", it.title)
             }
+            view.setSearchResults(it)
         }
     }
 
