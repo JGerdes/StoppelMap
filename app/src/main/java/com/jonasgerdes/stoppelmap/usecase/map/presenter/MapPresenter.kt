@@ -29,8 +29,7 @@ class MapPresenter(
                 .subscribe()
         disposables += view.getSearchEvents()
                 .subscribeOn(AndroidSchedulers.mainThread())
-                .map { it.toString() }
-                .filter { !it.trim().isEmpty() }
+                .map { it.toString().trim() }
                 .distinctUntilChanged()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(interactor::onSearchChanged)
