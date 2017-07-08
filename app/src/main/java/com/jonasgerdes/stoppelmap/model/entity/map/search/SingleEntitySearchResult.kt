@@ -9,5 +9,6 @@ import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 
 class SingleEntitySearchResult(
         title: String,
-        val entity: MapEntity
+        val entity: MapEntity,
+        val fromAlias: String? = null
 ) : MapSearchResult(title)

@@ -41,7 +41,7 @@ class MapFragment : LifecycleFragment(), MapView {
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return layoutInflater.inflate(R.layout.map_fragment, container, false)
+        return inflater?.inflate(R.layout.map_fragment, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {

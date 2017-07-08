@@ -21,6 +21,12 @@ abstract class SearchResultHolder<in E : MapSearchResult>(itemView: View)
         override fun onBind(result: SingleEntitySearchResult) {
             Log.d("SearchResultHolder", "onBindCalled with " + result.entity.slug)
             itemView.title.text = result.title
+            if (result.fromAlias != null) {
+                itemView.alias.visibility = View.VISIBLE
+                itemView.alias.text = result.fromAlias
+            } else {
+                itemView.alias.visibility = View.GONE
+            }
         }
 
     }
