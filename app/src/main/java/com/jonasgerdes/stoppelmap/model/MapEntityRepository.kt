@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResu
 import com.jonasgerdes.stoppelmap.util.asRxObservable
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.zip
 import io.realm.Case
 import io.realm.Realm
 import io.realm.RealmResults
@@ -22,11 +23,24 @@ class MapEntityRepository : Disposable {
         return if (term.isEmpty()) {
             Observable.just(ArrayList())
         } else {
-            realm.where(MapEntity::class.java)
-                    .like("name", "*$term*", Case.INSENSITIVE)
-                    .findAllAsync()
-                    .asRxObservable()
-                    .map { entities -> createEntityResult(entities, term) }
+            arrayListOf(
+                    realm.where(MapEntity::class.java)
+                            .like("name", "*$term*", Case.INSENSITIVE)
+                            .findAllAsync()
+                            .asRxObservable()
+                            .map { entities -> createEntityResult(entities, term) },
+                    realm.where(MapEntity::class.java)
+                            .like("alias.value", "*$term*", Case.INSENSITIVE)
+                            .findAllAsync()
+                            .asRxObservable()
+                            .map { entities -> createEntityResult(entities, term) }
+            ).zip {
+                val result = ArrayList<MapSearchResult>()
+                it.forEach {
+                    result.addAll(it)
+                }
+                result
+            }.map { it.distinctBy { it.title } }
         }
     }
 
@@ -39,7 +53,8 @@ class MapEntityRepository : Disposable {
         entities.forEach { mapEntity ->
             result.add(SingleEntitySearchResult(
                     mapEntity.name!!,
-                    mapEntity
+                    mapEntity,
+                    mapEntity.alias.where().like("value", "*$term*", Case.INSENSITIVE).findFirst()?.value
             ))
         }
         return result
