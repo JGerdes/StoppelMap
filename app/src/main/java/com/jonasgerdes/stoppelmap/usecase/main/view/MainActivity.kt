@@ -49,16 +49,8 @@ class MainActivity : AppCompatActivity(), MainView {
         MainPresenter(this, interactor)
 
         currentFragment.observeOn(Schedulers.io())
-                .delay(this::getDelayForFragment)
+                .delay(100L, TimeUnit.MILLISECONDS)
                 .subscribe(this::showFragment)
-    }
-
-    private fun getDelayForFragment(fragment: Fragment): Observable<Long>? {
-        val time = when (fragment) {
-            is MapFragment -> 100L
-            else -> 0L
-        }
-        return Observable.timer(time, TimeUnit.MILLISECONDS)
     }
 
     private fun showFragment(fragment: Fragment) {
