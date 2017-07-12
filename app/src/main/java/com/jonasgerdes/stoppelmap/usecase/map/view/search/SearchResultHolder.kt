@@ -1,10 +1,13 @@
 package com.jonasgerdes.stoppelmap.usecase.map.view.search
 
+import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
+import com.jonasgerdes.stoppelmap.util.Assets
+import com.jonasgerdes.stoppelmap.util.getDrawableCompat
 import kotlinx.android.synthetic.main.map_search_result_single.view.*
 
 /**
@@ -19,13 +22,28 @@ abstract class SearchResultHolder<in E : MapSearchResult>(itemView: View)
     class SingleResult(itemView: View)
         : SearchResultHolder<SingleEntitySearchResult>(itemView) {
         override fun onBind(result: SingleEntitySearchResult) {
-            Log.d("SearchResultHolder", "onBindCalled with " + result.entity.slug)
             itemView.title.text = result.title
             if (result.fromAlias != null) {
                 itemView.alias.visibility = View.VISIBLE
                 itemView.alias.text = result.fromAlias
             } else {
                 itemView.alias.visibility = View.GONE
+            }
+            setIcons(listOf(Assets.getIconFor(result.entity))
+                    .filter { i -> i != Assets.NONE }
+                    .map {
+                        itemView.context.getDrawableCompat(it)
+                    })
+        }
+
+        fun setIcons(icons: List<Drawable>) {
+            itemView.iconList.removeAllViews()
+            icons.map {
+                val view = ImageView(itemView.context)
+                view.setImageDrawable(it)
+                view
+            }.forEach {
+                itemView.iconList.addView(it)
             }
         }
 

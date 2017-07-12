@@ -11,4 +11,8 @@ import io.realm.RealmObject
 open class Bar : RealmObject() {
     var isTent: Boolean = false
     var drinks: RealmList<Product> = RealmList()
+
+    companion object {
+        val TYPE = "bar"
+    }
 }

@@ -15,14 +15,14 @@ import javax.inject.Inject
 class MapInteractor : ViewModel() {
 
     @Inject
-    protected lateinit var repository:MapEntityRepository
+    protected lateinit var repository: MapEntityRepository
 
     init {
         App.graph.inject(this)
     }
 
     private val stateSubject = BehaviorSubject.createDefault<MapViewState>(MapViewState.Exploring(
-            Settings.cameraBounds.center,
+            Settings.center,
             16f,
             MapBounds(
                     Settings.cameraBounds,

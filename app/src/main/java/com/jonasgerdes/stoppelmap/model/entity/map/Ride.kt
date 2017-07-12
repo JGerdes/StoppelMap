@@ -12,4 +12,8 @@ open class Ride : RealmObject() {
     var isForKids: Boolean = false
     var type: String? = null
     var prices: RealmList<Price> = RealmList()
+
+    companion object {
+        val TYPE = "ride"
+    }
 }
