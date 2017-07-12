@@ -14,4 +14,8 @@ open class Restroom : RealmObject() {
     var forDisabled: Boolean = false
 
     var prices: RealmList<Price> = RealmList()
+
+    companion object {
+        val TYPE = "restroom"
+    }
 }

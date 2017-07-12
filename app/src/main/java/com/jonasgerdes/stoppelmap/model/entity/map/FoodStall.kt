@@ -14,4 +14,8 @@ open class FoodStall : RealmObject() {
     var isTent: Boolean = false
     var dishes: RealmList<Product> = RealmList()
     var drinks: RealmList<Product> = RealmList()
+
+    companion object {
+        val TYPE = "food-stall"
+    }
 }

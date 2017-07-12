@@ -12,4 +12,8 @@ import io.realm.RealmObject
  */
 open class CandyStall : RealmObject(){
     var products: RealmList<Product> = RealmList()
+
+    companion object {
+        val TYPE = "candy-stall"
+    }
 }

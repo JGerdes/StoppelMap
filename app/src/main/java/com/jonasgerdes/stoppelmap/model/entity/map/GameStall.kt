@@ -11,4 +11,8 @@ import io.realm.RealmObject
  */
 open class GameStall : RealmObject() {
     var games: RealmList<Product> = RealmList()
+
+    companion object {
+        val TYPE = "game-stall"
+    }
 }

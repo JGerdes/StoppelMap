@@ -10,4 +10,8 @@ import io.realm.RealmObject
  */
 open class Exhibition : RealmObject() {
     var prices: RealmList<Price> = RealmList()
+
+    companion object {
+        val TYPE = "exhibition"
+    }
 }

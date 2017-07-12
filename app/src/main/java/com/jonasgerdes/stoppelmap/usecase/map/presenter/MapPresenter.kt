@@ -25,6 +25,7 @@ class MapPresenter(
         disposables += view.getMapMoveEvents()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .distinct()
+                .doOnNext({ Log.d("MapUpdate", it.target.toString()) })
                 .doOnNext(interactor::onMapMoved)
                 .subscribe()
         disposables += view.getSearchEvents()
