@@ -33,8 +33,7 @@
         app:layout_constraintBottom_toTopOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        tools:text="Niedersachsenhalle"/>
+        app:layout_constraintTop_toTopOf="@+id/imageView"/>
 
     <TextView
         android:id="@+id/title"

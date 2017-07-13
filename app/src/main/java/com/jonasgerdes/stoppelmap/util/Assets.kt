@@ -13,7 +13,7 @@ object Assets {
 
     fun getIconFor(entity: MapEntity): Int {
         return when (entity.type) {
-            Bar.TYPE -> NONE
+            Bar.TYPE -> R.drawable.ic_entity_bar_black_16dp
             CandyStall.TYPE -> NONE
             Exhibition.TYPE -> NONE
             FoodStall.TYPE -> R.drawable.ic_entity_food_black_16dp
