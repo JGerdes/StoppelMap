@@ -16,4 +16,5 @@ object Settings {
     val maxZoom = 20f
     val minZoom = 15f
     val center = LatLng(52.74736962293996, 8.295483738183975)
+    val detailZoom = 19f
 }

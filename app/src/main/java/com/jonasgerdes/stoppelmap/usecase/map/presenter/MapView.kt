@@ -20,4 +20,5 @@ interface MapView {
 
     fun getMapMoveEvents(): Observable<CameraPosition>
     fun getSearchEvents(): Observable<CharSequence>
+    fun getSearchResultSelectionEvents(): Observable<MapSearchResult>
 }

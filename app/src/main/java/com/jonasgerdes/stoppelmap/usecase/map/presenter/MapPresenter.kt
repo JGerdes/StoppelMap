@@ -21,6 +21,7 @@ class MapPresenter(
         disposables += interactor.state
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::render)
+
         disposables += view.getMapMoveEvents()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .distinct()
@@ -32,12 +33,16 @@ class MapPresenter(
                 .distinctUntilChanged()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(interactor::onSearchChanged)
+        disposables += view.getSearchResultSelectionEvents()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(interactor::onSearchResultSelected)
     }
 
     private fun render(state: MapViewState) {
         updateMap(state)
         when (state) {
             is MapViewState.Searching -> renderSearch(state)
+            is MapViewState.EntityDetail -> renderDetail(state)
             else -> renderDefault(state)
         }
     }
@@ -57,6 +62,10 @@ class MapPresenter(
             view.toggleSearchResults(!it.isEmpty())
             view.setSearchResults(it)
         }
+    }
+
+    private fun renderDetail(state: MapViewState.EntityDetail) {
+        view.toggleSearchResults(false)
     }
 
     override fun isDisposed(): Boolean {

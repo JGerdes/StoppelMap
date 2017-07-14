@@ -14,7 +14,7 @@ import io.realm.RealmObject
 open class MapEntity : RealmObject() {
     var slug: String? = null
     var type: String? = null
-    var center: GeoLocation? = null
+    lateinit var center: GeoLocation
     var bounds: RealmList<GeoLocation> = RealmList()
 
     var name: String? = null

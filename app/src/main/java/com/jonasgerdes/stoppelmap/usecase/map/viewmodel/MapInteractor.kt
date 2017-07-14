@@ -1,11 +1,12 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import com.google.android.gms.maps.model.CameraPosition
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
+import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
+import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
@@ -50,6 +51,16 @@ class MapInteractor : ViewModel() {
                 term,
                 repository.searchFor(term)
         ))
+    }
+
+    fun onSearchResultSelected(result: MapSearchResult) {
+        when (result) {
+            is SingleEntitySearchResult -> stateSubject.onNext(MapViewState.EntityDetail(
+                    Settings.detailZoom,
+                    stateSubject.value.bounds,
+                    result.entity
+            ))
+        }
     }
 
     override fun onCleared() {
