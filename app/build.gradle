@@ -99,6 +99,9 @@ dependencies {
     //serializing
     implementation 'com.google.code.gson:gson:2.8.0'
 
+    //image loading
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+
     //realm
     debugImplementation 'com.github.jonasrottmann.realm-browser:realm-browser:0.0.14'
     testImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
