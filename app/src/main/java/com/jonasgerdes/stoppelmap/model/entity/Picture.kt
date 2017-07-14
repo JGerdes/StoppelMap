@@ -7,6 +7,11 @@ import io.realm.RealmObject
  * @since 15.06.2017
  */
 open class Picture : RealmObject() {
+
+    companion object {
+        val TYPE_HEADER = "header"
+    }
+
     var filePath: String? = null
     var type: String? = null
 }
