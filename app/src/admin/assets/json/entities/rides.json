@@ -317,7 +317,12 @@
     "name": "Take Off",
     "alias": [],
     "operator": "Ruppert",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "takeoff_header_01.webp",
+        "type": "header"
+      }
+    ],
     "ride": {
       "isForKids": false,
       "type": "flat",
@@ -631,7 +636,12 @@
     "name": "Break Dancer",
     "alias": [],
     "operator": "Dreher-Vespermann",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "breakdancer_header_01.webp",
+        "type": "header"
+      }
+    ],
     "ride": {
       "isForKids": false,
       "type": "flat"
