@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
-import android.util.Log
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapViewState
 import com.jonasgerdes.stoppelmap.util.plusAssign
@@ -25,7 +24,6 @@ class MapPresenter(
         disposables += view.getMapMoveEvents()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .distinct()
-                .doOnNext({ Log.d("MapUpdate", it.target.toString()) })
                 .doOnNext(interactor::onMapMoved)
                 .subscribe()
         disposables += view.getSearchEvents()
@@ -56,10 +54,6 @@ class MapPresenter(
     private fun renderSearch(state: MapViewState.Searching) {
         view.setSearchField(state.searchTerm)
         disposables += state.results.subscribe {
-            Log.d("MapPresenter", "\n\nresults:")
-            it.forEach {
-                Log.d("MapPresenter", it.title)
-            }
             view.toggleSearchResults(!it.isEmpty())
             view.setSearchResults(it)
         }

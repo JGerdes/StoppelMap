@@ -9,7 +9,7 @@ import org.jetbrains.anko.AnkoLogger
  * @author Jonas Gerdes <dev@jonasgerdes.com>
  * @since 22.06.2017
  */
-class MainInteractor : ViewModel(), AnkoLogger{
+class MainInteractor : ViewModel(), AnkoLogger {
 
     private val stateSubject: BehaviorSubject<MainViewState>
             = BehaviorSubject.createDefault(MainViewState.Map())

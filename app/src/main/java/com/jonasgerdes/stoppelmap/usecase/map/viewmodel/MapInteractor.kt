@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
+import android.util.Log
 import com.google.android.gms.maps.model.CameraPosition
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.Settings

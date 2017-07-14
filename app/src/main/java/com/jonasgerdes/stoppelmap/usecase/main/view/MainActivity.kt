@@ -30,11 +30,12 @@ import java.util.concurrent.TimeUnit
  */
 class MainActivity : AppCompatActivity(), MainView {
 
-    val mapFragment = MapFragment()
-    val eventScheduleFragment = EventOverviewFragment()
-    val busScheduleFragment = TransportOverviewFragment()
-    val informationFragment = InformationFragment()
-    var currentFragment = BehaviorSubject.create<Fragment>()
+    private val mapFragment = MapFragment()
+    private val eventScheduleFragment = EventOverviewFragment()
+    private val busScheduleFragment = TransportOverviewFragment()
+    private val informationFragment = InformationFragment()
+    private var currentFragment = BehaviorSubject.create<Fragment>()
+    private lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity(), MainView {
         KeyboardUtil(this, fragmentContainer, extraMarginBottom).enable()
 
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
-        MainPresenter(this, interactor)
+        presenter = MainPresenter(this, interactor)
 
         currentFragment.observeOn(Schedulers.io())
                 .delay(100L, TimeUnit.MILLISECONDS)
@@ -75,6 +76,11 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun getNavigationEvents(): Observable<MenuItem> {
         return navigation.itemSelections()
+    }
+
+    override fun onDestroy() {
+        presenter.dispose()
+        super.onDestroy()
     }
 
 

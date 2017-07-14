@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.view
 import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.TileOverlayOptions
-import com.jakewharton.rxbinding2.widget.textChanges
+import com.jakewharton.rxbinding2.support.v7.widget.queryTextChanges
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
@@ -55,6 +56,7 @@ class MapFragment : LifecycleFragment(), MapView {
         initMap(presenter)
 
         searchResultList.adapter = searchAdapter
+        search.setIconifiedByDefault(false)
     }
 
     override fun onDestroyView() {
@@ -90,9 +92,7 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun setSearchField(term: String) {
-        if (search.text.toString() != term) {
-            search.setText(term)
-        }
+        search.setQuery(term, false)
     }
 
     override fun setSearchResults(results: List<MapSearchResult>) {
@@ -112,6 +112,6 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun getSearchEvents(): Observable<CharSequence> {
-        return search.textChanges()
+        return search.queryTextChanges()
     }
 }
