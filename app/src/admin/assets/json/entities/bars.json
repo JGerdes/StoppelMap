@@ -71,7 +71,12 @@
     "name": "Kühlings Niedersachsenhalle",
     "alias": [],
     "operator": "Kühling",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "kuehling_header_01.webp",
+        "type": "header"
+      }
+    ],
     "bar": {
       "drinks": [
         {
