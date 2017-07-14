@@ -34,8 +34,8 @@ import kotlin.properties.Delegates
  */
 class MapFragment : LifecycleFragment(), MapView {
     private var map by Delegates.notNull<GoogleMap>()
-    private lateinit var presenter: MapPresenter
 
+    private lateinit var presenter: MapPresenter
     private val searchAdapter = SearchResultAdapter()
 
     override fun onCreateView(inflater: LayoutInflater?,
@@ -87,7 +87,7 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun setMapCamera(center: LatLng, zoom: Float) {
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
     }
 
     override fun setSearchField(term: String) {
@@ -112,5 +112,9 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun getSearchEvents(): Observable<CharSequence> {
         return search.queryTextChanges()
+    }
+
+    override fun getSearchResultSelectionEvents(): Observable<MapSearchResult> {
+        return searchAdapter.selections()
     }
 }

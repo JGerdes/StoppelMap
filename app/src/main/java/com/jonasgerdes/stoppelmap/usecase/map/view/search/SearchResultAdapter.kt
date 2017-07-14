@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -14,6 +16,7 @@ import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResu
 class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
 
     private var resultList: List<MapSearchResult> = ArrayList()
+    private val selectionSubject = PublishSubject.create<MapSearchResult>()
 
     var results
         get() = resultList
@@ -31,10 +34,14 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SearchResultHolder<*> {
         val view = LayoutInflater.from(parent?.context).inflate(viewType, parent, false)
-        return when (viewType) {
+        val holder = when (viewType) {
             R.layout.map_search_result_single -> SearchResultHolder.SingleResult(view)
             else -> SearchResultHolder.SingleResult(view)
         }
+        holder.itemView.setOnClickListener({
+            selectionSubject.onNext(resultList[holder.adapterPosition])
+        })
+        return holder
     }
 
     override fun onBindViewHolder(holder: SearchResultHolder<*>?, position: Int) {
@@ -45,5 +52,9 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
 
     override fun getItemCount(): Int {
         return resultList.size
+    }
+
+    fun selections(): Observable<MapSearchResult> {
+        return selectionSubject.hide()
     }
 }

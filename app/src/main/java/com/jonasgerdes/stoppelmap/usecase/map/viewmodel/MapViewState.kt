@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import com.google.android.gms.maps.model.LatLng
+import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import io.reactivex.Observable
 
@@ -27,4 +28,10 @@ sealed class MapViewState(
             val searchTerm: String,
             val results: Observable<List<MapSearchResult>>
     ) : MapViewState(center, zoom, bounds)
+
+    class EntityDetail(
+            zoom: Float,
+            bounds: MapBounds,
+            val entity: MapEntity
+    ) : MapViewState(entity.center.latLng, zoom, bounds)
 }
