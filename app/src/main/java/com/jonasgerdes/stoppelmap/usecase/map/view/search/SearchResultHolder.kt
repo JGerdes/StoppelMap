@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.view.search
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.LinearLayout
+import com.bumptech.glide.Glide
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
@@ -24,15 +25,22 @@ abstract class SearchResultHolder<in E : MapSearchResult>(itemView: View)
     class SingleResult(itemView: View)
         : SearchResultHolder<SingleEntitySearchResult>(itemView) {
         override fun onBind(result: SingleEntitySearchResult) {
-            itemView.title.text = result.title
-            if (result.fromAlias != null) {
-                itemView.alias.visibility = View.VISIBLE
-                itemView.alias.text = result.fromAlias
-            } else {
-                itemView.alias.visibility = View.GONE
+            with(itemView) {
+                title.text = result.title
+                if (result.fromAlias != null) {
+                    alias.visibility = View.VISIBLE
+                    alias.text = result.fromAlias
+                } else {
+                    alias.visibility = View.GONE
+                }
+                setIcons(Assets.getIconsFor(result.entity)
+                        .filter { i -> i != Assets.NONE })
+
+                Glide.with(context)
+                        .load(Assets.getHeadersFor(result.entity)[0])
+                        .centerCrop()
+                        .into(thumbnail)
             }
-            setIcons(Assets.getIconsFor(result.entity)
-                    .filter { i -> i != Assets.NONE })
         }
 
         fun setIcons(icons: List<Int>) {

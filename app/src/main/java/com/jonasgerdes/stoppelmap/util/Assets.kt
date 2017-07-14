@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap.util
 
+import android.net.Uri
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.model.entity.Picture
 import com.jonasgerdes.stoppelmap.model.entity.map.*
 
 /**
@@ -10,6 +12,7 @@ import com.jonasgerdes.stoppelmap.model.entity.map.*
 object Assets {
 
     val NONE = -1
+    val PATH_PICTURES = "file:///android_asset/pictures"
 
     fun getTypeIconFor(entity: MapEntity): Int {
         return when (entity.type) {
@@ -64,6 +67,33 @@ object Assets {
             icons.add(R.drawable.ic_entity_tent_black_24dp)
         }
         return icons
+    }
+
+    fun getHeadersFor(entity: MapEntity): List<Uri> {
+        val headers = entity.getPictures(Picture.TYPE_HEADER)
+        return if (!headers.isEmpty()) {
+            headers.map {
+                PATH_PICTURES + "/${entity.type}/${it.filePath}"
+            }.map { Uri.parse(it) }
+        } else {
+            listOf(Assets.getDefaultHeaderFor(entity))
+        }
+    }
+
+    private fun getDefaultHeaderFor(entity: MapEntity): Uri {
+        return Uri.parse(
+                when (entity.type) {
+                    FoodStall.TYPE -> {
+                        if (entity.foodStall!!.isBar) {
+                            PATH_PICTURES + "/default_header/hybrid.png"
+                        } else {
+                            PATH_PICTURES + "/default_header/food-stall.png"
+                        }
+                    }
+                    Bar.TYPE, Ride.TYPE, CandyStall.TYPE, GameStall.TYPE,
+                    Restroom.TYPE -> PATH_PICTURES + "/default_header/${entity.type}.png"
+                    else -> PATH_PICTURES + "/default_header/default.png"
+                })
     }
 
 
