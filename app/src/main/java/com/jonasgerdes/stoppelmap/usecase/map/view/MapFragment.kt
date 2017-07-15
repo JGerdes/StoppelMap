@@ -1,7 +1,10 @@
 package com.jonasgerdes.stoppelmap.usecase.map.view
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.ViewModelProviders
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +18,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.TileOverlayOptions
 import com.jakewharton.rxbinding2.support.v7.widget.queryTextChanges
+import com.jakewharton.rxbinding2.view.clicks
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
+import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapView
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.SearchResultAdapter
@@ -63,6 +68,7 @@ class MapFragment : LifecycleFragment(), MapView {
         super.onDestroyView()
     }
 
+    @SuppressLint("MissingPermission")
     private fun initMap(presenter: MapPresenter) {
         val mapFragment = SupportMapFragment.newInstance()
         childFragmentManager
@@ -76,8 +82,28 @@ class MapFragment : LifecycleFragment(), MapView {
             )
             map.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style))
             map.setPadding(0, resources.getDimensionPixelSize(R.dimen.map_padding_top), 0, 0)
+            map.uiSettings.isMyLocationButtonEnabled = false
             presenter.bind()
+
+            requestLocation().subscribe {
+                map.isMyLocationEnabled = true
+            }
         })
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun getUserLocationEvents(): Observable<Location> {
+        return locationFab.clicks()
+                .concatMap { requestLocation() }
+                .doOnNext { map.isMyLocationEnabled = true }
+                .filter { map.myLocation != null }
+                .map { map.myLocation }
+    }
+
+    private fun requestLocation(): Observable<Boolean> {
+        return (activity as MainActivity).permissions.request(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION).filter({ it })
     }
 
     override fun setMapBounds(bounds: MapBounds) {

@@ -1,12 +1,14 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
+import android.location.Location
 import com.google.android.gms.maps.model.CameraPosition
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
+import com.jonasgerdes.stoppelmap.util.map.latLng
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
@@ -39,6 +41,14 @@ class MapInteractor : ViewModel() {
         stateSubject.onNext(MapViewState.Exploring(
                 position.target,
                 position.zoom,
+                stateSubject.value.bounds)
+        )
+    }
+
+    fun onUserMoved(location: Location) {
+        stateSubject.onNext(MapViewState.Exploring(
+                location.latLng(),
+                stateSubject.value.zoom,
                 stateSubject.value.bounds)
         )
     }
