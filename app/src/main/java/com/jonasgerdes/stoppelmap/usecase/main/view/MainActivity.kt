@@ -18,6 +18,7 @@ import com.jonasgerdes.stoppelmap.usecase.transportation.overview.view.Transport
 import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
 import com.jonasgerdes.stoppelmap.util.view.KeyboardUtil
+import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
@@ -35,7 +36,9 @@ class MainActivity : AppCompatActivity(), MainView {
     private val busScheduleFragment = TransportOverviewFragment()
     private val informationFragment = InformationFragment()
     private var currentFragment = BehaviorSubject.create<Fragment>()
+
     private lateinit var presenter: MainPresenter
+    lateinit var permissions: RxPermissions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
         val extraMarginBottom = resources.getDimensionPixelSize(R.dimen.bottom_navigation_height)
         KeyboardUtil(this, fragmentContainer, extraMarginBottom).enable()
+        permissions = RxPermissions(this)
 
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
         presenter = MainPresenter(this, interactor)

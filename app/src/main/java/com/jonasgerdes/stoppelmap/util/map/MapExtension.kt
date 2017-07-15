@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.util.map
 
+import android.location.Location
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import io.reactivex.Observable
 
 /**
@@ -11,5 +13,9 @@ import io.reactivex.Observable
 
 fun GoogleMap.idles(): Observable<CameraPosition> {
     return MapIdleObservable(this)
+}
+
+fun Location.latLng(): LatLng {
+    return LatLng(latitude, longitude)
 }
 

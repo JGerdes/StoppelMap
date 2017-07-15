@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
+import android.location.Location
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
@@ -19,6 +20,7 @@ interface MapView {
     fun toggleSearchResults(show: Boolean)
 
     fun getMapMoveEvents(): Observable<CameraPosition>
+    fun getUserLocationEvents(): Observable<Location>
     fun getSearchEvents(): Observable<CharSequence>
     fun getSearchResultSelectionEvents(): Observable<MapSearchResult>
 }

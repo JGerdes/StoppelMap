@@ -27,6 +27,8 @@ class MapPresenter(
                 .distinct()
                 .doOnNext(interactor::onMapMoved)
                 .subscribe()
+        disposables += view.getUserLocationEvents()
+                .subscribe(interactor::onUserMoved)
         disposables += view.getSearchEvents()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .map { it.toString().trim() }
@@ -36,6 +38,7 @@ class MapPresenter(
         disposables += view.getSearchResultSelectionEvents()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(interactor::onSearchResultSelected)
+
     }
 
     private fun render(state: MapViewState) {
