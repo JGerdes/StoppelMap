@@ -50,7 +50,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="56dp"
         app:cardElevation="10dp"
         app:cardUseCompatPadding="true">
 
