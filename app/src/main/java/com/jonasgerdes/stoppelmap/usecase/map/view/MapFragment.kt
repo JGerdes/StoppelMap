@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike
+import co.com.parsoniisolutions.custombottomsheetbehavior.lib.MergedAppBarLayoutBehavior
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -61,6 +63,18 @@ class MapFragment : LifecycleFragment(), MapView {
 
         searchResultList.adapter = searchAdapter
         search.setIconifiedByDefault(false)
+
+        initBottomSheet()
+    }
+
+    private fun initBottomSheet() {
+        val behavior = BottomSheetBehaviorGoogleMapsLike.from<View>(bottom_sheet)
+
+        val mergedAppBarLayoutBehavior = MergedAppBarLayoutBehavior.from(merged_appbarlayout)
+        mergedAppBarLayoutBehavior.setToolbarTitle("Title Dummy")
+        mergedAppBarLayoutBehavior.setNavigationOnClickListener { behavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED }
+
+        behavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_ANCHOR_POINT
     }
 
     override fun onDestroyView() {
