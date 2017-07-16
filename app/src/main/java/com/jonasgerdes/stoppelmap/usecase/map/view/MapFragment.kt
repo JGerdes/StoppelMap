@@ -74,7 +74,7 @@ class MapFragment : LifecycleFragment(), MapView {
         mergedAppBarLayoutBehavior.setToolbarTitle("Title Dummy")
         mergedAppBarLayoutBehavior.setNavigationOnClickListener { behavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED }
 
-        behavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_ANCHOR_POINT
+        behavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED
     }
 
     override fun onDestroyView() {

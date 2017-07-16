@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity(), MainView {
         navigation.enableItemShifting(false)
         navigation.enableItemTextHiding(true)
 
-        val extraMarginBottom = resources.getDimensionPixelSize(R.dimen.bottom_navigation_height)
+        val extraMarginBottom
+                = resources.getDimensionPixelSize(R.dimen.keyboard_extra_margin_bottom)
         KeyboardUtil(this, fragmentContainer, extraMarginBottom).enable()
         permissions = RxPermissions(this)
 
