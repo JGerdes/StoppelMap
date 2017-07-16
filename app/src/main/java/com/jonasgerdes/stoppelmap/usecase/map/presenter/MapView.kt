@@ -16,6 +16,7 @@ interface MapView {
     fun setMapCamera(center: LatLng, zoom: Float, animate: Boolean = true)
 
     fun setSearchField(term: String)
+    fun toggleSearchFieldFocus(isFocused: Boolean)
     fun setSearchResults(results: List<MapSearchResult>)
     fun toggleSearchResults(show: Boolean)
 

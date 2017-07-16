@@ -41,8 +41,8 @@ class MapFragment : LifecycleFragment(), MapView {
     private var map by Delegates.notNull<GoogleMap>()
 
     private lateinit var presenter: MapPresenter
-    private val searchAdapter = SearchResultAdapter()
 
+    private val searchAdapter = SearchResultAdapter()
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -121,7 +121,16 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun setSearchField(term: String) {
-        search.setQuery(term, false)
+        //fixme: figure out something for resubmit issue (on text changes) before setting query
+        //search.setQuery(term, false)
+    }
+
+    override fun toggleSearchFieldFocus(isFocused: Boolean) {
+        if(isFocused) {
+            search.requestFocus()
+        } else {
+            search.clearFocus()
+        }
     }
 
     override fun setSearchResults(results: List<MapSearchResult>) {

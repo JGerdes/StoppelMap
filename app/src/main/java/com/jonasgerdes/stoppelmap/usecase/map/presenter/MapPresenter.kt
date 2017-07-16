@@ -70,7 +70,9 @@ class MapPresenter(
     }
 
     private fun renderDetail(state: MapViewState.EntityDetail) {
+        state.entity.name?.let { view.setSearchField(it) }
         view.toggleSearchResults(false)
+        view.toggleSearchFieldFocus(false)
     }
 
     override fun isDisposed(): Boolean {
