@@ -16,6 +16,7 @@ class MapPresenter(
         private val interactor: MapInteractor) : Disposable {
 
     private val disposables = CompositeDisposable()
+    private var isFirstMapUpdate = true //don't animate first map update
 
     fun bind() {
         disposables += interactor.state
@@ -56,7 +57,8 @@ class MapPresenter(
 
     private fun updateMap(state: MapViewState) {
         view.setMapBounds(state.bounds)
-        view.setMapCamera(state.center, state.zoom)
+        view.setMapCamera(state.center, state.zoom, !isFirstMapUpdate)
+        isFirstMapUpdate = false
     }
 
     private fun renderSearch(state: MapViewState.Searching) {

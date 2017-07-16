@@ -112,8 +112,12 @@ class MapFragment : LifecycleFragment(), MapView {
         map.setMinZoomPreference(bounds.minZoom)
     }
 
-    override fun setMapCamera(center: LatLng, zoom: Float) {
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
+    override fun setMapCamera(center: LatLng, zoom: Float, animate: Boolean) {
+        if (animate) {
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
+        } else {
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
+        }
     }
 
     override fun setSearchField(term: String) {

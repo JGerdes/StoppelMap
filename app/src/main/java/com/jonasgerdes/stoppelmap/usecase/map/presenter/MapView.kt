@@ -13,7 +13,7 @@ import io.reactivex.Observable
  */
 interface MapView {
     fun setMapBounds(bounds: MapBounds)
-    fun setMapCamera(center: LatLng, zoom: Float)
+    fun setMapCamera(center: LatLng, zoom: Float, animate: Boolean = true)
 
     fun setSearchField(term: String)
     fun setSearchResults(results: List<MapSearchResult>)
