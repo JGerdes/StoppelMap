@@ -77,6 +77,8 @@ class MapPresenter(
         state.entity.name?.let { view.setSearchField(it) }
         view.toggleSearchResults(false)
         view.toggleSearchFieldFocus(false)
+
+        state.entity.name?.let { view.setBottomSheetTitle(it) }
         //workaround: wait 500ms so keyboard is actually closed before showing bottom sheet
         Observable.just(true)
                 .observeOn(AndroidSchedulers.mainThread())

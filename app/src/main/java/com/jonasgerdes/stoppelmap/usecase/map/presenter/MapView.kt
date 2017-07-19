@@ -26,4 +26,5 @@ interface MapView {
     fun getSearchResultSelectionEvents(): Observable<MapSearchResult>
 
     fun toggleBottomSheet(show: Boolean)
+    fun setBottomSheetTitle(title: String)
 }

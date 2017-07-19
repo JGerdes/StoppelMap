@@ -12,7 +12,6 @@ import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -546,7 +545,6 @@ public class BottomSheetBehaviorGoogleMapsLike<V extends View> extends Coordinat
      *              {@link #STATE_EXPANDED} or {@link #STATE_HIDDEN}.
      */
     public final void setState(@State int state) {
-        Log.d("BottomSheet", "setState:" + state);
         if (state == mState) {
             return;
         }
