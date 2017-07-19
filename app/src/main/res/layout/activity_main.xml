@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
-        app:itemBackground="@color/primary"
+        app:itemBackground="@color/primaryDark"
         app:itemIconTint="@drawable/csl_bottom_navigation_icons"
         app:itemTextColor="@drawable/csl_bottom_navigation_icons"
         app:layout_constraintBottom_toBottomOf="parent"
