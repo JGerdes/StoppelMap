@@ -5,12 +5,14 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.ViewModelProviders
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.MergedAppBarLayoutBehavior
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -193,5 +195,12 @@ class MapFragment : LifecycleFragment(), MapView {
     override fun setBottomSheetTitle(title: String) {
         bottomSheetHeaderTitle.text = title
         mergedAppBarLayoutBehavior.setToolbarTitle(title)
+    }
+
+    override fun setBottomSheetImage(imageUri: Uri) {
+        Glide.with(context)
+                .load(imageUri)
+                .centerCrop()
+                .into(bottomSheetImage)
     }
 }

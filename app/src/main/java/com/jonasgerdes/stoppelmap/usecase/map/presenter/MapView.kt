@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
 import android.location.Location
+import android.net.Uri
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
@@ -27,4 +28,5 @@ interface MapView {
 
     fun toggleBottomSheet(show: Boolean)
     fun setBottomSheetTitle(title: String)
+    fun setBottomSheetImage(imageUri: Uri)
 }
