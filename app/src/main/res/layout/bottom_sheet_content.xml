@@ -9,6 +9,7 @@
     android:paddingBottom="16dp">
 
     <RelativeLayout
+        android:id="@+id/bottomSheetHeader"
         android:layout_width="match_parent"
         android:layout_height="@dimen/map_bottom_sheet_peek_height"
         android:background="@color/primary"

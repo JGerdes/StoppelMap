@@ -24,4 +24,6 @@ interface MapView {
     fun getUserLocationEvents(): Observable<Location>
     fun getSearchEvents(): Observable<CharSequence>
     fun getSearchResultSelectionEvents(): Observable<MapSearchResult>
+
+    fun toggleBottomSheet(show: Boolean)
 }
