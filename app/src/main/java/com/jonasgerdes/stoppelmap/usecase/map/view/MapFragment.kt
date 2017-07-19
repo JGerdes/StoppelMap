@@ -46,8 +46,10 @@ class MapFragment : LifecycleFragment(), MapView {
 
     private lateinit var presenter: MapPresenter
     private lateinit var bottomSheetbehavior: BottomSheetBehaviorGoogleMapsLike<View>
+    private lateinit var mergedAppBarLayoutBehavior: MergedAppBarLayoutBehavior
 
     private val searchAdapter = SearchResultAdapter()
+
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -73,8 +75,8 @@ class MapFragment : LifecycleFragment(), MapView {
     private fun initBottomSheet() {
         bottomSheetbehavior = BottomSheetBehaviorGoogleMapsLike.from<View>(bottomSheet)
 
-        val mergedAppBarLayoutBehavior = MergedAppBarLayoutBehavior.from(mergedAppbarLayout)
-        mergedAppBarLayoutBehavior.setToolbarTitle("Title Dummy")
+        mergedAppBarLayoutBehavior = MergedAppBarLayoutBehavior.from(mergedAppbarLayout)
+        mergedAppBarLayoutBehavior.setToolbarTitle("Lorem Ipsum")
         mergedAppBarLayoutBehavior.setNavigationOnClickListener {
             bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
         }
@@ -186,5 +188,10 @@ class MapFragment : LifecycleFragment(), MapView {
         } else {
             bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
         }
+    }
+
+    override fun setBottomSheetTitle(title: String) {
+        bottomSheetHeaderTitle.text = title
+        mergedAppBarLayoutBehavior.setToolbarTitle(title)
     }
 }
