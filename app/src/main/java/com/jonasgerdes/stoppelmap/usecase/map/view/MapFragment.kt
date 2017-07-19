@@ -31,7 +31,9 @@ import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.util.map.idles
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlinx.android.synthetic.main.map_fragment.*
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import kotlin.properties.Delegates
 
 
@@ -43,6 +45,7 @@ class MapFragment : LifecycleFragment(), MapView {
     private var map by Delegates.notNull<GoogleMap>()
 
     private lateinit var presenter: MapPresenter
+    private lateinit var bottomSheetbehavior: BottomSheetBehaviorGoogleMapsLike<View>
 
     private val searchAdapter = SearchResultAdapter()
     override fun onCreateView(inflater: LayoutInflater?,
@@ -68,13 +71,19 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     private fun initBottomSheet() {
-        val behavior = BottomSheetBehaviorGoogleMapsLike.from<View>(bottom_sheet)
+        bottomSheetbehavior = BottomSheetBehaviorGoogleMapsLike.from<View>(bottomSheet)
 
-        val mergedAppBarLayoutBehavior = MergedAppBarLayoutBehavior.from(merged_appbarlayout)
+        val mergedAppBarLayoutBehavior = MergedAppBarLayoutBehavior.from(mergedAppbarLayout)
         mergedAppBarLayoutBehavior.setToolbarTitle("Title Dummy")
-        mergedAppBarLayoutBehavior.setNavigationOnClickListener { behavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED }
+        mergedAppBarLayoutBehavior.setNavigationOnClickListener {
+            bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
+        }
 
-        behavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED
+        bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
+
+        bottomSheetHeader.onClick {
+            bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_ANCHOR_POINT
+        }
     }
 
     override fun onDestroyView() {
@@ -140,7 +149,7 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun toggleSearchFieldFocus(isFocused: Boolean) {
-        if(isFocused) {
+        if (isFocused) {
             search.requestFocus()
         } else {
             search.clearFocus()
@@ -169,5 +178,13 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun getSearchResultSelectionEvents(): Observable<MapSearchResult> {
         return searchAdapter.selections()
+    }
+
+    override fun toggleBottomSheet(show: Boolean) {
+        if (show) {
+            bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED
+        } else {
+            bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
+        }
     }
 }
