@@ -82,6 +82,7 @@ class MarkerIconFactory(val context: Context) {
         canvas.drawText(title, textX, textY, textFillPaint)
 
         if (icon != null) {
+            canvas.translate(0f, canvas.clipBounds.height() / 2f - icon.bounds.height() / 2f)
             icon.mutate().setColorFilter(iconColor, PorterDuff.Mode.SRC_IN)
             icon.draw(canvas)
         }
