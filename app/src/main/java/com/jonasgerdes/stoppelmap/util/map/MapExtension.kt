@@ -4,6 +4,7 @@ import android.location.Location
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.jonasgerdes.stoppelmap.model.entity.GeoLocation
 import com.jonasgerdes.stoppelmap.util.MathUtil
 import io.reactivex.Observable
@@ -19,6 +20,10 @@ fun GoogleMap.idles(): Observable<CameraPosition> {
 
 fun GoogleMap.clicks(): Observable<LatLng> {
     return MapClickObservable(this)
+}
+
+fun GoogleMap.markerClicks(): Observable<Marker> {
+    return MapMarkerClickObservable(this)
 }
 
 fun Location.latLng(): LatLng {

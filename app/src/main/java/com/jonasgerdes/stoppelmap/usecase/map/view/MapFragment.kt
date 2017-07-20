@@ -33,6 +33,7 @@ import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.util.asset.MarkerIconFactory
 import com.jonasgerdes.stoppelmap.util.map.clicks
 import com.jonasgerdes.stoppelmap.util.map.idles
+import com.jonasgerdes.stoppelmap.util.map.markerClicks
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlinx.android.synthetic.main.map_fragment.*
@@ -185,7 +186,7 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun getMapClicks(): Observable<LatLng> {
-        return map.clicks()
+        return map.clicks().mergeWith(map.markerClicks().map { it.position })
     }
 
     override fun getSearchEvents(): Observable<CharSequence> {
