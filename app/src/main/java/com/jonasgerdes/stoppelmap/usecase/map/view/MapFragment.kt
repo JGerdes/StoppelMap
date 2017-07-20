@@ -192,6 +192,9 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun setMarkers(markers: List<MapMarker>) {
+        mapMarkers.forEach {
+            it.remove()
+        }
         mapMarkers.clear()
         markers.map {
             MarkerOptions()
