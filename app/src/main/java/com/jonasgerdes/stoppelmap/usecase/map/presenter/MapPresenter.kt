@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapViewState
 import com.jonasgerdes.stoppelmap.util.Assets
 import com.jonasgerdes.stoppelmap.util.plusAssign
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -82,7 +83,7 @@ class MapPresenter(
         state.entity.name?.let { view.setBottomSheetTitle(it) }
         view.setBottomSheetImage(Assets.getHeadersFor(state.entity)[0])
         //workaround: wait 500ms so keyboard is actually closed before showing bottom sheet
-        Observable.just(true)
+        Completable.complete()
                 .observeOn(AndroidSchedulers.mainThread())
                 .delay(500, TimeUnit.MILLISECONDS)
                 .subscribe {
