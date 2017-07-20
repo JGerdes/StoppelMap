@@ -1,8 +1,10 @@
 package com.jonasgerdes.stoppelmap.model
 
+import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
+import com.jonasgerdes.stoppelmap.util.asList
 import com.jonasgerdes.stoppelmap.util.asRxObservable
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
@@ -17,7 +19,7 @@ import io.realm.RealmResults
  */
 class MapEntityRepository : Disposable {
 
-    val realm: Realm = Realm.getDefaultInstance()
+    private val realm: Realm = Realm.getDefaultInstance()
 
     fun searchFor(term: String): Observable<List<MapSearchResult>> {
         return if (term.isEmpty()) {
@@ -66,5 +68,16 @@ class MapEntityRepository : Disposable {
 
     override fun dispose() {
         realm.close()
+    }
+
+    fun getVisibleEntities(zoom: Float): Observable<List<MapEntity>> {
+        if (zoom < Settings.detailZoom) {
+            return Observable.just(emptyList())
+        } else {
+            return realm.where(MapEntity::class.java)
+                    .findAllAsync()
+                    .asRxObservable()
+                    .map { it.asList() }
+        }
     }
 }

@@ -18,7 +18,8 @@ sealed class MapViewState(
     class Exploring(
             center: LatLng,
             zoom: Float,
-            bounds: MapBounds
+            bounds: MapBounds,
+            val visibleEntities: Observable<List<MapEntity>> = Observable.just(emptyList())
     ) : MapViewState(center, zoom, bounds)
 
     class Searching(
