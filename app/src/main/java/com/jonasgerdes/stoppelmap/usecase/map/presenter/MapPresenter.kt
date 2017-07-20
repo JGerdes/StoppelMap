@@ -51,7 +51,21 @@ class MapPresenter(
         when (state) {
             is MapViewState.Searching -> renderSearch(state)
             is MapViewState.EntityDetail -> renderDetail(state)
+            is MapViewState.Exploring -> renderExploring(state)
             else -> renderDefault(state)
+        }
+    }
+
+    private fun renderExploring(state: MapViewState.Exploring) {
+        renderDefault(state)
+        disposables += state.visibleEntities.subscribe {
+            view.setMarkers(it.map {
+                MapMarker(
+                        it.center.latLng,
+                        it.name ?: "",
+                        Assets.getTypeIconFor(it)
+                )
+            })
         }
     }
 

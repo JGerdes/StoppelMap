@@ -27,12 +27,14 @@ class MapInteractor : ViewModel() {
 
     private val stateSubject = BehaviorSubject.createDefault<MapViewState>(MapViewState.Exploring(
             Settings.center,
-            16f,
+            Settings.defaultZoom,
             MapBounds(
                     Settings.cameraBounds,
                     Settings.minZoom,
                     Settings.maxZoom
-            )
+            ),
+            repository.getVisibleEntities(Settings.defaultZoom)
+
     ))
 
     val state get() = stateSubject.hide()
@@ -41,7 +43,8 @@ class MapInteractor : ViewModel() {
         stateSubject.onNext(MapViewState.Exploring(
                 position.target,
                 position.zoom,
-                stateSubject.value.bounds)
+                stateSubject.value.bounds,
+                repository.getVisibleEntities(position.zoom))
         )
     }
 
@@ -49,7 +52,8 @@ class MapInteractor : ViewModel() {
         stateSubject.onNext(MapViewState.Exploring(
                 location.latLng(),
                 stateSubject.value.zoom,
-                stateSubject.value.bounds)
+                stateSubject.value.bounds,
+                repository.getVisibleEntities(stateSubject.value.zoom))
         )
     }
 
