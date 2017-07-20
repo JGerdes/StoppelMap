@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 import android.arch.lifecycle.ViewModel
 import android.location.Location
 import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
@@ -55,6 +56,23 @@ class MapInteractor : ViewModel() {
                 stateSubject.value.bounds,
                 repository.getVisibleEntities(stateSubject.value.zoom))
         )
+    }
+
+    fun onMapClicked(position: LatLng) {
+        val entity = repository.getEntityOn(position)
+        if (entity != null) {
+            stateSubject.onNext(MapViewState.EntityDetail(
+                    Settings.detailZoom,
+                    stateSubject.value.bounds,
+                    entity
+            ))
+        } else {
+            MapViewState.Exploring(
+                    stateSubject.value.center,
+                    stateSubject.value.zoom,
+                    stateSubject.value.bounds,
+                    repository.getVisibleEntities(stateSubject.value.zoom))
+        }
     }
 
     fun onSearchChanged(term: String) {

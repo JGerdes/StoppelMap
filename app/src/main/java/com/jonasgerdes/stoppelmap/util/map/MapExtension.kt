@@ -4,6 +4,8 @@ import android.location.Location
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.jonasgerdes.stoppelmap.model.entity.GeoLocation
+import com.jonasgerdes.stoppelmap.util.MathUtil
 import io.reactivex.Observable
 
 /**
@@ -21,5 +23,9 @@ fun GoogleMap.clicks(): Observable<LatLng> {
 
 fun Location.latLng(): LatLng {
     return LatLng(latitude, longitude)
+}
+
+fun LatLng.isIn(bounds: List<GeoLocation>): Boolean {
+    return MathUtil.isPointInGeoPolygon(this, bounds)
 }
 
