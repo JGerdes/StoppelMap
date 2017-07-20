@@ -4,6 +4,8 @@
     <color name="primaryDark">#0e1451</color>
     <color name="accent">#ff5252</color>
 
-    <color name="tint_icon_active">#8A000000</color>
+
+    <color name="text_dark">#8A000000</color>
+    <color name="tint_icon_active">@color/text_dark</color>
     <color name="tint_icon_inactive">#61000000</color>
 </resources>

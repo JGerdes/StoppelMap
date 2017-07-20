@@ -3,7 +3,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.presenter
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapViewState
-import com.jonasgerdes.stoppelmap.util.Assets
+import com.jonasgerdes.stoppelmap.util.asset.Assets
 import com.jonasgerdes.stoppelmap.util.plusAssign
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers

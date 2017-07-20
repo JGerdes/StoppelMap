@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
-import com.jonasgerdes.stoppelmap.util.Assets
+import com.jonasgerdes.stoppelmap.util.asset.Assets
 import com.jonasgerdes.stoppelmap.util.setTint
 import kotlinx.android.synthetic.main.map_search_result_single.view.*
 import org.jetbrains.anko.dip
