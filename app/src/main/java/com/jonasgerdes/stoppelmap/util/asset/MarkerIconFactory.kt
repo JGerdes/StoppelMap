@@ -58,17 +58,20 @@ class MarkerIconFactory(val context: Context) {
         textOutlinePaint.getTextBounds(title, 0, title.length, textBounds)
 
         var markerWidth = textBounds.width() + padding * 2
+        var markerHeight = textBounds.height() + padding * 2
+
         var textX = padding.toFloat()
 
         if (icon != null) {
             icon.setBounds(0, 0, iconSize, iconSize)
             markerWidth += icon.bounds.width()
+            markerHeight = Math.max(markerHeight, icon.bounds.height() + padding * 2)
             textX += icon.bounds.width()
         }
 
         val bitmap = Bitmap.createBitmap(
                 markerWidth,
-                textBounds.height() + padding * 2,
+                markerHeight,
                 Bitmap.Config.ARGB_8888
         )
         val canvas = Canvas(bitmap)
