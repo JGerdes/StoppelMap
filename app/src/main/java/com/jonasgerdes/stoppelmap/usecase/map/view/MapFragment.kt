@@ -200,6 +200,7 @@ class MapFragment : LifecycleFragment(), MapView {
             MarkerOptions()
                     .icon(markerFactory.createMarker(it.title, it.iconResource))
                     .position(it.position)
+                    .anchor(0.5f, 0.5f)
 
         }.map {
             map.addMarker(it)
