@@ -4,6 +4,7 @@ import android.location.Location
 import android.net.Uri
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import io.reactivex.Observable
@@ -25,6 +26,8 @@ interface MapView {
     fun getUserLocationEvents(): Observable<Location>
     fun getSearchEvents(): Observable<CharSequence>
     fun getSearchResultSelectionEvents(): Observable<MapSearchResult>
+
+    fun setMarkers(markers: List<MapMarker>)
 
     fun toggleBottomSheet(show: Boolean)
     fun setBottomSheetTitle(title: String)
