@@ -22,6 +22,8 @@ class MarkerIconFactory(val context: Context) {
     private val iconSize: Int
     private val iconColor: Int
 
+    private val iconCache = HashMap<String, BitmapDescriptor>()
+
     init {
         val resources = context.resources
 
@@ -49,6 +51,15 @@ class MarkerIconFactory(val context: Context) {
     }
 
     fun createMarker(title: String, iconResource: Int): BitmapDescriptor {
+        val hash = "$title|||$iconResource"
+        if (!iconCache.containsKey(hash)) {
+            iconCache.put(hash, generateMarker(title, iconResource))
+        }
+        return iconCache[hash]!!
+    }
+
+    private fun generateMarker(title: String, iconResource: Int): BitmapDescriptor {
+
         var icon: Drawable? = null
         if (iconResource != NONE) {
             icon = ContextCompat.getDrawable(context, iconResource)
