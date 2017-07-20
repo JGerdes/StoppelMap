@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.util
+package com.jonasgerdes.stoppelmap.util.asset
 
 import android.net.Uri
 import com.jonasgerdes.stoppelmap.R
@@ -76,7 +76,7 @@ object Assets {
                 PATH_PICTURES + "/${entity.type}/${it.filePath}"
             }.map { Uri.parse(it) }
         } else {
-            listOf(Assets.getDefaultHeaderFor(entity))
+            listOf(getDefaultHeaderFor(entity))
         }
     }
 

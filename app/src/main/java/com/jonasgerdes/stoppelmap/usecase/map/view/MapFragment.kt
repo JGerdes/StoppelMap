@@ -20,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.jakewharton.rxbinding2.support.v7.widget.queryTextChanges
 import com.jakewharton.rxbinding2.view.clicks
+import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
@@ -29,11 +30,13 @@ import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapView
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.SearchResultAdapter
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
+import com.jonasgerdes.stoppelmap.util.asset.MarkerIconFactory
 import com.jonasgerdes.stoppelmap.util.map.idles
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlinx.android.synthetic.main.map_fragment.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import javax.inject.Inject
 import kotlin.properties.Delegates
 
 
@@ -42,6 +45,10 @@ import kotlin.properties.Delegates
  * @since 16.06.2017
  */
 class MapFragment : LifecycleFragment(), MapView {
+
+    @Inject
+    lateinit var markerFactory: MarkerIconFactory
+
     private var map by Delegates.notNull<GoogleMap>()
     private val mapMarkers: ArrayList<Marker> = ArrayList()
 
@@ -59,6 +66,7 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        App.graph.inject(this)
 
         val interactor = ViewModelProviders.of(activity).get(MapInteractor::class.java)
         presenter = MapPresenter(this, interactor)
@@ -187,8 +195,8 @@ class MapFragment : LifecycleFragment(), MapView {
         mapMarkers.clear()
         markers.map {
             MarkerOptions()
+                    .icon(markerFactory.createMarker(it.title, it.iconResource))
                     .position(it.position)
-                    .title(it.title)
 
         }.map {
             map.addMarker(it)
