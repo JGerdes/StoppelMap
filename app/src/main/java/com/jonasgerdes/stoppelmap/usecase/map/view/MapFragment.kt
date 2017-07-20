@@ -17,13 +17,11 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.TileOverlayOptions
+import com.google.android.gms.maps.model.*
 import com.jakewharton.rxbinding2.support.v7.widget.queryTextChanges
 import com.jakewharton.rxbinding2.view.clicks
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
@@ -45,6 +43,7 @@ import kotlin.properties.Delegates
  */
 class MapFragment : LifecycleFragment(), MapView {
     private var map by Delegates.notNull<GoogleMap>()
+    private val mapMarkers: ArrayList<Marker> = ArrayList()
 
     private lateinit var presenter: MapPresenter
     private lateinit var bottomSheetbehavior: BottomSheetBehaviorGoogleMapsLike<View>
@@ -182,6 +181,18 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun getSearchResultSelectionEvents(): Observable<MapSearchResult> {
         return searchAdapter.selections()
+    }
+
+    override fun setMarkers(markers: List<MapMarker>) {
+        mapMarkers.clear()
+        markers.map {
+            MarkerOptions()
+                    .position(it.position)
+                    .title(it.title)
+
+        }.map {
+            map.addMarker(it)
+        }.toCollection(mapMarkers)
     }
 
     override fun toggleBottomSheet(show: Boolean) {
