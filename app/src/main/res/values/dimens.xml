@@ -5,8 +5,9 @@
 
     <dimen name="map_padding_top">96dp</dimen>
     <dimen name="map_marker_text_size">16sp</dimen>
-    <dimen name="map_marker_stroke_width">4dp</dimen>
+    <dimen name="map_marker_stroke_width">3dp</dimen>
     <dimen name="map_marker_padding">4dp</dimen>
+    <dimen name="map_marker_icon_size">20dp</dimen>
 
     <dimen name="map_bottom_sheet_anchor_point">300dp</dimen>
     <dimen name="map_bottom_sheet_peek_height">80dp</dimen>
