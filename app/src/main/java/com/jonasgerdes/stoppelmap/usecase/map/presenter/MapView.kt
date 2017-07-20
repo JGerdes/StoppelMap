@@ -23,6 +23,7 @@ interface MapView {
     fun toggleSearchResults(show: Boolean)
 
     fun getMapMoveEvents(): Observable<CameraPosition>
+    fun getMapClicks(): Observable<LatLng>
     fun getUserLocationEvents(): Observable<Location>
     fun getSearchEvents(): Observable<CharSequence>
     fun getSearchResultSelectionEvents(): Observable<MapSearchResult>

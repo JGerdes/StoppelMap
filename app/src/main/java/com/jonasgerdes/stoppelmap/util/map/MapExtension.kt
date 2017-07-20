@@ -15,6 +15,10 @@ fun GoogleMap.idles(): Observable<CameraPosition> {
     return MapIdleObservable(this)
 }
 
+fun GoogleMap.clicks(): Observable<LatLng> {
+    return MapClickObservable(this)
+}
+
 fun Location.latLng(): LatLng {
     return LatLng(latitude, longitude)
 }
