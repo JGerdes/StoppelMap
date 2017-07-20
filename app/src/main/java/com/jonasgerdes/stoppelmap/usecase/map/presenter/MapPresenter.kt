@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
-import android.util.Log
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapViewState
@@ -36,9 +35,7 @@ class MapPresenter(
         disposables += view.getUserLocationEvents()
                 .subscribe(interactor::onUserMoved)
         disposables += view.getMapClicks()
-                .subscribe {
-                    Log.d("MapPresenter", "clicked: " + it.toString())
-                }
+                .subscribe(interactor::onMapClicked)
         disposables += view.getSearchEvents()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .map { it.toString().trim() }

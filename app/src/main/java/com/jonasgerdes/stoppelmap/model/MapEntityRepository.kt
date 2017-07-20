@@ -1,11 +1,13 @@
 package com.jonasgerdes.stoppelmap.model
 
+import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
 import com.jonasgerdes.stoppelmap.util.asList
 import com.jonasgerdes.stoppelmap.util.asRxObservable
+import com.jonasgerdes.stoppelmap.util.map.isIn
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.zip
@@ -79,5 +81,11 @@ class MapEntityRepository : Disposable {
                     .asRxObservable()
                     .map { it.asList() }
         }
+    }
+
+    fun getEntityOn(position: LatLng): MapEntity? {
+        return realm.where(MapEntity::class.java)
+                .findAll()
+                .firstOrNull { position.isIn(it.bounds) }
     }
 }
