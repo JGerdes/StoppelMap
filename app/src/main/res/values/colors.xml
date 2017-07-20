@@ -11,4 +11,6 @@
 
     <color name="tint_icon_active">@color/text_dark</color>
     <color name="tint_icon_inactive">#61000000</color>
+
+    <color name="map_marker_icon">#2e1704</color>
 </resources>
