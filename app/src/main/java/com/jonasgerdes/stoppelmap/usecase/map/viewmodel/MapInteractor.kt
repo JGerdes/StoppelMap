@@ -70,20 +70,22 @@ class MapInteractor : ViewModel() {
 
     fun onMapClicked(position: LatLng) {
         val entity = repository.getEntityOn(position)
-        if (entity != null) {
-            stateSubject.onNext(MapViewState.EntityDetail(
-                    Settings.detailZoom,
-                    stateSubject.value.bounds,
-                    stateSubject.value.visibleEntities,
-                    entity
-            ))
-        } else {
-            MapViewState.Exploring(
-                    stateSubject.value.center,
-                    stateSubject.value.zoom,
-                    stateSubject.value.bounds,
-                    stateSubject.value.visibleEntities)
-        }
+        stateSubject.onNext(
+                if (entity != null) {
+                    MapViewState.EntityDetail(
+                            Settings.detailZoom,
+                            stateSubject.value.bounds,
+                            stateSubject.value.visibleEntities,
+                            entity
+                    )
+                } else {
+                    MapViewState.Exploring(
+                            stateSubject.value.center,
+                            stateSubject.value.zoom,
+                            stateSubject.value.bounds,
+                            stateSubject.value.visibleEntities)
+                }
+        )
     }
 
     fun onSearchChanged(term: String) {
