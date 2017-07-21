@@ -36,6 +36,7 @@ sealed class MapViewState(
             zoom: Float,
             bounds: MapBounds,
             visibleEntities: List<MapEntity>,
-            val entity: MapEntity
-    ) : MapViewState(entity.center.latLng, zoom, bounds, visibleEntities)
+            val entity: MapEntity,
+            center: LatLng = entity.center.latLng
+    ) : MapViewState(center, zoom, bounds, visibleEntities)
 }

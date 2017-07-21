@@ -21,12 +21,14 @@ interface MapView {
     fun toggleSearchFieldFocus(isFocused: Boolean)
     fun setSearchResults(results: List<MapSearchResult>)
     fun toggleSearchResults(show: Boolean)
+    fun toggleMyLocationButton(show: Boolean)
 
     fun getMapMoveEvents(): Observable<CameraPosition>
     fun getMapClicks(): Observable<LatLng>
     fun getUserLocationEvents(): Observable<Location>
     fun getSearchEvents(): Observable<CharSequence>
     fun getSearchResultSelectionEvents(): Observable<MapSearchResult>
+    fun getBottomSheetStateEvents(): Observable<Int>
 
     fun setMarkers(markers: List<MapMarker>)
 

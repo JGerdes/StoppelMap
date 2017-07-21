@@ -41,12 +41,22 @@ class MapInteractor : ViewModel() {
     val state get() = stateSubject.hide()
 
     fun onMapMoved(position: CameraPosition) {
-        stateSubject.onNext(MapViewState.Exploring(
-                position.target,
-                position.zoom,
-                stateSubject.value.bounds,
-                repository.getVisibleEntities(position.zoom))
-        )
+        stateSubject.onNext(
+                when (stateSubject.value) {
+                    is MapViewState.EntityDetail -> MapViewState.EntityDetail(
+                            position.zoom,
+                            stateSubject.value.bounds,
+                            repository.getVisibleEntities(position.zoom),
+                            (stateSubject.value as MapViewState.EntityDetail).entity,
+                            position.target
+                    )
+                    else -> MapViewState.Exploring(
+                            position.target,
+                            position.zoom,
+                            stateSubject.value.bounds,
+                            repository.getVisibleEntities(position.zoom))
+
+                })
     }
 
     fun onUserMoved(location: Location) {
@@ -96,6 +106,14 @@ class MapInteractor : ViewModel() {
                     result.entity
             ))
         }
+    }
+
+    fun onBottomSheetClosed(state: Int) {
+        stateSubject.onNext(MapViewState.Exploring(
+                stateSubject.value.center,
+                stateSubject.value.zoom,
+                stateSubject.value.bounds,
+                stateSubject.value.visibleEntities))
     }
 
     override fun onCleared() {
