@@ -86,7 +86,7 @@
         app:layout_behavior="@string/BottomSheetBehaviorGoogleMapsLike">
 
         <include
-            layout="@layout/bottom_sheet_content"
+            layout="@layout/map_entity_bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"/>

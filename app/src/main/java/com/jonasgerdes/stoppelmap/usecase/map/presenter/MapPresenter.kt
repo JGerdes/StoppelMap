@@ -112,6 +112,8 @@ class MapPresenter(
 
         state.entity.name?.let { view.setBottomSheetTitle(it) }
         view.setBottomSheetImage(Assets.getHeadersFor(state.entity)[0])
+        view.setBottomSheetIcons(Assets.getIconsFor(state.entity)
+                .filter { i -> i != Assets.NONE })
 
         //workaround: wait 500ms so keyboard is actually closed before showing bottom sheet
         Completable.complete()

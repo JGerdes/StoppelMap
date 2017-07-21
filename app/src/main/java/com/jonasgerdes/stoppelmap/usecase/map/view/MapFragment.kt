@@ -36,7 +36,7 @@ import com.jonasgerdes.stoppelmap.util.map.idles
 import com.jonasgerdes.stoppelmap.util.map.markerClicks
 import com.jonasgerdes.stoppelmap.util.map.stateChanges
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.bottom_sheet_content.*
+import kotlinx.android.synthetic.main.map_entity_bottom_sheet.*
 import kotlinx.android.synthetic.main.map_fragment.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import javax.inject.Inject
@@ -245,5 +245,15 @@ class MapFragment : LifecycleFragment(), MapView {
                 .load(imageUri)
                 .centerCrop()
                 .into(bottomSheetImage)
+    }
+
+    override fun setBottomSheetIcons(icons: List<Int>) {
+        with(bottomSheetIconList) {
+            iconTint = R.color.tint_icon_active_light
+            iconSize = 20
+            iconMargin = 4
+            setIcons(icons)
+        }
+
     }
 }
