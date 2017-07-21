@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
-import android.util.Log
+import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
@@ -49,11 +49,12 @@ class MapPresenter(
         disposables += view.getSearchResultSelectionEvents()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(interactor::onSearchResultSelected)
+        disposables += view.getBottomSheetStateEvents()
+                .filter { it == STATE_HIDDEN }
+                .subscribe(interactor::onBottomSheetClosed)
 
         disposables += visibleEntitySubject
-                .doOnNext { Log.d("MapPresenter", "visible Entities changed:" + it.size) }
                 .distinctUntilChanged { first, second -> first.size == second.size }
-                .doOnNext { Log.d("MapPresenter", "not equal") }
                 .map {
                     it.map {
                         MapMarker(
@@ -79,11 +80,12 @@ class MapPresenter(
 
     private fun renderExploring(state: MapViewState.Exploring) {
         renderDefault(state)
+        view.toggleMyLocationButton(true)
     }
 
     private fun renderDefault(state: MapViewState) {
         view.toggleSearchResults(false)
-        //view.toggleBottomSheet(false)
+        view.toggleBottomSheet(false)
     }
 
     private fun updateMap(state: MapViewState) {
@@ -95,6 +97,7 @@ class MapPresenter(
 
     private fun renderSearch(state: MapViewState.Searching) {
         view.setSearchField(state.searchTerm)
+        view.toggleMyLocationButton(true)
         //view.toggleBottomSheet(false)
         disposables += state.results.subscribe {
             view.toggleSearchResults(!it.isEmpty())
@@ -106,6 +109,7 @@ class MapPresenter(
         state.entity.name?.let { view.setSearchField(it) }
         view.toggleSearchResults(false)
         view.toggleSearchFieldFocus(false)
+        view.toggleMyLocationButton(false)
 
         state.entity.name?.let { view.setBottomSheetTitle(it) }
         view.setBottomSheetImage(Assets.getHeadersFor(state.entity)[0])

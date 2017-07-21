@@ -34,6 +34,7 @@ import com.jonasgerdes.stoppelmap.util.asset.MarkerIconFactory
 import com.jonasgerdes.stoppelmap.util.map.clicks
 import com.jonasgerdes.stoppelmap.util.map.idles
 import com.jonasgerdes.stoppelmap.util.map.markerClicks
+import com.jonasgerdes.stoppelmap.util.map.stateChanges
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlinx.android.synthetic.main.map_fragment.*
@@ -47,7 +48,6 @@ import kotlin.properties.Delegates
  * @since 16.06.2017
  */
 class MapFragment : LifecycleFragment(), MapView {
-
     @Inject
     lateinit var markerFactory: MarkerIconFactory
 
@@ -181,6 +181,14 @@ class MapFragment : LifecycleFragment(), MapView {
         }
     }
 
+    override fun toggleMyLocationButton(show: Boolean) {
+        if (show) {
+            locationFab.show()
+        } else {
+            locationFab.hide()
+        }
+    }
+
     override fun getMapMoveEvents(): Observable<CameraPosition> {
         return map.idles()
     }
@@ -195,6 +203,10 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun getSearchResultSelectionEvents(): Observable<MapSearchResult> {
         return searchAdapter.selections()
+    }
+
+    override fun getBottomSheetStateEvents(): Observable<Int> {
+        return bottomSheetbehavior.stateChanges()
     }
 
     override fun setMarkers(markers: List<MapMarker>) {
@@ -215,7 +227,9 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun toggleBottomSheet(show: Boolean) {
         if (show) {
-            bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED
+            if (bottomSheetbehavior.state == BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN) {
+                bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED
+            }
         } else {
             bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
         }

@@ -30,7 +30,7 @@ public class BottomSheetBehaviorGoogleMapsLike<V extends View> extends Coordinat
     /**
      * Callback for monitoring events about bottom sheets.
      */
-    public abstract static class BottomSheetCallback {
+    public abstract static interface BottomSheetCallback {
 
         /**
          * Called when the bottom sheet changes its state.
@@ -535,6 +535,17 @@ public class BottomSheetBehaviorGoogleMapsLike<V extends View> extends Coordinat
             mCallback = new Vector<>();
 
         mCallback.add(callback);
+    }
+
+    /**
+     * Removes a callback to be notified of bottom sheet events.
+     *
+     * @param callback The callback to notify when bottom sheet events occur.
+     */
+    public void removeBottomSheetCallback(BottomSheetCallback callback) {
+        if (mCallback.contains(callback)) {
+            mCallback.remove(callback);
+        }
     }
 
     /**
