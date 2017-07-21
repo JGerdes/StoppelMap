@@ -81,6 +81,9 @@ class MapPresenter(
     private fun renderExploring(state: MapViewState.Exploring) {
         renderDefault(state)
         view.toggleMyLocationButton(true)
+        if (state.message != Assets.NONE) {
+            view.showMessage(state.message)
+        }
     }
 
     private fun renderDefault(state: MapViewState) {
