@@ -35,4 +35,5 @@ interface MapView {
     fun toggleBottomSheet(show: Boolean)
     fun setBottomSheetTitle(title: String)
     fun setBottomSheetImage(imageUri: Uri)
+    fun setBottomSheetIcons(icons: List<Int>)
 }

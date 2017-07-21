@@ -9,8 +9,11 @@
     <color name="text_light">#FFFFFF</color>
     <color name="text_light_54">#80FFFFFF</color>
 
-    <color name="tint_icon_active">@color/text_dark</color>
-    <color name="tint_icon_inactive">#61000000</color>
+    <color name="tint_icon_active_dark">@color/text_dark</color>
+    <color name="tint_icon_inactive_dark">#61000000</color>
+
+    <color name="tint_icon_active_light">@color/text_light</color>
+    <color name="tint_icon_inactive_light">@color/text_light_54</color>
 
     <color name="map_marker_icon">#2e1704</color>
 </resources>

@@ -2,16 +2,12 @@ package com.jonasgerdes.stoppelmap.usecase.map.view.search
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
 import com.jonasgerdes.stoppelmap.util.asset.Assets
-import com.jonasgerdes.stoppelmap.util.setTint
 import kotlinx.android.synthetic.main.map_search_result_single.view.*
-import org.jetbrains.anko.dip
-import org.jetbrains.anko.imageView
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -33,29 +29,14 @@ abstract class SearchResultHolder<in E : MapSearchResult>(itemView: View)
                 } else {
                     alias.visibility = View.GONE
                 }
-                setIcons(Assets.getIconsFor(result.entity)
+                iconList.iconTint = R.color.tint_icon_active_dark
+                iconList.setIcons(Assets.getIconsFor(result.entity)
                         .filter { i -> i != Assets.NONE })
 
                 Glide.with(context)
                         .load(Assets.getHeadersFor(result.entity)[0])
                         .centerCrop()
                         .into(thumbnail)
-            }
-        }
-
-        fun setIcons(icons: List<Int>) {
-            itemView.iconList.removeAllViews()
-            with(itemView.iconList) {
-                icons.forEach {
-                    imageView(it) {
-                        setTint(R.color.tint_icon_active)
-                    }.layoutParams = LinearLayout.LayoutParams(dip(16), dip(16))
-                }
-                visibility = if (icons.isEmpty()) {
-                    View.GONE
-                } else {
-                    View.VISIBLE
-                }
             }
         }
 

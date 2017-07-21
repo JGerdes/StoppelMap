@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/alias"
         tools:text="Kühlings Niedersachsenhalle"/>
 
-    <LinearLayout
+    <com.jonasgerdes.stoppelmap.util.view.IconList
         android:id="@+id/iconList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -62,6 +62,6 @@
         app:layout_constraintStart_toEndOf="@+id/thumbnail"
         app:layout_constraintTop_toBottomOf="@+id/title">
 
-    </LinearLayout>
+    </com.jonasgerdes.stoppelmap.util.view.IconList>
 
 </android.support.constraint.ConstraintLayout>
