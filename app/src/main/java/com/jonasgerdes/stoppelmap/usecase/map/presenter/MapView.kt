@@ -36,4 +36,6 @@ interface MapView {
     fun setBottomSheetTitle(title: String)
     fun setBottomSheetImage(imageUri: Uri)
     fun setBottomSheetIcons(icons: List<Int>)
+
+    fun showMessage(messageResource: Int)
 }

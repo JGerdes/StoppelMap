@@ -7,6 +7,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -255,5 +256,9 @@ class MapFragment : LifecycleFragment(), MapView {
             setIcons(icons)
         }
 
+    }
+
+    override fun showMessage(messageResource: Int) {
+        Snackbar.make(view as View, messageResource, Snackbar.LENGTH_LONG).show()
     }
 }

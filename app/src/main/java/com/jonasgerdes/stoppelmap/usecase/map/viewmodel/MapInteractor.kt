@@ -5,6 +5,7 @@ import android.location.Location
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.App
+import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
@@ -60,12 +61,21 @@ class MapInteractor : ViewModel() {
     }
 
     fun onUserMoved(location: Location) {
-        stateSubject.onNext(MapViewState.Exploring(
-                location.latLng(),
-                stateSubject.value.zoom,
-                stateSubject.value.bounds,
-                repository.getVisibleEntities(stateSubject.value.zoom))
-        )
+        stateSubject.onNext(
+                if (Settings.cameraBounds.contains(location.latLng())) {
+                    MapViewState.Exploring(
+                            location.latLng(),
+                            stateSubject.value.zoom,
+                            stateSubject.value.bounds,
+                            repository.getVisibleEntities(stateSubject.value.zoom))
+                } else {
+                    MapViewState.Exploring(
+                            stateSubject.value.center,
+                            stateSubject.value.zoom,
+                            stateSubject.value.bounds,
+                            stateSubject.value.visibleEntities,
+                            R.string.map_my_location_not_in_bounds)
+                })
     }
 
     fun onMapClicked(position: LatLng) {

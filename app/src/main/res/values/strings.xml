@@ -6,4 +6,5 @@
     <string name="main_navigation_schedule_bus">Fahrpläne</string>
     <string name="main_navigation_information">Info</string>
     <string name="map_search_hint">Suche nach Zelten, Fahrgeschäften, Speißen,…</string>
+    <string name="map_my_location_not_in_bounds">Du befindest Dich nicht auf dem Festgelände</string>
 </resources>
