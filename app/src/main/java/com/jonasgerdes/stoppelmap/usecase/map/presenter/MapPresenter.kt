@@ -109,7 +109,6 @@ class MapPresenter(
         state.entity.name?.let { view.setSearchField(it) }
         view.toggleSearchResults(false)
         view.toggleSearchFieldFocus(false)
-        view.toggleMyLocationButton(false)
 
         state.entity.name?.let { view.setBottomSheetTitle(it) }
         view.setBottomSheetImage(Assets.getHeadersFor(state.entity)[0])
@@ -120,6 +119,7 @@ class MapPresenter(
                 .delay(500, TimeUnit.MILLISECONDS)
                 .subscribe {
                     view.toggleBottomSheet(true)
+                    view.toggleMyLocationButton(false)
                 }
     }
 
