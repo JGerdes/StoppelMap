@@ -12,27 +12,30 @@ import io.reactivex.Observable
 sealed class MapViewState(
         val center: LatLng,
         val zoom: Float,
-        val bounds: MapBounds
+        val bounds: MapBounds,
+        val visibleEntities: List<MapEntity>
 ) {
 
     class Exploring(
             center: LatLng,
             zoom: Float,
             bounds: MapBounds,
-            val visibleEntities: Observable<List<MapEntity>> = Observable.just(emptyList())
-    ) : MapViewState(center, zoom, bounds)
+            visibleEntities: List<MapEntity>
+    ) : MapViewState(center, zoom, bounds, visibleEntities)
 
     class Searching(
             center: LatLng,
             zoom: Float,
             bounds: MapBounds,
+            visibleEntities: List<MapEntity>,
             val searchTerm: String,
             val results: Observable<List<MapSearchResult>>
-    ) : MapViewState(center, zoom, bounds)
+    ) : MapViewState(center, zoom, bounds, visibleEntities)
 
     class EntityDetail(
             zoom: Float,
             bounds: MapBounds,
+            visibleEntities: List<MapEntity>,
             val entity: MapEntity
-    ) : MapViewState(entity.center.latLng, zoom, bounds)
+    ) : MapViewState(entity.center.latLng, zoom, bounds, visibleEntities)
 }

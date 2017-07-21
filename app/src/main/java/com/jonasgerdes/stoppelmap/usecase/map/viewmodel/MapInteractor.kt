@@ -64,6 +64,7 @@ class MapInteractor : ViewModel() {
             stateSubject.onNext(MapViewState.EntityDetail(
                     Settings.detailZoom,
                     stateSubject.value.bounds,
+                    stateSubject.value.visibleEntities,
                     entity
             ))
         } else {
@@ -71,7 +72,7 @@ class MapInteractor : ViewModel() {
                     stateSubject.value.center,
                     stateSubject.value.zoom,
                     stateSubject.value.bounds,
-                    repository.getVisibleEntities(stateSubject.value.zoom))
+                    stateSubject.value.visibleEntities)
         }
     }
 
@@ -80,6 +81,7 @@ class MapInteractor : ViewModel() {
                 stateSubject.value.center,
                 stateSubject.value.zoom,
                 stateSubject.value.bounds,
+                stateSubject.value.visibleEntities,
                 term,
                 repository.searchFor(term)
         ))
@@ -90,6 +92,7 @@ class MapInteractor : ViewModel() {
             is SingleEntitySearchResult -> stateSubject.onNext(MapViewState.EntityDetail(
                     Settings.detailZoom,
                     stateSubject.value.bounds,
+                    stateSubject.value.visibleEntities,
                     result.entity
             ))
         }

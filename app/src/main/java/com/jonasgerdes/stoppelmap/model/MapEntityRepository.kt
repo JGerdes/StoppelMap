@@ -72,14 +72,13 @@ class MapEntityRepository : Disposable {
         realm.close()
     }
 
-    fun getVisibleEntities(zoom: Float): Observable<List<MapEntity>> {
+    fun getVisibleEntities(zoom: Float): List<MapEntity> {
         if (zoom < Settings.detailZoom) {
-            return Observable.just(emptyList())
+            return emptyList()
         } else {
             return realm.where(MapEntity::class.java)
-                    .findAllAsync()
-                    .asRxObservable()
-                    .map { it.asList() }
+                    .findAll()
+                    .asList()
         }
     }
 
