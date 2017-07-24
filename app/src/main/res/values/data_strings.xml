@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Dishes -->
     <string name="dish_type_pizza">Pizza</string>
     <string name="dish_type_fries">Pommes</string>
     <string name="dish_type_sausauge">Bratwurst</string>
@@ -22,9 +23,39 @@
     <string name="dish_type_chinese">Chinesisch</string>
     <string name="dish_type_spit_roast">Spießbraten</string>
 
+    <!-- Candy -->
+    <string name="candy_type_crepe">Crepé</string>
+    <string name="candy_type_roasted_almonds">Gebrannte Mandeln</string>
+    <string name="candy_type_ice_Cream">Eis</string>
+    <string name="candy_type_slush">Slusheis</string>
+    <string name="candy_type_cotton_Candy">Zuckerwatte</string>
+    <string name="candy_type_gingerbread">Lebkuchen</string>
+    <string name="candy_type_waffle">Waffeln</string>
+    <string name="candy_type_wine_gums">Weingummi</string>
+    <string name="candy_type_poffertje">Poffertje</string>
+
+    <!-- Drinks -->
     <string name="drink_type_beer">Bier</string>
     <string name="drink_type_softdrins">Softdrinks</string>
     <string name="drink_type_shots">Shots</string>
     <string name="drink_type_longdrinks">Longdrinks</string>
     <string name="drink_type_cocktails">Cocktails</string>
+
+    <!-- Games -->
+    <string name="game_type_cross_bow">Armbrust</string>
+    <string name="game_type_machine">Automat</string>
+    <string name="game_type_basketball">Basketball</string>
+    <string name="game_type_archery">Bogenschießen</string>
+    <string name="game_type_darts">Dart</string>
+    <string name="game_type_can_knockdown">Dosenwerfen</string>
+    <string name="game_type_duck_pond">Ententeich</string>
+    <string name="game_type_pull_strings">Fändenziehen</string>
+    <string name="game_type_football">Fußball</string>
+    <string name="game_type_claw_crane">Greifarm</string>
+    <string name="game_type_high_striker">Hau-den-Lukas</string>
+    <string name="game_type_lottery">Losbude</string>
+    <string name="game_type_horse_race">Pferderennen</string>
+    <string name="game_type_ring_toss">Ringewerfen</string>
+    <string name="game_type_shooting">Schießbude</string>
+    <string name="game_type_skee_ball">Skee-Ball</string>
 </resources>
