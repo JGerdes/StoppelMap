@@ -12,7 +12,7 @@ import com.jonasgerdes.stoppelmap.model.entity.map.*
  */
 object Assets {
 
-    val NONE = -1
+    val NONE = 0
     val PATH_PICTURES = "file:///android_asset/pictures"
 
     fun getTypeIconFor(entity: MapEntity): Int {
@@ -97,7 +97,7 @@ object Assets {
                 })
     }
 
-    fun  getIconsFor(product: Product): Int {
+    fun getIconsFor(product: Product): Int {
         return R.drawable.ic_entity_food_black_24dp
     }
 
