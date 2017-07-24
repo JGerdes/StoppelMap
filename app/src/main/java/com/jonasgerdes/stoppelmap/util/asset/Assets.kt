@@ -98,7 +98,11 @@ object Assets {
     }
 
     fun getIconsFor(product: Product): Int {
-        return R.drawable.ic_entity_food_black_24dp
+        return when {
+            product.name.startsWith("dish_type") -> R.drawable.ic_entity_food_black_24dp
+            product.name.startsWith("drink_type") -> R.drawable.ic_entity_bar_black_24dp
+            else -> NONE
+        }
     }
 
 
