@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model
 
 import com.google.android.gms.maps.model.LatLng
+import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.entity.Product
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
@@ -10,6 +11,7 @@ import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResu
 import com.jonasgerdes.stoppelmap.util.asList
 import com.jonasgerdes.stoppelmap.util.asRxObservable
 import com.jonasgerdes.stoppelmap.util.asset.Assets
+import com.jonasgerdes.stoppelmap.util.asset.StringResourceHelper
 import com.jonasgerdes.stoppelmap.util.map.isIn
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
@@ -17,6 +19,7 @@ import io.reactivex.rxkotlin.zip
 import io.realm.Case
 import io.realm.Realm
 import io.realm.RealmResults
+import javax.inject.Inject
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -25,6 +28,11 @@ import io.realm.RealmResults
 class MapEntityRepository : Disposable {
 
     private val realm: Realm = Realm.getDefaultInstance()
+    @Inject lateinit var stringHelper:StringResourceHelper
+
+    init {
+        App.graph.inject(this)
+    }
 
     fun searchFor(term: String): Observable<List<MapSearchResult>> {
         return if (term.isEmpty()) {
@@ -42,9 +50,11 @@ class MapEntityRepository : Disposable {
                             .asRxObservable()
                             .map { entities -> createEntityResult(entities, term) },
                     realm.where(Product::class.java)
-                            .like("name", "*$term*", Case.INSENSITIVE)
                             .findAllAsync()
                             .asRxObservable()
+                            .map { products -> products.filter {
+                                stringHelper.getNameFor(it).contains(term, true)}
+                            }
                             .map { products -> createProductResult(products, term) }
             ).zip {
                 val result = ArrayList<MapSearchResult>()
