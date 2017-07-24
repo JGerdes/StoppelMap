@@ -1,3 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="dish_type_pizza">Pizza</string>
+    <string name="dish_type_fries">Pommes</string>
+    <string name="dish_type_sausauge">Bratwurst</string>
+    <string name="dish_type_currywurst">Currywurst</string>
+    <string name="dish_type_hotdog">HotDog</string>
+    <string name="dish_type_hamburger">Hamburger</string>
+    <string name="dish_type_corn">Mais</string>
+    <string name="dish_type_mushrooms">Pilze</string>
+    <string name="dish_type_fish">Fisch</string>
+    <string name="dish_type_salmon">Lachs</string>
+    <string name="dish_type_steak">Steak</string>
+    <string name="dish_type_bread">Brote</string>
+    <string name="dish_type_pretzel">Brezel</string>
+    <string name="dish_type_churros">Churros</string>
+    <string name="dish_type_broccoli">Brokkoli</string>
+    <string name="dish_type_pasta">Pasta</string>
+    <string name="dish_type_fried_potatoes">Bratkartoffeln</string>
+    <string name="dish_type_fried_egg">Spiegelei</string>
+    <string name="dish_type_potato_fritter">Reibekuchen</string>
+    <string name="dish_type_chinese">Chinesisch</string>
+    <string name="dish_type_spit_roast">Spießbraten</string>
+
+    <string name="drink_type_beer">Bier</string>
+    <string name="drink_type_softdrins">Softdrinks</string>
+    <string name="drink_type_shots">Shots</string>
+    <string name="drink_type_longdrinks">Longdrinks</string>
+    <string name="drink_type_cocktails">Cocktails</string>
 </resources>
