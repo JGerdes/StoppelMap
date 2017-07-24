@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.util.asset
 import android.net.Uri
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Picture
+import com.jonasgerdes.stoppelmap.model.entity.Product
 import com.jonasgerdes.stoppelmap.model.entity.map.*
 
 /**
@@ -94,6 +95,10 @@ object Assets {
                     Restroom.TYPE -> PATH_PICTURES + "/default_header/${entity.type}.png"
                     else -> PATH_PICTURES + "/default_header/default.png"
                 })
+    }
+
+    fun  getIconsFor(product: Product): Int {
+        return R.drawable.ic_entity_food_black_24dp
     }
 
 

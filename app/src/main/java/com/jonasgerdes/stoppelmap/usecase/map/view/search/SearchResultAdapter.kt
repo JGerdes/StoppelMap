@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
+import com.jonasgerdes.stoppelmap.model.entity.map.search.ProductSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -27,7 +28,8 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
 
     override fun getItemViewType(position: Int): Int {
         return when (resultList[position]) {
-            is MapSearchResult -> R.layout.map_search_result_single
+            is SingleEntitySearchResult -> R.layout.map_search_result_single
+            is ProductSearchResult -> R.layout.map_search_result_product
             else -> -1
         }
     }
@@ -35,8 +37,9 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SearchResultHolder<*> {
         val view = LayoutInflater.from(parent?.context).inflate(viewType, parent, false)
         val holder = when (viewType) {
-            R.layout.map_search_result_single -> SearchResultHolder.SingleResult(view)
-            else -> SearchResultHolder.SingleResult(view)
+            R.layout.map_search_result_single -> SingleResultHolder(view)
+            R.layout.map_search_result_product -> ProductResultHolder(view)
+            else -> SingleResultHolder(view)
         }
         holder.itemView.setOnClickListener({
             selectionSubject.onNext(resultList[holder.adapterPosition])
@@ -46,7 +49,8 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
 
     override fun onBindViewHolder(holder: SearchResultHolder<*>?, position: Int) {
         when (holder) {
-            is SearchResultHolder.SingleResult -> holder.onBind(resultList[position] as SingleEntitySearchResult)
+            is SingleResultHolder -> holder.onBind(resultList[position] as SingleEntitySearchResult)
+            is ProductResultHolder -> holder.onBind(resultList[position] as ProductSearchResult)
         }
     }
 
