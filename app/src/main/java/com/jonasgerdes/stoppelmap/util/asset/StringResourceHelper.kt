@@ -10,13 +10,24 @@ import com.jonasgerdes.stoppelmap.util.asset.Assets.NONE
  */
 
 class StringResourceHelper(val context: Context) {
-    
+
+    val cache = HashMap<String, String>()
+
     fun getNameFor(product: Product): String {
+        if (cache.containsKey(product.name)) {
+            return cache[product.name]!!
+        }
         val resId = context.resources.getIdentifier(product.name, "string", context.packageName)
-        return if (resId != NONE) {
+        val name = if (resId != NONE) {
             context.getString(resId)
         } else {
             product.name
         }
+        cache[product.name] = name
+        return name
+    }
+
+    fun resetCache() {
+        cache.clear()
     }
 }
