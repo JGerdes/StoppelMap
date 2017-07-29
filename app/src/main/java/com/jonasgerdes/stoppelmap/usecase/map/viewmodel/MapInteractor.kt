@@ -2,13 +2,17 @@ package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import android.location.Location
+import android.util.Log
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
+import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
+import com.jonasgerdes.stoppelmap.model.entity.map.boundsFor
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
+import com.jonasgerdes.stoppelmap.model.entity.map.search.ProductSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
 import com.jonasgerdes.stoppelmap.util.map.latLng
 import io.reactivex.subjects.BehaviorSubject
@@ -42,6 +46,7 @@ class MapInteractor : ViewModel() {
     val state get() = stateSubject.hide()
 
     fun onMapMoved(position: CameraPosition) {
+        Log.d("MapInteractor", "zoom: " + position.zoom)
         stateSubject.onNext(
                 when (stateSubject.value) {
                     is MapViewState.EntityDetail -> MapViewState.EntityDetail(
@@ -117,6 +122,15 @@ class MapInteractor : ViewModel() {
                     stateSubject.value.visibleEntities,
                     result.entity
             ))
+            is ProductSearchResult -> {
+                val bounds = MapEntity.boundsFor(result.entities)
+                stateSubject.onNext(MapViewState.Exploring(
+                        bounds.center,
+                        stateSubject.value.zoom,
+                        stateSubject.value.bounds,
+                        result.entities
+                ))
+            }
         }
     }
 

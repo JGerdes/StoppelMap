@@ -16,6 +16,7 @@ open class MapEntity : RealmObject() {
     var type: String? = null
     lateinit var center: GeoLocation
     var bounds: RealmList<GeoLocation> = RealmList()
+    var zoomLevel = 20f
 
     var name: String? = null
     var alias: RealmList<RealmString> = RealmList()
@@ -34,4 +35,6 @@ open class MapEntity : RealmObject() {
     var exhibition: Exhibition? = null
 
     class MapEntities : ArrayList<MapEntity>()
+
+    companion object
 }
