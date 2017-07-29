@@ -15,5 +15,5 @@
     <color name="tint_icon_active_light">@color/text_light</color>
     <color name="tint_icon_inactive_light">@color/text_light_54</color>
 
-    <color name="map_marker_icon">#2e1704</color>
+    <color name="map_marker_icon">@color/text_light</color>
 </resources>

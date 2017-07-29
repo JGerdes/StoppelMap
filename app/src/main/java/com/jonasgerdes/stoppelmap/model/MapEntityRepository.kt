@@ -2,7 +2,6 @@ package com.jonasgerdes.stoppelmap.model
 
 import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.App
-import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.entity.Product
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
@@ -28,7 +27,7 @@ import javax.inject.Inject
 class MapEntityRepository : Disposable {
 
     private val realm: Realm = Realm.getDefaultInstance()
-    @Inject lateinit var stringHelper:StringResourceHelper
+    @Inject lateinit var stringHelper: StringResourceHelper
 
     init {
         App.graph.inject(this)
@@ -52,8 +51,10 @@ class MapEntityRepository : Disposable {
                     realm.where(Product::class.java)
                             .findAllAsync()
                             .asRxObservable()
-                            .map { products -> products.filter {
-                                stringHelper.getNameFor(it).contains(term, true)}
+                            .map { products ->
+                                products.filter {
+                                    stringHelper.getNameFor(it).contains(term, true)
+                                }
                             }
                             .map { products -> createProductResult(products, term) }
             ).zip {
@@ -104,13 +105,10 @@ class MapEntityRepository : Disposable {
     }
 
     fun getVisibleEntities(zoom: Float): List<MapEntity> {
-        if (zoom < Settings.detailZoom) {
-            return emptyList()
-        } else {
-            return realm.where(MapEntity::class.java)
-                    .findAll()
-                    .asList()
-        }
+        return realm.where(MapEntity::class.java)
+                .lessThanOrEqualTo("zoomLevel", zoom)
+                .findAll()
+                .asList()
     }
 
     fun getEntityOn(position: LatLng): MapEntity? {
