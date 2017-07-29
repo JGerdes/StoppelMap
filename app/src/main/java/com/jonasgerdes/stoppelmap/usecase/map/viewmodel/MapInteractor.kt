@@ -46,7 +46,7 @@ class MapInteractor : ViewModel() {
     val state get() = stateSubject.hide()
 
     fun onMapMoved(position: CameraPosition) {
-        Log.d("MapInteractor", "zoom: " + position.zoom)
+        Log.d("MapInteractor", "zoom: "+position.zoom)
         stateSubject.onNext(
                 when (stateSubject.value) {
                     is MapViewState.EntityDetail -> MapViewState.EntityDetail(
@@ -88,7 +88,7 @@ class MapInteractor : ViewModel() {
         stateSubject.onNext(
                 if (entity != null) {
                     MapViewState.EntityDetail(
-                            Settings.detailZoom,
+                            entity.zoomLevel,
                             stateSubject.value.bounds,
                             stateSubject.value.visibleEntities,
                             entity
@@ -117,7 +117,7 @@ class MapInteractor : ViewModel() {
     fun onSearchResultSelected(result: MapSearchResult) {
         when (result) {
             is SingleEntitySearchResult -> stateSubject.onNext(MapViewState.EntityDetail(
-                    Settings.detailZoom,
+                    result.entity.zoomLevel,
                     stateSubject.value.bounds,
                     stateSubject.value.visibleEntities,
                     result.entity
