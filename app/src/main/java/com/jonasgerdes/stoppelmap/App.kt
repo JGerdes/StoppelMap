@@ -46,11 +46,14 @@ class App : Application(), AnkoLogger {
 
     private fun createRealmConfig(): RealmConfiguration {
         val builder = RealmConfiguration.Builder()
-        if (version.isStoreBuild) {
+        return if (version.isStoreBuild) {
             builder.assetFile("data.realm")
+            val config = builder.build()
+            Realm.deleteRealm(config)
+            config
         } else {
             builder.deleteRealmIfMigrationNeeded()
+                    .build()
         }
-        return builder.build()
     }
 }
