@@ -22,6 +22,9 @@
     <string name="dish_type_potato_fritter">Reibekuchen</string>
     <string name="dish_type_chinese">Chinesisch</string>
     <string name="dish_type_spit_roast">Spießbraten</string>
+    <string name="dish_type_gyros">Gyros</string>
+    <string name="dish_type_cheese">Käse</string>
+    <string name="dish_type_tarte_flambee">Flammkuchen</string>
 
     <!-- Candy -->
     <string name="candy_type_crepe">Crepé</string>
@@ -33,11 +36,13 @@
     <string name="candy_type_waffle">Waffeln</string>
     <string name="candy_type_wine_gums">Weingummi</string>
     <string name="candy_type_poffertje">Poffertje</string>
+    <string name="candy_type_backery">Backwaren</string>
+    <string name="candy_type_chocolate_fruits">Schokofrüchte</string>
 
     <!-- Drinks -->
     <string name="drink_type_beer">Bier</string>
-    <string name="drink_type_softdrins">Softdrinks</string>
-    <string name="drink_type_shots">Shots</string>
+    <string name="drink_type_softdrinks">Softdrinks</string>
+    <string name="drink_type_shots">Shots/Kurze</string>
     <string name="drink_type_longdrinks">Longdrinks</string>
     <string name="drink_type_cocktails">Cocktails</string>
 
