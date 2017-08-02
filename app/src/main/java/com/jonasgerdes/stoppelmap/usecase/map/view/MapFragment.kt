@@ -117,7 +117,7 @@ class MapFragment : LifecycleFragment(), MapView {
             map.addTileOverlay(
                     TileOverlayOptions().tileProvider(CustomMapTileProvider(resources.assets))
             )
-            map.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style))
+            map.mapType = GoogleMap.MAP_TYPE_NONE
             map.setPadding(0, resources.getDimensionPixelSize(R.dimen.map_padding_top), 0, 0)
             map.uiSettings.isMyLocationButtonEnabled = false
             presenter.bind()
