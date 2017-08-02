@@ -73,6 +73,7 @@ class MapPresenter(
         when (state) {
             is MapViewState.Searching -> renderSearch(state)
             is MapViewState.EntityDetail -> renderDetail(state)
+            is MapViewState.EntityGroupDetail -> renderGroupDetail(state)
             is MapViewState.Exploring -> renderExploring(state)
             else -> renderDefault(state)
         }
@@ -126,6 +127,11 @@ class MapPresenter(
                     view.toggleBottomSheet(true)
                     view.toggleMyLocationButton(false)
                 }
+    }
+
+    private fun renderGroupDetail(state: MapViewState.EntityGroupDetail) {
+        view.toggleSearchResults(false)
+        view.toggleSearchFieldFocus(false)
     }
 
     override fun isDisposed(): Boolean {

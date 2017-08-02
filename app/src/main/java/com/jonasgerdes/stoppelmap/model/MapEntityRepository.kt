@@ -51,10 +51,9 @@ class MapEntityRepository : Disposable {
                     realm.where(Product::class.java)
                             .findAllAsync()
                             .asRxObservable()
-                            .map { products ->
-                                products.filter {
+                            .map { it.filter {
                                     stringHelper.getNameFor(it).contains(term, true)
-                                }
+                                }.distinctBy { it.name }
                             }
                             .map { products -> createProductResult(products, term) }
             ).zip {

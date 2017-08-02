@@ -41,4 +41,11 @@ sealed class MapViewState(
             val entity: MapEntity,
             center: LatLng = entity.center.latLng
     ) : MapViewState(center, zoom, bounds, visibleEntities)
+
+    class EntityGroupDetail(
+            center: LatLng,
+            zoom: Float,
+            bounds: MapBounds,
+            val entities: List<MapEntity>
+    ) : MapViewState(center, zoom, bounds, entities)
 }
