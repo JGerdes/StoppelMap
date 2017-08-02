@@ -46,7 +46,7 @@ class MapInteractor : ViewModel() {
     val state get() = stateSubject.hide()
 
     fun onMapMoved(position: CameraPosition) {
-        Log.d("MapInteractor", "zoom: "+position.zoom)
+        Log.d("MapInteractor", "zoom: " + position.zoom)
         stateSubject.onNext(
                 when (stateSubject.value) {
                     is MapViewState.EntityDetail -> MapViewState.EntityDetail(
@@ -55,6 +55,12 @@ class MapInteractor : ViewModel() {
                             repository.getVisibleEntities(position.zoom),
                             (stateSubject.value as MapViewState.EntityDetail).entity,
                             position.target
+                    )
+                    is MapViewState.EntityGroupDetail -> MapViewState.EntityGroupDetail(
+                            position.target,
+                            position.zoom,
+                            stateSubject.value.bounds,
+                            (stateSubject.value as MapViewState.EntityGroupDetail).entities
                     )
                     else -> MapViewState.Exploring(
                             position.target,
@@ -124,9 +130,9 @@ class MapInteractor : ViewModel() {
             ))
             is ProductSearchResult -> {
                 val bounds = MapEntity.boundsFor(result.entities)
-                stateSubject.onNext(MapViewState.Exploring(
+                stateSubject.onNext(MapViewState.EntityGroupDetail(
                         bounds.center,
-                        stateSubject.value.zoom,
+                        result.entities[0].zoomLevel,
                         stateSubject.value.bounds,
                         result.entities
                 ))
