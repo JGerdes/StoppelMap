@@ -76,7 +76,11 @@ class MapEntityRepository : Disposable {
             ProductSearchResult(product,
                     Assets.getIconsFor(product),
                     realm.where(MapEntity::class.java)
-                            .like("foodStall.dishes.name", product.name).findAll()
+                            .like("foodStall.dishes.name", product.name)
+                            .or().like("foodStall.drinks.name", product.name)
+                            .or().like("candyStall.products.name", product.name)
+                            .or().like("gameStall.games.name", product.name)
+                            .findAll()
             )
         }
     }
