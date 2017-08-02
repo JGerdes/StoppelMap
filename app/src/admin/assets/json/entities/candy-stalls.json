@@ -1,149 +1,256 @@
 [
   {
-    "slug": "gingerbread-londermann-otc5nz",
+    "slug": "landwermann-n2nhmw",
     "type": "candy-stall",
     "center": {
-      "lat": 52.747716083696005,
-      "lon": 8.29815101524
+      "lat": 52.746286360965,
+      "lon": 8.298555921750001
     },
     "bounds": [
       {
-        "lat": 52.74774285249,
-        "lon": 8.29807743296
+        "lat": 52.74633515689,
+        "lon": 8.2984936155
       },
       {
-        "lat": 52.74770145044,
-        "lon": 8.29827591643
+        "lat": 52.7462591324,
+        "lon": 8.29864733596
       },
       {
-        "lat": 52.74767593049,
-        "lon": 8.29826138866
+        "lat": 52.74623756504,
+        "lon": 8.298618228
       },
       {
-        "lat": 52.74771733257,
-        "lon": 8.29806290519
+        "lat": 52.74631358957,
+        "lon": 8.29846450754
       },
       {
-        "lat": 52.74774285249,
-        "lon": 8.29807743296
+        "lat": 52.74633515689,
+        "lon": 8.2984936155
       }
     ],
+    "name": "Landwermann",
     "alias": [],
-    "operator": "Londermann",
+    "operator": "Landwermann",
     "pictures": [],
     "candyStall": {
       "products": [
         {
           "name": "candy_type_gingerbread",
           "prices": []
+        },
+        {
+          "name": "candy_type_waffle",
+          "prices": []
         }
       ]
-    }
+    },
+    "zoomLevel": 20.0,
+    "area": 41.3772636951101
   },
   {
-    "slug": "candy-ahrens-ztbhnj",
+    "slug": "welte-ogjjyj",
     "type": "candy-stall",
     "center": {
-      "lat": 52.747789663816,
-      "lon": 8.297802163642
+      "lat": 52.746351146514996,
+      "lon": 8.298418696199999
     },
     "bounds": [
       {
-        "lat": 52.74781266763,
-        "lon": 8.29774618015
+        "lat": 52.74638867805,
+        "lon": 8.2983690316
       },
       {
-        "lat": 52.74777938368,
-        "lon": 8.29790040717
+        "lat": 52.74633515689,
+        "lon": 8.2984936155
       },
       {
-        "lat": 52.74775515809,
-        "lon": 8.29788613888
+        "lat": 52.74631361498,
+        "lon": 8.2984683608
       },
       {
-        "lat": 52.74778844205,
-        "lon": 8.29773191186
+        "lat": 52.74636713617,
+        "lon": 8.2983437769
       },
       {
-        "lat": 52.74781266763,
-        "lon": 8.29774618015
+        "lat": 52.74638867805,
+        "lon": 8.2983690316
+      }
+    ],
+    "name": "Welte",
+    "alias": [],
+    "operator": "Welte",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        },
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        },
+        {
+          "name": "candy_type_waffle",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 30.203896890092643
+  },
+  {
+    "slug": "buettner-zgqwyz",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746404613965,
+      "lon": 8.298190316405
+    },
+    "bounds": [
+      {
+        "lat": 52.74638791254,
+        "lon": 8.29821231605
+      },
+      {
+        "lat": 52.74639597639,
+        "lon": 8.29815804273
+      },
+      {
+        "lat": 52.74642131539,
+        "lon": 8.29816831676
+      },
+      {
+        "lat": 52.74641325155,
+        "lon": 8.29822259008
+      },
+      {
+        "lat": 52.74638791254,
+        "lon": 8.29821231605
+      }
+    ],
+    "name": "Büttner",
+    "alias": [],
+    "operator": "Büttner",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_poffertje",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 10.913235541985525
+  },
+  {
+    "slug": "candy-langenscheidt-njhimt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746497648170006,
+      "lon": 8.297503132820001
+    },
+    "bounds": [
+      {
+        "lat": 52.74652126429,
+        "lon": 8.29742159111
+      },
+      {
+        "lat": 52.74650058573,
+        "lon": 8.29759339633
+      },
+      {
+        "lat": 52.74647403205,
+        "lon": 8.29758467453
+      },
+      {
+        "lat": 52.74649471062,
+        "lon": 8.29741286931
+      },
+      {
+        "lat": 52.74652126429,
+        "lon": 8.29742159111
       }
     ],
     "alias": [],
-    "operator": "Ahrens",
+    "operator": "Langenscheidt",
     "pictures": [],
     "candyStall": {
       "products": []
-    }
+    },
+    "zoomLevel": 20.0,
+    "area": 35.49528806418951
   },
   {
-    "slug": "gingerbread-hoehnemann-yte0nz",
+    "slug": "roasted-almonds-risse-ntiyzt",
     "type": "candy-stall",
     "center": {
-      "lat": 52.747719793108004,
-      "lon": 8.297565418526
+      "lat": 52.746513731265,
+      "lon": 8.297365792385001
     },
     "bounds": [
       {
-        "lat": 52.74774122888,
-        "lon": 8.29751819238
+        "lat": 52.74653281995,
+        "lon": 8.29731810609
       },
       {
-        "lat": 52.74771281571,
-        "lon": 8.29765096173
+        "lat": 52.74652126429,
+        "lon": 8.29742159111
       },
       {
-        "lat": 52.74768763944,
-        "lon": 8.29763625774
+        "lat": 52.74649464258,
+        "lon": 8.29741347867
       },
       {
-        "lat": 52.74771605263,
-        "lon": 8.2975034884
+        "lat": 52.74650619825,
+        "lon": 8.29730999366
       },
       {
-        "lat": 52.74774122888,
-        "lon": 8.29751819238
+        "lat": 52.74653281995,
+        "lon": 8.29731810609
       }
     ],
     "alias": [],
-    "operator": "Höhnemann",
+    "operator": "Risse",
     "pictures": [],
     "candyStall": {
       "products": [
         {
-          "name": "candy_type_gingerbread",
+          "name": "candy_type_roasted_almonds",
           "prices": []
         }
       ]
-    }
+    },
+    "zoomLevel": 20.0,
+    "area": 21.321441808342136
   },
   {
-    "slug": "gingerbread-marx-ntzkyz",
+    "slug": "gingerbread-marx-zmqynd",
     "type": "candy-stall",
     "center": {
-      "lat": 52.747802993506,
-      "lon": 8.297176042662
+      "lat": 52.7464457432,
+      "lon": 8.29850637285
     },
     "bounds": [
       {
-        "lat": 52.74782809189,
-        "lon": 8.29711586103
+        "lat": 52.74643003527,
+        "lon": 8.29857399221
       },
       {
-        "lat": 52.74779237254,
-        "lon": 8.29728215799
+        "lat": 52.74640914647,
+        "lon": 8.29854625734
       },
       {
-        "lat": 52.74776534592,
-        "lon": 8.29726631511
+        "lat": 52.74646145115,
+        "lon": 8.29843875349
       },
       {
-        "lat": 52.74780106529,
-        "lon": 8.29710001815
+        "lat": 52.74648233993,
+        "lon": 8.29846648836
       },
       {
-        "lat": 52.74782809189,
-        "lon": 8.29711586103
+        "lat": 52.74643003527,
+        "lon": 8.29857399221
       }
     ],
     "alias": [],
@@ -156,39 +263,289 @@
           "prices": []
         }
       ]
-    }
+    },
+    "zoomLevel": 20.0,
+    "area": 27.665441270212206
   },
   {
-    "slug": "crepe-bronzil-yjjlog",
+    "slug": "duchert-owrimw",
     "type": "candy-stall",
     "center": {
-      "lat": 52.7475790641,
-      "lon": 8.297353209708001
+      "lat": 52.746565359144995,
+      "lon": 8.29793438267
     },
     "bounds": [
       {
-        "lat": 52.74759272519,
-        "lon": 8.29736928508
+        "lat": 52.74655354219,
+        "lon": 8.29782128267
       },
       {
-        "lat": 52.74756204346,
-        "lon": 8.29737554263
+        "lat": 52.74660697679,
+        "lon": 8.29784248038
       },
       {
-        "lat": 52.74755857247,
-        "lon": 8.29732909665
+        "lat": 52.74657717614,
+        "lon": 8.29804748267
       },
       {
-        "lat": 52.74758925419,
-        "lon": 8.2973228391
+        "lat": 52.7465237415,
+        "lon": 8.29802628496
       },
       {
-        "lat": 52.74759272519,
-        "lon": 8.29736928508
+        "lat": 52.74655354219,
+        "lon": 8.29782128267
+      }
+    ],
+    "name": "Duchert",
+    "alias": [],
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 19.0,
+    "area": 86.71640579334057
+  },
+  {
+    "slug": "gingerbread-oberschelp-ymvhnm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746557150345,
+      "lon": 8.296991017
+    },
+    "bounds": [
+      {
+        "lat": 52.74653110701,
+        "lon": 8.29709113801
+      },
+      {
+        "lat": 52.74655593126,
+        "lon": 8.29688206243
+      },
+      {
+        "lat": 52.74658319368,
+        "lon": 8.29689089599
+      },
+      {
+        "lat": 52.74655836944,
+        "lon": 8.29709997157
+      },
+      {
+        "lat": 52.74653110701,
+        "lon": 8.29709113801
       }
     ],
     "alias": [],
-    "operator": "Bronzil",
+    "operator": "Oberschelp",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 44.30300450048428
+  },
+  {
+    "slug": "roasted-almonds-schack-nwe4ym",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746813364714995,
+      "lon": 8.297101077874999
+    },
+    "bounds": [
+      {
+        "lat": 52.74678491219,
+        "lon": 8.29714804821
+      },
+      {
+        "lat": 52.74677886683,
+        "lon": 8.29706690668
+      },
+      {
+        "lat": 52.74684181726,
+        "lon": 8.29705410754
+      },
+      {
+        "lat": 52.7468478626,
+        "lon": 8.29713524907
+      },
+      {
+        "lat": 52.74678491219,
+        "lon": 8.29714804821
+      }
+    ],
+    "alias": [],
+    "operator": "Schack",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 38.80961483327772
+  },
+  {
+    "slug": "roasted-almonds-oberschelp-mjc1mg",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746665206334995,
+      "lon": 8.29697979686
+    },
+    "bounds": [
+      {
+        "lat": 52.74663878391,
+        "lon": 8.29706691138
+      },
+      {
+        "lat": 52.74665810746,
+        "lon": 8.29688306714
+      },
+      {
+        "lat": 52.74669162876,
+        "lon": 8.29689268234
+      },
+      {
+        "lat": 52.74667230523,
+        "lon": 8.29707652658
+      },
+      {
+        "lat": 52.74663878391,
+        "lon": 8.29706691138
+      }
+    ],
+    "alias": [],
+    "operator": "Oberschelp",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 47.516082991734635
+  },
+  {
+    "slug": "roasted-almonds-friedrich-oge0nt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746677346135,
+      "lon": 8.29682630544
+    },
+    "bounds": [
+      {
+        "lat": 52.74665810746,
+        "lon": 8.29688306714
+      },
+      {
+        "lat": 52.74666966308,
+        "lon": 8.29676250207
+      },
+      {
+        "lat": 52.74669658481,
+        "lon": 8.29676954374
+      },
+      {
+        "lat": 52.7466850292,
+        "lon": 8.29689010881
+      },
+      {
+        "lat": 52.74665810746,
+        "lon": 8.29688306714
+      }
+    ],
+    "alias": [],
+    "operator": "Friedrich",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 24.90274646670791
+  },
+  {
+    "slug": "candy-tillmanm-zmvlnd",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74709358854,
+      "lon": 8.297053093279999
+    },
+    "bounds": [
+      {
+        "lat": 52.7470595116,
+        "lon": 8.29709104188
+      },
+      {
+        "lat": 52.7470546833,
+        "lon": 8.29703122002
+      },
+      {
+        "lat": 52.74712766548,
+        "lon": 8.29701514468
+      },
+      {
+        "lat": 52.74713249378,
+        "lon": 8.29707496654
+      },
+      {
+        "lat": 52.7470595116,
+        "lon": 8.29709104188
+      }
+    ],
+    "alias": [],
+    "operator": "Tillmanm",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 33.25791254452325
+  },
+  {
+    "slug": "crepe-haesler-mtu1yj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74724920776,
+      "lon": 8.296966233395
+    },
+    "bounds": [
+      {
+        "lat": 52.74726507775,
+        "lon": 8.2970036322
+      },
+      {
+        "lat": 52.74723698687,
+        "lon": 8.29700720188
+      },
+      {
+        "lat": 52.74723333777,
+        "lon": 8.29692883458
+      },
+      {
+        "lat": 52.74726142865,
+        "lon": 8.29692526491
+      },
+      {
+        "lat": 52.74726507775,
+        "lon": 8.2970036322
+      }
+    ],
+    "alias": [],
+    "operator": "Häsler",
     "pictures": [],
     "candyStall": {
       "products": [
@@ -197,42 +554,2106 @@
           "prices": []
         }
       ]
-    }
+    },
+    "zoomLevel": 20.0,
+    "area": 16.573954708758507
   },
   {
-    "slug": "candy-vormeyer-ngzjod",
+    "slug": "gingerbread-marxm-m-w.-otqxmd",
     "type": "candy-stall",
     "center": {
-      "lat": 52.747509701596,
-      "lon": 8.29575356707
+      "lat": 52.74778130598,
+      "lon": 8.297232135285
     },
     "bounds": [
       {
-        "lat": 52.74750093406,
-        "lon": 8.29577073321
+        "lat": 52.7478124385,
+        "lon": 8.29715534325
       },
       {
-        "lat": 52.74749808877,
-        "lon": 8.29573290065
+        "lat": 52.74777594799,
+        "lon": 8.29732413434
       },
       {
-        "lat": 52.7475228529,
-        "lon": 8.29572781786
+        "lat": 52.74775017346,
+        "lon": 8.29730892732
       },
       {
-        "lat": 52.74752569819,
-        "lon": 8.29576565042
+        "lat": 52.74778666399,
+        "lon": 8.29714013623
       },
       {
-        "lat": 52.74750093406,
-        "lon": 8.29577073321
+        "lat": 52.7478124385,
+        "lon": 8.29715534325
       }
     ],
     "alias": [],
-    "operator": "Vormeyer",
+    "operator": "Marxm, M-W.",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 36.71425682458608
+  },
+  {
+    "slug": "gingerbread-hoenemann-yzvkyz",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747695861669996,
+      "lon": 8.297635149209999
+    },
+    "bounds": [
+      {
+        "lat": 52.74772242854,
+        "lon": 8.29757832569
+      },
+      {
+        "lat": 52.74769688513,
+        "lon": 8.29770692843
+      },
+      {
+        "lat": 52.7476692948,
+        "lon": 8.29769197273
+      },
+      {
+        "lat": 52.74769483822,
+        "lon": 8.29756336999
+      },
+      {
+        "lat": 52.74772242854,
+        "lon": 8.29757832569
+      }
+    ],
+    "alias": [],
+    "operator": "Hönemann",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 29.415426130801748
+  },
+  {
+    "slug": "roasted-almonds-plaeser-ztm5nw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747586526635004,
+      "lon": 8.298153886815001
+    },
+    "bounds": [
+      {
+        "lat": 52.74760869947,
+        "lon": 8.29811182612
+      },
+      {
+        "lat": 52.74759045413,
+        "lon": 8.29820928288
+      },
+      {
+        "lat": 52.7475643538,
+        "lon": 8.29819594751
+      },
+      {
+        "lat": 52.74758259915,
+        "lon": 8.29809849075
+      },
+      {
+        "lat": 52.74760869947,
+        "lon": 8.29811182612
+      }
+    ],
+    "alias": [],
+    "operator": "Plaeser",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 20.85889687994932
+  },
+  {
+    "slug": "gingerbread-landwermann-zjc2zm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747693844240004,
+      "lon": 8.29822485587
+    },
+    "bounds": [
+      {
+        "lat": 52.74765978636,
+        "lon": 8.29831779144
+      },
+      {
+        "lat": 52.74770113495,
+        "lon": 8.29811688569
+      },
+      {
+        "lat": 52.74772790212,
+        "lon": 8.2981319203
+      },
+      {
+        "lat": 52.74768655355,
+        "lon": 8.29833282605
+      },
+      {
+        "lat": 52.74765978636,
+        "lon": 8.29831779144
+      }
+    ],
+    "alias": [],
+    "operator": "Landwermann",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 44.90169945156583
+  },
+  {
+    "slug": "candy-ahrens-mtc5zm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747773211194996,
+      "lon": 8.297850601805
+    },
+    "bounds": [
+      {
+        "lat": 52.74774432287,
+        "lon": 8.29792193614
+      },
+      {
+        "lat": 52.74777662987,
+        "lon": 8.29776496163
+      },
+      {
+        "lat": 52.74780209952,
+        "lon": 8.29777926747
+      },
+      {
+        "lat": 52.74776979254,
+        "lon": 8.29793624198
+      },
+      {
+        "lat": 52.74774432287,
+        "lon": 8.29792193614
+      }
+    ],
+    "alias": [],
+    "operator": "Ahrens",
     "pictures": [],
     "candyStall": {
       "products": []
-    }
+    },
+    "zoomLevel": 20.0,
+    "area": 33.382531239786644
+  },
+  {
+    "slug": "crepe-stratmann-zgi2md",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747998539579996,
+      "lon": 8.296606772185001
+    },
+    "bounds": [
+      {
+        "lat": 52.74798211893,
+        "lon": 8.29662485695
+      },
+      {
+        "lat": 52.74798687669,
+        "lon": 8.29658047175
+      },
+      {
+        "lat": 52.74801496023,
+        "lon": 8.29658868743
+      },
+      {
+        "lat": 52.74801020248,
+        "lon": 8.29663307262
+      },
+      {
+        "lat": 52.74798211893,
+        "lon": 8.29662485695
+      }
+    ],
+    "alias": [],
+    "operator": "Stratmann",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 9.621792078098037
+  },
+  {
+    "slug": "candy-kronlage-n2ewm2",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74718633587,
+      "lon": 8.296481549454999
+    },
+    "bounds": [
+      {
+        "lat": 52.74722068041,
+        "lon": 8.29644903289
+      },
+      {
+        "lat": 52.74722462781,
+        "lon": 8.29649812774
+      },
+      {
+        "lat": 52.74715199133,
+        "lon": 8.29651406602
+      },
+      {
+        "lat": 52.74714804393,
+        "lon": 8.29646497117
+      },
+      {
+        "lat": 52.74722068041,
+        "lon": 8.29644903289
+      }
+    ],
+    "alias": [],
+    "operator": "Kronlage",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 27.161287008664605
+  },
+  {
+    "slug": "slush-heitmann-zgexm2",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.7468052894,
+      "lon": 8.295896443
+    },
+    "bounds": [
+      {
+        "lat": 52.74679008468,
+        "lon": 8.29590649009
+      },
+      {
+        "lat": 52.74679329785,
+        "lon": 8.29587801962
+      },
+      {
+        "lat": 52.74682049412,
+        "lon": 8.29588639591
+      },
+      {
+        "lat": 52.74681728096,
+        "lon": 8.29591486638
+      },
+      {
+        "lat": 52.74679008468,
+        "lon": 8.29590649009
+      }
+    ],
+    "alias": [],
+    "operator": "Heitmann",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_slush",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 5.996693777912992
+  },
+  {
+    "slug": "gingerbread-kronlage-yjkwmg",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747177955219996,
+      "lon": 8.29600218911
+    },
+    "bounds": [
+      {
+        "lat": 52.74718297274,
+        "lon": 8.2958853917
+      },
+      {
+        "lat": 52.74720011884,
+        "lon": 8.29611340854
+      },
+      {
+        "lat": 52.74717293771,
+        "lon": 8.29611898652
+      },
+      {
+        "lat": 52.7471557916,
+        "lon": 8.29589096969
+      },
+      {
+        "lat": 52.74718297274,
+        "lon": 8.2958853917
+      }
+    ],
+    "alias": [],
+    "operator": "Kronlage",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 47.103108595327946
+  },
+  {
+    "slug": "crepe-reif-m.-ymfiyt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747281498670006,
+      "lon": 8.296024041025
+    },
+    "bounds": [
+      {
+        "lat": 52.74727055139,
+        "lon": 8.29606523409
+      },
+      {
+        "lat": 52.74726478312,
+        "lon": 8.29598852481
+      },
+      {
+        "lat": 52.74729244595,
+        "lon": 8.29598284796
+      },
+      {
+        "lat": 52.74729821422,
+        "lon": 8.29605955725
+      },
+      {
+        "lat": 52.74727055139,
+        "lon": 8.29606523409
+      }
+    ],
+    "alias": [],
+    "operator": "Reif- M.",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 16.127185289431438
+  },
+  {
+    "slug": "poffertje-boeker-mwy0mj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747560208029995,
+      "lon": 8.29600755085
+    },
+    "bounds": [
+      {
+        "lat": 52.74753543553,
+        "lon": 8.29603627257
+      },
+      {
+        "lat": 52.74753166241,
+        "lon": 8.29599094032
+      },
+      {
+        "lat": 52.74758498053,
+        "lon": 8.29597882913
+      },
+      {
+        "lat": 52.74758875365,
+        "lon": 8.29602416138
+      },
+      {
+        "lat": 52.74753543553,
+        "lon": 8.29603627257
+      }
+    ],
+    "alias": [],
+    "operator": "Böker",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_poffertje",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 18.43219059745597
+  },
+  {
+    "slug": "crepe-braun-e.-owmxod",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747515005075,
+      "lon": 8.295757556205
+    },
+    "bounds": [
+      {
+        "lat": 52.74750105189,
+        "lon": 8.29578492031
+      },
+      {
+        "lat": 52.74749709905,
+        "lon": 8.2957374289
+      },
+      {
+        "lat": 52.74752895827,
+        "lon": 8.2957301921
+      },
+      {
+        "lat": 52.7475329111,
+        "lon": 8.29577768351
+      },
+      {
+        "lat": 52.74750105189,
+        "lon": 8.29578492031
+      }
+    ],
+    "alias": [],
+    "operator": "Braun E.",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 11.538395757709548
+  },
+  {
+    "slug": "candy-vorwieger-yjnhnj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74738881376,
+      "lon": 8.29578603039
+    },
+    "bounds": [
+      {
+        "lat": 52.74740495948,
+        "lon": 8.29580400978
+      },
+      {
+        "lat": 52.74737620464,
+        "lon": 8.2958105414
+      },
+      {
+        "lat": 52.74737266804,
+        "lon": 8.295768051
+      },
+      {
+        "lat": 52.74740142288,
+        "lon": 8.29576151938
+      },
+      {
+        "lat": 52.74740495948,
+        "lon": 8.29580400978
+      }
+    ],
+    "alias": [],
+    "operator": "Vorwieger",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 9.317476973866633
+  },
+  {
+    "slug": "wine-gums-krause-ztzjmw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746230311225,
+      "lon": 8.295894051425
+    },
+    "bounds": [
+      {
+        "lat": 52.7461925317,
+        "lon": 8.29590438533
+      },
+      {
+        "lat": 52.74619675484,
+        "lon": 8.2958635734
+      },
+      {
+        "lat": 52.74626809075,
+        "lon": 8.29588371753
+      },
+      {
+        "lat": 52.74626386762,
+        "lon": 8.29592452945
+      },
+      {
+        "lat": 52.7461925317,
+        "lon": 8.29590438533
+      }
+    ],
+    "alias": [],
+    "operator": "Krause",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_wine_gums",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 22.427333193465003
+  },
+  {
+    "slug": "roasted-almonds-luedtke-yjnlym",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746292277365,
+      "lon": 8.295762661495
+    },
+    "bounds": [
+      {
+        "lat": 52.74625365863,
+        "lon": 8.29577085439
+      },
+      {
+        "lat": 52.74625973718,
+        "lon": 8.29572734146
+      },
+      {
+        "lat": 52.7463308961,
+        "lon": 8.2957544686
+      },
+      {
+        "lat": 52.74632481757,
+        "lon": 8.29579798153
+      },
+      {
+        "lat": 52.74625365863,
+        "lon": 8.29577085439
+      }
+    ],
+    "alias": [],
+    "operator": "Lüdtke",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 24.40924148261339
+  },
+  {
+    "slug": "eispalast-yzaxng",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74657113755,
+      "lon": 8.295939533904999
+    },
+    "bounds": [
+      {
+        "lat": 52.74661249311,
+        "lon": 8.29591854659
+      },
+      {
+        "lat": 52.74661188792,
+        "lon": 8.29596353534
+      },
+      {
+        "lat": 52.74652978199,
+        "lon": 8.29596052121
+      },
+      {
+        "lat": 52.74653038718,
+        "lon": 8.29591553247
+      },
+      {
+        "lat": 52.74661249311,
+        "lon": 8.29591854659
+      }
+    ],
+    "name": "Eispalast",
+    "alias": [],
+    "operator": "Langenscheidt",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 27.66070843349246
+  },
+  {
+    "slug": "roasted-almonds-holldinderbaeumer-nzqyy2",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746501629945,
+      "lon": 8.295817719075
+    },
+    "bounds": [
+      {
+        "lat": 52.74652795441,
+        "lon": 8.29579094856
+      },
+      {
+        "lat": 52.74653022747,
+        "lon": 8.29583710912
+      },
+      {
+        "lat": 52.74647530549,
+        "lon": 8.29584448959
+      },
+      {
+        "lat": 52.74647303242,
+        "lon": 8.29579832904
+      },
+      {
+        "lat": 52.74652795441,
+        "lon": 8.29579094856
+      }
+    ],
+    "alias": [],
+    "operator": "Holldinderbäumer",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 19.100854655125595
+  },
+  {
+    "slug": "eifelturm-ngu2yw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74698480303,
+      "lon": 8.295641176764999
+    },
+    "bounds": [
+      {
+        "lat": 52.7469999094,
+        "lon": 8.29570152947
+      },
+      {
+        "lat": 52.74694882174,
+        "lon": 8.2956141198
+      },
+      {
+        "lat": 52.74696969668,
+        "lon": 8.29558082406
+      },
+      {
+        "lat": 52.74702078432,
+        "lon": 8.29566823373
+      },
+      {
+        "lat": 52.7469999094,
+        "lon": 8.29570152947
+      }
+    ],
+    "name": "Eifelturm",
+    "alias": [],
+    "operator": "Winter",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 26.388107722743307
+  },
+  {
+    "slug": "candy-elsaesser-ztg4zm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747216968285,
+      "lon": 8.295023195045
+    },
+    "bounds": [
+      {
+        "lat": 52.74724439954,
+        "lon": 8.29501129446
+      },
+      {
+        "lat": 52.74720704063,
+        "lon": 8.29506708346
+      },
+      {
+        "lat": 52.74718953703,
+        "lon": 8.29503509564
+      },
+      {
+        "lat": 52.74722689595,
+        "lon": 8.29497930663
+      },
+      {
+        "lat": 52.74724439954,
+        "lon": 8.29501129446
+      }
+    ],
+    "alias": [],
+    "operator": "Elsässer",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 16.252927423756045
+  },
+  {
+    "slug": "roasted-almonds-mueller-r.-ngy5zd",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747256021855,
+      "lon": 8.29496515928
+    },
+    "bounds": [
+      {
+        "lat": 52.74728514776,
+        "lon": 8.29495101192
+      },
+      {
+        "lat": 52.74724457054,
+        "lon": 8.29501160697
+      },
+      {
+        "lat": 52.74722689595,
+        "lon": 8.29497930663
+      },
+      {
+        "lat": 52.74726747319,
+        "lon": 8.29491871159
+      },
+      {
+        "lat": 52.74728514776,
+        "lon": 8.29495101192
+      }
+    ],
+    "alias": [],
+    "operator": "Müller, R.",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 17.825495571945634
+  },
+  {
+    "slug": "crepe-schmidt-ogi5nz",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.746970062085,
+      "lon": 8.295392254629999
+    },
+    "bounds": [
+      {
+        "lat": 52.74699677612,
+        "lon": 8.29538338775
+      },
+      {
+        "lat": 52.74696203366,
+        "lon": 8.29543526925
+      },
+      {
+        "lat": 52.74694334805,
+        "lon": 8.29540112151
+      },
+      {
+        "lat": 52.74697809053,
+        "lon": 8.29534924001
+      },
+      {
+        "lat": 52.74699677612,
+        "lon": 8.29538338775
+      }
+    ],
+    "alias": [],
+    "operator": "Schmidt",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 16.135326283063094
+  },
+  {
+    "slug": "crepe-maus-zgi0yt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748256479935,
+      "lon": 8.29583480171
+    },
+    "bounds": [
+      {
+        "lat": 52.74825114912,
+        "lon": 8.29582153167
+      },
+      {
+        "lat": 52.74824971398,
+        "lon": 8.29580501449
+      },
+      {
+        "lat": 52.74828468916,
+        "lon": 8.29579672073
+      },
+      {
+        "lat": 52.74829000532,
+        "lon": 8.295857905
+      },
+      {
+        "lat": 52.74825503014,
+        "lon": 8.29586619876
+      },
+      {
+        "lat": 52.74822684364,
+        "lon": 8.29587288269
+      },
+      {
+        "lat": 52.74822295455,
+        "lon": 8.29582812279
+      },
+      {
+        "lat": 52.74825114912,
+        "lon": 8.29582153167
+      }
+    ],
+    "alias": [],
+    "operator": "Maus",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 25.97296163776168
+  },
+  {
+    "slug": "candy-cardinale-ytaxy2",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748530162935,
+      "lon": 8.295739976210001
+    },
+    "bounds": [
+      {
+        "lat": 52.74853896697,
+        "lon": 8.29567837381
+      },
+      {
+        "lat": 52.74854910045,
+        "lon": 8.29579500185
+      },
+      {
+        "lat": 52.7485213661,
+        "lon": 8.29580157861
+      },
+      {
+        "lat": 52.74851122542,
+        "lon": 8.29568495228
+      },
+      {
+        "lat": 52.74853896697,
+        "lon": 8.29567837381
+      }
+    ],
+    "alias": [],
+    "operator": "Cardinale",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 24.71072681399093
+  },
+  {
+    "slug": "candy-coldewey-zjjkmw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.7486735214,
+      "lon": 8.295619890295
+    },
+    "bounds": [
+      {
+        "lat": 52.74871678502,
+        "lon": 8.29557493615
+      },
+      {
+        "lat": 52.74872439464,
+        "lon": 8.29562800192
+      },
+      {
+        "lat": 52.74863025779,
+        "lon": 8.29566484444
+      },
+      {
+        "lat": 52.74862264816,
+        "lon": 8.29561177867
+      },
+      {
+        "lat": 52.74871678502,
+        "lon": 8.29557493615
+      }
+    ],
+    "alias": [],
+    "operator": "Coldewey",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 39.48553744136386
+  },
+  {
+    "slug": "roasted-almonds-boeker-nmqzmw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748665365095,
+      "lon": 8.29655145175
+    },
+    "bounds": [
+      {
+        "lat": 52.74869367486,
+        "lon": 8.29662184282
+      },
+      {
+        "lat": 52.74866867981,
+        "lon": 8.29663578585
+      },
+      {
+        "lat": 52.74863705533,
+        "lon": 8.29648106068
+      },
+      {
+        "lat": 52.7486620504,
+        "lon": 8.29646711765
+      },
+      {
+        "lat": 52.74869367486,
+        "lon": 8.29662184282
+      }
+    ],
+    "alias": [],
+    "operator": "Böker",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        },
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        },
+        {
+          "name": "candy_type_waffle",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 32.244536227050546
+  },
+  {
+    "slug": "crepe-stratmann-nzyxzj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748081555005,
+      "lon": 8.295429755715
+    },
+    "bounds": [
+      {
+        "lat": 52.7480605731,
+        "lon": 8.29545738521
+      },
+      {
+        "lat": 52.74805689735,
+        "lon": 8.29541227586
+      },
+      {
+        "lat": 52.74810253691,
+        "lon": 8.29540212622
+      },
+      {
+        "lat": 52.74810621266,
+        "lon": 8.29544723557
+      },
+      {
+        "lat": 52.7480605731,
+        "lon": 8.29545738521
+      }
+    ],
+    "alias": [],
+    "operator": "Stratmann",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 15.687832944757258
+  },
+  {
+    "slug": "candy-robrahn-nwe4zj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748200452275,
+      "lon": 8.294919363595
+    },
+    "bounds": [
+      {
+        "lat": 52.74817673367,
+        "lon": 8.29495302134
+      },
+      {
+        "lat": 52.74817648548,
+        "lon": 8.29488618914
+      },
+      {
+        "lat": 52.74822417088,
+        "lon": 8.29488570585
+      },
+      {
+        "lat": 52.74822441907,
+        "lon": 8.29495253805
+      },
+      {
+        "lat": 52.74817673367,
+        "lon": 8.29495302134
+      }
+    ],
+    "alias": [],
+    "operator": "Robrahn",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 23.852932330589077
+  },
+  {
+    "slug": "crepe-nives-yjixmw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748089339205,
+      "lon": 8.29473713522
+    },
+    "bounds": [
+      {
+        "lat": 52.74807273653,
+        "lon": 8.29472093359
+      },
+      {
+        "lat": 52.74810610605,
+        "lon": 8.29472140176
+      },
+      {
+        "lat": 52.74810594188,
+        "lon": 8.29475333685
+      },
+      {
+        "lat": 52.74807257236,
+        "lon": 8.29475286868
+      },
+      {
+        "lat": 52.74807273653,
+        "lon": 8.29472093359
+      }
+    ],
+    "alias": [],
+    "operator": "Nives",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 7.976360544727546
+  },
+  {
+    "slug": "candy-brunke-m2y5mw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747971552145,
+      "lon": 8.29434271936
+    },
+    "bounds": [
+      {
+        "lat": 52.74794988578,
+        "lon": 8.29442353975
+      },
+      {
+        "lat": 52.74795635657,
+        "lon": 8.29425796732
+      },
+      {
+        "lat": 52.74799321851,
+        "lon": 8.29426189896
+      },
+      {
+        "lat": 52.74798674773,
+        "lon": 8.2944274714
+      },
+      {
+        "lat": 52.74794988578,
+        "lon": 8.29442353975
+      }
+    ],
+    "alias": [],
+    "operator": "Brunke",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 45.870063300538966
+  },
+  {
+    "slug": "meyer-m-nmu5yj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747989027619994,
+      "lon": 8.294040004385
+    },
+    "bounds": [
+      {
+        "lat": 52.74801070303,
+        "lon": 8.29398448196
+      },
+      {
+        "lat": 52.74800279679,
+        "lon": 8.29410203291
+      },
+      {
+        "lat": 52.74796735221,
+        "lon": 8.2940955268
+      },
+      {
+        "lat": 52.74797525845,
+        "lon": 8.29397797586
+      },
+      {
+        "lat": 52.74801070303,
+        "lon": 8.29398448196
+      }
+    ],
+    "name": "Meyer, M",
+    "alias": [],
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 31.56902323620325
+  },
+  {
+    "slug": "gingerbread-thoelking-nzi0yt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74799373643,
+      "lon": 8.29390521705
+    },
+    "bounds": [
+      {
+        "lat": 52.74798558138,
+        "lon": 8.29382747278
+      },
+      {
+        "lat": 52.74801221441,
+        "lon": 8.29383245824
+      },
+      {
+        "lat": 52.74800189148,
+        "lon": 8.29398296132
+      },
+      {
+        "lat": 52.74797525845,
+        "lon": 8.29397797586
+      },
+      {
+        "lat": 52.74798558138,
+        "lon": 8.29382747278
+      }
+    ],
+    "alias": [],
+    "operator": "Thölking",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 30.385250803706533
+  },
+  {
+    "slug": "gingerbread-hoenemann-n2qxzw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748043725685,
+      "lon": 8.293235135795
+    },
+    "bounds": [
+      {
+        "lat": 52.74806300579,
+        "lon": 8.29316162538
+      },
+      {
+        "lat": 52.74805186564,
+        "lon": 8.29331411326
+      },
+      {
+        "lat": 52.74802444558,
+        "lon": 8.29330864621
+      },
+      {
+        "lat": 52.74803558574,
+        "lon": 8.29315615833
+      },
+      {
+        "lat": 52.74806300579,
+        "lon": 8.29316162538
+      }
+    ],
+    "alias": [],
+    "operator": "Hönemann",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 31.749709962876963
+  },
+  {
+    "slug": "candy-laffontin-mzhhym",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74805598565,
+      "lon": 8.2930624398
+    },
+    "bounds": [
+      {
+        "lat": 52.74807638556,
+        "lon": 8.29296872127
+      },
+      {
+        "lat": 52.748062303,
+        "lon": 8.29316148525
+      },
+      {
+        "lat": 52.74803558574,
+        "lon": 8.29315615833
+      },
+      {
+        "lat": 52.74804966831,
+        "lon": 8.29296339435
+      },
+      {
+        "lat": 52.74807638556,
+        "lon": 8.29296872127
+      }
+    ],
+    "alias": [],
+    "operator": "Laffontin",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 39.106928390943224
+  },
+  {
+    "slug": "crepe-wendler-mtjknm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748064851445,
+      "lon": 8.292941944795
+    },
+    "bounds": [
+      {
+        "lat": 52.74808003458,
+        "lon": 8.29292049524
+      },
+      {
+        "lat": 52.74807650958,
+        "lon": 8.292968746
+      },
+      {
+        "lat": 52.74804966831,
+        "lon": 8.29296339435
+      },
+      {
+        "lat": 52.74805319331,
+        "lon": 8.29291514359
+      },
+      {
+        "lat": 52.74808003458,
+        "lon": 8.29292049524
+      }
+    ],
+    "alias": [],
+    "operator": "Wendler",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 9.83429219554408
+  },
+  {
+    "slug": "roasted-almonds-becker-nwexnm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74808119563,
+      "lon": 8.29272568349
+    },
+    "bounds": [
+      {
+        "lat": 52.74809888758,
+        "lon": 8.29266831381
+      },
+      {
+        "lat": 52.74809128544,
+        "lon": 8.29278787417
+      },
+      {
+        "lat": 52.74806350368,
+        "lon": 8.29278305317
+      },
+      {
+        "lat": 52.74807110582,
+        "lon": 8.29266349281
+      },
+      {
+        "lat": 52.74809888758,
+        "lon": 8.29266831381
+      }
+    ],
+    "alias": [],
+    "operator": "Becker",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 25.134374734940458
+  },
+  {
+    "slug": "crepe-wendler-n2uzmm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748237097369994,
+      "lon": 8.296407982165
+    },
+    "bounds": [
+      {
+        "lat": 52.74821329028,
+        "lon": 8.29639099471
+      },
+      {
+        "lat": 52.74825753313,
+        "lon": 8.29638160698
+      },
+      {
+        "lat": 52.74826090446,
+        "lon": 8.29642496962
+      },
+      {
+        "lat": 52.74821666161,
+        "lon": 8.29643435735
+      },
+      {
+        "lat": 52.74821329028,
+        "lon": 8.29639099471
+      }
+    ],
+    "alias": [],
+    "operator": "Wendler",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 14.59549263109918
+  },
+  {
+    "slug": "slush-meyer-zwexod",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747857201944996,
+      "lon": 8.294265253279999
+    },
+    "bounds": [
+      {
+        "lat": 52.74787203959,
+        "lon": 8.29424269215
+      },
+      {
+        "lat": 52.74786908751,
+        "lon": 8.29429216616
+      },
+      {
+        "lat": 52.7478423643,
+        "lon": 8.29428781441
+      },
+      {
+        "lat": 52.74784531638,
+        "lon": 8.2942383404
+      },
+      {
+        "lat": 52.74787203959,
+        "lon": 8.29424269215
+      }
+    ],
+    "alias": [],
+    "operator": "Meyer",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_slush",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 9.991323322387455
+  },
+  {
+    "slug": "roasted-almonds-dietrich-nmjmng",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748004096565,
+      "lon": 8.29163741396
+    },
+    "bounds": [
+      {
+        "lat": 52.74803320539,
+        "lon": 8.29166762325
+      },
+      {
+        "lat": 52.74800942339,
+        "lon": 8.29169351774
+      },
+      {
+        "lat": 52.74797498774,
+        "lon": 8.29160720468
+      },
+      {
+        "lat": 52.74799876976,
+        "lon": 8.29158131018
+      },
+      {
+        "lat": 52.74803320539,
+        "lon": 8.29166762325
+      }
+    ],
+    "alias": [],
+    "operator": "Dietrich",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 22.03696503251724
+  },
+  {
+    "slug": "roasted-almonds-westendorf-ndgwm2",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.747996791255005,
+      "lon": 8.29224674572
+    },
+    "bounds": [
+      {
+        "lat": 52.74800583765,
+        "lon": 8.29232570757
+      },
+      {
+        "lat": 52.74797715335,
+        "lon": 8.29232027008
+      },
+      {
+        "lat": 52.74798774486,
+        "lon": 8.29216778387
+      },
+      {
+        "lat": 52.74801642916,
+        "lon": 8.29217322137
+      },
+      {
+        "lat": 52.74800583765,
+        "lon": 8.29232570757
+      }
+    ],
+    "alias": [],
+    "operator": "Westendorf",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 33.16744803687281
+  },
+  {
+    "slug": "candy-mueller-d.-ogixmt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.7483580061,
+      "lon": 8.292281818365
+    },
+    "bounds": [
+      {
+        "lat": 52.74832330233,
+        "lon": 8.29226442033
+      },
+      {
+        "lat": 52.74834101568,
+        "lon": 8.29222888678
+      },
+      {
+        "lat": 52.74839270987,
+        "lon": 8.2922992164
+      },
+      {
+        "lat": 52.74837499655,
+        "lon": 8.29233474995
+      },
+      {
+        "lat": 52.74832330233,
+        "lon": 8.29226442033
+      }
+    ],
+    "alias": [],
+    "operator": "Müller, D.",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 23.071561818856644
+  },
+  {
+    "slug": "candy-dziebel-parpalioni-yzyxzt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748413207775,
+      "lon": 8.292370910775
+    },
+    "bounds": [
+      {
+        "lat": 52.74837499655,
+        "lon": 8.29233474995
+      },
+      {
+        "lat": 52.7484045902,
+        "lon": 8.29229956774
+      },
+      {
+        "lat": 52.748451419,
+        "lon": 8.29240707159
+      },
+      {
+        "lat": 52.74842182538,
+        "lon": 8.29244225381
+      },
+      {
+        "lat": 52.74837499655,
+        "lon": 8.29233474995
+      }
+    ],
+    "alias": [],
+    "operator": "Dziebel/Parpalioni",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 36.141547594732565
+  },
+  {
+    "slug": "backstube-zdqznd",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748447578059995,
+      "lon": 8.292489336540001
+    },
+    "bounds": [
+      {
+        "lat": 52.74842182538,
+        "lon": 8.29244225381
+      },
+      {
+        "lat": 52.74844657144,
+        "lon": 8.2924259013
+      },
+      {
+        "lat": 52.74847333074,
+        "lon": 8.29253641928
+      },
+      {
+        "lat": 52.74844858468,
+        "lon": 8.29255277178
+      },
+      {
+        "lat": 52.74842182538,
+        "lon": 8.29244225381
+      }
+    ],
+    "name": "Backstube",
+    "alias": [],
+    "operator": "Müller",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 23.74371988208259
+  },
+  {
+    "slug": "crepe-schindler-m2m4ym",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74826417356,
+      "lon": 8.292376479205
+    },
+    "bounds": [
+      {
+        "lat": 52.74828620408,
+        "lon": 8.29237091947
+      },
+      {
+        "lat": 52.74827315964,
+        "lon": 8.29241017079
+      },
+      {
+        "lat": 52.74824214304,
+        "lon": 8.29238203895
+      },
+      {
+        "lat": 52.74825518749,
+        "lon": 8.29234278762
+      },
+      {
+        "lat": 52.74828620408,
+        "lon": 8.29237091947
+      }
+    ],
+    "alias": [],
+    "operator": "Schindler",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_crepe",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 11.858241573274483
+  },
+  {
+    "slug": "roasted-almonds-mueller-mwninj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74852973043,
+      "lon": 8.293877187780001
+    },
+    "bounds": [
+      {
+        "lat": 52.74854680306,
+        "lon": 8.29393876821
+      },
+      {
+        "lat": 52.74851931519,
+        "lon": 8.293942698
+      },
+      {
+        "lat": 52.7485126578,
+        "lon": 8.29381560735
+      },
+      {
+        "lat": 52.74854014568,
+        "lon": 8.29381167756
+      },
+      {
+        "lat": 52.74854680306,
+        "lon": 8.29393876821
+      }
+    ],
+    "alias": [],
+    "operator": "Müller",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 26.341833526354684
+  },
+  {
+    "slug": "roasted-almonds-landsmann-nznimm",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748210461685,
+      "lon": 8.290655393624998
+    },
+    "bounds": [
+      {
+        "lat": 52.74819614432,
+        "lon": 8.29072824961
+      },
+      {
+        "lat": 52.74820785661,
+        "lon": 8.2905789154
+      },
+      {
+        "lat": 52.74822477905,
+        "lon": 8.29058253764
+      },
+      {
+        "lat": 52.74821306677,
+        "lon": 8.29073187185
+      },
+      {
+        "lat": 52.74819614432,
+        "lon": 8.29072824961
+      }
+    ],
+    "alias": [],
+    "operator": "Landsmann",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 19.231224324170622
+  },
+  {
+    "slug": "candy-lange-mwfmnd",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748261877345,
+      "lon": 8.289963636955001
+    },
+    "bounds": [
+      {
+        "lat": 52.74824849764,
+        "lon": 8.29003597599
+      },
+      {
+        "lat": 52.7482600992,
+        "lon": 8.28988805338
+      },
+      {
+        "lat": 52.74827525705,
+        "lon": 8.28989129791
+      },
+      {
+        "lat": 52.7482636555,
+        "lon": 8.29003922053
+      },
+      {
+        "lat": 52.74824849764,
+        "lon": 8.29003597599
+      }
+    ],
+    "alias": [],
+    "operator": "Lange",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 17.06303665171241
+  },
+  {
+    "slug": "candy-laffontin-ztqxmt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74809584672,
+      "lon": 8.291092930255001
+    },
+    "bounds": [
+      {
+        "lat": 52.74807851385,
+        "lon": 8.29116577165
+      },
+      {
+        "lat": 52.74809032349,
+        "lon": 8.29101519654
+      },
+      {
+        "lat": 52.74811317959,
+        "lon": 8.29102008886
+      },
+      {
+        "lat": 52.74810136995,
+        "lon": 8.29117066397
+      },
+      {
+        "lat": 52.74807851385,
+        "lon": 8.29116577165
+      }
+    ],
+    "alias": [],
+    "operator": "Laffontin",
+    "pictures": [],
+    "candyStall": {
+      "products": []
+    },
+    "zoomLevel": 20.0,
+    "area": 26.19032989723072
+  },
+  {
+    "slug": "gingerbread-thoelking-zjkwnj",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.74810770605,
+      "lon": 8.29093895862
+    },
+    "bounds": [
+      {
+        "lat": 52.74811317959,
+        "lon": 8.29102008886
+      },
+      {
+        "lat": 52.74808989725,
+        "lon": 8.29101510531
+      },
+      {
+        "lat": 52.74810223252,
+        "lon": 8.29085782838
+      },
+      {
+        "lat": 52.74812551485,
+        "lon": 8.29086281193
+      },
+      {
+        "lat": 52.74811317959,
+        "lon": 8.29102008886
+      }
+    ],
+    "alias": [],
+    "operator": "Thölking",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_gingerbread",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 27.866157263713923
+  },
+  {
+    "slug": "roasted-almonds-dietrich-ogu3yt",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748149821850006,
+      "lon": 8.290327593255
+    },
+    "bounds": [
+      {
+        "lat": 52.74813720232,
+        "lon": 8.29037858223
+      },
+      {
+        "lat": 52.74814548513,
+        "lon": 8.29027297481
+      },
+      {
+        "lat": 52.74816244138,
+        "lon": 8.29027660428
+      },
+      {
+        "lat": 52.74815415858,
+        "lon": 8.2903822117
+      },
+      {
+        "lat": 52.74813720232,
+        "lon": 8.29037858223
+      }
+    ],
+    "alias": [],
+    "operator": "Dietrich",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_roasted_almonds",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 13.627289667599232
+  },
+  {
+    "slug": "waffle-haverkamp-ngi3nw",
+    "type": "candy-stall",
+    "center": {
+      "lat": 52.748156359679996,
+      "lon": 8.290238174165001
+    },
+    "bounds": [
+      {
+        "lat": 52.74816244138,
+        "lon": 8.29027660428
+      },
+      {
+        "lat": 52.74814455018,
+        "lon": 8.29027277468
+      },
+      {
+        "lat": 52.74815027798,
+        "lon": 8.29019974405
+      },
+      {
+        "lat": 52.74816816918,
+        "lon": 8.29020357364
+      },
+      {
+        "lat": 52.74816244138,
+        "lon": 8.29027660428
+      }
+    ],
+    "alias": [],
+    "operator": "Haverkamp",
+    "pictures": [],
+    "candyStall": {
+      "products": [
+        {
+          "name": "candy_type_waffle",
+          "prices": []
+        }
+      ]
+    },
+    "zoomLevel": 20.0,
+    "area": 9.943278314763383
   }
 ]

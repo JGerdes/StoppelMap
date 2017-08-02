@@ -1,82 +1,117 @@
 [
   {
-    "slug": "kuehlings-niedersachsenhalle-yjllyt",
+    "slug": "wittler-wein-ndflmt",
     "type": "bar",
     "center": {
-      "lat": 52.74831299479333,
-      "lon": 8.297013923851333
+      "lat": 52.74655122515,
+      "lon": 8.298067617275
     },
     "bounds": [
       {
-        "lat": 52.74863298668,
-        "lon": 8.29672425918
+        "lat": 52.74657870881,
+        "lon": 8.29810894959
       },
       {
-        "lat": 52.74863785741,
-        "lon": 8.29687111013
+        "lat": 52.74651579223,
+        "lon": 8.29808615081
       },
       {
-        "lat": 52.74845642964,
-        "lon": 8.29688753341
+        "lat": 52.7465237415,
+        "lon": 8.29802628496
       },
       {
-        "lat": 52.74846860053,
-        "lon": 8.29719096154
+        "lat": 52.74658665807,
+        "lon": 8.29804908374
       },
       {
-        "lat": 52.7484021243,
-        "lon": 8.29719823808
-      },
-      {
-        "lat": 52.74840446818,
-        "lon": 8.29727008805
-      },
-      {
-        "lat": 52.74813332873,
-        "lon": 8.29729422793
-      },
-      {
-        "lat": 52.74813116489,
-        "lon": 8.29722789738
-      },
-      {
-        "lat": 52.74800110733,
-        "lon": 8.29724213346
-      },
-      {
-        "lat": 52.74799797577,
-        "lon": 8.29714362527
-      },
-      {
-        "lat": 52.74791171956,
-        "lon": 8.29715110879
-      },
-      {
-        "lat": 52.74798347717,
-        "lon": 8.29679686686
-      },
-      {
-        "lat": 52.7484504296,
-        "lon": 8.29674574895
-      },
-      {
-        "lat": 52.74845026543,
-        "lon": 8.29674079956
-      },
-      {
-        "lat": 52.74863298668,
-        "lon": 8.29672425918
+        "lat": 52.74657870881,
+        "lon": 8.29810894959
       }
     ],
-    "name": "Kühlings Niedersachsenhalle",
+    "name": "Wittler Wein",
     "alias": [],
-    "operator": "Kühling",
-    "pictures": [
+    "operator": "Wittler",
+    "pictures": [],
+    "bar": {
+      "drinks": [],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 29.547754370058286
+  },
+  {
+    "slug": "wein-ellendorf-n2e2ot",
+    "type": "bar",
+    "center": {
+      "lat": 52.746627012385005,
+      "lon": 8.297801501375
+    },
+    "bounds": [
       {
-        "filePath": "kuehling_header_01.webp",
-        "type": "header"
+        "lat": 52.74670048258,
+        "lon": 8.29778172009
+      },
+      {
+        "lat": 52.74668872478,
+        "lon": 8.29787026821
+      },
+      {
+        "lat": 52.74655354219,
+        "lon": 8.29782128267
+      },
+      {
+        "lat": 52.74656530002,
+        "lon": 8.29773273454
+      },
+      {
+        "lat": 52.74670048258,
+        "lon": 8.29778172009
       }
     ],
+    "name": "Wein Ellendorf",
+    "alias": [],
+    "operator": "Ellendorf",
+    "pictures": [],
+    "bar": {
+      "drinks": [],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 93.90302626088138
+  },
+  {
+    "slug": "tepe-pferdestall-njawn2",
+    "type": "bar",
+    "center": {
+      "lat": 52.746634810619994,
+      "lon": 8.297560734435
+    },
+    "bounds": [
+      {
+        "lat": 52.74668871113,
+        "lon": 8.29750008814
+      },
+      {
+        "lat": 52.74667044508,
+        "lon": 8.2976509624
+      },
+      {
+        "lat": 52.74658091011,
+        "lon": 8.29762138073
+      },
+      {
+        "lat": 52.74659917619,
+        "lon": 8.29747050647
+      },
+      {
+        "lat": 52.74668871113,
+        "lon": 8.29750008814
+      }
+    ],
+    "name": "Tepe Pferdestall",
+    "alias": [],
+    "operator": "Tepe",
+    "pictures": [],
     "bar": {
       "drinks": [
         {
@@ -84,73 +119,63 @@
           "prices": []
         },
         {
-          "name": "drink_type_shots",
-          "prices": []
-        },
-        {
-          "name": "drink_type_longdrinks",
+          "name": "drink_type_softdrinks",
           "prices": []
         }
       ],
-      "isTent": true
-    }
+      "isTent": false
+    },
+    "zoomLevel": 19.0,
+    "area": 105.15040675511784
   },
   {
-    "slug": "wunderbar-zmqwm2",
+    "slug": "waldhof-owjkmj",
     "type": "bar",
     "center": {
-      "lat": 52.74758219521728,
-      "lon": 8.297696517994545
+      "lat": 52.7475405091,
+      "lon": 8.29784024564
     },
     "bounds": [
       {
-        "lat": 52.74763488235,
-        "lon": 8.29747125372
+        "lat": 52.74740514008,
+        "lon": 8.2980076962
       },
       {
-        "lat": 52.74764344729,
-        "lon": 8.29767549541
+        "lat": 52.74739783379,
+        "lon": 8.29785212807
       },
       {
-        "lat": 52.74770063863,
-        "lon": 8.29771131143
+        "lat": 52.74744299776,
+        "lon": 8.2978470619
       },
       {
-        "lat": 52.7476535539,
-        "lon": 8.29791650042
+        "lat": 52.74743551105,
+        "lon": 8.29769693497
       },
       {
-        "lat": 52.74756077098,
-        "lon": 8.29792711903
+        "lat": 52.74762303882,
+        "lon": 8.29767279508
       },
       {
-        "lat": 52.74755797616,
-        "lon": 8.29786047331
+        "lat": 52.74762572148,
+        "lon": 8.29772966911
       },
       {
-        "lat": 52.74746788708,
-        "lon": 8.2978695379
+        "lat": 52.74768318441,
+        "lon": 8.29776361518
       },
       {
-        "lat": 52.74745953178,
-        "lon": 8.2976429151
+        "lat": 52.74763731737,
+        "lon": 8.29797550969
       },
       {
-        "lat": 52.74754847748,
-        "lon": 8.29763396557
-      },
-      {
-        "lat": 52.74754209939,
-        "lon": 8.29748187233
-      },
-      {
-        "lat": 52.74763488235,
-        "lon": 8.29747125372
+        "lat": 52.74740514008,
+        "lon": 8.2980076962
       }
     ],
-    "name": "Wunderbar",
+    "name": "Waldhof",
     "alias": [
-      "Waldhof",
+      "Wunderbar",
       "Wuba"
     ],
     "operator": "Grieshop",
@@ -159,6 +184,10 @@
       "drinks": [
         {
           "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
           "prices": []
         },
         {
@@ -175,61 +204,79 @@
         }
       ],
       "isTent": true
-    }
+    },
+    "zoomLevel": 18.5,
+    "area": 532.1319286587138
   },
   {
-    "slug": "hanse-kogge-owe5zd",
+    "slug": "kuehlings-niedersachsenhalle-zjm1od",
     "type": "bar",
     "center": {
-      "lat": 52.747423003024444,
-      "lon": 8.297236581955556
+      "lat": 52.748267559249996,
+      "lon": 8.297015948744999
     },
     "bounds": [
       {
-        "lat": 52.74744921786,
-        "lon": 8.29739855342
+        "lat": 52.74797871298,
+        "lon": 8.2971616909
       },
       {
-        "lat": 52.74737783422,
-        "lon": 8.29741311208
+        "lat": 52.74789709508,
+        "lon": 8.29717084631
       },
       {
-        "lat": 52.74736309949,
-        "lon": 8.29721594495
+        "lat": 52.74796072537,
+        "lon": 8.29677868774
       },
       {
-        "lat": 52.74735562,
-        "lon": 8.29711586103
+        "lat": 52.74795884534,
+        "lon": 8.29673865698
       },
       {
-        "lat": 52.74742700368,
-        "lon": 8.29710130236
+        "lat": 52.74844668135,
+        "lon": 8.2966893898
       },
       {
-        "lat": 52.74747153574,
-        "lon": 8.29709222006
+        "lat": 52.74844917414,
+        "lon": 8.29676351672
       },
       {
-        "lat": 52.74747901521,
-        "lon": 8.29719230399
+        "lat": 52.74863176941,
+        "lon": 8.29674303398
       },
       {
-        "lat": 52.74743448316,
-        "lon": 8.29720138629
+        "lat": 52.74863802342,
+        "lon": 8.2968951935
       },
       {
-        "lat": 52.74744921786,
-        "lon": 8.29739855342
+        "lat": 52.74845429533,
+        "lon": 8.29691580332
+      },
+      {
+        "lat": 52.74846697613,
+        "lon": 8.29729288682
+      },
+      {
+        "lat": 52.74798720498,
+        "lon": 8.29734250769
+      },
+      {
+        "lat": 52.74797871298,
+        "lon": 8.2971616909
       }
     ],
-    "name": "Hanse Kogge",
+    "name": "Kühlings Niedersachsenhalle",
     "alias": [],
-    "operator": "Hanse/Kogge",
+    "operator": "Kühling",
     "pictures": [],
     "bar": {
       "drinks": [
         {
           "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
           "prices": []
         },
         {
@@ -242,45 +289,203 @@
         }
       ],
       "isTent": true
-    }
+    },
+    "zoomLevel": 17.5,
+    "area": 2522.0230579664894
   },
   {
-    "slug": "anton-linnemann-otnlyz",
+    "slug": "stratmann\u0027s-cafe-zdq4zw",
     "type": "bar",
     "center": {
-      "lat": 52.747849198698,
-      "lon": 8.295895724148
+      "lat": 52.748131554135,
+      "lon": 8.296524467485
     },
     "bounds": [
       {
-        "lat": 52.7479060249,
-        "lon": 8.29584583506
+        "lat": 52.74821329028,
+        "lon": 8.29639099471
       },
       {
-        "lat": 52.7479131027,
-        "lon": 8.2959399462
+        "lat": 52.74823236748,
+        "lon": 8.29661562972
       },
       {
-        "lat": 52.74776395941,
-        "lon": 8.29597055778
+        "lat": 52.74804981806,
+        "lon": 8.29665794026
       },
       {
-        "lat": 52.74775688158,
-        "lon": 8.29587644664
+        "lat": 52.74803074079,
+        "lon": 8.29643330526
       },
       {
-        "lat": 52.7479060249,
-        "lon": 8.29584583506
+        "lat": 52.74821329028,
+        "lon": 8.29639099471
       }
     ],
-    "name": "Anton Linnemann",
+    "name": "Stratmann\u0027s Cafe",
     "alias": [],
-    "operator": "Linnemann",
+    "operator": "Stratmann",
+    "pictures": [],
+    "bar": {
+      "drinks": [],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 312.9524589853228
+  },
+  {
+    "slug": "overmeyer-zdk0mg",
+    "type": "bar",
+    "center": {
+      "lat": 52.747849604625,
+      "lon": 8.296567349285
+    },
+    "bounds": [
+      {
+        "lat": 52.74783620992,
+        "lon": 8.29665586218
+      },
+      {
+        "lat": 52.74784692003,
+        "lon": 8.29665847843
+      },
+      {
+        "lat": 52.74785773331,
+        "lon": 8.29665759264
+      },
+      {
+        "lat": 52.74786823421,
+        "lon": 8.29665323885
+      },
+      {
+        "lat": 52.74787801919,
+        "lon": 8.29664558437
+      },
+      {
+        "lat": 52.74788671221,
+        "lon": 8.29663492336
+      },
+      {
+        "lat": 52.7478939792,
+        "lon": 8.29662166552
+      },
+      {
+        "lat": 52.74789954091,
+        "lon": 8.29660632033
+      },
+      {
+        "lat": 52.7479031836,
+        "lon": 8.29658947751
+      },
+      {
+        "lat": 52.74790476727,
+        "lon": 8.29657178431
+      },
+      {
+        "lat": 52.74790423108,
+        "lon": 8.29655392068
+      },
+      {
+        "lat": 52.74790159563,
+        "lon": 8.2965365731
+      },
+      {
+        "lat": 52.7478969622,
+        "lon": 8.29652040823
+      },
+      {
+        "lat": 52.74789050884,
+        "lon": 8.29650604728
+      },
+      {
+        "lat": 52.74788248356,
+        "lon": 8.29649404214
+      },
+      {
+        "lat": 52.74787319476,
+        "lon": 8.29648485414
+      },
+      {
+        "lat": 52.7478629994,
+        "lon": 8.29647883639
+      },
+      {
+        "lat": 52.74785228929,
+        "lon": 8.29647622014
+      },
+      {
+        "lat": 52.747841476,
+        "lon": 8.29647710593
+      },
+      {
+        "lat": 52.7478309751,
+        "lon": 8.29648145972
+      },
+      {
+        "lat": 52.74782119011,
+        "lon": 8.2964891142
+      },
+      {
+        "lat": 52.74781249708,
+        "lon": 8.29649977521
+      },
+      {
+        "lat": 52.74780523007,
+        "lon": 8.29651303305
+      },
+      {
+        "lat": 52.74779966835,
+        "lon": 8.29652837824
+      },
+      {
+        "lat": 52.74779602566,
+        "lon": 8.29654522106
+      },
+      {
+        "lat": 52.74779444198,
+        "lon": 8.29656291426
+      },
+      {
+        "lat": 52.74779497817,
+        "lon": 8.29658077789
+      },
+      {
+        "lat": 52.74779761362,
+        "lon": 8.29659812547
+      },
+      {
+        "lat": 52.74780224707,
+        "lon": 8.29661429034
+      },
+      {
+        "lat": 52.74780870044,
+        "lon": 8.29662865129
+      },
+      {
+        "lat": 52.74781672574,
+        "lon": 8.29664065643
+      },
+      {
+        "lat": 52.74782601455,
+        "lon": 8.29664984443
+      },
+      {
+        "lat": 52.74783620992,
+        "lon": 8.29665586218
+      }
+    ],
+    "name": "Overmeyer",
+    "alias": [],
+    "operator": "Overmeyer",
     "pictures": [],
     "bar": {
       "drinks": [
         {
           "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
           "prices": []
         },
         {
@@ -292,125 +497,62 @@
           "prices": []
         }
       ],
-      "isTent": false
-    }
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 117.71810896336535
   },
   {
-    "slug": "fischer-zwvinj",
+    "slug": "die-flotte-ymq4zm",
     "type": "bar",
     "center": {
-      "lat": 52.747741406022,
-      "lon": 8.295739731951999
+      "lat": 52.747677195655,
+      "lon": 8.29674178344
     },
     "bounds": [
       {
-        "lat": 52.74767397448,
-        "lon": 8.29584030672
+        "lat": 52.74777573016,
+        "lon": 8.29649358921
       },
       {
-        "lat": 52.74766736228,
-        "lon": 8.29575238695
+        "lat": 52.74778790722,
+        "lon": 8.29664446346
       },
       {
-        "lat": 52.74766322845,
-        "lon": 8.29569742108
+        "lat": 52.74776022927,
+        "lon": 8.29665056001
       },
       {
-        "lat": 52.74771768654,
-        "lon": 8.29568624362
+        "lat": 52.7477842541,
+        "lon": 8.29695023529
       },
       {
-        "lat": 52.74772182037,
-        "lon": 8.29574120949
+        "lat": 52.74760260952,
+        "lon": 8.29698997767
       },
       {
-        "lat": 52.74777764232,
-        "lon": 8.29572975209
+        "lat": 52.74756648409,
+        "lon": 8.29653936655
       },
       {
-        "lat": 52.74777279936,
-        "lon": 8.2956653571
-      },
-      {
-        "lat": 52.74786705841,
-        "lon": 8.29564601049
-      },
-      {
-        "lat": 52.74787851353,
-        "lon": 8.29579832526
-      },
-      {
-        "lat": 52.74767397448,
-        "lon": 8.29584030672
+        "lat": 52.74777573016,
+        "lon": 8.29649358921
       }
     ],
-    "name": "Fischer",
-    "alias": [],
-    "operator": "Fischer",
+    "name": "Die Flotte",
+    "alias": [
+      "Das Partyschiff"
+    ],
+    "operator": "Kröger",
     "pictures": [],
     "bar": {
       "drinks": [
         {
           "name": "drink_type_beer",
           "prices": []
-        }
-      ],
-      "isTent": true
-    }
-  },
-  {
-    "slug": "brackmann-ntg0mt",
-    "type": "bar",
-    "center": {
-      "lat": 52.74745445970777,
-      "lon": 8.295896281552222
-    },
-    "bounds": [
-      {
-        "lat": 52.74750883429,
-        "lon": 8.29594741358
-      },
-      {
-        "lat": 52.74755288981,
-        "lon": 8.29593837127
-      },
-      {
-        "lat": 52.74755881998,
-        "lon": 8.29601722212
-      },
-      {
-        "lat": 52.7473353247,
-        "lon": 8.29606309399
-      },
-      {
-        "lat": 52.74731342884,
-        "lon": 8.29577195579
-      },
-      {
-        "lat": 52.74740432868,
-        "lon": 8.29575329885
-      },
-      {
-        "lat": 52.74740956839,
-        "lon": 8.29582296871
-      },
-      {
-        "lat": 52.74749810839,
-        "lon": 8.29580479608
-      },
-      {
-        "lat": 52.74750883429,
-        "lon": 8.29594741358
-      }
-    ],
-    "name": "Brackmann",
-    "alias": [],
-    "operator": "Brackmann",
-    "pictures": [],
-    "bar": {
-      "drinks": [
+        },
         {
-          "name": "drink_type_beer",
+          "name": "drink_type_softdrinks",
           "prices": []
         },
         {
@@ -423,51 +565,45 @@
         }
       ],
       "isTent": true
-    }
+    },
+    "zoomLevel": 18.0,
+    "area": 655.1209563212044
   },
   {
-    "slug": "jansen-ndfjmt",
+    "slug": "jansen-ndm3nt",
     "type": "bar",
     "center": {
-      "lat": 52.74740235081889,
-      "lon": 8.29678301695
+      "lat": 52.747381191585,
+      "lon": 8.296745201259998
     },
     "bounds": [
       {
-        "lat": 52.74735805544,
-        "lon": 8.2968999432
+        "lat": 52.74743415515,
+        "lon": 8.29685925729
       },
       {
-        "lat": 52.74735332561,
-        "lon": 8.29683705303
+        "lat": 52.74743883022,
+        "lon": 8.29691737823
       },
       {
-        "lat": 52.74734976917,
-        "lon": 8.29683778298
+        "lat": 52.74733050557,
+        "lon": 8.29694115748
       },
       {
-        "lat": 52.74732801839,
-        "lon": 8.29654857382
+        "lat": 52.74730072578,
+        "lon": 8.29657920508
       },
       {
-        "lat": 52.74746294717,
-        "lon": 8.29652088005
+        "lat": 52.7474372066,
+        "lon": 8.29654924504
       },
       {
-        "lat": 52.74748469788,
-        "lon": 8.2968100892
+        "lat": 52.74746165739,
+        "lon": 8.29685322003
       },
       {
-        "lat": 52.74746077923,
-        "lon": 8.29681499845
-      },
-      {
-        "lat": 52.74746550904,
-        "lon": 8.29687788862
-      },
-      {
-        "lat": 52.74735805544,
-        "lon": 8.2968999432
+        "lat": 52.74743415515,
+        "lon": 8.29685925729
       }
     ],
     "name": "Jansen",
@@ -481,6 +617,10 @@
           "prices": []
         },
         {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
           "name": "drink_type_shots",
           "prices": []
         },
@@ -490,6 +630,2151 @@
         }
       ],
       "isTent": true
-    }
+    },
+    "zoomLevel": 19.0,
+    "area": 363.3317171326409
+  },
+  {
+    "slug": "die-2-dinklager-ytdjod",
+    "type": "bar",
+    "center": {
+      "lat": 52.74698651151,
+      "lon": 8.296896392499999
+    },
+    "bounds": [
+      {
+        "lat": 52.7470183105,
+        "lon": 8.29667866163
+      },
+      {
+        "lat": 52.74705162675,
+        "lon": 8.29709284912
+      },
+      {
+        "lat": 52.7469547126,
+        "lon": 8.29711412337
+      },
+      {
+        "lat": 52.74692139627,
+        "lon": 8.29669993588
+      },
+      {
+        "lat": 52.7470183105,
+        "lon": 8.29667866163
+      }
+    ],
+    "name": "Die 2 Dinklager",
+    "alias": [],
+    "operator": "Susen/Jordan",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 305.74001442796913
+  },
+  {
+    "slug": "treffpunkt-zdy1y2",
+    "type": "bar",
+    "center": {
+      "lat": 52.74671184805,
+      "lon": 8.297107479795
+    },
+    "bounds": [
+      {
+        "lat": 52.74678491219,
+        "lon": 8.29714804821
+      },
+      {
+        "lat": 52.74664773266,
+        "lon": 8.29717816117
+      },
+      {
+        "lat": 52.74663878391,
+        "lon": 8.29706691138
+      },
+      {
+        "lat": 52.74677596347,
+        "lon": 8.29703679842
+      },
+      {
+        "lat": 52.74678491219,
+        "lon": 8.29714804821
+      }
+    ],
+    "name": "Treffpunkt",
+    "alias": [],
+    "operator": "von Husen",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 116.24097104305855
+  },
+  {
+    "slug": "western-saloon-mte4mj",
+    "type": "bar",
+    "center": {
+      "lat": 52.74659024533,
+      "lon": 8.29640883701
+    },
+    "bounds": [
+      {
+        "lat": 52.74662660653,
+        "lon": 8.29649627142
+      },
+      {
+        "lat": 52.74653798924,
+        "lon": 8.296470488
+      },
+      {
+        "lat": 52.74655388416,
+        "lon": 8.2963214026
+      },
+      {
+        "lat": 52.74664250142,
+        "lon": 8.29634718601
+      },
+      {
+        "lat": 52.74662660653,
+        "lon": 8.29649627142
+      }
+    ],
+    "name": "Western Saloon",
+    "alias": [],
+    "operator": "Laffontie",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 101.95088378802663
+  },
+  {
+    "slug": "zauberbar-oti4od",
+    "type": "bar",
+    "center": {
+      "lat": 52.746803954629996,
+      "lon": 8.296374708624999
+    },
+    "bounds": [
+      {
+        "lat": 52.74688273668,
+        "lon": 8.29631052844
+      },
+      {
+        "lat": 52.74689037838,
+        "lon": 8.29640066733
+      },
+      {
+        "lat": 52.74672517261,
+        "lon": 8.29643888881
+      },
+      {
+        "lat": 52.74671753088,
+        "lon": 8.29634874992
+      },
+      {
+        "lat": 52.74688273668,
+        "lon": 8.29631052844
+      }
+    ],
+    "name": "Zauberbar",
+    "alias": [],
+    "operator": "v.Döllen/Hohnhorst",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 113.64263814058415
+  },
+  {
+    "slug": "hansekogge-nmi5m2",
+    "type": "bar",
+    "center": {
+      "lat": 52.746969601320004,
+      "lon": 8.296492583380001
+    },
+    "bounds": [
+      {
+        "lat": 52.74703738822,
+        "lon": 8.29641446404
+      },
+      {
+        "lat": 52.74704777086,
+        "lon": 8.29653693458
+      },
+      {
+        "lat": 52.74690181446,
+        "lon": 8.29657070272
+      },
+      {
+        "lat": 52.74689143178,
+        "lon": 8.29644823218
+      },
+      {
+        "lat": 52.74703738822,
+        "lon": 8.29641446404
+      }
+    ],
+    "name": "Hansekogge",
+    "alias": [],
+    "operator": "Neuhaus-Sonnenberg",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 136.4134007055211
+  },
+  {
+    "slug": "pickers-owrmnj",
+    "type": "bar",
+    "center": {
+      "lat": 52.74709299803,
+      "lon": 8.295979945515
+    },
+    "bounds": [
+      {
+        "lat": 52.74703738863,
+        "lon": 8.29614490137
+      },
+      {
+        "lat": 52.74701209729,
+        "lon": 8.29584657242
+      },
+      {
+        "lat": 52.74714860751,
+        "lon": 8.29581498966
+      },
+      {
+        "lat": 52.74717389877,
+        "lon": 8.2961133186
+      },
+      {
+        "lat": 52.74703738863,
+        "lon": 8.29614490137
+      }
+    ],
+    "name": "Pickers",
+    "alias": [
+      "Luttener Zelt"
+    ],
+    "operator": "Surmann",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 310.785967131436
+  },
+  {
+    "slug": "brackmann-ytcwzt",
+    "type": "bar",
+    "center": {
+      "lat": 52.747406832675,
+      "lon": 8.29592898354
+    },
+    "bounds": [
+      {
+        "lat": 52.74748432255,
+        "lon": 8.29596981812
+      },
+      {
+        "lat": 52.74752892695,
+        "lon": 8.29595949843
+      },
+      {
+        "lat": 52.74753543553,
+        "lon": 8.29603627257
+      },
+      {
+        "lat": 52.74730366402,
+        "lon": 8.29608991608
+      },
+      {
+        "lat": 52.74727822982,
+        "lon": 8.29578990018
+      },
+      {
+        "lat": 52.74737266804,
+        "lon": 8.295768051
+      },
+      {
+        "lat": 52.74737897779,
+        "lon": 8.29584247949
+      },
+      {
+        "lat": 52.74747170852,
+        "lon": 8.2958210253
+      },
+      {
+        "lat": 52.74748432255,
+        "lon": 8.29596981812
+      }
+    ],
+    "name": "Brackmann",
+    "alias": [],
+    "operator": "Brackmann",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 18.5,
+    "area": 401.97712844238146
+  },
+  {
+    "slug": "banane-ndk3og",
+    "type": "bar",
+    "center": {
+      "lat": 52.747041791520004,
+      "lon": 8.29559367616
+    },
+    "bounds": [
+      {
+        "lat": 52.74702602318,
+        "lon": 8.29550251231
+      },
+      {
+        "lat": 52.74711207579,
+        "lon": 8.29566210374
+      },
+      {
+        "lat": 52.74702569613,
+        "lon": 8.29568484001
+      },
+      {
+        "lat": 52.74697150725,
+        "lon": 8.2955839219
+      },
+      {
+        "lat": 52.74702602318,
+        "lon": 8.29550251231
+      }
+    ],
+    "name": "Banane",
+    "alias": [],
+    "operator": "Blömer",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 96.00852568935701
+  },
+  {
+    "slug": "alkoholfreies-zelt-zmrmzt",
+    "type": "bar",
+    "center": {
+      "lat": 52.746987593395,
+      "lon": 8.29508928782
+    },
+    "bounds": [
+      {
+        "lat": 52.74711572856,
+        "lon": 8.29520411722
+      },
+      {
+        "lat": 52.74704385678,
+        "lon": 8.2953114448
+      },
+      {
+        "lat": 52.74685945823,
+        "lon": 8.29497445841
+      },
+      {
+        "lat": 52.74693133031,
+        "lon": 8.29486713084
+      },
+      {
+        "lat": 52.74711572856,
+        "lon": 8.29520411722
+      }
+    ],
+    "name": "Alkoholfreies Zelt",
+    "alias": [],
+    "operator": "Kath. Frauenbund",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 329.4022278154812
+  },
+  {
+    "slug": "suing-k-ytm4ym",
+    "type": "bar",
+    "center": {
+      "lat": 52.74722390131,
+      "lon": 8.295288313275
+    },
+    "bounds": [
+      {
+        "lat": 52.74720665188,
+        "lon": 8.29539388351
+      },
+      {
+        "lat": 52.74715834573,
+        "lon": 8.29530344245
+      },
+      {
+        "lat": 52.74724115083,
+        "lon": 8.29518274304
+      },
+      {
+        "lat": 52.74728945689,
+        "lon": 8.29527318411
+      },
+      {
+        "lat": 52.74720665188,
+        "lon": 8.29539388351
+      }
+    ],
+    "name": "Suing-K",
+    "alias": [],
+    "operator": "Suing-K",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 99.69003576902108
+  },
+  {
+    "slug": "alt-berlin-mmrlot",
+    "type": "bar",
+    "center": {
+      "lat": 52.747569155485,
+      "lon": 8.29477947982
+    },
+    "bounds": [
+      {
+        "lat": 52.74762635798,
+        "lon": 8.29477965765
+      },
+      {
+        "lat": 52.74753868276,
+        "lon": 8.29485945337
+      },
+      {
+        "lat": 52.74751195299,
+        "lon": 8.29477930199
+      },
+      {
+        "lat": 52.74759962826,
+        "lon": 8.29469950627
+      },
+      {
+        "lat": 52.74762635798,
+        "lon": 8.29477965765
+      }
+    ],
+    "name": "Alt Berlin",
+    "alias": [],
+    "operator": "Wegener",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 68.55924382739761
+  },
+  {
+    "slug": "twistringer-zelt-mje1md",
+    "type": "bar",
+    "center": {
+      "lat": 52.747491103295005,
+      "lon": 8.295398610075
+    },
+    "bounds": [
+      {
+        "lat": 52.74755410712,
+        "lon": 8.29557560317
+      },
+      {
+        "lat": 52.74745935416,
+        "lon": 8.29559712624
+      },
+      {
+        "lat": 52.74742809947,
+        "lon": 8.29522161698
+      },
+      {
+        "lat": 52.7475228525,
+        "lon": 8.29520009391
+      },
+      {
+        "lat": 52.74755410712,
+        "lon": 8.29557560317
+      }
+    ],
+    "name": "Twistringer Zelt",
+    "alias": [],
+    "operator": "Brackmann",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 271.33707294578255
+  },
+  {
+    "slug": "anton-linnemann-ogrhzg",
+    "type": "bar",
+    "center": {
+      "lat": 52.747817537965,
+      "lon": 8.295924960895
+    },
+    "bounds": [
+      {
+        "lat": 52.74789871828,
+        "lon": 8.29595178299
+      },
+      {
+        "lat": 52.7477437524,
+        "lon": 8.29598698364
+      },
+      {
+        "lat": 52.74773635765,
+        "lon": 8.29589813881
+      },
+      {
+        "lat": 52.74789132355,
+        "lon": 8.29586293815
+      },
+      {
+        "lat": 52.74789871828,
+        "lon": 8.29595178299
+      }
+    ],
+    "name": "Anton Linnemann",
+    "alias": [],
+    "operator": "Linnemann",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 19.0,
+    "area": 104.99305802502738
+  },
+  {
+    "slug": "fischer-njyzzj",
+    "type": "bar",
+    "center": {
+      "lat": 52.74775273035,
+      "lon": 8.295757658105
+    },
+    "bounds": [
+      {
+        "lat": 52.7476539594,
+        "lon": 8.29585589401
+      },
+      {
+        "lat": 52.7476417823,
+        "lon": 8.29570569031
+      },
+      {
+        "lat": 52.74769689697,
+        "lon": 8.295693171
+      },
+      {
+        "lat": 52.74770200414,
+        "lon": 8.29575453152
+      },
+      {
+        "lat": 52.74775610289,
+        "lon": 8.29574224297
+      },
+      {
+        "lat": 52.74775110253,
+        "lon": 8.29568216576
+      },
+      {
+        "lat": 52.74785122786,
+        "lon": 8.2956594222
+      },
+      {
+        "lat": 52.7478636784,
+        "lon": 8.29580901058
+      },
+      {
+        "lat": 52.7476539594,
+        "lon": 8.29585589401
+      }
+    ],
+    "name": "Fischer",
+    "alias": [],
+    "operator": "Fischer",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 214.15000237516983
+  },
+  {
+    "slug": "elmendorffburg-nmmxod",
+    "type": "bar",
+    "center": {
+      "lat": 52.747696040715,
+      "lon": 8.295072843415
+    },
+    "bounds": [
+      {
+        "lat": 52.74785812859,
+        "lon": 8.29514577851
+      },
+      {
+        "lat": 52.74753665365,
+        "lon": 8.29516053066
+      },
+      {
+        "lat": 52.74753395284,
+        "lon": 8.29499990832
+      },
+      {
+        "lat": 52.74785542779,
+        "lon": 8.29498515617
+      },
+      {
+        "lat": 52.74785812859,
+        "lon": 8.29514577851
+      }
+    ],
+    "name": "Elmendorffburg",
+    "alias": [],
+    "operator": "Elmendorff",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 386.7651414608014
+  },
+  {
+    "slug": "schaefers-festzelt-no.1-zwy1ow",
+    "type": "bar",
+    "center": {
+      "lat": 52.74808457508,
+      "lon": 8.295720587504999
+    },
+    "bounds": [
+      {
+        "lat": 52.74817391858,
+        "lon": 8.29558029637
+      },
+      {
+        "lat": 52.74819421348,
+        "lon": 8.29581364855
+      },
+      {
+        "lat": 52.74799523168,
+        "lon": 8.29586087864
+      },
+      {
+        "lat": 52.74797493668,
+        "lon": 8.29562752646
+      },
+      {
+        "lat": 52.74817391858,
+        "lon": 8.29558029637
+      }
+    ],
+    "name": "Schäfers Festzelt No.1",
+    "alias": [],
+    "operator": "Schäfers",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 354.694750186987
+  },
+  {
+    "slug": "grieshop-zjdmmd",
+    "type": "bar",
+    "center": {
+      "lat": 52.748397943375,
+      "lon": 8.295683085835
+    },
+    "bounds": [
+      {
+        "lat": 52.74829000532,
+        "lon": 8.295857905
+      },
+      {
+        "lat": 52.74827452065,
+        "lon": 8.29567986078
+      },
+      {
+        "lat": 52.74830989198,
+        "lon": 8.29567146504
+      },
+      {
+        "lat": 52.74829974685,
+        "lon": 8.29555481538
+      },
+      {
+        "lat": 52.74849585661,
+        "lon": 8.29550826667
+      },
+      {
+        "lat": 52.7485213661,
+        "lon": 8.29580157861
+      },
+      {
+        "lat": 52.74829000532,
+        "lon": 8.295857905
+      }
+    ],
+    "name": "Grieshop",
+    "alias": [],
+    "operator": "Grieshop",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 18.5,
+    "area": 488.350133527935
+  },
+  {
+    "slug": "holla-zjawod",
+    "type": "bar",
+    "center": {
+      "lat": 52.748557417345,
+      "lon": 8.295997658895
+    },
+    "bounds": [
+      {
+        "lat": 52.74859605072,
+        "lon": 8.29606309399
+      },
+      {
+        "lat": 52.74853185237,
+        "lon": 8.29607872358
+      },
+      {
+        "lat": 52.74851878397,
+        "lon": 8.2959322238
+      },
+      {
+        "lat": 52.74858298234,
+        "lon": 8.29591659421
+      },
+      {
+        "lat": 52.74859605072,
+        "lon": 8.29606309399
+      }
+    ],
+    "name": "Holla",
+    "alias": [
+      "Holla die Waldfee"
+    ],
+    "operator": "Heyng",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 71.91879477497142
+  },
+  {
+    "slug": "kaponier-ywnmow",
+    "type": "bar",
+    "center": {
+      "lat": 52.74808558167,
+      "lon": 8.295172693595
+    },
+    "bounds": [
+      {
+        "lat": 52.74821937916,
+        "lon": 8.29504787788
+      },
+      {
+        "lat": 52.74822698378,
+        "lon": 8.29527202832
+      },
+      {
+        "lat": 52.74795178422,
+        "lon": 8.29529750931
+      },
+      {
+        "lat": 52.74794417956,
+        "lon": 8.29507335886
+      },
+      {
+        "lat": 52.74821937916,
+        "lon": 8.29504787788
+      }
+    ],
+    "name": "Kaponier",
+    "alias": [],
+    "operator": "Kaponier",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 18.5,
+    "area": 463.13208071116554
+  },
+  {
+    "slug": "stratmann-ywy0y2",
+    "type": "bar",
+    "center": {
+      "lat": 52.74880886738,
+      "lon": 8.29492919013
+    },
+    "bounds": [
+      {
+        "lat": 52.74880224455,
+        "lon": 8.29468577966
+      },
+      {
+        "lat": 52.74889235257,
+        "lon": 8.29466432199
+      },
+      {
+        "lat": 52.74889877313,
+        "lon": 8.29473790855
+      },
+      {
+        "lat": 52.74903441439,
+        "lon": 8.29470589623
+      },
+      {
+        "lat": 52.74905389712,
+        "lon": 8.29493120179
+      },
+      {
+        "lat": 52.74900925686,
+        "lon": 8.29494173722
+      },
+      {
+        "lat": 52.74902223768,
+        "lon": 8.29509213433
+      },
+      {
+        "lat": 52.74858955641,
+        "lon": 8.29519405827
+      },
+      {
+        "lat": 52.74856383764,
+        "lon": 8.29489608095
+      },
+      {
+        "lat": 52.74881542284,
+        "lon": 8.29483681681
+      },
+      {
+        "lat": 52.74880224455,
+        "lon": 8.29468577966
+      }
+    ],
+    "name": "Stratmann",
+    "alias": [
+      "Lohner Zelt",
+      "Echt Stoppelmarkt!"
+    ],
+    "operator": "Stratmann",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 17.5,
+    "area": 1219.3965052566582
+  },
+  {
+    "slug": "hogeback-ytfmyz",
+    "type": "bar",
+    "center": {
+      "lat": 52.748123180945,
+      "lon": 8.2941389289
+    },
+    "bounds": [
+      {
+        "lat": 52.74795635657,
+        "lon": 8.29425796732
+      },
+      {
+        "lat": 52.74796376204,
+        "lon": 8.29409717846
+      },
+      {
+        "lat": 52.74801124592,
+        "lon": 8.29410314702
+      },
+      {
+        "lat": 52.74801480617,
+        "lon": 8.29403668508
+      },
+      {
+        "lat": 52.74810855458,
+        "lon": 8.29405039073
+      },
+      {
+        "lat": 52.748112222,
+        "lon": 8.29397499427
+      },
+      {
+        "lat": 52.74820314324,
+        "lon": 8.29398706421
+      },
+      {
+        "lat": 52.74819941679,
+        "lon": 8.29406367447
+      },
+      {
+        "lat": 52.74829000532,
+        "lon": 8.29407691821
+      },
+      {
+        "lat": 52.7482779019,
+        "lon": 8.29430286353
+      },
+      {
+        "lat": 52.74795635657,
+        "lon": 8.29425796732
+      }
+    ],
+    "name": "Hogeback",
+    "alias": [],
+    "operator": "Muhle",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 18.5,
+    "area": 579.7966631730671
+  },
+  {
+    "slug": "borgerding-owflzj",
+    "type": "bar",
+    "center": {
+      "lat": 52.748382466150005,
+      "lon": 8.29418107076
+    },
+    "bounds": [
+      {
+        "lat": 52.74844668135,
+        "lon": 8.29407825932
+      },
+      {
+        "lat": 52.74845544392,
+        "lon": 8.29426644784
+      },
+      {
+        "lat": 52.74831825098,
+        "lon": 8.2942838822
+      },
+      {
+        "lat": 52.74830948838,
+        "lon": 8.29409569368
+      },
+      {
+        "lat": 52.74844668135,
+        "lon": 8.29407825932
+      }
+    ],
+    "name": "Borgerding",
+    "alias": [],
+    "operator": "Borgerding",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 194.3746315077462
+  },
+  {
+    "slug": "beckmanns-alter-dorfplatz-mwe3yz",
+    "type": "bar",
+    "center": {
+      "lat": 52.748291222795004,
+      "lon": 8.293377362600001
+    },
+    "bounds": [
+      {
+        "lat": 52.74838985591,
+        "lon": 8.2928833352
+      },
+      {
+        "lat": 52.74840093449,
+        "lon": 8.29312126292
+      },
+      {
+        "lat": 52.74840074826,
+        "lon": 8.29312128659
+      },
+      {
+        "lat": 52.74842963373,
+        "lon": 8.29374164209
+      },
+      {
+        "lat": 52.74827648656,
+        "lon": 8.29376110388
+      },
+      {
+        "lat": 52.74828107558,
+        "lon": 8.29385965928
+      },
+      {
+        "lat": 52.7481887649,
+        "lon": 8.29387139
+      },
+      {
+        "lat": 52.74818417586,
+        "lon": 8.2937728346
+      },
+      {
+        "lat": 52.74818231351,
+        "lon": 8.29377307127
+      },
+      {
+        "lat": 52.74815281186,
+        "lon": 8.29313948616
+      },
+      {
+        "lat": 52.74817249077,
+        "lon": 8.2931369854
+      },
+      {
+        "lat": 52.74816202814,
+        "lon": 8.29291228728
+      },
+      {
+        "lat": 52.74838985591,
+        "lon": 8.2928833352
+      }
+    ],
+    "name": "Beckmanns alter Dorfplatz",
+    "alias": [],
+    "operator": "Beckmann",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 17.5,
+    "area": 1633.644427678548
+  },
+  {
+    "slug": "heitmann\u0027s-biergarten-zdg4ng",
+    "type": "bar",
+    "center": {
+      "lat": 52.748061268215,
+      "lon": 8.293739685525
+    },
+    "bounds": [
+      {
+        "lat": 52.74798558138,
+        "lon": 8.29382747278
+      },
+      {
+        "lat": 52.74800019377,
+        "lon": 8.293624966
+      },
+      {
+        "lat": 52.74813695505,
+        "lon": 8.29365189827
+      },
+      {
+        "lat": 52.7481223427,
+        "lon": 8.29385440505
+      },
+      {
+        "lat": 52.74798558138,
+        "lon": 8.29382747278
+      }
+    ],
+    "name": "Heitmann\u0027s Biergarten",
+    "alias": [],
+    "operator": "Heitmann",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 19.0,
+    "area": 210.22592001532206
+  },
+  {
+    "slug": "bloemer\u0027s-zjc4nm",
+    "type": "bar",
+    "center": {
+      "lat": 52.747760305955,
+      "lon": 8.293366906025
+    },
+    "bounds": [
+      {
+        "lat": 52.74784595155,
+        "lon": 8.29317301378
+      },
+      {
+        "lat": 52.74784026454,
+        "lon": 8.29325182723
+      },
+      {
+        "lat": 52.74793037894,
+        "lon": 8.2932695733
+      },
+      {
+        "lat": 52.74790843851,
+        "lon": 8.29357363559
+      },
+      {
+        "lat": 52.74773610242,
+        "lon": 8.29353969779
+      },
+      {
+        "lat": 52.74773264408,
+        "lon": 8.29358762512
+      },
+      {
+        "lat": 52.74767709627,
+        "lon": 8.29357668623
+      },
+      {
+        "lat": 52.74768055462,
+        "lon": 8.2935287589
+      },
+      {
+        "lat": 52.74759023297,
+        "lon": 8.29351097211
+      },
+      {
+        "lat": 52.74761217356,
+        "lon": 8.29320690982
+      },
+      {
+        "lat": 52.74770403772,
+        "lon": 8.29322500038
+      },
+      {
+        "lat": 52.74770972475,
+        "lon": 8.29314618693
+      },
+      {
+        "lat": 52.74784595155,
+        "lon": 8.29317301378
+      }
+    ],
+    "name": "Blömer\u0027s",
+    "alias": [],
+    "operator": "Blömer",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 18.0,
+    "area": 836.1476507514506
+  },
+  {
+    "slug": "fala-treff-nde5m2",
+    "type": "bar",
+    "center": {
+      "lat": 52.747800803725,
+      "lon": 8.29295414604
+    },
+    "bounds": [
+      {
+        "lat": 52.74783783352,
+        "lon": 8.29304158553
+      },
+      {
+        "lat": 52.74774916148,
+        "lon": 8.29301825136
+      },
+      {
+        "lat": 52.74776377395,
+        "lon": 8.29286670655
+      },
+      {
+        "lat": 52.74785244597,
+        "lon": 8.29289004073
+      },
+      {
+        "lat": 52.74783783352,
+        "lon": 8.29304158553
+      }
+    ],
+    "name": "Fala-Treff",
+    "alias": [],
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 19.0,
+    "area": 103.12600897071616
+  },
+  {
+    "slug": "party-park-mwy4og",
+    "type": "bar",
+    "center": {
+      "lat": 52.74780312809,
+      "lon": 8.29176776047
+    },
+    "bounds": [
+      {
+        "lat": 52.74791304959,
+        "lon": 8.29183105422
+      },
+      {
+        "lat": 52.74804037744,
+        "lon": 8.29185873203
+      },
+      {
+        "lat": 52.7480312445,
+        "lon": 8.2919733968
+      },
+      {
+        "lat": 52.74789441528,
+        "lon": 8.29194365365
+      },
+      {
+        "lat": 52.74784432794,
+        "lon": 8.29224631056
+      },
+      {
+        "lat": 52.74756587874,
+        "lon": 8.29212292895
+      },
+      {
+        "lat": 52.74758016559,
+        "lon": 8.29203268664
+      },
+      {
+        "lat": 52.74763669609,
+        "lon": 8.29205711128
+      },
+      {
+        "lat": 52.74772025644,
+        "lon": 8.29155856346
+      },
+      {
+        "lat": 52.7477648326,
+        "lon": 8.29157895348
+      },
+      {
+        "lat": 52.74781418085,
+        "lon": 8.29128921038
+      },
+      {
+        "lat": 52.74790196589,
+        "lon": 8.29132899508
+      },
+      {
+        "lat": 52.74787742437,
+        "lon": 8.29147678025
+      },
+      {
+        "lat": 52.74796528637,
+        "lon": 8.29151540861
+      },
+      {
+        "lat": 52.74791304959,
+        "lon": 8.29183105422
+      }
+    ],
+    "name": "Party-Park",
+    "alias": [],
+    "operator": "von Döllen/Hake",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 17.5,
+    "area": 1513.5834694373466
+  },
+  {
+    "slug": "stierbraeu-m2e4yw",
+    "type": "bar",
+    "center": {
+      "lat": 52.74630284343,
+      "lon": 8.29599084012
+    },
+    "bounds": [
+      {
+        "lat": 52.74635789192,
+        "lon": 8.29591020808
+      },
+      {
+        "lat": 52.74633759616,
+        "lon": 8.29609796271
+      },
+      {
+        "lat": 52.74624779494,
+        "lon": 8.29607147216
+      },
+      {
+        "lat": 52.74626809075,
+        "lon": 8.29588371753
+      },
+      {
+        "lat": 52.74635789192,
+        "lon": 8.29591020808
+      }
+    ],
+    "name": "Stierbräu",
+    "alias": [],
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 130.22020970787855
+  },
+  {
+    "slug": "meyers-pony-bar-ytizmt",
+    "type": "bar",
+    "center": {
+      "lat": 52.746249377125,
+      "lon": 8.297556134965
+    },
+    "bounds": [
+      {
+        "lat": 52.74622264059,
+        "lon": 8.29747182655
+      },
+      {
+        "lat": 52.7462907586,
+        "lon": 8.29748991131
+      },
+      {
+        "lat": 52.74627611369,
+        "lon": 8.29764044338
+      },
+      {
+        "lat": 52.74620799565,
+        "lon": 8.29762235862
+      },
+      {
+        "lat": 52.74622264059,
+        "lon": 8.29747182655
+      }
+    ],
+    "name": "Meyers Pony Bar",
+    "alias": [
+      "Meyerei"
+    ],
+    "operator": "Meyer, M",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 78.7299134751564
+  },
+  {
+    "slug": "ellert-ndliog",
+    "type": "bar",
+    "center": {
+      "lat": 52.746204090575,
+      "lon": 8.298293176075
+    },
+    "bounds": [
+      {
+        "lat": 52.74623602093,
+        "lon": 8.29824746182
+      },
+      {
+        "lat": 52.74622574208,
+        "lon": 8.29835311585
+      },
+      {
+        "lat": 52.74617216022,
+        "lon": 8.29833889033
+      },
+      {
+        "lat": 52.74618243908,
+        "lon": 8.2982332363
+      },
+      {
+        "lat": 52.74623602093,
+        "lon": 8.29824746182
+      }
+    ],
+    "name": "Ellert",
+    "alias": [],
+    "operator": "Ellert",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 43.46632896735926
+  },
+  {
+    "slug": "böticherytflnj",
+    "type": "bar",
+    "center": {
+      "lat": 52.747480708924996,
+      "lon": 8.29715772997
+    },
+    "bounds": [
+      {
+        "lat": 52.74745969569,
+        "lon": 8.29719151277
+      },
+      {
+        "lat": 52.74745550053,
+        "lon": 8.29713298955
+      },
+      {
+        "lat": 52.74750172217,
+        "lon": 8.29712394717
+      },
+      {
+        "lat": 52.74750591732,
+        "lon": 8.29718247039
+      },
+      {
+        "lat": 52.74745969569,
+        "lon": 8.29719151277
+      }
+    ],
+    "alias": [],
+    "operator": "Böticher",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_cocktails",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 20.529717129138326
+  },
+  {
+    "slug": "zur-neuen-meyerei-ndhjmm",
+    "type": "bar",
+    "center": {
+      "lat": 52.747857428895,
+      "lon": 8.29762463657
+    },
+    "bounds": [
+      {
+        "lat": 52.74794076319,
+        "lon": 8.297760178
+      },
+      {
+        "lat": 52.7477740946,
+        "lon": 8.29777744659
+      },
+      {
+        "lat": 52.74783977749,
+        "lon": 8.29748105746
+      },
+      {
+        "lat": 52.74792981607,
+        "lon": 8.29747182655
+      },
+      {
+        "lat": 52.74794076319,
+        "lon": 8.297760178
+      }
+    ],
+    "name": "Zur neuen Meyerei",
+    "alias": [],
+    "operator": "Meyer",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 278.1517461649326
+  },
+  {
+    "slug": "ernst rentyzbkmj",
+    "type": "bar",
+    "center": {
+      "lat": 52.748525057465,
+      "lon": 8.29360785816
+    },
+    "bounds": [
+      {
+        "lat": 52.74855014797,
+        "lon": 8.29364237909
+      },
+      {
+        "lat": 52.74850392971,
+        "lon": 8.29364898666
+      },
+      {
+        "lat": 52.74849996696,
+        "lon": 8.29357333723
+      },
+      {
+        "lat": 52.74854618523,
+        "lon": 8.29356672966
+      },
+      {
+        "lat": 52.74855014797,
+        "lon": 8.29364237909
+      }
+    ],
+    "alias": [],
+    "operator": "Ernst Rent",
+    "pictures": [],
+    "bar": {
+      "drinks": [],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 26.363956129860963
+  },
+  {
+    "slug": "winter-zgniot",
+    "type": "bar",
+    "center": {
+      "lat": 52.748433857385,
+      "lon": 8.294695702025
+    },
+    "bounds": [
+      {
+        "lat": 52.74839567422,
+        "lon": 8.29476112194
+      },
+      {
+        "lat": 52.74838932997,
+        "lon": 8.29464233862
+      },
+      {
+        "lat": 52.74847204057,
+        "lon": 8.29463028211
+      },
+      {
+        "lat": 52.7484783848,
+        "lon": 8.29474906544
+      },
+      {
+        "lat": 52.74839567422,
+        "lon": 8.29476112194
+      }
+    ],
+    "name": "Winter",
+    "alias": [],
+    "operator": "Winter",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_cocktails",
+          "prices": []
+        }
+      ],
+      "isTent": false
+    },
+    "zoomLevel": 20.0,
+    "area": 74.10313862569322
+  },
+  {
+    "slug": "buessing-ndm5nm",
+    "type": "bar",
+    "center": {
+      "lat": 52.74397309077,
+      "lon": 8.29913853579
+    },
+    "bounds": [
+      {
+        "lat": 52.7440142214,
+        "lon": 8.29925719426
+      },
+      {
+        "lat": 52.74392344495,
+        "lon": 8.29924794624
+      },
+      {
+        "lat": 52.74393196016,
+        "lon": 8.29901987732
+      },
+      {
+        "lat": 52.74402273659,
+        "lon": 8.29902912534
+      },
+      {
+        "lat": 52.7440142214,
+        "lon": 8.29925719426
+      }
+    ],
+    "name": "Büssing",
+    "alias": [],
+    "operator": "Büssing",
+    "pictures": [],
+    "bar": {
+      "drinks": [
+        {
+          "name": "drink_type_beer",
+          "prices": []
+        },
+        {
+          "name": "drink_type_softdrinks",
+          "prices": []
+        },
+        {
+          "name": "drink_type_shots",
+          "prices": []
+        },
+        {
+          "name": "drink_type_longdrinks",
+          "prices": []
+        }
+      ],
+      "isTent": true
+    },
+    "zoomLevel": 19.0,
+    "area": 155.5551569955978
   }
 ]
