@@ -13,6 +13,7 @@ import com.jonasgerdes.stoppelmap.model.entity.map.Exhibition
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.SellerStall
 import com.jonasgerdes.stoppelmap.model.entity.map.boundsFor
+import com.jonasgerdes.stoppelmap.model.entity.map.search.GroupSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.ProductSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
@@ -133,6 +134,15 @@ class MapInteractor : ViewModel() {
                     result.entity
             ))
             is ProductSearchResult -> {
+                val bounds = MapEntity.boundsFor(result.entities)
+                stateSubject.onNext(MapViewState.EntityGroupDetail(
+                        bounds.center,
+                        result.entities[0].zoomLevel,
+                        stateSubject.value.bounds,
+                        result.entities
+                ))
+            }
+            is GroupSearchResult -> {
                 val bounds = MapEntity.boundsFor(result.entities)
                 stateSubject.onNext(MapViewState.EntityGroupDetail(
                         bounds.center,
