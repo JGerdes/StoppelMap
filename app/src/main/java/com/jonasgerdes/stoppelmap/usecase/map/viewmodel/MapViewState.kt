@@ -37,10 +37,9 @@ sealed class MapViewState(
     class EntityDetail(
             zoom: Float,
             bounds: MapBounds,
-            visibleEntities: List<MapEntity>,
             val entity: MapEntity,
             center: LatLng = entity.center.latLng
-    ) : MapViewState(center, zoom, bounds, visibleEntities)
+    ) : MapViewState(center, zoom, bounds, listOf(entity))
 
     class EntityGroupDetail(
             center: LatLng,

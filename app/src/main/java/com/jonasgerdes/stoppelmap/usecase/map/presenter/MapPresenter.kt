@@ -54,7 +54,9 @@ class MapPresenter(
                 .subscribe(interactor::onBottomSheetClosed)
 
         disposables += visibleEntitySubject
-                .distinctUntilChanged { first, second -> first.size == second.size }
+                .distinctUntilChanged { first, second ->
+                    first.size == second.size || first.size == 1
+                }
                 .map {
                     it.map {
                         MapMarker(

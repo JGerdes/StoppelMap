@@ -52,7 +52,6 @@ class MapInteractor : ViewModel() {
                     is MapViewState.EntityDetail -> MapViewState.EntityDetail(
                             position.zoom,
                             stateSubject.value.bounds,
-                            repository.getVisibleEntities(position.zoom),
                             (stateSubject.value as MapViewState.EntityDetail).entity,
                             position.target
                     )
@@ -96,7 +95,6 @@ class MapInteractor : ViewModel() {
                     MapViewState.EntityDetail(
                             entity.zoomLevel,
                             stateSubject.value.bounds,
-                            stateSubject.value.visibleEntities,
                             entity
                     )
                 } else {
@@ -125,7 +123,6 @@ class MapInteractor : ViewModel() {
             is SingleEntitySearchResult -> stateSubject.onNext(MapViewState.EntityDetail(
                     result.entity.zoomLevel,
                     stateSubject.value.bounds,
-                    stateSubject.value.visibleEntities,
                     result.entity
             ))
             is ProductSearchResult -> {
