@@ -9,7 +9,9 @@ import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
+import com.jonasgerdes.stoppelmap.model.entity.map.Exhibition
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
+import com.jonasgerdes.stoppelmap.model.entity.map.SellerStall
 import com.jonasgerdes.stoppelmap.model.entity.map.boundsFor
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.ProductSearchResult
@@ -44,6 +46,11 @@ class MapInteractor : ViewModel() {
     ))
 
     val state get() = stateSubject.hide()
+            //todo: remove filter when sellerstands and exhibition have proper names
+            .filter {
+                !(it is MapViewState.EntityDetail &&
+                        (it.entity.type == Exhibition.TYPE || it.entity.type == SellerStall.TYPE))
+            }
 
     fun onMapMoved(position: CameraPosition) {
         Log.d("MapInteractor", "zoom: " + position.zoom)
