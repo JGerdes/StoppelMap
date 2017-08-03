@@ -2,8 +2,11 @@ package com.jonasgerdes.stoppelmap.model
 
 import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.App
+import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Product
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
+import com.jonasgerdes.stoppelmap.model.entity.map.Restroom
+import com.jonasgerdes.stoppelmap.model.entity.map.search.GroupSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.ProductSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
@@ -37,7 +40,7 @@ class MapEntityRepository : Disposable {
         return if (term.isEmpty()) {
             Observable.just(ArrayList())
         } else {
-            arrayListOf(
+            val results = arrayListOf(
                     realm.where(MapEntity::class.java)
                             .like("name", "*$term*", Case.INSENSITIVE)
                             .findAllAsync()
@@ -51,12 +54,15 @@ class MapEntityRepository : Disposable {
                     realm.where(Product::class.java)
                             .findAllAsync()
                             .asRxObservable()
-                            .map { it.filter {
+                            .map {
+                                it.filter {
                                     stringHelper.getNameFor(it).contains(term, true)
                                 }.distinctBy { it.name }
                             }
                             .map { products -> createProductResult(products, term) }
-            ).zip {
+            )
+            results.addAll(createSpecialQueries(term))
+            results.zip {
                 val result = ArrayList<MapSearchResult>()
                 it.forEach {
                     result.addAll(it)
@@ -64,6 +70,64 @@ class MapEntityRepository : Disposable {
                 result
             }.map { it.distinctBy { it.title } }
         }
+    }
+
+    private fun createSpecialQueries(term: String): List<Observable<List<MapSearchResult>>> {
+        val result = ArrayList<Observable<List<MapSearchResult>>>()
+        when {
+            stringHelper.get(R.string.restroom_generic).contains(term, true) -> {
+                result.add(realm.where(MapEntity::class.java)
+                        .equalTo("type", Restroom.TYPE)
+                        .findAllAsync()
+                        .asRxObservable()
+                        .map { entities ->
+                            listOf(GroupSearchResult(
+                                    stringHelper.get(R.string.restroom_generic),
+                                    R.drawable.ic_entity_restroom_black_24dp,
+                                    entities))
+                        })
+            }
+            stringHelper.get(R.string.restroom_women_only).contains(term, true) -> {
+                result.add(realm.where(MapEntity::class.java)
+                        .equalTo("type", Restroom.TYPE)
+                        .equalTo("restroom.forWomen", true)
+                        .findAllAsync()
+                        .asRxObservable()
+                        .map { entities ->
+                            listOf(GroupSearchResult(
+                                    stringHelper.get(R.string.restroom_women_only),
+                                    R.drawable.ic_entity_restroom_black_24dp,
+                                    entities))
+                        })
+            }
+            stringHelper.get(R.string.restroom_men_only).contains(term, true) -> {
+                result.add(realm.where(MapEntity::class.java)
+                        .equalTo("type", Restroom.TYPE)
+                        .equalTo("restroom.forMen", true)
+                        .findAllAsync()
+                        .asRxObservable()
+                        .map { entities ->
+                            listOf(GroupSearchResult(
+                                    stringHelper.get(R.string.restroom_men_only),
+                                    R.drawable.ic_entity_restroom_black_24dp,
+                                    entities))
+                        })
+            }
+            stringHelper.get(R.string.restroom_for_disabled).contains(term, true) -> {
+                result.add(realm.where(MapEntity::class.java)
+                        .equalTo("type", Restroom.TYPE)
+                        .equalTo("restroom.forDisabled", true)
+                        .findAllAsync()
+                        .asRxObservable()
+                        .map { entities ->
+                            listOf(GroupSearchResult(
+                                    stringHelper.get(R.string.restroom_for_disabled),
+                                    R.drawable.ic_entity_restroom_black_24dp,
+                                    entities))
+                        })
+            }
+        }
+        return result
     }
 
     private fun createProductResult(products: List<Product>?, term: String)
