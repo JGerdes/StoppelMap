@@ -127,7 +127,7 @@ class MapPresenter(
         view.toggleSearchResults(false)
         view.toggleSearchFieldFocus(false)
 
-        state.entity.name?.let { view.setBottomSheetTitle(it) }
+        view.setBottomSheetTitle(stringResHelper.getTitleFor(state.entity))
         view.setBottomSheetImage(Assets.getHeadersFor(state.entity)[0])
         view.setBottomSheetIcons(Assets.getIconsFor(state.entity)
                 .filter { i -> i != Assets.NONE })
