@@ -44,15 +44,15 @@ class StringResourceHelper(val context: Context) {
             CandyStall.TYPE -> getNameFor(entity.candyStall!!.products.firstOrNull())
             GameStall.TYPE -> getNameFor(entity.gameStall!!.games.firstOrNull())
             Restroom.TYPE -> {
-                /*if (entity.restroom!!.forMen && !entity.restroom!!.forWomen) {
+                if (entity.restroom!!.forMen && !entity.restroom!!.forWomen) {
                     context.getString(R.string.restroom_men_only)
                 } else if (!entity.restroom!!.forMen && entity.restroom!!.forWomen) {
                     context.getString(R.string.restroom_women_only)
                 } else if (entity.restroom!!.forDisabled) {
                     context.getString(R.string.restroom_for_disabled)
-                } else { */
-                context.getString(R.string.restroom_generic)
-                //}
+                } else {
+                    context.getString(R.string.restroom_generic)
+                }
             }
             else -> ""
         }
