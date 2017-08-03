@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.di.module.AppModule
 import com.jonasgerdes.stoppelmap.di.module.DataModule
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
+import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.view.MapFragment
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.ProductResultHolder
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
@@ -20,6 +21,7 @@ interface AppComponent {
     fun inject(app: App)
     fun inject(interactor: MapInteractor)
     fun inject(mapFragment: MapFragment)
+    fun inject(mapPresenter: MapPresenter)
     fun inject(productResultHolder: ProductResultHolder)
     fun inject(mapEntityRepository: MapEntityRepository)
 }
