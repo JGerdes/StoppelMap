@@ -57,4 +57,8 @@ class StringResourceHelper(val context: Context) {
             else -> ""
         }
     }
+
+    fun get(resource: Int): String {
+        return context.getString(resource)
+    }
 }

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.model.entity.map.search.GroupSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.ProductSearchResult
 import com.jonasgerdes.stoppelmap.model.entity.map.search.SingleEntitySearchResult
@@ -30,6 +31,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
         return when (resultList[position]) {
             is SingleEntitySearchResult -> R.layout.map_search_result_single
             is ProductSearchResult -> R.layout.map_search_result_product
+            is GroupSearchResult -> R.layout.map_search_result_group
             else -> -1
         }
     }
@@ -39,6 +41,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
         val holder = when (viewType) {
             R.layout.map_search_result_single -> SingleResultHolder(view)
             R.layout.map_search_result_product -> ProductResultHolder(view)
+            R.layout.map_search_result_group -> GroupResultHolder(view)
             else -> SingleResultHolder(view)
         }
         holder.itemView.setOnClickListener({
@@ -51,6 +54,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder<*>>() {
         when (holder) {
             is SingleResultHolder -> holder.onBind(resultList[position] as SingleEntitySearchResult)
             is ProductResultHolder -> holder.onBind(resultList[position] as ProductSearchResult)
+            is GroupResultHolder -> holder.onBind(resultList[position] as GroupSearchResult)
         }
     }
 
