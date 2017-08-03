@@ -13,6 +13,7 @@
     <string name="dish_type_salmon">Lachs</string>
     <string name="dish_type_steak">Steak</string>
     <string name="dish_type_bread">Brote</string>
+    <string name="dish_type_beacon">Schinken</string>
     <string name="dish_type_pretzel">Brezel</string>
     <string name="dish_type_churros">Churros</string>
     <string name="dish_type_broccoli">Brokkoli</string>
@@ -38,6 +39,8 @@
     <string name="candy_type_poffertje">Poffertje</string>
     <string name="candy_type_backery">Backwaren</string>
     <string name="candy_type_chocolate_fruits">Schokofrüchte</string>
+    <string name="candy_type_bonbons">Bonbons</string>
+    <string name="candy_type_frozen_yogurt">Frozen Yogurt</string>
 
     <!-- Drinks -->
     <string name="drink_type_beer">Bier</string>
@@ -45,6 +48,8 @@
     <string name="drink_type_shots">Shots/Kurze</string>
     <string name="drink_type_longdrinks">Longdrinks</string>
     <string name="drink_type_cocktails">Cocktails</string>
+    <string name="drink_type_punchbowle">Bowle</string>
+    <string name="drink_type_wine">Wein</string>
 
     <!-- Games -->
     <string name="game_type_cross_bow">Armbrust</string>
@@ -63,4 +68,11 @@
     <string name="game_type_ring_toss">Ringewerfen</string>
     <string name="game_type_shooting">Schießbude</string>
     <string name="game_type_skee_ball">Skee-Ball</string>
+
+
+
+    <string name="restroom_women_only">Damen-WC</string>
+    <string name="restroom_men_only">Herren-WC</string>
+    <string name="restroom_generic">WC</string>
+    <string name="restroom_for_disabled">Barrierefreies WC</string>
 </resources>
