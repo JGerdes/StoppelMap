@@ -65,7 +65,7 @@ class MapPresenter(
 
         disposables += visibleEntitySubject
                 .distinctUntilChanged { first, second ->
-                    first.size == second.size || first.size == 1
+                    first.size == second.size && first.size != 1
                 }
                 .map {
                     it.map {
