@@ -1,11 +1,13 @@
 package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
+import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapViewState
 import com.jonasgerdes.stoppelmap.util.asset.Assets
+import com.jonasgerdes.stoppelmap.util.asset.StringResourceHelper
 import com.jonasgerdes.stoppelmap.util.plusAssign
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,6 +15,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -22,9 +25,16 @@ class MapPresenter(
         private val view: MapView,
         private val interactor: MapInteractor) : Disposable {
 
+    @Inject
+    lateinit var stringResHelper: StringResourceHelper
+
     private val disposables = CompositeDisposable()
     private var isFirstMapUpdate = true //don't animate first map update
     private var visibleEntitySubject = BehaviorSubject.create<List<MapEntity>>()
+
+    init {
+        App.graph.inject(this)
+    }
 
     fun bind() {
         disposables += interactor.state
@@ -61,7 +71,7 @@ class MapPresenter(
                     it.map {
                         MapMarker(
                                 it.center.latLng,
-                                it.name ?: "",
+                                stringResHelper.getTitleFor(it),
                                 Assets.getTypeIconFor(it)
                         )
                     }
@@ -69,6 +79,7 @@ class MapPresenter(
                 .subscribe(view::setMarkers)
 
     }
+
 
     private fun render(state: MapViewState) {
         updateMap(state)
