@@ -6,6 +6,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
+import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import io.reactivex.Observable
@@ -38,6 +39,7 @@ interface MapView {
     fun setBottomSheetTitle(title: String)
     fun setBottomSheetImage(imageUri: Uri)
     fun setBottomSheetIcons(icons: List<Int>)
+    fun setBottomSheetCards(cards: List<EntityDetailCard>)
 
     fun showMessage(messageResource: Int)
 }

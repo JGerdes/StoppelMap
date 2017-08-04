@@ -2,8 +2,9 @@ package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
 import com.jonasgerdes.stoppelmap.App
-import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
-import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
+import com.jonasgerdes.stoppelmap.model.entity.map.*
+import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
+import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityProductCard
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapViewState
 import com.jonasgerdes.stoppelmap.util.asset.Assets
@@ -107,7 +108,7 @@ class MapPresenter(
 
     private fun updateMap(state: MapViewState) {
         view.setMapLimits(state.mapState.limits)
-        if(state.mapState.bounds != null) {
+        if (state.mapState.bounds != null) {
             view.setMapCamera(state.mapState.bounds, !isFirstMapUpdate)
         } else {
             view.setMapCamera(state.mapState.center!!, state.mapState.zoom!!, !isFirstMapUpdate)
@@ -135,6 +136,7 @@ class MapPresenter(
         view.setBottomSheetImage(Assets.getHeadersFor(state.entity)[0])
         view.setBottomSheetIcons(Assets.getIconsFor(state.entity)
                 .filter { i -> i != Assets.NONE })
+        view.setBottomSheetCards(getCardsFor(state.entity))
 
         //workaround: wait 500ms so keyboard is actually closed before showing bottom sheet
         Completable.complete()
@@ -144,6 +146,16 @@ class MapPresenter(
                     view.toggleBottomSheet(true)
                     view.toggleMyLocationButton(false)
                 }
+    }
+
+    private fun getCardsFor(entity: MapEntity): List<EntityDetailCard> {
+        val cards = ArrayList<EntityDetailCard>()
+        when (entity.type) {
+            Bar.TYPE -> cards.add(EntityProductCard(entity.bar!!.drinks))
+            FoodStall.TYPE -> cards.add(EntityProductCard(entity.foodStall!!.dishes))
+            CandyStall.TYPE -> cards.add(EntityProductCard(entity.candyStall!!.products))
+        }
+        return cards
     }
 
     private fun renderGroupDetail(state: MapViewState.EntityGroupDetail) {
