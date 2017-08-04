@@ -326,7 +326,13 @@
     ],
     "alias": [],
     "operator": "Jansen",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "jansen_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "restroom": {
       "forMen": true,
       "forWomen": true,
@@ -645,7 +651,13 @@
     ],
     "alias": [],
     "operator": "Kaponier",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "kaponier_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "restroom": {
       "forMen": true,
       "forWomen": true,
@@ -725,7 +737,13 @@
     ],
     "alias": [],
     "operator": "Kühling",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "kuehling_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "restroom": {
       "forMen": true,
       "forWomen": false,

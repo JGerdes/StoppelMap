@@ -484,7 +484,13 @@
     "name": "Wellenflug",
     "alias": [],
     "operator": "Blume",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "wellenflug_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "ride": {
       "isForKids": false,
       "type": "swing-ride"
@@ -638,7 +644,13 @@
       "Krake"
     ],
     "operator": "Markmann",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "octopussy_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "ride": {
       "isForKids": false,
       "type": "flat"
@@ -834,7 +846,13 @@
     "name": "Looping the Loop",
     "alias": [],
     "operator": "Marquis",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "looping_the_loop_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "ride": {
       "isForKids": false
     },
@@ -985,7 +1003,13 @@
     "name": "Break Dancer",
     "alias": [],
     "operator": "Dreher-Vespermann",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "breakdancer_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "ride": {
       "isForKids": false,
       "type": "flat"
@@ -1041,7 +1065,13 @@
     "name": "Riesenrad",
     "alias": [],
     "operator": "Wilhelm",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "riesenrad_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "ride": {
       "isForKids": false
     },
@@ -1080,7 +1110,13 @@
     "name": "Formel 1",
     "alias": [],
     "operator": "Schneider",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "formel1_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "ride": {
       "isForKids": false,
       "type": "bumper-cars"
@@ -2314,7 +2350,13 @@
     "name": "Kinderkettenflieger",
     "alias": [],
     "operator": "Kutschenbauer",
-    "pictures": [],
+    "pictures": [
+      {
+        "filePath": "kinder_kettenflieger_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
     "ride": {
       "isForKids": true,
       "type": "swing-ride"
