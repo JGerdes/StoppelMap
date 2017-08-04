@@ -25,10 +25,12 @@ import com.jakewharton.rxbinding2.view.clicks
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
+import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapView
+import com.jonasgerdes.stoppelmap.usecase.map.view.search.EntityDetailCardAdapter
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.SearchResultAdapter
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
@@ -61,6 +63,7 @@ class MapFragment : LifecycleFragment(), MapView {
     private lateinit var mergedAppBarLayoutBehavior: MergedAppBarLayoutBehavior
 
     private val searchAdapter = SearchResultAdapter()
+    private val cardAdapter = EntityDetailCardAdapter()
 
     override fun onCreateView(inflater: LayoutInflater?,
                               container: ViewGroup?,
@@ -85,6 +88,7 @@ class MapFragment : LifecycleFragment(), MapView {
         initBottomSheet()
     }
 
+
     private fun initBottomSheet() {
         bottomSheetbehavior = BottomSheetBehaviorGoogleMapsLike.from<View>(bottomSheet)
 
@@ -99,6 +103,8 @@ class MapFragment : LifecycleFragment(), MapView {
         bottomSheetHeader.onClick {
             bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_ANCHOR_POINT
         }
+
+        detailCardList.adapter = cardAdapter
     }
 
     override fun onDestroyView() {
@@ -270,6 +276,10 @@ class MapFragment : LifecycleFragment(), MapView {
             setIcons(icons)
         }
 
+    }
+
+    override fun setBottomSheetCards(cards: List<EntityDetailCard>) {
+        cardAdapter.cards = cards
     }
 
     override fun showMessage(messageResource: Int) {
