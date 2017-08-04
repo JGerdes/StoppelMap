@@ -18,12 +18,12 @@ object Assets {
     fun getTypeIconFor(entity: MapEntity): Int {
         return when (entity.type) {
             Bar.TYPE -> R.drawable.ic_entity_bar_black_24dp
-            CandyStall.TYPE -> NONE
+            CandyStall.TYPE -> R.drawable.ic_entity_candy_black_24dp
             Exhibition.TYPE -> NONE
             FoodStall.TYPE -> R.drawable.ic_entity_food_black_24dp
-            GameStall.TYPE -> NONE
+            GameStall.TYPE -> R.drawable.ic_entity_game_black_24dp
             Restroom.TYPE -> R.drawable.ic_entity_restroom_black_24dp
-            Ride.TYPE -> NONE
+            Ride.TYPE -> R.drawable.ic_entity_ride_black_24dp
             SellerStall.TYPE -> NONE
 
             else -> NONE
@@ -51,6 +51,14 @@ object Assets {
         return icons
     }
 
+    private fun getIconsFor(bar: Bar): List<Int> {
+        val icons = ArrayList<Int>()
+        if (bar.isTent) {
+            icons.add(R.drawable.ic_entity_tent_black_24dp)
+        }
+        return icons
+    }
+
     private fun getIconsFor(foodStall: FoodStall): List<Int> {
         val icons = ArrayList<Int>()
         if (foodStall.isTent) {
@@ -58,14 +66,6 @@ object Assets {
         }
         if (foodStall.isBar) {
             icons.add(R.drawable.ic_entity_bar_black_24dp)
-        }
-        return icons
-    }
-
-    private fun getIconsFor(bar: Bar): List<Int> {
-        val icons = ArrayList<Int>()
-        if (bar.isTent) {
-            icons.add(R.drawable.ic_entity_tent_black_24dp)
         }
         return icons
     }

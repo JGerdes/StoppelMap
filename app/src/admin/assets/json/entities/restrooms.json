@@ -31,7 +31,7 @@
     "alias": [],
     "operator": "Susen",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -71,7 +71,7 @@
     "alias": [],
     "operator": "Heinen",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -111,7 +111,7 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": true
@@ -151,7 +151,7 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -191,7 +191,7 @@
     "alias": [],
     "operator": "Surrmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -231,7 +231,7 @@
     "alias": [],
     "operator": "Bokern",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -271,7 +271,7 @@
     "alias": [],
     "operator": "Kröger/Overmeyer",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -327,7 +327,7 @@
     "alias": [],
     "operator": "Jansen",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -367,7 +367,7 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": true
@@ -407,7 +407,7 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": true
@@ -447,7 +447,7 @@
     "alias": [],
     "operator": "Keese",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": true
@@ -487,7 +487,7 @@
     "alias": [],
     "operator": "Hartwig",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": false,
       "forWomen": false,
       "forDisabled": true
@@ -527,7 +527,7 @@
     "alias": [],
     "operator": "Hartwig",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -566,7 +566,7 @@
     ],
     "alias": [],
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": false,
       "forDisabled": false
@@ -606,7 +606,7 @@
     "alias": [],
     "operator": "Friedrich",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -646,7 +646,7 @@
     "alias": [],
     "operator": "Kaponier",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -686,7 +686,7 @@
     "alias": [],
     "operator": "Kaponier",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -726,7 +726,7 @@
     "alias": [],
     "operator": "Kühling",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": false,
       "forDisabled": false
@@ -782,7 +782,7 @@
     "alias": [],
     "operator": "Kühling",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -822,7 +822,7 @@
     "alias": [],
     "operator": "Stratmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -862,7 +862,7 @@
     "alias": [],
     "operator": "Stratmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": false,
       "forDisabled": false
@@ -902,7 +902,7 @@
     "alias": [],
     "operator": "Stratmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -941,7 +941,7 @@
     ],
     "alias": [],
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -980,7 +980,7 @@
     ],
     "alias": [],
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": false,
       "forWomen": false,
       "forDisabled": true
@@ -1020,7 +1020,7 @@
     "alias": [],
     "operator": "Heitmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1060,7 +1060,7 @@
     "alias": [],
     "operator": "Börgerding/Mühle",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1099,7 +1099,7 @@
     ],
     "alias": [],
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1139,7 +1139,7 @@
     "alias": [],
     "operator": "Beckmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": false,
       "forWomen": true,
       "forDisabled": false
@@ -1179,7 +1179,7 @@
     "alias": [],
     "operator": "Beckmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": false,
       "forDisabled": false
@@ -1219,7 +1219,7 @@
     "alias": [],
     "operator": "Beckmann",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": false,
       "forWomen": true,
       "forDisabled": false
@@ -1259,7 +1259,7 @@
     "alias": [],
     "operator": "Friedrich",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1299,7 +1299,7 @@
     "alias": [],
     "operator": "Winter",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1339,7 +1339,7 @@
     "alias": [],
     "operator": "von Döllen/Hake",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1379,7 +1379,7 @@
     "alias": [],
     "operator": "von Döllen/Hake",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": false,
       "forDisabled": false
@@ -1418,7 +1418,7 @@
     ],
     "alias": [],
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1458,7 +1458,7 @@
     "alias": [],
     "operator": "Friedrich",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false
@@ -1498,7 +1498,7 @@
     "alias": [],
     "operator": "Friedrich",
     "pictures": [],
-    "restroom": {
+    "mRestroom": {
       "forMen": true,
       "forWomen": true,
       "forDisabled": false

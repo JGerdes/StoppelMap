@@ -144,7 +144,7 @@
     "area": 10.913235541985525
   },
   {
-    "slug": "candy-langenscheidt-njhimt",
+    "slug": "ice-cream-langenscheidt-njhimt",
     "type": "candy-stall",
     "center": {
       "lat": 52.746497648170006,
@@ -176,7 +176,12 @@
     "operator": "Langenscheidt",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 35.49528806418951
@@ -478,7 +483,7 @@
     "area": 24.90274646670791
   },
   {
-    "slug": "candy-tillmanm-zmvlnd",
+    "slug": "ice-cream-tillmanm-zmvlnd",
     "type": "candy-stall",
     "center": {
       "lat": 52.74709358854,
@@ -510,7 +515,12 @@
     "operator": "Tillmanm",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 33.25791254452325
@@ -731,7 +741,7 @@
     "area": 44.90169945156583
   },
   {
-    "slug": "candy-ahrens-mtc5zm",
+    "slug": "ice-cream-ahrens-mtc5zm",
     "type": "candy-stall",
     "center": {
       "lat": 52.747773211194996,
@@ -763,7 +773,12 @@
     "operator": "Ahrens",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 33.382531239786644
@@ -812,7 +827,7 @@
     "area": 9.621792078098037
   },
   {
-    "slug": "candy-kronlage-n2ewm2",
+    "slug": "ice-cream-kronlage-n2ewm2",
     "type": "candy-stall",
     "center": {
       "lat": 52.74718633587,
@@ -844,7 +859,12 @@
     "operator": "Kronlage",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 27.161287008664605
@@ -1222,7 +1242,12 @@
     "operator": "Langenscheidt",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 27.66070843349246
@@ -1315,7 +1340,7 @@
     "area": 26.388107722743307
   },
   {
-    "slug": "candy-elsaesser-ztg4zm",
+    "slug": "ice-cream-elsaesser-ztg4zm",
     "type": "candy-stall",
     "center": {
       "lat": 52.747216968285,
@@ -1347,7 +1372,12 @@
     "operator": "Elsässer",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 16.252927423756045
@@ -1532,7 +1562,7 @@
     "area": 24.71072681399093
   },
   {
-    "slug": "candy-coldewey-zjjkmw",
+    "slug": "ice-cream-coldewey-zjjkmw",
     "type": "candy-stall",
     "center": {
       "lat": 52.7486735214,
@@ -1564,7 +1594,12 @@
     "operator": "Coldewey",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 39.48553744136386
@@ -1912,7 +1947,7 @@
     "area": 31.749709962876963
   },
   {
-    "slug": "candy-laffontin-mzhhym",
+    "slug": "ice-cream-laffontin-mzhhym",
     "type": "candy-stall",
     "center": {
       "lat": 52.74805598565,
@@ -1944,7 +1979,12 @@
     "operator": "Laffontin",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 39.106928390943224
@@ -2246,7 +2286,7 @@
     "area": 23.071561818856644
   },
   {
-    "slug": "candy-dziebel-parpalioni-yzyxzt",
+    "slug": "ice-cream-dziebel-parpalioni-yzyxzt",
     "type": "candy-stall",
     "center": {
       "lat": 52.748413207775,
@@ -2278,7 +2318,12 @@
     "operator": "Dziebel/Parpalioni",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 36.141547594732565
@@ -2490,7 +2535,7 @@
     "area": 17.06303665171241
   },
   {
-    "slug": "candy-laffontin-ztqxmt",
+    "slug": "ice-cream-laffontin-ztqxmt",
     "type": "candy-stall",
     "center": {
       "lat": 52.74809584672,
@@ -2522,7 +2567,12 @@
     "operator": "Laffontin",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_ice_cream",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 26.19032989723072
