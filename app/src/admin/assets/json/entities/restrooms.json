@@ -30,6 +30,7 @@
     ],
     "alias": [],
     "operator": "Susen",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -70,6 +71,7 @@
     ],
     "alias": [],
     "operator": "Heinen",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -110,6 +112,7 @@
     ],
     "alias": [],
     "operator": "Keese",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -150,6 +153,7 @@
     ],
     "alias": [],
     "operator": "Keese",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -190,6 +194,7 @@
     ],
     "alias": [],
     "operator": "Surrmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -230,6 +235,7 @@
     ],
     "alias": [],
     "operator": "Bokern",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -270,6 +276,7 @@
     ],
     "alias": [],
     "operator": "Kröger/Overmeyer",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -326,6 +333,7 @@
     ],
     "alias": [],
     "operator": "Jansen",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "jansen_header_01.webp",
@@ -372,6 +380,7 @@
     ],
     "alias": [],
     "operator": "Keese",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -412,6 +421,7 @@
     ],
     "alias": [],
     "operator": "Keese",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -452,6 +462,7 @@
     ],
     "alias": [],
     "operator": "Keese",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -492,6 +503,7 @@
     ],
     "alias": [],
     "operator": "Hartwig",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": false,
@@ -532,6 +544,7 @@
     ],
     "alias": [],
     "operator": "Hartwig",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -571,6 +584,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -611,6 +625,7 @@
     ],
     "alias": [],
     "operator": "Friedrich",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -651,6 +666,7 @@
     ],
     "alias": [],
     "operator": "Kaponier",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "kaponier_header_01.webp",
@@ -697,6 +713,7 @@
     ],
     "alias": [],
     "operator": "Kaponier",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -737,6 +754,7 @@
     ],
     "alias": [],
     "operator": "Kühling",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "kuehling_header_01.webp",
@@ -799,6 +817,7 @@
     ],
     "alias": [],
     "operator": "Kühling",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -839,6 +858,7 @@
     ],
     "alias": [],
     "operator": "Stratmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -879,6 +899,7 @@
     ],
     "alias": [],
     "operator": "Stratmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -919,6 +940,7 @@
     ],
     "alias": [],
     "operator": "Stratmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -958,6 +980,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -997,6 +1020,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": false,
@@ -1037,6 +1061,7 @@
     ],
     "alias": [],
     "operator": "Heitmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1077,6 +1102,7 @@
     ],
     "alias": [],
     "operator": "Börgerding/Mühle",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1116,6 +1142,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1156,6 +1183,7 @@
     ],
     "alias": [],
     "operator": "Beckmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": false,
@@ -1196,6 +1224,7 @@
     ],
     "alias": [],
     "operator": "Beckmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1236,6 +1265,7 @@
     ],
     "alias": [],
     "operator": "Beckmann",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": false,
@@ -1276,6 +1306,7 @@
     ],
     "alias": [],
     "operator": "Friedrich",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1316,6 +1347,7 @@
     ],
     "alias": [],
     "operator": "Winter",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1356,6 +1388,7 @@
     ],
     "alias": [],
     "operator": "von Döllen/Hake",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1396,6 +1429,7 @@
     ],
     "alias": [],
     "operator": "von Döllen/Hake",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1435,6 +1469,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1475,6 +1510,7 @@
     ],
     "alias": [],
     "operator": "Friedrich",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,
@@ -1515,6 +1551,7 @@
     ],
     "alias": [],
     "operator": "Friedrich",
+    "phoneNumbers": [],
     "pictures": [],
     "restroom": {
       "forMen": true,

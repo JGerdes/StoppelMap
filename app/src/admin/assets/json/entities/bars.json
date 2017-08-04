@@ -31,6 +31,7 @@
     "name": "Wittler Wein",
     "alias": [],
     "operator": "Wittler",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [],
@@ -71,6 +72,7 @@
     "name": "Wein Ellendorf",
     "alias": [],
     "operator": "Ellendorf",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [],
@@ -111,6 +113,7 @@
     "name": "Tepe Pferdestall",
     "alias": [],
     "operator": "Tepe",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -179,6 +182,7 @@
       "Wuba"
     ],
     "operator": "Grieshop",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "wunderbar_header_01.webp",
@@ -274,6 +278,7 @@
     "name": "Kühlings Niedersachsenhalle",
     "alias": [],
     "operator": "Kühling",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "kuehling_header_01.webp",
@@ -337,6 +342,7 @@
     "name": "Stratmann\u0027s Cafe",
     "alias": [],
     "operator": "Stratmann",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [],
@@ -489,6 +495,7 @@
     "name": "Overmeyer",
     "alias": [],
     "operator": "Overmeyer",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "overmeyer_header_01.webp",
@@ -562,6 +569,7 @@
       "Das Partyschiff"
     ],
     "operator": "Kröger",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "flotte_header_01.webp",
@@ -633,6 +641,7 @@
     "name": "Jansen",
     "alias": [],
     "operator": "Jansen",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -690,6 +699,7 @@
     "name": "Die 2 Dinklager",
     "alias": [],
     "operator": "Susen/Jordan",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "die2dinklager_header_01.webp",
@@ -753,6 +763,7 @@
     "name": "Treffpunkt",
     "alias": [],
     "operator": "von Husen",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "treffpunkt_header_01.webp",
@@ -816,6 +827,7 @@
     "name": "Western Saloon",
     "alias": [],
     "operator": "Laffontie",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -873,6 +885,7 @@
     "name": "Zauberbar",
     "alias": [],
     "operator": "v.Döllen/Hohnhorst",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "zauberbar_header_01.webp",
@@ -936,6 +949,7 @@
     "name": "Hansekogge",
     "alias": [],
     "operator": "Neuhaus-Sonnenberg",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "hanse_kogge_header_01.webp",
@@ -1001,6 +1015,7 @@
       "Luttener Zelt"
     ],
     "operator": "Surmann",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "pickers_header_01.webp",
@@ -1080,6 +1095,7 @@
     "name": "Brackmann",
     "alias": [],
     "operator": "Brackmann",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "brackmann_header_01.webp",
@@ -1143,6 +1159,7 @@
     "name": "Banane",
     "alias": [],
     "operator": "Blömer",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "banane_header_01.webp",
@@ -1206,6 +1223,7 @@
     "name": "Alkoholfreies Zelt",
     "alias": [],
     "operator": "Kath. Frauenbund",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "alkoholfrei_header_01.webp",
@@ -1257,6 +1275,7 @@
     "name": "Suing-K",
     "alias": [],
     "operator": "Suing-K",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -1314,6 +1333,7 @@
     "name": "Alt Berlin",
     "alias": [],
     "operator": "Wegener",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -1359,6 +1379,7 @@
     "name": "Twistringer Zelt",
     "alias": [],
     "operator": "Brackmann",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "twistringer_zelt_header_01.webp",
@@ -1423,9 +1444,10 @@
     "alias": [],
     "operator": "Linnemann",
     "description": {
-      "description": "Seit 90 Jahren ein traditionsreicher Treffpunkt für Jung und Alt inmitten des Marktes. Bei Linnemann kann man im geselligen Kreis bei einem frisch gezapften Bier alte Bekannte treffen und neue Freunde kennen lernen.\r\nHier trifft man sich zum Schnacken und Klönen. Das Publikum ist kontaktfreudig und man ist sofort in jeder Runde willkommen.",
+      "description": "Seit 90 Jahren ein traditionsreicher Treffpunkt für Jung und Alt inmitten des Marktes. Bei Linnemann kann man im geselligen Kreis bei einem frisch gezapften Bier alte Bekannte treffen und neue Freunde kennen lernen. Hier trifft man sich zum Schnacken und Klönen. Das Publikum ist kontaktfreudig und man ist sofort in jeder Runde willkommen.",
       "source": "Linnemann"
     },
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "linnemann_header_01.webp",
@@ -1505,6 +1527,7 @@
     "name": "Fischer",
     "alias": [],
     "operator": "Fischer",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -1562,6 +1585,7 @@
     "name": "Elmendorffburg",
     "alias": [],
     "operator": "Elmendorff",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -1619,6 +1643,7 @@
     "name": "Schäfers Festzelt No.1",
     "alias": [],
     "operator": "Schäfers",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "schaefers_header_01.webp",
@@ -1690,6 +1715,7 @@
     "name": "Grieshop",
     "alias": [],
     "operator": "Grieshop",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "grieshop_header_01.webp",
@@ -1755,6 +1781,7 @@
       "Holla die Waldfee"
     ],
     "operator": "Heyng",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -1812,6 +1839,7 @@
     "name": "Kaponier",
     "alias": [],
     "operator": "Kaponier",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -1896,6 +1924,7 @@
       "Echt Stoppelmarkt!"
     ],
     "operator": "Stratmann",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "stratmann_header_01.webp",
@@ -1983,6 +2012,7 @@
     "name": "Hogeback",
     "alias": [],
     "operator": "Muhle",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "hogeback_header_01.webp",
@@ -2046,6 +2076,7 @@
     "name": "Borgerding",
     "alias": [],
     "operator": "Borgerding",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -2135,6 +2166,7 @@
     "name": "Beckmanns alter Dorfplatz",
     "alias": [],
     "operator": "Beckmann",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -2192,6 +2224,7 @@
     "name": "Heitmann\u0027s Biergarten",
     "alias": [],
     "operator": "Heitmann",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "heitmann_header_01.webp",
@@ -2287,6 +2320,7 @@
     "name": "Blömer\u0027s",
     "alias": [],
     "operator": "Blömer",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "bloemers_header_01.webp",
@@ -2349,6 +2383,7 @@
     ],
     "name": "Fala-Treff",
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "fala_treff_header_01.webp",
@@ -2452,6 +2487,7 @@
     "name": "Party-Park",
     "alias": [],
     "operator": "von Döllen/Hake",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "partypark_header_01.webp",
@@ -2514,6 +2550,7 @@
     ],
     "name": "Stierbräu",
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "stierbraeu_header_01.webp",
@@ -2579,6 +2616,7 @@
       "Meyerei"
     ],
     "operator": "Meyer, M",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -2636,6 +2674,7 @@
     "name": "Ellert",
     "alias": [],
     "operator": "Ellert",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -2692,6 +2731,7 @@
     ],
     "alias": [],
     "operator": "Böticher",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -2737,6 +2777,7 @@
     "name": "Zur neuen Meyerei",
     "alias": [],
     "operator": "Meyer",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "zur_neuen_meyerei_header_01.webp",
@@ -2799,6 +2840,7 @@
     ],
     "alias": [],
     "operator": "Ernst Rent",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -2844,6 +2886,7 @@
     "name": "Winter",
     "alias": [],
     "operator": "Winter",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [
@@ -2905,6 +2948,7 @@
     "name": "Büssing",
     "alias": [],
     "operator": "Büssing",
+    "phoneNumbers": [],
     "pictures": [],
     "bar": {
       "drinks": [

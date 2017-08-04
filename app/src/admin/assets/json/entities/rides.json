@@ -47,6 +47,7 @@
     "name": "Alpina-Bahn",
     "alias": [],
     "operator": "Bruch",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -87,6 +88,7 @@
     "name": "Fuzzys Lachsaloon",
     "alias": [],
     "operator": "Rasch, R",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -127,6 +129,7 @@
     "name": "Avenger Royal",
     "alias": [],
     "operator": "Zinnecker",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -166,6 +169,7 @@
     "name": "Musikexpress",
     "alias": [],
     "operator": "Krause",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -214,6 +218,7 @@
     "name": "Piraten-Rutsche",
     "alias": [],
     "operator": "Meyer, M",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -365,6 +370,7 @@
     "name": "Commander",
     "alias": [],
     "operator": "Hanstein",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -405,6 +411,7 @@
     "name": "Psychodelic",
     "alias": [],
     "operator": "Schuster",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -444,6 +451,7 @@
     "name": "TopIn",
     "alias": [],
     "operator": "Robrahn",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -484,6 +492,7 @@
     "name": "Wellenflug",
     "alias": [],
     "operator": "Blume",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "wellenflug_header_01.webp",
@@ -644,6 +653,7 @@
       "Krake"
     ],
     "operator": "Markmann",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "octopussy_header_01.webp",
@@ -766,6 +776,7 @@
     "name": "Disco Swing",
     "alias": [],
     "operator": "Jörling",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -806,6 +817,7 @@
     "name": "Crazy Town",
     "alias": [],
     "operator": "Rasch",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -846,6 +858,7 @@
     "name": "Looping the Loop",
     "alias": [],
     "operator": "Marquis",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "looping_the_loop_header_01.webp",
@@ -1003,6 +1016,7 @@
     "name": "Break Dancer",
     "alias": [],
     "operator": "Dreher-Vespermann",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "breakdancer_header_01.webp",
@@ -1065,6 +1079,7 @@
     "name": "Riesenrad",
     "alias": [],
     "operator": "Wilhelm",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "riesenrad_header_01.webp",
@@ -1110,6 +1125,7 @@
     "name": "Formel 1",
     "alias": [],
     "operator": "Schneider",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "formel1_header_01.webp",
@@ -1156,6 +1172,7 @@
     "name": "Skater",
     "alias": [],
     "operator": "Kaiser",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -1195,6 +1212,7 @@
     "name": "Crazy Outback",
     "alias": [],
     "operator": "Hofmann",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -1234,6 +1252,7 @@
     "name": "Artistico",
     "alias": [],
     "operator": "Köhrmann",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -1273,6 +1292,7 @@
     "name": "V-Maxx",
     "alias": [],
     "operator": "Boos",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -1312,6 +1332,7 @@
     "name": "Poseidon",
     "alias": [],
     "operator": "Schneider/Heitmann",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -1354,6 +1375,7 @@
       "Boxbude"
     ],
     "operator": "Heinen",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -1394,6 +1416,7 @@
     "name": "Die große Geisterbahn",
     "alias": [],
     "operator": "Schütze",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false,
@@ -1546,6 +1569,7 @@
     "name": "Jumboflug",
     "alias": [],
     "operator": "Wegener",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true
@@ -1585,6 +1609,7 @@
     "name": "Flying Bus",
     "alias": [],
     "operator": "Hirsch",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true
@@ -1736,6 +1761,7 @@
     "name": "Baby-Flug",
     "alias": [],
     "operator": "Meyer-Baier",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true
@@ -1887,6 +1913,7 @@
     "name": "Kinder-Karusell",
     "alias": [],
     "operator": "Perl",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true,
@@ -2039,6 +2066,7 @@
     "name": "Pferde-Karusell",
     "alias": [],
     "operator": "Friedrich",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true,
@@ -2079,6 +2107,7 @@
     "name": "World of Fantasy",
     "alias": [],
     "operator": "Bruch",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true
@@ -2118,6 +2147,7 @@
     "name": "Märchenland",
     "alias": [],
     "operator": "Risse",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true
@@ -2158,6 +2188,7 @@
     "alias": [
       "Kinder-Autoscooter"
     ],
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true,
@@ -2198,6 +2229,7 @@
     "name": "Kasperltheater",
     "alias": [],
     "operator": "Kleuser",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true,
@@ -2350,6 +2382,7 @@
     "name": "Kinderkettenflieger",
     "alias": [],
     "operator": "Kutschenbauer",
+    "phoneNumbers": [],
     "pictures": [
       {
         "filePath": "kinder_kettenflieger_header_01.webp",
@@ -2508,6 +2541,7 @@
     "name": "Kinderkarusell",
     "alias": [],
     "operator": "Meyer, P",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true,
@@ -2548,6 +2582,7 @@
     "name": "Ponyreiten",
     "alias": [],
     "operator": "Pasquali",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": false
@@ -2587,6 +2622,7 @@
     "name": "Dschungelreise",
     "alias": [],
     "operator": "Risse",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true
@@ -2626,6 +2662,7 @@
     "name": "Zirkuswelt",
     "alias": [],
     "operator": "Kaiser",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true
@@ -2777,6 +2814,7 @@
     "name": "Kinderkarusell",
     "alias": [],
     "operator": "Böker",
+    "phoneNumbers": [],
     "pictures": [],
     "ride": {
       "isForKids": true,
