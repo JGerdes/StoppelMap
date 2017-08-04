@@ -2653,7 +2653,12 @@
     "operator": "Ernst Rent",
     "pictures": [],
     "bar": {
-      "drinks": [],
+      "drinks": [
+        {
+          "name": "drink_type_punchbowle",
+          "prices": []
+        }
+      ],
       "isTent": false
     },
     "zoomLevel": 20.0,

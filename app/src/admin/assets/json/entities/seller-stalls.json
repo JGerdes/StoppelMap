@@ -31,7 +31,14 @@
     "alias": [],
     "operator": "Hardt",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_horse_riding",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 44.30059174302941
   },
@@ -67,7 +74,14 @@
     "alias": [],
     "operator": "Praegla",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_horse_riding",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 28.34745237558723
   },
@@ -103,7 +117,14 @@
     "name": "Gertler",
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_sausages",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 27.3773775904885
   },
@@ -139,7 +160,14 @@
     "alias": [],
     "operator": "Döring",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_fruits",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 31.813480839055952
   },
@@ -175,7 +203,14 @@
     "alias": [],
     "operator": "Wela",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_soup_stock",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 12.362300937427943
   },
@@ -211,7 +246,14 @@
     "alias": [],
     "operator": "Rosenberg",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_airbrush",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 21.267237142216246
   },
@@ -247,7 +289,14 @@
     "alias": [],
     "operator": "Seye",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_generic",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 26.018895003815057
   },
@@ -283,7 +332,14 @@
     "alias": [],
     "operator": "Leimberger",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_games",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 17.967348560453708
   },
@@ -319,7 +375,14 @@
     "alias": [],
     "operator": "Ahmand",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_generic",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 29.975180998469
   },
@@ -355,7 +418,14 @@
     "alias": [],
     "operator": "Yasar",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_generic",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 36.63555748954211
   },
@@ -391,7 +461,14 @@
     "alias": [],
     "operator": "Hahne",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_games",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 4.262257615129916
   },
@@ -427,7 +504,14 @@
     "alias": [],
     "operator": "Meyer, N.",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_haircut",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 18.658826544262464
   },
@@ -462,7 +546,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 26.3395105592043
   },
@@ -497,7 +583,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 15.602717655430524
   },
@@ -533,7 +621,14 @@
     "alias": [],
     "operator": "Ahmand",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cloth",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 18.49096458819581
   },
@@ -569,7 +664,14 @@
     "alias": [],
     "operator": "Ahmand",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cloth",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 20.92859699676248
   },
@@ -605,7 +707,14 @@
     "alias": [],
     "operator": "Mazhar",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_leather",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 25.826904824585476
   },
@@ -641,7 +750,14 @@
     "alias": [],
     "operator": "Dudel",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_spices",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 24.7195904163486
   },
@@ -677,7 +793,14 @@
     "alias": [],
     "operator": "Hahne",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_games",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 3.9606320962695483
   },
@@ -713,7 +836,14 @@
     "alias": [],
     "operator": "Kleuser",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_handreading",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 15.564420030185826
   },
@@ -749,7 +879,14 @@
     "alias": [],
     "operator": "Winterstein",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_handreading",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 9.388009380435353
   },
@@ -785,7 +922,14 @@
     "alias": [],
     "operator": "Niang, A",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_leather",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 49.34033334052691
   },
@@ -821,7 +965,14 @@
     "alias": [],
     "operator": "Schubert",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_minerals",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 32.23114317887179
   },
@@ -857,7 +1008,14 @@
     "alias": [],
     "operator": "Niang, P.",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cloth",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 28.9495699447438
   },
@@ -892,7 +1050,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 13.05664895664145
   },
@@ -927,7 +1087,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 26.702583439123572
   },
@@ -962,7 +1124,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 20.450391728711285
   },
@@ -997,7 +1161,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 18.098187226598547
   },
@@ -1032,7 +1198,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 21.31012206771419
   },
@@ -1067,7 +1235,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 19.118067403171025
   },
@@ -1102,7 +1272,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 18.643507884792356
   },
@@ -1137,7 +1309,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 38.532166000098485
   },
@@ -1172,7 +1346,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 24.44872575205914
   },
@@ -1207,7 +1383,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 29.623442542308325
   },
@@ -1242,7 +1420,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 30.385154131782272
   },
@@ -1277,7 +1457,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 19.0544238579517
   },
@@ -1312,7 +1494,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 28.539900335390207
   },
@@ -1347,7 +1531,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 14.332670536554105
   },
@@ -1383,7 +1569,14 @@
     "alias": [],
     "operator": "Heidtmann",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_balloons",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 1.2075381047594345
   },
@@ -1419,7 +1612,14 @@
     "alias": [],
     "operator": "Niang",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_haircut",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 4.023074813232191
   },
@@ -1454,7 +1654,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 23.513178993304535
   },
@@ -1489,7 +1691,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 7.3419038691756136
   },
@@ -1524,7 +1728,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 18.02296968588871
   },
@@ -1560,7 +1766,14 @@
     "alias": [],
     "operator": "Malade",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_photo",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 9.832379907817378
   },
@@ -1596,7 +1809,14 @@
     "alias": [],
     "operator": "Niang",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_haircut",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 1.0132463480226344
   },
@@ -1631,7 +1851,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 19.0,
     "area": 92.57828291125892
   },
@@ -1666,7 +1888,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 19.026807484272062
   },
@@ -1701,7 +1925,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 52.35107318694804
   },
@@ -1736,7 +1962,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 75.74587366116373
   },
@@ -1771,7 +1999,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 56.109642371373056
   },
@@ -1806,7 +2036,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 35.42768641176311
   },
@@ -1841,7 +2073,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 35.47063527054802
   },
@@ -1876,7 +2110,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 64.01807890860906
   },
@@ -1911,7 +2147,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 35.448795755911334
   },
@@ -1946,7 +2184,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 32.449956849459156
   },
@@ -1981,7 +2221,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 19.03879065968109
   },
@@ -2016,7 +2258,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 32.05985421731755
   },
@@ -2051,7 +2295,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 28.33898083480755
   },
@@ -2086,7 +2332,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 24.281649412417764
   },
@@ -2121,7 +2369,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 29.982677040897038
   },
@@ -2156,7 +2406,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 24.096481918751955
   },
@@ -2191,7 +2443,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 7.098082179126083
   },
@@ -2226,7 +2480,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 50.096685662670275
   },
@@ -2261,7 +2517,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 30.889524395310172
   },
@@ -2296,7 +2554,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 30.58951704950105
   },
@@ -2331,7 +2591,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 52.553648000519175
   },
@@ -2366,7 +2628,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 18.47067025176498
   },
@@ -2401,7 +2665,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 20.30620006230697
   },
@@ -2436,7 +2702,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 19.9277985012435
   },
@@ -2471,7 +2739,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 57.913975649107186
   },
@@ -2507,7 +2777,14 @@
     "alias": [],
     "operator": "Zeltner",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_metall",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 22.68215658058471
   },
@@ -2543,7 +2820,14 @@
     "alias": [],
     "operator": "Dieng, A.",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_leather",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 13.210707388156287
   },
@@ -2579,7 +2863,14 @@
     "alias": [],
     "operator": "Gerken-M.",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cloth",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 30.978423396463473
   },
@@ -2615,7 +2906,14 @@
     "alias": [],
     "operator": "Claus",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cloth",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 18.453972254386578
   },
@@ -2651,7 +2949,14 @@
     "alias": [],
     "operator": "Diop,F.",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cloth",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 16.03810602195241
   },
@@ -2687,7 +2992,14 @@
     "alias": [],
     "operator": "Claus",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_leather",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 12.205149569023067
   },
@@ -2723,7 +3035,14 @@
     "alias": [],
     "operator": "Wickert",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cards",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 12.924914208244825
   },
@@ -2759,7 +3078,14 @@
     "alias": [],
     "operator": "Schöneberg",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_pods",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 45.37959090607485
   },
@@ -2795,7 +3121,14 @@
     "alias": [],
     "operator": "Weinmann",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cucumbers",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 8.058092685615144
   },
@@ -2830,7 +3163,9 @@
     ],
     "alias": [],
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": []
+    },
     "zoomLevel": 20.0,
     "area": 7.989879854867472
   },
@@ -2866,7 +3201,14 @@
     "alias": [],
     "operator": "Beifuß",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_liquids",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 12.599994162084295
   },
@@ -2902,7 +3244,14 @@
     "alias": [],
     "operator": "Delbeck",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_photo",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 15.488439045940748
   },
@@ -2938,7 +3287,14 @@
     "alias": [],
     "operator": "Klemann",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cards",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 33.489310773850946
   },
@@ -2974,7 +3330,14 @@
     "alias": [],
     "operator": "Suhleria",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_cloth",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 19.243380386353834
   },
@@ -3010,7 +3373,14 @@
     "alias": [],
     "operator": "Zarioh",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_smartphone_utils",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 12.348312734440569
   },
@@ -3046,7 +3416,14 @@
     "alias": [],
     "operator": "Reinecke",
     "pictures": [],
-    "sellerStall": {},
+    "sellerStall": {
+      "products": [
+        {
+          "name": "seller_type_pottery",
+          "prices": []
+        }
+      ]
+    },
     "zoomLevel": 20.0,
     "area": 8.312580794718773
   }
