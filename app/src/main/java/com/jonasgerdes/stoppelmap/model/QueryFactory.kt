@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.model
 
+import android.content.res.Resources
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.search.GroupSearchResult
@@ -27,7 +28,22 @@ class QueryFactory {
                              drawable: Int, vararg attributes: Pair<String, Any>)
             : Observable<List<MapSearchResult>>? {
         var realmQuery = query
-        if (stringHelper.get(keywords).contains(term, true)) {
+        var condition = false
+        var title = ""
+        try {
+            condition = stringHelper.get(keywords).contains(term, true)
+            title = stringHelper.get(keywords)
+        } catch (exception: Resources.NotFoundException) {
+            //when string with id doesn't exist, get array with id
+            //find matching keyword in it, reverse so first will be found last and not overridden
+            stringHelper.getArray(keywords).reversedArray().forEach {
+                if (it.contains(term, true)) {
+                    condition = true
+                    title = it
+                }
+            }
+        }
+        if (condition) {
             attributes.forEach {
                 when (it.second) {
                     is Boolean -> realmQuery = realmQuery.equalTo(it.first, it.second as Boolean)
@@ -39,7 +55,7 @@ class QueryFactory {
                     .asRxObservable()
                     .map { entities ->
                         listOf(GroupSearchResult(
-                                stringHelper.get(keywords),
+                                title,
                                 drawable,
                                 entities))
                     }

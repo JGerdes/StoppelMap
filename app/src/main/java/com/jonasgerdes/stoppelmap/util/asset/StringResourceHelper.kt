@@ -61,4 +61,8 @@ class StringResourceHelper(val context: Context) {
     fun get(resource: Int): String {
         return context.getString(resource)
     }
+
+    fun getArray(resource: Int): Array<String> {
+        return context.resources.getStringArray(resource)
+    }
 }

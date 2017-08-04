@@ -70,9 +70,19 @@
     <string name="game_type_skee_ball">Skee-Ball</string>
 
 
-
     <string name="restroom_women_only">Damen-WC</string>
     <string name="restroom_men_only">Herren-WC</string>
     <string name="restroom_generic">WC</string>
     <string name="restroom_for_disabled">Barrierefreies WC</string>
+
+    <string-array name="restroom_synonyms">
+        <item>@string/restroom_generic</item>
+        <item>Toilette</item>
+        <item>Klo</item>
+    </string-array>
+    <string-array name="restroom_for_disabled_synonyms">
+        <item>@string/restroom_for_disabled</item>
+        <item>Barrierefreie Toilette</item>
+        <item>Behinderten-WC</item>
+    </string-array>
 </resources>
