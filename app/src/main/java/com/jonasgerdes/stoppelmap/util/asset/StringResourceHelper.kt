@@ -16,19 +16,23 @@ class StringResourceHelper(val context: Context) {
     val cache = HashMap<String, String>()
 
     fun getNameFor(product: Product?): String {
-        if (product == null) {
+        return getNameFor(product?.name)
+    }
+
+    fun getNameFor(identifier: String?): String {
+        if (identifier == null) {
             return ""
         }
-        if (cache.containsKey(product.name)) {
-            return cache[product.name]!!
+        if (cache.containsKey(identifier)) {
+            return cache[identifier]!!
         }
-        val resId = context.resources.getIdentifier(product.name, "string", context.packageName)
+        val resId = context.resources.getIdentifier(identifier, "string", context.packageName)
         val name = if (resId != NONE) {
             context.getString(resId)
         } else {
-            product.name
+            identifier
         }
-        cache[product.name] = name
+        cache[identifier] = name
         return name
     }
 

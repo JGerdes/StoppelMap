@@ -9,6 +9,7 @@ import io.realm.RealmObject
 open class PhoneNumber : RealmObject() {
 
     var name: String? = null
+    var description: String? = null
     var callableNumber: String? = null
     var prettifiedNumber: String? = null
 }
