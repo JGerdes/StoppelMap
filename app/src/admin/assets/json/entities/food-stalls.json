@@ -30,6 +30,7 @@
     ],
     "alias": [],
     "operator": "Scheele",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -76,6 +77,7 @@
     ],
     "alias": [],
     "operator": "Wimmert",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -122,6 +124,7 @@
     ],
     "alias": [],
     "operator": "Fertig",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -168,6 +171,7 @@
     ],
     "alias": [],
     "operator": "Osthold",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -209,6 +213,7 @@
     ],
     "alias": [],
     "operator": "Osthold",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -255,6 +260,7 @@
     ],
     "alias": [],
     "operator": "Osthold,J.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -301,6 +307,7 @@
     ],
     "alias": [],
     "operator": "Tönnies",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -347,6 +354,7 @@
     ],
     "alias": [],
     "operator": "Böker",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -405,6 +413,7 @@
     ],
     "alias": [],
     "operator": "Maatz-M.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -452,6 +461,7 @@
     "name": "Churros Factory",
     "alias": [],
     "operator": "Kreuz",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -498,6 +508,7 @@
     ],
     "alias": [],
     "operator": "Vorlop",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -544,6 +555,7 @@
     ],
     "alias": [],
     "operator": "Leimberger",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -590,6 +602,7 @@
     ],
     "alias": [],
     "operator": "Marx",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -637,6 +650,7 @@
     "name": "Bokern",
     "alias": [],
     "operator": "Bokern",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -696,6 +710,7 @@
     ],
     "alias": [],
     "operator": "Winter",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -742,6 +757,7 @@
     ],
     "alias": [],
     "operator": "Wimmert",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -788,6 +804,7 @@
     ],
     "alias": [],
     "operator": "Steiger",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -834,6 +851,7 @@
     ],
     "alias": [],
     "operator": "Brandt",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -880,6 +898,7 @@
     ],
     "alias": [],
     "operator": "Heinen",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -926,6 +945,7 @@
     ],
     "alias": [],
     "operator": "Osthold, U.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -972,6 +992,7 @@
     ],
     "alias": [],
     "operator": "Wilken",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1018,6 +1039,7 @@
     ],
     "alias": [],
     "operator": "Meyer",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1073,6 +1095,7 @@
     "name": "Trumpf",
     "alias": [],
     "operator": "Trumpf",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -1132,6 +1155,7 @@
     ],
     "alias": [],
     "operator": "Fehrensen",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1178,6 +1202,7 @@
     ],
     "alias": [],
     "operator": "Stratmann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1224,6 +1249,7 @@
     ],
     "alias": [],
     "operator": "Severit",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1270,6 +1296,7 @@
     ],
     "alias": [],
     "operator": "Bökern, Jun.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1328,6 +1355,7 @@
     ],
     "alias": [],
     "operator": "Heidtmann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1374,6 +1402,7 @@
     ],
     "alias": [],
     "operator": "Robrahn",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1420,6 +1449,7 @@
     ],
     "alias": [],
     "operator": "Barber",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1467,6 +1497,7 @@
     "name": "Bokern",
     "alias": [],
     "operator": "Bokern",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -1526,6 +1557,7 @@
     ],
     "alias": [],
     "operator": "Strohmann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1572,6 +1604,7 @@
     ],
     "alias": [],
     "operator": "Fischer",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1626,6 +1659,7 @@
     ],
     "alias": [],
     "operator": "Laffontien",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1672,6 +1706,7 @@
     ],
     "alias": [],
     "operator": "Genius",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1718,6 +1753,7 @@
     ],
     "alias": [],
     "operator": "Fick",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1764,6 +1800,7 @@
     ],
     "alias": [],
     "operator": "Schmidt",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1810,6 +1847,7 @@
     ],
     "alias": [],
     "operator": "Bergsma",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1864,6 +1902,7 @@
     ],
     "alias": [],
     "operator": "Wimmert",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1910,6 +1949,7 @@
     ],
     "alias": [],
     "operator": "Lemoine",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -1956,6 +1996,7 @@
     ],
     "alias": [],
     "operator": "Maus",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2003,6 +2044,7 @@
     "name": "Pizza alá Hansi",
     "alias": [],
     "operator": "Steinbauer, M.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2049,6 +2091,7 @@
     ],
     "alias": [],
     "operator": "Winter, W.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2095,6 +2138,7 @@
     ],
     "alias": [],
     "operator": "Inhester",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2141,6 +2185,7 @@
     ],
     "alias": [],
     "operator": "Ahrend",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2183,6 +2228,7 @@
     "name": "Backfischrutsche",
     "alias": [],
     "operator": "Jipp",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2229,6 +2275,7 @@
     ],
     "alias": [],
     "operator": "Ricke-Dannemann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2275,6 +2322,7 @@
     ],
     "alias": [],
     "operator": "Schmidt",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2321,6 +2369,7 @@
     ],
     "alias": [],
     "operator": "Trumpf",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2379,6 +2428,7 @@
     ],
     "alias": [],
     "operator": "Welte",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2426,6 +2476,7 @@
     "name": "Beneke",
     "alias": [],
     "operator": "Beneke",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -2476,6 +2527,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2526,6 +2578,7 @@
     ],
     "alias": [],
     "operator": "Mc Emde",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2572,6 +2625,7 @@
     ],
     "alias": [],
     "operator": "Stratmann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2618,6 +2672,7 @@
     ],
     "alias": [],
     "operator": "Weber-Langenscheidt",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2665,6 +2720,7 @@
     "name": "Ostermann",
     "alias": [],
     "operator": "Ostermann, J.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -2724,6 +2780,7 @@
     ],
     "name": "Meyer, J",
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2783,6 +2840,7 @@
     "name": "Landwehr",
     "alias": [],
     "operator": "Landwehr",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -2846,6 +2904,7 @@
     ],
     "alias": [],
     "operator": "Meyer",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2892,6 +2951,7 @@
     ],
     "alias": [],
     "operator": "Laffonfin, W.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2939,6 +2999,7 @@
     "name": "Grüne Küche",
     "alias": [],
     "operator": "Karow",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -2980,6 +3041,7 @@
     ],
     "alias": [],
     "operator": "Sindermann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3026,6 +3088,7 @@
     ],
     "alias": [],
     "operator": "Hirsch-M.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3088,6 +3151,7 @@
     ],
     "alias": [],
     "operator": "Scheele",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3134,6 +3198,7 @@
     ],
     "alias": [],
     "operator": "Wimmer, E.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3180,6 +3245,7 @@
     ],
     "alias": [],
     "operator": "Pläser",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3226,6 +3292,7 @@
     ],
     "alias": [],
     "operator": "Heinen",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3281,6 +3348,7 @@
     "name": "Schinderhannes",
     "alias": [],
     "operator": "Schinderhannes",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -3344,6 +3412,7 @@
     ],
     "alias": [],
     "operator": "Sindermann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3390,6 +3459,7 @@
     ],
     "alias": [],
     "operator": "Meyer-L.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3436,6 +3506,7 @@
     ],
     "alias": [],
     "operator": "Thölking UG",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3482,6 +3553,7 @@
     ],
     "alias": [],
     "operator": "Barber",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3528,6 +3600,7 @@
     ],
     "alias": [],
     "operator": "Thelen",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3574,6 +3647,7 @@
     ],
     "alias": [],
     "operator": "Pläser, jr.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3620,6 +3694,7 @@
     ],
     "alias": [],
     "operator": "Oeltjen",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3666,6 +3741,7 @@
     ],
     "alias": [],
     "operator": "Tolisch",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3712,6 +3788,7 @@
     ],
     "name": "Lübke, T",
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3766,6 +3843,7 @@
     ],
     "alias": [],
     "operator": "Winter, T.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3816,6 +3894,7 @@
     ],
     "alias": [],
     "operator": "Puhl",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3862,6 +3941,7 @@
     ],
     "alias": [],
     "operator": "Scheider",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3908,6 +3988,7 @@
     ],
     "alias": [],
     "operator": "Wimmert",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -3954,6 +4035,7 @@
     ],
     "alias": [],
     "operator": "Sindermann,R.",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -4001,6 +4083,7 @@
     "name": "Bergsma",
     "alias": [],
     "operator": "Bergsma",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": true,
@@ -4060,6 +4143,7 @@
     ],
     "alias": [],
     "operator": "Dietrich",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -4106,6 +4190,7 @@
     ],
     "alias": [],
     "operator": "Fortmann",
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,
@@ -4151,6 +4236,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "foodStall": {
       "isBar": false,

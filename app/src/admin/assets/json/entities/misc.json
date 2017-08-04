@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "amtmannsbult",
+    "type": "misc",
+    "center": {
+      "lat": 52.74867055246,
+      "lon": 8.295397031125
+    },
+    "bounds": [
+      {
+        "lat": 52.74874541958,
+        "lon": 8.29523697361
+      },
+      {
+        "lat": 52.74876859608,
+        "lon": 8.29551819661
+      },
+      {
+        "lat": 52.74859568544,
+        "lon": 8.29555708864
+      },
+      {
+        "lat": 52.74857250884,
+        "lon": 8.29527586564
+      },
+      {
+        "lat": 52.74874541958,
+        "lon": 8.29523697361
+      }
+    ],
+    "name": "Amtmannsbult",
+    "alias": [],
+    "description": {
+      "description": "Das Amtmannsbult ist ein zentraler Punkt auf dem Stoppelmarkt. Wo früher das Marktgericht seinen Sitz hatte, wird heute traditionell am Donnerstag feierlich vom Bürgermeister der Markt eröffnet.\r\nNeben einem Marktplan kann hier auch die Polizei, die Feuerwehr und das Deutsche Rote Kreuz aufgesucht werden."
+    },
+    "phoneNumbers": [
+      {
+        "name": "Polizei",
+        "callableNumber": "+4944418538448",
+        "prettifiedNumber": "04441/8538448"
+      },
+      {
+        "name": "Deutsches Rotes Kreuz",
+        "callableNumber": "+4944418559654",
+        "prettifiedNumber": "04441/8559654"
+      },
+      {
+        "name": "Feuerwehr",
+        "callableNumber": "+4944418547712",
+        "prettifiedNumber": "04441/8547712"
+      },
+      {
+        "name": "Marktverwaltung/Fundbüro",
+        "callableNumber": "+4944418538452",
+        "prettifiedNumber": "04441/8538452"
+      }
+    ],
+    "pictures": [
+      {
+        "filePath": "amtmannsbult_header_01.webp",
+        "type": "header",
+        "source": "Jonas Gerdes"
+      }
+    ],
+    "zoomLevel": 17.0,
+    "area": 370.67986695649427
+  }
+]

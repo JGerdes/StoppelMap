@@ -4,15 +4,11 @@ import io.realm.RealmObject
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
- * @since 15.06.2017
+ * @since 04.08.2017
  */
-open class Picture : RealmObject() {
+open class PhoneNumber : RealmObject() {
 
-    companion object {
-        val TYPE_HEADER = "header"
-    }
-
-    var filePath: String? = null
-    var type: String? = null
-    var source: String? = null
+    var name: String? = null
+    var callableNumber: String? = null
+    var prettifiedNumber: String? = null
 }

@@ -30,6 +30,7 @@
     ],
     "alias": [],
     "operator": "Hardt",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -73,6 +74,7 @@
     ],
     "alias": [],
     "operator": "Praegla",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -116,6 +118,7 @@
     ],
     "name": "Gertler",
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -159,6 +162,7 @@
     ],
     "alias": [],
     "operator": "Döring",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -202,6 +206,7 @@
     ],
     "alias": [],
     "operator": "Wela",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -245,6 +250,7 @@
     ],
     "alias": [],
     "operator": "Rosenberg",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -288,6 +294,7 @@
     ],
     "alias": [],
     "operator": "Seye",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -331,6 +338,7 @@
     ],
     "alias": [],
     "operator": "Leimberger",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -374,6 +382,7 @@
     ],
     "alias": [],
     "operator": "Ahmand",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -417,6 +426,7 @@
     ],
     "alias": [],
     "operator": "Yasar",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -460,6 +470,7 @@
     ],
     "alias": [],
     "operator": "Hahne",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -503,6 +514,7 @@
     ],
     "alias": [],
     "operator": "Meyer, N.",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -545,6 +557,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -582,6 +595,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -620,6 +634,7 @@
     ],
     "alias": [],
     "operator": "Ahmand",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -663,6 +678,7 @@
     ],
     "alias": [],
     "operator": "Ahmand",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -706,6 +722,7 @@
     ],
     "alias": [],
     "operator": "Mazhar",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -749,6 +766,7 @@
     ],
     "alias": [],
     "operator": "Dudel",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -792,6 +810,7 @@
     ],
     "alias": [],
     "operator": "Hahne",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -835,6 +854,7 @@
     ],
     "alias": [],
     "operator": "Kleuser",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -878,6 +898,7 @@
     ],
     "alias": [],
     "operator": "Winterstein",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -921,6 +942,7 @@
     ],
     "alias": [],
     "operator": "Niang, A",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -964,6 +986,7 @@
     ],
     "alias": [],
     "operator": "Schubert",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -1007,6 +1030,7 @@
     ],
     "alias": [],
     "operator": "Niang, P.",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -1049,6 +1073,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1086,6 +1111,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1123,6 +1149,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1160,6 +1187,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1197,6 +1225,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1234,6 +1263,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1271,6 +1301,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1308,6 +1339,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1345,6 +1377,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1382,6 +1415,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1419,6 +1453,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1456,6 +1491,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1493,6 +1529,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1530,6 +1567,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1568,6 +1606,7 @@
     ],
     "alias": [],
     "operator": "Heidtmann",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -1611,6 +1650,7 @@
     ],
     "alias": [],
     "operator": "Niang",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -1653,6 +1693,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1690,6 +1731,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1727,6 +1769,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1765,6 +1808,7 @@
     ],
     "alias": [],
     "operator": "Malade",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -1808,6 +1852,7 @@
     ],
     "alias": [],
     "operator": "Niang",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -1850,6 +1895,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1887,6 +1933,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1924,6 +1971,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1961,6 +2009,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -1998,6 +2047,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2035,6 +2085,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2072,6 +2123,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2109,6 +2161,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2146,6 +2199,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2183,6 +2237,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2220,6 +2275,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2257,6 +2313,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2294,6 +2351,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2331,6 +2389,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2368,6 +2427,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2405,6 +2465,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2442,6 +2503,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2479,6 +2541,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2516,6 +2579,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2553,6 +2617,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2590,6 +2655,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2627,6 +2693,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2664,6 +2731,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2701,6 +2769,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2738,6 +2807,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -2776,6 +2846,7 @@
     ],
     "alias": [],
     "operator": "Zeltner",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -2819,6 +2890,7 @@
     ],
     "alias": [],
     "operator": "Dieng, A.",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -2862,6 +2934,7 @@
     ],
     "alias": [],
     "operator": "Gerken-M.",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -2905,6 +2978,7 @@
     ],
     "alias": [],
     "operator": "Claus",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -2948,6 +3022,7 @@
     ],
     "alias": [],
     "operator": "Diop,F.",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -2991,6 +3066,7 @@
     ],
     "alias": [],
     "operator": "Claus",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3034,6 +3110,7 @@
     ],
     "alias": [],
     "operator": "Wickert",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3077,6 +3154,7 @@
     ],
     "alias": [],
     "operator": "Schöneberg",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3120,6 +3198,7 @@
     ],
     "alias": [],
     "operator": "Weinmann",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3162,6 +3241,7 @@
       }
     ],
     "alias": [],
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": []
@@ -3200,6 +3280,7 @@
     ],
     "alias": [],
     "operator": "Beifuß",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3243,6 +3324,7 @@
     ],
     "alias": [],
     "operator": "Delbeck",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3286,6 +3368,7 @@
     ],
     "alias": [],
     "operator": "Klemann",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3329,6 +3412,7 @@
     ],
     "alias": [],
     "operator": "Suhleria",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3372,6 +3456,7 @@
     ],
     "alias": [],
     "operator": "Zarioh",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
@@ -3415,6 +3500,7 @@
     ],
     "alias": [],
     "operator": "Reinecke",
+    "phoneNumbers": [],
     "pictures": [],
     "sellerStall": {
       "products": [
