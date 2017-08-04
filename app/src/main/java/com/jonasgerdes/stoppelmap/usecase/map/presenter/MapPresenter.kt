@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.model.entity.map.*
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDescriptionCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
+import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityPhoneNumberCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityProductCard
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapViewState
@@ -154,6 +155,9 @@ class MapPresenter(
         if (entity.description != null) {
             cards.add(EntityDescriptionCard(entity.description!!.description!!,
                     entity.description!!.source))
+        }
+        if (!entity.phoneNumbers.isEmpty()) {
+            cards.add(EntityPhoneNumberCard(entity.phoneNumbers))
         }
         when (entity.type) {
             Bar.TYPE -> cards.add(EntityProductCard(entity.bar!!.drinks))

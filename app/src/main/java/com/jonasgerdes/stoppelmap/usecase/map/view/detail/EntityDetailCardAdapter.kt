@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDescriptionCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
+import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityPhoneNumberCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityProductCard
 
 /**
@@ -27,6 +28,7 @@ class EntityDetailCardAdapter : RecyclerView.Adapter<EntityCardHolder<*>>() {
         return when (cardList[position]) {
             is EntityProductCard -> R.layout.map_entity_card_products
             is EntityDescriptionCard -> R.layout.map_entity_card_description
+            is EntityPhoneNumberCard -> R.layout.map_entity_card_phone_numbers
             else -> -1
         }
     }
@@ -36,6 +38,7 @@ class EntityDetailCardAdapter : RecyclerView.Adapter<EntityCardHolder<*>>() {
         val holder = when (viewType) {
             R.layout.map_entity_card_products -> EntityProductCardHolder(view)
             R.layout.map_entity_card_description -> EntityDescriptionCardHolder(view)
+            R.layout.map_entity_card_phone_numbers -> EntityPhoneCardHolder(view)
             else -> EntityProductCardHolder(view)
         }
         return holder
@@ -48,6 +51,9 @@ class EntityDetailCardAdapter : RecyclerView.Adapter<EntityCardHolder<*>>() {
 
             is EntityDescriptionCardHolder
             -> holder.onBind(cardList[position] as EntityDescriptionCard)
+
+            is EntityPhoneCardHolder
+            -> holder.onBind(cardList[position] as EntityPhoneNumberCard)
         }
     }
 
