@@ -14,4 +14,5 @@ open class Picture : RealmObject() {
 
     var filePath: String? = null
     var type: String? = null
+    var source: String? = null
 }
