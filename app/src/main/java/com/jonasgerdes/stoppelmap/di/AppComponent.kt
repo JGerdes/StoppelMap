@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.QueryFactory
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.view.MapFragment
+import com.jonasgerdes.stoppelmap.usecase.map.view.search.ProductAdapter
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.ProductResultHolder
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import dagger.Component
@@ -26,4 +27,5 @@ interface AppComponent {
     fun inject(productResultHolder: ProductResultHolder)
     fun inject(mapEntityRepository: MapEntityRepository)
     fun inject(queryFactory: QueryFactory)
+    fun inject(productAdapter: ProductAdapter)
 }
