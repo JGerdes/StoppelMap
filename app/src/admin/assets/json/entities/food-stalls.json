@@ -850,7 +850,7 @@
     "area": 17.13022401030232
   },
   {
-    "slug": "food-heinen-nzmyzt",
+    "slug": "gyros-heinen-nzmyzt",
     "type": "food-stall",
     "center": {
       "lat": 52.746734513345004,
@@ -884,7 +884,12 @@
     "foodStall": {
       "isBar": false,
       "isTent": false,
-      "dishes": [],
+      "dishes": [
+        {
+          "name": "dish_type_gyros",
+          "prices": []
+        }
+      ],
       "drinks": []
     },
     "zoomLevel": 19.0,
@@ -1097,7 +1102,7 @@
     "area": 164.3813869600031
   },
   {
-    "slug": "food-fehrensen-otm3mt",
+    "slug": "potatoes-fehrensen-otm3mt",
     "type": "food-stall",
     "center": {
       "lat": 52.747990063719996,
@@ -1131,7 +1136,12 @@
     "foodStall": {
       "isBar": false,
       "isTent": false,
-      "dishes": [],
+      "dishes": [
+        {
+          "name": "dish_type_potatoes",
+          "prices": []
+        }
+      ],
       "drinks": []
     },
     "zoomLevel": 20.0,
@@ -2189,7 +2199,7 @@
     "area": 35.047799034422376
   },
   {
-    "slug": "food-ricke-dannemann-mtbhzt",
+    "slug": "cheese-ricke-dannemann-mtbhzt",
     "type": "food-stall",
     "center": {
       "lat": 52.748435946325,
@@ -2223,7 +2233,12 @@
     "foodStall": {
       "isBar": false,
       "isTent": false,
-      "dishes": [],
+      "dishes": [
+        {
+          "name": "dish_type_cheese",
+          "prices": []
+        }
+      ],
       "drinks": []
     },
     "zoomLevel": 20.0,
@@ -2468,6 +2483,10 @@
       "dishes": [
         {
           "name": "dish_type_bread",
+          "prices": []
+        },
+        {
+          "name": "dish_type_beacon",
           "prices": []
         }
       ],
@@ -3131,7 +3150,7 @@
     "area": 40.903557325556704
   },
   {
-    "slug": "food-plaeser-odyxod",
+    "slug": "cheese-plaeser-odyxod",
     "type": "food-stall",
     "center": {
       "lat": 52.747563954635,
@@ -3165,7 +3184,12 @@
     "foodStall": {
       "isBar": false,
       "isTent": false,
-      "dishes": [],
+      "dishes": [
+        {
+          "name": "dish_type_cheese",
+          "prices": []
+        }
+      ],
       "drinks": []
     },
     "zoomLevel": 20.0,
@@ -3612,7 +3636,7 @@
     "area": 56.65285709120144
   },
   {
-    "slug": "food-tolisch-odbimz",
+    "slug": "tarte-flambee-tolisch-odbimz",
     "type": "food-stall",
     "center": {
       "lat": 52.748555925525,
@@ -3646,7 +3670,12 @@
     "foodStall": {
       "isBar": false,
       "isTent": false,
-      "dishes": [],
+      "dishes": [
+        {
+          "name": "dish_type_tarte_flambee",
+          "prices": []
+        }
+      ],
       "drinks": []
     },
     "zoomLevel": 20.0,
@@ -4137,6 +4166,10 @@
         },
         {
           "name": "dish_type_currywurst",
+          "prices": []
+        },
+        {
+          "name": "dish_type_gyros",
           "prices": []
         }
       ],

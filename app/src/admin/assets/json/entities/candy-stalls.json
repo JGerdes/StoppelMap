@@ -305,7 +305,12 @@
     "alias": [],
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_backery",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 19.0,
     "area": 86.71640579334057
@@ -1159,6 +1164,10 @@
         {
           "name": "candy_type_wine_gums",
           "prices": []
+        },
+        {
+          "name": "candy_type_wine_gums",
+          "prices": []
         }
       ]
     },
@@ -1524,7 +1533,7 @@
     "area": 25.97296163776168
   },
   {
-    "slug": "candy-cardinale-ytaxy2",
+    "slug": "bonbons-cardinale-ytaxy2",
     "type": "candy-stall",
     "center": {
       "lat": 52.748530162935,
@@ -1556,7 +1565,12 @@
     "operator": "Cardinale",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_bonbons",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 24.71072681399093
@@ -1699,7 +1713,7 @@
     "area": 15.687832944757258
   },
   {
-    "slug": "candy-robrahn-nwe4zj",
+    "slug": "frozen-yogurt-robrahn-nwe4zj",
     "type": "candy-stall",
     "center": {
       "lat": 52.748200452275,
@@ -1731,7 +1745,12 @@
     "operator": "Robrahn",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_frozen_yogurt",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 23.852932330589077
@@ -1780,7 +1799,7 @@
     "area": 7.976360544727546
   },
   {
-    "slug": "candy-brunke-m2y5mw",
+    "slug": "backery-brunke-m2y5mw",
     "type": "candy-stall",
     "center": {
       "lat": 52.747971552145,
@@ -1812,7 +1831,12 @@
     "operator": "Brunke",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_backery",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 45.870063300538966
@@ -2248,7 +2272,7 @@
     "area": 33.16744803687281
   },
   {
-    "slug": "candy-mueller-d.-ogixmt",
+    "slug": "chocolate-fruits-mueller-d.-ogixmt",
     "type": "candy-stall",
     "center": {
       "lat": 52.7483580061,
@@ -2280,7 +2304,12 @@
     "operator": "Müller, D.",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_chocolate_fruits",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 23.071561818856644
@@ -2362,7 +2391,12 @@
     "operator": "Müller",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_backery",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 23.74371988208259
@@ -2497,7 +2531,7 @@
     "area": 19.231224324170622
   },
   {
-    "slug": "candy-lange-mwfmnd",
+    "slug": "bonbons-lange-mwfmnd",
     "type": "candy-stall",
     "center": {
       "lat": 52.748261877345,
@@ -2529,7 +2563,12 @@
     "operator": "Lange",
     "pictures": [],
     "candyStall": {
-      "products": []
+      "products": [
+        {
+          "name": "candy_type_bonbons",
+          "prices": []
+        }
+      ]
     },
     "zoomLevel": 20.0,
     "area": 17.06303665171241
