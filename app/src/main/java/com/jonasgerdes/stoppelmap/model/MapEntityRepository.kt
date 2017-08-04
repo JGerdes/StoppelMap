@@ -78,7 +78,7 @@ class MapEntityRepository : Disposable {
         queries.addIfNotNull(queryFactory.createAttributeQuery(
                 realm.where(MapEntity::class.java),
                 term,
-                R.string.restroom_generic,
+                R.array.restroom_synonyms,
                 R.drawable.ic_entity_restroom_black_24dp,
                 Pair("type", Restroom.TYPE)
         ))
@@ -88,7 +88,7 @@ class MapEntityRepository : Disposable {
                 R.string.restroom_women_only,
                 R.drawable.ic_entity_restroom_black_24dp,
                 Pair("type", Restroom.TYPE),
-                Pair("restroom.forWomenMen", true)
+                Pair("restroom.forWomen", true)
         ))
         queries.addIfNotNull(queryFactory.createAttributeQuery(
                 realm.where(MapEntity::class.java),
@@ -101,7 +101,7 @@ class MapEntityRepository : Disposable {
         queries.addIfNotNull(queryFactory.createAttributeQuery(
                 realm.where(MapEntity::class.java),
                 term,
-                R.string.restroom_for_disabled,
+                R.array.restroom_for_disabled_synonyms,
                 R.drawable.ic_entity_restroom_black_24dp,
                 Pair("type", Restroom.TYPE),
                 Pair("restroom.forDisabled", true)
