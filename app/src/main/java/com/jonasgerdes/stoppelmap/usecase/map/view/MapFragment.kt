@@ -144,17 +144,28 @@ class MapFragment : LifecycleFragment(), MapView {
                 Manifest.permission.ACCESS_FINE_LOCATION).filter({ it })
     }
 
-    override fun setMapBounds(bounds: MapBounds) {
+    override fun setMapLimits(bounds: MapBounds) {
         map.setLatLngBoundsForCameraTarget(bounds.bounds)
         map.setMaxZoomPreference(bounds.maxZoom)
         map.setMinZoomPreference(bounds.minZoom)
     }
 
     override fun setMapCamera(center: LatLng, zoom: Float, animate: Boolean) {
+        val update = CameraUpdateFactory.newLatLngZoom(center, zoom)
         if (animate) {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
+            map.animateCamera(update)
         } else {
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(center, zoom))
+            map.moveCamera(update)
+        }
+    }
+
+    override fun setMapCamera(bounds: LatLngBounds, animate: Boolean) {
+        val padding = resources.getDimensionPixelSize(R.dimen.map_zoom_bound_padding)
+        val update = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+        if (animate) {
+            map.animateCamera(update)
+        } else {
+            map.moveCamera(update)
         }
     }
 

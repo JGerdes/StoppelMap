@@ -4,6 +4,7 @@ import android.location.Location
 import android.net.Uri
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
@@ -14,8 +15,9 @@ import io.reactivex.Observable
  * @since 18.06.2017
  */
 interface MapView {
-    fun setMapBounds(bounds: MapBounds)
+    fun setMapLimits(bounds: MapBounds)
     fun setMapCamera(center: LatLng, zoom: Float, animate: Boolean = true)
+    fun setMapCamera(bounds: LatLngBounds, animate: Boolean = true)
 
     fun setSearchField(term: String)
     fun toggleSearchFieldFocus(isFocused: Boolean)
