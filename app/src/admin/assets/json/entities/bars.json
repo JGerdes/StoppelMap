@@ -1344,6 +1344,10 @@
     "name": "Anton Linnemann",
     "alias": [],
     "operator": "Linnemann",
+    "description": {
+      "description": "Seit 90 Jahren ein traditionsreicher Treffpunkt für Jung und Alt inmitten des Marktes. Bei Linnemann kann man im geselligen Kreis bei einem frisch gezapften Bier alte Bekannte treffen und neue Freunde kennen lernen.\r\nHier trifft man sich zum Schnacken und Klönen. Das Publikum ist kontaktfreudig und man ist sofort in jeder Runde willkommen.",
+      "source": "Linnemann"
+    },
     "pictures": [],
     "bar": {
       "drinks": [
