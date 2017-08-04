@@ -106,8 +106,12 @@ class MapPresenter(
     }
 
     private fun updateMap(state: MapViewState) {
-        view.setMapBounds(state.bounds)
-        view.setMapCamera(state.center, state.zoom, !isFirstMapUpdate)
+        view.setMapLimits(state.mapState.limits)
+        if(state.mapState.bounds != null) {
+            view.setMapCamera(state.mapState.bounds, !isFirstMapUpdate)
+        } else {
+            view.setMapCamera(state.mapState.center!!, state.mapState.zoom!!, !isFirstMapUpdate)
+        }
         isFirstMapUpdate = false
         visibleEntitySubject.onNext(state.visibleEntities)
     }

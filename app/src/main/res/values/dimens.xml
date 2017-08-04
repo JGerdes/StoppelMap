@@ -8,6 +8,7 @@
     <dimen name="map_marker_stroke_width">3dp</dimen>
     <dimen name="map_marker_padding">4dp</dimen>
     <dimen name="map_marker_icon_size">20dp</dimen>
+    <dimen name="map_zoom_bound_padding">64dp</dimen>
 
     <dimen name="map_bottom_sheet_anchor_point">300dp</dimen>
     <dimen name="map_bottom_sheet_peek_height">80dp</dimen>

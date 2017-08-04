@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
-import com.google.android.gms.maps.model.LatLng
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.util.asset.Assets
@@ -11,40 +10,30 @@ import io.reactivex.Observable
  * @since 18.06.2017
  */
 sealed class MapViewState(
-        val center: LatLng,
-        val zoom: Float,
-        val bounds: MapBounds,
+        val mapState: GoogleMapState,
         val visibleEntities: List<MapEntity>
 ) {
 
     class Exploring(
-            center: LatLng,
-            zoom: Float,
-            bounds: MapBounds,
+            mapState: GoogleMapState,
             visibleEntities: List<MapEntity>,
             val message: Int = Assets.NONE
-    ) : MapViewState(center, zoom, bounds, visibleEntities)
+    ) : MapViewState(mapState, visibleEntities)
 
     class Searching(
-            center: LatLng,
-            zoom: Float,
-            bounds: MapBounds,
+            mapState: GoogleMapState,
             visibleEntities: List<MapEntity>,
             val searchTerm: String,
             val results: Observable<List<MapSearchResult>>
-    ) : MapViewState(center, zoom, bounds, visibleEntities)
+    ) : MapViewState(mapState, visibleEntities)
 
     class EntityDetail(
-            zoom: Float,
-            bounds: MapBounds,
-            val entity: MapEntity,
-            center: LatLng = entity.center.latLng
-    ) : MapViewState(center, zoom, bounds, listOf(entity))
+            mapState: GoogleMapState,
+            val entity: MapEntity
+    ) : MapViewState(mapState, listOf(entity))
 
     class EntityGroupDetail(
-            center: LatLng,
-            zoom: Float,
-            bounds: MapBounds,
+            mapState: GoogleMapState,
             val entities: List<MapEntity>
-    ) : MapViewState(center, zoom, bounds, entities)
+    ) : MapViewState(mapState, entities)
 }

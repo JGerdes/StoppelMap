@@ -35,12 +35,14 @@ class MapInteractor : ViewModel() {
     }
 
     private val stateSubject = BehaviorSubject.createDefault<MapViewState>(MapViewState.Exploring(
-            Settings.center,
-            Settings.defaultZoom,
-            MapBounds(
-                    Settings.cameraBounds,
-                    Settings.minZoom,
-                    Settings.maxZoom
+            GoogleMapState(
+                    MapBounds(
+                            Settings.cameraBounds,
+                            Settings.minZoom,
+                            Settings.maxZoom
+                    ),
+                    Settings.center,
+                    Settings.defaultZoom
             ),
             repository.getVisibleEntities(Settings.defaultZoom)
 
@@ -58,21 +60,27 @@ class MapInteractor : ViewModel() {
         stateSubject.onNext(
                 when (stateSubject.value) {
                     is MapViewState.EntityDetail -> MapViewState.EntityDetail(
-                            position.zoom,
-                            stateSubject.value.bounds,
-                            (stateSubject.value as MapViewState.EntityDetail).entity,
-                            position.target
+                            stateSubject.value.mapState.copy(
+                                    zoom = position.zoom,
+                                    center = position.target,
+                                    bounds = null
+                            ),
+                            (stateSubject.value as MapViewState.EntityDetail).entity
                     )
                     is MapViewState.EntityGroupDetail -> MapViewState.EntityGroupDetail(
-                            position.target,
-                            position.zoom,
-                            stateSubject.value.bounds,
+                            stateSubject.value.mapState.copy(
+                                    zoom = position.zoom,
+                                    center = position.target,
+                                    bounds = null
+                            ),
                             (stateSubject.value as MapViewState.EntityGroupDetail).entities
                     )
                     else -> MapViewState.Exploring(
-                            position.target,
-                            position.zoom,
-                            stateSubject.value.bounds,
+                            stateSubject.value.mapState.copy(
+                                    zoom = position.zoom,
+                                    center = position.target,
+                                    bounds = null
+                            ),
                             repository.getVisibleEntities(position.zoom))
 
                 })
@@ -82,15 +90,13 @@ class MapInteractor : ViewModel() {
         stateSubject.onNext(
                 if (Settings.cameraBounds.contains(location.latLng())) {
                     MapViewState.Exploring(
-                            location.latLng(),
-                            stateSubject.value.zoom,
-                            stateSubject.value.bounds,
-                            repository.getVisibleEntities(stateSubject.value.zoom))
+                            stateSubject.value.mapState.copy(
+                                    center = location.latLng()
+                            ),
+                            repository.getVisibleEntities(stateSubject.value.mapState.zoom!!))
                 } else {
                     MapViewState.Exploring(
-                            stateSubject.value.center,
-                            stateSubject.value.zoom,
-                            stateSubject.value.bounds,
+                            stateSubject.value.mapState.copy(),
                             stateSubject.value.visibleEntities,
                             R.string.map_my_location_not_in_bounds)
                 })
@@ -101,25 +107,24 @@ class MapInteractor : ViewModel() {
         stateSubject.onNext(
                 if (entity != null) {
                     MapViewState.EntityDetail(
-                            entity.zoomLevel,
-                            stateSubject.value.bounds,
+                            stateSubject.value.mapState.copy(
+                                    zoom = entity.zoomLevel,
+                                    center = entity.center.latLng
+                            ),
                             entity
                     )
                 } else {
                     MapViewState.Exploring(
-                            stateSubject.value.center,
-                            stateSubject.value.zoom,
-                            stateSubject.value.bounds,
-                            stateSubject.value.visibleEntities)
+                            stateSubject.value.mapState.copy(),
+                            repository.getVisibleEntities(stateSubject.value.mapState.zoom!!)
+                    )
                 }
         )
     }
 
     fun onSearchChanged(term: String) {
         stateSubject.onNext(MapViewState.Searching(
-                stateSubject.value.center,
-                stateSubject.value.zoom,
-                stateSubject.value.bounds,
+                stateSubject.value.mapState.copy(),
                 stateSubject.value.visibleEntities,
                 term,
                 repository.searchFor(term)
@@ -128,26 +133,34 @@ class MapInteractor : ViewModel() {
 
     fun onSearchResultSelected(result: MapSearchResult) {
         when (result) {
-            is SingleEntitySearchResult -> stateSubject.onNext(MapViewState.EntityDetail(
-                    result.entity.zoomLevel,
-                    stateSubject.value.bounds,
-                    result.entity
-            ))
+            is SingleEntitySearchResult -> stateSubject.onNext(
+                    MapViewState.EntityDetail(
+                            stateSubject.value.mapState.copy(
+                                    zoom = result.entity.zoomLevel,
+                                    center = result.entity.center.latLng
+                            ),
+                            result.entity
+                    )
+            )
             is ProductSearchResult -> {
                 val bounds = MapEntity.boundsFor(result.entities)
                 stateSubject.onNext(MapViewState.EntityGroupDetail(
-                        bounds.center,
-                        result.entities[0].zoomLevel,
-                        stateSubject.value.bounds,
+                        stateSubject.value.mapState.copy(
+                                zoom = null,
+                                center = null,
+                                bounds = bounds
+                        ),
                         result.entities
                 ))
             }
             is GroupSearchResult -> {
                 val bounds = MapEntity.boundsFor(result.entities)
                 stateSubject.onNext(MapViewState.EntityGroupDetail(
-                        bounds.center,
-                        result.entities[0].zoomLevel,
-                        stateSubject.value.bounds,
+                        stateSubject.value.mapState.copy(
+                                zoom = null,
+                                center = null,
+                                bounds = bounds
+                        ),
                         result.entities
                 ))
             }
@@ -156,10 +169,9 @@ class MapInteractor : ViewModel() {
 
     fun onBottomSheetClosed(state: Int) {
         stateSubject.onNext(MapViewState.Exploring(
-                stateSubject.value.center,
-                stateSubject.value.zoom,
-                stateSubject.value.bounds,
-                stateSubject.value.visibleEntities))
+                stateSubject.value.mapState.copy(),
+                stateSubject.value.visibleEntities
+        ))
     }
 
     override fun onCleared() {
