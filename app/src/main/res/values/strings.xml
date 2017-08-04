@@ -12,4 +12,6 @@
     <string name="entity_detail_card_products_price">%1$.2f€</string>
     <string name="entity_detail_card_products_title">Hier gibt\'s:</string>
     <string name="entity_detail_card_products_bottom_line">und mehr</string>
+
+    <string name="entity_detail_card_description_source">Quelle: %1$s</string>
 </resources>

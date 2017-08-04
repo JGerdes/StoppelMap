@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.model.entity.map
 
+import com.jonasgerdes.stoppelmap.model.entity.Description
 import com.jonasgerdes.stoppelmap.model.entity.GeoLocation
 import com.jonasgerdes.stoppelmap.model.entity.Picture
 import com.jonasgerdes.stoppelmap.model.realm_wrapper.RealmString
@@ -21,7 +22,7 @@ open class MapEntity : RealmObject() {
     var name: String? = null
     var alias: RealmList<RealmString> = RealmList()
     var operator: String? = null
-    var description: String? = null
+    var description: Description? = null
     var website: String? = null
     var pictures: RealmList<Picture> = RealmList()
 

@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.presenter
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.model.entity.map.*
+import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDescriptionCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityProductCard
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
@@ -150,6 +151,10 @@ class MapPresenter(
 
     private fun getCardsFor(entity: MapEntity): List<EntityDetailCard> {
         val cards = ArrayList<EntityDetailCard>()
+        if (entity.description != null) {
+            cards.add(EntityDescriptionCard(entity.description!!.description!!,
+                    entity.description!!.source))
+        }
         when (entity.type) {
             Bar.TYPE -> cards.add(EntityProductCard(entity.bar!!.drinks))
             FoodStall.TYPE -> cards.add(EntityProductCard(entity.foodStall!!.dishes))
