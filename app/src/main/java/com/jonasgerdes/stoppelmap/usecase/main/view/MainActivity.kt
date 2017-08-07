@@ -57,6 +57,8 @@ class MainActivity : AppCompatActivity(), MainView {
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
         presenter = MainPresenter(this, interactor)
 
+        setTheme(R.style.AppTheme)
+
         currentFragment
                 .delay(100L, TimeUnit.MILLISECONDS)
                 .doOnNext(this::showFragment)
