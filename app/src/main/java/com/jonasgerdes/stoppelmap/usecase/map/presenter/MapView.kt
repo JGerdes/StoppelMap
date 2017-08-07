@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 /**
@@ -32,6 +33,7 @@ interface MapView {
     fun getSearchEvents(): Observable<CharSequence>
     fun getSearchResultSelectionEvents(): Observable<MapSearchResult>
     fun getBottomSheetStateEvents(): Observable<Int>
+    fun getShareBottomClicks(): Observable<Unit>
 
     fun setMarkers(markers: List<MapMarker>)
 
@@ -42,4 +44,5 @@ interface MapView {
     fun setBottomSheetCards(cards: List<EntityDetailCard>)
 
     fun showMessage(messageResource: Int)
+    fun shareLink(url: String, subject: String, chooserText: String)
 }

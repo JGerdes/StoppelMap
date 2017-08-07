@@ -174,6 +174,16 @@ class MapInteractor : ViewModel() {
         ))
     }
 
+    fun onShare(unit: Unit) {
+        if (stateSubject.value is MapViewState.EntityDetail) {
+            stateSubject.onNext(MapViewState.EntityDetail(
+                    stateSubject.value.mapState.copy(),
+                    (stateSubject.value as MapViewState.EntityDetail).entity,
+                    true
+            ))
+        }
+    }
+
     override fun onCleared() {
         if (!repository.isDisposed) {
             repository.dispose()

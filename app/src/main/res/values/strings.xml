@@ -9,6 +9,8 @@
     <string name="map_my_location_not_in_bounds">Du befindest Dich nicht auf dem Festgelände</string>
 
 
+    <string name="entity_detail_share_text">Schau dir mal %1$s auf der StoppelMap an!</string>
+    <string name="entity_detail_share_chooser_text">%1$s teilen</string>
     <string name="entity_detail_card_products_price">%1$.2f€</string>
     <string name="entity_detail_card_products_title">Hier gibt\'s:</string>
     <string name="entity_detail_card_products_bottom_line">und mehr</string>

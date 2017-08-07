@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
@@ -39,6 +40,7 @@ import com.jonasgerdes.stoppelmap.util.map.clicks
 import com.jonasgerdes.stoppelmap.util.map.idles
 import com.jonasgerdes.stoppelmap.util.map.markerClicks
 import com.jonasgerdes.stoppelmap.util.map.stateChanges
+import io.reactivex.Completable
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.map_entity_bottom_sheet.*
 import kotlinx.android.synthetic.main.map_fragment.*
@@ -230,6 +232,10 @@ class MapFragment : LifecycleFragment(), MapView {
         return bottomSheetbehavior.stateChanges()
     }
 
+    override fun getShareBottomClicks(): Observable<Unit> {
+        return bottomSheetFab.clicks().map {  }
+    }
+
     override fun setMarkers(markers: List<MapMarker>) {
         mapMarkers.forEach {
             it.remove()
@@ -284,5 +290,13 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun showMessage(messageResource: Int) {
         Snackbar.make(view as View, messageResource, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun shareLink(url: String, subject: String, chooserText: String) {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, url)
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        startActivity(Intent.createChooser(intent, chooserText))
     }
 }

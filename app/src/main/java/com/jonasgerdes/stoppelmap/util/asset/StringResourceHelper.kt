@@ -11,7 +11,7 @@ import com.jonasgerdes.stoppelmap.util.asset.Assets.NONE
  * @since 24.07.17
  */
 
-class StringResourceHelper(val context: Context) {
+class StringResourceHelper(private val context: Context) {
 
     val cache = HashMap<String, String>()
 
@@ -69,4 +69,9 @@ class StringResourceHelper(val context: Context) {
     fun getArray(resource: Int): Array<String> {
         return context.resources.getStringArray(resource)
     }
+
+    fun get(resource: Int, vararg format:Any): String {
+        return context.getString(resource, *format)
+    }
+
 }
