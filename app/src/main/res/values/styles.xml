@@ -8,7 +8,7 @@
 
     <style name="AppTheme" parent="AppTheme.Base"/>
 
-    <style name="AppTheme.Splash" parent="AppTheme">
+    <style name="AppTheme.Splash" parent="AppTheme.Base">
         <item name="android:windowBackground">@drawable/background_splash_screen</item>
     </style>
 
