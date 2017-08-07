@@ -43,4 +43,8 @@ object MathUtil {
 
         return x > pX
     }
+
+    fun limit(lower: Float, upper: Float, value: Float): Float {
+        return Math.max(lower, Math.min(upper, value))
+    }
 }
