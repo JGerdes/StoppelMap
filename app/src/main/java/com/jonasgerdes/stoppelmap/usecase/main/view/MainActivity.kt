@@ -1,10 +1,13 @@
 package com.jonasgerdes.stoppelmap.usecase.main.view
 
 import android.arch.lifecycle.ViewModelProviders
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import android.view.WindowManager
 import com.jakewharton.rxbinding2.support.design.widget.itemSelections
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.usecase.event.overview.view.EventOverviewFragment
@@ -20,7 +23,7 @@ import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
 import com.jonasgerdes.stoppelmap.util.view.KeyboardUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
@@ -54,9 +57,11 @@ class MainActivity : AppCompatActivity(), MainView {
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
         presenter = MainPresenter(this, interactor)
 
-        currentFragment.observeOn(Schedulers.io())
+        currentFragment
                 .delay(100L, TimeUnit.MILLISECONDS)
-                .subscribe(this::showFragment)
+                .doOnNext(this::showFragment)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::updateStatusBar)
     }
 
     private fun showFragment(fragment: Fragment) {
@@ -64,6 +69,20 @@ class MainActivity : AppCompatActivity(), MainView {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, fragment)
         transaction.commitAllowingStateLoss()
+    }
+
+    private fun updateStatusBar(fragment: Fragment) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (!(fragment is MapFragment)) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.statusBarColor = ContextCompat.getColor(this, R.color.primaryDark)
+            } else {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+            }
+        }
     }
 
     override fun showView(state: MainViewState) {
