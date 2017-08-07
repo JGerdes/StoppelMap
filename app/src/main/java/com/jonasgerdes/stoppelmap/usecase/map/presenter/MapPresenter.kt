@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.presenter
 
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
 import com.jonasgerdes.stoppelmap.App
+import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.map.*
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDescriptionCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
@@ -65,6 +66,8 @@ class MapPresenter(
         disposables += view.getBottomSheetStateEvents()
                 .filter { it == STATE_HIDDEN }
                 .subscribe(interactor::onBottomSheetClosed)
+        disposables += view.getShareBottomClicks()
+                .subscribe(interactor::onShare)
 
         disposables += visibleEntitySubject
                 .distinctUntilChanged { first, second ->
@@ -148,6 +151,17 @@ class MapPresenter(
                     view.toggleBottomSheet(true)
                     view.toggleMyLocationButton(false)
                 }
+
+        if (state.share) {
+            with(stringResHelper) {
+                val entityName = getTitleFor(state.entity)
+                view.shareLink(
+                        get(R.string.url_share_entity, state.entity.slug!!),
+                        get(R.string.entity_detail_share_text, entityName),
+                        get(R.string.entity_detail_share_chooser_text, entityName)
+                )
+            }
+        }
     }
 
     private fun getCardsFor(entity: MapEntity): List<EntityDetailCard> {

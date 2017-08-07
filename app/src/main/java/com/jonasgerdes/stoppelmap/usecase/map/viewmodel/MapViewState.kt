@@ -29,7 +29,8 @@ sealed class MapViewState(
 
     class EntityDetail(
             mapState: GoogleMapState,
-            val entity: MapEntity
+            val entity: MapEntity,
+            val share: Boolean = false
     ) : MapViewState(mapState, listOf(entity))
 
     class EntityGroupDetail(
