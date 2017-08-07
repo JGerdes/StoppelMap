@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity(), MainView {
     lateinit var permissions: RxPermissions
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigation.enableItemShifting(false)
@@ -57,13 +58,12 @@ class MainActivity : AppCompatActivity(), MainView {
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
         presenter = MainPresenter(this, interactor)
 
-        setTheme(R.style.AppTheme)
-
         currentFragment
                 .delay(100L, TimeUnit.MILLISECONDS)
                 .doOnNext(this::showFragment)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::updateStatusBar)
+
     }
 
     private fun showFragment(fragment: Fragment) {
