@@ -24,8 +24,9 @@
         <activity
             android:name=".usecase.main.view.MainActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.Splash">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Splash"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
