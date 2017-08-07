@@ -6,14 +6,12 @@ import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.ViewModelProviders
 import android.location.Location
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.MergedAppBarLayoutBehavior
 import com.bumptech.glide.Glide
