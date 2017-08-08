@@ -278,6 +278,7 @@ class MapFragment : LifecycleFragment(), MapView {
                 bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_COLLAPSED
             }
         } else {
+            bottomSheet.scrollY = 0
             bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
         }
     }
