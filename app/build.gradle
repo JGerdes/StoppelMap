@@ -112,8 +112,8 @@ dependencies {
     releaseImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
 
     //legacy dependencies for widgets
-    implementation 'com.jakewharton:butterknife:8.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.1.0'
+    implementation 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 
     //testing
     testImplementation 'junit:junit:4.12'
