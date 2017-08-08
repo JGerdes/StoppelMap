@@ -18,6 +18,7 @@ android {
         versionName "3.0.0-Alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        flavorSelection 'mode', 'store'
 
     }
     buildTypes {
@@ -46,8 +47,6 @@ android {
             versionNameSuffix "-admin"
         }
     }
-
-    flavorSelection 'mode', 'store'
 
     packagingOptions{
         exclude 'META-INF/rxjava.properties'
@@ -112,8 +111,8 @@ dependencies {
     releaseImplementation 'com.github.jonasrottmann.realm-browser:realm-browser-no-op:0.0.14'
 
     //legacy dependencies for widgets
-    implementation 'com.jakewharton:butterknife:8.6.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    implementation 'com.jakewharton:butterknife:8.8.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
 
     //testing
     testImplementation 'junit:junit:4.12'
