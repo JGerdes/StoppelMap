@@ -21,8 +21,6 @@ import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 import com.jonasgerdes.stoppelmap.widget.util.ViewUtil;
 
-import butterknife.BindView;
-
 /**
  * Created by jonas on 23.02.2017.
  */
@@ -31,12 +29,8 @@ public class SilhouettePreview extends WidgetPreview
         implements ColorableWidgetPreview, ChangeableFontWidgetPreview,
         ColorableFontWidgetPreview, ActionWidgetPreview {
 
-
-    @BindView(R.id.widget_countdown)
-    ImageView mPreviewFontLayer;
-
-    @BindView(R.id.widget_silhouette)
-    ImageView mPreviewLayer;
+    private ImageView mPreviewFontLayer;
+    private ImageView mPreviewLayer;
 
     private int mCurrentColor;
     private Rect mTextBounds = new Rect();
@@ -56,6 +50,13 @@ public class SilhouettePreview extends WidgetPreview
 
     public SilhouettePreview(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        mPreviewFontLayer = findViewById(R.id.widget_countdown);
+        mPreviewLayer = findViewById(R.id.widget_silhouette);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

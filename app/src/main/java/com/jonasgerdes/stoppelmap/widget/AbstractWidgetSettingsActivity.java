@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -21,22 +22,14 @@ import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Created by jonas on 23.02.2017.
  */
 public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     private static final String TAG = "AbstractWidgetSettingsA";
-    @BindView(R.id.previewBackground)
     ImageView mPreviewBackground;
-    @BindView(R.id.preview)
     FrameLayout mPreviewHolder;
-    @BindView(R.id.options_pager)
     ViewPager mOptionsPager;
-    @BindView(R.id.fab)
     FloatingActionButton mFab;
 
     private WidgetPreview mPreview;
@@ -49,7 +42,17 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.widget_settings_gingerbread_heart);
-        ButterKnife.bind(this);
+
+        mPreviewBackground = findViewById(R.id.previewBackground);
+        mPreviewHolder = findViewById(R.id.preview);
+        mOptionsPager = findViewById(R.id.options_pager);
+        mFab = findViewById(R.id.fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onFabClicked();
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -144,7 +147,6 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         return mPreviewBackground.getDrawable();
     }
 
-    @OnClick(R.id.fab)
     void onFabClicked() {
 
         if (mCurrentItem < mOptionsAdapter.getCount() - 1) {

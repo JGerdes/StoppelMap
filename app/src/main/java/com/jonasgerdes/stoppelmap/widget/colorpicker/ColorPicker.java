@@ -10,9 +10,6 @@ import android.widget.LinearLayout;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.util.MathUtil;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * Created by jonas on 22.02.2017.
  */
@@ -26,13 +23,8 @@ public class ColorPicker extends LinearLayout {
         void onColorChanged(int newColor);
     }
 
-    @BindView(R.id.slider_hue)
     HueSlider mHueSlider;
-
-    @BindView(R.id.slider_saturation)
     SaturationSlider mSaturationSlider;
-
-    @BindView(R.id.slider_lightness)
     LightnessSlider mLightnessSlider;
 
     private float[] mColor = new float[3];
@@ -61,7 +53,10 @@ public class ColorPicker extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.bind(this);
+
+        mHueSlider = findViewById(R.id.slider_hue);
+        mSaturationSlider = findViewById(R.id.slider_saturation);
+        mLightnessSlider = findViewById(R.id.slider_lightness);
 
         mHueSlider.setOnValueChangedListener(new AbstractSlider.OnValueChangedListener() {
             @Override

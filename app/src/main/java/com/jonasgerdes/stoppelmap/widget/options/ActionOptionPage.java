@@ -13,11 +13,8 @@ import android.widget.RadioGroup;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.widget.ActionWidgetPreview;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.BindViews;
-import butterknife.ButterKnife;
 
 /**
  * Created by jonas on 23.02.2017.
@@ -30,16 +27,8 @@ public class ActionOptionPage extends OptionPage<ActionWidgetPreview> {
     public static final int ACTION_OPEN_MAP = 2;
 
     public static final String PARAM_DEFAUT_ACTION = "PARAM_DEFAUT_ACTION";
-    @BindViews({
-            R.id.action_none,
-            R.id.action_edit_widget,
-            //R.id.action_open_bus,
-            R.id.action_open_map
-    })
-    List<RadioButton> mActionRadioButtons;
-
-    @BindView(R.id.action_selection)
-    RadioGroup mActionSelection;
+    private List<RadioButton> mActionRadioButtons;
+    private RadioGroup mActionSelection;
 
     @Nullable
     @Override
@@ -51,7 +40,11 @@ public class ActionOptionPage extends OptionPage<ActionWidgetPreview> {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        mActionRadioButtons = new ArrayList<>();
+        mActionRadioButtons.add((RadioButton) view.findViewById(R.id.action_none));
+        mActionRadioButtons.add((RadioButton) view.findViewById(R.id.action_edit_widget));
+        mActionRadioButtons.add((RadioButton) view.findViewById(R.id.action_open_map));
+        mActionSelection = view.findViewById(R.id.action_selection);
 
         int defaultAction = ACTION_EDIT_WIDGET;
         if (getArguments() != null && getArguments().containsKey(PARAM_DEFAUT_ACTION)) {
