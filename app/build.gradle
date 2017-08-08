@@ -14,11 +14,12 @@ android {
         applicationId "com.jonasgerdes.stoppelmap17"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 20
+        versionCode 19
         versionName "3.0.0-Alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         flavorSelection 'mode', 'store'
+        multiDexEnabled true
 
     }
     buildTypes {
@@ -57,6 +58,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //multidex
+    implementation 'com.android.support:multidex:1.0.2'
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
