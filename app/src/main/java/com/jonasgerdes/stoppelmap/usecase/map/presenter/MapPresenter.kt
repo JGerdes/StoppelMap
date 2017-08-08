@@ -126,7 +126,6 @@ class MapPresenter(
     }
 
     private fun renderSearch(state: MapViewState.Searching) {
-        view.setSearchField(state.searchTerm)
         view.toggleMyLocationButton(true)
         view.toggleBottomSheet(false)
         disposables += state.results.subscribe {
