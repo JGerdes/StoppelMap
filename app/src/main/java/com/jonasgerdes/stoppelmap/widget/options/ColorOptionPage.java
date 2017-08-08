@@ -19,35 +19,20 @@ import com.jonasgerdes.stoppelmap.widget.colorpicker.ColorEditText;
 import com.jonasgerdes.stoppelmap.widget.colorpicker.ColorPicker;
 import com.jonasgerdes.stoppelmap.widget.util.ViewUtil;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.BindViews;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by jonas on 23.02.2017.
  */
 
 public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
-
-    @BindView(R.id.widget_color_selection_list)
     ViewGroup mColorList;
-
-    @BindView(R.id.color_secection_dominant)
     CardView mColorSelectionDominant;
-
-    @BindView(R.id.color_secection_vibrant)
     CardView mColorSelectionVibrant;
-
-    @BindView(R.id.color_secection_muted)
     CardView mColorSelectionMuted;
-
-    @BindView(R.id.color_picker)
     ColorPicker mColorPicker;
 
-    @BindViews({R.id.from_wallpaper_list, R.id.from_wallpaper_text})
     List<View> mFromWallpaper;
 
     private int mDefaultColor;
@@ -69,7 +54,22 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        mColorList = view.findViewById(R.id.widget_color_selection_list);
+        mColorSelectionDominant = view.findViewById(R.id.color_secection_dominant);
+        mColorSelectionVibrant = view.findViewById(R.id.color_secection_vibrant);
+        mColorSelectionMuted = view.findViewById(R.id.color_secection_muted);
+        mColorPicker = view.findViewById(R.id.color_picker);
+
+        mFromWallpaper = new ArrayList<>();
+        mFromWallpaper.add(view.findViewById(R.id.from_wallpaper_list));
+        mFromWallpaper.add(view.findViewById(R.id.from_wallpaper_text));
+
+        view.findViewById(R.id.hex_input).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseHex();
+            }
+        });
 
         mColorPicker.setPreventZeroValues(true)
                 .setChangeListener(new ColorPicker.ColorChangeListener() {
@@ -175,7 +175,9 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
         }
 
         if (!atLeastOneWallpaperColorUsable) {
-            ButterKnife.apply(mFromWallpaper, ViewUtil.HIDE);
+            for (View view : mFromWallpaper) {
+                view.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -233,7 +235,6 @@ public class ColorOptionPage extends OptionPage<ColorableWidgetPreview> {
         return hsl[2] >= lowerBound && hsl[2] <= upperBound;
     }
 
-    @OnClick(R.id.hex_input)
     void chooseHex() {
         final ColorEditText colorEditText = new ColorEditText(getContext());
         colorEditText.setColor(mColor);

@@ -21,8 +21,6 @@ import com.jonasgerdes.stoppelmap.widget.WidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;
 import com.jonasgerdes.stoppelmap.widget.util.ViewUtil;
 
-import butterknife.BindView;
-
 /**
  * Created by jonas on 23.02.2017.
  */
@@ -30,18 +28,10 @@ import butterknife.BindView;
 public class GingerbreadHeartPreview extends WidgetPreview
         implements ColorableWidgetPreview, HourTogglableWidgetPreview, ActionWidgetPreview {
 
-
-    @BindView(R.id.widget_countdown)
-    ImageView mPreviewFontLayer;
-
-    @BindView(R.id.widget_gingerbread_heart_layer1)
-    ImageView mPreviewLayer1;
-
-    @BindView(R.id.widget_gingerbread_heart_layer2)
-    ImageView mPreviewLayer2;
-
-    @BindView(R.id.widget_gingerbread_heart_layer3)
-    ImageView mPreviewLayer3;
+    private ImageView mPreviewFontLayer;
+    private ImageView mPreviewLayer1;
+    private ImageView mPreviewLayer2;
+    private ImageView mPreviewLayer3;
 
     private int[] mCurrentColors = new int[3];
     private Rect mTextBounds = new Rect();
@@ -64,6 +54,15 @@ public class GingerbreadHeartPreview extends WidgetPreview
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public GingerbreadHeartPreview(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        mPreviewFontLayer = findViewById(R.id.widget_countdown);
+        mPreviewLayer1 = findViewById(R.id.widget_gingerbread_heart_layer1);
+        mPreviewLayer2 = findViewById(R.id.widget_gingerbread_heart_layer2);
+        mPreviewLayer3 = findViewById(R.id.widget_gingerbread_heart_layer3);
     }
 
     @Override

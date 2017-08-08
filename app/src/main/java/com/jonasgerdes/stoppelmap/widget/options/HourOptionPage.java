@@ -11,9 +11,6 @@ import android.widget.CompoundButton;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.widget.HourTogglableWidgetPreview;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * Created by jonas on 23.02.2017.
  */
@@ -22,7 +19,6 @@ public class HourOptionPage extends OptionPage<HourTogglableWidgetPreview> {
 
     public static final String PARAM_SHOW_HOURS = "PARAM_SHOW_HOURS";
 
-    @BindView(R.id.toggle_hours)
     CheckBox mHourToggle;
 
 
@@ -35,7 +31,7 @@ public class HourOptionPage extends OptionPage<HourTogglableWidgetPreview> {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        mHourToggle = view.findViewById(R.id.toggle_hours);
 
         mHourToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

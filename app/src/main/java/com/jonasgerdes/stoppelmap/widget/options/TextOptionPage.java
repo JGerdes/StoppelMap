@@ -15,9 +15,6 @@ import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.widget.ChangeableFontWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * Created by jonas on 23.02.2017.
  */
@@ -27,19 +24,11 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
 
     public static final String PARAM_DEFAULT_FONT = "PARAM_DEFAULT_FONT";
     public static final String PARAM_SHOW_HOURS = "PARAM_SHOW_HOURS";
-    @BindView(R.id.toggle_hours)
+
     CheckBox mHourToggle;
-
-    @BindView(R.id.font_selection)
     RadioGroup mFontSelection;
-
-    @BindView(R.id.font_roboto)
     RadioButton mFontSelectionRoboto;
-
-    @BindView(R.id.font_roboto_slab)
     RadioButton mFontSelectionRobotoSlab;
-
-    @BindView(R.id.font_damion)
     RadioButton mFontSelectionDamion;
 
 
@@ -53,7 +42,11 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        mHourToggle = view.findViewById(R.id.toggle_hours);
+        mFontSelection = view.findViewById(R.id.font_selection);
+        mFontSelectionRoboto = view.findViewById(R.id.font_roboto);
+        mFontSelectionRobotoSlab = view.findViewById(R.id.font_roboto_slab);
+        mFontSelectionDamion = view.findViewById(R.id.font_damion);
 
         mHourToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

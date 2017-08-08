@@ -17,9 +17,6 @@ import android.widget.FrameLayout;
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.widget.util.StringUtil;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
  * @since 30.03.2017
@@ -27,11 +24,8 @@ import butterknife.ButterKnife;
 
 public class ColorEditText extends FrameLayout {
 
-    @BindView(R.id.preview)
-    CardView mPreview;
-
-    @BindView(R.id.hex_input)
-    EditText mInput;
+    private CardView mPreview;
+    private EditText mInput;
     private int mColor;
 
     public ColorEditText(Context context) {
@@ -57,7 +51,9 @@ public class ColorEditText extends FrameLayout {
 
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.view_color_edit_text, this, true);
-        ButterKnife.bind(this);
+        mPreview = findViewById(R.id.preview);
+        mInput = findViewById(R.id.hex_input);
+
         mInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
