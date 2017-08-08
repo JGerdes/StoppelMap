@@ -68,6 +68,7 @@ class MapFragment : LifecycleFragment(), MapView {
     private lateinit var mergedAppBarLayoutBehavior: MergedAppBarLayoutBehavior
 
     private var isUpdatingMap = false //prevent map animations triggering observables
+    private var isUpdatingSearch = false //prevent retriggering of search observables
 
     private val searchAdapter = SearchResultAdapter()
     private val cardAdapter = EntityDetailCardAdapter()
@@ -187,8 +188,9 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun setSearchField(term: String) {
-        //fixme: figure out something for resubmit issue (on text changes) before setting query
-        //search.setQuery(term, false)
+        isUpdatingSearch = true
+        search.setQuery(term, false)
+        isUpdatingSearch = false
     }
 
     override fun toggleSearchFieldFocus(isFocused: Boolean) {
@@ -242,7 +244,7 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun getSearchEvents(): Observable<CharSequence> {
-        return search.queryTextChanges()
+        return search.queryTextChanges().filter { !isUpdatingSearch }
     }
 
     override fun getSearchResultSelectionEvents(): Observable<MapSearchResult> {

@@ -64,6 +64,7 @@ class MapPresenter(
                 .subscribe(interactor::onSearchChanged)
         disposables += view.getSearchResultSelectionEvents()
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext { updateSearchView(it.title) }
                 .subscribe(interactor::onSearchResultSelected)
         disposables += view.getBottomSheetStateEvents()
                 .filter { it == STATE_HIDDEN }
@@ -88,7 +89,6 @@ class MapPresenter(
 
     }
 
-
     private fun render(state: MapViewState) {
         updateMap(state)
         when (state) {
@@ -101,6 +101,7 @@ class MapPresenter(
     }
 
     private fun renderExploring(state: MapViewState.Exploring) {
+        view.setSearchField("")
         renderDefault(state)
         view.toggleMyLocationButton(true)
         if (state.message != Assets.NONE) {
@@ -135,7 +136,6 @@ class MapPresenter(
     }
 
     private fun renderDetail(state: MapViewState.EntityDetail) {
-        state.entity.name?.let { view.setSearchField(it) }
         view.toggleSearchResults(false)
         view.toggleSearchFieldFocus(false)
 
@@ -186,6 +186,10 @@ class MapPresenter(
     private fun renderGroupDetail(state: MapViewState.EntityGroupDetail) {
         view.toggleSearchResults(false)
         view.toggleSearchFieldFocus(false)
+    }
+
+    private fun updateSearchView(title: String) {
+        view.setSearchField(stringResHelper.getNameFor(title))
     }
 
     override fun isDisposed(): Boolean {
