@@ -320,4 +320,13 @@ class MapFragment : LifecycleFragment(), MapView {
         intent.putExtra(Intent.EXTRA_SUBJECT, subject)
         startActivity(Intent.createChooser(intent, chooserText))
     }
+
+    fun onBackPress(): Boolean {
+        if (bottomSheetbehavior.state != BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN) {
+            bottomSheetbehavior.state = BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
+            return true
+        }
+        return false
+    }
+
 }
