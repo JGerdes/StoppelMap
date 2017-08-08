@@ -14,8 +14,8 @@ android {
         applicationId "com.jonasgerdes.stoppelmap17"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 19
-        versionName "3.0.0-Alpha"
+        versionCode 20
+        versionName "2017.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         flavorSelection 'mode', 'store'

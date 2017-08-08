@@ -33,6 +33,12 @@ class MainPresenter(private val view: MainView, interactor: MainInteractor) : Di
     private fun render(state: MainViewState) {
         view.showView(state)
         view.selectNavigation(state.selectedItemId)
+        state.pendingUpdate?.let {
+            view.showUpdateMessage(it)
+        }
+        state.message?.let {
+            view.showMessage(it)
+        }
     }
 
     override fun isDisposed(): Boolean {
