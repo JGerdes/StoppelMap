@@ -9,7 +9,6 @@ import com.jonasgerdes.stoppelmap.model.entity.map.MapMarker
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
 import com.jonasgerdes.stoppelmap.model.entity.map.search.MapSearchResult
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapBounds
-import io.reactivex.Completable
 import io.reactivex.Observable
 
 /**
@@ -27,6 +26,7 @@ interface MapView {
     fun toggleSearchResults(show: Boolean)
     fun toggleMyLocationButton(show: Boolean)
 
+    fun getIntents(): Observable<Uri>
     fun getMapMoveEvents(): Observable<CameraPosition>
     fun getMapClicks(): Observable<LatLng>
     fun getUserLocationEvents(): Observable<Location>

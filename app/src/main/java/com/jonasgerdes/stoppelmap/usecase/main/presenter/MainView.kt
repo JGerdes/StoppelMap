@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.main.presenter
 
+import android.net.Uri
 import android.support.annotation.IdRes
 import android.view.MenuItem
 import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainViewState
@@ -14,4 +15,5 @@ interface MainView {
     fun selectNavigation(@IdRes selectedItemId: Int)
 
     fun getNavigationEvents(): Observable<MenuItem>
+    fun getIntents(): Observable<Uri>
 }

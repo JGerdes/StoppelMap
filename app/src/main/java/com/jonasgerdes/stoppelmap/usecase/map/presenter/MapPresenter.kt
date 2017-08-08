@@ -45,6 +45,8 @@ class MapPresenter(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::render)
 
+        disposables += view.getIntents()
+                .subscribe(interactor::onIntentReceived)
         disposables += view.getMapMoveEvents()
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .distinct()

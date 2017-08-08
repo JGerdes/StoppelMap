@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.usecase.main.viewmodel
 
 import android.arch.lifecycle.ViewModel
+import android.net.Uri
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.Settings
 import io.reactivex.subjects.BehaviorSubject
 import org.jetbrains.anko.AnkoLogger
 
@@ -12,7 +14,7 @@ import org.jetbrains.anko.AnkoLogger
 class MainInteractor : ViewModel(), AnkoLogger {
 
     private val stateSubject: BehaviorSubject<MainViewState>
-            = BehaviorSubject.createDefault(MainViewState.Map())
+            = BehaviorSubject.createDefault(MainViewState.Information())
 
     val state get() = stateSubject.hide()
 
@@ -27,5 +29,18 @@ class MainInteractor : ViewModel(), AnkoLogger {
         }
 
         stateSubject.onNext(newState)
+    }
+
+    fun onIntentReceived(uri: Uri) {
+        with(uri) {
+            if (pathSegments.first() == Settings.URI_IDENTIFIER_VERSION
+                    && pathSegments.size > 1) {
+
+                when (pathSegments[1]) {
+                    Settings.URI_IDENTIFIER_MAP -> stateSubject.onNext(MainViewState.Map(uri))
+                }
+            }
+        }
+
     }
 }
