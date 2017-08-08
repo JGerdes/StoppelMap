@@ -67,6 +67,8 @@ class MapFragment : LifecycleFragment(), MapView {
     private lateinit var bottomSheetbehavior: BottomSheetBehaviorGoogleMapsLike<View>
     private lateinit var mergedAppBarLayoutBehavior: MergedAppBarLayoutBehavior
 
+    private var isUpdatingMap = false //prevent map animations triggering observables
+
     private val searchAdapter = SearchResultAdapter()
     private val cardAdapter = EntityDetailCardAdapter()
 
@@ -163,20 +165,24 @@ class MapFragment : LifecycleFragment(), MapView {
 
     override fun setMapCamera(center: LatLng, zoom: Float, animate: Boolean) {
         val update = CameraUpdateFactory.newLatLngZoom(center, zoom)
+        isUpdatingMap = true
         if (animate) {
             map.animateCamera(update)
         } else {
             map.moveCamera(update)
+            isUpdatingMap = false
         }
     }
 
     override fun setMapCamera(bounds: LatLngBounds, animate: Boolean) {
         val padding = resources.getDimensionPixelSize(R.dimen.map_zoom_bound_padding)
         val update = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+        isUpdatingMap = true
         if (animate) {
             map.animateCamera(update)
         } else {
             map.moveCamera(update)
+            isUpdatingMap = false
         }
     }
 
@@ -216,7 +222,7 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun getIntents(): Observable<Uri> {
-        val uri:Uri? = arguments?.getParcelable(ARG_DETAIL_ENTITY_SLUG)
+        val uri: Uri? = arguments?.getParcelable(ARG_DETAIL_ENTITY_SLUG)
         if (uri != null) {
             return Observable.just(uri)
         }
@@ -224,7 +230,11 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun getMapMoveEvents(): Observable<CameraPosition> {
-        return map.idles()
+        return map.idles().filter {
+            val propagate = !isUpdatingMap
+            isUpdatingMap = false
+            propagate
+        }
     }
 
     override fun getMapClicks(): Observable<LatLng> {
