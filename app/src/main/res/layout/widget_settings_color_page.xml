@@ -110,31 +110,31 @@
                     android:text="@string/widget_settings_color_select_modify"
                     android:textSize="12sp"/>
 
-                <com.jonasgerdes.stoppelmap.views.colorpicker.ColorPicker
+                <com.jonasgerdes.stoppelmap.widget.colorpicker.ColorPicker
                     android:id="@+id/color_picker"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:orientation="vertical">
 
-                    <com.jonasgerdes.stoppelmap.views.colorpicker.HueSlider
+                    <com.jonasgerdes.stoppelmap.widget.colorpicker.HueSlider
                         android:id="@+id/slider_hue"
                         android:layout_width="match_parent"
                         android:layout_height="24dp"
                         android:layout_marginTop="4dp"/>
 
-                    <com.jonasgerdes.stoppelmap.views.colorpicker.SaturationSlider
+                    <com.jonasgerdes.stoppelmap.widget.colorpicker.SaturationSlider
                         android:id="@+id/slider_saturation"
                         android:layout_width="match_parent"
                         android:layout_height="24dp"
                         android:layout_marginTop="4dp"/>
 
-                    <com.jonasgerdes.stoppelmap.views.colorpicker.LightnessSlider
+                    <com.jonasgerdes.stoppelmap.widget.colorpicker.LightnessSlider
                         android:id="@+id/slider_lightness"
                         android:layout_width="match_parent"
                         android:layout_height="24dp"
                         android:layout_marginTop="4dp"/>
-                </com.jonasgerdes.stoppelmap.views.colorpicker.ColorPicker>
+                </com.jonasgerdes.stoppelmap.widget.colorpicker.ColorPicker>
             </LinearLayout>
         </ScrollView>
     </android.support.v7.widget.CardView>
