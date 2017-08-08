@@ -40,7 +40,6 @@ import com.jonasgerdes.stoppelmap.util.map.clicks
 import com.jonasgerdes.stoppelmap.util.map.idles
 import com.jonasgerdes.stoppelmap.util.map.markerClicks
 import com.jonasgerdes.stoppelmap.util.map.stateChanges
-import io.reactivex.Completable
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.map_entity_bottom_sheet.*
 import kotlinx.android.synthetic.main.map_fragment.*
@@ -54,6 +53,10 @@ import kotlin.properties.Delegates
  * @since 16.06.2017
  */
 class MapFragment : LifecycleFragment(), MapView {
+    companion object {
+        val ARG_DETAIL_ENTITY_SLUG = "ARG_DETAIL_ENTITY_SLUG"
+    }
+
     @Inject
     lateinit var markerFactory: MarkerIconFactory
 
@@ -212,6 +215,14 @@ class MapFragment : LifecycleFragment(), MapView {
         }
     }
 
+    override fun getIntents(): Observable<Uri> {
+        val uri:Uri? = arguments?.getParcelable(ARG_DETAIL_ENTITY_SLUG)
+        if (uri != null) {
+            return Observable.just(uri)
+        }
+        return Observable.empty<Uri>()
+    }
+
     override fun getMapMoveEvents(): Observable<CameraPosition> {
         return map.idles()
     }
@@ -233,7 +244,7 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun getShareBottomClicks(): Observable<Unit> {
-        return bottomSheetFab.clicks().map {  }
+        return bottomSheetFab.clicks().map { }
     }
 
     override fun setMarkers(markers: List<MapMarker>) {

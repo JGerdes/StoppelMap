@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.main.viewmodel
 
+import android.net.Uri
 import com.jonasgerdes.stoppelmap.R
 
 /**
@@ -9,7 +10,7 @@ import com.jonasgerdes.stoppelmap.R
 sealed class MainViewState(val selectedItemId: Int) {
 
 
-    class Map : MainViewState(R.id.navigation_map)
+    class Map(val slug: Uri? = null) : MainViewState(R.id.navigation_map)
     class EventSchedule : MainViewState(R.id.navigation_event_schedule)
     class BusSchedule : MainViewState(R.id.navigation_bus_schedule)
     class Information : MainViewState(R.id.navigation_information)

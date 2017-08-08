@@ -162,4 +162,11 @@ class MapEntityRepository : Disposable {
                 .findAll()
                 .firstOrNull { position.isIn(it.bounds) }
     }
+
+    fun getEntityBySlug(slug: String): MapEntity? {
+        return realm.where(MapEntity::class.java)
+                .equalTo("slug", slug)
+                .findAll()
+                .firstOrNull()
+    }
 }

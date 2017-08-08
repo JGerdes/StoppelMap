@@ -25,6 +25,9 @@ class MainPresenter(private val view: MainView, interactor: MainInteractor) : Di
                 .distinctUntilChanged()
                 .debounce(100, TimeUnit.MILLISECONDS)
                 .subscribe(interactor::onNavigationClicked)
+
+        disposable += view.getIntents()
+                .subscribe(interactor::onIntentReceived)
     }
 
     private fun render(state: MainViewState) {

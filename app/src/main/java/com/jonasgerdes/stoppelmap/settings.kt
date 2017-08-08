@@ -18,4 +18,7 @@ object Settings {
     val defaultZoom = 16f
     val detailZoom = 19f
     val center = LatLng(52.74736962293996, 8.295483738183975)
+
+    val URI_IDENTIFIER_VERSION = "2017"
+    val URI_IDENTIFIER_MAP = "map"
 }

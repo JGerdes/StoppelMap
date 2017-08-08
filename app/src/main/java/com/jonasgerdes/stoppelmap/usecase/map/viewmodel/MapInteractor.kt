@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import android.location.Location
+import android.net.Uri
 import android.util.Log
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -54,6 +55,28 @@ class MapInteractor : ViewModel() {
                 !(it is MapViewState.EntityDetail &&
                         (it.entity.type == Exhibition.TYPE || it.entity.type == SellerStall.TYPE))
             }
+
+    fun onIntentReceived(uri: Uri) {
+        if(uri.pathSegments.size > 2) {
+            val entity = repository.getEntityBySlug(uri.pathSegments[2])
+            stateSubject.onNext(
+                    if (entity != null) {
+                        MapViewState.EntityDetail(
+                                stateSubject.value.mapState.copy(
+                                        zoom = entity.zoomLevel,
+                                        center = entity.center.latLng
+                                ),
+                                entity
+                        )
+                    } else {
+                        MapViewState.Exploring(
+                                stateSubject.value.mapState.copy(),
+                                repository.getVisibleEntities(stateSubject.value.mapState.zoom!!)
+                        )
+                    }
+            )
+        }
+    }
 
     fun onMapMoved(position: CameraPosition) {
         Log.d("MapInteractor", "zoom: " + position.zoom)

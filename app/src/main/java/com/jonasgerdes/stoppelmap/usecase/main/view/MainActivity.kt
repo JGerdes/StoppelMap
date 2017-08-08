@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.usecase.main.view
 
 import android.arch.lifecycle.ViewModelProviders
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -42,6 +43,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
     private lateinit var presenter: MainPresenter
     lateinit var permissions: RxPermissions
+
+    init {
+        mapFragment.arguments = Bundle()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -89,7 +94,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun showView(state: MainViewState) {
         when (state) {
-            is MainViewState.Map -> currentFragment.onNext(mapFragment)
+            is MainViewState.Map -> {
+                mapFragment.arguments.putParcelable(MapFragment.ARG_DETAIL_ENTITY_SLUG, state.slug)
+                currentFragment.onNext(mapFragment)
+            }
             is MainViewState.EventSchedule -> currentFragment.onNext(eventScheduleFragment)
             is MainViewState.BusSchedule -> currentFragment.onNext(busScheduleFragment)
             is MainViewState.Information -> currentFragment.onNext(informationFragment)
@@ -102,6 +110,13 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun getNavigationEvents(): Observable<MenuItem> {
         return navigation.itemSelections()
+    }
+
+    override fun getIntents(): Observable<Uri> {
+        if (intent.data != null) {
+            return Observable.just(intent.data)
+        }
+        return Observable.empty<Uri>()
     }
 
     override fun onDestroy() {
