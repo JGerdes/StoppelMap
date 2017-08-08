@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity(), MainView {
     private val informationFragment = InformationFragment()
     private var currentFragment = BehaviorSubject.create<Fragment>()
 
+    private var isUpdatingNavigation = true //prevent nav selection events to be fired during change
+
     private lateinit var presenter: MainPresenter
     lateinit var permissions: RxPermissions
 
@@ -105,11 +107,14 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun selectNavigation(selectedItemId: Int) {
+        isUpdatingNavigation = true
         navigation.selectedItemId = selectedItemId
+        isUpdatingNavigation = false
     }
 
     override fun getNavigationEvents(): Observable<MenuItem> {
         return navigation.itemSelections()
+                .filter { !isUpdatingNavigation }
     }
 
     override fun getIntents(): Observable<Uri> {
