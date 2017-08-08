@@ -1,6 +1,6 @@
 [
   {
-    "slug": "landwermann-n2nhmw",
+    "slug": "gingerbread-landwermann-n2nhmw",
     "type": "candy-stall",
     "center": {
       "lat": 52.746286360965,
@@ -28,7 +28,6 @@
         "lon": 8.2984936155
       }
     ],
-    "name": "Landwermann",
     "alias": [],
     "operator": "Landwermann",
     "phoneNumbers": [],
@@ -49,7 +48,7 @@
     "area": 41.3772636951101
   },
   {
-    "slug": "welte-ogjjyj",
+    "slug": "roasted-almonds-welte-ogjjyj",
     "type": "candy-stall",
     "center": {
       "lat": 52.746351146514996,
@@ -77,7 +76,6 @@
         "lon": 8.2983690316
       }
     ],
-    "name": "Welte",
     "alias": [],
     "operator": "Welte",
     "phoneNumbers": [],
@@ -102,7 +100,7 @@
     "area": 30.203896890092643
   },
   {
-    "slug": "buettner-zgqwyz",
+    "slug": "poffertje-buettner-zgqwyz",
     "type": "candy-stall",
     "center": {
       "lat": 52.746404613965,
@@ -130,7 +128,6 @@
         "lon": 8.29821231605
       }
     ],
-    "name": "Büttner",
     "alias": [],
     "operator": "Büttner",
     "phoneNumbers": [],
@@ -279,7 +276,7 @@
     "area": 27.665441270212206
   },
   {
-    "slug": "duchert-owrimw",
+    "slug": "backery-duchert-owrimw",
     "type": "candy-stall",
     "center": {
       "lat": 52.746565359144995,
@@ -307,8 +304,8 @@
         "lon": 8.29782128267
       }
     ],
-    "name": "Duchert",
     "alias": [],
+    "operator": "Duchert",
     "phoneNumbers": [],
     "pictures": [],
     "candyStall": {
@@ -1884,7 +1881,7 @@
     "area": 45.870063300538966
   },
   {
-    "slug": "meyer-m-nmu5yj",
+    "slug": "roasted-almonds-meyer-m-nmu5yj",
     "type": "candy-stall",
     "center": {
       "lat": 52.747989027619994,
@@ -1912,8 +1909,8 @@
         "lon": 8.29398448196
       }
     ],
-    "name": "Meyer, M",
     "alias": [],
+    "operator": "Meyer, M",
     "phoneNumbers": [],
     "pictures": [],
     "candyStall": {
