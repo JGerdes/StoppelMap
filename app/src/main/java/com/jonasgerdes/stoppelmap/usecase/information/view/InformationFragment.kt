@@ -45,6 +45,9 @@ class InformationFragment : LifecycleFragment() {
                     License(getString(R.string.license_gson_title),
                             getString(R.string.license_gson_body)
                     ),
+                    License(getString(R.string.license_okhttp_title),
+                            getString(R.string.license_okhttp_body)
+                    ),
                     License(getString(R.string.license_realm_core_title),
                             getString(R.string.license_realm_core_body)
                     ),
