@@ -127,6 +127,7 @@ class MapInteractor : ViewModel() {
 
     fun onMapClicked(position: LatLng) {
         val entity = repository.getEntityOn(position)
+        //todo: fix crash kotlin.KotlinNullPointerException sometimes happening here
         stateSubject.onNext(
                 if (entity != null) {
                     MapViewState.EntityDetail(
