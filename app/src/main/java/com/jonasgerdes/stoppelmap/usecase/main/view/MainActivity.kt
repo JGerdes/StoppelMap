@@ -129,5 +129,15 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onDestroy()
     }
 
+    override fun onBackPressed() {
+        //todo: do this via presenter/interactor
+        if (currentFragment.value is MapFragment) {
+            if ((currentFragment.value as MapFragment).onBackPress()) {
+                return
+            }
+        }
+        super.onBackPressed()
+    }
+
 
 }
