@@ -69,7 +69,7 @@ class MapEntityRepository : Disposable {
                     result.addAll(it)
                 }
                 result
-            }.map { it.distinctBy { it.title } }
+            }
         }
     }
 
