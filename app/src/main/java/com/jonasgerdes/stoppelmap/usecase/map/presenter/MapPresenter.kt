@@ -147,8 +147,8 @@ class MapPresenter(
 
         //workaround: wait 500ms so keyboard is actually closed before showing bottom sheet
         Completable.complete()
-                .observeOn(AndroidSchedulers.mainThread())
                 .delay(500, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     view.toggleBottomSheet(true)
                     view.toggleMyLocationButton(false)
