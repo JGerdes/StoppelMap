@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.di.module.AppModule
 import com.jonasgerdes.stoppelmap.di.module.DataModule
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.QueryFactory
+import com.jonasgerdes.stoppelmap.usecase.information.view.InformationFragment
 import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
 import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
@@ -34,4 +35,5 @@ interface AppComponent {
     fun inject(queryFactory: QueryFactory)
     fun inject(productAdapter: ProductAdapter)
     fun inject(phoneNumberAdapter: PhoneNumberAdapter)
+    fun inject(informationFragment: InformationFragment)
 }
