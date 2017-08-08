@@ -14,7 +14,7 @@ import org.jetbrains.anko.AnkoLogger
 class MainInteractor : ViewModel(), AnkoLogger {
 
     private val stateSubject: BehaviorSubject<MainViewState>
-            = BehaviorSubject.createDefault(MainViewState.Information())
+            = BehaviorSubject.createDefault(MainViewState.Map())
 
     val state get() = stateSubject.hide()
 
