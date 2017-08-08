@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
+    android:minHeight="720dp"
     android:paddingBottom="16dp">
 
     <RelativeLayout
@@ -53,8 +54,5 @@
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:listitem="@layout/map_entity_card_products"/>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="720dp"/>
 
 </LinearLayout>
