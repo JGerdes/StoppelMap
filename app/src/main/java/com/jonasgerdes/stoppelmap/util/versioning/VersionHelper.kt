@@ -45,7 +45,7 @@ class VersionHelper(val app: Context) {
             val response = okHttpClient.newCall(request).execute()
             val jsonData = response.body()?.string()
             val versionInfo = gson.fromJson(jsonData, VersionInfo::class.java)
-            versionInfo.currentVersion = versionInfo.version["release"]
+            versionInfo.latest = versionInfo.version["release"]
             it.onNext(versionInfo)
             it.onComplete()
         }

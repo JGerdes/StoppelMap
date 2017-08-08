@@ -5,6 +5,8 @@ import com.jonasgerdes.stoppelmap.di.module.AppModule
 import com.jonasgerdes.stoppelmap.di.module.DataModule
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.QueryFactory
+import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
+import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainInteractor
 import com.jonasgerdes.stoppelmap.usecase.map.presenter.MapPresenter
 import com.jonasgerdes.stoppelmap.usecase.map.view.MapFragment
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.PhoneNumberAdapter
@@ -22,6 +24,8 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(AppModule::class, DataModule::class))
 interface AppComponent {
     fun inject(app: App)
+    fun inject(interactor: MainInteractor)
+    fun inject(mainActivity: MainActivity)
     fun inject(interactor: MapInteractor)
     fun inject(mapFragment: MapFragment)
     fun inject(mapPresenter: MapPresenter)

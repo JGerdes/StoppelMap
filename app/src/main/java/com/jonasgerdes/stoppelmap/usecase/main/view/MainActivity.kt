@@ -1,16 +1,24 @@
 package com.jonasgerdes.stoppelmap.usecase.main.view
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.ActivityNotFoundException
+import android.content.DialogInterface
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.text.Html
 import android.view.MenuItem
 import android.view.WindowManager
 import com.jakewharton.rxbinding2.support.design.widget.itemSelections
+import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.model.versioning.Message
+import com.jonasgerdes.stoppelmap.model.versioning.Release
 import com.jonasgerdes.stoppelmap.usecase.event.overview.view.EventOverviewFragment
 import com.jonasgerdes.stoppelmap.usecase.information.view.InformationFragment
 import com.jonasgerdes.stoppelmap.usecase.main.presenter.MainPresenter
@@ -21,6 +29,7 @@ import com.jonasgerdes.stoppelmap.usecase.map.view.MapFragment
 import com.jonasgerdes.stoppelmap.usecase.transportation.overview.view.TransportOverviewFragment
 import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
+import com.jonasgerdes.stoppelmap.util.versioning.VersionHelper
 import com.jonasgerdes.stoppelmap.util.view.KeyboardUtil
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
@@ -28,6 +37,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -46,7 +57,11 @@ class MainActivity : AppCompatActivity(), MainView {
     private lateinit var presenter: MainPresenter
     lateinit var permissions: RxPermissions
 
+    @Inject
+    protected lateinit var versionHelper: VersionHelper
+
     init {
+        App.graph.inject(this)
         mapFragment.arguments = Bundle()
     }
 
@@ -110,6 +125,45 @@ class MainActivity : AppCompatActivity(), MainView {
         isUpdatingNavigation = true
         navigation.selectedItemId = selectedItemId
         isUpdatingNavigation = false
+    }
+
+    override fun showMessage(message: Message) {
+        AlertDialog.Builder(this)
+                .setTitle(message.title)
+                .setMessage(Html.fromHtml(message.message))
+                .setPositiveButton(R.string.dialog_version_message_positiv, null)
+                .setOnDismissListener({
+                    versionHelper.setHasMessageBeShown(message)
+                })
+                .show()
+    }
+
+    override fun showUpdateMessage(pendingUpdate: Release) {
+        val message = getString(R.string.dialog_version_update_available_message,
+                pendingUpdate.name
+
+        )
+        AlertDialog.Builder(this)
+                .setTitle(R.string.dialog_version_update_available_title)
+                .setMessage(message)
+                .setPositiveButton(R.string.dialog_version_update_available_button_positive, {
+                    _: DialogInterface, _: Int ->
+                    try {
+                        startActivity(Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("market://details?id=$packageName")
+                        ))
+                    } catch (notFound: ActivityNotFoundException) {
+                        startActivity(Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse(
+                                        "http://play.google.com/store/apps/details?id=$packageName"
+                                )
+                        ))
+                    }
+                })
+                .setNegativeButton(R.string.dialog_version_update_available_button_negative, null)
+                .show()
     }
 
     override fun getNavigationEvents(): Observable<MenuItem> {

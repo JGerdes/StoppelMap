@@ -35,4 +35,9 @@
     <string name="widget_settings_action_select_none">Nichts tun</string>
 
     <string name="coming_soon">In Kürze verfügbar!</string>
+    <string name="dialog_version_update_available_title">Neue Version verfügbar</string>
+    <string name="dialog_version_update_available_message">Eine neue Version (%1$s) der StoppelMap ist verfügbar!</string>
+    <string name="dialog_version_update_available_button_positive">Aktualisieren</string>
+    <string name="dialog_version_update_available_button_negative">Später</string>
+    <string name="dialog_version_message_positiv">Ok</string>
 </resources>
