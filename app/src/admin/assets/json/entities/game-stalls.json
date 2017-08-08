@@ -1172,7 +1172,7 @@
     "area": 82.23010998418741
   },
   {
-    "slug": "mueller-yja2nz",
+    "slug": "can-knockdown-mueller-yja2nz",
     "type": "game-stall",
     "center": {
       "lat": 52.748135920775,
@@ -1200,8 +1200,8 @@
         "lon": 8.2953880603
       }
     ],
-    "name": "Müller",
     "alias": [],
+    "operator": "Müller",
     "phoneNumbers": [],
     "pictures": [],
     "gameStall": {
@@ -1519,7 +1519,7 @@
     "area": 19.168421448688825
   },
   {
-    "slug": "winter-w.-otuznm",
+    "slug": "archery-winter-w.-otuznm",
     "type": "game-stall",
     "center": {
       "lat": 52.748335122125,
@@ -1547,8 +1547,8 @@
         "lon": 8.29247239507
       }
     ],
-    "name": "Winter,W.",
     "alias": [],
+    "operator": "Winter,W.",
     "phoneNumbers": [],
     "pictures": [],
     "gameStall": {
@@ -1651,7 +1651,7 @@
     "area": 16.408473696198882
   },
   {
-    "slug": "osthold-m-zda1og",
+    "slug": "pull-strings-osthold-m-zda1og",
     "type": "game-stall",
     "center": {
       "lat": 52.748373282610004,
@@ -1679,8 +1679,8 @@
         "lon": 8.29277273939
       }
     ],
-    "name": "Osthold, M",
     "alias": [],
+    "operator": "Osthold, M",
     "phoneNumbers": [],
     "pictures": [],
     "gameStall": {
