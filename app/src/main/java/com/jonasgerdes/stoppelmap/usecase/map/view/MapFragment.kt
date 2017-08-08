@@ -9,7 +9,6 @@ import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -214,8 +213,6 @@ class MapFragment : LifecycleFragment(), MapView {
     }
 
     override fun toggleMyLocationButton(show: Boolean) {
-        //todo: fix crash when this is called from non looper thread
-        Log.d("MapFragment", "hide location fab on: ${Thread.currentThread().name}")
         if (show) {
             locationFab.show()
         } else {
