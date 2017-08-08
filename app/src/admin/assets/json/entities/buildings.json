@@ -190,13 +190,7 @@
     "alias": [],
     "operator": "Upe-Doal",
     "phoneNumbers": [],
-    "pictures": [
-      {
-        "filePath": "schmedes_header_01.webp",
-        "type": "header",
-        "source": "Jonas Gerdes"
-      }
-    ],
+    "pictures": [],
     "foodStall": {
       "isBar": true,
       "isTent": false,
