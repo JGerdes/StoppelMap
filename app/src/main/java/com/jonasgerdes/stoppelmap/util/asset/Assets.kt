@@ -14,6 +14,7 @@ object Assets {
 
     val NONE = 0
     val PATH_PICTURES = "file:///android_asset/pictures"
+    val DIRECTORY_DEFAULT = "default"
 
     fun getTypeIconFor(entity: MapEntity): Int {
         return when (entity.type) {
@@ -86,14 +87,14 @@ object Assets {
                 when (entity.type) {
                     FoodStall.TYPE -> {
                         if (entity.foodStall!!.isBar) {
-                            PATH_PICTURES + "/default_header/hybrid.png"
+                            PATH_PICTURES + "/$DIRECTORY_DEFAULT/hybrid.png"
                         } else {
-                            PATH_PICTURES + "/default_header/food-stall.png"
+                            PATH_PICTURES + "/$DIRECTORY_DEFAULT/food-stall.png"
                         }
                     }
                     Bar.TYPE, Ride.TYPE, CandyStall.TYPE, GameStall.TYPE,
-                    Restroom.TYPE -> PATH_PICTURES + "/default_header/${entity.type}.png"
-                    else -> PATH_PICTURES + "/default_header/default.png"
+                    Restroom.TYPE -> PATH_PICTURES + "/$DIRECTORY_DEFAULT/${entity.type}.png"
+                    else -> PATH_PICTURES + "/$DIRECTORY_DEFAULT/default.png"
                 })
     }
 
