@@ -84,6 +84,23 @@
             android:layout_height="96dp"
             android:fitsSystemWindows="true"
             android:src="@drawable/gradient_scrim_black_top"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_gravity="bottom"
+            android:fitsSystemWindows="true"
+            android:src="@drawable/gradient_scrim_black_bottom"/>
+
+        <TextView
+            android:id="@+id/bottomSheetImageLicense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="4dp"
+            android:textColor="@color/text_light"
+            android:textSize="10sp"
+            tools:ignore="SmallSp"/>
     </FrameLayout>
 
     <android.support.v4.widget.NestedScrollView

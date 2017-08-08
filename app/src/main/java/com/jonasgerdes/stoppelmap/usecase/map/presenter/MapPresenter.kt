@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.usecase.map.presenter
 import co.com.parsoniisolutions.custombottomsheetbehavior.lib.BottomSheetBehaviorGoogleMapsLike.STATE_HIDDEN
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.model.entity.Picture
 import com.jonasgerdes.stoppelmap.model.entity.map.*
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDescriptionCard
 import com.jonasgerdes.stoppelmap.model.entity.map.detail.EntityDetailCard
@@ -139,7 +140,11 @@ class MapPresenter(
         view.toggleSearchFieldFocus(false)
 
         view.setBottomSheetTitle(stringResHelper.getTitleFor(state.entity))
-        view.setBottomSheetImage(Assets.getHeadersFor(state.entity)[0])
+        val headers = state.entity.getPictures(Picture.TYPE_HEADER)
+        view.setBottomSheetImage(
+                Assets.getHeadersFor(state.entity)[0],
+                headers.firstOrNull()?.source
+        )
         view.setBottomSheetIcons(Assets.getIconsFor(state.entity)
                 .filter { i -> i != Assets.NONE })
         view.setBottomSheetCards(getCardsFor(state.entity))

@@ -288,11 +288,17 @@ class MapFragment : LifecycleFragment(), MapView {
         mergedAppBarLayoutBehavior.setToolbarTitle(title)
     }
 
-    override fun setBottomSheetImage(imageUri: Uri) {
+    override fun setBottomSheetImage(imageUri: Uri, source: String?) {
         Glide.with(context)
                 .load(imageUri)
                 .centerCrop()
                 .into(bottomSheetImage)
+        if (source != null) {
+            bottomSheetImageLicense.visibility = View.VISIBLE
+            bottomSheetImageLicense.text = "© $source"
+        } else {
+            bottomSheetImageLicense.visibility = View.GONE
+        }
     }
 
     override fun setBottomSheetIcons(icons: List<Int>) {
