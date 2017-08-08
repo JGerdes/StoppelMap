@@ -33,4 +33,6 @@
     <string name="widget_settings_action_select_bus">Busfahrplan öffnen</string>
     <string name="widget_settings_action_select_edit_widget">Widget bearbeiten</string>
     <string name="widget_settings_action_select_none">Nichts tun</string>
+
+    <string name="coming_soon">In Kürze verfügbar!</string>
 </resources>
