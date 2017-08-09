@@ -22,6 +22,13 @@ class TransportationRepository : Disposable {
                 .map { it.asList() }
     }
 
+    fun getRouteBy(slug: String): Route? {
+        return realm.where(Route::class.java)
+                .equalTo("uuid", slug)
+                .findAll()
+                .firstOrNull()
+    }
+
     override fun isDisposed(): Boolean {
         return realm.isClosed
     }

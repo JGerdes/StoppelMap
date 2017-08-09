@@ -44,7 +44,7 @@ open class Station : RealmObject() {
                     nextDepartures.add(departure)
                 }
                 if (nextDepartures.size == count) {
-                    break
+                    return nextDepartures
                 }
             }
         }
