@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="Title dummy"
                 android:textColor="@android:color/white"
-                android:textSize="19sp"/>
+                android:textSize="19dp"/>
 
             <com.jonasgerdes.stoppelmap.util.view.IconList
                 android:id="@+id/bottomSheetIconList"
