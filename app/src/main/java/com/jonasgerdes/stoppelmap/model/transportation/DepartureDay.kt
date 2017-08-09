@@ -11,7 +11,7 @@ import java.util.*
  */
 open class DepartureDay : RealmObject() {
     var comment: String? = null
-    var depatures: RealmList<Departure> = RealmList()
+    var departures: RealmList<Departure> = RealmList()
 
     companion object {
         val DAY_INVALID = -1

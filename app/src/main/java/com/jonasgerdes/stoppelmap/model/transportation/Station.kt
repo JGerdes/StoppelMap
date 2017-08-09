@@ -19,7 +19,7 @@ open class Station : RealmObject() {
     fun getNextDepature(date: Calendar): Departure? {
         val departureTime = Calendar.getInstance()
         for (day in days!!) {
-            for (departure in day.depatures) {
+            for (departure in day.departures) {
                 departureTime.time = departure.time
                 if (departureTime.after(date)) {
                     return departure
@@ -35,7 +35,7 @@ open class Station : RealmObject() {
         val departureTime = Calendar.getInstance()
         for (day in days!!) {
             var addNext = false
-            for (departure in day.depatures) {
+            for (departure in day.departures) {
                 departureTime.time = departure.time
                 if (departureTime.after(date)) {
                     addNext = true
