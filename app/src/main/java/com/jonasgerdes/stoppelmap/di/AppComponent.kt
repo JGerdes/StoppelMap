@@ -14,6 +14,7 @@ import com.jonasgerdes.stoppelmap.usecase.map.view.search.PhoneNumberAdapter
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.ProductAdapter
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.ProductResultHolder
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
+import com.jonasgerdes.stoppelmap.usecase.transportation.overview.view.TransportOverviewFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -36,4 +37,5 @@ interface AppComponent {
     fun inject(productAdapter: ProductAdapter)
     fun inject(phoneNumberAdapter: PhoneNumberAdapter)
     fun inject(informationFragment: InformationFragment)
+    fun inject(transportOverviewFragment: TransportOverviewFragment)
 }

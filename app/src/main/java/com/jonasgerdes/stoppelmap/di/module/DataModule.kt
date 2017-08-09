@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.di.module
 
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.QueryFactory
+import com.jonasgerdes.stoppelmap.model.TransportationRepository
 import dagger.Module
 import dagger.Provides
 
@@ -20,5 +21,10 @@ class DataModule {
     @Provides
     fun provideQueryFactory(): QueryFactory {
         return QueryFactory()
+    }
+
+    @Provides
+    fun provideTransportationRepository(): TransportationRepository {
+        return TransportationRepository()
     }
 }
