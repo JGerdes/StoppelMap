@@ -15,6 +15,9 @@ object Assets {
     val NONE = 0
     val PATH_PICTURES = "file:///android_asset/pictures"
     val DIRECTORY_DEFAULT = "default"
+    val DIRECTORY_APP = "app"
+
+    val HEADER_TRANSPORTATION_ROUTE = "route"
 
     fun getTypeIconFor(entity: MapEntity): Int {
         return when (entity.type) {
@@ -106,6 +109,10 @@ object Assets {
             product.name.startsWith("game_type") -> R.drawable.ic_entity_game_black_24dp
             else -> NONE
         }
+    }
+
+    fun getAppHeader(name: String): String {
+        return "$PATH_PICTURES/$DIRECTORY_APP/$name.webp"
     }
 
 
