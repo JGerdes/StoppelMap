@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Route
 import io.reactivex.subjects.BehaviorSubject
+import kotlinx.android.synthetic.main.transportation_overview_route.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 /**
@@ -14,8 +15,15 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
  */
 class RouteAdapter : RecyclerView.Adapter<RouteHolder>() {
 
+    data class RouteSelection(val route: Route, val type: Int) {
+        companion object {
+            val TYPE_STATIONS = 0
+            val TYPE_RETURN = 1
+        }
+    }
+
     private var routeList: List<Route> = ArrayList()
-    private val selectedSubject = BehaviorSubject.create<Route>()
+    private val selectedSubject = BehaviorSubject.create<RouteSelection>()
 
     var routes
         get() = routeList
@@ -28,8 +36,15 @@ class RouteAdapter : RecyclerView.Adapter<RouteHolder>() {
         val view = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.transportation_overview_route, parent, false)
         val holder = RouteHolder(view)
-        view.onClick {
-            selectedSubject.onNext(routeList[holder.adapterPosition])
+        view.details.onClick {
+            selectedSubject.onNext(
+                    RouteSelection(routeList[holder.adapterPosition], RouteSelection.TYPE_STATIONS)
+            )
+        }
+        view.returns.onClick {
+            selectedSubject.onNext(
+                    RouteSelection(routeList[holder.adapterPosition], RouteSelection.TYPE_RETURN)
+            )
         }
         return holder
     }
