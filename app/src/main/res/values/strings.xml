@@ -17,6 +17,19 @@
 
     <string name="entity_detail_card_description_source">Quelle: %1$s</string>
 
+    <string name="transportation_overview_route_card_stations">Halstestellen</string>
+    <string name="transportation_overview_route_card_return">Rückfahrten</string>
+    <string name="transportation_overview_route_card_no_depatures">keine weiteren Abfahrten</string>
+
+    <string-array name="days">
+        <item>Do</item>
+        <item>Fr</item>
+        <item>Sa</item>
+        <item>So</item>
+        <item>Mo</item>
+        <item>Di</item>
+    </string-array>
+
     <string name="widget_settings_color_select_title">Farbe wählen</string>
     <string name="widget_settings_font_color_select_title">Schriftfarbe wählen</string>
     <string name="widget_settings_color_select_from_wallpaper">aus Deinem Wallpaper</string>

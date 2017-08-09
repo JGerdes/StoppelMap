@@ -15,4 +15,7 @@
 
     <dimen name="color_picker_slider_handler_radius">10dp</dimen>
     <dimen name="color_picker_slider_bar_height">4dp</dimen>
+    <dimen name="text_size_card_title">22sp</dimen>
+    <dimen name="text_size_card_subtitle">20sp</dimen>
+    <dimen name="text_size_card_subtext">14sp</dimen>
 </resources>
