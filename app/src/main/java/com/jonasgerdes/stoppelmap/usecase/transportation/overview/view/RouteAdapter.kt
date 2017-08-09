@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Route
+import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.transportation_overview_route.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -55,5 +56,9 @@ class RouteAdapter : RecyclerView.Adapter<RouteHolder>() {
 
     override fun getItemCount(): Int {
         return routeList.size
+    }
+
+    fun getSelections(): Observable<RouteSelection> {
+        return selectedSubject.hide()
     }
 }

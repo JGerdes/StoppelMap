@@ -19,7 +19,10 @@
 
     <string name="transportation_overview_route_card_stations">Halstestellen</string>
     <string name="transportation_overview_route_card_return">Rückfahrten</string>
-    <string name="transportation_overview_route_card_no_depatures">keine weiteren Abfahrten</string>
+    <string name="transportation_overview_route_card_no_departures">keine weiteren Abfahrten</string>
+    <string name="transportation_route_detail_staion_card_no_departures">
+        @string/transportation_overview_route_card_no_departures
+    </string>
 
     <string-array name="days">
         <item>Do</item>

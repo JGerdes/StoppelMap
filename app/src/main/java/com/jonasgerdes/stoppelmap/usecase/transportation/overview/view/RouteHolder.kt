@@ -39,7 +39,7 @@ class RouteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         } else {
             itemView.nextStation.visibility = View.INVISIBLE
-            itemView.nextTime.setText(R.string.transportation_overview_route_card_no_depatures)
+            itemView.nextTime.setText(R.string.transportation_overview_route_card_no_departures)
         }
     }
 
