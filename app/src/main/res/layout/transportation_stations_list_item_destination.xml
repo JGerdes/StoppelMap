@@ -39,7 +39,7 @@
     </FrameLayout>
 
     <ImageView
-        android:id="@+id/node_top"
+        android:id="@+id/nodeTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
@@ -47,11 +47,4 @@
         android:scaleY="-1"
         android:src="@drawable/ui_timeline_node_black_top"/>
 
-    <ImageView
-        android:id="@+id/node_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/ui_timeline_node_black_top"/>
 </FrameLayout>
