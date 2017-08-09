@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
@@ -55,7 +56,7 @@ public class IconList extends LinearLayout {
             params.setMargins(iconMarginPx, iconMarginPx, iconMarginPx, iconMarginPx);
             AppCompatImageView image = new AppCompatImageView(getContext());
             image.setLayoutParams(params);
-            Drawable iconDrawable = getResources().getDrawable(icon);
+            Drawable iconDrawable = VectorDrawableCompat.create(getResources(), icon, null);
             image.setImageDrawable(iconDrawable);
             image.setColorFilter(color, PorterDuff.Mode.SRC_IN);
             addView(image);
