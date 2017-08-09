@@ -10,11 +10,10 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
-        //different appId for now to enable parallel installation with old version
-        applicationId "com.jonasgerdes.stoppelmap17"
+        applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 20
+        versionCode 21
         versionName "2017.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
