@@ -38,7 +38,7 @@ class RouteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             itemView.nextTime.text = departureString;
 
         } else {
-            itemView.nextStation.visibility = View.INVISIBLE;
+            itemView.nextStation.visibility = View.INVISIBLE
             itemView.nextTime.setText(R.string.transportation_overview_route_card_no_depatures)
         }
     }
