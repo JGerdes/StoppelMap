@@ -14,7 +14,7 @@ android {
         minSdkVersion 18
         targetSdkVersion 26
         versionCode 22
-        versionName "2017.0.1"
+        versionName "2017.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         flavorSelection 'mode', 'store'

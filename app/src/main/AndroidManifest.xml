@@ -45,6 +45,18 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".usecase.transportation.route_detail.view.RouteDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.Translucent"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".usecase.transportation.station_detail.view.StationDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.Translucent"
+            android:windowSoftInputMode="adjustResize"/>
+
         <!-- widgets -->
         <!-- gingerbread heart -->
         <activity
