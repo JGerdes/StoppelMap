@@ -31,7 +31,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="zur Location"
-                android:textColor="@color/primary"/>
+                android:textColor="@color/primary"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/facebook"
@@ -42,7 +43,8 @@
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
                 android:text="auf facebook"
-                android:textColor="@color/primary"/>
+                android:textColor="@color/primary"
+                android:visibility="gone"/>
 
 
         </LinearLayout>
