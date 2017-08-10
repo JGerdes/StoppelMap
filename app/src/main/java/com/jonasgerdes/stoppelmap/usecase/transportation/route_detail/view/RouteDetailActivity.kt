@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.TransportationRepository
+import com.jonasgerdes.stoppelmap.usecase.transportation.station_detail.view.StationDetailActivity
 import com.jonasgerdes.stoppelmap.util.asset.Assets
 import kotlinx.android.synthetic.main.transportation_route_detail_activity.*
 import javax.inject.Inject
@@ -74,6 +75,11 @@ class RouteDetailActivity : AppCompatActivity() {
                 stationList.adapter = StationAdapter()
                 with(stationList.adapter as StationAdapter) {
                     stations = it.stations!!
+                    selections().subscribe {
+                        startActivity(
+                                StationDetailActivity.createIntent(this@RouteDetailActivity, it)
+                        )
+                    }
                 }
             }
         }
