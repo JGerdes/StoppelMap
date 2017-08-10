@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_slab_light"
                 android:text="@string/main_navigation_schedule_bus"
+                android:textColor="@color/text_light"
                 android:textSize="24sp"/>
 
         </android.support.v7.widget.Toolbar>
