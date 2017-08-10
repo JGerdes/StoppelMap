@@ -6,8 +6,8 @@
       "name": "Festumzug",
       "type": 0,
       "day": 0,
-      "start": "2016-08-11 16:30:00",
-      "end": "2016-08-11 18:30:00",
+      "start": "2017-08-10 16:30:00",
+      "end": "2017-08-10 18:30:00",
       "description": "Vom Rathaus durch die Innenstadt bis zum Stoppelmarkt präsentieren sich während des historischen Festumzugs zahlreiche Motivwagen, Fußgruppen und Musikkapellen."
     },
     {
@@ -15,12 +15,11 @@
       "name": "Feierliche Eröffnung",
       "type": 0,
       "day": 0,
-      "start": "2016-08-11 18:30:00",
+      "start": "2017-08-10 18:30:00",
       "locationUuid": "amtmannsbult",
       "description": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet. Als Ehrengast darf dieses Jahr der Lohner Bürgermeister Tobias Gerdesmeyer begrüßt werden.",
       "artists": [
-        "Helmut Gels",
-        "Tobias Gerdesmeyer"
+        "Helmut Gels"
       ],
       "tags": [
       ]
@@ -31,23 +30,23 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 1,
-      "start": "2016-08-12 13:00:00"
+      "start": "2017-08-11 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_senioren_nachmittag",
       "name": "Senioren-Nachmittag",
       "type": 0,
       "day": 1,
-      "start": "2016-08-12 15:00:00",
-      "locationUuid": "kuehlings_niedersachsenhalle"
+      "start": "2017-08-11 15:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle-zjm1od"
     },
     {
       "uuid": "stoppelmarkt_happy_hour",
       "name": "Happy Hour",
       "type": 1,
       "day": 1,
-      "start": "2016-08-12 14:00:00",
-      "end": "2016-08-12 16:00:00",
+      "start": "2017-08-11 14:00:00",
+      "end": "2017-08-11 16:00:00",
       "description": "1x zahlen, 2x fahren",
       "tags": [
         "Für Kinder"
@@ -59,7 +58,7 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 2,
-      "start": "2016-08-13 13:00:00"
+      "start": "2017-08-12 13:00:00"
     },
     // Sonntag
     {
@@ -67,9 +66,9 @@
       "name": "Gottesdienst",
       "type": 0,
       "day": 3,
-      "start": "2016-08-14 10:00:00",
-      "end": "2016-08-14 12:00:00",
-      "locationUuid": "kuehlings_niedersachsenhalle",
+      "start": "2017-08-13 10:00:00",
+      "end": "2017-08-13 12:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle-zjm1od",
       "description": "Gottesdienst in der Niedersachsenhalle mit anschließendem Marktbeginn",
       "artists": [
         "Pfarrer Ellinghaus"
@@ -81,7 +80,7 @@
       "name": "Pferde- und Viehmarkt",
       "type": 0,
       "day": 4,
-      "start": "2016-08-15 07:00:00",
+      "start": "2017-08-14 07:00:00",
       "description": "Traditioneller Pferde- und Viehmarkt mit anschließendem Marktbeginn"
     },
     {
@@ -89,10 +88,10 @@
       "name": "Traditioneller Empfang der Gäste",
       "type": 0,
       "day": 4,
-      "start": "2016-08-15 11:00:00",
+      "start": "2017-08-14 11:00:00",
       "description": "Traditioneller Empfang der Gäste der Stadt Vechta. Als Festrednerin darf dieses Jahr die Bundesministerin der Verteidigung, Ursula von der Leyen, begrüßt werden.",
       "artists": [
-        "Ursula von der Leyen"
+        "Thomas de Maizière"
       ]
     },
     // Dienstag
@@ -101,15 +100,15 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 5,
-      "start": "2016-08-16 13:00:00"
+      "start": "2017-08-15 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_familientag",
       "name": "Familientag",
       "type": 1,
       "day": 5,
-      "start": "2016-08-16 13:00:00",
-      "end": "2016-08-16 18:00:00",
+      "start": "2017-08-15 13:00:00",
+      "end": "2017-08-15 18:00:00",
       "description": "Familientag mit ermäßigten Preisen"
     },
     {
@@ -117,7 +116,7 @@
       "name": "Brillant-Feuerwerk",
       "type": 0,
       "day": 5,
-      "start": "2016-08-16 22:00:00",
+      "start": "2017-08-15 22:00:00",
       "description": "Großes Brillant-Feuerwerk, zu sehen in Richtung Osten des Marktgeländes"
     }
   ]
