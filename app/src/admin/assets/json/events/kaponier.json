@@ -1,0 +1,77 @@
+{
+  "events": [
+    {
+      "uuid": "kaponier_gulfhaus",
+      "name": "Gulfhaus meets Kaponier",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 21:00:00",
+      "end": "2016-08-12 03:00:00",
+      "locationUuid": "kaponier",
+      "description": "Im \"Gulfhaus-Workhop\" bietet DJ Ohrwurm (Heiner Olberding) die besten Rock-Classics. Von David Bowie über Pink Floyd und AC/CD bis Queen ist alles dabei.",
+      "facebookUrl": "https://www.facebook.com/events/559956057522690/",
+      "artists": [
+        "DJ Ohrwurm"
+      ],
+      "tags": [
+        "Rock"
+      ]
+    },
+    {
+      "uuid": "kaponier_mofa25",
+      "name": "MOFA 25",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 21:30:00",
+      "locationUuid": "kaponier",
+      "description": "Die Partykapelle mit Welthits",
+      "facebookUrl": "https://de-de.facebook.com/events/743983715742675/",
+      "artists": [
+        "MOFA 25"
+      ]
+    },
+    {
+      "uuid": "kaponier_kaffeerausch",
+      "name": "KAFFEERAUSCH goes STOPPELMARKT",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 20:00:00",
+      "locationUuid": "kaponier",
+      "description": "Wer auf Tech-House und Techno steht ist hier genau richtig. An den Decks sind bekannte Mitglieder von Vec-Bassen, Lausbuben Komplizen und weitere. \nAlles getreu dem Motto \"Ihr kommt mit guter Laune, wir liefern die Bässe und das Drumherum.\"",
+      "facebookUrl": "https://www.facebook.com/events/821316897968115/",
+      "artists": [
+        "Inway (Vec-Bassen)",
+        "Dansir (Lausbuben)",
+        "Louis Dinkgrefe (Lausbuben)",
+        "Thomas Bolte"
+      ],
+      "tags": [
+        "House",
+        "Tech-House",
+        "Techno"
+      ]
+    },
+    {
+      "uuid": "kaponier_buddy_and_soul",
+      "name": "Buddy and Soul",
+      "type": 2,
+      "day": 3,
+      "start": "2016-08-14 21:00:00",
+      "locationUuid": "kaponier",
+      "artists": [
+        "Buddy and Soul"
+      ]
+    },
+    {
+      "uuid": "kaponier_dj_ohrwurm",
+      "name": "DJ Ohrwurm",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 10:00:00",
+      "locationUuid": "kaponier",
+      "artists": [
+        "DJ Ohrwurm"
+      ]
+    }
+  ]
+}

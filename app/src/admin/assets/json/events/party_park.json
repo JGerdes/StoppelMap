@@ -1,0 +1,132 @@
+{
+  "events": [
+    {
+      "uuid": "party_park_do_stoppelmarkt_opening_party",
+      "name": "Stoppelmarkt Opening Party",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 18:00:00",
+      "locationUuid": "party_park",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Ernesto",
+        "DJ Dusk"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "party_park_fr_allegehnhin",
+      "name": "#ALLEGEHNHIN",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 19:00:00",
+      "locationUuid": "party_park",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "party_park_sa_nacht_deines_lebens",
+      "name": "Nacht deines Lebens",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 19:00:00",
+      "locationUuid": "party_park",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Ernesto",
+        "DJ Dusk"
+      ],
+      "tags": [
+        "Charts",
+        "Black",
+        "House"
+      ]
+    },
+    {
+      "uuid": "party_park_so_party_park_festival",
+      "name": "Party Park Festival",
+      "type": 2,
+      "day": 3,
+      "start": "2016-08-14 19:00:00",
+      "locationUuid": "party_park",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Ernesto",
+        "DJ Dusk"
+      ],
+      "tags": [
+        "EDM",
+        "Bigroom House",
+        "Electro House"
+      ]
+    },
+    {
+      "uuid": "party_park_mo_stoppelmarkt_party_total_1",
+      "name": "Stoppelmarkt PARTY TOTAL",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 10:00:00",
+      "end": "2016-08-15 12:00:00",
+      "locationUuid": "party_park",
+      "description": "Frühschoppen",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Ernesto"
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "uuid": "party_park_mo_stoppelmarkt_party_total_2",
+      "name": "Stoppelmarkt PARTY TOTAL",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 12:00:00",
+      "end": "2016-08-15 17:00:00",
+      "locationUuid": "party_park",
+      "description": "Live Band",
+      "facebookUrl": "",
+      "artists": [
+        "FKK (Feten Kult Kapelle)"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "party_park_mo_stoppelmarkt_party_total_3",
+      "name": "Stoppelmarkt PARTY TOTAL",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 17:00:00",
+      "locationUuid": "party_park",
+      "description": "Party Total",
+      "facebookUrl": "",
+      "artists": [
+        "MJ Deejay",
+        "DJ Dusk"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "party_park_di_black_is_back",
+      "name": "Black is Back",
+      "type": 2,
+      "day": 5,
+      "start": "2016-08-16 19:00:00",
+      "locationUuid": "party_park",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Demolishun"
+      ],
+      "tags": [
+        "Black",
+        "R'n'B"
+      ]
+    }
+  ]
+}
