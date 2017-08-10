@@ -54,7 +54,7 @@ class StationAdapter : RecyclerView.Adapter<StationHolder>() {
         return stationList.size + 1
     }
 
-    fun getSelections(): Observable<Station> {
+    fun selections(): Observable<Station> {
         return selectedSubject.hide()
     }
 }
