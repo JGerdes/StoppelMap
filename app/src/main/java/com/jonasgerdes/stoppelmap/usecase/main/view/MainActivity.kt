@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), MainView {
                 .delay(100L, TimeUnit.MILLISECONDS)
                 .doOnNext(this::showFragment)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::updateStatusBar)
+                .subscribe { this::resetWindowFlags }
 
     }
 
@@ -95,17 +95,11 @@ class MainActivity : AppCompatActivity(), MainView {
         transaction.commitAllowingStateLoss()
     }
 
-    private fun updateStatusBar(fragment: Fragment) {
+    private fun resetWindowFlags() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (!(fragment is MapFragment)) {
-                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-                window.statusBarColor = ContextCompat.getColor(this, R.color.primaryDark)
-            } else {
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
-            }
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
         }
     }
 
