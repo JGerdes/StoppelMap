@@ -1,10 +1,15 @@
 package com.jonasgerdes.stoppelmap.usecase.transportation.route_detail.view
 
-import android.content.Context
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.transition.SidePropagation
+import android.transition.Slide
+import android.view.Gravity
 import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.jonasgerdes.stoppelmap.App
@@ -12,6 +17,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.TransportationRepository
 import com.jonasgerdes.stoppelmap.usecase.transportation.station_detail.view.StationDetailActivity
 import com.jonasgerdes.stoppelmap.util.asset.Assets
+import com.jonasgerdes.stoppelmap.util.view.SwipeBackLayout
 import kotlinx.android.synthetic.main.transportation_route_detail_activity.*
 import javax.inject.Inject
 
@@ -34,10 +40,15 @@ class RouteDetailActivity : AppCompatActivity() {
     companion object {
         val EXTRA_ROUTE_SLUG = "EXTRA_ROUTE_SLUG"
 
-        fun createIntent(context: Context, routeSlug: String): Intent {
-            val intent = Intent(context, RouteDetailActivity::class.java)
+        fun start(activity: Activity, routeSlug: String) {
+            val intent = Intent(activity, RouteDetailActivity::class.java)
             intent.putExtra(EXTRA_ROUTE_SLUG, routeSlug)
-            return intent
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val bundle = ActivityOptions.makeSceneTransitionAnimation(activity).toBundle()
+                activity.startActivity(intent, bundle)
+            } else {
+                activity.startActivity(intent)
+            }
         }
     }
 
@@ -45,8 +56,34 @@ class RouteDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.transportation_route_detail_activity)
         initToolbar()
+        initTransition()
         initStationList()
 
+    }
+
+    private fun initTransition() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val slide = Slide()
+            slide.slideEdge = Gravity.RIGHT
+            val propagation = SidePropagation()
+            propagation.setPropagationSpeed(0.9f)
+            slide.propagation = propagation
+            window.enterTransition = slide
+        }
+
+        swipeBackLayout.setSwipeListener(object : SwipeBackLayout.SwipeListener {
+            override fun onFullSwipeBack() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    finishAfterTransition()
+                } else {
+                    finish()
+                }
+            }
+
+            override fun onSwipe(progress: Float) {
+                //ignore
+            }
+        })
     }
 
     private fun initToolbar() {
@@ -76,9 +113,7 @@ class RouteDetailActivity : AppCompatActivity() {
                 with(stationList.adapter as StationAdapter) {
                     stations = it.stations!!
                     selections().subscribe {
-                        startActivity(
-                                StationDetailActivity.createIntent(this@RouteDetailActivity, it)
-                        )
+                        StationDetailActivity.start(this@RouteDetailActivity, it)
                     }
                 }
             }
