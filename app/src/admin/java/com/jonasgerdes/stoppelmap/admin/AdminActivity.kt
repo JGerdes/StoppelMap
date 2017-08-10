@@ -6,6 +6,8 @@ import com.google.gson.GsonBuilder
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Route
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
+import com.jonasgerdes.stoppelmap.model.events.Event
+import com.jonasgerdes.stoppelmap.model.events.Events
 import com.jonasgerdes.stoppelmap.model.realm_wrapper.RealmString
 import com.jonasgerdes.stoppelmap.util.readAsString
 import io.realm.Realm
@@ -19,6 +21,7 @@ class AdminActivity : AppCompatActivity() {
     companion object {
         val PATH_ENTITIES = "json/entities"
         val PATH_BUS_ROUTES = "json/transportation/bus"
+        val PATH_EVENTS = "json/events"
     }
 
     val gson = GsonBuilder()
@@ -50,10 +53,27 @@ class AdminActivity : AppCompatActivity() {
         }.forEach {
             routes.addAll(it)
         }
+
+        val events = ArrayList<Event>()
+        assets.list(PATH_EVENTS).map {
+            val json = assets.readAsString(PATH_EVENTS + "/" + it)
+            gson.fromJson(json, Events::class.java)
+        }.forEach {
+            events.addAll(it.events!!)
+        }
+
+        events.forEach {
+            val locationUuid = it.locationUuid
+            if (locationUuid != null) {
+                it.mapEntity = entities.filter { it.slug == locationUuid }.firstOrNull()
+            }
+        }
+
         realm.executeTransaction {
             realm.deleteAll()
             realm.copyToRealm(entities)
             realm.copyToRealm(routes)
+            realm.copyToRealm(events)
         }
     }
 

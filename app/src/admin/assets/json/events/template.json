@@ -1,0 +1,20 @@
+{
+  "events": [
+    {
+      "uuid": "",
+      "name": "",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 16:30:00",
+      "end": "2016-08-11 16:30:00",
+      "locationUuid": "",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        
+      ],
+      "tags": [
+      ]
+    }
+  ]
+}
