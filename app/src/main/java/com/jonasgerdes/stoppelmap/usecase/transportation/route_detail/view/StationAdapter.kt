@@ -40,6 +40,9 @@ class StationAdapter : RecyclerView.Adapter<StationHolder>() {
             view.details.onClick {
                 selectedSubject.onNext(stationList[holder.adapterPosition])
             }
+            view.onClick {
+                selectedSubject.onNext(stationList[holder.adapterPosition])
+            }
         }
         return holder
     }

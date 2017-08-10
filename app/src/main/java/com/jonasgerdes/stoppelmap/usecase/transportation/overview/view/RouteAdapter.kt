@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Route
 import io.reactivex.Observable
-import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.transportation_overview_route.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -39,6 +38,11 @@ class RouteAdapter : RecyclerView.Adapter<RouteHolder>() {
                 .inflate(R.layout.transportation_overview_route, parent, false)
         val holder = RouteHolder(view)
         view.details.onClick {
+            selectedSubject.onNext(
+                    RouteSelection(routeList[holder.adapterPosition], RouteSelection.TYPE_STATIONS)
+            )
+        }
+        view.onClick {
             selectedSubject.onNext(
                     RouteSelection(routeList[holder.adapterPosition], RouteSelection.TYPE_STATIONS)
             )
