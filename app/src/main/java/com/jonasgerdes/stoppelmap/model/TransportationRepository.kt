@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.util.asRxObservable
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.realm.Realm
+import io.realm.Sort
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -17,7 +18,7 @@ class TransportationRepository : Disposable {
 
     fun getRoutes(): Observable<List<Route>> {
         return realm.where(Route::class.java)
-                .findAll()
+                .findAll().sort("name", Sort.ASCENDING)
                 .asRxObservable()
                 .map { it.asList() }
     }
