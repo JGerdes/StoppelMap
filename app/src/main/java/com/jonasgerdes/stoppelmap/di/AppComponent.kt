@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.di.module.AppModule
 import com.jonasgerdes.stoppelmap.di.module.DataModule
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.QueryFactory
+import com.jonasgerdes.stoppelmap.usecase.event.overview.view.EventDayFragmentAdapter
 import com.jonasgerdes.stoppelmap.usecase.information.view.InformationFragment
 import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
 import com.jonasgerdes.stoppelmap.usecase.main.viewmodel.MainInteractor
@@ -46,4 +47,5 @@ interface AppComponent {
     fun inject(departureDayFragment: DepartureDayFragment)
     fun inject(stationDetailActivity: StationDetailActivity)
     fun inject(depatureDayFragmentAdapter: DepartureDayFragmentAdapter)
+    fun inject(eventDayFragmentAdapter: EventDayFragmentAdapter)
 }
