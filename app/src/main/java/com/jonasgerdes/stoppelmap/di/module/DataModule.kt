@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.di.module
 
+import com.jonasgerdes.stoppelmap.model.EventRepository
 import com.jonasgerdes.stoppelmap.model.MapEntityRepository
 import com.jonasgerdes.stoppelmap.model.QueryFactory
 import com.jonasgerdes.stoppelmap.model.TransportationRepository
@@ -26,5 +27,10 @@ class DataModule {
     @Provides
     fun provideTransportationRepository(): TransportationRepository {
         return TransportationRepository()
+    }
+
+    @Provides
+    fun provideEventRepository(): EventRepository {
+        return EventRepository()
     }
 }
