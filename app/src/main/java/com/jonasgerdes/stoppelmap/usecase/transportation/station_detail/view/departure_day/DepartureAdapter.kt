@@ -32,6 +32,6 @@ class DepartureAdapter : RecyclerView.Adapter<DepartureHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return departureList.size + 1
+        return departureList.size
     }
 }

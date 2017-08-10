@@ -30,10 +30,13 @@ class DepartureDayFragment : Fragment() {
         val ARGS_DEPARTURE_DAY = "ARGS_DEPARTURE_DAY"
         val ARGS_STATION_SLUG = "ARGS_STATION_SLUG"
 
-        fun createInstance(station: Station, day: Int) {
+        fun createInstance(station: Station, day: Int) : DepartureDayFragment{
             val args = Bundle()
             args.putString(ARGS_STATION_SLUG, station.uuid)
             args.putInt(ARGS_DEPARTURE_DAY, day)
+            val fragment = DepartureDayFragment()
+            fragment.arguments = args
+            return fragment
         }
     }
 

@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.transportation.overview.view
 
 import android.arch.lifecycle.LifecycleFragment
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +52,7 @@ class TransportOverviewFragment : LifecycleFragment() {
                     -> startActivity(RouteDetailActivity.createIntent(context, it.route.uuid!!))
 
                     RouteAdapter.RouteSelection.TYPE_RETURN
-                    -> startActivity(Intent(context, StationDetailActivity::class.java))
+                    -> startActivity(StationDetailActivity.createIntent(context, it.route.returnStation!!))
                 }
             }
         }

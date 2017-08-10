@@ -16,6 +16,8 @@ import com.jonasgerdes.stoppelmap.usecase.map.view.search.ProductResultHolder
 import com.jonasgerdes.stoppelmap.usecase.map.viewmodel.MapInteractor
 import com.jonasgerdes.stoppelmap.usecase.transportation.overview.view.TransportOverviewFragment
 import com.jonasgerdes.stoppelmap.usecase.transportation.route_detail.view.RouteDetailActivity
+import com.jonasgerdes.stoppelmap.usecase.transportation.station_detail.view.DepartureDayFragmentAdapter
+import com.jonasgerdes.stoppelmap.usecase.transportation.station_detail.view.StationDetailActivity
 import com.jonasgerdes.stoppelmap.usecase.transportation.station_detail.view.departure_day.DepartureDayFragment
 import dagger.Component
 import javax.inject.Singleton
@@ -42,4 +44,6 @@ interface AppComponent {
     fun inject(transportOverviewFragment: TransportOverviewFragment)
     fun inject(routeDetailActivity: RouteDetailActivity)
     fun inject(departureDayFragment: DepartureDayFragment)
+    fun inject(stationDetailActivity: StationDetailActivity)
+    fun inject(depatureDayFragmentAdapter: DepartureDayFragmentAdapter)
 }
