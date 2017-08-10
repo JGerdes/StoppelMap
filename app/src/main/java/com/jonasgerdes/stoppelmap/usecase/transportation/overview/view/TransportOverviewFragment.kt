@@ -47,7 +47,7 @@ class TransportOverviewFragment : LifecycleFragment() {
             disposables += repository.getRoutes().subscribe {
                 routes = it
             }
-            disposables += getSelections().subscribe {
+            selections().subscribe {
                 when (it.type) {
                     RouteAdapter.RouteSelection.TYPE_STATIONS
                     -> startActivity(RouteDetailActivity.createIntent(context, it.route.uuid!!))

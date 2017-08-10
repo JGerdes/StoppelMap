@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Route
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.transportation_overview_route.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
@@ -24,7 +25,7 @@ class RouteAdapter : RecyclerView.Adapter<RouteHolder>() {
     }
 
     private var routeList: List<Route> = ArrayList()
-    private val selectedSubject = BehaviorSubject.create<RouteSelection>()
+    private val selectedSubject = PublishSubject.create<RouteSelection>()
 
     var routes
         get() = routeList
@@ -58,7 +59,7 @@ class RouteAdapter : RecyclerView.Adapter<RouteHolder>() {
         return routeList.size
     }
 
-    fun getSelections(): Observable<RouteSelection> {
+    fun selections(): Observable<RouteSelection> {
         return selectedSubject.hide()
     }
 }
