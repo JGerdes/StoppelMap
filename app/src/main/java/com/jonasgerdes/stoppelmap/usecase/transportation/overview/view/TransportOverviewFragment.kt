@@ -54,10 +54,10 @@ class TransportOverviewFragment : LifecycleFragment() {
             selections().subscribe {
                 when (it.type) {
                     RouteAdapter.RouteSelection.TYPE_STATIONS
-                    -> startActivity(RouteDetailActivity.createIntent(context, it.route.uuid!!))
+                    -> RouteDetailActivity.start(activity, it.route.uuid!!)
 
                     RouteAdapter.RouteSelection.TYPE_RETURN
-                    -> startActivity(StationDetailActivity.createIntent(context, it.route.returnStation!!))
+                    -> StationDetailActivity.start(activity, it.route.returnStation!!)
                 }
             }
         }

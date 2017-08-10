@@ -1,14 +1,20 @@
 package com.jonasgerdes.stoppelmap.usecase.transportation.station_detail.view
 
-import android.content.Context
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.transition.SidePropagation
+import android.transition.Slide
+import android.view.Gravity
 import android.view.MenuItem
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.TransportationRepository
 import com.jonasgerdes.stoppelmap.model.entity.Station
+import com.jonasgerdes.stoppelmap.util.view.SwipeBackLayout
 import kotlinx.android.synthetic.main.transportation_station_detail_activity.*
 import javax.inject.Inject
 
@@ -30,10 +36,15 @@ class StationDetailActivity : AppCompatActivity() {
     companion object {
         val EXTRA_STATION_SLUG = "EXTRA_STATION_SLUG"
 
-        fun createIntent(context: Context, station: Station): Intent {
-            val intent = Intent(context, StationDetailActivity::class.java)
+        fun start(activity: Activity, station: Station) {
+            val intent = Intent(activity, StationDetailActivity::class.java)
             intent.putExtra(Companion.EXTRA_STATION_SLUG, station.uuid)
-            return intent
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val bundle = ActivityOptions.makeSceneTransitionAnimation(activity).toBundle()
+                activity.startActivity(intent, bundle)
+            } else {
+                activity.startActivity(intent)
+            }
         }
     }
 
@@ -41,6 +52,7 @@ class StationDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.transportation_station_detail_activity)
         initToolbar()
+        initTransition()
         initViewPagerList()
 
     }
@@ -56,6 +68,31 @@ class StationDetailActivity : AppCompatActivity() {
                 title = it.name
             }
         }
+    }
+
+    private fun initTransition() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val slide = Slide()
+            slide.slideEdge = Gravity.RIGHT
+            val propagation = SidePropagation()
+            propagation.setPropagationSpeed(0.9f)
+            slide.propagation = propagation
+            window.enterTransition = slide
+        }
+
+        swipeBackLayout.setSwipeListener(object : SwipeBackLayout.SwipeListener {
+            override fun onFullSwipeBack() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    finishAfterTransition()
+                } else {
+                    finish()
+                }
+            }
+
+            override fun onSwipe(progress: Float) {
+                //ignore
+            }
+        })
     }
 
     private fun initViewPagerList() {
