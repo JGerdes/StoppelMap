@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model
 
 import com.jonasgerdes.stoppelmap.model.entity.Route
+import com.jonasgerdes.stoppelmap.model.entity.Station
 import com.jonasgerdes.stoppelmap.util.asList
 import com.jonasgerdes.stoppelmap.util.asRxObservable
 import io.reactivex.Observable
@@ -25,6 +26,13 @@ class TransportationRepository : Disposable {
 
     fun getRouteBy(slug: String): Route? {
         return realm.where(Route::class.java)
+                .equalTo("uuid", slug)
+                .findAll()
+                .firstOrNull()
+    }
+
+    fun getStationBy(slug: String): Station? {
+        return realm.where(Station::class.java)
                 .equalTo("uuid", slug)
                 .findAll()
                 .firstOrNull()
