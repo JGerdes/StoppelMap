@@ -21,7 +21,7 @@ class EventRepository : Disposable {
                 .equalTo("day", day)
                 .findAll().sort("start", Sort.ASCENDING)
                 .asRxObservable()
-                .map { it.asList() }
+                .map { it.asList().filter { it.name != null } }
     }
 
     override fun isDisposed(): Boolean {
