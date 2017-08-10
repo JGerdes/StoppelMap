@@ -18,6 +18,7 @@ object Assets {
     val DIRECTORY_APP = "app"
 
     val HEADER_TRANSPORTATION_ROUTE = "route"
+    val HEADER_TRANSPORTATION_STATION = "station"
 
     fun getTypeIconFor(entity: MapEntity): Int {
         return when (entity.type) {
