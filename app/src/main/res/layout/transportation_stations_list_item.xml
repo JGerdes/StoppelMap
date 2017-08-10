@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="3dp"
+            android:foreground="?attr/selectableItemBackground"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@id/name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:textSize="@dimen/text_size_card_subtitle"
+                        tools:text="Vechtaer Marsch/Straßburger Str."/>
+
+
+                    <LinearLayout
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:gravity="right"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Nächste Abfahrten"
+                            android:textSize="12sp"/>
+
+                        <TextView
+                            android:id="@+id/depature1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            tools:text="18:05 Uhr"/>
+
+                        <TextView
+                            android:id="@+id/depature2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            tools:text="18:35 Uhr"/>
+
+                        <TextView
+                            android:id="@+id/depature3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            tools:text="19:05 Uhr"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/details"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="Alle abfahrten"
+                    android:textColor="@color/primary"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/nodeTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginLeft="24dp"
+        android:scaleY="-1"
+        android:src="@drawable/ui_timeline_node_black_top"/>
+
+    <ImageView
+        android:id="@+id/nodeBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="24dp"
+        android:src="@drawable/ui_timeline_node_black_top"/>
+</FrameLayout>
