@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.TransportationRepository
+import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
 import com.jonasgerdes.stoppelmap.usecase.map.view.search.RouteAdapter
 import com.jonasgerdes.stoppelmap.usecase.transportation.route_detail.view.RouteDetailActivity
 import com.jonasgerdes.stoppelmap.usecase.transportation.station_detail.view.StationDetailActivity
@@ -41,6 +43,9 @@ class TransportOverviewFragment : LifecycleFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         routes.adapter = RouteAdapter()
+
+        (activity as MainActivity).setSupportActionBar(toolbar)
+        activity.window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 
         with(routes.adapter as RouteAdapter) {
             disposables += repository.getRoutes().subscribe {
