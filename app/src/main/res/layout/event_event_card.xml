@@ -25,17 +25,16 @@
             android:padding="4dp">
 
             <Button
-                android:id="@+id/openLocation"
+                android:id="@+id/locationButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="zur Location"
-                android:textColor="@color/primary"
-                android:visibility="gone"/>
+                android:textColor="@color/primary"/>
 
             <Button
-                android:id="@+id/facebook"
+                android:id="@+id/facebookButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
