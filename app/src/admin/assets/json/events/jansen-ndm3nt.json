@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "jansen_ndm3nt_1_party_mit_mr._beat",
+    "name": "Party mit Mr. Beat",
+    "type": 0,
+    "day": 1,
+    "start": "2017-08-11 21:00:00",
+    "locationSlug": "jansen-ndm3nt"
+  },
+  {
+    "slug": "jansen_ndm3nt_2_party_mit_mr._beat",
+    "name": "Party mit Mr. Beat",
+    "type": 0,
+    "day": 2,
+    "start": "2017-08-12 21:00:00",
+    "locationSlug": "jansen-ndm3nt"
+  }
+]

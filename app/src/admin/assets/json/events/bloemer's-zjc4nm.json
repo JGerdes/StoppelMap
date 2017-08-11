@@ -1,0 +1,143 @@
+[
+  {
+    "slug": "bloemer_s_zjc4nm_0_blömer_s_­_stoppelmarkt­opening_mit_der_skylight_disco",
+    "name": "Blömer\u0027s ­ Stoppelmarkt­Opening mit der Skylight Disco",
+    "type": 0,
+    "day": 0,
+    "start": "2017-08-10 18:01:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "DJ Housecleaner und DJ Sebb eröffnen den Stoppelmarkt 2017"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_1_blömer_s_festzelt_café",
+    "name": "Blömer\u0027s Festzelt Café",
+    "type": 0,
+    "day": 1,
+    "start": "2017-08-11 14:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Große Kuchenauswahl und dazu ein Tässchen Kaffee (teilweise gluten-­ und laktosefrei)"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_1_blömer_s_literaturlesung_mit_martin",
+    "name": "Blömer\u0027s Literaturlesung mit Martin",
+    "type": 0,
+    "day": 1,
+    "start": "2017-08-11 15:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_1_blömer_s_­_partynacht_mit_skylight_disco",
+    "name": "Blömer\u0027s ­ Partynacht mit Skylight Disco",
+    "type": 0,
+    "day": 1,
+    "start": "2017-08-11 18:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "DJ Housecleaner und DJ Danny starten in die Partynacht"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_2_blömer_s_festzelt_café",
+    "name": "Blömer\u0027s Festzelt Café",
+    "type": 0,
+    "day": 2,
+    "start": "2017-08-12 14:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Große Kuchenauswahl und dazu ein Tässchen Kaffee (teilweise gluten-­ und laktosefrei)"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_2_blömer_s_literaturlesung_mit_martin",
+    "name": "Blömer\u0027s Literaturlesung mit Martin",
+    "type": 0,
+    "day": 2,
+    "start": "2017-08-12 15:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_2_blömer_s_­_partynacht_mit_skylight_disco",
+    "name": "Blömer\u0027s ­ Partynacht mit Skylight Disco",
+    "type": 0,
+    "day": 2,
+    "start": "2017-08-12 18:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "DJ Housecleaner , Ingo Becker und DJ Silence starten in die Partynacht"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_3_blömer_s_sonntagsfrühstück",
+    "name": "Blömer\u0027s Sonntagsfrühstück",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 09:30:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Vor dem Hochamt noch schnell frühstücken und durch einen Kaffee und ein belegtes Brötchen gestärkt zur Messe gehen."
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_3_blömer_s_suppentöpfe",
+    "name": "Blömer\u0027s Suppentöpfe",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 12:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Hier wird der Hunger gestillt! (teilweise gluten­ und laktosefrei)"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_3_blömer_s_festzelt_café",
+    "name": "Blömer\u0027s Festzelt Café",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 14:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Große Kuchenauswahl und dazu ein Tässchen Kaffee (teilweise gluten-­ und laktosefrei)"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_3_blömer_s_literaturlesung_mit_martin",
+    "name": "Blömer\u0027s Literaturlesung mit Martin",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 15:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_3_blömer_s_­_partynacht_mit_skylight_disco",
+    "name": "Blömer\u0027s ­ Partynacht mit Skylight Disco",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 18:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "DJ Housecleaner sorgt mit seinem Kollegen DJ Franky auch heute für Stimmung."
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_4_blömer_s_viehmarkt_frühstück",
+    "name": "Blömer\u0027s Viehmarkt-Frühstück",
+    "type": 0,
+    "day": 4,
+    "start": "2017-08-14 08:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Ein starker Kaffee und ein belegtes Brötchen erleichtern den Start in den Tag!"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_4_blömer_s_­_skylight_disco_s_sagenhafter_stoppelmarkt_montag",
+    "name": "Blömer\u0027s ­ Skylight Disco\u0027s sagenhafter Stoppelmarkt-Montag",
+    "type": 0,
+    "day": 4,
+    "start": "2017-08-14 11:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Nun geht die Party richtig los!\u003cbr\u003eDas Skylight Disco Trio ­ DJ Housecleaner, DJ Sebb und DJ Franky ­ ist ausgeschlafen und bereit für den Stoppelmarkt­-Montag!"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_5_familientag_\u0026_blömer_s_festzelt_café",
+    "name": "Familientag \u0026 Blömer\u0027s Festzelt Café",
+    "type": 0,
+    "day": 5,
+    "start": "2017-08-15 14:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "Familientag­ mit Angeboten\u003cbr\u003eGroße Kuchenauswahl und dazu ein Tässchen Kaffee (teilweise gluten­- und laktosefrei)\u003cbr\u003e\u003cbr\u003e"
+  },
+  {
+    "slug": "bloemer_s_zjc4nm_5_blömer_s_­_stoppelmarkt­_ausklang_mit_der_skylight_disco",
+    "name": "Blömer\u0027s ­ Stoppelmarkt­-Ausklang mit der Skylight Disco",
+    "type": 0,
+    "day": 5,
+    "start": "2017-08-15 18:00:00",
+    "locationSlug": "bloemer\u0027s-zjc4nm",
+    "description": "DJ Housecleaner und Ingo Becker bringen den Stoppelmarkt zu einem schwungvollen Abschluss."
+  }
+]
