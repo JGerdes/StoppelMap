@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.usecase.event.overview.view.event_day
 
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.EventRepository
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
+import com.jonasgerdes.stoppelmap.usecase.main.view.MainActivity
 import com.jonasgerdes.stoppelmap.util.plusAssign
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.event_day_fragment.*
@@ -60,6 +62,12 @@ class EventDayFragment : Fragment() {
         disposables += repository.getEventsFor(day).subscribe {
             with(events.adapter as EventAdapter) {
                 events = it
+                locationClicks().subscribe {
+                    if (activity is MainActivity) {
+                        val uri = Uri.parse("https://share.stoppelmap.de/2017/map/${it.slug}")
+                        (activity as MainActivity).intents.onNext(uri)
+                    }
+                }
             }
         }
     }
