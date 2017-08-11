@@ -7,7 +7,6 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.entity.Route
 import com.jonasgerdes.stoppelmap.model.entity.map.MapEntity
 import com.jonasgerdes.stoppelmap.model.events.Event
-import com.jonasgerdes.stoppelmap.model.events.Events
 import com.jonasgerdes.stoppelmap.model.realm_wrapper.RealmString
 import com.jonasgerdes.stoppelmap.util.readAsString
 import io.realm.Realm
@@ -57,13 +56,13 @@ class AdminActivity : AppCompatActivity() {
         val events = ArrayList<Event>()
         assets.list(PATH_EVENTS).map {
             val json = assets.readAsString(PATH_EVENTS + "/" + it)
-            gson.fromJson(json, Events::class.java)
+            gson.fromJson(json, Event.Events::class.java)
         }.forEach {
-            events.addAll(it.events!!)
+            events.addAll(it)
         }
 
         events.forEach {
-            val locationUuid = it.locationUuid
+            val locationUuid = it.locationSlug
             if (locationUuid != null) {
                 it.mapEntity = entities.filter { it.slug == locationUuid }.firstOrNull()
             }
