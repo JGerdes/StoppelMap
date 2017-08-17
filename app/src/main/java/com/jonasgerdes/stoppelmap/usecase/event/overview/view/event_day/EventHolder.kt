@@ -5,6 +5,7 @@ import android.text.Html
 import android.view.View
 import android.widget.TextView
 import com.jonasgerdes.stoppelmap.model.events.Event
+import kotlinx.android.synthetic.main.event_event_card.view.*
 import kotlinx.android.synthetic.main.event_event_content.view.*
 import java.text.SimpleDateFormat
 
@@ -24,6 +25,12 @@ class EventHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             setOrHide(description, Html.fromHtml(event.description ?: ""))
             setOrHide(location, event.mapEntity?.name ?: "")
             setOrHide(people, event.artists?.map { it.value }?.joinToString(", ") ?: "")
+
+            if(event.mapEntity != null) {
+                locationButton.visibility = View.VISIBLE
+            } else {
+                locationButton.visibility = View.GONE
+            }
         }
     }
 

@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity(), MainView {
     private val busScheduleFragment = TransportOverviewFragment()
     private val informationFragment = InformationFragment()
     private var currentFragment = BehaviorSubject.create<Fragment>()
+    val intents = BehaviorSubject.create<Uri>()
 
     private var isUpdatingNavigation = true //prevent nav selection events to be fired during change
 
@@ -81,6 +82,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
         val interactor = ViewModelProviders.of(this).get(MainInteractor::class.java)
         presenter = MainPresenter(this, interactor)
+
+        intent.data?.let {
+            intents.onNext(it)
+        }
 
         currentFragment
                 .delay(100L, TimeUnit.MILLISECONDS)
@@ -168,10 +173,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun getIntents(): Observable<Uri> {
-        if (intent.data != null) {
-            return Observable.just(intent.data)
-        }
-        return Observable.empty<Uri>()
+        return intents.hide()
     }
 
     override fun onDestroy() {

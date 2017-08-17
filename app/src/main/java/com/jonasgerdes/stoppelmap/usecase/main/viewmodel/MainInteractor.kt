@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.usecase.main.viewmodel
 
 import android.arch.lifecycle.ViewModel
 import android.net.Uri
+import android.util.Log
 import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
@@ -33,7 +34,9 @@ class MainInteractor : ViewModel(), AnkoLogger {
         versionHelper.requestVersionInfo()
                 .subscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onVersionInfoAvailable)
+                .subscribe(this::onVersionInfoAvailable, {
+                    Log.d("MainInteractor", "Version check failed:", it)
+                })
     }
 
     val state get() = stateSubject.hide()
