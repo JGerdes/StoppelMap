@@ -14,7 +14,7 @@ import java.util.*
  */
 open class Event : RealmObject() {
 
-    var uuid: String? = null
+    var slug: String? = null
     var name: String? = null
     var type: Int = 0
 
@@ -22,10 +22,13 @@ open class Event : RealmObject() {
     var start: Date? = null
     var end: Date? = null
 
-    var locationUuid: String? = null
+    var locationSlug: String? = null
     var mapEntity: MapEntity? = null
 
     var description: String? = null
     var facebookUrl: String? = null
     var artists: RealmList<RealmString>? = RealmList()
+    var music: RealmList<RealmString>? = RealmList()
+
+    class Events : ArrayList<Event>()
 }

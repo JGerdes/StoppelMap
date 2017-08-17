@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "die_flotte_ymq4zm_0_schluck_ahoi",
+    "name": "SCHLUCK AHOI",
+    "type": 0,
+    "day": 0,
+    "start": "2017-08-10 18:01:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "Die Große Schiffstaufe mit der TOP Band United Four.\u003cbr\u003e\u003cbr\u003eDie Ganze Nacht Schluck Ahoi."
+  },
+  {
+    "slug": "die_flotte_ymq4zm_1_alle_mann_an_bord",
+    "name": "ALLE MANN AN BORD",
+    "type": 0,
+    "day": 1,
+    "start": "2017-08-11 20:00:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "Party Nonstop · 80er, 90er und Schlager mit DJ-THOM-K"
+  },
+  {
+    "slug": "die_flotte_ymq4zm_2_alle_mann_an_bord",
+    "name": "ALLE MANN AN BORD",
+    "type": 0,
+    "day": 2,
+    "start": "2017-08-12 20:00:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "Party Nonstop · 80er, 90er und Schlager mit DJ-THOM-K"
+  },
+  {
+    "slug": "die_flotte_ymq4zm_3_schlagerfrühschoppen",
+    "name": "SCHLAGERFRÜHSCHOPPEN",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 12:00:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "Es wird geschunkelt, gesungen und getanzt. Wir spielen die besten Schlager."
+  },
+  {
+    "slug": "die_flotte_ymq4zm_3_dei_binnenschippers",
+    "name": "Dei Binnenschippers",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 16:00:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "Der Shantychor „Dei Binnenschippers“"
+  },
+  {
+    "slug": "die_flotte_ymq4zm_3_sturmflut_live",
+    "name": "Sturmflut Live",
+    "type": 0,
+    "day": 3,
+    "start": "2017-08-13 20:00:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "„Sturmflut Live“ mit Ihrer Piratentour"
+  },
+  {
+    "slug": "die_flotte_ymq4zm_4_volle_fahrt_voraus",
+    "name": "VOLLE FAHRT VORAUS",
+    "type": 0,
+    "day": 4,
+    "start": "2017-08-14 10:00:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "Wir geben nochmal Vollgas. Den ganzen Tag beste Musik zum Tanzen MIT DJ-THOM-K"
+  },
+  {
+    "slug": "die_flotte_ymq4zm_5_wir_verlassen_den_hafen",
+    "name": "WIR VERLASSEN DEN HAFEN",
+    "type": 0,
+    "day": 5,
+    "start": "2017-08-15 13:00:00",
+    "locationSlug": "die-flotte-ymq4zm",
+    "description": "Der letzte Tag in diesem Jahr im Westerheide-Hafen.\u003cbr\u003eDer Kapitän schenkt den ganzen Tag Bier aus."
+  }
+]

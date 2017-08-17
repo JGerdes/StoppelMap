@@ -22,7 +22,6 @@ class MainPresenter(private val view: MainView, interactor: MainInteractor) : Di
 
         disposable += view.getNavigationEvents()
                 .map { it.itemId }
-                .distinctUntilChanged()
                 .debounce(100, TimeUnit.MILLISECONDS)
                 .subscribe(interactor::onNavigationClicked)
 

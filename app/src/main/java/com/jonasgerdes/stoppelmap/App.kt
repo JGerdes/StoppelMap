@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap
 
-import android.app.Application
+import android.support.multidex.MultiDexApplication
 import com.jonasgerdes.stoppelmap.admin.Administration
 import com.jonasgerdes.stoppelmap.di.AppComponent
 import com.jonasgerdes.stoppelmap.di.DaggerAppComponent
@@ -17,7 +17,7 @@ import javax.inject.Inject
  * @author Jonas Gerdes <dev@jonasgerdes.com>
  * @since 11.06.2017
  */
-class App : Application(), AnkoLogger {
+class App : MultiDexApplication(), AnkoLogger {
 
     companion object {
         lateinit var graph: AppComponent
