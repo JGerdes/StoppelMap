@@ -25,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
+        android:autoLink="web"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         tools:text="Über Stoppelmarkt bleibt das KAFFEERAUSCH geschlossen und zieht für einen Tag ins Hotel am Kaponier Zelt, um mit euch steil zu gehen.\nWeils letztes Jahr so geil war bleibt alles wie beim Alten.\nIhr kommt mit guter Laune, wir liefern die Bässe und das Drumherum.\nSeid pünktlich um 20:00 Uhr am Start, um ja nichts zu verpassen, wir haben richtig Bock :)"/>
