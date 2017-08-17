@@ -17,7 +17,7 @@
 
     <string name="entity_detail_card_description_source">Quelle: %1$s</string>
 
-    <string name="transportation_overview_route_card_stations">Halstestellen</string>
+    <string name="transportation_overview_route_card_stations">Haltestellen</string>
     <string name="transportation_overview_route_card_return">Rückfahrten</string>
     <string name="transportation_overview_route_card_no_departures">keine weiteren Abfahrten</string>
     <string name="transportation_route_detail_staion_card_no_departures">
