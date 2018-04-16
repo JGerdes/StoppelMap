@@ -1,4 +1,0 @@
-<resources>
-    <string name="url_check_version">https://app.stoppelmap.de/version</string>
-    <string name="url_share_entity">https://share.stoppelmap.de/2017/map/%1$s</string>
-</resources>

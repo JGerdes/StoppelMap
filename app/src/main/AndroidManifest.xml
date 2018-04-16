@@ -1,103 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.jonasgerdes.stoppelmap">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
     <application
-        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/api_key_google_maps"/>
-
-        <activity
-            android:name=".usecase.main.view.MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-
-                <data
-                    android:host="share.stoppelmap.de"
-                    android:pathPrefix="/2017/"
-                    android:scheme="https"/>
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".usecase.transportation.route_detail.view.RouteDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.Translucent"
-            android:windowSoftInputMode="adjustResize"/>
-
-        <activity
-            android:name=".usecase.transportation.station_detail.view.StationDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.Translucent"
-            android:windowSoftInputMode="adjustResize"/>
-
-        <!-- widgets -->
-        <!-- gingerbread heart -->
-        <activity
-            android:name=".widget.heart.GingerbreadHeartWidgetSettingsActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
-            </intent-filter>
-        </activity>
-
-        <receiver android:name=".widget.heart.GingerbreadHeartWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info_gingerbreadheart"/>
-        </receiver>
-
-        <!-- silhouette -->
-        <activity
-            android:name=".widget.silhouette.SilhouetteWidgetSettingsActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
-            </intent-filter>
-        </activity>
-
-        <receiver android:name=".widget.silhouette.SilhouetteWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info_silhouette"/>
-        </receiver>
-
-    </application>
-
+        android:theme="@style/AppTheme"/>
 </manifest>
