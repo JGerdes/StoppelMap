@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#1A237E</color>
-    <color name="primaryDark">#0e1451</color>
-    <color name="accent">#ff5252</color>
-
-
-    <color name="text_dark">#8A000000</color>
-    <color name="text_light">#FFFFFF</color>
-    <color name="text_light_54">#80FFFFFF</color>
-
-    <color name="tint_icon_active_dark">@color/text_dark</color>
-    <color name="tint_icon_inactive_dark">#61000000</color>
-
-    <color name="tint_icon_active_light">@color/text_light</color>
-    <color name="tint_icon_inactive_light">@color/text_light_54</color>
-
-    <color name="map_marker_icon">@color/text_light</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 </resources>
