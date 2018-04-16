@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         mapView.onCreate(savedInstanceState)
+        mapView.setStyleUrl("asset://style-light.json")
         mapView.getMapAsync {
             it.uiSettings.isTiltGesturesEnabled = false
             it.uiSettings.isAttributionEnabled = false
