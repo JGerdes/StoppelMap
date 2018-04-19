@@ -18,9 +18,8 @@
             "data": "asset://stoma-2017.geojson"
         }
     },
-
-    "sprite": "mapbox://sprites/stoppelmap/cjg157v7z1c112sludl8571c3",
-    "glyphs": "mapbox://fonts/stoppelmap/{fontstack}/{range}.pbf",
+    "sprite": "asset://mapbox/sprites/sprite",
+    "glyphs": "asset://mapbox/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
             "id": "background",
@@ -477,100 +476,57 @@
                     "property": "building",
                     "stops": [
                         [
-                            {
-                                "zoom": 0,
-                                "value": "ignore"
-                            },
+                            "misc",
                             "misc"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "misc"
-                            },
-                            "misc"
-                        ],
-                        [
-                            {
-                                "zoom": 17,
-                                "value": "bar"
-                            },
+                            "bar",
                             "bar"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "food-stall"
-                            },
+                            "food-stall",
                             "food_stall"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "ride"
-                            },
+                            "ride",
                             "ride"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "restroom"
-                            },
+                            "restroom",
                             "restroom"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "building"
-                            },
+                            "building",
                             "restaurant"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "candy-stall"
-                            },
+                            "candy-stall",
                             "candy_stall"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "game-stall"
-                            },
+                            "game-stall",
                             "game_stall"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "seller-stall"
-                            },
+                            "seller-stall",
                             "seller_stall"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "exhibition"
-                            },
+                            "exhibition",
                             "expo"
                         ],
                         [
-                            {
-                                "zoom": 17,
-                                "value": "parking"
-                            },
+                            "parking",
                             "parking"
                         ],
                         [
-                            {
-                                "value": "ignore",
-                                "zoom": 17
-                            },
+                            "ignore",
                             "misc"
                         ]
                     ]
                 },
                 "text-font": [
-                    "Open Sans Regular"
+                    "Roboto Slab Light"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -592,19 +548,7 @@
                     -0.8
                 ],
                 "text-anchor": "bottom",
-                "text-field": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            0,
-                            ""
-                        ],
-                        [
-                            17,
-                            "{name}"
-                        ]
-                    ]
-                },
+                "text-field": "{name}",
                 "icon-padding": {
                     "base": 1,
                     "stops": [
@@ -631,7 +575,33 @@
                 "icon-translate": [
                     0,
                     0
-                ]
+                ],
+                "icon-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16.99,
+                            0
+                        ],
+                        [
+                            17,
+                            1
+                        ]
+                    ]
+                },
+                "text-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16.99,
+                            0
+                        ],
+                        [
+                            17,
+                            1
+                        ]
+                    ]
+                }
             }
         },
         {
@@ -722,7 +692,7 @@
                     ]
                 },
                 "text-font": [
-                    "Open Sans Regular"
+                    "Roboto Slab Light"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -862,7 +832,7 @@
                     ]
                 },
                 "text-font": [
-                    "Open Sans Regular"
+                    "Roboto Slab Light"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -1002,7 +972,7 @@
                     ]
                 },
                 "text-font": [
-                    "Open Sans Regular"
+                    "Roboto Slab Light"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -1140,7 +1110,7 @@
                     ]
                 },
                 "text-font": [
-                    "Open Sans Regular"
+                    "Roboto Slab Light"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -1272,7 +1242,7 @@
                 },
                 "symbol-spacing": 25,
                 "text-font": [
-                    "Open Sans Regular"
+                    "Roboto Slab Light"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -1327,7 +1297,7 @@
     ],
     "created": "2018-04-15T18:27:46.518Z",
     "id": "cjg157v7z1c112sludl8571c3",
-    "modified": "2018-04-16T14:21:13.944Z",
+    "modified": "2018-04-17T07:21:51.885Z",
     "owner": "stoppelmap",
     "visibility": "private",
     "draft": false
