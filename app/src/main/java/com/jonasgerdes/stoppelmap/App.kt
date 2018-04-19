@@ -16,7 +16,7 @@ class App : Application() {
     }
 
     private fun initMapbox() {
-        Mapbox.getInstance(applicationContext, BuildConfig.API_KEY_MAPBOX)
+        Mapbox.getInstance(applicationContext, "pk.NOT_USED")
         MapboxTelemetry.getInstance().isTelemetryEnabled = false
     }
 
