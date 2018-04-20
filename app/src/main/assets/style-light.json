@@ -526,7 +526,7 @@
                     ]
                 },
                 "text-font": [
-                    "Roboto Slab Light"
+                    "Roboto Slab Regular"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -692,7 +692,7 @@
                     ]
                 },
                 "text-font": [
-                    "Roboto Slab Light"
+                    "Roboto Slab Regular"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -832,7 +832,7 @@
                     ]
                 },
                 "text-font": [
-                    "Roboto Slab Light"
+                    "Roboto Slab Regular"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -972,7 +972,7 @@
                     ]
                 },
                 "text-font": [
-                    "Roboto Slab Light"
+                    "Roboto Slab Regular"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -1110,7 +1110,7 @@
                     ]
                 },
                 "text-font": [
-                    "Roboto Slab Light"
+                    "Roboto Slab Regular"
                 ],
                 "text-justify": "left",
                 "text-padding": {
@@ -1242,7 +1242,7 @@
                 },
                 "symbol-spacing": 25,
                 "text-font": [
-                    "Roboto Slab Light"
+                    "Roboto Slab Regular"
                 ],
                 "text-justify": "left",
                 "text-padding": {
