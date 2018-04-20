@@ -7,6 +7,8 @@ import com.jonasgerdes.stoppelmap.event.list.BusListFragment
 import com.jonasgerdes.stoppelmap.event.list.EventListFragment
 import com.jonasgerdes.stoppelmap.event.list.FeedFragment
 import com.jonasgerdes.stoppelmap.map.MapFragment
+import com.jonasgerdes.stoppelmap.util.enableItemShifting
+import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
 import kotlinx.android.synthetic.main.main_activity.*
 
 
@@ -23,11 +25,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        initNavigation()
+        showFragment(R.id.navigation_map)
+    }
+
+    private fun initNavigation() {
+        navigation.enableItemShifting(false)
+        navigation.enableItemTextHiding(true)
         navigation.setOnNavigationItemSelectedListener {
             showFragment(it.itemId)
             true
         }
-        showFragment(R.id.navigation_map)
+
     }
 
     private fun showFragment(itemId: Int) {
