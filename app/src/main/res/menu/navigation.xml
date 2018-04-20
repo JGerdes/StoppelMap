@@ -16,7 +16,11 @@
         android:icon="@drawable/ic_schedule_bus_black_24dp"
         android:title="@string/main_navigation_schedule_bus"/>
     <item
-        android:id="@+id/navigation_information"
+        android:id="@+id/main_navigation_social_feed"
+        android:icon="@drawable/ic_feed_black_24dp"
+        android:title="@string/main_navigation_social_feed"/>
+    <item
+        android:id="@+id/main_navigation_about"
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/main_navigation_information"/>
 
