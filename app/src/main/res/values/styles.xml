@@ -11,4 +11,8 @@
         <item name="android:statusBarColor">#40000000</item>
     </style>
 
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/roboto_slab_regular</item>
+    </style>
+
 </resources>
