@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
+import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorCompat
 import com.jonasgerdes.stoppelmap.util.toggleLayoutFulscreen
@@ -19,6 +21,10 @@ import kotlinx.android.synthetic.main.map_fragment.*
  * @since 19.04.2018
  */
 class MapFragment : Fragment() {
+
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProviders.of(this).get(MainViewModel::class.java)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
