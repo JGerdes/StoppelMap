@@ -5,4 +5,6 @@
     <string name="main_navigation_schedule_bus">Fahrpläne</string>
     <string name="main_navigation_social_feed">Feed</string>
     <string name="main_navigation_information">Info</string>
+
+    <string name="map_search_hint">Suche nach Zelten, Fahrgeschäften…</string>
 </resources>

@@ -36,6 +36,9 @@ class MapFragment : Fragment() {
             initMapUi(it)
             initMapCamera(it)
         }
+        mapView.isFocusable = true
+        mapView.isFocusableInTouchMode = true
+        search.clearFocus()
     }
 
     private fun initMapCamera(it: MapboxMap) {
@@ -52,7 +55,7 @@ class MapFragment : Fragment() {
         it.uiSettings.isTiltGesturesEnabled = false
         it.uiSettings.isAttributionEnabled = false
         it.uiSettings.isLogoEnabled = false
-        it.uiSettings.setCompassMargins(16.dp, (24 + 16).dp, 16.dp, 16.dp)
+        it.uiSettings.setCompassMargins(16.dp, (24 + 64).dp, 16.dp, 16.dp)
         it.uiSettings.compassImage = context?.getDrawable(R.drawable.ic_navigation_black_24dp)
                 ?.apply {
                     context?.getColorCompat(R.color.colorPrimary)?.let { color -> setTint(color) }
@@ -67,6 +70,7 @@ class MapFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         mapView?.onResume()
+        search.clearFocus()
     }
 
     override fun onPause() {
