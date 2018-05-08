@@ -4,7 +4,8 @@ buildscript {
 
     ext.kotlin_version = '1.1.51'
     ext.support_version = '27.1.1'
-    ext.room_version = '1.1.0-beta3'
+    ext.room_version = '1.1.0-rc1'
+    ext.arch_version = '1.1.0'
     ext.mapbox_version = '5.4.1'
 
     repositories {
@@ -24,6 +25,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://mvn.jonasgerdes.com/"
+        }
     }
 }
 
