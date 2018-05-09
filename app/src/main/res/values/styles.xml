@@ -12,6 +12,8 @@
 
         <item name="android:textColorPrimary">@color/light_text_primary</item>
         <item name="android:textColorSecondary">@color/light_text_secondary</item>
+
+        <item name="windowBackgroundColor">@color/light_window_background</item>
         <item name="inputBackgroundColor">@color/light_input_background</item>
     </style>
 
