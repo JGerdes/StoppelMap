@@ -21,6 +21,8 @@ class MainViewModel : ViewModel() {
         when (it) {
             is MainEvent.MapEvent.SearchFieldClickedEvent
             -> MapSearchToggle.Action(true)
+            is MainEvent.MapEvent.OnBackPressEvent
+            -> MapSearchToggle.Action(false)
         }
     }, process(
             MapSearchToggle()

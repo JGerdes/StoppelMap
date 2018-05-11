@@ -19,7 +19,7 @@ class MainReducer : BaseReducer<MainState> {
     override fun reduce(state: MainState, result: BaseResult): MainState {
         val map = state.map
         return when (result) {
-            is MapSearchToggle.Result -> state.copy(map = map.copy(searchExtended = true))
+            is MapSearchToggle.Result -> state.copy(map = map.copy(searchExtended = result.showSearch))
             else -> state.copy()
         }
     }
