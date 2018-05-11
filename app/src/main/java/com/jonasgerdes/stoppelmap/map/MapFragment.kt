@@ -1,12 +1,18 @@
 package com.jonasgerdes.stoppelmap.map
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
@@ -15,7 +21,7 @@ import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorCompat
-import com.jonasgerdes.stoppelmap.util.toggleLayoutFulscreen
+import com.jonasgerdes.stoppelmap.util.toggleLayoutFullscreen
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import io.reactivex.Observable
@@ -45,13 +51,14 @@ class MapFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mapView.onCreate(savedInstanceState)
-        activity?.toggleLayoutFulscreen(true)
+        activity?.toggleLayoutFullscreen(true)
 
         mapView.setStyleUrl("asset://style-light.json")
         mapView.getMapAsync {
             initMapUi(it)
             initMapCamera(it)
         }
+        search.isFocusableInTouchMode = true
         mapView.isFocusable = true
         mapView.isFocusableInTouchMode = true
         search.clearFocus()
@@ -88,17 +95,56 @@ class MapFragment : Fragment() {
             //todo use RxViewBindings
             viewModel.events.onNext(MainEvent.MapEvent.SearchFieldClickedEvent())
         }
-        search.setOnFocusChangeListener { _, hasFocus -> if(hasFocus) {
-            viewModel.events.onNext(MainEvent.MapEvent.SearchFieldClickedEvent())
-        }}
+        search.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                viewModel.events.onNext(MainEvent.MapEvent.SearchFieldClickedEvent())
+            }
+        }
+        search.setOnKeyListener { _, keyCode, event ->
+            Log.d("MapFragment", "onKeyEvent: ${event.action}; $keyCode")
+            if(event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                viewModel.events.onNext(MainEvent.MapEvent.OnBackPressEvent())
+            }
+            true
+        }
     }
 
     @SuppressLint("CheckResult")
     private fun render(state: Observable<MainState.MapState>) {
         state.map { it.searchExtended }
-                .map { if (it) View.VISIBLE else View.GONE }
+                .map { if (it) R.anim.slide_up else R.anim.slide_down }
                 .subscribe {
-                    searchBackground.visibility = it
+                    searchBackground.startAnimation(
+                            AnimationUtils.loadAnimation(context, it).apply {
+                                duration = 200
+                                fillAfter = true
+                            }
+                    )
+                }
+        state.map { it.searchExtended }
+                .map { if (it) Pair(32.dp, 0.dp) else Pair(0.dp, 32.dp) }
+                .subscribe {
+                    ObjectAnimator.ofFloat(search.background, "cornerRadius",
+                            it.first.toFloat(), it.second.toFloat())
+                            .setDuration(300)
+                            .start()
+                }
+        state.map { it.searchExtended }
+                .map { if (it) Pair(16.dp, 4.dp) else Pair(4.dp, 16.dp) }
+                .subscribe {
+                    ValueAnimator.ofInt(it.first, it.second)
+                            .setDuration(300)
+                            .apply {
+                                addUpdateListener {
+                                    val margin = it.animatedValue as Int
+                                    search.layoutParams = (search.layoutParams as ConstraintLayout.LayoutParams).apply {
+                                        setMargins(margin, margin, margin, margin)
+                                        marginStart = margin
+                                        marginEnd = margin
+                                    }
+                                }
+                                start()
+                            }
                 }
     }
 
@@ -139,4 +185,6 @@ class MapFragment : Fragment() {
         super.onLowMemory()
         mapView?.onLowMemory()
     }
+
+
 }

@@ -17,7 +17,7 @@ inline val Int.dp
 
 inline fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
-inline fun Activity.toggleLayoutFulscreen(overlap: Boolean) {
+inline fun Activity.toggleLayoutFullscreen(overlap: Boolean) {
     if (overlap) {
         window.decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

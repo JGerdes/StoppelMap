@@ -9,5 +9,6 @@ import com.jonasgerdes.mvi.BaseEvent
 sealed class MainEvent : BaseEvent {
     sealed class MapEvent : MainEvent() {
         class SearchFieldClickedEvent: MapEvent()
+        class OnBackPressEvent : MapEvent()
     }
 }
