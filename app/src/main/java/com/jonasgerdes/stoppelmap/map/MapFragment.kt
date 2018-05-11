@@ -1,18 +1,13 @@
 package com.jonasgerdes.stoppelmap.map
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
-import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
@@ -101,52 +96,22 @@ class MapFragment : Fragment() {
             }
         }
         search.setOnKeyListener { _, keyCode, event ->
-            Log.d("MapFragment", "onKeyEvent: ${event.action}; $keyCode")
-            if(event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+            if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                 viewModel.events.onNext(MainEvent.MapEvent.OnBackPressEvent())
             }
             true
         }
+
+
     }
 
-    @SuppressLint("CheckResult")
+
+
+
     private fun render(state: Observable<MainState.MapState>) {
-        state.map { it.searchExtended }
-                .map { if (it) R.anim.slide_up else R.anim.slide_down }
-                .subscribe {
-                    searchBackground.startAnimation(
-                            AnimationUtils.loadAnimation(context, it).apply {
-                                duration = 200
-                                fillAfter = true
-                            }
-                    )
-                }
-        state.map { it.searchExtended }
-                .map { if (it) Pair(32.dp, 0.dp) else Pair(0.dp, 32.dp) }
-                .subscribe {
-                    ObjectAnimator.ofFloat(search.background, "cornerRadius",
-                            it.first.toFloat(), it.second.toFloat())
-                            .setDuration(300)
-                            .start()
-                }
-        state.map { it.searchExtended }
-                .map { if (it) Pair(16.dp, 4.dp) else Pair(4.dp, 16.dp) }
-                .subscribe {
-                    ValueAnimator.ofInt(it.first, it.second)
-                            .setDuration(300)
-                            .apply {
-                                addUpdateListener {
-                                    val margin = it.animatedValue as Int
-                                    search.layoutParams = (search.layoutParams as ConstraintLayout.LayoutParams).apply {
-                                        setMargins(margin, margin, margin, margin)
-                                        marginStart = margin
-                                        marginEnd = margin
-                                    }
-                                }
-                                start()
-                            }
-                }
+        renderSearch(activity, view, state)
     }
+
 
     override fun onStart() {
         super.onStart()
