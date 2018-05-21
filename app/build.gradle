@@ -47,6 +47,11 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
     implementation "com.jakewharton.rxrelay2:rxrelay:2.0.0"
 
+    //rx view bindings
+    implementation 'com.jakewharton.rxbinding2:rxbinding-kotlin:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-design-kotlin:2.1.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:2.1.1'
+
     //map
     implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$mapbox_version"
 

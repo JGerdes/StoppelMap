@@ -9,4 +9,7 @@
 
     <color name="light_window_background">#f4f4f4</color>
     <color name="light_input_background">#fafafa</color>
+
+    <color name="black_51">#82000000</color>
+    <color name="black_24">#3D000000</color>
 </resources>

@@ -8,7 +8,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">#40000000</item>
+        <item name="android:statusBarColor">?colorPrimaryDark</item>
+        <item name="translucentStatusBarColor">@color/black_24</item>
 
         <item name="android:textColorPrimary">@color/light_text_primary</item>
         <item name="android:textColorSecondary">@color/light_text_secondary</item>
@@ -29,6 +30,7 @@
         <item name="android:paddingEnd">16dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:elevation">4dp</item>
+        <item name="android:lines">1</item>
     </style>
 
 </resources>
