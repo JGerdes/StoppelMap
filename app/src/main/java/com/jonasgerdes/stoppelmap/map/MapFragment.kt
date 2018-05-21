@@ -8,6 +8,9 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.rxbinding2.view.clicks
+import com.jakewharton.rxbinding2.view.focusChanges
+import com.jakewharton.rxbinding2.widget.editorActionEvents
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
@@ -22,6 +25,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Predicate
 import kotlinx.android.synthetic.main.map_fragment.*
 
 /**
@@ -44,9 +48,9 @@ class MapFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("MapFragment", "onViewCreated()")
         super.onViewCreated(view, savedInstanceState)
         mapView.onCreate(savedInstanceState)
-        activity?.toggleLayoutFullscreen(true)
 
         mapView.setStyleUrl("asset://style-light.json")
         mapView.getMapAsync {
@@ -86,27 +90,24 @@ class MapFragment : Fragment() {
     }
 
     private fun bindEvents() {
-        search.setOnClickListener {
-            //todo use RxViewBindings
-            viewModel.events.onNext(MainEvent.MapEvent.SearchFieldClickedEvent())
-        }
-        search.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                viewModel.events.onNext(MainEvent.MapEvent.SearchFieldClickedEvent())
-            }
-        }
-        search.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
-                viewModel.events.onNext(MainEvent.MapEvent.OnBackPressEvent())
-            }
-            true
-        }
+        search.clicks()
+                .map { MainEvent.MapEvent.SearchFieldClickedEvent() }
+                .subscribe(viewModel.events)
 
+        search.focusChanges()
+                .filter { it }
+                .map { MainEvent.MapEvent.SearchFieldClickedEvent() }
+                .subscribe(viewModel.events)
 
+        search.backPresses()
+                .map { MainEvent.MapEvent.OnBackPressEvent() }
+                .subscribe(viewModel.events)
+
+        search.editorActionEvents(Predicate { !(it.keyEvent()?.action == KeyEvent.ACTION_UP
+                && it.keyEvent()?.keyCode == KeyEvent.KEYCODE_BACK) })
+                .map { MainEvent.MapEvent.OnBackPressEvent() }
+                .subscribe(viewModel.events)
     }
-
-
-
 
     private fun render(state: Observable<MainState.MapState>) {
         renderSearch(activity, view, state)
@@ -122,7 +123,6 @@ class MapFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         mapView?.onResume()
-        search.clearFocus()
     }
 
     override fun onPause() {
@@ -150,6 +150,5 @@ class MapFragment : Fragment() {
         super.onLowMemory()
         mapView?.onLowMemory()
     }
-
 
 }

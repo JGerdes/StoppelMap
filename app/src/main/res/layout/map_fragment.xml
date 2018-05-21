@@ -29,7 +29,7 @@
         android:fitsSystemWindows="true">
 
 
-        <EditText
+        <com.jonasgerdes.stoppelmap.widget.ExtendedEditText
             android:id="@+id/search"
             style="@style/Widget.EditText.Rounded"
             android:layout_width="0dp"
