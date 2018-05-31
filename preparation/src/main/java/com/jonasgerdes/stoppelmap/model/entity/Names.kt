@@ -56,7 +56,7 @@ fun getNameForItem(item: String) = when (item) {
     "game_darts" -> "Dart"
     "game_can_knockdown" -> "Dosenwerfen"
     "game_duck_pond" -> "Ententeich"
-    "game_pull_strings" -> "Fändenziehen"
+    "game_pull_strings" -> "Fädenziehen"
     "game_football" -> "Fußball"
     "game_claw_crane" -> "Greifarm"
     "game_high_striker" -> "Hau-den-Lukas"
