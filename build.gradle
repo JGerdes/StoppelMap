@@ -2,22 +2,21 @@
 
 buildscript {
 
-    ext.kotlin_version = '1.1.51'
+    ext.kotlin_version = '1.2.41'
     ext.support_version = '27.1.1'
     ext.room_version = '1.1.0-rc1'
     ext.arch_version = '1.1.0'
     ext.mapbox_version = '5.4.1'
+    ext.rxjava_version = '2.1.7'
+    ext.rxkotlin_version = '2.2.0'
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha14'
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha15'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
@@ -25,6 +24,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
         maven {
             url "https://mvn.jonasgerdes.com/"
         }

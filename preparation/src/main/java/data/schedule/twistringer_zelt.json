@@ -1,0 +1,86 @@
+{
+  "events": [
+    {
+      "uuid": "twistringer_zelt_do_eroeffnung_mit_dj_tommy",
+      "name": "Eröffnung mit DJ Tommy",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 18:00:00",
+      "locationUuid": "twistringer_zelt",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Tommy"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "twistringer_zelt_fr_party_mit_dj_tommy",
+      "name": "Party mit DJ Tommy",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 21:00:00",
+      "locationUuid": "twistringer_zelt",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Tommy"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "twistringer_zelt_sa_party_mit_dj_tommy",
+      "name": "Party mit DJ Tommy",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 21:00:00",
+      "locationUuid": "twistringer_zelt",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Tommy"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "twistringer_zelt_so_kinderschminken",
+      "name": "Kinderschminken",
+      "type": 2,
+      "day": 3,
+      "start": "2016-08-14 14:00:00",
+      "locationUuid": "twistringer_zelt",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": [
+        "Für Kinder"
+      ]
+    },
+    {
+      "uuid": "twistringer_zelt_mo_party_mit_dj_tommy",
+      "name": "Party mit DJ Tommy",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 10:00:00",
+      "locationUuid": "twistringer_zelt",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Tommy"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "twistringer_zelt_di_familientag",
+      "name": "Familientag",
+      "type": 2,
+      "day": 5,
+      "start": "2016-08-16 15:00:00",
+      "locationUuid": "twistringer_zelt",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}

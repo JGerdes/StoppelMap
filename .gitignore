@@ -49,3 +49,7 @@ _sandbox
 .externalNativeBuild
 
 captures/
+
+
+# project related
+*.db

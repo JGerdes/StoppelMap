@@ -114,15 +114,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Jansen",
                 "operator": "Jansen",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -166,7 +166,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Thelen",
-                "spit_roast": "yes"
+                "item_spit_roast": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -202,7 +202,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Sindermann",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -237,7 +237,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Stratmann"
             },
             "geometry": {
@@ -467,7 +467,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Maus"
             },
             "geometry": {
@@ -516,7 +516,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Lüdtke",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -552,7 +552,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Wimmert",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -627,7 +627,7 @@
                 "name": "Alkoholfreies Zelt",
                 "operator": "Kath. Frauenbund",
                 "pictures": "alkoholfrei_header_01.webp:header:Jonas Gerdes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -685,7 +685,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "machine": "yes",
+                "game_machine": "yes",
                 "operator": "Thelen"
             },
             "geometry": {
@@ -756,7 +756,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Severit",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -825,7 +825,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Marx"
             },
             "geometry": {
@@ -1195,7 +1195,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "chinese": "yes",
+                "item_chinese": "yes",
                 "operator": "Stratmann"
             },
             "geometry": {
@@ -1231,9 +1231,9 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "chinese": "yes",
+                "item_chinese": "yes",
                 "operator": "Wimmert",
-                "spit_roast": "no"
+                "item_spit_roast": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -1268,7 +1268,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Wilken"
             },
             "geometry": {
@@ -1303,15 +1303,15 @@
             "type": "Feature",
             "properties": {
                 "alias": "Holla die Waldfee",
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "no",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Holla",
                 "operator": "Heyng",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -1420,7 +1420,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Barber",
-                "salmon": "yes"
+                "item_salmon": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -1710,7 +1710,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Sindermann"
             },
             "geometry": {
@@ -1746,7 +1746,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Nives"
             },
             "geometry": {
@@ -1818,7 +1818,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "can_knockdown": "yes",
+                "game_can_knockdown": "yes",
                 "operator": "Bossle"
             },
             "geometry": {
@@ -1854,7 +1854,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "mushrooms": "yes",
+                "item_mushrooms": "yes",
                 "operator": "Sindermann,R."
             },
             "geometry": {
@@ -1922,15 +1922,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "no",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Fala-Treff",
                 "pictures": "fala_treff_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2034,7 +2034,7 @@
             "properties": {
                 "priority": 1,
                 "building": "restroom",
-                "disabled": "yes",
+                "accessible": "yes",
                 "men": "yes",
                 "operator": "Keese",
                 "women": "yes"
@@ -2143,17 +2143,17 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 4,
                 "building": "bar",
-                "cocktails": "no",
+                "item_cocktails": "no",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Kühlings Niedersachsenhalle",
                 "operator": "Kühling",
                 "pictures": "kuehling_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2250,7 +2250,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Wendler"
             },
             "geometry": {
@@ -2320,10 +2320,10 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "cotton_Candy": "yes",
-                "gingerbread": "yes",
+                "item_cotton_Candy": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Landwermann",
-                "waffle": "yes"
+                "item_waffle": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2429,7 +2429,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "cheese": "yes",
+                "item_cheese": "yes",
                 "operator": "Pläser"
             },
             "geometry": {
@@ -2465,7 +2465,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "lottery": "yes",
+                "game_lottery": "yes",
                 "name": "Las Vegas",
                 "operator": "Osthold, jr."
             },
@@ -2502,7 +2502,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "cotton_Candy": "yes",
+                "item_cotton_Candy": "yes",
                 "operator": "Vorwieger"
             },
             "geometry": {
@@ -2648,16 +2648,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Hansekogge",
                 "operator": "Neuhaus-Sonnenberg",
                 "pictures": "hanse_kogge_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2764,7 +2764,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Kronlage"
             },
             "geometry": {
@@ -2835,7 +2835,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Risse",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2993,7 +2993,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "can_knockdown": "yes",
+                "game_can_knockdown": "yes",
                 "operator": "Meyer, H"
             },
             "geometry": {
@@ -3029,7 +3029,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "name": "Eispalast",
                 "operator": "Langenscheidt"
             },
@@ -3064,7 +3064,7 @@
         {
             "type": "Feature",
             "properties": {
-                "archery": "yes",
+                "game_archery": "yes",
                 "priority": 1,
                 "building": "game-stall",
                 "name": "Hercules",
@@ -3120,15 +3120,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Fischer",
                 "operator": "Fischer",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3179,7 +3179,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Oeltjen"
             },
             "geometry": {
@@ -3328,10 +3328,10 @@
         {
             "type": "Feature",
             "properties": {
-                "backery": "yes",
+                "item_backery": "yes",
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "no",
+                "item_gingerbread": "no",
                 "operator": "Duchert"
             },
             "geometry": {
@@ -3477,7 +3477,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Meyer",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3512,7 +3512,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Maus"
             },
             "geometry": {
@@ -3549,7 +3549,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Puhl",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3619,15 +3619,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Borgerding",
                 "operator": "Borgerding",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3662,7 +3662,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "machine": "yes",
+                "game_machine": "yes",
                 "operator": "Bögeholz"
             },
             "geometry": {
@@ -3753,7 +3753,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Oberschelp",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3860,7 +3860,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Thölking UG"
             },
             "geometry": {
@@ -3897,7 +3897,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Meyer",
-                "pretzel": "yes"
+                "item_pretzel": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3932,10 +3932,10 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
-                "gyros": "yes",
-                "sausauge": "yes"
+                "item_currywurst": "yes",
+                "item_fries": "yes",
+                "item_gyros": "yes",
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3969,14 +3969,14 @@
             "type": "Feature",
             "properties": {
                 "alias": "Meyerei",
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Meyers Pony Bar",
                 "operator": "Meyer, M",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4082,7 +4082,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "name": "Backfischrutsche",
                 "operator": "Jipp"
             },
@@ -4120,7 +4120,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Genius",
-                "potato_fritter": "yes"
+                "item_potato_fritter": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4155,7 +4155,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Häsler"
             },
             "geometry": {
@@ -4225,16 +4225,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Die 2 Dinklager",
                 "operator": "Susen/Jordan",
                 "pictures": "die2dinklager_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4269,7 +4269,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "chocolate_fruits": "yes",
+                "item_chocolate_fruits": "yes",
                 "operator": "Müller, D."
             },
             "geometry": {
@@ -4327,7 +4327,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "high_striker": "yes",
+                "game_high_striker": "yes",
                 "operator": "Heinen"
             },
             "geometry": {
@@ -4363,7 +4363,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "chinese": "yes",
+                "item_chinese": "yes",
                 "operator": "Stratmann"
             },
             "geometry": {
@@ -4433,7 +4433,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Scheele"
             },
             "geometry": {
@@ -4577,15 +4577,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
                 "isBar": "yes",
                 "name": "Beneke",
                 "operator": "Beneke",
                 "shots": "no",
-                "softdrins": "yes",
-                "spit_roast": "yes"
+                "item_softdrinks": "yes",
+                "item_spit_roast": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4656,7 +4656,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Steiger"
             },
             "geometry": {
@@ -4726,15 +4726,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Suing-K",
                 "operator": "Suing-K",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4770,7 +4770,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Osthold, M",
-                "pull_strings": "yes"
+                "game_pull_strings": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -5036,7 +5036,7 @@
             "properties": {
                 "priority": 1,
                 "building": "restroom",
-                "disabled": "yes",
+                "accessible": "yes",
                 "women": "no"
             },
             "geometry": {
@@ -5072,7 +5072,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "can_knockdown": "yes",
+                "game_can_knockdown": "yes",
                 "operator": "Müller"
             },
             "geometry": {
@@ -5145,8 +5145,8 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Tolisch",
-                "pizza": "no",
-                "tarte_flambee": "yes"
+                "item_pizza": "no",
+                "item_tarte_flambee": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -5181,7 +5181,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Ahrens"
             },
             "geometry": {
@@ -5558,7 +5558,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Reif- M."
             },
             "geometry": {
@@ -5886,7 +5886,7 @@
         {
             "type": "Feature",
             "properties": {
-                "backery": "yes",
+                "item_backery": "yes",
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Brunke"
@@ -5960,7 +5960,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Elsässer"
             },
             "geometry": {
@@ -6087,16 +6087,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Party-Park",
                 "operator": "von Döllen/Hake",
                 "pictures": "partypark_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6190,7 +6190,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "lottery": "yes",
+                "game_lottery": "yes",
                 "operator": "Meyer"
             },
             "geometry": {
@@ -6227,7 +6227,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Strohmann",
-                "pretzel": "yes"
+                "item_pretzel": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6299,7 +6299,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Fortmann"
             },
             "geometry": {
@@ -6372,7 +6372,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "chinese": "yes",
+                "item_chinese": "yes",
                 "operator": "Barber"
             },
             "geometry": {
@@ -6518,11 +6518,11 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "cotton_Candy": "yes",
-                "gingerbread": "yes",
+                "item_cotton_Candy": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Welte",
-                "roasted_almonds": "yes",
-                "waffle": "yes"
+                "item_roasted_almonds": "yes",
+                "item_waffle": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6628,10 +6628,10 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "operator": "Heinen",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6666,12 +6666,12 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fish": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fish": "yes",
+                "item_fries": "yes",
                 "operator": "Trumpf",
-                "salmon": "no",
-                "sausauge": "yes"
+                "item_salmon": "no",
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6738,15 +6738,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "isBar": "yes",
                 "name": "Bokern",
                 "operator": "Bokern",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6781,7 +6781,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Laffontin"
             },
             "geometry": {
@@ -6816,16 +6816,16 @@
             "type": "Feature",
             "properties": {
                 "alias": "Luttener Zelt",
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Pickers",
                 "operator": "Surmann",
                 "pictures": "pickers_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6860,7 +6860,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "can_knockdown": "yes",
+                "game_can_knockdown": "yes",
                 "operator": "Bruder"
             },
             "geometry": {
@@ -6932,9 +6932,9 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "can_knockdown": "yes",
+                "game_can_knockdown": "yes",
                 "operator": "Beine",
-                "skee_ball": "no"
+                "game_skee_ball": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7147,12 +7147,12 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "cotton_Candy": "yes",
-                "gingerbread": "yes",
+                "item_cotton_Candy": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Böker",
-                "roasted_almonds": "yes",
-                "waffle": "yes",
-                "wine_gums": "no"
+                "item_roasted_almonds": "yes",
+                "item_waffle": "yes",
+                "item_wine_gums": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7188,7 +7188,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Schmidt",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7224,7 +7224,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Plaeser",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7257,15 +7257,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Elmendorffburg",
                 "operator": "Elmendorff",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7301,7 +7301,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Müller",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7485,7 +7485,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fries": "yes",
+                "item_fries": "yes",
                 "operator": "Robrahn"
             },
             "geometry": {
@@ -7556,7 +7556,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Tönnies",
-                "spit_roast": "yes"
+                "item_spit_roast": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7663,18 +7663,18 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "isBar": "yes",
                 "isTent": "yes",
                 "name": "Schinderhannes",
                 "operator": "Schinderhannes",
-                "sausauge": "yes",
-                "softdrins": "yes",
-                "steak": "yes",
+                "item_sausauge": "yes",
+                "item_softdrinks": "yes",
+                "item_steak": "yes",
                 "pictures": "schinderhannes_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
@@ -7791,16 +7791,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "isBar": "yes",
                 "name": "Ostermann",
                 "operator": "Ostermann, J.",
-                "sausauge": "yes",
-                "softdrins": "yes",
+                "item_sausauge": "yes",
+                "item_softdrinks": "yes",
                 "pictures": "ostermann_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
@@ -7837,7 +7837,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Wimmert, D.",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7873,7 +7873,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Lemon",
-                "skee_ball": "yes"
+                "game_skee_ball": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7940,16 +7940,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 4,
                 "building": "bar",
-                "cocktails": "no",
+                "item_cocktails": "no",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Beckmanns alter Dorfplatz",
                 "operator": "Beckmann",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -8016,7 +8016,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Schmidt"
             },
             "geometry": {
@@ -8053,7 +8053,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Böker",
-                "poffertje": "yes"
+                "item_poffertje": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -8116,7 +8116,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Friedrich",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -8225,7 +8225,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Westendorf",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -8260,7 +8260,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Laffonfin, W."
             },
             "geometry": {
@@ -8418,14 +8418,14 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Ellert",
                 "operator": "Ellert",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -8550,7 +8550,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "football": "yes",
+                "game_football": "yes",
                 "operator": "Heinen"
             },
             "geometry": {
@@ -8586,7 +8586,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "mushrooms": "yes",
+                "item_mushrooms": "yes",
                 "operator": "Fick"
             },
             "geometry": {
@@ -8622,7 +8622,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "mushrooms": "yes",
+                "item_mushrooms": "yes",
                 "operator": "Leimberger"
             },
             "geometry": {
@@ -8692,16 +8692,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Treffpunkt",
                 "operator": "von Husen",
                 "pictures": "treffpunkt_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -8736,7 +8736,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Dziebel/Parpalioni"
             },
             "geometry": {
@@ -8772,7 +8772,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Hirsch-M."
             },
             "geometry": {
@@ -8879,7 +8879,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Wimmert",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9019,8 +9019,8 @@
         {
             "type": "Feature",
             "properties": {
-                "beacon": "yes",
-                "bread": "yes",
+                "item_beacon": "yes",
+                "item_bread": "yes",
                 "priority": 1,
                 "building": "food-stall"
             },
@@ -9093,7 +9093,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Hönemann"
             },
             "geometry": {
@@ -9130,7 +9130,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Dietrich",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9168,7 +9168,7 @@
                 "name": "Alt Berlin",
                 "operator": "Wegener",
                 "shots": "yes",
-                "softdrinks": "no"
+                "item_softdrinks": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9272,15 +9272,15 @@
         {
             "type": "Feature",
             "properties": {
-                "broccoli": "yes",
+                "item_broccoli": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "corn": "yes",
-                "fries": "yes",
-                "mushrooms": "yes",
+                "item_corn": "yes",
+                "item_fries": "yes",
+                "item_mushrooms": "yes",
                 "operator": "Bökern, Jun.",
-                "pasta": "no",
-                "sausauge": "no"
+                "item_pasta": "no",
+                "item_sausauge": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9350,7 +9350,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Osthold",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9604,9 +9604,9 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Stratmann",
-                "roasted_almonds": "no"
+                "item_roasted_almonds": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9641,8 +9641,8 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
-                "mushrooms": "no",
+                "item_fish": "yes",
+                "item_mushrooms": "no",
                 "operator": "Lemoine"
             },
             "geometry": {
@@ -9678,10 +9678,10 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "operator": "Lübke, T",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9716,10 +9716,10 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "operator": "Meyer",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9752,16 +9752,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
-                "cocktails": "no",
+                "item_cocktails": "no",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Kaponier",
                 "operator": "Kaponier",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9796,7 +9796,7 @@
             "properties": {
                 "priority": 1,
                 "building": "restroom",
-                "disabled": "yes",
+                "accessible": "yes",
                 "operator": "Hartwig"
             },
             "geometry": {
@@ -9848,17 +9848,17 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "isBar": "yes",
                 "name": "Bokern",
                 "operator": "Bokern",
-                "pizza": "no",
-                "sausauge": "yes",
-                "softdrins": "yes"
+                "item_pizza": "no",
+                "item_sausauge": "yes",
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9891,20 +9891,21 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 4,
                 "building": "building",
-                "fried_egg": "yes",
-                "fried_potatoes": "yes",
-                "fries": "yes",
+                "item_fried_egg": "yes",
+                "item_fried_potatoes": "yes",
+                "item_fries": "yes",
                 "isBar": "yes",
-                "longdrinks": "yes",
-                "name": "Schmedes",
+                "item_longdrinks": "yes",
                 "operator": "Schmedes",
+                "name": "Zum Kuhstall",
+                "alias": "Schmedes",
                 "pictures": "schmedes_header_01.webp:header:Jonas Gerdes",
-                "sausauge": "yes",
+                "item_sausauge": "yes",
                 "shots": "yes",
-                "softdrins": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9993,10 +9994,10 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "cotton_Candy": "no",
-                "gingerbread": "yes",
+                "item_cotton_Candy": "no",
+                "item_gingerbread": "yes",
                 "operator": "Oberschelp",
-                "roasted_almonds": "no"
+                "item_roasted_almonds": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10138,7 +10139,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Meyer, M",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10265,7 +10266,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Müller, R.",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10370,7 +10371,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "machine": "yes",
+                "game_machine": "yes",
                 "operator": "Cornelius"
             },
             "geometry": {
@@ -10406,10 +10407,10 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "operator": "Fischer",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10444,7 +10445,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Tillmanm"
             },
             "geometry": {
@@ -10478,7 +10479,7 @@
         {
             "type": "Feature",
             "properties": {
-                "bonbons": "yes",
+                "item_bonbons": "yes",
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Lange"
@@ -10514,16 +10515,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Overmeyer",
                 "operator": "Overmeyer",
                 "pictures": "overmeyer_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10740,18 +10741,18 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "isBar": "yes",
                 "isTent": "no",
                 "name": "Trumpf",
                 "operator": "Trumpf",
-                "sausauge": "yes",
+                "item_sausauge": "yes",
                 "shots": "no",
-                "softdrins": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10943,7 +10944,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Fischer",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -11039,7 +11040,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Marxm, M-W."
             },
             "geometry": {
@@ -11075,7 +11076,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Thölking"
             },
             "geometry": {
@@ -11109,16 +11110,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Brackmann",
                 "operator": "Brackmann",
                 "pictures": "brackmann_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -11167,7 +11168,7 @@
         {
             "type": "Feature",
             "properties": {
-                "archery": "yes",
+                "game_archery": "yes",
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Winter,W."
@@ -11229,7 +11230,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Wimmer, E.",
-                "spit_roast": "yes"
+                "item_spit_roast": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -11264,7 +11265,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "horse_race": "yes",
+                "game_horse_race": "yes",
                 "name": "Kentucky-Derby",
                 "operator": "Parpadioni,W."
             },
@@ -11479,7 +11480,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Mc Emde"
             },
             "geometry": {
@@ -11575,7 +11576,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Holldinderbäumer",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -11610,7 +11611,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Osthold, U."
             },
             "geometry": {
@@ -11644,16 +11645,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 3,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Schäfers Festzelt No.1",
                 "operator": "Schäfers",
                 "pictures": "schaefers_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -11688,7 +11689,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "lottery": "yes",
+                "game_lottery": "yes",
                 "name": "Silbermine",
                 "operator": "Kellner"
             },
@@ -11914,12 +11915,12 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
-                "hamburger": "no",
-                "hotdog": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
+                "item_hamburger": "no",
+                "item_hotdog": "yes",
                 "operator": "Böker",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12062,7 +12063,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Meyer, J"
             },
             "geometry": {
@@ -12100,7 +12101,7 @@
                 "building": "food-stall",
                 "name": "Pizza alá Hansi",
                 "operator": "Steinbauer, M.",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12136,7 +12137,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Scheider",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12203,16 +12204,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "no",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Heitmann's Biergarten",
                 "operator": "Heitmann",
                 "pictures": "heitmann_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12304,7 +12305,7 @@
             "properties": {
                 "priority": 1,
                 "building": "restroom",
-                "disabled": "yes",
+                "accessible": "yes",
                 "men": "yes",
                 "operator": "Keese",
                 "women": "yes"
@@ -12361,7 +12362,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "machine": "yes",
+                "game_machine": "yes",
                 "operator": "Fehrensen"
             },
             "geometry": {
@@ -12398,7 +12399,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Dietrich",
-                "pretzel": "yes"
+                "item_pretzel": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12431,12 +12432,12 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "name": "Tepe Pferdestall",
                 "operator": "Tepe",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12545,7 +12546,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Hönemann"
             },
             "geometry": {
@@ -12769,7 +12770,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "cheese": "yes",
+                "item_cheese": "yes",
                 "operator": "Ricke-Dannemann"
             },
             "geometry": {
@@ -12836,7 +12837,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Braun E."
             },
             "geometry": {
@@ -12872,7 +12873,7 @@
             "properties": {
                 "priority": 1,
                 "building": "bar",
-                "cocktails": "yes",
+                "item_cocktails": "yes",
                 "operator": "Böticher"
             },
             "geometry": {
@@ -12942,15 +12943,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Western Saloon",
                 "operator": "Laffontie",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12983,7 +12984,7 @@
         {
             "type": "Feature",
             "properties": {
-                "backery": "yes",
+                "item_backery": "yes",
                 "priority": 1,
                 "building": "candy-stall",
                 "name": "Backstube",
@@ -13022,7 +13023,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Scheele"
             },
             "geometry": {
@@ -13075,7 +13076,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Fischer",
-                "pull_strings": "yes"
+                "game_pull_strings": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -13144,7 +13145,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Fertig"
             },
             "geometry": {
@@ -13250,7 +13251,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Wendler"
             },
             "geometry": {
@@ -13284,11 +13285,11 @@
         {
             "type": "Feature",
             "properties": {
-                "bonbons": "yes",
+                "item_bonbons": "yes",
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Cardinale",
-                "wine_gums": "no"
+                "item_wine_gums": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -13359,7 +13360,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "mushrooms": "yes",
+                "item_mushrooms": "yes",
                 "operator": "Brandt"
             },
             "geometry": {
@@ -13393,16 +13394,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 3,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Twistringer Zelt",
                 "operator": "Brackmann",
                 "pictures": "twistringer_zelt_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -13437,7 +13438,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "churros": "yes",
+                "item_churros": "yes",
                 "operator": "Pläser, jr."
             },
             "geometry": {
@@ -13509,7 +13510,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Heidtmann"
             },
             "geometry": {
@@ -13598,7 +13599,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "mushrooms": "yes",
+                "item_mushrooms": "yes",
                 "operator": "Osthold"
             },
             "geometry": {
@@ -13855,7 +13856,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "chinese": "yes",
+                "item_chinese": "yes",
                 "operator": "Weber-Langenscheidt"
             },
             "geometry": {
@@ -13893,7 +13894,7 @@
                 "building": "game-stall",
                 "name": "High Chaparal Shooting Saloon",
                 "operator": "Schmidt",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -13928,8 +13929,8 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hamburger": "yes",
-                "hotdog": "yes",
+                "item_hamburger": "yes",
+                "item_hotdog": "yes",
                 "operator": "Winter, T."
             },
             "geometry": {
@@ -13963,16 +13964,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Zur neuen Meyerei",
                 "operator": "Meyer",
                 "pictures": "zur_neuen_meyerei_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14025,16 +14026,16 @@
             "type": "Feature",
             "properties": {
                 "alias": "Lohner Zelt;Echt Stoppelmarkt!",
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Stratmann",
                 "operator": "Stratmann",
                 "pictures": "stratmann_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14279,21 +14280,21 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 4,
                 "building": "building",
-                "currywurst": "yes",
-                "fried_egg": "no",
-                "fried_potatoes": "no",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fried_egg": "no",
+                "item_fried_potatoes": "no",
+                "item_fries": "yes",
                 "isBar": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Oldehus",
                 "operator": "Oldehus",
                 "pictures": "oldehus_header_01.webp:header:Jonas Gerdes",
-                "sausauge": "yes",
+                "item_sausauge": "yes",
                 "shots": "yes",
-                "softdrins": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14333,7 +14334,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Schack",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14439,7 +14440,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Meyer-L."
             },
             "geometry": {
@@ -14475,7 +14476,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Thölking"
             },
             "geometry": {
@@ -14545,7 +14546,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Inhester"
             },
             "geometry": {
@@ -14671,7 +14672,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Cornelius",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14707,7 +14708,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Laffontien",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14740,7 +14741,7 @@
         {
             "type": "Feature",
             "properties": {
-                "broccoli": "yes",
+                "item_broccoli": "yes",
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Vorlop"
@@ -14813,16 +14814,16 @@
             "type": "Feature",
             "properties": {
                 "alias": "Das Partyschiff",
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 3,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Die Flotte",
                 "operator": "Kröger",
                 "pictures": "flotte_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14865,7 +14866,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "lottery": "yes",
+                "game_lottery": "yes",
                 "operator": "Enders"
             },
             "geometry": {
@@ -14902,7 +14903,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Becker",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14938,7 +14939,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Fehrensen",
-                "potatoes": "yes"
+                "item_potatoes": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15008,7 +15009,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Büttner",
-                "poffertje": "yes"
+                "item_poffertje": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15261,9 +15262,9 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "fish": "yes",
+                "item_fish": "yes",
                 "operator": "Welte",
-                "salmon": "no"
+                "item_salmon": "no"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15299,7 +15300,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Krause",
-                "wine_gums": "yes"
+                "item_wine_gums": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15335,7 +15336,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Winter",
-                "steak": "yes"
+                "item_steak": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15404,16 +15405,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Banane",
                 "operator": "Blömer",
                 "pictures": "banane_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15452,7 +15453,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "machine": "yes",
+                "game_machine": "yes",
                 "operator": "Thelen"
             },
             "geometry": {
@@ -15523,7 +15524,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Balshüsemann",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15736,7 +15737,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "lottery": "yes",
+                "game_lottery": "yes",
                 "name": "Hollywood Casino",
                 "operator": "Stummer, M."
             },
@@ -15773,10 +15774,10 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "operator": "Bergsma",
-                "sausauge": "yes"
+                "item_sausauge": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15811,7 +15812,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Landwermann"
             },
             "geometry": {
@@ -15845,16 +15846,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Grieshop",
                 "operator": "Grieshop",
                 "pictures": "grieshop_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15897,7 +15898,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "lottery": "yes",
+                "game_lottery": "yes",
                 "operator": "Kleuser"
             },
             "geometry": {
@@ -15993,7 +15994,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "gingerbread": "yes",
+                "item_gingerbread": "yes",
                 "operator": "Kronlage"
             },
             "geometry": {
@@ -16086,7 +16087,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "chinese": "yes",
+                "item_chinese": "yes",
                 "operator": "Maatz-M."
             },
             "geometry": {
@@ -16195,7 +16196,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Meyer",
-                "slush": "yes"
+                "item_slush": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16274,7 +16275,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "darts": "yes",
+                "game_darts": "yes",
                 "operator": "Keep"
             },
             "geometry": {
@@ -16311,7 +16312,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Haverkamp",
-                "waffle": "yes"
+                "item_waffle": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16347,7 +16348,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Winter, W.",
-                "potato_fritter": "yes"
+                "item_potato_fritter": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16383,7 +16384,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Wimmert",
-                "pretzel": "yes"
+                "item_pretzel": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16450,16 +16451,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Blömer's",
                 "operator": "Blömer",
                 "pictures": "bloemers_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16560,7 +16561,7 @@
             "properties": {
                 "priority": 1,
                 "building": "restroom",
-                "disabled": "yes",
+                "accessible": "yes",
                 "men": "yes",
                 "operator": "Keese",
                 "women": "yes"
@@ -16599,7 +16600,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Osthold",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16635,7 +16636,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Landsmann",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16669,17 +16670,17 @@
             "type": "Feature",
             "properties": {
                 "alias": "Wunderbar;Wuba",
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 3,
                 "building": "bar",
-                "cocktails": "yes",
+                "item_cocktails": "yes",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Waldhof",
                 "operator": "Grieshop",
                 "pictures": "wunderbar_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16730,7 +16731,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "duck_pond": "yes",
+                "game_duck_pond": "yes",
                 "operator": "Meyer, M"
             },
             "geometry": {
@@ -16766,7 +16767,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Laffontin"
             },
             "geometry": {
@@ -16941,7 +16942,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Schmidt",
-                "pizza": "yes"
+                "item_pizza": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16977,7 +16978,7 @@
                 "priority": 1,
                 "building": "game-stall",
                 "operator": "Parpalionie, S.",
-                "shooting": "yes"
+                "game_shooting": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17012,7 +17013,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "hotdog": "yes",
+                "item_hotdog": "yes",
                 "operator": "Marx"
             },
             "geometry": {
@@ -17082,16 +17083,16 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Zauberbar",
                 "operator": "v.Döllen/Hohnhorst",
                 "pictures": "zauberbar_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17126,7 +17127,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "operator": "Schindler"
             },
             "geometry": {
@@ -17198,7 +17199,7 @@
             "properties": {
                 "priority": 1,
                 "building": "game-stall",
-                "horse_race": "yes",
+                "game_horse_race": "yes",
                 "name": "Crazy Camel",
                 "operator": "v.d. Gathen"
             },
@@ -17269,7 +17270,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Langenscheidt"
             },
             "geometry": {
@@ -17413,7 +17414,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "ice_cream": "yes",
+                "item_ice_cream": "yes",
                 "operator": "Coldewey"
             },
             "geometry": {
@@ -17485,7 +17486,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "gyros": "yes",
+                "item_gyros": "yes",
                 "operator": "Heinen"
             },
             "geometry": {
@@ -17519,17 +17520,17 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "description": "Seit 90 Jahren ein traditionsreicher Treffpunkt für Jung und Alt inmitten des Marktes. Bei Linnemann kann man im geselligen Kreis bei einem frisch gezapften Bier alte Bekannte treffen und neue Freunde kennen lernen. Hier trifft man sich zum Schnacken und Klönen. Das Publikum ist kontaktfreudig und man ist sofort in jeder Runde willkommen.|Linnemann",
                 "isTent": "no",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Anton Linnemann",
                 "operator": "Linnemann",
                 "pictures": "linnemann_header_01.webp:header:Linnemann",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17565,7 +17566,7 @@
                 "priority": 1,
                 "building": "bar",
                 "operator": "Ernst Rent",
-                "punchbowle": "yes"
+                "item_punchbowle": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17638,7 +17639,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Heitmann",
-                "slush": "yes"
+                "item_slush": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17708,7 +17709,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Osthold,J.",
-                "pretzel": "yes"
+                "item_pretzel": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18019,7 +18020,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "frozen_yogurt": "yes",
+                "item_frozen_yogurt": "yes",
                 "operator": "Robrahn"
             },
             "geometry": {
@@ -18055,7 +18056,7 @@
             "properties": {
                 "priority": 1,
                 "building": "candy-stall",
-                "crepe": "yes",
+                "item_crepe": "yes",
                 "name": "Eifelturm",
                 "operator": "Winter"
             },
@@ -18090,15 +18091,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
-                "cocktails": "yes",
-                "longdrinks": "yes",
+                "item_cocktails": "yes",
+                "item_longdrinks": "yes",
                 "name": "Winter",
                 "operator": "Winter",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18133,7 +18134,7 @@
             "properties": {
                 "priority": 1,
                 "building": "restroom",
-                "disabled": "yes",
+                "accessible": "yes",
                 "men": "yes",
                 "operator": "Keese",
                 "women": "yes"
@@ -18169,17 +18170,17 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
-                "cocktails": "no",
+                "item_cocktails": "no",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Hogeback",
                 "operator": "Muhle",
                 "pictures": "hogeback_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18308,19 +18309,19 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "building",
-                "fried_egg": "no",
-                "fried_potatoes": "no",
-                "fries": "no",
+                "item_fried_egg": "no",
+                "item_fried_potatoes": "no",
+                "item_fries": "no",
                 "isBar": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Upe-Doal",
                 "operator": "Upe-Doal",
-                "sausauge": "no",
+                "item_sausauge": "no",
                 "shots": "yes",
-                "softdrins": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18355,7 +18356,7 @@
             "properties": {
                 "priority": 1,
                 "building": "food-stall",
-                "churros": "yes",
+                "item_churros": "yes",
                 "name": "Churros Factory",
                 "operator": "Kreuz"
             },
@@ -18390,17 +18391,17 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
-                "hotdog": "no",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
+                "item_hotdog": "no",
                 "isBar": "yes",
                 "operator": "Bergsma",
-                "sausauge": "yes",
+                "item_sausauge": "yes",
                 "shots": "no",
-                "softdrins": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18473,7 +18474,7 @@
                 "priority": 1,
                 "building": "candy-stall",
                 "operator": "Dietrich",
-                "roasted_almonds": "yes"
+                "item_roasted_almonds": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18506,18 +18507,18 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "food-stall",
-                "currywurst": "yes",
-                "fries": "yes",
+                "item_currywurst": "yes",
+                "item_fries": "yes",
                 "isBar": "yes",
                 "isTent": "yes",
                 "name": "Landwehr",
                 "operator": "Landwehr",
-                "sausauge": "yes",
-                "softdrins": "yes",
-                "steak": "yes"
+                "item_sausauge": "yes",
+                "item_softdrinks": "yes",
+                "item_steak": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18562,15 +18563,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Büssing",
                 "operator": "Büssing",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18603,15 +18604,15 @@
         {
             "type": "Feature",
             "properties": {
-                "beer": "yes",
+                "item_beer": "yes",
                 "priority": 1,
                 "building": "bar",
                 "isTent": "yes",
-                "longdrinks": "yes",
+                "item_longdrinks": "yes",
                 "name": "Stierbräu",
                 "pictures": "stierbraeu_header_01.webp:header:Jonas Gerdes",
                 "shots": "yes",
-                "softdrinks": "yes"
+                "item_softdrinks": "yes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18718,7 +18719,7 @@
                 "priority": 1,
                 "building": "food-stall",
                 "operator": "Ahrend",
-                "pasta": "yes"
+                "item_pasta": "yes"
             },
             "geometry": {
                 "type": "Polygon",
