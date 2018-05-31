@@ -1,0 +1,84 @@
+{
+  "events": [
+    {
+      "uuid": "die_2_dinklager_do_party_mit_dj_joscha",
+      "name": "Party mit DJ Joscha",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 19:00:00",
+      "locationUuid": "die_2_dinklager",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Joscha"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "die_2_dinklager_fr_party_mit_dj_joscha",
+      "name": "Party mit DJ Joscha",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 19:00:00",
+      "locationUuid": "die_2_dinklager",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Joscha"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "die_2_dinklager_fr_beck_s_night",
+      "name": "Beck´s Night",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 19:01:00",
+      "locationUuid": "die_2_dinklager",
+      "description": "Alle Beck's Biere 1,50€",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "die_2_dinklager_sa_party_mit_dj_joscha",
+      "name": "Party mit DJ Joscha",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 19:00:00",
+      "locationUuid": "die_2_dinklager",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Joscha"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "die_2_dinklager_mo_party_mit_dj_joscha",
+      "name": "Party mit DJ Joscha",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 19:00:00",
+      "locationUuid": "die_2_dinklager",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Joscha"
+      ],
+      "tags": []
+    },
+    {
+      "uuid": "die_2_dinklager_di_inventur",
+      "name": "Inventur",
+      "type": 2,
+      "day": 5,
+      "start": "2016-08-16 13:00:00",
+      "locationUuid": "die_2_dinklager",
+      "description": "Bier 0,2l & Softdrinks 1,- €",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}

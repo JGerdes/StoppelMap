@@ -1,0 +1,104 @@
+{
+  "events": [
+    {
+      "uuid": "brackmann_do_stoppelmarkt_16_opening",
+      "name": "Stoppelmarkt'16-Opening",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 18:01:00",
+      "locationUuid": "brackmann",
+      "description": "Happy-Hour: Brackmann’s SchokoMinza (2cl) zum Probierpreis von 1,- EUR",
+      "facebookUrl": "https://www.facebook.com/events/969297999790980/",
+      "artists": [
+        "Herr Mehl (House am See, B)",
+        "Michi Pop (WhiteGuys)"
+      ],
+      "tags": [
+        "House",
+        "Charts"
+      ]
+    },
+    {
+      "uuid": "brackmann_fr_bacardi_night",
+      "name": "BACARDÍ-Night",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 20:00:00",
+      "locationUuid": "brackmann",
+      "description": "ClubSounds und coole BACARDÍ-Drinks",
+      "facebookUrl": "https://www.facebook.com/events/969297999790980/",
+      "artists": [
+        "Chrissi D (Pacha, Fashion Week, D)",
+        "Herr Mehl (House am See, B)"
+      ],
+      "tags": [
+        "House",
+        "Electro"
+      ]
+    },
+    {
+      "uuid": "brackmann_sa_stoppelmarkt_clubbing",
+      "name": "Stoppelmarkt-Clubbing",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 20:00:00",
+      "locationUuid": "brackmann",
+      "description": "Best of House-Classics!\nHappy-Hour:   BACARDÍ-Cola / BACARDÍ RAZZ-Sprite (bis 24 Uhr) nur 2,- EUR",
+      "facebookUrl": "https://www.facebook.com/events/969297999790980/",
+      "artists": [
+        "Miss Kiyami (Ruhr in Love, BI)",
+        "Herr Mehl (House am See, B)",
+        "Heavy Sax (Bacardi B-Live Tour)"
+      ],
+      "tags": [
+        "House",
+        "Live"
+      ]
+    },
+    {
+      "uuid": "brackmann_so_cocktailtag",
+      "name": "Cocktailtag",
+      "type": 2,
+      "day": 3,
+      "start": "2016-08-14 11:00:00",
+      "locationUuid": "brackmann",
+      "description": "Happy-Hour: Cocktails (bis 24 Uhr) nur 4,50 EUR\nHappy-Hour: BOMBAY SAPPHIRE Gin & Tonic (bis 24 Uhr) nur 4,50 EUR",
+      "facebookUrl": "https://www.facebook.com/events/969297999790980/",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "brackmann_mo_monday_night",
+      "name": "MonDay & Night",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 10:00:00",
+      "locationUuid": "brackmann",
+      "description": "",
+      "facebookUrl": "https://www.facebook.com/events/969297999790980/",
+      "artists": [
+        "Marcapasos & Janosh (Dusted Decks, L)",
+        "Herr Mehl (House am See, B)",
+        "Michi Pop (White Guys, VEC)"
+      ],
+      "tags": [
+        "House",
+        "Deep House",
+        "Electro",
+        "Charts"
+      ]
+    },
+    {
+      "uuid": "brackmann_di_familientag",
+      "name": "Familientag",
+      "type": 2,
+      "day": 5,
+      "start": "2016-08-16 15:00:00",
+      "locationUuid": "brackmann",
+      "description": "Familienfreundliche Preise: Bis 18:00 Uhr kosten alle Softdrinks (Cola, Mineralwasser, etc.) nur 1,- EUR!",
+      "facebookUrl": "https://www.facebook.com/events/969297999790980/",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}

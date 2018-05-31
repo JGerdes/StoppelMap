@@ -1,0 +1,40 @@
+{
+  "taxis": [
+    {
+      "name": "Kolbeck",
+      "phone": "+4944414444",
+      "phoneText": "4444",
+      "location": "Vechta/Lohne"
+    },
+    {
+      "name": "Taxi Ruf Vechta",
+      "phone": "+4944414040",
+      "phoneText": "4040",
+      "location": "Vechta"
+    },
+    {
+      "name": "City Taxi Vechta",
+      "phone": "+4944417788",
+      "phoneText": "7788",
+      "location": "Vechta"
+    },
+    {
+      "name": "Yellow Cab Vechta",
+      "phone": "+498005055200",
+      "phoneText": "0800/5055200",
+      "location": "Vechta"
+    },
+    {
+      "name": "Taxi-Boning KG",
+      "phone": "+4944442626",
+      "phoneText": "2626",
+      "location": "Goldenstedt"
+    },
+    {
+      "name": "Visbeker Taxiruf",
+      "phone": "+4944458262",
+      "phoneText": "8262",
+      "location": "Visbek"
+    }
+  ]
+}
