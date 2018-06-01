@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap
 
 import android.app.Application
+import com.jonasgerdes.stoppelmap.model.entity.StoppelMapDatabase
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.services.android.telemetry.MapboxTelemetry
 
@@ -13,6 +14,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initMapbox()
+        StoppelMapDatabase.init(this)
     }
 
     private fun initMapbox() {
