@@ -5,6 +5,8 @@ import android.util.Log
 import com.jonasgerdes.mvi.Flow
 import com.jonasgerdes.mvi.interpret
 import com.jonasgerdes.mvi.process
+import com.jonasgerdes.stoppelmap.domain.processor.MapHighlighter
+import com.jonasgerdes.stoppelmap.domain.MainEvent.*
 import com.jonasgerdes.stoppelmap.domain.processor.MapSearchToggle
 import io.reactivex.subjects.PublishSubject
 
@@ -19,13 +21,15 @@ class MainViewModel : ViewModel() {
 
     private val flow = Flow<MainEvent, MainState>(interpret {
         when (it) {
-            is MainEvent.MapEvent.SearchFieldClickedEvent
+            is MapEvent.SearchFieldClickedEvent
             -> MapSearchToggle.Action(true)
-            is MainEvent.MapEvent.OnBackPressEvent
+            is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
+            is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.StallSelect(it.slug)
         }
     }, process(
-            MapSearchToggle()
+            MapSearchToggle(),
+            MapHighlighter()
     ),
             MainReducer(),
             { Log.d("Flow", it) }
