@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model.entity
 
 import android.arch.persistence.room.*
+import io.reactivex.Maybe
 
 @Entity(tableName = "stalls")
 data class Stall(
@@ -8,9 +9,9 @@ data class Stall(
         val slug: String,
         val type: String,
         @ColumnInfo(name = "center_lon")
-        val centerLon: Double? = null,
+        val centerLon: Double,
         @ColumnInfo(name = "center_lat")
-        val centerLat: Double? = null,
+        val centerLat: Double,
         val name: String? = null,
         val operator: String? = null,
         val description: String? = null,

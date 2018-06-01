@@ -10,5 +10,6 @@ sealed class MainEvent : BaseEvent {
     sealed class MapEvent : MainEvent() {
         class SearchFieldClickedEvent: MapEvent()
         class OnBackPressEvent : MapEvent()
+        class MapItemClickedEvent(val slug:String) : MapEvent()
     }
 }

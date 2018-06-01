@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -19,13 +20,14 @@ import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorCompat
-import com.jonasgerdes.stoppelmap.util.toggleLayoutFullscreen
+import com.jonasgerdes.stoppelmap.util.mapbox.clicks
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Predicate
+import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.map_fragment.*
 
 /**
@@ -40,12 +42,12 @@ class MapFragment : Fragment() {
 
     private lateinit var flowDisposable: Disposable
     private val state = BehaviorRelay.create<MainState>()
+    private val map = BehaviorSubject.create<MapboxMap>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.map_fragment, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.d("MapFragment", "onViewCreated()")
@@ -56,6 +58,7 @@ class MapFragment : Fragment() {
         mapView.getMapAsync {
             initMapUi(it)
             initMapCamera(it)
+            map.onNext(it)
         }
         search.isFocusableInTouchMode = true
         mapView.isFocusable = true
@@ -89,6 +92,7 @@ class MapFragment : Fragment() {
                 }
     }
 
+    @SuppressLint("CheckResult")
     private fun bindEvents() {
         search.clicks()
                 .map { MainEvent.MapEvent.SearchFieldClickedEvent() }
@@ -103,14 +107,36 @@ class MapFragment : Fragment() {
                 .map { MainEvent.MapEvent.OnBackPressEvent() }
                 .subscribe(viewModel.events)
 
-        search.editorActionEvents(Predicate { !(it.keyEvent()?.action == KeyEvent.ACTION_UP
-                && it.keyEvent()?.keyCode == KeyEvent.KEYCODE_BACK) })
+        search.editorActionEvents(Predicate {
+            !(it.keyEvent()?.action == KeyEvent.ACTION_UP
+                    && it.keyEvent()?.keyCode == KeyEvent.KEYCODE_BACK)
+        })
                 .map { MainEvent.MapEvent.OnBackPressEvent() }
                 .subscribe(viewModel.events)
+
+        map.subscribe { map ->
+            map.clicks().map { map.projection.toScreenLocation(it) }
+                    .map { map.queryRenderedFeatures(it, "stalls") }
+                    .doOnNext { Log.d("MapFragment", "${it.size}") }
+                    .filter { it.size > 0 }
+                    .map {
+                        it.let {
+                            it.sortBy { it.getNumberProperty("priority")?.toInt() ?: 0 }
+                            it.first()
+                        }
+                    }.map { it.getStringProperty("slug") }
+                    .map {
+                        MainEvent.MapEvent.MapItemClickedEvent(it)
+                    }.subscribe(viewModel.events)
+        }
     }
 
+    @SuppressLint("CheckResult")
     private fun render(state: Observable<MainState.MapState>) {
         renderSearch(activity, view, state)
+        map.subscribe {
+            renderHighlight(activity, view, it, state)
+        }
     }
 
 
