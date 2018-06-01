@@ -2,8 +2,9 @@ package com.jonasgerdes.stoppelmap
 
 import android.app.Application
 import com.jonasgerdes.stoppelmap.model.entity.StoppelMapDatabase
+import com.mapbox.android.telemetry.MapboxTelemetry
+import com.mapbox.android.telemetry.TelemetryEnabler
 import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.services.android.telemetry.MapboxTelemetry
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -19,7 +20,7 @@ class App : Application() {
 
     private fun initMapbox() {
         Mapbox.getInstance(applicationContext, "pk.NOT_USED")
-        MapboxTelemetry.getInstance().isTelemetryEnabled = false
+        TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.DISABLED)
     }
 
 }
