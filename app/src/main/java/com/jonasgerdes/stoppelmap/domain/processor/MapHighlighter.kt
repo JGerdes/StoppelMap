@@ -3,19 +3,20 @@ package com.jonasgerdes.stoppelmap.domain.processor
 import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
-import com.jonasgerdes.stoppelmap.model.entity.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.entity.Stall
+import com.jonasgerdes.stoppelmap.model.entity.StoppelMapDatabase
 import io.reactivex.Observable
 
 class MapHighlighter
     : BaseOperation<MapHighlighter.Action>(Action::class.java) {
 
-    val db by lazy { StoppelMapDatabase.database }
+    private val database:StoppelMapDatabase by inject()
 
     override fun execute(action: Observable<Action>):
             Observable<BaseResult> = action.map {
         when (it) {
-            is Action.StallSelect -> db.stalls().getBySlug(it.slug)
+            is Action.StallSelect -> database.stalls().getBySlug(it.slug)
                     ?.let { Result.HighlightSingleStall(it) }
                     ?: Result.NoHighlight
         }
