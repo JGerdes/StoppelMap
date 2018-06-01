@@ -8,8 +8,11 @@ import java.io.File
 object Settings {
     val assets = File("app/src/main/assets/")
     val data = File("preparation/src/main/java/data")
+
     val database = File(assets, "stoppelmap.db")
-    val geoJson = File(assets, "stoma-2017.geojson")
+    val geoOutput = File(assets, "stoppelmap.geojson")
+
+    val geoInput = File("$data/map", "stoma-2017.geojson")
     val scheduleDir = File(data, "schedule")
     val busDir = File("$data/transportation", "bus")
 }
@@ -24,7 +27,7 @@ fun main(args: Array<String>) {
 
     val db = openSQLite(Settings.database)!!
     Data().apply {
-        parseGeoJson(Settings.geoJson)
+        parseGeoJson(Settings.geoInput, Settings.geoOutput)
         parseEventSchedule(Settings.scheduleDir.listFiles()
                 .asList()
                 .filter { it.extension == "json" }
