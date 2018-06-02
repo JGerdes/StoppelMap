@@ -5,13 +5,13 @@ import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.entity.Stall
-import com.jonasgerdes.stoppelmap.model.entity.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import io.reactivex.Observable
 
 class MapHighlighter
     : BaseOperation<MapHighlighter.Action>(Action::class.java) {
 
-    private val database:StoppelMapDatabase by inject()
+    private val database: StoppelMapDatabase by inject()
 
     override fun execute(action: Observable<Action>):
             Observable<BaseResult> = action.map {
