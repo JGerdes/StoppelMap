@@ -10,6 +10,7 @@ buildscript {
     ext.rxjava_version = '2.1.7'
     ext.rxkotlin_version = '2.2.0'
     ext.rxbinding_version = '2.1.1'
+    ext.retrofit_version = '2.3.0'
 
     repositories {
         google()

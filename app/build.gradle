@@ -59,6 +59,13 @@ dependencies {
     implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxbinding_version"
     implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxbinding_version"
 
+    //network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:3.10.0"
+    implementation "com.google.code.gson:gson:2.8.4"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+
     //map
     implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$mapbox_version"
 
