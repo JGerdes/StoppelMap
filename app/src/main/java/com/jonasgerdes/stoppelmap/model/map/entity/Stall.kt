@@ -1,7 +1,6 @@
-package com.jonasgerdes.stoppelmap.model.entity
+package com.jonasgerdes.stoppelmap.model.map.entity
 
 import android.arch.persistence.room.*
-import io.reactivex.Maybe
 
 @Entity(tableName = "stalls")
 data class Stall(

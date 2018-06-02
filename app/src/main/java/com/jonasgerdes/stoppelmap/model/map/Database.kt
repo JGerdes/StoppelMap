@@ -1,9 +1,11 @@
-package com.jonasgerdes.stoppelmap.model.entity
+package com.jonasgerdes.stoppelmap.model.map
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
+import com.jonasgerdes.stoppelmap.model.entity.Stall
+import com.jonasgerdes.stoppelmap.model.entity.StallDao
 import com.jonasgerdes.stoppelmap.util.copyToFile
 import java.io.File
 

@@ -1,8 +1,7 @@
 package com.jonasgerdes.stoppelmap
 
 import android.app.Application
-import com.jonasgerdes.stoppelmap.model.entity.StoppelMapDatabase
-import com.mapbox.android.telemetry.MapboxTelemetry
+import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.mapbox.android.telemetry.TelemetryEnabler
 import com.mapbox.mapboxsdk.Mapbox
 
