@@ -7,7 +7,10 @@ import com.jonasgerdes.mvi.interpret
 import com.jonasgerdes.mvi.process
 import com.jonasgerdes.stoppelmap.domain.processor.MapHighlighter
 import com.jonasgerdes.stoppelmap.domain.MainEvent.*
+import com.jonasgerdes.stoppelmap.domain.processor.FeedItemLoader
+import com.jonasgerdes.stoppelmap.domain.processor.FeedProvider
 import com.jonasgerdes.stoppelmap.domain.processor.MapSearchToggle
+import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
 /**
@@ -19,17 +22,25 @@ class MainViewModel : ViewModel() {
     val events = PublishSubject.create<MainEvent>()
     val state by lazy { flow.start(events) }
 
+    init {
+        //Observable.just(MainEvent.InitialEvent()).subscribe(events)
+    }
+
     private val flow = Flow<MainEvent, MainState>(interpret {
         when (it) {
+            is MainEvent.InitialEvent -> FeedProvider.Action()
             is MapEvent.SearchFieldClickedEvent
             -> MapSearchToggle.Action(true)
             is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
             is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.StallSelect(it.slug)
+            is MainEvent.FeedEvent.ReloadTriggered -> FeedItemLoader.Action() and FeedProvider.Action()
         }
     }, process(
             MapSearchToggle(),
-            MapHighlighter()
+            MapHighlighter(),
+            FeedProvider(),
+            FeedItemLoader()
     ),
             MainReducer(),
             { Log.d("Flow", it) }
