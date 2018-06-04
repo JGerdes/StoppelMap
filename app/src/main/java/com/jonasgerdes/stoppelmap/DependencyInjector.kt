@@ -5,6 +5,7 @@ package com.jonasgerdes.stoppelmap
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.network.StoppelMapApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -39,6 +40,10 @@ private fun <T> getInstanceFor(clazz: Class<T>) = when (clazz) {
 
     StoppelMapDatabase::class.java -> instance {
         StoppelMapDatabase.database
+    }
+
+    DynamicDatabase::class.java -> instance {
+        DynamicDatabase.database
     }
 
     Gson::class.java -> singleton {

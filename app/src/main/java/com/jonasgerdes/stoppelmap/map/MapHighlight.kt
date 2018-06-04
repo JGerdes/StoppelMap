@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap.map
 
-import com.jonasgerdes.stoppelmap.model.entity.Stall
+import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 
 sealed class MapHighlight {
     data class Center(

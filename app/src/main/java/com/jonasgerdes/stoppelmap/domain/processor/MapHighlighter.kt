@@ -4,8 +4,8 @@ import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
-import com.jonasgerdes.stoppelmap.model.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import io.reactivex.Observable
 
 class MapHighlighter
