@@ -8,6 +8,7 @@ import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.network.StoppelMapApi
 import okhttp3.OkHttpClient
+import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -54,7 +55,9 @@ private fun <T> getInstanceFor(clazz: Class<T>) = when (clazz) {
         val okhttp = OkHttpClient.Builder().build()
         Retrofit.Builder()
                 .client(okhttp)
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd")
+                        .create()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl("https://app.stoppelmap.de/")
                 .build()

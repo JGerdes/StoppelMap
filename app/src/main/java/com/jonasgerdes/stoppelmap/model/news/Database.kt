@@ -1,9 +1,8 @@
 package com.jonasgerdes.stoppelmap.model.news
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.*
 import android.content.Context
+import com.jonasgerdes.stoppelmap.model.Converters
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.entity.StallDao
 import com.jonasgerdes.stoppelmap.util.copyToFile
@@ -13,6 +12,7 @@ import java.io.File
     FeedItem::class,
     FeedImage::class
 ], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class DynamicDatabase : RoomDatabase() {
     abstract fun feedItems(): FeedItemDao
     abstract fun feedImages(): FeedImageDao

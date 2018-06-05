@@ -7,6 +7,9 @@
     <color name="light_text_primary">#000000</color>
     <color name="light_text_secondary">#80000000</color>
 
+    <color name="dark_text_primary">#eeeeee</color>
+    <color name="dark_text_secondary">#9e9e9e</color>
+
     <color name="light_window_background">#f4f4f4</color>
     <color name="light_input_background">#fafafa</color>
 

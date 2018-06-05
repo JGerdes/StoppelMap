@@ -21,7 +21,6 @@ class FeedProvider
             Observable<BaseResult> = action.switchMap {
         database.feedItemsWithImages()
                 .getAll()
-                .doOnNext{ Log.d("FeedProvider", "got ${it.size} entries")}
                 .map { Result(it) }
                 .toObservable()
     }

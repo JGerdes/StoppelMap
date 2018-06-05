@@ -8,17 +8,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.rxbinding2.support.v4.widget.refreshes
 import com.jakewharton.rxbinding2.view.clicks
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.domain.MainEvent
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
+import com.jonasgerdes.stoppelmap.feed.FeedItemAdapter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.event_list_fragment.*
 import kotlinx.android.synthetic.main.feed_fragment.*
 import java.util.concurrent.TimeUnit
 
@@ -32,6 +32,8 @@ class FeedFragment : Fragment() {
         ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
+    private val adapter = FeedItemAdapter()
+
     private lateinit var flowDisposable: Disposable
     private val state = BehaviorRelay.create<MainState>()
 
@@ -41,13 +43,15 @@ class FeedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        feed.adapter = adapter
         bindEvents()
         render(state.map { it.feed }
                 .observeOn(AndroidSchedulers.mainThread()))
     }
 
+    @SuppressLint("CheckResult")
     private fun bindEvents() {
-        view!!.clicks()
+        swipeRefresh.refreshes()
                 .map { MainEvent.FeedEvent.ReloadTriggered() }
                 .subscribe(viewModel.events)
     }
@@ -56,10 +60,12 @@ class FeedFragment : Fragment() {
     private fun render(feed: Observable<MainState.FeedState>) {
         feed.map { it.newsItems }
                 .distinctUntilChanged().subscribe {
-                    data.text = it.map {
-                        "[${it.feedItem?.publishDate ?: "null"}]${it.feedItem?.title
-                                ?: "null"} (${it.feedItem?.url ?: "null"})"
-                    }.joinToString("\n")
+                    adapter.submitList(it)
+                }
+        feed.map { it.isLoading }
+                .distinctUntilChanged()
+                .subscribe {
+                    swipeRefresh.isRefreshing = it
                 }
     }
 
