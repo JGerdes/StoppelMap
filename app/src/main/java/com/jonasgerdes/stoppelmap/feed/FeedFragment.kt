@@ -17,8 +17,10 @@ import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.event_list_fragment.*
 import kotlinx.android.synthetic.main.feed_fragment.*
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -45,7 +47,6 @@ class FeedFragment : Fragment() {
     }
 
     private fun bindEvents() {
-        //Observable.just(MainEvent.InitialEvent()).subscribe(viewModel.events)
         view!!.clicks()
                 .map { MainEvent.FeedEvent.ReloadTriggered() }
                 .subscribe(viewModel.events)

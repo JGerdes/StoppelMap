@@ -12,6 +12,7 @@ import com.jonasgerdes.stoppelmap.domain.processor.FeedProvider
 import com.jonasgerdes.stoppelmap.domain.processor.MapSearchToggle
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -20,10 +21,11 @@ import io.reactivex.subjects.PublishSubject
 class MainViewModel : ViewModel() {
 
     val events = PublishSubject.create<MainEvent>()
-    val state by lazy { flow.start(events) }
-
-    init {
-        //Observable.just(MainEvent.InitialEvent()).subscribe(events)
+    val state: Observable<MainState> by lazy {
+        Observable.just(MainEvent.InitialEvent())
+                .delay(100, TimeUnit.MILLISECONDS)
+                .subscribe(events)
+        flow.start(events)
     }
 
     private val flow = Flow<MainEvent, MainState>(interpret {
