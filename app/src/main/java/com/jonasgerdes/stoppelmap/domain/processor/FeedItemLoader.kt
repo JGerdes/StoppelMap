@@ -5,15 +5,13 @@ import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
-import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.FeedImage
 import com.jonasgerdes.stoppelmap.model.news.FeedItem
 import com.jonasgerdes.stoppelmap.model.news.FeedItem.Companion.TYPE_NEWS
-import com.jonasgerdes.stoppelmap.model.news.NewsItem
 import com.jonasgerdes.stoppelmap.model.news.network.StoppelMapApi
+import com.jonasgerdes.stoppelmap.util.toOffsetDateTime
 import io.reactivex.Observable
-import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 
 class FeedItemLoader
@@ -34,7 +32,7 @@ class FeedItemLoader
                                     type = TYPE_NEWS,
                                     title = title,
                                     subTitle = subTitle,
-                                    publishDate = publishDate,
+                                    publishDate = publishDate.toOffsetDateTime(),
                                     content = content
                             ))
                         }

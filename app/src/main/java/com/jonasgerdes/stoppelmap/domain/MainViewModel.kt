@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.domain
 
 import android.arch.lifecycle.ViewModel
 import android.util.Log
+import com.jakewharton.rxrelay2.PublishRelay
 import com.jonasgerdes.mvi.Flow
 import com.jonasgerdes.mvi.interpret
 import com.jonasgerdes.mvi.process
@@ -20,12 +21,13 @@ import java.util.concurrent.TimeUnit
  */
 class MainViewModel : ViewModel() {
 
-    val events = PublishSubject.create<MainEvent>()
+    val events = PublishRelay.create<MainEvent>()
     val state: Observable<MainState> by lazy {
+        flow.start(events)
+    }.apply {
         Observable.just(MainEvent.InitialEvent())
                 .delay(100, TimeUnit.MILLISECONDS)
                 .subscribe(events)
-        flow.start(events)
     }
 
     private val flow = Flow<MainEvent, MainState>(interpret {
@@ -36,7 +38,7 @@ class MainViewModel : ViewModel() {
             is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
             is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.StallSelect(it.slug)
-            is MainEvent.FeedEvent.ReloadTriggered -> FeedItemLoader.Action() and FeedProvider.Action()
+            is MainEvent.FeedEvent.ReloadTriggered -> FeedItemLoader.Action()
         }
     }, process(
             MapSearchToggle(),

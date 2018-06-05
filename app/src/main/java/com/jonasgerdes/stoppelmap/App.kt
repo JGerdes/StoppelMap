@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap
 
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.mapbox.android.telemetry.TelemetryEnabler
@@ -15,6 +16,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initMapbox()
+        AndroidThreeTen.init(this);
         StoppelMapDatabase.init(this)
         DynamicDatabase.init(this)
     }
