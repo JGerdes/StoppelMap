@@ -46,6 +46,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/searchResults"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            tools:listitem="@layout/map_search_result_item_single_stall"/>
+
+        <TextView
+            android:id="@+id/emptyQueryMessage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Bitte gebe etwas in die Suche ein"/>
+
+        <TextView
+            android:id="@+id/noResultMessage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="Nichts gefunden"/>
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

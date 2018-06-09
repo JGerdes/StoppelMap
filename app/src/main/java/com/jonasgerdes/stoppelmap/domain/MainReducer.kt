@@ -2,10 +2,7 @@ package com.jonasgerdes.stoppelmap.domain
 
 import com.jonasgerdes.mvi.BaseReducer
 import com.jonasgerdes.mvi.BaseResult
-import com.jonasgerdes.stoppelmap.domain.processor.FeedItemLoader
-import com.jonasgerdes.stoppelmap.domain.processor.FeedProvider
-import com.jonasgerdes.stoppelmap.domain.processor.MapHighlighter
-import com.jonasgerdes.stoppelmap.domain.processor.MapSearchToggle
+import com.jonasgerdes.stoppelmap.domain.processor.*
 import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.map.highlight
 
@@ -17,7 +14,11 @@ class MainReducer : BaseReducer<MainState> {
     override fun idle() = MainState(
             MainState.MapState(
                     searchExtended = false,
-                    highlight = MapHighlight.None
+                    highlight = MapHighlight.None,
+                    results = emptyList(),
+                    isPending = false,
+                    showEmptyQueryMessage = false,
+                    showNoResultMessage = false
             ),
             MainState.FeedState(
                     newsItems = emptyList(),
@@ -35,6 +36,26 @@ class MainReducer : BaseReducer<MainState> {
                 -> copy(map = map.copy(highlight = result.stall.highlight()))
                 is MapHighlighter.Result.NoHighlight
                 -> copy(map = map.copy(highlight = MapHighlight.None))
+                is MapSearch.Result.Pending
+                -> copy(map = map.copy(results = emptyList(),
+                        isPending = true,
+                        showEmptyQueryMessage = false,
+                        showNoResultMessage = false))
+                is MapSearch.Result.EmptyQuery
+                -> copy(map = map.copy(results = emptyList(),
+                        isPending = false,
+                        showEmptyQueryMessage = true,
+                        showNoResultMessage = false))
+                is MapSearch.Result.NoResults
+                -> copy(map = map.copy(results = emptyList(),
+                        isPending = false,
+                        showEmptyQueryMessage = false,
+                        showNoResultMessage = true))
+                is MapSearch.Result.Success
+                -> copy(map = map.copy(results = result.results,
+                        isPending = false,
+                        showEmptyQueryMessage = false,
+                        showNoResultMessage = false))
 
                 is FeedProvider.Result -> copy(feed = feed.copy(newsItems = result.news))
                 is FeedItemLoader.Result.Pending -> copy(feed = feed.copy(isLoading = true, errorMessage = null))
