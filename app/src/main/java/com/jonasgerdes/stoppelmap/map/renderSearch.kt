@@ -18,13 +18,30 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.map_fragment.view.*
 import java.util.concurrent.TimeUnit
 
-@SuppressLint("InlinedApi")
-fun renderSearch(activity: Activity?, view: View?, state: Observable<MainState.MapState>) {
+@SuppressLint("InlinedApi", "CheckResult")
+fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
+                 state: Observable<MainState.MapState>) {
+
+    state.map { it.results }
+            .subscribe { adapter.submitList(it) }
+
+
     val searchExtendedChanged = state
             .map { it.searchExtended }
             .distinctUntilChanged()
 
     view?.apply {
+        state.map { it.showNoResultMessage }
+                .distinctUntilChanged()
+                .subscribe {
+                    noResultMessage.visibility = if (it) View.VISIBLE else View.GONE
+                }
+
+        state.map { it.showEmptyQueryMessage }
+                .distinctUntilChanged()
+                .subscribe {
+                    emptyQueryMessage.visibility = if (it) View.VISIBLE else View.GONE
+                }
         searchExtendedChanged
                 .filter { !it }
                 .subscribe {

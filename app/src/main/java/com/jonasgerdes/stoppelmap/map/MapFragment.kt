@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.clicks
 import com.jakewharton.rxbinding2.view.focusChanges
 import com.jakewharton.rxbinding2.widget.editorActionEvents
+import com.jakewharton.rxbinding2.widget.textChanges
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.Settings
@@ -29,6 +30,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Predicate
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.map_fragment.*
+import java.util.concurrent.TimeUnit
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -43,6 +45,8 @@ class MapFragment : Fragment() {
     private lateinit var flowDisposable: Disposable
     private val state = BehaviorRelay.create<MainState>()
     private val map = BehaviorSubject.create<MapboxMap>()
+
+    private val searchResultAdapter = SearchResultAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -64,6 +68,8 @@ class MapFragment : Fragment() {
         mapView.isFocusable = true
         mapView.isFocusableInTouchMode = true
         search.clearFocus()
+
+        searchResults.adapter = searchResultAdapter
 
         bindEvents()
 
@@ -114,6 +120,11 @@ class MapFragment : Fragment() {
                 .map { MainEvent.MapEvent.OnBackPressEvent() }
                 .subscribe(viewModel.events)
 
+        search.textChanges()
+                .distinctUntilChanged()
+                .debounce(100, TimeUnit.MILLISECONDS)
+                .map { MainEvent.MapEvent.QueryEntered(it.toString()) }
+
         map.subscribe { map ->
             map.clicks().map { map.projection.toScreenLocation(it) }
                     .map { map.queryRenderedFeatures(it, "stalls") }
@@ -133,7 +144,7 @@ class MapFragment : Fragment() {
 
     @SuppressLint("CheckResult")
     private fun render(state: Observable<MainState.MapState>) {
-        renderSearch(activity, view, state)
+        renderSearch(activity, view, searchResultAdapter, state)
         map.subscribe {
             renderHighlight(activity, view, it, state)
         }

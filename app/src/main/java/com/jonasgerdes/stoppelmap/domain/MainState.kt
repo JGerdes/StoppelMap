@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.domain
 
 import com.jonasgerdes.stoppelmap.map.MapHighlight
+import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
 import com.jonasgerdes.stoppelmap.model.news.NewsItem
 
@@ -14,7 +15,11 @@ data class MainState(
 ) {
     data class MapState(
             val searchExtended: Boolean,
-            val highlight: MapHighlight
+            val highlight: MapHighlight,
+            val results: List<SearchResult>,
+            val showEmptyQueryMessage: Boolean,
+            val showNoResultMessage: Boolean,
+            val isPending: Boolean
     )
 
     data class FeedState(

@@ -11,7 +11,8 @@ sealed class MainEvent : BaseEvent {
     sealed class MapEvent : MainEvent() {
         class SearchFieldClickedEvent : MapEvent()
         class OnBackPressEvent : MapEvent()
-        class MapItemClickedEvent(val slug: String) : MapEvent()
+        data class MapItemClickedEvent(val slug: String) : MapEvent()
+        data class QueryEntered(val query: String) : MapEvent()
     }
     sealed class FeedEvent: MainEvent() {
         class ReloadTriggered : FeedEvent()
