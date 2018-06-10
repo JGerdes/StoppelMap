@@ -5,7 +5,9 @@ import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
+import android.support.annotation.AnimRes
 import android.support.constraint.ConstraintLayout
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import com.jonasgerdes.stoppelmap.R
@@ -13,6 +15,7 @@ import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.util.delayIf
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorFromTheme
+import com.jonasgerdes.stoppelmap.util.log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.map_fragment.view.*
@@ -31,17 +34,24 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
             .distinctUntilChanged()
 
     view?.apply {
-        state.map { it.showNoResultMessage }
+        state.map { it.showNoResultMessage && it.searchExtended }
                 .distinctUntilChanged()
                 .subscribe {
                     noResultMessage.visibility = if (it) View.VISIBLE else View.GONE
                 }
 
-        state.map { it.showEmptyQueryMessage }
+        state.map { it.showEmptyQueryMessage && it.searchExtended }
                 .distinctUntilChanged()
                 .subscribe {
                     emptyQueryMessage.visibility = if (it) View.VISIBLE else View.GONE
                 }
+
+        state.map { !it.showEmptyQueryMessage && it.searchExtended }
+                .distinctUntilChanged()
+                .subscribe {
+                    searchResults.visibility = if (it) View.VISIBLE else View.GONE
+                }
+
         searchExtendedChanged
                 .filter { !it }
                 .subscribe {
@@ -51,12 +61,11 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
         searchExtendedChanged
                 .map { if (it) R.anim.slide_up else R.anim.slide_down }
                 .subscribe {
-                    searchBackground.startAnimation(
-                            AnimationUtils.loadAnimation(context, it).apply {
-                                duration = 200
-                                fillAfter = true
-                            }
-                    )
+                    searchBackground.startAnimation(it)
+                    //these seem to be buggy in current version of constraint layout:
+                    /*noResultMessage.startAnimation(it)
+                    emptyQueryMessage.startAnimation(it)
+                    searchResults.startAnimation(it)*/
                 }
 
         searchExtendedChanged
@@ -134,4 +143,11 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
                             }
                 }
     }
+}
+
+private fun View.startAnimation(@AnimRes animation: Int) {
+    startAnimation(AnimationUtils.loadAnimation(context, animation).apply {
+        duration = 200
+        fillAfter = true
+    })
 }

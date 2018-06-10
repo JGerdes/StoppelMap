@@ -31,7 +31,7 @@ class MainViewModel : ViewModel() {
         when (it) {
             is MainEvent.InitialEvent -> FeedProvider.Action()
             is MapEvent.SearchFieldClickedEvent
-            -> MapSearchToggle.Action(true)
+            -> MapSearchToggle.Action(true) and MapSearch.Action("")
             is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
             is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.StallSelect(it.slug)
