@@ -12,6 +12,7 @@ buildscript {
     ext.rxbinding_version = '2.1.1'
     ext.retrofit_version = '2.3.0'
     ext.glide_version = '4.6.1'
+    ext.groupie_version = '2.1.0'
 
     repositories {
         google()
