@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.os.Build
 import android.support.annotation.AnimRes
 import android.support.constraint.ConstraintLayout
@@ -12,14 +13,14 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.domain.MainState
-import com.jonasgerdes.stoppelmap.util.delayIf
-import com.jonasgerdes.stoppelmap.util.dp
-import com.jonasgerdes.stoppelmap.util.getColorFromTheme
-import com.jonasgerdes.stoppelmap.util.log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.map_fragment.view.*
 import java.util.concurrent.TimeUnit
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.view.inputmethod.InputMethodManager
+import com.jonasgerdes.stoppelmap.util.*
+
 
 @SuppressLint("InlinedApi", "CheckResult")
 fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
@@ -55,6 +56,7 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
         searchExtendedChanged
                 .filter { !it }
                 .subscribe {
+                    activity?.hideSoftkeyboard()
                     search.clearFocus()
                 }
 
