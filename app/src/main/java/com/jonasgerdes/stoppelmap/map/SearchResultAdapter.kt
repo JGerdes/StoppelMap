@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
+import android.view.View
 import android.widget.TextView
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
@@ -61,6 +62,14 @@ class SingleStallItem(override val result: SearchResult.SingleStallResult, val b
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.title.setText(result.title)
         viewHolder.itemView.background = viewHolder.itemView.context.getDrawable(background)
+        if (result.subtitle != null) {
+            viewHolder.subtitle.apply {
+                visibility = View.VISIBLE
+                setText(result.subtitle)
+            }
+        } else {
+            viewHolder.subtitle.visibility = View.GONE
+        }
     }
 }
 
