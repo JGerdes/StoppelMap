@@ -13,10 +13,15 @@
 
         <item name="android:textColorPrimary">@color/light_text_primary</item>
         <item name="android:textColorSecondary">@color/light_text_secondary</item>
+        <item name="android:textColorTertiary">@color/light_text_tertiary</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
         <item name="imageCardTitleColor">@color/dark_text_primary</item>
 
         <item name="windowBackgroundColor">@color/light_window_background</item>
         <item name="inputBackgroundColor">@color/light_input_background</item>
+
+
+        <item name="dividerColor">@color/light_divider</item>
     </style>
 
     <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">

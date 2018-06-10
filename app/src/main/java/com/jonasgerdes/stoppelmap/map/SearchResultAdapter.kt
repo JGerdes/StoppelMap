@@ -11,6 +11,7 @@ import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import io.reactivex.subjects.PublishSubject
 import com.jonasgerdes.stoppelmap.util.NoContentItem
+import com.jonasgerdes.stoppelmap.util.setStallTypeDrawable
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -61,7 +62,7 @@ class SingleStallItem(override val result: SearchResult.SingleStallResult, val b
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.title.setText(result.title)
-        viewHolder.itemView.background = viewHolder.itemView.context.getDrawable(background)
+        viewHolder.itemView.setBackgroundResource(background)
         if (result.subtitle != null) {
             viewHolder.subtitle.apply {
                 visibility = View.VISIBLE
@@ -70,6 +71,7 @@ class SingleStallItem(override val result: SearchResult.SingleStallResult, val b
         } else {
             viewHolder.subtitle.visibility = View.GONE
         }
+        viewHolder.icon.setStallTypeDrawable(result.stall.type)
     }
 }
 

@@ -3,6 +3,7 @@
     <attr name="inputBackgroundColor" format="color|reference"/>
     <attr name="windowBackgroundColor" format="color|reference"/>
     <attr name="translucentStatusBarColor" format="color|reference"/>
+    <attr name="dividerColor" format="color|reference"/>
 
     <attr name="imageCardTitleColor" format="color|reference"/>
 
