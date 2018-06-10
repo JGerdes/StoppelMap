@@ -1,10 +1,16 @@
 package com.jonasgerdes.stoppelmap.map
 
+import android.graphics.Typeface
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.util.inflate
 import kotlinx.android.synthetic.main.map_search_result_item_single_stall.view.*
@@ -35,8 +41,19 @@ class SearchResultAdapter : ListAdapter<SearchResult,
 
         class SingleStallHolder(itemView: View) : ResultHolder(itemView) {
             fun bind(result: SearchResult.SingleStallResult) {
-                itemView.title.text = result.stall.name
+                itemView.title.setText(result.title)
+
             }
         }
     }
+}
+
+
+fun TextView.setText(text: HighlightedText) {
+    val spannable = SpannableStringBuilder(text.text)
+    text.highlights.forEach {
+        spannable.setSpan(StyleSpan(Typeface.BOLD), it.start, it.end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+    }
+    setText(spannable)
 }
