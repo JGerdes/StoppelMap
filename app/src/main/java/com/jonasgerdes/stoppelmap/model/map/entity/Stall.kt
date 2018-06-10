@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap.model.map.entity
 
 import android.arch.persistence.room.*
+import io.reactivex.Flowable
+import io.reactivex.Observable
 
 @Entity(tableName = "stalls")
 data class Stall(
@@ -31,4 +33,7 @@ interface StallDao {
 
     @Query("SELECT * FROM stalls WHERE slug = :slug")
     fun getBySlug(slug: String): Stall?
+
+    @Query("SELECT stalls.* from stalls where stalls.name like :query")
+    fun searchByName(query: String): Flowable<List<Stall>>
 }

@@ -1,8 +1,11 @@
 package com.jonasgerdes.stoppelmap.domain.processor
 
+import android.util.Log
 import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
+import com.jonasgerdes.stoppelmap.inject
+import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -10,14 +13,24 @@ import io.reactivex.schedulers.Schedulers
 class MapSearch
     : BaseOperation<MapSearch.Action>(Action::class.java) {
 
+    val database: StoppelMapDatabase by inject()
+
     override fun execute(action: Observable<Action>):
             Observable<BaseResult> = action.map { it.copy(query = it.query.trim()) }
             .switchMap {
                 if (it.query.isEmpty()) {
                     Observable.just(Result.EmptyQuery())
                 } else {
-                    Observable.just(emptyList<SearchResult>())
+                    val queryParts = it.query.split(" ").map { it.trim() }
+                    val query = queryParts.joinToString("%%").let { "%$it%" }
+                    Log.d("MapSearch", query)
+                    database.stalls().searchByName(query).toObservable()
                             .subscribeOn(Schedulers.io())
+                            .map {
+                                it.map {
+                                    SearchResult.SingleStallResult(it)
+                                }
+                            }
                             .map {
                                 if (it.isEmpty()) {
                                     Result.NoResults()
