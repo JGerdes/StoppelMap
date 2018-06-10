@@ -26,6 +26,19 @@ data class Stall(
         val isForKids: Boolean = false
 )
 
+@Entity(tableName = "aliases",
+        primaryKeys = ["stall", "alias"])
+data class Alias(
+        val stall: String,
+        val alias: String
+)
+
+data class StallWithAlias(
+        @Embedded
+        val stall: Stall,
+        val alias: String
+)
+
 @Dao
 interface StallDao {
 
@@ -37,4 +50,7 @@ interface StallDao {
 
     @Query("SELECT stalls.* from stalls where stalls.name like :query")
     fun searchByName(query: String): Single<List<Stall>>
+
+    @Query("SELECT stalls.*, aliases.alias from stalls join aliases on aliases.stall = stalls.slug where aliases.alias like :query")
+    fun searchByAlias(query: String): Single<List<StallWithAlias>>
 }

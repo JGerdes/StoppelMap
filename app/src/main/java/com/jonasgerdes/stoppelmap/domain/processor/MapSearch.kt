@@ -32,8 +32,13 @@ class MapSearch
                     val queryParts = it.split(" ").map { it.trim() }
                     val query = queryParts.joinToString("%%").let { "%$it%" }
 
-                    searchStallsByName(query, queryParts)
+                    Observable.concat(
+                            searchStallsByName(query, queryParts),
+                            searchStallsByAlias(query, queryParts)
+                    ).flatMapIterable { it }
+                            .toList()
                             .map(this::createResult)
+                            .toObservable()
                             .startWith(Result.Pending())
                 }
             }
@@ -44,6 +49,18 @@ class MapSearch
                 .map {
                     it.map {
                         SearchResult.SingleStallResult(it, HighlightedText.from(it.name!!, queryParts))
+                    }
+                }.toObservable()
+    }
+
+    private fun searchStallsByAlias(query: String, queryParts: List<String>):
+            Observable<List<SearchResult.SingleStallResult>> {
+        return database.stalls().searchByAlias(query)
+                .map {
+                    it.map {
+                        SearchResult.SingleStallResult(it.stall,
+                                HighlightedText.from(it.stall.name!!),
+                                HighlightedText.from(it.alias, queryParts))
                     }
                 }.toObservable()
     }

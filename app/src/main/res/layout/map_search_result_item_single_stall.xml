@@ -9,13 +9,15 @@
     android:background="?inputBackgroundColor"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="56dp">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_margin="16dp"
+        android:tint="?android:textColorSecondary"
+        android:tintMode="src_in"
         android:src="@drawable/ic_restaurant_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,13 +27,27 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:textColor="?android:textColorPrimary"
+        app:layout_constraintVertical_chainStyle="packed"
         android:textSize="18sp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@id/subtitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Amtmannsbult" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="?android:textColorSecondary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="Amtmannsbult" />
+
 
 
 </android.support.constraint.ConstraintLayout>
