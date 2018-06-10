@@ -2,13 +2,13 @@ package com.jonasgerdes.stoppelmap.model.map.search
 
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 
-sealed class SearchResult(val id: String) {
+sealed class SearchResult(val id: String, val highlights: List<Highlight>) {
 
     data class SingleStallResult(
             val stall: Stall,
             val title: HighlightedText,
             val subtitle: HighlightedText? = null
-    ) : SearchResult(stall.slug)
+    ) : SearchResult(stall.slug, title.highlights.union(subtitle?.highlights ?: emptyList()).toList())
 
 }
 
