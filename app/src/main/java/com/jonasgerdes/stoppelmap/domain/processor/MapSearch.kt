@@ -6,6 +6,7 @@ import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -28,7 +29,7 @@ class MapSearch
                             .subscribeOn(Schedulers.io())
                             .map {
                                 it.map {
-                                    SearchResult.SingleStallResult(it)
+                                    SearchResult.SingleStallResult(it, HighlightedText.from(it.name!!, queryParts))
                                 }
                             }
                             .map {
