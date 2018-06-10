@@ -36,12 +36,17 @@ class MapSearch
                             searchStallsByName(query, queryParts),
                             searchStallsByAlias(query, queryParts)
                     ).flatMapIterable { it }
+                            .filter(this::isRelevant)
                             .toList()
                             .map(this::createResult)
                             .toObservable()
                             .startWith(Result.Pending())
                 }
             }
+
+    private fun isRelevant(result: SearchResult): Boolean {
+        return result.highlights.find { it.length > 1 || it.start == 0 } != null
+    }
 
     private fun searchStallsByName(query: String, queryParts: List<String>):
             Observable<List<SearchResult.SingleStallResult>> {
