@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.domain.processor
 
-import android.util.Log
 import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
@@ -24,7 +23,6 @@ class MapSearch
                 } else {
                     val queryParts = it.query.split(" ").map { it.trim() }
                     val query = queryParts.joinToString("%%").let { "%$it%" }
-                    Log.d("MapSearch", query)
                     database.stalls().searchByName(query).toObservable()
                             .subscribeOn(Schedulers.io())
                             .map {
