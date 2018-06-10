@@ -33,7 +33,7 @@ class MainReducer : BaseReducer<MainState> {
             return when (result) {
                 is MapSearchToggle.Result -> copy(map = map.copy(searchExtended = result.showSearch))
                 is MapHighlighter.Result.HighlightSingleStall
-                -> copy(map = map.copy(highlight = result.stall.highlight()))
+                -> copy(map = map.copy(highlight = result.stall.highlight(), searchExtended = false))
                 is MapHighlighter.Result.NoHighlight
                 -> copy(map = map.copy(highlight = MapHighlight.None))
                 is MapSearch.Result.Pending

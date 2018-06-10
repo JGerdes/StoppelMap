@@ -138,6 +138,11 @@ class MapFragment : Fragment() {
                         MainEvent.MapEvent.MapItemClickedEvent(it)
                     }.subscribe(viewModel.events)
         }
+
+        searchResultAdapter.selections
+                .map { it.id }
+                .map { MainEvent.MapEvent.MapItemClickedEvent(it) }
+                .subscribe(viewModel.events)
     }
 
     @SuppressLint("CheckResult")
