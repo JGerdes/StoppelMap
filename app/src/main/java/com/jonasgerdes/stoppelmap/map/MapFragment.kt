@@ -121,14 +121,12 @@ class MapFragment : Fragment() {
                 .subscribe(viewModel.events)
 
         search.textChanges()
-                .distinctUntilChanged()
-                .debounce(100, TimeUnit.MILLISECONDS)
                 .map { MainEvent.MapEvent.QueryEntered(it.toString()) }
+                .subscribe(viewModel.events)
 
         map.subscribe { map ->
             map.clicks().map { map.projection.toScreenLocation(it) }
                     .map { map.queryRenderedFeatures(it, "stalls") }
-                    .doOnNext { Log.d("MapFragment", "${it.size}") }
                     .filter { it.size > 0 }
                     .map {
                         it.let {
