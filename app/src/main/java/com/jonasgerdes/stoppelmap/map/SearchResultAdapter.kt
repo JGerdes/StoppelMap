@@ -1,62 +1,66 @@
 package com.jonasgerdes.stoppelmap.map
 
-import android.annotation.SuppressLint
 import android.graphics.Typeface
-import android.support.v7.recyclerview.extensions.ListAdapter
-import android.support.v7.widget.RecyclerView
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import com.jakewharton.rxbinding2.view.clicks
-import com.jakewharton.rxrelay2.PublishRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
-import com.jonasgerdes.stoppelmap.util.inflate
-import kotlinx.android.synthetic.main.map_search_result_item_single_stall.view.*
-import java.lang.IllegalArgumentException
+import io.reactivex.subjects.PublishSubject
+import com.jonasgerdes.stoppelmap.util.NoContentItem
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Section
+import com.xwray.groupie.kotlinandroidextensions.Item
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import kotlinx.android.synthetic.main.map_search_result_item_single_stall.*
 
-class SearchResultAdapter : ListAdapter<SearchResult,
-        SearchResultAdapter.ResultHolder>(SearchResult.DiffCallback) {
+class SearchResultAdapter : GroupAdapter<ViewHolder>() {
 
-    private val selectionRelay = PublishRelay.create<SearchResult>()
-    val selections
-        get() = selectionRelay.hide()
+    val searchResultSection = Section().apply {
+        setHeader(NoContentItem(R.layout.map_search_result_item_header))
+    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultHolder {
-        return parent.inflate(viewType).let {
-            when (viewType) {
-                R.layout.map_search_result_item_single_stall -> ResultHolder.SingleStallHolder(it)
-                else -> throw IllegalArgumentException("invalid view type $viewType")
+    init {
+        add(searchResultSection)
+        setOnItemClickListener { item, _ ->
+            (item as? ResultItem<*>)?.let { selectionSubject.onNext(it.result) }
+        }
+    }
+
+    private val selectionSubject = PublishSubject.create<SearchResult>()
+
+    fun selections() = selectionSubject.hide()
+
+
+    fun submitList(results: List<SearchResult>) {
+        searchResultSection.update(results.mapIndexed { index, result ->
+            val background = when (true) {
+                results.size == 1 -> R.drawable.bg_rounded
+                index == 0 -> R.drawable.bg_rounded_top
+                index == results.lastIndex -> R.drawable.bg_rounded_bottom
+                else -> R.drawable.bg_card_no_rounds
             }
-        }
-    }
-
-    override fun getItemViewType(position: Int) = when (getItem(position)) {
-        is SearchResult.SingleStallResult -> R.layout.map_search_result_item_single_stall
-    }
-
-    @SuppressLint("CheckResult")
-    override fun onBindViewHolder(holder: ResultHolder, position: Int) {
-        when (holder) {
-            is ResultHolder.SingleStallHolder -> holder.bind(getItem(position) as SearchResult.SingleStallResult)
-        }
-        holder.itemView.clicks()
-                .map { getItem(holder.adapterPosition) }
-                .subscribe(selectionRelay)
-    }
-
-    sealed class ResultHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        class SingleStallHolder(itemView: View) : ResultHolder(itemView) {
-            fun bind(result: SearchResult.SingleStallResult) {
-                itemView.title.setText(result.title)
-
+            when (result) {
+                is SearchResult.SingleStallResult -> SingleStallItem(result, background)
             }
-        }
+        })
+    }
+
+}
+
+sealed class ResultItem<T : SearchResult> : Item() {
+    abstract val result: T
+}
+
+class SingleStallItem(override val result: SearchResult.SingleStallResult, val background: Int)
+    : ResultItem<SearchResult.SingleStallResult>() {
+    override fun getLayout() = R.layout.map_search_result_item_single_stall
+
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+        viewHolder.title.setText(result.title)
+        viewHolder.itemView.background = viewHolder.itemView.context.getDrawable(background)
     }
 }
 

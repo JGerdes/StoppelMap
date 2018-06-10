@@ -37,7 +37,7 @@ class MainReducer : BaseReducer<MainState> {
                 is MapHighlighter.Result.NoHighlight
                 -> copy(map = map.copy(highlight = MapHighlight.None))
                 is MapSearch.Result.Pending
-                -> copy(map = map.copy(results = emptyList(),
+                -> copy(map = map.copy(
                         isPending = true,
                         showEmptyQueryMessage = false,
                         showNoResultMessage = false))

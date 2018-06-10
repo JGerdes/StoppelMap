@@ -30,6 +30,10 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -56,11 +60,14 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
     implementation "com.jakewharton.rxrelay2:rxrelay:2.0.0"
 
-    //rx view bindings
+    //rx view bindings / view helpers
     implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxbinding_version"
     implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxbinding_version"
     implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxbinding_version"
     implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxbinding_version"
+
+    implementation "com.xwray:groupie:$groupie_version"
+    implementation "com.xwray:groupie-kotlin-android-extensions:$groupie_version"
 
     //network
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -71,6 +78,8 @@ dependencies {
 
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+
 
     //map
     implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$mapbox_version"

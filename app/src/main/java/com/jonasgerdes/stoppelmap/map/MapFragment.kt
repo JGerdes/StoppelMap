@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -24,6 +25,7 @@ import com.jonasgerdes.stoppelmap.util.getColorCompat
 import com.jonasgerdes.stoppelmap.util.mapbox.clicks
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.xwray.groupie.GroupAdapter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -70,6 +72,7 @@ class MapFragment : Fragment() {
         search.clearFocus()
 
         searchResults.adapter = searchResultAdapter
+        searchResults.itemAnimator = null
 
         bindEvents()
 
@@ -139,7 +142,7 @@ class MapFragment : Fragment() {
                     }.subscribe(viewModel.events)
         }
 
-        searchResultAdapter.selections
+        searchResultAdapter.selections()
                 .map { it.id }
                 .map { MainEvent.MapEvent.MapItemClickedEvent(it) }
                 .subscribe(viewModel.events)
