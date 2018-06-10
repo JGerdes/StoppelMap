@@ -14,34 +14,50 @@ class MapSearch
     : BaseOperation<MapSearch.Action>(Action::class.java) {
 
     val database: StoppelMapDatabase by inject()
+    var lastQuery = ""
 
     override fun execute(action: Observable<Action>):
-            Observable<BaseResult> = action.map { it.copy(query = it.query.trim()) }
+            Observable<BaseResult> = action.subscribeOn(Schedulers.io())
+            .map {
+                when (it) {
+                    is Action.Search -> it.query.trim()
+                    is Action.Refresh -> lastQuery
+                }
+            }
+            .doOnNext { lastQuery = it }
             .switchMap {
-                if (it.query.isEmpty()) {
+                if (it.isEmpty()) {
                     Observable.just(Result.EmptyQuery())
                 } else {
-                    val queryParts = it.query.split(" ").map { it.trim() }
+                    val queryParts = it.split(" ").map { it.trim() }
                     val query = queryParts.joinToString("%%").let { "%$it%" }
-                    database.stalls().searchByName(query).toObservable()
-                            .subscribeOn(Schedulers.io())
-                            .map {
-                                it.map {
-                                    SearchResult.SingleStallResult(it, HighlightedText.from(it.name!!, queryParts))
-                                }
-                            }
-                            .map {
-                                if (it.isEmpty()) {
-                                    Result.NoResults()
-                                } else {
-                                    Result.Success(it)
-                                }
-                            }
+
+                    searchStallsByName(query, queryParts)
+                            .map(this::createResult)
                             .startWith(Result.Pending())
                 }
             }
 
-    data class Action(val query: String) : BaseAction
+    private fun searchStallsByName(query: String, queryParts: List<String>):
+            Observable<List<SearchResult.SingleStallResult>> {
+        return database.stalls().searchByName(query)
+                .map {
+                    it.map {
+                        SearchResult.SingleStallResult(it, HighlightedText.from(it.name!!, queryParts))
+                    }
+                }.toObservable()
+    }
+
+    private fun createResult(results: List<SearchResult>) = if (results.isEmpty()) {
+        Result.NoResults()
+    } else {
+        Result.Success(results)
+    }
+
+    sealed class Action : BaseAction {
+        data class Search(val query: String) : Action()
+        class Refresh : Action()
+    }
 
     sealed class Result : BaseResult {
         data class Success(val results: List<SearchResult>) : Result()

@@ -31,11 +31,11 @@ class MainViewModel : ViewModel() {
         when (it) {
             is MainEvent.InitialEvent -> FeedProvider.Action()
             is MapEvent.SearchFieldClickedEvent
-            -> MapSearchToggle.Action(true) and MapSearch.Action("")
+            -> MapSearchToggle.Action(true) and MapSearch.Action.Refresh()
             is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
             is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.StallSelect(it.slug)
-            is MainEvent.MapEvent.QueryEntered -> MapSearch.Action(it.query)
+            is MainEvent.MapEvent.QueryEntered -> MapSearch.Action.Search(it.query)
             is MainEvent.FeedEvent.ReloadTriggered -> FeedItemLoader.Action()
         }
     }, process(
