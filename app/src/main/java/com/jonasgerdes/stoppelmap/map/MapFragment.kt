@@ -20,6 +20,7 @@ import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.domain.MainEvent
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
+import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorCompat
 import com.jonasgerdes.stoppelmap.util.mapbox.clicks
@@ -143,7 +144,12 @@ class MapFragment : Fragment() {
         }
 
         searchResultAdapter.selections()
-                .map { it.id }
+                .map {
+                    when (it) {
+                        is SearchResult.SingleStallResult -> it.stall.slug
+                        is SearchResult.ItemResult -> it.stalls.firstOrNull()?.slug
+                    }
+                }
                 .map { MainEvent.MapEvent.MapItemClickedEvent(it) }
                 .subscribe(viewModel.events)
     }

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model.map.search
 
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
+import com.jonasgerdes.stoppelmap.model.map.entity.Item
 
 sealed class SearchResult(val id: String, val highlights: List<Highlight>) {
 
@@ -9,6 +10,12 @@ sealed class SearchResult(val id: String, val highlights: List<Highlight>) {
             val title: HighlightedText,
             val subtitle: HighlightedText? = null
     ) : SearchResult(stall.slug, title.highlights.union(subtitle?.highlights ?: emptyList()).toList())
+
+    data class ItemResult(
+            val item: Item,
+            val stalls: List<Stall>,
+            val title: HighlightedText
+    ) : SearchResult(item.slug, title.highlights)
 
 }
 

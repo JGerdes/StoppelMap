@@ -46,6 +46,7 @@ class SearchResultAdapter : GroupAdapter<ViewHolder>() {
             }
             when (result) {
                 is SearchResult.SingleStallResult -> SingleStallItem(result, background)
+                is SearchResult.ItemResult -> ItemStallsItem(result, background)
             }
         })
     }
@@ -54,6 +55,26 @@ class SearchResultAdapter : GroupAdapter<ViewHolder>() {
 
 sealed class ResultItem<T : SearchResult> : Item() {
     abstract val result: T
+}
+
+class ItemStallsItem(override val result: SearchResult.ItemResult, val background: Int)
+    : ResultItem<SearchResult.ItemResult>() {
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+        viewHolder.title.setText(result.title)
+        viewHolder.icon.visibility = View.INVISIBLE
+        viewHolder.subtitle.visibility = View.VISIBLE
+        val withName = result.stalls.filter { it.name != null }.take(2)
+        val moreCount = result.stalls.size - withName.size
+        val names = withName.map { it.name }.joinToString(", ")
+        if(withName.isEmpty()) {
+            viewHolder.subtitle.text = "$moreCount bieten das an"
+        } else {
+            viewHolder.subtitle.text = "$names und $moreCount weitere"
+        }
+    }
+
+    override fun getLayout() = R.layout.map_search_result_item_single_stall
+
 }
 
 class SingleStallItem(override val result: SearchResult.SingleStallResult, val background: Int)
@@ -71,6 +92,7 @@ class SingleStallItem(override val result: SearchResult.SingleStallResult, val b
         } else {
             viewHolder.subtitle.visibility = View.GONE
         }
+        viewHolder.icon.visibility = View.VISIBLE
         viewHolder.icon.setStallTypeDrawable(result.stall.type)
     }
 }
