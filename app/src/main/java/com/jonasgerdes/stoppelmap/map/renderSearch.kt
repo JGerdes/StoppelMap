@@ -53,6 +53,14 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
                     searchResults.visibility = if (it) View.VISIBLE else View.GONE
                 }
 
+        state.map { it.isPending && it.searchExtended }
+                .distinctUntilChanged()
+                .debounce(100, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    searchProgress.visibility = if (it) View.VISIBLE else View.GONE
+                }
+
         searchExtendedChanged
                 .filter { !it }
                 .subscribe {

@@ -45,6 +45,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ProgressBar
+            android:id="@+id/searchProgress"
+            style="@android:style/Widget.Material.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:indeterminateDuration="100"
+            android:indeterminate="true"
+            android:translationY="7dp"
+            app:layout_constraintBottom_toBottomOf="@id/search"
+            app:layout_constraintEnd_toEndOf="@id/search"
+            app:layout_constraintStart_toStartOf="@id/search" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/searchResults"
             android:layout_width="match_parent"

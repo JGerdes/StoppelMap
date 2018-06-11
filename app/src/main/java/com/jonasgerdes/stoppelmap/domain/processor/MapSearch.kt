@@ -10,6 +10,7 @@ import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.util.squared
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class MapSearch
     : BaseOperation<MapSearch.Action>(Action::class.java) {
@@ -19,6 +20,7 @@ class MapSearch
 
     override fun execute(action: Observable<Action>):
             Observable<BaseResult> = action.subscribeOn(Schedulers.io())
+            .delay(100, TimeUnit.MILLISECONDS)
             .map {
                 when (it) {
                     is Action.Search -> it.query.trim()
