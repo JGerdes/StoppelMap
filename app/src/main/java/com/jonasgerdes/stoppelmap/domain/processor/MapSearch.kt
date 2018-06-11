@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
+import com.jonasgerdes.stoppelmap.util.squared
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
@@ -36,16 +37,18 @@ class MapSearch
                             searchStallsByName(query, queryParts),
                             searchStallsByAlias(query, queryParts)
                     ).flatMapIterable { it }
-                            .filter(this::isRelevant)
                             .toList()
+                            .map { it.apply { sortByDescending(this@MapSearch::getMatchingFactor) } }
                             .map(this::createResult)
                             .toObservable()
                             .startWith(Result.Pending())
                 }
             }
 
-    private fun isRelevant(result: SearchResult): Boolean {
-        return result.highlights.find { it.length > 1 || it.start == 0 } != null
+    private fun getMatchingFactor(result: SearchResult): Int {
+        return result.highlights.sumBy {
+            (it.length * (if (it.start == 0) 5 else 1)).squared()
+        }
     }
 
     private fun searchStallsByName(query: String, queryParts: List<String>):
