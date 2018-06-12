@@ -16,6 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:background="#DDF9DA" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/stallCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:listitem="@layout/map_stall_card" />
+
     <FrameLayout
         android:id="@+id/searchBackground"
         android:layout_width="match_parent"
@@ -51,8 +60,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:elevation="4dp"
-            android:indeterminateDuration="100"
             android:indeterminate="true"
+            android:indeterminateDuration="100"
             android:translationY="7dp"
             app:layout_constraintBottom_toBottomOf="@id/search"
             app:layout_constraintEnd_toEndOf="@id/search"

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.LinearSnapHelper
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -20,21 +20,18 @@ import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.domain.MainEvent
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
-import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorCompat
 import com.jonasgerdes.stoppelmap.util.mapbox.clicks
 import com.jonasgerdes.stoppelmap.util.mapbox.idles
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.xwray.groupie.GroupAdapter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Predicate
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.map_fragment.*
-import java.util.concurrent.TimeUnit
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -51,6 +48,7 @@ class MapFragment : Fragment() {
     private val map = BehaviorSubject.create<MapboxMap>()
 
     private val searchResultAdapter = SearchResultAdapter()
+    private val stallCardsAdapter = StalLCardAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -75,6 +73,9 @@ class MapFragment : Fragment() {
 
         searchResults.adapter = searchResultAdapter
         searchResults.itemAnimator = null
+
+        stallCards.adapter = stallCardsAdapter
+        LinearSnapHelper().attachToRecyclerView(stallCards)
 
         bindEvents()
 
@@ -157,7 +158,7 @@ class MapFragment : Fragment() {
     private fun render(state: Observable<MainState.MapState>) {
         renderSearch(activity, view, searchResultAdapter, state)
         map.subscribe {
-            renderHighlight(activity, view, it, state)
+            renderHighlight(activity, view, it, stallCardsAdapter, state)
         }
     }
 
