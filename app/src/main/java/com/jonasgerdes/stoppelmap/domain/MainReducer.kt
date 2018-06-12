@@ -15,6 +15,7 @@ class MainReducer : BaseReducer<MainState> {
             MainState.MapState(
                     searchExtended = false,
                     highlight = MapHighlight.None,
+                    cards = emptyList(),
                     results = emptyList(),
                     isPending = false,
                     showEmptyQueryMessage = false,
@@ -34,8 +35,10 @@ class MainReducer : BaseReducer<MainState> {
                 is MapSearchToggle.Result -> copy(map = map.copy(searchExtended = result.showSearch))
                 is MapHighlighter.Result.HighlightSingleStall
                 -> copy(map = map.copy(highlight = result.stall.highlight(), searchExtended = false))
+                is MapHighlighter.Result.HighlightStallsWithCards
+                -> copy(map = map.copy(cards = result.stalls))
                 is MapHighlighter.Result.NoHighlight
-                -> copy(map = map.copy(highlight = MapHighlight.None))
+                -> copy(map = map.copy(highlight = MapHighlight.None, cards = emptyList()))
                 is MapSearch.Result.Pending
                 -> copy(map = map.copy(
                         isPending = true,

@@ -24,6 +24,7 @@ import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorCompat
 import com.jonasgerdes.stoppelmap.util.mapbox.clicks
+import com.jonasgerdes.stoppelmap.util.mapbox.idles
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.xwray.groupie.GroupAdapter
@@ -129,6 +130,10 @@ class MapFragment : Fragment() {
                 .subscribe(viewModel.events)
 
         map.subscribe { map ->
+            map.idles()
+                    .map { MainEvent.MapEvent.MapMoved() }
+                    .subscribe(viewModel.events)
+
             map.clicks().map { map.projection.toScreenLocation(it) }
                     .map { map.queryRenderedFeatures(it, "stalls") }
                     .filter { it.size > 0 }
@@ -144,13 +149,7 @@ class MapFragment : Fragment() {
         }
 
         searchResultAdapter.selections()
-                .map {
-                    when (it) {
-                        is SearchResult.SingleStallResult -> it.stall.slug
-                        is SearchResult.ItemResult -> it.stalls.firstOrNull()?.slug
-                    }
-                }
-                .map { MainEvent.MapEvent.MapItemClickedEvent(it) }
+                .map { MainEvent.MapEvent.SearchResultClicked(it.id) }
                 .subscribe(viewModel.events)
     }
 

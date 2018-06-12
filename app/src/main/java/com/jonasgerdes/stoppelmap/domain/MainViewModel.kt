@@ -30,13 +30,18 @@ class MainViewModel : ViewModel() {
     private val flow = Flow<MainEvent, MainState>(interpret {
         when (it) {
             is MainEvent.InitialEvent -> FeedProvider.Action()
+            is MapEvent.MapMoved -> MapHighlighter.Action.SelectNothing
             is MapEvent.SearchFieldClickedEvent
             -> MapSearchToggle.Action(true) and MapSearch.Action.Refresh()
             is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
-            is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.StallSelect(it.slug)
+            is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.SelectNothing and
+                    MapHighlighter.Action.StallSelect(it.slug)
             is MainEvent.MapEvent.QueryEntered -> MapSearch.Action.Search(it.query)
             is MainEvent.FeedEvent.ReloadTriggered -> FeedItemLoader.Action()
+            is MainEvent.MapEvent.SearchResultClicked ->
+                MapHighlighter.Action.ResultSelect(it.searchResultId) and
+                        MapSearchToggle.Action(false)
         }
     }, process(
             MapSearchToggle(),

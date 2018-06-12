@@ -4,6 +4,7 @@ import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
+import com.jonasgerdes.stoppelmap.model.map.InMemoryDatabase
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
@@ -16,6 +17,7 @@ class MapSearch
     : BaseOperation<MapSearch.Action>(Action::class.java) {
 
     val database: StoppelMapDatabase by inject()
+    val inMemoryDatabase: InMemoryDatabase by inject()
     var lastQuery = ""
 
     override fun execute(action: Observable<Action>):
@@ -42,8 +44,9 @@ class MapSearch
                     ).flatMapIterable { it }
                             .toList()
                             .map { it.apply { sortByDescending(this@MapSearch::getMatchingFactor) } }
-                            .map(this::createResult)
                             .toObservable()
+                            .doOnNext { inMemoryDatabase.setSearchResults(it) }
+                            .map(this::createResult)
                             .startWith(Result.Pending())
                 }
             }
