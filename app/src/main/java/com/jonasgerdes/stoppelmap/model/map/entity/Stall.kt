@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model.map.entity
 
 import android.arch.persistence.room.*
+import android.support.v7.util.DiffUtil
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -24,7 +25,14 @@ data class Stall(
         val isSearchable: Boolean = true,
         @ColumnInfo(name = "is_for_kids")
         val isForKids: Boolean = false
-)
+) {
+    object DiffCallback : DiffUtil.ItemCallback<Stall>() {
+        override fun areItemsTheSame(old: Stall, new: Stall) = old.slug == new.slug
+
+        override fun areContentsTheSame(old: Stall, new: Stall) = old == new
+
+    }
+}
 
 @Entity(tableName = "aliases",
         primaryKeys = ["stall", "alias"])

@@ -11,6 +11,7 @@ import io.reactivex.Observable
 
 @SuppressLint("CheckResult")
 fun renderHighlight(activity: Activity?, view: View?, map: MapboxMap,
+                    cardAdapter: StalLCardAdapter,
                     state: Observable<MainState.MapState>) {
     state.map { it.highlight }
             .subscribe {
@@ -23,5 +24,7 @@ fun renderHighlight(activity: Activity?, view: View?, map: MapboxMap,
 
     state.map { it.cards }
             .distinctUntilChanged()
-            .subscribe { Log.d("RenderHightlight", "render stalls: ${it.size}") }
+            .subscribe {
+                cardAdapter.submitList(it)
+            }
 }
