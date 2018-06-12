@@ -4,6 +4,8 @@ package com.jonasgerdes.stoppelmap
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.jonasgerdes.stoppelmap.model.map.InMemoryDatabase
+import com.jonasgerdes.stoppelmap.model.map.InMemoryDatabaseImpl
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.network.StoppelMapApi
@@ -45,6 +47,10 @@ private fun <T> getInstanceFor(clazz: Class<T>) = when (clazz) {
 
     DynamicDatabase::class.java -> instance {
         DynamicDatabase.database
+    }
+
+    InMemoryDatabase::class.java -> singleton {
+        InMemoryDatabaseImpl()
     }
 
     Gson::class.java -> singleton {

@@ -12,9 +12,12 @@ sealed class MainEvent : BaseEvent {
         class SearchFieldClickedEvent : MapEvent()
         class OnBackPressEvent : MapEvent()
         data class MapItemClickedEvent(val slug: String) : MapEvent()
+        class MapMoved(): MapEvent()
+        data class SearchResultClicked(val searchResultId: String): MapEvent()
         data class QueryEntered(val query: String) : MapEvent()
     }
-    sealed class FeedEvent: MainEvent() {
+
+    sealed class FeedEvent : MainEvent() {
         class ReloadTriggered : FeedEvent()
     }
 }
