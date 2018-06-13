@@ -9,7 +9,10 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.map.SingleStallCard
 import com.jonasgerdes.stoppelmap.model.map.StallCard
 import com.jonasgerdes.stoppelmap.model.map.entity.headers
-import com.jonasgerdes.stoppelmap.util.*
+import com.jonasgerdes.stoppelmap.util.GlideApp
+import com.jonasgerdes.stoppelmap.util.getImagePath
+import com.jonasgerdes.stoppelmap.util.inflate
+import com.jonasgerdes.stoppelmap.util.setStallTypeBackgroundColor
 import kotlinx.android.synthetic.main.map_stall_card.view.*
 
 
