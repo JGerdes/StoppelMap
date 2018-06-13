@@ -14,7 +14,8 @@
     <ImageView
         android:id="@+id/cardBackground"
         android:layout_width="match_parent"
-        android:alpha="0.2"
+        android:alpha="0.1"
+        android:scaleType="centerCrop"
         android:layout_height="match_parent" />
 
     <android.support.constraint.ConstraintLayout
