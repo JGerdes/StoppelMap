@@ -18,6 +18,9 @@ fun List<Coordinates>.center() = fold(Point(0.0, 0.0))
 } / size
 
 
+fun List<Coordinates>.min() = Point(minBy { it.lon }!!.lon, minBy { it.lat }!!.lat)
+fun List<Coordinates>.max() = Point(maxBy { it.lon }!!.lon, maxBy { it.lat }!!.lat)
+
 fun Polygon.coordinates() = positions().children().flatMap {
     it.children()
 }.map { it.coordinates() }

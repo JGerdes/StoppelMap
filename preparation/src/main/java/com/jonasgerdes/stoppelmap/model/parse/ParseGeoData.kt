@@ -35,6 +35,12 @@ fun Data.parseGeoJson(input: File, output: File) {
                             null
                         }
                     }
+                    val min = it.geometry().let {
+                        (it as? Polygon)?.coordinates()?.min()
+                    }
+                    val max = it.geometry().let {
+                        (it as? Polygon)?.coordinates()?.max()
+                    }
                     val stall = Stall(slug = "placeholder",
                             type = it.properties()["building"]!!.asString,
                             name = it.properties()["name"]?.asString,
@@ -44,8 +50,12 @@ fun Data.parseGeoJson(input: File, output: File) {
                             description = it.properties()["description"]?.asString,
                             isTent = it.properties()["isTent"]?.asString ?: "no" == "yes",
                             isForKids = it.properties()["forKids"]?.asString ?: "no" == "yes",
-                            centerLon = center?.longitude,
-                            centerLat = center?.latitude
+                            centerLng = center?.longitude,
+                            centerLat = center?.latitude,
+                            minLng = min?.longitude,
+                            maxLng = max?.longitude,
+                            minLat = min?.latitude,
+                            maxLat = max?.latitude
                     ).run {
                         var slug = it.properties()["slug"]?.asString ?: createSlug()
                         if (stalls.map { it.slug }.contains(slug)) {
