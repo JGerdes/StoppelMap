@@ -22,6 +22,8 @@ import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorCompat
+import com.jonasgerdes.stoppelmap.util.itemScrolls
+import com.jonasgerdes.stoppelmap.util.log
 import com.jonasgerdes.stoppelmap.util.mapbox.clicks
 import com.jonasgerdes.stoppelmap.util.mapbox.idles
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
@@ -48,7 +50,7 @@ class MapFragment : Fragment() {
     private val map = BehaviorSubject.create<MapboxMap>()
 
     private val searchResultAdapter = SearchResultAdapter()
-    private val stallCardsAdapter = StalLCardAdapter()
+    private val stallCardsAdapter = StallCardAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -131,9 +133,9 @@ class MapFragment : Fragment() {
                 .subscribe(viewModel.events)
 
         map.subscribe { map ->
-            map.idles()
+            /*map.idles()
                     .map { MainEvent.MapEvent.MapMoved() }
-                    .subscribe(viewModel.events)
+                    .subscribe(viewModel.events)*/
 
             map.clicks().map { map.projection.toScreenLocation(it) }
                     .map { map.queryRenderedFeatures(it, "stalls") }
@@ -151,6 +153,12 @@ class MapFragment : Fragment() {
 
         searchResultAdapter.selections()
                 .map { MainEvent.MapEvent.SearchResultClicked(it.id) }
+                .subscribe(viewModel.events)
+
+        stallCards.itemScrolls()
+                .map { stallCardsAdapter.itemAt(it)?.slug ?: "" }
+                .filter { it.isNotEmpty() }
+                .map { MainEvent.MapEvent.StallCardSelected(it) }
                 .subscribe(viewModel.events)
     }
 

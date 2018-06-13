@@ -10,7 +10,10 @@ import com.jonasgerdes.stoppelmap.util.inflate
 import kotlinx.android.synthetic.main.map_stall_card.view.*
 
 
-class StalLCardAdapter: ListAdapter<Stall, StalLCardAdapter.StallCardHolder>(Stall.DiffCallback) {
+class StallCardAdapter: ListAdapter<Stall, StallCardAdapter.StallCardHolder>(Stall.DiffCallback) {
+
+    fun itemAt(position: Int) = getItem(position)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StallCardHolder {
         return StallCardHolder(parent.inflate(R.layout.map_stall_card))
     }

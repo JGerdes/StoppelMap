@@ -4,7 +4,7 @@ import com.jonasgerdes.mvi.BaseReducer
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.domain.processor.*
 import com.jonasgerdes.stoppelmap.map.MapHighlight
-import com.jonasgerdes.stoppelmap.map.highlight
+import com.jonasgerdes.stoppelmap.map.highlightArea
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -34,7 +34,7 @@ class MainReducer : BaseReducer<MainState> {
             return when (result) {
                 is MapSearchToggle.Result -> copy(map = map.copy(searchExtended = result.showSearch))
                 is MapHighlighter.Result.HighlightSingleStall
-                -> copy(map = map.copy(highlight = result.stall.highlight(), searchExtended = false))
+                -> copy(map = map.copy(highlight = result.stall.highlightArea(), searchExtended = false))
                 is MapHighlighter.Result.HighlightStallsWithCards
                 -> copy(map = map.copy(cards = result.stalls))
                 is MapHighlighter.Result.NoHighlight

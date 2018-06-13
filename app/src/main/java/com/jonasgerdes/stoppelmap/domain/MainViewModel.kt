@@ -42,6 +42,7 @@ class MainViewModel : ViewModel() {
             is MainEvent.MapEvent.SearchResultClicked ->
                 MapHighlighter.Action.ResultSelect(it.searchResultId) and
                         MapSearchToggle.Action(false)
+            is MainEvent.MapEvent.StallCardSelected -> MapHighlighter.Action.StallSelect(it.slug)
         }
     }, process(
             MapSearchToggle(),
