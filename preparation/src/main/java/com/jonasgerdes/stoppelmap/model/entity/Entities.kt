@@ -5,8 +5,12 @@ import java.util.*
 data class Stall(
         val slug: String,
         val type: String,
-        val centerLon: Double? = null,
+        val centerLng: Double? = null,
         val centerLat: Double? = null,
+        val minLng: Double? = null,
+        val maxLng: Double? = null,
+        val minLat: Double? = null,
+        val maxLat: Double? = null,
         val name: String? = null,
         val operator: String? = null,
         val description: String? = null,
