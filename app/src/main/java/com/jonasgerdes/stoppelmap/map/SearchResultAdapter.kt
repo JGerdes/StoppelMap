@@ -61,6 +61,7 @@ class ItemStallsItem(override val result: SearchResult.ItemResult, val backgroun
     : ResultItem<SearchResult.ItemResult>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.title.setText(result.title)
+        viewHolder.itemView.setBackgroundResource(background)
         viewHolder.icon.visibility = View.INVISIBLE
         viewHolder.subtitle.visibility = View.VISIBLE
         val withName = result.stalls.filter { it.name != null }.take(2)
