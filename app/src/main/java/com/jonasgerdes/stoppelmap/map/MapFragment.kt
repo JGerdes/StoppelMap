@@ -156,8 +156,6 @@ class MapFragment : Fragment() {
                 .subscribe(viewModel.events)
 
         stallCards.itemScrolls()
-                .map { stallCardsAdapter.itemAt(it)?.slug ?: "" }
-                .filter { it.isNotEmpty() }
                 .map { MainEvent.MapEvent.StallCardSelected(it) }
                 .subscribe(viewModel.events)
     }

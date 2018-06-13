@@ -18,4 +18,15 @@
 
     <color name="black_51">#82000000</color>
     <color name="black_24">#3D000000</color>
+
+
+    <color name="background_stall_type_bar">#2196F3</color>
+    <color name="background_stall_type_building">#FFC107</color>
+    <color name="background_stall_type_candy_stall">#E91E63</color>
+    <color name="background_stall_type_food_stall">#FFC107</color>
+    <color name="background_stall_type_game_stall">#673AB7</color>
+    <color name="background_stall_type_misc">#4CAF50</color>
+    <color name="background_stall_type_restroom">#FF7043</color>
+    <color name="background_stall_type_ride">#009688</color>
+    <color name="background_stall_type_seller_stall">#795548</color>
 </resources>
