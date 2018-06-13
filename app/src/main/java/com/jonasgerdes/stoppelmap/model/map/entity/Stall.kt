@@ -11,10 +11,18 @@ data class Stall(
         @PrimaryKey
         val slug: String,
         val type: String,
-        @ColumnInfo(name = "center_lon")
-        val centerLon: Double,
+        @ColumnInfo(name = "center_lng")
+        val centerLng: Double,
         @ColumnInfo(name = "center_lat")
         val centerLat: Double,
+        @ColumnInfo(name = "min_lng")
+        val minLng: Double,
+        @ColumnInfo(name = "min_lat")
+        val minLat: Double,
+        @ColumnInfo(name = "max_lng")
+        val maxLng: Double,
+        @ColumnInfo(name = "max_lat")
+        val maxLat: Double,
         val name: String? = null,
         val operator: String? = null,
         val description: String? = null,
