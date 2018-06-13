@@ -36,7 +36,7 @@ class MainReducer : BaseReducer<MainState> {
                 is MapHighlighter.Result.HighlightSingleStall
                 -> copy(map = map.copy(highlight = result.stall.highlightArea(), searchExtended = false))
                 is MapHighlighter.Result.HighlightStallsWithCards
-                -> copy(map = map.copy(cards = result.stalls))
+                -> copy(map = map.copy(cards = result.cards))
                 is MapHighlighter.Result.NoHighlight
                 -> copy(map = map.copy(highlight = MapHighlight.None, cards = emptyList()))
                 is MapSearch.Result.Pending
