@@ -123,8 +123,17 @@ fun Data.parseGeoJson(input: File, output: File) {
                         saveSubType(subType, stall)
                     }
 
-                    if(stall.type == "restroom") {
+                    if (stall.type == "restroom") {
                         saveSubType("restroom", stall)
+                        if (it.properties()["accessible"]?.asString ?: "no" == "yes") {
+                            saveSubType("accessible_restroom", stall)
+                        }
+                        if (it.properties()["women"]?.asString ?: "no" == "yes") {
+                            saveSubType("womens_restroom", stall)
+                        }
+                        if (it.properties()["men"]?.asString ?: "no" == "yes") {
+                            saveSubType("mens_restroom", stall)
+                        }
                     }
 
                     if (it.properties().containsKey("slug")) {
