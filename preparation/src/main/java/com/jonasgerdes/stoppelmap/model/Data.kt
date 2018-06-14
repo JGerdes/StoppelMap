@@ -12,6 +12,8 @@ data class Data(
         val restrooms: MutableList<Restroom> = mutableListOf(),
         val items: MutableMap<String, Item> = mutableMapOf(),
         val stallItems: MutableList<StallItem> = mutableListOf(),
+        val subTypes: MutableList<SubType> = mutableListOf(),
+        val stallSubTypes: MutableList<StallSubType> = mutableListOf(),
         val events: MutableList<Event> = mutableListOf(),
         val tags: MutableMap<String, Tag> = mutableMapOf(),
         val eventTags: MutableList<EventTag> = mutableListOf(),
@@ -33,6 +35,8 @@ data class Data(
         db.insert(restrooms)
         db.insert(items.values.toList())
         db.insert(stallItems)
+        db.insert(subTypes)
+        db.insert(stallSubTypes)
         db.insert(events)
         db.insert(tags.values.toList())
         db.insert(eventTags)

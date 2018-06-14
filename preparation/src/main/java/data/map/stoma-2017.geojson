@@ -5411,7 +5411,7 @@
                 "name": "Octopussy",
                 "operator": "Markmann",
                 "pictures": "octopussy_header_01.webp:header:Jonas Gerdes",
-                "type": "flat"
+                "type": "twister"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17603,7 +17603,8 @@
                 "building": "ride",
                 "name": "Musikexpress",
                 "operator": "Krause",
-                "type": "flat"
+                "type": "flat",
+                "alias": "Raupenbahn"
             },
             "geometry": {
                 "type": "Polygon",
