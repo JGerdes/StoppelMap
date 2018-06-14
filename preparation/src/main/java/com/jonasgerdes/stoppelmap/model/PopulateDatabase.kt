@@ -22,7 +22,11 @@ fun main(args: Array<String>) {
     println("Start parsing @ ${currentTime()}")
 
     if (Settings.database.exists()) {
-        Settings.database.delete()
+        val success = Settings.database.delete()
+        if (!success) {
+            System.err.println("Couldn't delete ${Settings.database.absolutePath}, " +
+                    "is it opened in any program?")
+        }
     }
 
     val db = openSQLite(Settings.database)!!
