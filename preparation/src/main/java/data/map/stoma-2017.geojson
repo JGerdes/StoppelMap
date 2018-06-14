@@ -5599,6 +5599,7 @@
                 "phone": "Polizei:+4944418538448:04441/8538448;Deutsches Rotes Kreuz:+4944418559654:04441/8559654;Feuerwehr:+4944418547712:04441/8547712;Marktverwaltung/Fundbüro:+4944418538452:04441/8538452",
                 "pictures": "amtmannsbult_header_01.webp:header:Jonas Gerdes",
                 "slug": "amtmannsbult",
+                "item_atm": "yes",
                 "zoomLevel": "17"
             },
             "geometry": {

@@ -49,6 +49,8 @@ fun getNameForItem(item: String) = when (item) {
     "item_backery" -> "Backwaren"
     "item_chocolate_fruits" -> "Schokofrüchte"
 
+    "item_atm" -> "Geldautomat"
+
     "game_cross_bow" -> "Armbrust"
     "game_machine" -> "Automat"
     "game_basketball" -> "Basketball"

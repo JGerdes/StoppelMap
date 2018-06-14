@@ -11,6 +11,8 @@ import com.jonasgerdes.stoppelmap.model.map.search.HighlightedText
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import io.reactivex.subjects.PublishSubject
 import com.jonasgerdes.stoppelmap.util.NoContentItem
+import com.jonasgerdes.stoppelmap.util.setDrawableFromItemOrHide
+import com.jonasgerdes.stoppelmap.util.setDrawableFromTypeOrHide
 import com.jonasgerdes.stoppelmap.util.setStallTypeDrawable
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
@@ -64,14 +66,14 @@ class ItemStallsItem(override val result: SearchResult.ItemResult, val backgroun
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.title.setText(result.title)
         viewHolder.itemView.setBackgroundResource(background)
-        viewHolder.icon.visibility = View.INVISIBLE
+        viewHolder.icon.setDrawableFromItemOrHide(result.item.slug)
         viewHolder.subtitle.visibility = View.VISIBLE
         val withName = result.stalls.filter { it.name != null }.take(2)
         val moreCount = result.stalls.size - withName.size
         val names = withName.map { it.name }.joinToString(", ")
-        viewHolder.subtitle.text = if(withName.isEmpty()) {
+        viewHolder.subtitle.text = if (withName.isEmpty()) {
             "$moreCount bieten das an"
-        } else if(moreCount > 0){
+        } else if (moreCount > 0) {
             "$names und $moreCount weitere"
         } else {
             names
@@ -87,14 +89,14 @@ class StallTypeItem(override val result: SearchResult.TypeResult, val background
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.title.setText(result.title)
         viewHolder.itemView.setBackgroundResource(background)
-        viewHolder.icon.visibility = View.INVISIBLE
+        viewHolder.icon.setDrawableFromTypeOrHide(result.type.slug)
         viewHolder.subtitle.visibility = View.VISIBLE
         val withName = result.stalls.filter { it.name != null }.take(2)
         val moreCount = result.stalls.size - withName.size
         val names = withName.map { it.name }.joinToString(", ")
-        viewHolder.subtitle.text = if(withName.isEmpty()) {
+        viewHolder.subtitle.text = if (withName.isEmpty()) {
             "$moreCount mal auf dem Stoppelmarkt"
-        } else if(moreCount > 0){
+        } else if (moreCount > 0) {
             "$names und $moreCount weitere"
         } else {
             names
