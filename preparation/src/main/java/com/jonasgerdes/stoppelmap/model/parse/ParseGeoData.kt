@@ -118,6 +118,17 @@ fun Data.parseGeoJson(input: File, output: File) {
                                         item = items[it.key]!!.slug
                                 )
                             }
+
+                    it.properties()["type"]?.asString?.let { subType ->
+                        if (subType != "flat") {
+                            if (subTypes.none { it.slug == subType }) {
+                                subTypes += getNamesForType(subType)
+                                        .map { SubType(subType, it) }
+                            }
+                            stallSubTypes += StallSubType(stall = stall.slug, subType = subType)
+                        }
+                    }
+
                     if (it.properties().containsKey("slug")) {
                         it
                     } else {

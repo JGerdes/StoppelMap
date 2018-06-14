@@ -53,6 +53,16 @@ data class StallItem(
         val item: String
 )
 
+data class SubType(
+        val slug: String,
+        val name: String
+)
+
+data class StallSubType(
+        val stall: String,
+        val subType: String
+)
+
 data class Event(
         val slug: String,
         val name: String,

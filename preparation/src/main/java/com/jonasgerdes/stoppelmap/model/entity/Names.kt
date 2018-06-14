@@ -68,3 +68,25 @@ fun getNameForItem(item: String) = when (item) {
 
     else -> throw RuntimeException("no name for item $item")
 }
+
+fun getNamesForType(type: String): List<String> {
+    val names = getNameForType(type)
+    return when (names) {
+        is String -> listOf(names)
+        is List<*> -> names as List<String>
+        else -> listOf(names.toString())
+    }
+}
+
+private fun getNameForType(type: String) = when (type) {
+    "coaster" -> "Achterbahn"
+    "swing-ride" -> listOf("Kettenflieger", "Kettenkarusell")
+    "funhouse" -> "Spaßhaus"
+    "bumper-cars" -> "Autoscooter"
+    "twister" -> "Twister"
+    "marry-go-round" -> "Karusell"
+    "log-flume" -> listOf("Baumstammkanal", "Wasserbahn")
+    "live-show" -> "Show"
+    "ghost-train" -> "Geisterbahn"
+    else -> throw RuntimeException("no name for item $type")
+}
