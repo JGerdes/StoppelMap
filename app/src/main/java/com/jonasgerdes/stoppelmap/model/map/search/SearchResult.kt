@@ -17,6 +17,12 @@ sealed class SearchResult(val id: String, val highlights: List<Highlight>) {
             val title: HighlightedText
     ) : SearchResult(item.slug, title.highlights)
 
+    data class TypeResult(
+            val item: Item,
+            val stalls: List<Stall>,
+            val title: HighlightedText
+    ) : SearchResult(item.slug, title.highlights)
+
 }
 
 data class Highlight(val start: Int, val length: Int) {

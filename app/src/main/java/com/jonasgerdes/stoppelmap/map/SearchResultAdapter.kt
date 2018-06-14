@@ -47,6 +47,7 @@ class SearchResultAdapter : GroupAdapter<ViewHolder>() {
             when (result) {
                 is SearchResult.SingleStallResult -> SingleStallItem(result, background)
                 is SearchResult.ItemResult -> ItemStallsItem(result, background)
+                is SearchResult.TypeResult -> StallTypeItem(result, background)
             }
         })
     }
@@ -67,10 +68,35 @@ class ItemStallsItem(override val result: SearchResult.ItemResult, val backgroun
         val withName = result.stalls.filter { it.name != null }.take(2)
         val moreCount = result.stalls.size - withName.size
         val names = withName.map { it.name }.joinToString(", ")
-        if(withName.isEmpty()) {
-            viewHolder.subtitle.text = "$moreCount bieten das an"
+        viewHolder.subtitle.text = if(withName.isEmpty()) {
+            "$moreCount bieten das an"
+        } else if(moreCount > 0){
+            "$names und $moreCount weitere"
         } else {
-            viewHolder.subtitle.text = "$names und $moreCount weitere"
+            names
+        }
+    }
+
+    override fun getLayout() = R.layout.map_search_result_item_single_stall
+
+}
+
+class StallTypeItem(override val result: SearchResult.TypeResult, val background: Int)
+    : ResultItem<SearchResult.TypeResult>() {
+    override fun bind(viewHolder: ViewHolder, position: Int) {
+        viewHolder.title.setText(result.title)
+        viewHolder.itemView.setBackgroundResource(background)
+        viewHolder.icon.visibility = View.INVISIBLE
+        viewHolder.subtitle.visibility = View.VISIBLE
+        val withName = result.stalls.filter { it.name != null }.take(2)
+        val moreCount = result.stalls.size - withName.size
+        val names = withName.map { it.name }.joinToString(", ")
+        viewHolder.subtitle.text = if(withName.isEmpty()) {
+            "$moreCount mal auf dem Stoppelmarkt"
+        } else if(moreCount > 0){
+            "$names und $moreCount weitere"
+        } else {
+            names
         }
     }
 

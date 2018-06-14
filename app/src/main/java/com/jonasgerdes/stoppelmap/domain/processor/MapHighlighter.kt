@@ -54,6 +54,7 @@ class MapHighlighter
         val stalls = when (searchResult) {
             is SearchResult.SingleStallResult -> listOf(searchResult.stall)
             is SearchResult.ItemResult -> searchResult.stalls
+            is SearchResult.TypeResult -> searchResult.stalls
         }
         return database.images().getAllForStalls(stalls.map { it.slug }.toTypedArray())
                 .map { images ->
