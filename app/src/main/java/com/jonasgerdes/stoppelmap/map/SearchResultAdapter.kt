@@ -22,6 +22,7 @@ class SearchResultAdapter : GroupAdapter<ViewHolder>() {
 
     val searchResultSection = Section().apply {
         setHeader(NoContentItem(R.layout.map_search_result_item_header))
+        setFooter(NoContentItem(R.layout.map_search_result_item_footer))
     }
 
     init {
@@ -40,9 +41,9 @@ class SearchResultAdapter : GroupAdapter<ViewHolder>() {
         searchResultSection.update(results.mapIndexed { index, result ->
             val background = when (true) {
                 results.size == 1 -> R.drawable.bg_rounded
-                index == 0 -> R.drawable.bg_rounded_top
+                index == 0 -> R.drawable.bg_search_item_top
                 index == results.lastIndex -> R.drawable.bg_rounded_bottom
-                else -> R.drawable.bg_card_no_rounds
+                else -> R.drawable.bg_search_item
             }
             when (result) {
                 is SearchResult.SingleStallResult -> SingleStallItem(result, background)
