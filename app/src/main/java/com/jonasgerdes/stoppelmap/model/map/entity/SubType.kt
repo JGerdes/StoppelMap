@@ -23,6 +23,6 @@ data class StallSubType(
 @Dao
 interface SubTypeDao {
     @Query("SELECT * FROM sub_types WHERE name LIKE :query")
-    fun searchByName(query: String): Single<List<Item>>
+    fun searchByName(query: String): Single<List<SubType>>
 
 }

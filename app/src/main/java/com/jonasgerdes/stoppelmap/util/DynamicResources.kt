@@ -38,4 +38,23 @@ fun ImageView.setStallTypeDrawable(type: String) {
     setImageResource(context.getDrawableByName("ic_stall_type_${type.fixNameForRes()}"))
 }
 
+fun ImageView.setDrawableFromItemOrHide(name: String) {
+    setDrawableOrHide("ic_stall_item_${name.fixNameForRes()}")
+}
+
+fun ImageView.setDrawableFromTypeOrHide(name: String) {
+    setDrawableOrHide("ic_stall_type_${name.fixNameForRes()}")
+}
+
+
+fun ImageView.setDrawableOrHide(name: String) {
+    val drawable = context.getDrawableByName(name)
+    if (drawable == 0) {
+        visibility = View.INVISIBLE
+    } else {
+        visibility = View.VISIBLE
+        setImageResource(drawable)
+    }
+}
+
 private fun String.fixNameForRes() = replace("-", "_")
