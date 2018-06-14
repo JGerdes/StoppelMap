@@ -40,7 +40,8 @@ class MapSearch
                     Observable.concat(
                             searchStallsByName(query, queryParts),
                             searchStallsByAlias(query, queryParts),
-                            searchStallsByItemName(query, queryParts)
+                            searchStallsByItemName(query, queryParts),
+                            searchStallsBySubTypeName(query, queryParts)
                     ).flatMapIterable { it }
                             .toList()
                             .map { it.apply { sortByDescending(this@MapSearch::getMatchingFactor) } }
@@ -59,6 +60,18 @@ class MapSearch
                         val title = HighlightedText.from(item.name, queryParts)
                         val stalls = database.stalls().getStallsByItemSlug(item.slug)
                         SearchResult.ItemResult(item, stalls, title)
+                    }
+                }.toObservable()
+    }
+
+    private fun searchStallsBySubTypeName(query: String, queryParts: List<String>):
+            Observable<List<SearchResult.TypeResult>> {
+        return database.subTypes().searchByName(query)
+                .map {
+                    it.map { item ->
+                        val title = HighlightedText.from(item.name, queryParts)
+                        val stalls = database.stalls().getStallsBySubType(item.slug)
+                        SearchResult.TypeResult(item, stalls, title)
                     }
                 }.toObservable()
     }

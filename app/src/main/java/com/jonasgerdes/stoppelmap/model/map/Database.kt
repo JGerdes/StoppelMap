@@ -8,11 +8,14 @@ import com.jonasgerdes.stoppelmap.model.map.entity.*
 import com.jonasgerdes.stoppelmap.util.copyToFile
 import java.io.File
 
-@Database(entities = [Stall::class, Alias::class, Item::class, StallItem::class, Image::class
+@Database(entities = [Stall::class, Alias::class, Image::class,
+    Item::class, StallItem::class,
+    SubType::class, StallSubType::class
 ], version = 1, exportSchema = false)
 abstract class StoppelMapDatabase : RoomDatabase() {
     abstract fun stalls(): StallDao
     abstract fun items(): ItemDao
+    abstract fun subTypes(): SubTypeDao
     abstract fun images(): ImageDao
 
     companion object {

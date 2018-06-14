@@ -74,7 +74,20 @@ interface StallDao {
         WHERE aliases.alias LIKE :query""")
     fun searchByAlias(query: String): Single<List<StallWithAlias>>
 
-    @Query("SELECT stalls.* FROM stall_items JOIN stalls ON stalls.slug = stall_items.stall WHERE stall_items.item = :item")
+    @Query("""
+        SELECT stalls.*
+        FROM stall_items
+        JOIN stalls ON stalls.slug = stall_items.stall
+        WHERE stall_items.item = :item
+        """)
     fun getStallsByItemSlug(item: String): List<Stall>
+
+    @Query("""
+        SELECT stalls.*
+        FROM stall_sub_types
+        JOIN stalls ON stalls.slug = stall_sub_types.stall
+        WHERE stall_sub_types.sub_type = :subType
+        """)
+    fun getStallsBySubType(subType: String): List<Stall>
 
 }
