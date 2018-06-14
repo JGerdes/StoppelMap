@@ -78,6 +78,7 @@ fun getNamesForType(type: String): List<String> {
     }
 }
 
+@Suppress("IMPLICIT_CAST_TO_ANY")
 private fun getNameForType(type: String) = when (type) {
     "coaster" -> "Achterbahn"
     "swing-ride" -> listOf("Kettenflieger", "Kettenkarusell")
@@ -89,5 +90,9 @@ private fun getNameForType(type: String) = when (type) {
     "live-show" -> "Show"
     "ghost-train" -> "Geisterbahn"
     "restroom" -> listOf("Toilette", "WC", "Klo")
+    "accessible_restroom" -> listOf("Barrierefreie Toilette", "Barrierefreies WC",
+            "Rollstuhlgerechte Toilette")
+    "mens_restroom" -> listOf("Herren-Toilette", "Herren-WC")
+    "womens_restroom" -> listOf("Damen-Toilette", "Damen-WC")
     else -> throw RuntimeException("no name for item $type")
 }

@@ -23,7 +23,9 @@ fun main(args: Array<String>) {
 
     if (Settings.database.exists()) {
         val success = Settings.database.delete()
-        if (!success) {
+        if (success) {
+            println("Successfully deleted old database file")
+        } else {
             System.err.println("Couldn't delete ${Settings.database.absolutePath}, " +
                     "is it opened in any program?")
         }
