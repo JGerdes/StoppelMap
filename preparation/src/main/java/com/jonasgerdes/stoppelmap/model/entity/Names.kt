@@ -88,5 +88,6 @@ private fun getNameForType(type: String) = when (type) {
     "log-flume" -> listOf("Baumstammkanal", "Wasserbahn")
     "live-show" -> "Show"
     "ghost-train" -> "Geisterbahn"
+    "restroom" -> listOf("Toilette", "WC", "Klo")
     else -> throw RuntimeException("no name for item $type")
 }

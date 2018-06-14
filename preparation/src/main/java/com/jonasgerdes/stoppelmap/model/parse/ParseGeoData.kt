@@ -120,13 +120,11 @@ fun Data.parseGeoJson(input: File, output: File) {
                             }
 
                     it.properties()["type"]?.asString?.let { subType ->
-                        if (subType != "flat") {
-                            if (subTypes.none { it.slug == subType }) {
-                                subTypes += getNamesForType(subType)
-                                        .map { SubType(subType, it) }
-                            }
-                            stallSubTypes += StallSubType(stall = stall.slug, subType = subType)
-                        }
+                        saveSubType(subType, stall)
+                    }
+
+                    if(stall.type == "restroom") {
+                        saveSubType("restroom", stall)
                     }
 
                     if (it.properties().containsKey("slug")) {
@@ -146,4 +144,14 @@ fun Data.parseGeoJson(input: File, output: File) {
     jsonWriter.close()
     println("Created ${stalls.size} stalls from geojson")
 
+}
+
+private fun Data.saveSubType(subType: String, stall: Stall) {
+    if (subType != "flat") {
+        if (subTypes.none { it.slug == subType }) {
+            subTypes += getNamesForType(subType)
+                    .map { SubType(subType, it) }
+        }
+        stallSubTypes += StallSubType(stall = stall.slug, subType = subType)
+    }
 }
