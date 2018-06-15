@@ -36,3 +36,4 @@ fun Location.latLng(): LatLng {
     return LatLng(latitude, longitude)
 }
 
+fun List<LatLng>.toBounds() = LatLngBounds.Builder().includes(this).build()

@@ -40,7 +40,8 @@ class MainViewModel : ViewModel() {
             is MainEvent.MapEvent.QueryEntered -> MapSearch.Action.Search(it.query)
             is MainEvent.FeedEvent.ReloadTriggered -> FeedItemLoader.Action()
             is MainEvent.MapEvent.SearchResultClicked ->
-                MapHighlighter.Action.ResultSelect(it.searchResultId) and
+                MapHighlighter.Action.SelectNothing and
+                        MapHighlighter.Action.ResultSelect(it.searchResultId) and
                         MapSearchToggle.Action(false)
             is MainEvent.MapEvent.StallCardSelected ->
                 MapHighlighter.Action.HighlightCard(it.cardIndex)

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.map
 
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
+import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.geometry.LatLngBounds
 
 sealed class MapHighlight {
@@ -12,6 +13,11 @@ sealed class MapHighlight {
 
     data class Area(
             val bounds: LatLngBounds,
+            val title: String
+    ) : MapHighlight()
+
+    data class MultiplePoints(
+            val points: List<LatLng>,
             val title: String
     ) : MapHighlight()
 
