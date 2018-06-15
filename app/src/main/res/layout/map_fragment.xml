@@ -23,7 +23,7 @@
         android:layout_gravity="bottom"
         android:orientation="horizontal"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:listitem="@layout/map_stall_card" />
+        tools:listitem="@layout/map_stall_card_single_stall" />
 
     <FrameLayout
         android:id="@+id/searchBackground"

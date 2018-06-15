@@ -20,8 +20,10 @@ fun Context.getColorByName(resName: String, default: Int = 0) =
             if (it == 0) default else it
         })
 
-fun CardView.setStallTypeBackgroundColor(type: String) {
-    setCardBackgroundColor(context.getColorByName("background_stall_type_${type.fixNameForRes()}"))
+fun CardView.setStallTypeBackgroundColor(type: String, default: Int = 0) {
+    setCardBackgroundColor(context.getColorByName(
+            "background_stall_type_${type.fixNameForRes()}"
+            , default))
 }
 
 fun ImageView.setStallColorTint(type: String) {

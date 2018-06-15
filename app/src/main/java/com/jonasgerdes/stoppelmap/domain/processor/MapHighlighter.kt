@@ -1,13 +1,11 @@
 package com.jonasgerdes.stoppelmap.domain.processor
 
+import android.util.Log
 import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
-import com.jonasgerdes.stoppelmap.model.map.InMemoryDatabase
-import com.jonasgerdes.stoppelmap.model.map.SingleStallCard
-import com.jonasgerdes.stoppelmap.model.map.StallCard
-import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.model.map.*
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import io.reactivex.Observable
@@ -45,6 +43,7 @@ class MapHighlighter
             inMemoryDatabase.getStallCard(action.cardIndex)?.let {
                 when (it) {
                     is SingleStallCard -> Result.HighlightSingleStall(it.stall)
+                    is StallCollectionCard -> Result.HighlightSingleStall(it.stalls.first())
                 }
             } ?: Result.NoHighlight
 
@@ -56,10 +55,33 @@ class MapHighlighter
             is SearchResult.ItemResult -> searchResult.stalls
             is SearchResult.TypeResult -> searchResult.stalls
         }
+
+        val title = when (searchResult) {
+            is SearchResult.SingleStallResult -> searchResult.stall.name
+            is SearchResult.ItemResult -> searchResult.item.name
+            is SearchResult.TypeResult -> searchResult.type.name
+        }
+
+        val type = when (searchResult) {
+            is SearchResult.SingleStallResult -> searchResult.stall.type
+            is SearchResult.ItemResult -> searchResult.stalls.first().type
+            is SearchResult.TypeResult -> searchResult.stalls.first().type
+        }
+        val subType = (searchResult as? SearchResult.TypeResult)?.type?.slug
+
+        val stallsWithName = stalls.filter { it.name != null }
+        val stallsWithouthName = stalls.filter { it.name == null }
         return database.images().getAllForStalls(stalls.map { it.slug }.toTypedArray())
                 .map { images ->
-                    stalls.map { stall ->
+                    stallsWithName.map { stall ->
                         SingleStallCard(stall, images.filter { it.stall == stall.slug })
+                    }.let {
+                        if (stallsWithouthName.isNotEmpty()) {
+                            it + listOf(StallCollectionCard(title!!, type, subType,
+                                    stallsWithouthName, stallsWithName.isNotEmpty()))
+                        } else {
+                            it
+                        }
                     }
                 }
                 .toObservable()
