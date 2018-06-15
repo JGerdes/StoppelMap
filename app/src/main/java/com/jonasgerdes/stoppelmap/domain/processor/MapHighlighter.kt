@@ -15,6 +15,11 @@ import io.reactivex.Observable
 class MapHighlighter
     : BaseOperation<MapHighlighter.Action>(Action::class.java) {
 
+    companion object {
+        //filter to prevent stalls at the bus station to screw up zooming bounds
+        const val maxIncludeLatitude = 52.746122
+    }
+
     private val database: StoppelMapDatabase by inject()
     private val inMemoryDatabase: InMemoryDatabase by inject()
 
@@ -48,7 +53,8 @@ class MapHighlighter
                     is SingleStallCard -> Result.HighlightSingleStall(it.stall)
                     is StallCollectionCard -> Result.HighlightStallsCollection(
                             MapHighlight.MultiplePoints(
-                                    it.stalls.map { LatLng(it.centerLat, it.centerLng) },
+                                    it.stalls.filter { it.centerLat > maxIncludeLatitude }
+                                            .map { LatLng(it.centerLat, it.centerLng) },
                                     it.title
                             )
                     )
