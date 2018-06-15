@@ -5,9 +5,11 @@ import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
+import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.model.map.*
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
+import com.mapbox.mapboxsdk.geometry.LatLng
 import io.reactivex.Observable
 
 class MapHighlighter
@@ -25,6 +27,7 @@ class MapHighlighter
 
     sealed class Result : BaseResult {
         data class HighlightSingleStall(val stall: Stall) : Result()
+        data class HighlightStallsCollection(val highlight: MapHighlight.MultiplePoints) : Result()
         data class HighlightStallsWithCards(val cards: List<StallCard>) : Result()
         object NoHighlight : Result()
     }
@@ -43,7 +46,12 @@ class MapHighlighter
             inMemoryDatabase.getStallCard(action.cardIndex)?.let {
                 when (it) {
                     is SingleStallCard -> Result.HighlightSingleStall(it.stall)
-                    is StallCollectionCard -> Result.HighlightSingleStall(it.stalls.first())
+                    is StallCollectionCard -> Result.HighlightStallsCollection(
+                            MapHighlight.MultiplePoints(
+                                    it.stalls.map { LatLng(it.centerLat, it.centerLng) },
+                                    it.title
+                            )
+                    )
                 }
             } ?: Result.NoHighlight
 
