@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
 import com.jonasgerdes.stoppelmap.util.GlideApp
 import com.jonasgerdes.stoppelmap.util.inflate
+import com.mapbox.mapboxsdk.style.layers.Property
 import kotlinx.android.synthetic.main.feed_list_item_image.view.*
 import org.threeten.bp.format.DateTimeFormatter
 import java.text.SimpleDateFormat
@@ -47,8 +48,15 @@ class FeedItemAdapter : ListAdapter<FeedItemWithImages, FeedItemAdapter.Holder>(
             itemView.date.text = item.feedItem?.publishDate?.format(dateFormat)
 
             if (item.images!!.isNotEmpty()) {
+                val image = item.images!!.first()
+                if (image.author != null) {
+                    itemView.copyright.visibility = View.VISIBLE
+                    itemView.copyright.text = image.author
+                } else {
+                    itemView.copyright.visibility = View.GONE
+                }
                 GlideApp.with(itemView)
-                        .load(item.images!!.first().url)
+                        .load(image.url)
                         .transition(withCrossFade())
                         .centerCrop()
                         .into(itemView.image)

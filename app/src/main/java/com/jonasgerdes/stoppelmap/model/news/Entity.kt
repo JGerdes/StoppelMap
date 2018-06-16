@@ -18,12 +18,16 @@ data class NewsResponse(val versionName: String = "",
 
 
 data class NewsItem(val url: String,
-                    val images: List<String>?,
+                    val images: List<NewsImage>?,
                     val subTitle: String? = "",
                     val publishDate: Date,
                     val title: String = "",
                     val content: String = "",
                     val teaser: String = "")
+
+data class NewsImage(val url: String,
+                     val author: String?,
+                     val caption: String?)
 
 @Entity(tableName = "feed_items")
 data class FeedItem(
@@ -62,6 +66,8 @@ interface FeedItemDao {
 data class FeedImage(
         @PrimaryKey
         var url: String,
+        val author: String?,
+        val caption: String?,
         @ColumnInfo(name = "feed_item")
         var feedItem: String?
 )
