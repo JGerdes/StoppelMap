@@ -51,13 +51,17 @@ class MapHighlighter
             inMemoryDatabase.getStallCard(action.cardIndex)?.let {
                 when (it) {
                     is SingleStallCard -> Result.HighlightSingleStall(it.stall)
-                    is StallCollectionCard -> Result.HighlightStallsCollection(
-                            MapHighlight.MultiplePoints(
-                                    it.stalls.filter { it.centerLat > maxIncludeLatitude }
-                                            .map { LatLng(it.centerLat, it.centerLng) },
-                                    it.title
-                            )
-                    )
+                    is StallCollectionCard -> if (it.stalls.size == 1) {
+                        Result.HighlightSingleStall(it.stalls.first())
+                    } else {
+                        Result.HighlightStallsCollection(
+                                MapHighlight.MultiplePoints(
+                                        it.stalls.filter { it.centerLat > maxIncludeLatitude }
+                                                .map { LatLng(it.centerLat, it.centerLng) },
+                                        it.title
+                                )
+                        )
+                    }
                 }
             } ?: Result.NoHighlight
 
