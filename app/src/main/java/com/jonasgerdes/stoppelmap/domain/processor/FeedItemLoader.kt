@@ -36,7 +36,12 @@ class FeedItemLoader
                                     content = content
                             ))
                         }
-                        item.images?.map { FeedImage(it, item.url) }
+                        item.images?.map {
+                            FeedImage(url = it.url,
+                                    author = it.author,
+                                    caption = it.caption,
+                                    feedItem = item.url)
+                        }
                                 ?.forEach { database.feedImages().insertItem(it) }
                     }
                 }
