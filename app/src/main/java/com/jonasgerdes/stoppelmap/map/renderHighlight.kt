@@ -3,13 +3,18 @@ package com.jonasgerdes.stoppelmap.map
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.View
+import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.domain.MainState
+import com.jonasgerdes.stoppelmap.model.map.StallCollectionCard
+import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.util.dp
+import com.jonasgerdes.stoppelmap.util.getColorForStallType
+import com.jonasgerdes.stoppelmap.util.getMapBoxIcon
 import com.jonasgerdes.stoppelmap.util.mapbox.toBounds
 import com.jonasgerdes.stoppelmap.util.mapbox.toCenter
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
-import com.mapbox.mapboxsdk.geometry.LatLngBounds
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import io.reactivex.Observable
 
@@ -43,8 +48,20 @@ fun renderHighlight(activity: Activity?, view: View?, map: MapboxMap,
                         top = 128.dp,
                         right = 64.dp,
                         bottom = if (it.cards.isEmpty()) 64.dp else 256.dp))
-                marker = highlight.points.map {
-                    map.addMarker(MarkerOptions().position(it))
+
+                activity?.let { context ->
+                    val type = (it.cards.find { it is StallCollectionCard } as? StallCollectionCard)?.type
+                    val color = context.getColorForStallType(type, R.color.colorPrimary)
+                    val icon = context.getMapBoxIcon(
+                            R.drawable.ic_map_marker_24dp,
+                            color,
+                            32.dp
+                    )
+                    marker = highlight.points.map {
+                        map.addMarker(MarkerOptions()
+                                .icon(icon)
+                                .position(it))
+                    }
                 }
             }
         }
