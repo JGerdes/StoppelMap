@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.model.map.StallCollectionCard
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
+import com.jonasgerdes.stoppelmap.model.map.toBounds
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorForStallType
 import com.jonasgerdes.stoppelmap.util.getMapBoxIcon
@@ -15,24 +16,21 @@ import com.jonasgerdes.stoppelmap.util.mapbox.toCenter
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions
+import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import io.reactivex.Observable
 
-private var marker: List<Marker> = emptyList()
 
 @SuppressLint("CheckResult")
 fun renderHighlight(activity: Activity?, view: View?, map: MapboxMap,
                     cardAdapter: StallCardAdapter,
                     state: Observable<MainState.MapState>) {
     state.subscribe {
-        marker.forEach {
-            map.removeMarker(it)
-        }
-        marker = emptyList()
         val highlight = it.highlight
         when (highlight) {
             is MapHighlight.Center -> {
                 map.animateCamera(toCenter(highlight.latitude, highlight.longitude))
+                map.removeMarkers()
             }
             is MapHighlight.Area -> {
                 map.animateCamera(toBounds(highlight.bounds,
@@ -41,6 +39,7 @@ fun renderHighlight(activity: Activity?, view: View?, map: MapboxMap,
                         right = 64.dp,
                         bottom = if (it.cards.isEmpty()) 64.dp else 256.dp
                 ), if (it.cards.isEmpty()) 300 else 600)
+                map.removeMarkers()
             }
             is MapHighlight.MultiplePoints -> {
                 map.animateCamera(toBounds(highlight.points.toBounds(),
@@ -57,12 +56,11 @@ fun renderHighlight(activity: Activity?, view: View?, map: MapboxMap,
                             color,
                             32.dp
                     )
-                    marker = highlight.points.map {
-                        map.addMarker(MarkerOptions()
-                                .icon(icon)
-                                .position(it))
-                    }
+                    map.setMarkers(highlight.points)
                 }
+            }
+            MapHighlight.None -> {
+                map.removeMarkers()
             }
         }
     }

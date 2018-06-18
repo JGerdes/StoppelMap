@@ -57,7 +57,10 @@ class MapHighlighter
                         Result.HighlightStallsCollection(
                                 MapHighlight.MultiplePoints(
                                         it.stalls.filter { it.centerLat > maxIncludeLatitude }
-                                                .map { LatLng(it.centerLat, it.centerLng) },
+                                                .map {
+                                                    MarkerItem(LatLng(it.centerLat, it.centerLng),
+                                                            it.type)
+                                                },
                                         it.title
                                 )
                         )

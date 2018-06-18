@@ -16,6 +16,10 @@
         "composite": {
             "type": "geojson",
             "data": "asset://stoppelmap.geojson"
+        },
+        "selected-marker": {
+            "type": "geojson",
+            "data": "asset://empty.geojson"
         }
     },
     "sprite": "asset://mapbox/sprites/sprite",
@@ -1291,6 +1295,123 @@
                 "icon-translate": [
                     0,
                     0
+                ]
+            }
+        },
+        {
+            "id": "selected-marker-layer",
+            "type": "symbol",
+            "source": "selected-marker",
+            "source-layer": "selected-markers",
+            "layout": {
+                "text-optional": true,
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "type",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ]
+                    ]
+                },
+                "symbol-spacing": 25,
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20,
+                "icon-allow-overlap": true
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate": [
+                    0,
+                    0
+                ],
+                "icon-translate": [
+                    0,
+                    -10
                 ]
             }
         }

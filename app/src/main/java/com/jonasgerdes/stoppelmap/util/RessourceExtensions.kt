@@ -17,9 +17,7 @@ fun Context.getDrawableAsBitmap(@DrawableRes id: Int, @ColorInt colorInt: Int = 
     val vectorDrawable = ResourcesCompat.getDrawable(resources, id, theme)!!
     val width = if (size == -1) vectorDrawable.intrinsicWidth else size
     val height = if (size == -1) vectorDrawable.intrinsicHeight else size
-    //temp hack to achor marker on bottom of icon
-    //TODO: improve this somehow
-    val bitmap = Bitmap.createBitmap(width, height * 2, Bitmap.Config.ARGB_8888)
+    val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     vectorDrawable.setBounds(0, 0, width, height)
     if (colorInt != -1) {
