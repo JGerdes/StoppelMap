@@ -42,7 +42,7 @@ class MainViewModel : ViewModel() {
             is MainEvent.MapEvent.SearchResultClicked ->
                         MapHighlighter.Action.ResultSelect(it.searchResultId) and
                         MapSearchToggle.Action(false) and
-                                MapHighlighter.Action.HighlightCard(1)
+                                MapHighlighter.Action.HighlightCard(0)
             is MainEvent.MapEvent.StallCardSelected ->
                 MapHighlighter.Action.HighlightCard(it.cardIndex)
         }

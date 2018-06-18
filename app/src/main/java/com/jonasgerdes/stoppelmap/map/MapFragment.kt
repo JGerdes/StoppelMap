@@ -20,20 +20,23 @@ import com.jonasgerdes.stoppelmap.Settings
 import com.jonasgerdes.stoppelmap.domain.MainEvent
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
-import com.jonasgerdes.stoppelmap.util.dp
-import com.jonasgerdes.stoppelmap.util.getColorCompat
-import com.jonasgerdes.stoppelmap.util.itemScrolls
-import com.jonasgerdes.stoppelmap.util.log
+import com.jonasgerdes.stoppelmap.util.*
 import com.jonasgerdes.stoppelmap.util.mapbox.clicks
 import com.jonasgerdes.stoppelmap.util.mapbox.idles
+import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Predicate
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.map_fragment.*
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+
+
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -66,6 +69,7 @@ class MapFragment : Fragment() {
         mapView.getMapAsync {
             initMapUi(it)
             initMapCamera(it)
+            it.initMarkerLayer(context!!)
             map.onNext(it)
         }
         search.isFocusableInTouchMode = true
