@@ -12,6 +12,7 @@ sealed class MainEvent : BaseEvent {
         class SearchFieldClickedEvent : MapEvent()
         class OnBackPressEvent : MapEvent()
         data class MapItemClickedEvent(val slug: String) : MapEvent()
+        object MapClickedEvent: MapEvent()
         data class StallCardSelected(val cardIndex: Int) : MapEvent()
         class MapMoved() : MapEvent()
         data class SearchResultClicked(val searchResultId: String) : MapEvent()

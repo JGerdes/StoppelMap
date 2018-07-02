@@ -113,7 +113,13 @@ class MapHighlighter
 
     private fun highlightSingleStall(action: MapHighlighter.Action.StallSelect): Result {
         return database.stalls().getBySlug(action.slug)
-                ?.let { Result.HighlightSingleStall(it) }
+                ?.let {
+                    if (it.name == null) {
+                        Result.HighlightSingleStall(it)
+                    } else {
+                        Result.HighlightStallsWithCards(listOf(SingleStallCard(it, emptyList())))
+                    }
+                }
                 ?: Result.NoHighlight
     }
 }

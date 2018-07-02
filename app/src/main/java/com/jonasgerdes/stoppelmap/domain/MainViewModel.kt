@@ -35,8 +35,8 @@ class MainViewModel : ViewModel() {
             -> MapSearchToggle.Action(true) and MapSearch.Action.Refresh()
             is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
-            is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.SelectNothing and
-                    MapHighlighter.Action.StallSelect(it.slug)
+            MainEvent.MapEvent.MapClickedEvent -> MapHighlighter.Action.SelectNothing
+            is MapEvent.MapItemClickedEvent -> MapHighlighter.Action.StallSelect(it.slug) and MapHighlighter.Action.HighlightCard(0)
             is MainEvent.MapEvent.QueryEntered -> MapSearch.Action.Search(it.query)
             is MainEvent.FeedEvent.ReloadTriggered -> FeedItemLoader.Action()
             is MainEvent.MapEvent.SearchResultClicked ->

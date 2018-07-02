@@ -69,7 +69,6 @@ class MapFragment : Fragment() {
         mapView.getMapAsync {
             initMapUi(it)
             initMapCamera(it)
-            it.initMarkerLayer(context!!)
             map.onNext(it)
         }
         search.isFocusableInTouchMode = true
@@ -141,9 +140,10 @@ class MapFragment : Fragment() {
                     .map { MainEvent.MapEvent.MapMoved() }
                     .subscribe(viewModel.events)*/
 
-            map.clicks().map { map.projection.toScreenLocation(it) }
+            val mapClicks = map.clicks().map { map.projection.toScreenLocation(it) }
                     .map { map.queryRenderedFeatures(it, "stalls") }
-                    .filter { it.size > 0 }
+
+            mapClicks.filter { it.size > 0 }
                     .map {
                         it.let {
                             it.sortBy { it.getNumberProperty("priority")?.toInt() ?: 0 }
@@ -153,6 +153,10 @@ class MapFragment : Fragment() {
                     .map {
                         MainEvent.MapEvent.MapItemClickedEvent(it)
                     }.subscribe(viewModel.events)
+
+            mapClicks.filter { it.size == 0 }
+                    .map { MainEvent.MapEvent.MapClickedEvent }
+                    .subscribe(viewModel.events)
         }
 
         searchResultAdapter.selections()
