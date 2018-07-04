@@ -7,4 +7,6 @@
 
     <attr name="imageCardTitleColor" format="color|reference"/>
 
+    <attr name="transportationBackgroundColor" format="color|reference" />
+
 </resources>

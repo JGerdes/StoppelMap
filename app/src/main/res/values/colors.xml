@@ -19,6 +19,8 @@
     <color name="black_51">#82000000</color>
     <color name="black_24">#3D000000</color>
 
+    <color name="background_transportation">#303F9F</color>
+
 
     <color name="background_stall_type_bar">#01579b</color>
     <color name="background_stall_type_building">#FF8F00</color>
