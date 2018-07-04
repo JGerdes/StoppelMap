@@ -5,18 +5,23 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.jonasgerdes.stoppelmap.model.map.entity.*
+import com.jonasgerdes.stoppelmap.model.transportation.Route
+import com.jonasgerdes.stoppelmap.model.transportation.RouteDao
+import com.jonasgerdes.stoppelmap.model.transportation.Station
 import com.jonasgerdes.stoppelmap.util.copyToFile
 import java.io.File
 
 @Database(entities = [Stall::class, Alias::class, Image::class,
     Item::class, StallItem::class,
-    SubType::class, StallSubType::class
+    SubType::class, StallSubType::class,
+    Route::class, Station::class
 ], version = 1, exportSchema = false)
 abstract class StoppelMapDatabase : RoomDatabase() {
     abstract fun stalls(): StallDao
     abstract fun items(): ItemDao
     abstract fun subTypes(): SubTypeDao
     abstract fun images(): ImageDao
+    abstract fun routes(): RouteDao
 
     companion object {
         lateinit var database: StoppelMapDatabase

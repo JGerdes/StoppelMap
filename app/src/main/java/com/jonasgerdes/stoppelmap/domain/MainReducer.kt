@@ -21,6 +21,9 @@ class MainReducer : BaseReducer<MainState> {
                     showEmptyQueryMessage = false,
                     showNoResultMessage = false
             ),
+            MainState.TransportationState(
+                    routes = emptyList()
+            ),
             MainState.FeedState(
                     newsItems = emptyList(),
                     isLoading = false,
@@ -66,6 +69,8 @@ class MainReducer : BaseReducer<MainState> {
                 is FeedItemLoader.Result.Pending -> copy(feed = feed.copy(isLoading = true, errorMessage = null))
                 is FeedItemLoader.Result.Success -> copy(feed = feed.copy(isLoading = false, errorMessage = null))
                 is FeedItemLoader.Result.NetworkError -> copy(feed = feed.copy(isLoading = false, errorMessage = "No Network"))
+
+                is TransportationProvider.Result -> copy(transportation = transportation.copy(routes = result.routes))
 
                 else -> state.copy()
             }

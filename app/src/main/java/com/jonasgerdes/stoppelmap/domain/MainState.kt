@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
 import com.jonasgerdes.stoppelmap.model.news.NewsItem
+import com.jonasgerdes.stoppelmap.model.transportation.Route
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -13,6 +14,7 @@ import com.jonasgerdes.stoppelmap.model.news.NewsItem
  */
 data class MainState(
         val map: MapState,
+        val transportation: TransportationState,
         val feed: FeedState
 ) {
     data class MapState(
@@ -23,6 +25,10 @@ data class MainState(
             val showEmptyQueryMessage: Boolean,
             val showNoResultMessage: Boolean,
             val isPending: Boolean
+    )
+
+    data class TransportationState(
+            val routes: List<Route>
     )
 
     data class FeedState(

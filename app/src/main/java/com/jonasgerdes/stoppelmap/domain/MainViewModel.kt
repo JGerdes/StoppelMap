@@ -29,7 +29,7 @@ class MainViewModel : ViewModel() {
 
     private val flow = Flow<MainEvent, MainState>(interpret {
         when (it) {
-            is MainEvent.InitialEvent -> FeedProvider.Action()
+            is MainEvent.InitialEvent -> FeedProvider.Action() and TransportationProvider.Action()
             is MapEvent.MapMoved -> MapHighlighter.Action.SelectNothing
             is MapEvent.SearchFieldClickedEvent
             -> MapSearchToggle.Action(true) and MapSearch.Action.Refresh()
@@ -51,7 +51,8 @@ class MainViewModel : ViewModel() {
             MapHighlighter(),
             MapSearch(),
             FeedProvider(),
-            FeedItemLoader()
+            FeedItemLoader(),
+            TransportationProvider()
     ),
             MainReducer(),
             { Log.d("Flow", it) }
