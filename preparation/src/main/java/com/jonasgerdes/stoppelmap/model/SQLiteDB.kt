@@ -5,6 +5,9 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.Statement
 import java.text.SimpleDateFormat
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.reflect.KClass
 import kotlin.reflect.full.declaredMemberProperties
@@ -13,7 +16,7 @@ import kotlin.reflect.jvm.javaField
 
 
 object SQLiteConstants {
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
+    val dateFormat = DateTimeFormatter.ISO_OFFSET_DATE_TIME
     const val jdbcUrlPrefix = "jdbc:sqlite:"
 }
 
@@ -93,7 +96,7 @@ fun getValue(value: Any?): String? {
         null -> null
         is String -> value
         is Boolean -> if (value) "1" else "0"
-        is Date -> SQLiteConstants.dateFormat.format(value)
+        is Date -> value.toInstant().atOffset(ZoneOffset.ofHours(2)).format(SQLiteConstants.dateFormat)
         else -> value.toString()
     }
 }

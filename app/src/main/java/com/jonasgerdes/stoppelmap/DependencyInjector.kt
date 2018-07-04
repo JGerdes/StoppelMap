@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.model.map.InMemoryDatabaseImpl
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.network.StoppelMapApi
+import com.jonasgerdes.stoppelmap.util.DateTimeProvider
 import okhttp3.OkHttpClient
 import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.Retrofit
@@ -55,6 +56,10 @@ private fun <T> getInstanceFor(clazz: Class<T>) = when (clazz) {
 
     Gson::class.java -> singleton {
         GsonBuilder().create()
+    }
+
+    DateTimeProvider::class.java -> singleton {
+        DateTimeProvider
     }
 
     StoppelMapApi::class.java -> singleton {

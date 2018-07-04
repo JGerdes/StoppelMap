@@ -1,12 +1,10 @@
 package com.jonasgerdes.stoppelmap.domain
 
+import com.jonasgerdes.stoppelmap.domain.model.TransportRoute
 import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.model.map.StallCard
-import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
-import com.jonasgerdes.stoppelmap.model.news.NewsItem
-import com.jonasgerdes.stoppelmap.model.transportation.Route
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -28,7 +26,7 @@ data class MainState(
     )
 
     data class TransportationState(
-            val routes: List<Route>
+            val routes: List<TransportRoute>
     )
 
     data class FeedState(

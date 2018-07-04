@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
+    android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     app:cardCornerRadius="16dp">
@@ -37,7 +37,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title"
-            android:text="via" />
+            android:text="@string/transportation_card_via" />
 
         <TextView
             android:id="@+id/departure"
@@ -49,7 +49,7 @@
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@id/via"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Abfahrt" />
+            android:text="@string/transportation_card_departure" />
 
 
         <TextView
@@ -86,7 +86,7 @@
             style="@android:style/Widget.Material.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alle Haltestellen"
+            android:text="@string/transportation_card_action_all_stations"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
@@ -98,7 +98,7 @@
             style="@android:style/Widget.Material.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rückfahrt"
+            android:text="@string/transportation_card_action_return"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/actionAllStations"
             app:layout_constraintHorizontal_bias="1"

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model
 
 import android.arch.persistence.room.TypeConverter
+import org.threeten.bp.LocalDateTime
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
@@ -20,4 +21,5 @@ object Converters {
     fun fromOffsetDateTime(date: OffsetDateTime?): String? {
         return date?.format(formatter)
     }
+
 }
