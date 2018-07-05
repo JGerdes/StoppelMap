@@ -1,16 +1,16 @@
 package com.jonasgerdes.stoppelmap
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.jonasgerdes.stoppelmap.about.AboutFragment
 import com.jonasgerdes.stoppelmap.event.list.BusListFragment
 import com.jonasgerdes.stoppelmap.event.list.EventListFragment
 import com.jonasgerdes.stoppelmap.event.list.FeedFragment
 import com.jonasgerdes.stoppelmap.map.MapFragment
-import com.jonasgerdes.stoppelmap.util.enableItemShifting
-import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
-import com.jonasgerdes.stoppelmap.util.toggleLayoutFullscreen
+import com.jonasgerdes.stoppelmap.util.*
 import kotlinx.android.synthetic.main.main_activity.*
 
 
@@ -24,12 +24,19 @@ class MainActivity : AppCompatActivity() {
             R.id.main_navigation_about to AboutFragment()
     )
 
+    private val keyboardDetector by lazy { KeyboardDetector(this) }
+
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         initNavigation()
         toggleLayoutFullscreen(true)
         showFragment(R.id.navigation_map)
+
+        keyboardDetector.keyboardChanges.subscribe {
+            navigation.visibility = if (it) View.GONE else View.VISIBLE
+        }
 
     }
 
