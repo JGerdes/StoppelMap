@@ -37,7 +37,6 @@ import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 
 
-
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
  * @since 19.04.2018
