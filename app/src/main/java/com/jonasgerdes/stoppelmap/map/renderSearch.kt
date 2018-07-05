@@ -18,6 +18,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.map_fragment.view.*
 import java.util.concurrent.TimeUnit
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.VectorDrawable
+import android.graphics.drawable.shapes.Shape
 import android.view.inputmethod.InputMethodManager
 import com.jonasgerdes.stoppelmap.util.*
 
@@ -102,6 +107,7 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
 
         searchExtendedChanged
                 .map { if (it) Pair(32.dp, 0.dp) else Pair(0.dp, 32.dp) }
+                .filter { (search.background as GradientDrawable).cornerRadius.toInt() != it.second }
                 .subscribe {
                     ObjectAnimator.ofFloat(search.background, "cornerRadius",
                             it.first.toFloat(), it.second.toFloat())
@@ -111,6 +117,7 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
 
         searchExtendedChanged
                 .map { if (it) Pair(4.dp, 2.dp) else Pair(2.dp, 4.dp) }
+                .filter { search.elevation.toInt() != it.second }
                 .subscribe {
                     ObjectAnimator.ofFloat(search, "elevation",
                             it.first.toFloat(), it.second.toFloat())
@@ -120,6 +127,7 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
 
         searchExtendedChanged
                 .map { if (it) Pair(8.dp, 12.dp) else Pair(12.dp, 8.dp) }
+                .filter { search.paddingTop != it.second || search.paddingBottom != it.second }
                 .subscribe {
                     ValueAnimator.ofInt(it.first, it.second)
                             .setDuration(200)
@@ -137,6 +145,7 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
 
         searchExtendedChanged
                 .map { if (it) Pair(16.dp, 4.dp) else Pair(4.dp, 16.dp) }
+                .filter { (search.layoutParams as ConstraintLayout.LayoutParams).marginStart != it.second }
                 .subscribe {
                     ValueAnimator.ofInt(it.first, it.second)
                             .setDuration(200)
