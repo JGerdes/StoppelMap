@@ -5,11 +5,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.jakewharton.rxbinding2.view.clicks
+import com.jakewharton.rxrelay2.PublishRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
 import com.jonasgerdes.stoppelmap.util.GlideApp
 import com.jonasgerdes.stoppelmap.util.inflate
 import com.mapbox.mapboxsdk.style.layers.Property
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.feed_list_item_image.view.*
 import org.threeten.bp.format.DateTimeFormatter
 import java.text.SimpleDateFormat
@@ -18,6 +21,8 @@ class FeedItemAdapter : ListAdapter<FeedItemWithImages, FeedItemAdapter.Holder>(
 
     private val dateTimeFormat = DateTimeFormatter.ofPattern("dd. MMMM yyyy - HH:mm")
     private val dateFormat = DateTimeFormatter.ofPattern("dd. MMMM yyyy")
+
+    val itemClicks = PublishSubject.create<FeedItemWithImages>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(parent.inflate(viewType))
@@ -33,6 +38,12 @@ class FeedItemAdapter : ListAdapter<FeedItemWithImages, FeedItemAdapter.Holder>(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(getItem(position))
+        holder.itemView.clicks()
+                .map { getItem(position) }
+                .subscribe(itemClicks)
+        holder.itemView.actionMore.clicks()
+                .map { getItem(position) }
+                .subscribe(itemClicks)
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {

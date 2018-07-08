@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.domain
 
 import com.jonasgerdes.mvi.BaseReducer
 import com.jonasgerdes.mvi.BaseResult
+import com.jonasgerdes.stoppelmap.domain.model.ExternalIntent
 import com.jonasgerdes.stoppelmap.domain.processor.*
 import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.map.highlightArea
@@ -27,7 +28,8 @@ class MainReducer : BaseReducer<MainState> {
             MainState.FeedState(
                     newsItems = emptyList(),
                     isLoading = false,
-                    errorMessage = null
+                    errorMessage = null,
+                    externalIntent = ExternalIntent.None
             )
     )
 
@@ -69,6 +71,9 @@ class MainReducer : BaseReducer<MainState> {
                 is FeedItemLoader.Result.Pending -> copy(feed = feed.copy(isLoading = true, errorMessage = null))
                 is FeedItemLoader.Result.Success -> copy(feed = feed.copy(isLoading = false, errorMessage = null))
                 is FeedItemLoader.Result.NetworkError -> copy(feed = feed.copy(isLoading = false, errorMessage = "No Network"))
+
+                is FeedItemInteractor.Result.OpenIntent -> copy(feed = feed.copy(externalIntent = result.intent))
+                is FeedItemInteractor.Result.ResetIntent -> copy(feed = feed.copy(externalIntent = ExternalIntent.None))
 
                 is TransportationProvider.Result -> copy(transportation = transportation.copy(routes = result.routes))
 
