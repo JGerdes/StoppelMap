@@ -20,9 +20,9 @@ class TransportationProvider
 
     override fun execute(action: Observable<Action>):
             Observable<BaseResult> = action.switchMap {
-        /*Observable.interval(30, TimeUnit.SECONDS)
+        Observable.interval(30, TimeUnit.SECONDS)
                 .startWith(0)
-                .switchMap {*/
+                .switchMap {
                     database.routes()
                             .getAll()
                             .map {
@@ -36,7 +36,7 @@ class TransportationProvider
                             }
                             .map { Result(it) }
                             .toObservable()
-                //}
+                }
     }
 
     private fun getNearestStations(route: String): List<TransportRoute.Station> {
