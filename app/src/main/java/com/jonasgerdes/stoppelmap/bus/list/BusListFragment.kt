@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.res.ResourcesCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +42,10 @@ class BusListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         routes.adapter = routeAdapter
         bindEvents()
+        toolbar.title = "Fahrpläne"
+        val font = ResourcesCompat.getFont(context!!, R.font.roboto_slab_light)
+        toolbarLayout.setExpandedTitleTypeface(font)
+        toolbarLayout.setCollapsedTitleTypeface(font)
         render(state.map { it.transportation }
                 .observeOn(AndroidSchedulers.mainThread()))
     }
