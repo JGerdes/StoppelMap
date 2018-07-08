@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.res.ResourcesCompat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -45,6 +46,10 @@ class FeedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         feed.adapter = adapter
         bindEvents()
+        toolbar.title = "Neuigkeiten"
+        val font = ResourcesCompat.getFont(context!!, R.font.roboto_slab_light)
+        toolbarLayout.setExpandedTitleTypeface(font)
+        toolbarLayout.setCollapsedTitleTypeface(font)
         render(state.map { it.feed }
                 .observeOn(AndroidSchedulers.mainThread()))
     }

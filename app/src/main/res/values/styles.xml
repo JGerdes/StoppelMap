@@ -21,6 +21,7 @@
         <item name="inputBackgroundColor">@color/light_input_background</item>
 
         <item name="transportationBackgroundColor">@color/background_transportation</item>
+        <item name="feedBackgroundColor">@color/background_feed</item>
 
 
         <item name="dividerColor">@color/light_divider</item>
@@ -39,6 +40,20 @@
         <item name="android:textSize">14sp</item>
         <item name="android:elevation">4dp</item>
         <item name="android:lines">1</item>
+    </style>
+
+    <style name="CenterToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/roboto_slab_thin</item>
+        <item name="android:textAppearance">@style/CenterToolbarTextAppearance</item>
+    </style>
+
+    <style name="CenterToolbarTextAppearance" parent="android:TextAppearance">
+        <item name="android:textColor">?imageCardTitleColor</item>
+        <item name="android:fontFamily">@font/roboto_slab_thin</item>
+    </style>
+
+    <style name="CenterToolbarTextAppearance.Expanded">
+        <item name="android:textSize">32sp</item>
     </style>
 
 </resources>

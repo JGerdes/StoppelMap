@@ -8,5 +8,6 @@
     <attr name="imageCardTitleColor" format="color|reference"/>
 
     <attr name="transportationBackgroundColor" format="color|reference" />
+    <attr name="feedBackgroundColor" format="color|reference" />
 
 </resources>

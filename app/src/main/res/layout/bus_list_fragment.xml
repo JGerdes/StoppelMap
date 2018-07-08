@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/transportationBackgroundColor"
+    android:background="?transportationBackgroundColor"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -19,17 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            android:theme="@style/CenterToolbarTheme"
+            app:collapsedTitleGravity="center_vertical|start"
+            app:collapsedTitleTextAppearance="@style/CenterToolbarTextAppearance"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleGravity="center"
+            app:expandedTitleTextAppearance="@style/CenterToolbarTextAppearance.Expanded"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
-                android:id="@+id/header"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                android:scaleType="centerInside"
-                app:layout_collapseMode="parallax" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
