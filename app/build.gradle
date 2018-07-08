@@ -9,7 +9,7 @@ apply from: '../api_keys.gradle'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.jonasgerdes.stoppelmap"
+        applicationId "com.jonasgerdes.stoppelmap.alpha"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 25
