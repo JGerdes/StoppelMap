@@ -21,5 +21,6 @@ sealed class MainEvent : BaseEvent {
 
     sealed class FeedEvent : MainEvent() {
         class ReloadTriggered : FeedEvent()
+        data class ItemClicked(val url: String) : FeedEvent()
     }
 }

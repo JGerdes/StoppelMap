@@ -10,12 +10,15 @@ import com.jonasgerdes.stoppelmap.event.list.BusListFragment
 import com.jonasgerdes.stoppelmap.event.list.EventListFragment
 import com.jonasgerdes.stoppelmap.event.list.FeedFragment
 import com.jonasgerdes.stoppelmap.map.MapFragment
-import com.jonasgerdes.stoppelmap.util.*
+import com.jonasgerdes.stoppelmap.util.KeyboardDetector
+import com.jonasgerdes.stoppelmap.util.enableItemShifting
+import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
+import com.jonasgerdes.stoppelmap.util.toggleLayoutFullscreen
 import kotlinx.android.synthetic.main.main_activity.*
 
 
 class MainActivity : AppCompatActivity() {
-
+    
     private val fragments = mapOf(
             R.id.navigation_map to MapFragment(),
             R.id.navigation_event_schedule to EventListFragment(),

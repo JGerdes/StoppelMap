@@ -2,6 +2,8 @@ package com.jonasgerdes.stoppelmap.event.list
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.res.ResourcesCompat
@@ -16,6 +18,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.domain.MainEvent
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
+import com.jonasgerdes.stoppelmap.domain.model.ExternalIntent
 import com.jonasgerdes.stoppelmap.feed.FeedItemAdapter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -59,6 +62,11 @@ class FeedFragment : Fragment() {
         swipeRefresh.refreshes()
                 .map { MainEvent.FeedEvent.ReloadTriggered() }
                 .subscribe(viewModel.events)
+
+        adapter.itemClicks
+                .map { it.feedItem?.url }
+                .map { MainEvent.FeedEvent.ItemClicked(it) }
+                .subscribe(viewModel.events)
     }
 
     @SuppressLint("CheckResult")
@@ -71,6 +79,18 @@ class FeedFragment : Fragment() {
                 .distinctUntilChanged()
                 .subscribe {
                     swipeRefresh.isRefreshing = it
+                }
+
+        feed.map { it.externalIntent }
+                .distinctUntilChanged()
+                .subscribe {
+                    when (it) {
+                        is ExternalIntent.Url -> {
+                            val intent = Intent(Intent.ACTION_VIEW,
+                                    Uri.parse(it.url))
+                            startActivity(intent)
+                        }
+                    }
                 }
     }
 

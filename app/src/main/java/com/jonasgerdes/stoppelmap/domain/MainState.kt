@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.domain
 
+import com.jonasgerdes.stoppelmap.domain.model.ExternalIntent
 import com.jonasgerdes.stoppelmap.domain.model.TransportRoute
 import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.model.map.StallCard
@@ -32,6 +33,7 @@ data class MainState(
     data class FeedState(
             val newsItems: List<FeedItemWithImages>,
             val isLoading: Boolean,
-            val errorMessage: String?
+            val errorMessage: String?,
+            val externalIntent: ExternalIntent = ExternalIntent.None
     )
 }
