@@ -9,9 +9,14 @@
     <string name="map_search_hint">Suche nach Zelten, Fahrgeschäften…</string>
     
 
+    <string name="transportation_toolbar_title">Fahrpläne</string>
     <string name="transportation_card_via">via</string>
     <string name="transportation_card_departure">Abfahrt</string>
     <string name="transportation_card_action_all_stations">Alle Haltestellen</string>
     <string name="transportation_card_action_return">Rückfahrt</string>
     <string name="transportation_relative_time_immediately">sofort</string>
+
+    <string name="feed_toolbar_title">Neuigkeiten</string>
+    <string name="feed_card_photo_copyright">Foto: %1$s</string>
+    <string name="feed_card_action_more">mehr</string>
 </resources>
