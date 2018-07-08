@@ -42,7 +42,7 @@ class BusListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         routes.adapter = routeAdapter
         bindEvents()
-        toolbar.title = "Fahrpläne"
+        toolbar.title = getString(R.string.transportation_toolbar_title)
         val font = ResourcesCompat.getFont(context!!, R.font.roboto_slab_light)
         toolbarLayout.setExpandedTitleTypeface(font)
         toolbarLayout.setCollapsedTitleTypeface(font)

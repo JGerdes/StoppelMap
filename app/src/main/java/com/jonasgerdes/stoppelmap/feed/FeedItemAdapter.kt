@@ -6,20 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.jakewharton.rxbinding2.view.clicks
-import com.jakewharton.rxrelay2.PublishRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
 import com.jonasgerdes.stoppelmap.util.GlideApp
 import com.jonasgerdes.stoppelmap.util.inflate
-import com.mapbox.mapboxsdk.style.layers.Property
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.feed_list_item_image.view.*
 import org.threeten.bp.format.DateTimeFormatter
-import java.text.SimpleDateFormat
 
 class FeedItemAdapter : ListAdapter<FeedItemWithImages, FeedItemAdapter.Holder>(FeedItemWithImages.Diff) {
 
-    private val dateTimeFormat = DateTimeFormatter.ofPattern("dd. MMMM yyyy - HH:mm")
     private val dateFormat = DateTimeFormatter.ofPattern("dd. MMMM yyyy")
 
     val itemClicks = PublishSubject.create<FeedItemWithImages>()
@@ -48,6 +44,7 @@ class FeedItemAdapter : ListAdapter<FeedItemWithImages, FeedItemAdapter.Holder>(
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: FeedItemWithImages) {
+            val context = itemView.context
             if (item.feedItem?.subTitle == null) {
                 itemView.title.text = item.feedItem?.title
                 itemView.subtitle.text = ""
@@ -62,7 +59,10 @@ class FeedItemAdapter : ListAdapter<FeedItemWithImages, FeedItemAdapter.Holder>(
                 val image = item.images!!.first()
                 if (image.author != null) {
                     itemView.copyright.visibility = View.VISIBLE
-                    itemView.copyright.text = image.author
+                    itemView.copyright.text = context.getString(
+                            R.string.feed_card_photo_copyright,
+                            image.author
+                    )
                 } else {
                     itemView.copyright.visibility = View.GONE
                 }

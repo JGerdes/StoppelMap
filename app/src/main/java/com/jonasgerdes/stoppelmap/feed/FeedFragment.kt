@@ -49,7 +49,7 @@ class FeedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         feed.adapter = adapter
         bindEvents()
-        toolbar.title = "Neuigkeiten"
+        toolbar.title = getString(R.string.feed_toolbar_title)
         val font = ResourcesCompat.getFont(context!!, R.font.roboto_slab_light)
         toolbarLayout.setExpandedTitleTypeface(font)
         toolbarLayout.setCollapsedTitleTypeface(font)
