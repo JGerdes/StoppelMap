@@ -62,6 +62,9 @@ class FeedFragment : Fragment() {
         swipeRefresh.refreshes()
                 .map { MainEvent.FeedEvent.ReloadTriggered() }
                 .subscribe(viewModel.events)
+        Observable.just(MainEvent.FeedEvent.ReloadTriggered())
+                .delay(100, TimeUnit.MILLISECONDS)
+                .subscribe(viewModel.events)
 
         adapter.itemClicks
                 .map { it.feedItem?.url }
