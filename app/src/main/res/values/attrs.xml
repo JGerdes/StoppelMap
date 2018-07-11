@@ -8,6 +8,14 @@
     <attr name="imageCardTitleColor" format="color|reference"/>
 
     <attr name="transportationBackgroundColor" format="color|reference" />
+    <attr name="eventsBackgroundColor" format="color|reference" />
     <attr name="feedBackgroundColor" format="color|reference" />
+    <attr name="aboutBackgroundColor" format="color|reference" />
+
+
+    <attr name="cardCornerRadius" format="dimension" />
+    <attr name="cardElevation" format="dimension" />
+    <attr name="cardMargin" format="dimension" />
+
 
 </resources>

@@ -20,7 +20,9 @@
     <color name="black_24">#3D000000</color>
 
     <color name="background_transportation">#303F9F</color>
+    <color name="background_events">#303F9F</color>
     <color name="background_feed">#303F9F</color>
+    <color name="background_about">#303F9F</color>
 
 
     <color name="background_stall_type_bar">#01579b</color>
