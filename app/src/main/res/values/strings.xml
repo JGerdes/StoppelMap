@@ -19,4 +19,6 @@
     <string name="feed_toolbar_title">Neuigkeiten</string>
     <string name="feed_card_photo_copyright">Foto: %1$s</string>
     <string name="feed_card_action_more">mehr</string>
+
+    <string name="about_toolbar_title">Über StoppelMap</string>
 </resources>

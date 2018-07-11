@@ -21,10 +21,16 @@
         <item name="inputBackgroundColor">@color/light_input_background</item>
 
         <item name="transportationBackgroundColor">@color/background_transportation</item>
+        <item name="eventsBackgroundColor">@color/background_feed</item>
         <item name="feedBackgroundColor">@color/background_feed</item>
-
+        <item name="aboutBackgroundColor">@color/background_feed</item>
 
         <item name="dividerColor">@color/light_divider</item>
+
+
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardMargin">8dp</item>
     </style>
 
     <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
