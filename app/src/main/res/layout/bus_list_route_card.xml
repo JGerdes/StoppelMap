@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    app:cardCornerRadius="16dp"
-    android:elevation="4dp">
+    android:layout_marginBottom="8dp"
+    android:elevation="4dp"
+    app:cardBackgroundColor="?cardBackgroundColor"
+    app:cardCornerRadius="16dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,24 +34,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:textAllCaps="true"
-            android:textSize="10sp"
-            android:textStyle="bold"
+            android:text="@string/transportation_card_via"
+            style="@style/TextCaption"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            android:text="@string/transportation_card_via" />
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
         <TextView
             android:id="@+id/departure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:textAllCaps="true"
-            android:textSize="10sp"
-            android:textStyle="bold"
+            android:text="@string/transportation_card_departure"
+            style="@style/TextCaption"
             app:layout_constraintBaseline_toBaselineOf="@id/via"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/transportation_card_departure" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
         <TextView

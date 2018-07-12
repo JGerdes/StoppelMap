@@ -35,7 +35,13 @@ class AboutFragment : Fragment() {
 
     private val cardAdapter = GroupAdapter<ViewHolder>().apply {
         add(Section().apply {
-            add(AuthorCard(name = "Jonas Gerdes"))
+            add(AuthorCard(
+                    name = "Jonas Gerdes",
+                    work = "Idee, Programmierung",
+                    mail = "moin@jonasgerdes.com",
+                    website = "https://jonasgerdes.com",
+                    githubUrl = "https://github.com/JGerdes"
+            ))
         })
     }
 

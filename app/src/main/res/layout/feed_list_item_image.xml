@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    app:cardCornerRadius="16dp"
-    android:elevation="4dp">
+    android:layout_marginBottom="8dp"
+    android:elevation="4dp"
+    app:cardBackgroundColor="?cardBackgroundColor"
+    app:cardCornerRadius="16dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -56,13 +57,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            app:layout_goneMarginBottom="16dp"
             android:fontFamily="@font/roboto_slab_light"
             android:textColor="?imageCardTitleColor"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/copyright"
             app:layout_constraintEnd_toEndOf="@id/image"
             app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_goneMarginBottom="16dp"
             tools:text="Bürgermeister Helmut Gels präsentiert Schaustellern das Plakat für den Stoppelmarkt 2018" />
 
         <TextView
