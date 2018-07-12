@@ -6,12 +6,11 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.about_card_author.*
 
-data class AuthorCard(
+data class LibraryCard(
         val name: String,
-        val work: String,
-        val website: String? = null,
-        val githubUrl: String? = null,
-        val mail: String? = null
+        val author: String,
+        val license: String,
+        val githubUrl: String? = null
 ) : Item() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.name.text = name
@@ -24,6 +23,3 @@ data class AuthorCard(
     override fun getLayout() = R.layout.about_card_author
 
 }
-
-
-

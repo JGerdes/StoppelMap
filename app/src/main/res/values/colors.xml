@@ -14,6 +14,8 @@
     <color name="light_window_background">#f4f4f4</color>
     <color name="light_input_background">#fafafa</color>
 
+    <color name="light_card_background">#fafafa</color>
+
     <color name="light_divider">#20000000</color>
 
     <color name="black_51">#82000000</color>

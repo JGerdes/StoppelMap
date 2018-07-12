@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import io.reactivex.subjects.BehaviorSubject
 
 fun ViewGroup.inflate(@LayoutRes layout: Int) =
@@ -18,6 +19,11 @@ fun ViewGroup.inflate(@LayoutRes layout: Int) =
 fun Activity.hideSoftkeyboard() = currentFocus?.let {
     val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(it.windowToken, 0)
+}
+
+fun TextView.setTextOrHide(text: String?) {
+    visibility = if (text == null) View.GONE else View.VISIBLE
+    this.text = text
 }
 
 /**
