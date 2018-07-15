@@ -9,8 +9,6 @@ import com.jonasgerdes.mvi.process
 import com.jonasgerdes.stoppelmap.domain.MainEvent.*
 import com.jonasgerdes.stoppelmap.domain.processor.*
 import io.reactivex.Observable
-import io.reactivex.subjects.PublishSubject
-import java.util.concurrent.TimeUnit
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
@@ -25,7 +23,9 @@ class MainViewModel : ViewModel() {
 
     private val flow = Flow<MainEvent, MainState>(interpret {
         when (it) {
-            is InitialEvent -> FeedProvider.Action() and TransportationProvider.Action()
+            is InitialEvent -> Versioner.Action.CheckForUpdates and
+                    FeedProvider.Action() and
+                    TransportationProvider.Action()
             is MapEvent.MapMoved -> MapHighlighter.Action.SelectNothing
             is MapEvent.SearchFieldClickedEvent
             -> MapSearchToggle.Action(true) and MapSearch.Action.Refresh()
@@ -44,6 +44,7 @@ class MainViewModel : ViewModel() {
                 MapHighlighter.Action.HighlightCard(it.cardIndex)
         }
     }, process(
+            Versioner(),
             MapSearchToggle(),
             MapHighlighter(),
             MapSearch(),
