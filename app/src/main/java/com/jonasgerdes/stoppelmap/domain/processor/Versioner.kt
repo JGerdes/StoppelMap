@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.versioning.Message
 import com.jonasgerdes.stoppelmap.util.versioning.VersionProvider
 import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
 
 class Versioner
@@ -24,11 +25,12 @@ class Versioner
 
     private fun checkForUpdates(action: Action.CheckForUpdates) =
             versionProvider.requestVersionInfo()
+                    .subscribeOn(Schedulers.io())
                     .map {
                         Result.ShowMessages(
-                                messages = it.messages.filter {
+                                messages = it.messages?.filter {
                                     versionProvider.getHasMessageBeShown(it)
-                                },
+                                } ?: emptyList(),
                                 newVersionAvailable = it.latest?.let
                                 {
                                     it.code > versionProvider.getCurrentVersionCode()

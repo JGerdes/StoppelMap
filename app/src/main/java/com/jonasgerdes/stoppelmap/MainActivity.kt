@@ -1,11 +1,16 @@
 package com.jonasgerdes.stoppelmap
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
+import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.about.AboutFragment
+import com.jonasgerdes.stoppelmap.domain.MainState
+import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.event.list.BusListFragment
 import com.jonasgerdes.stoppelmap.event.list.EventListFragment
 import com.jonasgerdes.stoppelmap.event.list.FeedFragment
@@ -14,11 +19,21 @@ import com.jonasgerdes.stoppelmap.util.KeyboardDetector
 import com.jonasgerdes.stoppelmap.util.enableItemShifting
 import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
 import com.jonasgerdes.stoppelmap.util.toggleLayoutFullscreen
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.main_activity.*
 
 
 class MainActivity : AppCompatActivity() {
-    
+
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProviders.of(this).get(MainViewModel::class.java)
+    }
+
+    private lateinit var flowDisposable: Disposable
+    private val state = BehaviorRelay.create<MainState>()
+
     private val fragments = mapOf(
             R.id.navigation_map to MapFragment(),
             R.id.navigation_event_schedule to EventListFragment(),
@@ -41,6 +56,28 @@ class MainActivity : AppCompatActivity() {
             navigation.visibility = if (it) View.GONE else View.VISIBLE
         }
 
+        render(state.observeOn(AndroidSchedulers.mainThread()))
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        flowDisposable = viewModel.state.subscribe(state)
+    }
+
+
+    override fun onStop() {
+        flowDisposable.dispose()
+        super.onStop()
+    }
+
+
+    @SuppressLint("CheckResult")
+    private fun render(state: Observable<MainState>) {
+        state.subscribe {
+            Log.d("MainActivity", "new state: $it")
+        }
     }
 
     private fun initNavigation() {
