@@ -35,13 +35,59 @@ class AboutFragment : Fragment() {
 
     private val cardAdapter = GroupAdapter<ViewHolder>().apply {
         add(Section().apply {
+            add(VersionItem("v2018.0.1 Beta"))
+        })
+        add(Section().apply {
+            setHeader(HeaderItem("Disclaimer"))
+            add(TextItem(
+                    text = """StoppelMap ist eine inoffizielle App für den Stoppelmarkt.
+                        |Alle Angaben sind ohne Gewähr, es wird keine Garantie für die Richtig- und
+                        |Vollständigkeit der dargestellten Informationen gegeben und keine Haftung
+                        |für eventuell verursachte Schäden übernommen.
+                    """.trimMargin()
+            ))
+        })
+        add(Section().apply {
+            setHeader(HeaderItem("Mitwirkende"))
             add(AuthorCard(
                     name = "Jonas Gerdes",
-                    work = "Idee, Programmierung",
+                    work = "Idee, Design, Programmierung",
                     mail = "moin@jonasgerdes.com",
                     website = "https://jonasgerdes.com",
                     githubUrl = "https://github.com/JGerdes"
             ))
+        })
+        add(Section().apply {
+            setHeader(HeaderItem("Grafik/Illustrationen"))
+            add(AuthorCard(
+                    name = "Sara Fraas",
+                    work = "Süßigkeiten, Dosenwerfen",
+                    website = "www.fraas-home.de"
+            ))
+            add(AuthorCard(
+                    name = "Jonas Gerdes",
+                    work = "Alle nicht weiter gekennzeichneten Grafiken",
+                    mail = "moin@jonasgerdes.com",
+                    website = "https://jonasgerdes.com",
+                    githubUrl = "https://github.com/JGerdes"
+            ))
+        })
+        add(Section().apply {
+            setHeader(HeaderItem("Informationsquellen"))
+            add(AuthorCard(
+                    name = "Stadt Vechta",
+                    work = "Lageplan, Infotexte, Lageplan",
+                    website = "https://stoppelmarkt.de"
+            ))
+            add(AuthorCard(
+                    name = "Stoppelmarkt/Stadt Vechta",
+                    work = "Newsfeed",
+                    website = "https://stoppelmarkt.de/aktuelles"
+            ))
+        })
+        add(Section().apply {
+            setHeader(HeaderItem("Opensource Bibliotheken"))
+            addAll(Library.list.sortedBy { it.name })
         })
     }
 
