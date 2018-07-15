@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.util.versioning
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.GsonBuilder
 import com.jonasgerdes.stoppelmap.BuildConfig
 import com.jonasgerdes.stoppelmap.R
@@ -46,8 +47,9 @@ class VersionProviderImpl(app: Context) : VersionProvider {
         return Observable.create {
             val response = okHttpClient.newCall(request).execute()
             val jsonData = response.body()?.string()
+            Log.d("VersionProvider", "data: $jsonData")
             val versionInfo = gson.fromJson(jsonData, VersionInfo::class.java)
-            versionInfo.latest = versionInfo.version["release"]
+            versionInfo.latest = versionInfo.version["release"]?.copy(code = 26)
             it.onNext(versionInfo)
             it.onComplete()
         }

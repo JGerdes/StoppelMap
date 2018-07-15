@@ -21,6 +21,7 @@
 
         <item name="windowBackgroundColor">@color/light_window_background</item>
         <item name="inputBackgroundColor">@color/light_input_background</item>
+        <item name="dimWindowBackgroundColor">@color/dim_window_background</item>
 
         <item name="transportationBackgroundColor">@color/background_transportation</item>
         <item name="eventsBackgroundColor">@color/background_feed</item>
@@ -79,5 +80,4 @@
         <item name="android:textColor">?android:textColorPrimary</item>
         <item name="android:textColorLink">?android:textColorPrimary</item>
     </style>
-
 </resources>
