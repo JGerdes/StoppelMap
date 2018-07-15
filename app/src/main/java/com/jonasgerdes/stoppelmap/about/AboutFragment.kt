@@ -37,6 +37,7 @@ class AboutFragment : Fragment() {
         GroupAdapter<ViewHolder>().apply {
             add(Section().apply {
                 add(VersionItem("v2018.0.1 Beta"))
+                add(TextItem(text= getString(R.string.about_open_source)))
             })
             add(Section().apply {
                 setHeader(HeaderItem(getString(R.string.about_disclaimer_title)))
