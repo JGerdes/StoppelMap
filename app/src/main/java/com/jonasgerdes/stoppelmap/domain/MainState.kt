@@ -6,12 +6,14 @@ import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.model.map.StallCard
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
+import com.jonasgerdes.stoppelmap.model.versioning.Message
 
 /**
  * @author Jonas Gerdes <dev@jonasgerdes.com>
  * @since 08.05.2018
  */
 data class MainState(
+        val versionInfo: VersionInfo,
         val map: MapState,
         val transportation: TransportationState,
         val feed: FeedState
@@ -35,5 +37,10 @@ data class MainState(
             val isLoading: Boolean,
             val errorMessage: String?,
             val externalIntent: ExternalIntent = ExternalIntent.None
+    )
+
+    data class VersionInfo(
+            val messages: List<Message> = emptyList(),
+            val newVersionAvailable: Boolean = false
     )
 }

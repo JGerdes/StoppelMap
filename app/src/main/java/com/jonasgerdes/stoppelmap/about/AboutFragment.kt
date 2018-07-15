@@ -13,6 +13,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.bus.list.RouteAdapter
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
+import com.jonasgerdes.stoppelmap.util.versionName
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
@@ -36,8 +37,8 @@ class AboutFragment : Fragment() {
     private val cardAdapter by lazy {
         GroupAdapter<ViewHolder>().apply {
             add(Section().apply {
-                add(VersionItem("v2018.0.1 Beta"))
-                add(TextItem(text= getString(R.string.about_open_source)))
+                add(VersionItem(context?.versionName ?: ""))
+                add(TextItem(text = getString(R.string.about_open_source)))
             })
             add(Section().apply {
                 setHeader(HeaderItem(getString(R.string.about_disclaimer_title)))

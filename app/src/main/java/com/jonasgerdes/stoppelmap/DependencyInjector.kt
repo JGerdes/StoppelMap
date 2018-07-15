@@ -10,12 +10,15 @@ import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.network.StoppelMapApi
 import com.jonasgerdes.stoppelmap.util.DateTimeProvider
+import com.jonasgerdes.stoppelmap.util.versioning.VersionProvider
+import com.jonasgerdes.stoppelmap.util.versioning.VersionProviderImpl
 import okhttp3.OkHttpClient
 import org.threeten.bp.format.DateTimeFormatter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.reflect.KProperty
+
 
 inline fun <reified T> inject() = inject(T::class.java)
 
@@ -41,6 +44,10 @@ private inline fun <reified T : Any> singleton(crossinline provide: () -> T): In
 
 
 private fun <T> getInstanceFor(clazz: Class<T>) = when (clazz) {
+
+    VersionProvider::class.java -> singleton {
+        VersionProviderImpl.instance
+    }
 
     StoppelMapDatabase::class.java -> instance {
         StoppelMapDatabase.database

@@ -4,6 +4,7 @@ import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
+import com.jonasgerdes.stoppelmap.util.versioning.VersionProviderImpl
 import com.mapbox.android.telemetry.TelemetryEnabler
 import com.mapbox.mapboxsdk.Mapbox
 
@@ -16,9 +17,10 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initMapbox()
-        AndroidThreeTen.init(this);
+        AndroidThreeTen.init(this)
         StoppelMapDatabase.init(this)
         DynamicDatabase.init(this)
+        VersionProviderImpl.init(this)
     }
 
     private fun initMapbox() {

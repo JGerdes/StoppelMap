@@ -13,6 +13,7 @@ import com.jonasgerdes.stoppelmap.map.highlightArea
  */
 class MainReducer : BaseReducer<MainState> {
     override fun idle() = MainState(
+            MainState.VersionInfo(),
             MainState.MapState(
                     searchExtended = false,
                     highlight = MapHighlight.None,
@@ -37,6 +38,11 @@ class MainReducer : BaseReducer<MainState> {
     override fun reduce(state: MainState, result: BaseResult): MainState {
         with(state) {
             return when (result) {
+                is Versioner.Result.ShowMessages ->
+                    copy(versionInfo = versionInfo.copy(
+                            messages = result.messages,
+                            newVersionAvailable = result.newVersionAvailable
+                    ))
                 is MapSearchToggle.Result -> copy(map = map.copy(searchExtended = result.showSearch))
                 is MapHighlighter.Result.HighlightSingleStall
                 -> copy(map = map.copy(highlight = result.stall.highlightArea(), searchExtended = false))
