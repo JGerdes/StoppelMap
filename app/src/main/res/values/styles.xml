@@ -16,6 +16,8 @@
         <item name="android:textColorTertiary">@color/light_text_tertiary</item>
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="imageCardTitleColor">@color/dark_text_primary</item>
+        <item name="lightTitleColor">@color/dark_text_primary</item>
+        <item name="lightTextColor">@color/dark_text_secondary</item>
 
         <item name="windowBackgroundColor">@color/light_window_background</item>
         <item name="inputBackgroundColor">@color/light_input_background</item>

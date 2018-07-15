@@ -6,6 +6,8 @@
     <attr name="dividerColor" format="color|reference"/>
 
     <attr name="imageCardTitleColor" format="color|reference"/>
+    <attr name="lightTitleColor" format="color|reference"/>
+    <attr name="lightTextColor" format="color|reference"/>
 
     <attr name="transportationBackgroundColor" format="color|reference" />
     <attr name="eventsBackgroundColor" format="color|reference" />
