@@ -60,6 +60,7 @@
 
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/messages"
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
                 android:orientation="horizontal"
@@ -67,7 +68,7 @@
                 tools:listitem="@layout/main_message_dialog_item" />
 
             <Button
-                android:id="@+id/actionReturn"
+                android:id="@+id/actionNext"
                 style="@android:style/Widget.Material.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

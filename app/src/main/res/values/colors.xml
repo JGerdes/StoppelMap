@@ -16,6 +16,7 @@
     <color name="dim_window_background">#cc000000</color>
 
     <color name="light_card_background">#fafafa</color>
+    <color name="highlight_card_background">@color/colorPrimaryDark</color>
 
     <color name="light_divider">#20000000</color>
 

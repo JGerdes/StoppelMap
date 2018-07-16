@@ -4,6 +4,7 @@ import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
+import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.versioning.Message
 import com.jonasgerdes.stoppelmap.util.versioning.VersionProvider
 import io.reactivex.Observable
@@ -14,6 +15,7 @@ class Versioner
     : BaseOperation<Versioner.Action>(Action::class.java) {
 
     private val versionProvider: VersionProvider by inject()
+    private val database: DynamicDatabase by inject()
 
     override fun execute(action: Observable<Action>):
             Observable<BaseResult> = action.flatMap {
@@ -29,7 +31,7 @@ class Versioner
                     .map {
                         Result.ShowMessages(
                                 messages = it.messages?.filter {
-                                    versionProvider.getHasMessageBeShown(it)
+                                    !versionProvider.getHasMessageBeShown(it)
                                 } ?: emptyList(),
                                 newVersionAvailable = it.latest?.let
                                 {

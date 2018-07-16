@@ -10,13 +10,15 @@ import java.io.File
 
 @Database(entities = [
     FeedItem::class,
-    FeedImage::class
+    FeedImage::class,
+    VersionMessage::class
 ], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class DynamicDatabase : RoomDatabase() {
     abstract fun feedItems(): FeedItemDao
     abstract fun feedImages(): FeedImageDao
     abstract fun feedItemsWithImages(): FeedItemWithImagesDao
+    abstract fun versionMessages(): VersionMessageDao
 
     companion object {
         lateinit var database: DynamicDatabase

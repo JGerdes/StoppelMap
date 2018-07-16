@@ -17,6 +17,7 @@
 
 
     <attr name="cardBackgroundColor" format="color|reference" />
+    <attr name="cardBackgroundColorHighlight" format="color|reference" />
     <attr name="cardCornerRadius" format="dimension" />
     <attr name="cardElevation" format="dimension" />
     <attr name="cardMargin" format="dimension" />

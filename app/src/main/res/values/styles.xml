@@ -31,6 +31,7 @@
         <item name="dividerColor">@color/light_divider</item>
 
         <item name="cardBackgroundColor">@color/light_card_background</item>
+        <item name="cardBackgroundColorHighlight">@color/highlight_card_background</item>
         <item name="cardCornerRadius">16dp</item>
         <item name="cardElevation">4dp</item>
         <item name="cardMargin">8dp</item>

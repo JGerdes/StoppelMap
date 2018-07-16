@@ -15,25 +15,24 @@ import okhttp3.Request
 
 
 class VersionProviderImpl(app: Context) : VersionProvider {
-
     companion object {
+
         private const val PREF_VERSION_CONFIG = "STOPPELMAP_VERSION_CONFIG"
         private const val URL_VERSION_CHECK = "https://app.stoppelmap.de/version"
         lateinit var instance: VersionProviderImpl
-
         fun init(app: Context) {
             instance = VersionProviderImpl(app)
         }
+
     }
-
     private val okHttpClient = OkHttpClient()
-    private val gson = GsonBuilder().create()
 
+    private val gson = GsonBuilder().create()
     private val versionCode = app.versionCode
+
     private val versionName = app.versionName
     private val appName = app.getString(R.string.app_name)
     private val userAgent = "$appName v$versionName ($versionCode)"
-
     private val pref = app.getSharedPreferences("STOPPELMAP_SHOW_MESSAGES", Context.MODE_PRIVATE)
 
     override fun requestVersionInfo(): Observable<VersionInfo> {
@@ -65,5 +64,7 @@ class VersionProviderImpl(app: Context) : VersionProvider {
     }
 
     override fun getCurrentVersionCode() = versionCode
+
+    override fun getUserAgent() = userAgent
 
 }

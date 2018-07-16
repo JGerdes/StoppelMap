@@ -14,4 +14,6 @@ interface VersionProvider {
 
     fun getCurrentVersionCode(): Int
 
+    fun getUserAgent(): String
+
 }
