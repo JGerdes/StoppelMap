@@ -22,4 +22,17 @@ object Converters {
         return date?.format(formatter)
     }
 
+
+    @TypeConverter
+    @JvmStatic
+    fun toIntList(value: String?): List<Int>? {
+        return value?.split(";")?.map { it.toInt() }
+    }
+
+    @TypeConverter
+    @JvmStatic
+    fun fromIntList(list: List<Int>?): String? {
+        return list?.joinToString(";")
+    }
+
 }

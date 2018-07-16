@@ -8,6 +8,7 @@ import com.jonasgerdes.mvi.BaseEvent
  */
 sealed class MainEvent : BaseEvent {
     class InitialEvent : MainEvent()
+    data class MessageRead(val messageSlug: String): MainEvent()
     sealed class MapEvent : MainEvent() {
         class SearchFieldClickedEvent : MapEvent()
         class OnBackPressEvent : MapEvent()

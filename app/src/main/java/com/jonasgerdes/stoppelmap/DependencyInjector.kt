@@ -10,6 +10,7 @@ import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.network.StoppelMapApi
 import com.jonasgerdes.stoppelmap.util.DateTimeProvider
+import com.jonasgerdes.stoppelmap.util.UserAgentInterceptor
 import com.jonasgerdes.stoppelmap.util.versioning.VersionProvider
 import com.jonasgerdes.stoppelmap.util.versioning.VersionProviderImpl
 import okhttp3.OkHttpClient
@@ -70,7 +71,9 @@ private fun <T> getInstanceFor(clazz: Class<T>) = when (clazz) {
     }
 
     StoppelMapApi::class.java -> singleton {
-        val okhttp = OkHttpClient.Builder().build()
+        val okhttp = OkHttpClient.Builder()
+                .addNetworkInterceptor(UserAgentInterceptor(VersionProviderImpl.instance.getUserAgent()))
+                .build()
         Retrofit.Builder()
                 .client(okhttp)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder()

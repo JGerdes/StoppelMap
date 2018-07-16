@@ -5,24 +5,33 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearSnapHelper
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import com.jakewharton.rxbinding2.support.v4.widget.refreshes
+import com.jakewharton.rxbinding2.view.clicks
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.about.AboutFragment
+import com.jonasgerdes.stoppelmap.domain.MainEvent
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.event.list.BusListFragment
 import com.jonasgerdes.stoppelmap.event.list.EventListFragment
 import com.jonasgerdes.stoppelmap.event.list.FeedFragment
 import com.jonasgerdes.stoppelmap.map.MapFragment
-import com.jonasgerdes.stoppelmap.util.KeyboardDetector
-import com.jonasgerdes.stoppelmap.util.enableItemShifting
-import com.jonasgerdes.stoppelmap.util.enableItemTextHiding
-import com.jonasgerdes.stoppelmap.util.toggleLayoutFullscreen
+import com.jonasgerdes.stoppelmap.util.*
+import com.jonasgerdes.stoppelmap.versioning.HtmlMessageItem
+import com.jonasgerdes.stoppelmap.versioning.UpdateMessageItem
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.kotlinandroidextensions.Item
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.abc_tooltip.*
 import kotlinx.android.synthetic.main.main_activity.*
+import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +42,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var flowDisposable: Disposable
     private val state = BehaviorRelay.create<MainState>()
+
+    private val messageAdapter = GroupAdapter<ViewHolder>()
 
     private val fragments = mapOf(
             R.id.navigation_map to MapFragment(),
@@ -48,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        bindEvents()
         initNavigation()
         toggleLayoutFullscreen(true)
         showFragment(R.id.navigation_map)
@@ -56,6 +68,9 @@ class MainActivity : AppCompatActivity() {
             navigation.visibility = if (it) View.GONE else View.VISIBLE
         }
 
+        messages.adapter = messageAdapter
+        messages.layoutManager = VariableScrollSpeedLinearLayoutManager(this, RecyclerView.HORIZONTAL, 4f)
+        LinearSnapHelper().attachToRecyclerView(messages)
         render(state.observeOn(AndroidSchedulers.mainThread()))
 
     }
@@ -78,7 +93,39 @@ class MainActivity : AppCompatActivity() {
         state.subscribe {
             Log.d("MainActivity", "new state: $it")
         }
+
+        state.map { it.versionInfo }
+                .distinctUntilChanged()
+                .map {
+                    it.messages.map { HtmlMessageItem(it) as Item }
+                            .toMutableList()
+                            .apply {
+                                if (it.newVersionAvailable) {
+                                    add(0, UpdateMessageItem())
+                                }
+                            }
+                }
+                .subscribe {
+                    windowDim.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+                    messageAdapter.update(it)
+                }
     }
+
+    @SuppressLint("CheckResult")
+    private fun bindEvents() {
+
+        actionNext.clicks()
+                .map { messages.findFirstCompletelyVisibleItemPosition() }
+                .subscribe {
+                    if (it < messageAdapter.itemCount - 1) {
+                        messages.smoothScrollToPosition(it + 1)
+                    } else {
+                        windowDim.visibility = View.GONE
+                    }
+                }
+        //        .subscribe(viewModel.events)
+    }
+
 
     private fun initNavigation() {
         navigation.enableItemShifting(false)

@@ -22,4 +22,7 @@
 
     <string name="about_toolbar_title">Über StoppelMap</string>
     <string name="main_message_dialog_next">Weiter</string>
+
+    <string name="main_message_dialog_update_item_title">Neue Version</string>
+    <string name="main_message_dialog_update_item_body">Eine neue Version der StoppelMap ist ab sofort bei Google Play verfügbar.</string>
 </resources>
