@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.model
 
+import com.jonasgerdes.stoppelmap.model.events.parseMarqueeEvents
 import com.jonasgerdes.stoppelmap.model.parse.parseBusSchedule
 import com.jonasgerdes.stoppelmap.model.parse.parseEventSchedule
 import com.jonasgerdes.stoppelmap.model.parse.parseGeoJson
@@ -31,6 +32,10 @@ fun main(args: Array<String>) {
         }
     }
 
+    val marquees = parseMarqueeEvents()
+    marquees.forEach { println(it) }
+    println("got ${marquees.size}")
+
     val db = openSQLite(Settings.database)!!
     Data().apply {
         parseGeoJson(Settings.geoInput, Settings.geoOutput)
@@ -43,6 +48,7 @@ fun main(args: Array<String>) {
                 .filter { it.extension == "json" }
                 .filter { it.name != "template.json" })
     }.insertInto(db)
+
 
     System.out.println("finished @ ${currentTime()}")
 }
