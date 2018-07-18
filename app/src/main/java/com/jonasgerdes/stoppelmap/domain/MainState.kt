@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.model.map.StallCard
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.jonasgerdes.stoppelmap.model.news.FeedItemWithImages
+import com.jonasgerdes.stoppelmap.model.news.VersionMessage
 import com.jonasgerdes.stoppelmap.model.versioning.Message
 
 /**
@@ -40,7 +41,7 @@ data class MainState(
     )
 
     data class VersionInfo(
-            val messages: List<Message> = emptyList(),
+            val messages: List<VersionMessage> = emptyList(),
             val newVersionAvailable: Boolean = false
     )
 }

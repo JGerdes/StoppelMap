@@ -42,7 +42,7 @@ class MainViewModel : ViewModel() {
                         MapHighlighter.Action.HighlightCard(0)
             is MapEvent.StallCardSelected ->
                 MapHighlighter.Action.HighlightCard(it.cardIndex)
-            is MainEvent.MessageRead -> TODO()
+            is MainEvent.MessageRead -> Versioner.Action.MarkMessageRead(it.messageSlug)
         }
     }, process(
             Versioner(),

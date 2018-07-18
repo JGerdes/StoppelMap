@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearSnapHelper
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
-import com.jakewharton.rxbinding2.support.v4.widget.refreshes
 import com.jakewharton.rxbinding2.view.clicks
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.about.AboutFragment
@@ -20,18 +19,15 @@ import com.jonasgerdes.stoppelmap.event.list.BusListFragment
 import com.jonasgerdes.stoppelmap.event.list.EventListFragment
 import com.jonasgerdes.stoppelmap.event.list.FeedFragment
 import com.jonasgerdes.stoppelmap.map.MapFragment
+import com.jonasgerdes.stoppelmap.model.news.VersionMessage
 import com.jonasgerdes.stoppelmap.util.*
-import com.jonasgerdes.stoppelmap.versioning.HtmlMessageItem
-import com.jonasgerdes.stoppelmap.versioning.UpdateMessageItem
+import com.jonasgerdes.stoppelmap.versioning.MessageItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import com.xwray.groupie.kotlinandroidextensions.Item
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.abc_tooltip.*
 import kotlinx.android.synthetic.main.main_activity.*
-import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -97,13 +93,12 @@ class MainActivity : AppCompatActivity() {
         state.map { it.versionInfo }
                 .distinctUntilChanged()
                 .map {
-                    it.messages.map { HtmlMessageItem(it) as Item }
-                            .toMutableList()
-                            .apply {
-                                if (it.newVersionAvailable) {
-                                    add(0, UpdateMessageItem())
-                                }
-                            }
+                    it.messages.map {
+                        when (it.type) {
+                            VersionMessage.TYPE_UPDATE -> MessageItem.Update(it)
+                            else -> MessageItem.Styled(it)
+                        }
+                    }
                 }
                 .subscribe {
                     windowDim.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
@@ -123,7 +118,13 @@ class MainActivity : AppCompatActivity() {
                         windowDim.visibility = View.GONE
                     }
                 }
-        //        .subscribe(viewModel.events)
+        messages.itemScrolls()
+                .log("Main") { it.toString() }
+                .map { messageAdapter.getItem(it) }
+                .filter { it is MessageItem }
+                .map { (it as MessageItem).message.slug }
+                .map { MainEvent.MessageRead(it) }
+                .subscribe(viewModel.events)
     }
 
 
