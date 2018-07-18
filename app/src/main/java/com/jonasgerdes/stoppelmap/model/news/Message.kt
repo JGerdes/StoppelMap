@@ -6,17 +6,22 @@ import android.arch.persistence.room.*
 data class VersionMessage(
         @PrimaryKey
         var slug: String,
-        var title: String,
-        var body: String,
-        var versions: List<Int>,
+        var title: String? = null,
+        var body: String? = null,
+        var versions: List<Int>? = null,
         var image: String? = null,
         var url: String? = null,
         var color: Int? = null,
         @ColumnInfo(name = "show_always")
         var showAlways: Boolean,
         var seen: Boolean = false,
-        var type:String = slug.substringBefore("#", "default")
-)
+        var type:String = slug.substringBefore("#", TYPE_DEFAULT)
+) {
+    companion object {
+        const val TYPE_DEFAULT = "default"
+        const val TYPE_UPDATE = "update"
+    }
+}
 
 @Dao
 interface VersionMessageDao {
@@ -34,4 +39,4 @@ interface VersionMessageDao {
 }
 
 fun VersionMessageDao.getUnseenForVersion(version: Int) =
-        getUnseen().filter { it.versions.contains(version) }
+        getUnseen().filter { it.versions?.contains(version) ?: true }

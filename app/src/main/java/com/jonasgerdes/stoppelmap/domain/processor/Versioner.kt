@@ -5,6 +5,7 @@ import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
+import com.jonasgerdes.stoppelmap.model.news.VersionMessage
 import com.jonasgerdes.stoppelmap.model.versioning.Message
 import com.jonasgerdes.stoppelmap.util.versioning.VersionProvider
 import io.reactivex.Observable
@@ -29,10 +30,28 @@ class Versioner
             versionProvider.requestVersionInfo()
                     .subscribeOn(Schedulers.io())
                     .map {
+                        database.versionMessages().removeUnseen()
+                        it.messages?.forEach {
+                            database.versionMessages().insertMessage(VersionMessage(
+                                    slug = it.slug,
+                                    title = it.title,
+                                    body = it.message,
+                                    versions = it.versions,
+                                    showAlways = it.showAlways
+                            ))
+                        }
+                        it.latest?.let {
+                            if (it.code > versionProvider.getCurrentVersionCode()) {
+                                database.versionMessages().insertMessage(VersionMessage(
+                                        slug = "${VersionMessage.TYPE_UPDATE}#${it.code}",
+                                        showAlways = false
+                                ))
+                            }
+                        }
+
+
                         Result.ShowMessages(
-                                messages = it.messages?.filter {
-                                    !versionProvider.getHasMessageBeShown(it)
-                                } ?: emptyList(),
+                                messages = database.versionMessages().getUnseen(),
                                 newVersionAvailable = it.latest?.let
                                 {
                                     it.code > versionProvider.getCurrentVersionCode()
@@ -40,9 +59,10 @@ class Versioner
                         )
                     }
 
-    private fun markMessageAsRead(action: Action.MarkMessageRead): Observable<Result.ShowMessages> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    private fun markMessageAsRead(action: Action.MarkMessageRead) =
+            Observable.just(action.messageSlug)
+                    .doOnNext { database.versionMessages().markAsSeen(it) }
+                    .map { Result.MarkAsReadResult }
 
     sealed class Action : BaseAction {
         object CheckForUpdates : Action()
@@ -50,7 +70,8 @@ class Versioner
     }
 
     sealed class Result : BaseResult {
+        object MarkAsReadResult : Result()
         data class ShowMessages(val newVersionAvailable: Boolean,
-                                val messages: List<Message>) : Result()
+                                val messages: List<VersionMessage>) : Result()
     }
 }
