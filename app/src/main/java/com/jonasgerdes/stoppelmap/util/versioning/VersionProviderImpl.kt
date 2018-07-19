@@ -46,7 +46,6 @@ class VersionProviderImpl(app: Context) : VersionProvider {
         return Observable.create {
             val response = okHttpClient.newCall(request).execute()
             val jsonData = response.body()?.string()
-            Log.d("VersionProvider", "data: $jsonData")
             val versionInfo = gson.fromJson(jsonData, VersionInfo::class.java)
             versionInfo.latest = versionInfo.version["release"]?.copy(code = 26)
             it.onNext(versionInfo)

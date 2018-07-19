@@ -18,7 +18,8 @@ class MainViewModel : ViewModel() {
 
     val events = PublishRelay.create<MainEvent>()
     val state: Observable<MainState> by lazy {
-        flow.start(events.startWith(MainEvent.InitialEvent())).replay(1).autoConnect()
+        flow.start(events.startWith(MainEvent.InitialEvent()))
+                .replay(1).autoConnect()
     }
 
     private val flow = Flow<MainEvent, MainState>(interpret {

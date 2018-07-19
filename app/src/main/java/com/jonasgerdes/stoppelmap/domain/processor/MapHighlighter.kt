@@ -11,6 +11,7 @@ import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.mapbox.mapboxsdk.geometry.LatLng
 import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 
 class MapHighlighter
     : BaseOperation<MapHighlighter.Action>(Action::class.java) {
@@ -105,6 +106,7 @@ class MapHighlighter
                         }
                     }
                 }
+                .subscribeOn(Schedulers.io())
                 .toObservable()
                 .doOnNext { inMemoryDatabase.setStallCards(it) }
                 .map { Result.HighlightStallsWithCards(it) }
@@ -115,6 +117,7 @@ class MapHighlighter
         return database.stalls().getBySlug(action.slug)
                 ?.let {
                     if (it.name == null) {
+                        inMemoryDatabase.setStallCards(emptyList())
                         Result.HighlightSingleStall(it)
                     } else {
                         val images = database.images().getAllForStall(it.slug)
