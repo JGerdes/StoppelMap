@@ -117,7 +117,9 @@ class MapHighlighter
                     if (it.name == null) {
                         Result.HighlightSingleStall(it)
                     } else {
-                        Result.HighlightStallsWithCards(listOf(SingleStallCard(it, emptyList())))
+                        val cards = listOf(SingleStallCard(it, emptyList()))
+                        inMemoryDatabase.setStallCards(cards)
+                        Result.HighlightStallsWithCards(cards)
                     }
                 }
                 ?: Result.NoHighlight
