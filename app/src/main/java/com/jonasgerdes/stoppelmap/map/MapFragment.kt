@@ -2,9 +2,11 @@ package com.jonasgerdes.stoppelmap.map
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
+import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearSnapHelper
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -79,6 +81,16 @@ class MapFragment : Fragment() {
         searchResults.itemAnimator = null
 
         stallCards.adapter = stallCardsAdapter
+        stallCards.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(outRect: Rect, view: View?, parent: RecyclerView, state: RecyclerView.State) {
+                if (stallCardsAdapter.itemCount == 1) {
+                    val totalWidth = parent.width
+                    val cardWidth = 256.dp
+                    val sidePadding = Math.max(0, (totalWidth - cardWidth) / 2)
+                    outRect.set(sidePadding, 0, sidePadding, 0)
+                }
+            }
+        })
         LinearSnapHelper().attachToRecyclerView(stallCards)
 
         bindEvents()
