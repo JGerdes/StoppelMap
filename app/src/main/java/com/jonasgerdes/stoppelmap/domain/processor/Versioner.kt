@@ -44,14 +44,16 @@ class Versioner
                             if (it.code > versionProvider.getCurrentVersionCode()) {
                                 database.versionMessages().insertMessage(VersionMessage(
                                         slug = "${VersionMessage.TYPE_UPDATE}#${it.code}",
-                                        showAlways = false
+                                        showAlways = true,
+                                        importance = 10
                                 ))
                             }
                         }
 
 
                         Result.ShowMessages(
-                                messages = database.versionMessages().getUnseen(),
+                                messages = database.versionMessages().getUnseen()
+                                        .sortedByDescending { it.importance },
                                 newVersionAvailable = it.latest?.let
                                 {
                                     it.code > versionProvider.getCurrentVersionCode()

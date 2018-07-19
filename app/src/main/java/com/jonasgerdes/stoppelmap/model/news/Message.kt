@@ -15,7 +15,8 @@ data class VersionMessage(
         @ColumnInfo(name = "show_always")
         var showAlways: Boolean,
         var seen: Boolean = false,
-        var type:String = slug.substringBefore("#", TYPE_DEFAULT)
+        var type:String = slug.substringBefore("#", TYPE_DEFAULT),
+        var importance:Int = 1
 ) {
     companion object {
         const val TYPE_DEFAULT = "default"
