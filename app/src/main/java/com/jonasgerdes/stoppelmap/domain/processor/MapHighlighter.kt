@@ -117,7 +117,8 @@ class MapHighlighter
                     if (it.name == null) {
                         Result.HighlightSingleStall(it)
                     } else {
-                        val cards = listOf(SingleStallCard(it, emptyList()))
+                        val images = database.images().getAllForStall(it.slug)
+                        val cards = listOf(SingleStallCard(it, images))
                         inMemoryDatabase.setStallCards(cards)
                         Result.HighlightStallsWithCards(cards)
                     }

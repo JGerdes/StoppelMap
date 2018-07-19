@@ -23,4 +23,7 @@ interface ImageDao {
     @Query("SELECT * FROM images WHERE images.stall IN (:stalls)")
     fun getAllForStalls(stalls: Array<String>): Single<List<Image>>
 
+    @Query("SELECT * FROM images WHERE images.stall = :stall")
+    fun getAllForStall(stall: String): List<Image>
+
 }
