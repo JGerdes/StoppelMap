@@ -3,9 +3,12 @@ package com.jonasgerdes.stoppelmap.versioning
 import android.text.Html
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.news.VersionMessage
+import com.jonasgerdes.stoppelmap.util.context
+import com.jonasgerdes.stoppelmap.util.openPlaystore
+import com.jonasgerdes.stoppelmap.util.setTextOrDefault
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.main_message_dialog_item.*
+import kotlinx.android.synthetic.main.main_message_dialog_update_item.*
 
 
 sealed class MessageItem(val message: VersionMessage) : Item() {
@@ -20,8 +23,16 @@ sealed class MessageItem(val message: VersionMessage) : Item() {
 
     class Update(message: VersionMessage) : MessageItem(message) {
         override fun bind(viewHolder: ViewHolder, position: Int) {
-            viewHolder.title.setText(R.string.main_message_dialog_update_item_title)
-            viewHolder.text.setText(R.string.main_message_dialog_update_item_body)
+            viewHolder.apply {
+                title.setTextOrDefault(message.body,
+                        R.string.main_message_dialog_update_item_title)
+                text.setTextOrDefault(message.title,
+                        R.string.main_message_dialog_update_item_body)
+
+                updateButton.setOnClickListener {
+                    context.openPlaystore()
+                }
+            }
         }
 
         override fun getLayout() = R.layout.main_message_dialog_update_item

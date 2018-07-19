@@ -31,4 +31,15 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="Neue neue Version der StoppelMap steht jetzt zum Download bereit!" />
 
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_message_dialog_update_item_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
 </android.support.constraint.ConstraintLayout>

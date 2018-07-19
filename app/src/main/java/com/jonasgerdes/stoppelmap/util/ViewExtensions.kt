@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
 import android.support.annotation.LayoutRes
+import android.support.annotation.StringRes
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,14 @@ fun Activity.hideSoftkeyboard() = currentFocus?.let {
 fun TextView.setTextOrHide(text: String?) {
     visibility = if (text == null) View.GONE else View.VISIBLE
     this.text = text
+}
+
+fun TextView.setTextOrDefault(text: String?, @StringRes defaultRes: Int) {
+    if (text != null) {
+        setText(text)
+    } else {
+        setText(defaultRes)
+    }
 }
 
 /**

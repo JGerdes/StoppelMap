@@ -25,4 +25,5 @@
 
     <string name="main_message_dialog_update_item_title">Neue Version</string>
     <string name="main_message_dialog_update_item_body">Eine neue Version der StoppelMap ist ab sofort bei Google Play verfügbar.</string>
+    <string name="main_message_dialog_update_item_button">Update</string>
 </resources>
