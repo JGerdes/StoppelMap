@@ -1,8 +1,7 @@
-package com.jonasgerdes.stoppelmap.widget;
+package com.jonasgerdes.stoppelmap.view.widget;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.LayoutDirection;
 
 public class CustomLayoutManager extends LinearLayoutManager {
     private int mParentWidth;
