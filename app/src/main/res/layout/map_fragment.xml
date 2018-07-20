@@ -37,7 +37,7 @@
         android:fitsSystemWindows="true">
 
 
-        <com.jonasgerdes.stoppelmap.widget.ExtendedEditText
+        <com.jonasgerdes.stoppelmap.view.widget.ExtendedEditText
             android:id="@+id/search"
             style="@style/Widget.EditText.Rounded"
             android:layout_width="0dp"
