@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -9,10 +8,12 @@
         android:id="@+id/color_settings_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:cardElevation="4dp">
+        android:layout_marginStart="?cardMargin"
+        android:layout_marginEnd="?cardMargin"
+        android:layout_marginBottom="?cardMargin"
+        android:elevation="?cardElevation"
+        app:cardBackgroundColor="?cardBackgroundColor"
+        app:cardCornerRadius="?cardCornerRadius">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/widget_settings_color_select_title"/>
+                    android:text="@string/widget_settings_color_select_title" />
 
                 <LinearLayout
                     android:id="@+id/widget_color_selection_list"
@@ -46,7 +47,7 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/widget_settings_color_select_from_wallpaper"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -64,21 +65,21 @@
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_margin="4dp"
-                            app:cardBackgroundColor="#7d56c2"/>
+                            app:cardBackgroundColor="#7d56c2" />
 
                         <android.support.v7.widget.CardView
                             android:id="@+id/color_secection_vibrant"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_margin="4dp"
-                            app:cardBackgroundColor="?colorPrimary"/>
+                            app:cardBackgroundColor="?colorPrimary" />
 
                         <android.support.v7.widget.CardView
                             android:id="@+id/color_secection_muted"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_margin="4dp"
-                            app:cardBackgroundColor="#2196f3"/>
+                            app:cardBackgroundColor="#2196f3" />
 
                     </LinearLayout>
 
@@ -98,7 +99,7 @@
                             android:text="#"
                             android:textColor="#f4f4f4"
                             android:textSize="18sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
                     </android.support.v7.widget.CardView>
                 </FrameLayout>
 
@@ -108,7 +109,7 @@
                     android:layout_marginLeft="4dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/widget_settings_color_select_modify"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <com.jonasgerdes.stoppelmap.widget.colorpicker.ColorPicker
                     android:id="@+id/color_picker"
@@ -121,19 +122,19 @@
                         android:id="@+id/slider_hue"
                         android:layout_width="match_parent"
                         android:layout_height="24dp"
-                        android:layout_marginTop="4dp"/>
+                        android:layout_marginTop="4dp" />
 
                     <com.jonasgerdes.stoppelmap.widget.colorpicker.SaturationSlider
                         android:id="@+id/slider_saturation"
                         android:layout_width="match_parent"
                         android:layout_height="24dp"
-                        android:layout_marginTop="4dp"/>
+                        android:layout_marginTop="4dp" />
 
                     <com.jonasgerdes.stoppelmap.widget.colorpicker.LightnessSlider
                         android:id="@+id/slider_lightness"
                         android:layout_width="match_parent"
                         android:layout_height="24dp"
-                        android:layout_marginTop="4dp"/>
+                        android:layout_marginTop="4dp" />
                 </com.jonasgerdes.stoppelmap.widget.colorpicker.ColorPicker>
             </LinearLayout>
         </ScrollView>
