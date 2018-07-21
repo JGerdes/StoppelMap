@@ -38,4 +38,5 @@
     <color name="background_stall_type_restroom">#bf360c</color>
     <color name="background_stall_type_ride">#00695C</color>
     <color name="background_stall_type_seller_stall">#4E342E</color>
+    <color name="background_stall_type_exhibition">#404040</color>
 </resources>
