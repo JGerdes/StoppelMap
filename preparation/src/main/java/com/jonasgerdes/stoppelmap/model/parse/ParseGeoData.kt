@@ -21,6 +21,7 @@ fun Data.parseGeoJson(input: File, output: File) {
             .create()
     val reader = JsonReader(input.reader())
     val geoJson = gson.fromJson<FeatureCollection>(reader, FeatureCollection::class.java)
+    addTypeSubTypes(this)
     println("Read geojson")
     val updatedFeatures = geoJson.features()
             .map {
@@ -164,12 +165,29 @@ fun Data.parseGeoJson(input: File, output: File) {
 
 }
 
+fun addTypeSubTypes(data: Data) {
+    listOf("bar",
+            "building",
+            "candy-stall",
+            "exhibition",
+            "food-stall",
+            "game-stall",
+            "misc",
+            "restroom",
+            "ride",
+            "seller-stall").forEach { data.addSubType(it) }
+}
+
 private fun Data.saveSubType(subType: String, stall: Stall) {
     if (subType != "flat") {
-        if (subTypes.none { it.slug == subType }) {
-            subTypes += getNamesForType(subType)
-                    .map { SubType(subType, it) }
-        }
+        addSubType(subType)
         stallSubTypes += StallSubType(stall = stall.slug, subType = subType)
+    }
+}
+
+private fun Data.addSubType(subType: String) {
+    if (subTypes.none { it.slug == subType }) {
+        subTypes += getNamesForType(subType)
+                .map { SubType(subType, it) }
     }
 }

@@ -82,9 +82,19 @@ fun getNamesForType(type: String): List<String> {
 
 @Suppress("IMPLICIT_CAST_TO_ANY")
 private fun getNameForType(type: String) = when (type) {
+    "bar" -> "Ausschank"
+    "building" -> "Hof"
+    "candy-stall" -> "Süßwaren"
+    "exhibition" -> "Gebwerbezelt"
+    "food-stall" -> "Imbissstand"
+    "game-stall" -> "Spielbude"
+    "misc" -> "Stand"
+    "restroom" -> "Toilette"
+    "ride" -> "Fahrgeschäft"
+    "seller-stall" -> "Verkaufsstand"
+
     "for-kids" -> "Für Kinder"
     "marquee" -> "Festzelt"
-    "bar" -> "Ausschank"
     "coaster" -> "Achterbahn"
     "swing-ride" -> listOf("Kettenflieger", "Kettenkarusell")
     "funhouse" -> "Spaßhaus"

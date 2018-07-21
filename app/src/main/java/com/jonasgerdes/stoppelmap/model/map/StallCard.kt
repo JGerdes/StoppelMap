@@ -20,7 +20,8 @@ data class SingleStallCard(
         val stall: Stall,
         val images: List<Image>,
         val subTypes: List<SubType>,
-        val items: List<Item>
+        val items: List<Item>,
+        val type: SubType
 ) : StallCard(stall.slug)
 
 data class StallCollectionCard(val title: String, val type: Type, val subType: String? = null,

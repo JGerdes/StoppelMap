@@ -50,7 +50,7 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
         class Single(itemView: View) : StallCardHolder(itemView) {
             fun bind(stallCard: SingleStallCard) {
                 itemView.apply {
-                    title.text = stallCard.stall.name
+                    title.text = stallCard.stall.name ?: stallCard.type.name
                     card.setStallTypeBackgroundColor(stallCard.stall.type)
                     var subtypes = stallCard.subTypes.map { it.name }
                     if (stallCard.stall.type == Type.GAME_STALL) {

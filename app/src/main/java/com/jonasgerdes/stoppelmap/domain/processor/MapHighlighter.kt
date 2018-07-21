@@ -100,7 +100,8 @@ class MapHighlighter
                                 stall = stall,
                                 images = images.filter { it.stall == stall.slug },
                                 items = database.items().getByStall(stall.slug),
-                                subTypes = database.subTypes().getByStall(stall.slug)
+                                subTypes = database.subTypes().getByStall(stall.slug),
+                                type = database.subTypes().getType(stall.type.type).first()
                         )
                     }.let {
                         if (stallsWithouthName.isNotEmpty()) {
@@ -128,7 +129,8 @@ class MapHighlighter
                             stall = it,
                             images = images,
                             items = items,
-                            subTypes = subTypes)
+                            subTypes = subTypes,
+                            type = database.subTypes().getType(it.type.type).first())
                     )
                     inMemoryDatabase.setStallCards(cards)
                     Result.HighlightStallsWithCards(cards)
