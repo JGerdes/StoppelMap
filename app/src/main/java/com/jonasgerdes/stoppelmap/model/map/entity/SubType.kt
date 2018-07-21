@@ -31,4 +31,10 @@ interface SubTypeDao {
         WHERE stall_sub_types.stall = :stall
     """)
     fun getByStall(stall: String): List<SubType>
+
+    @Query("""
+        SELECT sub_types.* FROM sub_types
+        WHERE sub_types.slug = :type
+    """)
+    fun getType(type: String): List<SubType>
 }
