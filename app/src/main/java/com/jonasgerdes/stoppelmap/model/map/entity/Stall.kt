@@ -10,7 +10,7 @@ import io.reactivex.Single
 data class Stall(
         @PrimaryKey
         val slug: String,
-        val type: String,
+        val type: Type,
         @ColumnInfo(name = "center_lng")
         val centerLng: Double,
         @ColumnInfo(name = "center_lat")
@@ -27,12 +27,8 @@ data class Stall(
         val operator: String? = null,
         val description: String? = null,
         val priority: Int = 0,
-        @ColumnInfo(name = "is_tent")
-        val isTent: Boolean = false,
         @ColumnInfo(name = "is_searchable")
-        val isSearchable: Boolean = true,
-        @ColumnInfo(name = "is_for_kids")
-        val isForKids: Boolean = false
+        val isSearchable: Boolean = true
 ) {
     object DiffCallback : DiffUtil.ItemCallback<Stall>() {
         override fun areItemsTheSame(old: Stall, new: Stall) = old.slug == new.slug
@@ -40,6 +36,19 @@ data class Stall(
         override fun areContentsTheSame(old: Stall, new: Stall) = old == new
 
     }
+}
+
+enum class Type(val type: String) {
+    BAR("bar"),
+    BUILDING("building"),
+    CANDY_STALL("candy-stall"),
+    EXHIBITION("exhibition"),
+    FOOD_STALL("food-stall"),
+    GAME_STALL("game-stall"),
+    MISC("misc"),
+    RESTROOM("restroom"),
+    RIDE("ride"),
+    SELLER_STALL("seller-stall")
 }
 
 @Entity(tableName = "aliases",

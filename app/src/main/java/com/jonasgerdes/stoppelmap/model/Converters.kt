@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.model
 
 import android.arch.persistence.room.TypeConverter
+import com.jonasgerdes.stoppelmap.model.map.entity.Type
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.format.DateTimeFormatter
@@ -34,5 +35,13 @@ object Converters {
     fun fromIntList(list: List<Int>?): String? {
         return list?.joinToString(";")
     }
+
+    @TypeConverter
+    @JvmStatic
+    fun toType(value: String?) = Type.values().firstOrNull { it.type == value }
+
+    @TypeConverter
+    @JvmStatic
+    fun fromType(type: Type?) = type?.type
 
 }

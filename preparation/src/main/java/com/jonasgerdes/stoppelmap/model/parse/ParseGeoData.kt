@@ -48,8 +48,6 @@ fun Data.parseGeoJson(input: File, output: File) {
                             priority = Integer.parseInt(it.properties()["priority"]?.asString
                                     ?: "0"),
                             description = it.properties()["description"]?.asString,
-                            isTent = it.properties()["isTent"]?.asString ?: "no" == "yes",
-                            isForKids = it.properties()["forKids"]?.asString ?: "no" == "yes",
                             centerLng = center?.longitude,
                             centerLat = center?.latitude,
                             minLng = min?.longitude,
@@ -123,6 +121,17 @@ fun Data.parseGeoJson(input: File, output: File) {
                         saveSubType(subType, stall)
                     }
 
+                    //todo add special subtypes like Festzelt, Ausschank etc
+                    if (stall.type == "bar") {
+                        if (it.properties()["isTent"]?.asString ?: "no" == "yes") {
+                            saveSubType("marquee", stall)
+                        } else {
+                            saveSubType("bar", stall)
+                        }
+                    }
+                    if (it.properties()["forKids"]?.asString ?: "no" == "yes") {
+                        saveSubType("for-kids", stall)
+                    }
                     if (stall.type == "restroom") {
                         saveSubType("restroom", stall)
                         if (it.properties()["accessible"]?.asString ?: "no" == "yes") {
