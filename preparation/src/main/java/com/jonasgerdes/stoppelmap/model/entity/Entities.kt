@@ -15,9 +15,7 @@ data class Stall(
         val operator: String? = null,
         val description: String? = null,
         val priority: Int = 0,
-        val isTent: Boolean = false,
-        val isSearchable: Boolean = true,
-        val isForKids: Boolean = false
+        val isSearchable: Boolean = true
 )
 
 data class Alias(val stall: String, val alias: String)

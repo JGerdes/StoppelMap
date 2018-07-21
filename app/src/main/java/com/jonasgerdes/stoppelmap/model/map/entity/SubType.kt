@@ -25,4 +25,10 @@ interface SubTypeDao {
     @Query("SELECT * FROM sub_types WHERE name LIKE :query")
     fun searchByName(query: String): Single<List<SubType>>
 
+    @Query("""
+        SELECT sub_types.* FROM sub_types
+        JOIN stall_sub_types ON sub_types.slug = stall_sub_types.sub_type
+        WHERE stall_sub_types.stall = :stall
+    """)
+    fun getByStall(stall: String): List<SubType>
 }

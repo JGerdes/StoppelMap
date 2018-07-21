@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.model.map.SingleStallCard
 import com.jonasgerdes.stoppelmap.model.map.StallCard
 import com.jonasgerdes.stoppelmap.model.map.StallCollectionCard
+import com.jonasgerdes.stoppelmap.model.map.entity.Type
 import com.jonasgerdes.stoppelmap.model.map.entity.headers
 import com.jonasgerdes.stoppelmap.util.GlideApp
 import com.jonasgerdes.stoppelmap.util.getImagePath
@@ -47,20 +48,28 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
     sealed class StallCardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         class Single(itemView: View) : StallCardHolder(itemView) {
-            fun bind(card: SingleStallCard) {
-                itemView.title.text = card.stall.name
-                itemView.card.setStallTypeBackgroundColor(card.stall.type)
-                GlideApp.with(itemView.cardBackground)
-                        .load(card.stall.getImagePath(card.images.headers().firstOrNull()).apply { Log.d("StallCardAdapter", this) })
-                        .centerCrop()
-                        .into(itemView.cardBackground)
+            fun bind(stallCard: SingleStallCard) {
+                itemView.apply {
+                    title.text = stallCard.stall.name
+                    card.setStallTypeBackgroundColor(stallCard.stall.type)
+                    var subtypes = stallCard.subTypes.map { it.name }
+                    if (stallCard.stall.type == Type.GAME_STALL) {
+                        subtypes += stallCard.items.map { it.name }
+                    }
+                    type.text = subtypes.joinToString(", ")
+                    val header = stallCard.images.headers().firstOrNull()
+                    GlideApp.with(cardBackground)
+                            .load(stallCard.stall.getImagePath(header))
+                            .centerCrop()
+                            .into(cardBackground)
+                }
             }
         }
 
         class Collection(itemView: View) : StallCardHolder(itemView) {
             fun bind(card: StallCollectionCard) {
                 itemView.collectionTitle.text = card.title
-                itemView.text.text = if(card.areAdditional) {
+                itemView.text.text = if (card.areAdditional) {
                     "${card.stalls.size} weitere auf dem Stoppelmarkt"
                 } else {
                     "${card.stalls.size} mal auf dem Stoppelmarkt"

@@ -60,7 +60,7 @@ class MapHighlighter
                                         it.stalls.filter { it.centerLat > maxIncludeLatitude }
                                                 .map {
                                                     MarkerItem(LatLng(it.centerLat, it.centerLng),
-                                                            it.type)
+                                                            it.type.type)
                                                 },
                                         it.title
                                 )
@@ -96,7 +96,12 @@ class MapHighlighter
         return database.images().getAllForStalls(stalls.map { it.slug }.toTypedArray())
                 .map { images ->
                     stallsWithName.map { stall ->
-                        SingleStallCard(stall, images.filter { it.stall == stall.slug })
+                        SingleStallCard(
+                                stall = stall,
+                                images = images.filter { it.stall == stall.slug },
+                                items = database.items().getByStall(stall.slug),
+                                subTypes = database.subTypes().getByStall(stall.slug)
+                        )
                     }.let {
                         if (stallsWithouthName.isNotEmpty()) {
                             it + listOf(StallCollectionCard(title!!, type, subType,
@@ -116,15 +121,17 @@ class MapHighlighter
     private fun highlightSingleStall(action: MapHighlighter.Action.StallSelect): Result {
         return database.stalls().getBySlug(action.slug)
                 ?.let {
-                    if (it.name == null) {
-                        inMemoryDatabase.setStallCards(emptyList())
-                        Result.HighlightSingleStall(it)
-                    } else {
-                        val images = database.images().getAllForStall(it.slug)
-                        val cards = listOf(SingleStallCard(it, images))
-                        inMemoryDatabase.setStallCards(cards)
-                        Result.HighlightStallsWithCards(cards)
-                    }
+                    val images = database.images().getAllForStall(it.slug)
+                    val items = database.items().getByStall(it.slug)
+                    val subTypes = database.subTypes().getByStall(it.slug)
+                    val cards = listOf(SingleStallCard(
+                            stall = it,
+                            images = images,
+                            items = items,
+                            subTypes = subTypes)
+                    )
+                    inMemoryDatabase.setStallCards(cards)
+                    Result.HighlightStallsWithCards(cards)
                 }
                 ?: Result.NoHighlight
     }

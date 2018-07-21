@@ -32,4 +32,11 @@ interface ItemDao {
     @Query("SELECT * FROM items WHERE name LIKE :query")
     fun searchByName(query: String): Single<List<Item>>
 
+    @Query("""
+        SELECT items.* FROM items
+        JOIN stall_items ON items.slug = stall_items.item
+        WHERE stall_items.stall = :stall
+        """)
+    fun getByStall(stall: String): List<Item>
+
 }

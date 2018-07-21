@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import com.jonasgerdes.stoppelmap.model.map.entity.Image
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
+import com.jonasgerdes.stoppelmap.model.map.entity.Type
 
 
 fun Context.getDrawableByName(resName: String, default: Int = 0) =
@@ -20,11 +21,11 @@ fun Context.getColorByName(resName: String, default: Int = 0) =
             if (it == 0) default else it
         })
 
-fun CardView.setStallTypeBackgroundColor(type: String, default: Int = 0) {
+fun CardView.setStallTypeBackgroundColor(type: Type, default: Int = 0) {
     setCardBackgroundColor(context.getColorForStallType(type, default))
 }
 
-fun Context.getColorForStallType(type: String?, default: Int = 0) = getColorByName(
+fun Context.getColorForStallType(type: Type?, default: Int = 0) = getColorByName(
         "background_stall_type_${type?.fixNameForRes()}"
         , default)
 
@@ -38,7 +39,7 @@ fun Stall.getImagePath(image: Image?): String = image
         ?.let { "file:///android_asset/image/$type/${it.file}" }
         ?: "file:///android_asset/image/default/$type.png"
 
-fun ImageView.setStallTypeDrawable(type: String) {
+fun ImageView.setStallTypeDrawable(type: Type) {
     setImageResource(context.getDrawableByName("ic_stall_type_${type.fixNameForRes()}"))
 }
 
@@ -62,3 +63,4 @@ fun ImageView.setDrawableOrHide(name: String) {
 }
 
 private fun String.fixNameForRes() = replace("-", "_")
+private fun Type.fixNameForRes() = type.replace("-", "_")
