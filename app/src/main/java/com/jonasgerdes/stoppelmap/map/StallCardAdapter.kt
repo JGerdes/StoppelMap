@@ -58,8 +58,10 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                     }
                     type.text = subtypes.joinToString(", ")
                     val header = stallCard.images.headers().firstOrNull()
+                    val imagePath = stallCard.stall.getImagePath(header)
+                    Log.d("StallCardAdapter", "load header: $header from [$imagePath]")
                     GlideApp.with(cardBackground)
-                            .load(stallCard.stall.getImagePath(header))
+                            .load(imagePath)
                             .centerCrop()
                             .into(cardBackground)
                 }

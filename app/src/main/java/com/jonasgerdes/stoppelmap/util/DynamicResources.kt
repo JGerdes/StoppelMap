@@ -36,8 +36,8 @@ fun ImageView.setStallColorTint(type: String) {
 }
 
 fun Stall.getImagePath(image: Image?): String = image
-        ?.let { "file:///android_asset/image/$type/${it.file}" }
-        ?: "file:///android_asset/image/default/$type.png"
+        ?.let { "file:///android_asset/image/${type.type}/${it.file}" }
+        ?: "file:///android_asset/image/default/${type.type}.png"
 
 fun ImageView.setStallTypeDrawable(type: Type) {
     setImageResource(context.getDrawableByName("ic_stall_type_${type.fixNameForRes()}"))
