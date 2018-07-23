@@ -146,6 +146,10 @@ class MapFragment : Fragment() {
                 .map { MainEvent.MapEvent.QueryEntered(it.toString()) }
                 .subscribe(viewModel.events)
 
+        clearSearch.clicks()
+                .map { MainEvent.MapEvent.ClearSearchClicked}
+                .subscribe(viewModel.events)
+
         map.subscribe { map ->
             /*map.idles()
                     .map { MainEvent.MapEvent.MapMoved() }

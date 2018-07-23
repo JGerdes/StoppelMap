@@ -30,6 +30,7 @@ class MainViewModel : ViewModel() {
             is MapEvent.MapMoved -> MapHighlighter.Action.SelectNothing
             is MapEvent.SearchFieldClickedEvent
             -> MapSearchToggle.Action(true) and MapSearch.Action.Refresh()
+            is MainEvent.MapEvent.ClearSearchClicked -> MapSearchToggle.Action(false)
             is MapEvent.OnBackPressEvent
             -> MapSearchToggle.Action(false)
             MapEvent.MapClickedEvent -> MapHighlighter.Action.SelectNothing

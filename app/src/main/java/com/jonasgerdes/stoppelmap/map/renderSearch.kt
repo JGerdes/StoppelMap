@@ -56,6 +56,8 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
                 .distinctUntilChanged()
                 .subscribe {
                     searchResults.visibility = if (it) View.VISIBLE else View.GONE
+                    clearSearch.setImageResource(if (it) R.drawable.ic_clear_black_24dp
+                    else R.drawable.ic_search_black_24dp)
                 }
 
         state.map { it.isPending && it.searchExtended }
