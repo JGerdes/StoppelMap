@@ -50,13 +50,16 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
         class Single(itemView: View) : StallCardHolder(itemView) {
             fun bind(stallCard: SingleStallCard) {
                 itemView.apply {
-                    title.text = stallCard.stall.name ?: stallCard.type.name
+                    val cardTitle = stallCard.stall.name ?: stallCard.type.name
+                    title.text = cardTitle
                     card.setStallTypeBackgroundColor(stallCard.stall.type)
                     var subtypes = stallCard.subTypes.distinctBy { it.slug }.map { it.name }
                     if (stallCard.stall.type == Type.GAME_STALL) {
                         subtypes += stallCard.items.map { it.name }
                     }
-                    type.text = subtypes.joinToString(", ")
+                    type.text = subtypes.distinct()
+                            .filter { it != cardTitle }
+                            .joinToString(", ")
                     val header = stallCard.images.headers().firstOrNull()
                     val imagePath = stallCard.stall.getImagePath(header)
                     Log.d("StallCardAdapter", "load header: $header from [$imagePath]")
