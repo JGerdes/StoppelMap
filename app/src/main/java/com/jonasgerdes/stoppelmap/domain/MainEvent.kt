@@ -18,6 +18,7 @@ sealed class MainEvent : BaseEvent {
         class MapMoved() : MapEvent()
         data class SearchResultClicked(val searchResultId: String) : MapEvent()
         data class QueryEntered(val query: String) : MapEvent()
+        object ClearSearchClicked : MapEvent()
     }
 
     sealed class FeedEvent : MainEvent() {
