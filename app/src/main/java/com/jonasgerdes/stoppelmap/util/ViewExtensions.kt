@@ -23,7 +23,7 @@ fun Activity.hideSoftkeyboard() = currentFocus?.let {
 }
 
 fun TextView.setTextOrHide(text: String?) {
-    visibility = if (text == null) View.GONE else View.VISIBLE
+    visibility = if (text == null || text.isEmpty()) View.GONE else View.VISIBLE
     this.text = text
 }
 
