@@ -11,10 +11,7 @@ import com.jonasgerdes.stoppelmap.model.map.StallCard
 import com.jonasgerdes.stoppelmap.model.map.StallCollectionCard
 import com.jonasgerdes.stoppelmap.model.map.entity.Type
 import com.jonasgerdes.stoppelmap.model.map.entity.headers
-import com.jonasgerdes.stoppelmap.util.GlideApp
-import com.jonasgerdes.stoppelmap.util.getImagePath
-import com.jonasgerdes.stoppelmap.util.inflate
-import com.jonasgerdes.stoppelmap.util.setStallTypeBackgroundColor
+import com.jonasgerdes.stoppelmap.util.*
 import kotlinx.android.synthetic.main.map_stall_card_single_stall.view.*
 import kotlinx.android.synthetic.main.map_stall_card_stall_collection.view.*
 
@@ -62,11 +59,20 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                             .joinToString(", ")
                     val header = stallCard.images.headers().firstOrNull()
                     val imagePath = stallCard.stall.getImagePath(header)
-                    Log.d("StallCardAdapter", "load header: $header from [$imagePath]")
                     GlideApp.with(cardBackground)
                             .load(imagePath)
                             .centerCrop()
                             .into(cardBackground)
+
+                    items.setTextOrHide(when (stallCard.stall.type) {
+                        Type.FOOD_STALL -> stallCard.items.joinToString(", ") +
+                                context.getString(R.string.generic_enumeration_more_suffix)
+                        Type.CANDY_STALL -> stallCard.items.joinToString(", ") +
+                                context.getString(R.string.generic_enumeration_more_suffix)
+                        Type.SELLER_STALL -> stallCard.items.joinToString(", ") +
+                                context.getString(R.string.generic_enumeration_more_suffix)
+                        else -> null
+                    })
                 }
             }
         }
