@@ -50,13 +50,11 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                     val cardTitle = stallCard.stall.name ?: stallCard.type.name
                     title.text = cardTitle
                     card.setStallTypeBackgroundColor(stallCard.stall.type)
-                    var subtypes = stallCard.subTypes.distinctBy { it.slug }.map { it.name }
-                    if (stallCard.stall.type == Type.GAME_STALL) {
-                        subtypes += stallCard.items.map { it.name }
-                    }
-                    type.text = subtypes.distinct()
+                    type.setTextOrHide(stallCard.subTypes
+                            .distinctBy { it.slug }
+                            .map { it.name }
                             .filter { it != cardTitle }
-                            .joinToString(", ")
+                            .joinToString(", "))
                     val header = stallCard.images.headers().firstOrNull()
                     val imagePath = stallCard.stall.getImagePath(header)
                     GlideApp.with(cardBackground)
@@ -65,12 +63,15 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                             .into(cardBackground)
 
                     items.setTextOrHide(when (stallCard.stall.type) {
-                        Type.FOOD_STALL -> stallCard.items.joinToString(", ") +
-                                context.getString(R.string.generic_enumeration_more_suffix)
-                        Type.CANDY_STALL -> stallCard.items.joinToString(", ") +
-                                context.getString(R.string.generic_enumeration_more_suffix)
-                        Type.SELLER_STALL -> stallCard.items.joinToString(", ") +
-                                context.getString(R.string.generic_enumeration_more_suffix)
+                        Type.FOOD_STALL, Type.CANDY_STALL, Type.SELLER_STALL,
+                        Type.BAR, Type.BUILDING ->
+                            stallCard.items.joinToString(", ") { it.name }.let {
+                                if (it.isNotEmpty()) {
+                                    it + ", " + context.getString(R.string.generic_enumeration_more_suffix)
+                                } else null
+                            }
+                        Type.GAME_STALL -> stallCard.items.joinToString(", ") { it.name }
+
                         else -> null
                     })
                 }
