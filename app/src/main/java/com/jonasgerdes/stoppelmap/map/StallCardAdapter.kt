@@ -52,7 +52,7 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                 itemView.apply {
                     title.text = stallCard.stall.name ?: stallCard.type.name
                     card.setStallTypeBackgroundColor(stallCard.stall.type)
-                    var subtypes = stallCard.subTypes.map { it.name }
+                    var subtypes = stallCard.subTypes.distinctBy { it.slug }.map { it.name }
                     if (stallCard.stall.type == Type.GAME_STALL) {
                         subtypes += stallCard.items.map { it.name }
                     }
