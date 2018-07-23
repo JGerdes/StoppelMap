@@ -7,7 +7,7 @@
     <string name="main_navigation_information">Info</string>
 
     <string name="map_search_hint">Suche nach Zelten, Fahrgeschäften…</string>
-    
+
 
     <string name="transportation_toolbar_title">Fahrpläne</string>
     <string name="transportation_card_via">via</string>
@@ -26,4 +26,7 @@
     <string name="main_message_dialog_update_item_title">Neue Version</string>
     <string name="main_message_dialog_update_item_body">Eine neue Version der StoppelMap ist ab sofort bei Google Play verfügbar.</string>
     <string name="main_message_dialog_update_item_button">Update</string>
+
+
+    <string name="generic_enumeration_more_suffix">etc.</string>
 </resources>
