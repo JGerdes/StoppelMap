@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.domain.processor
 
-import android.util.Log
 import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
@@ -8,9 +7,7 @@ import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.map.highlightArea
 import com.jonasgerdes.stoppelmap.model.map.*
-import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.entity.SubType
-import com.jonasgerdes.stoppelmap.model.map.search.Highlight
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.mapbox.mapboxsdk.geometry.LatLng
 import io.reactivex.Observable
@@ -20,8 +17,6 @@ class MapHighlighter
     : BaseOperation<MapHighlighter.Action>(Action::class.java) {
 
     companion object {
-        //filter to prevent stalls at the bus station to screw up zooming bounds
-        const val maxIncludeLatitude = 52.746122
     }
 
     private val database: StoppelMapDatabase by inject()
@@ -60,11 +55,10 @@ class MapHighlighter
                         it.stalls.first().highlightArea()
                     } else {
                         MapHighlight.MultiplePoints(
-                                it.stalls.filter { it.centerLat > maxIncludeLatitude }
-                                        .map {
-                                            MarkerItem(LatLng(it.centerLat, it.centerLng),
-                                                    it.type.type)
-                                        },
+                                it.stalls.map {
+                                    MarkerItem(LatLng(it.centerLat, it.centerLng),
+                                            it.type.type)
+                                },
                                 it.title
                         )
                     }
