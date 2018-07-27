@@ -6,9 +6,11 @@ import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.map.MapHighlight
+import com.jonasgerdes.stoppelmap.map.highlightArea
 import com.jonasgerdes.stoppelmap.model.map.*
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.entity.SubType
+import com.jonasgerdes.stoppelmap.model.map.search.Highlight
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.mapbox.mapboxsdk.geometry.LatLng
 import io.reactivex.Observable
@@ -33,9 +35,8 @@ class MapHighlighter
     }
 
     sealed class Result : BaseResult {
-        data class HighlightSingleStall(val stall: Stall) : Result()
-        data class HighlightStallsCollection(val highlight: MapHighlight.MultiplePoints) : Result()
-        data class HighlightStallsWithCards(val cards: List<StallCard>) : Result()
+        data class Highlight(val highlight: MapHighlight) : Result()
+        data class HighlightStallsWithCards(val cards: List<StallCard>, val highlight: MapHighlight) : Result()
         object NoHighlight : Result()
     }
 
@@ -45,30 +46,30 @@ class MapHighlighter
             is Action.SelectNothing -> Observable.just(Result.NoHighlight)
             is Action.StallSelect -> Observable.just(highlightSingleStall(it))
             is Action.ResultSelect -> highlightResult(it)
-            is MapHighlighter.Action.HighlightCard -> Observable.just(highlightCard(it))
+            is MapHighlighter.Action.HighlightCard -> Observable.just(
+                    Result.Highlight(highlightCard(it.cardIndex))
+            )
         }
     }
 
-    private fun highlightCard(action: Action.HighlightCard) =
-            inMemoryDatabase.getStallCard(action.cardIndex)?.let {
+    fun highlightCard(cardIndex: Int) =
+            inMemoryDatabase.getStallCard(cardIndex)?.let {
                 when (it) {
-                    is SingleStallCard -> Result.HighlightSingleStall(it.stall)
+                    is SingleStallCard -> it.stall.highlightArea()
                     is StallCollectionCard -> if (it.stalls.size == 1) {
-                        Result.HighlightSingleStall(it.stalls.first())
+                        it.stalls.first().highlightArea()
                     } else {
-                        Result.HighlightStallsCollection(
-                                MapHighlight.MultiplePoints(
-                                        it.stalls.filter { it.centerLat > maxIncludeLatitude }
-                                                .map {
-                                                    MarkerItem(LatLng(it.centerLat, it.centerLng),
-                                                            it.type.type)
-                                                },
-                                        it.title
-                                )
+                        MapHighlight.MultiplePoints(
+                                it.stalls.filter { it.centerLat > maxIncludeLatitude }
+                                        .map {
+                                            MarkerItem(LatLng(it.centerLat, it.centerLng),
+                                                    it.type.type)
+                                        },
+                                it.title
                         )
                     }
                 }
-            } ?: Result.NoHighlight
+            } ?: MapHighlight.None
 
     private fun highlightResult(action: Action.ResultSelect): Observable<Result> {
         val searchResult = inMemoryDatabase.getSearchResultById(action.resultId)
@@ -116,7 +117,7 @@ class MapHighlighter
                 .subscribeOn(Schedulers.io())
                 .toObservable()
                 .doOnNext { inMemoryDatabase.setStallCards(it) }
-                .map { Result.HighlightStallsWithCards(it) }
+                .map { Result.HighlightStallsWithCards(it, highlightCard(0)) }
 
     }
 
@@ -131,10 +132,11 @@ class MapHighlighter
                             images = images,
                             items = items,
                             subTypes = subTypes,
-                            type = database.subTypes().getType(it.type.type).firstOrNull() ?: SubType(it.type.type, it.type.type))
+                            type = database.subTypes().getType(it.type.type).firstOrNull()
+                                    ?: SubType(it.type.type, it.type.type))
                     )
                     inMemoryDatabase.setStallCards(cards)
-                    Result.HighlightStallsWithCards(cards)
+                    Result.HighlightStallsWithCards(cards, highlightCard(0))
                 }
                 ?: Result.NoHighlight
     }
