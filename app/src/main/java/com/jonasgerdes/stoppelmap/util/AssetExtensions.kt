@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.util
 
+import android.content.Context
 import android.content.res.AssetManager
 import java.io.File
 import java.io.FileOutputStream
@@ -15,4 +16,14 @@ fun AssetManager.copyToFile(path: String, destination: File) {
         bytes = sourceStream.read(buf)
     }
     sourceStream.close()
+}
+
+fun Context.removeDatabase(name: String) {
+    val dir = File(filesDir.parentFile, "databases")
+
+    listOf(".db", ".db-shm", ".db-wal")
+            .map { File(dir, name + it) }
+            .filter { it.exists() }
+            .forEach { it.delete() }
+
 }

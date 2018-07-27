@@ -8,6 +8,7 @@ import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.map.MapHighlight
 import com.jonasgerdes.stoppelmap.model.map.*
 import com.jonasgerdes.stoppelmap.model.map.entity.Stall
+import com.jonasgerdes.stoppelmap.model.map.entity.SubType
 import com.jonasgerdes.stoppelmap.model.map.search.SearchResult
 import com.mapbox.mapboxsdk.geometry.LatLng
 import io.reactivex.Observable
@@ -130,7 +131,7 @@ class MapHighlighter
                             images = images,
                             items = items,
                             subTypes = subTypes,
-                            type = database.subTypes().getType(it.type.type).first())
+                            type = database.subTypes().getType(it.type.type).firstOrNull() ?: SubType(it.type.type, it.type.type))
                     )
                     inMemoryDatabase.setStallCards(cards)
                     Result.HighlightStallsWithCards(cards)
