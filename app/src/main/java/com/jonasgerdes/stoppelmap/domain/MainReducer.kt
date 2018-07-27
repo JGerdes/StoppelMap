@@ -48,12 +48,10 @@ class MainReducer : BaseReducer<MainState> {
                         newVersionAvailable = false)
                 )
                 is MapSearchToggle.Result -> copy(map = map.copy(searchExtended = result.showSearch))
-                is MapHighlighter.Result.HighlightSingleStall
-                -> copy(map = map.copy(highlight = result.stall.highlightArea(), searchExtended = false))
+                is MapHighlighter.Result.Highlight
+                -> copy(map = map.copy(highlight = result.highlight, searchExtended = false))
                 is MapHighlighter.Result.HighlightStallsWithCards
-                -> copy(map = map.copy(cards = result.cards))
-                is MapHighlighter.Result.HighlightStallsCollection
-                -> copy(map = map.copy(highlight = result.highlight))
+                -> copy(map = map.copy(cards = result.cards, highlight = result.highlight))
                 is MapHighlighter.Result.NoHighlight
                 -> copy(map = map.copy(highlight = MapHighlight.None, cards = emptyList()))
                 is MapSearch.Result.Pending
