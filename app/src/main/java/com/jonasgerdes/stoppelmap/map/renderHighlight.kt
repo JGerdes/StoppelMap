@@ -43,10 +43,10 @@ fun renderHighlight(activity: Activity?, view: View?, map: MapboxMap,
             }
             is MapHighlight.MultiplePoints -> {
                 map.animateCamera(toBounds(highlight.points.toBounds(),
-                        left = 64.dp,
-                        top = 128.dp,
-                        right = 64.dp,
-                        bottom = if (it.cards.isEmpty()) 64.dp else 256.dp))
+                        left = 32.dp,
+                        top = 112.dp,
+                        right = 32.dp,
+                        bottom = if (it.cards.isEmpty()) 32.dp else 208.dp))
 
                 activity?.let { context ->
                     val type = (it.cards.find { it is StallCollectionCard } as? StallCollectionCard)?.type
