@@ -43,6 +43,10 @@ class MainReducer : BaseReducer<MainState> {
                             messages = result.messages,
                             newVersionAvailable = result.newVersionAvailable
                     ))
+                is Versioner.Result.NoMessage -> copy(versionInfo = versionInfo.copy(
+                        messages = emptyList(),
+                        newVersionAvailable = false)
+                )
                 is MapSearchToggle.Result -> copy(map = map.copy(searchExtended = result.showSearch))
                 is MapHighlighter.Result.HighlightSingleStall
                 -> copy(map = map.copy(highlight = result.stall.highlightArea(), searchExtended = false))

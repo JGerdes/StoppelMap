@@ -58,8 +58,9 @@ class Versioner
                                 {
                                     it.code > versionProvider.getCurrentVersionCode()
                                 } ?: false
-                        )
+                        ) as BaseResult
                     }
+                    .onErrorReturn { Result.NoMessage }
 
     private fun markMessageAsRead(action: Action.MarkMessageRead) =
             Observable.just(action.messageSlug)
@@ -73,6 +74,7 @@ class Versioner
 
     sealed class Result : BaseResult {
         object MarkAsReadResult : Result()
+        object NoMessage : Result()
         data class ShowMessages(val newVersionAvailable: Boolean,
                                 val messages: List<VersionMessage>) : Result()
     }
