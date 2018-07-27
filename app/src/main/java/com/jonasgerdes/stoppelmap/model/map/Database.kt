@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.model.Converters
 import com.jonasgerdes.stoppelmap.model.map.entity.*
 import com.jonasgerdes.stoppelmap.model.transportation.*
 import com.jonasgerdes.stoppelmap.util.copyToFile
+import com.jonasgerdes.stoppelmap.util.removeDatabase
 import java.io.File
 
 @Database(entities = [Stall::class, Alias::class, Image::class,
@@ -33,6 +34,7 @@ abstract class StoppelMapDatabase : RoomDatabase() {
         fun init(context: Context) {
             val databaseFileName = "stoppelmap.db"
             val dir = File(context.filesDir.parentFile, "databases")
+            context.removeDatabase("stoppelmap")
             context.assets.copyToFile(databaseFileName, File(dir, databaseFileName))
             database = Room.databaseBuilder(context, StoppelMapDatabase::class.java, databaseFileName)
                     .fallbackToDestructiveMigration()
