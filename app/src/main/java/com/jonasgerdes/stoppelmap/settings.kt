@@ -12,10 +12,10 @@ object Settings {
             .include(LatLng(52.7429499584193, 8.28653654801576))
             .include(LatLng(52.7494011815008, 8.30059127365977))
             .build()
-    val maxZoom = 20.0
-    val minZoom = 15.0
-    val defaultZoom = 15.2
-    val detailZoom = 19.0
+    const val maxZoom = 20.0
+    const val minZoom = 14.0
+    const val defaultZoom = 15.2
+    const val detailZoom = 19.0
     val center = LatLng(52.74736962293996, 8.295483738183975)
 
 }
