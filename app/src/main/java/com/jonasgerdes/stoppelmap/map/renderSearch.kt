@@ -154,7 +154,7 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
                                 addUpdateListener {
                                     val margin = it.animatedValue as Int
                                     search.layoutParams = (search.layoutParams as ConstraintLayout.LayoutParams).apply {
-                                        setMargins(margin, margin, margin, margin)
+                                        setMargins(margin, 16.dp + margin, margin, margin)
                                         marginStart = margin
                                         marginEnd = margin
                                     }
