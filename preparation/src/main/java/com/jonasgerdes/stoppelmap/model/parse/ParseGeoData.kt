@@ -3,7 +3,9 @@ package com.jonasgerdes.stoppelmap.model.parse
 import com.github.filosganga.geogson.gson.GeometryAdapterFactory
 import com.github.filosganga.geogson.model.FeatureCollection
 import com.github.filosganga.geogson.model.Polygon
+import com.google.common.collect.ImmutableMap
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
@@ -17,6 +19,7 @@ import java.util.*
 
 fun Data.parseGeoJson(input: File, output: File) {
     val gson = GsonBuilder()
+            .setPrettyPrinting()
             .registerTypeAdapterFactory(GeometryAdapterFactory())
             .create()
     val reader = JsonReader(input.reader())
@@ -104,17 +107,18 @@ fun Data.parseGeoJson(input: File, output: File) {
                                 || it.key.startsWith("game_")
                     }
                             .forEach {
-                                val name = getNameForItem(it.key)
+                                val names = getNamesForItem(it.key)
                                 if (!items.containsKey(it.key)) {
-                                    items[it.key] = Item(
-                                            slug = it.key.removePrefix("item_")
-                                                    .removePrefix("game_"),
-                                            name = name
-                                    )
+                                    items[it.key] = names.map { name ->
+                                        Item(slug = it.key.removePrefix("item_")
+                                                .removePrefix("game_"),
+                                                name = name
+                                        )
+                                    }
                                 }
                                 stallItems += StallItem(
                                         stall = stall.slug,
-                                        item = items[it.key]!!.slug
+                                        item = items[it.key]!!.first().slug
                                 )
                             }
 
@@ -146,13 +150,23 @@ fun Data.parseGeoJson(input: File, output: File) {
                         }
                     }
 
-                    if (it.properties().containsKey("slug")) {
-                        it
-                    } else {
-                        it.withProperty("slug", JsonObject().let {
-                            it.addProperty("slug", stall.slug)
-                            it.get("slug")
+                    it.let {
+                        if (it.properties().containsKey("slug")) {
+                            it
+                        } else {
+                            it.withProperty("slug", JsonObject().let {
+                                it.addProperty("slug", stall.slug)
+                                it.get("slug")
+                            })
+                        }
+                    }.let {
+                        val priority = it.properties()["priority"]?.asString?.toInt() ?: 1
+                        val props = it.properties().toMutableMap()
+                        props.put("priority", JsonObject().let {
+                            it.addProperty("priority", priority)
+                            it.get("priority")
                         })
+                        it.withProperties(ImmutableMap.copyOf(props))
                     }
                 }
 

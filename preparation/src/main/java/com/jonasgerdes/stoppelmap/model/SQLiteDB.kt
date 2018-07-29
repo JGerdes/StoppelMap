@@ -44,7 +44,13 @@ fun Statement.createTable(obj: Any) {
 }
 
 
-fun <T : Any> Connection.insert(items: List<T>) {
+@Suppress("UNCHECKED_CAST")
+fun <T : Any> Connection.insert(itemsToInsert: Iterable<T>) {
+    val items = if (itemsToInsert.first() is Iterable<*>) {
+        (itemsToInsert as Iterable<Iterable<T>>).flatten()
+    } else {
+        itemsToInsert
+    }
     createStatement().createTable(items.first())
     val table = items.first()::class.java.simpleName.toSnake().toPlural()
     val fields = getFields(items.first())
@@ -59,7 +65,7 @@ fun <T : Any> Connection.insert(items: List<T>) {
         ps.addBatch()
         //ps.clearParameters()
     }
-    System.out.println("Batch insert ${items.size} elements into $table")
+    System.out.println("Batch insert ${items.count()} elements into $table")
     autoCommit = false
     ps.executeBatch()
     autoCommit = true

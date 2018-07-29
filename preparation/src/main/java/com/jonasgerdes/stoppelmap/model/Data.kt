@@ -10,7 +10,7 @@ data class Data(
         val urls: MutableList<Url> = mutableListOf(),
         val phones: MutableList<Phone> = mutableListOf(),
         val restrooms: MutableList<Restroom> = mutableListOf(),
-        val items: MutableMap<String, Item> = mutableMapOf(),
+        val items: MutableMap<String, List<Item>> = mutableMapOf(),
         val stallItems: MutableList<StallItem> = mutableListOf(),
         val subTypes: MutableList<SubType> = mutableListOf(),
         val stallSubTypes: MutableList<StallSubType> = mutableListOf(),
@@ -27,25 +27,25 @@ data class Data(
 ) {
 
     fun insertInto(db: Connection) {
-        db.insert(stalls)
-        db.insert(images)
-        db.insert(alias)
-        db.insert(urls)
-        db.insert(phones)
-        db.insert(restrooms)
-        db.insert(items.values.toList())
-        db.insert(stallItems)
-        db.insert(subTypes)
-        db.insert(stallSubTypes)
-        db.insert(events)
-        db.insert(tags.values.toList())
-        db.insert(eventTags)
-        db.insert(artists.values.toList())
-        db.insert(eventArtists)
+        stalls.apply { if(isNotEmpty()) db.insert(this) }
+        images.apply { if(isNotEmpty()) db.insert(this) }
+        alias.apply { if(isNotEmpty()) db.insert(this) }
+        urls.apply { if(isNotEmpty()) db.insert(this) }
+        phones.apply { if(isNotEmpty()) db.insert(this) }
+        restrooms.apply { if(isNotEmpty()) db.insert(this) }
+        items.values.toList().apply { if(isNotEmpty()) db.insert(this) }
+        stallItems.apply { if(isNotEmpty()) db.insert(this) }
+        subTypes.apply { if(isNotEmpty()) db.insert(this) }
+        stallSubTypes.apply { if(isNotEmpty()) db.insert(this) }
+        events.apply { if(isNotEmpty()) db.insert(this) }
+        tags.values.toList().apply { if(isNotEmpty()) db.insert(this) }
+        eventTags.apply { if(isNotEmpty()) db.insert(this) }
+        artists.values.toList().apply { if(isNotEmpty()) db.insert(this) }
+        eventArtists.apply { if(isNotEmpty()) db.insert(this) }
 
-        db.insert(routes)
-        db.insert(stations)
-        db.insert(departures)
-        db.insert(transportPrices)
+        routes.apply { if(isNotEmpty()) db.insert(this) }
+        stations.apply { if(isNotEmpty()) db.insert(this) }
+        departures.apply { if(isNotEmpty()) db.insert(this) }
+        transportPrices.apply { if(isNotEmpty()) db.insert(this) }
     }
 }
