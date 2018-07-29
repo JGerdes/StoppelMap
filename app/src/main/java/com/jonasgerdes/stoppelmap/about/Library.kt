@@ -12,19 +12,19 @@ object Library {
                     name = "Android Compatibility Library v7",
                     author = "The Android Open Source Project",
                     license = License.Apache2(),
-                    githubUrl = "https://android.googlesource.com/platform/frameworks/support.git/+/master/v7/"
+                    sourceUrl = "https://android.googlesource.com/platform/frameworks/support.git/+/master/v7/"
             ),
             LibraryCard(
                     name = "Android Design Support Library",
                     author = "The Android Open Source Project",
                     license = License.Apache2(),
-                    githubUrl = "https://android.googlesource.com/platform/frameworks/support/+/master/design/"
+                    sourceUrl = "https://android.googlesource.com/platform/frameworks/support/+/master/design/"
             ),
             LibraryCard(
                     name = "Android Constraint Layout Support Library",
                     author = "The Android Open Source Project",
                     license = License.Apache2(),
-                    githubUrl = "https://android.googlesource.com/platform/frameworks/opt/sherpa/+/studio-3.0/constraintlayout"
+                    sourceUrl = "https://android.googlesource.com/platform/frameworks/opt/sherpa/+/studio-3.0/constraintlayout"
             ),
             LibraryCard(
                     name = "RxJava",
@@ -97,6 +97,18 @@ object Library {
                     author = "Jake Wharton",
                     license = License.Apache2(),
                     githubUrl = "https://github.com/JakeWharton/ThreeTenABP"
+            ),
+            LibraryCard(
+                    name = "Lottie",
+                    author = "Airbnb, Inc.",
+                    license = License.Apache2(),
+                    githubUrl = "https://github.com/airbnb/lottie-android"
+            ),
+            LibraryCard(
+                    name = "Kotlin",
+                    author = "JetBrains, Inc.",
+                    license = License.Apache2(),
+                    githubUrl = "https://github.com/JetBrains/kotlin"
             )
     )
 }
