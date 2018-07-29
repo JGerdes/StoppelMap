@@ -64,13 +64,18 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
 
                     items.setTextOrHide(when (stallCard.stall.type) {
                         Type.FOOD_STALL, Type.CANDY_STALL, Type.SELLER_STALL,
-                        Type.BAR, Type.BUILDING ->
-                            stallCard.items.joinToString(", ") { it.name }.let {
-                                if (it.isNotEmpty()) {
-                                    it + ", " + context.getString(R.string.generic_enumeration_more_suffix)
-                                } else null
-                            }
-                        Type.GAME_STALL -> stallCard.items.joinToString(", ") { it.name }
+                        Type.BAR, Type.BUILDING -> stallCard.items
+                                .distinctBy { it.slug }
+                                .filter { it.name != cardTitle }
+                                .joinToString(", ") { it.name }.let {
+                                    if (it.isNotEmpty()) {
+                                        it + ", " + context.getString(R.string.generic_enumeration_more_suffix)
+                                    } else null
+                                }
+                        Type.GAME_STALL -> stallCard.items
+                                .distinctBy { it.slug }
+                                .filter { it.name != cardTitle }
+                                .joinToString(", ") { it.name }
 
                         else -> null
                     })
