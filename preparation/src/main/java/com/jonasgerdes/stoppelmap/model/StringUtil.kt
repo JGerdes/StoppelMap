@@ -78,7 +78,8 @@ fun Stall.createSlug(): String {
     }
 
     if (addHash) {
-        slug += UUID.randomUUID().toString().toShortHash()
+        val id = "$centerLat $centerLng $minLat $minLng $maxLat $maxLng"
+        slug += id.toShortHash()
     }
 
     return slug.removeSuffix("-").asSlug()

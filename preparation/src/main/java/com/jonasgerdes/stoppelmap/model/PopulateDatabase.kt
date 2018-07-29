@@ -13,7 +13,7 @@ object Settings {
     val database = File(assets, "stoppelmap.db")
     val geoOutput = File(assets, "stoppelmap.geojson")
 
-    val geoInput = File("$data/map", "stoma-2017.geojson")
+    val geoInput = File("$data/map", "StoppelMap2018.geojson")
     val scheduleDir = File(data, "schedule")
     val busDir = File("$data/transportation", "bus")
 }
@@ -27,14 +27,14 @@ fun main(args: Array<String>) {
         if (success) {
             println("Successfully deleted old database file")
         } else {
-            System.err.println("Couldn't delete ${Settings.database.absolutePath}, " +
+            throw RuntimeException("Couldn't delete ${Settings.database.absolutePath}, " +
                     "is it opened in any program?")
         }
     }
 
-    val marquees = parseMarqueeEvents()
+    /*val marquees = parseMarqueeEvents()
     marquees.forEach { println(it) }
-    println("got ${marquees.size}")
+    println("got ${marquees.size}")*/
 
     val db = openSQLite(Settings.database)!!
     Data().apply {
