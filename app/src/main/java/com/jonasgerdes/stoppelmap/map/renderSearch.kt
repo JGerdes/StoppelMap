@@ -27,7 +27,6 @@ import android.view.inputmethod.InputMethodManager
 import com.jonasgerdes.stoppelmap.util.*
 
 
-@SuppressLint("InlinedApi", "CheckResult")
 fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
                  state: Observable<MainState.MapState>) {
 
@@ -109,7 +108,7 @@ fun renderSearch(activity: Activity?, view: View?, adapter: SearchResultAdapter,
 
         searchExtendedChanged
                 .map { if (it) Pair(32.dp, 0.dp) else Pair(0.dp, 32.dp) }
-                .filter { (search.background as GradientDrawable).cornerRadius.toInt() != it.second }
+                .filter { search.background.getCornerRadiusCompat() != it.second }
                 .subscribe {
                     ObjectAnimator.ofFloat(search.background, "cornerRadius",
                             it.first.toFloat(), it.second.toFloat())
