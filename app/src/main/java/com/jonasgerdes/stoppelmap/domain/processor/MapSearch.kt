@@ -70,7 +70,9 @@ class MapSearch
                 .map {
                     it.map { item ->
                         val title = HighlightedText.from(item.name, queryParts)
-                        val stalls = database.stalls().getStallsBySubType(item.slug)
+                        val stalls = database.stalls().getStallsBySubType(item.slug).union(
+                                database.stalls().getStallsByType(item.slug)
+                        ).toList()
                         SearchResult.TypeResult(item, stalls, title)
                     }
                 }.toObservable()
