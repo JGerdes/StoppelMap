@@ -99,4 +99,11 @@ interface StallDao {
         """)
     fun getStallsBySubType(subType: String): List<Stall>
 
+    @Query("""
+        SELECT *
+        FROM stalls
+        WHERE stalls.type = :type
+        """)
+    fun getStallsByType(type: String): List<Stall>
+
 }
