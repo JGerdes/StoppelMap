@@ -113,7 +113,7 @@ class MapFragment : Fragment() {
         it.uiSettings.isTiltGesturesEnabled = false
         it.uiSettings.isAttributionEnabled = false
         it.uiSettings.isLogoEnabled = false
-        it.uiSettings.setCompassMargins(16.dp, (24 + 64).dp, 16.dp, 16.dp)
+        it.uiSettings.setCompassMargins(16.dp, (24 + 96).dp, 16.dp, 16.dp)
         it.uiSettings.compassImage = context?.getDrawable(R.drawable.ic_navigation_black_24dp)
                 ?.apply {
                     context?.getColorCompat(R.color.colorPrimary)?.let { color -> setTint(color) }
