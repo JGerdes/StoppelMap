@@ -17,7 +17,8 @@
                 "item_spit_roast": "yes",
                 "item_steak": "yes",
                 "name": "Schinderhannes",
-                "operator": "Schinderhannes"
+                "operator": "Schinderhannes",
+                "pictures": "schinderhannes_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -337,7 +338,8 @@
                 "item_softdrinks": "yes",
                 "name": "Treffpunkt",
                 "operator": "von Husen",
-                "priority": "2"
+                "priority": "2",
+                "pictures": "treffpunkt_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -585,7 +587,8 @@
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
                 "name": "Fala-Treff",
-                "operator": "Fala"
+                "operator": "Fala",
+                "pictures": "fala_treff_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -741,7 +744,8 @@
                 "item_softdrinks": "yes",
                 "name": "Schäfers Festzelt No.1",
                 "operator": "Schäfers",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "schaefers_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -786,7 +790,8 @@
                 "item_softdrinks": "yes",
                 "name": "Zum Kuhstall",
                 "operator": "Schmedes",
-                "priority": "4"
+                "priority": "4",
+                "pictures": "schmedes_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -1226,7 +1231,8 @@
                 "item_softdrinks": "yes",
                 "name": "Heitmann's Bierstube",
                 "operator": "Heitmann",
-                "priority": "2"
+                "priority": "2",
+                "pictures": "heitmann_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -1405,7 +1411,8 @@
                 "item_softdrinks": "yes",
                 "name": "Anton Linneman",
                 "operator": "Linneman",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "linnemann_header_01.webp:header:Linnemann"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2123,7 +2130,8 @@
                 "item_softdrinks": "yes",
                 "name": "Grieshop",
                 "operator": "Grieshop",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "grieshop_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2210,7 +2218,8 @@
                 "item_softdrinks": "yes",
                 "name": "Pickers",
                 "operator": "Surrmann",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "pickers_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -2462,6 +2471,7 @@
                 "item_softdrinks": "yes",
                 "name": "Overmeyer",
                 "operator": "Overmeyer",
+                "pictures": "overmeyer_header_01.webp:header:Jonas Gerdes",
                 "priority": "2"
             },
             "geometry": {
@@ -3362,9 +3372,10 @@
                 "item_longdrinks": "yes",
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
-                "name": "Brackland",
+                "name": "Twistringer Zelt",
                 "operator": "Brackland",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "twistringer_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3641,7 +3652,8 @@
                 "name": "Kinderkettenflieger",
                 "operator": "Kutschenb.",
                 "priority": "2",
-                "type": "swing-ride"
+                "type": "swing-ride",
+                "pictures": "kinder_kettenflieger_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4307,7 +4319,8 @@
                 "item_softdrinks": "yes",
                 "name": "Brackmann",
                 "operator": "Meckl",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "brackmann_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4601,7 +4614,8 @@
                 "building": "ride",
                 "forKids": "no",
                 "name": "Looping the Loop",
-                "operator": "Marquis"
+                "operator": "Marquis",
+                "pictures": "looping_the_loop_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4673,7 +4687,8 @@
                 "item_longdrinks": "yes",
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
-                "name": "Stierbräu"
+                "name": "Stierbräu",
+                "pictures": "stierbraeu_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -4851,7 +4866,8 @@
                 "name": "Formel 1",
                 "operator": "Schneider",
                 "priority": "3",
-                "type": "bumper-cars"
+                "type": "bumper-cars",
+                "pictures": "formel1_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -5218,7 +5234,8 @@
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
                 "name": "Die 2 Dinklager",
-                "operator": "Susen/Jordan"
+                "operator": "Susen/Jordan",
+                "pictures": "die2dinklager_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -5295,7 +5312,8 @@
                 "name": "Kühlings Niedersachsenhalle",
                 "operator": "Kühling",
                 "priority": "4",
-                "slug": "kuehlings-niedersachsenhalle"
+                "slug": "kuehlings-niedersachsenhalle",
+                "pictures": "kuehling_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -5443,7 +5461,7 @@
                 "name": "Octopussy",
                 "operator": "Markmann",
                 "priority": "3",
-                "type": "twister"
+                "pictures": "octopussy_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -5555,7 +5573,8 @@
                 "item_softdrinks": "yes",
                 "name": "Zur neuen Meyerei",
                 "operator": "Meyer",
-                "priority": "2"
+                "priority": "2",
+                "pictures": "zur_neuen_meyerei_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6397,7 +6416,8 @@
                 "name": "Riesenrad",
                 "operator": "Wilhelm",
                 "type": "ferris-wheel",
-                "priority": "4"
+                "priority": "4",
+                "pictures": "riesenrad_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6664,7 +6684,8 @@
                 "item_fries": "yes",
                 "item_sausauge": "yes",
                 "item_softdrinks": "yes",
-                "operator": "Ostermann, J."
+                "operator": "Ostermann, J.",
+                "pictures": "ostermann_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -7363,11 +7384,9 @@
             "properties": {
                 "building": "bar",
                 "isTent": "yes",
-                "item_beer": "no",
-                "item_longdrinks": "no",
-                "item_shots": "no",
                 "item_softdrinks": "yes",
                 "name": "Alkoholfreies Zelt",
+                "pictures": "alkoholfrei_header_01.webp:header:Jonas Gerdes",
                 "operator": "Katholischer Frauenbind",
                 "priority": "3"
             },
@@ -7770,7 +7789,8 @@
             "properties": {
                 "building": "misc",
                 "name": "Amtmannsbult",
-                "priority": "5"
+                "priority": "5",
+                "pictures": "amtmannsbult_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9413,7 +9433,8 @@
                 "item_softdrinks": "yes",
                 "name": "Waldhof",
                 "operator": "Grieshop",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "wunderbar_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9779,7 +9800,8 @@
                 "item_softdrinks": "yes",
                 "name": "Die Flotte",
                 "operator": "Kröger",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "flotte_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -9942,7 +9964,8 @@
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
                 "name": "Hanse Kogge",
-                "operator": "Neuhaus-Sonnenberg"
+                "operator": "Neuhaus-Sonnenberg",
+                "pictures": "hanse_kogge_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10561,7 +10584,8 @@
                 "item_softdrinks": "yes",
                 "name": "Party-Park",
                 "operator": "von Döllen / Hake",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "partypark_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10750,7 +10774,8 @@
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
                 "name": "Kaponier",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "kaponier_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -11177,8 +11202,10 @@
                 "alias": "Lohner Zelt",
                 "building": "bar",
                 "name": "Stratmann",
+                "isTent": "yes",
                 "operator": "Stratmann",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "stratmann_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -11741,7 +11768,8 @@
                 "name": "Break Dancer",
                 "operator": "Dreher-Verspermann",
                 "priority": "4",
-                "type": "breakdancer"
+                "type": "breakdancer",
+                "pictures": "breakdancer_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -12614,7 +12642,8 @@
                 "item_softdrinks": "yes",
                 "name": "Jansen",
                 "operator": "Jansen",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "jansen_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14042,7 +14071,8 @@
                 "name": "Wellenflug",
                 "operator": "Blume",
                 "priority": "4",
-                "type": "swing-ride"
+                "type": "swing-ride",
+                "pictures": "wellenflug_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -14429,7 +14459,8 @@
                 "item_softdrinks": "yes",
                 "name": "Banane",
                 "operator": "Blömer",
-                "priority": "2"
+                "priority": "2",
+                "pictures": "banane_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -15391,7 +15422,8 @@
                 "item_softdrinks": "yes",
                 "name": "Blömer's",
                 "operator": "Blömer",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "bloemers_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -16715,7 +16747,8 @@
                 "item_softdrinks": "yes",
                 "name": "Zauberbar",
                 "operator": "v. Döllen/Hohnhorst",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "zauberbar_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17752,7 +17785,8 @@
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
                 "name": "Hogeback",
-                "operator": "Muhle"
+                "operator": "Muhle",
+                "pictures": "hogeback_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -17894,7 +17928,8 @@
                 "item_softdrinks": "yes",
                 "name": "Oldehus",
                 "operator": "Oldehus",
-                "priority": "4"
+                "priority": "4",
+                "pictures": "oldehus_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
