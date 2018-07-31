@@ -13,7 +13,7 @@ fun getNamesForItem(type: String): List<String> {
 fun getNameForItem(item: String): Any = when (item) {
     "item_beer" -> "Bier"
     "item_softdrinks" -> listOf("Softdrinks", "Limonaden")
-    "item_shots" -> listOf("Shots", "Kurze")
+    "item_shots" -> listOf("Kurze", "Shots")
     "item_longdrinks" -> listOf("Longdrinks", "Mischgetränke")
     "item_cocktails" -> "Cocktails"
     "item_punchbowle" -> "Bowle"
