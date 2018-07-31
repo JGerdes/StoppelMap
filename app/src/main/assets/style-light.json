@@ -75,6 +75,71 @@
             }
         },
         {
+            "id": "bus_stop",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "public_transport",
+                    "platform",
+                    "bus"
+                ],
+                [
+                    "in",
+                    "$type",
+                    "LineString",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            15,
+                            2
+                        ],
+                        [
+                            16,
+                            4
+                        ],
+                        [
+                            17,
+                            8
+                        ],
+                        [
+                            18,
+                            16
+                        ],
+                        [
+                            19,
+                            32
+                        ],
+                        [
+                            20,
+                            64
+                        ],
+                        [
+                            21,
+                            128
+                        ]
+                    ]
+                },
+                "line-color": "#FAFAFA",
+                "line-gap-width": 0,
+                "line-blur": 0
+            }
+        },
+        {
             "id": "street",
             "type": "line",
             "source": "composite",
@@ -247,6 +312,11 @@
                 [
                     "has",
                     "building"
+                ],
+                [
+                    "!=",
+                    "building",
+                    "yes"
                 ]
             ],
             "layout": {
