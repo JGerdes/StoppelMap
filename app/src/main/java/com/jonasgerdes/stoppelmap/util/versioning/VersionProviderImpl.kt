@@ -47,7 +47,7 @@ class VersionProviderImpl(app: Context) : VersionProvider {
             val response = okHttpClient.newCall(request).execute()
             val jsonData = response.body()?.string()
             val versionInfo = gson.fromJson(jsonData, VersionInfo::class.java)
-            versionInfo.latest = versionInfo.version["release"]?.copy(code = 26)
+            versionInfo.latest = versionInfo.version["release"]
             it.onNext(versionInfo)
             it.onComplete()
         }

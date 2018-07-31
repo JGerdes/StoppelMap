@@ -6,6 +6,7 @@ import com.jonasgerdes.mvi.BaseResult
 import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.news.DynamicDatabase
 import com.jonasgerdes.stoppelmap.model.news.VersionMessage
+import com.jonasgerdes.stoppelmap.model.news.getUnseenForVersion
 import com.jonasgerdes.stoppelmap.model.versioning.Message
 import com.jonasgerdes.stoppelmap.util.versioning.VersionProvider
 import io.reactivex.Observable
@@ -52,7 +53,8 @@ class Versioner
 
 
                         Result.ShowMessages(
-                                messages = database.versionMessages().getUnseen()
+                                messages = database.versionMessages()
+                                        .getUnseenForVersion(versionProvider.getCurrentVersionCode())
                                         .sortedByDescending { it.importance },
                                 newVersionAvailable = it.latest?.let
                                 {
