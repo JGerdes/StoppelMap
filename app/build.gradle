@@ -9,11 +9,11 @@ apply from: '../api_keys.gradle'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.jonasgerdes.stoppelmap.alpha"
+        applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 25
-        versionName "2018.0.1 Alpha"
+        versionName "2018.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
