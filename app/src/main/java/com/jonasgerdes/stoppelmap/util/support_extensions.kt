@@ -58,22 +58,26 @@ fun RecyclerView.findVisibleChild(start: Int, end: Int, fullyVisible: Boolean,
     val next = if (end > start) 1 else -1
     var partiallyVisible: View? = null
     var i = start
-    while (i != end) {
-        val child = layoutManager.getChildAt(i)
-        val childStart = helper.getDecoratedStart(child)
-        val childEnd = helper.getDecoratedEnd(child)
-        if (childStart < endPad && childEnd > startPad) {
-            if (fullyVisible) {
-                if (childStart >= startPad && childEnd <= endPad) {
+    try {
+        while (i != end) {
+            val child = layoutManager.getChildAt(i)
+            val childStart = helper.getDecoratedStart(child)
+            val childEnd = helper.getDecoratedEnd(child)
+            if (childStart < endPad && childEnd > startPad) {
+                if (fullyVisible) {
+                    if (childStart >= startPad && childEnd <= endPad) {
+                        return child
+                    } else if (acceptPartiallyVisible && partiallyVisible == null) {
+                        partiallyVisible = child
+                    }
+                } else {
                     return child
-                } else if (acceptPartiallyVisible && partiallyVisible == null) {
-                    partiallyVisible = child
                 }
-            } else {
-                return child
             }
+            i += next
         }
-        i += next
+    } catch (e: Exception) {
+        Log.d("SupportExtensions", "can't find a visible child")
     }
     return partiallyVisible
 }
