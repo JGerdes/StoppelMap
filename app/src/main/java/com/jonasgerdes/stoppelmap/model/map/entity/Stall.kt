@@ -67,20 +67,22 @@ data class StallWithAlias(
 @Dao
 interface StallDao {
 
-    @Query("SELECT * FROM stalls")
+    @Query("SELECT * FROM stalls ORDER BY stalls.name")
     fun getAll(): List<Stall>
 
-    @Query("SELECT * FROM stalls WHERE slug = :slug")
+    @Query("SELECT * FROM stalls WHERE slug = :slug ORDER BY stalls.name")
     fun getBySlug(slug: String): Stall?
 
-    @Query("SELECT stalls.* from stalls where stalls.name like :query")
+    @Query("SELECT stalls.* from stalls where stalls.name like :query ORDER BY stalls.name")
     fun searchByName(query: String): Single<List<Stall>>
 
     @Query("""
         SELECT stalls.*, aliases.alias
         FROM stalls
         JOIN aliases ON aliases.stall = stalls.slug
-        WHERE aliases.alias LIKE :query""")
+        WHERE aliases.alias LIKE :query
+        ORDER BY stalls.name
+        """)
     fun searchByAlias(query: String): Single<List<StallWithAlias>>
 
     @Query("""
@@ -88,6 +90,7 @@ interface StallDao {
         FROM stall_items
         JOIN stalls ON stalls.slug = stall_items.stall
         WHERE stall_items.item = :item
+        ORDER BY stalls.name
         """)
     fun getStallsByItemSlug(item: String): List<Stall>
 
@@ -96,6 +99,7 @@ interface StallDao {
         FROM stall_sub_types
         JOIN stalls ON stalls.slug = stall_sub_types.stall
         WHERE stall_sub_types.sub_type = :subType
+        ORDER BY stalls.name
         """)
     fun getStallsBySubType(subType: String): List<Stall>
 
@@ -103,6 +107,7 @@ interface StallDao {
         SELECT *
         FROM stalls
         WHERE stalls.type = :type
+        ORDER BY stalls.name
         """)
     fun getStallsByType(type: String): List<Stall>
 
