@@ -51,7 +51,9 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                     title.text = cardTitle
                     card.setStallTypeBackgroundColor(stallCard.stall.type)
                     type.setTextOrHide(stallCard.subTypes
+                            .reversed() //temp fix: distinctBy uses last entry
                             .distinctBy { it.slug }
+                            .reversed()
                             .map { it.name }
                             .filter { it != cardTitle }
                             .joinToString(", "))
@@ -65,7 +67,9 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                     items.setTextOrHide(when (stallCard.stall.type) {
                         Type.FOOD_STALL, Type.CANDY_STALL, Type.SELLER_STALL,
                         Type.BAR, Type.BUILDING -> stallCard.items
+                                .reversed() //temp fix: distinctBy uses last entry
                                 .distinctBy { it.slug }
+                                .reversed()
                                 .filter { it.name != cardTitle }
                                 .joinToString(", ") { it.name }.let {
                                     if (it.isNotEmpty()) {
@@ -73,7 +77,9 @@ class StallCardAdapter : ListAdapter<StallCard, StallCardAdapter.StallCardHolder
                                     } else null
                                 }
                         Type.GAME_STALL -> stallCard.items
+                                .reversed() //temp fix: distinctBy uses last entry
                                 .distinctBy { it.slug }
+                                .reversed()
                                 .filter { it.name != cardTitle }
                                 .joinToString(", ") { it.name }
 
