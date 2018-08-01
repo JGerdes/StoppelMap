@@ -3375,7 +3375,7 @@
                 "name": "Twistringer Zelt",
                 "operator": "Brackland",
                 "priority": "3",
-                "pictures": "twistringer_header_01.webp:header:Jonas Gerdes"
+                "pictures": "twistringer_zelt_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3542,7 +3542,8 @@
                 "building": "ride",
                 "name": "Take Off",
                 "operator": "Ruppert",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "takeoff_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -3937,7 +3938,8 @@
                 "building": "game-stall",
                 "game_lottery": "yes",
                 "operator": "Kellner",
-                "name": "Silbermine"
+                "name": "Silbermine",
+                "pictures": "silbermine_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -6413,7 +6415,7 @@
             "type": "Feature",
             "properties": {
                 "building": "ride",
-                "name": "Riesenrad",
+                "name": "Wilhelms große Riesenrad",
                 "operator": "Wilhelm",
                 "type": "ferris-wheel",
                 "priority": "4",
@@ -7425,7 +7427,8 @@
                 "name": "Piratenfluss",
                 "operator": "Heitmann - Schneider",
                 "priority": "3",
-                "type": "log-flume"
+                "type": "log-flume",
+                "pictures": "piratenfluss_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -10400,7 +10403,8 @@
                 "item_softdrinks": "yes",
                 "name": "Meyer",
                 "operator": "Meyer, F.",
-                "priority": "2"
+                "priority": "2",
+                "pictures": "meyer_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
@@ -18696,7 +18700,8 @@
                 "building": "ride",
                 "name": "Musikexpress",
                 "operator": "Krause",
-                "priority": "3"
+                "priority": "3",
+                "pictures": "musikexpress_header_01.webp:header:Jonas Gerdes"
             },
             "geometry": {
                 "type": "Polygon",
