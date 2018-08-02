@@ -21,6 +21,9 @@ import android.util.TypedValue
 inline val Int.dp
     get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
+inline val Double.dp
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
 inline fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
 inline fun Context.getColorFromTheme(@AttrRes color: Int): Int {

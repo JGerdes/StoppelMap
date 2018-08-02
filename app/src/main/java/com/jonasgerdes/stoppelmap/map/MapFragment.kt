@@ -2,6 +2,9 @@ package com.jonasgerdes.stoppelmap.map
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -24,19 +27,14 @@ import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.util.*
 import com.jonasgerdes.stoppelmap.util.mapbox.clicks
-import com.jonasgerdes.stoppelmap.util.mapbox.idles
-import com.mapbox.geojson.FeatureCollection
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Predicate
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.map_fragment.*
-import com.mapbox.mapboxsdk.style.layers.SymbolLayer
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 
 
 /**
@@ -68,6 +66,7 @@ class MapFragment : Fragment() {
 
         mapView.setStyleUrl("asset://style-light.json")
         mapView.getMapAsync {
+            loadImages(it)
             initMapUi(it)
             initMapCamera(it)
             map.onNext(it)
@@ -97,6 +96,48 @@ class MapFragment : Fragment() {
 
         render(state.map { it.map }
                 .observeOn(AndroidSchedulers.mainThread()))
+    }
+
+
+    class MarkerIcon(val name: String, val icon: Int)
+    private fun loadImages(map: MapboxMap) {
+        listOf(
+                MarkerIcon("bar", R.drawable.ic_stall_type_bar),
+                MarkerIcon("candy_stall", R.drawable.ic_stall_type_candy_stall),
+                MarkerIcon("expo", R.drawable.ic_stall_type_expo),
+                MarkerIcon("food_stall", R.drawable.ic_stall_type_food_stall),
+                MarkerIcon("game_stall", R.drawable.ic_stall_type_game_stall),
+                MarkerIcon("misc", R.drawable.ic_stall_type_info),
+                MarkerIcon("parking", R.drawable.ic_stall_type_parking),
+                MarkerIcon("restaurant", R.drawable.ic_stall_type_building),
+                MarkerIcon("restroom", R.drawable.ic_stall_type_restroom),
+                MarkerIcon("ride", R.drawable.ic_stall_type_ride),
+                MarkerIcon("seller_stall", R.drawable.ic_stall_type_seller_stall)
+        ).forEach {
+            val color = context!!.getColorByName("marker_type_${it.name}", Color.RED)
+            val bitmap = Bitmap.createBitmap(24.dp, 24.dp, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            context!!.getDrawable(R.drawable.ic_marker_outline).apply {
+                bounds = canvas.clipBounds
+                draw(canvas)
+            }
+            context!!.getDrawable(R.drawable.ic_marker_fill).apply {
+                setTint(color)
+                bounds = canvas.clipBounds
+                draw(canvas)
+            }
+            context!!.getDrawable(it.icon).apply {
+                setTint(Color.WHITE)
+                bounds = canvas.clipBounds.insetBy(
+                        left = 5.dp,
+                        top = 4.dp,
+                        right = 5.dp,
+                        bottom = 6.dp
+                )
+                draw(canvas)
+            }
+            map.addImage(it.name, bitmap)
+        }
     }
 
     private fun initMapCamera(it: MapboxMap) {
@@ -147,7 +188,7 @@ class MapFragment : Fragment() {
                 .subscribe(viewModel.events)
 
         clearSearch.clicks()
-                .map { MainEvent.MapEvent.ClearSearchClicked}
+                .map { MainEvent.MapEvent.ClearSearchClicked }
                 .subscribe(viewModel.events)
 
         map.subscribe { map ->
