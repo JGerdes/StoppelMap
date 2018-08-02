@@ -6,8 +6,8 @@
         "mapbox:trackposition": false
     },
     "center": [
-        8.295483738183975,
-        52.74736962293996
+            8.295483738183975,
+            52.74736962293996
     ],
     "zoom": 15.2,
     "bearing": 0,
@@ -22,7 +22,7 @@
             "data": "asset://empty.geojson"
         }
     },
-    "sprite": "asset://mapbox/sprites/sprite",
+    "ignore_sprite": "asset://mapbox/sprites/sprite",
     "glyphs": "asset://mapbox/fonts/{fontstack}/{range}.pbf",
     "layers": [
         {
@@ -642,14 +642,16 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-blur": 0,
                 "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    0
+                    -8
                 ],
                 "icon-translate": [
                     0,
-                    0
+                    -10
                 ],
+                "icon-translate-anchor": "viewport",
                 "icon-opacity": {
                     "base": 1,
                     "stops": [
@@ -808,14 +810,16 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-blur": 0,
                 "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    0
+                    -8
                 ],
                 "icon-translate": [
                     0,
-                    0
-                ]
+                    -10
+                ],
+                "icon-translate-anchor": "viewport"
             }
         },
         {
@@ -948,14 +952,16 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-blur": 0,
                 "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    0
+                    -8
                 ],
                 "icon-translate": [
                     0,
-                    0
-                ]
+                    -10
+                ],
+                "icon-translate-anchor": "viewport"
             }
         },
         {
@@ -1088,14 +1094,16 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-blur": 0,
                 "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    0
+                    -8
                 ],
                 "icon-translate": [
                     0,
-                    0
-                ]
+                    -10
+                ],
+                "icon-translate-anchor": "viewport"
             }
         },
         {
@@ -1226,14 +1234,16 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-blur": 0,
                 "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    0
+                    -8
                 ],
                 "icon-translate": [
                     0,
-                    0
-                ]
+                    -10
+                ],
+                "icon-translate-anchor": "viewport"
             }
         },
         {
@@ -1358,14 +1368,16 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-blur": 0,
                 "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    0
+                    -8
                 ],
                 "icon-translate": [
                     0,
-                    0
-                ]
+                    -10
+                ],
+                "icon-translate-anchor": "viewport"
             }
         },
         {
@@ -1475,14 +1487,16 @@
                 "text-halo-color": "hsl(0, 0%, 100%)",
                 "text-halo-blur": 0,
                 "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    0
+                    -8
                 ],
                 "icon-translate": [
                     0,
                     -10
-                ]
+                ],
+                "icon-translate-anchor": "viewport"
             }
         }
     ],
