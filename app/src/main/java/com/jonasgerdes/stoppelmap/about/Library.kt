@@ -109,6 +109,12 @@ object Library {
                     author = "JetBrains, Inc.",
                     license = License.Apache2(),
                     githubUrl = "https://github.com/JetBrains/kotlin"
+            ),
+            LibraryCard(
+                    name = "RxPermissions",
+                    author = "Thomas Bruyelle",
+                    license = License.Apache2(),
+                    githubUrl = "https://github.com/tbruyelle/RxPermissions"
             )
     )
 }
