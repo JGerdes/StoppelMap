@@ -61,7 +61,7 @@ class AboutFragment : Fragment() {
                 add(AuthorCard(
                         name = "Sara Fraas",
                         work = "Süßigkeiten, Dosenwerfen",
-                        website = "www.fraas-home.de"
+                        website = "https://www.xing.com/profile/Sara_Fraas/"
                 ))
                 add(AuthorCard(
                         name = "Jonas Gerdes",
