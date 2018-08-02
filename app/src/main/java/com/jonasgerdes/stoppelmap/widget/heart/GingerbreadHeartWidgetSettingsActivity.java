@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.widget.heart;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 
@@ -52,14 +53,12 @@ public class GingerbreadHeartWidgetSettingsActivity extends AbstractWidgetSettin
                         ContextUtil.getColorFromTheme(this, R.attr.colorAccent)
                 )
                 .setLimits(MIN_LIGHTNESS, MAX_LIGHTNESS);
-        Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
-        Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
 
-            @Override
-            public void onGenerated(Palette palette) {
-                colorOptionPage.setPalette(palette);
-            }
-        });
+        Drawable background = getWallpaperDrawable();
+        if (background != null) {
+            Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(background);
+            Palette.from(wallpaperBitmap).generate(colorOptionPage::setPalette);
+        }
 
         pages.add(colorOptionPage);
         pages.add(HourOptionPage.newInstance(mDefaultShowHours));

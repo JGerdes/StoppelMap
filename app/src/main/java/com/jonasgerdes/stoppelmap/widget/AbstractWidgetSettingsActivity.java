@@ -1,9 +1,12 @@
 package com.jonasgerdes.stoppelmap.widget;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -19,12 +22,14 @@ import android.widget.RemoteViews;
 
 import com.jonasgerdes.stoppelmap.R;
 import com.jonasgerdes.stoppelmap.widget.options.OptionPage;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
 /**
  * Created by jonas on 23.02.2017.
  */
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     private static final String TAG = "AbstractWidgetSettingsA";
     ImageView mPreviewBackground;
@@ -37,22 +42,24 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
     protected int mAppWidgetId;
     private int mCurrentItem;
     private OptionsPagerAdapter mOptionsAdapter;
+    private RxPermissions mPermissions;
 
+    @Nullable
+    private Drawable mWallpaperDrawable = null;
+
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.widget_settings_gingerbread_heart);
 
+        mPermissions = new RxPermissions(this);
+
         mPreviewBackground = findViewById(R.id.previewBackground);
         mPreviewHolder = findViewById(R.id.preview);
         mOptionsPager = findViewById(R.id.options_pager);
         mFab = findViewById(R.id.fab);
-        mFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onFabClicked();
-            }
-        });
+        mFab.setOnClickListener(view -> onFabClicked());
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -70,11 +77,25 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("StoppelMap");
         getSupportActionBar().setSubtitle(getWidgetName() + " konfigurieren");
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            mPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .subscribe(this::init);
+        } else {
+            init(true);
+        }
 
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
-        Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-        mPreviewBackground.setImageDrawable(wallpaperDrawable);
 
+    }
+
+    private void init(boolean useWallpaper) {
+
+        if (useWallpaper) {
+            WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+            mWallpaperDrawable = wallpaperManager.getDrawable();
+            mPreviewBackground.setImageDrawable(mWallpaperDrawable);
+        } else {
+            mPreviewBackground.setImageResource(R.drawable.bg_gradient_app_colors);
+        }
         initWithWidgetId(mAppWidgetId);
 
         final List<OptionPage> mOptionsPages = getOptionPages();
@@ -122,7 +143,6 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         }
 
         initPreview();
-
     }
 
     @Override
@@ -143,8 +163,9 @@ public abstract class AbstractWidgetSettingsActivity extends AppCompatActivity {
         mPreview.update();
     }
 
+    @Nullable
     protected Drawable getWallpaperDrawable() {
-        return mPreviewBackground.getDrawable();
+        return mWallpaperDrawable;
     }
 
     void onFabClicked() {
