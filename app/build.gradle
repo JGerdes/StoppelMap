@@ -12,8 +12,8 @@ android {
         applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 26
-        versionName "2018.1.1"
+        versionCode 27
+        versionName "2018.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
