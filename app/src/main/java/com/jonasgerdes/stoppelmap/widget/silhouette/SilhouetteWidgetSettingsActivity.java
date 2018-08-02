@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.widget.silhouette;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.graphics.Palette;
 
@@ -68,15 +69,14 @@ public class SilhouetteWidgetSettingsActivity extends AbstractWidgetSettingsActi
                         )
                         .setLimits(MIN_LIGHTNESS, MAX_LIGHTNESS);
 
-        Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(getWallpaperDrawable());
-        Palette.from(wallpaperBitmap).generate(new Palette.PaletteAsyncListener() {
-
-            @Override
-            public void onGenerated(Palette palette) {
+        Drawable background = getWallpaperDrawable();
+        if (background != null) {
+            Bitmap wallpaperBitmap = BitmapUtil.drawableToBitmap(background);
+            Palette.from(wallpaperBitmap).generate(palette -> {
                 colorOptionPage.setPalette(palette);
                 fontColorOptionPage.setPalette(palette);
-            }
-        });
+            });
+        }
 
         pages.add(colorOptionPage);
         pages.add(fontColorOptionPage);
