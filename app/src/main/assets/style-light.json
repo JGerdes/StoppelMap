@@ -645,11 +645,11 @@
                 "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    -8
+                    -6
                 ],
                 "icon-translate": [
                     0,
-                    -10
+                    -8
                 ],
                 "icon-translate-anchor": "viewport",
                 "icon-opacity": {
@@ -813,11 +813,11 @@
                 "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    -8
+                    -6
                 ],
                 "icon-translate": [
                     0,
-                    -10
+                    -8
                 ],
                 "icon-translate-anchor": "viewport"
             }
@@ -955,11 +955,11 @@
                 "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    -8
+                    -6
                 ],
                 "icon-translate": [
                     0,
-                    -10
+                    -8
                 ],
                 "icon-translate-anchor": "viewport"
             }
@@ -1097,11 +1097,11 @@
                 "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    -8
+                    -6
                 ],
                 "icon-translate": [
                     0,
-                    -10
+                    -8
                 ],
                 "icon-translate-anchor": "viewport"
             }
@@ -1237,11 +1237,11 @@
                 "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    -8
+                    -6
                 ],
                 "icon-translate": [
                     0,
-                    -10
+                    -8
                 ],
                 "icon-translate-anchor": "viewport"
             }
@@ -1371,11 +1371,11 @@
                 "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    -8
+                    -6
                 ],
                 "icon-translate": [
                     0,
-                    -10
+                    -8
                 ],
                 "icon-translate-anchor": "viewport"
             }
@@ -1490,11 +1490,11 @@
                 "text-translate-anchor": "viewport",
                 "text-translate": [
                     0,
-                    -8
+                    -6
                 ],
                 "icon-translate": [
                     0,
-                    -10
+                    -8
                 ],
                 "icon-translate-anchor": "viewport"
             }
