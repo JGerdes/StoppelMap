@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/bg_card_no_rounds" />
-    <item
-        android:gravity="bottom"
-        android:left="56dp">
+    <item android:left="56dp">
         <shape android:shape="rectangle">
-            <size android:height="1dp" />
             <solid android:color="?dividerColor" />
         </shape>
     </item>
+    <item
+        android:bottom="1dp"
+        android:drawable="@drawable/bg_card_no_rounds" />
 </layer-list>
