@@ -7350,7 +7350,7 @@
             "type": "Feature",
             "properties": {
                 "building": "seller-stall",
-                "name": "Ahmad",
+                "operator": "Ahmad",
                 "products": "seller_type_cloth"
             },
             "geometry": {
