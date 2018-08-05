@@ -24,8 +24,7 @@ class App : Application() {
     }
 
     private fun initMapbox() {
-        Mapbox.getInstance(applicationContext, "pk.NOT_USED")
-        TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.DISABLED)
+        Mapbox.getInstance(applicationContext, null)
     }
 
 }
