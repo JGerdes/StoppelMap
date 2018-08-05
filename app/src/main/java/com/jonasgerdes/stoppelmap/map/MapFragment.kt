@@ -100,6 +100,7 @@ class MapFragment : Fragment() {
 
 
     class MarkerIcon(val name: String, val icon: Int)
+
     private fun loadImages(map: MapboxMap) {
         listOf(
                 MarkerIcon("bar", R.drawable.ic_stall_type_bar),
@@ -158,7 +159,7 @@ class MapFragment : Fragment() {
         it.uiSettings.compassImage = context?.getDrawable(R.drawable.ic_navigation_black_24dp)
                 ?.apply {
                     context?.getColorCompat(R.color.colorPrimary)?.let { color -> setTint(color) }
-                }
+                } ?: return
     }
 
     @SuppressLint("CheckResult")
