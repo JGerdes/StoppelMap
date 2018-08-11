@@ -6,17 +6,12 @@ import android.view.View
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.model.map.StallCollectionCard
-import com.jonasgerdes.stoppelmap.model.map.entity.Stall
 import com.jonasgerdes.stoppelmap.model.map.toBounds
 import com.jonasgerdes.stoppelmap.util.dp
 import com.jonasgerdes.stoppelmap.util.getColorForStallType
 import com.jonasgerdes.stoppelmap.util.getMapBoxIcon
 import com.jonasgerdes.stoppelmap.util.mapbox.toBounds
 import com.jonasgerdes.stoppelmap.util.mapbox.toCenter
-import com.mapbox.mapboxsdk.annotations.Marker
-import com.mapbox.mapboxsdk.annotations.MarkerOptions
-import com.mapbox.mapboxsdk.annotations.MarkerViewOptions
-import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import io.reactivex.Observable
 

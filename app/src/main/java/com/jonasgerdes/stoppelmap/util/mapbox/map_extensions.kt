@@ -29,8 +29,7 @@ fun toBounds(bounds: LatLngBounds,
              top: Int = 0,
              right: Int = 0,
              bottom: Int = 0
-) =
-        CameraUpdateFactory.newLatLngBounds(bounds, left, top, right, bottom)
+) = CameraUpdateFactory.newLatLngBounds(bounds, left, top, right, bottom)
 
 fun Location.latLng(): LatLng {
     return LatLng(latitude, longitude)
