@@ -31,6 +31,7 @@ import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Predicate
 import io.reactivex.subjects.BehaviorSubject
@@ -48,6 +49,7 @@ class MapFragment : Fragment() {
     }
 
     private lateinit var flowDisposable: Disposable
+    private val disposables = CompositeDisposable()
     private val state = BehaviorRelay.create<MainState>()
     private val map = BehaviorSubject.create<MapboxMap>()
 
@@ -91,8 +93,6 @@ class MapFragment : Fragment() {
             }
         })
         LinearSnapHelper().attachToRecyclerView(stallCards)
-
-        bindEvents()
 
         render(state.map { it.map }
                 .observeOn(AndroidSchedulers.mainThread()))
@@ -162,40 +162,36 @@ class MapFragment : Fragment() {
                 } ?: return
     }
 
-    @SuppressLint("CheckResult")
     private fun bindEvents() {
         search.clicks()
                 .map { MainEvent.MapEvent.SearchFieldClickedEvent() }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
 
         search.focusChanges()
                 .filter { it }
                 .map { MainEvent.MapEvent.SearchFieldClickedEvent() }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
 
         search.backPresses()
                 .map { MainEvent.MapEvent.OnBackPressEvent() }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
 
         search.editorActionEvents(Predicate {
             !(it.keyEvent()?.action == KeyEvent.ACTION_UP
                     && it.keyEvent()?.keyCode == KeyEvent.KEYCODE_BACK)
         })
                 .map { MainEvent.MapEvent.OnBackPressEvent() }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
 
         search.textChanges()
                 .map { MainEvent.MapEvent.QueryEntered(it.toString()) }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
 
         clearSearch.clicks()
                 .map { MainEvent.MapEvent.ClearSearchClicked }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
 
-        map.subscribe { map ->
-            /*map.idles()
-                    .map { MainEvent.MapEvent.MapMoved() }
-                    .subscribe(viewModel.events)*/
+        map.distinctUntilChanged().subscribe { map ->
 
             val mapClicks = map.clicks().map { map.projection.toScreenLocation(it) }
                     .map { map.queryRenderedFeatures(it, "stalls") }
@@ -209,20 +205,20 @@ class MapFragment : Fragment() {
                     }.map { it.getStringProperty("slug") }
                     .map {
                         MainEvent.MapEvent.MapItemClickedEvent(it)
-                    }.subscribe(viewModel.events)
+                    }.subscribe(viewModel.events) to disposables
 
             mapClicks.filter { it.size == 0 }
                     .map { MainEvent.MapEvent.MapClickedEvent }
-                    .subscribe(viewModel.events)
-        }
+                    .subscribe(viewModel.events) to disposables
+        } to disposables
 
         searchResultAdapter.selections()
                 .map { MainEvent.MapEvent.SearchResultClicked(it.id) }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
 
         stallCards.itemScrolls()
                 .map { MainEvent.MapEvent.StallCardSelected(it) }
-                .subscribe(viewModel.events)
+                .subscribe(viewModel.events) to disposables
     }
 
     @SuppressLint("CheckResult")
@@ -237,6 +233,7 @@ class MapFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         mapView?.onStart()
+        bindEvents()
         flowDisposable = viewModel.state.subscribe(state)
     }
 
@@ -253,6 +250,7 @@ class MapFragment : Fragment() {
     override fun onStop() {
         mapView?.onStop()
         flowDisposable.dispose()
+        disposables.clear()
         super.onStop()
     }
 

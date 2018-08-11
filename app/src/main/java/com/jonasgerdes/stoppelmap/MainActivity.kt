@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.annotation.IdRes
 import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearSnapHelper
@@ -41,13 +42,14 @@ class MainActivity : AppCompatActivity() {
 
     private val messageAdapter = GroupAdapter<ViewHolder>()
 
-    private val fragments = mapOf(
-            R.id.navigation_map to MapFragment(),
-            R.id.navigation_event_schedule to EventListFragment(),
-            R.id.navigation_bus_schedule to BusListFragment(),
-            R.id.main_navigation_social_feed to FeedFragment(),
-            R.id.main_navigation_about to AboutFragment()
-    )
+    private fun getFragment(@IdRes id: Int) = when (id) {
+        R.id.navigation_map -> MapFragment()
+        R.id.navigation_event_schedule -> EventListFragment()
+        R.id.navigation_bus_schedule -> BusListFragment()
+        R.id.main_navigation_social_feed -> FeedFragment()
+        R.id.main_navigation_about -> AboutFragment()
+        else -> MapFragment()
+    }
 
     private val keyboardDetector by lazy { KeyboardDetector(this) }
 
@@ -141,7 +143,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFragment(to: Int) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.content, fragments[to])
+        transaction.replace(R.id.content, getFragment(to))
         transaction.commit()
         ViewCompat.requestApplyInsets(content)
     }
