@@ -20,8 +20,7 @@ class TransportationProvider
 
     override fun execute(action: Observable<Action>):
             Observable<BaseResult> = action.switchMap {
-        Observable.interval(30, TimeUnit.SECONDS)
-                .startWith(0)
+        Observable.interval(0, 10, TimeUnit.SECONDS)
                 .switchMap {
                     database.routes()
                             .getAll()

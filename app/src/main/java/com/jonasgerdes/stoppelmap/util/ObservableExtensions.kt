@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap.util
 
+import android.arch.lifecycle.LiveDataReactiveStreams
 import android.util.Log
+import io.reactivex.BackpressureStrategy
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -27,3 +29,6 @@ operator fun CompositeDisposable.plusAssign(disposable: Disposable) {
 infix fun Disposable.to(compositeDisposable: CompositeDisposable) {
     compositeDisposable.add(this)
 }
+
+fun <T> Observable<T>.toFlowable() = toFlowable(BackpressureStrategy.LATEST)!!
+fun <T> Observable<T>.toLiveData() = LiveDataReactiveStreams.fromPublisher(toFlowable())

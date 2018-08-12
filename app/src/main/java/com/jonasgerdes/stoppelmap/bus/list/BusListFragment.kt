@@ -6,14 +6,17 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.bus.list.RouteAdapter
+import com.jonasgerdes.stoppelmap.bus.route.RouteActivity
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
+import com.jonasgerdes.stoppelmap.domain.model.TransportRoute
 import com.jonasgerdes.stoppelmap.feed.FeedItemAdapter
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -36,15 +39,17 @@ class BusListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.work_in_progress, container, false)
+            inflater.inflate(R.layout.bus_list_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //init()
+        init()
     }
 
+    @SuppressLint("CheckResult")
     private fun init() {
         routes.adapter = routeAdapter
+        routes.itemAnimator = null
         bindEvents()
         toolbar.title = getString(R.string.transportation_toolbar_title)
         val font = ResourcesCompat.getFont(context!!, R.font.roboto_slab_light)
@@ -52,6 +57,17 @@ class BusListFragment : Fragment() {
         toolbarLayout.setCollapsedTitleTypeface(font)
         render(state.map { it.transportation }
                 .observeOn(AndroidSchedulers.mainThread()))
+
+        routeAdapter.events.subscribe {
+            when (it) {
+                is RouteAdapter.RouteClickedEvent.Card -> showStations(it.route)
+                is RouteAdapter.RouteClickedEvent.AllStations -> showStations(it.route)
+            }
+        }
+    }
+
+    private fun showStations(route: TransportRoute) {
+        RouteActivity.start(context!!, route.slug, route.name)
     }
 
     @SuppressLint("CheckResult")
@@ -69,11 +85,11 @@ class BusListFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        //flowDisposable = viewModel.state.subscribe(state)
+        flowDisposable = viewModel.state.subscribe(state)
     }
 
     override fun onStop() {
-        //flowDisposable.dispose()
+        flowDisposable.dispose()
         super.onStop()
     }
 }
