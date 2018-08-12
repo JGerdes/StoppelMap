@@ -20,6 +20,7 @@
     <string name="transportation_route_station_card_action_all_stations">Alle Abfahrten</string>
 
 
+    <string name="transportation_station_prices">Preise</string>
     <string name="transportation_station_day_monday">Mo</string>
     <string name="transportation_station_day_tuesday">Di</string>
     <string name="transportation_station_day_wednesday">Mi</string>
@@ -27,7 +28,6 @@
     <string name="transportation_station_day_friday">Fr</string>
     <string name="transportation_station_day_saturday">Sa</string>
     <string name="transportation_station_day_sunday">So</string>
-
     <string name="transportation_station_span_morning">Morgens</string>
     <string name="transportation_station_span_afternoon">Nachmittags</string>
     <string name="transportation_station_span_evening">Abends</string>

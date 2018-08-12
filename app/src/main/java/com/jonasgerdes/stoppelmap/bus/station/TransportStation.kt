@@ -1,10 +1,14 @@
 package com.jonasgerdes.stoppelmap.bus.station
 
+import com.jonasgerdes.stoppelmap.model.transportation.Station
+import com.jonasgerdes.stoppelmap.model.transportation.TransportPrice
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.OffsetDateTime
 
 data class StationState(
-        val departureItems: List<DepartureGridItem>
+        val station: Station,
+        val departureItems: List<DepartureGridItem>,
+        val prices: List<TransportPrice>
 )
 
 data class TimeSpan(

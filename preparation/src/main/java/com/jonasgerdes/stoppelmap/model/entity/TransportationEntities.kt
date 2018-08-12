@@ -17,7 +17,8 @@ data class JsonStation(
 data class JsonRoute(
         val name: String,
         val uuid: String,
-        val stations: List<JsonStation>
+        val stations: List<JsonStation>,
+        val returnStation: JsonStation
 )
 data class ScheduleFile(
         val routes: List<JsonRoute>
