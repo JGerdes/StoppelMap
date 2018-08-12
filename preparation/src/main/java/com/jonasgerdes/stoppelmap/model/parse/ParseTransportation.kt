@@ -23,30 +23,36 @@ fun Data.parseBusSchedule(files: List<File>) {
                         name = it.name
                 )
                 it.stations.forEach {
-                    val station = Station(
-                            slug = it.uuid,
-                            name = it.name,
-                            latitude = it.geoLocation?.lat,
-                            longitude = it.geoLocation?.lng,
-                            comment = it.comment,
-                            route = route.slug
-                    )
-                    transportPrices += it.prices.map {
-                        TransportPrice(
-                                station = station.slug,
-                                type = it.type,
-                                price = it.price
-                        )
-                    }
-                    departures += it.days.flatMap { it.departures }
-                            .map {
-                                Departure(
-                                        station = station.slug,
-                                        time = it.time
-                                )
-                            }
-                    stations += station
+                    addStation(it, route, false)
                 }
+                addStation(it.returnStation, route, true)
                 routes += route
             }
+}
+
+private fun Data.addStation(it: JsonStation, route: Route, isReturnStation:Boolean) {
+    val station = Station(
+            slug = it.uuid,
+            name = it.name,
+            latitude = it.geoLocation?.lat,
+            longitude = it.geoLocation?.lng,
+            comment = it.comment,
+            route = route.slug,
+            is_return = isReturnStation
+    )
+    transportPrices += it.prices.map {
+        TransportPrice(
+                station = station.slug,
+                type = it.type,
+                price = it.price
+        )
+    }
+    departures += it.days.flatMap { it.departures }
+            .map {
+                Departure(
+                        station = station.slug,
+                        time = it.time
+                )
+            }
+    stations += station
 }

@@ -12,6 +12,7 @@ import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.bus.list.RouteAdapter
 import com.jonasgerdes.stoppelmap.bus.route.RouteActivity
+import com.jonasgerdes.stoppelmap.bus.station.StationActivity
 import com.jonasgerdes.stoppelmap.domain.MainState
 import com.jonasgerdes.stoppelmap.domain.MainViewModel
 import com.jonasgerdes.stoppelmap.domain.model.TransportRoute
@@ -59,6 +60,7 @@ class BusListFragment : Fragment() {
             when (it) {
                 is RouteAdapter.RouteClickedEvent.Card -> showStations(it.route)
                 is RouteAdapter.RouteClickedEvent.AllStations -> showStations(it.route)
+                is RouteAdapter.RouteClickedEvent.Return -> StationActivity.start(context!!, it.route.returnStation.slug)
             }
         }
     }
