@@ -108,7 +108,8 @@ data class Station(
         val route: String,
         val comment: String? = null,
         val longitude: Double? = null,
-        val latitude: Double? = null
+        val latitude: Double? = null,
+        val is_return:Boolean = false
 )
 
 data class Departure(

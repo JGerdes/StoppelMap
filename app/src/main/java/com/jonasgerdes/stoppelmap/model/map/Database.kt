@@ -16,7 +16,7 @@ import java.io.File
     Item::class, StallItem::class,
     SubType::class, StallSubType::class,
     Route::class, Station::class, Departure::class, TransportPrice::class
-], version = 1, exportSchema = false)
+], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class StoppelMapDatabase : RoomDatabase() {
     abstract fun stalls(): StallDao

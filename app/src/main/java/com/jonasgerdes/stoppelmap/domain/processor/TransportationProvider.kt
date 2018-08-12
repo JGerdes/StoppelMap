@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.domain.processor
 import com.jonasgerdes.mvi.BaseAction
 import com.jonasgerdes.mvi.BaseOperation
 import com.jonasgerdes.mvi.BaseResult
+import com.jonasgerdes.stoppelmap.bus.route.TransportStation
 import com.jonasgerdes.stoppelmap.domain.model.TransportRoute
 import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.Converters
@@ -29,7 +30,8 @@ class TransportationProvider
                                     TransportRoute(
                                             slug = it.slug,
                                             name = it.name,
-                                            nearestStations = getNearestStations(it.slug)
+                                            nearestStations = getNearestStations(it.slug),
+                                            returnStation = database.stations().getReturnByRoute(it.slug)
                                     )
                                 }
                             }
