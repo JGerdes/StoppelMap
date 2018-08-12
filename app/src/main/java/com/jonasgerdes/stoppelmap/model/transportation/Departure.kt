@@ -25,6 +25,9 @@ interface DepartureDao {
     @Query("SELECT * FROM departures WHERE station like :station AND time > :start LIMIT :limit")
     fun getForStationAfter(station: String, start: String, limit: Int = 3): List<Departure>
 
+    @Query("SELECT * FROM departures WHERE station like :station")
+    fun getAllByStation(station: String): List<Departure>
+
 }
 
 fun DepartureDao.getForStationAfter(station: String, start: OffsetDateTime, limit: Int = 3) =

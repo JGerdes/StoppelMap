@@ -65,7 +65,8 @@
                 android:resource="@xml/widget_info_silhouette" />
         </receiver>
 
-        <activity android:name=".bus.route.RouteActivity"></activity>
+        <activity android:name=".bus.route.RouteActivity" />
+        <activity android:name=".bus.station.StationActivity" />
     </application>
 
 </manifest>

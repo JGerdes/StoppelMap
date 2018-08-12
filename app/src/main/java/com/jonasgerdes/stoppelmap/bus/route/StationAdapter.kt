@@ -17,7 +17,7 @@ class StationAdapter : ListAdapter<TransportStation, StationAdapter.Holder>(Tran
 
     sealed class StationClickedEvent {
         data class Card(val station: TransportStation) : StationClickedEvent()
-        data class AllStations(val station: TransportStation) : StationClickedEvent()
+        data class AllDepartures(val station: TransportStation) : StationClickedEvent()
     }
 
     val format = DateTimeFormatter.ofPattern("HH:mm:ss")
@@ -36,6 +36,12 @@ class StationAdapter : ListAdapter<TransportStation, StationAdapter.Holder>(Tran
                 itemView.clicks()
                         .map { StationClickedEvent.Card(getItem(adapterPosition)) }
                         .subscribe(eventSubject)
+                if (viewType == R.layout.bus_route_station_card) {
+                    itemView.actionAllDepartures.clicks()
+                            .map { StationClickedEvent.AllDepartures(getItem(adapterPosition)) }
+                            .subscribe(eventSubject)
+                }
+
             }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
