@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:elevation="4dp"
-        android:text="@string/transportation_station_card_departure"
+        android:text="@string/transportation_route_station_card_departure"
         app:layout_constraintBaseline_toBaselineOf="@id/title"
         app:layout_constraintEnd_toEndOf="@id/card"
         app:layout_constraintTop_toTopOf="@id/card" />
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="4dp"
-        android:text="@string/transportation_station_card_action_all_stations"
+        android:text="@string/transportation_route_station_card_action_all_stations"
         app:layout_constraintBottom_toBottomOf="@id/card"
         app:layout_constraintEnd_toEndOf="@id/card"
         app:layout_constraintHorizontal_bias="1"
