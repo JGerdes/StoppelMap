@@ -22,11 +22,9 @@ class StationActivity : AppCompatActivity() {
 
     companion object {
         private const val EXTRA_STATION_SLUG = "EXTRA_STATION_SLUG"
-        private const val EXTRA_STATION_NAME = "EXTRA_STATION_NAME"
-        fun start(context: Context, stationSlug: String, stationName: String?) =
+        fun start(context: Context, stationSlug: String) =
                 context.startActivity(Intent(context, StationActivity::class.java).apply {
                     putExtra(EXTRA_STATION_SLUG, stationSlug)
-                    putExtra(EXTRA_STATION_NAME, stationName)
                 })
     }
 
@@ -43,15 +41,13 @@ class StationActivity : AppCompatActivity() {
 
         viewModel.setStation(intent.getStringExtra(EXTRA_STATION_SLUG))
 
-        val font = ResourcesCompat.getFont(this, R.font.roboto_slab_light)
-        toolbarLayout.setExpandedTitleTypeface(font)
-        toolbarLayout.setCollapsedTitleTypeface(font)
-        intent.getStringExtra(EXTRA_STATION_NAME)?.let {
-            toolbar.title = it
-        }
-
         viewModel.state.observeWith(this) {
             adapter.submitList(it.departureItems)
+            stationTitle.text = it.station.name
+            prices.text = it.prices.joinToString("\n") {
+                val price = "%.2f€".format(it.price / 100.0)
+                "${it.type}: $price"
+            }
         }
     }
 }

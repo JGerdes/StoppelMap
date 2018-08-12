@@ -15,7 +15,7 @@ import java.io.File
 @Database(entities = [Stall::class, Alias::class, Image::class,
     Item::class, StallItem::class,
     SubType::class, StallSubType::class,
-    Route::class, Station::class, Departure::class
+    Route::class, Station::class, Departure::class, TransportPrice::class
 ], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class StoppelMapDatabase : RoomDatabase() {
@@ -26,6 +26,7 @@ abstract class StoppelMapDatabase : RoomDatabase() {
     abstract fun routes(): RouteDao
     abstract fun stations(): StationDao
     abstract fun departures(): DepartureDao
+    abstract fun transportPrices(): TransportPriceDao
 
     companion object {
         lateinit var database: StoppelMapDatabase

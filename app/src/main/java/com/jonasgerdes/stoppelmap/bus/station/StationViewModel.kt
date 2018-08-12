@@ -51,7 +51,11 @@ class StationViewModel : ViewModel() {
 
                 }
                 .map { it.toGridItems() }
-                .map { StationState(departureItems = it) }
+                .map { StationState(
+                        station = database.stations().getBySlug(stationSlug),
+                        departureItems = it,
+                        prices = database.transportPrices().getAllByStation(stationSlug)
+                ) }
                 .subscribe(stateRelay)
     }
 

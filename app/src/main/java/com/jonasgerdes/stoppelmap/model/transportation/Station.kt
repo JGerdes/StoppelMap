@@ -23,4 +23,7 @@ data class Station(
 interface StationDao {
     @Query("SELECT * FROM stations WHERE route like :route")
     fun getAllByRoute(route: String): List<Station>
+
+    @Query("SELECT * FROM stations WHERE slug like :slug")
+    fun getBySlug(slug: String): Station
 }

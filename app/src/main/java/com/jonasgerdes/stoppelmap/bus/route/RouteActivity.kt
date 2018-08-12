@@ -61,6 +61,6 @@ class RouteActivity : AppCompatActivity() {
     }
 
     private fun showDepartures(station: TransportStation) {
-        StationActivity.start(this, station.slug, station.name)
+        StationActivity.start(this, station.slug)
     }
 }
