@@ -45,7 +45,7 @@ class StationViewModel : ViewModel() {
                                     TimeSlot(label = it.key, days = createDays(it.value.groupBy {
                                         getDayFor(it.time)
                                     }))
-                                })
+                                }.sortedBy { it.label })
                             }
                             .sortedBy { it.type.ordinal }
 
