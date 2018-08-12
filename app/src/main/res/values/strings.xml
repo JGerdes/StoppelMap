@@ -16,8 +16,22 @@
     <string name="transportation_card_action_return">Rückfahrt</string>
     <string name="transportation_relative_time_immediately">sofort</string>
 
-    <string name="transportation_station_card_departure">nächste Abfahrt</string>
-    <string name="transportation_station_card_action_all_stations">Alle Abfahrten</string>
+    <string name="transportation_route_station_card_departure">nächste Abfahrt</string>
+    <string name="transportation_route_station_card_action_all_stations">Alle Abfahrten</string>
+
+
+    <string name="transportation_station_day_monday">Mo</string>
+    <string name="transportation_station_day_tuesday">Di</string>
+    <string name="transportation_station_day_wednesday">Mi</string>
+    <string name="transportation_station_day_thursday">Do</string>
+    <string name="transportation_station_day_friday">Fr</string>
+    <string name="transportation_station_day_saturday">Sa</string>
+    <string name="transportation_station_day_sunday">So</string>
+
+    <string name="transportation_station_span_morning">Morgens</string>
+    <string name="transportation_station_span_afternoon">Nachmittags</string>
+    <string name="transportation_station_span_evening">Abends</string>
+    <string name="transportation_station_span_night">Nachts</string>
 
     <string name="feed_toolbar_title">Neuigkeiten</string>
     <string name="feed_card_photo_copyright">Foto: %1$s</string>
