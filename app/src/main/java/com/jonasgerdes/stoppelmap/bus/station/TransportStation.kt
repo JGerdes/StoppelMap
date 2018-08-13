@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.model.transportation.Station
 import com.jonasgerdes.stoppelmap.model.transportation.TransportPrice
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.OffsetTime
 
 data class StationState(
         val station: Station,
@@ -22,6 +23,7 @@ data class TimeSpan(
 
 data class TimeSlot(
         val label: String,
+        val hour: OffsetTime,
         val days: List<DayDepartures>
 )
 
