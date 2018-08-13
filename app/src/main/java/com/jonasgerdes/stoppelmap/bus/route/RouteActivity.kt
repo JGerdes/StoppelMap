@@ -24,7 +24,7 @@ class RouteActivity : AppCompatActivity() {
     companion object {
         private const val EXTRA_ROUTE_SLUG = "EXTRA_ROUTE_SLUG"
         private const val EXTRA_ROUTE_NAME = "EXTRA_ROUTE_NAME"
-        fun start(context: Context, routeSlug: String, routeName: String?) =
+        fun start(context: Context, routeSlug: String, routeName: String) =
                 context.startActivity(Intent(context, RouteActivity::class.java).apply {
                     putExtra(EXTRA_ROUTE_SLUG, routeSlug)
                     putExtra(EXTRA_ROUTE_NAME, routeName)
@@ -47,7 +47,7 @@ class RouteActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         intent.getStringExtra(EXTRA_ROUTE_NAME)?.let {
-            toolbar.title = it
+            title = it
         }
 
         viewModel.state.observeWith(this) {
