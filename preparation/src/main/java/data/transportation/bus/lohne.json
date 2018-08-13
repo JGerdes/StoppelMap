@@ -15,11 +15,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -729,11 +729,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -1443,11 +1443,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -2157,11 +2157,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -2871,11 +2871,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -3585,11 +3585,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -4299,11 +4299,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -5013,11 +5013,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -5727,11 +5727,11 @@
           "prices": [
             {
               "type": "Erwachsene",
-              "price": "300"
+              "price": "350"
             },
             {
-              "type": "Kinder (3-11 Jahre)",
-              "price": "120"
+              "type": "Kinder (3-14 Jahre)",
+              "price": "150"
             }
           ],
           "days": [
@@ -6442,11 +6442,11 @@
         "prices": [
           {
             "type": "Erwachsene",
-            "price": "300"
+            "price": "350"
           },
           {
-            "type": "Kinder (3-11 Jahre)",
-            "price": "120"
+            "type": "Kinder (3-14 Jahre)",
+            "price": "150"
           }
         ],
         "days": [
