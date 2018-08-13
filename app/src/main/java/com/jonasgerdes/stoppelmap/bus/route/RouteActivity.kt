@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.bus.station.StationActivity
 import com.jonasgerdes.stoppelmap.util.observeWith
@@ -43,6 +44,8 @@ class RouteActivity : AppCompatActivity() {
         val font = ResourcesCompat.getFont(this, R.font.roboto_slab_light)
         toolbarLayout.setExpandedTitleTypeface(font)
         toolbarLayout.setCollapsedTitleTypeface(font)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         intent.getStringExtra(EXTRA_ROUTE_NAME)?.let {
             toolbar.title = it
         }
@@ -55,9 +58,17 @@ class RouteActivity : AppCompatActivity() {
         adapter.events.subscribe {
             when (it) {
                 is StationAdapter.StationClickedEvent.Card -> showDepartures(it.station)
-                is StationAdapter.StationClickedEvent.AllDepartures-> showDepartures(it.station)
+                is StationAdapter.StationClickedEvent.AllDepartures -> showDepartures(it.station)
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            onBackPressed()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 
     private fun showDepartures(station: TransportStation) {

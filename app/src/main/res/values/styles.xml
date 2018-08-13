@@ -56,9 +56,10 @@
         <item name="android:lines">1</item>
     </style>
 
-    <style name="CenterToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+    <style name="CenterToolbarTheme" parent="ThemeOverlay.AppCompat">
         <item name="android:fontFamily">@font/roboto_slab_thin</item>
         <item name="android:textAppearance">@style/CenterToolbarTextAppearance</item>
+        <item name="android:colorControlNormal">?imageCardTitleColor</item>
     </style>
 
     <style name="CenterToolbarTextAppearance" parent="android:TextAppearance">

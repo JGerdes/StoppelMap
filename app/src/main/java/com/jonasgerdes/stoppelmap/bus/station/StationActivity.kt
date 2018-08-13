@@ -4,9 +4,9 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.widget.Toast
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.util.observeWith
 import kotlinx.android.synthetic.main.bus_station_activity.*
@@ -31,6 +31,11 @@ class StationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bus_station_activity)
+
+        back.setOnClickListener {
+            Toast.makeText(this, "clicked!", Toast.LENGTH_SHORT).show()
+            onBackPressed()
+        }
 
         departures.adapter = adapter
         departures.itemAnimator = null
