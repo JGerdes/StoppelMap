@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.util.observeWith
+import com.jonasgerdes.stoppelmap.util.show
 import kotlinx.android.synthetic.main.bus_station_activity.*
 
 class StationActivity : AppCompatActivity() {
@@ -51,6 +52,8 @@ class StationActivity : AppCompatActivity() {
                 val price = "%.2f€".format(it.price / 100.0)
                 "${it.type}: $price"
             }
+            prices.show(it.prices.isNotEmpty())
+            priceLabel.show(it.prices.isNotEmpty())
         }
     }
 }

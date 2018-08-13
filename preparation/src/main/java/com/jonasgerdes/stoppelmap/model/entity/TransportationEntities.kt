@@ -8,17 +8,17 @@ data class JsonDeparture(val time: Date)
 data class JsonDay(val day: Int, val departures: List<JsonDeparture>)
 data class JsonStation(
         val name: String,
-        val uuid: String,
+        val uuid: String?,
         val comment: String,
         val geoLocation: JsonLocation?,
-        val prices: List<JsonPrice>,
+        val prices: List<JsonPrice>?,
         val days: List<JsonDay>? = null,
         val departureOffset: Int?
 )
 
 data class JsonRoute(
         val name: String,
-        val uuid: String,
+        val uuid: String?,
         val days: List<JsonDay>? = null,
         val stations: List<JsonStation>,
         val returnStation: JsonStation

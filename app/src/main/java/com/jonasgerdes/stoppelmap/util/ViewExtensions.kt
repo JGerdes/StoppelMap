@@ -27,6 +27,10 @@ fun TextView.setTextOrHide(text: String?) {
     this.text = text
 }
 
+fun View.show(show: Boolean) {
+    visibility = if (show) View.VISIBLE else View.GONE
+}
+
 fun TextView.setTextOrDefault(text: String?, @StringRes defaultRes: Int) {
     if (text != null) {
         setText(text)

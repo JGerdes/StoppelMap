@@ -46,7 +46,8 @@ fun main(args: Array<String>) {
         parseBusSchedule(Settings.busDir.listFiles()
                 .asList()
                 .filter { it.extension == "json" }
-                .filter { it.name != "template.json" })
+                .filter { it.name != "template.json" }
+                .filter { it.name != "new_template.json" })
     }.insertInto(db)
 
 
