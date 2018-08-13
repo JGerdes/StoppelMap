@@ -12,14 +12,18 @@ data class JsonStation(
         val comment: String,
         val geoLocation: JsonLocation?,
         val prices: List<JsonPrice>,
-        val days: List<JsonDay>
+        val days: List<JsonDay>? = null,
+        val departureOffset: Int?
 )
+
 data class JsonRoute(
         val name: String,
         val uuid: String,
+        val days: List<JsonDay>? = null,
         val stations: List<JsonStation>,
         val returnStation: JsonStation
 )
+
 data class ScheduleFile(
         val routes: List<JsonRoute>
 )

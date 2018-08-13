@@ -5,6 +5,8 @@ import com.google.gson.stream.JsonReader
 import com.jonasgerdes.stoppelmap.model.Data
 import com.jonasgerdes.stoppelmap.model.entity.*
 import java.io.File
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 fun Data.parseBusSchedule(files: List<File>) {
@@ -17,20 +19,20 @@ fun Data.parseBusSchedule(files: List<File>) {
     files.map { JsonReader(it.reader()) }
             .map { gson.fromJson<ScheduleFile>(it, ScheduleFile::class.java) }
             .flatMap { it.routes }
-            .forEach {
+            .forEach { jsonRoute ->
                 val route = Route(
-                        slug = it.uuid,
-                        name = it.name
+                        slug = jsonRoute.uuid,
+                        name = jsonRoute.name
                 )
-                it.stations.forEach {
-                    addStation(it, route, false)
+                jsonRoute.stations.forEach {
+                    addStation(it, route, false, jsonRoute.days)
                 }
-                addStation(it.returnStation, route, true)
+                addStation(jsonRoute.returnStation, route, true)
                 routes += route
             }
 }
 
-private fun Data.addStation(it: JsonStation, route: Route, isReturnStation:Boolean) {
+private fun Data.addStation(it: JsonStation, route: Route, isReturnStation: Boolean, days: List<JsonDay>? = null) {
     val station = Station(
             slug = it.uuid,
             name = it.name,
@@ -47,12 +49,28 @@ private fun Data.addStation(it: JsonStation, route: Route, isReturnStation:Boole
                 price = it.price
         )
     }
-    departures += it.days.flatMap { it.departures }
-            .map {
-                Departure(
-                        station = station.slug,
-                        time = it.time
-                )
-            }
+    if (it.days != null) {
+        departures += it.days.flatMap { it.departures }
+                .map {
+                    Departure(
+                            station = station.slug,
+                            time = it.time
+                    )
+                }
+    } else if (days != null && it.departureOffset != null) {
+        val offset = it.departureOffset
+        departures += days.flatMap { it.departures }
+                .map {
+                    val time = Calendar.getInstance()
+                    time.time = it.time
+                    time.add(Calendar.SECOND, offset)
+                    Departure(
+                            station = station.slug,
+                            time = time.time
+                    )
+                }
+    } else {
+        throw RuntimeException("Invalid departure times. No days ($days) or departureOffset(${it.departureOffset}) defined for ${it.name} on ${route.name} (${it.uuid})")
+    }
     stations += station
 }
