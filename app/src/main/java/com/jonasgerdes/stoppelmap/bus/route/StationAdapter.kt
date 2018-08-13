@@ -33,10 +33,10 @@ class StationAdapter : ListAdapter<TransportStation, StationAdapter.Holder>(Tran
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
             Holder(parent.inflate(viewType)).apply {
-                itemView.clicks()
-                        .map { StationClickedEvent.Card(getItem(adapterPosition)) }
-                        .subscribe(eventSubject)
                 if (viewType == R.layout.bus_route_station_card) {
+                    itemView.clicks()
+                            .map { StationClickedEvent.Card(getItem(adapterPosition)) }
+                            .subscribe(eventSubject)
                     itemView.actionAllDepartures.clicks()
                             .map { StationClickedEvent.AllDepartures(getItem(adapterPosition)) }
                             .subscribe(eventSubject)

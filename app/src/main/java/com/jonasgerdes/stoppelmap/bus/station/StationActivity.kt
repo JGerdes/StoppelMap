@@ -33,7 +33,6 @@ class StationActivity : AppCompatActivity() {
         setContentView(R.layout.bus_station_activity)
 
         back.setOnClickListener {
-            Toast.makeText(this, "clicked!", Toast.LENGTH_SHORT).show()
             onBackPressed()
         }
 
