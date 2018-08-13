@@ -6,15 +6,15 @@ import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jonasgerdes.stoppelmap.inject
 import com.jonasgerdes.stoppelmap.model.map.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.model.transportation.Departure
-import com.jonasgerdes.stoppelmap.model.transportation.Station
-import com.jonasgerdes.stoppelmap.model.transportation.getForStationAfter
 import com.jonasgerdes.stoppelmap.util.DateTimeProvider
 import com.jonasgerdes.stoppelmap.util.toLiveData
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.OffsetTime
 import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 
 class StationViewModel : ViewModel() {
@@ -23,7 +23,7 @@ class StationViewModel : ViewModel() {
     private val dateTimeProvider: DateTimeProvider by inject()
 
     private val stateRelay = BehaviorRelay.create<StationState>()
-    private var routeDisposable: Disposable? = null
+    private var departureDisposable: Disposable? = null
 
     val format = DateTimeFormatter.ofPattern("HH")
 
@@ -31,33 +31,39 @@ class StationViewModel : ViewModel() {
 
 
     fun setStation(stationSlug: String) {
-        routeDisposable?.dispose()
+        departureDisposable?.dispose()
 
-        routeDisposable = Observable.interval(0, 30, TimeUnit.SECONDS)
+        departureDisposable = Observable.interval(0, 30, TimeUnit.SECONDS)
                 .map {
                     val departures = database.departures().getAllByStation(stationSlug)
 
                     departures.groupBy { getSpanFor(it.time.hour) }
                             .map {
                                 TimeSpan(type = it.key, slots = it.value.groupBy {
-                                    it.time.format(format)
+                                    it.time.toOffsetTime().truncatedTo(ChronoUnit.HOURS)
                                 }.map {
-                                    TimeSlot(label = it.key, days = createDays(it.value.groupBy {
-                                        getDayFor(it.time)
-                                    }))
-                                }.sortedBy { it.label })
+                                    TimeSlot(hour = it.key,
+                                            label = it.key.format(format),
+                                            days = createDays(it.value.groupBy {
+                                                getDayFor(it.time)
+                                            }))
+                                }.sortedBy { getFixedHour(it.hour.hour) })
                             }
                             .sortedBy { it.type.ordinal }
 
                 }
                 .map { it.toGridItems() }
-                .map { StationState(
-                        station = database.stations().getBySlug(stationSlug),
-                        departureItems = it,
-                        prices = database.transportPrices().getAllByStation(stationSlug)
-                ) }
+                .map {
+                    StationState(
+                            station = database.stations().getBySlug(stationSlug),
+                            departureItems = it,
+                            prices = database.transportPrices().getAllByStation(stationSlug)
+                    )
+                }
                 .subscribe(stateRelay)
     }
+
+    private fun getFixedHour(time: Int): Int = if (time < 5) time + 24 else time
 
     private fun createDays(departureGroups: Map<DayOfWeek, List<Departure>>) =
             Day.values().map {
@@ -80,5 +86,9 @@ class StationViewModel : ViewModel() {
         else -> TimeSpan.Type.NIGHT
     }
 
+    override fun onCleared() {
+        departureDisposable?.dispose()
+        super.onCleared()
+    }
 
 }

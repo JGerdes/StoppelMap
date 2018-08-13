@@ -42,5 +42,8 @@ class RouteViewModel : ViewModel() {
                 .subscribe(stateRelay)
     }
 
-
+    override fun onCleared() {
+        routeDisposable?.dispose()
+        super.onCleared()
+    }
 }

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.widget.Toast
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.util.observeWith
 import kotlinx.android.synthetic.main.bus_station_activity.*
