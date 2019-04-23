@@ -1,6 +1,7 @@
 stages:
   - environment
   - test
+  - build
 
 .updateContainerJob:
   image: docker:stable
@@ -48,7 +49,6 @@ ensureContainer:
 
 unitTest:
   extends: .testJob
-  stage: test
   script:
     - ./gradlew testDebugUnitTest
   artifacts:
@@ -71,7 +71,6 @@ unitTest:
       - .gradle/
 
 debugBuild:
-  stage: build
   extends: .buildJob
   script:
     - ./gradlew assembleDebug
