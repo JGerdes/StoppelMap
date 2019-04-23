@@ -14,7 +14,7 @@ buildscript {
 
 ext {
     //query SHA for  automate versioning
-    gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+    gitSha = 'git rev-parse HEAD'.execute([], project.rootDir).text.trim().substring(0, 8)
 }
 
 allprojects {
