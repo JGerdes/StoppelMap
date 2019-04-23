@@ -1,5 +1,6 @@
 
 buildscript {
+    apply from: './version.gradle'
     apply from: './dependencies.gradle'
     repositories {
         google()

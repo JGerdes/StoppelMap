@@ -1,0 +1,4 @@
+
+ext.compileSdk = 28
+ext.minSdk = 21
+ext.targetSdk = 28
