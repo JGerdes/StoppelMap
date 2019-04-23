@@ -5,7 +5,7 @@ ENV ANDROID_COMPILE_SDK "28"
 # Just matched `app/build.gradle`
 ENV ANDROID_BUILD_TOOLS "28.0.3"
 # Version from https://developer.android.com/studio/releases/sdk-tools
-ENV ANDROID_SDK_TOOLS "24.4.1"
+ENV ANDROID_SDK_TOOLS "26.1.1"
 
 ENV ANDROID_HOME /android-sdk-linux
 ENV PATH="${PATH}:/android-sdk-linux/platform-tools/"
@@ -24,8 +24,3 @@ RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all -
 RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository
 RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services
 RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
-# install Fastlane
-#COPY Gemfile.lock .
-#COPY Gemfile .
-#RUN gem install bundle
-#RUN bundle install

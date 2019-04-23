@@ -48,12 +48,31 @@ ensureContainer:
 
 unitTest:
   extends: .testJob
-  stage: test
   script:
     - ./gradlew testDebugUnitTest
   artifacts:
     paths:
       - ./app/build/reports/tests/
-    expire_in: 7d
     reports:
       junit: ./app/build/test-results/**/TEST-*.xml
+
+
+.buildJob:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: build
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - chmod +x ./gradlew
+
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - .gradle/
+
+debugBuild:
+  extends: .buildJob
+  script:
+    - ./gradlew assembleDebug
+  artifacts:
+    paths:
+      - ./app/build/outputs/apk/
