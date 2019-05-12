@@ -9,11 +9,15 @@ kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 deps.kotlin = kotlin
 
 def androidx = [:]
-androidx.material = 'com.google.android.material:material:1.1.0-alpha05'
+androidx.material = 'com.google.android.material:material:1.1.0-alpha06'
 androidx.compat = 'androidx.appcompat:appcompat:1.0.2'
 androidx.ktx = 'androidx.core:core-ktx:1.0.1'
 deps.androidx = androidx
 
+def firebase = [:]
+firebase.core = 'com.google.firebase:firebase-core:16.0.9'
+firebase.messaging = 'com.google.firebase:firebase-messaging:18.0.0'
+deps.firebase = firebase
 
 def test = [:]
 test.junit = 'junit:junit:4.12'

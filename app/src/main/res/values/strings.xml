@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">StoppelMap</string>
+
+
+    <string name="fcm_news_new_article_title_one">Neuer Artikel</string>
+    <string name="fcm_news_new_article_title_multiple">%s neue Artikel</string>
 </resources>

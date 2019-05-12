@@ -28,9 +28,14 @@ dependencies {
 
     implementation project(':splash')
 
+    implementation deps.firebase.core
+    implementation deps.firebase.messaging
+
     implementation deps.kotlin.stdlib
     implementation deps.androidx.material
     implementation deps.androidx.compat
     implementation deps.androidx.ktx
 
 }
+
+apply plugin: 'com.google.gms.google-services'

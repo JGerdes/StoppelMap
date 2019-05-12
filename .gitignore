@@ -54,3 +54,5 @@ captures/
 # project related
 *.db
 app/release/
+
+*/google-services.json
