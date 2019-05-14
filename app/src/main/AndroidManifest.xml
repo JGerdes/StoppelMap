@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.StoppelMap"></activity>
+        <activity android:name=".view.StoppelMapActivity"></activity>
 
         <activity-alias
             android:name=".Launcher"
