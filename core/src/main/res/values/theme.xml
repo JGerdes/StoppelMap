@@ -22,6 +22,8 @@
         <item name="shapeAppearanceSmallComponent">@style/StoppelMapTheme.ShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/StoppelMapTheme.ShapeAppearance.MediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/StoppelMapTheme.ShapeAppearance.LargeComponent</item>
+
+        <item name="bottomNavigationStyle">@style/StoppelMapTheme.BottomNavigation</item>
     </style>
 
     <style name="StoppelMapTheme.ShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
@@ -37,5 +39,16 @@
     <style name="StoppelMapTheme.ShapeAppearance.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="StoppelMapTheme.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemHorizontalTranslationEnabled">false</item>
+        <item name="itemIconTint">@null</item>
+        <item name="labelVisibilityMode">selected</item>
+        <item name="itemTextAppearanceActive">@style/StoppelMapTheme.BottomNavigation.TextAppearanceActive</item>
+    </style>
+
+    <style name="StoppelMapTheme.BottomNavigation.TextAppearanceActive" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
