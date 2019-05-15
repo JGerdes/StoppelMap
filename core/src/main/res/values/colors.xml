@@ -6,4 +6,6 @@
     <color name="stoppelHotPink">#FF69B4</color>
 
     <color name="crimson">#DC143C</color>
+
+    <color name="transparent">#00FFFFFF</color>
 </resources>

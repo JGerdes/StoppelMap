@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="StoppelMapTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="StoppelMapTheme" parent="StoppelMapTheme.Base" />
+
+    <style name="StoppelMapTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/stoppelPurple</item>
         <item name="colorPrimaryVariant">@color/stoppelIndigo</item>
         <item name="colorOnPrimary">#FFFFFF</item>

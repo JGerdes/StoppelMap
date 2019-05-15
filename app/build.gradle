@@ -27,6 +27,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':splash')
+    implementation project(':core')
 
     implementation deps.firebase.core
     implementation deps.firebase.messaging
