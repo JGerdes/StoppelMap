@@ -37,6 +37,8 @@ dependencies {
     implementation deps.androidx.compat
     implementation deps.androidx.ktx
 
+    implementation deps.lottie
+
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }
