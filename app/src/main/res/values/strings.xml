@@ -4,4 +4,10 @@
 
     <string name="fcm_news_new_article_title_one">Neuer Artikel</string>
     <string name="fcm_news_new_article_title_multiple">%s neue Artikel</string>
+
+    <string name="main_bottom_nav_item_home">Info</string>
+    <string name="main_bottom_nav_item_map">Karte</string>
+    <string name="main_bottom_nav_item_schedule">Programm</string>
+    <string name="main_bottom_nav_item_transport">Anreise</string>
+    <string name="main_bottom_nav_item_news">News</string>
 </resources>

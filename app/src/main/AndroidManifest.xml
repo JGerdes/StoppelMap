@@ -15,7 +15,7 @@
         <activity-alias
             android:name=".Launcher"
             android:label="@string/app_name"
-            android:targetActivity=".splash.SplashActivity">
+            android:targetActivity=".view.StoppelMapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

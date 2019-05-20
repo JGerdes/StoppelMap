@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StoppelMapTheme" parent="StoppelMapTheme.Base" />
+
+    <style name="StoppelMapTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/stoppelPurple</item>
+        <item name="colorPrimaryVariant">@color/stoppelIndigo</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <item name="colorSecondary">@color/stoppelPink</item>
+        <item name="colorSecondaryVariant">@color/stoppelHotPink</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+
+        <item name="colorError">@color/crimson</item>
+        <item name="colorOnError">#FFFFFF</item>
+
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <item name="fontFamily">@font/roboto_slab</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+
+
+        <item name="shapeAppearanceSmallComponent">@style/StoppelMapTheme.ShapeAppearance.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/StoppelMapTheme.ShapeAppearance.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/StoppelMapTheme.ShapeAppearance.LargeComponent</item>
+
+        <item name="bottomNavigationStyle">@style/StoppelMapTheme.BottomNavigation</item>
+    </style>
+
+    <style name="StoppelMapTheme.ShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">32dp</item>
+    </style>
+
+    <style name="StoppelMapTheme.ShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">32dp</item>
+    </style>
+
+    <style name="StoppelMapTheme.ShapeAppearance.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="StoppelMapTheme.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemHorizontalTranslationEnabled">false</item>
+        <item name="itemIconTint">@null</item>
+        <item name="labelVisibilityMode">selected</item>
+        <item name="itemTextAppearanceActive">@style/StoppelMapTheme.BottomNavigation.TextAppearanceActive</item>
+    </style>
+
+    <style name="StoppelMapTheme.BottomNavigation.TextAppearanceActive" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
