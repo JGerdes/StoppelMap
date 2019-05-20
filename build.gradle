@@ -1,0 +1,32 @@
+
+buildscript {
+    apply from: './version.gradle'
+    apply from: './dependencies.gradle'
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0-alpha13'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.2.0'
+    }
+}
+
+ext {
+    //query SHA for  automate versioning
+    gitSha = 'git rev-parse HEAD'.execute([], project.rootDir).text.trim().substring(0, 8)
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
