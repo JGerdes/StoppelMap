@@ -29,9 +29,9 @@ dependencies {
     implementation project(':core')
 
     implementation deps.kotlin.stdlib
-    implementation deps.androidx.material
+
     implementation deps.androidx.compat
+    implementation deps.androidx.material
     implementation deps.androidx.ktx
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation deps.androidx.constraint_layout
 }
