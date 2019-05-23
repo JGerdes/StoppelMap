@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.view
 
 import android.os.Bundle
+import com.jonasgerdes.androidutil.navigation.createFragmentScreenNavigator
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
@@ -8,11 +9,15 @@ import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
 
-private const val KEY_CURRENT_SCREEN = "CURRENT_SCREEN"
 
 class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Navigator {
 
-    private var currentScreen: Screen? = null
+    private val fragmentNavigator by lazy {
+        createFragmentScreenNavigator(
+            R.id.fragmentHost,
+            supportFragmentManager
+        ) { screen: Screen -> createFragmentFor(screen) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +30,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         if (savedInstanceState == null) {
             Router.navigateToRoute(Route.Home())
         } else {
-            currentScreen = Screen.valueOf(savedInstanceState.getString(KEY_CURRENT_SCREEN))
+            fragmentNavigator.loadState(savedInstanceState)
         }
 
         navigation.setOnNavigationItemSelectedListener {
@@ -42,18 +47,22 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        currentScreen?.let { outState.putString(KEY_CURRENT_SCREEN, it.name) }
+        fragmentNavigator.saveState(outState)
 
     }
 
-    private fun Screen.createFragment() = when (this) {
+    override fun navigateToRoute(route: Route) {
+        val screen = route.toScreen()
+        fragmentNavigator.showScreen(screen)
+    }
+
+    private fun createFragmentFor(screen: Screen) = when (screen) {
         Screen.Home -> HomePlaceholderFragment()
         Screen.Map -> MapPlaceholderFragment()
         Screen.Schedule -> SchedulePlaceholderFragment()
         Screen.Transport -> TransportPlaceholderFragment()
         Screen.News -> NewsPlaceholderFragment()
     }
-
 
     private fun Route.toScreen() = when (this) {
         is Route.Home -> Screen.Home
@@ -62,20 +71,5 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         is Route.Transport -> Screen.Transport
         is Route.News -> Screen.News
         else -> Screen.Home
-    }
-
-    override fun navigateToRoute(route: Route) {
-        val screen = route.toScreen()
-        supportFragmentManager.beginTransaction().apply {
-            val existingFragment = supportFragmentManager.findFragmentByTag(screen.name)
-            val currentFragment = currentScreen?.let { supportFragmentManager.findFragmentByTag(it.name) }
-
-            val fragment = existingFragment ?: screen.createFragment().also {
-                add(R.id.fragmentHost, it, screen.name)
-            }
-            currentFragment?.let { hide(it) }
-            show(fragment)
-            currentScreen = screen
-        }.commitNowAllowingStateLoss()
     }
 }

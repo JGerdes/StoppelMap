@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -6,11 +6,10 @@ android {
     compileSdkVersion compileSdk
 
     defaultConfig {
-        applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion minSdk
         targetSdkVersion targetSdk
         versionCode 1
-        versionName "v2019.0.1-${gitSha}"
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,17 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation project(':splash')
-    implementation project(':core')
-    implementation project(':androidutil')
-
-    implementation deps.firebase.core
-    implementation deps.firebase.messaging
 
     implementation deps.kotlin.stdlib
 
@@ -39,8 +32,4 @@ dependencies {
     implementation deps.androidx.material
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
-
-    implementation deps.lottie
 }
-
-apply plugin: 'com.google.gms.google-services'
