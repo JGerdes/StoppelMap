@@ -35,13 +35,16 @@ ensureContainer:
     - docker manifest inspect $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG > /dev/null && exit || true
 
 
+
 .testJob:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: test
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./gradlew
-
+    - echo $GOOGLE_SERVICES_JSON | base64 -d > ./app/google-services.json
+  after_script:
+    - rm ./app/google-services.json
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
@@ -64,6 +67,9 @@ unitTest:
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./gradlew
+    - echo $GOOGLE_SERVICES_JSON | base64 -d > ./app/google-services.json
+  after_script:
+    - rm ./app/google-services.json
 
   cache:
     key: "$CI_COMMIT_REF_NAME"
