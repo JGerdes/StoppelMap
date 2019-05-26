@@ -16,6 +16,7 @@ RUN apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 build-esse
 # We use this for xxd hex->binary
 RUN apt-get --quiet install --yes vim-common
 # install Android SDK
+RUN touch ~/.android/repositories.cfg
 RUN wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
 RUN unzip -d android-sdk-linux android-sdk.zip
 RUN echo y | android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
