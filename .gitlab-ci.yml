@@ -68,18 +68,24 @@ unitTest:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./gradlew
     - echo $GOOGLE_SERVICES_JSON | base64 -d > ./app/google-services.json
+    - base64 -d -i $RELEASE_KEYSTORE -o ./ci_release.keystore
+    - echo "keystorePath=../ci_release.keystore" > ./signing.properties
+    - echo "keystorePassword=$RELEASE_STORE_PASSWORD" >> signing.properties
+    - echo "keyAlias=$RELEASE_KEY_ALIAS" >> signing.properties
+    - echo "keyPassword=$RELEASE_KEY_PASSWORD" >> signing.properties
   after_script:
     - rm ./app/google-services.json
+    - rm ./ci_release.keystore
 
   cache:
     key: "$CI_COMMIT_REF_NAME"
     paths:
       - .gradle/
 
-debugBuild:
+bundleRelease:
   extends: .buildJob
   script:
-    - ./gradlew assembleDebug
+    - ./gradlew bundleRelease
   artifacts:
     paths:
-      - ./app/build/outputs/apk/
+      - ./app/build/outputs/bundle/release/
