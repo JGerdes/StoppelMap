@@ -68,7 +68,7 @@ unitTest:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./gradlew
     - echo $GOOGLE_SERVICES_JSON | base64 -d > ./app/google-services.json
-    - base64 -d -i $RELEASE_KEYSTORE -o ./ci_release.keystore
+    - base64 -d -i $RELEASE_KEYSTORE > ./ci_release.keystore
     - echo "keystorePath=../ci_release.keystore" > ./signing.properties
     - echo "keystorePassword=$RELEASE_STORE_PASSWORD" >> signing.properties
     - echo "keyAlias=$RELEASE_KEY_ALIAS" >> signing.properties
