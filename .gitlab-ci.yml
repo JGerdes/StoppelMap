@@ -92,7 +92,7 @@ bundleRelease:
       - ./app/build/outputs/bundle/release/
 
 publishInternal:
-  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  extends: .buildJob
   stage: internal
   when: manual
   before_script:
