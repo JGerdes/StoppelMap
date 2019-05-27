@@ -92,12 +92,16 @@ bundleRelease:
       - ./app/build/outputs/bundle/release/
 
 publishInternal:
-  extends: .buildJob
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: internal
   when: manual
   before_script:
+    - chmod +x ./gradlew
+    - echo $GOOGLE_SERVICES_JSON | base64 -d > ./app/google-services.json
     - base64 -d -i $GOOGLE_PLAY_API_KEY > ./google_play_api_key.json
+    - export GRADLE_USER_HOME=`pwd`/.gradle
   after_script:
     - rm ./google_play_api_key.json
+    - rm ./app/google-services.json
   script:
     - bundle exec fastlane internal
