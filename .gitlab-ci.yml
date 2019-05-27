@@ -73,8 +73,6 @@ unitTest:
     - echo "keystorePassword=$RELEASE_STORE_PASSWORD" >> ./signing.properties
     - echo "keyAlias=$RELEASE_KEY_ALIAS" >> ./signing.properties
     - echo "keyPassword=$RELEASE_KEY_PASSWORD" >> ./signing.properties
-    - pwd
-    - ls -al
   after_script:
     - rm ./app/google-services.json
     - rm ./ci_release.keystore
