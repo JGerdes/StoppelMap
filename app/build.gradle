@@ -46,19 +46,22 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':splash')
     implementation project(':core')
     implementation project(':androidutil')
 
+    implementation deps.kotlin.stdlib
+
     implementation deps.firebase.core
     implementation deps.firebase.messaging
-
-    implementation deps.kotlin.stdlib
 
     implementation deps.androidx.compat
     implementation deps.androidx.material
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
+
+    implementation deps.koin.core
+    implementation deps.koin.android
+    implementation deps.koin.viewmodel
 
     implementation deps.lottie
 }

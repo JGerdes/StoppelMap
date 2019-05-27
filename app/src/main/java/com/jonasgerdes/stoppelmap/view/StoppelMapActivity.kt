@@ -20,6 +20,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
         navigation.itemIconTintList = null
