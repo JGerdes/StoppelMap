@@ -42,4 +42,20 @@ dependencies {
     implementation deps.koin.core
     implementation deps.koin.android
     implementation deps.koin.viewmodel
+
+    implementation deps.androidx.arch.room.runtime
+    implementation deps.androidx.arch.room.compiler
+    implementation deps.androidx.arch.lifecycle
+    implementation deps.androidx.arch.lifecycle_compiler
+
+    implementation deps.retrofit.core
+    implementation deps.retrofit.coroutines
+    implementation deps.retrofit.moshi
+    implementation deps.moshi
+    implementation deps.threeten_android
+    implementation deps.threeten
+
+
+    testImplementation deps.test.junit
+    testImplementation deps.koin.test
 }
