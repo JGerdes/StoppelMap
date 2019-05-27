@@ -54,5 +54,8 @@ captures/
 # project related
 *.db
 app/release/
+signing.properties
 
+# google keys
 */google-services.json
+google_play_api_key.json

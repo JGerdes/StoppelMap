@@ -2,6 +2,7 @@ stages:
   - environment
   - test
   - build
+  - internal
 
 .updateContainerJob:
   image: docker:stable
@@ -89,3 +90,14 @@ bundleRelease:
   artifacts:
     paths:
       - ./app/build/outputs/bundle/release/
+      -
+publishInternal:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  stage: internal
+  when: manual
+  before_script:
+    - base64 -d -i $GOOGLE_PLAY_API_KEY > ./google_play_api_key.json
+  after_script:
+    - rm ./google_play_api_key.json
+  script:
+    - bundle exec fastlane internal
