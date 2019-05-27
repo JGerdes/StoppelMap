@@ -26,3 +26,8 @@ RUN echo y | android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD
 RUN echo y | android-sdk-linux/tools/bin/sdkmanager "extras;google;m2repository" >/dev/null
 RUN echo y | android-sdk-linux/tools/bin/sdkmanager "extras;google;google_play_services" >/dev/null
 # RUN echo y | android-sdk-linux/tools/bin/sdkmanager "emulator" >/dev/null
+
+COPY Gemfile.lock .
+COPY Gemfile .
+RUN gem install bundle
+RUN bundle install
