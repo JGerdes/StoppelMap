@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compileSdk
 
@@ -44,9 +45,9 @@ dependencies {
     implementation deps.koin.viewmodel
 
     implementation deps.androidx.arch.room.runtime
-    implementation deps.androidx.arch.room.compiler
+    kapt deps.androidx.arch.room.compiler
     implementation deps.androidx.arch.lifecycle
-    implementation deps.androidx.arch.lifecycle_compiler
+    kapt deps.androidx.arch.lifecycle_compiler
 
     implementation deps.retrofit.core
     implementation deps.retrofit.coroutines
