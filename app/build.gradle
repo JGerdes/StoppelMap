@@ -47,6 +47,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':core')
+    implementation project(':news')
     implementation project(':androidutil')
 
     implementation deps.kotlin.stdlib

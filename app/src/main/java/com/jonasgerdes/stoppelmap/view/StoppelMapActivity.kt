@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
+import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
 
 
@@ -62,7 +63,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         Screen.Map -> MapPlaceholderFragment()
         Screen.Schedule -> SchedulePlaceholderFragment()
         Screen.Transport -> TransportPlaceholderFragment()
-        Screen.News -> NewsPlaceholderFragment()
+        Screen.News -> NewsFragment()
     }
 
     private fun Route.toScreen() = when (this) {
