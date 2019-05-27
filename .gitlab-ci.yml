@@ -90,7 +90,7 @@ bundleRelease:
   artifacts:
     paths:
       - ./app/build/outputs/bundle/release/
-      -
+
 publishInternal:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: internal
