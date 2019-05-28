@@ -54,9 +54,9 @@ dependencies {
     implementation deps.retrofit.moshi
     implementation deps.moshi
     implementation deps.threeten_android
-    implementation deps.threeten
 
 
     testImplementation deps.test.junit
     testImplementation deps.koin.test
+    testImplementation deps.threeten
 }
