@@ -6,7 +6,7 @@ class LoadMoreNewsUseCase(
     private val usecaseRepository: NewsRepository
 ) {
 
-    suspend fun invoke(): Result = when (val result = usecaseRepository.loadNextPage()) {
+    suspend operator fun invoke(): Result = when (val result = usecaseRepository.loadNextPage()) {
         NewsRepository.LoadPageResult.Success -> Result.Success
         NewsRepository.LoadPageResult.Error -> Result.Error
         NewsRepository.LoadPageResult.NetworkError -> Result.NetworkError

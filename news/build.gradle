@@ -47,6 +47,7 @@ dependencies {
     implementation deps.androidx.arch.room.runtime
     kapt deps.androidx.arch.room.compiler
     implementation deps.androidx.arch.lifecycle
+    implementation deps.androidx.arch.viewmodel
     kapt deps.androidx.arch.lifecycle_compiler
 
     implementation deps.retrofit.core

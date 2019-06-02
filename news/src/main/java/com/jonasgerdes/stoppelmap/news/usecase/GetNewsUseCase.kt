@@ -6,5 +6,5 @@ class GetNewsUseCase(
     private val usecaseRepository: NewsRepository
 ) {
 
-    fun invoke() = usecaseRepository.getNews()
+    operator fun invoke() = usecaseRepository.getNews()
 }
