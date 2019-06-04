@@ -7,11 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.news.data.entity.Article
 import com.jonasgerdes.stoppelmap.news.usecase.GetNewsUseCase
 import com.jonasgerdes.stoppelmap.news.usecase.LoadMoreNewsUseCase
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 
-@ObsoleteCoroutinesApi
+@UseExperimental(ObsoleteCoroutinesApi::class)
 class NewsViewModel(
     private val getNews: GetNewsUseCase,
     private val loadMoreNews: LoadMoreNewsUseCase
@@ -29,6 +30,8 @@ class NewsViewModel(
                 _articles.postValue(it)
             }
         }
+
+        loadMoreArticles()
     }
 
     fun loadMoreArticles() {

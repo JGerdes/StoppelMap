@@ -22,6 +22,6 @@ import androidx.room.Index
 data class Image(
     @ColumnInfo(name = "url") val url: String,
     @ColumnInfo(name = "article_url") val articleUrl: String,
-    @ColumnInfo(name = "author") val author: String,
-    @ColumnInfo(name = "caption") val caption: String
+    @ColumnInfo(name = "author") val author: String?,
+    @ColumnInfo(name = "caption") val caption: String?
 )

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="elevationNone">0dp</dimen>
+    <dimen name="elevationDefault">8dp</dimen>
+    <dimen name="elevationFocus">12dp</dimen>
+    <dimen name="elevationImportant">16dp</dimen>
+    <dimen name="elevationMax">24dp</dimen>
+</resources>

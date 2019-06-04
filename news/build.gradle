@@ -56,6 +56,9 @@ dependencies {
     implementation deps.moshi
     implementation deps.threeten_android
 
+    implementation deps.groupie
+    implementation deps.groupie_kotlin
+
 
     testImplementation deps.test.junit
     testImplementation deps.koin.test

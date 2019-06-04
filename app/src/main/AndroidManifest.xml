@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jonasgerdes.stoppelmap">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -23,7 +25,9 @@
             </intent-filter>
         </activity-alias>
 
-        <activity android:name=".view.StoppelMapActivity" />
+        <activity
+            android:name=".view.StoppelMapActivity"
+            android:theme="@style/AppTheme.Splash" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"

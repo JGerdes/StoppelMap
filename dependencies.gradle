@@ -34,7 +34,7 @@ koin.test = "org.koin:koin-test:$version_koin"
 deps.koin = koin
 
 def retrofit = [:]
-retrofit.core = 'com.squareup.retrofit2:retrofit:2.5.0'
+retrofit.core = 'com.squareup.retrofit2:retrofit:2.3.0'
 retrofit.coroutines = 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 retrofit.moshi = 'com.squareup.retrofit2:converter-moshi:2.3.0'
 deps.retrofit = retrofit

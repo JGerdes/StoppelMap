@@ -12,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Url
 
 interface NewsService {
-    @GET("/news")
+    @GET("news")
     fun getFirstPage(): Deferred<Response<NewsResponse>>
 
 
@@ -22,6 +22,7 @@ interface NewsService {
 
 
 fun createNewsService(okHttpClient: OkHttpClient, moshiConverterFactory: MoshiConverterFactory): NewsService {
+
     val retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.API_BASE_URL)
         .client(okHttpClient)

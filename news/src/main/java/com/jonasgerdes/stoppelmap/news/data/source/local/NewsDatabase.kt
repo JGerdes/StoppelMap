@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.jonasgerdes.stoppelmap.news.data.source.local.model.Article
 
+/*
 @Database(
     entities = [
         Article::class
@@ -24,4 +25,4 @@ abstract class NewsDatabase() : RoomDatabase() {
                 .build().also { instance = it }
         }
     }
-}
+}*/

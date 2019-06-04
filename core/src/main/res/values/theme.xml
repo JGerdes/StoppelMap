@@ -26,6 +26,11 @@
         <item name="shapeAppearanceLargeComponent">@style/StoppelMapTheme.ShapeAppearance.LargeComponent</item>
 
         <item name="bottomNavigationStyle">@style/StoppelMapTheme.BottomNavigation</item>
+
+        <item name="noElevation">@dimen/elevationNone</item>
+        <item name="floatingCardElevation">@dimen/elevationDefault</item>
+        <item name="cardHighlightElevation">@dimen/elevationFocus</item>
+        <item name="interactiveElementElevation">@dimen/elevationImportant</item>
     </style>
 
     <style name="StoppelMapTheme.ShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
