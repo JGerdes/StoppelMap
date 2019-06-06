@@ -39,7 +39,6 @@ class NewsViewModel(
         refresh(clear = false)
     }
 
-
     fun loadMoreArticles() {
         if (isLoading) return
         isLoading = true

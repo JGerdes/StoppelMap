@@ -14,5 +14,6 @@ interface NewsRepository {
         object Success : LoadPageResult()
         object Error : LoadPageResult()
         object NetworkError : LoadPageResult()
+        object NoNextPage : LoadPageResult()
     }
 }

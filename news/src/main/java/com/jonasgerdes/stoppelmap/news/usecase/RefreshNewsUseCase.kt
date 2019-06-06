@@ -11,5 +11,6 @@ class RefreshNewsUseCase(
         NewsRepository.LoadPageResult.Success -> Result.Success
         NewsRepository.LoadPageResult.Error -> Result.Error
         NewsRepository.LoadPageResult.NetworkError -> Result.NetworkError
+        NewsRepository.LoadPageResult.NoNextPage -> Result.Success
     }
 }

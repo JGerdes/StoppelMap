@@ -32,6 +32,8 @@ class RemoteNewsSource(
             is NextPage.None -> NetworkResult.ServerError(code = 404)
         }
 
+    fun hasNextPage() = nextPage != NextPage.None
+
     private suspend fun loadPage(request: () -> Deferred<Response<NewsResponse>>): NetworkResult<NewsResponse, Error> {
         return try {
             val response = request().await()

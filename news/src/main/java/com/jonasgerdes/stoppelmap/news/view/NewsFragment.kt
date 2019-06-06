@@ -3,9 +3,10 @@ package com.jonasgerdes.stoppelmap.news.view
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.core.view.updatePadding
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.jonasgerdes.androidutil.navigation.onScrolledToEnd
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.news.R
@@ -20,6 +21,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
     private val viewModel: NewsViewModel by viewModel()
     private val articleAdapter = GroupAdapter<ViewHolder>()
     private val articleSection = Section()
+    private var snackbar: Snackbar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,27 +53,30 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
                 LoadingState.Loading.More -> articleSection.setFooter(LoadingIndicatorItem())
                 else -> articleSection.removeFooter()
             }
+
+            when (state) {
+                LoadingState.Error.Unknown -> showSnackbar(R.string.news_error_unknown)
+                LoadingState.Error.NoNetwork -> showSnackbar(R.string.news_error_no_network)
+                else -> snackbar?.also { it.dismiss() }
+            }
+        }
+
+        articleList.onScrolledToEnd { isOnEnd ->
+            if (isOnEnd) viewModel.loadMoreArticles()
         }
 
         refreshLayout.setOnRefreshListener {
             viewModel.refreshArticles()
         }
 
-        val loadNextThreshold = 1
-        articleList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val lastItem = when (val layoutManager = recyclerView.layoutManager) {
-                    is LinearLayoutManager -> layoutManager.findLastVisibleItemPosition()
-                    else -> 0
-                }
-                recyclerView.adapter?.itemCount?.let { itemCount ->
-                    if (itemCount - lastItem <= loadNextThreshold) {
-                        viewModel.loadMoreArticles()
-                    }
-                }
-            }
-        })
 
+    }
+
+    private fun showSnackbar(@StringRes title: Int) {
+        view?.let { snackRoot ->
+            snackbar = Snackbar.make(snackRoot, title, Snackbar.LENGTH_LONG).apply {
+                show()
+            }
+        }
     }
 }
