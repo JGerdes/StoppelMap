@@ -1,9 +1,7 @@
 package com.jonasgerdes.stoppelmap
 
 import android.app.Application
-import com.jonasgerdes.stoppelmap.core.routing.Route
-import com.jonasgerdes.stoppelmap.core.routing.Router
-import com.jonasgerdes.stoppelmap.fcm.subscribeToNewsMessages
+import com.jonasgerdes.stoppelmap.news.fcm.subscribeToNewsMessages
 import com.jonasgerdes.stoppelmap.news.newsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

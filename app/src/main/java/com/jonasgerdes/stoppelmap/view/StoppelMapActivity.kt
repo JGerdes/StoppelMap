@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
+import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
 
@@ -16,8 +17,10 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
     private val fragmentNavigator by lazy {
         createFragmentScreenNavigator(
             R.id.fragmentHost,
-            supportFragmentManager
-        ) { screen: Screen -> createFragmentFor(screen) }
+            supportFragmentManager,
+            { _, fragment -> if (fragment is BaseFragment) fragment.onReselected() },
+            { screen: Screen -> createFragmentFor(screen) }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

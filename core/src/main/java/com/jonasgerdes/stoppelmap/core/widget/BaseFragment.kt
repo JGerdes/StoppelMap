@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment(@LayoutRes val layoutRes: Int) : Fragment() {
@@ -13,4 +12,6 @@ abstract class BaseFragment(@LayoutRes val layoutRes: Int) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ) = inflater.inflate(layoutRes, container, false)
+
+    open fun onReselected() {}
 }

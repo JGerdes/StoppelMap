@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.fcm
+package com.jonasgerdes.stoppelmap.news.fcm
 
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessaging

@@ -79,4 +79,8 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
             }
         }
     }
+
+    override fun onReselected() {
+        articleList.smoothScrollToPosition(0)
+    }
 }
