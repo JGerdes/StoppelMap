@@ -19,4 +19,12 @@ data class ArticleWithoutImagesItem(
             date.text = "gestern"
         }
     }
+
+    override fun isSameAs(other: com.xwray.groupie.Item<*>?): Boolean {
+        if (other !is ArticleWithoutImagesItem) {
+            return false
+        }
+        return other.article.url == article.url
+    }
+
 }

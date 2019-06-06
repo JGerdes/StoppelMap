@@ -21,9 +21,13 @@ class RemoteNewsSource(
 
     private var nextPage: NextPage = NextPage.First
 
+    fun resetToFirstPage() {
+        nextPage = NextPage.First
+    }
+
     suspend fun loadNextPage(): NetworkResult<NewsResponse, Error> =
         when (val page = nextPage) {
-            is NextPage.First -> loadPage {newsService.getFirstPage() }
+            is NextPage.First -> loadPage { newsService.getFirstPage() }
             is NextPage.Next -> loadPage { newsService.getPage(page.url) }
             is NextPage.None -> NetworkResult.ServerError(code = 404)
         }

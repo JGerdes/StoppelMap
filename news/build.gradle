@@ -45,6 +45,7 @@ dependencies {
     implementation deps.koin.viewmodel
 
     implementation deps.androidx.arch.room.runtime
+    implementation deps.androidx.arch.room.ktx
     kapt deps.androidx.arch.room.compiler
     implementation deps.androidx.arch.lifecycle
     implementation deps.androidx.arch.viewmodel
@@ -59,6 +60,7 @@ dependencies {
     implementation deps.groupie
     implementation deps.groupie_kotlin
 
+    implementation deps.lottie
 
     testImplementation deps.test.junit
     testImplementation deps.koin.test

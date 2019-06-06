@@ -15,11 +15,12 @@ androidx.constraint_layout = 'androidx.constraintlayout:constraintlayout:2.0.0-b
 androidx.arch = [:]
 androidx.arch.runtime = "android.arch.work:work-runtime-ktx:1.0.1"
 
-def version_room = '2.0.0'
+def version_room = '2.1.0-rc01'
 def version_lifecycle = '2.2.0-alpha01'
 androidx.arch.room = [:]
 androidx.arch.room.runtime = "androidx.room:room-runtime:$version_room"
 androidx.arch.room.compiler = "androidx.room:room-compiler:$version_room"
+androidx.arch.room.ktx = "androidx.room:room-ktx:$version_room"
 androidx.arch.lifecycle = "androidx.lifecycle:lifecycle-extensions:$version_lifecycle"
 androidx.arch.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle"
 androidx.arch.lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:$version_lifecycle"

@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.news.data.entity.Article
+import com.jonasgerdes.stoppelmap.news.data.entity.Result
 import com.jonasgerdes.stoppelmap.news.usecase.GetNewsUseCase
 import com.jonasgerdes.stoppelmap.news.usecase.LoadMoreNewsUseCase
-import kotlinx.coroutines.GlobalScope
+import com.jonasgerdes.stoppelmap.news.usecase.RefreshNewsUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
@@ -15,7 +17,8 @@ import kotlinx.coroutines.launch
 @UseExperimental(ObsoleteCoroutinesApi::class)
 class NewsViewModel(
     private val getNews: GetNewsUseCase,
-    private val loadMoreNews: LoadMoreNewsUseCase
+    private val loadMoreNews: LoadMoreNewsUseCase,
+    private val refreshNews: RefreshNewsUseCase
 ) : ViewModel() {
 
     private val _articles = MutableLiveData<List<Article>>(emptyList())
@@ -24,26 +27,50 @@ class NewsViewModel(
     private val _loadingState = MutableLiveData<LoadingState>(LoadingState.Idle)
     val loadingState: LiveData<LoadingState> get() = _loadingState
 
+    private var isLoading = false
+
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getNews().consumeEach {
                 _articles.postValue(it)
             }
         }
 
-        loadMoreArticles()
+        refresh(clear = false)
     }
 
+
     fun loadMoreArticles() {
-        viewModelScope.launch {
-            _loadingState.postValue(LoadingState.Loading)
+        if (isLoading) return
+        isLoading = true
+        viewModelScope.launch(Dispatchers.IO) {
+            _loadingState.postValue(LoadingState.Loading.More)
             _loadingState.postValue(
                 when (loadMoreNews()) {
-                    LoadMoreNewsUseCase.Result.Success -> LoadingState.Idle
-                    LoadMoreNewsUseCase.Result.Error -> LoadingState.Error.Unknown
-                    LoadMoreNewsUseCase.Result.NetworkError -> LoadingState.Error.NoNetwork
+                    Result.Success -> LoadingState.Idle
+                    Result.Error -> LoadingState.Error.Unknown
+                    Result.NetworkError -> LoadingState.Error.NoNetwork
                 }
             )
+            isLoading = false
+        }
+    }
+
+    fun refreshArticles() = refresh(clear = true)
+
+    private fun refresh(clear: Boolean = false) {
+        if (isLoading) return
+        isLoading = true
+        viewModelScope.launch(Dispatchers.IO) {
+            _loadingState.postValue(LoadingState.Loading.Refresh)
+            _loadingState.postValue(
+                when (refreshNews(clear)) {
+                    Result.Success -> LoadingState.Idle
+                    Result.Error -> LoadingState.Error.Unknown
+                    Result.NetworkError -> LoadingState.Error.NoNetwork
+                }
+            )
+            isLoading = false
         }
     }
 }

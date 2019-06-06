@@ -4,15 +4,26 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.jonasgerdes.stoppelmap.news.data.source.local.dao.ArticleDao
+import com.jonasgerdes.stoppelmap.news.data.source.local.dao.ImageDao
 import com.jonasgerdes.stoppelmap.news.data.source.local.model.Article
+import com.jonasgerdes.stoppelmap.news.data.source.local.model.Image
 
-/*
+
 @Database(
     entities = [
-        Article::class
-    ], version = 1, exportSchema = true
+        Article::class,
+        Image::class
+    ],
+    version = 1,
+    exportSchema = true
 )
+@TypeConverters(RoomConverters::class)
 abstract class NewsDatabase() : RoomDatabase() {
+
+    abstract fun articleDao(): ArticleDao
+    abstract fun imageDao(): ImageDao
 
     companion object {
         @Volatile
@@ -25,4 +36,4 @@ abstract class NewsDatabase() : RoomDatabase() {
                 .build().also { instance = it }
         }
     }
-}*/
+}
