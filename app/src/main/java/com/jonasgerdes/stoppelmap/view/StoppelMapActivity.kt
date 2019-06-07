@@ -1,10 +1,13 @@
 package com.jonasgerdes.stoppelmap.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import com.jonasgerdes.androidutil.navigation.createFragmentScreenNavigator
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
+import com.jonasgerdes.stoppelmap.core.routing.createRouteFromUri
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
@@ -27,16 +30,18 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
+
         navigation.itemIconTintList = null
         window.enableTransparentStatusBar()
 
         Router.navigator = this
 
-        if (savedInstanceState == null) {
-            Router.navigateToRoute(Route.Home())
-        } else {
-            fragmentNavigator.loadState(savedInstanceState)
+        when {
+            intent.action == Intent.ACTION_VIEW && intent.data != null -> resolveUri(intent.data)
+            savedInstanceState == null -> Router.navigateToRoute(Route.Home())
+            else -> fragmentNavigator.loadState(savedInstanceState)
         }
+
 
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -47,6 +52,22 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
                 R.id.nav_news -> Router.navigateToRoute(Route.News())
             }
             true
+        }
+    }
+
+    private fun resolveUri(destination: Uri) {
+        val resolvedRoute = createRouteFromUri(destination) ?: Route.Home()
+        Router.navigateToRoute(resolvedRoute)
+        updateNavigation(resolvedRoute)
+    }
+
+    private fun updateNavigation(route: Route) {
+        navigation.selectedItemId = when (route) {
+            is Route.Home -> R.id.nav_home
+            is Route.Map -> R.id.nav_map
+            is Route.Schedule -> R.id.nav_schedule
+            is Route.Transport -> R.id.nav_transport
+            is Route.News -> R.id.nav_news
         }
     }
 
