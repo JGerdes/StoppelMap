@@ -32,4 +32,8 @@ dependencies {
     implementation deps.androidx.material
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
+
+    implementation deps.threeten_android
+
+    testImplementation deps.threeten
 }

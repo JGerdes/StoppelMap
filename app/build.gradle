@@ -64,6 +64,8 @@ dependencies {
     implementation deps.koin.android
     implementation deps.koin.viewmodel
 
+    implementation deps.threeten_android
+
     implementation deps.lottie
 }
 

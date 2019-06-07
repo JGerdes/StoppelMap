@@ -61,6 +61,8 @@ dependencies {
     implementation deps.groupie_kotlin
 
     implementation deps.lottie
+    implementation deps.glide
+    kapt deps.glide_compiler
 
     testImplementation deps.test.junit
     testImplementation deps.koin.test

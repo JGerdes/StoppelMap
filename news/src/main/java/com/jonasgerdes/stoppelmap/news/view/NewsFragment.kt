@@ -38,7 +38,8 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         observe(viewModel.articles) { articles ->
             Log.d("NewsFragment:", "got articles: ${articles.size}")
             articleSection.update(articles.map { article ->
-                ArticleWithoutImagesItem(article)
+                if (article.images.isNotEmpty()) ArticleWithImagesItem(article)
+                else ArticleWithoutImagesItem(article)
             })
         }
 
