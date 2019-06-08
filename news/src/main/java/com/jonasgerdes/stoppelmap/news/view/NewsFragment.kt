@@ -6,7 +6,7 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.core.view.updatePadding
 import com.google.android.material.snackbar.Snackbar
-import com.jonasgerdes.androidutil.navigation.onScrolledToEnd
+import com.jonasgerdes.androidutil.navigation.recyclerview.onScrolledToEnd
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.news.R

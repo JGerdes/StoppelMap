@@ -1,4 +1,4 @@
-package com.jonasgerdes.androidutil.navigation
+package com.jonasgerdes.androidutil.navigation.recyclerview
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,4 +21,10 @@ fun RecyclerView.onScrolledToEnd(itemThreshold: UInt = 1u, callback: (isOnEnd: B
             }
         }
     })
+}
+
+fun RecyclerView.removeAllItemDecorations() {
+    while (itemDecorationCount > 0) {
+        removeItemDecorationAt(0);
+    }
 }
