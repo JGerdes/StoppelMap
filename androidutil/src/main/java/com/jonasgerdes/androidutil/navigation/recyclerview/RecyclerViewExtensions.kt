@@ -23,6 +23,18 @@ fun RecyclerView.onScrolledToEnd(itemThreshold: UInt = 1u, callback: (isOnEnd: B
     })
 }
 
+class OnCurrentItemChangedListener(private val callback: (itemId: Int) -> Unit) : RecyclerView.OnScrollListener() {
+    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+            val currentItem = when (val layoutManager = recyclerView.layoutManager) {
+                is LinearLayoutManager -> layoutManager.findFirstCompletelyVisibleItemPosition()
+                else -> -1
+            }
+            if (currentItem != -1) callback(currentItem)
+        }
+    }
+}
+
 fun RecyclerView.removeAllItemDecorations() {
     while (itemDecorationCount > 0) {
         removeItemDecorationAt(0);

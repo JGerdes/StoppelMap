@@ -47,6 +47,18 @@
             />
 
         <TextView
+            android:id="@+id/copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textAppearance="?textAppearanceCaption2"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="@id/images"
+            app:layout_constraintStart_toStartOf="@id/images"
+            tools:text="Foto: Max Mustermann"
+            />
+
+        <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

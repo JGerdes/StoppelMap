@@ -4,4 +4,5 @@
     <string name="news_error_no_network">@string/generic_error_no_network</string>
     <string name="news_error_unknown">@string/generic_error_unknown</string>
     <string name="news_card_action_read_more">mehr</string>
+    <string name="news_card_image_copyright">© %s</string>
 </resources>

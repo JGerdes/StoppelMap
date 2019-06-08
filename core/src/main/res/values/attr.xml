@@ -4,4 +4,5 @@
     <attr name="floatingCardElevation" format="dimension" />
     <attr name="cardHighlightElevation" format="dimension" />
     <attr name="interactiveElementElevation" format="dimension" />
+    <attr name="textAppearanceCaption2" format="dimension" />
 </resources>

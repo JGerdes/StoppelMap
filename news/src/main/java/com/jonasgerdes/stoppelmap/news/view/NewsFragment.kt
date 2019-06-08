@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.news.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -64,6 +66,19 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
         articleList.onScrolledToEnd { isOnEnd ->
             if (isOnEnd) viewModel.loadMoreArticles()
+        }
+
+        articleAdapter.setOnItemClickListener { item, view ->
+            val url = when (item) {
+                is ArticleWithImagesItem -> item.article.url
+                is ArticleWithoutImagesItem -> item.article.url
+                else -> null
+            }
+            if (url != null) {
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                )
+            }
         }
 
         refreshLayout.setOnRefreshListener {
