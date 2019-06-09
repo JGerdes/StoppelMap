@@ -1,14 +1,18 @@
 package com.jonasgerdes.stoppelmap.news.data.source.local
 
-import androidx.room.InvalidationTracker.Observer
 import androidx.room.Transaction
 import com.jonasgerdes.stoppelmap.news.data.entity.Article
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 
+private typealias ArticleListener = () -> Any
+
 class LocalNewsSource(
     private val database: NewsDatabase
 ) {
+
+    private val newsListeners = mutableListOf<ArticleListener>()
+
     @Transaction
     suspend fun persist(articles: List<Article>) {
 
@@ -19,20 +23,16 @@ class LocalNewsSource(
         articles.forEach { article ->
             database.imageDao().insert(article.images.asDatabaseImages(article.url))
         }
+        newsListeners.forEach { it() }
     }
 
     suspend fun getNewsStream(): ReceiveChannel<List<Article>> = Channel<List<Article>>(Channel.CONFLATED).apply {
         send(database.articleDao().getAllArticlesWithImages().asArticles())
-        val databaseInvalidationObserver = object : Observer("articles", "images") {
-            override fun onInvalidated(tables: MutableSet<String>) {
-                offer(database.articleDao().getAllArticlesWithImages().asArticles())
-            }
-
-        }
-        database.invalidationTracker.addObserver(databaseInvalidationObserver)
+        val listener = { offer(database.articleDao().getAllArticlesWithImages().asArticles()) }
+        newsListeners.add(listener)
 
         invokeOnClose {
-            database.invalidationTracker.removeObserver(databaseInvalidationObserver)
+            newsListeners.remove(listener)
         }
     }
 
