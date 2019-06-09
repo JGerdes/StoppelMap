@@ -10,7 +10,6 @@ import com.jonasgerdes.androidutil.navigation.recyclerview.removeAllItemDecorati
 import com.jonasgerdes.stoppelmap.news.R
 import com.jonasgerdes.stoppelmap.news.data.entity.Article
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_article_no_images.view.date
 import kotlinx.android.synthetic.main.item_article_no_images.view.teaser
@@ -19,8 +18,9 @@ import kotlinx.android.synthetic.main.item_article_with_images.view.*
 
 
 data class ArticleWithImagesItem(
-    val article: Article
-) : Item() {
+    override val article: Article,
+    val onMoreClickedListener: (article: Article) -> Unit
+) : ArticleItem() {
 
     private val pagerIndicator = LinePagerIndicatorDecoration()
     private var onCurrentItemChangedListener: OnCurrentItemChangedListener? = null
@@ -51,7 +51,8 @@ data class ArticleWithImagesItem(
             if (article.images.size > 1) {
                 images.addItemDecoration(pagerIndicator)
                 onCurrentItemChangedListener = OnCurrentItemChangedListener { currentItem ->
-                    copyright.updateCopyright(article.images[currentItem].author)
+                    copyright.updateCopyright(article.images.getOrNull(currentItem)?.author)
+
                 }.also {
                     images.addOnScrollListener(it)
                 }
@@ -59,6 +60,10 @@ data class ArticleWithImagesItem(
 
             images.overScrollMode = if (article.images.size > 1) RecyclerView.OVER_SCROLL_ALWAYS
             else RecyclerView.OVER_SCROLL_NEVER
+
+            moreButton.setOnClickListener {
+                onMoreClickedListener(article)
+            }
         }
     }
 

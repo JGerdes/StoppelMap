@@ -12,6 +12,7 @@ import com.jonasgerdes.androidutil.navigation.recyclerview.onScrolledToEnd
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.news.R
+import com.jonasgerdes.stoppelmap.news.data.entity.Article
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
@@ -38,10 +39,11 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         }
 
         observe(viewModel.articles) { articles ->
-            Log.d("NewsFragment:", "got articles: ${articles.size}")
             articleSection.update(articles.map { article ->
-                if (article.images.isNotEmpty()) ArticleWithImagesItem(article)
-                else ArticleWithoutImagesItem(article)
+                if (article.images.isNotEmpty()) ArticleWithImagesItem(
+                    article,
+                    onMoreClickedListener = { openArticle(it) })
+                else ArticleWithoutImagesItem(article, onMoreClickedListener = { openArticle(it) })
             })
         }
 
@@ -69,15 +71,11 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         }
 
         articleAdapter.setOnItemClickListener { item, view ->
-            val url = when (item) {
-                is ArticleWithImagesItem -> item.article.url
-                is ArticleWithoutImagesItem -> item.article.url
-                else -> null
-            }
-            if (url != null) {
-                startActivity(
-                    Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                )
+            when (item) {
+                is ArticleItem -> openArticle(item.article)
+                else -> {
+                    //do nothing
+                }
             }
         }
 
@@ -86,6 +84,12 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         }
 
 
+    }
+
+    private fun openArticle(article: Article) {
+        startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse(article.url))
+        )
     }
 
     private fun showSnackbar(@StringRes title: Int) {

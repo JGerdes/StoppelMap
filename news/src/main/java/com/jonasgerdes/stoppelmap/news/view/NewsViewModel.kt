@@ -21,7 +21,7 @@ class NewsViewModel(
     private val refreshNews: RefreshNewsUseCase
 ) : ViewModel() {
 
-    private val _articles = MutableLiveData<List<Article>>(emptyList())
+    private val _articles = MutableLiveData<List<Article>>()
     val articles: LiveData<List<Article>> get() = _articles
 
     private val _loadingState = MutableLiveData<LoadingState>(LoadingState.Idle)

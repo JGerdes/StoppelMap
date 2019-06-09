@@ -7,6 +7,30 @@
     android:layout_height="match_parent"
     >
     <ImageView
+        android:id="@+id/loadingIndicator"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_anim_photo_loading"
+        app:layout_constraintBottom_toBottomOf="@id/imageView"
+        app:layout_constraintEnd_toEndOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="@id/imageView"
+        />
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_anim_photo_loading"
+        android:text="@string/news_card_image_loading_error"
+        android:textAppearance="?textAppearanceCaption"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/loadingIndicator"
+        app:layout_constraintStart_toStartOf="@id/loadingIndicator"
+        app:layout_constraintTop_toBottomOf="@id/loadingIndicator"
+        tools:visibility="visible"
+        />
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -16,6 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/backgrounds/scenic"
+        tools:visibility="invisible"
         />
     <ImageView
         android:id="@+id/scrim"
@@ -23,8 +48,10 @@
         android:layout_height="24dp"
         android:alpha="0.7"
         android:src="@drawable/scrim_bottom"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/imageView"
         app:layout_constraintEnd_toEndOf="@id/imageView"
         app:layout_constraintStart_toStartOf="@id/imageView"
+        tools:visibility="visible"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

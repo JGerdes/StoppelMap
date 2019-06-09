@@ -34,6 +34,7 @@ dependencies {
     implementation deps.androidx.constraint_layout
 
     implementation deps.threeten_android
+    implementation deps.glide
 
     testImplementation deps.threeten
 }

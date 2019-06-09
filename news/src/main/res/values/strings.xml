@@ -5,4 +5,5 @@
     <string name="news_error_unknown">@string/generic_error_unknown</string>
     <string name="news_card_action_read_more">mehr</string>
     <string name="news_card_image_copyright">© %s</string>
+    <string name="news_card_image_loading_error">Bild nicht geladen</string>
 </resources>
