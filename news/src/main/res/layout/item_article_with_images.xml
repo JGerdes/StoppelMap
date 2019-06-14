@@ -3,16 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.MaterialComponents.CardView"
+    style="?materialCardViewOutlineStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="8dp"
-    app:cardElevation="?attr/noElevation"
-    app:strokeColor="@color/outline_color"
-    app:strokeWidth="1dp"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,16 +20,15 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="24dp"
+            app:layout_constraintGuide_begin="?cardPadding"
             />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideEnd"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="24dp"
+            app:layout_constraintGuide_end="?cardPadding"
             />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/images"
             android:layout_width="0dp"
@@ -45,14 +41,13 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_image"
             />
-
         <TextView
             android:id="@+id/copyright"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:textAppearance="?textAppearanceCaption2"
-            android:textColor="#ffffff"
+            android:textColor="?colorOnDark"
             app:layout_constraintBottom_toBottomOf="@id/images"
             app:layout_constraintStart_toStartOf="@id/images"
             tools:text="Foto: Max Mustermann"
@@ -98,8 +93,8 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Mehr"
+            android:layout_marginBottom="?cardPadding"
+            android:text="@string/news_card_action_read_more"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/teaser"
 

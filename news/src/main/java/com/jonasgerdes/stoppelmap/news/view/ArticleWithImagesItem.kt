@@ -40,19 +40,20 @@ data class ArticleWithImagesItem(
                 })
             }
 
-            images.onFlingListener = null
-            PagerSnapHelper().attachToRecyclerView(images)
-
             onCurrentItemChangedListener?.let { images.removeOnScrollListener(it) }
+            images.clearOnScrollListeners() //sometimes onCurrentItemChangedListener isn't remove by line above
             images.removeItemDecoration(pagerIndicator)
             images.removeAllItemDecorations() //sometimes pagerIndicator isn't remove by line above
+            //TODO: investigate why itemDecorator and scrollListener aren't removed properly
+
+            images.onFlingListener = null
+            PagerSnapHelper().attachToRecyclerView(images)
 
 
             if (article.images.size > 1) {
                 images.addItemDecoration(pagerIndicator)
                 onCurrentItemChangedListener = OnCurrentItemChangedListener { currentItem ->
-                    copyright.updateCopyright(article.images.getOrNull(currentItem)?.author)
-
+                    copyright.updateCopyright(article.images[currentItem].author)
                 }.also {
                     images.addOnScrollListener(it)
                 }

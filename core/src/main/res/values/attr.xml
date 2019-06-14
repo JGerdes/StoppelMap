@@ -4,5 +4,12 @@
     <attr name="floatingCardElevation" format="dimension" />
     <attr name="cardHighlightElevation" format="dimension" />
     <attr name="interactiveElementElevation" format="dimension" />
-    <attr name="textAppearanceCaption2" format="dimension" />
+
+    <attr name="textAppearanceCaption2" format="reference" />
+    <attr name="materialCardViewOutlineStyle" format="reference" />
+
+    <attr name="colorOnDark" format="color" />
+
+    <attr name="cardPadding" format="dimension" />
+
 </resources>

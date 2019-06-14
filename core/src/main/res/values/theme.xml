@@ -6,20 +6,23 @@
     <style name="StoppelMapTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/stoppelPurple</item>
         <item name="colorPrimaryVariant">@color/stoppelIndigo</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorOnPrimary">@color/lightText</item>
 
         <item name="colorSecondary">@color/stoppelPink</item>
         <item name="colorSecondaryVariant">@color/stoppelHotPink</item>
-        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorOnSecondary">@color/lightText</item>
 
         <item name="colorError">@color/crimson</item>
-        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorOnError">@color/lightText</item>
+
+        <item name="colorOnDark">@color/lightText</item>
 
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
         <item name="fontFamily">@font/roboto_slab</item>
         <item name="android:fontFamily">@font/roboto_slab</item>
 
+        <item name="cardPadding">@dimen/cardPaddingDefault</item>
 
         <item name="shapeAppearanceSmallComponent">@style/StoppelMapTheme.ShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/StoppelMapTheme.ShapeAppearance.MediumComponent</item>
@@ -46,6 +49,9 @@
         <item name="textAppearanceCaption">@style/TextAppearance.StoppelMapTheme.Caption</item>
         <item name="textAppearanceCaption2">@style/TextAppearance.StoppelMapTheme.Caption2</item>
         <item name="textAppearanceOverline">@style/TextAppearance.StoppelMapTheme.Overline</item>
+
+        <item name="materialCardViewStyle">@style/StoppelMapTheme.CardView</item>
+        <item name="materialCardViewOutlineStyle">@style/StoppelMapTheme.OutlineCardView</item>
 
     </style>
 
@@ -99,6 +105,14 @@
     </style>
 
     <style name="TextAppearance.StoppelMapTheme.Overline" parent="TextAppearance.MaterialComponents.Overline" />
+
+    <style name="StoppelMapTheme.CardView" parent="Widget.MaterialComponents.CardView" />
+
+    <style name="StoppelMapTheme.OutlineCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">?attr/noElevation</item>
+        <item name="strokeColor">@color/outline_color</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
 
     <style name="StoppelMapTheme.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemHorizontalTranslationEnabled">false</item>
