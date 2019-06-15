@@ -10,6 +10,7 @@ deps.kotlin = kotlin
 def androidx = [:]
 androidx.material = 'com.google.android.material:material:1.1.0-alpha06'
 androidx.compat = 'androidx.appcompat:appcompat:1.0.2'
+androidx.palette = 'androidx.palette:palette:1.0.0'
 androidx.ktx = 'androidx.core:core-ktx:1.2.0-alpha01'
 androidx.constraint_layout = 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 androidx.arch = [:]
@@ -31,6 +32,15 @@ koin.android = "org.koin:koin-androidx-scope:$version_koin"
 koin.viewmodel = "org.koin:koin-androidx-viewmodel:$version_koin"
 koin.test = "org.koin:koin-test:$version_koin"
 deps.koin = koin
+
+def rx = [:]
+rx.java = "io.reactivex.rxjava2:rxjava:2.1.7"
+rx.kotlin = "io.reactivex.rxjava2:rxkotlin:2.2.0"
+rx.android = "io.reactivex.rxjava2:rxandroid:2.0.1"
+rx.relay = "com.jakewharton.rxrelay2:rxrelay:2.0.0"
+rx.permissions = 'com.github.tbruyelle:rxpermissions:0.10.2'
+deps.rx = rx
+
 
 def retrofit = [:]
 retrofit.core = 'com.squareup.retrofit2:retrofit:2.5.0'
