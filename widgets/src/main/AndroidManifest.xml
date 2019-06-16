@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.jonasgerdes.stoppelmap">
+    package="com.jonasgerdes.stoppelmap.widget">
 
     <application>
 
         <activity
-            android:name=".widget.heart.GingerbreadHeartWidgetSettingsActivity"
+            android:name=".heart.GingerbreadHeartWidgetSettingsActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleTop">
             <intent-filter>
@@ -14,7 +14,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".widget.heart.GingerbreadHeartWidgetProvider">
+        <receiver android:name=".heart.GingerbreadHeartWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -26,7 +26,7 @@
 
         <!-- silhouette -->
         <activity
-            android:name=".widget.silhouette.SilhouetteWidgetSettingsActivity"
+            android:name=".silhouette.SilhouetteWidgetSettingsActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleTop">
             <intent-filter>
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".widget.silhouette.SilhouetteWidgetProvider">
+        <receiver android:name=".silhouette.SilhouetteWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

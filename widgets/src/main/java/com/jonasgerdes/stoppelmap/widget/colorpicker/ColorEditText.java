@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 import com.jonasgerdes.stoppelmap.widget.util.StringUtil;
 
 /**

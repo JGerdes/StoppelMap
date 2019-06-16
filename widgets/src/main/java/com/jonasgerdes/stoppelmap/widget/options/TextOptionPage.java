@@ -9,7 +9,7 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 import com.jonasgerdes.stoppelmap.widget.ChangeableFontWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.Font;
 

@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import androidx.annotation.Nullable;
 import androidx.palette.graphics.Palette;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 import com.jonasgerdes.stoppelmap.widget.AbstractWidgetSettingsActivity;
 import com.jonasgerdes.stoppelmap.widget.Font;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;

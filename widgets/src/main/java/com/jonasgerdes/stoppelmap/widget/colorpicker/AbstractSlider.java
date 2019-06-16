@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.DimenRes;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 
 
 public abstract class AbstractSlider extends View {

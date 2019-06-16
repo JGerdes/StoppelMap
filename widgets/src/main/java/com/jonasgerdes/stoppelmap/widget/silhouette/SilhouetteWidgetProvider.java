@@ -16,7 +16,7 @@ import android.widget.RemoteViews;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 import com.jonasgerdes.stoppelmap.widget.ActionIntentFactory;
 import com.jonasgerdes.stoppelmap.widget.Font;
 import com.jonasgerdes.stoppelmap.widget.WidgetSettingsHelper;

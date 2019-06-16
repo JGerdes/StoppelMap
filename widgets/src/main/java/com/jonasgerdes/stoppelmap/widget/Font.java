@@ -7,7 +7,7 @@ import androidx.annotation.FontRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 
 public enum Font {
     //legacy wrapper - in old versions font is load from assets and file name was

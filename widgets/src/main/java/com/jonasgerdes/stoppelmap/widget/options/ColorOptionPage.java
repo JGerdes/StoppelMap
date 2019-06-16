@@ -12,7 +12,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 import androidx.core.graphics.ColorUtils;
 import androidx.palette.graphics.Palette;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 import com.jonasgerdes.stoppelmap.widget.ColorableWidgetPreview;
 import com.jonasgerdes.stoppelmap.widget.colorpicker.ColorEditText;
 import com.jonasgerdes.stoppelmap.widget.colorpicker.ColorPicker;

@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
-import com.jonasgerdes.stoppelmap.R;
+import com.jonasgerdes.stoppelmap.widget.R;
 import com.jonasgerdes.stoppelmap.widget.ActionWidgetPreview;
 
 import java.util.ArrayList;
