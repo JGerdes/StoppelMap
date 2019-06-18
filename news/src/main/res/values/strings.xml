@@ -6,4 +6,9 @@
     <string name="news_card_action_read_more">mehr</string>
     <string name="news_card_image_copyright">© %s</string>
     <string name="news_card_image_loading_error">Bild nicht geladen</string>
+
+
+    <string name="news_notification_channel_news_title">Neuigkeiten</string>
+    <string name="news_notification_channel_news_description">Neuigkeiten zum Stoppelmarkt</string>
+    <string name="news_notification_channel_news_id" translatable="false">CHANNEL_TOPIC_NEWS</string>
 </resources>

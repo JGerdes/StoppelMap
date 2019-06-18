@@ -22,7 +22,6 @@ class App : Application() {
 
         AndroidThreeTen.init(this)
 
-        subscribeToNewsMessages()
-
+        subscribeToNewsMessages(this)
     }
 }
