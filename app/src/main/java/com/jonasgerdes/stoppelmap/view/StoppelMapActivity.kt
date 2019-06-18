@@ -3,27 +3,38 @@ package com.jonasgerdes.stoppelmap.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import com.jonasgerdes.androidutil.navigation.BackStack
+import com.jonasgerdes.androidutil.navigation.FragmentScreenNavigator
 import com.jonasgerdes.androidutil.navigation.createFragmentScreenNavigator
 import com.jonasgerdes.stoppelmap.R
-import com.jonasgerdes.stoppelmap.core.routing.Route
-import com.jonasgerdes.stoppelmap.core.routing.Router
-import com.jonasgerdes.stoppelmap.core.routing.createRouteFromUri
+import com.jonasgerdes.stoppelmap.core.routing.*
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
+import com.jonasgerdes.stoppelmap.core.widget.saveProcessRoute
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
 
 
 class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Navigator {
 
+    private val backStack = BackStack(
+        mapOf(
+            Screen.Home to Route.Home(),
+            Screen.Map to Route.Map(),
+            Screen.Schedule to Route.Schedule(),
+            Screen.Transport to Route.Transport(),
+            Screen.News to Route.News()
+        )
+    )
+
     private val fragmentNavigator by lazy {
         createFragmentScreenNavigator(
             R.id.fragmentHost,
-            supportFragmentManager,
-            { _, fragment -> if (fragment is BaseFragment) fragment.onReselected() },
-            { screen: Screen -> createFragmentFor(screen) }
-        )
+            supportFragmentManager
+        ) { screen: Screen ->
+            createFragmentFor(screen)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +47,12 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
         Router.navigator = this
 
+        val routeFromAction = Action.fromString(intent.action)?.toRoute()
         when {
+            routeFromAction != null -> {
+                Router.navigateToRoute(routeFromAction)
+                updateNavigation(routeFromAction)
+            }
             intent.action == Intent.ACTION_VIEW && intent.data != null -> resolveUri(intent.data)
             savedInstanceState == null -> Router.navigateToRoute(Route.Home())
             else -> fragmentNavigator.loadState(savedInstanceState)
@@ -79,7 +95,31 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
     override fun navigateToRoute(route: Route) {
         val screen = route.toScreen()
-        fragmentNavigator.showScreen(screen)
+        val result = fragmentNavigator.showScreen(screen)
+        if (result is FragmentScreenNavigator.ShowScreenResult.Success) {
+            val fragment = result.fragment
+            if ((fragment is BaseFragment<*>)) {
+                if (result.reselected) fragment.onReselected()
+                fragment.saveProcessRoute(route)
+            }
+            backStack.push(screen, route)
+        }
+    }
+
+    override fun navigateBack(): Router.BackNavigationResult {
+        val route = backStack.pop()
+        if (route != null) {
+            val screen = route.toScreen()
+            val result = fragmentNavigator.showScreen(screen)
+            if (result is FragmentScreenNavigator.ShowScreenResult.Success) {
+                val fragment = result.fragment
+                if ((fragment is BaseFragment<*>)) {
+                    fragment.saveProcessRoute(route)
+                }
+            }
+            return Router.BackNavigationResult.HANDLED
+        }
+        return Router.BackNavigationResult.EMPTY_STACK
     }
 
     private fun createFragmentFor(screen: Screen) = when (screen) {
@@ -97,5 +137,14 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         is Route.Transport -> Screen.Transport
         is Route.News -> Screen.News
         else -> Screen.Home
+    }
+
+    override fun onBackPressed() {
+        when (Router.navigateBack()) {
+            Router.BackNavigationResult.EMPTY_STACK -> super.onBackPressed()
+            Router.BackNavigationResult.HANDLED -> {
+                //do nothing
+            }
+        }
     }
 }

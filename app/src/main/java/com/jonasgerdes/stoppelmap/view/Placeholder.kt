@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import kotlinx.android.synthetic.main.fragment_placeholder.*
 
-abstract class PlaceholderFragment(layoutRes: Int, @StringRes val titleRes: Int) : BaseFragment(layoutRes) {
+abstract class PlaceholderFragment<R: Route>(layoutRes: Int, @StringRes val titleRes: Int) : BaseFragment<R>(layoutRes) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -15,27 +16,27 @@ abstract class PlaceholderFragment(layoutRes: Int, @StringRes val titleRes: Int)
     }
 }
 
-class HomePlaceholderFragment : PlaceholderFragment(
+class HomePlaceholderFragment : PlaceholderFragment<Route.Home>(
     R.layout.fragment_placeholder,
     R.string.main_bottom_nav_item_home
 )
 
-class MapPlaceholderFragment : PlaceholderFragment(
+class MapPlaceholderFragment : PlaceholderFragment<Route.Map>(
     R.layout.fragment_placeholder,
     R.string.main_bottom_nav_item_map
 )
 
-class SchedulePlaceholderFragment : PlaceholderFragment(
+class SchedulePlaceholderFragment : PlaceholderFragment<Route.Schedule>(
     R.layout.fragment_placeholder,
     R.string.main_bottom_nav_item_schedule
 )
 
-class TransportPlaceholderFragment : PlaceholderFragment(
+class TransportPlaceholderFragment : PlaceholderFragment<Route.Transport>(
     R.layout.fragment_placeholder,
     R.string.main_bottom_nav_item_transport
 )
 
-class NewsPlaceholderFragment : PlaceholderFragment(
+class NewsPlaceholderFragment : PlaceholderFragment<Route.News>(
     R.layout.fragment_placeholder,
     R.string.main_bottom_nav_item_news
 )

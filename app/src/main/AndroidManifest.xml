@@ -34,6 +34,11 @@
                     android:scheme="https" />
             </intent-filter>
 
+            <intent-filter>
+                <action android:name="com.jonasgerdes.stoppelmap.action.OPEN_NEWS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
         </activity-alias>
 
         <activity

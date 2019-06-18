@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentManager
 
 typealias FragmentFactory<T> = (T) -> Fragment
 typealias EnumFactory<T> = (name: String) -> T
-typealias ReselectionCallback<T> = (screen: T, fragment: Fragment) -> Unit
 
 private const val KEY_CURRENT_SCREEN = "CURRENT_SCREEN"
 
@@ -20,10 +19,9 @@ internal inline fun <reified T : Enum<T>> enumValueByName(name: String) = try {
 inline fun <reified T : Enum<T>> createFragmentScreenNavigator(
     @IdRes hostViewId: Int,
     fragmentManager: FragmentManager,
-    noinline reselectionCallback: ReselectionCallback<T>,
     noinline fragmentFactory: FragmentFactory<T>
 ) =
-    FragmentScreenNavigator<T>(fragmentFactory, reselectionCallback) { enumValueOf(it) }.also { navigator ->
+    FragmentScreenNavigator<T>(fragmentFactory) { enumValueOf(it) }.also { navigator ->
         navigator.hostViewId = hostViewId
         navigator.fragmentManager = fragmentManager
     }
@@ -31,7 +29,6 @@ inline fun <reified T : Enum<T>> createFragmentScreenNavigator(
 
 class FragmentScreenNavigator<T : Enum<T>>(
     private val fragmentFactory: FragmentFactory<T>,
-    private val reselectionCallback: ReselectionCallback<T>? = null,
     private val enumFactory: EnumFactory<T>
 ) {
 
@@ -49,25 +46,27 @@ class FragmentScreenNavigator<T : Enum<T>>(
         currentScreen = enumFactory(name)
     }
 
-    fun showScreen(screen: T) = hostViewId?.let { hostId ->
+    sealed class ShowScreenResult<T> {
+        data class Success<T>(val screen: T, val fragment: Fragment, val reselected: Boolean) : ShowScreenResult<T>()
+        class Failure<T> : ShowScreenResult<T>()
+    }
 
+    fun showScreen(screen: T): ShowScreenResult<T> = hostViewId?.let { hostId ->
+        var result: ShowScreenResult<T> = ShowScreenResult.Failure()
         fragmentManager?.let { manager ->
             val existingFragment = manager.findFragmentByTag(screen.name)
             val currentFragment = currentScreen?.let { manager.findFragmentByTag(it.name) }
-            if (screen == currentScreen) {
-                reselectionCallback?.let { reselectionCallback ->
-                    if (currentFragment != null) reselectionCallback(screen, currentFragment)
-                }
-            }
             manager.beginTransaction().apply {
                 val fragment = existingFragment ?: fragmentFactory(screen).also {
                     add(hostId, it, screen.name)
                 }
                 currentFragment?.let { hide(it) }
                 show(fragment)
+                result = ShowScreenResult.Success(screen, fragment, screen == currentScreen)
                 currentScreen = screen
             }.commitNowAllowingStateLoss()
         }
-    }
+        result
+    } ?: ShowScreenResult.Failure()
 
 }

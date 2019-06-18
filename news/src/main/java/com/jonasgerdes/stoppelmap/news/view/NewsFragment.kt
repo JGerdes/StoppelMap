@@ -3,12 +3,12 @@ package com.jonasgerdes.stoppelmap.news.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.core.view.updatePadding
 import com.google.android.material.snackbar.Snackbar
 import com.jonasgerdes.androidutil.navigation.recyclerview.onScrolledToEnd
+import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.news.R
@@ -19,12 +19,14 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_news.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewsFragment : BaseFragment(R.layout.fragment_news) {
+class NewsFragment : BaseFragment<Route.News>(R.layout.fragment_news) {
 
     private val viewModel: NewsViewModel by viewModel()
     private val articleAdapter = GroupAdapter<ViewHolder>()
     private val articleSection = Section()
     private var snackbar: Snackbar? = null
+
+    private var shouldScrollToTopOnNewData = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,6 +47,14 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
                     onMoreClickedListener = { openArticle(it) })
                 else ArticleWithoutImagesItem(article, onMoreClickedListener = { openArticle(it) })
             })
+            if (articles.isNotEmpty()) {
+                if (shouldScrollToTopOnNewData) {
+                    articleList.postDelayed({
+                        articleList.smoothScrollToPosition(0)
+                    }, 1000)
+                    shouldScrollToTopOnNewData = false
+                }
+            }
         }
 
         observe(viewModel.loadingState) { state ->
@@ -102,5 +112,10 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
     override fun onReselected() {
         articleList.smoothScrollToPosition(0)
+    }
+
+    override fun processRoute(route: Route.News) {
+        shouldScrollToTopOnNewData = route.scrollToTop
+        if(route.forceReload) viewModel.refreshArticles()
     }
 }
