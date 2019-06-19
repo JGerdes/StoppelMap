@@ -1,0 +1,27 @@
+<resources>
+    <string name="home_title">Stoppelmark 2019</string>
+
+    <string name="home_card_to_few_cards_info">Hier werden demnächst aktuelle und nützliche Infos angezeigt.</string>
+
+    <string name="home_card_countdown_text">noch</string>
+    <plurals name="home_card_countdown_day">
+        <item quantity="one">Tag</item>
+        <item quantity="other">Tage</item>
+        <item quantity="zero">Tage</item>
+    </plurals>
+    <plurals name="home_card_countdown_hour">
+        <item quantity="one">Stunde</item>
+        <item quantity="other">Stunden</item>
+        <item quantity="zero">Stunden</item>
+    </plurals>
+    <plurals name="home_card_countdown_minute">
+        <item quantity="one">Minute</item>
+        <item quantity="other">Minuten</item>
+        <item quantity="zero">Minuten</item>
+    </plurals>
+    <plurals name="home_card_countdown_second">
+        <item quantity="one">Sekunde</item>
+        <item quantity="other">Sekunden</item>
+        <item quantity="zero">Sekunden</item>
+    </plurals>
+</resources>

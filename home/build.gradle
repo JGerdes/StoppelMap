@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion compileSdk
+
+
+    defaultConfig {
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':core')
+    implementation project(':androidutil')
+
+    implementation deps.kotlin.stdlib
+
+
+    implementation deps.androidx.compat
+    implementation deps.androidx.material
+    implementation deps.androidx.ktx
+    implementation deps.androidx.constraint_layout
+
+    implementation deps.koin.core
+    implementation deps.koin.android
+    implementation deps.koin.viewmodel
+
+
+    implementation deps.androidx.arch.lifecycle
+    implementation deps.androidx.arch.viewmodel
+    kapt deps.androidx.arch.lifecycle_compiler
+
+    implementation deps.threeten_android
+
+    implementation deps.groupie
+    implementation deps.groupie_kotlin
+
+    implementation deps.lottie
+    implementation deps.glide
+    kapt deps.glide_compiler
+
+    testImplementation deps.test.junit
+    testImplementation deps.koin.test
+    testImplementation deps.threeten
+}

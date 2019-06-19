@@ -12,6 +12,7 @@ import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.core.widget.saveProcessRoute
+import com.jonasgerdes.stoppelmap.home.view.HomeFragment
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
 
@@ -123,7 +124,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
     }
 
     private fun createFragmentFor(screen: Screen) = when (screen) {
-        Screen.Home -> HomePlaceholderFragment()
+        Screen.Home -> HomeFragment()
         Screen.Map -> MapPlaceholderFragment()
         Screen.Schedule -> SchedulePlaceholderFragment()
         Screen.Transport -> TransportPlaceholderFragment()
