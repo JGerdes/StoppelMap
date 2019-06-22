@@ -52,6 +52,7 @@
 
         <item name="materialCardViewStyle">@style/StoppelMapTheme.CardView</item>
         <item name="materialCardViewOutlineStyle">@style/StoppelMapTheme.OutlineCardView</item>
+        <item name="toolbarStyle">@style/StoppelMapTheme.ToolbarStyle</item>
 
     </style>
 
@@ -107,6 +108,12 @@
     <style name="TextAppearance.StoppelMapTheme.Overline" parent="TextAppearance.MaterialComponents.Overline" />
 
     <style name="StoppelMapTheme.CardView" parent="Widget.MaterialComponents.CardView" />
+
+
+    <style name="StoppelMapTheme.ToolbarStyle" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="menu">@menu/empty</item> <!-- work around for different heights of toolbars with/-out menu-->
+        <item name="titleTextAppearance">?textAppearanceHeadline5</item>
+    </style>
 
     <style name="StoppelMapTheme.OutlineCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">?attr/noElevation</item>
