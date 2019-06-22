@@ -33,4 +33,7 @@ dependencies {
     implementation deps.androidx.material
     implementation deps.androidx.compat
     implementation deps.androidx.ktx
+
+    implementation deps.threeten_android
+    testImplementation deps.threeten
 }
