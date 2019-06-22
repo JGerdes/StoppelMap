@@ -14,4 +14,12 @@ data class SimpleTextItem(private @StringRes val text: Int) : Item() {
             textContent.text = context.getString(text)
         }
     }
+
+    override fun isSameAs(other: com.xwray.groupie.Item<*>?): Boolean {
+        if (other !is SimpleTextItem) {
+            return false
+        }
+
+        return text == other.text
+    }
 }

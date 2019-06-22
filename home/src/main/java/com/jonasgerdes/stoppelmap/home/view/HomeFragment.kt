@@ -1,9 +1,11 @@
 package com.jonasgerdes.stoppelmap.home.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.home.R
 import com.jonasgerdes.stoppelmap.home.view.item.CountdownItem
@@ -11,13 +13,11 @@ import com.jonasgerdes.stoppelmap.home.view.item.SimpleTextItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_home.*
-import org.threeten.bp.Duration
-import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.Month
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<Route.News>(R.layout.fragment_home) {
 
+    private val viewModel: HomeViewModel by viewModel()
 
     private val cardAdapter = GroupAdapter<ViewHolder>()
 
@@ -27,16 +27,31 @@ class HomeFragment : BaseFragment<Route.News>(R.layout.fragment_home) {
 
         toolbar.consumeWindowInsetsTop()
 
-        cardAdapter.update(
-            listOf(
-                SimpleTextItem(R.string.home_card_to_few_cards_info),
-                CountdownItem(
-                    Duration.between(LocalDateTime.now(), LocalDateTime.of(2019, Month.AUGUST, 15, 18, 0, 0))
-                )
+
+        observe(viewModel.cards) { cards ->
+            Log.d("Flow", "update cards")
+            cardAdapter.update(
+                mapCards(cards)
             )
-        )
+        }
 
+    }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.startUpdates()
+    }
+
+    override fun onPause() {
+        viewModel.stopUpdates()
+        super.onPause()
+    }
+
+    private fun mapCards(cards: List<HomeCard>) = cards.map { card ->
+        when (card) {
+            MoreCardsInfoCard -> SimpleTextItem(R.string.home_card_to_few_cards_info)
+            is CountdownCard -> CountdownItem(card.duration)
+        }
     }
 
 }

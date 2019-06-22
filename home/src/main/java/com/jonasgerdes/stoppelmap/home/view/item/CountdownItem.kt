@@ -34,4 +34,13 @@ data class CountdownItem(private val duration: Duration) : Item() {
             secondText.text = res.getQuantityText(R.plurals.home_card_countdown_second, seconds.toInt())
         }
     }
+
+    override fun isSameAs(other: com.xwray.groupie.Item<*>?): Boolean {
+        return other is CountdownItem
+    }
+
+
+    override fun getChangePayload(newItem: com.xwray.groupie.Item<*>?): Any? {
+        return duration
+    }
 }

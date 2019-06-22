@@ -31,6 +31,8 @@ dependencies {
     implementation project(':androidutil')
 
     implementation deps.kotlin.stdlib
+    implementation deps.kotlin.coroutines
+    implementation deps.kotlin.coroutines_android
 
 
     implementation deps.androidx.compat
