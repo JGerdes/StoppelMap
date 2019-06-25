@@ -7,6 +7,7 @@ import com.jonasgerdes.androidutil.navigation.BackStack
 import com.jonasgerdes.androidutil.navigation.FragmentScreenNavigator
 import com.jonasgerdes.androidutil.navigation.createFragmentScreenNavigator
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.about.view.AboutFragment
 import com.jonasgerdes.stoppelmap.core.routing.*
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
@@ -129,10 +130,14 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         Screen.Schedule -> SchedulePlaceholderFragment()
         Screen.Transport -> TransportPlaceholderFragment()
         Screen.News -> NewsFragment()
+        Screen.About -> AboutFragment()
     }
 
     private fun Route.toScreen() = when (this) {
-        is Route.Home -> Screen.Home
+        is Route.Home -> when (detail) {
+            is HomeDetail.About -> Screen.About
+            else -> Screen.Home
+        }
         is Route.Map -> Screen.Map
         is Route.Schedule -> Screen.Schedule
         is Route.Transport -> Screen.Transport

@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
+import com.jonasgerdes.stoppelmap.core.routing.HomeDetail
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.home.R
@@ -34,6 +36,14 @@ class HomeFragment : BaseFragment<Route.News>(R.layout.fragment_home) {
                 mapCards(cards)
             )
         }
+
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.settings_about -> Router.navigateToRoute(Route.Home(detail = HomeDetail.About()))
+            }
+            true
+        }
+
 
     }
 
