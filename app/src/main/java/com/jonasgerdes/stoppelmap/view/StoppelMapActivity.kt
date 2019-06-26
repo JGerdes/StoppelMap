@@ -3,16 +3,11 @@ package com.jonasgerdes.stoppelmap.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import com.jonasgerdes.androidutil.navigation.BackStack
-import com.jonasgerdes.androidutil.navigation.FragmentScreenNavigator
-import com.jonasgerdes.androidutil.navigation.createFragmentScreenNavigator
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.about.view.AboutFragment
 import com.jonasgerdes.stoppelmap.core.routing.*
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
-import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
-import com.jonasgerdes.stoppelmap.core.widget.saveProcessRoute
 import com.jonasgerdes.stoppelmap.home.view.HomeFragment
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
@@ -20,24 +15,28 @@ import kotlinx.android.synthetic.main.activity_stoppelmap.*
 
 class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Navigator {
 
-    private val backStack = BackStack(
-        mapOf(
-            Screen.Home to Route.Home(),
-            Screen.Map to Route.Map(),
-            Screen.Schedule to Route.Schedule(),
-            Screen.Transport to Route.Transport(),
-            Screen.News to Route.News()
+    private val navigator by lazy {
+        Navigator(
+            R.id.fragmentHost, supportFragmentManager, { route ->
+                when (route) {
+                    is Route.Home -> HomeFragment()
+                    is Route.Map -> MapPlaceholderFragment()
+                    is Route.Transport -> TransportPlaceholderFragment()
+                    is Route.Schedule -> SchedulePlaceholderFragment()
+                    is Route.News -> NewsFragment()
+                    is Route.About -> AboutFragment()
+                    else -> HomeFragment()
+                }
+            }, mapOf(
+                Router.Destination.HOME to Route.Home(),
+                Router.Destination.MAP to Route.Map(),
+                Router.Destination.SCHEDULE to Route.Schedule(),
+                Router.Destination.TRANSPORT to Route.Transport(),
+                Router.Destination.NEWS to Route.News()
+            )
         )
-    )
-
-    private val fragmentNavigator by lazy {
-        createFragmentScreenNavigator(
-            R.id.fragmentHost,
-            supportFragmentManager
-        ) { screen: Screen ->
-            createFragmentFor(screen)
-        }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -49,108 +48,68 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
         Router.navigator = this
 
-        val routeFromAction = Action.fromString(intent.action)?.toRoute()
+        val journeyFromAction = Action.fromString(intent.action)?.toRoute()
         when {
-            routeFromAction != null -> {
-                Router.navigateToRoute(routeFromAction)
-                updateNavigation(routeFromAction)
+            savedInstanceState != null -> navigator.onloadState(savedInstanceState)
+            journeyFromAction != null -> {
+                Router.navigateToRoute(journeyFromAction.route, journeyFromAction.destination, clearBackStack = true)
             }
             intent.action == Intent.ACTION_VIEW && intent.data != null -> resolveUri(intent.data)
-            savedInstanceState == null -> Router.navigateToRoute(Route.Home())
-            else -> fragmentNavigator.loadState(savedInstanceState)
+            else -> Router.navigateToRoute(Route.Home(), Router.Destination.HOME)
         }
 
 
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_home -> Router.navigateToRoute(Route.Home())
-                R.id.nav_map -> Router.navigateToRoute(Route.Map())
-                R.id.nav_schedule -> Router.navigateToRoute(Route.Schedule())
-                R.id.nav_transport -> Router.navigateToRoute(Route.Transport())
-                R.id.nav_news -> Router.navigateToRoute(Route.News())
+                R.id.nav_home -> navigator.switchToDestination(Router.Destination.HOME)
+                R.id.nav_map -> navigator.switchToDestination(Router.Destination.MAP)
+                R.id.nav_schedule -> navigator.switchToDestination(Router.Destination.SCHEDULE)
+                R.id.nav_transport -> navigator.switchToDestination(Router.Destination.TRANSPORT)
+                R.id.nav_news -> navigator.switchToDestination(Router.Destination.NEWS)
             }
             true
         }
     }
 
     private fun resolveUri(destination: Uri) {
-        val resolvedRoute = createRouteFromUri(destination) ?: Route.Home()
-        Router.navigateToRoute(resolvedRoute)
-        updateNavigation(resolvedRoute)
+        val resolvedJourney = createJourneyFromUri(destination) ?: Route.Home() to Router.Destination.HOME
+        Router.navigateToRoute(resolvedJourney.route, resolvedJourney.destination, clearBackStack = true)
     }
 
-    private fun updateNavigation(route: Route) {
-        navigation.selectedItemId = when (route) {
-            is Route.Home -> R.id.nav_home
-            is Route.Map -> R.id.nav_map
-            is Route.Schedule -> R.id.nav_schedule
-            is Route.Transport -> R.id.nav_transport
-            is Route.News -> R.id.nav_news
+    private fun updateNavigation(destination: Router.Destination) {
+        navigation.selectedItemId = when (destination) {
+            Router.Destination.HOME -> R.id.nav_home
+            Router.Destination.MAP -> R.id.nav_map
+            Router.Destination.SCHEDULE -> R.id.nav_schedule
+            Router.Destination.TRANSPORT -> R.id.nav_transport
+            Router.Destination.NEWS -> R.id.nav_news
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        fragmentNavigator.saveState(outState)
+        navigator.onSaveInstanceState(outState)
 
     }
 
-    override fun navigateToRoute(route: Route) {
-        val screen = route.toScreen()
-        val result = fragmentNavigator.showScreen(screen)
-        if (result is FragmentScreenNavigator.ShowScreenResult.Success) {
-            val fragment = result.fragment
-            if ((fragment is BaseFragment<*>)) {
-                if (result.reselected) fragment.onReselected()
-                fragment.saveProcessRoute(route)
-            }
-            backStack.push(screen, route)
-        }
+    override fun navigateToRoute(route: Route, destination: Router.Destination, clearBackStack: Boolean) {
+        navigator.navigateToRoute(route, destination, clearBackStack)
+        updateNavigation(destination)
     }
 
-    override fun navigateBack(): Router.BackNavigationResult {
-        val route = backStack.pop()
-        if (route != null) {
-            val screen = route.toScreen()
-            val result = fragmentNavigator.showScreen(screen)
-            if (result is FragmentScreenNavigator.ShowScreenResult.Success) {
-                val fragment = result.fragment
-                if ((fragment is BaseFragment<*>)) {
-                    fragment.saveProcessRoute(route)
-                }
-            }
-            return Router.BackNavigationResult.HANDLED
-        }
-        return Router.BackNavigationResult.EMPTY_STACK
+    override fun switchToDestination(destination: Router.Destination) {
+        navigator.switchToDestination(destination)
+        updateNavigation(destination)
     }
 
-    private fun createFragmentFor(screen: Screen) = when (screen) {
-        Screen.Home -> HomeFragment()
-        Screen.Map -> MapPlaceholderFragment()
-        Screen.Schedule -> SchedulePlaceholderFragment()
-        Screen.Transport -> TransportPlaceholderFragment()
-        Screen.News -> NewsFragment()
-        Screen.About -> AboutFragment()
+    override fun navigateBack(): Router.NavigateBackResult {
+        return navigator.navigateBack()
     }
 
-    private fun Route.toScreen() = when (this) {
-        is Route.Home -> when (detail) {
-            is HomeDetail.About -> Screen.About
-            else -> Screen.Home
-        }
-        is Route.Map -> Screen.Map
-        is Route.Schedule -> Screen.Schedule
-        is Route.Transport -> Screen.Transport
-        is Route.News -> Screen.News
-        else -> Screen.Home
-    }
 
     override fun onBackPressed() {
         when (Router.navigateBack()) {
-            Router.BackNavigationResult.EMPTY_STACK -> super.onBackPressed()
-            Router.BackNavigationResult.HANDLED -> {
-                //do nothing
-            }
+            Router.NavigateBackResult.UNHANDLED -> super.onBackPressed()
         }
     }
 }

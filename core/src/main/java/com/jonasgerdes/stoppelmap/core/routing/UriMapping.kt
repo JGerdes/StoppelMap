@@ -7,13 +7,13 @@ private const val SEGMENT_MAP = "map"
 private const val SEGMENT_SCHEDULE = "schedule"
 private const val SEGMENT_TRANSPORT = "transport"
 
-fun createRouteFromUri(destination: Uri): Route? {
+fun createJourneyFromUri(destination: Uri): Journey? {
     return when {
-        destination.pathSegments.isEmpty() -> Route.Home()
-        destination.pathSegments.first() == SEGMENT_MAP -> Route.Map()
-        destination.pathSegments.first() == SEGMENT_SCHEDULE -> Route.Schedule()
-        destination.pathSegments.first() == SEGMENT_TRANSPORT -> Route.Transport()
-        destination.pathSegments.first() == SEGMENT_NEWS -> Route.News()
+        destination.pathSegments.isEmpty() -> Route.Home() to Router.Destination.HOME
+        destination.pathSegments.first() == SEGMENT_MAP -> Route.Map() to Router.Destination.MAP
+        destination.pathSegments.first() == SEGMENT_SCHEDULE -> Route.Schedule() to Router.Destination.SCHEDULE
+        destination.pathSegments.first() == SEGMENT_TRANSPORT -> Route.Transport() to Router.Destination.TRANSPORT
+        destination.pathSegments.first() == SEGMENT_NEWS -> Route.News() to Router.Destination.NEWS
         else -> null
     }
 }

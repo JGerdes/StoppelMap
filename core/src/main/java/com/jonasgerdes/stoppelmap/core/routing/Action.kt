@@ -22,6 +22,6 @@ enum class Action {
 }
 
 fun Action?.toRoute() = when (this) {
-    Action.OPEN_NEWS -> Route.News(scrollToTop = true)
+    Action.OPEN_NEWS -> Route.News(scrollToTop = true) to Router.Destination.NEWS
     null -> null
 }

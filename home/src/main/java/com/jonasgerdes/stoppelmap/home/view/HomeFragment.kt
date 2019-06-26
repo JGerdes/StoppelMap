@@ -39,7 +39,7 @@ class HomeFragment : BaseFragment<Route.News>(R.layout.fragment_home) {
 
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.settings_about -> Router.navigateToRoute(Route.Home(detail = HomeDetail.About()))
+                R.id.settings_about -> Router.navigateToRoute(Route.About(), Router.Destination.HOME)
             }
             true
         }
