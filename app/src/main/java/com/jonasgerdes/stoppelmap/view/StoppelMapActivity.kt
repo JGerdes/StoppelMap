@@ -12,7 +12,6 @@ import com.jonasgerdes.stoppelmap.home.view.HomeFragment
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
 
-
 class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Navigator {
 
     private val navigator by lazy {
@@ -50,12 +49,12 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
         val journeyFromAction = Action.fromString(intent.action)?.toRoute()
         when {
-            savedInstanceState != null -> navigator.onloadState(savedInstanceState)
+            savedInstanceState != null -> navigator.onLoadState(savedInstanceState)
             journeyFromAction != null -> {
                 Router.navigateToRoute(journeyFromAction.route, journeyFromAction.destination, clearBackStack = true)
             }
             intent.action == Intent.ACTION_VIEW && intent.data != null -> resolveUri(intent.data)
-            else -> Router.navigateToRoute(Route.Home(), Router.Destination.HOME)
+            else -> Router.switchToDestination(Router.Destination.HOME)
         }
 
 

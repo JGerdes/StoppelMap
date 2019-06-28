@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap.view
 
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -9,6 +11,12 @@ import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.core.widget.saveProcessRoute
 import java.util.*
+import kotlin.collections.ArrayList
+
+private const val CURRENT_DESTINATION = "CURRENT_DESTINATION"
+private const val CURRENT_ROUTE = "CURRENT_ROUTE"
+private const val STACK_NAMES = "STACK_NAMES"
+private const val BACK_STACK_PREFIX = "BACK_STACK_"
 
 class Navigator(
     private @IdRes val hostViewId: Int,
@@ -35,12 +43,17 @@ class Navigator(
             backStack[destination]?.clear()
         }
         backStack[destination]?.add(route)
-        switchToDestination(destination)
         needsFragmentUpdate = true
+        switchToDestination(destination)
 
     }
 
+    private fun Map<Router.Destination, Stack<Route>>.toDebugString() = map { (destination, stack) ->
+        destination.name + " (${stack.size}): " + stack.joinToString(", ")
+    }.joinToString("\n")
+
     override fun switchToDestination(destination: Router.Destination) {
+        Log.d("Navigator", "currentBackStack: \n${backStack.toDebugString()}")
         val currentFragment = currentRoute?.let { route ->
             fragmentManager.findFragmentByTag(route::class.java.name) as BaseFragment<Route>
         }
@@ -85,14 +98,33 @@ class Navigator(
     }
 
     fun onSaveInstanceState(outState: Bundle) {
-        outState.putString("CURRENT_DESTINATION", currentDestination?.name)
-        outState.putParcelable("CURRENT_ROUTE", currentRoute)
+        outState.putString(CURRENT_DESTINATION, currentDestination?.name)
+        outState.putParcelable(CURRENT_ROUTE, currentRoute)
+
+        val list = ArrayList<String>()
+        list.addAll(backStack.keys.map { it.name })
+        outState.putStringArrayList(STACK_NAMES, list)
+
+        backStack.forEach { (key, stack) ->
+            val stackList = ArrayList<Parcelable>()
+            stackList.addAll(stack)
+            outState.putParcelableArrayList("$BACK_STACK_PREFIX$key", stackList)
+        }
     }
 
-    fun onloadState(state: Bundle) {
-        currentDestination = state.getString("CURRENT_DESTINATION")?.let {
+    fun onLoadState(state: Bundle) {
+        val stackNames = state.getStringArrayList(STACK_NAMES)
+
+        stackNames.forEach { key ->
+            val destination = Router.Destination.valueOf(key)
+            val stack: ArrayList<Route> = state.getParcelableArrayList("$BACK_STACK_PREFIX$key")
+            backStack[destination] = Stack<Route>().apply {
+                addAll(stack)
+            }
+        }
+        currentDestination = state.getString(CURRENT_DESTINATION)?.let {
             Router.Destination.valueOf(it)
         }
-        currentRoute = state.getParcelable("CURRENT_ROUTE")
+        currentRoute = state.getParcelable(CURRENT_ROUTE)
     }
 }
