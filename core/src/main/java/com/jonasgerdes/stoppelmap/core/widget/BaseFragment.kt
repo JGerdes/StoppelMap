@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Router
 
 abstract class BaseFragment<R: Route>(@LayoutRes val layoutRes: Int) : Fragment() {
     override fun onCreateView(
@@ -14,7 +15,9 @@ abstract class BaseFragment<R: Route>(@LayoutRes val layoutRes: Int) : Fragment(
         savedInstanceState: Bundle?
     ) = inflater.inflate(layoutRes, container, false)
 
-    open fun onReselected() {}
+    open fun onReselected() {
+        Router.navigateBack()
+    }
 
     open fun processRoute(route: R) {}
 }

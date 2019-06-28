@@ -24,6 +24,5 @@ class AboutFragment: BaseFragment<Route.Home>(R.layout.fragment_about) {
             Router.navigateBack()
         }
 
-
     }
 }

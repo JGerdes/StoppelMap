@@ -76,12 +76,15 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
     }
 
     private fun updateNavigation(destination: Router.Destination) {
-        navigation.selectedItemId = when (destination) {
+        val itemId = when (destination) {
             Router.Destination.HOME -> R.id.nav_home
             Router.Destination.MAP -> R.id.nav_map
             Router.Destination.SCHEDULE -> R.id.nav_schedule
             Router.Destination.TRANSPORT -> R.id.nav_transport
             Router.Destination.NEWS -> R.id.nav_news
+        }
+        if(itemId != navigation.selectedItemId) {
+            navigation.selectedItemId = itemId
         }
     }
 
