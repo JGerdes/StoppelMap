@@ -1,4 +1,4 @@
-package com.jonasgerdes.androidutil.navigation
+package com.jonasgerdes.androidutil
 
 inline fun <reified T : Enum<T>> valueOfOrNull(name: String): T? {
     return try {

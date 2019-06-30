@@ -1,4 +1,4 @@
-package com.jonasgerdes.androidutil.navigation
+package com.jonasgerdes.androidutil
 
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable

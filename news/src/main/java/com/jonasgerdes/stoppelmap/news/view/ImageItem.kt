@@ -2,8 +2,8 @@ package com.jonasgerdes.stoppelmap.news.view
 
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
-import com.jonasgerdes.androidutil.navigation.onComplete
-import com.jonasgerdes.androidutil.navigation.startIfAnimatable
+import com.jonasgerdes.androidutil.onComplete
+import com.jonasgerdes.androidutil.startIfAnimatable
 import com.jonasgerdes.stoppelmap.news.R
 import com.jonasgerdes.stoppelmap.news.data.entity.Image
 import com.xwray.groupie.kotlinandroidextensions.Item

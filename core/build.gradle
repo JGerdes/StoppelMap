@@ -33,6 +33,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation project(':androidutil')
+
     implementation deps.kotlin.stdlib
     implementation deps.androidx.material
     implementation deps.androidx.compat

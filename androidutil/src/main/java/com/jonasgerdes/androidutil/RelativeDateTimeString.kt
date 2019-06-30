@@ -1,7 +1,6 @@
-package com.jonasgerdes.androidutil.navigation
+package com.jonasgerdes.androidutil
 
 import android.content.res.Resources
-import com.jonasgerdes.androidutil.R
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter

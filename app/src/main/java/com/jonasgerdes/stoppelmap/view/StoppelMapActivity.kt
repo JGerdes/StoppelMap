@@ -3,30 +3,25 @@ package com.jonasgerdes.stoppelmap.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import com.jonasgerdes.androidutil.navigation.FragmentFactory
+import com.jonasgerdes.androidutil.navigation.Navigator
+import com.jonasgerdes.androidutil.navigation.createFragmentNavigator
 import com.jonasgerdes.stoppelmap.R
-import com.jonasgerdes.stoppelmap.about.view.AboutFragment
 import com.jonasgerdes.stoppelmap.core.routing.*
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
-import com.jonasgerdes.stoppelmap.home.view.HomeFragment
-import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
+import org.koin.android.ext.android.inject
 
 class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Navigator {
 
+    private val fragmentFactory: FragmentFactory<Route> by inject()
     private val navigator by lazy {
-        Navigator(
-            R.id.fragmentHost, supportFragmentManager, { route ->
-                when (route) {
-                    is Route.Home -> HomeFragment()
-                    is Route.Map -> MapPlaceholderFragment()
-                    is Route.Transport -> TransportPlaceholderFragment()
-                    is Route.Schedule -> SchedulePlaceholderFragment()
-                    is Route.News -> NewsFragment()
-                    is Route.About -> AboutFragment()
-                    else -> HomeFragment()
-                }
-            }, mapOf(
+        createFragmentNavigator(
+            R.id.fragmentHost,
+            supportFragmentManager,
+            fragmentFactory,
+            mapOf(
                 Router.Destination.HOME to Route.Home(),
                 Router.Destination.MAP to Route.Map(),
                 Router.Destination.SCHEDULE to Route.Schedule(),
@@ -83,7 +78,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
             Router.Destination.TRANSPORT -> R.id.nav_transport
             Router.Destination.NEWS -> R.id.nav_news
         }
-        if(itemId != navigation.selectedItemId) {
+        if (itemId != navigation.selectedItemId) {
             navigation.selectedItemId = itemId
         }
     }
@@ -105,13 +100,20 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
     }
 
     override fun navigateBack(): Router.NavigateBackResult {
-        return navigator.navigateBack()
+        return navigator.navigateBack().let { result ->
+            when(result) {
+                Navigator.NavigateBackResult.HANDLED -> Router.NavigateBackResult.HANDLED
+                Navigator.NavigateBackResult.UNHANDLED -> Router.NavigateBackResult.UNHANDLED
+            }
+        }
     }
-
 
     override fun onBackPressed() {
         when (Router.navigateBack()) {
             Router.NavigateBackResult.UNHANDLED -> super.onBackPressed()
+            Router.NavigateBackResult.HANDLED -> {
+                //do nothing
+            }
         }
     }
 }

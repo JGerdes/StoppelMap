@@ -22,12 +22,11 @@
  * SOFTWARE.
  */
 
-package com.jonasgerdes.androidutil.navigation.recyclerview;
+package com.jonasgerdes.androidutil.recyclerview;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;

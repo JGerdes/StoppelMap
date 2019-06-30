@@ -17,7 +17,7 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : BaseFragment<Route.News>(R.layout.fragment_home) {
+class HomeFragment : BaseFragment<Route.Home>(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModel()
 

@@ -5,9 +5,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
-import androidx.core.view.updatePadding
 import com.google.android.material.snackbar.Snackbar
-import com.jonasgerdes.androidutil.navigation.recyclerview.onScrolledToEnd
+import com.jonasgerdes.androidutil.recyclerview.onScrolledToEnd
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.util.observe

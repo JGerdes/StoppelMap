@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap.news.view
 
-import com.jonasgerdes.androidutil.navigation.asRelativeString
+import com.jonasgerdes.androidutil.asRelativeString
 import com.jonasgerdes.stoppelmap.news.R
 import com.jonasgerdes.stoppelmap.news.data.entity.Article
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
