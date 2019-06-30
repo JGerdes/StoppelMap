@@ -17,7 +17,7 @@
         app:title="@string/about_title"
         />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homeCards"
+        android:id="@+id/aboutCards"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:listitem="@layout/item_home_simple_text"
+        tools:listitem="@layout/about_item_version"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

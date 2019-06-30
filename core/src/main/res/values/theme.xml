@@ -23,6 +23,13 @@
         <item name="android:fontFamily">@font/roboto_slab</item>
 
         <item name="cardPadding">@dimen/cardPaddingDefault</item>
+        <item name="cardMarginVertical">@dimen/marginSmall</item>
+        <item name="cardMarginHorizontal">@dimen/marginDefault</item>
+
+        <item name="marginSameContent">@dimen/marginTiny</item>
+        <item name="marginOtherContent">@dimen/marginSmall</item>
+        <item name="marginOtherElement">@dimen/marginDefault</item>
+        <item name="marginOtherSection">@dimen/marginLarge</item>
 
         <item name="shapeAppearanceSmallComponent">@style/StoppelMapTheme.ShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/StoppelMapTheme.ShapeAppearance.MediumComponent</item>
@@ -44,6 +51,7 @@
         <item name="textAppearanceSubtitle1">@style/TextAppearance.StoppelMapTheme.Subtitle1</item>
         <item name="textAppearanceSubtitle2">@style/TextAppearance.StoppelMapTheme.Subtitle2</item>
         <item name="textAppearanceBody1">@style/TextAppearance.StoppelMapTheme.Body1</item>
+        <item name="textAppearanceBodyLink">@style/TextAppearance.StoppelMapTheme.Body1.Link</item>
         <item name="textAppearanceBody2">@style/TextAppearance.StoppelMapTheme.Body2</item>
         <item name="textAppearanceButton">@style/TextAppearance.StoppelMapTheme.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.StoppelMapTheme.Caption</item>
@@ -103,6 +111,14 @@
 
     <style name="TextAppearance.StoppelMapTheme.Caption2" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="TextAppearance.StoppelMapTheme.Body1.Link" parent="TextAppearance.StoppelMapTheme.Body1">
+        <item name="android:autoLink">web</item>
+        <item name="android:drawablePadding">@dimen/marginSmall</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textColor">?colorPrimaryDark</item>
+        <item name="android:textColorLink">?colorPrimaryDark</item>
     </style>
 
     <style name="TextAppearance.StoppelMapTheme.Overline" parent="TextAppearance.MaterialComponents.Overline" />

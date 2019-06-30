@@ -9,4 +9,9 @@
     <dimen name="cardPaddingDefault">24dp</dimen>
     <dimen name="cardPaddingSmall">16dp</dimen>
     <dimen name="cardPaddingTiny">8dp</dimen>
+
+    <dimen name="marginLarge">32dp</dimen>
+    <dimen name="marginDefault">16dp</dimen>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginTiny">4dp</dimen>
 </resources>

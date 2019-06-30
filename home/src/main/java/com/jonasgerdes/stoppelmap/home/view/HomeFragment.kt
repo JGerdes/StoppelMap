@@ -31,7 +31,6 @@ class HomeFragment : BaseFragment<Route.Home>(R.layout.fragment_home) {
 
 
         observe(viewModel.cards) { cards ->
-            Log.d("Flow", "update cards")
             cardAdapter.update(
                 mapCards(cards)
             )
