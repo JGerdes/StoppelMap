@@ -1,4 +1,4 @@
-package com.jonasgerdes.androidutil.navigation.recyclerview
+package com.jonasgerdes.androidutil.recyclerview
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

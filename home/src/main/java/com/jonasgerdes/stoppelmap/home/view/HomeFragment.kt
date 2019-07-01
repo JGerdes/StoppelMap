@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
+import com.jonasgerdes.stoppelmap.core.routing.HomeDetail
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.home.R
@@ -15,7 +17,7 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : BaseFragment<Route.News>(R.layout.fragment_home) {
+class HomeFragment : BaseFragment<Route.Home>(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModel()
 
@@ -29,11 +31,18 @@ class HomeFragment : BaseFragment<Route.News>(R.layout.fragment_home) {
 
 
         observe(viewModel.cards) { cards ->
-            Log.d("Flow", "update cards")
             cardAdapter.update(
                 mapCards(cards)
             )
         }
+
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.settings_about -> Router.navigateToRoute(Route.About(), Router.Destination.HOME)
+            }
+            true
+        }
+
 
     }
 

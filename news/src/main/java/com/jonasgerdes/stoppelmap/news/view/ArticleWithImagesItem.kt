@@ -3,10 +3,10 @@ package com.jonasgerdes.stoppelmap.news.view
 import android.widget.TextView
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.jonasgerdes.androidutil.navigation.asRelativeString
-import com.jonasgerdes.androidutil.navigation.recyclerview.LinePagerIndicatorDecoration
-import com.jonasgerdes.androidutil.navigation.recyclerview.OnCurrentItemChangedListener
-import com.jonasgerdes.androidutil.navigation.recyclerview.removeAllItemDecorations
+import com.jonasgerdes.androidutil.asRelativeString
+import com.jonasgerdes.androidutil.recyclerview.LinePagerIndicatorDecoration
+import com.jonasgerdes.androidutil.recyclerview.OnCurrentItemChangedListener
+import com.jonasgerdes.androidutil.recyclerview.removeAllItemDecorations
 import com.jonasgerdes.stoppelmap.news.R
 import com.jonasgerdes.stoppelmap.news.data.entity.Article
 import com.xwray.groupie.GroupAdapter

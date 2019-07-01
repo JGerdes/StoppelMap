@@ -1,2 +1,2 @@
-include ':app', ':core', ':androidutil', ':news', ':widgets', ':home'
+include ':app', ':core', ':androidutil', ':news', ':widgets', ':home', ':about'
 rootProject.name='StoppelMap'

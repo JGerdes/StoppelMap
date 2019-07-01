@@ -1,4 +1,4 @@
-package com.jonasgerdes.androidutil.navigation
+package com.jonasgerdes.androidutil
 
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.DataSource

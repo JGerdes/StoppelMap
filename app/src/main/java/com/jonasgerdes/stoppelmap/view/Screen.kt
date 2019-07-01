@@ -5,5 +5,6 @@ enum class Screen {
     Map,
     Schedule,
     Transport,
-    News
+    News,
+    About
 }

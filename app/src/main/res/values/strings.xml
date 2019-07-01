@@ -10,4 +10,5 @@
     <string name="main_bottom_nav_item_schedule">Programm</string>
     <string name="main_bottom_nav_item_transport">Anreise</string>
     <string name="main_bottom_nav_item_news">News</string>
+    <string name="main_available_soon">Bald verfügbar</string>
 </resources>

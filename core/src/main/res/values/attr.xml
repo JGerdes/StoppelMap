@@ -6,10 +6,18 @@
     <attr name="interactiveElementElevation" format="dimension" />
 
     <attr name="textAppearanceCaption2" format="reference" />
+    <attr name="textAppearanceBodyLink" format="reference" />
     <attr name="materialCardViewOutlineStyle" format="reference" />
 
     <attr name="colorOnDark" format="color" />
 
     <attr name="cardPadding" format="dimension" />
+    <attr name="cardMarginVertical" format="dimension" />
+    <attr name="cardMarginHorizontal" format="dimension" />
+
+    <attr name="marginSameContent" format="dimension" />
+    <attr name="marginOtherContent" format="dimension" />
+    <attr name="marginOtherElement" format="dimension" />
+    <attr name="marginOtherSection" format="dimension" />
 
 </resources>

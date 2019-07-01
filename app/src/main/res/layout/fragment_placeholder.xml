@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_colorFilter="?colorPrimary"
-        app:lottie_fileName="animation/ferris_wheel.json"
+        app:lottie_fileName="animation/under_construction.json"
         app:lottie_loop="true"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

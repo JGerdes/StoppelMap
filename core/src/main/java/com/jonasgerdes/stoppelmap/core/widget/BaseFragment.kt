@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import com.jonasgerdes.androidutil.navigation.NavigationFragment
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Router
 
-abstract class BaseFragment<R: Route>(@LayoutRes val layoutRes: Int) : Fragment() {
+abstract class BaseFragment<R: Route>(@LayoutRes val layoutRes: Int) : NavigationFragment<R>() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ) = inflater.inflate(layoutRes, container, false)
 
-    open fun onReselected() {}
+    override fun onReselected() {
+        Router.navigateBack()
+    }
 
-    open fun processRoute(route: R) {}
+    override fun processRoute(route: R) {}
 }
 
 @Suppress("UNCHECKED_CAST")
