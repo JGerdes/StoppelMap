@@ -11,6 +11,7 @@ data class AuthorCard(
     val work: String,
     val website: String? = null,
     val githubUrl: String? = null,
+    val gitlabUrl: String? = null,
     val mail: String? = null
 ) : Item() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
@@ -19,6 +20,7 @@ data class AuthorCard(
             itemView.work.text = work
             itemView.urlWebsite.setTextOrHide(website)
             itemView.urlGitHub.setTextOrHide(githubUrl)
+            itemView.urlGitLab.setTextOrHide(gitlabUrl)
             itemView.mail.setTextOrHide(mail)
         }
     }

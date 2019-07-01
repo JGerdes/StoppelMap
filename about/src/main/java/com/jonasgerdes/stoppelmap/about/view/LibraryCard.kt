@@ -12,6 +12,7 @@ data class LibraryCard(
     val name: String,
     val author: String,
     val license: License,
+    val gitlabUrl: String? = null,
     val githubUrl: String? = null,
     val sourceUrl: String? = null
 ) : Item() {
@@ -26,6 +27,7 @@ data class LibraryCard(
                 )
             }
             itemView.urlGitHub.setTextOrHide(githubUrl)
+            itemView.urlGitLab.setTextOrHide(gitlabUrl)
             itemView.sourceUrl.setTextOrHide(sourceUrl)
         }
     }

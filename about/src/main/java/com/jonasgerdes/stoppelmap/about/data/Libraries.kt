@@ -5,34 +5,22 @@ import com.jonasgerdes.stoppelmap.about.view.License
 
 internal val libraries = listOf(
     LibraryCard(
-        name = "Android Architecture Components",
+        name = "Android JetPack",
         author = "The Android Open Source Project",
         license = License.Apache2(),
-        sourceUrl = "https://android.googlesource.com/platform/frameworks/support/+/master/lifecycle/common/src/main/java/android/arch"
+        sourceUrl = "https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev"
     ),
     LibraryCard(
-        name = "Android Compatibility Library v7",
+        name = "Material Components for Android",
         author = "The Android Open Source Project",
         license = License.Apache2(),
-        sourceUrl = "https://android.googlesource.com/platform/frameworks/support.git/+/master/v7/"
-    ),
-    LibraryCard(
-        name = "Android Design Support Library",
-        author = "The Android Open Source Project",
-        license = License.Apache2(),
-        sourceUrl = "https://android.googlesource.com/platform/frameworks/support/+/master/design/"
-    ),
-    LibraryCard(
-        name = "Android Constraint Layout Support Library",
-        author = "The Android Open Source Project",
-        license = License.Apache2(),
-        sourceUrl = "https://android.googlesource.com/platform/frameworks/opt/sherpa/+/studio-3.0/constraintlayout"
+        sourceUrl = "https://github.com/material-components/material-components-android"
     ),
     LibraryCard(
         name = "Firebase Core, Firebase Messaging",
-        author = "The Android Open Source Project",
+        author = "Firebase Contributors",
         license = License.Apache2(),
-        sourceUrl = "https://android.googlesource.com/platform/frameworks/opt/sherpa/+/studio-3.0/constraintlayout"
+        githubUrl = "https://github.com/firebase/firebase-android-sdk"
     ),
     LibraryCard(
         name = "Groupie",
@@ -57,6 +45,12 @@ internal val libraries = listOf(
         author = "Square, Inc.",
         license = License.Apache2(),
         githubUrl = "https://github.com/square/moshi"
+    ),
+    LibraryCard(
+        name = "Retrofit 2 Moshi Converter",
+        author = "Square, Inc.",
+        license = License.Apache2(),
+        githubUrl = "https://github.com/square/retrofit/tree/master/retrofit-converters/moshi"
     ),
     LibraryCard(
         name = "Glide",
@@ -99,5 +93,23 @@ internal val libraries = listOf(
         author = "JetBrains, Inc.",
         license = License.Apache2(),
         githubUrl = "https://github.com/InsertKoinIO/kotlin"
+    ),
+    LibraryCard(
+        name = "RxJava",
+        author = "RxJava Contributors",
+        license = License.Apache2(),
+        githubUrl = "https://github.com/ReactiveX/RxJava"
+    ),
+    LibraryCard(
+        name = "RxAndroid",
+        author = "RxAndroid authors",
+        license = License.Apache2(),
+        githubUrl = "https://github.com/ReactiveX/RxAndroid"
+    ),
+    LibraryCard(
+        name = "RxPermissions",
+        author = "Thomas Bruyelle",
+        license = License.Apache2(),
+        githubUrl = "https://github.com/tbruyelle/RxPermissions"
     )
 )

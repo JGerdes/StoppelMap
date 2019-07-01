@@ -59,6 +59,18 @@
             tools:text="https://github.com/JGerdes"
             />
         <TextView
+            android:id="@+id/urlGitLab"
+            style="?textAppearanceBodyLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/marginSameContent"
+            android:autoLink="web"
+            android:drawableStart="@drawable/ic_gitlab"
+            app:layout_constraintStart_toStartOf="@id/work"
+            app:layout_constraintTop_toBottomOf="@id/urlGitHub"
+            tools:text="https://github.com/JGerdes"
+            />
+        <TextView
             android:id="@+id/mail"
             style="?textAppearanceBodyLink"
             android:layout_width="wrap_content"
@@ -67,7 +79,7 @@
             android:autoLink="email"
             android:drawableStart="@drawable/ic_email"
             app:layout_constraintStart_toStartOf="@id/work"
-            app:layout_constraintTop_toBottomOf="@id/urlGitHub"
+            app:layout_constraintTop_toBottomOf="@id/urlGitLab"
             tools:text="moin@jonasgerdes.com"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
