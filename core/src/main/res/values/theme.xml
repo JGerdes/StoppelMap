@@ -117,8 +117,8 @@
         <item name="android:autoLink">web</item>
         <item name="android:drawablePadding">@dimen/marginSmall</item>
         <item name="android:gravity">start|center_vertical</item>
-        <item name="android:textColor">?colorPrimaryDark</item>
-        <item name="android:textColorLink">?colorPrimaryDark</item>
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textColorLink">?colorPrimary</item>
     </style>
 
     <style name="TextAppearance.StoppelMapTheme.Overline" parent="TextAppearance.MaterialComponents.Overline" />
