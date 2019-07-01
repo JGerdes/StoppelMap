@@ -38,8 +38,8 @@
                 android:propertyName="trimPathOffset"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:valueFrom="0"
-                android:valueTo="1"
+                android:valueFrom="1"
+                android:valueTo="0"
                 android:valueType="floatType" />
             <!--</set>-->
         </aapt:attr>

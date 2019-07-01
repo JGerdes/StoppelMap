@@ -14,9 +14,9 @@ class FragmentFactoryImpl : FragmentFactory<Route> {
             is Route.Home -> HomeFragment()
             is Route.About -> AboutFragment()
 
-            is Route.Map -> MapPlaceholderFragment()
-            is Route.Schedule -> SchedulePlaceholderFragment()
-            is Route.Transport -> TransportPlaceholderFragment()
+            is Route.Map -> WorkInProgressPlaceholderFragment()
+            is Route.Schedule -> WorkInProgressPlaceholderFragment()
+            is Route.Transport -> WorkInProgressPlaceholderFragment()
 
             is Route.News -> NewsFragment()
 

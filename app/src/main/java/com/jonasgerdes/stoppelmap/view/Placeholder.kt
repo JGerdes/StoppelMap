@@ -40,3 +40,7 @@ class NewsPlaceholderFragment : PlaceholderFragment<Route.News>(
     R.layout.fragment_placeholder,
     R.string.main_bottom_nav_item_news
 )
+class WorkInProgressPlaceholderFragment : PlaceholderFragment<Route.News>(
+    R.layout.fragment_placeholder,
+    R.string.main_available_soon
+)
