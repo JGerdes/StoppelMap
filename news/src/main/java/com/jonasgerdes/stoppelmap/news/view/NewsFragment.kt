@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import androidx.core.view.updatePadding
 import com.google.android.material.snackbar.Snackbar
 import com.jonasgerdes.androidutil.navigation.recyclerview.onScrolledToEnd
+import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
@@ -31,10 +32,7 @@ class NewsFragment : BaseFragment<Route.News>(R.layout.fragment_news) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        toolbar.setOnApplyWindowInsetsListener { v, insets ->
-            insets.apply { toolbar.updatePadding(top = insets.systemWindowInsetTop) }
-        }
-        toolbar.requestApplyInsets()
+        toolbar.consumeWindowInsetsTop()
 
         articleList.adapter = articleAdapter.apply {
             add(articleSection)

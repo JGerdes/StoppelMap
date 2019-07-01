@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.news.fcm.subscribeToNewsMessages
 import com.jonasgerdes.stoppelmap.news.newsModule
 import org.koin.android.ext.koin.androidContext
@@ -17,7 +18,11 @@ class App : Application() {
             androidContext(this@App)
             androidLogger()
 
-            modules(appModule, newsModule)
+            modules(
+                appModule,
+                homeModule,
+                newsModule
+            )
         }
 
         AndroidThreeTen.init(this)
