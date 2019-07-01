@@ -5,5 +5,5 @@ sealed class Route {
     class Map : Route()
     class Schedule : Route()
     class Transport : Route()
-    class News : Route()
+    data class News(val forceReload:Boolean = false, val scrollToTop: Boolean = false) : Route()
 }

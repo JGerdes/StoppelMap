@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">AndroidUtil</string>
+
+    <string name="date_today">heute</string>
+    <string name="date_yesterday">gestern</string>
+
+    <string name="date_weekday_monday">Montag</string>
+    <string name="date_weekday_tuesday">Dienstag</string>
+    <string name="date_weekday_wednesday">Mittwoch</string>
+    <string name="date_weekday_thursday">Donnerstag</string>
+    <string name="date_weekday_friday">Freitag</string>
+    <string name="date_weekday_saturday">Samstag</string>
+    <string name="date_weekday_sunday">Sonntag</string>
+
+    <plurals name="date_weeks_ago">
+        <item quantity="one">vor einer Woche</item>
+        <item quantity="two">vor zwei Wochen</item>
+        <item quantity="other">vor %d Wochen</item>
+    </plurals>
 </resources>

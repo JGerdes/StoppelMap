@@ -33,7 +33,8 @@ class FragmentScreenNavigator<T : Enum<T>>(
 ) {
 
     private var currentScreen: T? = null
-    @IdRes var hostViewId: Int? = null
+    @IdRes
+    var hostViewId: Int? = null
     var fragmentManager: FragmentManager? = null
 
     fun saveState(bundle: Bundle) {
@@ -45,20 +46,27 @@ class FragmentScreenNavigator<T : Enum<T>>(
         currentScreen = enumFactory(name)
     }
 
-    fun showScreen(screen: T) = hostViewId?.let { hostId ->
-        fragmentManager?.let { manager ->
-            manager.beginTransaction().apply {
-                val existingFragment = manager.findFragmentByTag(screen.name)
-                val currentFragment = currentScreen?.let { manager.findFragmentByTag(it.name) }
+    sealed class ShowScreenResult<T> {
+        data class Success<T>(val screen: T, val fragment: Fragment, val reselected: Boolean) : ShowScreenResult<T>()
+        class Failure<T> : ShowScreenResult<T>()
+    }
 
+    fun showScreen(screen: T): ShowScreenResult<T> = hostViewId?.let { hostId ->
+        var result: ShowScreenResult<T> = ShowScreenResult.Failure()
+        fragmentManager?.let { manager ->
+            val existingFragment = manager.findFragmentByTag(screen.name)
+            val currentFragment = currentScreen?.let { manager.findFragmentByTag(it.name) }
+            manager.beginTransaction().apply {
                 val fragment = existingFragment ?: fragmentFactory(screen).also {
                     add(hostId, it, screen.name)
                 }
                 currentFragment?.let { hide(it) }
                 show(fragment)
+                result = ShowScreenResult.Success(screen, fragment, screen == currentScreen)
                 currentScreen = screen
             }.commitNowAllowingStateLoss()
         }
-    }
+        result
+    } ?: ShowScreenResult.Failure()
 
 }

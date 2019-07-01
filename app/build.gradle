@@ -53,9 +53,12 @@ dependencies {
 
     implementation project(':widgets')
     implementation project(':core')
+    implementation project(':news')
     implementation project(':androidutil')
 
     implementation deps.kotlin.stdlib
+    implementation deps.kotlin.coroutines
+    implementation deps.kotlin.coroutines_android
 
     implementation deps.firebase.core
     implementation deps.firebase.messaging
@@ -68,6 +71,8 @@ dependencies {
     implementation deps.koin.core
     implementation deps.koin.android
     implementation deps.koin.viewmodel
+
+    implementation deps.threeten_android
 
     implementation deps.lottie
 }

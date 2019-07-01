@@ -5,6 +5,8 @@ def deps = [:]
 
 def kotlin = [:]
 kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+kotlin.coroutines = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.0'
+kotlin.coroutines_android = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.0'
 deps.kotlin = kotlin
 
 def androidx = [:]
@@ -16,12 +18,14 @@ androidx.constraint_layout = 'androidx.constraintlayout:constraintlayout:2.0.0-b
 androidx.arch = [:]
 androidx.arch.runtime = "android.arch.work:work-runtime-ktx:1.0.1"
 
-def version_room = '2.0.0'
-def version_lifecycle = '2.0.0'
+def version_room = '2.1.0-rc01'
+def version_lifecycle = '2.2.0-alpha01'
 androidx.arch.room = [:]
 androidx.arch.room.runtime = "androidx.room:room-runtime:$version_room"
 androidx.arch.room.compiler = "androidx.room:room-compiler:$version_room"
+androidx.arch.room.ktx = "androidx.room:room-ktx:$version_room"
 androidx.arch.lifecycle = "androidx.lifecycle:lifecycle-extensions:$version_lifecycle"
+androidx.arch.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle"
 androidx.arch.lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:$version_lifecycle"
 deps.androidx = androidx
 
@@ -43,7 +47,7 @@ deps.rx = rx
 
 
 def retrofit = [:]
-retrofit.core = 'com.squareup.retrofit2:retrofit:2.5.0'
+retrofit.core = 'com.squareup.retrofit2:retrofit:2.3.0'
 retrofit.coroutines = 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 retrofit.moshi = 'com.squareup.retrofit2:converter-moshi:2.3.0'
 deps.retrofit = retrofit

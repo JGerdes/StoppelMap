@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.jonasgerdes.stoppelmap">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -21,9 +23,27 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="open.stoppelmap.de"
+                    android:scheme="https" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="com.jonasgerdes.stoppelmap.action.OPEN_NEWS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
         </activity-alias>
 
-        <activity android:name=".view.StoppelMapActivity" />
+        <activity
+            android:name=".view.StoppelMapActivity"
+            android:theme="@style/AppTheme.Splash" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"

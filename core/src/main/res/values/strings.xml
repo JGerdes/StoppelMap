@@ -1,3 +1,4 @@
 <resources>
-
+    <string name="generic_error_no_network">Keine bestehende Internetverbindung</string>
+    <string name="generic_error_unknown">Ein unbekannter Fehler ist aufgetreten</string>
 </resources>

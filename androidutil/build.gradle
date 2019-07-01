@@ -27,9 +27,16 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation deps.kotlin.stdlib
+    implementation deps.kotlin.coroutines
+    implementation deps.kotlin.coroutines_android
 
     implementation deps.androidx.compat
     implementation deps.androidx.material
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
+
+    implementation deps.threeten_android
+    implementation deps.glide
+
+    testImplementation deps.threeten
 }

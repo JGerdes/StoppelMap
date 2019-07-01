@@ -6,26 +6,53 @@
     <style name="StoppelMapTheme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/stoppelPurple</item>
         <item name="colorPrimaryVariant">@color/stoppelIndigo</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorOnPrimary">@color/lightText</item>
 
         <item name="colorSecondary">@color/stoppelPink</item>
         <item name="colorSecondaryVariant">@color/stoppelHotPink</item>
-        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorOnSecondary">@color/lightText</item>
 
         <item name="colorError">@color/crimson</item>
-        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorOnError">@color/lightText</item>
+
+        <item name="colorOnDark">@color/lightText</item>
 
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
         <item name="fontFamily">@font/roboto_slab</item>
         <item name="android:fontFamily">@font/roboto_slab</item>
 
+        <item name="cardPadding">@dimen/cardPaddingDefault</item>
 
         <item name="shapeAppearanceSmallComponent">@style/StoppelMapTheme.ShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/StoppelMapTheme.ShapeAppearance.MediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/StoppelMapTheme.ShapeAppearance.LargeComponent</item>
 
         <item name="bottomNavigationStyle">@style/StoppelMapTheme.BottomNavigation</item>
+
+        <item name="noElevation">@dimen/elevationNone</item>
+        <item name="floatingCardElevation">@dimen/elevationDefault</item>
+        <item name="cardHighlightElevation">@dimen/elevationFocus</item>
+        <item name="interactiveElementElevation">@dimen/elevationImportant</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearance.StoppelMapTheme.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.StoppelMapTheme.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.StoppelMapTheme.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.StoppelMapTheme.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.StoppelMapTheme.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.StoppelMapTheme.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.StoppelMapTheme.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.StoppelMapTheme.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.StoppelMapTheme.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.StoppelMapTheme.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.StoppelMapTheme.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.StoppelMapTheme.Caption</item>
+        <item name="textAppearanceCaption2">@style/TextAppearance.StoppelMapTheme.Caption2</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.StoppelMapTheme.Overline</item>
+
+        <item name="materialCardViewStyle">@style/StoppelMapTheme.CardView</item>
+        <item name="materialCardViewOutlineStyle">@style/StoppelMapTheme.OutlineCardView</item>
+
     </style>
 
     <style name="StoppelMapTheme.ShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
@@ -41,6 +68,50 @@
     <style name="StoppelMapTheme.ShapeAppearance.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="TextAppearance.StoppelMapTheme.Headline1" parent="TextAppearance.MaterialComponents.Headline1" />
+
+    <style name="TextAppearance.StoppelMapTheme.Headline2" parent="TextAppearance.MaterialComponents.Headline2" />
+
+    <style name="TextAppearance.StoppelMapTheme.Headline3" parent="TextAppearance.MaterialComponents.Headline3" />
+
+    <style name="TextAppearance.StoppelMapTheme.Headline4" parent="TextAppearance.MaterialComponents.Headline4" />
+
+    <style name="TextAppearance.StoppelMapTheme.Headline5" parent="TextAppearance.MaterialComponents.Headline5" />
+
+    <style name="TextAppearance.StoppelMapTheme.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.StoppelMapTheme.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1" />
+
+    <style name="TextAppearance.StoppelMapTheme.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2" />
+
+    <style name="TextAppearance.StoppelMapTheme.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.StoppelMapTheme.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.StoppelMapTheme.Button" parent="TextAppearance.MaterialComponents.Button" />
+
+    <style name="TextAppearance.StoppelMapTheme.Caption" parent="TextAppearance.MaterialComponents.Caption" />
+
+    <style name="TextAppearance.StoppelMapTheme.Caption2" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="TextAppearance.StoppelMapTheme.Overline" parent="TextAppearance.MaterialComponents.Overline" />
+
+    <style name="StoppelMapTheme.CardView" parent="Widget.MaterialComponents.CardView" />
+
+    <style name="StoppelMapTheme.OutlineCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">?attr/noElevation</item>
+        <item name="strokeColor">@color/outline_color</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
     <style name="StoppelMapTheme.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
