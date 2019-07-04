@@ -5,6 +5,7 @@ import com.jonasgerdes.androidutil.navigation.NavigationFragment
 import com.jonasgerdes.stoppelmap.about.view.AboutFragment
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.home.view.HomeFragment
+import com.jonasgerdes.stoppelmap.map.MapFragment
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 
 class FragmentFactoryImpl : FragmentFactory<Route> {
@@ -14,7 +15,7 @@ class FragmentFactoryImpl : FragmentFactory<Route> {
             is Route.Home -> HomeFragment()
             is Route.About -> AboutFragment()
 
-            is Route.Map -> WorkInProgressPlaceholderFragment()
+            is Route.Map -> MapFragment()
             is Route.Schedule -> WorkInProgressPlaceholderFragment()
             is Route.Transport -> WorkInProgressPlaceholderFragment()
 
