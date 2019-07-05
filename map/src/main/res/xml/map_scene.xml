@@ -39,12 +39,22 @@
             app:layout_constraintTop_toTopOf="@id/searchCard" />
 
         <Constraint
+            android:id="@+id/searchHint"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/searchCard"
+            app:layout_constraintEnd_toStartOf="@id/searchIcon"
+            app:layout_constraintStart_toStartOf="@id/searchCard"
+            app:layout_constraintTop_toTopOf="@id/searchCard" />
+
+        <Constraint
             android:id="@+id/searchIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@id/searchCard"
             app:layout_constraintEnd_toEndOf="@id/searchCard"
+            app:progress="0"
             app:layout_constraintTop_toTopOf="@id/searchCard" />
 
         <Constraint
@@ -106,10 +116,21 @@
             app:layout_constraintTop_toTopOf="@id/searchCard" />
 
         <Constraint
+            android:id="@+id/searchHint"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/searchCard"
+            app:layout_constraintEnd_toStartOf="@id/searchIcon"
+            app:layout_constraintStart_toStartOf="@id/searchCard"
+            app:layout_constraintTop_toTopOf="@id/searchCard" />
+
+        <Constraint
             android:id="@+id/searchIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
+            app:progress="1"
             app:layout_constraintBottom_toBottomOf="@id/searchCard"
             app:layout_constraintStart_toStartOf="@id/searchCard"
             app:layout_constraintTop_toTopOf="@id/searchCard" />

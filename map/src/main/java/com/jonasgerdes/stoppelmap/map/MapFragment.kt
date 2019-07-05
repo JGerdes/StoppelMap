@@ -38,16 +38,25 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     override fun processRoute(route: Route.Map) {
         when (route.state) {
-            is Route.Map.State.Idle -> {
-                motionLayout.transitionToState(R.id.idle)
-                searchInput.clearFocus()
-            }
-            is Route.Map.State.Search -> {
-                motionLayout.transitionToState(R.id.search)
-                searchInput.requestFocus()
-                searchInput.showKeyboard()
+            is Route.Map.State.Idle -> setIdleState()
+            is Route.Map.State.Search -> setSearchState()
+        }
+    }
 
-            }
+    private fun setIdleState() {
+        motionLayout.transitionToState(R.id.idle)
+        searchInput.clearFocus()
+        searchIcon.setOnClickListener {
+            Router.navigateToRoute(Route.Map(state = Route.Map.State.Search()), Router.Destination.MAP)
+        }
+    }
+
+    private fun setSearchState() {
+        motionLayout.transitionToState(R.id.search)
+        searchInput.requestFocus()
+        searchInput.showKeyboard()
+        searchIcon.setOnClickListener {
+            Router.navigateBack()
         }
     }
 }

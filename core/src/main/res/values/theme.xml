@@ -16,6 +16,7 @@
         <item name="colorOnError">@color/lightText</item>
 
         <item name="colorOnDark">@color/lightText</item>
+        <item name="colorControlNormal">@color/mutedGrey</item>
 
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
