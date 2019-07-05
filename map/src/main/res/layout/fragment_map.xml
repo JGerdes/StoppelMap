@@ -2,16 +2,25 @@
 <androidx.constraintlayout.motion.widget.MotionLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/map_scene"
-    app:motionDebug="SHOW_ALL"
+    tools:motionDebug="SHOW_ALL"
     >
-    <FrameLayout
-        android:id="@+id/map"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTop"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="?colorPrimaryDark"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="32dp"
+        />
+    <FrameLayout
+        android:id="@+id/mapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#eee"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,13 +31,40 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="MAP"
-            android:textColor="?colorOnPrimary"
             />
     </FrameLayout>
-
-    <EditText
-        android:id="@+id/searchInput"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:cardElevation="0dp"
         />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="?colorSurface"
+        app:cardElevation="12dp"
+        />
+
+    <com.jonasgerdes.androidutil.widget.ExtendedEditText
+        android:id="@+id/searchInput"
+        style="@style/StoppelMapTheme.SearchEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical"
+        android:elevation="12dp"
+        android:hint="@string/map_search_hint"
+        android:outlineProvider="none"
+        />
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:elevation="12dp"
+        android:outlineProvider="none"
+        android:src="@drawable/ic_search"
+        />
+
 </androidx.constraintlayout.motion.widget.MotionLayout>

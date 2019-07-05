@@ -147,4 +147,15 @@
     <style name="StoppelMapTheme.BottomNavigation.TextAppearanceActive" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="StoppelMapTheme.SearchEditText">
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lines">1</item>
+        <item name="android:background">@null</item>
+    </style>
 </resources>
