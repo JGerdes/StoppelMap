@@ -1,16 +1,13 @@
-package com.jonasgerdes.stoppelmap.map
+package com.jonasgerdes.stoppelmap.map.view
 
 import android.os.Bundle
 import android.view.View
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
-import kotlinx.android.synthetic.main.fragment_map.*
-import com.mapbox.mapboxsdk.maps.Style.OnStyleLoaded
-import com.mapbox.mapboxsdk.maps.Style.MAPBOX_STREETS
-import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
+import com.jonasgerdes.stoppelmap.map.R
 import com.mapbox.mapboxsdk.maps.Style
+import kotlinx.android.synthetic.main.fragment_map.*
 
 
 class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
@@ -34,8 +31,13 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     private fun initMapView(savedInstanceState: Bundle?) {
         mapView.onCreate(savedInstanceState)
-        mapView.getMapAsync { mapboxMap ->
-            mapboxMap.setStyle(MAPBOX_STREETS)
+        mapView.getMapAsync {map ->
+            val styleBuilder = Style.Builder().fromUri("asset://style-light.json")
+            initMapUi(map)
+            initMapCamera(map)
+            map.setStyle(styleBuilder) { style ->
+                loadImages(context!!, style)
+            }
         }
     }
 

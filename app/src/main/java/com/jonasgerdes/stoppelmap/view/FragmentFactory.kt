@@ -5,7 +5,7 @@ import com.jonasgerdes.androidutil.navigation.NavigationFragment
 import com.jonasgerdes.stoppelmap.about.view.AboutFragment
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.home.view.HomeFragment
-import com.jonasgerdes.stoppelmap.map.MapFragment
+import com.jonasgerdes.stoppelmap.map.view.MapFragment
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
 
 class FragmentFactoryImpl : FragmentFactory<Route> {

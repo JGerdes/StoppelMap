@@ -1,0 +1,1510 @@
+{
+    "version": 8,
+    "name": "Light",
+    "metadata": {
+        "mapbox:autocomposite": true,
+        "mapbox:type": "template",
+        "mapbox:trackposition": false
+    },
+    "center": [
+            8.295483738183975,
+            52.74736962293996
+    ],
+    "zoom": 15.2,
+    "bearing": 0,
+    "pitch": 0,
+    "sources": {
+        "composite": {
+            "type": "geojson",
+            "data": "asset://stoppelmap.geojson"
+        },
+        "selected-marker": {
+            "type": "geojson",
+            "data": "asset://empty.geojson"
+        }
+    },
+    "ignore_sprite": "asset://mapbox/sprites/sprite",
+    "glyphs": "asset://mapbox/fonts/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "id": "background",
+            "type": "background",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "background-color": "#DDF9DA"
+            }
+        },
+        {
+            "id": "parking",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Polygon"
+                ],
+                [
+                    "==",
+                    "amenity",
+                    "parking"
+                ]
+            ],
+            "layout": {},
+            "paint": {
+                "fill-color": {
+                    "base": 1,
+                    "type": "exponential",
+                    "property": "parkId",
+                    "stops": [
+                        [
+                            0,
+                            "#BAAf98"
+                        ],
+                        [
+                            16,
+                            "#F7F4EB"
+                        ]
+                    ],
+                    "default": "hsl(236, 100%, 50%)"
+                },
+                "fill-opacity": 1
+            }
+        },
+        {
+            "id": "bus_stop",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "public_transport",
+                    "platform",
+                    "bus"
+                ],
+                [
+                    "in",
+                    "$type",
+                    "LineString",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            15,
+                            2
+                        ],
+                        [
+                            16,
+                            4
+                        ],
+                        [
+                            17,
+                            8
+                        ],
+                        [
+                            18,
+                            16
+                        ],
+                        [
+                            19,
+                            32
+                        ],
+                        [
+                            20,
+                            64
+                        ],
+                        [
+                            21,
+                            128
+                        ]
+                    ]
+                },
+                "line-color": "#FAFAFA",
+                "line-gap-width": 0,
+                "line-blur": 0
+            }
+        },
+        {
+            "id": "street",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "highway",
+                    "residential"
+                ],
+                [
+                    "in",
+                    "$type",
+                    "LineString",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            15,
+                            4
+                        ],
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            17,
+                            16
+                        ],
+                        [
+                            18,
+                            32
+                        ],
+                        [
+                            19,
+                            64
+                        ],
+                        [
+                            20,
+                            128
+                        ],
+                        [
+                            21,
+                            256
+                        ]
+                    ]
+                },
+                "line-color": "#FFFFFF",
+                "line-gap-width": 0,
+                "line-blur": 0
+            }
+        },
+        {
+            "id": "train",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "==",
+                    "public_transport",
+                    "train"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgb(64, 64, 64)",
+                "line-gap-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            0
+                        ],
+                        [
+                            17,
+                            4
+                        ],
+                        [
+                            18,
+                            8
+                        ],
+                        [
+                            19,
+                            16
+                        ],
+                        [
+                            20,
+                            32
+                        ],
+                        [
+                            21,
+                            64
+                        ],
+                        [
+                            22,
+                            128
+                        ]
+                    ]
+                },
+                "line-dasharray": [
+                    10,
+                    1
+                ],
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            4
+                        ],
+                        [
+                            17,
+                            3
+                        ],
+                        [
+                            18,
+                            6
+                        ],
+                        [
+                            19,
+                            12
+                        ],
+                        [
+                            20,
+                            24
+                        ],
+                        [
+                            21,
+                            48
+                        ],
+                        [
+                            22,
+                            92
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "stalls",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Polygon"
+                ],
+                [
+                    "has",
+                    "building"
+                ],
+                [
+                    "!=",
+                    "building",
+                    "yes"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "building",
+                    "stops": [
+                        [
+                            "bar",
+                            "#A4BDF7"
+                        ],
+                        [
+                            "ride",
+                            "#83D8C5"
+                        ],
+                        [
+                            "food-stall",
+                            "#F8EDB2"
+                        ],
+                        [
+                            "candy-stall",
+                            "#F4C9F1"
+                        ],
+                        [
+                            "restroom",
+                            "#EE93B0"
+                        ],
+                        [
+                            "game-stall",
+                            "#909BCC"
+                        ],
+                        [
+                            "seller-stall",
+                            "#C8C6BE"
+                        ],
+                        [
+                            "exhibition",
+                            "#AEAEBE"
+                        ],
+                        [
+                            "misc",
+                            "#EEC193"
+                        ],
+                        [
+                            "building",
+                            "#EEc193"
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "stalls copy",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "Polygon"
+                ],
+                [
+                    "has",
+                    "building"
+                ]
+            ],
+            "layout": {
+                "visibility": "none"
+            },
+            "paint": {
+                "fill-color": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "building",
+                    "stops": [
+                        [
+                            "bar",
+                            "#A4BDF7"
+                        ],
+                        [
+                            "ride",
+                            "#85D2D8"
+                        ],
+                        [
+                            "food-stall",
+                            "#F8EDB2"
+                        ],
+                        [
+                            "candy-stall",
+                            "#B29CDA"
+                        ],
+                        [
+                            "restroom",
+                            "#AC1457"
+                        ],
+                        [
+                            "game-stall",
+                            "#C7F98C"
+                        ],
+                        [
+                            "seller-stall",
+                            "#8B9DFE"
+                        ],
+                        [
+                            "exhibition",
+                            "#283592"
+                        ],
+                        [
+                            "misc",
+                            "hsl(23, 40%, 71%)"
+                        ],
+                        [
+                            "building",
+                            "hsl(23, 40%, 71%)"
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "sidewalk",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "==",
+                    "$type",
+                    "LineString"
+                ],
+                [
+                    "==",
+                    "highway",
+                    "pedestrian"
+                ]
+            ],
+            "layout": {
+                "visibility": "visible",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-width": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            15,
+                            2
+                        ],
+                        [
+                            16,
+                            4
+                        ],
+                        [
+                            17,
+                            8
+                        ],
+                        [
+                            18,
+                            16
+                        ],
+                        [
+                            19,
+                            32
+                        ],
+                        [
+                            20,
+                            64
+                        ],
+                        [
+                            21,
+                            128
+                        ],
+                        [
+                            22,
+                            256
+                        ]
+                    ]
+                },
+                "line-color": "#FFFFFF",
+                "line-dasharray": [
+                    2,
+                    0.5
+                ]
+            }
+        },
+        {
+            "id": "label 1",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"
+            },
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "all",
+                    [
+                        "==",
+                        "priority",
+                        1
+                    ],
+                    [
+                        "has",
+                        "building"
+                    ]
+                ],
+                [
+                    "in",
+                    "$type",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "text-optional": true,
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "building",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ],
+                        [
+                            "ignore",
+                            "misc"
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
+                "text-translate": [
+                    0,
+                    -6
+                ],
+                "icon-translate": [
+                    0,
+                    -8
+                ],
+                "icon-translate-anchor": "viewport",
+                "icon-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16.99,
+                            0
+                        ],
+                        [
+                            17,
+                            1
+                        ]
+                    ]
+                },
+                "text-opacity": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16.99,
+                            0
+                        ],
+                        [
+                            17,
+                            1
+                        ]
+                    ]
+                }
+            }
+        },
+        {
+            "id": "label 2",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"
+            },
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "minzoom": 17,
+            "filter": [
+                "all",
+                [
+                    "all",
+                    [
+                        "==",
+                        "priority",
+                        2
+                    ],
+                    [
+                        "has",
+                        "building"
+                    ]
+                ],
+                [
+                    "in",
+                    "$type",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "text-optional": true,
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "building",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
+                "text-translate": [
+                    0,
+                    -6
+                ],
+                "icon-translate": [
+                    0,
+                    -8
+                ],
+                "icon-translate-anchor": "viewport"
+            }
+        },
+        {
+            "id": "label 3",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"
+            },
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "minzoom": 15.5,
+            "filter": [
+                "all",
+                [
+                    "all",
+                    [
+                        "==",
+                        "priority",
+                        3
+                    ],
+                    [
+                        "has",
+                        "building"
+                    ]
+                ],
+                [
+                    "in",
+                    "$type",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "text-optional": true,
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "building",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
+                "text-translate": [
+                    0,
+                    -6
+                ],
+                "icon-translate": [
+                    0,
+                    -8
+                ],
+                "icon-translate-anchor": "viewport"
+            }
+        },
+        {
+            "id": "label 4",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"
+            },
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "minzoom": 15,
+            "filter": [
+                "all",
+                [
+                    "all",
+                    [
+                        "==",
+                        "priority",
+                        4
+                    ],
+                    [
+                        "has",
+                        "building"
+                    ]
+                ],
+                [
+                    "in",
+                    "$type",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "text-optional": true,
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "building",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
+                "text-translate": [
+                    0,
+                    -6
+                ],
+                "icon-translate": [
+                    0,
+                    -8
+                ],
+                "icon-translate-anchor": "viewport"
+            }
+        },
+        {
+            "id": "label 5",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"
+            },
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "all",
+                    [
+                        "==",
+                        "priority",
+                        5
+                    ],
+                    [
+                        "has",
+                        "building"
+                    ]
+                ],
+                [
+                    "in",
+                    "$type",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "building",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ]
+                    ]
+                },
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
+                "text-translate": [
+                    0,
+                    -6
+                ],
+                "icon-translate": [
+                    0,
+                    -8
+                ],
+                "icon-translate-anchor": "viewport"
+            }
+        },
+        {
+            "id": "label parking",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"
+            },
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                [
+                    "has",
+                    "amenity"
+                ],
+                [
+                    "in",
+                    "$type",
+                    "Point",
+                    "Polygon"
+                ]
+            ],
+            "layout": {
+                "text-optional": true,
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "amenity",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ]
+                    ]
+                },
+                "symbol-spacing": 25,
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
+                "text-translate": [
+                    0,
+                    -6
+                ],
+                "icon-translate": [
+                    0,
+                    -8
+                ],
+                "icon-translate-anchor": "viewport"
+            }
+        },
+        {
+            "id": "selected-marker-layer",
+            "type": "symbol",
+            "source": "selected-marker",
+            "source-layer": "selected-markers",
+            "layout": {
+                "text-optional": true,
+                "icon-offset": [
+                    0,
+                    0
+                ],
+                "icon-image": {
+                    "base": 1,
+                    "type": "categorical",
+                    "property": "type",
+                    "stops": [
+                        [
+                            "misc",
+                            "misc"
+                        ],
+                        [
+                            "bar",
+                            "bar"
+                        ],
+                        [
+                            "food-stall",
+                            "food_stall"
+                        ],
+                        [
+                            "ride",
+                            "ride"
+                        ],
+                        [
+                            "restroom",
+                            "restroom"
+                        ],
+                        [
+                            "building",
+                            "restaurant"
+                        ],
+                        [
+                            "candy-stall",
+                            "candy_stall"
+                        ],
+                        [
+                            "game-stall",
+                            "game_stall"
+                        ],
+                        [
+                            "seller-stall",
+                            "seller_stall"
+                        ],
+                        [
+                            "exhibition",
+                            "expo"
+                        ],
+                        [
+                            "parking",
+                            "parking"
+                        ]
+                    ]
+                },
+                "symbol-spacing": 25,
+                "text-font": [
+                    "Roboto Slab Regular"
+                ],
+                "text-justify": "left",
+                "text-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            20,
+                            0
+                        ]
+                    ]
+                },
+                "visibility": "visible",
+                "text-offset": [
+                    0,
+                    -0.8
+                ],
+                "text-anchor": "bottom",
+                "text-field": "{name}",
+                "icon-padding": {
+                    "base": 1,
+                    "stops": [
+                        [
+                            16,
+                            8
+                        ],
+                        [
+                            19,
+                            0
+                        ]
+                    ]
+                },
+                "text-max-width": 20,
+                "icon-allow-overlap": true
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate-anchor": "viewport",
+                "text-translate": [
+                    0,
+                    -6
+                ],
+                "icon-translate": [
+                    0,
+                    -8
+                ],
+                "icon-translate-anchor": "viewport"
+            }
+        }
+    ],
+    "created": "2018-04-15T18:27:46.518Z",
+    "id": "cjg157v7z1c112sludl8571c3",
+    "modified": "2018-04-17T07:21:51.885Z",
+    "owner": "stoppelmap",
+    "visibility": "private",
+    "draft": false
+}
