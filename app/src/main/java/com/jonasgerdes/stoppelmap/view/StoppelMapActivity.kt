@@ -23,7 +23,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
             fragmentFactory,
             mapOf(
                 Router.Destination.HOME to Route.Home(),
-                Router.Destination.MAP to Route.Map(),
+                Router.Destination.MAP to Route.Map(state = Route.Map.State.Idle()),
                 Router.Destination.SCHEDULE to Route.Schedule(),
                 Router.Destination.TRANSPORT to Route.Transport(),
                 Router.Destination.NEWS to Route.News()
@@ -101,7 +101,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
     override fun navigateBack(): Router.NavigateBackResult {
         return navigator.navigateBack().let { result ->
-            when(result) {
+            when (result) {
                 Navigator.NavigateBackResult.HANDLED -> Router.NavigateBackResult.HANDLED
                 Navigator.NavigateBackResult.UNHANDLED -> Router.NavigateBackResult.UNHANDLED
             }

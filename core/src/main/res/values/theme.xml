@@ -156,6 +156,8 @@
         <item name="android:paddingEnd">16dp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
         <item name="android:background">@null</item>
     </style>
 </resources>

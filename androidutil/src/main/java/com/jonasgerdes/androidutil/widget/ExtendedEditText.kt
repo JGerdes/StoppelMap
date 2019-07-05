@@ -4,10 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo.IME_ACTION_UNSPECIFIED
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatEditText
 
 
 typealias BackPressListener = () -> Unit
+typealias FocusRegainedListener = () -> Unit
 
 class ExtendedEditText @JvmOverloads constructor(
     context: Context,
@@ -32,4 +34,10 @@ class ExtendedEditText @JvmOverloads constructor(
         }
         return super.onKeyPreIme(keyCode, event)
     }
+
+    fun showKeyboard() = post {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+    }
+
 }

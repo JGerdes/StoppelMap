@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.map
 import android.os.Bundle
 import android.view.View
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import kotlinx.android.synthetic.main.fragment_map.*
 
@@ -23,23 +24,30 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         }
         motionLayout.requestApplyInsets()
 
-        mapView.isFocusable = true
-        mapView.isFocusableInTouchMode = true
-        searchInput.isFocusable = true
-        searchInput.isFocusableInTouchMode = true
-        searchInput.clearFocus()
-
-        searchInput.setOnFocusChangeListener { view, focus ->
-            if (focus) {
-                motionLayout.transitionToState(R.id.search)
-            } else {
-                motionLayout.transitionToState(R.id.idle)
-            }
-        }
 
         searchInput.onBackPress {
-            searchInput.clearFocus()
+            Router.navigateBack()
         }
 
+        searchCard.setOnClickListener {
+            Router.navigateToRoute(Route.Map(state = Route.Map.State.Search()), Router.Destination.MAP)
+        }
+
+
+    }
+
+    override fun processRoute(route: Route.Map) {
+        when (route.state) {
+            is Route.Map.State.Idle -> {
+                motionLayout.transitionToState(R.id.idle)
+                searchInput.clearFocus()
+            }
+            is Route.Map.State.Search -> {
+                motionLayout.transitionToState(R.id.search)
+                searchInput.requestFocus()
+                searchInput.showKeyboard()
+
+            }
+        }
     }
 }

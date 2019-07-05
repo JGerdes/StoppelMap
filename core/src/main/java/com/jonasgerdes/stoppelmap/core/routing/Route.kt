@@ -9,7 +9,17 @@ abstract class Route : Parcelable {
     class Home : Route()
 
     @Parcelize
-    class Map : Route()
+    data class Map(
+        val state: State
+    ) : Route() {
+        sealed class State : Parcelable {
+            @Parcelize
+            class Idle() : State()
+
+            @Parcelize
+            class Search() : State()
+        }
+    }
 
     @Parcelize
     class Schedule : Route()
