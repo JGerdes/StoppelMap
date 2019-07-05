@@ -63,8 +63,7 @@ deps.threeten = 'org.threeten:threetenbp:1.1.0'
 deps.timber = 'com.jakewharton.timber:timber:4.7.1'
 
 deps.mapbox = [:]
-deps.mapbox.sdk = 'com.mapbox.mapboxsdk:mapbox-android-sdk:7.1.1'
-deps.mapbox.annotation = 'com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v7:0.5.0'
+deps.mapbox.sdk = 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.1.0'
 
 def firebase = [:]
 firebase.core = 'com.google.firebase:firebase-core:16.0.9'

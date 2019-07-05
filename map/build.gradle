@@ -45,6 +45,8 @@ dependencies {
     implementation deps.androidx.arch.viewmodel
     kapt deps.androidx.arch.lifecycle_compiler
 
+    implementation deps.mapbox.sdk
+
     implementation deps.threeten_android
 
     implementation deps.groupie
