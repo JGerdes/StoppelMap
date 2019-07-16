@@ -38,6 +38,10 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
             map.setStyle(styleBuilder) { style ->
                 loadImages(context!!, style)
             }
+
+            map.addOnCameraMoveListener {
+                mapDebug.text = map.cameraPosition.toString()
+            }
         }
     }
 

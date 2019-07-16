@@ -74,4 +74,15 @@
         app:lottie_fileName="animation/search_to_back.json"
         />
 
+
+    <TextView
+        android:id="@+id/mapDebug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 </androidx.constraintlayout.motion.widget.MotionLayout>

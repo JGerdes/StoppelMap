@@ -4,5 +4,5 @@ import android.content.Context
 import com.mapbox.mapboxsdk.Mapbox
 
 fun initMapBox(context: Context) {
-    Mapbox.getInstance(context, null);
+    Mapbox.getInstance(context, null)
 }
