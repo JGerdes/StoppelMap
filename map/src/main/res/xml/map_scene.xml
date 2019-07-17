@@ -54,8 +54,8 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@id/searchCard"
             app:layout_constraintEnd_toEndOf="@id/searchCard"
-            app:progress="0"
-            app:layout_constraintTop_toTopOf="@id/searchCard" />
+            app:layout_constraintTop_toTopOf="@id/searchCard"
+            app:progress="0" />
 
         <Constraint
             android:id="@+id/searchBackground"
@@ -68,6 +68,25 @@
             <CustomAttribute
                 app:attributeName="alpha"
                 app:customFloatValue="0" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/locationFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <CustomAttribute
+                app:attributeName="scaleX"
+                app:customFloatValue="1" />
+            <CustomAttribute
+                app:attributeName="scaleY"
+                app:customFloatValue="1" />
+            <!--<CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="1" -->/>
         </Constraint>
     </ConstraintSet>
 
@@ -130,17 +149,36 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
-            app:progress="1"
             app:layout_constraintBottom_toBottomOf="@id/searchCard"
             app:layout_constraintStart_toStartOf="@id/searchCard"
-            app:layout_constraintTop_toTopOf="@id/searchCard" />
+            app:layout_constraintTop_toTopOf="@id/searchCard"
+            app:progress="1" />
+
+        <Constraint
+            android:id="@+id/locationFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <CustomAttribute
+                app:attributeName="scaleX"
+                app:customFloatValue="0" />
+            <CustomAttribute
+                app:attributeName="scaleY"
+                app:customFloatValue="0" />
+            <!--<CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="0" />-->
+        </Constraint>
 
     </ConstraintSet>
 
     <Transition
-        app:motionInterpolator="easeInOut"
         app:constraintSetEnd="@+id/search"
         app:constraintSetStart="@+id/idle"
-        app:duration="300" />
+        app:duration="300"
+        app:motionInterpolator="easeInOut" />
 
 </MotionScene>

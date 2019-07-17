@@ -74,6 +74,13 @@
         app:lottie_fileName="animation/search_to_back.json"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/locationFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_my_location"
+        app:fabSize="normal"
+        />
 
     <TextView
         android:id="@+id/mapDebug"
