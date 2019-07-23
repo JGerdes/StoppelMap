@@ -180,9 +180,13 @@ fun Data.parseGeoJson(input: File, output: File) {
 
         }
 
-    val jsonWriter = JsonWriter(output.writer())
-    gson.toJson(FeatureCollection(updatedFeatures), FeatureCollection::class.java, jsonWriter)
-    jsonWriter.close()
+    if(output.parentFile.exists()) {
+        val jsonWriter = JsonWriter(output.writer())
+        gson.toJson(FeatureCollection(updatedFeatures), FeatureCollection::class.java, jsonWriter)
+        jsonWriter.close()
+    } else {
+        System.err.println("output file for mapdata (${output.path}) doesn't exist, ignore geo output")
+    }
     println("Created ${stalls.size} stalls from geojson")
 
 }

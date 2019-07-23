@@ -20,7 +20,7 @@ object SQLiteConstants {
 
 fun openSQLite(file: File): Connection? {
     if (!file.exists()) {
-        file.mkdir()
+        file.parentFile.mkdirs()
         file.createNewFile()
     }
     val url = "${SQLiteConstants.jdbcUrlPrefix}${file.absolutePath}"

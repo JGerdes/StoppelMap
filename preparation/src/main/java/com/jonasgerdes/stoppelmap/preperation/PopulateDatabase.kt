@@ -6,11 +6,12 @@ import com.jonasgerdes.stoppelmap.preperation.parse.parseGeoJson
 import java.io.File
 
 object Settings {
-    val assets = File("data/src/main/assets/")
+    val dataAssets = File("data/src/main/assets/")
+    val mapAssets = File("map/src/main/assets/")
     val data = File("preparation/src/main/resources")
 
-    val database = File(assets, "stoppelmap.db")
-    val geoOutput = File(assets, "stoppelmap.geojson")
+    val database = File(dataAssets, "stoppelmap.db")
+    val geoOutput = File(mapAssets, "mapdata.geojson")
 
     val geoInput = File("$data/map", "StoppelMap2018.geojson")
     val scheduleDir = File(data, "schedule")
