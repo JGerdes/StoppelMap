@@ -9,11 +9,18 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation deps.kotlin.stdlib
     implementation deps.kotlin.coroutines
+    implementation deps.kotlin.reflect
 
-    implementation deps.threeten_android
+    implementation 'com.google.code.gson:gson:2.8.4'
+    implementation 'com.github.filosganga:geogson-core:1.2.21'
+
+    implementation "org.xerial:sqlite-jdbc:3.20.1"
+
+    implementation 'org.jsoup:jsoup:1.11.3'
 }

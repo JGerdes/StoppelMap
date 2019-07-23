@@ -1,0 +1,37 @@
+{
+  "events": [
+    {
+      "uuid": "stierbraeu_fr",
+      "name": "Happy Hour",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 14:00:00",
+      "end": "2016-08-12 16:00:00",
+      "locationUuid": "stierbraeu",
+      "description": "zwei Getränke zum Preis von einem",
+      "facebookUrl": "",
+      "artists": [
+
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "uuid": "stierbraeu_di",
+      "name": "Familientag",
+      "type": 2,
+      "day": 5,
+      "start": "2016-08-16 13:00:00",
+      "end": "2016-08-16 18:00:00",
+      "locationUuid": "stierbraeu",
+      "description": "Für Kinder: alkoholfreie Getränke für 1€",
+      "facebookUrl": "",
+      "artists": [
+
+      ],
+      "tags": [
+        "Für Kinder"
+      ]
+    }
+  ]
+}

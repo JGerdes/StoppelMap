@@ -1,0 +1,64 @@
+{
+  "events": [
+    {
+      "uuid": "ellendorf_do_schlagernacht",
+      "name": "Schlagernacht",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 20:00:00",
+      "locationUuid": "ellendorf",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "ellendorf_fr_karaoke",
+      "name": "Karaoke",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 20:00:00",
+      "locationUuid": "ellendorf",
+      "description": "Karaoke mit weit über 1.000 Musiktiteln",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "ellendorf_sa_karaoke",
+      "name": "Karaoke",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 20:00:00",
+      "locationUuid": "ellendorf",
+      "description": "Karaoke mit weit über 1.000 Musiktiteln",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "ellendorf_so_schlagernacht",
+      "name": "Schlagernacht",
+      "type": 2,
+      "day": 3,
+      "start": "2016-08-14 20:00:00",
+      "locationUuid": "ellendorf",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    },
+    {
+      "uuid": "ellendorf_mo_karaoke",
+      "name": "Karaoke",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 10:00:00",
+      "locationUuid": "ellendorf",
+      "description": "Karaoke mit weit über 1.000 Musiktiteln",
+      "facebookUrl": "",
+      "artists": [],
+      "tags": []
+    }
+  ]
+}
