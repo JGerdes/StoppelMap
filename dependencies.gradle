@@ -7,6 +7,7 @@ def kotlin = [:]
 kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 kotlin.coroutines = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
 kotlin.coroutines_android = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
+kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 deps.kotlin = kotlin
 
 def androidx = [:]
