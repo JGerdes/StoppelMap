@@ -24,7 +24,7 @@ fun Data.parseGeoJson(input: File, output: File) {
     val reader = JsonReader(input.reader())
     val geoJson = gson.fromJson<FeatureCollection>(reader, FeatureCollection::class.java)
     addTypeSubTypes(this)
-    println("Read geojson")
+    println("Read geojson (${input.path})")
     val updatedFeatures = geoJson.features()
         .map {
             if (it.properties()["building"] == null

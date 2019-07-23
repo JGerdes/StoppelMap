@@ -6,9 +6,9 @@ import com.jonasgerdes.stoppelmap.preperation.parse.parseGeoJson
 import java.io.File
 
 object Settings {
-    val dataAssets = File("data/src/main/assets/")
-    val mapAssets = File("map/src/main/assets/")
-    val data = File("preparation/src/main/resources")
+    val dataAssets = File("../data/src/main/assets/")
+    val mapAssets = File("../map/src/main/assets/")
+    val data = File("../preparation/src/main/resources")
 
     val database = File(dataAssets, "stoppelmap.db")
     val geoOutput = File(mapAssets, "mapdata.geojson")
@@ -21,6 +21,8 @@ object Settings {
 
 fun main(args: Array<String>) {
     println("Start parsing @ ${currentTime()}")
+    val file = File("")
+    println("root dir: ${file.absolutePath}")
 
     if (Settings.database.exists()) {
         val success = Settings.database.delete()
