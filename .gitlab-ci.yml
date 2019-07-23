@@ -3,6 +3,7 @@ stages:
   - test
   - build
   - internal
+  - beta
 
 .updateContainerJob:
   image: docker:stable
@@ -92,6 +93,15 @@ bundleRelease:
     paths:
       - ./app/build/outputs/bundle/release/
 
+buildReleaseApk:
+  extends: .buildJob
+  when: manual
+  script:
+    - ./gradlew buildRelease
+  artifacts:
+    paths:
+      - ./app/build/outputs/apk/release/
+
 publishInternal:
   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: internal
@@ -112,3 +122,9 @@ publishInternal:
     - rm ./signing.properties
   script:
     - bundle exec fastlane internal
+
+promoteToBeta:
+  stage: beta
+  when: manual
+  script:
+    - bundle exec fastlane promote_internal_to_beta
