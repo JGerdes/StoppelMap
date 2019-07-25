@@ -126,6 +126,7 @@ publishInternal:
     - bundle exec fastlane internal
 
 promoteToBeta:
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   stage: beta
   when: manual
   script:
