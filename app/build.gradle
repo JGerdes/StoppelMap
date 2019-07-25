@@ -53,6 +53,7 @@ dependencies {
 
     implementation project(':core')
     implementation project(':widgets')
+    implementation project(':data')
     implementation project(':home')
     implementation project(':about')
     implementation project(':news')

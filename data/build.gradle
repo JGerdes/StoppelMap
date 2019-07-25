@@ -29,6 +29,7 @@ dependencies {
 
     implementation project(':core')
     implementation project(':androidutil')
+    implementation project(':model')
 
     implementation deps.kotlin.stdlib
 
