@@ -13,8 +13,8 @@ data class Station(
         val name: String,
         val route: String,
         val comment: String,
-        val longitude: Double,
-        val latitude: Double,
+        val longitude: Double?,
+        val latitude: Double?,
         @ColumnInfo(name = "is_return")
         val isReturnStation: Boolean
 )

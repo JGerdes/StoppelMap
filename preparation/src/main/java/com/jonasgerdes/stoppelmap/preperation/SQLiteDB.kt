@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.preperation
 
+import com.google.gson.Gson
+import com.jonasgerdes.stoppelmap.preperation.db.DatabaseSchema
 import java.io.File
 import java.sql.Connection
 import java.sql.DriverManager
@@ -27,7 +29,14 @@ fun openSQLite(file: File): Connection? {
     return DriverManager.getConnection(url)
 }
 
-fun Statement.createTable(obj: Any) {
+fun Statement.createTablesFromSchema(schema: DatabaseSchema) {
+    schema.database.entities.forEach {entity ->
+        val statement = entity.createSql.replace("\${TABLE_NAME}", entity.tableName)
+        execute(statement)
+    }
+}
+
+fun Statement.createTableIfNotExists(obj: Any) {
     val table = obj::class.java.simpleName.toSnake().toPlural()
     val fields = obj::class.primaryConstructor!!.parameters.map {
         val type = (it.type.classifier as KClass<*>).toSqliteType()
@@ -43,6 +52,12 @@ fun Statement.createTable(obj: Any) {
 }
 
 
+fun Connection.createTablesFromSchemaFile(file: File, gson: Gson) {
+    val schemaJson = file.readText()
+    val databaseSchema = gson.fromJson(schemaJson, DatabaseSchema::class.java)
+    createStatement().createTablesFromSchema(databaseSchema)
+}
+
 @Suppress("UNCHECKED_CAST")
 fun <T : Any> Connection.insert(itemsToInsert: Iterable<T>) {
     val items = if (itemsToInsert.first() is Iterable<*>) {
@@ -50,7 +65,7 @@ fun <T : Any> Connection.insert(itemsToInsert: Iterable<T>) {
     } else {
         itemsToInsert
     }
-    createStatement().createTable(items.first())
+    createStatement().createTableIfNotExists(items.first())
     val table = items.first()::class.java.simpleName.toSnake().toPlural()
     val fields = getFields(items.first())
     val columns = fields.keys.joinToString(", ")

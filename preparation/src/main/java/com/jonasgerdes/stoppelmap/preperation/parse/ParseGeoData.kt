@@ -73,7 +73,7 @@ fun Data.parseGeoJson(input: File, output: File) {
 
                 images += it.properties()["pictures"].splitBy(";", ":") {
                     Image(
-                        stall = stall.slug,
+                        reference = stall.slug,
                         file = it[0],
                         type = it[1],
                         author = it.getOrNull(2),

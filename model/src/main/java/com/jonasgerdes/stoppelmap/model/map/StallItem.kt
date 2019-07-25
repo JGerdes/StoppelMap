@@ -8,10 +8,7 @@ import androidx.room.ForeignKey
     foreignKeys = [
         ForeignKey(entity = Stall::class,
             parentColumns = ["slug"],
-            childColumns = ["stall"]),
-        ForeignKey(entity = Item::class,
-            parentColumns = ["slug"],
-            childColumns = ["item"])
+            childColumns = ["stall"])
     ])
 data class StallItem(
     val stall: String,

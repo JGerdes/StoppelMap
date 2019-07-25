@@ -20,7 +20,7 @@ data class Stall(
 
 data class Alias(val stall: String, val alias: String)
 data class Image(
-        val stall: String,
+        val reference: String,
         val file: String,
         val type: String,
         val author: String? = null,

@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 import org.threeten.bp.OffsetDateTime
 
 
-@Entity(tableName = "departures")
+@Entity(tableName = "departures",
+        primaryKeys = ["station", "time"])
 data class Departure(
-        @PrimaryKey
         val station: String,
         val time: OffsetDateTime
 )
