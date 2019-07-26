@@ -5,6 +5,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.initMapBox
+import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.news.fcm.subscribeToNewsMessages
 import com.jonasgerdes.stoppelmap.news.newsModule
 import org.koin.android.ext.koin.androidContext
@@ -22,8 +23,9 @@ class App : Application() {
 
             modules(
                 appModule,
-                homeModule,
                 dataModule,
+                homeModule,
+                mapModule,
                 newsModule
             )
         }

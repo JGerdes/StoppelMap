@@ -2,36 +2,45 @@ package com.jonasgerdes.stoppelmap.map.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doOnTextChanged
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.map.R
 import com.mapbox.mapboxsdk.maps.Style
 import kotlinx.android.synthetic.main.fragment_map.*
+import org.koin.android.ext.android.inject
 
 
 class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
+
+    private val viewModel: MapViewModel by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initMotionLayout()
+        initSearch()
+        initMapView(savedInstanceState)
+    }
 
-        searchInput.onBackPress {
-            Router.navigateBack()
+    private fun initSearch() {
+        searchInput.apply {
+            onBackPress { Router.navigateBack() }
+
+            doOnTextChanged { text, start, count, after ->
+                if (text != null) viewModel.onSearchEntered(text.toString())
+            }
         }
 
         searchCard.setOnClickListener {
             Router.navigateToRoute(Route.Map(state = Route.Map.State.Search()), Router.Destination.MAP)
         }
-
-        initMapView(savedInstanceState)
-
     }
 
     private fun initMapView(savedInstanceState: Bundle?) {
         mapView.onCreate(savedInstanceState)
-        mapView.getMapAsync {map ->
+        mapView.getMapAsync { map ->
             val styleBuilder = Style.Builder().fromUri("asset://style-light.json")
             initMapUi(map)
             initMapCamera(map)
