@@ -14,11 +14,20 @@ class SearchForStallsUseCase(
             val name = stall.name!! //save to assume here because we searched by name
             SearchResult.StallSearchResult(
                 title = HighlightedText.from(name, searchQuery),
-                stall = stall
+                stall = stall,
+                score = 100f
             )
         }
 
+        val aliasResults = stallRepository.findStallByAlias(searchQuery).map { stallWithAlias ->
+            SearchResult.StallSearchResult(
+                title = HighlightedText.from(stallWithAlias.alias, searchQuery),
+                subtitle = stallWithAlias.stall.name?.let { name -> HighlightedText.from(name, searchQuery) },
+                stall = stallWithAlias.stall,
+                score = 80f
+            )
+        }
 
-        return (nameResults).sortedByDescending { it.score }
+        return (nameResults + aliasResults).sortedByDescending { it.score }
     }
 }
