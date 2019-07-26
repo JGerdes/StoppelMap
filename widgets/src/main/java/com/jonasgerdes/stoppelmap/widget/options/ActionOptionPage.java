@@ -55,10 +55,11 @@ public class ActionOptionPage extends OptionPage<ActionWidgetPreview> {
                     .OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
+                    ActionWidgetPreview editablePreview = getEditableWidgetPreview();
+                    if (isChecked && editablePreview != null) {
                         //don't use buttons view id as id for action because view ids can change
                         //in a new build and action is persistent in shared prefs
-                        getEditableWidgetPreview().setAction(getAction(buttonView));
+                        editablePreview.setAction(getAction(buttonView));
                         getWidgetPreview().update();
                     }
                 }

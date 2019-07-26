@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.initMapBox
 import com.jonasgerdes.stoppelmap.news.fcm.subscribeToNewsMessages
@@ -22,6 +23,7 @@ class App : Application() {
             modules(
                 appModule,
                 homeModule,
+                dataModule,
                 newsModule
             )
         }

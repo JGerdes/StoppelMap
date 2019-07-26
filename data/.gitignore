@@ -1,0 +1,4 @@
+/build
+
+#ignore generated database file
+/src/main/assets/stoppelmap.db
