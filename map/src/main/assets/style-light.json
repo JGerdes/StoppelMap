@@ -27,7 +27,7 @@
     "sources": {
         "composite": {
             "type": "geojson",
-            "data": "asset://stoppelmap.geojson"
+            "data": "asset://mapdata.geojson"
         },
         "selected-marker": {
             "type": "geojson",
@@ -241,7 +241,7 @@
             "metadata": {"mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"},
             "source": "composite",
             "source-layer": "stoma-2018",
-            "filter": ["==", ["get","priority"], "1"],
+            "filter": ["==", ["get","priority"], 1],
             "layout": {
                 "text-optional": true,
                 "icon-offset": [0, 0],
@@ -334,7 +334,7 @@
             "source": "composite",
             "source-layer": "stoma-2018",
             "minzoom": 17,
-            "filter": ["==", ["get","priority"], "2"],
+            "filter": ["==", ["get","priority"], 2],
             "layout": {
                 "text-optional": true,
                 "icon-offset": [0, 0],
@@ -407,7 +407,7 @@
             "source": "composite",
             "source-layer": "stoma-2018",
             "minzoom": 15.5,
-            "filter": ["==", ["get","priority"], "3"],
+            "filter": ["==", ["get","priority"], 3],
             "layout": {
                 "text-optional": true,
                 "icon-offset": [0, 0],
@@ -480,7 +480,7 @@
             "source": "composite",
             "source-layer": "stoma-2018",
             "minzoom": 15,
-            "filter": ["==", ["get","priority"], "4"],
+            "filter": ["==", ["get","priority"], 4],
             "layout": {
                 "text-optional": true,
                 "icon-offset": [0, 0],
@@ -552,7 +552,7 @@
             "metadata": {"mapbox:group": "f3cd312b8bce7042ab7467c6a4f52a97"},
             "source": "composite",
             "source-layer": "stoma-2018",
-            "filter": ["==", ["get","priority"], "5"],
+            "filter": ["==", ["get","priority"], 5],
             "layout": {
                 "icon-offset": [0, 0],
                 "icon-image": [
