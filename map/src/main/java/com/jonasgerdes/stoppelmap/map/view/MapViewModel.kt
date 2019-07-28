@@ -8,7 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
 import com.jonasgerdes.stoppelmap.map.usecase.SearchForStallsUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
+private const val SEARCH_DEBOUNCE_DELAY_MS = 100L
 
 class MapViewModel(
     private val searchForStalls: SearchForStallsUseCase
@@ -17,9 +21,13 @@ class MapViewModel(
     private val _searchResults = MutableLiveData<List<SearchResult>>()
     val searchResults: LiveData<List<SearchResult>> get() = _searchResults
 
+    private var searchJob: Job? = null
+
     fun onSearchEntered(text: String) {
         if (text.isNotEmpty()) {
-            viewModelScope.launch(Dispatchers.IO) {
+            searchJob?.cancel()
+            searchJob = viewModelScope.launch(Dispatchers.IO) {
+                delay(SEARCH_DEBOUNCE_DELAY_MS)
                 val searchResults = searchForStalls(text)
                 Log.d("MapViewModel", "Found stalls:")
                 searchResults.forEach {
