@@ -4,7 +4,6 @@ import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
-import android.util.Log
 import androidx.core.view.isVisible
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.entity.HighlightedText
@@ -14,8 +13,8 @@ import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_search_result.view.*
 
 
-data class SearchResultItem(
-    val result: SearchResult
+data class StallSearchResultItem(
+    val result: SearchResult.StallSearchResult
 ) : Item() {
 
     override fun getLayout() = R.layout.item_search_result
@@ -30,27 +29,24 @@ data class SearchResultItem(
                     subtitle.text = subtitleText.asSpannable()
                 }
             }
+            icon.setStallTypeDrawable(result.stall.type)
+
         }
     }
 
     override fun isSameAs(other: com.xwray.groupie.Item<*>?): Boolean {
-        if (other !is SearchResultItem) {
+        if (other !is StallSearchResultItem) {
             return false
         }
         return other.result == result
     }
 
-    private fun HighlightedText.asSpannable() = try {
-        SpannableStringBuilder(text).apply {
-            highlights.forEach {
-                setSpan(
-                    StyleSpan(Typeface.BOLD), it.start, it.end,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
-            }
+    private fun HighlightedText.asSpannable() = SpannableStringBuilder(text).apply {
+        highlights.forEach {
+            setSpan(
+                StyleSpan(Typeface.BOLD), it.start, it.end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
         }
-    }catch (e: Exception) {
-        Log.e("SearchResultItem","Error while turning $this to spannable", e)
-        null
     }
 }

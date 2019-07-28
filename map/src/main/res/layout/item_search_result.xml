@@ -5,7 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/marginSmall"
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingStart="@dimen/marginDefault"
+    android:paddingTop="@dimen/marginSmall"
+    android:paddingEnd="@dimen/marginSmall"
+    android:paddingBottom="@dimen/marginSmall"
     >
     <ImageView
         android:id="@+id/icon"
