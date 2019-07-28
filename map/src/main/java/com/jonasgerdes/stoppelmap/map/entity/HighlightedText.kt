@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.map.entity
 
 data class HighlightedText(val text: String, val highlights: List<Highlight>) {
     companion object {
+        fun withNoHighlights(text: String) = HighlightedText(text, emptyList())
         fun from(full: String, part: String) = from(full, listOf(part))
         fun from(full: String, parts: List<String>? = null): HighlightedText {
             val highlights = parts?.fold(mutableListOf(), { highlights, part ->
