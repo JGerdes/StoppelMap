@@ -40,3 +40,13 @@ fun RecyclerView.removeAllItemDecorations() {
         removeItemDecorationAt(0);
     }
 }
+
+fun RecyclerView.doOnScrolledByUser(action: () -> Unit) {
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                action()
+            }
+        }
+    })
+}
