@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.map.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.core.view.doOnPreDraw
 import androidx.core.widget.doOnTextChanged
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
 import com.jonasgerdes.stoppelmap.core.routing.Route
@@ -45,7 +47,8 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
         searchResultList.adapter = searchResultAdapter
 
-        searchResultList.doOnScrolledByUser { searchInput.hideKeyboard() }
+        searchResultList.doOnScrolledByUser {
+            searchInput.hideKeyboard() }
 
         observe(viewModel.searchResults) { searchResults ->
             searchResultAdapter.update(searchResults.map { result ->
@@ -103,8 +106,10 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     private fun setSearchState() {
         motionLayout.transitionToState(R.id.search)
-        searchInput.requestFocus()
-        searchInput.showKeyboard()
+        searchInput.post{
+            searchInput.requestFocus()
+            searchInput.showKeyboard()
+        }
         searchIcon.setOnClickListener {
             Router.navigateBack()
         }
