@@ -31,6 +31,14 @@
         android:layout_height="0dp"
         app:cardElevation="0dp"
         />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchResultList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_search_result"
+        />
     <androidx.cardview.widget.CardView
         android:id="@+id/searchCard"
         android:layout_width="0dp"
@@ -38,7 +46,6 @@
         android:backgroundTint="?colorSurface"
         app:cardElevation="12dp"
         />
-
     <com.jonasgerdes.androidutil.widget.ExtendedEditText
         android:id="@+id/searchInput"
         style="@style/StoppelMapTheme.SearchEditText"

@@ -51,6 +51,7 @@
         <item name="textAppearanceHeadline6">@style/TextAppearance.StoppelMapTheme.Headline6</item>
         <item name="textAppearanceSubtitle1">@style/TextAppearance.StoppelMapTheme.Subtitle1</item>
         <item name="textAppearanceSubtitle2">@style/TextAppearance.StoppelMapTheme.Subtitle2</item>
+        <item name="textAppearanceBodyTitle">@style/TextAppearance.StoppelMapTheme.BodyTitle</item>
         <item name="textAppearanceBody1">@style/TextAppearance.StoppelMapTheme.Body1</item>
         <item name="textAppearanceBodyLink">@style/TextAppearance.StoppelMapTheme.Body1.Link</item>
         <item name="textAppearanceBody2">@style/TextAppearance.StoppelMapTheme.Body2</item>
@@ -98,12 +99,16 @@
 
     <style name="TextAppearance.StoppelMapTheme.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2" />
 
+    <style name="TextAppearance.StoppelMapTheme.BodyTitle" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="TextAppearance.StoppelMapTheme.Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextAppearance.StoppelMapTheme.Body2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TextAppearance.StoppelMapTheme.Button" parent="TextAppearance.MaterialComponents.Button" />

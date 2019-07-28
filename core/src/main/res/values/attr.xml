@@ -6,6 +6,7 @@
     <attr name="interactiveElementElevation" format="dimension" />
 
     <attr name="textAppearanceCaption2" format="reference" />
+    <attr name="textAppearanceBodyTitle" format="reference" />
     <attr name="textAppearanceBodyLink" format="reference" />
     <attr name="materialCardViewOutlineStyle" format="reference" />
 

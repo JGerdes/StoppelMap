@@ -71,6 +71,15 @@
         </Constraint>
 
         <Constraint
+            android:id="@+id/searchResultList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+        <Constraint
             android:id="@+id/locationFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,6 +133,15 @@
                 app:attributeName="alpha"
                 app:customFloatValue="1" />
         </Constraint>
+
+        <Constraint
+            android:id="@+id/searchResultList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchCard" />
 
         <Constraint
             android:id="@+id/searchInput"
