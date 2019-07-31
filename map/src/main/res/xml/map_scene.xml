@@ -49,9 +49,8 @@
 
         <Constraint
             android:id="@+id/searchIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="@id/searchCard"
             app:layout_constraintEnd_toEndOf="@id/searchCard"
             app:layout_constraintTop_toTopOf="@id/searchCard"
@@ -164,9 +163,9 @@
 
         <Constraint
             android:id="@+id/searchIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="@id/searchCard"
             app:layout_constraintStart_toStartOf="@id/searchCard"
             app:layout_constraintTop_toTopOf="@id/searchCard"

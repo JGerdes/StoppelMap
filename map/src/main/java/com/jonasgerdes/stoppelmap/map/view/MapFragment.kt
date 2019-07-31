@@ -142,7 +142,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     override fun onDestroy() {
         super.onDestroy()
-        mapView.onDestroy()
+        mapView?.onDestroy()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
