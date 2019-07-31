@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonasgerdes.stoppelmap.map.entity.Location
+import com.jonasgerdes.stoppelmap.map.entity.MapFocus
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
 import com.jonasgerdes.stoppelmap.map.usecase.GetFullStallsBySlugUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchForStallsUseCase
@@ -23,6 +25,9 @@ class MapViewModel(
     private val _searchResults = MutableLiveData<List<SearchResult>>()
     val searchResults: LiveData<List<SearchResult>> get() = _searchResults
 
+    private val _mapFocus = MutableLiveData<MapFocus>()
+    val mapFocus: LiveData<MapFocus> get() = _mapFocus
+
     private var searchJob: Job? = null
 
     fun onSearchEntered(text: String) {
@@ -40,6 +45,18 @@ class MapViewModel(
         } else {
             //TODO: show empty state with requests from history etc
             _searchResults.postValue(emptyList())
+        }
+    }
+
+    fun onSearchResultSelected(searchResult: SearchResult) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val stalls = getStallsBySlug(searchResult.stallSlugs)
+            _mapFocus.postValue(MapFocus.All(stalls.flatMap { stall ->
+                listOf(
+                    Location(longitude = stall.minLng, latitude = stall.minLat),
+                    Location(longitude = stall.maxLng, latitude = stall.maxLat)
+                    )
+            }))
         }
     }
 }

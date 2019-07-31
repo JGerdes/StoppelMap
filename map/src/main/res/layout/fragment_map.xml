@@ -88,6 +88,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_my_location"
         app:fabSize="normal"
+        android:visibility="gone"
         />
 
     <TextView

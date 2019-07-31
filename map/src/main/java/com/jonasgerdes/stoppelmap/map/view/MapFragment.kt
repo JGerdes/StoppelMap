@@ -1,17 +1,20 @@
 package com.jonasgerdes.stoppelmap.map.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.view.doOnPreDraw
 import androidx.core.widget.doOnTextChanged
+import com.jonasgerdes.androidutil.dp
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.map.R
+import com.jonasgerdes.stoppelmap.map.entity.MapFocus
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
+import com.jonasgerdes.stoppelmap.map.entity.adapter.asLatLngBounds
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -23,6 +26,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     private val viewModel: MapViewModel by inject()
     private val searchResultAdapter = GroupAdapter<ViewHolder>()
+    private var map: MapboxMap? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,7 +52,17 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         searchResultList.adapter = searchResultAdapter
 
         searchResultList.doOnScrolledByUser {
-            searchInput.hideKeyboard() }
+            searchInput.hideKeyboard()
+        }
+
+        searchResultAdapter.setOnItemClickListener { item, view ->
+            val searchResult = when (item) {
+                is StallSearchResultItem -> item.result
+                else -> null
+            }
+            if (searchResult != null) viewModel.onSearchResultSelected(searchResult)
+            setIdleState() //TODO: do this via Router
+        }
 
         observe(viewModel.searchResults) { searchResults ->
             searchResultAdapter.update(searchResults.map { result ->
@@ -67,11 +81,19 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
             initMapCamera(map)
             map.setStyle(styleBuilder) { style ->
                 loadImages(context!!, style)
+                this@MapFragment.map = map
             }
 
             map.addOnCameraMoveListener {
                 mapDebug.text = map.cameraPosition.toString()
             }
+        }
+
+        observe(viewModel.mapFocus) { focus ->
+            val cameraUpdate = when (focus) {
+                is MapFocus.All -> CameraUpdateFactory.newLatLngBounds(focus.coordinates.asLatLngBounds(), 64.dp)
+            }
+            map?.animateCamera(cameraUpdate)
         }
     }
 
@@ -106,7 +128,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     private fun setSearchState() {
         motionLayout.transitionToState(R.id.search)
-        searchInput.post{
+        searchInput.post {
             searchInput.requestFocus()
             searchInput.showKeyboard()
         }
