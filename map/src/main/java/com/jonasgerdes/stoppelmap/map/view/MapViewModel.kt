@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
+import com.jonasgerdes.stoppelmap.map.usecase.GetFullStallsBySlugUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchForStallsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -15,7 +16,8 @@ import kotlinx.coroutines.launch
 private const val SEARCH_DEBOUNCE_DELAY_MS = 100L
 
 class MapViewModel(
-    private val searchForStalls: SearchForStallsUseCase
+    private val searchForStalls: SearchForStallsUseCase,
+    private val getStallsBySlug: GetFullStallsBySlugUseCase
 ) : ViewModel() {
 
     private val _searchResults = MutableLiveData<List<SearchResult>>()

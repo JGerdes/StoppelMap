@@ -8,6 +8,9 @@ class StallRepository(
     private val database: StoppelmapDatabase
 ) {
 
+    suspend fun getStallBySlug(slug: String) =
+        database.stallsDao().findStallBySlug(slug)
+
     suspend fun queryStallsByName(nameQuery: String) =
         database.stallsDao().findStallByName("%$nameQuery%")
 
