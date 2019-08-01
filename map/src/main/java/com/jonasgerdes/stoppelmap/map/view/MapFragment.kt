@@ -88,7 +88,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                     val pointOnMap = map.projection.toScreenLocation(location)
                     val stallSlug = map.queryRenderedFeatures(pointOnMap, "stalls")
                         .sortedByDescending { it.getNumberProperty("priority")?.toInt() ?: 0}
-                        .first()?.getStringProperty("slug")
+                        .firstOrNull()?.getStringProperty("slug")
                     if(stallSlug != null) {
                         viewModel.onStallClicked(stallSlug)
                         true
