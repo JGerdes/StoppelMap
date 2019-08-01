@@ -56,15 +56,7 @@
             ],
             "layout": {},
             "paint": {
-                "fill-color": [
-                    "interpolate",
-                    ["exponential", 1],
-                    ["number", ["get", "parkId"]],
-                    0,
-                    "#BAAf98",
-                    16,
-                    "#F7F4EB"
-                ],
+                "fill-color": "#d6d0c2",
                 "fill-opacity": 1
             },
             "interactive": true
@@ -230,7 +222,7 @@
                     22,
                     256
                 ],
-                "line-color": "#FFFFFF",
+                "line-color": "#e4e2e2",
                 "line-dasharray": [2, 0.5]
             },
             "interactive": true

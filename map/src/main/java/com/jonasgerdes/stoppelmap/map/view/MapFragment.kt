@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import com.jonasgerdes.androidutil.dp
@@ -84,12 +83,12 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                 loadImages(context!!, style)
                 this@MapFragment.map = map
 
-                map.addOnMapClickListener {location ->
+                map.addOnMapClickListener { location ->
                     val pointOnMap = map.projection.toScreenLocation(location)
                     val stallSlug = map.queryRenderedFeatures(pointOnMap, "stalls")
-                        .sortedByDescending { it.getNumberProperty("priority")?.toInt() ?: 0}
+                        .sortedByDescending { it.getNumberProperty("priority")?.toInt() ?: 0 }
                         .firstOrNull()?.getStringProperty("slug")
-                    if(stallSlug != null) {
+                    if (stallSlug != null) {
                         viewModel.onStallClicked(stallSlug)
                         true
                     } else false
