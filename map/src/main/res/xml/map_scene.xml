@@ -84,6 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <CustomAttribute
@@ -92,9 +93,6 @@
             <CustomAttribute
                 app:attributeName="scaleY"
                 app:customFloatValue="1" />
-            <!--<CustomAttribute
-                app:attributeName="alpha"
-                app:customFloatValue="1" -->/>
         </Constraint>
     </ConstraintSet>
 
@@ -177,6 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <CustomAttribute
@@ -185,9 +184,6 @@
             <CustomAttribute
                 app:attributeName="scaleY"
                 app:customFloatValue="0" />
-            <!--<CustomAttribute
-                app:attributeName="alpha"
-                app:customFloatValue="0" />-->
         </Constraint>
 
     </ConstraintSet>

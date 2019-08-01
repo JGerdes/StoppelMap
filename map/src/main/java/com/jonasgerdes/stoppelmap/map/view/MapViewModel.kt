@@ -55,8 +55,22 @@ class MapViewModel(
                 listOf(
                     Location(longitude = stall.minLng, latitude = stall.minLat),
                     Location(longitude = stall.maxLng, latitude = stall.maxLat)
-                    )
+                )
             }))
+        }
+    }
+
+    fun onStallClicked(slug: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val stall = getStallsBySlug(listOf(slug)).first()
+            _mapFocus.postValue(
+                MapFocus.All(
+                    listOf(
+                        Location(longitude = stall.minLng, latitude = stall.minLat),
+                        Location(longitude = stall.maxLng, latitude = stall.maxLat)
+                    )
+                )
+            )
         }
     }
 }
