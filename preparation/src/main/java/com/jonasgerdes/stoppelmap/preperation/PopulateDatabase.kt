@@ -16,7 +16,7 @@ object Settings {
     val database = File(dataAssets, "stoppelmap.db")
     val geoOutput = File(mapAssets, "mapdata.geojson")
 
-    val geoInput = File("$data/map", "StoppelMap2018.geojson")
+    val geoInput = File("$data/map", "stoma-2019.geojson")
     val scheduleDir = File(data, "schedule")
     val busDir = File("$data/transportation", "bus")
 }

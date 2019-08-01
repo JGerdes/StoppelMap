@@ -109,16 +109,20 @@ private fun getNameForType(type: String) = when (type) {
     "for-kids" -> "für Kinder"
     "marquee" -> "Festzelt"
     "coaster" -> "Achterbahn"
+    "rollercoaster" -> "Achterbahn"
     "swing-ride" -> listOf("Kettenflieger", "Kettenkarusell")
     "funhouse" -> "Spaßhaus"
+    "labyrinth" -> "Labyrinth"
     "bumper-cars" -> "Autoscooter"
     "twister" -> "Twister"
     "marry-go-round" -> "Karusell"
     "log-flume" -> listOf("Baumstammkanal", "Wasserbahn")
     "live-show" -> "Show"
     "ghost-train" -> "Geisterbahn"
+    "tunnel-of-horror" -> "Geisterbahn"
     "breakdancer" -> "Break Dancer"
     "ferris-wheel" -> "Riesenrad"
+    "flying-carpet" -> "Fliegender Teppich"
     "show" -> "Show"
     "accessible_restroom" -> listOf("Barrierefreie Toilette", "Barrierefreies WC",
             "Rollstuhlgerechte Toilette")
