@@ -5,7 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.jonasgerdes.stoppelmap.data.dao.ItemDao
 import com.jonasgerdes.stoppelmap.data.dao.StallDao
+import com.jonasgerdes.stoppelmap.data.dao.StallTypeDao
 import com.jonasgerdes.stoppelmap.model.common.Image
 import com.jonasgerdes.stoppelmap.model.map.*
 import com.jonasgerdes.stoppelmap.model.transportation.Departure
@@ -34,6 +36,8 @@ import com.jonasgerdes.stoppelmap.model.transportation.TransportPrice
 abstract class StoppelmapDatabase() : RoomDatabase() {
 
     abstract fun stallsDao(): StallDao
+    abstract fun stallTypeDao(): StallTypeDao
+    abstract fun itemDao(): ItemDao
 
     companion object {
         @Volatile

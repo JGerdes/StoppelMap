@@ -58,6 +58,8 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         searchResultAdapter.setOnItemClickListener { item, view ->
             val searchResult = when (item) {
                 is StallSearchResultItem -> item.result
+                is TypeSearchResultItem -> item.result
+                is ItemSearchResultItem -> item.result
                 else -> null
             }
             if (searchResult != null) viewModel.onSearchResultSelected(searchResult)
@@ -68,6 +70,8 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
             searchResultAdapter.update(searchResults.map { result ->
                 when (result) {
                     is SearchResult.StallSearchResult -> StallSearchResultItem(result)
+                    is SearchResult.TypeSearchResult -> TypeSearchResultItem(result)
+                    is SearchResult.ItemSearchResult -> ItemSearchResultItem(result)
                 }
             })
         }
