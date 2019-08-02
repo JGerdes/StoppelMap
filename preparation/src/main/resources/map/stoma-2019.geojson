@@ -18154,6 +18154,26 @@
         {
             "type": "Feature",
             "properties": {
+                "public_transport": "platform",
+                "name": "Bahnhof"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        8.29221747749,
+                        52.74841745644
+                    ],
+                    [
+                        8.29176820748,
+                        52.74821653747
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
                 "building": "restroom",
                 "men": "yes",
                 "operator": "Stratmann",
