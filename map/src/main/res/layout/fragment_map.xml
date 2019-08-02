@@ -75,9 +75,9 @@
         android:id="@+id/searchIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:padding="8dp"
         android:elevation="12dp"
         android:outlineProvider="none"
+        android:padding="8dp"
         app:lottie_colorFilter="?colorControlNormal"
         app:lottie_fileName="animation/search_to_back.json"
         />
@@ -87,18 +87,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_my_location"
-        app:fabSize="normal"
         android:visibility="gone"
-        />
-
-    <TextView
-        android:id="@+id/mapDebug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:fabSize="normal"
         />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
