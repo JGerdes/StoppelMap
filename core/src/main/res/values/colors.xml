@@ -7,6 +7,8 @@
 
     <color name="lightText">#FFFFFF</color>
 
+    <color name="mutedGrey">#777777</color>
+
     <color name="crimson">#DC143C</color>
 
     <color name="transparent">#00FFFFFF</color>

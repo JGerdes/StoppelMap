@@ -59,7 +59,7 @@ class Navigator<Route : Parcelable, Destination : Enum<Destination>>(
     private var currentDestination: Destination? = null
     private var currentRoute: Route? = null
 
-    private val fragmentCache = mutableMapOf<Route, NavigationFragment<out Route>>()
+    private val fragmentCache = mutableMapOf<String, NavigationFragment<out Route>>()
 
     init {
         initialState.forEach { (destination, route) ->
@@ -94,10 +94,12 @@ class Navigator<Route : Parcelable, Destination : Enum<Destination>>(
         backStack[destination]?.peek()?.let { route ->
             val fragment = getFragmentForRoute(route)
             fragment.saveProcessRoute(route)
-            fragmentManager.beginTransaction().apply {
-                currentFragment?.let { hide(it) }
-                show(fragment)
-            }.commitNowAllowingStateLoss()
+            if (currentFragment != fragment) {
+                fragmentManager.beginTransaction().apply {
+                    currentFragment?.let { hide(it) }
+                    show(fragment)
+                }.commitNowAllowingStateLoss()
+            }
             currentRoute = route
         }
     }
@@ -152,8 +154,8 @@ class Navigator<Route : Parcelable, Destination : Enum<Destination>>(
     }.joinToString("\n")
 
     private fun getFragmentForRoute(route: Route): NavigationFragment<out Route> =
-        fragmentCache[route] ?: fragmentFactory(route).also { newFragment ->
-            fragmentCache[route] = newFragment
+        fragmentCache[route::class.java.name] ?: fragmentFactory(route).also { newFragment ->
+            fragmentCache[route::class.java.name] = newFragment
             fragmentManager.beginTransaction().apply {
                 add(hostViewId, newFragment, route::class.java.name)
             }.commitNowAllowingStateLoss()

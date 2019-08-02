@@ -1,0 +1,4 @@
+<resources>
+    <string name="map_search_hint_short">Suche</string>
+    <string name="map_search_hint_long">Suche nach Fahrgeschäften, Zelten…</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="marker_type_bar">#2196F3</color>
+    <color name="marker_type_restaurant">#FFC107</color>
+    <color name="marker_type_candy_stall">#E91E63</color>
+    <color name="marker_type_food_stall">#FFC107</color>
+    <color name="marker_type_game_stall">#673AB7</color>
+    <color name="marker_type_misc">#4CAF50</color>
+    <color name="marker_type_restroom">#FF7043</color>
+    <color name="marker_type_ride">#009688</color>
+    <color name="marker_type_seller_stall">#795548</color>
+    <color name="marker_type_expo">#607D8B</color>
+    <color name="marker_type_parking">#1A237E</color>
+</resources>

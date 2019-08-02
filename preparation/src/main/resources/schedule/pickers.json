@@ -1,0 +1,106 @@
+{
+  "events": [
+    {
+      "uuid": "pickers_do",
+      "name": "Party Non-Stop",
+      "type": 2,
+      "day": 0,
+      "start": "2016-08-11 18:00:00",
+      "locationUuid": "pickers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Dodo",
+        "DJ Caruso",
+        "DJ Westi"
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "uuid": "pickers_fr",
+      "name": "Party Non-Stop",
+      "type": 2,
+      "day": 1,
+      "start": "2016-08-12 14:00:00",
+      "locationUuid": "pickers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Dodo",
+        "DJ Caruso",
+        "DJ Westi"
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "uuid": "pickers_sa",
+      "name": "Party Non-Stop",
+      "type": 2,
+      "day": 2,
+      "start": "2016-08-13 14:00:00",
+      "locationUuid": "pickers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Dodo",
+        "DJ Caruso",
+        "DJ Westi"
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "uuid": "pickers_so",
+      "name": "Party Non-Stop",
+      "type": 2,
+      "day": 3,
+      "start": "2016-08-14 10:00:00",
+      "locationUuid": "pickers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Dodo",
+        "DJ Caruso",
+        "DJ Westi"
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "uuid": "pickers_mo",
+      "name": "Party Non-Stop",
+      "type": 2,
+      "day": 4,
+      "start": "2016-08-15 08:00:00",
+      "locationUuid": "pickers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Dodo",
+        "DJ Caruso",
+        "DJ Westi"
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "uuid": "pickers_di",
+      "name": "Party Non-Stop",
+      "type": 2,
+      "day": 5,
+      "start": "2016-08-16 14:00:00",
+      "locationUuid": "pickers",
+      "description": "",
+      "facebookUrl": "",
+      "artists": [
+        "DJ Dodo",
+        "DJ Caruso",
+        "DJ Westi"
+      ],
+      "tags": [
+      ]
+    }
+  ]
+}

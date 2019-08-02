@@ -88,6 +88,8 @@ unitTest:
 bundleRelease:
   extends: .buildJob
   script:
+    - ./gradlew preparation:clean
+    - ./gradlew preparation:run
     - ./gradlew bundleRelease
   artifacts:
     paths:
@@ -97,6 +99,7 @@ buildReleaseApk:
   extends: .buildJob
   when: manual
   script:
+    - ./gradlew preparation:run
     - ./gradlew buildRelease
   artifacts:
     paths:
