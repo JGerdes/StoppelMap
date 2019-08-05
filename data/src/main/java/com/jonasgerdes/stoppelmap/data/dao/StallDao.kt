@@ -3,8 +3,8 @@ package com.jonasgerdes.stoppelmap.data.dao
 import androidx.room.Dao
 import androidx.room.Query
 import com.jonasgerdes.stoppelmap.model.map.Alias
-import com.jonasgerdes.stoppelmap.model.map.Item
 import com.jonasgerdes.stoppelmap.model.map.Stall
+import com.jonasgerdes.stoppelmap.model.map.SubType
 
 @Dao
 abstract class StallDao {
@@ -41,6 +41,17 @@ abstract class StallDao {
         """
     )
     suspend abstract fun getStallsByItem(item: String): List<Stall>
+
+
+    @Query(
+        """
+        SELECT sub_types.*
+        FROM stall_sub_types
+        JOIN sub_types ON sub_types.slug = stall_sub_types.sub_type
+        WHERE stall_sub_types.stall = :stall
+        """
+    )
+    suspend abstract fun getSubTypesByStall(stall: String): List<SubType>
 
 
 }

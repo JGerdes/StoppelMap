@@ -19,7 +19,12 @@ data class StallCarouselItem(
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.apply {
-            title.text = highlight.stall.basicInfo.name ?: highlight.stall.basicInfo.type.name
+            title.text = highlight.stall.basicInfo.name
+            subtitle.text = if (highlight.stall.subTypes.isNotEmpty()) {
+                highlight.stall.subTypes.joinToString(",\n") { it.name }
+            } else {
+                context.getTypeName(highlight.stall.basicInfo.type)
+            }
         }
     }
 }
@@ -61,7 +66,7 @@ data class NamelessStallCarouselItem(
     override val highlight: Highlight.NamelessStall
 ) : CarouselItem() {
 
-    override fun getLayout() = R.layout.item_stall_carousel
+    override fun getLayout() = R.layout.item_generic_stall_carousel
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.apply {

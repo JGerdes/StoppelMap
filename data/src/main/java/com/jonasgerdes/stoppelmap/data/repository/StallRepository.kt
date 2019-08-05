@@ -44,6 +44,8 @@ class StallRepository(
     suspend fun getTypeBySlug(slug: String) = database.stallTypeDao().getTypeBySlug(slug)
     suspend fun getItemBySlug(slug: String) = database.itemDao().getItemBySlug(slug)
 
+    suspend fun getTypesForStall(stallSlug: String) = database.stallsDao().getSubTypesByStall(stallSlug)
+
 
     data class StallWithAlias(val stall: Stall, val alias: String)
     data class TypeWithStalls(val type: SubType, val stalls: List<Stall>)

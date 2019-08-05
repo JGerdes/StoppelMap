@@ -40,16 +40,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_goneMarginTop="@dimen/cardPaddingDefault"
             />
-        <TextView
-            android:id="@+id/subtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?marginOtherContent"
-            android:textAppearance="?textAppearanceBodyTitle"
-            app:layout_constraintEnd_toStartOf="@id/guideEnd"
-            app:layout_constraintStart_toEndOf="@id/guideStart"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_goneMarginTop="@dimen/cardPaddingDefault"
-            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

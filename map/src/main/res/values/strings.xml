@@ -14,6 +14,6 @@
     <string name="name_type_restroom">Toilette</string>
     <string name="name_type_ride">Fahrgeschäft</string>
     <string name="name_type_seller_stall">Verkaufsstand</string>
-    <string name="name_type_expo">Gewerbestand/-zelt</string>
+    <string name="name_type_exhibition">Gewerbestand/-zelt</string>
     <string name="name_type_parking">Parkplatz</string>
 </resources>
