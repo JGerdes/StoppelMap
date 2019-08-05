@@ -18,6 +18,9 @@ abstract class Route : Parcelable {
 
             @Parcelize
             class Search() : State()
+
+            @Parcelize
+            data class Carousel(val stallSlugs: List<String>) : State()
         }
     }
 

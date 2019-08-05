@@ -1,7 +1,11 @@
 package com.jonasgerdes.stoppelmap.map.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.MotionScene
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import com.jonasgerdes.androidutil.dp
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
@@ -10,6 +14,7 @@ import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.map.R
+import com.jonasgerdes.stoppelmap.map.entity.Highlight
 import com.jonasgerdes.stoppelmap.map.entity.MapFocus
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
 import com.jonasgerdes.stoppelmap.map.entity.adapter.asLatLngBounds
@@ -26,13 +31,16 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     private val viewModel: MapViewModel by inject()
     private val searchResultAdapter = GroupAdapter<ViewHolder>()
+    private val carouselAdapter = GroupAdapter<ViewHolder>()
     private var map: MapboxMap? = null
+    //private val carouselSheet by lazy { BottomSheetBehavior.from(stallCarousel) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initMotionLayout()
         initSearch()
+        initCarousel()
         initMapView(savedInstanceState)
     }
 
@@ -62,8 +70,12 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                 is ItemSearchResultItem -> item.result
                 else -> null
             }
-            if (searchResult != null) viewModel.onSearchResultSelected(searchResult)
-            setIdleState() //TODO: do this via Router
+            if (searchResult != null) {
+                Router.navigateToRoute(
+                    Route.Map(Route.Map.State.Carousel(stallSlugs = searchResult.stallSlugs)),
+                    Router.Destination.MAP
+                )
+            }
         }
 
         observe(viewModel.searchResults) { searchResults ->
@@ -93,7 +105,10 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                         .sortedByDescending { it.getNumberProperty("priority")?.toInt() ?: 0 }
                         .firstOrNull()?.getStringProperty("slug")
                     if (stallSlug != null) {
-                        viewModel.onStallClicked(stallSlug)
+                        Router.navigateToRoute(
+                            Route.Map(Route.Map.State.Carousel(listOf(stallSlug))),
+                            Router.Destination.MAP
+                        )
                         true
                     } else false
 
@@ -107,8 +122,11 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         observe(viewModel.mapFocus) { focus ->
             val cameraUpdate = when (focus) {
                 is MapFocus.All -> CameraUpdateFactory.newLatLngBounds(focus.coordinates.asLatLngBounds(), 64.dp)
+                MapFocus.None -> null
             }
-            map?.animateCamera(cameraUpdate)
+            if (cameraUpdate != null) {
+                map?.animateCamera(cameraUpdate)
+            }
         }
     }
 
@@ -126,14 +144,52 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         motionLayout.requestApplyInsets()
     }
 
+    private fun initCarousel() {
+        stallCarousel.adapter = carouselAdapter
+        observe(viewModel.highlightedStalls) { highlights ->
+            Log.d("MapFragment", "Updates with ${highlights.size} highlights")
+            carouselAdapter.update(
+                highlights.map { highlight ->
+                    when (highlight) {
+                        is Highlight.SingleStall -> StallCarouselItem(highlight.stall)
+                        is Highlight.Stalls -> TODO()
+                    }
+                })
+        }
+
+        carouselMotion.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) = Unit
+            override fun allowsTransition(p0: MotionScene.Transition?) = true
+            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) = Unit
+            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) = Unit
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, transition: Int) {
+                when (transition) {
+                    R.id.hidden -> motionLayout?.isVisible = false
+                }
+            }
+        })
+    }
+
     override fun processRoute(route: Route.Map) {
-        when (route.state) {
+        when (val state = route.state) {
             is Route.Map.State.Idle -> setIdleState()
             is Route.Map.State.Search -> setSearchState()
+            is Route.Map.State.Carousel -> setCarouselState(state.stallSlugs)
         }
     }
 
+    private fun setCarouselState(stallSlugs: List<String>) {
+        carouselMotion.isVisible = true
+        carouselMotion.post {
+            carouselMotion.transitionToState(R.id.bottom)
+        }
+        motionLayout.transitionToState(R.id.idle)
+        searchInput.hideKeyboard()
+        viewModel.onSearchResultSelected(stallSlugs)
+    }
+
     private fun setIdleState() {
+        carouselMotion.transitionToState(R.id.hidden)
         motionLayout.transitionToState(R.id.idle)
         searchInput.hideKeyboard()
         searchIcon.setOnClickListener {
@@ -142,6 +198,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     }
 
     private fun setSearchState() {
+        carouselMotion.transitionToState(R.id.hidden)
         motionLayout.transitionToState(R.id.search)
         searchInput.post {
             searchInput.requestFocus()

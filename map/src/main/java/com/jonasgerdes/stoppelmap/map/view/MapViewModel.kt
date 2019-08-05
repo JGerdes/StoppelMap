@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonasgerdes.androidutil.withDefault
+import com.jonasgerdes.stoppelmap.map.entity.Highlight
 import com.jonasgerdes.stoppelmap.map.entity.Location
 import com.jonasgerdes.stoppelmap.map.entity.MapFocus
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
@@ -25,8 +27,11 @@ class MapViewModel(
     private val _searchResults = MutableLiveData<List<SearchResult>>()
     val searchResults: LiveData<List<SearchResult>> get() = _searchResults
 
-    private val _mapFocus = MutableLiveData<MapFocus>()
+    private val _mapFocus = MutableLiveData<MapFocus>().withDefault(MapFocus.None)
     val mapFocus: LiveData<MapFocus> get() = _mapFocus
+
+    private val _highlightedStalls = MutableLiveData<List<Highlight>>().withDefault(emptyList())
+    val highlightedStalls: LiveData<List<Highlight>> get() = _highlightedStalls
 
     private var searchJob: Job? = null
 
@@ -48,16 +53,32 @@ class MapViewModel(
         }
     }
 
-    fun onSearchResultSelected(searchResult: SearchResult) {
+    fun onSearchResultSelected(stallsSlugs: List<String>) {
         viewModelScope.launch(Dispatchers.IO) {
-            val stalls = getStallsBySlug(searchResult.stallSlugs)
+            val stalls = getStallsBySlug(stallsSlugs)
             _mapFocus.postValue(MapFocus.All(stalls.flatMap { stall ->
                 listOf(
                     Location(longitude = stall.minLng, latitude = stall.minLat),
                     Location(longitude = stall.maxLng, latitude = stall.maxLat)
                 )
             }))
+            _highlightedStalls.postValue(stalls.map {
+                Highlight.SingleStall(stall = it)
+            })
         }
+    }
+
+    fun onStallHighlightedSelected(highlight: Highlight) {
+        val stalls = when (highlight) {
+            is Highlight.SingleStall -> listOf(highlight.stall)
+            is Highlight.Stalls -> highlight.stalls
+        }
+        _mapFocus.postValue(MapFocus.All(stalls.flatMap { stall ->
+            listOf(
+                Location(latitude = stall.minLat, longitude = stall.minLng),
+                Location(latitude = stall.maxLat, longitude = stall.maxLng)
+            )
+        }))
     }
 
     fun onStallClicked(slug: String) {
@@ -71,6 +92,7 @@ class MapViewModel(
                     )
                 )
             )
+            _highlightedStalls.postValue(listOf(Highlight.SingleStall(stall = stall)))
         }
     }
 }

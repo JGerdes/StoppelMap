@@ -1,104 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/map_scene"
-    tools:motionDebug="SHOW_ALL"
     >
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideTop"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="32dp"
-        />
-    <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-    <androidx.cardview.widget.CardView
-        android:id="@+id/searchBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardElevation="0dp"
-        />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchResultList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_search_result"
-        />
-    <androidx.cardview.widget.CardView
-        android:id="@+id/searchCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="?colorSurface"
-        app:cardElevation="12dp"
-        />
-    <com.jonasgerdes.androidutil.widget.ExtendedEditText
-        android:id="@+id/searchInput"
-        style="@style/StoppelMapTheme.SearchEditText"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
-        android:elevation="12dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:hint="@string/map_search_hint_long"
-        android:outlineProvider="none"
-        />
-
-    <TextView
-        android:id="@+id/searchHint"
-        style="@style/StoppelMapTheme.SearchEditText"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
-        android:elevation="12dp"
-        android:outlineProvider="none"
-        android:text="@string/map_search_hint_short"
-        android:textColor="?colorControlNormal"
-        />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/searchIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:padding="8dp"
-        android:elevation="12dp"
-        android:outlineProvider="none"
-        app:lottie_colorFilter="?colorControlNormal"
-        app:lottie_fileName="animation/search_to_back.json"
-        />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/locationFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_my_location"
-        app:fabSize="normal"
-        android:visibility="gone"
-        />
-
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/map_scene"
+        >
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideTop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="32dp"
+            />
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardElevation="0dp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchResultList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_search_result"
+            />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="?colorSurface"
+            app:cardElevation="12dp"
+            />
+        <com.jonasgerdes.androidutil.widget.ExtendedEditText
+            android:id="@+id/searchInput"
+            style="@style/StoppelMapTheme.SearchEditText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:elevation="12dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/map_search_hint_long"
+            android:outlineProvider="none"
+            />
+        <TextView
+            android:id="@+id/searchHint"
+            style="@style/StoppelMapTheme.SearchEditText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:elevation="12dp"
+            android:outlineProvider="none"
+            android:text="@string/map_search_hint_short"
+            android:textColor="?colorControlNormal"
+            />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/searchIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:elevation="12dp"
+            android:outlineProvider="none"
+            android:padding="8dp"
+            app:lottie_colorFilter="?colorControlNormal"
+            app:lottie_fileName="animation/search_to_back.json"
+            />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/locationFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_my_location"
+            android:visibility="gone"
+            app:fabSize="normal"
+            />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
     <TextView
         android:id="@+id/mapDebug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:textSize="10sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
-
-</androidx.constraintlayout.motion.widget.MotionLayout>
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/carouselMotion"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:layout_gravity="bottom"
+        android:visibility="gone"
+        app:layoutDescription="@xml/map_carousel_scene"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stallCarousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_stall_carousel"
+            />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</FrameLayout>
