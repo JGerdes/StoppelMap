@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.jonasgerdes.stoppelmap.data.StoppelmapDatabase
 import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.initMapBox
@@ -32,6 +33,7 @@ class App : Application() {
 
         AndroidThreeTen.init(this)
 
+        StoppelmapDatabase.init(this)
         initMapBox(this)
         subscribeToNewsMessages(this)
     }

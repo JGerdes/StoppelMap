@@ -5,6 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.jonasgerdes.androidutil.copyToFile
+import com.jonasgerdes.androidutil.removeDatabase
 import com.jonasgerdes.stoppelmap.data.dao.ItemDao
 import com.jonasgerdes.stoppelmap.data.dao.StallDao
 import com.jonasgerdes.stoppelmap.data.dao.StallTypeDao
@@ -14,6 +18,7 @@ import com.jonasgerdes.stoppelmap.model.transportation.Departure
 import com.jonasgerdes.stoppelmap.model.transportation.Route
 import com.jonasgerdes.stoppelmap.model.transportation.Station
 import com.jonasgerdes.stoppelmap.model.transportation.TransportPrice
+import java.io.File
 
 @Database(
     entities = [
@@ -40,12 +45,20 @@ abstract class StoppelmapDatabase() : RoomDatabase() {
     abstract fun itemDao(): ItemDao
 
     companion object {
+
+        val databaseFileName = "stoppelmap.db"
+
+        fun init(context: Context) {
+            val dir = File(context.filesDir.parentFile, "databases")
+            context.removeDatabase("stoppelmap")
+            context.assets.copyToFile(databaseFileName, File(dir, databaseFileName))
+        }
+
         @Volatile
         private var instance: StoppelmapDatabase? = null
 
         fun getInstance(context: Context): StoppelmapDatabase = instance ?: synchronized(this) {
-            instance ?: Room.databaseBuilder(context, StoppelmapDatabase::class.java, "stoppelmap.db")
-                .createFromAsset("stoppelmap.db")
+            instance ?: Room.databaseBuilder(context, StoppelmapDatabase::class.java, databaseFileName)
                 .addMigrations()
                 .build().also { instance = it }
         }
