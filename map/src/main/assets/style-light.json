@@ -695,6 +695,7 @@
             "layout": {
                 "icon-offset": [0, 0],
                 "icon-ignore-placement": true,
+                "text-ignore-placement": true,
               "icon-image": [
                     "match",
                     ["get", "type"],

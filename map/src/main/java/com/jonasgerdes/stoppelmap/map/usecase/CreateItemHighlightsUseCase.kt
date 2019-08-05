@@ -11,9 +11,13 @@ class CreateItemHighlightsUseCase(
         val fullStalls = getFullStallsBySlug(slugs)
         val (stallsWithName, stallsWithoutName) = fullStalls.partition { it.basicInfo.name != null }
 
-        return stallsWithName.map { Highlight.SingleStall(it) } + Highlight.ItemCollection(
-            item = stallRepository.getItemBySlug(itemSlug)!!,
-            stalls = stallsWithoutName
-        )
+        var highlights: List<Highlight> = stallsWithName.map { Highlight.SingleStall(it) }
+        if (stallsWithoutName.isNotEmpty()) {
+            highlights += Highlight.ItemCollection(
+                item = stallRepository.getItemBySlug(itemSlug)!!,
+                stalls = stallsWithoutName
+            )
+        }
+        return highlights
     }
 }

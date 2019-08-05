@@ -178,7 +178,14 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         stallCarousel.adapter = carouselAdapter
         observe(viewModel.highlightedStalls) { highlights ->
             map?.setMarkers(highlights.flatMap { it.getStalls() }.map { stall ->
-                MarkerItem(LatLng(stall.basicInfo.centerLat, stall.basicInfo.centerLng), stall.basicInfo.type.type)
+                MarkerItem(
+                    LatLng(
+                        stall.basicInfo.centerLat,
+                        stall.basicInfo.centerLng
+                    ),
+                    stall.basicInfo.type.type,
+                    stall.basicInfo.name
+                )
             })
             val isOnlyOne = highlights.size == 1
             carouselAdapter.clear()

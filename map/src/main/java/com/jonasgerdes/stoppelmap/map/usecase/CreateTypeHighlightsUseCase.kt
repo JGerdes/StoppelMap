@@ -11,9 +11,13 @@ class CreateTypeHighlightsUseCase(
         val fullStalls = getFullStallsBySlug(slugs)
         val (stallsWithName, stallsWithoutName) = fullStalls.partition { it.basicInfo.name != null }
 
-        return stallsWithName.map { Highlight.SingleStall(it) } + Highlight.TypeCollection(
-            type = stallRepository.getTypeBySlug(typeSlug)!!,
-            stalls = stallsWithoutName
-        )
+        var highlights: List<Highlight> = stallsWithName.map { Highlight.SingleStall(it) }
+        if (stallsWithoutName.isNotEmpty()) {
+            highlights += Highlight.TypeCollection(
+                type = stallRepository.getTypeBySlug(typeSlug)!!,
+                stalls = stallsWithoutName
+            )
+        }
+        return highlights
     }
 }

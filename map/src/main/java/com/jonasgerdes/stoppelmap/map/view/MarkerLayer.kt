@@ -10,7 +10,7 @@ import com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
 
-data class MarkerItem(val location: LatLng, val type: String)
+data class MarkerItem(val location: LatLng, val type: String, val name: String? = null)
 
 private object Constants {
     const val markerLayerId = "selected-marker-layer"
@@ -26,6 +26,7 @@ fun MapboxMap.setMarkers(items: List<MarkerItem>) {
         Feature.fromGeometry(Point.fromLngLat(it.location.longitude,
                 it.location.latitude)).apply {
             addStringProperty("type", it.type)
+            it.name?.let { name -> addStringProperty("name", name) }
         }
     })
     val source = style?.getSourceAs(Constants.sourceName) as GeoJsonSource?
