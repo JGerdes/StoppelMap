@@ -85,4 +85,9 @@ class MapViewModel(
         is StallCollection.TypeCollection -> stallSlugs
         is StallCollection.ItemCollection -> stallSlugs
     }
+
+    fun onHighlightsHidden() {
+        _mapFocus.postValue(MapFocus.None)
+        _highlightedStalls.postValue(emptyList())
+    }
 }

@@ -16,4 +16,5 @@
     <string name="name_type_seller_stall">Verkaufsstand</string>
     <string name="name_type_exhibition">Gewerbestand/-zelt</string>
     <string name="name_type_parking">Parkplatz</string>
+    <string name="name_type_building">Wirtschaft/Scheune</string>
 </resources>

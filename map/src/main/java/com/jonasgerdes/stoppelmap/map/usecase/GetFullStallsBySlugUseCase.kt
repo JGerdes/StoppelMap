@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.usecase
 
+import android.util.Log
 import com.jonasgerdes.stoppelmap.data.repository.StallRepository
 import com.jonasgerdes.stoppelmap.map.entity.FullStall
 
@@ -8,7 +9,9 @@ class GetFullStallsBySlugUseCase(
 ) {
     suspend operator fun invoke(slugs: List<String>): List<FullStall> {
         val stalls = slugs.map { slug ->
-            stallRepository.getStallBySlug(slug)
+            val stall = stallRepository.getStallBySlug(slug)
+            Log.d("GetFullStallUseCase","found for slug $slug stall: $stall")
+            stall
         }.filterNotNull().map { stall ->
             FullStall(
                 basicInfo = stall,

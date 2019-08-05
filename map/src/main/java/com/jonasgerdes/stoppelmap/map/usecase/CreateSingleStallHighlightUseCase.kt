@@ -8,7 +8,8 @@ class CreateSingleStallHighlightUseCase(
     private val getFullStallsBySlug: GetFullStallsBySlugUseCase
 ) {
     suspend operator fun invoke(slug: String): Highlight {
-        val fullStall = getFullStallsBySlug(listOf(slug)).first()
+        val fullStall = getFullStallsBySlug(listOf(slug)).firstOrNull()
+            ?: throw IllegalArgumentException("no full stall found for slug $slug")
         return if (fullStall.basicInfo.name == null) {
             Highlight.NamelessStall(fullStall)
         } else {

@@ -686,8 +686,78 @@
                 "icon-translate": [0, 0]
             },
             "interactive": true
+        },
+        {
+            "id": "selected-marker-layer",
+            "type": "symbol",
+            "source": "selected-marker",
+            "source-layer": "selected-marker",
+            "layout": {
+                "icon-offset": [0, 0],
+                "icon-ignore-placement": true,
+              "icon-image": [
+                    "match",
+                    ["get", "type"],
+                    "misc",
+                    "misc",
+                    "bar",
+                    "bar",
+                    "food-stall",
+                    "food_stall",
+                    "ride",
+                    "ride",
+                    "restroom",
+                    "restroom",
+                    "building",
+                    "restaurant",
+                    "candy-stall",
+                    "candy_stall",
+                    "game-stall",
+                    "game_stall",
+                    "seller-stall",
+                    "seller_stall",
+                    "exhibition",
+                    "expo",
+                    "parking",
+                    "parking",
+                    ["error", "No default property value available."]
+                ],
+                "text-font": ["Roboto Slab Regular"],
+                "text-justify": "left",
+                "text-padding": [
+                    "interpolate",
+                    ["exponential", 1],
+                    ["zoom"],
+                    16,
+                    8,
+                    20,
+                    0
+                ],
+                "visibility": "visible",
+                "text-offset": [0, -0.8],
+                "text-anchor": "bottom",
+                "text-field": ["to-string", ["get", "name"]],
+                "icon-padding": [
+                    "interpolate",
+                    ["exponential", 1],
+                    ["zoom"],
+                    16,
+                    8,
+                    19,
+                    0
+                ],
+                "text-max-width": 20
+            },
+            "paint": {
+                "text-halo-color": "hsl(0, 0%, 100%)",
+                "text-halo-blur": 0,
+                "text-halo-width": 1,
+                "text-translate": [0, 0],
+                "icon-translate": [0, 0],
+                "icon-translate-anchor": "viewport"
+            },
+            "interactive": true
         }
-
     ],
     "created": "2018-04-15T18:27:46.518Z",
     "id": "cjg157v7z1c112sludl8571c3",

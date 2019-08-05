@@ -23,7 +23,9 @@ import com.jonasgerdes.stoppelmap.map.entity.Highlight
 import com.jonasgerdes.stoppelmap.map.entity.MapFocus
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
 import com.jonasgerdes.stoppelmap.map.entity.adapter.asLatLngBounds
+import com.jonasgerdes.stoppelmap.map.entity.getStalls
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
+import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.xwray.groupie.GroupAdapter
@@ -175,6 +177,9 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         })
         stallCarousel.adapter = carouselAdapter
         observe(viewModel.highlightedStalls) { highlights ->
+            map?.setMarkers(highlights.flatMap { it.getStalls() }.map { stall ->
+                MarkerItem(LatLng(stall.basicInfo.centerLat, stall.basicInfo.centerLng), stall.basicInfo.type.type)
+            })
             val isOnlyOne = highlights.size == 1
             carouselAdapter.clear()
             carouselAdapter.addAll(
@@ -202,7 +207,10 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) = Unit
             override fun onTransitionCompleted(motionLayout: MotionLayout?, transition: Int) {
                 when (transition) {
-                    R.id.hidden -> motionLayout?.isVisible = false
+                    R.id.hidden -> {
+                        motionLayout?.isVisible = false
+                        viewModel.onHighlightsHidden()
+                    }
                 }
             }
         })
