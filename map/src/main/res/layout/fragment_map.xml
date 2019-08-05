@@ -104,7 +104,7 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/carouselMotion"
         android:layout_width="match_parent"
-        android:layout_height="192dp"
+        android:layout_height="208dp"
         android:layout_gravity="bottom"
         android:visibility="gone"
         app:layoutDescription="@xml/map_carousel_scene"

@@ -12,7 +12,7 @@ abstract class StallDao {
     suspend abstract fun findStallByName(name: String): List<Stall>
 
     @Query("SELECT * FROM stalls WHERE slug = :slug")
-    suspend abstract fun findStallBySlug(slug: String): Stall
+    suspend abstract fun findStallBySlug(slug: String): Stall?
 
     @Query("SELECT * FROM aliases WHERE alias LIKE :alias")
     suspend abstract fun findAlias(alias: String): List<Alias>

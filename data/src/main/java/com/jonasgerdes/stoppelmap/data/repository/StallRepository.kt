@@ -18,7 +18,7 @@ class StallRepository(
     suspend fun findStallByAlias(stallAlias: String): List<StallWithAlias> {
         return database.stallsDao().findAlias("%$stallAlias%").map { alias ->
             StallWithAlias(
-                stall = database.stallsDao().findStallBySlug(alias.stall),
+                stall = database.stallsDao().findStallBySlug(alias.stall)!!,
                 alias = alias.alias
             )
         }

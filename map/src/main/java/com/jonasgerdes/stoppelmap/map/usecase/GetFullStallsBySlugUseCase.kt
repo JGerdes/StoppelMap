@@ -9,7 +9,7 @@ class GetFullStallsBySlugUseCase(
     suspend operator fun invoke(slugs: List<String>): List<Stall> {
         val stalls = slugs.map { slug ->
             stallRepository.getStallBySlug(slug)
-        }
+        }.filterNotNull()
         return stalls
     }
 }

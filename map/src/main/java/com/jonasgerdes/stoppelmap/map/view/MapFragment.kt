@@ -1,14 +1,18 @@
 package com.jonasgerdes.stoppelmap.map.view
 
+import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.motion.widget.MotionScene
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.jonasgerdes.androidutil.dp
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
+import com.jonasgerdes.androidutil.recyclerview.doOnScrolledFinished
+import com.jonasgerdes.androidutil.recyclerview.findFirstCompletelyVisibleItemPosition
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
@@ -33,7 +37,6 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     private val searchResultAdapter = GroupAdapter<ViewHolder>()
     private val carouselAdapter = GroupAdapter<ViewHolder>()
     private var map: MapboxMap? = null
-    //private val carouselSheet by lazy { BottomSheetBehavior.from(stallCarousel) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -110,7 +113,13 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                             Router.Destination.MAP
                         )
                         true
-                    } else false
+                    } else {
+                        Router.navigateToRoute(
+                            Route.Map(Route.Map.State.Idle()),
+                            Router.Destination.MAP
+                        )
+                        false
+                    }
 
                 }
             }
@@ -121,7 +130,13 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         }
         observe(viewModel.mapFocus) { focus ->
             val cameraUpdate = when (focus) {
-                is MapFocus.All -> CameraUpdateFactory.newLatLngBounds(focus.coordinates.asLatLngBounds(), 64.dp)
+                is MapFocus.All -> CameraUpdateFactory.newLatLngBounds(
+                    focus.coordinates.asLatLngBounds(),
+                    64.dp,
+                    80.dp,
+                    64.dp,
+                    208.dp
+                )
                 MapFocus.None -> null
             }
             if (cameraUpdate != null) {
@@ -145,16 +160,34 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     }
 
     private fun initCarousel() {
+        LinearSnapHelper().attachToRecyclerView(stallCarousel)
+        //TODO: improve this
+        stallCarousel.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                if (carouselAdapter.itemCount == 1) {
+                    val totalWidth = parent.width
+                    val cardWidth = 256.dp + 16.dp
+                    val sidePadding = Math.max(0, (totalWidth - cardWidth) / 2)
+                    outRect.set(sidePadding, 0, sidePadding, 0)
+                }
+            }
+        })
         stallCarousel.adapter = carouselAdapter
         observe(viewModel.highlightedStalls) { highlights ->
-            Log.d("MapFragment", "Updates with ${highlights.size} highlights")
             carouselAdapter.update(
                 highlights.map { highlight ->
                     when (highlight) {
-                        is Highlight.SingleStall -> StallCarouselItem(highlight.stall)
+                        is Highlight.SingleStall -> StallCarouselItem(highlight)
                         is Highlight.Stalls -> TODO()
                     }
                 })
+        }
+
+        stallCarousel.doOnScrolledFinished {
+            val id = stallCarousel.findFirstCompletelyVisibleItemPosition()
+            if (id != -1) {
+                viewModel.onStallHighlightedSelected((carouselAdapter.getItem(id) as CarouselItem).highlight)
+            }
         }
 
         carouselMotion.setTransitionListener(object : MotionLayout.TransitionListener {

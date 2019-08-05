@@ -23,10 +23,11 @@
 
     <Transition
         app:constraintSetEnd="@+id/bottom"
-        app:constraintSetStart="@+id/hidden"
-        app:motionInterpolator="easeInOut">
+        app:constraintSetStart="@+id/hidden">
         <OnSwipe
             app:dragDirection="dragUp"
+            app:maxAcceleration="64"
+            app:maxVelocity="64"
             app:moveWhenScrollAtTop="true"
             app:onTouchUp="autoComplete"
             app:touchAnchorId="@+id/stallCarousel"
