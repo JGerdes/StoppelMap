@@ -6,12 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.androidutil.withDefault
-import com.jonasgerdes.stoppelmap.map.entity.Highlight
-import com.jonasgerdes.stoppelmap.map.entity.Location
-import com.jonasgerdes.stoppelmap.map.entity.MapFocus
-import com.jonasgerdes.stoppelmap.map.entity.SearchResult
-import com.jonasgerdes.stoppelmap.map.usecase.GetFullStallsBySlugUseCase
-import com.jonasgerdes.stoppelmap.map.usecase.SearchForStallsUseCase
+import com.jonasgerdes.stoppelmap.core.routing.Route.Map.State.Carousel.StallCollection
+import com.jonasgerdes.stoppelmap.map.entity.*
+import com.jonasgerdes.stoppelmap.map.usecase.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -21,7 +18,10 @@ private const val SEARCH_DEBOUNCE_DELAY_MS = 100L
 
 class MapViewModel(
     private val searchForStalls: SearchForStallsUseCase,
-    private val getStallsBySlug: GetFullStallsBySlugUseCase
+    private val getStallsBySlug: GetFullStallsBySlugUseCase,
+    private val createSingleStallHighlight: CreateSingleStallHighlightUseCase,
+    private val createTypeHighlights: CreateTypeHighlightsUseCase,
+    private val createItemHighlights: CreateItemHighlightsUseCase
 ) : ViewModel() {
 
     private val _searchResults = MutableLiveData<List<SearchResult>>()
@@ -53,26 +53,25 @@ class MapViewModel(
         }
     }
 
-    fun onSearchResultSelected(stallsSlugs: List<String>) {
+    fun onStallsSelected(stalls: StallCollection) {
         viewModelScope.launch(Dispatchers.IO) {
-            val stalls = getStallsBySlug(stallsSlugs)
-            _mapFocus.postValue(MapFocus.All(stalls.flatMap { stall ->
-                listOf(
-                    Location(longitude = stall.minLng, latitude = stall.minLat),
-                    Location(longitude = stall.maxLng, latitude = stall.maxLat)
-                )
-            }))
-            _highlightedStalls.postValue(stalls.map {
-                Highlight.SingleStall(stall = it)
-            })
+
+            val highlights = when (stalls) {
+                is StallCollection.Single -> listOf(createSingleStallHighlight(stalls.stallSlug))
+                is StallCollection.TypeCollection -> createTypeHighlights(stalls.stallSlugs, stalls.type)
+                is StallCollection.ItemCollection -> createItemHighlights(stalls.stallSlugs, stalls.item)
+            }
+
+            if (highlights.isNotEmpty()) {
+                onStallHighlightedSelected(highlights.first())
+            }
+
+            _highlightedStalls.postValue(highlights)
         }
     }
 
     fun onStallHighlightedSelected(highlight: Highlight) {
-        val stalls = when (highlight) {
-            is Highlight.SingleStall -> listOf(highlight.stall)
-            is Highlight.Stalls -> highlight.stalls
-        }
+        val stalls = highlight.getStalls().map { it.basicInfo }
         _mapFocus.postValue(MapFocus.All(stalls.flatMap { stall ->
             listOf(
                 Location(latitude = stall.minLat, longitude = stall.minLng),
@@ -81,18 +80,9 @@ class MapViewModel(
         }))
     }
 
-    fun onStallClicked(slug: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val stall = getStallsBySlug(listOf(slug)).first()
-            _mapFocus.postValue(
-                MapFocus.All(
-                    listOf(
-                        Location(longitude = stall.minLng, latitude = stall.minLat),
-                        Location(longitude = stall.maxLng, latitude = stall.maxLat)
-                    )
-                )
-            )
-            _highlightedStalls.postValue(listOf(Highlight.SingleStall(stall = stall)))
-        }
+    fun StallCollection.getStallSlugs() = when (this) {
+        is StallCollection.Single -> listOf(stallSlug)
+        is StallCollection.TypeCollection -> stallSlugs
+        is StallCollection.ItemCollection -> stallSlugs
     }
 }

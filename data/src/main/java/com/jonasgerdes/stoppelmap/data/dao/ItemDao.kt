@@ -8,4 +8,7 @@ import com.jonasgerdes.stoppelmap.model.map.Item
 abstract class ItemDao {
     @Query("SELECT * FROM items WHERE name LIKE :name")
     suspend abstract fun findItemByName(name: String): List<Item>
+
+    @Query("SELECT * FROM items WHERE slug LIKE :itemSlug")
+    suspend abstract fun getItemBySlug(itemSlug: String): Item?
 }

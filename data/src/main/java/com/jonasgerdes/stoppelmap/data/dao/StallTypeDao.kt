@@ -11,5 +11,8 @@ abstract class StallTypeDao {
     @Query("SELECT * FROM sub_types WHERE name LIKE :name")
     suspend abstract fun findTypeByName(name: String): List<SubType>
 
+    @Query("SELECT * FROM sub_types WHERE slug LIKE :slug")
+    suspend abstract fun getTypeBySlug(slug: String): SubType?
+
 
 }

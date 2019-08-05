@@ -5,6 +5,14 @@ import android.view.View
 import android.widget.ImageView
 import com.jonasgerdes.stoppelmap.model.map.Type
 
+fun Context.getStringByName(resName: String, default: Int = 0) =
+    resources.getIdentifier(resName, "string", packageName).let {
+        if (it == 0) default else it
+    }
+
+fun Context.getTypeName(type: Type) =
+    getString(getStringByName("name_type_${type.nameForRes}"))
+
 fun Context.getDrawableByName(resName: String, default: Int = 0) =
     resources.getIdentifier(resName, "drawable", packageName).let {
         if (it == 0) default else it

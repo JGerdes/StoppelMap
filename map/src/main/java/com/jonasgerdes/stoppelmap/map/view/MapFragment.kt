@@ -14,6 +14,7 @@ import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledFinished
 import com.jonasgerdes.androidutil.recyclerview.findFirstCompletelyVisibleItemPosition
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Route.Map.State.Carousel.StallCollection
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
@@ -67,15 +68,15 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         }
 
         searchResultAdapter.setOnItemClickListener { item, view ->
-            val searchResult = when (item) {
-                is StallSearchResultItem -> item.result
-                is TypeSearchResultItem -> item.result
-                is ItemSearchResultItem -> item.result
+            val stallCollection = when (item) {
+                is StallSearchResultItem -> StallCollection.Single(item.result.stall.slug)
+                is TypeSearchResultItem -> StallCollection.TypeCollection(item.result.type.slug, item.result.stallSlugs)
+                is ItemSearchResultItem -> StallCollection.ItemCollection(item.result.item.slug, item.result.stallSlugs)
                 else -> null
             }
-            if (searchResult != null) {
+            if (stallCollection != null) {
                 Router.navigateToRoute(
-                    Route.Map(Route.Map.State.Carousel(stallSlugs = searchResult.stallSlugs)),
+                    Route.Map(Route.Map.State.Carousel(stallCollection)),
                     Router.Destination.MAP
                 )
             }
@@ -109,7 +110,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                         .firstOrNull()?.getStringProperty("slug")
                     if (stallSlug != null) {
                         Router.navigateToRoute(
-                            Route.Map(Route.Map.State.Carousel(listOf(stallSlug))),
+                            Route.Map(Route.Map.State.Carousel(StallCollection.Single(stallSlug))),
                             Router.Destination.MAP
                         )
                         true
@@ -174,11 +175,15 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         })
         stallCarousel.adapter = carouselAdapter
         observe(viewModel.highlightedStalls) { highlights ->
-            carouselAdapter.update(
+            val isOnlyOne = highlights.size == 1
+            carouselAdapter.clear()
+            carouselAdapter.addAll(
                 highlights.map { highlight ->
                     when (highlight) {
                         is Highlight.SingleStall -> StallCarouselItem(highlight)
-                        is Highlight.Stalls -> TODO()
+                        is Highlight.TypeCollection -> TypeCollectionCarouselItem(highlight, isOnlyOne)
+                        is Highlight.ItemCollection -> ItemCollectionCarouselItem(highlight, isOnlyOne)
+                        is Highlight.NamelessStall -> NamelessStallCarouselItem(highlight)
                     }
                 })
         }
@@ -207,18 +212,18 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         when (val state = route.state) {
             is Route.Map.State.Idle -> setIdleState()
             is Route.Map.State.Search -> setSearchState()
-            is Route.Map.State.Carousel -> setCarouselState(state.stallSlugs)
+            is Route.Map.State.Carousel -> setCarouselState(state.stallCollection)
         }
     }
 
-    private fun setCarouselState(stallSlugs: List<String>) {
+    private fun setCarouselState(stallSlugs: StallCollection) {
         carouselMotion.isVisible = true
         carouselMotion.post {
             carouselMotion.transitionToState(R.id.bottom)
         }
         motionLayout.transitionToState(R.id.idle)
         searchInput.hideKeyboard()
-        viewModel.onSearchResultSelected(stallSlugs)
+        viewModel.onStallsSelected(stallSlugs)
     }
 
     private fun setIdleState() {

@@ -1,4 +1,19 @@
 <resources>
     <string name="map_search_hint_short">Suche</string>
     <string name="map_search_hint_long">Suche nach Fahrgeschäften, Zelten…</string>
+    <string name="map_carousel_item_and_more">weitere %1$d mal auf dem Stoppelmarkt</string>
+    <string name="map_carousel_item_more">%1$d mal auf dem Stoppelmarkt</string>
+
+
+    <string name="name_type_bar">Ausschank</string>
+    <string name="name_type_restaurant">Imbiss</string>
+    <string name="name_type_candy_stall">Süßigkeitenstand</string>
+    <string name="name_type_food_stall">Imbissstand</string>
+    <string name="name_type_game_stall">Spielstand</string>
+    <string name="name_type_misc">Verschiedenes</string>
+    <string name="name_type_restroom">Toilette</string>
+    <string name="name_type_ride">Fahrgeschäft</string>
+    <string name="name_type_seller_stall">Verkaufsstand</string>
+    <string name="name_type_expo">Gewerbestand/-zelt</string>
+    <string name="name_type_parking">Parkplatz</string>
 </resources>
