@@ -62,6 +62,80 @@
             "interactive": true
         },
         {
+            "id": "bus-street",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                ["==", "public_transport", "bus"],
+                ["in", "$type", "LineString", "Point", "Polygon"]
+            ],
+            "layout": {"visibility": "visible", "line-join": "round"},
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    ["exponential", 1],
+                    ["zoom"],
+                    15,
+                    2,
+                    16,
+                    4,
+                    17,
+                    8,
+                    18,
+                    16,
+                    19,
+                    32,
+                    20,
+                    64,
+                    21,
+                    128
+                ],
+                "line-color": "#e4e2e2",
+                "line-gap-width": 0,
+                "line-blur": 0
+            },
+            "interactive": true
+        },
+        {
+            "id": "platform",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                ["==", "public_transport", "platform"],
+                ["in", "$type", "LineString", "Point", "Polygon"]
+            ],
+            "layout": {"visibility": "visible", "line-join": "round", "line-cap":  "round"},
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    ["exponential", 1],
+                    ["zoom"],
+                    15,
+                    3,
+                    16,
+                    6,
+                    17,
+                    12,
+                    18,
+                    24,
+                    19,
+                    48,
+                    20,
+                    96,
+                    21,
+                    192
+                ],
+                "line-color": "#dbd2c3",
+                "line-gap-width": 0,
+                "line-blur": 0
+            },
+            "interactive": true
+        },
+        {
             "id": "street",
             "type": "line",
             "source": "composite",
