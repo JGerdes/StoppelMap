@@ -4655,7 +4655,7 @@
                 "name": "Spinning Racer",
                 "operator": "Bruch",
                 "priority": "3",
-                "type": "rollercoaster"
+                "type": "coaster"
             },
             "geometry": {
                 "type": "Polygon",

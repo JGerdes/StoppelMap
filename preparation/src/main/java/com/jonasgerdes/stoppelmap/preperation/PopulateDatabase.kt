@@ -21,6 +21,12 @@ object Settings {
     val geoInput = File("$data/map", "stoma-2019.geojson")
     val shareJson = File("$data/server", "2019.json")
     val scheduleDir = File(data, "schedule")
+    val manualDir = File(scheduleDir, "manual")
+    val descriptionFolder = File(data, "descriptions").apply { mkdirs() }
+    val eventsFile = File(scheduleDir, "fetched.json").apply {
+        if (!exists())
+            createNewFile()
+    }
     val busDir = File("$data/transportation", "bus")
 }
 
@@ -51,13 +57,15 @@ fun main(args: Array<String>) {
     val data = Data().apply {
         parseGeoJson(
             Settings.geoInput,
-            Settings.geoOutput
+            Settings.geoOutput,
+            Settings.descriptionFolder
         )
         parseEventSchedule(
-            Settings.scheduleDir.listFiles()
-                .asList()
+            Settings.manualDir.listFiles().asList()
                 .filter { it.extension == "json" }
-                .filter { it.name != "template.json" })
+                .filter { it.name != "template.json" }
+                    + listOf(Settings.eventsFile)
+        )
         parseBusSchedule(
             Settings.busDir.listFiles()
                 .asList()
@@ -65,10 +73,10 @@ fun main(args: Array<String>) {
                 .filter { it.name != "template.json" }
                 .filter { it.name != "new_template.json" })
     }
+
     data.insertInto(db)
 
     createShareJson(Settings.shareJson, data)
-
 
     System.out.println("finished @ ${currentTime()}")
 }

@@ -45,6 +45,7 @@ fun getNameForItem(item: String): Any = when (item) {
     "item_shashlik" -> "Schaschlik"
     "item_cheese" -> "Käse"
     "item_tarte_flambee" -> "Flammkuchen"
+    "item_bruschetta" -> "Bruschetta"
 
     "item_crepe" -> "Crepé"
     "item_roasted_almonds" -> "Gebrannte Mandeln"
@@ -109,7 +110,6 @@ private fun getNameForType(type: String) = when (type) {
     "for-kids" -> "für Kinder"
     "marquee" -> "Festzelt"
     "coaster" -> "Achterbahn"
-    "rollercoaster" -> "Achterbahn"
     "swing-ride" -> listOf("Kettenflieger", "Kettenkarusell")
     "funhouse" -> "Spaßhaus"
     "labyrinth" -> "Labyrinth"
@@ -128,5 +128,10 @@ private fun getNameForType(type: String) = when (type) {
             "Rollstuhlgerechte Toilette")
     "mens_restroom" -> listOf("Herren-Toilette", "Herren-WC")
     "womens_restroom" -> listOf("Damen-Toilette", "Damen-WC")
+
+
+    "misc_atm" -> "Geldautomat"
+    "misc_police" -> "Polizei"
+    "misc_first_aid" -> "Erste Hilfe"
     else -> throw RuntimeException("no name for item $type")
 }

@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preperation.entity
 
+import java.time.OffsetDateTime
 import java.util.*
 
 data class Stall(
@@ -64,8 +65,8 @@ data class StallSubType(
 data class Event(
         val slug: String,
         val name: String,
-        val start: Date,
-        val end: Date?,
+        val start: OffsetDateTime,
+        val end: OffsetDateTime?,
         val location: String? = null,
         val description: String? = null
 )

@@ -1,6 +1,5 @@
 {
   "events": [
-    // Donnerstag
     {
       "uuid": "stoppelmarkt_umzug",
       "name": "Festumzug",
@@ -25,7 +24,6 @@
       "tags": [
       ]
     },
-    // Freitag
     {
       "uuid": "stoppelmarkt_marktbeginn_freitag",
       "name": "Marktbeginn",
@@ -53,7 +51,6 @@
         "Für Kinder"
       ]
     },
-    // Samstag
     {
       "uuid": "stoppelmarkt_marktbeginn_samstag",
       "name": "Marktbeginn",
@@ -61,7 +58,6 @@
       "day": 2,
       "start": "2016-08-13 13:00:00"
     },
-    // Sonntag
     {
       "uuid": "stoppelmarkt_gottesdienst",
       "name": "Gottesdienst",
@@ -75,7 +71,6 @@
         "Pfarrer Ellinghaus"
       ]
     },
-    // Montag
     {
       "uuid": "stoppelmarkt_viehmarkt",
       "name": "Pferde- und Viehmarkt",
@@ -95,7 +90,6 @@
         "Ursula von der Leyen"
       ]
     },
-    // Dienstag
     {
       "uuid": "stoppelmarkt_marktbeginn_dienstag",
       "name": "Marktbeginn",

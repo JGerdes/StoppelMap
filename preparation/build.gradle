@@ -9,12 +9,19 @@ repositories {
     mavenCentral()
 }
 
-run {
+task runPreparation(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
     main = 'com.jonasgerdes.stoppelmap.preperation.PopulateDatabaseKt'
-    classpath = sourceSets.main.runtimeClasspath
 }
 
-dependencies {
+
+task fetchEvents(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = 'com.jonasgerdes.stoppelmap.preperation.events.EventParserKt'
+}
+
+
+    dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation deps.kotlin.stdlib
