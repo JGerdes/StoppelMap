@@ -4,15 +4,18 @@ import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.entity.Highlight
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import kotlinx.android.synthetic.main.item_stall_carousel.view.*
 import kotlinx.android.synthetic.main.item_stall_carousel.view.title
 import kotlinx.android.synthetic.main.item_type_collection_carousel.view.*
+import kotlinx.android.synthetic.main.item_type_collection_carousel.view.subtitle
 
 abstract class CarouselItem : Item() {
     abstract val highlight: Highlight
 }
 
 data class StallCarouselItem(
-    override val highlight: Highlight.SingleStall
+    override val highlight: Highlight.SingleStall,
+    val shareClickedCallback: (slug: String, name: String) -> Unit
 ) : CarouselItem() {
 
     override fun getLayout() = R.layout.item_stall_carousel
@@ -24,6 +27,9 @@ data class StallCarouselItem(
                 highlight.stall.subTypes.joinToString(",\n") { it.name }
             } else {
                 context.getTypeName(highlight.stall.basicInfo.type)
+            }
+            shareButton.setOnClickListener {
+                shareClickedCallback(highlight.stall.basicInfo.slug, highlight.stall.basicInfo.name ?: "")
             }
         }
     }

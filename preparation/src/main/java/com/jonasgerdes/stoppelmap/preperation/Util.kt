@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preperation
 
+import com.google.common.reflect.TypeToken
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -13,3 +14,5 @@ fun currentTime() = Util.format.format(Calendar.getInstance().time)!!
 fun <T> List<T>?.emptyIfNull(): List<T> {
     return this ?: emptyList()
 }
+
+inline fun <reified T> genericType() = object: TypeToken<T>() {}.type

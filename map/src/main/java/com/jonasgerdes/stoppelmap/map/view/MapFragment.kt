@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.view
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
@@ -40,6 +41,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     private val searchResultAdapter = GroupAdapter<ViewHolder>()
     private val carouselAdapter = GroupAdapter<ViewHolder>()
     private var map: MapboxMap? = null
+    private var routeToProcess: Route.Map? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,6 +50,17 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         initSearch()
         initCarousel()
         initMapView(savedInstanceState)
+    }
+
+    private val shareStallListener = { slug: String, name: String ->
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.map_share_stall_title, slug))
+        }
+        val uri = getString(R.string.map_share_legacy_uri, slug)
+        val message = getString(R.string.map_share_stall_text, name, uri)
+        shareIntent.putExtra(Intent.EXTRA_TEXT, message)
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.map_share_chooser_title, name)))
     }
 
     private fun initSearch() {
@@ -123,7 +136,11 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                         )
                         false
                     }
+                }
 
+                routeToProcess?.let {
+                    processRouteImplementation(it)
+                    routeToProcess = null
                 }
             }
 
@@ -192,7 +209,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
             carouselAdapter.addAll(
                 highlights.map { highlight ->
                     when (highlight) {
-                        is Highlight.SingleStall -> StallCarouselItem(highlight)
+                        is Highlight.SingleStall -> StallCarouselItem(highlight, shareStallListener)
                         is Highlight.TypeCollection -> TypeCollectionCarouselItem(highlight, isOnlyOne)
                         is Highlight.ItemCollection -> ItemCollectionCarouselItem(highlight, isOnlyOne)
                         is Highlight.NamelessStall -> NamelessStallCarouselItem(highlight)
@@ -224,6 +241,16 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     }
 
     override fun processRoute(route: Route.Map) {
+        if (map == null) {
+            routeToProcess = route
+        } else processRouteImplementation(route)
+    }
+
+    fun processRouteImplementation(route: Route.Map) {
+        if (map == null) {
+            //TODO: log error, something went really wrong here
+            return
+        }
         when (val state = route.state) {
             is Route.Map.State.Idle -> setIdleState()
             is Route.Map.State.Search -> setSearchState()

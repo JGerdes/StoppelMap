@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap.preperation
 
 import com.google.gson.GsonBuilder
+import com.google.gson.stream.JsonWriter
+import com.jonasgerdes.stoppelmap.preperation.entity.SharableStall
 import com.jonasgerdes.stoppelmap.preperation.parse.parseBusSchedule
 import com.jonasgerdes.stoppelmap.preperation.parse.parseEventSchedule
 import com.jonasgerdes.stoppelmap.preperation.parse.parseGeoJson
@@ -17,6 +19,7 @@ object Settings {
     val geoOutput = File(mapAssets, "mapdata.geojson")
 
     val geoInput = File("$data/map", "stoma-2019.geojson")
+    val shareJson = File("$data/server", "2019.json")
     val scheduleDir = File(data, "schedule")
     val busDir = File("$data/transportation", "bus")
 }
@@ -41,11 +44,11 @@ fun main(args: Array<String>) {
 
     val db = openSQLite(Settings.database)!!
     val gson = GsonBuilder().create()
-    println("created database from schema "+Settings.databaseSchemaFile.path)
+    println("created database from schema " + Settings.databaseSchemaFile.path)
     db.createTablesFromSchemaFile(Settings.databaseSchemaFile, gson)
     println("created database, start parsing")
 
-    Data().apply {
+    val data = Data().apply {
         parseGeoJson(
             Settings.geoInput,
             Settings.geoOutput
@@ -61,7 +64,37 @@ fun main(args: Array<String>) {
                 .filter { it.extension == "json" }
                 .filter { it.name != "template.json" }
                 .filter { it.name != "new_template.json" })
-    }.insertInto(db)
+    }
+    data.insertInto(db)
+
+    createShareJson(Settings.shareJson, data)
+
 
     System.out.println("finished @ ${currentTime()}")
+}
+
+fun createShareJson(shareJson: File, data: Data) {
+    val gson = GsonBuilder()
+        .setPrettyPrinting()
+        .create()
+
+    if (shareJson.exists()) {
+        shareJson.delete()
+    }
+    shareJson.createNewFile()
+
+
+    val shareJsonData = data.stalls
+        .filter { it.name != null }
+        .map {
+            SharableStall(
+                slug = it.slug,
+                name = it.name!!,
+                type = it.type
+            )
+        }
+
+    val jsonWriter = JsonWriter(shareJson.writer())
+    gson.toJson(shareJsonData, genericType<List<SharableStall>>(), jsonWriter)
+    jsonWriter.close()
 }

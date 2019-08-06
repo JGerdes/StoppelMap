@@ -3,6 +3,11 @@
     <string name="map_search_hint_long">Suche nach Fahrgeschäften, Zelten…</string>
     <string name="map_carousel_item_and_more">weitere %1$d mal auf dem Stoppelmarkt</string>
     <string name="map_carousel_item_more">%1$d mal auf dem Stoppelmarkt</string>
+    <string name="map_carousel_item_share">Teilen</string>
+    <string name="map_share_stall_title">Schau Dir %1$s an</string>
+    <string name="map_share_stall_text">Schau Dir %1$s in der StoppelMap an: %2$s</string>
+    <string name="map_share_legacy_uri">https://share.stoppelmap.de/2019/map/%1$s</string>
+    <string name="map_share_chooser_title">%1$s teilen</string>
 
 
     <string name="name_type_bar">Ausschank</string>
