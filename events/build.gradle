@@ -37,6 +37,7 @@ dependencies {
     implementation deps.androidx.material
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
+    implementation deps.androidx.viewpager2
 
     implementation deps.koin.core
     implementation deps.koin.android
