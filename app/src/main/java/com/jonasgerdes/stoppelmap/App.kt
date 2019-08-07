@@ -4,6 +4,7 @@ import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.jonasgerdes.stoppelmap.data.StoppelmapDatabase
 import com.jonasgerdes.stoppelmap.data.dataModule
+import com.jonasgerdes.stoppelmap.events.eventsModule
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.initMapBox
 import com.jonasgerdes.stoppelmap.map.mapModule
@@ -27,6 +28,7 @@ class App : Application() {
                 dataModule,
                 homeModule,
                 mapModule,
+                eventsModule,
                 newsModule
             )
         }

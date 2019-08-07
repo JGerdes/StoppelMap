@@ -56,8 +56,9 @@ dependencies {
     implementation project(':data')
     implementation project(':home')
     implementation project(':map')
-    implementation project(':about')
+    implementation project(':events')
     implementation project(':news')
+    implementation project(':about')
     implementation project(':androidutil')
 
     implementation deps.kotlin.stdlib
