@@ -27,8 +27,8 @@ android {
         applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode 35
-        versionName "v2019.2.1-${gitSha}"
+        versionCode 36
+        versionName "v2019.3.0-${gitSha}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
