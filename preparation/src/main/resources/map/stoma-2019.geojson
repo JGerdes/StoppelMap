@@ -13394,13 +13394,14 @@
             "type": "Feature",
             "properties": {
                 "building": "bar",
+                "slug": "anton_linnemann",
                 "isTent": "no",
                 "item_beer": "yes",
                 "item_longdrinks": "yes",
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
-                "name": "Anton Linneman",
-                "operator": "Linneman GbR",
+                "name": "Anton Linnemann",
+                "operator": "Linnemann GbR",
                 "pictures": "linnemann_header_01.webp:header:Linnemann",
                 "priority": "3"
             },
