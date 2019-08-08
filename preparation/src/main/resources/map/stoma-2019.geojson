@@ -1,4 +1,3 @@
-
 {
     "type": "FeatureCollection",
     "generator": "JOSM",
@@ -9800,7 +9799,8 @@
                 "item_longdrinks": "yes",
                 "item_shots": "yes",
                 "item_softdrinks": "yes",
-                "name": "Schäfers Festzelt No.1",
+                "name": "Schäfers Fetenscheune",
+                "slug": "schaefers",
                 "operator": "Schäfers",
                 "pictures": "schaefers_header_01.webp:header:Jonas Gerdes",
                 "priority": "3"
