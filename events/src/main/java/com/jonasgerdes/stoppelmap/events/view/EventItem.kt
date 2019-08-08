@@ -51,6 +51,8 @@ data class EventItem(val event: Event) : Item() {
     }
 
     private fun openLocation() = event.location?.let { stall ->
+        //TODO: investigate why this is needed (otherwise first opening of map fragments is overwritten by idle)
+        Router.switchToDestination(Router.Destination.MAP)
         Router.navigateToRoute(
             Route.Map(Route.Map.State.Carousel(Route.Map.State.Carousel.StallCollection.Single(stall.slug))),
             Router.Destination.MAP
