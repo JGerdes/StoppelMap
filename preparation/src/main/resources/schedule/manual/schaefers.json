@@ -31,18 +31,18 @@
     },
     {
       "uuid": "schaefers_fruehstueck",
-      "name": "two4beats",
+      "name": "Frühstück im Campingstyle",
       "locationUuid": "schaefers",
       "start": "2019-08-19 10:00:00",
       "end": "2019-08-19 12:00:00",
-      "description": "Frühstück im Campingstyle - Reservierungen unter Tel: 04441/92830 (ab 10 Personen pro Person 10€, 4 halbe belegte Brötchen und Filterkaffee satt)"
+      "description": "Reservierungen unter Tel: 04441/92830 (ab 10 Personen pro Person 10€, 4 halbe belegte Brötchen und Filterkaffee satt)"
     },
     {
-      "uuid": "schaefers_two_for_beats_do",
+      "uuid": "schaefers_two_for_beats_mo",
       "name": "two4beats",
       "locationUuid": "schaefers",
       "start": "2019-08-19 12:00:00",
       "description": "Von den aktuellen Dance-Charts bis hin zu den Top Hits der guten alten Zeiten, Dj Obi & Kiksa aka T4B zünden wie gewohnt alle Tage bei uns einen (Konfetti-)Knaller nach dem nächsten, und sorgen für eine ultimative Feier-Atmosphäre auf der Tanzfläche bis in die kuscheligen Ecken ..."
-    },
+    }
   ]
 }
