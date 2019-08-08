@@ -18,6 +18,20 @@ abstract class Route : Parcelable {
 
             @Parcelize
             class Search() : State()
+
+            @Parcelize
+            data class Carousel(val stallCollection: StallCollection) : State() {
+                sealed class StallCollection : Parcelable {
+                    @Parcelize
+                    data class Single(val stallSlug: String) : StallCollection()
+
+                    @Parcelize
+                    data class TypeCollection(val type: String, val stallSlugs: List<String>) : StallCollection()
+
+                    @Parcelize
+                    data class ItemCollection(val item: String, val stallSlugs: List<String>) : StallCollection()
+                }
+            }
         }
     }
 

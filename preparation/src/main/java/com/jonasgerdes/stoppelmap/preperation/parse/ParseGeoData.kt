@@ -16,7 +16,7 @@ import com.jonasgerdes.stoppelmap.preperation.toShortHash
 import java.io.File
 import java.util.*
 
-fun Data.parseGeoJson(input: File, output: File) {
+fun Data.parseGeoJson(input: File, output: File, descriptionFolder: File) {
     val gson = GsonBuilder()
         .setPrettyPrinting()
         .registerTypeAdapterFactory(GeometryAdapterFactory())
@@ -67,7 +67,11 @@ fun Data.parseGeoJson(input: File, output: File) {
                         System.err.println("duplicate slug found: $slug")
                         slug += "-" + UUID.randomUUID().toString().toShortHash()
                     }
-                    copy(slug = slug)
+                    val descriptionFile = File(descriptionFolder, "$slug.html")
+                    val description =
+                        if (descriptionFile.exists()) descriptionFile.readText()
+                        else this.description
+                    copy(slug = slug, description = description)
                 }
                 stalls += stall
 
@@ -180,7 +184,7 @@ fun Data.parseGeoJson(input: File, output: File) {
 
         }
 
-    if(output.parentFile.exists()) {
+    if (output.parentFile.exists()) {
         val jsonWriter = JsonWriter(output.writer())
         gson.toJson(FeatureCollection(updatedFeatures), FeatureCollection::class.java, jsonWriter)
         jsonWriter.close()

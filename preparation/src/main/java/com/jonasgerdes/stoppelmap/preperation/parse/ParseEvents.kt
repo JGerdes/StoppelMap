@@ -6,13 +6,16 @@ import com.jonasgerdes.stoppelmap.preperation.Data
 import com.jonasgerdes.stoppelmap.preperation.asSlug
 import com.jonasgerdes.stoppelmap.preperation.emptyIfNull
 import com.jonasgerdes.stoppelmap.preperation.entity.*
+import com.jonasgerdes.stoppelmap.preperation.toOffsetAtStoppelmarkt
 import java.io.File
-import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
+
+val eventJsonFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
 fun Data.parseEventSchedule(files: List<File>) {
 
-    val format = SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 
     System.out.println("Reading events from ${files.size} files")
 
@@ -31,8 +34,8 @@ fun Data.parseEventSchedule(files: List<File>) {
             val event = Event(
                 slug = it.uuid,
                 name = it.name,
-                start = format.parse(it.start),
-                end = it.end?.let { format.parse(it) },
+                start = LocalDateTime.parse(it.start, eventJsonFormat).toOffsetAtStoppelmarkt(),
+                end = it.end?.let { LocalDateTime.parse(it, eventJsonFormat).toOffsetAtStoppelmarkt() },
                 description = it.description,
                 location = it.locationUuid
             )

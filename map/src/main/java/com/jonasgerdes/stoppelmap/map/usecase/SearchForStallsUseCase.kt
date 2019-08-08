@@ -31,7 +31,27 @@ class SearchForStallsUseCase(
             )
         }
 
-        return (nameResults + aliasResults)
+        val typeResults = stallRepository.findStallsByType(searchQuery).map { typeWithStalls ->
+            val title = HighlightedText.from(typeWithStalls.type.name, searchQuery)
+            SearchResult.TypeSearchResult(
+                title = title,
+                stalls = typeWithStalls.stalls,
+                type = typeWithStalls.type,
+                score = title.getScore()
+            )
+        }
+
+        val itemResults = stallRepository.findStallsByItem(searchQuery).map { itemWithStalls ->
+            val title = HighlightedText.from(itemWithStalls.item.name, searchQuery)
+            SearchResult.ItemSearchResult(
+                title = title,
+                stalls = itemWithStalls.stalls,
+                item = itemWithStalls.item,
+                score = title.getScore()
+            )
+        }
+
+        return (nameResults + aliasResults + typeResults + itemResults)
             //sort by score first (inverted to have highest score first, if score is equal sort alphabetically
             .sortedWith(compareBy({ -it.score }, { it.title.text }))
     }

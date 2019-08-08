@@ -1,0 +1,14 @@
+<resources>
+    <string name="events_title">Programm</string>
+
+    <string-array name="events_day_abbreviation">
+        <item>Do</item>
+        <item>Fr</item>
+        <item>Sa</item>
+        <item>So</item>
+        <item>Mo</item>
+        <item>Di</item>
+    </string-array>
+
+    <string name="events_event_card_go_to_location">Zur Location</string>
+</resources>

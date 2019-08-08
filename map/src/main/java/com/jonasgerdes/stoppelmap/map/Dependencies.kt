@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.map
 
-import com.jonasgerdes.stoppelmap.map.usecase.GetFullStallsBySlugUseCase
-import com.jonasgerdes.stoppelmap.map.usecase.SearchForStallsUseCase
+import com.jonasgerdes.stoppelmap.map.usecase.*
 import com.jonasgerdes.stoppelmap.map.view.MapViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -10,6 +9,17 @@ val mapModule = module {
 
     single { SearchForStallsUseCase(stallRepository = get()) }
     single { GetFullStallsBySlugUseCase(stallRepository = get()) }
+    single { CreateSingleStallHighlightUseCase(stallRepository = get(), getFullStallsBySlug = get()) }
+    single { CreateTypeHighlightsUseCase(stallRepository = get(), getFullStallsBySlug = get()) }
+    single { CreateItemHighlightsUseCase(stallRepository = get(), getFullStallsBySlug = get()) }
 
-    viewModel { MapViewModel(searchForStalls = get(), getStallsBySlug = get()) }
+    viewModel {
+        MapViewModel(
+            searchForStalls = get(),
+            getStallsBySlug = get(),
+            createSingleStallHighlight = get(),
+            createItemHighlights = get(),
+            createTypeHighlights = get()
+        )
+    }
 }

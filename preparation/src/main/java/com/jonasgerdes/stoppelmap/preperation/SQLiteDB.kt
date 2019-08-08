@@ -6,6 +6,7 @@ import java.io.File
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.Statement
+import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -30,7 +31,7 @@ fun openSQLite(file: File): Connection? {
 }
 
 fun Statement.createTablesFromSchema(schema: DatabaseSchema) {
-    schema.database.entities.forEach {entity ->
+    schema.database.entities.forEach { entity ->
         val statement = entity.createSql.replace("\${TABLE_NAME}", entity.tableName)
         execute(statement)
     }
@@ -116,6 +117,7 @@ fun getValue(value: Any?): String? {
         null -> null
         is String -> value
         is Boolean -> if (value) "1" else "0"
+        is OffsetDateTime -> value.format(SQLiteConstants.dateFormat)
         is Date -> value.toInstant().atOffset(ZoneOffset.ofHours(2)).format(SQLiteConstants.dateFormat)
         else -> value.toString()
     }
@@ -126,6 +128,7 @@ fun KClass<*>.toSqliteType(): String {
         "java.lang.String" -> "text"
         "java.lang.Double" -> "real"
         "java.util.Date" -> "text"
+        "java.time.OffsetDateTime" -> "text"
         "int" -> "integer"
         "boolean" -> "integer"
         else -> throw RuntimeException("Unsupported type ${java.name}")

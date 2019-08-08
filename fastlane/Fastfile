@@ -23,8 +23,7 @@ platform :android do
 
   desc "Submit a new Internal Build to Play Store"
   lane :internal do
-    gradle(task: "preparation:clean")
-    gradle(task: "preparation:run")
+    gradle(task: "preparation:runPreparation")
     gradle(task: "clean bundleRelease")
     upload_to_play_store(track: 'internal', aab: 'app/build/outputs/bundle/release/app-release.aab')
   end

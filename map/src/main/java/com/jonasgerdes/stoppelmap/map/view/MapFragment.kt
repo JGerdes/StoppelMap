@@ -1,20 +1,32 @@
 package com.jonasgerdes.stoppelmap.map.view
 
+import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.MotionScene
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.jonasgerdes.androidutil.dp
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
+import com.jonasgerdes.androidutil.recyclerview.doOnScrolledFinished
+import com.jonasgerdes.androidutil.recyclerview.findFirstCompletelyVisibleItemPosition
 import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Route.Map.State.Carousel.StallCollection
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
-import com.jonasgerdes.stoppelmap.map.BuildConfig
 import com.jonasgerdes.stoppelmap.map.R
+import com.jonasgerdes.stoppelmap.map.entity.Highlight
 import com.jonasgerdes.stoppelmap.map.entity.MapFocus
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
 import com.jonasgerdes.stoppelmap.map.entity.adapter.asLatLngBounds
+import com.jonasgerdes.stoppelmap.map.entity.getStalls
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
+import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.xwray.groupie.GroupAdapter
@@ -27,14 +39,28 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     private val viewModel: MapViewModel by inject()
     private val searchResultAdapter = GroupAdapter<ViewHolder>()
+    private val carouselAdapter = GroupAdapter<ViewHolder>()
     private var map: MapboxMap? = null
+    private var routeToProcess: Route.Map? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initMotionLayout()
         initSearch()
+        initCarousel()
         initMapView(savedInstanceState)
+    }
+
+    private val shareStallListener = { slug: String, name: String ->
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.map_share_stall_title, slug))
+        }
+        val uri = getString(R.string.map_share_legacy_uri, slug)
+        val message = getString(R.string.map_share_stall_text, name, uri)
+        shareIntent.putExtra(Intent.EXTRA_TEXT, message)
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.map_share_chooser_title, name)))
     }
 
     private fun initSearch() {
@@ -57,18 +83,26 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         }
 
         searchResultAdapter.setOnItemClickListener { item, view ->
-            val searchResult = when (item) {
-                is StallSearchResultItem -> item.result
+            val stallCollection = when (item) {
+                is StallSearchResultItem -> StallCollection.Single(item.result.stall.slug)
+                is TypeSearchResultItem -> StallCollection.TypeCollection(item.result.type.slug, item.result.stallSlugs)
+                is ItemSearchResultItem -> StallCollection.ItemCollection(item.result.item.slug, item.result.stallSlugs)
                 else -> null
             }
-            if (searchResult != null) viewModel.onSearchResultSelected(searchResult)
-            setIdleState() //TODO: do this via Router
+            if (stallCollection != null) {
+                Router.navigateToRoute(
+                    Route.Map(Route.Map.State.Carousel(stallCollection)),
+                    Router.Destination.MAP
+                )
+            }
         }
 
         observe(viewModel.searchResults) { searchResults ->
             searchResultAdapter.update(searchResults.map { result ->
                 when (result) {
                     is SearchResult.StallSearchResult -> StallSearchResultItem(result)
+                    is SearchResult.TypeSearchResult -> TypeSearchResultItem(result)
+                    is SearchResult.ItemSearchResult -> ItemSearchResultItem(result)
                 }
             })
         }
@@ -90,18 +124,40 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                         .sortedByDescending { it.getNumberProperty("priority")?.toInt() ?: 0 }
                         .firstOrNull()?.getStringProperty("slug")
                     if (stallSlug != null) {
-                        viewModel.onStallClicked(stallSlug)
+                        Router.navigateToRoute(
+                            Route.Map(Route.Map.State.Carousel(StallCollection.Single(stallSlug))),
+                            Router.Destination.MAP
+                        )
                         true
-                    } else false
+                    } else {
+                        Router.navigateToRoute(
+                            Route.Map(Route.Map.State.Idle()),
+                            Router.Destination.MAP
+                        )
+                        false
+                    }
+                }
 
+                routeToProcess?.let {
+                    processRouteImplementation(it)
+                    routeToProcess = null
                 }
             }
         }
         observe(viewModel.mapFocus) { focus ->
             val cameraUpdate = when (focus) {
-                is MapFocus.All -> CameraUpdateFactory.newLatLngBounds(focus.coordinates.asLatLngBounds(), 64.dp)
+                is MapFocus.All -> CameraUpdateFactory.newLatLngBounds(
+                    focus.coordinates.asLatLngBounds(),
+                    64.dp,
+                    80.dp,
+                    64.dp,
+                    208.dp
+                )
+                MapFocus.None -> null
             }
-            map?.animateCamera(cameraUpdate)
+            if (cameraUpdate != null) {
+                map?.animateCamera(cameraUpdate)
+            }
         }
     }
 
@@ -119,14 +175,97 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
         motionLayout.requestApplyInsets()
     }
 
+    private fun initCarousel() {
+        LinearSnapHelper().attachToRecyclerView(stallCarousel)
+        //TODO: improve this
+        stallCarousel.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+                if (carouselAdapter.itemCount == 1) {
+                    val totalWidth = parent.width
+                    val cardWidth = 256.dp + 16.dp
+                    val sidePadding = Math.max(0, (totalWidth - cardWidth) / 2)
+                    outRect.set(sidePadding, 0, sidePadding, 0)
+                }
+            }
+        })
+        stallCarousel.adapter = carouselAdapter
+        observe(viewModel.highlightedStalls) { highlights ->
+            map?.setMarkers(highlights.flatMap { it.getStalls() }.map { stall ->
+                MarkerItem(
+                    LatLng(
+                        stall.basicInfo.centerLat,
+                        stall.basicInfo.centerLng
+                    ),
+                    stall.basicInfo.type.type,
+                    stall.basicInfo.name
+                )
+            })
+            val isOnlyOne = highlights.size == 1
+            carouselAdapter.clear()
+            carouselAdapter.addAll(
+                highlights.map { highlight ->
+                    when (highlight) {
+                        is Highlight.SingleStall -> StallCarouselItem(highlight, shareStallListener)
+                        is Highlight.TypeCollection -> TypeCollectionCarouselItem(highlight, isOnlyOne)
+                        is Highlight.ItemCollection -> ItemCollectionCarouselItem(highlight, isOnlyOne)
+                        is Highlight.NamelessStall -> NamelessStallCarouselItem(highlight)
+                    }
+                })
+        }
+
+        stallCarousel.doOnScrolledFinished {
+            val id = stallCarousel.findFirstCompletelyVisibleItemPosition()
+            if (id != -1) {
+                viewModel.onStallHighlightedSelected((carouselAdapter.getItem(id) as CarouselItem).highlight)
+            }
+        }
+
+        carouselMotion.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) = Unit
+            override fun allowsTransition(p0: MotionScene.Transition?) = true
+            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) = Unit
+            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) = Unit
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, transition: Int) {
+                when (transition) {
+                    R.id.hidden -> {
+                        motionLayout?.isVisible = false
+                        viewModel.onHighlightsHidden()
+                    }
+                }
+            }
+        })
+    }
+
     override fun processRoute(route: Route.Map) {
-        when (route.state) {
+        if (map == null) {
+            routeToProcess = route
+        } else processRouteImplementation(route)
+    }
+
+    fun processRouteImplementation(route: Route.Map) {
+        if (map == null) {
+            //TODO: log error, something went really wrong here
+            return
+        }
+        when (val state = route.state) {
             is Route.Map.State.Idle -> setIdleState()
             is Route.Map.State.Search -> setSearchState()
+            is Route.Map.State.Carousel -> setCarouselState(state.stallCollection)
         }
     }
 
+    private fun setCarouselState(stallSlugs: StallCollection) {
+        carouselMotion.isVisible = true
+        carouselMotion.post {
+            carouselMotion.transitionToState(R.id.bottom)
+        }
+        motionLayout.transitionToState(R.id.idle)
+        searchInput.hideKeyboard()
+        viewModel.onStallsSelected(stallSlugs)
+    }
+
     private fun setIdleState() {
+        carouselMotion.transitionToState(R.id.hidden)
         motionLayout.transitionToState(R.id.idle)
         searchInput.hideKeyboard()
         searchIcon.setOnClickListener {
@@ -135,6 +274,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     }
 
     private fun setSearchState() {
+        carouselMotion.transitionToState(R.id.hidden)
         motionLayout.transitionToState(R.id.search)
         searchInput.post {
             searchInput.requestFocus()

@@ -11,13 +11,14 @@ kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 deps.kotlin = kotlin
 
 def androidx = [:]
-androidx.material = 'com.google.android.material:material:1.1.0-alpha06'
+androidx.material = 'com.google.android.material:material:1.1.0-alpha08'
 androidx.compat = 'androidx.appcompat:appcompat:1.0.2'
 androidx.palette = 'androidx.palette:palette:1.0.0'
 androidx.ktx = 'androidx.core:core-ktx:1.2.0-alpha01'
 androidx.constraint_layout = 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 androidx.arch = [:]
 androidx.arch.runtime = "android.arch.work:work-runtime-ktx:1.0.1"
+androidx.viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-beta02"
 
 def version_room = '2.2.0-alpha01'
 def version_lifecycle = '2.2.0-alpha01'

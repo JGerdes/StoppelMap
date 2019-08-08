@@ -82,7 +82,7 @@ class Navigator<Route : Parcelable, Destination : Enum<Destination>>(
     fun switchToDestination(destination: Destination) {
         Log.d("Navigator", "currentBackStack: \n${backStack.toDebugString()}")
         val currentFragment = currentRoute?.let { route ->
-            fragmentManager.findFragmentByTag(route::class.java.name) as NavigationFragment<out Route>
+            fragmentManager.findFragmentByTag(route::class.java.name) as? NavigationFragment<out Route>
         }
 
         if (!needsFragmentUpdate && destination == currentDestination && currentFragment != null) {
