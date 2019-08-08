@@ -1,617 +1,694 @@
 {
   "events": [
     {
-      "uuid": "altdeutscher-biergarten-beckmannband-cadillac-und-dj-schabba-heinz",
+      "uuid": "altdeutscher-biergarten-beckmannband-cadillac-und-dj-schabba-heinz0",
       "name": "Band Cadillac und DJ Schabba Heinz",
       "start": "2019-08-15 20:00:00",
+      "locationUuid": "altdeutscher-biergarten-beckmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "altdeutscher-biergarten-beckmanndie-bamberger-und-dj-schabba-heinz",
+      "uuid": "altdeutscher-biergarten-beckmanndie-bamberger-und-dj-schabba-heinz1",
       "name": "Die Bamberger und DJ Schabba Heinz",
       "start": "2019-08-16 20:00:00",
+      "locationUuid": "altdeutscher-biergarten-beckmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "altdeutscher-biergarten-beckmanncasablanca-und-dj-schabba-heinz",
+      "uuid": "altdeutscher-biergarten-beckmanncasablanca-und-dj-schabba-heinz2",
       "name": "Casablanca und DJ Schabba Heinz",
       "start": "2019-08-17 20:00:00",
+      "locationUuid": "altdeutscher-biergarten-beckmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "altdeutscher-biergarten-beckmannbakumer-musikverein-und-abends-dj-schabba-heinz",
+      "uuid": "altdeutscher-biergarten-beckmannbakumer-musikverein-und-abends-dj-schabba-heinz3",
       "name": "Bakumer Musikverein und abends DJ Schabba Heinz",
       "start": "2019-08-18 14:00:00",
+      "locationUuid": "altdeutscher-biergarten-beckmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "altdeutscher-biergarten-beckmanncasablanca-und-dj-schabba-heinz",
+      "uuid": "altdeutscher-biergarten-beckmanncasablanca-und-dj-schabba-heinz4",
       "name": "Casablanca und DJ Schabba Heinz",
       "start": "2019-08-19 11:00:00",
+      "locationUuid": "altdeutscher-biergarten-beckmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "altdeutscher-biergarten-beckmanndj-schabba-heinz",
+      "uuid": "altdeutscher-biergarten-beckmanndj-schabba-heinz5",
       "name": "DJ Schabba Heinz",
       "start": "2019-08-20 18:00:00",
+      "locationUuid": "altdeutscher-biergarten-beckmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "brackmann-mecklstoppelmarkt-19-opening",
+      "uuid": "brackmann-mecklstoppelmarkt-19-opening0",
       "name": "Stoppelmarkt\u002719-Opening",
       "start": "2019-08-15 18:01:00",
+      "locationUuid": "brackmann-meckl",
       "description": "\u003cp\u003e\u003cb\u003eDJs:\u003c/b\u003e Michi Pop / Herr Mehl \u003c/p\u003e \n\u003cp\u003e\u003cb\u003eLive:\u003c/b\u003e Musikverein Oythe / Kolpingorchester Vechta / Sambalaon \u0026amp; Samba \u003c/p\u003e \n\u003cp\u003eLandaya Let me see you pop, pop pop, pop pop ... Die Stoppelmarkt\u002719-Auftaktparty bei BRACKMANN! \u003c/p\u003e \n\u003cp\u003eWir starten in Vechtas 5. Jahreszeit mit allem Pipapo: Neben der traditionellen Eröffnung durch den \"Musikverein Oythe\" und das \"Kolpingorchester Vechta\" wird es auch einen Auftritt der Samba-Gruppen \"Sambalaon\" und \"Samba Landaya\" geben.\u003cbr\u003eFreut euch auf unsere hausgemachten Shots wie „Brackmanns Apfelstrudel“, „Split Shot“, „Mexikaner“ oder „Hot Wheel“ und tanzt euch zu den neusten Stoppelhits warm!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "brackmann-mecklbacardí-night",
+      "uuid": "brackmann-mecklbacardí-night1",
       "name": "BACARDÍ-Night",
       "start": "2019-08-16 20:00:00",
+      "locationUuid": "brackmann-meckl",
       "description": "\u003cp\u003e\u003cb\u003eDJ:\u003c/b\u003e Nicky Jones (Tante Mia) \u003c/p\u003e \n\u003cp\u003eFreitag ist der neue Samstag! Clubparty und coole BACARDÍ-Drinks: Die Nacht wird heiss - mit dem original BACARDÍ Cuatro Libre! Freut euch auf unsere BACARDÍ-Promotion-Aktion mit vielen coolen Give-Aways!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "brackmann-mecklstoppelmarkt-clubbing",
+      "uuid": "brackmann-mecklstoppelmarkt-clubbing2",
       "name": "Stoppelmarkt-Clubbing",
       "start": "2019-08-17 20:00:00",
+      "locationUuid": "brackmann-meckl",
       "description": "\u003cp\u003e\u003cb\u003eDJs:\u003c/b\u003e Ton Don / Herr Mehl \u003c/p\u003e \n\u003cp\u003e\u003cb\u003eKeine Kompromisse mehr:\u003c/b\u003e Einfach der beste Sound auf dem Stoppelmarkt!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "brackmann-mecklbrackmann-s-bierzeltreden-19-poetry-slam-rudelsingen",
+      "uuid": "brackmann-mecklbrackmann-s-bierzeltreden-19-poetry-slam-rudelsingen3",
       "name": "BRACKMANN\u0027S Bierzeltreden \u002719 // Poetry-Slam \u0026 Rudelsingen",
       "start": "2019-08-18 11:00:00",
+      "locationUuid": "brackmann-meckl",
       "description": "\u003cp\u003e\u003cb\u003eLive:\u003c/b\u003e (ab 18:00 Uhr) Poetry-Slammerinnen und -Slamer der \"Bleib Laut!\"-Slamily / Stage Students\u0026amp;Friends \u003c/p\u003e \n\u003cp\u003e\u003cb\u003eAktion (17:00 bis 22:00 Uhr):\u003c/b\u003e Zu jedem Glas Haake-Beck (0,2l) gibt es einen \"Brackmann\u0027s Apfelsprudel (2cl)\" gratis! \u003c/p\u003e \n\u003cp\u003e\u003cb\u003eVormittags Frühschoppen, nachmittags Kaffee und Kuchen und abends ganz neu:\u003c/b\u003e \"BRACKMANN\u0027S Bierzeltreden \u002719\", der erste Poetry-Slam auf dem Stoppelmarkt! \u003c/p\u003e \n\u003cp\u003eErstmals erobern die Slammerinnen und Slammer der \"Bleib Laut!\"-Slamily auch die Westerheide. Durch zünftige Bierzeltreden und musikalische Auftritte der Stage Students\u0026amp;Friends ist beste Unterhaltung garantiert. Anschließend gibt es ein großes Rudelsingen – einmalig auf dem Stoppelmarkt!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "brackmann-mecklglitzerbox-day",
+      "uuid": "brackmann-mecklglitzerbox-day4",
       "name": "Glitzerbox-Day",
       "start": "2019-08-19 10:00:00",
+      "locationUuid": "brackmann-meckl",
       "description": "\u003cp\u003e\u003cb\u003eDJs:\u003c/b\u003e Herr Mehl / Mark 50 / Pascal Heidelberg / Herr Plate \u003c/p\u003e \n\u003cp\u003eDie längste Party des Jahres mit den besten Danceclassics-Stoppelhits! … Party all day/night long! Bei BRACKMANN!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "brackmann-mecklfamilientag",
+      "uuid": "brackmann-mecklfamilientag5",
       "name": "Familientag",
       "start": "2019-08-20 15:00:00",
+      "locationUuid": "brackmann-meckl",
       "description": "\u003cp\u003e\u003cb\u003eFamilientag:\u003c/b\u003e Bis 18:00 Uhr alle Softdrinks zu familienfreundlichen Preisen\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhleeroeffnung-musikverein-langfoerden",
+      "uuid": "hogeback-muhleeroeffnung-musikverein-langfoerden0",
       "name": "Eröffnung - Musikverein Langförden",
       "start": "2019-08-15 19:30:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003eEröffnung des Stoppelmarkts mit dem Langfördener Musikverein und der Erdbeerkönigin Pauline I. Danach heizt DJ Tim mit seiner Musik das Festzelt ein!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhlekaffee-kuchen",
+      "uuid": "hogeback-muhlekaffee-kuchen1",
       "name": "Kaffee \u0026 Kuchen",
       "start": "2019-08-16 14:30:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e Leckerer hausgebackener Kuchen und röstfrischer Kaffee stehen zum Genießen bereit.\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhledj-tim",
+      "uuid": "hogeback-muhledj-tim2",
       "name": "DJ Tim",
       "start": "2019-08-16 19:00:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e DJ Tim feiert mit euch durch die Nacht. Exotisches gibt es an der Cocktailbar!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhlekaffee-kuchen",
+      "uuid": "hogeback-muhlekaffee-kuchen3",
       "name": "Kaffee \u0026 Kuchen",
       "start": "2019-08-17 14:30:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e Leckerer hausgebackener Kuchen und röstfrischer Kaffee stehen zum Genießen bereit.\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhledj-tim",
+      "uuid": "hogeback-muhledj-tim4",
       "name": "DJ Tim",
       "start": "2019-08-17 19:00:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e DJ Tim feiert mit euch durch die Nacht. Exotisches gibt es an der Cocktailbar!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhlekaffee-kuchen",
+      "uuid": "hogeback-muhlekaffee-kuchen5",
       "name": "Kaffee \u0026 Kuchen",
       "start": "2019-08-18 14:30:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e Leckerer hausgebackener Kuchen und röstfrischer Kaffee stehen zum Genießen bereit.\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhlemusikverein-visbek",
+      "uuid": "hogeback-muhlemusikverein-visbek6",
       "name": "Musikverein Visbek",
       "start": "2019-08-18 15:00:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e Der Musikverein Visbek sorgt für einen musikalischen Nachmittag\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhledj-tim",
+      "uuid": "hogeback-muhledj-tim7",
       "name": "DJ Tim",
       "start": "2019-08-18 19:00:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e DJ Tim lässt das Wochenende ausklingen!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhlefruehstuecksbuffet",
+      "uuid": "hogeback-muhlefruehstuecksbuffet8",
       "name": "Frühstücksbuffet",
       "start": "2019-08-19 09:30:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e Ein deftiges Frühstück wartet auf Sie! Mit röstfrischem Kaffee, Kilmerstuten und reichlich belegten Brötchen. Wir bitten um Voranmeldung! Danach Party bis der neue Tag anbricht!!!\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "hogeback-muhlekaffee-kuchen",
+      "uuid": "hogeback-muhlekaffee-kuchen9",
       "name": "Kaffee \u0026 Kuchen",
       "start": "2019-08-20 14:30:00",
+      "locationUuid": "hogeback-muhle",
       "description": "\u003cp\u003e Leckerer hausgebackener Kuchen und röstfrischer Kaffee stehen zum Genießen bereit.\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kaponier-zjzhzmdj-ohrwurm-gulfhaus-meets-kaponier",
+      "uuid": "kaponier-zjzhzmdj-ohrwurm-gulfhaus-meets-kaponier0",
       "name": "DJ Ohrwurm - Gulfhaus meets Kaponier",
       "start": "2019-08-15 21:00:00",
+      "locationUuid": "kaponier-zjzhzm",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kaponier-zjzhzmmofa-25",
+      "uuid": "kaponier-zjzhzmmofa-251",
       "name": "MOFA 25",
       "start": "2019-08-16 21:00:00",
+      "locationUuid": "kaponier-zjzhzm",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kaponier-zjzhzmkaffeerausch-goes-stoma",
+      "uuid": "kaponier-zjzhzmkaffeerausch-goes-stoma2",
       "name": "KAFFEERAUSCH goes StoMa",
       "start": "2019-08-17 19:00:00",
+      "locationUuid": "kaponier-zjzhzm",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kaponier-zjzhzmbuddy-soul",
+      "uuid": "kaponier-zjzhzmbuddy-soul3",
       "name": "Buddy \u0026 Soul",
       "start": "2019-08-18 20:00:00",
+      "locationUuid": "kaponier-zjzhzm",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kaponier-zjzhzmdj-ohrwurm",
+      "uuid": "kaponier-zjzhzmdj-ohrwurm4",
       "name": "DJ Ohrwurm",
       "start": "2019-08-19 12:00:00",
+      "locationUuid": "kaponier-zjzhzm",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalledj-ernesto",
+      "uuid": "kuehlings-niedersachsenhalledj-ernesto0",
       "name": "DJ Ernesto",
       "start": "2019-08-15 20:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhallesmile",
+      "uuid": "kuehlings-niedersachsenhallesmile1",
       "name": "Smile",
       "start": "2019-08-15 20:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalleoli-p",
+      "uuid": "kuehlings-niedersachsenhalleoli-p2",
       "name": "Oli P",
       "start": "2019-08-15 21:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalledj-ernesto",
+      "uuid": "kuehlings-niedersachsenhalledj-ernesto3",
       "name": "DJ Ernesto",
       "start": "2019-08-16 20:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhallelive-sensation",
+      "uuid": "kuehlings-niedersachsenhallelive-sensation4",
       "name": "Live Sensation",
       "start": "2019-08-16 21:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhallesmile",
+      "uuid": "kuehlings-niedersachsenhallesmile5",
       "name": "Smile",
       "start": "2019-08-17 20:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalledj-ernesto",
+      "uuid": "kuehlings-niedersachsenhalledj-ernesto6",
       "name": "DJ Ernesto",
       "start": "2019-08-17 20:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhallebig-band-boesel",
+      "uuid": "kuehlings-niedersachsenhallebig-band-boesel7",
       "name": "Big Band Bösel",
       "start": "2019-08-18 12:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalledj-ernesto",
+      "uuid": "kuehlings-niedersachsenhalledj-ernesto8",
       "name": "DJ Ernesto",
       "start": "2019-08-18 20:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalleempfang-der-stadt-vechta",
+      "uuid": "kuehlings-niedersachsenhalleempfang-der-stadt-vechta9",
       "name": "Empfang der Stadt Vechta",
       "start": "2019-08-19 11:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "\u003cp\u003eTraditioneller Montagsempfang der Stadt Vechta. \u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhallelive-sensation",
+      "uuid": "kuehlings-niedersachsenhallelive-sensation10",
       "name": "Live Sensation",
       "start": "2019-08-19 14:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalledj-ernesto",
+      "uuid": "kuehlings-niedersachsenhalledj-ernesto11",
       "name": "DJ Ernesto",
       "start": "2019-08-19 20:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhallemickie-krause",
+      "uuid": "kuehlings-niedersachsenhallemickie-krause12",
       "name": "Mickie Krause",
       "start": "2019-08-19 22:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "\u003cp\u003e„Ich will zehn nackte Friseusen…“. Es war der Song in der Partywelt, der jeden die Luft anhalten ließ. Innerhalb kürzester Zeit sang ganz Mallorca, sowie sämtliche Partyhochburgen Deutschlands, diesen Hit. Über 100.000 Exemplare gingen über den Ladentisch, zehn Wochen lang hielt sich der Song in den Top 50 der Media-Control-Charts. Das Jahr 1999 war der Beginn eines Triumphzuges für Mickie Krause, der bis heute jede Party in Deutschland und Europa aufs nächste Level hievt.\u003cbr\u003e\u003cbr\u003eÜber 10 Jahre später ist der Münsterländer der erfolgreichste Partykünstler überhaupt. Immer wieder gelangen ihm neue Charterfolge, seine Show ist einzigartig und unerreicht. Mickie Krause ist Kult und ein Ende ist nicht in Sicht. Sein erster Song „Anita“ bescherte ihm damals den ersten Auftritt im RIU- Palace, der Kultdiscothek auf Mallorca, welches fort an sein Wohnzimmer wurde. Seitdem räumt Mickie Krause dort Jahr für Jahr wöchentlich in der Saison von Mai bis Oktober ab und sorgt für Begeisterungsstürme. Krause ist der einzige Künstler überhaupt, der noch im RIU- Palace auftritt und ist von der Insel nicht mehr wegzudenken.\u003cbr\u003e\u003cbr\u003eWas sich im Sommer auf Mallorca abspielt verlagert sich im Winter in Österreichs Apres-Ski-Gebiete. Jeder Partyfan kennt seine Hits und egal ob in Deutschland, auf Mallorca oder in jeder anderen Partyhochburg: Seine Auftritte werden zu einem echten Erlebnis. Da ist es kein Wunder, dass Mickie Krause zu Recht nicht nur der wahre „König von Mallorca“, sondern auch gerne der König des Apres-Ski genannt wird. Denn kein anderer Künstler seines Genres schafft es jedes Jahr wieder mit neuen Gassenhauern so sein Publikum zu begeistern wie er.\u003cbr\u003e\u003cbr\u003e \u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "kuehlings-niedersachsenhalledj-ernesto",
+      "uuid": "kuehlings-niedersachsenhalledj-ernesto13",
       "name": "DJ Ernesto",
       "start": "2019-08-20 18:00:00",
+      "locationUuid": "kuehlings-niedersachsenhalle",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "party-park-von-doellen-hakeparty-malle-park",
+      "uuid": "party-park-von-doellen-hakeparty-malle-park0",
       "name": "Party \u0027Malle\u0027 Park",
       "start": "2019-08-15 18:00:00",
+      "locationUuid": "party-park-von-doellen-hake",
       "description": "\u003cp\u003emit DJ Ralf Burnett\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "party-park-von-doellen-hakethe-sound-of-ibiza",
+      "uuid": "party-park-von-doellen-hakethe-sound-of-ibiza1",
       "name": "The Sound of Ibiza",
       "start": "2019-08-16 20:00:00",
+      "locationUuid": "party-park-von-doellen-hake",
       "description": "\u003cp\u003e\u0027\u0027The Sound of Ibiza\u0027\u0027 präsentiert von den Funky Rockerz\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "party-park-von-doellen-hakethe-sound-of-ibiza",
+      "uuid": "party-park-von-doellen-hakethe-sound-of-ibiza2",
       "name": "The Sound of Ibiza",
       "start": "2019-08-17 20:00:00",
+      "locationUuid": "party-park-von-doellen-hake",
       "description": "\u003cp\u003e\u0027\u0027The Sound of Ibiza\u0027\u0027 präsentiert von den Funky Rockerz\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "party-park-von-doellen-hakebiergarten-party",
+      "uuid": "party-park-von-doellen-hakebiergarten-party3",
       "name": "Biergarten-Party",
       "start": "2019-08-18 11:00:00",
+      "locationUuid": "party-park-von-doellen-hake",
       "description": "\u003cp\u003e\u0026nbsp;\u003c/p\u003e \n\u003cp\u003e\u0026nbsp;\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "party-park-von-doellen-hakemega-park-party!-mit-isi-glueck-frenzy-blitz-honk!-und-markus-becker",
+      "uuid": "party-park-von-doellen-hakemega-park-party!-mit-isi-glueck-frenzy-blitz-honk!-und-markus-becker4",
       "name": "Mega Park Party! mit Isi Glück, Frenzy Blitz, Honk! und Markus Becker",
       "start": "2019-08-19 14:30:00",
+      "locationUuid": "party-park-von-doellen-hake",
       "description": "\u003cp\u003e14.30 Uhr Isi Glück Live \u003c/p\u003e \n\u003cp\u003e16 Uhr Frenzy Blitz Live \u003c/p\u003e \n\u003cp\u003e18 Uhr Honk! Live \u003c/p\u003e \n\u003cp\u003e20 Uhr Markus Becker Live\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "party-park-von-doellen-hakebiergarten-party",
+      "uuid": "party-park-von-doellen-hakebiergarten-party5",
       "name": "Biergarten-Party",
       "start": "2019-08-20 14:00:00",
+      "locationUuid": "party-park-von-doellen-hake",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "pickers-surrmanndj-dodo",
+      "uuid": "pickers-surrmanndj-dodo0",
       "name": "DJ Dodo",
       "start": "2019-08-15 18:01:00",
+      "locationUuid": "pickers-surrmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "pickers-surrmanndj-dodo",
+      "uuid": "pickers-surrmanndj-dodo1",
       "name": "DJ Dodo",
       "start": "2019-08-16 20:00:00",
+      "locationUuid": "pickers-surrmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "pickers-surrmanndj-dodo",
+      "uuid": "pickers-surrmanndj-dodo2",
       "name": "DJ Dodo",
       "start": "2019-08-17 20:00:00",
+      "locationUuid": "pickers-surrmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "pickers-surrmannblasmusik-mit-dem-musikverein-lutten-",
+      "uuid": "pickers-surrmannblasmusik-mit-dem-musikverein-lutten-3",
       "name": "Blasmusik mit dem Musikverein Lutten ",
       "start": "2019-08-18 11:00:00",
+      "locationUuid": "pickers-surrmann",
       "description": "\u003cp\u003enachmittags Kaffee und Kuchen \u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "pickers-surrmanndj-westi",
+      "uuid": "pickers-surrmanndj-westi4",
       "name": "DJ Westi",
       "start": "2019-08-18 19:00:00",
+      "locationUuid": "pickers-surrmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "pickers-surrmanndj-westi-und-dj-dodo",
+      "uuid": "pickers-surrmanndj-westi-und-dj-dodo5",
       "name": "DJ Westi und DJ Dodo",
       "start": "2019-08-19 11:00:00",
+      "locationUuid": "pickers-surrmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "stratmanntake-five",
+      "uuid": "stratmanntake-five0",
       "name": "Take Five",
       "start": "2019-08-15 19:00:00",
+      "locationUuid": "stratmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "stratmannimpulse",
+      "uuid": "stratmannimpulse1",
       "name": "Impulse",
       "start": "2019-08-16 19:00:00",
+      "locationUuid": "stratmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "stratmannimpulse",
+      "uuid": "stratmannimpulse2",
       "name": "Impulse",
       "start": "2019-08-17 19:00:00",
+      "locationUuid": "stratmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "stratmannline-dance-festival-mit-dj",
+      "uuid": "stratmannline-dance-festival-mit-dj3",
       "name": "Line Dance Festival mit DJ",
       "start": "2019-08-18 12:00:00",
+      "locationUuid": "stratmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "stratmannholy-moly",
+      "uuid": "stratmannholy-moly4",
       "name": "Holy Moly",
       "start": "2019-08-19 12:00:00",
+      "locationUuid": "stratmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "stratmanndj",
+      "uuid": "stratmanndj5",
       "name": "DJ",
       "start": "2019-08-20 19:00:00",
+      "locationUuid": "stratmann",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "ellendorfjetzt-geht-s-los!-schlagernacht",
+      "uuid": "ellendorfjetzt-geht-s-los!-schlagernacht0",
       "name": "Jetzt geht\u0027s los! Schlagernacht",
       "start": "2019-08-15 18:00:00",
+      "locationUuid": "ellendorf",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "ellendorfkaraoke",
+      "uuid": "ellendorfkaraoke1",
       "name": "Karaoke",
       "start": "2019-08-16 21:00:00",
+      "locationUuid": "ellendorf",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "ellendorfkaraoke",
+      "uuid": "ellendorfkaraoke2",
       "name": "Karaoke",
       "start": "2019-08-17 21:00:00",
+      "locationUuid": "ellendorf",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "ellendorffamilientag",
+      "uuid": "ellendorffamilientag3",
       "name": "Familientag",
       "start": "2019-08-18 13:00:00",
+      "locationUuid": "ellendorf",
       "description": "\u003cp\u003e\u003cb\u003eFamilientag:\u003c/b\u003e Bis 18:00 Uhr alle Softdrinks zu familienfreundlichen Preisen\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "ellendorfkaraoke",
+      "uuid": "ellendorfkaraoke4",
       "name": "Karaoke",
       "start": "2019-08-19 10:00:00",
+      "locationUuid": "ellendorf",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "ellendorfit-s-time-to-say-goodbye",
+      "uuid": "ellendorfit-s-time-to-say-goodbye5",
       "name": "It\u0027s time to say goodbye",
       "start": "2019-08-20 13:00:00",
+      "locationUuid": "ellendorf",
       "description": "\u003cp\u003eWe say good bye Party\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "waldhof-grieshopgrand-opening-best-residenz-party",
+      "uuid": "waldhof-grieshopgrand-opening-best-residenz-party0",
       "name": "Grand Opening \u0026 Best Residenz Party",
       "start": "2019-08-15 18:01:00",
+      "locationUuid": "waldhof-grieshop",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "waldhof-grieshopparty-nonstop-mit-dj-lusic",
+      "uuid": "waldhof-grieshopparty-nonstop-mit-dj-lusic1",
       "name": "Party Nonstop mit DJ Lusic",
       "start": "2019-08-16 20:00:00",
+      "locationUuid": "waldhof-grieshop",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "waldhof-grieshopbest-residenz-coycue",
+      "uuid": "waldhof-grieshopbest-residenz-coycue2",
       "name": "Best Residenz \u0026 COYcue",
       "start": "2019-08-17 20:00:00",
+      "locationUuid": "waldhof-grieshop",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "waldhof-grieshopcocktail-party",
+      "uuid": "waldhof-grieshopcocktail-party3",
       "name": "Cocktail Party",
       "start": "2019-08-18 20:00:00",
+      "locationUuid": "waldhof-grieshop",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "waldhof-grieshopcoycue-housedestroyer",
+      "uuid": "waldhof-grieshopcoycue-housedestroyer4",
       "name": "COYcue \u0026 Housedestroyer",
       "start": "2019-08-19 20:00:00",
+      "locationUuid": "waldhof-grieshop",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "waldhof-grieshoplatino-finale",
+      "uuid": "waldhof-grieshoplatino-finale5",
       "name": "Latino Finale",
       "start": "2019-08-20 20:00:00",
+      "locationUuid": "waldhof-grieshop",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "zur-traenke-suing-k-startangebot",
+      "uuid": "zur-traenke-suing-k-startangebot0",
       "name": "Startangebot",
       "start": "2019-08-15 18:00:00",
+      "locationUuid": "zur-traenke-suing-k-",
       "description": "\u003cp\u003e günstiges Bier\u003c/p\u003e",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "zur-traenke-suing-k-14-16-uhr-happy-hour!",
+      "uuid": "zur-traenke-suing-k-14-16-uhr-happy-hour!1",
       "name": "14-16 Uhr Happy Hour!",
       "start": "2019-08-16 13:00:00",
+      "locationUuid": "zur-traenke-suing-k-",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "zur-traenke-suing-k-immer-gut-immer-guenstig",
+      "uuid": "zur-traenke-suing-k-immer-gut-immer-guenstig2",
       "name": "immer gut - immer günstig",
       "start": "2019-08-17 13:00:00",
+      "locationUuid": "zur-traenke-suing-k-",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "zur-traenke-suing-k-fruehschoppen",
+      "uuid": "zur-traenke-suing-k-fruehschoppen3",
       "name": "Frühschoppen",
       "start": "2019-08-18 11:00:00",
+      "locationUuid": "zur-traenke-suing-k-",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "zur-traenke-suing-k-vollgas",
+      "uuid": "zur-traenke-suing-k-vollgas4",
       "name": "VOLLGAS",
       "start": "2019-08-19 08:00:00",
+      "locationUuid": "zur-traenke-suing-k-",
       "description": "",
       "artists": [],
       "tags": []
     },
     {
-      "uuid": "zur-traenke-suing-k-bis-18-uhr-familientag",
+      "uuid": "zur-traenke-suing-k-bis-18-uhr-familientag5",
       "name": "bis 18 Uhr - Familientag",
       "start": "2019-08-20 13:00:00",
+      "locationUuid": "zur-traenke-suing-k-",
       "description": "",
       "artists": [],
       "tags": []

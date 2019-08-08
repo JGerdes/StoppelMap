@@ -67,7 +67,7 @@ data class Event(
         val name: String,
         val start: OffsetDateTime,
         val end: OffsetDateTime?,
-        val location: String? = null,
+        val location: String?,
         val description: String? = null
 )
 

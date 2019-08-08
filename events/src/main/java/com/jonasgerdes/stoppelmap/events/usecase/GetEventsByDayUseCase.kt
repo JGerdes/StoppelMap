@@ -6,21 +6,16 @@ import com.jonasgerdes.stoppelmap.model.events.Event
 import org.threeten.bp.LocalDate
 import org.threeten.bp.Month
 
-class GetAllEventsUseCase(
+class GetEventsByDayUseCase(
     private val eventRepository: EventRepository
 ) {
 
-    suspend operator fun invoke(): Map<Day, List<Event>> {
-        val events = eventRepository.getAllEvents()
-        return events.groupBy { it.start.toLocalDate().toDay() }
+    suspend operator fun invoke(day: Day): List<Event> {
+        return eventRepository.getEventsByDay(day.toLocalDate())
     }
 
-    private fun LocalDate.toDay(): Day {
+    private fun Day.toLocalDate(): LocalDate {
         //TODO: make this less hardcoded
-        return when {
-            month != Month.AUGUST -> Day(-1)
-            dayOfMonth >= 15 && dayOfMonth <= 20 -> Day(dayOfMonth - 15)
-            else -> Day(-1)
-        }
+        return LocalDate.of(2019, Month.AUGUST, id + 15)
     }
 }

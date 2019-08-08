@@ -5,8 +5,8 @@
       "name": "Festumzug",
       "type": 0,
       "day": 0,
-      "start": "2016-08-15 16:30:00",
-      "end": "2016-08-15 18:30:00",
+      "start": "2019-08-15 16:30:00",
+      "end": "2019-08-15 18:30:00",
       "description": "Vom Rathaus durch die Innenstadt bis zum Stoppelmarkt präsentieren sich während des historischen Festumzugs zahlreiche Motivwagen, Fußgruppen und Musikkapellen."
     },
     {
@@ -14,7 +14,7 @@
       "name": "Feierliche Eröffnung",
       "type": 0,
       "day": 0,
-      "start": "2016-08-15 18:30:00",
+      "start": "2019-08-15 18:30:00",
       "locationUuid": "amtmannsbult",
       "description": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet.",
       "artists": [
@@ -28,14 +28,14 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 1,
-      "start": "2016-08-16 13:00:00"
+      "start": "2019-08-16 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_senioren_nachmittag",
       "name": "Senioren-Nachmittag",
       "type": 0,
       "day": 1,
-      "start": "2016-08-16 15:00:00",
+      "start": "2019-08-16 15:00:00",
       "locationUuid": "kuehlings_niedersachsenhalle"
     },
     {
@@ -43,8 +43,8 @@
       "name": "Happy Hour",
       "type": 1,
       "day": 1,
-      "start": "2016-08-16 14:00:00",
-      "end": "2016-08-16 16:00:00",
+      "start": "2019-08-16 14:00:00",
+      "end": "2019-08-16 16:00:00",
       "description": "1x zahlen, 2x fahren",
       "tags": [
         "Für Kinder"
@@ -55,15 +55,15 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 2,
-      "start": "2016-08-17 13:00:00"
+      "start": "2019-08-17 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_gottesdienst",
       "name": "Gottesdienst",
       "type": 0,
       "day": 3,
-      "start": "2016-08-18 10:00:00",
-      "end": "2016-08-18 12:00:00",
+      "start": "2019-08-18 10:00:00",
+      "end": "2019-08-18 12:00:00",
       "locationUuid": "kuehlings_niedersachsenhalle",
       "description": "Gottesdienst in der Niedersachsenhalle mit anschließendem Marktbeginn",
       "artists": [
@@ -75,7 +75,7 @@
       "name": "Pferde- und Viehmarkt",
       "type": 0,
       "day": 4,
-      "start": "2016-08-19 07:00:00",
+      "start": "2019-08-19 07:00:00",
       "description": "Traditioneller Pferde- und Viehmarkt mit anschließendem Marktbeginn"
     },
     {
@@ -83,7 +83,7 @@
       "name": "Traditioneller Empfang der Gäste",
       "type": 0,
       "day": 4,
-      "start": "2016-08-19 11:00:00",
+      "start": "2019-08-19 11:00:00",
       "description": "Traditioneller Empfang der Gäste der Stadt Vechta. Als Festredner darf dieses Jahr der Bundesratspräsident und Ministerpräsident des Landes Schleswig-Holstein, Daniel Günther, begrüßt werden.",
       "artists": [
         "Daniel Günther"
@@ -94,15 +94,15 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 5,
-      "start": "2016-08-20 13:00:00"
+      "start": "2019-08-20 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_familientag",
       "name": "Familientag",
       "type": 1,
       "day": 5,
-      "start": "2016-08-20 13:00:00",
-      "end": "2016-08-20 18:00:00",
+      "start": "2019-08-20 13:00:00",
+      "end": "2019-08-20 18:00:00",
       "description": "Familientag mit ermäßigten Preisen"
     },
     {
@@ -110,7 +110,7 @@
       "name": "Brillant-Feuerwerk",
       "type": 0,
       "day": 5,
-      "start": "2016-08-20 22:00:00",
+      "start": "2019-08-20 22:00:00",
       "description": "Großes Brillant-Höhenfeuerwerk, zu sehen in Richtung Osten des Marktgeländes"
     }
   ]

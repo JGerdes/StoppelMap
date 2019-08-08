@@ -110,13 +110,14 @@ fun writeEventsToFile(descriptionFolder: File, eventsFile: File, marquees: List<
             file.writeText(marquee.description)
         }
 
-        events += marquee.events?.map { event ->
+        events += marquee.events?.mapIndexed { index, event ->
             JsonEvent(
                 name = event.title,
                 start = event.start.format(eventJsonFormat),
                 end = null,
                 description = event.description,
-                uuid = stallSlug + event.title.asSlug()
+                uuid = stallSlug + event.title.asSlug() + index,
+                locationUuid = stallSlug
             )
         } ?: emptyList()
     }

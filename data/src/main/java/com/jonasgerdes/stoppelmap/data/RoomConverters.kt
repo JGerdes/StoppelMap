@@ -12,10 +12,11 @@ class RoomConverters {
     private val dateFormat = DateTimeFormatter.ISO_LOCAL_DATE
 
     @TypeConverter
-    fun toOffsetDateTime(value: String): OffsetDateTime = OffsetDateTime.parse(value, dateTimeFormat)
+    fun toNullableOffsetDateTime(value: String?): OffsetDateTime? =
+        value?.let { OffsetDateTime.parse(it, dateTimeFormat) }
 
     @TypeConverter
-    fun fromOffsetDateTime(value: OffsetDateTime): String = dateTimeFormat.format(value)
+    fun fromNullableOffsetDateTime(value: OffsetDateTime?): String? = value?.let { dateTimeFormat.format(it) }
 
     @TypeConverter
     fun toLocalDate(value: String): LocalDate = LocalDate.parse(value, dateFormat)
