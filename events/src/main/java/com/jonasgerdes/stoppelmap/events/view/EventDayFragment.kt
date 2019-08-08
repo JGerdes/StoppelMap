@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.events.view
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.events.R
@@ -25,6 +26,7 @@ class EventDayFragment : Fragment(R.layout.fragment_event_day) {
         eventList.adapter = eventAdapter
 
         observe(viewModel.events) { events ->
+            animation.isVisible = false
             eventAdapter.update(events.map { event -> EventItem(event) })
         }
     }
