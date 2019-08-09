@@ -31,6 +31,10 @@ androidx.arch.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_l
 androidx.arch.lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:$version_lifecycle"
 deps.androidx = androidx
 
+def play = [:]
+play.core = "com.google.android.play:core:1.6.1"
+deps.play = play
+
 def version_koin = '2.0.0-GA'
 def koin = [:]
 koin.core = "org.koin:koin-core:$version_koin"

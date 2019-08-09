@@ -7,6 +7,8 @@ import com.jonasgerdes.stoppelmap.preperation.parse.parseBusSchedule
 import com.jonasgerdes.stoppelmap.preperation.parse.parseEventSchedule
 import com.jonasgerdes.stoppelmap.preperation.parse.parseGeoJson
 import java.io.File
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 object Settings {
     val dataAssets = File("../data/src/main/assets/")
@@ -35,6 +37,7 @@ object Settings {
 
 fun main(args: Array<String>) {
     println("Start parsing @ ${currentTime()}")
+    println("Start parsing @ ${OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)}")
     val file = File("")
     println("root dir: ${file.absolutePath}")
 
@@ -71,9 +74,9 @@ fun main(args: Array<String>) {
         parseBusSchedule(
             Settings.busDir.listFiles()
                 .asList()
-                .filter { it.extension == "json" }
-                .filter { it.name != "template.json" }
-                .filter { it.name != "new_template.json" })
+                .filter { it.extension == "csv" }
+                .filter { it.name != "template.csv" }
+        )
     }
 
     data.insertInto(db)

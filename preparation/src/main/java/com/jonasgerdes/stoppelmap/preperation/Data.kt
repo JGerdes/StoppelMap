@@ -45,6 +45,7 @@ data class Data(
 
         routes.apply { if (isNotEmpty()) db.insert(this) }
         stations.apply { if (isNotEmpty()) db.insert(this) }
+        transportPrices.apply { if (isNotEmpty()) db.insert(this) }
         departures.apply {
             val unique = this.distinct()
             System.err.println("original size: $size, unique size: ${unique.size}")
@@ -58,6 +59,5 @@ data class Data(
             }
             if (unique.isNotEmpty()) db.insert(unique)
         }
-        transportPrices.apply { if (isNotEmpty()) db.insert(this) }
     }
 }
