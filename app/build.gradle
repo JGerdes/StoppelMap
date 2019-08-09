@@ -57,6 +57,7 @@ dependencies {
     implementation project(':home')
     implementation project(':map')
     implementation project(':events')
+    implementation project(':transport')
     implementation project(':news')
     implementation project(':about')
     implementation project(':androidutil')
