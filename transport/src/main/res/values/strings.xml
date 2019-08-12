@@ -2,4 +2,5 @@
     <string name="transport_title">Anreise</string>
     <string name="transport_category_title_bus">Bus</string>
     <string name="transport_via">über</string>
+    <string name="transport_next_departures">nächste Abfahrten</string>
 </resources>

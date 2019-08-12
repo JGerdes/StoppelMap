@@ -8,4 +8,8 @@ import com.jonasgerdes.stoppelmap.model.transportation.Station
 abstract class StationDao {
     @Query("SELECT * FROM stations where stations.route = :route")
     suspend abstract fun getAllStationsByRoute(route: String): List<Station>
+
+
+    @Query("SELECT * FROM stations where stations.slug = :slug")
+    suspend abstract fun getStationBySlug(slug: String): Station?
 }

@@ -47,10 +47,10 @@ abstract class Route : Parcelable {
             class OptionsList : State()
 
             @Parcelize
-            data class RouteDetail(val route: String) : State()
+            data class RouteDetail(val route: String, val title: String? = null) : State()
 
             @Parcelize
-            data class StationDetail(val station: String) : State()
+            data class StationDetail(val station: String, val title: String? = null) : State()
         }
     }
 

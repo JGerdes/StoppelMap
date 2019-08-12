@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
+import com.jonasgerdes.stoppelmap.core.routing.Route
+import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.transport.R
 import com.xwray.groupie.Group
@@ -25,6 +27,16 @@ class OptionListFragment : Fragment(R.layout.fragment_option_list) {
         toolbar.consumeWindowInsetsTop()
 
         transportList.adapter = transportAdapter
+        transportAdapter.setOnItemClickListener { item, view ->
+            when (item) {
+                is TransportListItem.BusRoute -> {
+                    Router.navigateToRoute(
+                        Route.Transport(Route.Transport.State.RouteDetail(item.busRoute.slug, item.busRoute.title)),
+                        Router.Destination.TRANSPORT
+                    )
+                }
+            }
+        }
 
         observe(viewModel.transportOptions) { options ->
             val sections = mutableListOf<Group>()

@@ -8,4 +8,7 @@ import com.jonasgerdes.stoppelmap.model.transportation.Route
 abstract class RouteDao {
     @Query("SELECT * FROM routes")
     suspend abstract fun getAllRoutes(): List<Route>
+
+    @Query("SELECT * FROM routes where routes.slug = :slug")
+    suspend abstract fun getRouteBySlug(slug: String): Route?
 }

@@ -12,7 +12,15 @@ class RouteRepository(
         return database.routeDao().getAllRoutes()
     }
 
+    suspend fun getRouteBySlug(slug: String): Route? {
+        return database.routeDao().getRouteBySlug(slug)
+    }
+
     suspend fun getAllStationsForRoute(routeSlug: String): List<Station> {
         return database.stationDao().getAllStationsByRoute(routeSlug)
+    }
+
+    suspend fun getStationBySlug(slug: String): Station? {
+        return database.stationDao().getStationBySlug(slug)
     }
 }
