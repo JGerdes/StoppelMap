@@ -1,0 +1,11 @@
+package com.jonasgerdes.stoppelmap.data.dao
+
+import androidx.room.Dao
+import androidx.room.Query
+import com.jonasgerdes.stoppelmap.model.transportation.Route
+
+@Dao
+abstract class RouteDao {
+    @Query("SELECT * FROM routes")
+    suspend abstract fun getAllRoutes(): List<Route>
+}
