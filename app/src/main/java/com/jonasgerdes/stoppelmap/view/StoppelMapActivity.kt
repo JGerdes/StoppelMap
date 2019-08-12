@@ -25,7 +25,7 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
                 Router.Destination.HOME to Route.Home(),
                 Router.Destination.MAP to Route.Map(state = Route.Map.State.Idle()),
                 Router.Destination.SCHEDULE to Route.Schedule(),
-                Router.Destination.TRANSPORT to Route.Transport(),
+                Router.Destination.TRANSPORT to Route.Transport(state = Route.Transport.State.OptionsList()),
                 Router.Destination.NEWS to Route.News()
             )
         )
