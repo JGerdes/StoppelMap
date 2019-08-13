@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.model.transportation.Departure
 import com.jonasgerdes.stoppelmap.model.transportation.Route
 import com.jonasgerdes.stoppelmap.model.transportation.Station
 import com.jonasgerdes.stoppelmap.model.transportation.TransportPrice
+import org.threeten.bp.OffsetDateTime
 
 class RouteRepository(
     private val database: StoppelmapDatabase
@@ -33,4 +34,7 @@ class RouteRepository(
     suspend fun getPricesByStation(stationSlug: String): List<TransportPrice> {
         return database.priceDao().getPricesByStation(stationSlug)
     }
+
+    suspend fun getAllDeparturesForStationAfter(station: String, dateTime: OffsetDateTime, limit: Int) =
+        database.departureDao().getAllDeparturesForStationAfter(station, dateTime, limit)
 }

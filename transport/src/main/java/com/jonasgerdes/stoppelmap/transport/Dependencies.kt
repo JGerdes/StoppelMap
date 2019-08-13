@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val transportModule = module {
     single { GetRoutesUseCase(routeRepository = get()) }
-    single { GetFullRouteUseCase(routeRepository = get()) }
+    single { GetFullRouteUseCase(routeRepository = get(), getCurrentTime = get()) }
     single { GetFullStationUseCase(routeRepository = get(), getCurrentTime = get()) }
 
     viewModel {
