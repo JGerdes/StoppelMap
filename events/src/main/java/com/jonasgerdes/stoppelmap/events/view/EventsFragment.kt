@@ -28,7 +28,7 @@ class EventsFragment : BaseFragment<Route.Schedule>(R.layout.fragment_events) {
 
         dayPager.adapter = fragmentAdapter
         TabLayoutMediator(tabs, dayPager) { tab, position ->
-            tab.text = resources.getStringArray(R.array.events_day_abbreviation)[position]
+            tab.text = resources.getStringArray(R.array.generic_day_abbreviation)[position]
         }.attach()
     }
 }

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.data.repository
 
 import com.jonasgerdes.stoppelmap.data.StoppelmapDatabase
+import com.jonasgerdes.stoppelmap.model.transportation.Departure
 import com.jonasgerdes.stoppelmap.model.transportation.Route
 import com.jonasgerdes.stoppelmap.model.transportation.Station
 
@@ -22,5 +23,9 @@ class RouteRepository(
 
     suspend fun getStationBySlug(slug: String): Station? {
         return database.stationDao().getStationBySlug(slug)
+    }
+
+    suspend fun getDeparturesByStation(stationSlug: String): List<Departure> {
+        return database.departureDao().getAllDeparturesByStation(stationSlug)
     }
 }

@@ -44,6 +44,7 @@ abstract class StoppelmapDatabase() : RoomDatabase() {
     abstract fun eventDao(): EventDao
     abstract fun routeDao(): RouteDao
     abstract fun stationDao(): StationDao
+    abstract fun departureDao(): DepartureDao
 
     companion object {
 

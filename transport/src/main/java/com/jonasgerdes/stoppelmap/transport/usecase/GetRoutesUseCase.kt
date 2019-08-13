@@ -23,7 +23,7 @@ class GetRoutesUseCase(
             }
             via.sortBy { stations.indexOf(it) }
             RouteInformation(route, via)
-        }
+        }.sortedBy { it.basicInfo.name }
     }
 
     data class RouteInformation(

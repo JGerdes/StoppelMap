@@ -53,7 +53,7 @@ class RouteDetailFragment : Fragment(R.layout.fragment_route_detail) {
             toolbar.title = route.basicInfo.name
             stationAdapter.update(route.stations.map {
                 StationItem(it)
-            })
+            } + listOf(DestinationStationItem()))
         }
     }
 

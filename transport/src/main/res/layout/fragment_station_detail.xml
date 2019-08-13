@@ -15,18 +15,96 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_nav_back"
+        app:subtitle="Alle Abfahrten"
         app:title="@string/transport_title"
+        />
+
+    <TextView
+        android:id="@+id/dayLabelThursday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?marginOtherElement"
+        android:gravity="center"
+        android:text="@string/generic_day_abbreviation_thursday"
+        android:textAppearance="?textAppearanceBodyTitle"
+        app:layout_constraintEnd_toStartOf="@+id/dayLabelFriday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        />
+    <TextView
+        android:id="@+id/dayLabelFriday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/generic_day_abbreviation_friday"
+        android:textAppearance="?textAppearanceBodyTitle"
+        app:layout_constraintBaseline_toBaselineOf="@id/dayLabelThursday"
+        app:layout_constraintEnd_toStartOf="@+id/dayLabelSaturday"
+        app:layout_constraintStart_toEndOf="@id/dayLabelThursday"
+        />
+    <TextView
+        android:id="@+id/dayLabelSaturday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/generic_day_abbreviation_saturday"
+        android:textAppearance="?textAppearanceBodyTitle"
+        app:layout_constraintBaseline_toBaselineOf="@id/dayLabelThursday"
+        app:layout_constraintEnd_toStartOf="@+id/dayLabelSunday"
+        app:layout_constraintStart_toEndOf="@id/dayLabelFriday"
+        />
+    <TextView
+        android:id="@+id/dayLabelSunday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/generic_day_abbreviation_sunday"
+        android:textAppearance="?textAppearanceBodyTitle"
+        app:layout_constraintBaseline_toBaselineOf="@id/dayLabelThursday"
+        app:layout_constraintEnd_toStartOf="@+id/dayLabelMonday"
+        app:layout_constraintStart_toEndOf="@id/dayLabelSaturday"
+        />
+    <TextView
+        android:id="@+id/dayLabelMonday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/generic_day_abbreviation_monday"
+        android:textAppearance="?textAppearanceBodyTitle"
+        app:layout_constraintBaseline_toBaselineOf="@id/dayLabelThursday"
+        app:layout_constraintEnd_toStartOf="@+id/dayLabelTuesday"
+        app:layout_constraintStart_toEndOf="@id/dayLabelSunday"
+        />
+    <TextView
+        android:id="@+id/dayLabelTuesday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/generic_day_abbreviation_tuesday"
+        android:textAppearance="?textAppearanceBodyTitle"
+        app:layout_constraintBaseline_toBaselineOf="@id/dayLabelThursday"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/dayLabelMonday"
+        />
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/weekdayBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="dayLabelTuesday,dayLabelMonday,dayLabelThursday,dayLabelSunday,dayLabelFriday,dayLabelSaturday"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/departureGrid"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="?marginOtherElement"
         android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:listitem="@layout/item_transport_bus_route"
+        app:layout_constraintTop_toBottomOf="@id/weekdayBarrier"
+        app:spanCount="6"
+        tools:listitem="@layout/bus_station_departure_item_time"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

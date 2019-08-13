@@ -13,7 +13,9 @@ class GetFullRouteUseCase(
 
         return FullRoute(
             basicInfo = route,
-            stations = stations.map { StationInformation(basicInfo = it) }
+            stations = stations.filter {
+                it.name != "Stoppelmarkt" && !it.isReturnStation
+            }.map { StationInformation(basicInfo = it) }
         )
     }
 
