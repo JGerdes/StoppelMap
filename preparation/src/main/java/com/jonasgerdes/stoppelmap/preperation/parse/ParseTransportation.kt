@@ -81,7 +81,7 @@ private val TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm")
 
 fun parseDepartures(line: String, day: Int): List<JsonDeparture> {
     val dayLimit = LocalTime.of(6, 0)
-    return line.split("|").map { timeString ->
+    return line.split("|").filter { it.isNotBlank() }.map { timeString ->
         val time = LocalTime.parse(timeString, TIME_FORMAT)
         //todo: improve this
 
