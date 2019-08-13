@@ -86,7 +86,7 @@ fun parseDepartures(line: String, day: Int): List<JsonDeparture> {
         //todo: improve this
 
         var date = LocalDate.of(2019, Month.AUGUST, 15 + day)
-        if (time.isBefore(dayLimit)) date.plusDays(1) //departure is actually next day but at night
+        if (time.isBefore(dayLimit)) date = date.plusDays(1) //departure is actually next day but at night
 
         val localDateTime = LocalDateTime.of(date, time)
         localDateTime.toOffsetAtStoppelmarkt()
