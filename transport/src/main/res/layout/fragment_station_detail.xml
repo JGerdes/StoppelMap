@@ -15,8 +15,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_nav_back"
-        app:subtitle="Alle Abfahrten"
-        app:title="@string/transport_title"
+        />
+
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="?marginOtherContent"
+        android:layout_marginEnd="?marginOtherElement"
+        android:text="@string/transport_prices"
+        android:textAppearance="?textAppearanceCaption"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        />
+
+    <TextView
+        android:id="@+id/prices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="?marginOtherElement"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintStart_toStartOf="@id/priceLabel"
+        app:layout_constraintTop_toBottomOf="@id/priceLabel"
         />
 
     <TextView
@@ -29,7 +50,7 @@
         android:textAppearance="?textAppearanceBodyTitle"
         app:layout_constraintEnd_toStartOf="@+id/dayLabelFriday"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/prices"
         />
     <TextView
         android:id="@+id/dayLabelFriday"

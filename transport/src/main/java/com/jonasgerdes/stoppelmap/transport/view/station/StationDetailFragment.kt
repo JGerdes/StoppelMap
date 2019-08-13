@@ -9,7 +9,6 @@ import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.transport.R
-import com.jonasgerdes.stoppelmap.transport.usecase.GetFullStationUseCase
 import kotlinx.android.synthetic.main.fragment_option_list.toolbar
 import kotlinx.android.synthetic.main.fragment_station_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,7 +40,10 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
             }
 
         observe(viewModel.station) { station ->
-            toolbar.title = station.basicInfo.name
+            prices.text = station.prices.joinToString("\n") {
+                val price = "%.2f€".format(it.price / 100.0)
+                "${it.type}: $price"
+            }
 
             departureAdapter.submitList(station.departures.flatMap { slot ->
                 listOf(

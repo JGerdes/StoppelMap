@@ -8,7 +8,6 @@ import com.jonasgerdes.stoppelmap.transport.R
 import com.jonasgerdes.stoppelmap.transport.usecase.GetFullStationUseCase
 import kotlinx.android.synthetic.main.item_departure_time.view.*
 import kotlinx.android.synthetic.main.item_departure_time_of_day_title.view.*
-import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
 class DepartureAdapter : RecyclerView.Adapter<DepartureAdapter.Holder>() {
@@ -26,7 +25,7 @@ class DepartureAdapter : RecyclerView.Adapter<DepartureAdapter.Holder>() {
     override fun getItemCount() = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            Holder(parent.inflate(viewType))
+        Holder(parent.inflate(viewType))
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(items[position])
@@ -48,7 +47,8 @@ class DepartureAdapter : RecyclerView.Adapter<DepartureAdapter.Holder>() {
         }
 
         fun bind(departure: DepartureGridItem.Departure) = itemView.apply {
-            time.text = departure.departure.format(format)
+            time.text = departure.departure.time.format(format)
+            time.alpha = if (departure.departure.isPast) 0.4f else 1f
         }
 
         fun bindEmpty() = itemView.apply {
@@ -81,6 +81,6 @@ fun GetFullStationUseCase.DayTimeSlot.Type.getTitle() =
 
 sealed class DepartureGridItem {
     data class TimeSpanHeader(val type: GetFullStationUseCase.DayTimeSlot.Type) : DepartureGridItem()
-    data class Departure(val departure: OffsetDateTime) : DepartureGridItem()
+    data class Departure(val departure: GetFullStationUseCase.Departure) : DepartureGridItem()
     object Empty : DepartureGridItem()
 }
