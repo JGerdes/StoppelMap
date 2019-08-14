@@ -12,6 +12,8 @@ val mapModule = module {
     single { CreateSingleStallHighlightUseCase(stallRepository = get(), getFullStallsBySlug = get()) }
     single { CreateTypeHighlightsUseCase(stallRepository = get(), getFullStallsBySlug = get()) }
     single { CreateItemHighlightsUseCase(stallRepository = get(), getFullStallsBySlug = get()) }
+    single { GetUserLocationUseCase(locationProvider = get()) }
+    single { IsUserInAreaUseCase(globalInfoProvider = get()) }
 
     viewModel {
         MapViewModel(
@@ -19,7 +21,9 @@ val mapModule = module {
             getStallsBySlug = get(),
             createSingleStallHighlight = get(),
             createItemHighlights = get(),
-            createTypeHighlights = get()
+            createTypeHighlights = get(),
+            getUserLocation = get(),
+            isUserInArea = get()
         )
     }
 }

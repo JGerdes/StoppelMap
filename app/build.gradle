@@ -66,6 +66,8 @@ dependencies {
     implementation deps.kotlin.coroutines
     implementation deps.kotlin.coroutines_android
 
+    implementation deps.playServices.location
+
     implementation deps.firebase.core
     implementation deps.firebase.messaging
 

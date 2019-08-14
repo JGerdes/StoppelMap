@@ -9,6 +9,8 @@
     <string name="map_share_legacy_uri">https://share.stoppelmap.de/2019/map/%1$s</string>
     <string name="map_share_chooser_title">%1$s teilen</string>
 
+    <string name="map_message_not_in_area">Du befindest Dich nicht auf dem Stoppelmarkt!</string>
+
 
     <string name="name_type_bar">Ausschank</string>
     <string name="name_type_restaurant">Imbiss</string>
