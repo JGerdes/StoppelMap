@@ -58,7 +58,8 @@ class RouteDetailFragment : Fragment(R.layout.fragment_route_detail) {
                     Route.Transport(
                         state = Route.Transport.State.StationDetail(
                             station = route.returnStation.slug,
-                            title = getString(R.string.transport_return_route)
+                            title = getString(R.string.transport_return_route),
+                            subtitle = route.basicInfo.name
                         )
                     ),
                     destination = Router.Destination.TRANSPORT

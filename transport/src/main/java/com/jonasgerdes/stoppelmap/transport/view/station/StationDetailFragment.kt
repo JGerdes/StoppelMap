@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.transport.view.station
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
@@ -19,6 +20,7 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
     val departureAdapter = DepartureAdapter()
 
     val title: String? by lazy { arguments!!.getString(ARGUMENT_TITLE) }
+    val subtitle: String? by lazy { arguments!!.getString(ARGUMENT_SUBTITLE) }
     val slug: String by lazy { arguments!!.getString(ARGUMENT_SLUG) }
 
     val viewModel: StationDetailViewModel by viewModel { parametersOf(slug) }
@@ -28,6 +30,7 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
 
         toolbar.consumeWindowInsetsTop()
         if (title != null) toolbar.title = title
+        if (subtitle != null) toolbar.subtitle = subtitle
         toolbar.setNavigationOnClickListener {
             Router.navigateBack()
         }
@@ -44,6 +47,9 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
                 val price = "%.2f€".format(it.price / 100.0)
                 "${it.type}: $price"
             }
+
+            prices.isVisible = station.prices.isNotEmpty()
+            priceLabel.isVisible = station.prices.isNotEmpty()
 
             departureAdapter.submitList(station.departures.flatMap { slot ->
                 listOf(
@@ -66,11 +72,14 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
     companion object {
         private const val ARGUMENT_SLUG = "argument_slug"
         private const val ARGUMENT_TITLE = "argument_title"
-        fun newInstance(slug: String, title: String? = null) = StationDetailFragment().apply {
-            arguments = bundleOf(
-                ARGUMENT_SLUG to slug,
-                ARGUMENT_TITLE to title
-            )
-        }
+        private const val ARGUMENT_SUBTITLE = "argument_subtitle"
+        fun newInstance(slug: String, title: String? = null, subtitle: String? = null) =
+            StationDetailFragment().apply {
+                arguments = bundleOf(
+                    ARGUMENT_SLUG to slug,
+                    ARGUMENT_TITLE to title,
+                    ARGUMENT_SUBTITLE to subtitle
+                )
+            }
     }
 }

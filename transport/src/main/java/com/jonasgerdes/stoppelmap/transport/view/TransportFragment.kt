@@ -12,7 +12,9 @@ class TransportFragment : BaseFragment<Route.Transport>(R.layout.fragment_transp
         val fragment = when (val state = route.state) {
             is Route.Transport.State.OptionsList -> OptionListFragment()
             is Route.Transport.State.RouteDetail -> RouteDetailFragment.newInstance(state.route, state.title)
-            is Route.Transport.State.StationDetail -> StationDetailFragment.newInstance(state.station, state.title)
+            is Route.Transport.State.StationDetail -> StationDetailFragment.newInstance(
+                state.station, state.title, state.subtitle
+            )
         }
         childFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
