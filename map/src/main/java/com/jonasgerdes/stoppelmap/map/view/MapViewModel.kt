@@ -21,7 +21,9 @@ class MapViewModel(
     private val getStallsBySlug: GetFullStallsBySlugUseCase,
     private val createSingleStallHighlight: CreateSingleStallHighlightUseCase,
     private val createTypeHighlights: CreateTypeHighlightsUseCase,
-    private val createItemHighlights: CreateItemHighlightsUseCase
+    private val createItemHighlights: CreateItemHighlightsUseCase,
+    private val getUserLocation: GetUserLocationUseCase,
+    private val isUserInArea: IsUserInAreaUseCase
 ) : ViewModel() {
 
     private val _searchResults = MutableLiveData<List<SearchResult>>()
@@ -32,6 +34,9 @@ class MapViewModel(
 
     private val _highlightedStalls = MutableLiveData<List<Highlight>>().withDefault(emptyList())
     val highlightedStalls: LiveData<List<Highlight>> get() = _highlightedStalls
+
+    private val _message = MutableLiveData<Message>()
+    val message: LiveData<Message> get() = _message
 
     private var searchJob: Job? = null
 
@@ -71,13 +76,33 @@ class MapViewModel(
     }
 
     fun onStallHighlightedSelected(highlight: Highlight) {
-        val stalls = highlight.getStalls().map { it.basicInfo }
-        _mapFocus.postValue(MapFocus.All(stalls.flatMap { stall ->
-            listOf(
-                Location(latitude = stall.minLat, longitude = stall.minLng),
-                Location(latitude = stall.maxLat, longitude = stall.maxLng)
+        val mapFocus = when (highlight) {
+            is Highlight.SingleStall -> MapFocus.One(
+                Location(
+                    latitude = highlight.stall.basicInfo.centerLat,
+                    longitude = highlight.stall.basicInfo.centerLng
+                )
             )
-        }))
+            is Highlight.NamelessStall -> MapFocus.One(
+                Location(
+                    latitude = highlight.stall.basicInfo.centerLat,
+                    longitude = highlight.stall.basicInfo.centerLng
+                )
+            )
+            else -> {
+                val coordinates = highlight.getStalls()
+                    .map { it.basicInfo }
+                    .flatMap { stall ->
+                        listOf(
+                            Location(latitude = stall.minLat, longitude = stall.minLng),
+                            Location(latitude = stall.maxLat, longitude = stall.maxLng)
+                        )
+                    }
+                MapFocus.All(coordinates)
+            }
+        }
+
+        _mapFocus.postValue(mapFocus)
     }
 
     fun StallCollection.getStallSlugs() = when (this) {
@@ -89,5 +114,26 @@ class MapViewModel(
     fun onHighlightsHidden() {
         _mapFocus.postValue(MapFocus.None)
         _highlightedStalls.postValue(emptyList())
+    }
+
+    fun onCenterOnUserTriggered() {
+        viewModelScope.launch {
+            val userLocation = getUserLocation()
+            when (isUserInArea(userLocation)) {
+                IsUserInAreaUseCase.UserState.IN_AREA ->
+                    _mapFocus.postValue(
+                        MapFocus.One(
+                            Location(
+                                latitude = userLocation!!.latitude,
+                                longitude = userLocation.longitude
+                            )
+                        )
+                    )
+                IsUserInAreaUseCase.UserState.OUTSIDE_AREA -> _message.postValue(Message.NotInArea)
+                IsUserInAreaUseCase.UserState.UNDEFINED -> {
+                    //do nothing
+                }
+            }
+        }
     }
 }

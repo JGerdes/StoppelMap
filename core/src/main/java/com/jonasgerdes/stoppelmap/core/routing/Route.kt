@@ -39,7 +39,24 @@ abstract class Route : Parcelable {
     class Schedule : Route()
 
     @Parcelize
-    class Transport : Route()
+    class Transport(
+        val state: State
+    ) : Route() {
+        sealed class State : Parcelable {
+            @Parcelize
+            class OptionsList : State()
+
+            @Parcelize
+            data class RouteDetail(val route: String, val title: String? = null) : State()
+
+            @Parcelize
+            data class StationDetail(
+                val station: String,
+                val title: String? = null,
+                val subtitle: String? = null
+            ) : State()
+        }
+    }
 
     @Parcelize
     data class News(val forceReload: Boolean = false, val scrollToTop: Boolean = false) : Route()

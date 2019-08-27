@@ -7,10 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.jonasgerdes.androidutil.copyToFile
 import com.jonasgerdes.androidutil.removeDatabase
-import com.jonasgerdes.stoppelmap.data.dao.EventDao
-import com.jonasgerdes.stoppelmap.data.dao.ItemDao
-import com.jonasgerdes.stoppelmap.data.dao.StallDao
-import com.jonasgerdes.stoppelmap.data.dao.StallTypeDao
+import com.jonasgerdes.stoppelmap.data.dao.*
 import com.jonasgerdes.stoppelmap.model.common.Image
 import com.jonasgerdes.stoppelmap.model.events.Event
 import com.jonasgerdes.stoppelmap.model.map.*
@@ -35,7 +32,7 @@ import java.io.File
         TransportPrice::class,
         Event::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = true
 )
 @TypeConverters(RoomConverters::class)
@@ -45,6 +42,10 @@ abstract class StoppelmapDatabase() : RoomDatabase() {
     abstract fun stallTypeDao(): StallTypeDao
     abstract fun itemDao(): ItemDao
     abstract fun eventDao(): EventDao
+    abstract fun routeDao(): RouteDao
+    abstract fun stationDao(): StationDao
+    abstract fun departureDao(): DepartureDao
+    abstract fun priceDao(): PriceDao
 
     companion object {
 

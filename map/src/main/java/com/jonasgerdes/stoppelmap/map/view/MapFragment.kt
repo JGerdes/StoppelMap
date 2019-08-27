@@ -1,15 +1,18 @@
 package com.jonasgerdes.stoppelmap.map.view
 
+import android.Manifest
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.motion.widget.MotionScene
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.github.florent37.runtimepermission.kotlin.askPermission
 import com.jonasgerdes.androidutil.dp
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledFinished
@@ -20,13 +23,13 @@ import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.map.R
-import com.jonasgerdes.stoppelmap.map.entity.Highlight
-import com.jonasgerdes.stoppelmap.map.entity.MapFocus
-import com.jonasgerdes.stoppelmap.map.entity.SearchResult
+import com.jonasgerdes.stoppelmap.map.entity.*
 import com.jonasgerdes.stoppelmap.map.entity.adapter.asLatLngBounds
-import com.jonasgerdes.stoppelmap.map.entity.getStalls
+import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
+import com.mapbox.mapboxsdk.location.modes.RenderMode
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.xwray.groupie.GroupAdapter
@@ -106,6 +109,42 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                 }
             })
         }
+
+        observe(viewModel.message) { message ->
+            val messageString = when (message) {
+                is Message.NotInArea -> getString(R.string.map_message_not_in_area)
+            }
+            Toast.makeText(context, messageString, Toast.LENGTH_SHORT).show()
+
+        }
+
+        locationFab.setOnClickListener {
+            assurePermissionAndShowUserLocation(wasTriggeredManually = true)
+        }
+    }
+
+    private fun assurePermissionAndShowUserLocation(wasTriggeredManually: Boolean = false) {
+        if (PermissionsManager.areLocationPermissionsGranted(context)) {
+            enableUserLocation()
+            viewModel.onCenterOnUserTriggered()
+        } else askPermission(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION) {
+            enableUserLocation()
+            viewModel.onCenterOnUserTriggered()
+        }.onDeclined { result ->
+            if (wasTriggeredManually && result.hasForeverDenied()) {
+                result.goToSettings();
+            }
+        }
+    }
+
+    private fun enableUserLocation() {
+        map?.let { map ->
+            map.locationComponent.apply {
+                activateLocationComponent(LocationComponentActivationOptions.builder(context!!, map.style!!).build())
+                isLocationComponentEnabled = true
+                renderMode = RenderMode.NORMAL
+            }
+        }
     }
 
     private fun initMapView(savedInstanceState: Bundle?) {
@@ -142,6 +181,8 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                     processRouteImplementation(it)
                     routeToProcess = null
                 }
+
+                assurePermissionAndShowUserLocation(wasTriggeredManually = true)
             }
         }
         observe(viewModel.mapFocus) { focus ->
@@ -152,6 +193,12 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                     80.dp,
                     64.dp,
                     208.dp
+                )
+                is MapFocus.One -> CameraUpdateFactory.newLatLngZoom(
+                    LatLng(
+                        focus.coordinate.latitude, focus.coordinate.longitude
+                    ),
+                    Settings.detailZoom
                 )
                 MapFocus.None -> null
             }
@@ -230,6 +277,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
                     R.id.hidden -> {
                         motionLayout?.isVisible = false
                         viewModel.onHighlightsHidden()
+                        locationFab.show()
                     }
                 }
             }
@@ -256,6 +304,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
     private fun setCarouselState(stallSlugs: StallCollection) {
         carouselMotion.isVisible = true
+        locationFab.hide()
         carouselMotion.post {
             carouselMotion.transitionToState(R.id.bottom)
         }
@@ -267,6 +316,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     private fun setIdleState() {
         carouselMotion.transitionToState(R.id.hidden)
         motionLayout.transitionToState(R.id.idle)
+        locationFab.show()
         searchInput.hideKeyboard()
         searchIcon.setOnClickListener {
             Router.navigateToRoute(Route.Map(state = Route.Map.State.Search()), Router.Destination.MAP)
@@ -276,6 +326,7 @@ class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
     private fun setSearchState() {
         carouselMotion.transitionToState(R.id.hidden)
         motionLayout.transitionToState(R.id.search)
+        locationFab.hide()
         searchInput.post {
             searchInput.requestFocus()
             searchInput.showKeyboard()

@@ -12,7 +12,7 @@ data class Station(
         val slug: String,
         val name: String,
         val route: String,
-        val comment: String,
+        val comment: String?,
         val longitude: Double?,
         val latitude: Double?,
         @ColumnInfo(name = "is_return")

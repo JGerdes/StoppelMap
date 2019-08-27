@@ -1,0 +1,17 @@
+<resources>
+    <string name="transport_title">Anreise</string>
+    <string name="transport_category_title_bus">Bus</string>
+    <string name="transport_via">über</string>
+    <string name="transport_next_departures">nächste Abfahrten</string>
+    <string name="transport_no_next_departures">heute keine weiteren Abfahrten</string>
+    <string name="transport_next_departure_time">%1$s Uhr</string>
+    <string name="transport_prices">Preise</string>
+    <string name="transport_return_route">Rückfahrten</string>
+
+    <string name="transport_destination_station_title">Stoppelmarkt</string>
+
+    <string name="transport_slot_morning">Morgens</string>
+    <string name="transport_slot_afternoon">Nachmittags</string>
+    <string name="transport_slot_evening">Abends</string>
+    <string name="transport_slot_night">Nachts</string>
+</resources>

@@ -31,6 +31,10 @@ androidx.arch.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_l
 androidx.arch.lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:$version_lifecycle"
 deps.androidx = androidx
 
+def play = [:]
+play.core = "com.google.android.play:core:1.6.1"
+deps.play = play
+
 def version_koin = '2.0.0-GA'
 def koin = [:]
 koin.core = "org.koin:koin-core:$version_koin"
@@ -38,6 +42,10 @@ koin.android = "org.koin:koin-androidx-scope:$version_koin"
 koin.viewmodel = "org.koin:koin-androidx-viewmodel:$version_koin"
 koin.test = "org.koin:koin-test:$version_koin"
 deps.koin = koin
+
+def playServices = [:]
+playServices.location = "com.google.android.gms:play-services-location:17.0.0"
+deps.playServices = playServices
 
 def rx = [:]
 rx.java = "io.reactivex.rxjava2:rxjava:2.1.7"
@@ -63,6 +71,7 @@ deps.moshi = 'com.squareup.moshi:moshi:1.8.0'
 deps.threeten_android = 'com.jakewharton.threetenabp:threetenabp:1.1.0'
 deps.threeten = 'org.threeten:threetenbp:1.1.0'
 deps.timber = 'com.jakewharton.timber:timber:4.7.1'
+deps.permissions = 'com.github.florent37:runtime-permission-kotlin:1.1.1'
 
 deps.mapbox = [:]
 deps.mapbox.sdk = 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.1.0'

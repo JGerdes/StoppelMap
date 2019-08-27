@@ -8,6 +8,7 @@ import com.jonasgerdes.stoppelmap.events.view.EventsFragment
 import com.jonasgerdes.stoppelmap.home.view.HomeFragment
 import com.jonasgerdes.stoppelmap.map.view.MapFragment
 import com.jonasgerdes.stoppelmap.news.view.NewsFragment
+import com.jonasgerdes.stoppelmap.transport.view.TransportFragment
 
 class FragmentFactoryImpl : FragmentFactory<Route> {
     @Suppress("UNCHECKED_CAST")
@@ -18,7 +19,7 @@ class FragmentFactoryImpl : FragmentFactory<Route> {
 
             is Route.Map -> MapFragment()
             is Route.Schedule -> EventsFragment()
-            is Route.Transport -> WorkInProgressPlaceholderFragment()
+            is Route.Transport -> TransportFragment()
 
             is Route.News -> NewsFragment()
 

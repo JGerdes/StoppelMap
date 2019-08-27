@@ -82,14 +82,6 @@
             app:lottie_colorFilter="?colorControlNormal"
             app:lottie_fileName="animation/search_to_back.json"
             />
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/locationFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_my_location"
-            android:visibility="gone"
-            app:fabSize="normal"
-            />
     </androidx.constraintlayout.motion.widget.MotionLayout>
     <TextView
         android:id="@+id/mapDebug"
@@ -100,6 +92,15 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/locationFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_my_location"
+        app:fabSize="normal"
         />
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/carouselMotion"

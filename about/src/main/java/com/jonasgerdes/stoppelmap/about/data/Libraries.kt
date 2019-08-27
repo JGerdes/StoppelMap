@@ -111,5 +111,11 @@ internal val libraries = listOf(
         author = "Thomas Bruyelle",
         license = License.Apache2(),
         githubUrl = "https://github.com/tbruyelle/RxPermissions"
+    ),
+    LibraryCard(
+        name = "Runtime Permission Kotlin",
+        author = "Florent Champigny",
+        license = License.Apache2(),
+        githubUrl = "https://github.com/florent37/RuntimePermission"
     )
 )

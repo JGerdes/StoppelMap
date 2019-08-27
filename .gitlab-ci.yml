@@ -99,7 +99,7 @@ buildReleaseApk:
   when: manual
   script:
     - ./gradlew preparation:runPreparation
-    - ./gradlew buildRelease
+    - ./gradlew assembleRelease
   artifacts:
     paths:
       - ./app/build/outputs/apk/release/

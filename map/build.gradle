@@ -47,6 +47,7 @@ dependencies {
     kapt deps.androidx.arch.lifecycle_compiler
 
     implementation deps.mapbox.sdk
+    implementation deps.permissions
 
     implementation deps.threeten_android
 

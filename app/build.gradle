@@ -27,8 +27,8 @@ android {
         applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode 37
-        versionName "v2019.3.1-${gitSha}"
+        versionCode 40
+        versionName "v2019.4.2-${gitSha}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -57,6 +57,7 @@ dependencies {
     implementation project(':home')
     implementation project(':map')
     implementation project(':events')
+    implementation project(':transport')
     implementation project(':news')
     implementation project(':about')
     implementation project(':androidutil')
@@ -64,6 +65,8 @@ dependencies {
     implementation deps.kotlin.stdlib
     implementation deps.kotlin.coroutines
     implementation deps.kotlin.coroutines_android
+
+    implementation deps.playServices.location
 
     implementation deps.firebase.core
     implementation deps.firebase.messaging
