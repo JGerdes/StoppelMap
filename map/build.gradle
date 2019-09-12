@@ -58,7 +58,9 @@ dependencies {
     implementation deps.glide
     kapt deps.glide_compiler
 
+    testImplementation project(':datastub')
     testImplementation deps.test.junit
+    testImplementation deps.test.mockitokotlin
     testImplementation deps.koin.test
     testImplementation deps.threeten
 }

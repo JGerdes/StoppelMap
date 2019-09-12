@@ -83,6 +83,7 @@ deps.firebase = firebase
 
 def test = [:]
 test.junit = 'junit:junit:4.12'
+test.mockitokotlin = 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
 deps.test = test
 
 
