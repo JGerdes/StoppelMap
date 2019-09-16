@@ -22,7 +22,7 @@ class GetFullStallsBySlugUseCaseTest {
         database.empty().with(DEFAULT_STALL.copy(slug = slug))
         // when
         val result = getFullStalls(listOf(slug))
-        //then
+        // then
         assertEquals(slug, result.first().basicInfo.slug)
     }
 
@@ -45,7 +45,7 @@ class GetFullStallsBySlugUseCaseTest {
             )
         // when
         val result = getFullStalls(listOf(slug))
-        //then
+        // then
         assertEquals(2, result.first().subTypes.size)
         assertEquals("type1", result.first().subTypes[0].slug)
         assertEquals("type2", result.first().subTypes[1].slug)

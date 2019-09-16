@@ -152,4 +152,35 @@ class SearchForStallsUseCaseTest {
         // then
         assertTrue("Result does contain $slug", result.none { it.stallSlugs.contains(slug) })
     }
+
+    @Test
+    fun `results with match at beginning of word are prioritized`() = runBlocking {
+        val searchForStalls = SearchForStallsUseCase(stallRepository)
+        val slugBeginning = "eis-wie-sahne"
+        val slugEnd = "der-grosse-preis"
+
+        // given
+        database.empty()
+            .with(
+                DEFAULT_STALL.copy(
+                    slug = slugBeginning,
+                    name = "Eis wie Sahne"
+                )
+            )
+            .with(
+                DEFAULT_STALL.copy(
+                    slug = slugEnd,
+                    name = "Der große Preis"
+                )
+            )
+        // when
+        val result = searchForStalls("eis")
+        // then
+        val matchingAtBeginningResult = result.find { it.stallSlugs.contains(slugBeginning) }
+        val matchingAtEndResult = result.find { it.stallSlugs.contains(slugEnd) }
+        assertTrue(
+            "Score of $matchingAtBeginningResult is less than $matchingAtEndResult",
+            matchingAtBeginningResult!!.score > matchingAtEndResult!!.score
+        )
+    }
 }
