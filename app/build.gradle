@@ -83,6 +83,10 @@ dependencies {
     implementation deps.threeten_android
 
     implementation deps.lottie
+
+    testImplementation deps.test.junit
+    testImplementation deps.koin.test
+    testImplementation deps.threeten
 }
 
 apply plugin: 'com.google.gms.google-services'
