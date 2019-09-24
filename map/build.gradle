@@ -58,6 +58,7 @@ dependencies {
     implementation deps.glide
     kapt deps.glide_compiler
 
+    testImplementation project(':testutil')
     testImplementation project(':datastub')
     testImplementation deps.kotlin.coroutines_test
     testImplementation deps.test.junit

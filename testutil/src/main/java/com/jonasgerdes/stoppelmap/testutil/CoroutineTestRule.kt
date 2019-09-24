@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.map
+package com.jonasgerdes.stoppelmap.testutil
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

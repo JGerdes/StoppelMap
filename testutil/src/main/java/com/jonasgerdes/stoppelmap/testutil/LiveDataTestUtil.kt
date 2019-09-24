@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.map
+package com.jonasgerdes.stoppelmap.testutil
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

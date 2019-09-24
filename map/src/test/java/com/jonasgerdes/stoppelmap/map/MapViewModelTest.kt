@@ -12,6 +12,8 @@ import com.jonasgerdes.stoppelmap.map.usecase.*
 import com.jonasgerdes.stoppelmap.map.view.MapViewModel
 import com.jonasgerdes.stoppelmap.model.map.Item
 import com.jonasgerdes.stoppelmap.model.map.SubType
+import com.jonasgerdes.stoppelmap.testutil.CoroutinesTestRule
+import com.jonasgerdes.stoppelmap.testutil.test
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
