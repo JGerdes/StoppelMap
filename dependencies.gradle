@@ -6,6 +6,7 @@ def deps = [:]
 def kotlin = [:]
 kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 kotlin.coroutines = 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
+kotlin.coroutines_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.1"
 kotlin.coroutines_android = 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
 kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 deps.kotlin = kotlin
@@ -19,6 +20,7 @@ androidx.constraint_layout = 'androidx.constraintlayout:constraintlayout:2.0.0-b
 androidx.arch = [:]
 androidx.arch.runtime = "android.arch.work:work-runtime-ktx:1.0.1"
 androidx.viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-beta02"
+androidx.test = "androidx.arch.core:core-testing:2.0.0"
 
 def version_room = '2.2.0-alpha01'
 def version_lifecycle = '2.2.0-alpha01'
