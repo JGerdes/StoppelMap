@@ -76,8 +76,9 @@ public class TextOptionPage extends OptionPage<ChangeableFontWidgetPreview> {
         button.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    getEditableWidgetPreview().setFont(font);
+                ChangeableFontWidgetPreview preview = getEditableWidgetPreview();
+                if (isChecked && preview != null) {
+                    preview.setFont(font);
                     getWidgetPreview().update();
                 }
             }
