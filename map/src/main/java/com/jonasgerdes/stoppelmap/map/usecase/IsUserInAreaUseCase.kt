@@ -15,7 +15,6 @@ class IsUserInAreaUseCase(
             userLocation.longitude > area.eastLongitude -> UserState.OUTSIDE_AREA
             else -> UserState.IN_AREA
         }
-
     }
 
     enum class UserState {
@@ -23,5 +22,4 @@ class IsUserInAreaUseCase(
         OUTSIDE_AREA,
         UNDEFINED
     }
-
 }

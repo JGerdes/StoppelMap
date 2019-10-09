@@ -2,7 +2,7 @@ package com.jonasgerdes.stoppelmap
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.jonasgerdes.stoppelmap.data.StoppelmapDatabase
+import com.jonasgerdes.stoppelmap.data.RoomStoppelmapDatabase
 import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.events.eventsModule
 import com.jonasgerdes.stoppelmap.home.homeModule
@@ -37,7 +37,7 @@ class App : Application() {
 
         AndroidThreeTen.init(this)
 
-        StoppelmapDatabase.init(this)
+        RoomStoppelmapDatabase.init(this)
         initMapBox(this)
         subscribeToNewsMessages(this)
     }

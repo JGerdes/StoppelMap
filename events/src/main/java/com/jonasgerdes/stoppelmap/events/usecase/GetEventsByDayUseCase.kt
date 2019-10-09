@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.events.usecase
 
+import com.jonasgerdes.stoppelmap.core.domain.GlobalInfoProvider
 import com.jonasgerdes.stoppelmap.data.repository.EventRepository
 import com.jonasgerdes.stoppelmap.events.entity.Day
 import com.jonasgerdes.stoppelmap.model.events.Event
@@ -7,7 +8,8 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.Month
 
 class GetEventsByDayUseCase(
-    private val eventRepository: EventRepository
+    private val eventRepository: EventRepository,
+    private val globalInfoProvider: GlobalInfoProvider
 ) {
 
     suspend operator fun invoke(day: Day): List<Event> {
@@ -15,7 +17,6 @@ class GetEventsByDayUseCase(
     }
 
     private fun Day.toLocalDate(): LocalDate {
-        //TODO: make this less hardcoded
-        return LocalDate.of(2019, Month.AUGUST, id + 15)
+        return globalInfoProvider.getCurrentSeason().days[id]
     }
 }

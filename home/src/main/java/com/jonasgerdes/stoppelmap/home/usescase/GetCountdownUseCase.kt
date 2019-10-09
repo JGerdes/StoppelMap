@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.home.usescase
 
 import com.jonasgerdes.stoppelmap.core.domain.DateTimeProvider
+import com.jonasgerdes.stoppelmap.core.domain.GlobalInfoProvider
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
@@ -9,12 +10,13 @@ import org.threeten.bp.Duration
 @FlowPreview
 class GetCountdownUseCase(
     private val currentDateTime: DateTimeProvider,
-    private val getStoppelmarktDates: GetStoppelmarktDatesUseCase
+    private val globalInfoProvider: GlobalInfoProvider
 ) {
 
     operator fun invoke(year: Int? = null): CountdownResult {
-        val now = currentDateTime().toLocalDateTime()
-        val nextDate = getStoppelmarktDates().asSequence()
+        val now = currentDateTime()
+        val nextDate = globalInfoProvider.getSeasons().asSequence()
+            .map { it.start }
             .filter { it.isAfter(now) }
             .firstOrNull()
 
