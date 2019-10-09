@@ -58,9 +58,9 @@ unitTest:
     - ./gradlew testDebugUnitTest
   artifacts:
     paths:
-      - ./app/build/reports/tests/
+      - ./**/build/reports/tests/
     reports:
-      junit: ./app/build/test-results/**/TEST-*.xml
+      junit: ./**/build/test-results/**/TEST-*.xml
 
 
 .buildJob:

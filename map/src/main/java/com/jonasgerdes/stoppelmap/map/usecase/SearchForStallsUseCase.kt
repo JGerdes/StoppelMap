@@ -8,7 +8,6 @@ import com.jonasgerdes.stoppelmap.model.map.Stall
 class SearchForStallsUseCase(
     private val stallRepository: StallRepository
 ) {
-
     suspend operator fun invoke(searchQuery: String): List<SearchResult> {
 
         val nameResults = stallRepository.queryStallsByName(searchQuery).map { stall ->

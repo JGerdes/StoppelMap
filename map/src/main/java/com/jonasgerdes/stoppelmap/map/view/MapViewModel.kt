@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.map.view
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import com.jonasgerdes.androidutil.withDefault
 import com.jonasgerdes.stoppelmap.core.routing.Route.Map.State.Carousel.StallCollection
 import com.jonasgerdes.stoppelmap.map.entity.*
 import com.jonasgerdes.stoppelmap.map.usecase.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -43,13 +41,9 @@ class MapViewModel(
     fun onSearchEntered(text: String) {
         if (text.isNotEmpty()) {
             searchJob?.cancel()
-            searchJob = viewModelScope.launch(Dispatchers.IO) {
+            searchJob = viewModelScope.launch {
                 delay(SEARCH_DEBOUNCE_DELAY_MS)
                 val searchResults = searchForStalls(text)
-                Log.d("MapViewModel", "Found stalls:")
-                searchResults.forEach {
-                    Log.d("MapViewModel", "${it.title}")
-                }
                 _searchResults.postValue(searchResults)
             }
         } else {
@@ -59,12 +53,18 @@ class MapViewModel(
     }
 
     fun onStallsSelected(stalls: StallCollection) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
 
             val highlights = when (stalls) {
                 is StallCollection.Single -> listOf(createSingleStallHighlight(stalls.stallSlug))
-                is StallCollection.TypeCollection -> createTypeHighlights(stalls.stallSlugs, stalls.type)
-                is StallCollection.ItemCollection -> createItemHighlights(stalls.stallSlugs, stalls.item)
+                is StallCollection.TypeCollection -> createTypeHighlights(
+                    stalls.stallSlugs,
+                    stalls.type
+                )
+                is StallCollection.ItemCollection -> createItemHighlights(
+                    stalls.stallSlugs,
+                    stalls.item
+                )
             }
 
             if (highlights.isNotEmpty()) {

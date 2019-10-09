@@ -9,8 +9,14 @@ import org.koin.dsl.module
 
 val eventsModule = module {
 
-    single { GetEventsByDayUseCase(eventRepository = get()) }
+    single { GetEventsByDayUseCase(eventRepository = get(), globalInfoProvider = get()) }
     single { GetStallBySlugUseCase(stallRepository = get()) }
 
-    viewModel { (day: Day) -> EventsViewModel(day = day, getEventsByDay = get(), getStallBySlug = get()) }
+    viewModel { (day: Day) ->
+        EventsViewModel(
+            day = day,
+            getEventsByDay = get(),
+            getStallBySlug = get()
+        )
+    }
 }
