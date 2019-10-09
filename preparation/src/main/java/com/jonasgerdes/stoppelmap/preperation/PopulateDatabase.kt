@@ -14,7 +14,7 @@ object Settings {
     val dataAssets = File("../data/src/main/assets/")
     val mapAssets = File("../map/src/main/assets/")
     val data = File("../preparation/src/main/resources")
-    val databaseSchemaLocation = File("../schemas/com.jonasgerdes.stoppelmap.data.StoppelmapDatabase")
+    val databaseSchemaLocation = File("../schemas/com.jonasgerdes.stoppelmap.data.RoomStoppelmapDatabase")
     val databaseSchemaFile = databaseSchemaLocation.listFiles()
         .sortedBy { it.name.replaceFirst(".json", "").toInt() }.last()
 

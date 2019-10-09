@@ -12,7 +12,7 @@ import org.koin.dsl.module
 val homeModule = module {
 
     single { GetStoppelmarktDatesUseCase() }
-    single { GetCountdownUseCase(currentDateTime = get(), getStoppelmarktDates = get()) }
+    single { GetCountdownUseCase(currentDateTime = get(), globalInfoProvider = get()) }
 
     viewModel { HomeViewModel(getCountdown = get()) }
 }
