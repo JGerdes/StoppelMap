@@ -31,3 +31,7 @@ The project is splitted into modules by feature, while some additional modules c
 A `core` modules contains base classes as well as base interfaces needed by every feature. Everything comes together in the `app` module which.
 ![modules](.gitlab/modules.png)
 For simplicity, the additional `androidutil` module isn't shown here as most modules depend on it. Also modules for testing (`testutil`, `datastub`) and preparation (`preparation`) are also omitted in the overview.
+
+Features usually are splitted into a `view` and a `usecase` package. While `view` contains the feature's Fragment(s) and ViewModel(s) (in the Android JetPack meaning), `usecase` contains command-pattern-like classes which can execute a single usecase.
+
+Any usecases a ViewModel needs is injected. The ViewModel reacts to events triggered by the view (Fragment) and executes suitable usecases, which run their business logic and make use of Services and Repositories they got injected.
