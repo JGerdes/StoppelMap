@@ -10,6 +10,8 @@ In addition to a map of the area which also includes a search for stalls, marque
 
 ## Build
 
+Since the project uses firebase for push notifications, first you need to [create a project in firebase](https://firebase.google.com/docs/android/setup#create-firebase-project), [download the config file](https://support.google.com/firebase/answer/7015592#android) and place it as `google-services.json` into the `app` folder.
+
 Before building the actual app, a preparation script has to be executed by running
 
 ```sh
