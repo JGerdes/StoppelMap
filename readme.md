@@ -8,10 +8,10 @@ In addition to a map of the area which also includes a search for stalls, marque
 
 [![icon](.gitlab/google_play_badge.png)](https://play.google.com/store/apps/details?id=com.jonasgerdes.stoppelmap)
 
-| ![01_map_stall](fastlane/metadata/android/de-DE/images/phoneScreenshots/01_map_stall.png) | ![02_search](fastlane/metadata/android/de-DE/images/phoneScreenshots/02_search.png)           | ![03_wc](fastlane/metadata/android/de-DE/images/phoneScreenshots/03_wc.png)     |
-| ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| ![04_bus_route](fastlane/metadata/android/de-DE/images/phoneScreenshots/04_bus_route.png) | ![05_bus_station](fastlane/metadata/android/de-DE/images/phoneScreenshots/05_bus_station.png) | ![06_news](fastlane/metadata/android/de-DE/images/phoneScreenshots/06_news.png) |
-|                                                                                           | ![07_widget](fastlane/metadata/android/de-DE/images/phoneScreenshots/07_widget.png)           |                                                                                 |
+| ![Selecting stalls on map shows destails](fastlane/metadata/android/de-DE/images/phoneScreenshots/01_map_stall.png) | ![Search for stalls, food, funrides or marquees](fastlane/metadata/android/de-DE/images/phoneScreenshots/02_search.png)                 | ![Find the nearest restroom around you](fastlane/metadata/android/de-DE/images/phoneScreenshots/03_wc.png)              |
+| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| ![See the bus schedules](fastlane/metadata/android/de-DE/images/phoneScreenshots/04_bus_route.png)                  | ![See all departures](fastlane/metadata/android/de-DE/images/phoneScreenshots/05_bus_station.png)                                       | ![Keep up todate with news about the Stoppelmarkt](fastlane/metadata/android/de-DE/images/phoneScreenshots/06_news.png) |
+|                                                                                                                     | ![Track time left with configurable widgets for the home screen](fastlane/metadata/android/de-DE/images/phoneScreenshots/07_widget.png) |                                                                                                                         |
 
 ## Build
 
@@ -23,7 +23,7 @@ Before building the actual app, a preparation script has to be executed by runni
 ./gradlew runPreparation
 ```
 
-which will process the GeoJSON file in `preparation/src/main/resources/map`, copy it to the assets folder of the app, create a database file and fill it with data for events, busschedules and information about the stalls read from the GeoJSON file.
+which processes the GeoJSON file in `preparation/src/main/resources/map`, copies it to the assets folder of the app, creates a database file and fills it with data for events, busschedules and information about the stalls read from the GeoJSON file.
 This is done to keep the data in a handy format which can also be managed in git.
 
 After the preparation, a debug version of the app can be build and installed on a connected device or emulator by running
