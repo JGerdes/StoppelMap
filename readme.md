@@ -8,6 +8,11 @@ In addition to a map of the area which also includes a search for stalls, marque
 
 [![icon](.gitlab/google_play_badge.png)](https://play.google.com/store/apps/details?id=com.jonasgerdes.stoppelmap)
 
+| ![01_map_stall](fastlane/metadata/android/de-DE/images/phoneScreenshots/01_map_stall.png) | ![02_search](fastlane/metadata/android/de-DE/images/phoneScreenshots/02_search.png)           | ![03_wc](fastlane/metadata/android/de-DE/images/phoneScreenshots/03_wc.png)     |
+| ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| ![04_bus_route](fastlane/metadata/android/de-DE/images/phoneScreenshots/04_bus_route.png) | ![05_bus_station](fastlane/metadata/android/de-DE/images/phoneScreenshots/05_bus_station.png) | ![06_news](fastlane/metadata/android/de-DE/images/phoneScreenshots/06_news.png) |
+|                                                                                           | ![07_widget](fastlane/metadata/android/de-DE/images/phoneScreenshots/07_widget.png)           |                                                                                 |
+
 ## Build
 
 Since the project uses firebase for push notifications, first you need to [create a project in firebase](https://firebase.google.com/docs/android/setup#create-firebase-project), [download the config file](https://support.google.com/firebase/answer/7015592#android) and place it as `google-services.json` into the `app` folder.
