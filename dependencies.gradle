@@ -45,6 +45,9 @@ koin.viewmodel = "org.koin:koin-androidx-viewmodel:$version_koin"
 koin.test = "org.koin:koin-test:$version_koin"
 deps.koin = koin
 
+deps.dagger = 'com.google.dagger:dagger:2.25.2'
+deps.dagger_compiler = 'com.google.dagger:dagger-compiler:2.25.2'
+
 def playServices = [:]
 playServices.location = "com.google.android.gms:play-services-location:17.0.0"
 deps.playServices = playServices

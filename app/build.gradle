@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compileSdk
@@ -79,6 +80,9 @@ dependencies {
     implementation deps.koin.core
     implementation deps.koin.android
     implementation deps.koin.viewmodel
+
+    implementation deps.dagger
+    kapt deps.dagger_compiler
 
     implementation deps.threeten_android
 
