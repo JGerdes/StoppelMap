@@ -10,9 +10,10 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.threeten.bp.Duration
+import javax.inject.Inject
 
 @FlowPreview
-class HomeViewModel(
+class HomeViewModel @Inject constructor(
     private val getCountdown: GetCountdownUseCase
 ) : ViewModel(), UpdatingViewModel by UpdatingViewModel.DefaultImplementation() {
 

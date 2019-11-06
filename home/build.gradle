@@ -40,9 +40,8 @@ dependencies {
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
 
-    implementation deps.koin.core
-    implementation deps.koin.android
-    implementation deps.koin.viewmodel
+    implementation deps.dagger
+    kapt deps.dagger_compiler
 
 
     implementation deps.androidx.arch.lifecycle

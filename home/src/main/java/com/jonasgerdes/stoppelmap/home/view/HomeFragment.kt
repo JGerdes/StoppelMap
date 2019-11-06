@@ -1,10 +1,9 @@
 package com.jonasgerdes.stoppelmap.home.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
-import com.jonasgerdes.stoppelmap.core.routing.HomeDetail
+import com.jonasgerdes.stoppelmap.core.di.viewModelFactory
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
@@ -15,11 +14,10 @@ import com.jonasgerdes.stoppelmap.home.view.item.SimpleTextItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_home.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<Route.Home>(R.layout.fragment_home) {
 
-    private val viewModel: HomeViewModel by viewModel()
+    private val viewModel: HomeViewModel by viewModelFactory()
 
     private val cardAdapter = GroupAdapter<ViewHolder>()
 
@@ -38,7 +36,10 @@ class HomeFragment : BaseFragment<Route.Home>(R.layout.fragment_home) {
 
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.settings_about -> Router.navigateToRoute(Route.About(), Router.Destination.HOME)
+                R.id.settings_about -> Router.navigateToRoute(
+                    Route.About(),
+                    Router.Destination.HOME
+                )
             }
             true
         }

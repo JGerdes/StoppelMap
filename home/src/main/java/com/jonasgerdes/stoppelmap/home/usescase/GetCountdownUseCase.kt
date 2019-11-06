@@ -6,9 +6,12 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 import org.threeten.bp.Duration
+import javax.inject.Inject
+import javax.inject.Singleton
+
 
 @FlowPreview
-class GetCountdownUseCase(
+class GetCountdownUseCase @Inject constructor(
     private val currentDateTime: DateTimeProvider,
     private val globalInfoProvider: GlobalInfoProvider
 ) {
