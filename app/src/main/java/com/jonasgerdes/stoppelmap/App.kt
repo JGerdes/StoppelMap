@@ -8,7 +8,6 @@ import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.di.*
 import com.jonasgerdes.stoppelmap.events.eventsModule
 import com.jonasgerdes.stoppelmap.map.initMapBox
-import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.news.fcm.subscribeToNewsMessages
 import com.jonasgerdes.stoppelmap.transport.transportModule
 import org.koin.android.ext.koin.androidContext
@@ -29,7 +28,6 @@ class App : Application() {
             modules(
                 appModule,
                 dataModule,
-                mapModule,
                 eventsModule,
                 transportModule
             )

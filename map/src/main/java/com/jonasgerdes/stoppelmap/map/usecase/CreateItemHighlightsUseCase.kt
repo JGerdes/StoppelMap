@@ -2,8 +2,9 @@ package com.jonasgerdes.stoppelmap.map.usecase
 
 import com.jonasgerdes.stoppelmap.data.repository.StallRepository
 import com.jonasgerdes.stoppelmap.map.entity.Highlight
+import javax.inject.Inject
 
-class CreateItemHighlightsUseCase(
+class CreateItemHighlightsUseCase @Inject constructor(
     private val stallRepository: StallRepository,
     private val getFullStallsBySlug: GetFullStallsBySlugUseCase
 ) {

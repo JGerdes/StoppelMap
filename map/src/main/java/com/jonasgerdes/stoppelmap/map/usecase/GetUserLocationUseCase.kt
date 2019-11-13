@@ -1,8 +1,9 @@
 package com.jonasgerdes.stoppelmap.map.usecase
 
 import com.jonasgerdes.stoppelmap.core.domain.LocationProvider
+import javax.inject.Inject
 
-class GetUserLocationUseCase(
+class GetUserLocationUseCase @Inject constructor(
     private val locationProvider: LocationProvider
 ) {
 
