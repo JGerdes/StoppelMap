@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.di
 import androidx.lifecycle.ViewModelProvider
 import com.jonasgerdes.stoppelmap.core.di.ViewModelModule
 import com.jonasgerdes.stoppelmap.home.di.HomeModule
+import com.jonasgerdes.stoppelmap.news.di.NewsModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,7 +13,8 @@ import javax.inject.Singleton
         ContextModule::class,
         StoppelmapModule::class,
         ViewModelModule::class,
-        HomeModule::class
+        HomeModule::class,
+        NewsModule::class
     ]
 )
 @Singleton

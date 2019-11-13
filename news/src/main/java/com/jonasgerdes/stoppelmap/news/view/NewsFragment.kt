@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import com.google.android.material.snackbar.Snackbar
 import com.jonasgerdes.androidutil.recyclerview.onScrolledToEnd
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
+import com.jonasgerdes.stoppelmap.core.di.viewModelFactory
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
@@ -17,11 +18,10 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_news.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsFragment : BaseFragment<Route.News>(R.layout.fragment_news) {
 
-    private val viewModel: NewsViewModel by viewModel()
+    private val viewModel: NewsViewModel by viewModelFactory()
     private val articleAdapter = GroupAdapter<ViewHolder>()
     private val articleSection = Section()
     private var snackbar: Snackbar? = null

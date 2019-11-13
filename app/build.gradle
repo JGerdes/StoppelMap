@@ -88,6 +88,11 @@ dependencies {
 
     implementation deps.lottie
 
+    // needed by dagger (https://github.com/google/dagger/issues/970)
+    compileOnly deps.moshi
+    compileOnly deps.androidx.arch.room.runtime
+    compileOnly deps.retrofit.core
+
     testImplementation deps.test.junit
     testImplementation deps.koin.test
     testImplementation deps.threeten

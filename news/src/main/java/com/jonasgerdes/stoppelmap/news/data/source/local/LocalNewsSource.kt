@@ -4,10 +4,11 @@ import androidx.room.Transaction
 import com.jonasgerdes.stoppelmap.news.data.entity.Article
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
+import javax.inject.Inject
 
 private typealias ArticleListener = () -> Any
 
-class LocalNewsSource(
+class LocalNewsSource @Inject constructor(
     private val database: NewsDatabase
 ) {
 
