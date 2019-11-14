@@ -4,8 +4,9 @@ import com.jonasgerdes.stoppelmap.data.StoppelmapDatabase
 import com.jonasgerdes.stoppelmap.model.map.Item
 import com.jonasgerdes.stoppelmap.model.map.Stall
 import com.jonasgerdes.stoppelmap.model.map.SubType
+import javax.inject.Inject
 
-class StallRepository(
+class StallRepository @Inject constructor(
     private val database: StoppelmapDatabase
 ) {
 

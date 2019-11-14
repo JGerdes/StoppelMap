@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.jonasgerdes.stoppelmap.core.di.ViewModelModule
+import com.jonasgerdes.stoppelmap.data.di.DataModule
 import com.jonasgerdes.stoppelmap.home.di.HomeModule
 import com.jonasgerdes.stoppelmap.map.di.MapModule
 import com.jonasgerdes.stoppelmap.news.di.NewsModule
@@ -14,6 +15,7 @@ import javax.inject.Singleton
         ContextModule::class,
         StoppelmapModule::class,
         ViewModelModule::class,
+        DataModule::class,
         HomeModule::class,
         MapModule::class,
         NewsModule::class

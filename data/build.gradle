@@ -5,7 +5,6 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compileSdk
 
-
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
@@ -27,7 +26,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -42,8 +40,8 @@ dependencies {
     implementation deps.firebase.core
     implementation deps.firebase.messaging
 
-    implementation deps.koin.core
-    implementation deps.koin.android
+    implementation deps.dagger
+    kapt deps.dagger_compiler
 
     implementation deps.androidx.arch.room.runtime
     implementation deps.androidx.arch.room.ktx
@@ -54,6 +52,5 @@ dependencies {
     implementation deps.threeten_android
 
     testImplementation deps.test.junit
-    testImplementation deps.koin.test
     testImplementation deps.threeten
 }

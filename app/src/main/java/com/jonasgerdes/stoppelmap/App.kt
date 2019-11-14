@@ -27,7 +27,6 @@ class App : Application() {
 
             modules(
                 appModule,
-                dataModule,
                 eventsModule,
                 transportModule
             )
