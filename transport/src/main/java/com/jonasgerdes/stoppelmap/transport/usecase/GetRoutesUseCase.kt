@@ -3,8 +3,9 @@ package com.jonasgerdes.stoppelmap.transport.usecase
 import com.jonasgerdes.stoppelmap.data.repository.RouteRepository
 import com.jonasgerdes.stoppelmap.model.transportation.Route
 import com.jonasgerdes.stoppelmap.model.transportation.Station
+import javax.inject.Inject
 
-class GetRoutesUseCase(
+class GetRoutesUseCase @Inject constructor(
     val routeRepository: RouteRepository
 ) {
     suspend operator fun invoke(): List<RouteInformation> {

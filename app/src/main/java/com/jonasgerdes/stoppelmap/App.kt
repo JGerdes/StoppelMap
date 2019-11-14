@@ -7,7 +7,6 @@ import com.jonasgerdes.stoppelmap.data.RoomStoppelmapDatabase
 import com.jonasgerdes.stoppelmap.di.*
 import com.jonasgerdes.stoppelmap.map.initMapBox
 import com.jonasgerdes.stoppelmap.news.fcm.subscribeToNewsMessages
-import com.jonasgerdes.stoppelmap.transport.transportModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -24,8 +23,7 @@ class App : Application() {
             androidLogger()
 
             modules(
-                appModule,
-                transportModule
+                appModule
             )
         }
 

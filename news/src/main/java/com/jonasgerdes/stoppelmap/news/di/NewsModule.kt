@@ -49,5 +49,5 @@ class NewsModule {
     @Provides
     @IntoMap
     @ViewModelClass(NewsViewModel::class)
-    fun homeViewModel(viewModel: NewsViewModel): ViewModel = viewModel
+    fun newsViewModel(viewModel: NewsViewModel): ViewModel = viewModel
 }

@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.events.di.EventsModule
 import com.jonasgerdes.stoppelmap.home.di.HomeModule
 import com.jonasgerdes.stoppelmap.map.di.MapModule
 import com.jonasgerdes.stoppelmap.news.di.NewsModule
+import com.jonasgerdes.stoppelmap.transport.di.TransportModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -19,6 +20,7 @@ import javax.inject.Singleton
         DataModule::class,
         HomeModule::class,
         MapModule::class,
+        TransportModule::class,
         EventsModule::class,
         NewsModule::class
     ]

@@ -7,10 +7,10 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Singleton
 @Module
 class DataModule {
 
+    @Singleton
     @Provides
     fun database(context: Context): StoppelmapDatabase
             = RoomStoppelmapDatabase.getInstance(context)

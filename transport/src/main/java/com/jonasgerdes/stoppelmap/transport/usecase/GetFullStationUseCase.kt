@@ -8,10 +8,11 @@ import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.OffsetTime
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
+import javax.inject.Inject
 
 private val HOUR_FORMAT = DateTimeFormatter.ofPattern("HH")
 
-class GetFullStationUseCase(
+class GetFullStationUseCase @Inject constructor(
     private val routeRepository: RouteRepository,
     private val getCurrentTime: DateTimeProvider
 ) {

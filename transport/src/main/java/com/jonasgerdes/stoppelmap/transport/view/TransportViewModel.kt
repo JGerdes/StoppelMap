@@ -8,8 +8,9 @@ import com.jonasgerdes.stoppelmap.transport.entity.BusRoute
 import com.jonasgerdes.stoppelmap.transport.entity.TransportOptions
 import com.jonasgerdes.stoppelmap.transport.usecase.GetRoutesUseCase
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TransportViewModel(
+class TransportViewModel @Inject constructor(
     private val getRoutes: GetRoutesUseCase
 ) : ViewModel() {
 
