@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.di
 
 import androidx.lifecycle.ViewModelProvider
+import com.jonasgerdes.androidutil.navigation.FragmentFactory
 import com.jonasgerdes.stoppelmap.core.di.ViewModelModule
+import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.data.di.DataModule
 import com.jonasgerdes.stoppelmap.events.di.EventsModule
 import com.jonasgerdes.stoppelmap.home.di.HomeModule
@@ -28,4 +30,5 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun viewModelFactory(): ViewModelProvider.Factory
+    fun fragmentFactory(): FragmentFactory<Route>
 }

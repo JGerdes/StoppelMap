@@ -5,7 +5,6 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compileSdk
 
-
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
@@ -21,7 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -34,7 +32,6 @@ dependencies {
     implementation deps.kotlin.coroutines
     implementation deps.kotlin.coroutines_android
 
-
     implementation deps.androidx.compat
     implementation deps.androidx.material
     implementation deps.androidx.ktx
@@ -42,7 +39,6 @@ dependencies {
 
     implementation deps.dagger
     kapt deps.dagger_compiler
-
 
     implementation deps.androidx.arch.lifecycle
     implementation deps.androidx.arch.viewmodel
@@ -58,6 +54,5 @@ dependencies {
     kapt deps.glide_compiler
 
     testImplementation deps.test.junit
-    testImplementation deps.koin.test
     testImplementation deps.threeten
 }

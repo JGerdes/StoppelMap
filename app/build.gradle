@@ -46,7 +46,6 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-
 }
 
 dependencies {
@@ -77,10 +76,6 @@ dependencies {
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
 
-    implementation deps.koin.core
-    implementation deps.koin.android
-    implementation deps.koin.viewmodel
-
     implementation deps.dagger
     kapt deps.dagger_compiler
 
@@ -94,7 +89,6 @@ dependencies {
     compileOnly deps.retrofit.core
 
     testImplementation deps.test.junit
-    testImplementation deps.koin.test
     testImplementation deps.threeten
 }
 
