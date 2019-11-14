@@ -17,6 +17,7 @@ import com.jonasgerdes.androidutil.dp
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledByUser
 import com.jonasgerdes.androidutil.recyclerview.doOnScrolledFinished
 import com.jonasgerdes.androidutil.recyclerview.findFirstCompletelyVisibleItemPosition
+import com.jonasgerdes.stoppelmap.core.di.viewModelFactory
 import com.jonasgerdes.stoppelmap.core.routing.Route
 import com.jonasgerdes.stoppelmap.core.routing.Route.Map.State.Carousel.StallCollection
 import com.jonasgerdes.stoppelmap.core.routing.Router
@@ -35,12 +36,11 @@ import com.mapbox.mapboxsdk.maps.Style
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_map.*
-import org.koin.android.ext.android.inject
 
 
 class MapFragment : BaseFragment<Route.Map>(R.layout.fragment_map) {
 
-    private val viewModel: MapViewModel by inject()
+    private val viewModel: MapViewModel by viewModelFactory()
     private val searchResultAdapter = GroupAdapter<ViewHolder>()
     private val carouselAdapter = GroupAdapter<ViewHolder>()
     private var map: MapboxMap? = null

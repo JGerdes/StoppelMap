@@ -4,9 +4,7 @@ import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.jonasgerdes.stoppelmap.core.di.Injector
 import com.jonasgerdes.stoppelmap.data.RoomStoppelmapDatabase
-import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.di.*
-import com.jonasgerdes.stoppelmap.events.eventsModule
 import com.jonasgerdes.stoppelmap.map.initMapBox
 import com.jonasgerdes.stoppelmap.news.fcm.subscribeToNewsMessages
 import com.jonasgerdes.stoppelmap.transport.transportModule
@@ -27,7 +25,6 @@ class App : Application() {
 
             modules(
                 appModule,
-                eventsModule,
                 transportModule
             )
         }

@@ -13,5 +13,5 @@ class MapModule {
     @Provides
     @IntoMap
     @ViewModelClass(MapViewModel::class)
-    fun homeViewModel(viewModel: MapViewModel): ViewModel = viewModel
+    fun mapViewModel(viewModel: MapViewModel): ViewModel = viewModel
 }

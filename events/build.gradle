@@ -5,7 +5,6 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion compileSdk
 
-
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
@@ -22,43 +21,40 @@ android {
         }
     }
 
-}
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation project(':core')
+        implementation project(':androidutil')
+        implementation project(':data')
 
-    implementation project(':core')
-    implementation project(':androidutil')
-    implementation project(':data')
+        implementation deps.kotlin.stdlib
 
-    implementation deps.kotlin.stdlib
+        implementation deps.androidx.compat
+        implementation deps.androidx.material
+        implementation deps.androidx.ktx
+        implementation deps.androidx.constraint_layout
+        implementation deps.androidx.viewpager2
 
-    implementation deps.androidx.compat
-    implementation deps.androidx.material
-    implementation deps.androidx.ktx
-    implementation deps.androidx.constraint_layout
-    implementation deps.androidx.viewpager2
+        implementation deps.androidx.arch.lifecycle
+        implementation deps.androidx.arch.viewmodel
+        kapt deps.androidx.arch.lifecycle_compiler
 
-    implementation deps.koin.core
-    implementation deps.koin.android
-    implementation deps.koin.viewmodel
+        implementation deps.threeten_android
 
-    implementation deps.androidx.arch.lifecycle
-    implementation deps.androidx.arch.viewmodel
-    kapt deps.androidx.arch.lifecycle_compiler
+        implementation deps.dagger
+        kapt deps.dagger_compiler
 
-    implementation deps.threeten_android
+        implementation deps.groupie
+        implementation deps.groupie_kotlin
 
-    implementation deps.groupie
-    implementation deps.groupie_kotlin
+        implementation deps.lottie
+        implementation deps.glide
+        kapt deps.glide_compiler
 
-    implementation deps.lottie
-    implementation deps.glide
-    kapt deps.glide_compiler
-
-    testImplementation project(':datastub')
-    testImplementation deps.test.mockitokotlin
-    testImplementation deps.test.junit
-    testImplementation deps.koin.test
-    testImplementation deps.threeten
+        testImplementation project(':datastub')
+        testImplementation deps.test.mockitokotlin
+        testImplementation deps.test.junit
+        testImplementation deps.threeten
+    }
 }

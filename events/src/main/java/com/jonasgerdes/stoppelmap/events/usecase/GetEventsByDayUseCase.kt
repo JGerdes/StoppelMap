@@ -6,8 +6,9 @@ import com.jonasgerdes.stoppelmap.events.entity.Day
 import com.jonasgerdes.stoppelmap.model.events.Event
 import org.threeten.bp.LocalDate
 import org.threeten.bp.Month
+import javax.inject.Inject
 
-class GetEventsByDayUseCase(
+class GetEventsByDayUseCase @Inject constructor(
     private val eventRepository: EventRepository,
     private val globalInfoProvider: GlobalInfoProvider
 ) {
