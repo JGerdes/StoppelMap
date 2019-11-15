@@ -11,10 +11,11 @@ import com.jonasgerdes.stoppelmap.map.usecase.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private const val SEARCH_DEBOUNCE_DELAY_MS = 100L
 
-class MapViewModel(
+class MapViewModel @Inject constructor(
     private val searchForStalls: SearchForStallsUseCase,
     private val getStallsBySlug: GetFullStallsBySlugUseCase,
     private val createSingleStallHighlight: CreateSingleStallHighlightUseCase,

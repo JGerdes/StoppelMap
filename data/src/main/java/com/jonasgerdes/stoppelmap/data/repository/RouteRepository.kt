@@ -6,8 +6,9 @@ import com.jonasgerdes.stoppelmap.model.transportation.Route
 import com.jonasgerdes.stoppelmap.model.transportation.Station
 import com.jonasgerdes.stoppelmap.model.transportation.TransportPrice
 import org.threeten.bp.OffsetDateTime
+import javax.inject.Inject
 
-class RouteRepository(
+class RouteRepository @Inject constructor(
     private val database: StoppelmapDatabase
 ) {
 

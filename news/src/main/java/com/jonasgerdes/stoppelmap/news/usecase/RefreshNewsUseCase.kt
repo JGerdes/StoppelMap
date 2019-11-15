@@ -2,8 +2,9 @@ package com.jonasgerdes.stoppelmap.news.usecase
 
 import com.jonasgerdes.stoppelmap.news.data.entity.Result
 import com.jonasgerdes.stoppelmap.news.data.repository.NewsRepository
+import javax.inject.Inject
 
-class RefreshNewsUseCase(
+class RefreshNewsUseCase @Inject constructor(
     private val usecaseRepository: NewsRepository
 ) {
 

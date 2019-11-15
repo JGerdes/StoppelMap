@@ -5,8 +5,9 @@ import com.squareup.moshi.Moshi
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import java.io.IOException
+import javax.inject.Inject
 
-class RemoteNewsSource(
+class RemoteNewsSource @Inject constructor(
     private val newsService: NewsService,
     private val moshi: Moshi
 ) {

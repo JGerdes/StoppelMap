@@ -6,16 +6,18 @@ import android.os.Bundle
 import com.jonasgerdes.androidutil.navigation.FragmentFactory
 import com.jonasgerdes.androidutil.navigation.Navigator
 import com.jonasgerdes.androidutil.navigation.createFragmentNavigator
+import com.jonasgerdes.stoppelmap.App
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.core.routing.*
 import com.jonasgerdes.stoppelmap.core.util.enableTransparentStatusBar
 import com.jonasgerdes.stoppelmap.core.widget.BaseActivity
 import kotlinx.android.synthetic.main.activity_stoppelmap.*
-import org.koin.android.ext.android.inject
 
 class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Navigator {
 
-    private val fragmentFactory: FragmentFactory<Route> by inject()
+    private val fragmentFactory: FragmentFactory<Route> by lazy {
+        (application as App).fragmentFactory
+    }
     private val navigator by lazy {
         createFragmentNavigator(
             R.id.fragmentHost,

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compileSdk
@@ -39,6 +40,10 @@ dependencies {
     implementation deps.androidx.material
     implementation deps.androidx.compat
     implementation deps.androidx.ktx
+    implementation deps.androidx.arch.lifecycle
+
+    implementation deps.dagger
+    kapt deps.dagger_compiler
 
     implementation deps.threeten_android
     testImplementation deps.threeten

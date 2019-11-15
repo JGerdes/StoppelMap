@@ -13,9 +13,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @UseExperimental(ObsoleteCoroutinesApi::class)
-class NewsViewModel(
+class NewsViewModel @Inject constructor(
     private val getNews: GetNewsUseCase,
     private val loadMoreNews: LoadMoreNewsUseCase,
     private val refreshNews: RefreshNewsUseCase

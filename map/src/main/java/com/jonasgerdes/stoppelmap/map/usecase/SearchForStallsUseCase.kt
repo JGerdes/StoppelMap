@@ -4,8 +4,9 @@ import com.jonasgerdes.stoppelmap.data.repository.StallRepository
 import com.jonasgerdes.stoppelmap.map.entity.HighlightedText
 import com.jonasgerdes.stoppelmap.map.entity.SearchResult
 import com.jonasgerdes.stoppelmap.model.map.Stall
+import javax.inject.Inject
 
-class SearchForStallsUseCase(
+class SearchForStallsUseCase @Inject constructor(
     private val stallRepository: StallRepository
 ) {
     suspend operator fun invoke(searchQuery: String): List<SearchResult> {

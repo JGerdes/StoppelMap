@@ -39,9 +39,8 @@ dependencies {
     implementation deps.androidx.constraint_layout
     implementation deps.androidx.viewpager2
 
-    implementation deps.koin.core
-    implementation deps.koin.android
-    implementation deps.koin.viewmodel
+    implementation deps.dagger
+    kapt deps.dagger_compiler
 
     implementation deps.androidx.arch.lifecycle
     implementation deps.androidx.arch.viewmodel
@@ -56,7 +55,5 @@ dependencies {
     implementation deps.glide
     kapt deps.glide_compiler
 
-    testImplementation deps.test.junit
-    testImplementation deps.koin.test
     testImplementation deps.threeten
 }

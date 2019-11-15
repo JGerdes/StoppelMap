@@ -1,8 +1,9 @@
 package com.jonasgerdes.stoppelmap.map.usecase
 
 import com.jonasgerdes.stoppelmap.core.domain.GlobalInfoProvider
+import javax.inject.Inject
 
-class IsUserInAreaUseCase(
+class IsUserInAreaUseCase @Inject constructor(
     private val globalInfoProvider: GlobalInfoProvider
 ) {
     operator fun invoke(userLocation: GetUserLocationUseCase.Location?): UserState {

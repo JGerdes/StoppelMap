@@ -7,13 +7,12 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jonasgerdes.androidutil.view.consumeWindowInsetsTop
+import com.jonasgerdes.stoppelmap.core.di.viewModelFactory
 import com.jonasgerdes.stoppelmap.core.routing.Router
 import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.transport.R
 import kotlinx.android.synthetic.main.fragment_option_list.toolbar
 import kotlinx.android.synthetic.main.fragment_station_detail.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 
 class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
 
@@ -23,7 +22,7 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
     val subtitle: String? by lazy { arguments!!.getString(ARGUMENT_SUBTITLE) }
     val slug: String by lazy { arguments!!.getString(ARGUMENT_SLUG) }
 
-    val viewModel: StationDetailViewModel by viewModel { parametersOf(slug) }
+    val viewModel: StationDetailViewModel by viewModelFactory()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,6 +40,8 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
             object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int) = departureAdapter.items[position].getSpanSize()
             }
+
+        viewModel.setStation(slug)
 
         observe(viewModel.station) { station ->
             prices.text = station.prices.joinToString("\n") {

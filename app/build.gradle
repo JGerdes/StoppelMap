@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compileSdk
@@ -45,7 +46,6 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-
 }
 
 dependencies {
@@ -76,16 +76,19 @@ dependencies {
     implementation deps.androidx.ktx
     implementation deps.androidx.constraint_layout
 
-    implementation deps.koin.core
-    implementation deps.koin.android
-    implementation deps.koin.viewmodel
+    implementation deps.dagger
+    kapt deps.dagger_compiler
 
     implementation deps.threeten_android
 
     implementation deps.lottie
 
+    // needed by dagger (https://github.com/google/dagger/issues/970)
+    compileOnly deps.moshi
+    compileOnly deps.androidx.arch.room.runtime
+    compileOnly deps.retrofit.core
+
     testImplementation deps.test.junit
-    testImplementation deps.koin.test
     testImplementation deps.threeten
 }
 

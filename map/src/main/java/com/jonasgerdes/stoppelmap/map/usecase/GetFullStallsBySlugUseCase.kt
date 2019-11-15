@@ -3,11 +3,12 @@ package com.jonasgerdes.stoppelmap.map.usecase
 import android.util.Log
 import com.jonasgerdes.stoppelmap.data.repository.StallRepository
 import com.jonasgerdes.stoppelmap.map.entity.FullStall
+import javax.inject.Inject
 
 /**
  * Resolves a list of stall slugs to it's full representation as [FullStall]
  */
-class GetFullStallsBySlugUseCase(
+class GetFullStallsBySlugUseCase @Inject constructor(
     private val stallRepository: StallRepository
 ) {
     suspend operator fun invoke(slugs: List<String>): List<FullStall> {

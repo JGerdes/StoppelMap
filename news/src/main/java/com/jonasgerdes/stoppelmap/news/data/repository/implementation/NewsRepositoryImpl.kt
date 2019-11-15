@@ -8,9 +8,10 @@ import com.jonasgerdes.stoppelmap.news.data.source.remote.Error
 import com.jonasgerdes.stoppelmap.news.data.source.remote.NetworkResult
 import com.jonasgerdes.stoppelmap.news.data.source.remote.RemoteNewsSource
 import kotlinx.coroutines.channels.ReceiveChannel
+import javax.inject.Inject
 
 
-class NewsRepositoryImpl(
+class NewsRepositoryImpl @Inject constructor(
     private val localSource: LocalNewsSource,
     private val remoteSource: RemoteNewsSource
 ) : NewsRepository {

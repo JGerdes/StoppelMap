@@ -5,10 +5,11 @@ import com.jonasgerdes.stoppelmap.data.repository.RouteRepository
 import com.jonasgerdes.stoppelmap.model.transportation.Route
 import com.jonasgerdes.stoppelmap.model.transportation.Station
 import org.threeten.bp.OffsetDateTime
+import javax.inject.Inject
 
 private const val NEXT_DEPARTURE_COUNT = 3
 
-class GetFullRouteUseCase(
+class GetFullRouteUseCase @Inject constructor(
     private val routeRepository: RouteRepository,
     private val getCurrentTime: DateTimeProvider
 ) {
