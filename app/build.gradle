@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion compileSdk
+    compileSdkVersion rootProject.ext.compileSdk
 
     signingConfigs {
         release {
@@ -26,8 +26,8 @@ android {
 
     defaultConfig {
         applicationId "com.jonasgerdes.stoppelmap"
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
         versionCode 40
         versionName "v2019.4.2-${gitSha}"
 
