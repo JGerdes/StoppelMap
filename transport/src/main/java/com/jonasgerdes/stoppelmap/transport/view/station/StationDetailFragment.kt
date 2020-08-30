@@ -20,7 +20,7 @@ class StationDetailFragment : Fragment(R.layout.fragment_station_detail) {
 
     val title: String? by lazy { arguments!!.getString(ARGUMENT_TITLE) }
     val subtitle: String? by lazy { arguments!!.getString(ARGUMENT_SUBTITLE) }
-    val slug: String by lazy { arguments!!.getString(ARGUMENT_SLUG) }
+    val slug: String by lazy { arguments!!.getString(ARGUMENT_SLUG)!! }
 
     val viewModel: StationDetailViewModel by viewModelFactory()
 

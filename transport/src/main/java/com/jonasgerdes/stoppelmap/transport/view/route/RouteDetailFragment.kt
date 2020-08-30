@@ -20,7 +20,7 @@ class RouteDetailFragment : Fragment(R.layout.fragment_route_detail) {
     val stationAdapter = GroupAdapter<ViewHolder>()
 
     val title: String? by lazy { arguments!!.getString(ARGUMENT_TITLE) }
-    val slug: String by lazy { arguments!!.getString(ARGUMENT_SLUG) }
+    val slug: String by lazy { arguments!!.getString(ARGUMENT_SLUG)!! }
 
     val viewModel: RouteDetailViewModel by viewModelFactory()
 

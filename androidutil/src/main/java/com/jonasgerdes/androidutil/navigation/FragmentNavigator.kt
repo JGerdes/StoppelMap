@@ -120,11 +120,12 @@ class Navigator<Route : Parcelable, Destination : Enum<Destination>>(
     }
 
     fun onLoadState(state: Bundle) {
-        val stackNames = state.getStringArrayList(STACK_NAMES)
+        val stackNames = state.getStringArrayList(STACK_NAMES)!!
 
         stackNames.forEach { key ->
             val destination = destinationConverter(key)
-            val stack: ArrayList<Route> = state.getParcelableArrayList("$BACK_STACK_PREFIX$key")
+            val stack: ArrayList<Route> =
+                state.getParcelableArrayList("$BACK_STACK_PREFIX$key")!!
             backStack[destination] = Stack<Route>().apply {
                 addAll(stack)
             }
