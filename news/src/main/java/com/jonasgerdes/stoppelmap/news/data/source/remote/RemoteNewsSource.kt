@@ -2,7 +2,11 @@ package com.jonasgerdes.stoppelmap.news.data.source.remote
 
 import android.util.Log
 import com.squareup.moshi.Moshi
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -35,20 +39,26 @@ class RemoteNewsSource @Inject constructor(
 
     fun hasNextPage() = nextPage != NextPage.None
 
-    private suspend fun loadPage(request: () -> Deferred<Response<NewsResponse>>): NetworkResult<NewsResponse, Error> {
-        return try {
-            val response = request().await()
-            if (response.isSuccessful) {
-                val result = response.body()!! //body will be != null if success
-                nextPage = result.pagination.next?.let { NextPage.Next(it) } ?: NextPage.None
-                NetworkResult.Success(result)
-            } else {
-                val error = errorAdapter.fromJson(response.errorBody()!!.string())!!
-                NetworkResult.ServerError(response.code(), error)
-            }
+    private suspend fun loadPage(request: suspend () -> NewsResponse):
+            NetworkResult<NewsResponse, Error> =
+        try {
+            val result = request()
+            nextPage = result.pagination.next?.let { NextPage.Next(it) } ?: NextPage.None
+            NetworkResult.Success(result)
+        } catch (httpException: HttpException) {
+            val error = parseServerError(httpException)
+            NetworkResult.ServerError(httpException.code(), error)
         } catch (exception: IOException) {
             Log.e("RemoteNewsSource", "Error while loading page", exception)
             NetworkResult.NetworkError
         }
-    }
+
+    private suspend fun parseServerError(httpException: HttpException) =
+        withContext(Dispatchers.IO) {
+            try {
+                errorAdapter.fromJson(httpException.response()!!.toString())
+            } catch (exception: IOException) {
+                null
+            }
+        }
 }
