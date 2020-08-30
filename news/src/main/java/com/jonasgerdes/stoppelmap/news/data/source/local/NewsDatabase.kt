@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.jonasgerdes.stoppelmap.news.data.source.local.dao.ArticleDao
 import com.jonasgerdes.stoppelmap.news.data.source.local.dao.ImageDao
 import com.jonasgerdes.stoppelmap.news.data.source.local.model.Article
@@ -16,7 +18,7 @@ import com.jonasgerdes.stoppelmap.news.data.source.local.model.Image
         Article::class,
         Image::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 @TypeConverters(RoomConverters::class)
@@ -37,3 +39,5 @@ abstract class NewsDatabase() : RoomDatabase() {
         }
     }
 }
+
+

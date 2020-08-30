@@ -51,6 +51,7 @@ dependencies {
     implementation deps.retrofit.core
     implementation deps.retrofit.moshi
     implementation deps.moshi
+    kapt deps.moshi_codegen
     implementation deps.threeten_android
 
     implementation deps.groupie
