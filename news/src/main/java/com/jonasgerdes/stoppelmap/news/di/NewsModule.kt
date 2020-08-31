@@ -8,6 +8,7 @@ import com.jonasgerdes.stoppelmap.news.data.repository.implementation.NewsReposi
 import com.jonasgerdes.stoppelmap.news.data.source.local.NewsDatabase
 import com.jonasgerdes.stoppelmap.news.data.source.remote.MoshiAdapters
 import com.jonasgerdes.stoppelmap.news.data.source.remote.NewsService
+import com.jonasgerdes.stoppelmap.news.data.source.remote.UserAgentInterceptor
 import com.jonasgerdes.stoppelmap.news.data.source.remote.createNewsService
 import com.jonasgerdes.stoppelmap.news.view.NewsViewModel
 import com.squareup.moshi.Moshi
@@ -29,7 +30,10 @@ class NewsModule {
 
     @Singleton
     @Provides
-    fun okHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+    fun okHttpClient(userAgentInterceptor: UserAgentInterceptor): OkHttpClient =
+        OkHttpClient.Builder()
+            .addNetworkInterceptor(userAgentInterceptor)
+            .build()
 
     @Singleton
     @Provides
