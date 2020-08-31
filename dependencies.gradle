@@ -74,8 +74,7 @@ deps.mapbox = [:]
 deps.mapbox.sdk = 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.1.0'
 
 def firebase = [:]
-firebase.core = 'com.google.firebase:firebase-core:16.0.9'
-firebase.messaging = 'com.google.firebase:firebase-messaging:18.0.0'
+firebase.messaging = 'com.google.firebase:firebase-messaging:20.2.4'
 deps.firebase = firebase
 
 def test = [:]
