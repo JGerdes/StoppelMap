@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap
 
 import android.app.Application
+import android.util.Log
+import com.google.firebase.iid.FirebaseInstanceId
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.jonasgerdes.stoppelmap.core.di.Injector
 import com.jonasgerdes.stoppelmap.data.RoomStoppelmapDatabase
@@ -25,6 +27,16 @@ class App : Application() {
         RoomStoppelmapDatabase.init(this)
         initMapBox(this)
         subscribeToNewsMessages(this)
+
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val token = task.result?.token
+                    Log.d("Firebase", "getInstanceId succeeded, token: $token")
+                } else {
+                    Log.w("Firebase", "getInstanceId failed", task.exception)
+                }
+            }
     }
 
     override fun getSystemService(name: String): Any? = when (name) {

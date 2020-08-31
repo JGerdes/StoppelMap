@@ -22,6 +22,10 @@ android {
                 }
             }
         }
+
+        debug {
+            storeFile file("../debug.keystore")
+        }
     }
 
     defaultConfig {
@@ -68,7 +72,6 @@ dependencies {
 
     implementation deps.playServices.location
 
-    implementation deps.firebase.core
     implementation deps.firebase.messaging
 
     implementation deps.androidx.compat

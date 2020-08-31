@@ -37,7 +37,6 @@ dependencies {
 
     implementation deps.kotlin.stdlib
 
-    implementation deps.firebase.core
     implementation deps.firebase.messaging
 
     implementation deps.dagger
