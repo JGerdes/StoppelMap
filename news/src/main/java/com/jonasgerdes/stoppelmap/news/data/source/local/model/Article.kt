@@ -10,7 +10,7 @@ import org.threeten.bp.LocalDate
 data class Article(
     @ColumnInfo(name = "url") val url: String,
     @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "teaser") val teaser: String,
+    @ColumnInfo(name = "teaser") val teaser: String?,
     @ColumnInfo(name = "publishDate") val publishDate: LocalDate,
-    @ColumnInfo(name = "content") val content: String
+    @ColumnInfo(name = "content") val content: String?
 )

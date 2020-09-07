@@ -44,13 +44,25 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
         Router.navigator = this
 
-        val journeyFromAction = Action.fromString(intent.action)?.toRoute()
+        val journeyFromAction = intent.action?.let(Action::fromString)?.toRoute()
+        val intentData = intent.data
         when {
             savedInstanceState != null -> navigator.onLoadState(savedInstanceState)
             journeyFromAction != null -> {
-                Router.navigateToRoute(journeyFromAction.route, journeyFromAction.destination, clearBackStack = true)
+                Router.navigateToRoute(
+                    journeyFromAction.route,
+                    journeyFromAction.destination,
+                    clearBackStack = true
+                )
             }
-            intent.action == Intent.ACTION_VIEW && intent.data != null -> resolveUri(intent.data)
+            intent.action == Intent.ACTION_VIEW && intentData != null -> {
+                val resolvedJourney = resolveJourneyFromUri(intentData)
+                Router.navigateToRoute(
+                    resolvedJourney.route,
+                    resolvedJourney.destination,
+                    clearBackStack = true
+                )
+            }
             else -> Router.switchToDestination(Router.Destination.HOME)
         }
 
@@ -67,10 +79,8 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         }
     }
 
-    private fun resolveUri(destination: Uri) {
-        val resolvedJourney = createJourneyFromUri(destination) ?: Route.Home() to Router.Destination.HOME
-        Router.navigateToRoute(resolvedJourney.route, resolvedJourney.destination, clearBackStack = true)
-    }
+    private fun resolveJourneyFromUri(destination: Uri) =
+        createJourneyFromUri(destination) ?: Route.Home() to Router.Destination.HOME
 
     private fun updateNavigation(destination: Router.Destination) {
         val itemId = when (destination) {
@@ -91,7 +101,11 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
 
     }
 
-    override fun navigateToRoute(route: Route, destination: Router.Destination, clearBackStack: Boolean) {
+    override fun navigateToRoute(
+        route: Route,
+        destination: Router.Destination,
+        clearBackStack: Boolean
+    ) {
         navigator.navigateToRoute(route, destination, clearBackStack)
         updateNavigation(destination)
     }

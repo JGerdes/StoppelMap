@@ -14,7 +14,7 @@ import com.mapbox.mapboxsdk.maps.Style
 
 class MarkerIcon(val name: String, val icon: Int)
 
-fun loadImages(context: Context, style:Style) {
+fun loadImages(context: Context, style: Style) {
     listOf(
         MarkerIcon("bar", R.drawable.ic_stall_type_bar),
         MarkerIcon("candy_stall", R.drawable.ic_stall_type_candy_stall),
@@ -27,20 +27,20 @@ fun loadImages(context: Context, style:Style) {
         MarkerIcon("restroom", R.drawable.ic_stall_type_restroom),
         MarkerIcon("ride", R.drawable.ic_stall_type_ride),
         MarkerIcon("seller_stall", R.drawable.ic_stall_type_seller_stall)
-    ).forEach {markerIcon ->
+    ).forEach { markerIcon ->
         val color = context.getColorByName("marker_type_${markerIcon.name}", Color.RED)
         val bitmap = Bitmap.createBitmap(24.dp, 24.dp, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
-        context.getDrawable(R.drawable.ic_marker_outline).apply {
+        context.getDrawable(R.drawable.ic_marker_outline)!!.apply {
             bounds = canvas.clipBounds
             draw(canvas)
         }
-        context.getDrawable(R.drawable.ic_marker_fill).apply {
+        context.getDrawable(R.drawable.ic_marker_fill)!!.apply {
             setTint(color)
             bounds = canvas.clipBounds
             draw(canvas)
         }
-        context.getDrawable(markerIcon.icon).apply {
+        context.getDrawable(markerIcon.icon)!!.apply {
             setTint(Color.WHITE)
             bounds = canvas.clipBounds.insetBy(
                 left = 5.dp,
@@ -54,20 +54,21 @@ fun loadImages(context: Context, style:Style) {
     }
 }
 
-fun initMapCamera(it: MapboxMap) {
-    it.setLatLngBoundsForCameraTarget(Settings.cameraBounds)
-    it.setMinZoomPreference(Settings.minZoom)
-    it.setMaxZoomPreference(Settings.maxZoom)
-    it.moveCamera(
+fun initMapCamera(map: MapboxMap) = with(map) {
+    setLatLngBoundsForCameraTarget(Settings.cameraBounds)
+    setMinZoomPreference(Settings.minZoom)
+    setMaxZoomPreference(Settings.maxZoom)
+    moveCamera(
         CameraUpdateFactory.newLatLngZoom(
             Settings.center,
             Settings.defaultZoom
-        ))
+        )
+    )
 }
 
-fun initMapUi(it: MapboxMap) {
-    it.uiSettings.isTiltGesturesEnabled = false
-    it.uiSettings.isAttributionEnabled = false
-    it.uiSettings.isLogoEnabled = false
-    it.uiSettings.setCompassMargins(16.dp, (24 + 16).dp, 16.dp, 16.dp)
+fun initMapUi(map: MapboxMap) = with(map.uiSettings) {
+    isTiltGesturesEnabled = false
+    isAttributionEnabled = false
+    isLogoEnabled = false
+    setCompassMargins(16.dp, (24 + 16).dp, 16.dp, 16.dp)
 }

@@ -3,11 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion compileSdk
+    compileSdkVersion rootProject.ext.compileSdk
 
     defaultConfig {
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -30,7 +30,6 @@ dependencies {
 
     implementation deps.kotlin.stdlib
 
-    implementation deps.firebase.core
     implementation deps.firebase.messaging
 
     implementation deps.androidx.compat
@@ -49,9 +48,9 @@ dependencies {
     kapt deps.androidx.arch.lifecycle_compiler
 
     implementation deps.retrofit.core
-    implementation deps.retrofit.coroutines
     implementation deps.retrofit.moshi
     implementation deps.moshi
+    kapt deps.moshi_codegen
     implementation deps.threeten_android
 
     implementation deps.groupie

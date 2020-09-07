@@ -38,7 +38,11 @@ class Navigator(
         }
     }
 
-    override fun navigateToRoute(route: Route, destination: Router.Destination, clearBackStack: Boolean) {
+    override fun navigateToRoute(
+        route: Route,
+        destination: Router.Destination,
+        clearBackStack: Boolean
+    ) {
         if (clearBackStack) {
             backStack[destination]?.clear()
         }
@@ -48,10 +52,12 @@ class Navigator(
 
     }
 
-    private fun Map<Router.Destination, Stack<Route>>.toDebugString() = map { (destination, stack) ->
-        destination.name + " (${stack.size}): " + stack.joinToString(", ")
-    }.joinToString("\n")
+    private fun Map<Router.Destination, Stack<Route>>.toDebugString() =
+        map { (destination, stack) ->
+            destination.name + " (${stack.size}): " + stack.joinToString(", ")
+        }.joinToString("\n")
 
+    @Suppress("UNCHECKED_CAST")
     override fun switchToDestination(destination: Router.Destination) {
         Log.d("Navigator", "currentBackStack: \n${backStack.toDebugString()}")
         val currentFragment = currentRoute?.let { route ->
@@ -83,48 +89,18 @@ class Navigator(
             }.commitNowAllowingStateLoss()
         }
 
-    override fun navigateBack(): Router.NavigateBackResult = when (val destination = currentDestination) {
-        null -> Router.NavigateBackResult.UNHANDLED
-        else -> {
-            needsFragmentUpdate = true
-            if (backStack[destination]?.size ?: 0 <= 1) {
-                Router.NavigateBackResult.UNHANDLED
-            } else {
-                backStack[destination]?.pop()
-                switchToDestination(destination)
-                Router.NavigateBackResult.HANDLED
+    override fun navigateBack(): Router.NavigateBackResult =
+        when (val destination = currentDestination) {
+            null -> Router.NavigateBackResult.UNHANDLED
+            else -> {
+                needsFragmentUpdate = true
+                if (backStack[destination]?.size ?: 0 <= 1) {
+                    Router.NavigateBackResult.UNHANDLED
+                } else {
+                    backStack[destination]?.pop()
+                    switchToDestination(destination)
+                    Router.NavigateBackResult.HANDLED
+                }
             }
         }
-    }
-
-    fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(CURRENT_DESTINATION, currentDestination?.name)
-        outState.putParcelable(CURRENT_ROUTE, currentRoute)
-
-        val list = ArrayList<String>()
-        list.addAll(backStack.keys.map { it.name })
-        outState.putStringArrayList(STACK_NAMES, list)
-
-        backStack.forEach { (key, stack) ->
-            val stackList = ArrayList<Parcelable>()
-            stackList.addAll(stack)
-            outState.putParcelableArrayList("$BACK_STACK_PREFIX$key", stackList)
-        }
-    }
-
-    fun onLoadState(state: Bundle) {
-        val stackNames = state.getStringArrayList(STACK_NAMES)
-
-        stackNames.forEach { key ->
-            val destination = Router.Destination.valueOf(key)
-            val stack: ArrayList<Route> = state.getParcelableArrayList("$BACK_STACK_PREFIX$key")
-            backStack[destination] = Stack<Route>().apply {
-                addAll(stack)
-            }
-        }
-        currentDestination = state.getString(CURRENT_DESTINATION)?.let {
-            Router.Destination.valueOf(it)
-        }
-        currentRoute = state.getParcelable(CURRENT_ROUTE)
-    }
 }
