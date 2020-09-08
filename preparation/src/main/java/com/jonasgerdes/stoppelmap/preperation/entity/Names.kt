@@ -59,6 +59,7 @@ fun getNameForItem(item: String): Any = when (item) {
     "item_bonbons" -> "Bonbons"
     "item_licorice" -> "Lakritz"
     "item_poffertje" -> "Poffertje"
+    "item_deep_frying_dough" -> "Schmalzgebäck"
     "item_backery" -> "Backwaren"
     "item_chocolate_fruits" -> "Schokofrüchte"
     "item_kurtosh_kalach" -> "Baumstriezel"
