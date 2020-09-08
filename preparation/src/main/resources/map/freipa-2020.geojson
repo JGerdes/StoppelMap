@@ -1488,7 +1488,8 @@
             "type": "Feature",
             "properties": {
                 "building": "misc",
-                "name": "Kasse"
+                "name": "Kasse",
+                "priority": 5
             },
             "geometry": {
                 "type": "Polygon",
@@ -2415,7 +2416,8 @@
             "type": "Feature",
             "properties": {
                 "building": "misc",
-                "name": "Kasse"
+                "name": "Kasse",
+                "priority": 5
             },
             "geometry": {
                 "type": "Polygon",
