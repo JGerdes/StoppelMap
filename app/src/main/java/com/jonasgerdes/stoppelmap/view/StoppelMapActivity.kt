@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import com.jonasgerdes.androidutil.navigation.FragmentFactory
 import com.jonasgerdes.androidutil.navigation.Navigator
 import com.jonasgerdes.androidutil.navigation.createFragmentNavigator
@@ -71,8 +72,8 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
             when (it.itemId) {
                 R.id.nav_home -> navigator.switchToDestination(Router.Destination.HOME)
                 R.id.nav_map -> navigator.switchToDestination(Router.Destination.MAP)
-                R.id.nav_schedule -> navigator.switchToDestination(Router.Destination.SCHEDULE)
-                R.id.nav_transport -> navigator.switchToDestination(Router.Destination.TRANSPORT)
+                /*R.id.nav_schedule -> navigator.switchToDestination(Router.Destination.SCHEDULE)
+                R.id.nav_transport -> navigator.switchToDestination(Router.Destination.TRANSPORT)*/
                 R.id.nav_news -> navigator.switchToDestination(Router.Destination.NEWS)
             }
             true
@@ -86,8 +87,8 @@ class StoppelMapActivity : BaseActivity(R.layout.activity_stoppelmap), Router.Na
         val itemId = when (destination) {
             Router.Destination.HOME -> R.id.nav_home
             Router.Destination.MAP -> R.id.nav_map
-            Router.Destination.SCHEDULE -> R.id.nav_schedule
-            Router.Destination.TRANSPORT -> R.id.nav_transport
+            Router.Destination.SCHEDULE -> R.id.nav_home //R.id.nav_schedule
+            Router.Destination.TRANSPORT -> R.id.nav_home //R.id.nav_transport
             Router.Destination.NEWS -> R.id.nav_news
         }
         if (itemId != navigation.selectedItemId) {
