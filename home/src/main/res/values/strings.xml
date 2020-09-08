@@ -25,4 +25,16 @@
         <item quantity="other">Sekunden</item>
         <item quantity="zero">Sekunden</item>
     </plurals>
+
+
+    <string name="home_card_freizeitpark_info">Informationen zum Freizeitpark Vechta</string>
+    <string name="home_card_opening_hours_title">Öffnungszeiten</string>
+    <string name="home_card_opening_hours_description"><![CDATA[10.09.2020 - 07.10.2020<br>donnerstags - sonntags<br>14:00 - 22:00 Uhr]]></string>
+    <string name="home_card_price_title">Eintrittspreis</string>
+    <string name="home_card_price_title_price">1€</string>
+    <string name="home_card_regulations_title">Bitte beachte, dass auf dem gesamten Gelände des Freizeitpark Vechta folgende Regeln gelten:</string>
+    <string name="home_card_regulations_distance">Abstand einhalten</string>
+    <string name="home_card_regulations_mask">Wo kein Abstand einhaltbar ist:\nMund-Nasen-Schutz tragen</string>
+    <string name="home_card_regulations_sanitizer">Nutze die ca. 50 Desinfektionsstellen auf dem Gelände</string>
+    <string name="home_card_regulations_form"><![CDATA[Bitte fülle bereits im Voraus das <a href="https://www.schaustellerverein-vechta.de/templates/images/documents/95_1.pdf">Besucherformular</a> aus und bringe es mit.]]></string>
 </resources>

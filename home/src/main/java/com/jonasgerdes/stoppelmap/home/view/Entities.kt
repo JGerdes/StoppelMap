@@ -7,3 +7,4 @@ sealed class HomeCard
 
 object MoreCardsInfoCard : HomeCard()
 data class CountdownCard(val duration: Duration) : HomeCard()
+object RegulationsCard : HomeCard()

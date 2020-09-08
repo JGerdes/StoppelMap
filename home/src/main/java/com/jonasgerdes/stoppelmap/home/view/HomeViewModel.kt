@@ -37,15 +37,18 @@ class HomeViewModel @Inject constructor(
     private fun updateCards(countdownResult: CountdownResult) {
         val cardList = mutableListOf<HomeCard>()
 
+        cardList.add(RegulationsCard)
+
+        //add countdown widget to top if there is any time left until start
+        if (countdownResult is CountdownResult.Countdown) {
+            cardList.add(CountdownCard(countdownResult.timeLeft))
+        }
+
         //if there aren't any cards yet, show info that there will be soon
         if (cardList.isEmpty()) {
             cardList.add(MoreCardsInfoCard)
         }
 
-        //add countdown widget to top if there is any time left until start
-        if (countdownResult is CountdownResult.Countdown) {
-            cardList.add(0, CountdownCard(countdownResult.timeLeft))
-        }
         _cards.postValue(cardList)
     }
 
