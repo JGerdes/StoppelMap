@@ -1,10 +1,10 @@
 <resources>
-    <string name="home_title">Stoppelmarkt 2020</string>
+    <string name="home_title">Freizeitpark Vechta</string>
     <string name="home_settings_menu_about">Über die App</string>
 
-    <string name="home_card_to_few_cards_info">Hier werden demnächst aktuelle und nützliche Infos angezeigt.</string>
+    <string name="home_card_to_few_cards_info">Hier werden demnächst weitere aktuelle und nützliche Infos angezeigt, schau doch mal wieder vorbei!</string>
 
-    <string name="home_card_countdown_text">noch</string>
+    <string name="home_card_countdown_text">Bis zum Stoppelmarkt 2021 sind es noch</string>
     <plurals name="home_card_countdown_day">
         <item quantity="one">Tag</item>
         <item quantity="other">Tage</item>
