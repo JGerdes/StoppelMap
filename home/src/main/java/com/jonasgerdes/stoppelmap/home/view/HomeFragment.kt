@@ -10,6 +10,7 @@ import com.jonasgerdes.stoppelmap.core.util.observe
 import com.jonasgerdes.stoppelmap.core.widget.BaseFragment
 import com.jonasgerdes.stoppelmap.home.R
 import com.jonasgerdes.stoppelmap.home.view.item.CountdownItem
+import com.jonasgerdes.stoppelmap.home.view.item.FireworkCountdownItem
 import com.jonasgerdes.stoppelmap.home.view.item.RegulationsItem
 import com.jonasgerdes.stoppelmap.home.view.item.SimpleTextItem
 import com.xwray.groupie.GroupAdapter
@@ -62,6 +63,7 @@ class HomeFragment : BaseFragment<Route.Home>(R.layout.fragment_home) {
         when (card) {
             MoreCardsInfoCard -> SimpleTextItem(R.string.home_card_to_few_cards_info)
             is CountdownCard -> CountdownItem(card.duration)
+            is FireworkCountdownCard -> FireworkCountdownItem(card.duration)
             RegulationsCard -> RegulationsItem
         }
     }

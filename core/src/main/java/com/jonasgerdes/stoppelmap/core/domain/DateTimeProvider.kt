@@ -12,8 +12,9 @@ class LiveDateTimeProvider : DateTimeProvider {
 }
 
 class NowAtStomaSaturdayTimeProvider : DateTimeProvider {
-    override fun invoke() = LocalDate.of(2019, Month.AUGUST, 17)
+    override fun invoke() = /*LocalDate.of(2019, Month.AUGUST, 17)
         .atTime(LocalTime.now())
         .atZone(ZoneId.systemDefault())
-        .toOffsetDateTime()
+        .toOffsetDateTime()*/
+    OffsetDateTime.now()
 }

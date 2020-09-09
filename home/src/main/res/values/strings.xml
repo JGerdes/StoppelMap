@@ -26,6 +26,17 @@
         <item quantity="zero">Sekunden</item>
     </plurals>
 
+    <plurals name="home_card_firework_countdown_hours">
+        <item quantity="one">In einer Stunde geht\'s los</item>
+        <item quantity="other">In %1$d Stunden geht\'s los</item>
+    </plurals>
+    <plurals name="home_card_firework_countdown_minutes">
+        <item quantity="one">In einer Minute geht\'s los</item>
+        <item quantity="other">In %1$d Minuten geht\'s los</item>
+    </plurals>
+    <string name="home_card_firework_greeting">Viel Spaß auf dem Freizeitpark Vechta!</string>
+    <string name="home_card_firework_description">Große Eröffnung am Donnerstag,\nFeuerwerk um 21 Uhr</string>
+
 
     <string name="home_card_freizeitpark_info">Informationen zum Freizeitpark Vechta</string>
     <string name="home_card_opening_hours_title">Öffnungszeiten</string>
