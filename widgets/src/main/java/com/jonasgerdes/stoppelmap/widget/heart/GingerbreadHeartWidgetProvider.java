@@ -44,7 +44,8 @@ public class GingerbreadHeartWidgetProvider extends AppWidgetProvider {
             new Date(117, 7, 10, 18, 0),
             new Date(118, 7, 16, 18, 0),
             new Date(119, 7, 15, 18, 0),
-            new Date(120, 7, 13, 18, 0)
+            new Date(120, 7, 13, 18, 0),
+            new Date(121, 7, 12, 18, 0)
     };
     private static final long STOMA_DURATION = TimeUnit.DAYS.toMillis(5) + TimeUnit.HOURS.toMillis(4);
 
