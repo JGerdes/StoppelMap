@@ -13,7 +13,13 @@ constructor(
     private val appVersionProvider: AppVersionProvider
 ) : Interceptor {
 
-    private val userAgent get() = "StoppelMap/${appVersionProvider.getAppVersionName}"
+    fun getSystemUserAgent() = try {
+        System.getProperty("http.agent")
+    } catch (e: Exception) {
+        ""
+    }
+
+    private val userAgent get() = "StoppelMap/${appVersionProvider.getAppVersionName} {${getSystemUserAgent()}}"
 
     override fun intercept(chain: Interceptor.Chain) = chain.run {
         proceed(

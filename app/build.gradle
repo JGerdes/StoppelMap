@@ -33,7 +33,7 @@ android {
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
         versionCode 41
-        versionName "v2020.1.0-${gitSha}"
+        versionName "v2020.1.1-${gitSha}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
