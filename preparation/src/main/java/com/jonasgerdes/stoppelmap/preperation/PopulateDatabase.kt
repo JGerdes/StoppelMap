@@ -21,9 +21,9 @@ object Settings {
     val database = File(dataAssets, "stoppelmap.db")
     val geoOutput = File(mapAssets, "mapdata.geojson")
 
-    val geoInput = File("$data/map", "stoma-2019.geojson")
+    val geoInput = File("$data/map", "freipa-2020.geojson")
     val serverData = File("$data", "server").apply { mkdirs() }
-    val shareJson = File("$serverData", "2019.json")
+    val shareJson = File("$serverData", "2020.json")
     val scheduleDir = File(data, "schedule")
     val manualDir = File(scheduleDir, "manual")
     val descriptionFolder = File(data, "descriptions").apply { mkdirs() }

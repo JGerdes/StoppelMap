@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="256dp"
     android:layout_height="192dp"
@@ -9,26 +8,26 @@
     android:layout_marginEnd="?marginOtherContent"
     android:layout_marginBottom="?marginOtherContent"
     android:elevation="?cardHighlightElevation"
-    app:cardElevation="?cardHighlightElevation"
-    >
+    app:cardElevation="?cardHighlightElevation">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideStart"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="?cardPadding"
-            />
+            app:layout_constraintGuide_begin="?cardPadding" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideEnd"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="?cardPadding"
-            />
+            app:layout_constraintGuide_end="?cardPadding" />
+
         <TextView
             android:id="@+id/title"
             android:layout_width="0dp"
@@ -38,8 +37,8 @@
             app:layout_constraintEnd_toStartOf="@id/guideEnd"
             app:layout_constraintStart_toEndOf="@id/guideStart"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_goneMarginTop="@dimen/cardPaddingDefault"
-            />
+            app:layout_goneMarginTop="@dimen/cardPaddingDefault" />
+
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="0dp"
@@ -49,8 +48,8 @@
             app:layout_constraintEnd_toStartOf="@id/guideEnd"
             app:layout_constraintStart_toEndOf="@id/guideStart"
             app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_goneMarginTop="@dimen/cardPaddingDefault"
-            />
+            app:layout_goneMarginTop="@dimen/cardPaddingDefault" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/shareButton"
             style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -59,6 +58,7 @@
             android:layout_marginEnd="?marginOtherContent"
             android:layout_marginBottom="?marginOtherContent"
             android:text="@string/map_carousel_item_share"
+            android:visibility="gone"
             app:icon="@drawable/ic_share"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

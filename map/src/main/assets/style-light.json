@@ -228,6 +228,22 @@
             "interactive": true
         },
         {
+            "id": "seating-area",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                ["==", "leisure", "outdoor_seating"],
+                ["==", "$type", "Polygon"]
+            ],
+            "layout": {"visibility": "visible"},
+            "paint": {
+                "fill-color": "#dbd2c3"
+            },
+            "interactive": true
+        },
+        {
             "id": "stalls",
             "type": "fill",
             "source": "composite",
@@ -298,6 +314,25 @@
                 ],
                 "line-color": "#e4e2e2",
                 "line-dasharray": [2, 0.5]
+            },
+            "interactive": true
+        },
+        {
+            "id": "fence",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "stoma-2018",
+            "filter": [
+                "all",
+                ["==", "barrier", "fence"],
+                ["in", "$type", "LineString", "Point", "Polygon"]
+            ],
+            "layout": {"visibility": "visible", "line-join": "round", "line-cap":  "round"},
+            "paint": {
+                "line-width": 2,
+                "line-color": "#dbd2c3",
+                "line-gap-width": 0,
+                "line-blur": 0
             },
             "interactive": true
         },

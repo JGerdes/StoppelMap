@@ -14,5 +14,10 @@ val illustrators = listOf(
         mail = "moin@jonasgerdes.com",
         website = "https://jonasgerdes.com",
         githubUrl = "https://github.com/JGerdes"
+    ),
+    AuthorCard(
+        name = "Jordan Steranka",
+        work = "Foto: Feuerwerk",
+        website = "https://unsplash.com/@jordansteranka"
     )
 )

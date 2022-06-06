@@ -9,8 +9,18 @@ internal val sources = listOf(
         website = "https://stoppelmarkt.de"
     ),
     AuthorCard(
+        name = "Schaustellerverein Vechta",
+        work = "Informationen",
+        website = "https://schaustellerverein-vechta.de/de/pages/show/freizeitparkvechta"
+    ),
+    AuthorCard(
         name = "Stoppelmarkt/Stadt Vechta",
         work = "Newsfeed",
         website = "https://stoppelmarkt.de/aktuelles"
+    ),
+    AuthorCard(
+        name = "Schaustellerverein Vechta",
+        work = "Newsfeed",
+        website = "https://schaustellerverein-vechta.de/de/pages/show/aktuelles"
     )
 )
