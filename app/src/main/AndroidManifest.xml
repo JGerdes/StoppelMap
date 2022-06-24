@@ -32,9 +32,7 @@
 
         </activity-alias>
 
-        <activity
-            android:name=".view.StoppelMapActivity"
-            android:theme="@style/AppTheme.Splash" />
+        <activity android:name=".view.StoppelMapActivity" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
