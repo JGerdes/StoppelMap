@@ -32,8 +32,8 @@ android {
         applicationId "com.jonasgerdes.stoppelmap"
         minSdkVersion rootProject.ext.minSdk
         targetSdkVersion rootProject.ext.targetSdk
-        versionCode 40
-        versionName "v2019.4.2-${gitSha}"
+        versionCode 43
+        versionName "v2022.0.0-alpha-${gitSha}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -60,29 +60,5 @@ dependencies {
     implementation deps.kotlin.coroutines
     implementation deps.kotlin.coroutines_android
 
-    implementation deps.playServices.location
-
-    implementation deps.firebase.messaging
-
-    implementation deps.androidx.compat
-    implementation deps.androidx.material
-    implementation deps.androidx.ktx
-    implementation deps.androidx.constraint_layout
-
-    implementation deps.dagger
-    kapt deps.dagger_compiler
-
-    implementation deps.threeten_android
-
-    implementation deps.lottie
-
-    // needed by dagger (https://github.com/google/dagger/issues/970)
-    compileOnly deps.moshi
-    compileOnly deps.androidx.arch.room.runtime
-    compileOnly deps.retrofit.core
-
     testImplementation deps.test.junit
-    testImplementation deps.threeten
 }
-
-apply plugin: 'com.google.gms.google-services'
