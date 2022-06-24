@@ -50,21 +50,11 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+    namespace 'com.jonasgerdes.stoppelmap'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation project(':core')
-    implementation project(':widgets')
-    implementation project(':data')
-    implementation project(':home')
-    implementation project(':map')
-    implementation project(':events')
-    implementation project(':transport')
-    implementation project(':news')
-    implementation project(':about')
-    implementation project(':androidutil')
 
     implementation deps.kotlin.stdlib
     implementation deps.kotlin.coroutines
