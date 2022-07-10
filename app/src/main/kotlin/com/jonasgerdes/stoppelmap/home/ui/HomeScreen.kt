@@ -10,15 +10,24 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.home.ui.components.CountdownCard
+import org.koin.androidx.compose.viewModel
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    lazyViewModel: Lazy<HomeViewModel> = viewModel(),
+) {
+    val viewModel by lazyViewModel
+    val state by viewModel.state.collectAsState()
+
     Column(
         modifier = modifier
     ) {
@@ -26,9 +35,18 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         LazyColumn(
             contentPadding = PaddingValues(16.dp), modifier = Modifier.fillMaxSize()
         ) {
-            item {
-                CountdownCard(days = 30, hours = 12, minutes = 4)
+            when (val countDownState = state.openingCountDownState) {
+                is HomeViewModel.CountDownState.CountingDown -> item {
+                    CountdownCard(
+                        days = countDownState.daysLeft,
+                        hours = countDownState.hoursLeft,
+                        minutes = countDownState.minutesLeft
+                    )
+                }
+                HomeViewModel.CountDownState.Loading -> Unit
+                HomeViewModel.CountDownState.Over -> Unit
             }
+
         }
     }
 }

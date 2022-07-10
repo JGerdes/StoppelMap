@@ -34,6 +34,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -59,16 +61,25 @@ android {
 dependencies {
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$desugarSDK")
 
         implementation("androidx.compose.ui:ui:$compose")
         implementation("androidx.compose.ui:ui-tooling-preview:$compose")
         implementation("androidx.compose.material3:material3:$material3")
         implementation("androidx.compose.material:material-icons-extended:$compose")
 
+        implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidxRuntime")
         implementation("androidx.activity:activity-compose:$androidxActivityCompose")
         implementation("androidx.navigation:navigation-compose:$androidxNavigation")
 
+        implementation("io.insert-koin:koin-android:$koin")
+        implementation("io.insert-koin:koin-androidx-compose:$koin")
+
+        implementation("com.jakewharton.timber:timber:$timber")
+
         implementation("com.airbnb.android:lottie-compose:$lottie")
+
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")
 
