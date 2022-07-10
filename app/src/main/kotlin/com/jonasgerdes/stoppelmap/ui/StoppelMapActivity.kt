@@ -3,17 +3,22 @@ package com.jonasgerdes.stoppelmap.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.jonasgerdes.stoppelmap.navigation.Screen
+import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.ui.theme.StoppelMapTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 class StoppelMapActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +32,44 @@ class StoppelMapActivity : ComponentActivity() {
 
     @Composable
     fun StoppelMapApp() {
-        Column(
-            Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-            Text("Hallo Stoppelmarkt!")
+
+        val navController = rememberNavController()
+
+        Scaffold(bottomBar = {
+            NavigationBar {
+                val navBackStackEntry = navController.currentBackStackEntryAsState().value
+                val currentDestination = navBackStackEntry?.destination
+
+                navigationTabs.forEach { (icon, label, startDestination) ->
+                    NavigationBarItem(icon = {
+                        Icon(
+                            imageVector = icon, contentDescription = null
+                        )
+                    },
+                        label = { Text(text = stringResource(label)) },
+                        selected = currentDestination?.hierarchy?.any { it.route == startDestination } == true,
+                        onClick = {
+                            navController.navigate(startDestination) {
+                                launchSingleTop = true
+                                restoreState = true
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+                            }
+                        })
+                }
+            }
+        }) { scaffoldPadding ->
+            NavHost(
+                navController,
+                startDestination = Screen.Home.route,
+                modifier = Modifier.padding(scaffoldPadding)
+            ) {
+                composable(Screen.Home.route) { Text("Home") }
+                composable(Screen.Map.route) { Text("Map") }
+                composable(Screen.Schedule.route) { Text("Schedule") }
+                composable(Screen.Transportation.route) { Text("Transportation") }
+            }
         }
     }
 }

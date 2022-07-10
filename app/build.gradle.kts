@@ -63,6 +63,7 @@ dependencies {
         implementation("androidx.compose.ui:ui:$compose")
         implementation("androidx.compose.ui:ui-tooling-preview:$compose")
         implementation("androidx.compose.material3:material3:$material3")
+        implementation("androidx.compose.material:material-icons-extended:$compose")
 
         implementation("androidx.activity:activity-compose:$androidxActivityCompose")
         implementation("androidx.navigation:navigation-compose:$androidxNavigation")
