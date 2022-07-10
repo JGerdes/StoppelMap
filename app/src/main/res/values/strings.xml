@@ -11,4 +11,23 @@
     <string name="main_bottom_nav_item_transport">Anreise</string>
     <string name="main_bottom_nav_item_news">News</string>
     <string name="main_available_soon">Bald verfügbar</string>
+
+
+    <string name="home_topbar_title">Stoppelmarkt 2022</string>
+
+
+    <string name="countdownCard_prefix">Nur noch</string>
+    <plurals name="countdownCard_unit_day">
+        <item quantity="one">Tag</item>
+        <item quantity="other">Tage</item>
+    </plurals>
+    <plurals name="countdownCard_unit_hour">
+        <item quantity="one">Stunde</item>
+        <item quantity="other">Stunden</item>
+    </plurals>
+    <plurals name="countdownCard_unit_minute">
+        <item quantity="one">Minute</item>
+        <item quantity="other">Minuten</item>
+    </plurals>
+    <string name="countdownCard_suffix">bis zur Eröffnung</string>
 </resources>
