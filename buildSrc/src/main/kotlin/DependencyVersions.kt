@@ -6,4 +6,5 @@ object DependencyVersions {
     const val material3 = "1.0.0-alpha12"
     const val androidxActivityCompose = "1.4.0"
     const val androidxNavigation = "2.5.0-rc01"
+    const val lottie = "5.2.0"
 }

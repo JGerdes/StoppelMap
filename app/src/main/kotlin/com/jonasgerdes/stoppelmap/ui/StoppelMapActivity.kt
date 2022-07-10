@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
+import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
 import com.jonasgerdes.stoppelmap.ui.theme.StoppelMapTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -66,9 +68,9 @@ class StoppelMapActivity : ComponentActivity() {
                 modifier = Modifier.padding(scaffoldPadding)
             ) {
                 composable(Screen.Home.route) { Text("Home") }
-                composable(Screen.Map.route) { Text("Map") }
-                composable(Screen.Schedule.route) { Text("Schedule") }
-                composable(Screen.Transportation.route) { Text("Transportation") }
+                composable(Screen.Map.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
+                composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
+                composable(Screen.Transportation.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
             }
         }
     }

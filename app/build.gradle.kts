@@ -68,6 +68,8 @@ dependencies {
         implementation("androidx.activity:activity-compose:$androidxActivityCompose")
         implementation("androidx.navigation:navigation-compose:$androidxNavigation")
 
+        implementation("com.airbnb.android:lottie-compose:$lottie")
+
 
         testImplementation("junit:junit:4.13.2")
         androidTestImplementation("androidx.test.ext:junit:1.1.3")
