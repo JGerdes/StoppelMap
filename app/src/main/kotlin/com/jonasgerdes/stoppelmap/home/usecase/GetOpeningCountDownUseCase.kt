@@ -42,7 +42,9 @@ class GetOpeningCountDownUseCase {
                 Result(
                     daysLeft = days.toInt().coerceAtLeast(0),
                     hoursLeft = hours.coerceAtLeast(0),
-                    minutesLeft = minutes.coerceAtLeast(0)
+                    // Since we don't show seconds, minutes seem to be 1 minute behind what
+                    // they should be.
+                    minutesLeft = (minutes + 1).coerceAtLeast(0)
                 )
             }
         } else {
