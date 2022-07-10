@@ -41,6 +41,14 @@ android {
         freeCompilerArgs = freeCompilerArgs + listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = DependencyVersions.compose
+    }
+
     signingConfigs {
         getByName("debug") {
             storeFile = file("../debug.keystore")
@@ -51,6 +59,14 @@ android {
 dependencies {
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
+
+        implementation("androidx.compose.ui:ui:$compose")
+        implementation("androidx.compose.ui:ui-tooling-preview:$compose")
+        implementation("androidx.compose.material3:material3:$material3")
+
+        implementation("androidx.activity:activity-compose:$androidxActivityCompose")
+        implementation("androidx.navigation:navigation-compose:$androidxNavigation")
+
 
         testImplementation("junit:junit:4.13.2")
         androidTestImplementation("androidx.test.ext:junit:1.1.3")
