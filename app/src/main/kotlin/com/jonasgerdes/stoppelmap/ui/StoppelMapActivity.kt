@@ -9,6 +9,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -44,12 +46,18 @@ class StoppelMapActivity : ComponentActivity() {
                 val currentDestination = navBackStackEntry?.destination
 
                 navigationTabs.forEach { (icon, label, startDestination) ->
-                    NavigationBarItem(icon = {
-                        Icon(
-                            imageVector = icon, contentDescription = null
-                        )
-                    },
-                        label = { Text(text = stringResource(label)) },
+                    NavigationBarItem(
+                        icon = {
+                            Icon(imageVector = icon, contentDescription = null)
+                        },
+                        label = {
+                            Text(
+                                text = stringResource(label),
+                                textAlign = TextAlign.Center,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        },
                         selected = currentDestination?.hierarchy?.any { it.route == startDestination } == true,
                         onClick = {
                             navController.navigate(startDestination) {
