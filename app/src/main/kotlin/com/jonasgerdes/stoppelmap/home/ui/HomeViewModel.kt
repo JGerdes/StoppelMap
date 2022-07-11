@@ -3,40 +3,35 @@ package com.jonasgerdes.stoppelmap.home.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.home.usecase.GetOpeningCountDownUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.*
+import timber.log.Timber
 
 class HomeViewModel(
-    private val getOpeningCountDown: GetOpeningCountDownUseCase
+    getOpeningCountDown: GetOpeningCountDownUseCase
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(ViewState.Default)
-    val state: StateFlow<ViewState> = _state
 
-    init {
-        viewModelScope.launch {
-            getOpeningCountDown().collect { countDownResult ->
-                updateState {
-                    copy(
-                        openingCountDownState = if (countDownResult.isOver) {
-                            CountDownState.Over
-                        } else {
-                            CountDownState.CountingDown(
-                                daysLeft = countDownResult.daysLeft,
-                                hoursLeft = countDownResult.hoursLeft,
-                                minutesLeft = countDownResult.minutesLeft
-                            )
-                        }
-                    )
-                }
+    private val openingCountDownState: Flow<CountDownState> =
+        getOpeningCountDown().map { countDownResult ->
+            Timber.d("new countDownResult: $countDownResult")
+            if (countDownResult.isOver) {
+                CountDownState.Over
+            } else {
+                CountDownState.CountingDown(
+                    daysLeft = countDownResult.daysLeft,
+                    hoursLeft = countDownResult.hoursLeft,
+                    minutesLeft = countDownResult.minutesLeft
+                )
             }
         }
-    }
 
-    private fun updateState(updater: ViewState.() -> ViewState) {
-        _state.value = _state.value.updater()
-    }
+    val state: StateFlow<ViewState> = openingCountDownState
+        .map(::ViewState)
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = ViewState.Default
+        )
 
     data class ViewState(
         val openingCountDownState: CountDownState
