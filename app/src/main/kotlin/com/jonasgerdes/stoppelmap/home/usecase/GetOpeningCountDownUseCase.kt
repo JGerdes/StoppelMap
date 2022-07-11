@@ -2,10 +2,7 @@ package com.jonasgerdes.stoppelmap.home.usecase
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
-import kotlinx.datetime.Clock
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
+import kotlinx.datetime.*
 import java.time.Month
 
 private const val UPDATE_INTERVAL_MS = 1_000L
@@ -36,15 +33,16 @@ class GetOpeningCountDownUseCase {
     private fun calculateTimeLeft(): Result {
         val now = Clock.System.now()
         val target = stoppelmarktOpening.toInstant(stoppelmarktTimeZone)
+            // Since we don't show seconds, add 1 minute so visible time left adds up to target.
+            // e.g. 18:10 -> 18:30 - rather show 20 minutes then 19 (with e.g. 21s not shown)
+            .plus(1L, DateTimeUnit.MINUTE)
 
         return if (target > now) {
             (target - now).toComponents { days, hours, minutes, _, _ ->
                 Result(
                     daysLeft = days.toInt().coerceAtLeast(0),
                     hoursLeft = hours.coerceAtLeast(0),
-                    // Since we don't show seconds, minutes seem to be 1 minute behind what
-                    // they should be.
-                    minutesLeft = (minutes + 1).coerceAtLeast(0)
+                    minutesLeft = minutes.coerceAtLeast(0)
                 )
             }
         } else {
