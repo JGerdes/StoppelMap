@@ -1,6 +1,9 @@
 // repositoriesMode etc. is marked unstable
 @file:Suppress("UnstableApiUsage")
 
+include(":widgets")
+
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
