@@ -1,10 +1,9 @@
-package com.jonasgerdes.stoppelmap.ui.theme
+package com.jonasgerdes.stoppelmap.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import com.jonasgerdes.stoppelmap.R
 
 val fontFamily = FontFamily(
     Font(R.font.roboto_slab_thin, FontWeight.Thin),

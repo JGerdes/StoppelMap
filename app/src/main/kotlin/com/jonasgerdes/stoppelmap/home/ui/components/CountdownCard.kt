@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.R
-import com.jonasgerdes.stoppelmap.ui.theme.StoppelMapTheme
+import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 
 @Composable
 fun CountdownCard(

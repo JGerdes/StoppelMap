@@ -59,6 +59,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":theme"))
+
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
         implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")

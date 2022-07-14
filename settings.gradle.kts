@@ -1,7 +1,9 @@
 // repositoriesMode etc. is marked unstable
 @file:Suppress("UnstableApiUsage")
 
+include(":theme")
 include(":widgets")
+include(":app")
 
 
 pluginManagement {
@@ -19,4 +21,3 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "StoppelMap"
-include("app")

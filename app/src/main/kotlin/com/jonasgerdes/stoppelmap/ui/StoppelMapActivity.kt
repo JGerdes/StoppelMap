@@ -20,8 +20,8 @@ import androidx.navigation.compose.rememberNavController
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
+import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
-import com.jonasgerdes.stoppelmap.ui.theme.StoppelMapTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 class StoppelMapActivity : ComponentActivity() {

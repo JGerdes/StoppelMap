@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.ui.theme
+package com.jonasgerdes.stoppelmap.theme
 
 import androidx.compose.ui.graphics.Color
 
