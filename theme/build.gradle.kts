@@ -1,7 +1,3 @@
-import DependencyVersions.androidxCore
-import DependencyVersions.compose
-import DependencyVersions.material3
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -49,12 +45,15 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:$androidxCore")
+    with(DependencyVersions) {
 
-    implementation("androidx.compose.ui:ui:$compose")
-    implementation("androidx.compose.ui:ui-tooling-preview:$compose")
-    implementation("androidx.compose.material3:material3:$material3")
-    implementation("androidx.compose.material:material-icons-extended:$compose")
+        implementation("androidx.core:core-ktx:$androidxCore")
 
-    debugImplementation("androidx.compose.ui:ui-tooling:$compose")
+        implementation("androidx.compose.ui:ui:$compose")
+        implementation("androidx.compose.ui:ui-tooling-preview:$compose")
+        implementation("androidx.compose.material3:material3:$material3")
+        implementation("androidx.compose.material:material-icons-extended:$compose")
+
+        debugImplementation("androidx.compose.ui:ui-tooling:$compose")
+    }
 }

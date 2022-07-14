@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.jonasgerdes.stoppelmap.theme
 
 import androidx.compose.ui.graphics.Color

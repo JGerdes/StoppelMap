@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/widget_gingerbread_heart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:importantForAccessibility="no"
+        android:src="@drawable/widget_gingerbread_heart_layer_0" />
+
+    <ImageView
+        android:id="@+id/widget_gingerbread_heart_layer1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:importantForAccessibility="no"
+        android:src="@drawable/widget_gingerbread_heart_layer_1" />
+
+    <ImageView
+        android:id="@+id/widget_gingerbread_heart_layer2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:importantForAccessibility="no"
+        android:src="@drawable/widget_gingerbread_heart_layer_2" />
+
+    <ImageView
+        android:id="@+id/widget_gingerbread_heart_layer3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:importantForAccessibility="no"
+        android:src="@drawable/widget_gingerbread_heart_layer_3" />
+
+    <ImageView
+        android:id="@+id/widget_countdown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:layout_gravity="center" />
+
+</FrameLayout>
