@@ -2,26 +2,24 @@ package com.jonasgerdes.stoppelmap.home.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jonasgerdes.stoppelmap.home.usecase.GetOpeningCountDownUseCase
+import com.jonasgerdes.stoppelmap.countdown.model.CountDown
+import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import kotlinx.coroutines.flow.*
-import timber.log.Timber
 
 class HomeViewModel(
-    getOpeningCountDown: GetOpeningCountDownUseCase
+    getOpeningCountDown: GetOpeningCountDownFlowUseCase
 ) : ViewModel() {
-
-
+    
     private val openingCountDownState: Flow<CountDownState> =
         getOpeningCountDown().map { countDownResult ->
-            Timber.d("new countDownResult: $countDownResult")
-            if (countDownResult.isOver) {
-                CountDownState.Over
-            } else {
+            if (countDownResult is CountDown.InFuture) {
                 CountDownState.CountingDown(
                     daysLeft = countDownResult.daysLeft,
                     hoursLeft = countDownResult.hoursLeft,
                     minutesLeft = countDownResult.minutesLeft
                 )
+            } else {
+                CountDownState.Over
             }
         }
 

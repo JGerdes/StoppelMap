@@ -6,23 +6,26 @@
 
 package com.jonasgerdes.stoppelmap.home.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.R
-import com.jonasgerdes.stoppelmap.home.ui.components.CountdownCard
+import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
+import com.jonasgerdes.stoppelmap.countdown.ui.widget.heart.GingerbreadHeartWidgetProvider
 import org.koin.androidx.compose.viewModel
 
 @Composable
@@ -33,12 +36,16 @@ fun HomeScreen(
     val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
 
+    val context = LocalContext.current
+
     Column(
         modifier = modifier
     ) {
         CenterAlignedTopAppBar(title = { Text(text = stringResource(id = R.string.home_topbar_title)) })
         LazyColumn(
-            contentPadding = PaddingValues(16.dp), modifier = Modifier.fillMaxSize()
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.fillMaxSize()
         ) {
             when (val countDownState = state.openingCountDownState) {
                 is HomeViewModel.CountDownState.CountingDown -> item {
@@ -52,6 +59,39 @@ fun HomeScreen(
                 HomeViewModel.CountDownState.Over -> Unit
             }
 
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                && AppWidgetManager.getInstance(context).getAppWidgetIds(
+                    ComponentName(
+                        "com.jonasgerdes.stoppelmap",
+                        "com.jonasgerdes.stoppelmap.widgets.GingerbreadHeartWidgetProvider"
+                    )
+                ).isEmpty()
+            ) {
+                item {
+                    Card {
+                        Column(Modifier.padding(16.dp)) {
+                            Text(
+                                text = "Homescreen Widgets",
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            Button(onClick = { addWidget(context) }) {
+                                Text(text = "Jetzt hinzufügen")
+                            }
+                        }
+                    }
+                }
+            }
         }
+    }
+}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+private fun addWidget(context: Context) {
+    val appWidgetManager = AppWidgetManager.getInstance(context)
+    val myProvider = ComponentName(context, GingerbreadHeartWidgetProvider::class.java)
+
+    if (appWidgetManager.isRequestPinAppWidgetSupported) {
+        appWidgetManager.requestPinAppWidget(myProvider, null, null)
     }
 }

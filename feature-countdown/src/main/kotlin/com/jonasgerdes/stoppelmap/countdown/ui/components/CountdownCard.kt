@@ -3,7 +3,7 @@
     ExperimentalComposeUiApi::class,
 )
 
-package com.jonasgerdes.stoppelmap.home.ui.components
+package com.jonasgerdes.stoppelmap.countdown.ui.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -18,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 
 @Composable
@@ -70,7 +70,7 @@ fun CountdownCard(
 }
 
 @Composable
-fun CountdownUnit(
+private fun CountdownUnit(
     unitLabel: String, value: String, modifier: Modifier = Modifier
 ) {
     Card(
@@ -99,25 +99,11 @@ fun CountdownUnit(
 
 
 @Preview(uiMode = UI_MODE_NIGHT_NO)
-@Composable
-fun PreviewCountdownCardDay() {
-    StoppelMapTheme {
-        CountdownCard(days = 129, hours = 1, minutes = 20)
-    }
-}
-
 @Preview(fontScale = 1.6f)
-@Composable
-fun PreviewCountdownCardLargeFont() {
-    StoppelMapTheme {
-        CountdownCard(days = 129, hours = 1, minutes = 20)
-    }
-}
-
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun PreviewCountdownCardNight() {
+private fun PreviewCountdownCard() {
     StoppelMapTheme {
-        CountdownCard(days = 0, hours = 22, minutes = 0)
+        CountdownCard(days = 129, hours = 1, minutes = 20)
     }
 }

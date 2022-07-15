@@ -61,6 +61,7 @@ android {
 dependencies {
 
     implementation(project(":theme"))
+    implementation(project(":feature-countdown"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")

@@ -2,7 +2,7 @@
 @file:Suppress("UnstableApiUsage")
 
 include(":theme")
-include(":widgets")
+include(":feature-countdown")
 include(":app")
 
 

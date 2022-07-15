@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.widgets"
+    namespace = "com.jonasgerdes.stoppelmap.countdown"
     compileSdk = 32
 
     defaultConfig {

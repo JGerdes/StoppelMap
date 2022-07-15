@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="countdownCard_prefix">Nur noch</string>
+    <plurals name="countdownCard_unit_day">
+        <item quantity="one">Tag</item>
+        <item quantity="other">Tage</item>
+    </plurals>
+    <plurals name="countdownCard_unit_hour">
+        <item quantity="one">Stunde</item>
+        <item quantity="other">Stunden</item>
+    </plurals>
+    <plurals name="countdownCard_unit_minute">
+        <item quantity="one">Minute</item>
+        <item quantity="other">Minuten</item>
+    </plurals>
+    <string name="countdownCard_suffix">bis zur Eröffnung</string>
+
+
+    <plurals name="countdownWidget_day">
+        <item quantity="one">%1$d Tag</item>
+        <item quantity="other">%1$d Tage</item>
+    </plurals>
+    <plurals name="countdownWidget_hour">
+        <item quantity="one">%1$d Stunde</item>
+        <item quantity="other">%1$d Stunden</item>
+    </plurals>
+    <string name="countdownWidget_preposition_until">bis zum</string>
+
+    <string name="countdownWidget_mainText_ongoing">Viel Spaß</string>
+    <string name="countdownWidget_preposition_ongoing">auf dem</string>
+
+    <string name="countdownWidget_mainText_past">Man sieht sich</string>
+    <string name="countdownWidget_preposition_past">auf dem</string>
+</resources>

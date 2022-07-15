@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jonasgerdes.stoppelmap.widgets">
+    package="com.jonasgerdes.stoppelmap.countdown">
 
     <application>
         <activity
-            android:name=".WidgetSettingsActivity"
+            android:name=".ui.widget.heart.WidgetSettingsActivity"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTop">
@@ -14,7 +14,7 @@
         </activity>
 
         <receiver
-            android:name=".GingerbreadHeartWidgetProvider"
+            android:name=".ui.widget.heart.GingerbreadHeartWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap
 
 import android.app.Application
+import com.jonasgerdes.stoppelmap.countdown.countdownModule
 import com.jonasgerdes.stoppelmap.home.homeModule
 import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
@@ -20,7 +21,8 @@ class App : Application() {
             androidContext(this@App)
 
             modules(
-                homeModule
+                homeModule,
+                countdownModule,
             )
         }
     }
