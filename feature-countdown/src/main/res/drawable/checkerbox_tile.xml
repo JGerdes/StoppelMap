@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="16dp"
+        android:right="16dp">
+        <shape android:shape="rectangle">
+            <size
+                android:width="16dp"
+                android:height="16dp" />
+            <solid android:color="@color/checkerbox_tile_light" />
+        </shape>
+    </item>
+    <item
+        android:right="16dp"
+        android:top="16dp">
+        <shape android:shape="rectangle">
+            <size
+                android:width="16dp"
+                android:height="16dp" />
+            <solid android:color="@color/checkerbox_tile_dark" />
+        </shape>
+    </item>
+
+    <item
+        android:left="16dp"
+        android:top="16dp">
+        <shape android:shape="rectangle">
+            <size
+                android:width="16dp"
+                android:height="16dp" />
+            <solid android:color="@color/checkerbox_tile_light" />
+        </shape>
+    </item>
+    <item
+        android:bottom="16dp"
+        android:left="16dp">
+        <shape android:shape="rectangle">
+            <size
+                android:width="16dp"
+                android:height="16dp" />
+            <solid android:color="@color/checkerbox_tile_dark" />
+        </shape>
+    </item>
+</layer-list>

@@ -58,6 +58,8 @@ dependencies {
         implementation("androidx.compose.material3:material3:$material3")
         implementation("androidx.compose.material:material-icons-extended:$compose")
 
+        implementation("com.google.accompanist:accompanist-pager:${accompoanist}")
+
         implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycle")
         implementation("androidx.lifecycle:lifecycle-runtime-compose:$androidxLifecycle")
         implementation("androidx.activity:activity-compose:$androidxActivityCompose")

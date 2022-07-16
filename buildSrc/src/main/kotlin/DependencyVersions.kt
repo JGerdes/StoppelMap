@@ -9,6 +9,7 @@ object DependencyVersions {
     const val material3 = "1.0.0-alpha12"
     const val androidxActivityCompose = "1.4.0"
     const val androidxNavigation = "2.5.0-rc02"
+    const val accompoanist = "0.24.13-rc"
     const val koin = "3.1.6"
     const val timber = "5.0.1"
     const val lottie = "5.2.0"
