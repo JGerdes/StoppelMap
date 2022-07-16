@@ -16,6 +16,8 @@
     <string name="countdownCard_suffix">bis zur Eröffnung</string>
 
     <string name="widget_configuration_title">Widget konfigurieren</string>
+    <string name="widget_configuration_button_next_contentDescription">Nächster Schritt</string>
+    <string name="widget_configuration_button_save_contentDescription">Einstellungen speichern</string>
 
 
     <plurals name="countdownWidget_day">

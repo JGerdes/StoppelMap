@@ -7,7 +7,7 @@
 package com.jonasgerdes.stoppelmap.home.ui
 
 import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_MUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -103,8 +103,8 @@ private fun addWidget(context: Context) {
                 0,
                 Intent(context, WidgetSettingsActivity::class.java),
                 FLAG_UPDATE_CURRENT.let {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        it or FLAG_IMMUTABLE
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        it or FLAG_MUTABLE
                     } else it
                 }
             )
