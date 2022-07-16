@@ -6,5 +6,5 @@
     android:previewImage="@drawable/widget_preview_heart"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
-    android:configure="com.jonasgerdes.stoppelmap.countdown.ui.widget.heart.WidgetSettingsActivity"
+    android:configure="com.jonasgerdes.stoppelmap.countdown.widget.heart.WidgetSettingsActivity"
     android:widgetCategory="home_screen" />

@@ -6,9 +6,13 @@
 
 package com.jonasgerdes.stoppelmap.home.ui
 
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
@@ -25,7 +29,8 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
-import com.jonasgerdes.stoppelmap.countdown.ui.widget.heart.GingerbreadHeartWidgetProvider
+import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
+import com.jonasgerdes.stoppelmap.countdown.widget.heart.WidgetSettingsActivity
 import org.koin.androidx.compose.viewModel
 
 @Composable
@@ -92,6 +97,17 @@ private fun addWidget(context: Context) {
     val myProvider = ComponentName(context, GingerbreadHeartWidgetProvider::class.java)
 
     if (appWidgetManager.isRequestPinAppWidgetSupported) {
-        appWidgetManager.requestPinAppWidget(myProvider, null, null)
+        val successCallback: PendingIntent =
+            PendingIntent.getActivity(
+                context,
+                0,
+                Intent(context, WidgetSettingsActivity::class.java),
+                FLAG_UPDATE_CURRENT.let {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        it or FLAG_IMMUTABLE
+                    } else it
+                }
+            )
+        appWidgetManager.requestPinAppWidget(myProvider, null, successCallback)
     }
 }

@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name=".ui.widget.heart.WidgetSettingsActivity"
+            android:name=".widget.heart.WidgetSettingsActivity"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleTop">
@@ -14,7 +14,7 @@
         </activity>
 
         <receiver
-            android:name=".ui.widget.heart.GingerbreadHeartWidgetProvider"
+            android:name=".widget.heart.GingerbreadHeartWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

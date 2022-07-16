@@ -1,8 +1,10 @@
-package com.jonasgerdes.stoppelmap.countdown.ui.widget.heart
+package com.jonasgerdes.stoppelmap.countdown.widget.heart
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.*
 import android.os.Build
@@ -51,6 +53,7 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
     ) {
         val views = initWidget(
             context = context,
+            appWidgetId = appWidgetId,
             showHours = widgetSettings.getShowHour(appWidgetId, true),
             colors = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 arrayOf(
@@ -69,6 +72,7 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
 
     internal fun initWidget(
         context: Context,
+        appWidgetId: Int,
         showHours: Boolean,
         colors: Array<Int>
     ) = RemoteViews(
@@ -87,6 +91,22 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
         views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", colors[0])
         views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", colors[1])
         views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", colors[2])
+
+        val intent: PendingIntent =
+            PendingIntent.getActivity(
+                context,
+                0,
+                Intent(context, WidgetSettingsActivity::class.java).apply {
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                },
+                PendingIntent.FLAG_UPDATE_CURRENT.let {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        it or PendingIntent.FLAG_IMMUTABLE
+                    } else it
+                }
+            )
+
+        views.setOnClickPendingIntent(R.id.widget_countdown, intent)
         return views
     }
 

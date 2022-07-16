@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.countdown.ui.widget.heart
+package com.jonasgerdes.stoppelmap.countdown.widget.heart
 
 import android.content.Context
 
