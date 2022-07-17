@@ -67,8 +67,8 @@ fun HomeScreen(
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
                 && AppWidgetManager.getInstance(context).getAppWidgetIds(
                     ComponentName(
-                        "com.jonasgerdes.stoppelmap",
-                        "com.jonasgerdes.stoppelmap.widgets.GingerbreadHeartWidgetProvider"
+                        context.packageName,
+                        GingerbreadHeartWidgetProvider::class.java.simpleName,
                     )
                 ).isEmpty()
             ) {

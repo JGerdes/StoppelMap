@@ -8,6 +8,7 @@ package com.jonasgerdes.stoppelmap.countdown.widget.heart
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.FrameLayout
@@ -34,27 +35,65 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.countdown.R
+import com.jonasgerdes.stoppelmap.countdown.widget.mutablePreferenceStateOf
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 
 class WidgetSettingsActivity : ComponentActivity() {
 
-    private val appWidgetId by lazy {
-        intent.extras?.getInt(
+    private var appWidgetId by mutableStateOf(-1)
+    private val sharedPreferences: SharedPreferences by inject()
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        Timber.d(
+            "onNewIntent: ${intent}, ${
+                intent.extras?.getInt(
+                    AppWidgetManager.EXTRA_APPWIDGET_ID,
+                    AppWidgetManager.INVALID_APPWIDGET_ID
+                )
+            }"
+        )
+        appWidgetId = intent.extras?.getInt(
             AppWidgetManager.EXTRA_APPWIDGET_ID,
             AppWidgetManager.INVALID_APPWIDGET_ID
-        )
+        )!!
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Timber.d(
+            "onCreate: ${intent}, ${
+                intent.extras?.getInt(
+                    AppWidgetManager.EXTRA_APPWIDGET_ID,
+                    AppWidgetManager.INVALID_APPWIDGET_ID
+                )
+            }"
+        )
         super.onCreate(savedInstanceState)
+        appWidgetId = intent.extras?.getInt(
+            AppWidgetManager.EXTRA_APPWIDGET_ID,
+            AppWidgetManager.INVALID_APPWIDGET_ID
+        )!!
         setContent {
             StoppelMapTheme {
                 Scaffold(
-                    topBar = { CenterAlignedTopAppBar(title = { Text(text = stringResource(id = R.string.widget_configuration_title)) }) }
+                    topBar = {
+                        CenterAlignedTopAppBar(
+                            title = { Text(text = stringResource(id = R.string.widget_configuration_title) + " #$appWidgetId") },
+                        )
+                    }
                 ) { scaffoldPadding ->
+                    var widetSettings by remember(appWidgetId) {
+                        mutablePreferenceStateOf(
+                            sharedPreferences,
+                            GingerbreadWidgetSettings.loadFromPreferences(appWidgetId),
+                            GingerbreadWidgetSettings::saveToPreferences
+                        )
+                    }
+
                     Box(Modifier.fillMaxSize()) {
                         CheckerBoxBackground(Modifier.fillMaxSize())
                         Column(
@@ -68,16 +107,20 @@ class WidgetSettingsActivity : ComponentActivity() {
                                 Modifier
                                     .fillMaxWidth()
                                     .padding(16.dp),
-                                showHours = false,
-                                colors = arrayOf(0xD1C4E9, 0x7E57C2, 0x311B92)
+                                settings = widetSettings
                             )
                             Spacer(modifier = Modifier.size(16.dp))
                             WidgetSettingsPager(
                                 onSave = { addWidget() },
-                                settingsCards = listOf(
-                                    { ColorSettingsCard(modifier = Modifier.fillMaxWidth()) },
-                                    { ColorSettingsCard(modifier = Modifier.fillMaxWidth()) }
-                                )
+                                settingsCards = listOf {
+                                    ShowHoursSettingsCard(
+                                        showHours = widetSettings.showHours,
+                                        onShowHoursChanged = {
+                                            widetSettings = widetSettings.copy(showHours = it)
+                                        },
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
                             )
 
                         }
@@ -89,29 +132,17 @@ class WidgetSettingsActivity : ComponentActivity() {
     }
 
     private fun addWidget() {
-        val appWidgetId = appWidgetId ?: return
-
-        val widgetSettings = GingerbreadWidgetSettings(this)
         val views = GingerbreadHeartWidgetProvider().initWidget(
             context = this,
-            appWidgetId = appWidgetId,
-            showHours = widgetSettings.getShowHour(appWidgetId, true),
-            colors = arrayOf(
-                widgetSettings.getColor1(appWidgetId, 0xD1C4E9),
-                widgetSettings.getColor2(appWidgetId, 0x7E57C2),
-                widgetSettings.getColor3(appWidgetId, 0x311B92),
-            ),
+            settings = GingerbreadWidgetSettings.loadFromPreferences(appWidgetId)(sharedPreferences)
         )
 
-
-        //save widget
         val appWidgetManager = AppWidgetManager.getInstance(baseContext)
         appWidgetManager.updateAppWidget(appWidgetId, views)
 
         val resultValue = Intent()
         resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
         setResult(RESULT_OK, resultValue)
-        Timber.d("finish")
         finish()
     }
 
@@ -131,7 +162,7 @@ fun WidgetSettingsPager(
         }
     }
     val isLastPage = pagerState.currentPage == pagerState.pageCount - 1
-    Box {
+    Box(modifier = modifier) {
         Column {
             Spacer(modifier = Modifier.size(28.dp))
             HorizontalPager(
@@ -182,14 +213,17 @@ fun WidgetSettingsPager(
 }
 
 @Composable
-fun ColorSettingsCard(modifier: Modifier = Modifier) {
+fun ShowHoursSettingsCard(
+    showHours: Boolean,
+    onShowHoursChanged: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Card(modifier = modifier, elevation = CardDefaults.cardElevation(defaultElevation = 16.dp)) {
         Column(Modifier.padding(16.dp)) {
-            var checkBoxState by remember { mutableStateOf(false) }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(
-                    checked = checkBoxState,
-                    onCheckedChange = { checkBoxState = it }
+                    checked = showHours,
+                    onCheckedChange = onShowHoursChanged
                 )
                 Text(text = "Zeige Tage")
             }
@@ -198,7 +232,7 @@ fun ColorSettingsCard(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun WidgetPreview(modifier: Modifier, showHours: Boolean, colors: Array<Int>) {
+fun WidgetPreview(modifier: Modifier, settings: GingerbreadWidgetSettings) {
     val widgetProvider = remember { GingerbreadHeartWidgetProvider() }
     val context = LocalContext.current
     AndroidView(
@@ -208,7 +242,7 @@ fun WidgetPreview(modifier: Modifier, showHours: Boolean, colors: Array<Int>) {
         },
         update = {
             it.removeAllViews()
-            val views = widgetProvider.initWidget(context, 0, showHours, colors)
+            val views = widgetProvider.initWidget(context, settings)
             it.addView(views.apply(context, it))
         }
     )
@@ -233,6 +267,7 @@ fun CheckerBoxBackground(modifier: Modifier = Modifier) {
         }
         paint.reset()
     }
+
 
 }
 

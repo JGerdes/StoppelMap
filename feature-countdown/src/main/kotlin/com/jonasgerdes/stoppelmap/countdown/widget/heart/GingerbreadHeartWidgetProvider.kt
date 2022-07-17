@@ -5,8 +5,10 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.*
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
@@ -22,7 +24,8 @@ import kotlin.math.roundToInt
 
 class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
 
-    private val widgetSettings: GingerbreadWidgetSettings by inject(GingerbreadWidgetSettings::class.java)
+    private val sharedPreferences: SharedPreferences by inject(SharedPreferences::class.java)
+
     private val getTimeLeftToOpening: GetOpeningCountDownUseCase by inject(
         GetOpeningCountDownUseCase::class.java
     )
@@ -51,30 +54,17 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetId: Int
     ) {
+        val settings = GingerbreadWidgetSettings.loadFromPreferences(appWidgetId)(sharedPreferences)
         val views = initWidget(
             context = context,
-            appWidgetId = appWidgetId,
-            showHours = widgetSettings.getShowHour(appWidgetId, true),
-            colors = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                arrayOf(
-                    context.resources.getColor(android.R.color.system_accent1_300, context.theme),
-                    context.resources.getColor(android.R.color.system_accent1_200, context.theme),
-                    context.resources.getColor(android.R.color.system_accent1_100, context.theme),
-                )
-            } else arrayOf(
-                widgetSettings.getColor1(appWidgetId, 0xD1C4E9),
-                widgetSettings.getColor2(appWidgetId, 0x7E57C2),
-                widgetSettings.getColor3(appWidgetId, 0x311B92),
-            ),
+            settings = settings,
         )
         appWidgetManager.updateAppWidget(appWidgetId, views)
     }
 
     internal fun initWidget(
         context: Context,
-        appWidgetId: Int,
-        showHours: Boolean,
-        colors: Array<Int>
+        settings: GingerbreadWidgetSettings,
     ) = RemoteViews(
         context.packageName,
         R.layout.widget_layout_gingerbread_heart
@@ -83,27 +73,29 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
         val size = Point(256.dp.toPx(context), 206.dp.toPx(context))
         val countdownBitmap = createCountdownBitmap(
             context,
-            getCountdownTexts(context.resources, showHours),
+            getCountdownTexts(context.resources, settings.showHours),
             size,
-            showHours
+            settings.showHours
         )
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap)
-        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", colors[0])
-        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", colors[1])
-        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", colors[2])
+        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", settings.color1)
+        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", settings.color2)
+        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", settings.color3)
 
         val intent: PendingIntent =
             PendingIntent.getActivity(
                 context,
                 0,
                 Intent(context, WidgetSettingsActivity::class.java).apply {
-                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, settings.appWidgetId)
+                    data = Uri.withAppendedPath(
+                        Uri.parse("stoppelmap" + "://widget/id/"),
+                        settings.appWidgetId.toString()
+                    )
                 },
-                PendingIntent.FLAG_UPDATE_CURRENT.let {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        it or PendingIntent.FLAG_IMMUTABLE
-                    } else it
-                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    PendingIntent.FLAG_IMMUTABLE
+                } else 0
             )
 
         views.setOnClickPendingIntent(R.id.widget_countdown, intent)
