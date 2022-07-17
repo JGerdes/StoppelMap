@@ -19,6 +19,10 @@
     <string name="widget_configuration_button_next_contentDescription">Nächster Schritt</string>
     <string name="widget_configuration_button_save_contentDescription">Einstellungen speichern</string>
 
+    <string name="widget_configuration_display_title">Darstellung anpassen</string>
+    <string name="widget_configuration_display_show_hours_label">Stunden anzeigen</string>
+    <string name="widget_configuration_display_show_hours_description">Wenn es weniger als 24 Stunden bis zum Stoppelmarkt dauert wird automatisch auf Stunden gewechselt.</string>
+
 
     <plurals name="countdownWidget_day">
         <item quantity="one">%1$d Tag</item>

@@ -35,6 +35,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.countdown.R
+import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.ShowHoursSettingsCard
 import com.jonasgerdes.stoppelmap.countdown.widget.mutablePreferenceStateOf
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import kotlinx.coroutines.launch
@@ -111,7 +112,7 @@ class WidgetSettingsActivity : ComponentActivity() {
                             )
                             Spacer(modifier = Modifier.size(16.dp))
                             WidgetSettingsPager(
-                                onSave = { addWidget() },
+                                onSave = { updateWidget() },
                                 settingsCards = listOf {
                                     ShowHoursSettingsCard(
                                         showHours = widetSettings.showHours,
@@ -131,7 +132,7 @@ class WidgetSettingsActivity : ComponentActivity() {
         }
     }
 
-    private fun addWidget() {
+    private fun updateWidget() {
         val views = GingerbreadHeartWidgetProvider().initWidget(
             context = this,
             settings = GingerbreadWidgetSettings.loadFromPreferences(appWidgetId)(sharedPreferences)
@@ -164,7 +165,7 @@ fun WidgetSettingsPager(
     val isLastPage = pagerState.currentPage == pagerState.pageCount - 1
     Box(modifier = modifier) {
         Column {
-            Spacer(modifier = Modifier.size(28.dp))
+            Spacer(modifier = Modifier.size(16.dp))
             HorizontalPager(
                 count = settingsCards.size,
                 state = pagerState,
@@ -207,25 +208,6 @@ fun WidgetSettingsPager(
                         )
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-fun ShowHoursSettingsCard(
-    showHours: Boolean,
-    onShowHoursChanged: (Boolean) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Card(modifier = modifier, elevation = CardDefaults.cardElevation(defaultElevation = 16.dp)) {
-        Column(Modifier.padding(16.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(
-                    checked = showHours,
-                    onCheckedChange = onShowHoursChanged
-                )
-                Text(text = "Zeige Tage")
             }
         }
     }
