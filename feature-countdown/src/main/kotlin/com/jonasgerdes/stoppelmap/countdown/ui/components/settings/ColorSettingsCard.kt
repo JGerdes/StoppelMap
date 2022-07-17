@@ -2,7 +2,9 @@
 
 package com.jonasgerdes.stoppelmap.countdown.ui.components.settings
 
+import android.graphics.Color.colorToHSV
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
@@ -15,6 +17,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
@@ -25,6 +28,8 @@ import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.StoppelPink
 import com.jonasgerdes.stoppelmap.theme.StoppelPurple
+import kotlin.math.max
+import android.graphics.Color.HSVToColor as hsvToColor
 
 private val DEFAULT_COLORS = listOf(
     Color(0xff7d56c2),
@@ -59,7 +64,11 @@ fun ColorSettingsCard(
                     Surface(
                         shape = RoundedCornerShape(2.dp),
                         color = color,
-                        modifier = Modifier.size(32.dp)
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clickable {
+                                onColorsChanged(deriveColorsFrom(color.toArgb()))
+                            }
                     ) {}
                     Spacer(modifier = Modifier.size(4.dp))
                 }
@@ -77,10 +86,17 @@ fun ColorSettingsCard(
                 out
             }
 
-            var hue by remember { mutableStateOf(hsv[0]) }
             HueSlider(
-                selectedHue = hue,
-                onHueSelected = { hue = it },
+                selectedHue = hsv[0],
+                onHueSelected = { updatedHue ->
+                    onColorsChanged(
+                        deriveColorsFrom(
+                            hsvToColor(
+                                floatArrayOf(updatedHue, hsv[1], hsv[2])
+                            )
+                        )
+                    )
+                },
                 modifier = Modifier
                     .fillMaxWidth()
             )
@@ -92,64 +108,77 @@ fun ColorSettingsCard(
 @Composable
 fun HueSlider(selectedHue: Float, onHueSelected: (Float) -> Unit, modifier: Modifier = Modifier) {
 
-    var offsetX by remember { mutableStateOf(0f) }
     var width: Int? by remember { mutableStateOf(null) }
 
-    Canvas(
+    Box(
         modifier = modifier
             .height(16.dp)
             .pointerInput(Unit) {
-                detectTapGestures {
-                    offsetX = it.x
+                detectTapGestures { offset ->
                     width?.let {
-                        onHueSelected((offsetX / it.toFloat()) * 360)
+                        onHueSelected(
+                            ((offset.x - 8.dp.toPx()) / (it - 16.dp.toPx())).coerceIn(
+                                0f,
+                                1f
+                            ) * 359
+                        )
                     }
                 }
             }
             .pointerInput(Unit) {
+                var offsetX = 0f
                 detectHorizontalDragGestures(
                     onDragStart = {
                         offsetX = it.x
-                        width?.let {
-                            onHueSelected((offsetX / it.toFloat()) * 360)
-                        }
                     },
                     onHorizontalDrag = { change, dragAmount ->
                         change.consume()
                         offsetX += dragAmount
                         width?.let {
-                            onHueSelected((offsetX / it.toFloat()) * 360)
+                            onHueSelected(
+                                ((offsetX - 8.dp.toPx()) / (it - 16.dp.toPx())).coerceIn(
+                                    0f,
+                                    1f
+                                ) * 359
+                            )
                         }
                     }
                 )
             }
             .onGloballyPositioned { coordinates ->
                 width = coordinates.size.width
-                offsetX = (selectedHue / 360f) * coordinates.size.width
-                onHueSelected((offsetX / coordinates.size.width.toFloat()) * 360)
             }
-            // TODO: Fix work around for BlendMode.Clear
-            .graphicsLayer(alpha = 0.99f)
     ) {
-        for (pixel in 0 until size.width.toInt()) {
-            val hue = (pixel / size.width) * 360
-            drawRect(
-                color = Color.hsv(hue = hue.toFloat(), saturation = 1f, value = 1f),
-                topLeft = Offset(x = pixel.toFloat(), y = 6.dp.toPx()),
-                size = Size(width = 1f, height = 4.dp.toPx())
+
+        Canvas(
+            modifier = Modifier
+                .fillMaxSize()
+                // TODO: Fix work around for BlendMode.Clear
+                .graphicsLayer(alpha = 0.99f)
+        ) {
+            val effectiveWidth = size.width - 16.dp.toPx()
+            val start = 8.dp.toPx()
+            val handleCenterX = (selectedHue / 359) * effectiveWidth + start
+            for (pixel in 0 until effectiveWidth.toInt()) {
+                val hue = (pixel / effectiveWidth) * 360
+                drawRect(
+                    color = Color.hsv(hue = hue, saturation = 1f, value = 1f),
+                    topLeft = Offset(x = start + pixel.toFloat(), y = 6.dp.toPx()),
+                    size = Size(width = 1f, height = 4.dp.toPx())
+                )
+            }
+            drawCircle(
+                Color.White,
+                radius = 10.dp.toPx(),
+                center = center.copy(x = handleCenterX),
+                blendMode = BlendMode.Clear
+            )
+            drawCircle(
+                Color.hsv(selectedHue, saturation = 1f, value = 1f),
+                radius = 8.dp.toPx(),
+                center = center.copy(x = handleCenterX)
             )
         }
-        drawCircle(
-            Color.White,
-            radius = 10.dp.toPx(),
-            center = center.copy(x = offsetX),
-            blendMode = BlendMode.Clear
-        )
-        drawCircle(
-            Color.hsv(selectedHue, saturation = 1f, value = 1f),
-            radius = 8.dp.toPx(),
-            center = center.copy(x = offsetX)
-        )
     }
 }
 
@@ -159,4 +188,23 @@ fun ColorSettingsCardPreview() {
     StoppelMapTheme {
         ColorSettingsCard(colors = listOf(), onColorsChanged = {})
     }
+}
+
+fun deriveColorsFrom(color: Int): List<Int> {
+    val color1AsHsv = FloatArray(3)
+    colorToHSV(color, color1AsHsv)
+
+    val color2AsHsv = floatArrayOf(color1AsHsv[0], color1AsHsv[1], color1AsHsv[2])
+    color1AsHsv[1] = max(0.1f, color1AsHsv[1] - 0.4f)
+    color1AsHsv[2] = 0.75f
+
+
+    color2AsHsv[1] += 0.3f
+    color2AsHsv[2] = max(0.4f, color2AsHsv[2] - 0.3f)
+
+    return listOf(
+        hsvToColor(color1AsHsv),
+        color,
+        hsvToColor(color2AsHsv)
+    )
 }

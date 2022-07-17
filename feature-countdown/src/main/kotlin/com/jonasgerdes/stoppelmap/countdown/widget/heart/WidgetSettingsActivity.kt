@@ -122,7 +122,13 @@ class WidgetSettingsActivity : ComponentActivity() {
                                                 widetSettings.color2,
                                                 widetSettings.color3
                                             ),
-                                            onColorsChanged = {},
+                                            onColorsChanged = {
+                                                widetSettings = widetSettings.copy(
+                                                    color1 = it[0],
+                                                    color2 = it[1],
+                                                    color3 = it[2],
+                                                )
+                                            },
                                             modifier = Modifier.fillMaxWidth()
                                         )
                                     },
