@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
 
 package com.jonasgerdes.stoppelmap.countdown.ui.components.settings
 
@@ -31,7 +31,7 @@ fun ShowHoursSettingsCard(
         Column(Modifier.padding(16.dp)) {
             Text(
                 text = stringResource(R.string.widget_configuration_display_title),
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleLarge
             )
             Spacer(modifier = Modifier.size(8.dp))
             Row {

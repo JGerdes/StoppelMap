@@ -35,6 +35,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.countdown.R
+import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.ColorSettingsCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.ShowHoursSettingsCard
 import com.jonasgerdes.stoppelmap.countdown.widget.mutablePreferenceStateOf
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
@@ -113,15 +114,28 @@ class WidgetSettingsActivity : ComponentActivity() {
                             Spacer(modifier = Modifier.size(16.dp))
                             WidgetSettingsPager(
                                 onSave = { updateWidget() },
-                                settingsCards = listOf {
-                                    ShowHoursSettingsCard(
-                                        showHours = widetSettings.showHours,
-                                        onShowHoursChanged = {
-                                            widetSettings = widetSettings.copy(showHours = it)
-                                        },
-                                        modifier = Modifier.fillMaxWidth()
-                                    )
-                                }
+                                settingsCards = listOf(
+                                    {
+                                        ColorSettingsCard(
+                                            colors = listOf(
+                                                widetSettings.color1,
+                                                widetSettings.color2,
+                                                widetSettings.color3
+                                            ),
+                                            onColorsChanged = {},
+                                            modifier = Modifier.fillMaxWidth()
+                                        )
+                                    },
+                                    {
+                                        ShowHoursSettingsCard(
+                                            showHours = widetSettings.showHours,
+                                            onShowHoursChanged = {
+                                                widetSettings = widetSettings.copy(showHours = it)
+                                            },
+                                            modifier = Modifier.fillMaxWidth()
+                                        )
+                                    }
+                                )
                             )
 
                         }
