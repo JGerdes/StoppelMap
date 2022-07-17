@@ -1,6 +1,6 @@
 @file:OptIn(
     ExperimentalMaterial3Api::class, ExperimentalPagerApi::class,
-    ExperimentalAnimationApi::class
+    ExperimentalAnimationApi::class, ExperimentalPagerApi::class, ExperimentalPagerApi::class
 )
 
 package com.jonasgerdes.stoppelmap.countdown.widget.heart
@@ -31,13 +31,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.ColorSettingsCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.ShowHoursSettingsCard
-import com.jonasgerdes.stoppelmap.countdown.widget.mutablePreferenceStateOf
+import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.toHSV
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -88,12 +89,26 @@ class WidgetSettingsActivity : ComponentActivity() {
                         )
                     }
                 ) { scaffoldPadding ->
-                    var widetSettings by remember(appWidgetId) {
-                        mutablePreferenceStateOf(
-                            sharedPreferences,
-                            GingerbreadWidgetSettings.loadFromPreferences(appWidgetId),
-                            GingerbreadWidgetSettings::saveToPreferences
+
+                    var settings by remember {
+                        mutableStateOf(
+                            GingerbreadWidgetSettings.loadFromPreferences(
+                                appWidgetId
+                            )(sharedPreferences)
                         )
+                    }
+
+                    var showHours by remember {
+                        mutableStateOf(settings.showHours)
+                    }
+                    var hue by remember {
+                        mutableStateOf(settings.color2.toHSV()[0])
+                    }
+                    var saturation by remember {
+                        mutableStateOf(settings.color2.toHSV()[1])
+                    }
+                    var brightness by remember {
+                        mutableStateOf(settings.color2.toHSV()[2])
                     }
 
                     Box(Modifier.fillMaxSize()) {
@@ -109,34 +124,62 @@ class WidgetSettingsActivity : ComponentActivity() {
                                 Modifier
                                     .fillMaxWidth()
                                     .padding(16.dp),
-                                settings = widetSettings
+                                settings = settings,
                             )
                             Spacer(modifier = Modifier.size(16.dp))
                             WidgetSettingsPager(
-                                onSave = { updateWidget() },
+                                onSave = {
+                                    updateWidget(settings)
+                                },
                                 settingsCards = listOf(
                                     {
                                         ColorSettingsCard(
-                                            colors = listOf(
-                                                widetSettings.color1,
-                                                widetSettings.color2,
-                                                widetSettings.color3
-                                            ),
-                                            onColorsChanged = {
-                                                widetSettings = widetSettings.copy(
-                                                    color1 = it[0],
-                                                    color2 = it[1],
-                                                    color3 = it[2],
+                                            hue = hue,
+                                            saturation = saturation,
+                                            brightness = brightness,
+                                            onHueChanged = {
+                                                hue = it
+                                                settings = settings.setColorsFrom(
+                                                    hue,
+                                                    saturation,
+                                                    brightness
                                                 )
                                             },
-                                            modifier = Modifier.fillMaxWidth()
+                                            onSaturationChanged = {
+                                                saturation = it
+                                                settings = settings.setColorsFrom(
+                                                    hue,
+                                                    saturation,
+                                                    brightness
+                                                )
+                                            },
+                                            onBrightnessChanged = {
+                                                brightness = it
+                                                settings = settings.setColorsFrom(
+                                                    hue,
+                                                    saturation,
+                                                    brightness
+                                                )
+                                            },
+                                            onColorChanged = { newHue, newSaturation, newBrighness ->
+                                                hue = newHue
+                                                saturation = newSaturation
+                                                brightness = newBrighness
+                                                settings = settings.setColorsFrom(
+                                                    hue,
+                                                    saturation,
+                                                    brightness
+                                                )
+                                            },
+                                            modifier = Modifier.fillMaxWidth(),
                                         )
                                     },
                                     {
                                         ShowHoursSettingsCard(
-                                            showHours = widetSettings.showHours,
+                                            showHours = showHours,
                                             onShowHoursChanged = {
-                                                widetSettings = widetSettings.copy(showHours = it)
+                                                showHours = it
+                                                settings = settings.copy(showHours = showHours)
                                             },
                                             modifier = Modifier.fillMaxWidth()
                                         )
@@ -152,11 +195,12 @@ class WidgetSettingsActivity : ComponentActivity() {
         }
     }
 
-    private fun updateWidget() {
+    private fun updateWidget(settings: GingerbreadWidgetSettings) {
         val views = GingerbreadHeartWidgetProvider().initWidget(
             context = this,
-            settings = GingerbreadWidgetSettings.loadFromPreferences(appWidgetId)(sharedPreferences)
+            settings = settings
         )
+        GingerbreadWidgetSettings.saveToPreferences(sharedPreferences, settings)
 
         val appWidgetManager = AppWidgetManager.getInstance(baseContext)
         appWidgetManager.updateAppWidget(appWidgetId, views)
@@ -284,3 +328,29 @@ private fun Context.getBitmapFromVectorDrawable(drawableId: Int): Bitmap {
     drawable.draw(canvas)
     return bitmap
 }
+
+
+fun GingerbreadWidgetSettings.setColorsFrom(hue: Float, saturation: Float, brightness: Float) =
+    copy(
+        color1 = ColorUtils.HSLToColor(
+            floatArrayOf(
+                hue,
+                (saturation - 0.4f).coerceAtLeast(0.1f),
+                0.75f
+            )
+        ),
+        color2 = ColorUtils.HSLToColor(
+            floatArrayOf(
+                hue,
+                saturation,
+                brightness
+            )
+        ),
+        color3 = ColorUtils.HSLToColor(
+            floatArrayOf(
+                hue,
+                (saturation + 0.3f).coerceAtMost(1f),
+                (brightness - 0.3f).coerceAtLeast(0.1f)
+            )
+        )
+    )

@@ -9,28 +9,29 @@ private const val SETTING_COLOR_2 = "setting_color_2"
 private const val SETTING_COLOR_3 = "setting_color_3"
 
 
-private const val DEFAULT_SHOW_HOUR = false
-private const val DEFAULT_COLOR_1 = 0xD1C4E9
-private const val DEFAULT_COLOR_2 = 0x7E57C2
-private const val DEFAULT_COLOR_3 = 0x311B92
-private val DEFAULT_ACTION = GingerbreadWidgetSettings.Action.OPEN_SETTINGS
-
 @Suppress("unused")
 private const val SETTING_ACTION = "setting_action" // TODO: Implement
 
 data class GingerbreadWidgetSettings(
     val appWidgetId: Int,
-    val showHours: Boolean,
-    val color1: Int,
-    val color2: Int,
-    val color3: Int,
-    val action: Action
+    val showHours: Boolean = DEFAULT_SHOW_HOUR,
+    val color1: Int = DEFAULT_COLOR_1,
+    val color2: Int = DEFAULT_COLOR_2,
+    val color3: Int = DEFAULT_COLOR_3,
+    val action: Action = DEFAULT_ACTION
 ) {
     enum class Action {
         OPEN_SETTINGS
     }
 
     companion object {
+        const val DEFAULT_SHOW_HOUR = false
+        const val DEFAULT_COLOR_1 = 0xD1C4E9
+        const val DEFAULT_COLOR_2 = 0x7E57C2
+        const val DEFAULT_COLOR_3 = 0x311B92
+        val DEFAULT_ACTION = Action.OPEN_SETTINGS
+
+
         fun saveToPreferences(
             preferences: SharedPreferences,
             widgetSettings: GingerbreadWidgetSettings
