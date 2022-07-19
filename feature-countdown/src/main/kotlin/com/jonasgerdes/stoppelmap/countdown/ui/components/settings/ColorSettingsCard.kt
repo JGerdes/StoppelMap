@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelPink
 import com.jonasgerdes.stoppelmap.theme.StoppelPurple
-import timber.log.Timber
 
 private val DEFAULT_COLORS = listOf(
     Color(0xff7d56c2),
@@ -46,7 +45,6 @@ fun ColorSettingsCard(
     onColorChanged: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Timber.d("h: $hue, s:$saturation, b: $brightness")
     Card(
         modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
