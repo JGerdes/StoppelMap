@@ -46,30 +46,27 @@ data class GingerbreadWidgetSettings(
         }
 
         fun loadFromPreferences(
-            appWidgetId: Int
-        ): (SharedPreferences) -> GingerbreadWidgetSettings {
-            return { preferences: SharedPreferences ->
-                with(preferences) {
-                    GingerbreadWidgetSettings(
-                        appWidgetId = appWidgetId,
-                        showHours = getBoolean(
-                            "$SETTING_SHOW_HOUR-$appWidgetId",
-                            DEFAULT_SHOW_HOUR
-                        ),
-                        color1 = getInt("$SETTING_COLOR_1-$appWidgetId", DEFAULT_COLOR_1),
-                        color2 = getInt("$SETTING_COLOR_2-$appWidgetId", DEFAULT_COLOR_2),
-                        color3 = getInt("$SETTING_COLOR_3-$appWidgetId", DEFAULT_COLOR_3),
-                        action = try {
-                            Action.valueOf(
-                                getString("$SETTING_ACTION-$appWidgetId", null)
-                                    ?: DEFAULT_ACTION.name
-                            )
-                        } catch (invalidValue: IllegalArgumentException) {
-                            DEFAULT_ACTION
-                        },
+            preferences: SharedPreferences,
+            appWidgetId: Int,
+        ) = with(preferences) {
+            GingerbreadWidgetSettings(
+                appWidgetId = appWidgetId,
+                showHours = getBoolean(
+                    "$SETTING_SHOW_HOUR-$appWidgetId",
+                    DEFAULT_SHOW_HOUR
+                ),
+                color1 = getInt("$SETTING_COLOR_1-$appWidgetId", DEFAULT_COLOR_1),
+                color2 = getInt("$SETTING_COLOR_2-$appWidgetId", DEFAULT_COLOR_2),
+                color3 = getInt("$SETTING_COLOR_3-$appWidgetId", DEFAULT_COLOR_3),
+                action = try {
+                    Action.valueOf(
+                        getString("$SETTING_ACTION-$appWidgetId", null)
+                            ?: DEFAULT_ACTION.name
                     )
-                }
-            }
+                } catch (invalidValue: IllegalArgumentException) {
+                    DEFAULT_ACTION
+                },
+            )
         }
     }
 }

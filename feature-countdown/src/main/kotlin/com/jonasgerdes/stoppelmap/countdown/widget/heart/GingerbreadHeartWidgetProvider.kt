@@ -54,7 +54,7 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetId: Int
     ) {
-        val settings = GingerbreadWidgetSettings.loadFromPreferences(appWidgetId)(sharedPreferences)
+        val settings = GingerbreadWidgetSettings.loadFromPreferences(sharedPreferences, appWidgetId)
         val views = initWidget(
             context = context,
             settings = settings,

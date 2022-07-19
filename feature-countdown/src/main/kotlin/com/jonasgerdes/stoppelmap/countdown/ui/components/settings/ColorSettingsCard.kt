@@ -21,7 +21,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.ColorUtils
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelPink
 import com.jonasgerdes.stoppelmap.theme.StoppelPurple
@@ -44,7 +43,7 @@ fun ColorSettingsCard(
     onHueChanged: (Float) -> Unit,
     onSaturationChanged: (Float) -> Unit,
     onBrightnessChanged: (Float) -> Unit,
-    onColorChanged: (Float, Float, Float) -> Unit,
+    onColorChanged: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Timber.d("h: $hue, s:$saturation, b: $brightness")
@@ -69,10 +68,7 @@ fun ColorSettingsCard(
                         modifier = Modifier
                             .size(32.dp)
                             .clickable {
-                                val hsv = color
-                                    .toArgb()
-                                    .toHSV()
-                                onColorChanged(hsv[0], hsv[1], hsv[2])
+                                onColorChanged(color.toArgb())
                             }
                     ) {}
                     Spacer(modifier = Modifier.size(4.dp))
@@ -248,9 +244,4 @@ fun ColorSlider(
             )
         }
     }
-}
-
-fun Int.toHSV() = FloatArray(3).let {
-    ColorUtils.colorToHSL(this, it)
-    it
 }
