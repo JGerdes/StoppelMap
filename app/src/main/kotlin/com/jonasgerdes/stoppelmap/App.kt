@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap
 
 import android.app.Application
+import android.appwidget.AppWidgetManager
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
+import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.home.homeModule
 import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
@@ -25,5 +27,10 @@ class App : Application() {
                 countdownModule,
             )
         }
+
+        GingerbreadHeartWidgetProvider().updateAllWidgets(
+            context = this,
+            appWidgetManager = AppWidgetManager.getInstance(this)
+        )
     }
 }

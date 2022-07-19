@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.countdown.widget.heart
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -47,6 +48,20 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
         newOptions: Bundle?
     ) {
         updateWidget(context, appWidgetManager, appWidgetId)
+    }
+
+    fun updateAllWidgets(
+        context: Context,
+        appWidgetManager: AppWidgetManager
+    ) {
+        appWidgetManager.getAppWidgetIds(
+            ComponentName(
+                context.packageName,
+                this::class.java.name
+            )
+        ).forEach {
+            updateWidget(context, appWidgetManager, it)
+        }
     }
 
     private fun updateWidget(
