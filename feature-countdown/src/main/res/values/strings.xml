@@ -22,10 +22,16 @@
     <string name="widget_configuration_color_title">Farbe wählen</string>
     <string name="widget_configuration_color_section_wallpaper">passend zu deinem Wallaper</string>
     <string name="widget_configuration_color_section_modify">Farbe anpassen</string>
+    <string name="widget_configuration_font_color_title">Schriftfarbe wählen</string>
 
     <string name="widget_configuration_display_title">Darstellung anpassen</string>
     <string name="widget_configuration_display_show_hours_label">Stunden anzeigen</string>
     <string name="widget_configuration_display_show_hours_description">Wenn es weniger als 24 Stunden bis zum Stoppelmarkt dauert wird automatisch auf Stunden gewechselt.</string>
+    <string name="widget_configuration_font_title">Schriftart wählen</string>
+
+    <string name="widget_configuration_font_name_roboto">Roboto</string>
+    <string name="widget_configuration_font_name_roboto_slab">Roboto Slab</string>
+    <string name="widget_configuration_font_name_damion">Damion</string>
 
 
     <plurals name="countdownWidget_day">
@@ -43,4 +49,6 @@
 
     <string name="countdownWidget_mainText_past">Man sieht sich</string>
     <string name="countdownWidget_preposition_past">auf dem</string>
+
+    <string name="countdownWidget_preposition_still">noch</string>
 </resources>

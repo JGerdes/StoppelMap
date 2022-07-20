@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialLayout="@layout/widget_layout_gingerbread_heart"
+    android:initialLayout="@layout/widget_layout_skyline"
     android:minHeight="110dp"
     android:minWidth="110dp"
-    android:previewImage="@drawable/widget_preview_heart"
+    android:previewImage="@drawable/widget_preview_skyline"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
-    android:configure="com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsActivity"
+    android:configure="com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetProvider"
     android:widgetCategory="home_screen" />

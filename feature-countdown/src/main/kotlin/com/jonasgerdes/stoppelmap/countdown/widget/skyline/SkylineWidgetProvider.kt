@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.countdown.widget.heart
+package com.jonasgerdes.stoppelmap.countdown.widget.skyline
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -19,11 +19,12 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.res.ResourcesCompat
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
+import com.jonasgerdes.stoppelmap.countdown.ui.Font
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
 import org.koin.java.KoinJavaComponent.inject
 import kotlin.math.roundToInt
 
-class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
+class SkylineWidgetProvider : AppWidgetProvider() {
 
     private val sharedPreferences: SharedPreferences by inject(SharedPreferences::class.java)
 
@@ -69,7 +70,7 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetId: Int
     ) {
-        val settings = GingerbreadWidgetSettings.loadFromPreferences(sharedPreferences, appWidgetId)
+        val settings = SkylineWidgetSettings.loadFromPreferences(sharedPreferences, appWidgetId)
         val views = initWidget(
             context = context,
             settings = settings,
@@ -79,29 +80,29 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
 
     internal fun initWidget(
         context: Context,
-        settings: GingerbreadWidgetSettings,
+        settings: SkylineWidgetSettings,
     ) = RemoteViews(
         context.packageName,
-        R.layout.widget_layout_gingerbread_heart
+        R.layout.widget_layout_skyline
     ).apply {
         val views = this
         val size = Point(256.dp.toPx(context), 206.dp.toPx(context))
         val countdownBitmap = createCountdownBitmap(
             context,
-            getCountdownTexts(context.resources, settings.showHours),
+            getCountdownTexts(context.resources),
             size,
-            settings.showHours
+            settings.showHours,
+            settings.font,
+            settings.fontColor
         )
         views.setImageViewBitmap(R.id.widget_countdown, countdownBitmap)
-        views.setInt(R.id.widget_gingerbread_heart_layer1, "setColorFilter", settings.color1)
-        views.setInt(R.id.widget_gingerbread_heart_layer2, "setColorFilter", settings.color2)
-        views.setInt(R.id.widget_gingerbread_heart_layer3, "setColorFilter", settings.color3)
+        views.setInt(R.id.widget_skyline, "setColorFilter", settings.color)
 
         val intent: PendingIntent =
             PendingIntent.getActivity(
                 context,
                 0,
-                Intent(context, GingerbreadWidgetSettingsActivity::class.java).apply {
+                Intent(context, SkylineWidgetSettingsActivity::class.java).apply {
                     putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, settings.appWidgetId)
                     data = Uri.withAppendedPath(
                         Uri.parse("stoppelmap" + "://widget/id/"),
@@ -118,33 +119,33 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
     }
 
     private fun getCountdownTexts(
-        resources: Resources,
-        showHours: Boolean
+        resources: Resources
     ): CountdownTexts = with(resources) {
         when (val countdown = getTimeLeftToOpening()) {
             is CountDown.InFuture -> with(countdown) {
                 CountdownTexts(
-                    mainText = listOfNotNull(
-                        if (countdown.daysLeft > 0) getQuantityString(
-                            R.plurals.countdownWidget_day, daysLeft, daysLeft
-                        ) else null,
-                        if (countdown.daysLeft == 0 || showHours) getQuantityString(
-                            R.plurals.countdownWidget_hour, hoursLeft, hoursLeft
-                        ) else null,
-                    ).joinToString(", "),
-                    preposition = getString(R.string.countdownWidget_preposition_until),
-                    year = "2022"
+                    mainText = getQuantityString(
+                        R.plurals.countdownWidget_day,
+                        daysLeft,
+                        daysLeft
+                    ),
+                    subText = getQuantityString(
+                        R.plurals.countdownWidget_hour,
+                        hoursLeft,
+                        hoursLeft
+                    ),
+                    preposition = getString(R.string.countdownWidget_preposition_still)
                 )
             }
             CountDown.InPast -> CountdownTexts(
                 mainText = getString(R.string.countdownWidget_mainText_past),
-                preposition = getString(R.string.countdownWidget_preposition_past),
-                year = "2023"
+                subText = "2023",
+                preposition = getString(R.string.countdownWidget_preposition_still)
             )
             CountDown.OnGoing -> CountdownTexts(
                 mainText = getString(R.string.countdownWidget_mainText_ongoing),
-                preposition = getString(R.string.countdownWidget_preposition_ongoing),
-                year = "2022"
+                subText = "",
+                preposition = getString(R.string.countdownWidget_preposition_still)
             )
         }
     }
@@ -152,47 +153,65 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
 
 private data class CountdownTexts(
     val mainText: String,
+    val subText: String,
     val preposition: String,
-    val year: String,
 )
 
 private val textBounds by lazy { Rect() }
 
 private fun createCountdownBitmap(
-    context: Context?,
+    context: Context,
     texts: CountdownTexts,
     size: Point,
-    showHours: Boolean
+    showHours: Boolean,
+    font: Font,
+    fontColor: Int
 ): Bitmap {
     val bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
-    var countDownSize = size.y / 9f
+    val centerOffset = 0.065f * size.y
+    var countDownSize = size.y / 10f
+    var daysYPosition = size.y * 0.7f
     if (!showHours) {
-        countDownSize = size.y / 5f
-    }
-    val font = ResourcesCompat.getFont(context!!, R.font.damion)
-    val paint = Paint().apply {
-        isAntiAlias = true
-        isSubpixelText = true
-        typeface = font
-        style = Paint.Style.FILL
-        color = Color.rgb(244, 244, 244)
-        textSize = countDownSize
+        daysYPosition = size.y * 0.76f
+        countDownSize = size.y / 6.5f
     }
 
+    if (font == Font.Damion) {
+        countDownSize *= 1.2f
+    }
+
+    val paint = Paint().apply {
+        typeface = ResourcesCompat.getFont(context, font.fontResource)
+        isAntiAlias = true
+        isSubpixelText = true
+        style = Paint.Style.FILL
+        color = fontColor
+    }
+
+    paint.textSize = size.y / 15f
+
+    paint.getTextBounds(texts.preposition, 0, texts.preposition.length, textBounds)
+    canvas.drawText(
+        texts.preposition, size.x / 2f - textBounds.exactCenterX() + centerOffset,
+        size.y * 0.55f, paint
+    )
+
+    paint.textSize = countDownSize
     paint.getTextBounds(texts.mainText, 0, texts.mainText.length, textBounds)
     canvas.drawText(
-        texts.mainText,
-        size.x / 2f - textBounds.exactCenterX(),
-        size.y * 0.4f,
-        paint
+        texts.mainText, size.x / 2f - textBounds.exactCenterX() + centerOffset,
+        daysYPosition, paint
     )
-    paint.textSize = size.y / 14f
-    paint.textAlign = Paint.Align.RIGHT
-    canvas.drawText(texts.preposition, size.x / 2f, size.y * 0.55f, paint)
-    paint.textSize = size.y / 14f
-    paint.textAlign = Paint.Align.LEFT
-    canvas.drawText(texts.year, size.x * 0.53f, size.y * 0.7f, paint)
+
+    if (showHours) {
+        paint.textSize = size.y / 12f
+        paint.getTextBounds(texts.subText, 0, texts.subText.length, textBounds)
+        canvas.drawText(
+            texts.subText, size.x / 2f - textBounds.exactCenterX() + centerOffset,
+            size.y * 0.8f, paint
+        )
+    }
     return bitmap
 }
 

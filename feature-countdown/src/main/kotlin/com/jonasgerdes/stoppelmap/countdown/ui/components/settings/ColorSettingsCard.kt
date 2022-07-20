@@ -43,7 +43,8 @@ fun ColorSettingsCard(
     onSaturationChanged: (Float) -> Unit,
     onBrightnessChanged: (Float) -> Unit,
     onColorChanged: (Int) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    title: String = stringResource(R.string.widget_configuration_color_title)
 ) {
     Card(
         modifier = modifier,
@@ -54,7 +55,7 @@ fun ColorSettingsCard(
     ) {
         Column(Modifier.padding(16.dp)) {
             Text(
-                text = stringResource(R.string.widget_configuration_color_title),
+                text = title,
                 style = MaterialTheme.typography.titleLarge
             )
             Spacer(modifier = Modifier.size(8.dp))

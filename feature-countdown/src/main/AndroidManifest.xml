@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name=".widget.heart.WidgetSettingsActivity"
+            android:name=".widget.heart.GingerbreadWidgetSettingsActivity"
             android:excludeFromRecents="true"
             android:exported="true"
             android:launchMode="singleInstance">
@@ -23,6 +23,28 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/gingerbread_heart_widget_provider" />
+        </receiver>
+
+        <activity
+            android:name=".widget.skyline.SkylineWidgetSettingsActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".widget.skyline.SkylineWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/skyline_widget_provider" />
         </receiver>
     </application>
 

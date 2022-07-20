@@ -8,7 +8,10 @@ import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCa
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettings
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsViewModel
+import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettings
+import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettingsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 private const val SHARED_PREFERENCES_NAME = "prefs_widgets"
@@ -19,19 +22,31 @@ val countdownModule = module {
     factory { GetOpeningCountDownFlowUseCase(getOpeningCountDown = get()) }
     factory { GetOpeningCountDownUseCase() }
 
-    factory {
+    factory(named("GingerbreadWidgetSettings")) {
         WidgetSettingsRepository(
             sharedPreferences = get(),
             loadFromPreferences = GingerbreadWidgetSettings::loadFromPreferences,
             saveToPreferences = GingerbreadWidgetSettings::saveToPreferences
         )
     }
+    factory(named("SkylineWidgetSettings")) {
+        WidgetSettingsRepository(
+            sharedPreferences = get(),
+            loadFromPreferences = SkylineWidgetSettings::loadFromPreferences,
+            saveToPreferences = SkylineWidgetSettings::saveToPreferences
+        )
+    }
     factory { CalculateGingerbreadHeartColorsFromHSLUseCase() }
 
     viewModel {
         GingerbreadWidgetSettingsViewModel(
-            widgetSettingsRepository = get(),
+            widgetSettingsRepository = get(named("GingerbreadWidgetSettings")),
             calculateGingerbreadHeartColorsFromHSL = get()
+        )
+    }
+    viewModel {
+        SkylineWidgetSettingsViewModel(
+            widgetSettingsRepository = get(named("SkylineWidgetSettings")),
         )
     }
 }

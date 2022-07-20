@@ -3,7 +3,7 @@
     ExperimentalLifecycleComposeApi::class
 )
 
-package com.jonasgerdes.stoppelmap.countdown.widget.heart
+package com.jonasgerdes.stoppelmap.countdown.widget.skyline
 
 import android.appwidget.AppWidgetManager
 import android.content.Intent
@@ -28,10 +28,10 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class GingerbreadWidgetSettingsActivity : ComponentActivity() {
+class SkylineWidgetSettingsActivity : ComponentActivity() {
 
     private val sharedPreferences: SharedPreferences by inject()
-    private val viewModel: GingerbreadWidgetSettingsViewModel by viewModel()
+    private val viewModel: SkylineWidgetSettingsViewModel by viewModel()
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
@@ -55,12 +55,12 @@ class GingerbreadWidgetSettingsActivity : ComponentActivity() {
             StoppelMapTheme {
                 val state by viewModel.state.collectAsStateWithLifecycle()
 
-                (state as? GingerbreadWidgetSettingsViewModel.ViewState.Done)?.run {
+                (state as? SkylineWidgetSettingsViewModel.ViewState.Done)?.run {
                     saveWidgetAndFinish(settings)
                 }
 
                 val appWidgetId =
-                    (state as? GingerbreadWidgetSettingsViewModel.ViewState.Loaded)?.appWidgetId
+                    (state as? SkylineWidgetSettingsViewModel.ViewState.Loaded)?.appWidgetId
                 Scaffold(
                     topBar = {
                         CenterAlignedTopAppBar(
@@ -75,6 +75,11 @@ class GingerbreadWidgetSettingsActivity : ComponentActivity() {
                         onSaturationChange = viewModel::onSaturationChanged,
                         onBrightnessChange = viewModel::onBrightnessChanged,
                         onColorSelect = viewModel::onColorSelected,
+                        onFontHueChange = viewModel::onFontHueChanged,
+                        onFontSaturationChange = viewModel::onFontSaturationChanged,
+                        onFontBrightnessChange = viewModel::onFontBrightnessChanged,
+                        onFontColorSelect = viewModel::onFontColorSelected,
+                        onFontSelect = viewModel::onFontChanged,
                         onSaveTap = viewModel::onSaveSettingsTapped,
                         modifier = Modifier
                             .padding(scaffoldPadding)
@@ -85,8 +90,8 @@ class GingerbreadWidgetSettingsActivity : ComponentActivity() {
         }
     }
 
-    private fun saveWidgetAndFinish(settings: GingerbreadWidgetSettings) {
-        val views = GingerbreadHeartWidgetProvider().initWidget(
+    private fun saveWidgetAndFinish(settings: SkylineWidgetSettings) {
+        val views = SkylineWidgetProvider().initWidget(
             context = this,
             settings = settings
         )
