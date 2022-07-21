@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.ui.Font
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
-import timber.log.Timber
 import androidx.compose.ui.text.font.Font as ComposeFont
 
 @Composable
@@ -66,13 +65,12 @@ fun DisplaySettingsCard(
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.size(8.dp))
-            Timber.d("selectable: $selectableFonts, current: $font")
             selectableFonts.forEach { selectableFont ->
                 Row {
                     val interactionSource = remember { MutableInteractionSource() }
                     RadioButton(
                         selected = selectableFont == font,
-                        onClick = { onFontChanged(font) },
+                        onClick = { onFontChanged(selectableFont) },
                         interactionSource = interactionSource
                     )
                     Column {

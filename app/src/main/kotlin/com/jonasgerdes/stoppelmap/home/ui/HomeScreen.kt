@@ -32,6 +32,7 @@ import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsActivity
 import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetProvider
+import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettingsActivity
 import org.koin.androidx.compose.viewModel
 
 @Composable
@@ -126,7 +127,7 @@ private fun addSkylineWidget(context: Context) {
             PendingIntent.getActivity(
                 context,
                 0,
-                Intent(context, SkylineWidgetProvider::class.java),
+                Intent(context, SkylineWidgetSettingsActivity::class.java),
                 FLAG_UPDATE_CURRENT.let {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                         it or FLAG_MUTABLE
