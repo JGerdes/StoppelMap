@@ -9,12 +9,31 @@ android {
     compileSdk = SdkVersions.compileSdk
     namespace = "com.jonasgerdes.stoppelmap"
 
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("../debug.keystore")
+        }
+
+        create("release") {
+            loadProperties(
+                "./signing.properties",
+                onSuccess = { properties ->
+                    storeFile = File(properties["keystorePath"] as String)
+                    storePassword = properties["keystorePassword"] as String
+                    keyAlias = properties["keyAlias"] as String
+                    keyPassword = properties["keyPassword"] as String
+                },
+                onFailure = { println("Unable to read signing.properties") }
+            )
+        }
+    }
+
     defaultConfig {
         applicationId = "com.jonasgerdes.stoppelmap"
         minSdk = SdkVersions.minSdk
         targetSdk = SdkVersions.targetSdk
         versionCode = 43
-        versionName = "v2022.0.0-alpha-$commitSha"
+        versionName = "v2022.07.24.01-$commitSha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -23,11 +42,18 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            isDebuggable = true
+        }
+
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
+            isDebuggable = false
         }
     }
 
@@ -49,12 +75,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = DependencyVersions.compose
-    }
-
-    signingConfigs {
-        getByName("debug") {
-            storeFile = file("../debug.keystore")
-        }
     }
 }
 
