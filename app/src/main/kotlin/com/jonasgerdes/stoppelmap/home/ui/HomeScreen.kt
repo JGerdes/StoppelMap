@@ -12,14 +12,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
@@ -32,18 +31,38 @@ import org.koin.androidx.compose.viewModel
 @SuppressLint("NewApi")
 @Composable
 fun HomeScreen(
+    onAboutOptionTap: () -> Unit,
     modifier: Modifier = Modifier,
     lazyViewModel: Lazy<HomeViewModel> = viewModel(),
 ) {
     val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    val context = LocalContext.current
-
     Column(
         modifier = modifier
     ) {
-        CenterAlignedTopAppBar(title = { Text(text = stringResource(id = R.string.home_topbar_title)) })
+        var showOptionsMenu by remember { mutableStateOf(true) }
+
+        CenterAlignedTopAppBar(
+            title = { Text(text = stringResource(id = R.string.home_topbar_title)) },
+            actions = {
+                DropdownMenu(
+                    expanded = showOptionsMenu,
+                    onDismissRequest = { showOptionsMenu = false }) {
+                    DropdownMenuItem(
+                        leadingIcon = { Icon(Icons.Rounded.Info, contentDescription = null) },
+                        text = { Text(stringResource(R.string.home_optionsMenu_about)) },
+                        onClick = { onAboutOptionTap() }
+                    )
+                }
+                IconButton(onClick = { showOptionsMenu = true }) {
+                    Icon(
+                        Icons.Rounded.MoreVert,
+                        stringResource(R.string.home_optionsMenu_contentDescription)
+                    )
+                }
+            }
+        )
         LazyColumn(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),

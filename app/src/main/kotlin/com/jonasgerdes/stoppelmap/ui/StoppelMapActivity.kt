@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.jonasgerdes.stoppelmap.home.ui.AboutScreen
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
@@ -76,7 +77,18 @@ class StoppelMapActivity : ComponentActivity() {
                 startDestination = Screen.Home.route,
                 modifier = Modifier.padding(scaffoldPadding)
             ) {
-                composable(Screen.Home.route) { HomeScreen(Modifier.fillMaxSize()) }
+                composable(Screen.Home.route) {
+                    HomeScreen(
+                        onAboutOptionTap = { navController.navigate(Screen.About.route) },
+                        Modifier.fillMaxSize()
+                    )
+                }
+                composable(Screen.About.route) {
+                    AboutScreen(
+                        onNavigateBack = { navController.navigateUp() },
+                        Modifier.fillMaxSize()
+                    )
+                }
                 composable(Screen.Map.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
                 composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
                 composable(Screen.Transportation.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }

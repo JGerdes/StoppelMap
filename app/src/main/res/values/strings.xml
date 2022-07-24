@@ -14,4 +14,9 @@
 
 
     <string name="home_topbar_title">Stoppelmarkt 2022</string>
+    <string name="home_optionsMenu_contentDescription">Mehr</string>
+    <string name="home_optionsMenu_about">Über die App</string>
+
+    <string name="about_topbar_title">Über die App</string>
+    <string name="about_topbar_navigateBack_contentDescription">Zurück</string>
 </resources>
