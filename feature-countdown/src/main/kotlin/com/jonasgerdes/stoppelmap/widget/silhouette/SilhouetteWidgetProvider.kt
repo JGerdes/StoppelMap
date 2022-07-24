@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.countdown.widget.skyline
+package com.jonasgerdes.stoppelmap.widget.silhouette
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -21,10 +21,12 @@ import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.ui.Font
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
+import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettings
+import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettingsActivity
 import org.koin.java.KoinJavaComponent.inject
 import kotlin.math.roundToInt
 
-class SkylineWidgetProvider : AppWidgetProvider() {
+class SilhouetteWidgetProvider : AppWidgetProvider() {
 
     private val sharedPreferences: SharedPreferences by inject(SharedPreferences::class.java)
 

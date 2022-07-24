@@ -14,6 +14,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.ui.Font
 import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.*
+import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 
 @Composable
 fun WidgetSettingsScreen(
@@ -113,7 +114,7 @@ fun WidgetSettingsScreen(
 
 @Composable
 fun GingerbreadWidgetPreview(modifier: Modifier, settings: SkylineWidgetSettings) {
-    val widgetProvider = remember { SkylineWidgetProvider() }
+    val widgetProvider = remember { SilhouetteWidgetProvider() }
     val context = LocalContext.current
     AndroidView(
         modifier = modifier,

@@ -24,6 +24,7 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
+import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.countdown.widget.heart
+package com.jonasgerdes.stoppelmap.widget.heart
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -20,6 +20,8 @@ import androidx.core.content.res.ResourcesCompat
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
+import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettings
+import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsActivity
 import org.koin.java.KoinJavaComponent.inject
 import kotlin.math.roundToInt
 

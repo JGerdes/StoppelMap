@@ -23,6 +23,7 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
+import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -85,7 +86,7 @@ class SkylineWidgetSettingsActivity : ComponentActivity() {
     }
 
     private fun saveWidgetAndFinish(settings: SkylineWidgetSettings) {
-        val views = SkylineWidgetProvider().initWidget(
+        val views = SilhouetteWidgetProvider().initWidget(
             context = this,
             settings = settings
         )

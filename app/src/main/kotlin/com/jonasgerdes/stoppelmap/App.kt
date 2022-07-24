@@ -3,9 +3,9 @@ package com.jonasgerdes.stoppelmap
 import android.app.Application
 import android.appwidget.AppWidgetManager
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
-import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
-import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetProvider
 import com.jonasgerdes.stoppelmap.home.homeModule
+import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
+import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -28,13 +28,13 @@ class App : Application() {
                 countdownModule,
             )
         }
-        
+
         val appWidgetManager = AppWidgetManager.getInstance(this)
         GingerbreadHeartWidgetProvider().updateAllWidgets(
             context = this,
             appWidgetManager = appWidgetManager
         )
-        SkylineWidgetProvider().updateAllWidgets(
+        SilhouetteWidgetProvider().updateAllWidgets(
             context = this,
             appWidgetManager = appWidgetManager
         )

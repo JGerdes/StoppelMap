@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.countdown.widget.heart
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.core.content.edit
 
 private const val SETTING_SHOW_HOUR = "setting_show_hour"
@@ -36,6 +37,7 @@ data class GingerbreadWidgetSettings(
             preferences: SharedPreferences,
             widgetSettings: GingerbreadWidgetSettings
         ) = with(widgetSettings) {
+
             preferences.edit {
                 putBoolean("$SETTING_SHOW_HOUR-$appWidgetId", showHours)
                 putInt("$SETTING_COLOR_1-$appWidgetId", color1)
@@ -49,6 +51,8 @@ data class GingerbreadWidgetSettings(
             preferences: SharedPreferences,
             appWidgetId: Int,
         ) = with(preferences) {
+            Log.e("WidgetPrefs", "Load preferences:")
+            this.all.forEach { (t, any) -> Log.e("WidgetPrefs", "    key: $t, value:$any") }
             GingerbreadWidgetSettings(
                 appWidgetId = appWidgetId,
                 showHours = getBoolean(

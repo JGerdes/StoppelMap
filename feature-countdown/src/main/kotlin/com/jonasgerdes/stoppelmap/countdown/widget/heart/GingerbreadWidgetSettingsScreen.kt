@@ -10,6 +10,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.*
+import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 
 @Composable
 fun GingerbreadWidgetSettingsScreen(

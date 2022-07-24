@@ -27,10 +27,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.countdown.R
-import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsActivity
-import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetProvider
 import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettingsActivity
+import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
+import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
@@ -111,7 +111,7 @@ private fun addGingerbreadWidget(context: Context) {
 @RequiresApi(Build.VERSION_CODES.O)
 private fun addSkylineWidget(context: Context) {
     val appWidgetManager = AppWidgetManager.getInstance(context)
-    val provider = ComponentName(context, SkylineWidgetProvider::class.java)
+    val provider = ComponentName(context, SilhouetteWidgetProvider::class.java)
 
     if (appWidgetManager.isRequestPinAppWidgetSupported) {
         val successCallback: PendingIntent =

@@ -3,12 +3,12 @@ package com.jonasgerdes.stoppelmap.countdown.usecase
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.os.Build
-import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
-import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetProvider
+import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
+import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 
 class ShouldShowCountdownWidgetSuggestionUseCase(
     private val gingerbreadHeartWidgetProvider: GingerbreadHeartWidgetProvider,
-    private val skylineWidgetProvider: SkylineWidgetProvider,
+    private val skylineWidgetProvider: SilhouetteWidgetProvider,
     private val context: Context,
     private val appWidgetManager: AppWidgetManager,
 ) {

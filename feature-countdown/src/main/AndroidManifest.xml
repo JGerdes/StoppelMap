@@ -14,7 +14,7 @@
         </activity>
 
         <receiver
-            android:name=".widget.heart.GingerbreadHeartWidgetProvider"
+            android:name="com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -34,9 +34,8 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-
         <receiver
-            android:name=".widget.skyline.SkylineWidgetProvider"
+            android:name="com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
