@@ -34,6 +34,12 @@
     <string name="widget_configuration_font_name_damion">Damion</string>
 
 
+    <string name="widget_suggestion_card_title">Hast du schon die Homescreen Widgets ausprobiert?</string>
+    <string name="widget_suggestion_card_gingerbread_contentDescription">Vorschau des Countdown-Widgets in Form eines Lebkuchenherzens</string>
+    <string name="widget_suggestion_card_skyline_contentDescription">Vorschau des Countdown-Widgets in Form einer Skyline des Marktes</string>
+    <string name="widget_suggestion_card_add">Jetzt hinzufügen</string>
+
+
     <plurals name="countdownWidget_day">
         <item quantity="one">%1$d Tag</item>
         <item quantity="other">%1$d Tage</item>

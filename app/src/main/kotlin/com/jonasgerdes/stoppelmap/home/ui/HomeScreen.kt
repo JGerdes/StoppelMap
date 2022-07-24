@@ -6,18 +6,15 @@
 
 package com.jonasgerdes.stoppelmap.home.ui
 
-import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_MUTABLE
-import android.app.PendingIntent.FLAG_UPDATE_CURRENT
-import android.appwidget.AppWidgetManager
-import android.content.ComponentName
-import android.content.Context
-import android.content.Intent
-import android.os.Build
-import androidx.annotation.RequiresApi
-import androidx.compose.foundation.layout.*
+import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.*
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -28,13 +25,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
-import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
-import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsActivity
-import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetProvider
-import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettingsActivity
 import org.koin.androidx.compose.viewModel
 
+@SuppressLint("NewApi")
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
@@ -65,75 +60,12 @@ fun HomeScreen(
                 HomeViewModel.CountDownState.Loading -> Unit
                 HomeViewModel.CountDownState.Over -> Unit
             }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-                && AppWidgetManager.getInstance(context).getAppWidgetIds(
-                    ComponentName(
-                        context.packageName,
-                        GingerbreadHeartWidgetProvider::class.java.simpleName,
-                    )
-                ).isEmpty()
-            ) {
-                item {
-                    Card {
-                        Column(Modifier.padding(16.dp)) {
-                            Text(
-                                text = "Homescreen Widgets",
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                            Button(onClick = { addGingerbreadWidget(context) }) {
-                                Text(text = "Jetzt Herz hinzufügen")
-                            }
-                            Button(onClick = { addSkylineWidget(context) }) {
-                                Text(text = "Jetzt Skyline hinzufügen")
-                            }
-                        }
-                    }
+            when (state.countdownWidgetSuggestionState) {
+                HomeViewModel.CountDownWidgetSuggestionState.Hidden -> Unit
+                HomeViewModel.CountDownWidgetSuggestionState.Visible -> item {
+                    CountDownWidgetSuggestionCard()
                 }
             }
         }
-    }
-}
-
-
-@RequiresApi(Build.VERSION_CODES.O)
-private fun addGingerbreadWidget(context: Context) {
-    val appWidgetManager = AppWidgetManager.getInstance(context)
-    val provider = ComponentName(context, GingerbreadHeartWidgetProvider::class.java)
-
-    if (appWidgetManager.isRequestPinAppWidgetSupported) {
-        val successCallback: PendingIntent =
-            PendingIntent.getActivity(
-                context,
-                0,
-                Intent(context, GingerbreadWidgetSettingsActivity::class.java),
-                FLAG_UPDATE_CURRENT.let {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        it or FLAG_MUTABLE
-                    } else it
-                }
-            )
-        appWidgetManager.requestPinAppWidget(provider, null, successCallback)
-    }
-}
-
-@RequiresApi(Build.VERSION_CODES.O)
-private fun addSkylineWidget(context: Context) {
-    val appWidgetManager = AppWidgetManager.getInstance(context)
-    val provider = ComponentName(context, SkylineWidgetProvider::class.java)
-
-    if (appWidgetManager.isRequestPinAppWidgetSupported) {
-        val successCallback: PendingIntent =
-            PendingIntent.getActivity(
-                context,
-                0,
-                Intent(context, SkylineWidgetSettingsActivity::class.java),
-                FLAG_UPDATE_CURRENT.let {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        it or FLAG_MUTABLE
-                    } else it
-                }
-            )
-        appWidgetManager.requestPinAppWidget(provider, null, successCallback)
     }
 }

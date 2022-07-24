@@ -4,12 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
+import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
 import kotlinx.coroutines.flow.*
 
 class HomeViewModel(
-    getOpeningCountDown: GetOpeningCountDownFlowUseCase
+    getOpeningCountDown: GetOpeningCountDownFlowUseCase,
+    private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
 ) : ViewModel() {
-    
+
     private val openingCountDownState: Flow<CountDownState> =
         getOpeningCountDown().map { countDownResult ->
             if (countDownResult is CountDown.InFuture) {
@@ -23,22 +25,41 @@ class HomeViewModel(
             }
         }
 
-    val state: StateFlow<ViewState> = openingCountDownState
-        .map(::ViewState)
-        .stateIn(
+    private val countdownWidgetSuggestionState: Flow<CountDownWidgetSuggestionState> = flow {
+        emit(
+            when (shouldShowCountdownWidgetSuggestion()) {
+                true -> CountDownWidgetSuggestionState.Visible
+                false -> CountDownWidgetSuggestionState.Hidden
+            }
+        )
+    }
+
+    val state: StateFlow<ViewState> =
+        combine(
+            openingCountDownState,
+            countdownWidgetSuggestionState,
+            ::ViewState
+        ).stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(),
             initialValue = ViewState.Default
         )
 
     data class ViewState(
-        val openingCountDownState: CountDownState
+        val openingCountDownState: CountDownState,
+        val countdownWidgetSuggestionState: CountDownWidgetSuggestionState,
     ) {
         companion object {
             val Default = ViewState(
-                openingCountDownState = CountDownState.Loading
+                openingCountDownState = CountDownState.Loading,
+                countdownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden
             )
         }
+    }
+
+    sealed class CountDownWidgetSuggestionState {
+        object Hidden : CountDownWidgetSuggestionState()
+        object Visible : CountDownWidgetSuggestionState()
     }
 
     sealed class CountDownState {

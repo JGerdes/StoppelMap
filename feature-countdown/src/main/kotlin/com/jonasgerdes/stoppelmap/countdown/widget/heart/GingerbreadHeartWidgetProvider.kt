@@ -64,6 +64,16 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
         }
     }
 
+    fun getWidgetCount(
+        context: Context,
+        appWidgetManager: AppWidgetManager
+    ) = appWidgetManager.getAppWidgetIds(
+        ComponentName(
+            context.packageName,
+            this::class.java.name
+        )
+    ).size
+
     private fun updateWidget(
         context: Context,
         appWidgetManager: AppWidgetManager,

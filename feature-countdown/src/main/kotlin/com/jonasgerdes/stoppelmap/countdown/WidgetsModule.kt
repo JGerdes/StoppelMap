@@ -1,13 +1,17 @@
 package com.jonasgerdes.stoppelmap.countdown
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import com.jonasgerdes.stoppelmap.countdown.repository.WidgetSettingsRepository
 import com.jonasgerdes.stoppelmap.countdown.usecase.CalculateGingerbreadHeartColorsFromHSLUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
+import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
+import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettings
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsViewModel
+import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetProvider
 import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettings
 import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettingsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -19,8 +23,20 @@ private const val SHARED_PREFERENCES_NAME = "prefs_widgets"
 val countdownModule = module {
 
     factory { get<Context>().getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE) }
+    factory { AppWidgetManager.getInstance(get()) }
+    factory { GingerbreadHeartWidgetProvider() }
+    factory { SkylineWidgetProvider() }
+
     factory { GetOpeningCountDownFlowUseCase(getOpeningCountDown = get()) }
     factory { GetOpeningCountDownUseCase() }
+    factory {
+        ShouldShowCountdownWidgetSuggestionUseCase(
+            gingerbreadHeartWidgetProvider = get(),
+            skylineWidgetProvider = get(),
+            context = get(),
+            appWidgetManager = get()
+        )
+    }
 
     factory(named("GingerbreadWidgetSettings")) {
         WidgetSettingsRepository(
