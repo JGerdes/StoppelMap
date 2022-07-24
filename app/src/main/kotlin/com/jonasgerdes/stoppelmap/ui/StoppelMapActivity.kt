@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,12 +19,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.jonasgerdes.stoppelmap.home.ui.AboutScreen
+import com.jonasgerdes.stoppelmap.about.ui.AboutScreen
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 class StoppelMapActivity : ComponentActivity() {
@@ -86,6 +89,7 @@ class StoppelMapActivity : ComponentActivity() {
                 composable(Screen.About.route) {
                     AboutScreen(
                         onNavigateBack = { navController.navigateUp() },
+                        onUrlTap = { openUrl(it) },
                         Modifier.fillMaxSize()
                     )
                 }
@@ -94,5 +98,10 @@ class StoppelMapActivity : ComponentActivity() {
                 composable(Screen.Transportation.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
             }
         }
+    }
+
+
+    private fun openUrl(url: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 }

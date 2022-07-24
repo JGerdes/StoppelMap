@@ -41,7 +41,7 @@ fun HomeScreen(
     Column(
         modifier = modifier
     ) {
-        var showOptionsMenu by remember { mutableStateOf(true) }
+        var showOptionsMenu by remember { mutableStateOf(false) }
 
         CenterAlignedTopAppBar(
             title = { Text(text = stringResource(id = R.string.home_topbar_title)) },
