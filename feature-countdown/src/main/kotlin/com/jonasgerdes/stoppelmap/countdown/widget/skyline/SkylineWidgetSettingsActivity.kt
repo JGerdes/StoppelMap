@@ -7,7 +7,6 @@ package com.jonasgerdes.stoppelmap.countdown.widget.skyline
 
 import android.appwidget.AppWidgetManager
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,13 +23,11 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SkylineWidgetSettingsActivity : ComponentActivity() {
 
-    private val sharedPreferences: SharedPreferences by inject()
     private val viewModel: SkylineWidgetSettingsViewModel by viewModel()
 
     override fun onNewIntent(intent: Intent) {
@@ -58,13 +55,10 @@ class SkylineWidgetSettingsActivity : ComponentActivity() {
                 (state as? SkylineWidgetSettingsViewModel.ViewState.Done)?.run {
                     saveWidgetAndFinish(settings)
                 }
-
-                val appWidgetId =
-                    (state as? SkylineWidgetSettingsViewModel.ViewState.Loaded)?.appWidgetId
                 Scaffold(
                     topBar = {
                         CenterAlignedTopAppBar(
-                            title = { Text(text = stringResource(id = R.string.widget_configuration_title) + " #$appWidgetId") },
+                            title = { Text(text = stringResource(id = R.string.widget_configuration_title)) },
                         )
                     }
                 ) { scaffoldPadding ->

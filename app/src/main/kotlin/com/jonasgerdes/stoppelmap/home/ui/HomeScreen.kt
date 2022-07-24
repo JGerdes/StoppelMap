@@ -99,7 +99,7 @@ fun HomeScreen(
 @RequiresApi(Build.VERSION_CODES.O)
 private fun addGingerbreadWidget(context: Context) {
     val appWidgetManager = AppWidgetManager.getInstance(context)
-    val myProvider = ComponentName(context, GingerbreadHeartWidgetProvider::class.java)
+    val provider = ComponentName(context, GingerbreadHeartWidgetProvider::class.java)
 
     if (appWidgetManager.isRequestPinAppWidgetSupported) {
         val successCallback: PendingIntent =
@@ -113,14 +113,14 @@ private fun addGingerbreadWidget(context: Context) {
                     } else it
                 }
             )
-        appWidgetManager.requestPinAppWidget(myProvider, null, successCallback)
+        appWidgetManager.requestPinAppWidget(provider, null, successCallback)
     }
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
 private fun addSkylineWidget(context: Context) {
     val appWidgetManager = AppWidgetManager.getInstance(context)
-    val myProvider = ComponentName(context, SkylineWidgetProvider::class.java)
+    val provider = ComponentName(context, SkylineWidgetProvider::class.java)
 
     if (appWidgetManager.isRequestPinAppWidgetSupported) {
         val successCallback: PendingIntent =
@@ -134,6 +134,6 @@ private fun addSkylineWidget(context: Context) {
                     } else it
                 }
             )
-        appWidgetManager.requestPinAppWidget(myProvider, null, successCallback)
+        appWidgetManager.requestPinAppWidget(provider, null, successCallback)
     }
 }

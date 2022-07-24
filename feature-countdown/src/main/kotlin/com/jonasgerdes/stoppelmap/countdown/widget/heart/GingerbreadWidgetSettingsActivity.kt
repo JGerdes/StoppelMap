@@ -58,17 +58,14 @@ class GingerbreadWidgetSettingsActivity : ComponentActivity() {
                 (state as? GingerbreadWidgetSettingsViewModel.ViewState.Done)?.run {
                     saveWidgetAndFinish(settings)
                 }
-
-                val appWidgetId =
-                    (state as? GingerbreadWidgetSettingsViewModel.ViewState.Loaded)?.appWidgetId
                 Scaffold(
                     topBar = {
                         CenterAlignedTopAppBar(
-                            title = { Text(text = stringResource(id = R.string.widget_configuration_title) + " #$appWidgetId") },
+                            title = { Text(text = stringResource(id = R.string.widget_configuration_title)) },
                         )
                     }
                 ) { scaffoldPadding ->
-                    WidgetSettingsScreen(
+                    GingerbreadWidgetSettingsScreen(
                         state = state,
                         onShowHoursChange = viewModel::onShowHoursChanged,
                         onHueChange = viewModel::onHueChanged,

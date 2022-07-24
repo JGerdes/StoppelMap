@@ -7,6 +7,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -25,7 +28,7 @@ import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.theme.StoppelPink
 import com.jonasgerdes.stoppelmap.theme.StoppelPurple
 
-private val DEFAULT_COLORS = listOf(
+val DEFAULT_COLORS = listOf(
     Color(0xff7d56c2),
     StoppelPurple,
     Color(0xff2196f3),
@@ -44,7 +47,8 @@ fun ColorSettingsCard(
     onBrightnessChanged: (Float) -> Unit,
     onColorChanged: (Int) -> Unit,
     modifier: Modifier = Modifier,
-    title: String = stringResource(R.string.widget_configuration_color_title)
+    title: String = stringResource(R.string.widget_configuration_color_title),
+    selectableColors: List<Color> = DEFAULT_COLORS
 ) {
     Card(
         modifier = modifier,
@@ -59,18 +63,23 @@ fun ColorSettingsCard(
                 style = MaterialTheme.typography.titleLarge
             )
             Spacer(modifier = Modifier.size(8.dp))
-            Row {
-                DEFAULT_COLORS.forEach { color ->
+            // TODO:  put everything (also slider) in lazy grid
+            LazyVerticalGrid(
+                columns = GridCells.Adaptive(32.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                items(selectableColors) { color ->
                     Surface(
                         shape = RoundedCornerShape(2.dp),
                         color = color,
                         modifier = Modifier
-                            .size(32.dp)
+                            .fillMaxWidth()
+                            .aspectRatio(1f)
                             .clickable {
                                 onColorChanged(color.toArgb())
                             }
                     ) {}
-                    Spacer(modifier = Modifier.size(4.dp))
                 }
             }
             Spacer(modifier = Modifier.size(16.dp))

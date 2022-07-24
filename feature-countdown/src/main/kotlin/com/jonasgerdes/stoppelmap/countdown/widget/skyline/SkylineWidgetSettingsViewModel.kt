@@ -25,6 +25,9 @@ class SkylineWidgetSettingsViewModel(
         )
 
     fun onAppWidgetIdChanged(appWidgetId: Int) {
+        if (appWidgetId == (mutableState.value as? ViewState.Loaded)?.appWidgetId) {
+            return
+        }
         val settings = widgetSettingsRepository.loadSettings(appWidgetId)
         val colorHsl = FloatArray(3).apply {
             ColorUtils.colorToHSL(settings.color, this)

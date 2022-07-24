@@ -2,19 +2,17 @@ package com.jonasgerdes.stoppelmap.countdown.widget.heart
 
 import android.widget.FrameLayout
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.CheckerBoxBackground
-import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.ColorSettingsCard
-import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.ShowHoursSettingsCard
-import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.WidgetSettingsPager
+import com.jonasgerdes.stoppelmap.countdown.ui.components.settings.*
 
 @Composable
-fun WidgetSettingsScreen(
+fun GingerbreadWidgetSettingsScreen(
     state: GingerbreadWidgetSettingsViewModel.ViewState,
     onShowHoursChange: (Boolean) -> Unit,
     onHueChange: (Float) -> Unit,
@@ -29,41 +27,50 @@ fun WidgetSettingsScreen(
         if (state is GingerbreadWidgetSettingsViewModel.ViewState.Loaded) {
             Column(
                 modifier = modifier,
-                verticalArrangement = Arrangement.SpaceBetween
+                verticalArrangement = Arrangement.Top
             ) {
-                Spacer(modifier = Modifier.size(16.dp))
                 GingerbreadWidgetPreview(
                     Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
                     settings = state.settings,
                 )
-                Spacer(modifier = Modifier.size(16.dp))
-                WidgetSettingsPager(
-                    onSave = onSaveTap,
-                    settingsCards = listOf(
-                        { modifier ->
-                            ColorSettingsCard(
-                                hue = state.colorSettings.hue,
-                                saturation = state.colorSettings.saturation,
-                                brightness = state.colorSettings.brightness,
-                                onHueChanged = onHueChange,
-                                onSaturationChanged = onSaturationChange,
-                                onBrightnessChanged = onBrightnessChange,
-                                onColorChanged = onColorSelect,
-                                modifier = modifier.fillMaxWidth(),
-                            )
-                        },
-                        { modifier ->
-                            ShowHoursSettingsCard(
-                                showHours = state.displaySettings.showHours,
-                                onShowHoursChanged = onShowHoursChange,
-                                modifier = modifier.fillMaxWidth()
-                            )
-                        }
+                Column(Modifier.weight(1f)) {
+                    Spacer(
+                        modifier = Modifier
+                            .size(16.dp)
+                            .weight(1f)
                     )
-                )
-
+                    WidgetSettingsPager(
+                        onSave = onSaveTap,
+                        settingsCards = listOf(
+                            { modifier ->
+                                ColorSettingsCard(
+                                    hue = state.colorSettings.hue,
+                                    saturation = state.colorSettings.saturation,
+                                    brightness = state.colorSettings.brightness,
+                                    onHueChanged = onHueChange,
+                                    onSaturationChanged = onSaturationChange,
+                                    onBrightnessChanged = onBrightnessChange,
+                                    onColorChanged = onColorSelect,
+                                    selectableColors = DEFAULT_COLORS + listOf(
+                                        MaterialTheme.colorScheme.primary,
+                                        MaterialTheme.colorScheme.secondary,
+                                        MaterialTheme.colorScheme.tertiary,
+                                    ),
+                                    modifier = modifier.fillMaxWidth(),
+                                )
+                            },
+                            { modifier ->
+                                ShowHoursSettingsCard(
+                                    showHours = state.displaySettings.showHours,
+                                    onShowHoursChanged = onShowHoursChange,
+                                    modifier = modifier.fillMaxWidth()
+                                )
+                            }
+                        )
+                    )
+                }
             }
 
         }

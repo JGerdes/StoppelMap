@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.countdown.widget.skyline
 
 import android.content.SharedPreferences
+import android.graphics.Color
 import androidx.core.content.edit
 import com.jonasgerdes.stoppelmap.countdown.ui.Font
 
@@ -28,7 +29,7 @@ data class SkylineWidgetSettings(
     companion object {
         const val DEFAULT_SHOW_HOUR = false
         const val DEFAULT_COLOR = 0x0b0b0b
-        const val DEFAULT_FONT_COLOR = 0xf4f4f4
+        const val DEFAULT_FONT_COLOR = Color.WHITE
         val DEFAULT_FONT = Font.RobotoSlab
         val DEFAULT_ACTION = Action.OPEN_SETTINGS
 
