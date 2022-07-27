@@ -9,7 +9,6 @@ package com.jonasgerdes.stoppelmap.about.ui
 import android.annotation.SuppressLint
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -33,6 +32,7 @@ import com.jonasgerdes.stoppelmap.BuildConfig
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.about.data.Library
 import com.jonasgerdes.stoppelmap.about.data.libraries
+import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 
 @SuppressLint("NewApi")
 @Composable
@@ -118,30 +118,12 @@ fun AboutHeader(
     @StringRes title: Int,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-            .padding(top = 16.dp)
-    ) {
-        Line(modifier = Modifier.weight(1f))
+    ListLineHeader(modifier = modifier.padding(top = 16.dp)) {
         Text(
             text = stringResource(id = title),
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
+            style = MaterialTheme.typography.titleLarge
         )
-        Line(modifier = Modifier.weight(1f))
     }
-}
-
-@Composable
-fun Line(modifier: Modifier = Modifier) {
-    val color = LocalContentColor.current
-    Box(
-        modifier
-            .height(1.dp)
-            .background(color = color)
-    )
 }
 
 @Composable
