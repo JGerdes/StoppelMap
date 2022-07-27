@@ -4,6 +4,7 @@ import android.app.Application
 import android.appwidget.AppWidgetManager
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
 import com.jonasgerdes.stoppelmap.home.homeModule
+import com.jonasgerdes.stoppelmap.transportation.transportationModule
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 import org.koin.android.BuildConfig
@@ -26,6 +27,7 @@ class App : Application() {
             modules(
                 homeModule,
                 countdownModule,
+                transportationModule,
             )
         }
 
