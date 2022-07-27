@@ -24,6 +24,7 @@ import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
+import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
 
 
@@ -95,7 +96,11 @@ class StoppelMapActivity : ComponentActivity() {
                 }
                 composable(Screen.Map.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
                 composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
-                composable(Screen.Transportation.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
+                composable(Screen.TransportationOverview.route) {
+                    TransportationOverviewScreen(
+                        Modifier.fillMaxSize()
+                    )
+                }
             }
         }
     }

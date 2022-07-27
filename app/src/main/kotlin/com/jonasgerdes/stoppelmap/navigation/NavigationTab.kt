@@ -32,6 +32,6 @@ val navigationTabs = listOf(
     NavigationTab(
         icon = Icons.Rounded.DepartureBoard,
         label = R.string.main_bottom_nav_item_transport,
-        startRoute = Screen.Transportation.route
+        startRoute = Screen.TransportationOverview.route
     ),
 )
