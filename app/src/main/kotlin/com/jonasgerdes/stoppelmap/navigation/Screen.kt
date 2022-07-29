@@ -7,5 +7,8 @@ sealed class Screen(val route: String) {
     object Map : Screen("map")
     object Schedule : Screen("schedule")
     object TransportationOverview : Screen("transportation")
+    object Route : Screen("transportation/route/{routeId}") {
+        fun create(routeId: String) = "transportation/route/$routeId"
+    }
 
 }

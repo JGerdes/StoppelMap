@@ -25,6 +25,7 @@ import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
+import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
 
 
@@ -98,6 +99,15 @@ class StoppelMapActivity : ComponentActivity() {
                 composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
                 composable(Screen.TransportationOverview.route) {
                     TransportationOverviewScreen(
+                        onRouteTap = { navController.navigate(Screen.Route.create(routeId = it)) },
+                        Modifier.fillMaxSize()
+                    )
+                }
+                composable(Screen.Route.route) {
+                    val routeId = it.arguments?.getString("routeId")!!
+                    RouteScreen(
+                        routeId = routeId,
+                        onNavigateBack = { navController.navigateUp() },
                         Modifier.fillMaxSize()
                     )
                 }

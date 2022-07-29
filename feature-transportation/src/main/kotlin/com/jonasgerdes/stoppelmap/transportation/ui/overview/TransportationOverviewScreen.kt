@@ -6,6 +6,7 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.overview
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -28,6 +29,7 @@ import org.koin.androidx.compose.viewModel
 @SuppressLint("NewApi")
 @Composable
 fun TransportationOverviewScreen(
+    onRouteTap: (routeId: String) -> Unit,
     modifier: Modifier = Modifier,
     lazyViewModel: Lazy<TransportationOverviewViewModel> = viewModel(),
 ) {
@@ -68,7 +70,11 @@ fun TransportationOverviewScreen(
                         key = { it.id },
                         contentType = { ItemTypes.BusRoute }) { route ->
 
-                        Card(modifier = Modifier.fillMaxWidth()) {
+                        Card(modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                onRouteTap(route.id)
+                            }) {
                             Column(
                                 modifier = Modifier
                                     .fillMaxWidth()

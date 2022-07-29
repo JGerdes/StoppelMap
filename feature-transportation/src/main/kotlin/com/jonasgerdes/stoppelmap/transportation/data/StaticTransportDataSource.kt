@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.transportation.data
 
+import com.jonasgerdes.stoppelmap.transportation.data.model.BusRoute
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteSummary
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -22,5 +23,11 @@ class StaticTransportDataSource : TransportDataSource {
                 )
             }
         )
+    }
+
+    override fun getRouteById(id: String): Flow<BusRoute> = flow {
+        val route = routes.find { it.id == id }
+
+        emit(route!!)
     }
 }
