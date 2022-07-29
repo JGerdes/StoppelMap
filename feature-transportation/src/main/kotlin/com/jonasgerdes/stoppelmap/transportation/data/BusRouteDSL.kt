@@ -11,7 +11,7 @@ class BusRouteScope {
     var title: String? = null
         set(value) {
             if (id == null && value != null) {
-                id = "22-" + value.trim().lowercase().replace(" ", "-")
+                id = "22-" + value.toSlug()
             }
             field = value
         }
@@ -38,7 +38,7 @@ class StationScope(private val routeScope: BusRouteScope) {
     var title: String? = null
         set(value) {
             if (id == null && value != null) {
-                id = routeScope.id + "-" + value.trim().lowercase().replace(" ", "-")
+                id = routeScope.id + "-" + value.toSlug()
             }
             field = value
         }
@@ -245,3 +245,16 @@ private val timeZoneStoppelmarkt = TimeZone.of("Europe/Berlin")
 private const val firstHourOfNextDay = 6
 
 val Int.Minutes get() = toDuration(DurationUnit.MINUTES)
+
+
+private fun String.toSlug() =
+    this
+        .trim().lowercase()
+        .replace("ä", "ae")
+        .replace("ö", "oe")
+        .replace("ü", "ue")
+        .replace("ß", "s")
+        .replace(Regex("\\W"), "-")
+        .replace("--", "-")
+        .replace("--", "-")
+        .replace("--", "-")
