@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.transportation.data.TransportDataSource
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteViewModel
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationViewModel
+import com.jonasgerdes.stoppelmap.transportation.usecase.CreateTimetableUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -14,6 +15,8 @@ val transportationModule = module {
     single<TransportDataSource> { StaticTransportDataSource() }
 
     single { BusRoutesRepository(transportDataSource = get()) }
+
+    factory { CreateTimetableUseCase() }
 
     viewModel {
         TransportationOverviewViewModel(
@@ -26,6 +29,6 @@ val transportationModule = module {
     }
 
     viewModel {
-        StationViewModel(stationId = get(), busRoutesRepository = get())
+        StationViewModel(stationId = get(), busRoutesRepository = get(), createTimetable = get())
     }
 }

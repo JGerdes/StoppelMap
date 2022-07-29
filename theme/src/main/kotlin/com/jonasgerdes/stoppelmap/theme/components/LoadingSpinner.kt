@@ -19,7 +19,7 @@ fun LoadingSpinner(modifier: Modifier = Modifier) {
         val infiniteTransition = rememberInfiniteTransition()
         val rotation by infiniteTransition.animateFloat(
             initialValue = 0f,
-            targetValue = -360f,
+            targetValue = 360f,
             animationSpec = infiniteRepeatable(
                 animation = tween(1000, easing = LinearEasing),
                 repeatMode = RepeatMode.Restart
