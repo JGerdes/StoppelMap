@@ -1,9 +1,6 @@
 package com.jonasgerdes.stoppelmap.transportation.data
 
-import com.jonasgerdes.stoppelmap.transportation.data.model.BusRoute
-import com.jonasgerdes.stoppelmap.transportation.data.model.DepartureDay
-import com.jonasgerdes.stoppelmap.transportation.data.model.Price
-import com.jonasgerdes.stoppelmap.transportation.data.model.Station
+import com.jonasgerdes.stoppelmap.transportation.data.model.*
 import kotlinx.datetime.*
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
@@ -47,13 +44,17 @@ class StationScope(private val routeScope: BusRouteScope) {
         }
     var prices: List<Price> = routeScope.fixedPrices ?: emptyList()
     var departures: MutableList<DepartureDay> = mutableListOf()
+    var isDestination: Boolean = false
 
     fun departuresAfterPreviousStation(offset: Duration) {
         departures = routeScope.stations.last().departures.map { departureDay ->
             departureDay.copy(
                 departures = departureDay.departures.map { departure ->
-                    departure.toInstant(timeZoneStoppelmarkt).plus(offset).toLocalDateTime(
-                        timeZoneStoppelmarkt
+                    departure.copy(
+                        time = departure.time.toInstant(timeZoneStoppelmarkt).plus(offset)
+                            .toLocalDateTime(
+                                timeZoneStoppelmarkt
+                            )
                     )
                 }
             )
@@ -136,7 +137,7 @@ class StationScope(private val routeScope: BusRouteScope) {
             departures.add(
                 DepartureDay(
                     day = it.day,
-                    departures = it.departures.distinct(),
+                    departures = it.departures.distinctBy { it.time },
                     laterDeparturesOnDemand = it.laterDeparturesOnDemand
                 )
             )
@@ -162,6 +163,7 @@ fun BusRouteScope.addStation(
                 title = it.title!!,
                 prices = it.prices,
                 departures = it.departures,
+                isDestination = it.isDestination
             )
         }
     )
@@ -183,11 +185,15 @@ fun BusRouteScope.addReturnStation(builder: StationScope.() -> Unit) {
 }
 
 class DepartureDayScope(val day: LocalDate) {
-    val departures: MutableList<LocalDateTime> = mutableListOf()
+    val departures: MutableList<Departure> = mutableListOf()
     var laterDeparturesOnDemand: Boolean = false
 
     fun departures(vararg departureTimes: String) {
-        departures.addAll(departureTimes.map { it.toLocalTime().atDay() })
+        departures.addAll(departureTimes.map { Departure(it.toLocalTime().atDay()) })
+    }
+
+    fun departure(time: LocalDateTime, annotation: String? = null) {
+        departures.add(Departure(time, annotation))
     }
 
     private fun LocalTime.atDay() =
@@ -203,7 +209,7 @@ class DepartureDayScope(val day: LocalDate) {
         var next = start.atDay()
         val end = inclusiveEnd.atDay()
         while (next <= end) {
-            departures.add(next)
+            departures.add(Departure(next))
             next = next.toInstant(timeZoneStoppelmarkt).plus(step).toLocalDateTime(
                 timeZoneStoppelmarkt
             )

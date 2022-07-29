@@ -14,6 +14,7 @@ data class Station(
     val id: String,
     val title: String,
     val prices: List<Price>,
+    val isDestination: Boolean = false,
     val departures: List<DepartureDay>
 )
 
@@ -32,6 +33,11 @@ data class Price(
 
 data class DepartureDay(
     val day: LocalDate,
-    val departures: List<LocalDateTime>,
+    val departures: List<Departure>,
     val laterDeparturesOnDemand: Boolean = false
+)
+
+data class Departure(
+    val time: LocalDateTime,
+    val annotation: String? = null,
 )

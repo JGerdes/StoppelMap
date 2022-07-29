@@ -36,7 +36,7 @@ internal fun vechtaStadt() = createBusRoute {
     addStation("Füchteler Straße/Krusenschlopp", minutesAfterPrevious = 1)
     addStation("Botenkamp/Georgstraße", minutesAfterPrevious = 2)
     addStation("Botenkamp/Markusstraße", minutesAfterPrevious = 1)
-    addStation("Stoppelmarkt", minutesAfterPrevious = 2)
+    addStation("Stoppelmarkt", minutesAfterPrevious = 2) { isDestination = true }
 
     addReturnStation {
         title = "Stoppelmarkt"
