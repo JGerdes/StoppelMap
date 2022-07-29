@@ -26,6 +26,7 @@ import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
+import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
 
 
@@ -99,14 +100,31 @@ class StoppelMapActivity : ComponentActivity() {
                 composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
                 composable(Screen.TransportationOverview.route) {
                     TransportationOverviewScreen(
-                        onRouteTap = { navController.navigate(Screen.Route.create(routeId = it)) },
+                        onRouteTap = {
+                            navController.navigate(
+                                Screen.TransportRoute.create(routeId = it)
+                            )
+                        },
                         Modifier.fillMaxSize()
                     )
                 }
-                composable(Screen.Route.route) {
+                composable(Screen.TransportRoute.route) {
                     val routeId = it.arguments?.getString("routeId")!!
                     RouteScreen(
                         routeId = routeId,
+                        onStationTap = {
+                            navController.navigate(
+                                Screen.TransportStation.create(stationId = it)
+                            )
+                        },
+                        onNavigateBack = { navController.navigateUp() },
+                        Modifier.fillMaxSize()
+                    )
+                }
+                composable(Screen.TransportStation.route) {
+                    val stationId = it.arguments?.getString("stationId")!!
+                    StationScreen(
+                        stationId = stationId,
                         onNavigateBack = { navController.navigateUp() },
                         Modifier.fillMaxSize()
                     )

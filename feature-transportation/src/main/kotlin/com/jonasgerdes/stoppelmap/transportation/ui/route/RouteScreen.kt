@@ -1,12 +1,14 @@
 @file:OptIn(
     ExperimentalLifecycleComposeApi::class,
     ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class,
+    ExperimentalLifecycleComposeApi::class,
 )
 
 package com.jonasgerdes.stoppelmap.transportation.ui.route
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -36,6 +38,7 @@ import java.util.*
 @Composable
 fun RouteScreen(
     routeId: String,
+    onStationTap: (stationId: String) -> Unit,
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     lazyViewModel: Lazy<RouteViewModel> = viewModel { parametersOf(routeId) }
@@ -123,6 +126,9 @@ fun RouteScreen(
                                     Modifier
                                         .weight(1f)
                                         .padding(vertical = 8.dp)
+                                        .clickable {
+                                            onStationTap(station.id)
+                                        }
                                 )
                             }
                             is BusRouteDetails.Station.Destination -> {
@@ -131,6 +137,9 @@ fun RouteScreen(
                                     Modifier
                                         .weight(1f)
                                         .padding(vertical = 8.dp)
+                                        .clickable {
+                                            onStationTap(station.id)
+                                        }
                                 )
                             }
                         }
