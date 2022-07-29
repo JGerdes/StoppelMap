@@ -31,6 +31,7 @@ import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
+import java.time.DayOfWeek
 import java.time.format.DateTimeFormatter
 import java.util.*
 
@@ -59,7 +60,7 @@ fun StationScreen(
                     ) {
                         Icon(
                             Icons.Rounded.ArrowBack,
-                            stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
+                            stringResource(id = R.string.transportation_station_topbar_navigateBack_contentDescription)
                         )
                     }
                 }
@@ -67,7 +68,8 @@ fun StationScreen(
             Row(modifier = Modifier.fillMaxWidth()) {
                 stationState.timetable.departureDays.forEach {
                     Text(
-                        text = it.dayOfWeek.name,
+                        text = stringResource(it.dayOfWeek.toResourceString()),
+                        textAlign = TextAlign.Center,
                         modifier = Modifier
                             .padding(8.dp)
                             .weight(1f)
@@ -95,10 +97,9 @@ fun TimetableCard(
     ) {
         timetable.segments.forEach {
             item(span = { GridItemSpan(maxLineSpan) }) {
-                ListLineHeader {
+                ListLineHeader(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = it.type.name,
-                        textAlign = TextAlign.Center,
+                        text = stringResource(it.type.toStringResource())
                     )
                 }
             }
@@ -106,12 +107,31 @@ fun TimetableCard(
                 if (slot != null) {
                     Text(
                         text = slot.time.time.toJavaLocalTime().format(timeFormatter),
-                        style = MaterialTheme.typography.bodySmall,
+                        style = MaterialTheme.typography.bodyMedium,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(2.dp)
                     )
                 }
             }
         }
     }
+}
+
+private fun Timetable.DaySegmentType.toStringResource() = when (this) {
+    Timetable.DaySegmentType.MORNING -> R.string.transportation_station_timetable_segment_morning
+    Timetable.DaySegmentType.AFTERNOON -> R.string.transportation_station_timetable_segment_afternoon
+    Timetable.DaySegmentType.EVENING -> R.string.transportation_station_timetable_segment_evening
+    Timetable.DaySegmentType.NIGHT -> R.string.transportation_station_timetable_segment_night
+}
+
+private fun DayOfWeek.toResourceString() = when (this) {
+    DayOfWeek.MONDAY -> R.string.transportation_station_timetable_day_monday
+    DayOfWeek.TUESDAY -> R.string.transportation_station_timetable_day_tuesday
+    DayOfWeek.WEDNESDAY -> R.string.transportation_station_timetable_day_wednesday
+    DayOfWeek.THURSDAY -> R.string.transportation_station_timetable_day_thursday
+    DayOfWeek.FRIDAY -> R.string.transportation_station_timetable_day_friday
+    DayOfWeek.SATURDAY -> R.string.transportation_station_timetable_day_saturday
+    DayOfWeek.SUNDAY -> R.string.transportation_station_timetable_day_sunday
 }

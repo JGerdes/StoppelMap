@@ -8,4 +8,18 @@
     <string name="transportation_route_card_next_departures_label">Nächste Abfahrten</string>
     <string name="transportation_route_card_next_departures_immediately">Nächste Abfahrten</string>
 
+    <string name="transportation_station_topbar_navigateBack_contentDescription">Zurück</string>
+    <string name="transportation_station_timetable_day_monday">Mo</string>
+    <string name="transportation_station_timetable_day_tuesday">Di</string>
+    <string name="transportation_station_timetable_day_wednesday">Mi</string>
+    <string name="transportation_station_timetable_day_thursday">Do</string>
+    <string name="transportation_station_timetable_day_friday">Fr</string>
+    <string name="transportation_station_timetable_day_saturday">Sa</string>
+    <string name="transportation_station_timetable_day_sunday">So</string>
+
+    <string name="transportation_station_timetable_segment_morning">Morgens</string>
+    <string name="transportation_station_timetable_segment_afternoon">Nachmittags</string>
+    <string name="transportation_station_timetable_segment_evening">Abends</string>
+    <string name="transportation_station_timetable_segment_night">Nachts</string>
+
 </resources>
