@@ -6,6 +6,11 @@ import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 
 class CreateTimetableUseCase {
 
@@ -22,12 +27,20 @@ class CreateTimetableUseCase {
                     Timetable.DaySegment(
                         type = daySegmentType,
                         departureSlots =
-                        allSlots.keys.filter { daySegmentType.containsTime(it) }
+                        allSlots.keys
+                            .filter { daySegmentType.containsTime(it) }
                             .map { slotTime ->
                                 val departuresWithDay = allSlots[slotTime]!!
                                 Timetable.DepartureSlot(departures = departures.associate { day -> day.day to departuresWithDay.find { it.day == day }?.departure }.values.toList())
                             }
-                            .sortedBy { it.departures.filterNotNull().first().time }
+                            .sortedBy {
+                                val firstIndex = it.departures.indexOfFirst { it != null }
+                                it.departures[firstIndex]!!.time.toInstant(TimeZone.UTC).minus(
+                                    firstIndex.toDuration(
+                                        DurationUnit.DAYS
+                                    )
+                                ).toLocalDateTime(TimeZone.UTC)
+                            }
                     )
                 }
             )
@@ -41,7 +54,7 @@ private data class DepartureWithDay(
 
 private fun Timetable.DaySegmentType.containsTime(localTime: LocalTime) =
     if (startTimeInclusive < endTimeExclusive) {
-        localTime > startTimeInclusive && localTime < endTimeExclusive
+        localTime >= startTimeInclusive && localTime < endTimeExclusive
     } else {
-        localTime > startTimeInclusive || localTime < endTimeExclusive
+        localTime >= startTimeInclusive || localTime < endTimeExclusive
     }
