@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.transportation.data.model
+package com.jonasgerdes.stoppelmap.transportation.model
 
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime

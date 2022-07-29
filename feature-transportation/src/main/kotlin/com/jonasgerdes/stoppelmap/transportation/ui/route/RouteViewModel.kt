@@ -3,7 +3,7 @@ package com.jonasgerdes.stoppelmap.transportation.ui.route
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
-import com.jonasgerdes.stoppelmap.transportation.data.model.BusRoute
+import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -14,7 +14,32 @@ class RouteViewModel(
     busRoutesRepository: BusRoutesRepository
 ) : ViewModel() {
 
-    private val routeState = busRoutesRepository.getRouteById(routeId).map(RouteState::Loaded)
+    private val routeState = busRoutesRepository.getRouteById(routeId)
+        .map { route ->
+            BusRouteDetails(
+                routeId = route.id,
+                title = route.title,
+                stations = route.stations.map { station ->
+                    if (station.isDestination) {
+                        BusRouteDetails.Station.Destination(
+                            id = station.id,
+                            title = station.title
+                        )
+                    } else {
+                        BusRouteDetails.Station.Stop(
+                            id = station.id,
+                            title = station.title,
+                            nextDepartures = station.departures.first().departures.take(3).map {
+                                BusRouteDetails.DepartureTime.Absolut(
+                                    time = it.time
+                                )
+                            }
+                        )
+                    }
+                }
+            )
+        }
+        .map(RouteState::Loaded)
 
     val state: StateFlow<ViewState> =
         routeState
@@ -38,6 +63,6 @@ class RouteViewModel(
 
     sealed class RouteState {
         object Loading : RouteState()
-        data class Loaded(val route: BusRoute) : RouteState()
+        data class Loaded(val routeDetails: BusRouteDetails) : RouteState()
     }
 }

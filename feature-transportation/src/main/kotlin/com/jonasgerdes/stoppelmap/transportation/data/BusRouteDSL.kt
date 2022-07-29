@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap.transportation.data
 
-import com.jonasgerdes.stoppelmap.transportation.data.model.*
+import com.jonasgerdes.stoppelmap.transportation.model.*
 import kotlinx.datetime.*
 import kotlin.time.Duration
 import kotlin.time.DurationUnit

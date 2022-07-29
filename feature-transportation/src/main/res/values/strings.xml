@@ -5,5 +5,7 @@
     <string name="transportation_overview_card_via">über</string>
 
     <string name="transportation_route_topbar_navigateBack_contentDescription">Zurück</string>
+    <string name="transportation_route_card_next_departures_label">Nächste Abfahrten</string>
+    <string name="transportation_route_card_next_departures_immediately">Nächste Abfahrten</string>
 
 </resources>
