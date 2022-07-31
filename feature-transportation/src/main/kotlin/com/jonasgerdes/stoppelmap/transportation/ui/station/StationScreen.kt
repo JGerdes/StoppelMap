@@ -1,24 +1,24 @@
 @file:OptIn(
-    ExperimentalLifecycleComposeApi::class,
-    ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class,
-    ExperimentalLifecycleComposeApi::class,
+    ExperimentalMaterial3Api::class,
+    ExperimentalLifecycleComposeApi::class, ExperimentalLifecycleComposeApi::class,
 )
 
 package com.jonasgerdes.stoppelmap.transportation.ui.station
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -65,18 +65,48 @@ fun StationScreen(
                     }
                 }
             )
-            Row(modifier = Modifier.fillMaxWidth()) {
-                stationState.timetable.departureDays.forEach {
-                    Text(
-                        text = stringResource(it.dayOfWeek.toResourceString()),
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .weight(1f)
+            val topShape = remember {
+                RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
+            }
+            Card(
+                shape = topShape,
+                modifier = Modifier
+                    .padding(horizontal = 8.dp),
+            ) {
+                Column(modifier.fillMaxWidth()) {
+                    val gridState = rememberLazyGridState()
+                    val firstItemVisible by remember {
+                        derivedStateOf {
+                            gridState.firstVisibleItemIndex == 0
+                        }
+                    }
+                    val elevation by animateDpAsState(
+                        targetValue = if (firstItemVisible) 0.dp else 4.dp
+                    )
+                    Card(
+                        shape = topShape,
+                        modifier = Modifier.shadow(elevation)
+                    ) {
+                        Row {
+                            stationState.timetable.departureDays.forEach {
+                                Text(
+                                    text = stringResource(it.dayOfWeek.toResourceString()),
+                                    textAlign = TextAlign.Center,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    modifier = Modifier
+                                        .padding(16.dp)
+                                        .weight(1f)
+                                )
+                            }
+                        }
+                    }
+                    Timetable(
+                        timetable = stationState.timetable,
+                        gridState = gridState,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
-            TimetableCard(timetable = stationState.timetable, modifier = Modifier.fillMaxWidth())
         }
     } else {
         LoadingSpinner(Modifier.fillMaxSize())
@@ -84,22 +114,26 @@ fun StationScreen(
 }
 
 @Composable
-fun TimetableCard(
+fun Timetable(
     timetable: Timetable,
     modifier: Modifier = Modifier,
+    gridState: LazyGridState = rememberLazyGridState(),
 ) {
     val timeFormatter = remember(Locale.getDefault()) {
         DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault())
     }
     LazyVerticalGrid(
         columns = GridCells.Fixed(timetable.departureDays.size),
+        contentPadding = PaddingValues(bottom = 16.dp),
+        state = gridState,
         modifier = modifier
     ) {
         timetable.segments.forEach {
             item(span = { GridItemSpan(maxLineSpan) }) {
                 ListLineHeader(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = stringResource(it.type.toStringResource())
+                        text = stringResource(it.type.toStringResource()),
+                        style = MaterialTheme.typography.titleMedium
                     )
                 }
             }
