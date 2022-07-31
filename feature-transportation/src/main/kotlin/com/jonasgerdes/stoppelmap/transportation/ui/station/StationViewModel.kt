@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.transportation.ui.station
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
+import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.usecase.CreateTimetableUseCase
 import kotlinx.coroutines.flow.SharingStarted
@@ -20,7 +21,8 @@ class StationViewModel(
         .map { station ->
             StationState.Loaded(
                 stationTitle = station.title,
-                timetable = createTimetable(station.departures)
+                timetable = createTimetable(station.departures),
+                prices = station.prices
             )
         }
 
@@ -49,6 +51,7 @@ class StationViewModel(
         data class Loaded(
             val stationTitle: String,
             val timetable: Timetable,
+            val prices: List<Price>
         ) : StationState()
     }
 }
