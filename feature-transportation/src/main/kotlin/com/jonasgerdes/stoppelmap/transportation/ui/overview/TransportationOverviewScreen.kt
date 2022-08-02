@@ -10,6 +10,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DirectionsBus
 import androidx.compose.material3.*
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
+import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel.BusRoutesState
 import org.koin.androidx.compose.viewModel
@@ -39,12 +41,15 @@ fun TransportationOverviewScreen(
     Column(
         modifier = modifier
     ) {
+        val listState = rememberLazyListState()
         CenterAlignedTopAppBar(
             title = { Text(text = stringResource(id = R.string.transportation_overview_topbar_title)) },
+            modifier = Modifier.elevationWhenScrolled(listState)
         )
         LazyColumn(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
+            state = listState,
             modifier = Modifier.fillMaxSize()
         ) {
             when (val busRoutesState = state.busRoutesViewState) {

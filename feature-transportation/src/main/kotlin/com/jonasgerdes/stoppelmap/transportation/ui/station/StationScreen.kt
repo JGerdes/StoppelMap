@@ -8,7 +8,6 @@ package com.jonasgerdes.stoppelmap.transportation.ui.station
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,11 +15,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -31,6 +28,7 @@ import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
+import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
@@ -124,17 +122,9 @@ fun StationScreen(
             ) {
                 Column(modifier.fillMaxWidth()) {
                     val gridState = rememberLazyGridState()
-                    val firstItemVisible by remember {
-                        derivedStateOf {
-                            gridState.firstVisibleItemIndex == 0
-                        }
-                    }
-                    val elevation by animateDpAsState(
-                        targetValue = if (firstItemVisible) 0.dp else 4.dp
-                    )
                     Card(
                         shape = topShape,
-                        modifier = Modifier.shadow(elevation)
+                        modifier = Modifier.elevationWhenScrolled(gridState)
                     ) {
                         Row {
                             stationState.timetable.departureDays.forEach {
@@ -199,7 +189,8 @@ fun Timetable(
     LazyVerticalGrid(
         columns = GridCells.Fixed(timetable.departureDays.size),
         contentPadding = PaddingValues(bottom = 16.dp),
-        state = gridState
+        state = gridState,
+        modifier = modifier
     ) {
         timetable.segments.forEach { daySegment ->
             item(

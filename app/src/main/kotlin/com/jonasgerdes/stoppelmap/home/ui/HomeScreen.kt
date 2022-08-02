@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.MoreVert
@@ -26,6 +27,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
+import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import org.koin.androidx.compose.viewModel
 
 @SuppressLint("NewApi")
@@ -42,7 +44,7 @@ fun HomeScreen(
         modifier = modifier
     ) {
         var showOptionsMenu by remember { mutableStateOf(false) }
-
+        val listState = rememberLazyListState()
         CenterAlignedTopAppBar(
             title = { Text(text = stringResource(id = R.string.home_topbar_title)) },
             actions = {
@@ -61,11 +63,13 @@ fun HomeScreen(
                         stringResource(R.string.home_optionsMenu_contentDescription)
                     )
                 }
-            }
+            },
+            modifier = Modifier.elevationWhenScrolled(listState)
         )
         LazyColumn(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
+            state = listState,
             modifier = Modifier.fillMaxSize()
         ) {
             when (val countDownState = state.openingCountDownState) {

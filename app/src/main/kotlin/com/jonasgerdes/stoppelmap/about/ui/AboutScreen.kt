@@ -13,6 +13,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Attribution
@@ -33,6 +34,7 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.about.data.Library
 import com.jonasgerdes.stoppelmap.about.data.libraries
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
+import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 
 @SuppressLint("NewApi")
 @Composable
@@ -41,7 +43,7 @@ fun AboutScreen(
     onUrlTap: (url: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-
+    val listState = rememberLazyListState()
     Column(
         modifier = modifier
     ) {
@@ -56,11 +58,13 @@ fun AboutScreen(
                         stringResource(id = R.string.about_topbar_navigateBack_contentDescription)
                     )
                 }
-            }
+            },
+            modifier = Modifier.elevationWhenScrolled(listState)
         )
         LazyColumn(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
+            state = listState,
             modifier = Modifier.fillMaxSize()
         ) {
 
@@ -142,7 +146,7 @@ fun LibraryCard(
         ) {
             Text(
                 text = library.name,
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.size(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {

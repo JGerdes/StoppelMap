@@ -7,7 +7,6 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.route
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,13 +17,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -33,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
+import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import kotlinx.datetime.toJavaLocalDateTime
@@ -57,15 +55,9 @@ fun RouteScreen(
     val routeState = state.routeState
     if (routeState is RouteViewModel.RouteState.Loaded) {
         val stationListState = rememberLazyListState()
-        val isAtTop by remember {
-            derivedStateOf {
-                stationListState.firstVisibleItemIndex == 0 && stationListState.firstVisibleItemScrollOffset == 0
-            }
-        }
         Column(
             modifier = modifier
         ) {
-            val elevation by animateDpAsState(targetValue = if (isAtTop) 0.dp else 8.dp)
             SmallTopAppBar(
                 title = { Text(text = routeState.routeDetails.title) },
                 navigationIcon = {
@@ -78,7 +70,7 @@ fun RouteScreen(
                         )
                     }
                 },
-                modifier = Modifier.shadow(elevation = elevation)
+                modifier = Modifier.elevationWhenScrolled(stationListState)
             )
             val stations = routeState.routeDetails.stations
             LazyColumn(
