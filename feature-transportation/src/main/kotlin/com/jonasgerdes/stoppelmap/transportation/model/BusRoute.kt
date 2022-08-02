@@ -7,7 +7,8 @@ data class BusRoute(
     val id: String,
     val title: String,
     val stations: List<Station>,
-    val returnStations: List<Station>
+    val returnStations: List<Station>,
+    val additionalInfo: String? = null
 )
 
 data class Station(
@@ -15,6 +16,7 @@ data class Station(
     val title: String,
     val prices: List<Price>,
     val isDestination: Boolean = false,
+    val annotateAsNew: Boolean = false,
     val departures: List<DepartureDay>
 )
 

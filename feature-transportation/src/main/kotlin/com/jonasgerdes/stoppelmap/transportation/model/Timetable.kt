@@ -14,7 +14,6 @@ data class Timetable(
     )
 
     data class DepartureSlot(
-        // val departures: Map<LocalDate, Departure?>
         val departures: List<Departure?>
     )
 

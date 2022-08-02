@@ -5,6 +5,7 @@ import kotlinx.datetime.LocalDateTime
 data class BusRouteDetails(
     val routeId: String,
     val title: String,
+    val additionalInfo: String? = null,
     val stations: List<Station>
 ) {
 
@@ -15,7 +16,8 @@ data class BusRouteDetails(
         data class Stop(
             override val id: String,
             override val title: String,
-            val nextDepartures: List<DepartureTime>
+            val nextDepartures: List<DepartureTime>,
+            val annotateAsNew: Boolean = false,
         ) : Station()
 
         data class Destination(

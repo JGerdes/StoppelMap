@@ -17,6 +17,7 @@ class BusRouteScope {
         }
     val stations: MutableList<Station> = mutableListOf()
     val returnStations: MutableList<Station> = mutableListOf()
+    var additionalInfo: String? = null
 
     var fixedPrices: List<Price>? = null
 }
@@ -30,6 +31,7 @@ fun createBusRoute(builder: BusRouteScope.() -> Unit) =
             title = it.title!!,
             stations = it.stations.toList(),
             returnStations = it.returnStations,
+            additionalInfo = it.additionalInfo,
         )
     }
 
@@ -45,6 +47,7 @@ class StationScope(private val routeScope: BusRouteScope) {
     var prices: List<Price> = routeScope.fixedPrices ?: emptyList()
     var departures: MutableList<DepartureDay> = mutableListOf()
     var isDestination: Boolean = false
+    var isNew: Boolean = false
 
     fun departuresAfterPreviousStation(offset: Duration) {
         departures = routeScope.stations.last().departures.map { departureDay ->
@@ -163,7 +166,8 @@ fun BusRouteScope.addStation(
                 title = it.title!!,
                 prices = it.prices,
                 departures = it.departures,
-                isDestination = it.isDestination
+                isDestination = it.isDestination,
+                annotateAsNew = it.isNew,
             )
         }
     )
@@ -233,6 +237,15 @@ fun prices(
         amountInCents = children
     ),
 )
+
+fun StationScope.prices(
+    adult: Int,
+    children: Int,
+    childrenAgeRange: Pair<Int?, Int>? = 3 to 11
+) {
+    prices =
+        com.jonasgerdes.stoppelmap.transportation.data.prices(adult, children, childrenAgeRange)
+}
 
 
 data class StartAndStep(
