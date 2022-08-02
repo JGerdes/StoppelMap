@@ -64,7 +64,7 @@ fun TransportationOverviewScreen(
                                 Icon(Icons.Rounded.DirectionsBus, contentDescription = null)
                                 Spacer(modifier = Modifier.size(8.dp))
                                 Text(
-                                    text = "mit dem Bus",
+                                    text = stringResource(R.string.transportation_overview_section_bus),
                                     style = MaterialTheme.typography.titleLarge
                                 )
                             }
