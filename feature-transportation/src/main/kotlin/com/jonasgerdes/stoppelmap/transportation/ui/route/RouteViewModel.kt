@@ -33,10 +33,12 @@ class RouteViewModel(
                                 BusRouteDetails.DepartureTime.Absolut(
                                     time = it.time
                                 )
-                            }
+                            },
+                            annotateAsNew = station.annotateAsNew
                         )
                     }
-                }
+                },
+                additionalInfo = route.additionalInfo
             )
         }
         .map(RouteState::Loaded)

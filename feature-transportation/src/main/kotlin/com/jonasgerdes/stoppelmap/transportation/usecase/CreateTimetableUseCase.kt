@@ -42,7 +42,7 @@ class CreateTimetableUseCase {
                                 ).toLocalDateTime(TimeZone.UTC)
                             }
                     )
-                }
+                }.filter { it.departureSlots.isNotEmpty() }
             )
         }
 }

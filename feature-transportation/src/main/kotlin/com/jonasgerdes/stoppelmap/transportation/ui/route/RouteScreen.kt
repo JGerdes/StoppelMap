@@ -7,21 +7,28 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.route
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.layout.*
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -33,6 +40,7 @@ import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.math.roundToInt
 
 @SuppressLint("NewApi")
 @Composable
@@ -48,10 +56,17 @@ fun RouteScreen(
 
     val routeState = state.routeState
     if (routeState is RouteViewModel.RouteState.Loaded) {
+        val stationListState = rememberLazyListState()
+        val isAtTop by remember {
+            derivedStateOf {
+                stationListState.firstVisibleItemIndex == 0 && stationListState.firstVisibleItemScrollOffset == 0
+            }
+        }
         Column(
             modifier = modifier
         ) {
-            CenterAlignedTopAppBar(
+            val elevation by animateDpAsState(targetValue = if (isAtTop) 0.dp else 8.dp)
+            SmallTopAppBar(
                 title = { Text(text = routeState.routeDetails.title) },
                 navigationIcon = {
                     IconButton(
@@ -62,13 +77,27 @@ fun RouteScreen(
                             stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
                         )
                     }
-                }
+                },
+                modifier = Modifier.shadow(elevation = elevation)
             )
             val stations = routeState.routeDetails.stations
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
+                state = stationListState,
                 modifier = Modifier.fillMaxSize()
             ) {
+                routeState.routeDetails.additionalInfo?.let { additionalInfo ->
+                    item {
+                        OutlinedCard(
+                            modifier = Modifier.padding(bottom = 16.dp)
+                        ) {
+                            Text(
+                                text = additionalInfo,
+                                modifier = Modifier.padding(16.dp)
+                            )
+                        }
+                    }
+                }
                 items(
                     count = stations.size,
                     key = { stations[it].id },
@@ -162,33 +191,83 @@ fun StopStationCard(
     }
 
     Card(modifier = modifier) {
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.End
         ) {
-            Text(
-                text = station.title,
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.align(Alignment.Start)
-            )
-            Spacer(modifier = Modifier.size(8.dp))
-            Text(
-                text = stringResource(R.string.transportation_route_card_next_departures_label),
-                style = MaterialTheme.typography.labelMedium
-            )
-            station.nextDepartures.forEach { departureTime ->
-                val departureText = when (departureTime) {
-                    is BusRouteDetails.DepartureTime.Absolut -> departureTimeFormatter.format(
-                        departureTime.time.toJavaLocalDateTime()
-                    )
-                    BusRouteDetails.DepartureTime.Immediately ->
-                        stringResource(R.string.transportation_route_card_next_departures_immediately)
-                    is BusRouteDetails.DepartureTime.Relative -> TODO()
-                }
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.End
+            ) {
                 Text(
-                    text = departureText,
+                    text = station.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier
+                        .align(Alignment.Start)
+                        .padding(end = 64.dp)
+                )
+                Spacer(modifier = Modifier.size(8.dp))
+                Text(
+                    text = stringResource(R.string.transportation_route_card_next_departures_label),
+                    style = MaterialTheme.typography.labelMedium
+                )
+                station.nextDepartures.forEach { departureTime ->
+                    val departureText = when (departureTime) {
+                        is BusRouteDetails.DepartureTime.Absolut -> departureTimeFormatter.format(
+                            departureTime.time.toJavaLocalDateTime()
+                        )
+                        BusRouteDetails.DepartureTime.Immediately ->
+                            stringResource(R.string.transportation_route_card_next_departures_immediately)
+                        is BusRouteDetails.DepartureTime.Relative -> TODO()
+                    }
+                    Text(
+                        text = departureText,
+                    )
+                }
+            }
+            if (station.annotateAsNew) {
+                CornerRibbon(text = stringResource(R.string.transportation_route_card_annotation_new))
+            }
+        }
+    }
+}
+
+@Composable
+private fun CornerRibbon(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    Layout(
+        measurePolicy = remember { CornerRibbonMeasurePolicy() },
+        content = {
+            Text(
+                text = text,
+                color = MaterialTheme.colorScheme.onTertiary,
+                style = MaterialTheme.typography.labelSmall,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .rotate(45f)
+                    .background(MaterialTheme.colorScheme.tertiary)
+                    .padding(vertical = 2.dp, horizontal = 32.dp)
+            )
+        },
+        modifier = modifier.fillMaxWidth()
+    )
+}
+
+private class CornerRibbonMeasurePolicy : MeasurePolicy {
+    override fun MeasureScope.measure(
+        measurables: List<Measurable>,
+        constraints: Constraints
+    ): MeasureResult {
+        val placables = measurables.map { it.measure(Constraints()) }
+        return layout(constraints.maxWidth, constraints.minHeight) {
+            placables.forEach {
+                it.placeRelative(
+                    ((constraints.maxWidth - it.width / 2) - it.width / 5f).roundToInt(),
+                    ((it.height / -2) + it.width / 5f).roundToInt()
                 )
             }
         }

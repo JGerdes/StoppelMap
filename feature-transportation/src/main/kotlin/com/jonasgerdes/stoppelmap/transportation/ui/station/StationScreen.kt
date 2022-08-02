@@ -1,6 +1,7 @@
 @file:OptIn(
     ExperimentalMaterial3Api::class,
     ExperimentalLifecycleComposeApi::class, ExperimentalLifecycleComposeApi::class,
+    ExperimentalLifecycleComposeApi::class, ExperimentalMaterial3Api::class,
 )
 
 package com.jonasgerdes.stoppelmap.transportation.ui.station
@@ -23,7 +24,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
@@ -56,11 +59,13 @@ fun StationScreen(
         Column(
             modifier = modifier
         ) {
-            CenterAlignedTopAppBar(
+            SmallTopAppBar(
                 title = {
-                    Column() {
-                        Text(text = stationState.stationTitle)
-                    }
+                    Text(
+                        text = stationState.stationTitle,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 },
                 navigationIcon = {
                     IconButton(
@@ -73,35 +78,42 @@ fun StationScreen(
                     }
                 }
             )
-            Card(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-            ) {
-                Column(Modifier.padding(16.dp)) {
-                    Text(
-                        text = stringResource(R.string.transportation_station_prices_title),
-                        style = MaterialTheme.typography.labelMedium
-                    )
-                    Spacer(modifier = Modifier.size(8.dp))
-                    stationState.prices.forEach { price ->
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                text = price.label.asString(LocalContext.current.resources)
-                            )
-                            Spacer(modifier = Modifier.size(8.dp))
-                            Text(
-                                text = price.formatAmount(LocalContext.current.resources)
-                            )
+            if (stationState.prices.isNotEmpty()) {
+                OutlinedCard(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                ) {
+                    Column(Modifier.padding(16.dp)) {
+                        Text(
+                            text = stringResource(R.string.transportation_station_prices_title),
+                            style = MaterialTheme.typography.labelMedium
+                        )
+                        Spacer(modifier = Modifier.size(8.dp))
+                        stationState.prices.forEach { price ->
+                            Row(
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Text(
+                                    text = price.label.asString(LocalContext.current.resources)
+                                )
+                                Spacer(modifier = Modifier.size(8.dp))
+                                Text(
+                                    text = price.formatAmount(LocalContext.current.resources)
+                                )
+                            }
                         }
-                    }
+                        Spacer(modifier = Modifier.size(8.dp))
+                        Text(
+                            text = stringResource(R.string.transportation_station_prices_hint_9_euro_ticket),
+                            style = MaterialTheme.typography.labelMedium
+                        )
 
+                    }
                 }
+                Spacer(modifier = Modifier.size(16.dp))
             }
-            Spacer(modifier = Modifier.size(16.dp))
             val topShape = remember {
                 RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
             }
@@ -152,7 +164,7 @@ fun StationScreen(
 
 private fun Price.formatAmount(resources: Resources) =
     NumberFormat.getCurrencyInstance(
-        resources.configuration.locale
+        ConfigurationCompat.getLocales(resources.configuration)[0] ?: Locale.getDefault()
     ).apply {
         maximumFractionDigits = 2
         currency = Currency.getInstance("EUR")
@@ -189,16 +201,24 @@ fun Timetable(
         contentPadding = PaddingValues(bottom = 16.dp),
         state = gridState
     ) {
-        timetable.segments.forEach {
-            item(span = { GridItemSpan(maxLineSpan) }) {
+        timetable.segments.forEach { daySegment ->
+            item(
+                key = daySegment.type,
+                contentType = ContentType.HEADER,
+                span = { GridItemSpan(maxLineSpan) }) {
                 ListLineHeader(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = stringResource(it.type.toStringResource()),
+                        text = stringResource(daySegment.type.toStringResource()),
                         style = MaterialTheme.typography.titleMedium
                     )
                 }
             }
-            items(it.departureSlots.flatMap { it.departures }) { slot ->
+            items(
+                items = daySegment.departureSlots.flatMap { dslot -> dslot.departures.mapIndexed() { id, it -> it to id.toString() + "-" + dslot.departures.first { it != null }!!.time } },
+                key = { it.second },
+                contentType = { ContentType.TIME }
+            ) { slotPair ->
+                val slot = slotPair.first
                 if (slot != null) {
                     Text(
                         text = slot.time.time.toJavaLocalTime().format(timeFormatter),
@@ -212,6 +232,10 @@ fun Timetable(
             }
         }
     }
+}
+
+enum class ContentType {
+    HEADER, TIME
 }
 
 private fun Timetable.DaySegmentType.toStringResource() = when (this) {
