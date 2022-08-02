@@ -29,7 +29,7 @@ internal fun calveslage() = createBusRoute {
         title = "Stoppelmarkt"
         thursday("23:00")
         friday("00:00")
-        friday("00:00")
+        saturday("00:00")
         monday("21:00")
     }
 }

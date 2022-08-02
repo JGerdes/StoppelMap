@@ -200,6 +200,10 @@ class DepartureDayScope(val day: LocalDate) {
         departures.add(Departure(time, annotation))
     }
 
+    fun departure(time: String, annotation: String? = null) {
+        departures.add(Departure(time.toLocalTime().atDay(), annotation))
+    }
+
     private fun LocalTime.atDay() =
         LocalDateTime(
             date = if (hour < firstHourOfNextDay) day.plus(1, DateTimeUnit.DAY) else day,

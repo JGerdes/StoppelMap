@@ -12,4 +12,6 @@ fun generateBusRoutes() = listOf(
     vechtaWest(),
     langfoerden(),
     calveslage(),
+    diepholz(),
+    barnstorf(),
 ).sortedBy { it.title }
