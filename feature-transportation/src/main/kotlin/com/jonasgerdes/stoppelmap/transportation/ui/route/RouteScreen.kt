@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
@@ -88,6 +89,14 @@ fun RouteScreen(
                                 modifier = Modifier.padding(16.dp)
                             )
                         }
+                    }
+                }
+                item(key = "section_there", contentType = ItemTypes.SectionTitle) {
+                    ListLineHeader(Modifier.fillMaxWidth()) {
+                        Text(
+                            text = stringResource(R.string.transportation_route_section_there),
+                            style = MaterialTheme.typography.titleLarge
+                        )
                     }
                 }
                 items(
@@ -158,13 +167,35 @@ fun RouteScreen(
                                     Modifier
                                         .weight(1f)
                                         .padding(vertical = 8.dp)
-                                        .clickable {
-                                            onStationTap(station.id)
-                                        }
                                 )
                             }
                         }
                     }
+                }
+                item(key = "section_back", contentType = ItemTypes.SectionTitle) {
+                    ListLineHeader(Modifier.fillMaxWidth()) {
+                        Text(
+                            text = stringResource(R.string.transportation_route_section_back),
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    }
+                }
+                val returnStations = routeState.routeDetails.returnStations
+                items(
+                    count = returnStations.size,
+                    key = { returnStations[it].id + "_returning" },
+                    contentType = { ItemTypes.ReturnStation }
+                ) {
+                    val station = returnStations[it]
+                    ReturnStationCard(
+                        station = station,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                            .clickable {
+                                onStationTap(station.id)
+                            }
+                    )
                 }
             }
         }
@@ -292,7 +323,36 @@ fun DestinationStationCard(
     }
 }
 
+
+@Composable
+fun ReturnStationCard(
+    station: BusRouteDetails.ReturnStation,
+    modifier: Modifier = Modifier
+) {
+    Card(modifier = modifier) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.End
+        ) {
+            Text(
+                text = stringResource(
+                    R.string.transportation_route_return_station_from,
+                    station.title
+                ),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier
+                    .align(Alignment.Start)
+                    .padding(end = 64.dp)
+            )
+        }
+    }
+}
+
 enum class ItemTypes {
     Station,
-    DestinationStation
+    SectionTitle,
+    DestinationStation,
+    ReturnStation,
 }

@@ -6,9 +6,12 @@
     <string name="transportation_overview_card_via">über</string>
 
     <string name="transportation_route_topbar_navigateBack_contentDescription">Zurück</string>
+    <string name="transportation_route_section_there">Hinfahrt</string>
+    <string name="transportation_route_section_back">Rückfahrt</string>
     <string name="transportation_route_card_next_departures_label">Nächste Abfahrten</string>
     <string name="transportation_route_card_next_departures_immediately">Sofort</string>
     <string name="transportation_route_card_annotation_new">Neu</string>
+    <string name="transportation_route_return_station_from">ab %1$s</string>
 
     <string name="transportation_station_topbar_navigateBack_contentDescription">Zurück</string>
     <string name="transportation_station_prices_title">Preise</string>

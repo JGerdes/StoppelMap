@@ -6,7 +6,8 @@ data class BusRouteDetails(
     val routeId: String,
     val title: String,
     val additionalInfo: String? = null,
-    val stations: List<Station>
+    val stations: List<Station>,
+    val returnStations: List<ReturnStation>,
 ) {
 
     sealed class Station {
@@ -25,6 +26,11 @@ data class BusRouteDetails(
             override val title: String
         ) : Station()
     }
+
+    data class ReturnStation(
+        val id: String,
+        val title: String,
+    )
 
 
     sealed class DepartureTime {

@@ -38,7 +38,13 @@ class RouteViewModel(
                         )
                     }
                 },
-                additionalInfo = route.additionalInfo
+                additionalInfo = route.additionalInfo,
+                returnStations = route.returnStations.map {
+                    BusRouteDetails.ReturnStation(
+                        id = it.id,
+                        title = it.title,
+                    )
+                }
             )
         }
         .map(RouteState::Loaded)

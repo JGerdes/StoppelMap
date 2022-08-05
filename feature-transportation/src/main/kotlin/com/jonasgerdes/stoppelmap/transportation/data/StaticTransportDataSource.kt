@@ -36,6 +36,9 @@ class StaticTransportDataSource : TransportDataSource {
         val station = routes
             .flatMap { it.stations }
             .find { it.id == id }
+            ?: routes
+                .flatMap { it.returnStations }
+                .find { it.id == id }
 
         emit(station!!)
     }
