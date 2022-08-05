@@ -183,7 +183,7 @@ fun RouteScreen(
                 val returnStations = routeState.routeDetails.returnStations
                 items(
                     count = returnStations.size,
-                    key = { returnStations[it].id + "_returning" },
+                    key = { returnStations[it].id },
                     contentType = { ItemTypes.ReturnStation }
                 ) {
                     val station = returnStations[it]

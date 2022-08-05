@@ -179,7 +179,7 @@ fun BusRouteScope.addReturnStation(builder: StationScope.() -> Unit) {
             builder()
         }.let {
             Station(
-                id = it.id!!,
+                id = it.id!! + "-return",
                 title = it.title!!,
                 prices = it.prices,
                 departures = it.departures,
