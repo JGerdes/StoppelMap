@@ -28,6 +28,7 @@ import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverv
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
+import timber.log.Timber
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,6 +54,7 @@ class StoppelMapActivity : ComponentActivity() {
                 val currentDestination = navBackStackEntry?.destination
 
                 navigationTabs.forEach { (icon, label, startDestination) ->
+                    Timber.d("Adding NavigationBarItem for #$startDestination - current screen is #${currentDestination?.route}")
                     NavigationBarItem(
                         icon = {
                             Icon(imageVector = icon, contentDescription = null)
@@ -65,7 +67,11 @@ class StoppelMapActivity : ComponentActivity() {
                                 overflow = TextOverflow.Ellipsis
                             )
                         },
-                        selected = currentDestination?.hierarchy?.any { it.route == startDestination } == true,
+                        selected = currentDestination?.hierarchy?.any {
+                            it.route?.startsWith(
+                                startDestination
+                            ) ?: false
+                        } == true,
                         onClick = {
                             navController.navigate(startDestination) {
                                 launchSingleTop = true
