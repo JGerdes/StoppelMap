@@ -20,7 +20,7 @@ internal fun langfoerden() = createBusRoute {
         saturday("15:00", "18:30", "20:00", "21:30", "22:30")
         sunday("15:00", "19:00")
         monday("09:00", "10:00", "13:00", "15:00", "18:00", "19:00", "20:00")
-        thursday("15:00", "19:00")
+        tuesday("15:00", "19:00")
     }
     addStation("Deindrup, Schule", minutesAfterPrevious = 2) { prices(330, 250) }
     addStation("Deindrup, Spelgenweg", minutesAfterPrevious = 2) { prices(330, 250) }
