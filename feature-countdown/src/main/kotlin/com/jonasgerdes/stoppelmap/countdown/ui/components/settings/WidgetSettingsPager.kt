@@ -4,12 +4,12 @@ package com.jonasgerdes.stoppelmap.countdown.ui.components.settings
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowForward
 import androidx.compose.material.icons.rounded.Save
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Shapes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -82,7 +82,7 @@ private fun WidgetSettingsPageFab(
             onClick = {
                 if (isLastPage) onSave() else onNext()
             },
-            shape = Shapes.Full,
+            shape = CircleShape,
         ) {
             if (isLastPage) {
                 Icon(
