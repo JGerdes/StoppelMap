@@ -16,4 +16,5 @@ fun generateBusRoutes() = listOf(
     barnstorf(),
     bakumEssen(),
     visbek(),
+    ellenstedtGoldenstedtLutten()
 ).sortedBy { it.title }

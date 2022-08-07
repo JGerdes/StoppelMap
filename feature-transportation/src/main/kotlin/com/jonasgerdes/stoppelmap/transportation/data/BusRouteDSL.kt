@@ -137,6 +137,7 @@ class StationScope(private val routeScope: BusRouteScope) {
         ).apply {
             builder()
         }.let {
+            departures.removeIf { it.day == day }
             departures.add(
                 DepartureDay(
                     day = it.day,
