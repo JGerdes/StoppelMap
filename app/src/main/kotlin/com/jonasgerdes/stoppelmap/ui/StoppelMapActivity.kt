@@ -21,6 +21,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.jonasgerdes.stoppelmap.about.ui.AboutScreen
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
+import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
@@ -102,7 +103,7 @@ class StoppelMapActivity : ComponentActivity() {
                         Modifier.fillMaxSize()
                     )
                 }
-                composable(Screen.Map.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
+                composable(Screen.Map.route) { MapScreen(Modifier.fillMaxSize()) }
                 composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
                 composable(Screen.TransportationOverview.route) {
                     TransportationOverviewScreen(
