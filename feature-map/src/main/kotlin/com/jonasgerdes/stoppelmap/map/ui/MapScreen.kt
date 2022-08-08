@@ -2,36 +2,64 @@ package com.jonasgerdes.stoppelmap.map.ui
 
 import android.content.ComponentCallbacks
 import android.content.res.Configuration
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import com.mapbox.geojson.Point
+import com.jonasgerdes.stoppelmap.map.MapDefaults
+import com.mapbox.maps.CameraBoundsOptions
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
+import com.mapbox.maps.plugin.attribution.attribution
+import com.mapbox.maps.plugin.gestures.gestures
+import com.mapbox.maps.plugin.logo.logo
+import com.mapbox.maps.plugin.scalebar.scalebar
+import com.mapbox.maps.toCameraOptions
+import timber.log.Timber
 
 @Composable
 fun MapScreen(modifier: Modifier = Modifier) {
 
     val context = LocalContext.current
 
-    val cameraOptions = remember {
-        CameraOptions.Builder()
-            .center(Point.fromLngLat(8.295345, 52.748351))
-            .zoom(15.2)
-            .build()
+    var cameraOptions by rememberSaveable {
+        mutableStateOf(
+            CameraOptions.Builder()
+                .center(MapDefaults.center)
+                .zoom(MapDefaults.defaultZoom)
+                .build()
+        )
     }
 
-    val mapView = remember { MapView(context) }
+    val mapView = remember {
+        MapView(context).apply {
+            getMapboxMap().apply {
+                loadStyleUri("asset://style.json")
+                logo.enabled = false
+                scalebar.enabled = false
+                attribution.enabled = false
+                gestures.pitchEnabled = false
+                setBounds(
+                    CameraBoundsOptions.Builder()
+                        .minZoom(MapDefaults.minZoom)
+                        .maxZoom(MapDefaults.maxZoom)
+                        .bounds(MapDefaults.cameraBounds)
+                        .build()
+                )
+            }
+        }
+    }
     AndroidView(factory = { mapView }) {
         it.getMapboxMap().apply {
             setCamera(cameraOptions)
-            loadStyleUri("asset://style.json")
+            this.addOnCameraChangeListener {
+                Timber.d("addOnCameraChangeListener: $cameraState")
+                cameraOptions = this.cameraState.toCameraOptions()
+            }
         }
     }
     MapLifecycle(mapView = mapView)
