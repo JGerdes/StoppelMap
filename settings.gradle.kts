@@ -20,6 +20,19 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://api.mapbox.com/downloads/v2/releases/maven") {
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
+            java.io.FileInputStream(File("secrets.properties")).use {
+                val properties = java.util.Properties()
+                properties.load(it)
+                credentials {
+                    username = "mapbox"
+                    password = properties["mapBoxDownloadToken"] as String
+                }
+            }
+        }
     }
 }
 rootProject.name = "StoppelMap"

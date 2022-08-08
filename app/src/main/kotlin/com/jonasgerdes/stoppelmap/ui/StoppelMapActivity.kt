@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
@@ -93,7 +94,9 @@ class StoppelMapActivity : ComponentActivity() {
                 composable(Screen.Home.route) {
                     HomeScreen(
                         onAboutOptionTap = { navController.navigate(Screen.About.route) },
-                        Modifier.fillMaxSize()
+                        Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
                     )
                 }
                 composable(Screen.About.route) {
@@ -112,7 +115,9 @@ class StoppelMapActivity : ComponentActivity() {
                                 Screen.TransportRoute.create(routeId = it)
                             )
                         },
-                        Modifier.fillMaxSize()
+                        Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
                     )
                 }
                 composable(Screen.TransportRoute.route) {
@@ -125,7 +130,9 @@ class StoppelMapActivity : ComponentActivity() {
                             )
                         },
                         onNavigateBack = { navController.navigateUp() },
-                        Modifier.fillMaxSize()
+                        Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
                     )
                 }
                 composable(Screen.TransportStation.route) {

@@ -13,5 +13,5 @@ object DependencyVersions {
     const val koin = "3.1.6"
     const val timber = "5.0.1"
     const val lottie = "5.2.0"
-    const val mapBox = "8.1.0"
+    const val mapBox = "10.7.0"
 }

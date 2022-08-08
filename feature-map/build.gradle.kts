@@ -66,6 +66,7 @@ dependencies {
         implementation("io.insert-koin:koin-androidx-compose:$koin")
 
         implementation("com.jakewharton.timber:timber:$timber")
+        implementation("com.mapbox.maps:android:$mapBox")
 
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")

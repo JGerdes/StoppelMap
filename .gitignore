@@ -59,3 +59,4 @@ signing.properties
 # google keys
 */google-services.json
 google_play_api_key.json
+/secrets.properties
