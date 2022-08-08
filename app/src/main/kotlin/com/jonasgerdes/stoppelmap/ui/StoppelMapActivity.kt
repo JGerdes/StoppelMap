@@ -106,7 +106,13 @@ class StoppelMapActivity : ComponentActivity() {
                         Modifier.fillMaxSize()
                     )
                 }
-                composable(Screen.Map.route) { MapScreen(Modifier.fillMaxSize()) }
+                composable(Screen.Map.route) {
+                    MapScreen(
+                        Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
+                    )
+                }
                 composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
                 composable(Screen.TransportationOverview.route) {
                     TransportationOverviewScreen(

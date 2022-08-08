@@ -24,6 +24,10 @@ import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.logo.logo
 import com.mapbox.maps.plugin.scalebar.scalebar
 import com.mapbox.maps.toCameraOptions
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @Composable
@@ -38,6 +42,21 @@ fun MapScreen(modifier: Modifier = Modifier) {
                 .zoom(MapDefaults.defaultZoom)
                 .build()
         )
+    }
+
+    val mutableStateFlow = MutableStateFlow<CameraOptions>(
+        CameraOptions.Builder()
+            .center(MapDefaults.center)
+            .zoom(MapDefaults.defaultZoom)
+            .build()
+    )
+
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(Unit) {
+        scope.launch {
+            mutableStateFlow.debounce(300).collectLatest { cameraOptions = it }
+        }
     }
 
     val mapView = remember {
@@ -60,12 +79,13 @@ fun MapScreen(modifier: Modifier = Modifier) {
     }
     val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
     val streetColor = MaterialTheme.colorScheme.surfaceVariant.toArgb()
-    AndroidView(factory = { mapView }) {
+    AndroidView(factory = { mapView }, modifier = modifier) {
         it.getMapboxMap().apply {
             setCamera(cameraOptions)
             addOnCameraChangeListener {
                 Timber.d("addOnCameraChangeListener: $cameraState")
-                cameraOptions = this.cameraState.toCameraOptions()
+                //cameraOptions = cameraState.toCameraOptions()
+                mutableStateFlow.value = cameraState.toCameraOptions()
             }
 
             getStyle { style ->
