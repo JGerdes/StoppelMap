@@ -2,9 +2,11 @@ package com.jonasgerdes.stoppelmap.map.ui
 
 import android.content.ComponentCallbacks
 import android.content.res.Configuration
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
@@ -14,6 +16,9 @@ import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.mapbox.maps.CameraBoundsOptions
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
+import com.mapbox.maps.extension.style.layers.generated.BackgroundLayer
+import com.mapbox.maps.extension.style.layers.generated.FillLayer
+import com.mapbox.maps.extension.style.layers.getLayerAs
 import com.mapbox.maps.plugin.attribution.attribution
 import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.logo.logo
@@ -53,13 +58,25 @@ fun MapScreen(modifier: Modifier = Modifier) {
             }
         }
     }
+    val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
+    val streetColor = MaterialTheme.colorScheme.surfaceVariant.toArgb()
     AndroidView(factory = { mapView }) {
         it.getMapboxMap().apply {
             setCamera(cameraOptions)
-            this.addOnCameraChangeListener {
+            addOnCameraChangeListener {
                 Timber.d("addOnCameraChangeListener: $cameraState")
                 cameraOptions = this.cameraState.toCameraOptions()
             }
+
+            getStyle { style ->
+                style.getLayerAs<BackgroundLayer>("background")?.apply {
+                    backgroundColor(backgroundColor)
+                }
+                style.getLayerAs<FillLayer>("streets")?.apply {
+                    fillColor(streetColor)
+                }
+            }
+
         }
     }
     MapLifecycle(mapView = mapView)
