@@ -6,14 +6,17 @@ import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
 import org.koin.dsl.module
 import java.io.File
 
-private const val DB_FILE_PATH = "stoma22.db"
-private val appAssets = File("../app/src/main/assets/")
 
 val preparationModule = module {
 
     single {
+        val appAssets = File("../app/src/main/assets/")
+        val mapFeatureAssets = File("../feature-map/src/main/assets/")
+        val resources = File("../preparation/src/main/resources")
         Settings(
-            databaseFile = File(appAssets, DB_FILE_PATH)
+            databaseFile = File(appAssets, "stoma22.db"),
+            geoJsonInput = File(resources, "stoma22.geojson"),
+            geoJsonOutput = File("$mapFeatureAssets/map", "stoma22.geojson")
         )
     }
 

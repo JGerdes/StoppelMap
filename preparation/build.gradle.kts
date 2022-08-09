@@ -17,8 +17,10 @@ dependencies {
     implementation(project(":data"))
 
     with(DependencyVersions) {
-        //implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
         implementation("io.insert-koin:koin-core:$koin")
         implementation("com.squareup.sqldelight:sqlite-driver:$sqldelight")
+        implementation("com.google.code.gson:gson:2.8.4")
+        implementation("com.github.filosganga:geogson-core:1.2.21")
     }
 }
