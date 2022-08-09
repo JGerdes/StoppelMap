@@ -1,0 +1,262 @@
+{
+  "version": 8,
+  "name": "stoma22",
+  "metadata": {
+    "mapbox:autocomposite": true,
+    "mapbox:type": "template",
+    "mapbox:sdk-support": {
+      "android": "10.6.0",
+      "ios": "10.6.0",
+      "js": "2.9.0"
+    },
+    "mapbox:groups": {},
+    "mapbox:uiParadigm": "layers"
+  },
+  "center": [
+    8.294915363560904,
+    52.747785148952005
+  ],
+  "zoom": 17.264392656429813,
+  "bearing": 0,
+  "pitch": 0,
+  "sources": {
+    "composite": {
+      "type": "geojson",
+      "data": "asset://map/stoma22.geojson"
+    }
+  },
+  "glyphs": "asset://mapbox/font/{fontstack}/{range}.pbf",
+  "projection": {
+    "name": "globe"
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "background-color": "#ffffff"
+      },
+      "interactive": true
+    },
+    {
+      "id": "streets",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "has",
+          "highway"
+        ]
+      ],
+      "layout": {},
+      "paint": {
+        "fill-color": "#AAAAAA"
+      }
+    },
+    {
+      "id": "stalls",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "has",
+          "building"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": [
+          "match",
+          [
+            "get",
+            "building"
+          ],
+          "bar",
+          "#A4BDF7",
+          "ride",
+          "#83D8C5",
+          "food-stall",
+          "#F8EDB2",
+          "candy-stall",
+          "#F4C9F1",
+          "restroom",
+          "#EE93B0",
+          "game-stall",
+          "#909BCC",
+          "seller-stall",
+          "#C8C6BE",
+          "exhibition",
+          "#AEAEBE",
+          "misc",
+          "#EEC193",
+          "building",
+          "#EEc193",
+          "#000000"
+        ]
+      },
+      "interactive": true
+    },
+    {
+      "id": "labels",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "layout": {
+        "text-optional": true,
+        "icon-offset": [
+          0,
+          0
+        ],
+        "icon-image": [
+          "match",
+          [
+            "get",
+            "building"
+          ],
+          "misc",
+          "misc",
+          "bar",
+          "bar",
+          "food-stall",
+          "food_stall",
+          "ride",
+          "ride",
+          "restroom",
+          "restroom",
+          "building",
+          "restaurant",
+          "candy-stall",
+          "candy_stall",
+          "game-stall",
+          "game_stall",
+          "seller-stall",
+          "seller_stall",
+          "exhibition",
+          "expo",
+          "parking",
+          "parking",
+          "ignore",
+          "misc",
+          [
+            "error",
+            "No default property value available."
+          ]
+        ],
+        "text-font": [
+          "Roboto Slab Regular"
+        ],
+        "text-justify": "left",
+        "text-padding": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          16,
+          8,
+          20,
+          0
+        ],
+        "visibility": "visible",
+        "text-offset": [
+          0,
+          -0.8
+        ],
+        "text-anchor": "bottom",
+        "text-field": [
+          "to-string",
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "icon-padding": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          16,
+          8,
+          19,
+          0
+        ],
+        "text-max-width": 20
+      },
+      "paint": {
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-blur": 0,
+        "text-halo-width": 1,
+        "text-translate": [
+          0,
+          0
+        ],
+        "icon-translate": [
+          0,
+          -10
+        ],
+        "icon-opacity": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          16.99,
+          0,
+          17,
+          1
+        ],
+        "text-opacity": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          16.99,
+          0,
+          17,
+          1
+        ]
+      },
+      "interactive": true
+    }
+  ],
+  "created": "2022-08-08T09:03:06.173Z",
+  "modified": "2022-08-08T09:33:11.489Z",
+  "id": "cl6kj07mx000415ruy1uha78e",
+  "owner": "stoppelmap",
+  "visibility": "private",
+  "protected": false,
+  "draft": false
+}
