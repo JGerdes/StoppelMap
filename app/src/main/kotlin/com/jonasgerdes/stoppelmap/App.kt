@@ -7,8 +7,11 @@ import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
 import com.jonasgerdes.stoppelmap.transportation.transportationModule
+import com.jonasgerdes.stoppelmap.usecase.CopyDatabaseUseCase
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.android.BuildConfig
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
@@ -20,6 +23,7 @@ import timber.log.Timber
 class App : Application() {
 
     val initializeMapBox: InitializeMapBoxUseCase by inject()
+    val copyDatabase: CopyDatabaseUseCase by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -50,5 +54,9 @@ class App : Application() {
         )
 
         initializeMapBox(this)
+
+        GlobalScope.launch {
+            copyDatabase()
+        }
     }
 }
