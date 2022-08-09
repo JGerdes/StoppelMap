@@ -1,4 +1,4 @@
-CREATE TABLE stall(
+CREATE TABLE IF NOT EXISTS stall(
     slug                TEXT NOT NULL PRIMARY KEY,
     type                TEXT NOT NULL,
     name                TEXT,
@@ -10,3 +10,8 @@ CREATE TABLE stall(
 insert:
 INSERT INTO stall(slug, type, name, center_lng, center_lat, isSearchable)
 VALUES ?;
+
+selectBySlug:
+SELECT *
+FROM stall
+WHERE slug = ?;

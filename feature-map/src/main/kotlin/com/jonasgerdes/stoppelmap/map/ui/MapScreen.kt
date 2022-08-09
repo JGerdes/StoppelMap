@@ -23,7 +23,8 @@ fun MapScreen(
     Box(modifier = modifier) {
         MapboxMap(
             mapState = state.mapState,
-            onCameraMoved = viewModel::onCameraMoved,
+            onCameraMove = viewModel::onCameraMoved,
+            onStallTap = viewModel::onStallTapped,
             modifier = Modifier.fillMaxSize()
         )
     }

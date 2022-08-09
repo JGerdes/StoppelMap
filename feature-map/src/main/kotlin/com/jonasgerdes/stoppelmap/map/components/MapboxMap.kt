@@ -34,13 +34,16 @@ import com.mapbox.maps.extension.style.layers.generated.SymbolLayer
 import com.mapbox.maps.extension.style.layers.getLayerAs
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.attribution.attribution
+import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.scalebar.scalebar
+import timber.log.Timber
 
 @Composable
 fun MapboxMap(
     mapState: MapState,
-    onCameraMoved: (CameraOptions) -> Unit,
+    onCameraMove: (CameraOptions) -> Unit,
+    onStallTap: (String) -> Unit,
     modifier: Modifier = Modifier,
     colors: MapBoxMapColors = MapBoxMapColors.fromMaterialTheme(),
 ) {
@@ -61,11 +64,31 @@ fun MapboxMap(
                         .build()
                 )
                 addOnCameraChangeListener {
-                    onCameraMoved(cameraState.toCameraOptions())
+                    onCameraMove(cameraState.toCameraOptions())
                 }
                 getStyle()?.apply {
                     addMarkerIcons(context, density, colors, isDarkTheme)
                 }
+                addOnMapClickListener { point ->
+                    Timber.d("addOnMapClickListener@ $point")
+                    queryRenderedFeatures(
+                        RenderedQueryGeometry(pixelForCoordinate(point)),
+                        RenderedQueryOptions(
+                            listOf(
+                                "rides", "bars", "restaurants"
+                            ), null
+                        )
+                    ) {
+                        Timber.d("queryRenderedFeatures: ${it.value} - ${it.error}")
+                        val tappedStall = it.value?.firstOrNull()?.feature
+                        val slug = tappedStall?.getStringProperty("slug")
+                        if (slug != null) {
+                            onStallTap(slug)
+                        }
+                    }
+                    true
+                }
+
             }
         }
     }

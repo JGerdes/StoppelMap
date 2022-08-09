@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
     implementation(project(":theme"))
 
     with(DependencyVersions) {
@@ -67,6 +68,8 @@ dependencies {
 
         implementation("com.jakewharton.timber:timber:$timber")
         implementation("com.mapbox.maps:android:$mapBox")
+
+        implementation("com.squareup.sqldelight:coroutines-extensions-jvm:${sqldelight}")
 
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")
