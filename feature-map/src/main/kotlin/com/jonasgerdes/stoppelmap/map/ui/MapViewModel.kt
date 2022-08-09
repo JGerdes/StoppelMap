@@ -8,22 +8,24 @@ import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MapViewModel(
     private val stallRepository: StallRepository
 ) : ViewModel() {
 
     private val mapState = MutableStateFlow(MapState.Default)
+    private val searchState = MutableStateFlow(SearchState())
 
     val state: StateFlow<ViewState> =
-        mapState.debounce(100)
-            .map(::ViewState)
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(),
-                initialValue = ViewState.Default
-            )
+        combine(
+            mapState.debounce(100),
+            searchState,
+            ::ViewState
+        ).stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(),
+            initialValue = ViewState.Default
+        )
 
 
     fun onCameraMoved(updatedCameraOptions: CameraOptions) {
@@ -34,10 +36,8 @@ class MapViewModel(
     }
 
     fun onStallTapped(stallSlug: String) {
-        Timber.d("onStallTapped: $stallSlug")
         viewModelScope.launch {
             stallRepository.getStall(stallSlug)?.let { stall ->
-                Timber.d("found stall: $stall")
                 mapState.value = mapState.value.copy(
                     cameraOptions = CameraOptions.Builder()
                         .center(Point.fromLngLat(stall.center_lng, stall.center_lat))
@@ -49,13 +49,19 @@ class MapViewModel(
         }
     }
 
+    fun onSearchQueryChanged(query: String) {
+        searchState.value = searchState.value.copy(query = query)
+    }
+
     data class ViewState(
         val mapState: MapState,
+        val searchState: SearchState,
     ) {
 
         companion object {
             val Default = ViewState(
                 mapState = MapState.Default,
+                searchState = SearchState()
             )
         }
     }
@@ -78,4 +84,8 @@ class MapViewModel(
             User, Computed
         }
     }
+
+    data class SearchState(
+        val query: String = ""
+    )
 }
