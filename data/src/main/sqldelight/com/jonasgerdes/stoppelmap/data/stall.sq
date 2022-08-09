@@ -1,0 +1,12 @@
+CREATE TABLE stall(
+    slug                TEXT NOT NULL PRIMARY KEY,
+    type                TEXT NOT NULL,
+    name                TEXT,
+    center_lng          REAL AS Double,
+    center_lat          REAL AS Double,
+    isSearchable        INTEGER AS Boolean DEFAULT 1
+);
+
+insert:
+INSERT INTO stall(slug, type, name, center_lng, center_lat, isSearchable)
+VALUES ?;

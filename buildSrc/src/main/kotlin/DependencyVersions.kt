@@ -14,4 +14,5 @@ object DependencyVersions {
     const val timber = "5.0.1"
     const val lottie = "5.2.0"
     const val mapBox = "10.7.0"
+    const val sqldelight = "1.5.3"
 }

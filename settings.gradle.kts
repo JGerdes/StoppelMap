@@ -2,6 +2,7 @@
 @file:Suppress("UnstableApiUsage")
 
 include(":theme")
+include(":data")
 include(":feature-countdown")
 include(":feature-transportation")
 include(":feature-map")
