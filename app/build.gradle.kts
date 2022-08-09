@@ -80,6 +80,8 @@ android {
 
 dependencies {
 
+    implementation(project(":data"))
+
     implementation(project(":theme"))
     implementation(project(":feature-countdown"))
     implementation(project(":feature-transportation"))
@@ -106,6 +108,8 @@ dependencies {
         implementation("com.jakewharton.timber:timber:$timber")
 
         implementation("com.airbnb.android:lottie-compose:$lottie")
+
+        implementation("com.squareup.sqldelight:android-driver:$sqldelight")
 
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")

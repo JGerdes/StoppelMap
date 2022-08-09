@@ -1,8 +1,11 @@
 // repositoriesMode etc. is marked unstable
 @file:Suppress("UnstableApiUsage")
 
-include(":theme")
 include(":data")
+
+include(":preparation")
+
+include(":theme")
 include(":feature-countdown")
 include(":feature-transportation")
 include(":feature-map")
