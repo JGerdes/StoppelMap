@@ -90,6 +90,58 @@
       "interactive": true
     },
     {
+      "id": "bars",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "bar"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": true
+    },
+    {
+      "id": "restaurants",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "restaurant"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": true
+    },
+    {
       "id": "labels",
       "type": "symbol",
       "source": "composite",
@@ -116,7 +168,7 @@
           "ride",
           "restroom",
           "restroom",
-          "building",
+          "restaurant",
           "restaurant",
           "candy-stall",
           "candy_stall",
@@ -190,34 +242,6 @@
         "icon-translate": [
           0,
           0
-        ],
-        "icon-opacity": [
-          "interpolate",
-          [
-            "exponential",
-            1
-          ],
-          [
-            "zoom"
-          ],
-          16.99,
-          0,
-          17,
-          1
-        ],
-        "text-opacity": [
-          "interpolate",
-          [
-            "exponential",
-            1
-          ],
-          [
-            "zoom"
-          ],
-          16.99,
-          0,
-          17,
-          1
         ]
       },
       "interactive": true

@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -45,6 +46,7 @@ fun MapboxMap(
 ) {
     val context = LocalContext.current
     val density = LocalDensity.current
+    val isDarkTheme = isSystemInDarkTheme()
     val mapView = remember {
         MapView(context, MapInitOptions(context, styleUri = "asset://map/style.json")).apply {
             getMapboxMap().apply {
@@ -62,7 +64,7 @@ fun MapboxMap(
                     onCameraMoved(cameraState.toCameraOptions())
                 }
                 getStyle()?.apply {
-                    addMarkerIcons(context, density, colors)
+                    addMarkerIcons(context, density, colors, isDarkTheme)
                 }
             }
         }
@@ -85,12 +87,19 @@ fun MapboxMap(
                 style.getLayerAs<FillLayer>("rides")?.apply {
                     fillColor(colors.stallTypeRideColor.toArgb())
                 }
+                style.getLayerAs<FillLayer>("bars")?.apply {
+                    fillColor(colors.stallTypeBarColor.toArgb())
+                }
+                style.getLayerAs<FillLayer>("restaurants")?.apply {
+                    fillColor(colors.stallTypeRestaurantColor.toArgb())
+                }
+
                 style.getLayerAs<SymbolLayer>("labels")?.apply {
                     textColor(colors.labelColor.toArgb())
                     textHaloColor(colors.labelHaloColor.toArgb())
                 }
                 getStyle()?.apply {
-                    addMarkerIcons(context, density, colors)
+                    addMarkerIcons(context, density, colors, isDarkTheme)
                 }
             }
         }
@@ -116,24 +125,52 @@ data class MapBoxMapColors(
     val stallTypeSellerStallColor: Color,
 ) {
     companion object {
+
+        private fun Color.withHSL(
+            hue: Float? = null,
+            saturation: Float? = null,
+            lightness: Float? = null,
+        ) = FloatArray(3).let { hsl ->
+            ColorUtils.colorToHSL(toArgb(), hsl)
+            hue?.let { hsl[0] = it }
+            saturation?.let { hsl[1] = it }
+            lightness?.let { hsl[2] = it }
+            Color(ColorUtils.HSLToColor(hsl))
+        }
+
+        private fun Color.modify(isDarkTheme: Boolean) =
+            withHSL(lightness = if (isDarkTheme) 0.3f else 0.7f)
+
         @Composable
-        fun fromMaterialTheme() =
+        fun fromMaterialTheme(
+            isDarkTheme: Boolean = isSystemInDarkTheme()
+        ) =
             MapBoxMapColors(
                 backgroundColor = MaterialTheme.colorScheme.background,
                 streetColor = MaterialTheme.colorScheme.surfaceVariant,
                 labelColor = MaterialTheme.colorScheme.onSurface,
                 labelHaloColor = MaterialTheme.colorScheme.surface,
-                stallTypeBarColor = MaterialTheme.colorScheme.secondaryContainer,
-                stallTypeCandyStallColor = MaterialTheme.colorScheme.primaryContainer,
-                stallTypeExpoColor = MaterialTheme.colorScheme.primaryContainer,
-                stallTypeFoodStallColor = MaterialTheme.colorScheme.primaryContainer,
-                stallTypeGameStallColor = MaterialTheme.colorScheme.primaryContainer,
-                stallTypeMiscColor = MaterialTheme.colorScheme.primaryContainer,
-                stallTypeParkingColor = MaterialTheme.colorScheme.primaryContainer,
-                stallTypeRestaurantColor = MaterialTheme.colorScheme.primaryContainer,
-                stallTypeRestroomColor = MaterialTheme.colorScheme.errorContainer,
-                stallTypeRideColor = MaterialTheme.colorScheme.tertiaryContainer,
-                stallTypeSellerStallColor = MaterialTheme.colorScheme.primaryContainer,
+                stallTypeBarColor = MaterialTheme.colorScheme.secondaryContainer.modify(isDarkTheme),
+                stallTypeCandyStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
+                    isDarkTheme
+                ),
+                stallTypeExpoColor = MaterialTheme.colorScheme.surfaceVariant.modify(isDarkTheme),
+                stallTypeFoodStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
+                    isDarkTheme
+                ),
+                stallTypeGameStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
+                    isDarkTheme
+                ),
+                stallTypeMiscColor = MaterialTheme.colorScheme.surfaceVariant.modify(isDarkTheme),
+                stallTypeParkingColor = MaterialTheme.colorScheme.surfaceVariant.modify(isDarkTheme),
+                stallTypeRestaurantColor = MaterialTheme.colorScheme.surfaceVariant.modify(
+                    isDarkTheme
+                ),
+                stallTypeRestroomColor = MaterialTheme.colorScheme.errorContainer.modify(isDarkTheme),
+                stallTypeRideColor = MaterialTheme.colorScheme.tertiaryContainer.modify(isDarkTheme),
+                stallTypeSellerStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
+                    isDarkTheme
+                ),
             )
     }
 }
@@ -186,7 +223,8 @@ data class MarkerIcon(
 fun Style.addMarkerIcons(
     context: Context,
     density: Density,
-    colors: MapBoxMapColors
+    colors: MapBoxMapColors,
+    isDarkTheme: Boolean
 ) {
     val colorHSL = FloatArray(3)
     listOf(
@@ -211,7 +249,7 @@ fun Style.addMarkerIcons(
         MarkerIcon("parking", R.drawable.ic_stall_type_parking, colors.stallTypeParkingColor),
         MarkerIcon(
             "restaurant",
-            R.drawable.ic_stall_type_building,
+            R.drawable.ic_stall_type_restaurant,
             colors.stallTypeRestaurantColor
         ),
         MarkerIcon("restroom", R.drawable.ic_stall_type_restroom, colors.stallTypeRestroomColor),
@@ -233,8 +271,8 @@ fun Style.addMarkerIcons(
         }
         context.getDrawable(R.drawable.ic_marker_fill)!!.apply {
             ColorUtils.colorToHSL(markerIcon.tintColor.toArgb(), colorHSL)
-            colorHSL[1] = 1f
-            colorHSL[2] = 0.4f
+            colorHSL[1] = 0.7f
+            colorHSL[2] = if (isDarkTheme) 0.6f else 0.4f
             setTint(ColorUtils.HSLToColor(colorHSL))
             bounds = canvas.clipBounds
             draw(canvas)
