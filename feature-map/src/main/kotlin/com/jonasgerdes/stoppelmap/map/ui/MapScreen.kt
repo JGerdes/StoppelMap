@@ -47,7 +47,7 @@ fun MapScreen(
         Search(
             searchState = state.searchState,
             onQueryChange = viewModel::onSearchQueryChanged,
-            onResultTap = viewModel::onStallTapped
+            onResultTap = viewModel::onSearchResultTapped
         )
 
     }
@@ -92,7 +92,6 @@ fun Search(
                                 .clickable {
                                     onResultTap(result.slug)
                                     searchExpanded = false
-                                    onQueryChange("")
                                 }
                                 .padding(16.dp)
                             ) {

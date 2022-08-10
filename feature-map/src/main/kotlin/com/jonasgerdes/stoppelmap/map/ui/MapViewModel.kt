@@ -10,6 +10,7 @@ import com.mapbox.maps.CameraOptions
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class MapViewModel(
     private val stallRepository: StallRepository
@@ -18,9 +19,24 @@ class MapViewModel(
     private val mapState = MutableStateFlow(MapState.Default)
     private val searchState = MutableStateFlow(SearchState())
 
+
+    private val userCameraUpdates = MutableStateFlow(MapState.Default.cameraOptions)
+
+    init {
+        viewModelScope.launch {
+            userCameraUpdates.debounce(300)
+                .collectLatest {
+                    mapState.value = mapState.value.copy(
+                        cameraOptions = it,
+                        cameraMovementSource = MapState.CameraMovementSource.User
+                    )
+                }
+        }
+    }
+
     val state: StateFlow<ViewState> =
         combine(
-            mapState.debounce(100),
+            mapState,
             searchState,
             ::ViewState
         ).stateIn(
@@ -31,15 +47,14 @@ class MapViewModel(
 
 
     fun onCameraMoved(updatedCameraOptions: CameraOptions) {
-        mapState.value = mapState.value.copy(
-            cameraOptions = updatedCameraOptions,
-            cameraMovementSource = MapState.CameraMovementSource.User
-        )
+        userCameraUpdates.value = updatedCameraOptions
     }
 
     fun onStallTapped(stallSlug: String) {
+        Timber.d("onStallTapped: $stallSlug")
         viewModelScope.launch {
             stallRepository.getStall(stallSlug)?.let { stall ->
+                Timber.d("found stall: $stall")
                 mapState.value = mapState.value.copy(
                     cameraOptions = CameraOptions.Builder()
                         .center(Point.fromLngLat(stall.center_lng, stall.center_lat))
@@ -49,6 +64,11 @@ class MapViewModel(
                 )
             }
         }
+    }
+
+    fun onSearchResultTapped(resultSlug: String) {
+        searchState.value = searchState.value.copy(query = "")
+        onStallTapped(resultSlug)
     }
 
     private var searchJob: Job? = null
