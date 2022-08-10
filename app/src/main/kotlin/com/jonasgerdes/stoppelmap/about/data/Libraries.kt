@@ -45,6 +45,18 @@ internal val libraries = listOf(
         githubUrl = "https://github.com/InsertKoinIO/koin"
     ),
     Library(
+        name = "Mapbox",
+        author = "Mapbox Inc.",
+        license = License.BSD2Clause(),
+        githubUrl = "https://github.com/mapbox/mapbox-maps-android"
+    ),
+    Library(
+        name = "SQLDelight",
+        author = "CashApp",
+        license = License.Apache2(),
+        githubUrl = "https://github.com/cashapp/sqldelight"
+    ),
+    Library(
         name = "Timber",
         author = "JakeWharton, Timber Contributors",
         license = License.Apache2(),

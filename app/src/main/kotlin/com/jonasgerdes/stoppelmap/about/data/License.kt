@@ -9,6 +9,9 @@ open class License(
     data class Apache2(val url: String = "https://www.apache.org/licenses/LICENSE-2.0.txt") :
         License("Apache 2.0", "", url)
 
+    data class BSD2Clause(val url: String = "https://opensource.org/licenses/BSD-2-Clause") :
+        License("BSD 2-Clause", "", url)
+
     data class MIT(val url: String = "https://opensource.org/licenses/MIT") :
         License("MIT", "", url)
 }
