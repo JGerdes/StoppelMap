@@ -22,6 +22,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -85,31 +86,41 @@ fun Search(
                             .fillMaxWidth()
                             .focusRequester(focusRequester)
                     )
-                    LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                        items(searchState.results) { result ->
-                            Row(modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    onResultTap(result.slug)
-                                    searchExpanded = false
-                                }
-                                .padding(16.dp)
-                            ) {
-                                val context = LocalContext.current
-                                val vectorId =
-                                    context.resources.getIdentifier(
-                                        "ic_stall_type_${result.type}",
-                                        "drawable",
-                                        context.packageName
+                    if (searchState.results.isNotEmpty() || searchState.query.isBlank()) {
+                        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                            items(searchState.results) { result ->
+                                Row(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        onResultTap(result.slug)
+                                        searchExpanded = false
+                                    }
+                                    .padding(16.dp)
+                                ) {
+                                    val context = LocalContext.current
+                                    val vectorId =
+                                        context.resources.getIdentifier(
+                                            "ic_stall_type_${result.type}",
+                                            "drawable",
+                                            context.packageName
+                                        )
+                                    Icon(
+                                        painterResource(id = vectorId),
+                                        contentDescription = null
                                     )
-                                Icon(
-                                    painterResource(id = vectorId),
-                                    contentDescription = null
-                                )
-                                Spacer(modifier = Modifier.size(8.dp))
-                                Text(text = result.name!!)
+                                    Spacer(modifier = Modifier.size(8.dp))
+                                    Text(text = result.name!!)
+                                }
                             }
                         }
+                    } else {
+                        Text(
+                            text = "Keine Ergebnisse zur Suche nach \"${searchState.query}\"",
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(32.dp)
+                        )
                     }
                 }
                 DisposableEffect(Unit) {
