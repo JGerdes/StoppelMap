@@ -1,10 +1,12 @@
 package com.jonasgerdes.stoppelmap.ui
 
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -22,6 +24,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.jonasgerdes.stoppelmap.about.ui.AboutScreen
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
+import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
 import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
@@ -30,11 +33,21 @@ import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverv
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 class StoppelMapActivity : ComponentActivity() {
+
+    private val permissionRepository: PermissionRepository by inject()
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            permissionRepository.update()
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +121,8 @@ class StoppelMapActivity : ComponentActivity() {
                 }
                 composable(Screen.Map.route) {
                     MapScreen(
-                        Modifier
+                        onRequestLocationPermission = ::requestLocationPermission,
+                        modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
                     )
@@ -156,5 +170,10 @@ class StoppelMapActivity : ComponentActivity() {
 
     private fun openUrl(url: String) {
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    private fun requestLocationPermission() {
+        if (permissionRepository.isLocationPermissionGranted()) return
+        requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
 }

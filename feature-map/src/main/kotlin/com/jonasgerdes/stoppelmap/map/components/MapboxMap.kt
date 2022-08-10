@@ -39,11 +39,12 @@ import com.mapbox.maps.extension.style.layers.generated.SymbolLayer
 import com.mapbox.maps.extension.style.layers.getLayerAs
 import com.mapbox.maps.extension.style.layers.properties.generated.Visibility
 import com.mapbox.maps.extension.style.sources.generated.GeoJsonSource
-import com.mapbox.maps.extension.style.sources.getSource
+import com.mapbox.maps.extension.style.sources.getSourceAs
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.attribution.attribution
 import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.gestures.gestures
+import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.scalebar.scalebar
 import timber.log.Timber
 
@@ -76,6 +77,10 @@ fun MapboxMap(
                 }
                 getStyle()?.apply {
                     addMarkerIcons(context, density, colors, isDarkTheme)
+                    location.updateSettings {
+                        enabled = true
+                        pulsingEnabled = true
+                    }
                 }
                 addOnMapClickListener { point ->
                     queryRenderedFeatures(
@@ -107,7 +112,9 @@ fun MapboxMap(
                 is MapState.CameraPosition.Options -> position.cameraOptions
             }
             when (mapState.cameraMovementSource) {
-                MapState.CameraMovementSource.User -> setCamera(targetCameraOptions)
+                MapState.CameraMovementSource.User -> if (!isGestureInProgress()) setCamera(
+                    targetCameraOptions
+                )
                 MapState.CameraMovementSource.Computed -> flyTo(targetCameraOptions)
             }
 
@@ -144,15 +151,33 @@ fun MapboxMap(
 
                 style.addMarkerIcons(context, density, colors, isDarkTheme)
 
-
                 style.getLayerAs<SymbolLayer>("highlight-labels")?.apply {
                     textColor(colors.labelColor.toArgb())
                     textHaloColor(colors.labelHaloColor.toArgb())
                     visibility(if (highlightedStalls.isNullOrEmpty()) Visibility.NONE else Visibility.VISIBLE)
                 }
 
+                style.addImageFromVectorResource(
+                    context,
+                    density,
+                    "location-puck",
+                    R.drawable.ic_location_puck,
+                    colors.locationPuckColor
+                )
+                mapState.userLocation?.let { userLocation ->
+                    style.getSourceAs<GeoJsonSource>("user-location-source")?.apply {
+                        data(
+                            FeatureCollection.fromFeatures(
+                                listOf(
+                                    Feature.fromGeometry(userLocation)
+                                )
+                            ).toJson()
+                        )
+                    }
+                }
+
                 if (highlightedStalls != null) {
-                    (style.getSource("highlight-labels-source") as? GeoJsonSource)?.apply {
+                    style.getSourceAs<GeoJsonSource>("highlight-labels-source")?.apply {
                         data(
                             FeatureCollection.fromFeatures(
                                 highlightedStalls.map { stall ->
@@ -182,6 +207,7 @@ fun MapboxMap(
 }
 
 data class MapBoxMapColors(
+    val locationPuckColor: Color,
     val backgroundColor: Color,
     val streetColor: Color,
     val labelColor: Color,
@@ -220,6 +246,7 @@ data class MapBoxMapColors(
             isDarkTheme: Boolean = isSystemInDarkTheme()
         ) =
             MapBoxMapColors(
+                locationPuckColor = MaterialTheme.colorScheme.primary,
                 backgroundColor = MaterialTheme.colorScheme.background,
                 streetColor = MaterialTheme.colorScheme.surfaceVariant,
                 labelColor = MaterialTheme.colorScheme.onSurface,
@@ -293,6 +320,25 @@ data class MarkerIcon(
     @DrawableRes val iconResource: Int,
     val tintColor: Color
 )
+
+fun Style.addImageFromVectorResource(
+    context: Context,
+    density: Density,
+    id: String,
+    @DrawableRes iconResource: Int,
+    tintColor: Color
+) {
+    val bitmap = with(density) {
+        Bitmap.createBitmap(32.dp.roundToPx(), 32.dp.roundToPx(), Bitmap.Config.ARGB_8888)
+    }
+    val canvas = Canvas(bitmap)
+    context.getDrawable(iconResource)!!.apply {
+        setTint(tintColor.toArgb())
+        bounds = canvas.clipBounds
+        draw(canvas)
+    }
+    addImage(id, bitmap)
+}
 
 fun Style.addMarkerIcons(
     context: Context,

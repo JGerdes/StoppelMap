@@ -68,6 +68,7 @@ dependencies {
 
         implementation("com.jakewharton.timber:timber:$timber")
         implementation("com.mapbox.maps:android:$mapBox")
+        implementation("com.google.android.gms:play-services-location:$playServiceLocation")
 
         implementation("com.squareup.sqldelight:coroutines-extensions-jvm:${sqldelight}")
 

@@ -5,19 +5,19 @@
 
 package com.jonasgerdes.stoppelmap.map.ui
 
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Error
+import androidx.compose.material.icons.rounded.MyLocation
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -36,6 +36,7 @@ import org.koin.androidx.compose.viewModel
 @Composable
 fun MapScreen(
     modifier: Modifier = Modifier,
+    onRequestLocationPermission: () -> Unit,
     lazyViewModel: Lazy<MapViewModel> = viewModel(),
 ) {
     val viewModel by lazyViewModel
@@ -55,7 +56,6 @@ fun MapScreen(
             onQueryChange = viewModel::onSearchQueryChanged,
             onResultTap = viewModel::onSearchResultTapped
         )
-
         Text(
             text = "Weitere Stände, Attraktionen und Zelte folgen in Kürze",
             style = MaterialTheme.typography.labelSmall,
@@ -65,7 +65,51 @@ fun MapScreen(
                 .fillMaxWidth(0.5f)
                 .padding(8.dp)
         )
+        FloatingActionButton(
+            onClick = {
+                onRequestLocationPermission()
+                viewModel.onMyLocationFabTap()
+            },
+            shape = CircleShape,
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.BottomEnd)
+        ) {
+            Icon(Icons.Rounded.MyLocation, contentDescription = "Meine Position")
+        }
 
+        var snackbarText by remember { mutableStateOf("") }
+
+        (state.snackbarState as? MapViewModel.SnackbarState.Shown)?.text?.let {
+            snackbarText = it
+        }
+
+        AnimatedVisibility(
+            visible = state.snackbarState is MapViewModel.SnackbarState.Shown,
+            enter = fadeIn() + slideInVertically(),
+            exit = fadeOut() + slideOutVertically()
+        ) {
+            ElevatedCard(
+                colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                ) {
+                    Icon(Icons.Rounded.Error, contentDescription = null)
+                    Spacer(modifier = Modifier.size(16.dp))
+                    Text(
+                        text = snackbarText,
+                        color = MaterialTheme.colorScheme.onErrorContainer
+                    )
+                }
+            }
+        }
     }
 }
 
