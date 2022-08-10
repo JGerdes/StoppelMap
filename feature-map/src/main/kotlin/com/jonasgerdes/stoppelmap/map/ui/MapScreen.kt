@@ -17,6 +17,7 @@ import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -49,6 +50,16 @@ fun MapScreen(
             searchState = state.searchState,
             onQueryChange = viewModel::onSearchQueryChanged,
             onResultTap = viewModel::onSearchResultTapped
+        )
+
+        Text(
+            text = "Weitere Stände, Attraktionen und Zelte folgen in Kürze",
+            style = MaterialTheme.typography.labelSmall,
+            textAlign = TextAlign.Right,
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .fillMaxWidth(0.5f)
+                .padding(8.dp)
         )
 
     }
