@@ -5,7 +5,6 @@
 
 package com.jonasgerdes.stoppelmap.map.ui
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,8 +14,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.map.components.MapboxMap
+import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.SearchState
 import org.koin.androidx.compose.viewModel
 
@@ -48,6 +50,8 @@ fun MapScreen(
         )
         Search(
             searchState = state.searchState,
+            onSearchButtonTap = viewModel::onSearchButtonTapped,
+            onCloseSearchTap = viewModel::onCloseSearchTapped,
             onQueryChange = viewModel::onSearchQueryChanged,
             onResultTap = viewModel::onSearchResultTapped
         )
@@ -68,88 +72,148 @@ fun MapScreen(
 @Composable
 fun Search(
     searchState: SearchState,
+    onSearchButtonTap: () -> Unit,
+    onCloseSearchTap: () -> Unit,
     onQueryChange: (String) -> Unit,
-    onResultTap: (String) -> Unit,
-    modifier: Modifier = Modifier
+    onResultTap: (SearchResult) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    var searchExpanded by rememberSaveable { mutableStateOf(false) }
-    val focusRequester = remember { FocusRequester() }
-
     ElevatedCard(
         modifier = modifier.padding(16.dp)
     ) {
-        AnimatedContent(targetState = searchExpanded) { targetExpanded ->
-            if (targetExpanded) {
-                Column(Modifier.fillMaxWidth()) {
-                    TextField(
-                        value = searchState.query,
-                        onValueChange = onQueryChange,
-                        trailingIcon = {
-                            IconButton(onClick = {
-                                searchExpanded = false
-                                onQueryChange("")
-                            }) {
-                                Icon(Icons.Rounded.Close, contentDescription = null)
-                            }
-                        },
-                        placeholder = { Text("Suche") },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .focusRequester(focusRequester)
-                    )
-                    if (searchState.results.isNotEmpty() || searchState.query.isBlank()) {
-                        LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                            items(searchState.results) { result ->
-                                Row(modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable {
-                                        onResultTap(result.slug)
-                                        searchExpanded = false
-                                    }
-                                    .padding(16.dp)
-                                ) {
-                                    val context = LocalContext.current
-                                    val vectorId =
-                                        context.resources.getIdentifier(
-                                            "ic_stall_type_${result.type}",
-                                            "drawable",
-                                            context.packageName
-                                        )
-                                    Icon(
-                                        painterResource(id = vectorId),
-                                        contentDescription = null
-                                    )
-                                    Spacer(modifier = Modifier.size(8.dp))
-                                    Text(text = result.name!!)
-                                }
-                            }
-                        }
-                    } else {
-                        Text(
-                            text = "Keine Ergebnisse zur Suche nach \"${searchState.query}\"",
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(32.dp)
-                        )
-                    }
-                }
-                DisposableEffect(Unit) {
-                    focusRequester.requestFocus()
+        //AnimatedContent(targetState = searchState) { searchState ->
+        when (searchState) {
+            SearchState.Collapsed -> SearchPill(onTap = onSearchButtonTap)
+            is SearchState.Search -> SearchField(
+                searchState = searchState,
+                onQueryChange = onQueryChange,
+                onResultTap = onResultTap,
+                onCloseSearchTap = onCloseSearchTap
+            )
+            is SearchState.HighlightResult -> HighlightedCard(
+                searchState = searchState,
+                onCloseSearchTap = onCloseSearchTap
+            )
+        }
+        //}
+    }
+}
 
-                    onDispose {
-                        focusRequester.freeFocus()
-                    }
+@Composable
+fun HighlightedCard(
+    searchState: SearchState.HighlightResult,
+    onCloseSearchTap: () -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth()
+    ) {
+        val context = LocalContext.current
+        val vectorId =
+            context.resources.getIdentifier(
+                "ic_stall_type_${searchState.result.stalls.first().type}",
+                "drawable",
+                context.packageName
+            )
+        Icon(
+            painterResource(id = vectorId),
+            contentDescription = null
+        )
+        Spacer(modifier = Modifier.size(8.dp))
+        Text(text = searchState.result.term)
+        Spacer(
+            modifier = Modifier
+                .defaultMinSize(minWidth = 8.dp)
+                .weight(1f)
+        )
+        IconButton(
+            onClick = { onCloseSearchTap() }
+        ) {
+            Icon(Icons.Rounded.Close, contentDescription = null)
+        }
+    }
+}
+
+@Composable
+fun SearchField(
+    searchState: SearchState.Search,
+    onQueryChange: (String) -> Unit,
+    onResultTap: (SearchResult) -> Unit,
+    onCloseSearchTap: () -> Unit
+) {
+    val focusRequester = remember { FocusRequester() }
+    Column(Modifier.fillMaxWidth()) {
+        TextField(
+            value = searchState.query,
+            onValueChange = onQueryChange,
+            trailingIcon = {
+                IconButton(onClick = { onCloseSearchTap() }) {
+                    Icon(Icons.Rounded.Close, contentDescription = null)
                 }
-            } else {
-                Row(Modifier
-                        .clickable { searchExpanded = true }
-                        .padding(vertical = 8.dp, horizontal = 16.dp)) {
-                    Icon(Icons.Rounded.Search, contentDescription = null)
-                    Spacer(modifier = Modifier.size(8.dp))
-                    Text("Suche")
+            },
+            placeholder = { Text("Suche") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .focusRequester(focusRequester)
+        )
+        if (searchState.results.isNotEmpty() || searchState.query.isBlank()) {
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                items(searchState.results) { result ->
+                    Row(modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            onResultTap(result)
+                        }
+                        .padding(16.dp)
+                    ) {
+                        val context = LocalContext.current
+                        val vectorId =
+                            context.resources.getIdentifier(
+                                "ic_stall_type_${result.stalls.first().type}",
+                                "drawable",
+                                context.packageName
+                            )
+                        Icon(
+                            painterResource(id = vectorId),
+                            contentDescription = null
+                        )
+                        Spacer(modifier = Modifier.size(8.dp))
+                        Text(text = result.term)
+                    }
                 }
             }
+        } else {
+            Text(
+                text = "Keine Ergebnisse zur Suche nach \"${searchState.query}\"",
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(32.dp)
+            )
         }
+    }
+    DisposableEffect(Unit) {
+        focusRequester.requestFocus()
+
+        onDispose {
+            focusRequester.freeFocus()
+        }
+    }
+}
+
+
+@Composable
+fun SearchPill(
+    onTap: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(modifier
+            .clickable { onTap() }
+            .padding(vertical = 8.dp, horizontal = 16.dp)) {
+        Icon(Icons.Rounded.Search, contentDescription = null)
+        Spacer(modifier = Modifier.size(8.dp))
+        Text("Suche")
     }
 }

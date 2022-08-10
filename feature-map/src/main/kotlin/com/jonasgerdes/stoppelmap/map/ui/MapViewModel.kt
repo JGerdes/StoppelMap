@@ -4,30 +4,32 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.data.Stall
 import com.jonasgerdes.stoppelmap.map.MapDefaults
+import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import com.jonasgerdes.stoppelmap.map.repository.StallRepository
+import com.jonasgerdes.stoppelmap.map.usecase.SearchStallsUseCase
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MapViewModel(
-    private val stallRepository: StallRepository
+    private val stallRepository: StallRepository,
+    private val searchStalls: SearchStallsUseCase
 ) : ViewModel() {
 
     private val mapState = MutableStateFlow(MapState.Default)
-    private val searchState = MutableStateFlow(SearchState())
+    private val searchState = MutableStateFlow<SearchState>(SearchState.Collapsed)
 
 
-    private val userCameraUpdates = MutableStateFlow(MapState.Default.cameraOptions)
+    private val userCameraUpdates = MutableStateFlow(initialCameraOptions)
 
     init {
         viewModelScope.launch {
             userCameraUpdates.debounce(300)
                 .collectLatest {
                     mapState.value = mapState.value.copy(
-                        cameraOptions = it,
+                        cameraPosition = MapState.CameraPosition.Options(it),
                         cameraMovementSource = MapState.CameraMovementSource.User
                     )
                 }
@@ -51,43 +53,63 @@ class MapViewModel(
     }
 
     fun onStallTapped(stallSlug: String) {
-        Timber.d("onStallTapped: $stallSlug")
+        searchState.value = SearchState.Collapsed
+        mapState.value = mapState.value.copy(highlightedStalls = null)
+
         viewModelScope.launch {
             stallRepository.getStall(stallSlug)?.let { stall ->
-                Timber.d("found stall: $stall")
                 mapState.value = mapState.value.copy(
-                    cameraOptions = CameraOptions.Builder()
-                        .center(Point.fromLngLat(stall.center_lng, stall.center_lat))
-                        .zoom(MapDefaults.detailZoom)
-                        .build(),
+                    cameraPosition = MapState.CameraPosition.Options(
+                        CameraOptions.Builder()
+                            .center(Point.fromLngLat(stall.center_lng, stall.center_lat))
+                            .zoom(MapDefaults.detailZoom)
+                            .build()
+                    ),
                     cameraMovementSource = MapState.CameraMovementSource.Computed
                 )
             }
         }
     }
 
-    fun onSearchResultTapped(resultSlug: String) {
-        searchState.value = searchState.value.copy(query = "")
-        onStallTapped(resultSlug)
+    fun onSearchButtonTapped() {
+        searchState.value = SearchState.Search()
+        mapState.value = mapState.value.copy(highlightedStalls = null)
+    }
+
+    fun onCloseSearchTapped() {
+        searchState.value = SearchState.Collapsed
+        mapState.value = mapState.value.copy(highlightedStalls = null)
+    }
+
+    fun onSearchResultTapped(result: SearchResult) {
+        searchState.value = SearchState.HighlightResult(result)
+        mapState.value = mapState.value.copy(
+            cameraPosition = MapState.CameraPosition.BoundingCoordinates(result.stalls.map {
+                Point.fromLngLat(
+                    it.center_lng,
+                    it.center_lat
+                )
+            }),
+            cameraMovementSource = MapState.CameraMovementSource.Computed,
+            highlightedStalls = result.stalls
+        )
     }
 
     private var searchJob: Job? = null
 
     fun onSearchQueryChanged(query: String) {
-        searchState.value = searchState.value.let {
-            it.copy(
-                query = query,
-                results = if (query.isBlank()) emptyList() else it.results
-            )
+        searchState.value = when (val currentState = searchState.value) {
+            SearchState.Collapsed -> SearchState.Search(query = query)
+            is SearchState.HighlightResult -> SearchState.Search(query = query)
+            is SearchState.Search -> currentState.copy(query = query)
         }
         searchJob?.cancel()
 
         if (query.isBlank()) return
 
         searchJob = viewModelScope.launch {
-            val results = stallRepository.findByQuery(query)
-            searchState.value =
-                searchState.value.copy(results = results.filter { it.name.isNullOrBlank().not() })
+            val results = searchStalls(query)
+            searchState.value = SearchState.Search(query = query, results = results)
         }
 
     }
@@ -100,23 +122,26 @@ class MapViewModel(
         companion object {
             val Default = ViewState(
                 mapState = MapState.Default,
-                searchState = SearchState()
+                searchState = SearchState.Collapsed
             )
         }
     }
 
     data class MapState(
-        val cameraOptions: CameraOptions,
-        val cameraMovementSource: CameraMovementSource
+        val cameraPosition: CameraPosition,
+        val cameraMovementSource: CameraMovementSource,
+        val highlightedStalls: List<Stall>? = null
     ) {
         companion object {
             val Default = MapState(
-                cameraOptions = CameraOptions.Builder()
-                    .center(MapDefaults.center)
-                    .zoom(MapDefaults.defaultZoom)
-                    .build(),
+                cameraPosition = CameraPosition.Options(initialCameraOptions),
                 cameraMovementSource = CameraMovementSource.User
             )
+        }
+
+        sealed interface CameraPosition {
+            data class Options(val cameraOptions: CameraOptions) : CameraPosition
+            data class BoundingCoordinates(val coordinates: List<Point>) : CameraPosition
         }
 
         enum class CameraMovementSource {
@@ -124,8 +149,18 @@ class MapViewModel(
         }
     }
 
-    data class SearchState(
-        val query: String = "",
-        val results: List<Stall> = emptyList()
-    )
+    sealed interface SearchState {
+        object Collapsed : SearchState
+        data class Search(
+            val query: String = "",
+            val results: List<SearchResult> = emptyList()
+        ) : SearchState
+
+        data class HighlightResult(val result: SearchResult) : SearchState
+    }
 }
+
+private val initialCameraOptions = CameraOptions.Builder()
+    .center(MapDefaults.center)
+    .zoom(MapDefaults.defaultZoom)
+    .build()

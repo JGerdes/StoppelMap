@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS stall_sub_types (
+    stall           TEXT NOT NULL,
+    sub_type        TEXT NOT NULL,
+
+    FOREIGN KEY(stall) REFERENCES stall(slug),
+    FOREIGN KEY(sub_type) REFERENCES sub_types(slug)
+);
+
+insert:
+INSERT INTO stall_sub_types(stall, sub_type)
+VALUES ?;
+
+selectStallsBySubType:
+SELECT stall.*
+FROM stall_sub_types
+JOIN stall ON stall.slug = stall_sub_types.stall
+WHERE stall_sub_types.sub_type = :subType
+ORDER BY stall.name;

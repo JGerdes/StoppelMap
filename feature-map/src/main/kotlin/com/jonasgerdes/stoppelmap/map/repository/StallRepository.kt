@@ -12,7 +12,11 @@ class StallRepository(
         stallQueries.selectBySlug(slug).executeAsOneOrNull()
     }
 
-    suspend fun findByQuery(query: String) = withContext(Dispatchers.IO) {
-        stallQueries.findByQuery(query).executeAsList()
+    suspend fun findByName(nameQuery: String) = withContext(Dispatchers.IO) {
+        stallQueries.findByNameQuery(nameQuery).executeAsList()
+    }
+
+    suspend fun findByType(typeSlug: String) = withContext(Dispatchers.IO) {
+        stallQueries.findByType(typeSlug).executeAsList()
     }
 }

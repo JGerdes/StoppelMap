@@ -24,14 +24,22 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.graphics.ColorUtils
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import com.google.gson.JsonObject
+import com.google.gson.JsonPrimitive
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.MapState
+import com.mapbox.geojson.Feature
+import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.Point
 import com.mapbox.maps.*
 import com.mapbox.maps.extension.style.layers.generated.BackgroundLayer
 import com.mapbox.maps.extension.style.layers.generated.FillLayer
 import com.mapbox.maps.extension.style.layers.generated.SymbolLayer
 import com.mapbox.maps.extension.style.layers.getLayerAs
+import com.mapbox.maps.extension.style.layers.properties.generated.Visibility
+import com.mapbox.maps.extension.style.sources.generated.GeoJsonSource
+import com.mapbox.maps.extension.style.sources.getSource
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.attribution.attribution
 import com.mapbox.maps.plugin.gestures.addOnMapClickListener
@@ -70,7 +78,6 @@ fun MapboxMap(
                     addMarkerIcons(context, density, colors, isDarkTheme)
                 }
                 addOnMapClickListener { point ->
-                    Timber.d("addOnMapClickListener@ $point")
                     queryRenderedFeatures(
                         RenderedQueryGeometry(pixelForCoordinate(point)),
                         RenderedQueryOptions(
@@ -88,16 +95,20 @@ fun MapboxMap(
                     }
                     true
                 }
-
             }
         }
     }
 
     AndroidView(factory = { mapView }, modifier = modifier) {
         it.getMapboxMap().apply {
+            val targetCameraOptions = when (val position = mapState.cameraPosition) {
+                is MapState.CameraPosition.BoundingCoordinates ->
+                    cameraForCoordinates(coordinates = position.coordinates)
+                is MapState.CameraPosition.Options -> position.cameraOptions
+            }
             when (mapState.cameraMovementSource) {
-                MapState.CameraMovementSource.User -> setCamera(mapState.cameraOptions)
-                MapState.CameraMovementSource.Computed -> flyTo(mapState.cameraOptions)
+                MapState.CameraMovementSource.User -> setCamera(targetCameraOptions)
+                MapState.CameraMovementSource.Computed -> flyTo(targetCameraOptions)
             }
 
             getStyle { style ->
@@ -116,14 +127,54 @@ fun MapboxMap(
                 style.getLayerAs<FillLayer>("restaurants")?.apply {
                     fillColor(colors.stallTypeRestaurantColor.toArgb())
                 }
+                style.getLayerAs<FillLayer>("restrooms")?.apply {
+                    fillColor(colors.stallTypeRestroomColor.toArgb())
+                }
+                style.getLayerAs<FillLayer>("miscs")?.apply {
+                    fillColor(colors.stallTypeMiscColor.toArgb())
+                }
+
+                val highlightedStalls = mapState.highlightedStalls
 
                 style.getLayerAs<SymbolLayer>("labels")?.apply {
                     textColor(colors.labelColor.toArgb())
                     textHaloColor(colors.labelHaloColor.toArgb())
+                    visibility(if (highlightedStalls.isNullOrEmpty()) Visibility.VISIBLE else Visibility.NONE)
                 }
-                getStyle()?.apply {
-                    addMarkerIcons(context, density, colors, isDarkTheme)
+
+                style.addMarkerIcons(context, density, colors, isDarkTheme)
+
+
+                style.getLayerAs<SymbolLayer>("highlight-labels")?.apply {
+                    textColor(colors.labelColor.toArgb())
+                    textHaloColor(colors.labelHaloColor.toArgb())
+                    visibility(if (highlightedStalls.isNullOrEmpty()) Visibility.NONE else Visibility.VISIBLE)
                 }
+
+                if (highlightedStalls != null) {
+                    (style.getSource("highlight-labels-source") as? GeoJsonSource)?.apply {
+                        data(
+                            FeatureCollection.fromFeatures(
+                                highlightedStalls.map { stall ->
+                                    Feature.fromGeometry(
+                                        Point.fromLngLat(
+                                            stall.center_lng,
+                                            stall.center_lat
+                                        ),
+                                        JsonObject().apply {
+                                            add("building", JsonPrimitive(stall.type))
+                                            stall.name?.let { name ->
+                                                add("name", JsonPrimitive(name))
+                                            }
+                                        }
+                                    )
+                                }
+                            ).toJson()
+                        )
+                    }
+                }
+
+
             }
         }
     }

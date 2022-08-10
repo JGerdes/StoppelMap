@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS sub_types (
+    slug                TEXT NOT NULL PRIMARY KEY,
+    name                TEXT NOT NULL
+);
+
+insert:
+INSERT INTO sub_types(slug, name)
+VALUES ?;
+
+findByQuery:
+SELECT *
+FROM sub_types
+WHERE name LIKE ( '%' || :name || '%');
