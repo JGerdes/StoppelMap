@@ -9,6 +9,8 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Search
@@ -18,6 +20,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -42,7 +46,8 @@ fun MapScreen(
         )
         Search(
             searchState = state.searchState,
-            onQueryChange = viewModel::onSearchQueryChanged
+            onQueryChange = viewModel::onSearchQueryChanged,
+            onResultTap = viewModel::onStallTapped
         )
 
     }
@@ -52,6 +57,7 @@ fun MapScreen(
 fun Search(
     searchState: SearchState,
     onQueryChange: (String) -> Unit,
+    onResultTap: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var searchExpanded by rememberSaveable { mutableStateOf(false) }
@@ -79,6 +85,33 @@ fun Search(
                             .fillMaxWidth()
                             .focusRequester(focusRequester)
                     )
+                    LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                        items(searchState.results) { result ->
+                            Row(modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    onResultTap(result.slug)
+                                    searchExpanded = false
+                                    onQueryChange("")
+                                }
+                                .padding(16.dp)
+                            ) {
+                                val context = LocalContext.current
+                                val vectorId =
+                                    context.resources.getIdentifier(
+                                        "ic_stall_type_${result.type}",
+                                        "drawable",
+                                        context.packageName
+                                    )
+                                Icon(
+                                    painterResource(id = vectorId),
+                                    contentDescription = null
+                                )
+                                Spacer(modifier = Modifier.size(8.dp))
+                                Text(text = result.name!!)
+                            }
+                        }
+                    }
                 }
                 DisposableEffect(Unit) {
                     focusRequester.requestFocus()

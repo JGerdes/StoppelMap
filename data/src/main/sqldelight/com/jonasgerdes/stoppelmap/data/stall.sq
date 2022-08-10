@@ -15,3 +15,9 @@ selectBySlug:
 SELECT *
 FROM stall
 WHERE slug = ?;
+
+
+findByQuery:
+SELECT *
+FROM stall
+WHERE name LIKE (:name || '%');

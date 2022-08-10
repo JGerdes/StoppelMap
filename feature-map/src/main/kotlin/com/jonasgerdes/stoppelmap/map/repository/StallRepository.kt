@@ -11,4 +11,8 @@ class StallRepository(
     suspend fun getStall(slug: String) = withContext(Dispatchers.IO) {
         stallQueries.selectBySlug(slug).executeAsOneOrNull()
     }
+
+    suspend fun findByQuery(query: String) = withContext(Dispatchers.IO) {
+        stallQueries.findByQuery(query).executeAsList()
+    }
 }

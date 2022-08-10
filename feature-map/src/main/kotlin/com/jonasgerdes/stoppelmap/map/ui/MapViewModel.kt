@@ -2,10 +2,12 @@ package com.jonasgerdes.stoppelmap.map.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonasgerdes.stoppelmap.data.Stall
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.repository.StallRepository
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -49,8 +51,25 @@ class MapViewModel(
         }
     }
 
+    private var searchJob: Job? = null
+
     fun onSearchQueryChanged(query: String) {
-        searchState.value = searchState.value.copy(query = query)
+        searchState.value = searchState.value.let {
+            it.copy(
+                query = query,
+                results = if (query.isBlank()) emptyList() else it.results
+            )
+        }
+        searchJob?.cancel()
+
+        if (query.isBlank()) return
+
+        searchJob = viewModelScope.launch {
+            val results = stallRepository.findByQuery(query)
+            searchState.value =
+                searchState.value.copy(results = results.filter { it.name.isNullOrBlank().not() })
+        }
+
     }
 
     data class ViewState(
@@ -86,6 +105,7 @@ class MapViewModel(
     }
 
     data class SearchState(
-        val query: String = ""
+        val query: String = "",
+        val results: List<Stall> = emptyList()
     )
 }
