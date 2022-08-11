@@ -11,6 +11,9 @@
     <string name="transportation_route_section_back">Rückfahrt</string>
     <string name="transportation_route_card_next_departures_label">Nächste Abfahrten</string>
     <string name="transportation_route_card_next_departures_immediately">Sofort</string>
+    <string name="transportation_route_card_next_departures_inMinutes">in %1$d Min.</string>
+    <string name="transportation_route_card_next_departures_tomorrow">morgen %1$s</string>
+    <string name="transportation_route_card_next_departures_none">Keinere weiteren Fahrten</string>
     <string name="transportation_route_card_annotation_new">Neu</string>
     <string name="transportation_route_return_station_from">ab %1$s</string>
 

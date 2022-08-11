@@ -35,8 +35,10 @@ import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import kotlinx.datetime.toJavaLocalDateTime
+import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.viewModel
 import org.koin.core.parameter.parametersOf
+import timber.log.Timber
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.math.roundToInt
@@ -52,6 +54,8 @@ fun RouteScreen(
 ) {
     val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
+
+    Timber.d("new state: ${(state.routeState as? RouteViewModel.RouteState.Loaded)?.routeDetails?.stations?.firstOrNull()}")
 
     val routeState = state.routeState
     if (routeState is RouteViewModel.RouteState.Loaded) {
@@ -209,8 +213,14 @@ fun StopStationCard(
     station: BusRouteDetails.Station.Stop,
     modifier: Modifier = Modifier
 ) {
-    val departureTimeFormatter = remember(Locale.getDefault()) {
+    val departureDateTimeFormatter = remember(Locale.getDefault()) {
         DateTimeFormatter.ofPattern("dd.MM, HH:mm", Locale.getDefault())
+    }
+    val departureWeekdayTimeFormatter = remember(Locale.getDefault()) {
+        DateTimeFormatter.ofPattern("EE, HH:mm", Locale.getDefault())
+    }
+    val departureTimeFormatter = remember(Locale.getDefault()) {
+        DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault())
     }
 
     Card(modifier = modifier) {
@@ -236,17 +246,35 @@ fun StopStationCard(
                     text = stringResource(R.string.transportation_route_card_next_departures_label),
                     style = MaterialTheme.typography.labelMedium
                 )
-                station.nextDepartures.forEach { departureTime ->
-                    val departureText = when (departureTime) {
-                        is BusRouteDetails.DepartureTime.Absolut -> departureTimeFormatter.format(
-                            departureTime.time.toJavaLocalDateTime()
-                        )
-                        BusRouteDetails.DepartureTime.Immediately ->
-                            stringResource(R.string.transportation_route_card_next_departures_immediately)
-                        is BusRouteDetails.DepartureTime.Relative -> TODO()
+                if (station.nextDepartures.isNotEmpty()) {
+                    station.nextDepartures.forEach { departureTime ->
+                        val departureText = when (departureTime) {
+                            BusRouteDetails.DepartureTime.Immediately ->
+                                stringResource(R.string.transportation_route_card_next_departures_immediately)
+                            is BusRouteDetails.DepartureTime.InMinutes ->
+                                stringResource(
+                                    R.string.transportation_route_card_next_departures_inMinutes,
+                                    departureTime.minutes
+                                )
+                            is BusRouteDetails.DepartureTime.Today ->
+                                departureTimeFormatter.format(departureTime.time.toJavaLocalTime())
+                            is BusRouteDetails.DepartureTime.Tomorrow ->
+                                stringResource(
+                                    R.string.transportation_route_card_next_departures_tomorrow,
+                                    departureTimeFormatter.format(departureTime.time.toJavaLocalTime())
+                                )
+                            is BusRouteDetails.DepartureTime.ThisWeek ->
+                                departureWeekdayTimeFormatter.format(departureTime.dateTime.toJavaLocalDateTime())
+                            is BusRouteDetails.DepartureTime.Absolute ->
+                                departureDateTimeFormatter.format(departureTime.dateTime.toJavaLocalDateTime())
+                        }
+                        Text(text = departureText)
                     }
+                } else {
                     Text(
-                        text = departureText,
+                        text = stringResource(
+                            R.string.transportation_route_card_next_departures_none
+                        )
                     )
                 }
             }

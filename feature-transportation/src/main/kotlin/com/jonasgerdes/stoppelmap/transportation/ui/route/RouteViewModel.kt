@@ -4,50 +4,62 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.ReturnStation
+import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.Station
+import com.jonasgerdes.stoppelmap.transportation.usecase.GetNextDeparturesUseCase
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
+import kotlinx.datetime.LocalDateTime
 
 class RouteViewModel(
     routeId: String,
-    busRoutesRepository: BusRoutesRepository
+    busRoutesRepository: BusRoutesRepository,
+    private val getCurrentLocalDateTime: () -> LocalDateTime,
+    private val getNextDepartures: GetNextDeparturesUseCase
 ) : ViewModel() {
 
-    private val routeState = busRoutesRepository.getRouteById(routeId)
-        .map { route ->
+    private val timeUpdate = flow {
+        while (true) {
+            emit(getCurrentLocalDateTime())
+            delay(10_000)
+        }
+    }
+    private val routeState =
+        combine(
+            busRoutesRepository.getRouteById(routeId),
+            timeUpdate
+        ) { route, now ->
             BusRouteDetails(
                 routeId = route.id,
                 title = route.title,
                 stations = route.stations.map { station ->
                     if (station.isDestination) {
-                        BusRouteDetails.Station.Destination(
+                        Station.Destination(
                             id = station.id,
                             title = station.title
                         )
                     } else {
-                        BusRouteDetails.Station.Stop(
+                        Station.Stop(
                             id = station.id,
                             title = station.title,
-                            nextDepartures = station.departures.first().departures.take(3).map {
-                                BusRouteDetails.DepartureTime.Absolut(
-                                    time = it.time
-                                )
-                            },
+                            nextDepartures = getNextDepartures(
+                                departures = station.departures.flatMap { it.departures },
+                                now = now
+                            ),
                             annotateAsNew = station.annotateAsNew
                         )
                     }
                 },
                 additionalInfo = route.additionalInfo,
                 returnStations = route.returnStations.map {
-                    BusRouteDetails.ReturnStation(
+                    ReturnStation(
                         id = it.id,
                         title = it.title,
                     )
                 }
             )
         }
-        .map(RouteState::Loaded)
+            .map(RouteState::Loaded)
 
     val state: StateFlow<ViewState> =
         routeState
