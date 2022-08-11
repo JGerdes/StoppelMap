@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.preparation
 
-import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
 import org.koin.dsl.module
@@ -16,7 +15,10 @@ val preparationModule = module {
         Settings(
             databaseFile = File(appAssets, "stoma22.db"),
             geoJsonInput = File(resources, "stoma22.geojson"),
-            geoJsonOutput = File("$mapFeatureAssets/map", "stoma22.geojson")
+            geoJsonOutput = File("$mapFeatureAssets/map", "stoma22.geojson"),
+            fetchedEventsFile = File(resources, "events/fetched.json"),
+            manualEventsFile = File(resources, "events/manual.json"),
+            descriptionFolder = File(resources, "descriptions")
         )
     }
 
@@ -24,9 +26,4 @@ val preparationModule = module {
         val settings: Settings = get()
         JdbcSqliteDriver("jdbc:sqlite:${settings.databaseFile.absoluteFile}")
     }
-
-    single {
-        StoppelMapDatabase(driver = get())
-    }
-
 }

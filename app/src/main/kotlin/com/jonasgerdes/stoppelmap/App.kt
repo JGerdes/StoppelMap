@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap
 import android.app.Application
 import android.appwidget.AppWidgetManager
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
+import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
@@ -36,6 +37,7 @@ class App : Application() {
 
             modules(
                 appModule,
+                dataModule,
                 homeModule,
                 countdownModule,
                 transportationModule,

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.preparation
 
 import com.jonasgerdes.stoppelmap.preperation.entity.*
+import com.jonasgerdes.stoppelmap.preperation.entity.Event
 
 data class Data(
     val stalls: MutableList<Stall> = mutableListOf(),

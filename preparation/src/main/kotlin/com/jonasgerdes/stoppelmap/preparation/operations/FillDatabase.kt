@@ -1,9 +1,6 @@
 package com.jonasgerdes.stoppelmap.preparation.operations
 
-import com.jonasgerdes.stoppelmap.data.Stall
-import com.jonasgerdes.stoppelmap.data.Stall_sub_types
-import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
-import com.jonasgerdes.stoppelmap.data.Sub_types
+import com.jonasgerdes.stoppelmap.data.*
 import com.jonasgerdes.stoppelmap.preparation.Data
 import com.jonasgerdes.stoppelmap.preparation.Settings
 import org.koin.core.component.KoinComponent
@@ -21,6 +18,11 @@ class FillDatabase : KoinComponent {
                 input = settings.geoJsonInput,
                 output = settings.geoJsonOutput,
                 descriptionFolder = null
+            )
+
+            parseEventSchedule(
+                settings.manualEventsFile,
+                settings.fetchedEventsFile,
             )
         }
 
@@ -56,6 +58,22 @@ class FillDatabase : KoinComponent {
                     Stall_sub_types(
                         stall = it.stall,
                         sub_type = it.subType
+                    )
+                )
+            }
+        }
+
+        database.eventQueries.transaction {
+            data.events.forEach {
+                database.eventQueries.insert(
+                    Event(
+                        slug = it.slug,
+                        name = it.name,
+                        location = it.location,
+                        start = it.start,
+                        end = it.end,
+                        description = it.description,
+                        isOfficial = it.isOfficial
                     )
                 )
             }

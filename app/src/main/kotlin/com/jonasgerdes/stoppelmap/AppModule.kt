@@ -14,10 +14,6 @@ val appModule = module {
         AndroidSqliteDriver(StoppelMapDatabase.Schema, context = get(), databaseFileName)
     }
 
-    single {
-        StoppelMapDatabase(driver = get())
-    }
-
     factory {
         CopyDatabaseUseCase(context = get(), databaseFileName = databaseFileName)
     }

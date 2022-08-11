@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preperation.entity
 
+import kotlinx.datetime.LocalDateTime
 import java.time.OffsetDateTime
 
 data class Stall(
@@ -64,10 +65,11 @@ data class StallSubType(
 data class Event(
     val slug: String,
     val name: String,
-    val start: OffsetDateTime,
-    val end: OffsetDateTime?,
+    val start: LocalDateTime,
+    val end: LocalDateTime?,
     val location: String?,
-    val description: String? = null
+    val description: String? = null,
+    val isOfficial: Boolean = false
 )
 
 
