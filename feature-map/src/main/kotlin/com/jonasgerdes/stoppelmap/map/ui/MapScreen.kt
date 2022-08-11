@@ -52,13 +52,6 @@ fun MapScreen(
             onStallTap = viewModel::onStallTapped,
             modifier = Modifier.fillMaxSize()
         )
-        Search(
-            searchState = state.searchState,
-            onSearchButtonTap = viewModel::onSearchButtonTapped,
-            onCloseSearchTap = viewModel::onCloseSearchTapped,
-            onQueryChange = viewModel::onSearchQueryChanged,
-            onResultTap = viewModel::onSearchResultTapped
-        )
         FloatingActionButton(
             onClick = {
                 onRequestLocationPermission()
@@ -69,8 +62,16 @@ fun MapScreen(
                 .padding(16.dp)
                 .align(Alignment.BottomEnd)
         ) {
-            Icon(Icons.Rounded.MyLocation, contentDescription = "Meine Position")
+            Icon(Icons.Rounded.MyLocation, contentDescription = "Lokalisiere mich")
         }
+
+        Search(
+            searchState = state.searchState,
+            onSearchButtonTap = viewModel::onSearchButtonTapped,
+            onCloseSearchTap = viewModel::onCloseSearchTapped,
+            onQueryChange = viewModel::onSearchQueryChanged,
+            onResultTap = viewModel::onSearchResultTapped
+        )
 
         var snackbarText by remember { mutableStateOf("") }
 

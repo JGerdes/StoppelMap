@@ -4,7 +4,6 @@
     <string name="transportation_overview_topbar_title">An- und Abreise</string>
     <string name="transportation_overview_section_bus">mit dem Bus</string>
     <string name="transportation_overview_card_via">über</string>
-    <string name="transportation_overview_more_to_come">weitere Buspläne folgen in Kürze</string>
 
     <string name="transportation_route_topbar_navigateBack_contentDescription">Zurück</string>
     <string name="transportation_route_section_there">Hinfahrt</string>

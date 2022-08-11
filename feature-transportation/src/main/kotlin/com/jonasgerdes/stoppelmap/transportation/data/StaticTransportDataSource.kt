@@ -16,11 +16,16 @@ class StaticTransportDataSource : TransportDataSource {
                 BusRouteSummary(
                     id = route.id,
                     title = route.title,
-                    viaStations = listOf(
-                        route.stations.first().title,
-                        route.stations[route.stations.size / 2].title,
-                        route.stations.last { it.isDestination.not() }.title,
-                    )
+                    viaStations =
+                    if (route.stations.size <= 4) {
+                        route.stations.map { it.title }
+                    } else {
+                        listOf(
+                            route.stations.first().title,
+                            route.stations[route.stations.size / 2].title,
+                            route.stations.last { it.isDestination.not() }.title,
+                        )
+                    }
                 )
             }
         )
