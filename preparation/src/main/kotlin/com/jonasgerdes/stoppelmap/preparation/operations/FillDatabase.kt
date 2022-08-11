@@ -69,7 +69,7 @@ class FillDatabase : KoinComponent {
                     Event(
                         slug = it.slug,
                         name = it.name,
-                        location = it.location,
+                        location = it.locationName,
                         start = it.start,
                         end = it.end,
                         description = it.description,

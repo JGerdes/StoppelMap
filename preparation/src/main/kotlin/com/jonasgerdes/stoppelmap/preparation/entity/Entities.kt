@@ -68,6 +68,7 @@ data class Event(
     val start: LocalDateTime,
     val end: LocalDateTime?,
     val location: String?,
+    val locationName: String?,
     val description: String? = null,
     val isOfficial: Boolean = false
 )

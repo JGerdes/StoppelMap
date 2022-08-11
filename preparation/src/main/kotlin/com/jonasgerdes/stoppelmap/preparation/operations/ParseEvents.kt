@@ -40,6 +40,7 @@ fun Data.parseEventSchedule(vararg files: File) {
                 },
                 description = it.description,
                 location = it.locationUuid,
+                locationName = it.locationName,
                 isOfficial = it.isOfficial
             )
             eventTags += it.tags.emptyIfNull()

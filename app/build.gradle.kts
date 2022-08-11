@@ -84,8 +84,9 @@ dependencies {
 
     implementation(project(":theme"))
     implementation(project(":feature-countdown"))
-    implementation(project(":feature-transportation"))
     implementation(project(":feature-map"))
+    implementation(project(":feature-schedule"))
+    implementation(project(":feature-transportation"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")

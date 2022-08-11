@@ -7,6 +7,7 @@ data class JsonEvent(
     val start: String,
     val end: String?,
     val locationUuid: String? = null,
+    val locationName: String? = null,
     val description: String? = null,
     val facebookUrl: String? = null,
     val artists: List<String>? = emptyList(),

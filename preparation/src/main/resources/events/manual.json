@@ -25,14 +25,14 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 1,
-      "start": "2021-08-12 13:00:00"
+      "start": "2022-08-12 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_senioren_nachmittag",
       "name": "Senioren-Nachmittag",
       "type": 0,
       "day": 1,
-      "start": "2021-08-12 15:00:00",
+      "start": "2022-08-12 15:00:00",
       "description": "Die Stadt Vechta lädt zum Seniorennachmittag in Kühlings Niedersachsenzelt ein. Dort begrüßen die Traditionsfiguren Jan und Libett und die Mitglieder des Marktausschusses alle Gäste. Es gibt Lebkuchenherzen, Getränke und Live-Musik. Alle Seniorinnen und Senioren aus dem Stadtgebiet Vechta können dort in netter Gesellschaft die Kirmesatmosphäre genießen.",
       "locationUuid": "kuehlings_niedersachsenhalle",
       "isOfficial": true
@@ -42,8 +42,8 @@
       "name": "Happy Hour",
       "type": 1,
       "day": 1,
-      "start": "2021-08-12 14:00:00",
-      "end": "2021-08-12 16:00:00",
+      "start": "2022-08-12 14:00:00",
+      "end": "2022-08-12 16:00:00",
       "description": "1x zahlen, 2x fahren",
       "tags": [
         "Für Kinder"
@@ -55,14 +55,14 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 2,
-      "start": "2021-08-13 13:00:00"
+      "start": "2022-08-13 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_gottesdienst",
       "name": "Gottesdienst",
       "type": 0,
       "day": 3,
-      "start": "2021-08-14 10:00:00",
+      "start": "2022-08-14 10:00:00",
       "locationUuid": "kuehlings_niedersachsenhalle",
       "description": "Gottesdienst in der Niedersachsenhalle mit anschließendem Marktbeginn",
       "isOfficial": true
@@ -72,7 +72,7 @@
       "name": "Pferde- und Viehmarkt",
       "type": 0,
       "day": 4,
-      "start": "2021-08-15 07:00:00",
+      "start": "2022-08-15 07:00:00",
       "description": "Traditioneller Pferde- und Viehmarkt mit anschließendem Marktbeginn"
     },
     {
@@ -80,15 +80,15 @@
       "name": "Marktbeginn",
       "type": 0,
       "day": 5,
-      "start": "2021-08-16 13:00:00"
+      "start": "2022-08-16 13:00:00"
     },
     {
       "uuid": "stoppelmarkt_familientag",
       "name": "Familientag",
       "type": 1,
       "day": 5,
-      "start": "2021-08-16 13:00:00",
-      "end": "2021-08-16 18:00:00",
+      "start": "2022-08-16 13:00:00",
+      "end": "2022-08-16 18:00:00",
       "description": "Familientag mit ermäßigten Preisen",
       "isOfficial": true
     },
@@ -97,7 +97,7 @@
       "name": "Brillant-Feuerwerk",
       "type": 0,
       "day": 5,
-      "start": "2021-08-16 22:00:00",
+      "start": "2022-08-16 22:00:00",
       "description": "Großes Brillant-Höhenfeuerwerk, zu sehen in Richtung Osten des Marktgeländes",
       "isOfficial": true
     }

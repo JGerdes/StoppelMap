@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="schedule_topbar_title">Programme</string>
+
+    <string name="schedule_day_monday">Mo</string>
+    <string name="schedule_day_tuesday">Di</string>
+    <string name="schedule_day_wednesday">Mi</string>
+    <string name="schedule_day_thursday">Do</string>
+    <string name="schedule_day_friday">Fr</string>
+    <string name="schedule_day_saturday">Sa</string>
+    <string name="schedule_day_sunday">So</string>
+
+    <string name="schedule_startTime_contentDescription">Startzeit</string>
+    <string name="schedule_location_contentDescription">Lokation</string>
+
+</resources>

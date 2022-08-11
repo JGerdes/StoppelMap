@@ -129,7 +129,8 @@ fun writeEventsToFile(descriptionFolder: File, eventsFile: File, marquees: List<
                 end = null,
                 description = event.description,
                 uuid = stallSlug + event.title.asSlug() + index,
-                locationUuid = stallSlug
+                locationUuid = stallSlug,
+                locationName = marquee.title
             )
         } ?: emptyList()
     }

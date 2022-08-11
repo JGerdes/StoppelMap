@@ -28,11 +28,11 @@ import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
 import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
+import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleScreen
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
-import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -127,7 +127,13 @@ class StoppelMapActivity : ComponentActivity() {
                             .background(MaterialTheme.colorScheme.background)
                     )
                 }
-                composable(Screen.Schedule.route) { UnderConstructionPlaceholder(Modifier.fillMaxSize()) }
+                composable(Screen.Schedule.route) {
+                    ScheduleScreen(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
+                    )
+                }
                 composable(Screen.TransportationOverview.route) {
                     TransportationOverviewScreen(
                         onRouteTap = {
