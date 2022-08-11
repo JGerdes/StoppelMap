@@ -62,7 +62,7 @@ fun MapScreen(
             textAlign = TextAlign.Right,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .fillMaxWidth(0.5f)
+                .fillMaxWidth(0.6f)
                 .padding(8.dp)
         )
         FloatingActionButton(
@@ -73,6 +73,7 @@ fun MapScreen(
             shape = CircleShape,
             modifier = Modifier
                 .padding(16.dp)
+                .padding(bottom = 32.dp)
                 .align(Alignment.BottomEnd)
         ) {
             Icon(Icons.Rounded.MyLocation, contentDescription = "Meine Position")
