@@ -1,6 +1,8 @@
 CREATE TABLE IF NOT EXISTS sub_types (
-    slug                TEXT NOT NULL PRIMARY KEY,
-    name                TEXT NOT NULL
+    slug                TEXT NOT NULL,
+    name                TEXT NOT NULL,
+
+    PRIMARY KEY (slug, name)
 );
 
 insert:

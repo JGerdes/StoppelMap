@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS item(
+    slug    TEXT NOT NULL,
+    name    TEXT NOT NULL,
+
+    PRIMARY KEY (slug, name)
+);
+
+insert:
+INSERT INTO item(slug, name)
+VALUES ?;
+
+findByNameQuery:
+SELECT *
+FROM item
+WHERE name LIKE ( '%' || :name || '%');

@@ -176,6 +176,136 @@
       "interactive": true
     },
     {
+      "id": "food-stalls",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "food-stall"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": true
+    },
+    {
+      "id": "candy-stalls",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "candy-stall"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": true
+    },
+    {
+      "id": "game-stalls",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "game-stall"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": true
+    },
+    {
+      "id": "seller-stalls",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "seller-stall"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": true
+    },
+    {
+      "id": "expo-stalls",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "exhibition"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": true
+    },
+    {
       "id": "miscs",
       "type": "fill",
       "source": "composite",

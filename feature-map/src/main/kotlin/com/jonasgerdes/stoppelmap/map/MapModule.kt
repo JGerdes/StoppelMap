@@ -4,10 +4,7 @@ package com.jonasgerdes.stoppelmap.map
 import android.content.Context
 import com.google.android.gms.location.LocationServices
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
-import com.jonasgerdes.stoppelmap.map.repository.LocationRepository
-import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
-import com.jonasgerdes.stoppelmap.map.repository.StallRepository
-import com.jonasgerdes.stoppelmap.map.repository.TypeRepository
+import com.jonasgerdes.stoppelmap.map.repository.*
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
@@ -19,6 +16,8 @@ val mapModule = module {
 
     single { StallRepository(stallQueries = get<StoppelMapDatabase>().stallQueries) }
     single { TypeRepository(typeQueries = get<StoppelMapDatabase>().sub_typesQueries) }
+    single { ItemRepository(itemQueries = get<StoppelMapDatabase>().itemQueries) }
+    single { AliasRepository(aliasQueries = get<StoppelMapDatabase>().aliasQueries) }
 
     single { PermissionRepository(context = get()) }
 
@@ -27,7 +26,14 @@ val mapModule = module {
 
     single { InitializeMapBoxUseCase() }
 
-    factory { SearchStallsUseCase(stallRepository = get(), typeRepository = get()) }
+    factory {
+        SearchStallsUseCase(
+            stallRepository = get(),
+            typeRepository = get(),
+            itemRepository = get(),
+            aliasRepository = get(),
+        )
+    }
     factory { IsLocationInAreaUseCase() }
 
     viewModel {

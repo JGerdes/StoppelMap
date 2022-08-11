@@ -46,6 +46,9 @@ fun getNameForItem(item: String): Any = when (item) {
     "item_cheese" -> "Käse"
     "item_tarte_flambee" -> "Flammkuchen"
     "item_bruschetta" -> "Bruschetta"
+    "item_langos" -> "Lángos"
+    "item_vegetables" -> "Gemüse"
+    "item_cucumbers" -> "Gurken"
 
     "item_crepe" -> "Crepé"
     "item_roasted_almonds" -> "Gebrannte Mandeln"
@@ -63,6 +66,7 @@ fun getNameForItem(item: String): Any = when (item) {
     "item_backery" -> "Backwaren"
     "item_chocolate_fruits" -> "Schokofrüchte"
     "item_kurtosh_kalach" -> "Baumstriezel"
+    "item_bubble_team" -> "Bubble Tea"
 
     "item_atm" -> "Geldautomat"
 
@@ -73,6 +77,7 @@ fun getNameForItem(item: String): Any = when (item) {
     "game_darts" -> "Dart"
     "game_can_knockdown" -> "Dosenwerfen"
     "game_duck_pond" -> "Ententeich"
+    "game_flying_frog" -> "Fliegende Frösche"
     "game_pull_strings" -> "Fädenziehen"
     "game_football" -> "Fußball"
     "game_claw_crane" -> "Greifarm"
@@ -125,8 +130,10 @@ private fun getNameForType(type: String) = when (type) {
     "ferris-wheel" -> "Riesenrad"
     "flying-carpet" -> "Fliegender Teppich"
     "show" -> "Show"
-    "accessible_restroom" -> listOf("Barrierefreie Toilette", "Barrierefreies WC",
-            "Rollstuhlgerechte Toilette")
+    "accessible_restroom" -> listOf(
+        "Barrierefreie Toilette", "Barrierefreies WC",
+        "Rollstuhlgerechte Toilette"
+    )
     "mens_restroom" -> listOf("Herren-Toilette", "Herren-WC")
     "womens_restroom" -> listOf("Damen-Toilette", "Damen-WC")
 

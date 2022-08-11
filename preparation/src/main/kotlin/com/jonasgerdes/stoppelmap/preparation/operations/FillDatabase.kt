@@ -42,7 +42,7 @@ class FillDatabase : KoinComponent {
         }
 
         database.sub_typesQueries.transaction {
-            data.subTypes.distinctBy { it.slug }.forEach {
+            data.subTypes.forEach {
                 database.sub_typesQueries.insert(
                     Sub_types(
                         slug = it.slug,
@@ -74,6 +74,39 @@ class FillDatabase : KoinComponent {
                         end = it.end,
                         description = it.description,
                         isOfficial = it.isOfficial
+                    )
+                )
+            }
+        }
+
+        database.itemQueries.transaction {
+            data.items.values.flatten().forEach {
+                database.itemQueries.insert(
+                    Item(
+                        slug = it.slug,
+                        name = it.name
+                    )
+                )
+            }
+        }
+
+        database.stallItemsQueries.transaction {
+            data.stallItems.forEach {
+                database.stallItemsQueries.insert(
+                    StallItems(
+                        stall = it.stall,
+                        item = it.item
+                    )
+                )
+            }
+        }
+
+        database.aliasQueries.transaction {
+            data.alias.forEach {
+                database.aliasQueries.insert(
+                    Alias(
+                        alias = it.alias,
+                        stall = it.stall,
                     )
                 )
             }

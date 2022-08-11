@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS alias(
+    alias TEXT NOT NULL,
+    stall TEXT NOT NULL,
+
+    PRIMARY KEY (alias, stall),
+    FOREIGN KEY(stall) REFERENCES stall(slug)
+);
+
+
+insert:
+INSERT INTO alias(alias, stall)
+VALUES ?;
+
+findByQuery:
+SELECT *
+FROM alias
+WHERE alias LIKE ( '%' || :alias || '%');

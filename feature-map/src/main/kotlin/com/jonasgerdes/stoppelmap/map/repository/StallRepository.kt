@@ -19,4 +19,12 @@ class StallRepository(
     suspend fun findByType(typeSlug: String) = withContext(Dispatchers.IO) {
         stallQueries.findByType(typeSlug).executeAsList()
     }
+
+    suspend fun findBySubType(typeSlug: String) = withContext(Dispatchers.IO) {
+        stallQueries.selectStallsBySubType(typeSlug).executeAsList()
+    }
+
+    suspend fun findByItem(itemSlug: String) = withContext(Dispatchers.IO) {
+        stallQueries.selectStallsByItem(itemSlug).executeAsList()
+    }
 }

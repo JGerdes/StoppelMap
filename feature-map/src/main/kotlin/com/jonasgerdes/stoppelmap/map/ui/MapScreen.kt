@@ -5,6 +5,8 @@
 
 package com.jonasgerdes.stoppelmap.map.ui
 
+import android.content.Context
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -32,6 +34,7 @@ import com.jonasgerdes.stoppelmap.map.components.MapboxMap
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.SearchState
 import org.koin.androidx.compose.viewModel
+import timber.log.Timber
 
 @Composable
 fun MapScreen(
@@ -56,15 +59,6 @@ fun MapScreen(
             onQueryChange = viewModel::onSearchQueryChanged,
             onResultTap = viewModel::onSearchResultTapped
         )
-        Text(
-            text = "Weitere Stände, Attraktionen und Zelte folgen in Kürze",
-            style = MaterialTheme.typography.labelSmall,
-            textAlign = TextAlign.Right,
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .fillMaxWidth(0.6f)
-                .padding(8.dp)
-        )
         FloatingActionButton(
             onClick = {
                 onRequestLocationPermission()
@@ -73,7 +67,6 @@ fun MapScreen(
             shape = CircleShape,
             modifier = Modifier
                 .padding(16.dp)
-                .padding(bottom = 32.dp)
                 .align(Alignment.BottomEnd)
         ) {
             Icon(Icons.Rounded.MyLocation, contentDescription = "Meine Position")
@@ -156,16 +149,15 @@ fun HighlightedCard(
             .fillMaxWidth()
     ) {
         val context = LocalContext.current
-        val vectorId =
-            context.resources.getIdentifier(
-                "ic_stall_type_${searchState.result.stalls.first().type}",
-                "drawable",
-                context.packageName
+        val vectorId = context.getDrawableForStallType(searchState.result.stalls.first().type)
+        if (vectorId == null) {
+            Spacer(modifier = Modifier.size(24.dp))
+        } else {
+            Icon(
+                painterResource(id = vectorId),
+                contentDescription = null
             )
-        Icon(
-            painterResource(id = vectorId),
-            contentDescription = null
-        )
+        }
         Spacer(modifier = Modifier.size(8.dp))
         Text(text = searchState.result.term)
         Spacer(
@@ -214,16 +206,15 @@ fun SearchField(
                         .padding(16.dp)
                     ) {
                         val context = LocalContext.current
-                        val vectorId =
-                            context.resources.getIdentifier(
-                                "ic_stall_type_${result.stalls.first().type}",
-                                "drawable",
-                                context.packageName
+                        val vectorId = context.getDrawableForStallType(result.stalls.first().type)
+                        if (vectorId == null) {
+                            Spacer(modifier = Modifier.size(24.dp))
+                        } else {
+                            Icon(
+                                painterResource(id = vectorId),
+                                contentDescription = null
                             )
-                        Icon(
-                            painterResource(id = vectorId),
-                            contentDescription = null
-                        )
+                        }
                         Spacer(modifier = Modifier.size(8.dp))
                         Text(text = result.term)
                     }
@@ -262,3 +253,17 @@ fun SearchPill(
         Text("Suche")
     }
 }
+
+@DrawableRes
+private fun Context.getDrawableForStallType(stallType: String): Int? =
+    "ic_stall_type_${stallType.replace("-", "_")}".let { name ->
+        val id = resources.getIdentifier(
+            name,
+            "drawable",
+            packageName
+        )
+        if (id == 0) {
+            Timber.w("Can't find icon for type [$stallType]")
+            null
+        } else id
+    }

@@ -9,10 +9,3 @@ CREATE TABLE IF NOT EXISTS stall_sub_types (
 insert:
 INSERT INTO stall_sub_types(stall, sub_type)
 VALUES ?;
-
-selectStallsBySubType:
-SELECT stall.*
-FROM stall_sub_types
-JOIN stall ON stall.slug = stall_sub_types.stall
-WHERE stall_sub_types.sub_type = :subType
-ORDER BY stall.name;
