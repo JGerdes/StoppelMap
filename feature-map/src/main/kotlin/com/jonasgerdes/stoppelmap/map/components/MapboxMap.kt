@@ -7,12 +7,17 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 import androidx.annotation.DrawableRes
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
@@ -46,6 +51,7 @@ import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.scalebar.scalebar
+import kotlinx.coroutines.delay
 import timber.log.Timber
 
 @Composable
@@ -87,7 +93,16 @@ fun MapboxMap(
                         RenderedQueryGeometry(pixelForCoordinate(point)),
                         RenderedQueryOptions(
                             listOf(
-                                "rides", "bars", "restaurants"
+                                "rides",
+                                "bars",
+                                "restaurants",
+                                "restrooms",
+                                "miscs",
+                                "food-stalls",
+                                "candy-stalls",
+                                "game-stalls",
+                                "seller-stalls",
+                                "expo-stalls"
                             ), null
                         )
                     ) {
@@ -104,18 +119,35 @@ fun MapboxMap(
         }
     }
 
-    AndroidView(factory = { mapView }, modifier = modifier) {
+
+    val zoomPadding = remember(density) { with(density) { 64.dp.toPx().toDouble() } }
+    // Map flashes white for some frames, work around that by fading it in after some time
+    val mapAlpha = remember { Animatable(0f) }
+    LaunchedEffect(Unit) {
+        delay(100)
+        mapAlpha.animateTo(1f, tween(durationMillis = 300, easing = LinearEasing))
+    }
+
+    AndroidView(factory = { mapView }, modifier = modifier.alpha(mapAlpha.value)) {
         it.getMapboxMap().apply {
             val targetCameraOptions = when (val position = mapState.cameraPosition) {
                 is MapState.CameraPosition.BoundingCoordinates ->
-                    cameraForCoordinates(coordinates = position.coordinates)
+                    cameraForCoordinates(
+                        coordinates = position.coordinates,
+                        padding = EdgeInsets(
+                            zoomPadding,
+                            zoomPadding,
+                            zoomPadding,
+                            zoomPadding
+                        )
+                    )
                 is MapState.CameraPosition.Options -> position.cameraOptions
             }
-            when (mapState.cameraMovementSource) {
-                MapState.CameraMovementSource.User -> if (!isGestureInProgress()) setCamera(
-                    targetCameraOptions
-                )
-                MapState.CameraMovementSource.Computed -> flyTo(targetCameraOptions)
+            if (!isGestureInProgress() && !isUserAnimationInProgress()) {
+                when (mapState.cameraMovementSource) {
+                    MapState.CameraMovementSource.User -> setCamera(targetCameraOptions)
+                    MapState.CameraMovementSource.Computed -> flyTo(targetCameraOptions)
+                }
             }
 
             getStyle { style ->
@@ -139,6 +171,21 @@ fun MapboxMap(
                 }
                 style.getLayerAs<FillLayer>("miscs")?.apply {
                     fillColor(colors.stallTypeMiscColor.toArgb())
+                }
+                style.getLayerAs<FillLayer>("food-stalls")?.apply {
+                    fillColor(colors.stallTypeFoodStallColor.toArgb())
+                }
+                style.getLayerAs<FillLayer>("candy-stalls")?.apply {
+                    fillColor(colors.stallTypeCandyStallColor.toArgb())
+                }
+                style.getLayerAs<FillLayer>("game-stalls")?.apply {
+                    fillColor(colors.stallTypeGameStallColor.toArgb())
+                }
+                style.getLayerAs<FillLayer>("seller-stalls")?.apply {
+                    fillColor(colors.stallTypeSellerStallColor.toArgb())
+                }
+                style.getLayerAs<FillLayer>("expo-stalls")?.apply {
+                    fillColor(colors.stallTypeSellerStallColor.toArgb())
                 }
 
                 val highlightedStalls = mapState.highlightedStalls

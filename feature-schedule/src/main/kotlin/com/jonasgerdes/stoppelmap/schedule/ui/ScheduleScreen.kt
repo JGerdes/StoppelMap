@@ -71,6 +71,12 @@ fun ScheduleScreen(
                     val pagerState = rememberPagerState()
                     val scheduleDays = state.scheduleState.scheduleDays
                     val scope = rememberCoroutineScope()
+
+                    state.scheduleState.selectedDay?.let { index ->
+                        scope.launch {
+                            pagerState.animateScrollToPage(index)
+                        }
+                    }
                     Card(
                         shape = topShape,
                         modifier = Modifier.fillMaxWidth()
@@ -78,7 +84,7 @@ fun ScheduleScreen(
                         Row(Modifier.fillMaxWidth()) {
                             scheduleDays.forEachIndexed { index, day ->
                                 Text(
-                                    text = stringResource(day.dayOfWeek.toResourceString()),
+                                    text = stringResource(day.date.dayOfWeek.toResourceString()),
                                     textAlign = TextAlign.Center,
                                     style = MaterialTheme.typography.titleMedium,
                                     modifier = Modifier
@@ -86,9 +92,7 @@ fun ScheduleScreen(
                                         .padding(vertical = 4.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                         .clickable {
-                                            scope.launch {
-                                                pagerState.animateScrollToPage(index)
-                                            }
+                                            viewModel.onDayTap(day)
                                         }
                                         .then(
                                             if (index == pagerState.currentPage) {

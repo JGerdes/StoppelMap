@@ -15,6 +15,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class MapViewModel(
     private val stallRepository: StallRepository,
@@ -55,6 +56,7 @@ class MapViewModel(
         locationState,
     ) { mapState, location ->
         if (location != null) {
+            Timber.d("new location: $location")
             mapState.copy(
                 userLocation = Point.fromLngLat(location.longitude, location.latitude)
             )

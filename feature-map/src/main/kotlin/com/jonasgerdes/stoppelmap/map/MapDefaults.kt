@@ -16,8 +16,8 @@ object MapDefaults {
     )
     const val maxZoom = 19.0
     const val minZoom = 14.0
-    const val defaultZoom = 15.2
+    const val defaultZoom = 16.2
     const val detailZoom = 18.0
-    val center = Point.fromLngLat(8.295345, 52.748351)
+    val center = Point.fromLngLat(8.2956, 52.7477)
 
 }

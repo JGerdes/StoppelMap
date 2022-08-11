@@ -52,6 +52,7 @@ class LocationRepository(
     fun getLocationUpdates(
         locationRequest: LocationRequest = LocationRequest.create()
             .setInterval(5000)
+            .setSmallestDisplacement(3f)
             .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
     ): Flow<Location> = permissionRepository.getLocationPermissionState()
         .flatMapLatest { isGranted ->

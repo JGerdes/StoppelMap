@@ -13,6 +13,9 @@ val scheduleModule = module {
     }
 
     viewModel {
-        ScheduleViewModel(eventRepository = get())
+        ScheduleViewModel(
+            eventRepository = get(),
+            getCurrentLocalDateTime = get()
+        )
     }
 }

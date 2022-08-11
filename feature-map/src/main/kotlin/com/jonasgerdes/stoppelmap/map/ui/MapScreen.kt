@@ -198,12 +198,14 @@ fun SearchField(
         if (searchState.results.isNotEmpty() || searchState.query.isBlank()) {
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 items(searchState.results) { result ->
-                    Row(modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable {
-                            onResultTap(result)
-                        }
-                        .padding(16.dp)
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                onResultTap(result)
+                            }
+                            .padding(16.dp)
                     ) {
                         val context = LocalContext.current
                         val vectorId = context.getDrawableForStallType(result.stalls.first().type)
