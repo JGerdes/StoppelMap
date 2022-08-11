@@ -32,8 +32,8 @@ android {
         applicationId = "com.jonasgerdes.stoppelmap"
         minSdk = SdkVersions.minSdk
         targetSdk = SdkVersions.targetSdk
-        versionCode = 47
-        versionName = "v2022.08.10.01-$commitSha"
+        versionCode = 48
+        versionName = "v2022.08.11.01-$commitSha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

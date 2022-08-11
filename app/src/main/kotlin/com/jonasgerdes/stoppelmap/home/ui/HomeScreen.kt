@@ -34,7 +34,6 @@ import org.koin.androidx.compose.viewModel
 @Composable
 fun HomeScreen(
     onAboutOptionTap: () -> Unit,
-    onUrlTap: (url: String) -> Unit,
     modifier: Modifier = Modifier,
     lazyViewModel: Lazy<HomeViewModel> = viewModel(),
 ) {
