@@ -58,22 +58,12 @@
       "start": "2022-08-13 13:00:00"
     },
     {
-      "uuid": "stoppelmarkt_gottesdienst",
-      "name": "Gottesdienst",
-      "type": 0,
-      "day": 3,
-      "start": "2022-08-14 10:00:00",
-      "locationUuid": "kuehlings_niedersachsenhalle",
-      "description": "Gottesdienst in der Niedersachsenhalle mit anschließendem Marktbeginn",
-      "isOfficial": true
-    },
-    {
       "uuid": "stoppelmarkt_viehmarkt",
       "name": "Pferde- und Viehmarkt",
       "type": 0,
       "day": 4,
       "start": "2022-08-15 07:00:00",
-      "description": "Traditioneller Pferde- und Viehmarkt mit anschließendem Marktbeginn"
+      "description": " - Fällt dieses Jahr aus! - "
     },
     {
       "uuid": "stoppelmarkt_marktbeginn_dienstag",
