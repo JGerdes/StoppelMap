@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="schedule_topbar_title">Programme</string>
+    <string name="schedule_topbar_title">Programm</string>
 
     <string name="schedule_day_monday">Mo</string>
     <string name="schedule_day_tuesday">Di</string>
