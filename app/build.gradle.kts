@@ -32,8 +32,8 @@ android {
         applicationId = "com.jonasgerdes.stoppelmap"
         minSdk = SdkVersions.minSdk
         targetSdk = SdkVersions.targetSdk
-        versionCode = 49
-        versionName = "v2022.08.11.02-$commitSha"
+        versionCode = 50
+        versionName = "v2022.08.12.01-$commitSha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -92,7 +92,7 @@ dependencies {
         implementation("androidx.core:core-ktx:$androidxCore")
         implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$desugarSDK")
-        
+
         implementation("androidx.compose.ui:ui:$compose")
         implementation("androidx.compose.ui:ui-tooling-preview:$compose")
         implementation("androidx.compose.material3:material3:$material3composse")
