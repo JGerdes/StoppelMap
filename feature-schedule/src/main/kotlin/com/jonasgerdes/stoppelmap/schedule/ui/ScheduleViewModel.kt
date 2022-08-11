@@ -28,6 +28,7 @@ class ScheduleViewModel(
                 .groupBy { it.start.date }
                 .entries
                 .map { (day, events) -> ScheduleDay(day, events.sortedBy { it.start }) }
+                .sortedBy { it.date }
             scheduleState.value = ScheduleState(
                 scheduleDays = scheduleDays,
                 selectedDay = scheduleDays.indexOfFirst { it.date == today }.mapNegative1ToNull()
