@@ -10,9 +10,9 @@ internal class GetOpeningCountDownUseCase {
     // TODO: Calculate dates dynamically
 
     private val stoppelmarktOpening = LocalDateTime(
-        year = 2022,
+        year = 2023,
         month = Month.AUGUST,
-        dayOfMonth = 11,
+        dayOfMonth = 10,
         hour = 18,
         minute = 30,
         second = 0,
@@ -41,6 +41,7 @@ internal class GetOpeningCountDownUseCase {
         val closing = stoppelmarktClosing.toInstant(stoppelmarktTimeZone)
 
         return when {
+            now < closing -> CountDown.OnGoing
             opening > now -> {
                 (opening - now).toComponents { days, hours, minutes, _, _ ->
                     CountDown.InFuture(
@@ -50,7 +51,6 @@ internal class GetOpeningCountDownUseCase {
                     )
                 }
             }
-            now > closing -> CountDown.InPast
             else -> CountDown.OnGoing
         }
     }

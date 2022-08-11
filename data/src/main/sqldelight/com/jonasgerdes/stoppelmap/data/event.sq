@@ -16,3 +16,6 @@ VALUES ?;
 
 getAll:
 SELECT * FROM event;
+
+getAllOfficialEvents:
+SELECT * FROM event WHERE isOfficial = 1;

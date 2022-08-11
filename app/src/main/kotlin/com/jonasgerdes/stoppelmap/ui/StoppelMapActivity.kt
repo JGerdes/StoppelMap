@@ -106,8 +106,9 @@ class StoppelMapActivity : ComponentActivity() {
             ) {
                 composable(Screen.Home.route) {
                     HomeScreen(
+                        onUrlTap = { openUrl(it) },
                         onAboutOptionTap = { navController.navigate(Screen.About.route) },
-                        Modifier
+                        modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
                     )

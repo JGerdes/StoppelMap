@@ -5,11 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
+import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
 import kotlinx.coroutines.flow.*
 
 class HomeViewModel(
     getOpeningCountDown: GetOpeningCountDownFlowUseCase,
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
+    getNextOfficialEvent: GetNextOfficialEventUseCase
 ) : ViewModel() {
 
     private val openingCountDownState: Flow<CountDownState> =
@@ -34,10 +36,13 @@ class HomeViewModel(
         )
     }
 
+    private val nextOfficialEventState = getNextOfficialEvent()
+
     val state: StateFlow<ViewState> =
         combine(
             openingCountDownState,
             countdownWidgetSuggestionState,
+            nextOfficialEventState,
             ::ViewState
         ).stateIn(
             scope = viewModelScope,
@@ -48,11 +53,13 @@ class HomeViewModel(
     data class ViewState(
         val openingCountDownState: CountDownState,
         val countdownWidgetSuggestionState: CountDownWidgetSuggestionState,
+        val nextOfficialEventState: GetNextOfficialEventUseCase.Result,
     ) {
         companion object {
             val Default = ViewState(
                 openingCountDownState = CountDownState.Loading,
-                countdownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden
+                countdownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
+                nextOfficialEventState = GetNextOfficialEventUseCase.Result.None
             )
         }
     }

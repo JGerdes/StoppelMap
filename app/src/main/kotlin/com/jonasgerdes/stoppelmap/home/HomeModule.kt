@@ -7,6 +7,10 @@ import org.koin.dsl.module
 val homeModule = module {
 
     viewModel {
-        HomeViewModel(getOpeningCountDown = get(), shouldShowCountdownWidgetSuggestion = get())
+        HomeViewModel(
+            getOpeningCountDown = get(),
+            shouldShowCountdownWidgetSuggestion = get(),
+            getNextOfficialEvent = get()
+        )
     }
 }

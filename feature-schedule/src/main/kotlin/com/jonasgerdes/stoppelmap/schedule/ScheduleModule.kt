@@ -12,6 +12,13 @@ val scheduleModule = module {
         EventRepository(eventQueries = get<StoppelMapDatabase>().eventQueries)
     }
 
+    factory {
+        GetNextOfficialEventUseCase(
+            eventRepository = get(),
+            getCurrentLocalDateTime = get()
+        )
+    }
+
     viewModel {
         ScheduleViewModel(
             eventRepository = get(),

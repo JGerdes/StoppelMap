@@ -10,19 +10,18 @@ package com.jonasgerdes.stoppelmap.schedule.ui
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.LocationOn
-import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
@@ -34,8 +33,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.schedule.R
+import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
 import kotlinx.coroutines.launch
-import kotlinx.datetime.toJavaLocalDateTime
 import org.koin.androidx.compose.viewModel
 import java.time.DayOfWeek
 import java.time.format.DateTimeFormatter
@@ -117,57 +116,13 @@ fun ScheduleScreen(
                                 items = scheduleDay.events,
                                 key = { it.slug }
                             ) { event ->
-                                Column(
-                                    modifier = Modifier
+                                EventRow(
+                                    event = event,
+                                    timeFormatter = formatter,
+                                    Modifier
                                         .fillMaxWidth()
-                                        .padding(vertical = 8.dp)
-                                ) {
-                                    Column(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(horizontal = 16.dp)
-                                    ) {
-                                        Text(
-                                            text = event.name,
-                                            style = MaterialTheme.typography.titleLarge
-                                        )
-                                        Spacer(modifier = Modifier.size(4.dp))
-                                        Row(verticalAlignment = Alignment.CenterVertically) {
-                                            Icon(
-                                                Icons.Rounded.Schedule,
-                                                contentDescription = stringResource(R.string.schedule_startTime_contentDescription)
-                                            )
-                                            Spacer(modifier = Modifier.size(8.dp))
-                                            Text(
-                                                text = event.start.toJavaLocalDateTime()
-                                                    .format(formatter)
-                                            )
-                                        }
-                                        if (event.location != null) {
-                                            Spacer(modifier = Modifier.size(4.dp))
-                                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                                Icon(
-                                                    Icons.Rounded.LocationOn,
-                                                    contentDescription = stringResource(R.string.schedule_location_contentDescription)
-                                                )
-                                                Spacer(modifier = Modifier.size(8.dp))
-                                                Text(text = event.location!!)
-                                            }
-                                        }
-                                        if (event.description != null) {
-                                            Spacer(modifier = Modifier.size(4.dp))
-                                            Text(
-                                                text = event.description!!,
-                                                style = MaterialTheme.typography.bodySmall,
-                                                modifier = Modifier.padding(
-                                                    start = 32.dp,
-                                                )
-                                            )
-                                        }
-                                    }
-                                    Spacer(modifier = Modifier.size(8.dp))
-                                    Divider()
-                                }
+                                        .padding(vertical = 8.dp, horizontal = 16.dp)
+                                )
                             }
                         }
                     }

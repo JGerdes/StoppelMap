@@ -7,10 +7,8 @@
 package com.jonasgerdes.stoppelmap.home.ui
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
@@ -18,6 +16,7 @@ import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -27,13 +26,18 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
+import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
+import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import org.koin.androidx.compose.viewModel
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @SuppressLint("NewApi")
 @Composable
 fun HomeScreen(
     onAboutOptionTap: () -> Unit,
+    onUrlTap: (String) -> Unit,
     modifier: Modifier = Modifier,
     lazyViewModel: Lazy<HomeViewModel> = viewModel(),
 ) {
@@ -72,6 +76,46 @@ fun HomeScreen(
             state = listState,
             modifier = Modifier.fillMaxSize()
         ) {
+            when (val nextOfficialEvent = state.nextOfficialEventState) {
+                GetNextOfficialEventUseCase.Result.None -> Unit
+                is GetNextOfficialEventUseCase.Result.Some -> {
+                    item {
+                        Column(
+                            Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.home_officalEventCard_title),
+                            )
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Card(modifier = Modifier.fillMaxWidth()) {
+                                Box(modifier = Modifier.padding(16.dp)) {
+                                    val formatter =
+                                        remember {
+                                            DateTimeFormatter.ofPattern(
+                                                "EEE, HH:mm",
+                                                Locale.GERMAN
+                                            )
+                                        }
+                                    EventRow(
+                                        event = nextOfficialEvent.event,
+                                        timeFormatter = formatter,
+                                        showDivider = false,
+                                        modifier = modifier
+                                            .background(
+                                                CardDefaults
+                                                    .cardColors()
+                                                    .containerColor(
+                                                        enabled = true
+                                                    ).value
+                                            )
+                                            .fillMaxWidth()
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             when (val countDownState = state.openingCountDownState) {
                 is HomeViewModel.CountDownState.CountingDown -> item {
                     CountdownCard(
@@ -87,6 +131,28 @@ fun HomeScreen(
                 HomeViewModel.CountDownWidgetSuggestionState.Hidden -> Unit
                 HomeViewModel.CountDownWidgetSuggestionState.Visible -> item {
                     CountDownWidgetSuggestionCard()
+                }
+            }
+
+            item {
+                Card {
+                    Column(
+                        Modifier
+                            .padding(horizontal = 16.dp)
+                            .padding(top = 16.dp, bottom = 8.dp)
+                    ) {
+                        Text(
+                            text = "Du willst auf dem Laufenden bleiben, was StoppelMap und den Stoppelmarkt angeht?",
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                        Spacer(modifier = Modifier.size(16.dp))
+                        Button(
+                            onClick = { onUrlTap("https://instagram.com/stoppelmap") },
+                            modifier = Modifier.align(Alignment.CenterHorizontally)
+                        ) {
+                            Text("Folge StoppelMap auf Instagram")
+                        }
+                    }
                 }
             }
         }

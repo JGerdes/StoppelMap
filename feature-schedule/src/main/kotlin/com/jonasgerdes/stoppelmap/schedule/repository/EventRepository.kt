@@ -10,4 +10,8 @@ class EventRepository(
     suspend fun getAllEvents() = withContext(Dispatchers.IO) {
         eventQueries.getAll().executeAsList()
     }
+
+    suspend fun getAllOfficialEvents() = withContext(Dispatchers.IO) {
+        eventQueries.getAllOfficialEvents().executeAsList()
+    }
 }
