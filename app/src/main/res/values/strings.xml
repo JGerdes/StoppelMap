@@ -18,6 +18,7 @@
     <string name="home_optionsMenu_about">Über die App</string>
 
     <string name="home_officalEventCard_title">Nicht verpassen:</string>
+    <string name="home_countdownCard_nextSeason_title">Stoppelmarkt schon vorbei? Nicht traurig sein, denn:</string>
 
     <string name="about_topbar_title">Über die App</string>
     <string name="about_topbar_navigateBack_contentDescription">Zurück</string>

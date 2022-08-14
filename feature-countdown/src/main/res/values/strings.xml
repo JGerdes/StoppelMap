@@ -13,7 +13,7 @@
         <item quantity="one">Minute</item>
         <item quantity="other">Minuten</item>
     </plurals>
-    <string name="countdownCard_suffix">bis zum Stoppelmarkt 2023</string>
+    <string name="countdownCard_suffix">bis zum Stoppelmarkt %1$d</string>
 
     <string name="widget_configuration_title">Widget konfigurieren</string>
     <string name="widget_configuration_button_next_contentDescription">Nächster Schritt</string>

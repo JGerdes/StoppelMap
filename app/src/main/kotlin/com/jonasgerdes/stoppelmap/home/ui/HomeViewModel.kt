@@ -6,12 +6,14 @@ import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
+import com.jonasgerdes.stoppelmap.usecase.IsCurrentYearsSeasonJustOverUseCase
 import kotlinx.coroutines.flow.*
 
 class HomeViewModel(
     getOpeningCountDown: GetOpeningCountDownFlowUseCase,
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
-    getNextOfficialEvent: GetNextOfficialEventUseCase
+    getNextOfficialEvent: GetNextOfficialEventUseCase,
+    isCurrentYearsSeasonJustOver: IsCurrentYearsSeasonJustOverUseCase
 ) : ViewModel() {
 
     private val openingCountDownState: Flow<CountDownState> =
@@ -20,7 +22,9 @@ class HomeViewModel(
                 CountDownState.CountingDown(
                     daysLeft = countDownResult.daysLeft,
                     hoursLeft = countDownResult.hoursLeft,
-                    minutesLeft = countDownResult.minutesLeft
+                    minutesLeft = countDownResult.minutesLeft,
+                    year = countDownResult.year,
+                    showCurrentSeasonIsOverHint = isCurrentYearsSeasonJustOver()
                 )
             } else {
                 CountDownState.Over
@@ -72,7 +76,11 @@ class HomeViewModel(
     sealed class CountDownState {
         object Loading : CountDownState()
         data class CountingDown(
-            val daysLeft: Int, val hoursLeft: Int, val minutesLeft: Int
+            val daysLeft: Int,
+            val hoursLeft: Int,
+            val minutesLeft: Int,
+            val year: Int,
+            val showCurrentSeasonIsOverHint: Boolean
         ) : CountDownState()
 
         object Over : CountDownState()

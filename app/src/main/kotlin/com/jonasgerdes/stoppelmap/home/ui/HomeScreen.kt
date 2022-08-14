@@ -86,11 +86,23 @@ fun HomeScreen(
             }
             when (val countDownState = state.openingCountDownState) {
                 is HomeViewModel.CountDownState.CountingDown -> item {
-                    CountdownCard(
-                        days = countDownState.daysLeft,
-                        hours = countDownState.hoursLeft,
-                        minutes = countDownState.minutesLeft
-                    )
+                    if (countDownState.showCurrentSeasonIsOverHint) {
+                        CountdownCurrentSeasonIsOverHint(modifier = Modifier.fillMaxWidth()) {
+                            CountdownCard(
+                                days = countDownState.daysLeft,
+                                hours = countDownState.hoursLeft,
+                                minutes = countDownState.minutesLeft,
+                                seasonYear = countDownState.year
+                            )
+                        }
+                    } else {
+                        CountdownCard(
+                            days = countDownState.daysLeft,
+                            hours = countDownState.hoursLeft,
+                            minutes = countDownState.minutesLeft,
+                            seasonYear = countDownState.year
+                        )
+                    }
                 }
                 HomeViewModel.CountDownState.Loading -> Unit
                 HomeViewModel.CountDownState.Over -> Unit
@@ -124,5 +136,18 @@ fun HomeScreen(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun CountdownCurrentSeasonIsOverHint(modifier: Modifier, content: @Composable () -> Unit) {
+    Column(
+        modifier
+    ) {
+        Text(
+            text = stringResource(id = R.string.home_countdownCard_nextSeason_title),
+        )
+        Spacer(modifier = Modifier.size(8.dp))
+        content()
     }
 }

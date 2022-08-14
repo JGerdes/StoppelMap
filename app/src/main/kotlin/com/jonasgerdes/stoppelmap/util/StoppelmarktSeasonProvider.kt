@@ -23,6 +23,9 @@ class StoppelmarktSeasonProvider(
             getSeasonForYear(currentYear + 1)
         }
     }
+
+    override fun getThisYearsSeason(): Season =
+        getSeasonForYear(clockProvider.nowAsLocalDateTime().year)
 }
 
 fun getSeasonForYear(year: Int): Season = StoppelmarktSeason(

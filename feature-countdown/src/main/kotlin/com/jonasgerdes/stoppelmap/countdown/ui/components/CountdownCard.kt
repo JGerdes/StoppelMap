@@ -23,7 +23,7 @@ import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 
 @Composable
 fun CountdownCard(
-    days: Int, hours: Int, minutes: Int, modifier: Modifier = Modifier
+    days: Int, hours: Int, minutes: Int, seasonYear: Int, modifier: Modifier = Modifier
 ) {
     Card(
         colors = CardDefaults.cardColors(
@@ -62,7 +62,7 @@ fun CountdownCard(
             }
             Spacer(modifier = Modifier.size(16.dp))
             Text(
-                text = stringResource(id = R.string.countdownCard_suffix),
+                text = stringResource(id = R.string.countdownCard_suffix, seasonYear),
                 modifier = Modifier.align(Alignment.End)
             )
         }
@@ -104,6 +104,6 @@ private fun CountdownUnit(
 @Composable
 private fun PreviewCountdownCard() {
     StoppelMapTheme {
-        CountdownCard(days = 129, hours = 1, minutes = 20)
+        CountdownCard(days = 129, hours = 1, minutes = 20, seasonYear = 2023)
     }
 }

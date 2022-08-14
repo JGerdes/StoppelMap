@@ -6,6 +6,7 @@ import kotlinx.datetime.LocalDateTime
 interface SeasonProvider {
 
     fun getCurrentOrNextSeason(): Season
+    fun getThisYearsSeason(): Season
 }
 
 

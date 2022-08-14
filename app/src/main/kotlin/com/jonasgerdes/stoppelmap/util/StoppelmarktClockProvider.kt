@@ -7,9 +7,7 @@ private val stoppelmarktTimeZone = TimeZone.of("Europe/Berlin")
 
 class StoppelmarktClockProvider : ClockProvider {
 
-    private val mockDateTime: LocalDateTime? =
-        // null
-        LocalDateTime(2022, Month.AUGUST, 16, 22, 15)
+    private val mockDateTime: LocalDateTime? = null
 
     override fun nowAsInstant() =
         mockDateTime?.toInstant(stoppelmarktTimeZone) ?: Clock.System.now()
