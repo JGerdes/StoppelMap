@@ -1,6 +1,7 @@
 // repositoriesMode etc. is marked unstable
 @file:Suppress("UnstableApiUsage")
 
+include(":base")
 include(":data")
 
 include(":preparation")

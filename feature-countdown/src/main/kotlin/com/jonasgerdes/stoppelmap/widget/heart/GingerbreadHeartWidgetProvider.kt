@@ -145,7 +145,7 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
                         ) else null,
                     ).joinToString(", "),
                     preposition = getString(R.string.countdownWidget_preposition_until),
-                    year = "2022"
+                    year = countdown.year.toString()
                 )
             }
             CountDown.InPast -> CountdownTexts(

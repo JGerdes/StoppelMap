@@ -30,7 +30,7 @@ val transportationModule = module {
         RouteViewModel(
             routeId = get(),
             busRoutesRepository = get(),
-            getCurrentLocalDateTime = get(),
+            clockProvider = get(),
             getNextDepartures = get()
         )
     }

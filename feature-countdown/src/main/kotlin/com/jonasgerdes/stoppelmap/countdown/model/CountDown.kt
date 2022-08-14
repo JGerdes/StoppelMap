@@ -5,6 +5,7 @@ sealed class CountDown {
         val daysLeft: Int,
         val hoursLeft: Int,
         val minutesLeft: Int,
+        val year: Int,
     ) : CountDown()
 
     object OnGoing : CountDown()

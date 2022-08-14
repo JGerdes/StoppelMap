@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":base"))
     implementation(project(":theme"))
 
     with(DependencyVersions) {

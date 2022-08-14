@@ -28,7 +28,7 @@ val countdownModule = module {
     factory { SilhouetteWidgetProvider() }
 
     factory { GetOpeningCountDownFlowUseCase(getOpeningCountDown = get()) }
-    factory { GetOpeningCountDownUseCase() }
+    factory { GetOpeningCountDownUseCase(clockProvider = get()) }
     factory {
         ShouldShowCountdownWidgetSuggestionUseCase(
             gingerbreadHeartWidgetProvider = get(),

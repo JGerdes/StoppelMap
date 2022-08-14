@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.transportation.ui.route
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.ReturnStation
@@ -9,18 +10,17 @@ import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.Station
 import com.jonasgerdes.stoppelmap.transportation.usecase.GetNextDeparturesUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
-import kotlinx.datetime.LocalDateTime
 
 class RouteViewModel(
     routeId: String,
     busRoutesRepository: BusRoutesRepository,
-    private val getCurrentLocalDateTime: () -> LocalDateTime,
+    private val clockProvider: ClockProvider,
     private val getNextDepartures: GetNextDeparturesUseCase
 ) : ViewModel() {
 
     private val timeUpdate = flow {
         while (true) {
-            emit(getCurrentLocalDateTime())
+            emit(clockProvider.nowAsLocalDateTime())
             delay(10_000)
         }
     }

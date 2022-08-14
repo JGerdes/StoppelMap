@@ -1,22 +1,22 @@
 package com.jonasgerdes.stoppelmap.schedule
 
+import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.data.Event
 import com.jonasgerdes.stoppelmap.schedule.repository.EventRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
-import kotlinx.datetime.LocalDateTime
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
 class GetNextOfficialEventUseCase(
     private val eventRepository: EventRepository,
-    private val getCurrentLocalDateTime: () -> LocalDateTime,
+    private val clockProvider: ClockProvider,
 ) {
 
     operator fun invoke() = flow {
         var isDone = false
         while (!isDone) {
-            val now = getCurrentLocalDateTime()
+            val now = clockProvider.nowAsLocalDateTime()
             val nextEvent = eventRepository.getAllOfficialEvents()
                 .filter { it.start > now }
                 .minByOrNull { it.start }

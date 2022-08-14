@@ -1,30 +1,24 @@
 package com.jonasgerdes.stoppelmap.schedule.ui
 
-import androidx.core.text.HtmlCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.schedule.model.ScheduleDay
 import com.jonasgerdes.stoppelmap.schedule.repository.EventRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import kotlinx.datetime.LocalDateTime
 
 class ScheduleViewModel(
     private val eventRepository: EventRepository,
-    private val getCurrentLocalDateTime: () -> LocalDateTime,
+    private val clockProvider: ClockProvider,
 ) : ViewModel() {
 
     private val scheduleState = MutableStateFlow(ScheduleState())
 
     init {
         viewModelScope.launch {
-            val today = getCurrentLocalDateTime().date
+            val today = clockProvider.nowAsLocalDateTime().date
             val scheduleDays = eventRepository.getAllEvents()
-                .map {
-                    it.copy(
-                        description = it.description?.removeHtml()
-                    )
-                }
                 .groupBy { it.start.date }
                 .entries
                 .map { (day, events) -> ScheduleDay(day, events.sortedBy { it.start }) }
@@ -62,13 +56,6 @@ class ScheduleViewModel(
         }
     }
 }
-
-
-private fun String.removeHtml() =
-    HtmlCompat.fromHtml(
-        this,
-        HtmlCompat.FROM_HTML_MODE_LEGACY
-    ).toString().trim()
 
 
 private fun Int.mapNegative1ToNull() = if (this == -1) null else this

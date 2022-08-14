@@ -1,11 +1,16 @@
 package com.jonasgerdes.stoppelmap.countdown.usecase
 
+import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
-import kotlinx.datetime.*
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.plus
 import java.time.Month
 
 
-internal class GetOpeningCountDownUseCase {
+internal class GetOpeningCountDownUseCase(
+    private val clockProvider: ClockProvider
+) {
 
     // TODO: Calculate dates dynamically
 
@@ -24,21 +29,19 @@ internal class GetOpeningCountDownUseCase {
         month = Month.AUGUST,
         dayOfMonth = 16,
         hour = 22,
-        minute = 0,
+        minute = 30,
         second = 0,
         nanosecond = 0
     )
 
-    private val stoppelmarktTimeZone = TimeZone.of("Europe/Berlin")
-
     operator fun invoke(): CountDown {
-        val now = Clock.System.now()
-        val opening = stoppelmarktOpening.toInstant(stoppelmarktTimeZone)
+        val now = clockProvider.nowAsInstant()
+        val opening = clockProvider.toInstant(stoppelmarktOpening)
             // Since we don't show seconds, add 1 minute so visible time left adds up to target.
             // e.g. 18:10 -> 18:30 - rather show 20 minutes then 19 (with e.g. 21s not shown)
             .plus(1L, DateTimeUnit.MINUTE)
 
-        val closing = stoppelmarktClosing.toInstant(stoppelmarktTimeZone)
+        val closing = clockProvider.toInstant(stoppelmarktClosing)
 
         return when {
             now < closing -> CountDown.OnGoing
@@ -47,7 +50,8 @@ internal class GetOpeningCountDownUseCase {
                     CountDown.InFuture(
                         daysLeft = days.toInt().coerceAtLeast(0),
                         hoursLeft = hours.coerceAtLeast(0),
-                        minutesLeft = minutes.coerceAtLeast(0)
+                        minutesLeft = minutes.coerceAtLeast(0),
+                        year = stoppelmarktOpening.year
                     )
                 }
             }

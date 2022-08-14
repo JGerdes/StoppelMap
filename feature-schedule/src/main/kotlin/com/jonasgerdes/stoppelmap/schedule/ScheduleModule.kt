@@ -15,14 +15,14 @@ val scheduleModule = module {
     factory {
         GetNextOfficialEventUseCase(
             eventRepository = get(),
-            getCurrentLocalDateTime = get()
+            clockProvider = get()
         )
     }
 
     viewModel {
         ScheduleViewModel(
             eventRepository = get(),
-            getCurrentLocalDateTime = get()
+            clockProvider = get()
         )
     }
 }
