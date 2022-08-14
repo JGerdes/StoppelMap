@@ -149,12 +149,7 @@ class SilhouetteWidgetProvider : AppWidgetProvider() {
                     preposition = getString(R.string.countdownWidget_preposition_still)
                 )
             }
-            CountDown.InPast -> CountdownTexts(
-                mainText = getString(R.string.countdownWidget_mainText_past),
-                subText = "2023",
-                preposition = getString(R.string.countdownWidget_preposition_still)
-            )
-            CountDown.OnGoing -> CountdownTexts(
+            is CountDown.OnGoing -> CountdownTexts(
                 mainText = getString(R.string.countdownWidget_mainText_ongoing),
                 subText = "",
                 preposition = getString(R.string.countdownWidget_preposition_still)

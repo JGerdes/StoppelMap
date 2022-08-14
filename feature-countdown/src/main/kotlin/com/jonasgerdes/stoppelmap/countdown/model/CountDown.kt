@@ -1,14 +1,16 @@
 package com.jonasgerdes.stoppelmap.countdown.model
 
-sealed class CountDown {
+sealed interface CountDown {
+    val year: Int
+
     data class InFuture(
         val daysLeft: Int,
         val hoursLeft: Int,
         val minutesLeft: Int,
-        val year: Int,
-    ) : CountDown()
+        override val year: Int,
+    ) : CountDown
 
-    object OnGoing : CountDown()
-
-    object InPast : CountDown()
+    data class OnGoing(
+        override val year: Int
+    ) : CountDown
 }

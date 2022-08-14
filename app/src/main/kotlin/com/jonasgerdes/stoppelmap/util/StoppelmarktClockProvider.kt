@@ -9,7 +9,7 @@ class StoppelmarktClockProvider : ClockProvider {
 
     private val mockDateTime: LocalDateTime? =
         // null
-        LocalDateTime(2022, Month.AUGUST, 16, 23, 0)
+        LocalDateTime(2022, Month.AUGUST, 11, 18, 10)
 
     override fun nowAsInstant() =
         mockDateTime?.toInstant(stoppelmarktTimeZone) ?: Clock.System.now()
