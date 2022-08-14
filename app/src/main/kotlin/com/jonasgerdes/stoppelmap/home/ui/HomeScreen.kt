@@ -7,7 +7,6 @@
 package com.jonasgerdes.stoppelmap.home.ui
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -27,11 +26,9 @@ import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
-import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
+import com.jonasgerdes.stoppelmap.schedule.ui.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import org.koin.androidx.compose.viewModel
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 @SuppressLint("NewApi")
 @Composable
@@ -80,39 +77,10 @@ fun HomeScreen(
                 GetNextOfficialEventUseCase.Result.None -> Unit
                 is GetNextOfficialEventUseCase.Result.Some -> {
                     item {
-                        Column(
-                            Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.home_officalEventCard_title),
-                            )
-                            Spacer(modifier = Modifier.size(8.dp))
-                            Card(modifier = Modifier.fillMaxWidth()) {
-                                Box(modifier = Modifier.padding(16.dp)) {
-                                    val formatter =
-                                        remember {
-                                            DateTimeFormatter.ofPattern(
-                                                "EEE, HH:mm",
-                                                Locale.GERMAN
-                                            )
-                                        }
-                                    EventRow(
-                                        event = nextOfficialEvent.event,
-                                        timeFormatter = formatter,
-                                        showDivider = false,
-                                        modifier = modifier
-                                            .background(
-                                                CardDefaults
-                                                    .cardColors()
-                                                    .containerColor(
-                                                        enabled = true
-                                                    ).value
-                                            )
-                                            .fillMaxWidth()
-                                    )
-                                }
-                            }
-                        }
+                        NextOfficialEventCard(
+                            event = nextOfficialEvent.event,
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     }
                 }
             }

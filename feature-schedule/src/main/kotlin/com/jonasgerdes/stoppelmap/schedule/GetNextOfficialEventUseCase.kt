@@ -16,9 +16,12 @@ class GetNextOfficialEventUseCase(
     operator fun invoke() = flow {
         var isDone = false
         while (!isDone) {
-            val now = clockProvider.nowAsLocalDateTime()
+            val now = clockProvider.nowAsInstant()
+            // Simulating us being in past so we still see events 15 after they're started.
+            val adjustedNow =
+                clockProvider.toLocalDateTime(now.minus(15.toDuration(DurationUnit.MINUTES)))
             val nextEvent = eventRepository.getAllOfficialEvents()
-                .filter { it.start > now }
+                .filter { it.start > adjustedNow }
                 .minByOrNull { it.start }
 
             if (nextEvent == null) {
