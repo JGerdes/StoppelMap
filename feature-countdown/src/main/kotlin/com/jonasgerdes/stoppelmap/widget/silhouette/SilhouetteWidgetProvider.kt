@@ -101,7 +101,7 @@ class SilhouetteWidgetProvider : AppWidgetProvider() {
         val size = Point(256.dp.toPx(context), 206.dp.toPx(context))
         val countdownBitmap = createCountdownBitmap(
             context,
-            getCountdownTexts(context.resources),
+            getCountdownTexts(settings.showHours, context.resources),
             size,
             settings.showHours,
             settings.font,
@@ -131,16 +131,26 @@ class SilhouetteWidgetProvider : AppWidgetProvider() {
     }
 
     private fun getCountdownTexts(
+        showHours: Boolean,
         resources: Resources
     ): CountdownTexts = with(resources) {
         when (val countdown = getTimeLeftToOpening()) {
             is CountDown.InFuture -> with(countdown) {
                 CountdownTexts(
-                    mainText = getQuantityString(
-                        R.plurals.countdownWidget_day,
-                        daysLeft,
-                        daysLeft
-                    ),
+                    mainText =
+                    if (!showHours && daysLeft == 0)
+                    // Switch to hours anyway if hours are not shown
+                        getQuantityString(
+                            R.plurals.countdownWidget_hour,
+                            hoursLeft,
+                            hoursLeft
+                        )
+                    else if (showHours)
+                        getQuantityString(
+                            R.plurals.countdownWidget_day,
+                            daysLeft,
+                            daysLeft
+                        ) else "",
                     subText = getQuantityString(
                         R.plurals.countdownWidget_hour,
                         hoursLeft,
