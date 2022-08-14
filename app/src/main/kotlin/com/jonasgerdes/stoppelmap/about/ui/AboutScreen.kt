@@ -31,7 +31,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import com.jonasgerdes.stoppelmap.BuildConfig
 import com.jonasgerdes.stoppelmap.R
-import com.jonasgerdes.stoppelmap.about.data.Library
+import com.jonasgerdes.stoppelmap.about.data.License
+import com.jonasgerdes.stoppelmap.about.data.imageSources
 import com.jonasgerdes.stoppelmap.about.data.libraries
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
@@ -103,7 +104,27 @@ fun AboutScreen(
                 contentType = { ContentTypes.LIBRARY }
             ) {
                 LibraryCard(
-                    library = it,
+                    content = it.name,
+                    author = it.author,
+                    license = it.license,
+                    url = it.githubUrl ?: it.gitlabUrl ?: it.sourceUrl,
+                    onTap = onUrlTap,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+            item {
+                AboutHeader(R.string.about_images_title)
+            }
+            items(
+                imageSources,
+                key = { it.work },
+                contentType = { ContentTypes.LIBRARY }
+            ) {
+                LibraryCard(
+                    content = it.work,
+                    author = it.author,
+                    license = it.license,
+                    url = it.website,
                     onTap = onUrlTap,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -132,12 +153,14 @@ fun AboutHeader(
 
 @Composable
 fun LibraryCard(
-    library: Library,
+    content: String,
+    author: String,
+    license: License? = null,
+    url: String? = null,
     onTap: (url: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val sourceUrl = library.githubUrl ?: library.gitlabUrl ?: library.sourceUrl
-    val clickModifier = sourceUrl?.let { Modifier.clickable { onTap(it) } } ?: Modifier
+    val clickModifier = url?.let { Modifier.clickable { onTap(it) } } ?: Modifier
     OutlinedCard(modifier.then(clickModifier)) {
         Column(
             modifier = Modifier
@@ -145,7 +168,7 @@ fun LibraryCard(
                 .padding(16.dp)
         ) {
             Text(
-                text = library.name,
+                text = content,
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.size(4.dp))
@@ -155,18 +178,25 @@ fun LibraryCard(
                     contentDescription = stringResource(R.string.about_libraries_item_attribution)
                 )
                 Spacer(modifier = Modifier.size(8.dp))
-                Text(text = library.author)
+                Text(text = author)
             }
-            Spacer(modifier = Modifier.size(4.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    Icons.Rounded.Balance,
-                    contentDescription = stringResource(R.string.about_libraries_item_license)
-                )
-                Spacer(modifier = Modifier.size(8.dp))
-                Text(text = library.license.name)
+            if (license != null) {
+                Spacer(modifier = Modifier.size(4.dp))
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable {
+                        onTap(license.link)
+                    }
+                ) {
+                    Icon(
+                        Icons.Rounded.Balance,
+                        contentDescription = stringResource(R.string.about_libraries_item_license)
+                    )
+                    Spacer(modifier = Modifier.size(8.dp))
+                    Text(text = license.name)
+                }
             }
-            if (sourceUrl != null) {
+            if (url != null) {
                 Spacer(modifier = Modifier.size(4.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
@@ -175,7 +205,7 @@ fun LibraryCard(
                     )
                     Spacer(modifier = Modifier.size(8.dp))
                     Text(
-                        text = sourceUrl,
+                        text = url,
                         style = MaterialTheme.typography.bodySmall
                     )
                 }

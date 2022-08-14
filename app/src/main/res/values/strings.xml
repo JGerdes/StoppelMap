@@ -29,6 +29,7 @@
     <string name="about_graphics_title">Grafik/Illustration</string>
     <string name="about_sources_title">Informationsquellen</string>
     <string name="about_libraries_title">Opensource Bibliotheken</string>
+    <string name="about_images_title">Foto-/Grafikquellen</string>
 
     <string name="about_libraries_item_attribution">Erstellende</string>
     <string name="about_libraries_item_license">Lizenz</string>

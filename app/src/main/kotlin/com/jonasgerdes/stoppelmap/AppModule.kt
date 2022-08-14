@@ -4,9 +4,7 @@ import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.usecase.CopyDatabaseUseCase
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
-import kotlinx.datetime.Clock
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.*
 import org.koin.dsl.module
 
 val appModule = module {
@@ -21,7 +19,9 @@ val appModule = module {
 
     single {
         {
-            Clock.System.now().toLocalDateTime(stoppelmarktTimeZone)
+            Clock.System.now().toLocalDateTime(stoppelmarktTimeZone).let {
+                LocalDateTime(2022, Month.AUGUST, 16, 19, 0)
+            }
         }
     }
 

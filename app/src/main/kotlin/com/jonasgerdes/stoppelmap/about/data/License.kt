@@ -14,4 +14,7 @@ open class License(
 
     data class MIT(val url: String = "https://opensource.org/licenses/MIT") :
         License("MIT", "", url)
+
+    data class Unsplash(val url: String = "https://unsplash.com/license") :
+        License("Unsplash License", "", url)
 }
