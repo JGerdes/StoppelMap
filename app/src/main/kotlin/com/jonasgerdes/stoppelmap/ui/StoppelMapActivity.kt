@@ -69,7 +69,6 @@ class StoppelMapActivity : ComponentActivity() {
                 val currentDestination = navBackStackEntry?.destination
 
                 navigationTabs.forEach { (icon, label, startDestination) ->
-                    Timber.d("Adding NavigationBarItem for #$startDestination - current screen is #${currentDestination?.route}")
                     NavigationBarItem(
                         icon = {
                             Icon(imageVector = icon, contentDescription = null)

@@ -137,20 +137,24 @@ class SilhouetteWidgetProvider : AppWidgetProvider() {
         when (val countdown = getTimeLeftToOpening()) {
             is CountDown.InFuture -> with(countdown) {
                 CountdownTexts(
-                    mainText =
-                    if (!showHours && daysLeft == 0)
-                    // Switch to hours anyway if hours are not shown
-                        getQuantityString(
+                    mainText = when {
+                        showHours -> getQuantityString(
+                            R.plurals.countdownWidget_day,
+                            daysLeft,
+                            daysLeft
+                        )
+                        // Switch to hours anyway if hours are not shown
+                        daysLeft == 0 -> getQuantityString(
                             R.plurals.countdownWidget_hour,
                             hoursLeft,
                             hoursLeft
                         )
-                    else if (showHours)
-                        getQuantityString(
+                        else -> getQuantityString(
                             R.plurals.countdownWidget_day,
                             daysLeft,
                             daysLeft
-                        ) else "",
+                        )
+                    },
                     subText = getQuantityString(
                         R.plurals.countdownWidget_hour,
                         hoursLeft,
