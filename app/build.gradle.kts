@@ -88,6 +88,7 @@ dependencies {
     implementation(project(":feature-map"))
     implementation(project(":feature-schedule"))
     implementation(project(":feature-transportation"))
+    implementation(project(":feature-news"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")

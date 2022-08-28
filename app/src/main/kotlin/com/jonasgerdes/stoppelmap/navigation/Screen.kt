@@ -15,4 +15,6 @@ sealed class Screen(val route: String) {
         fun create(stationId: String) = "transportation/station/$stationId"
     }
 
+    object News : Screen("news")
+
 }

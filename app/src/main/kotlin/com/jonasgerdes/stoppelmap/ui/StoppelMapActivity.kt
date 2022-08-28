@@ -28,13 +28,13 @@ import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
 import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
+import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
 import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleScreen
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -168,6 +168,9 @@ class StoppelMapActivity : ComponentActivity() {
                         onNavigateBack = { navController.navigateUp() },
                         Modifier.fillMaxSize()
                     )
+                }
+                composable(Screen.News.route) {
+                    NewsScreen(Modifier.fillMaxSize())
                 }
             }
         }

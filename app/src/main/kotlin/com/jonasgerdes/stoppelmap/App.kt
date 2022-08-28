@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
+import com.jonasgerdes.stoppelmap.news.newsModule
 import com.jonasgerdes.stoppelmap.schedule.scheduleModule
 import com.jonasgerdes.stoppelmap.transportation.transportationModule
 import com.jonasgerdes.stoppelmap.usecase.CopyDatabaseUseCase
@@ -44,6 +45,7 @@ class App : Application() {
                 mapModule,
                 scheduleModule,
                 transportationModule,
+                newsModule,
             )
         }
 
