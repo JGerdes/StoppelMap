@@ -68,6 +68,9 @@ dependencies {
         implementation("io.insert-koin:koin-android:$koin")
         implementation("io.insert-koin:koin-androidx-compose:$koin")
 
+        implementation("com.google.accompanist:accompanist-pager:${accompoanist}")
+        implementation("io.coil-kt:coil-compose:$coil")
+
         implementation("io.ktor:ktor-client-android:$ktor")
         implementation("io.ktor:ktor-client-logging:$ktor")
         implementation("io.ktor:ktor-client-content-negotiation:$ktor")
