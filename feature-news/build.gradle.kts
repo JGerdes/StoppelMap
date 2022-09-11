@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("plugin.serialization") version DependencyVersions.kotlin
 }
 
 android {
@@ -67,8 +68,13 @@ dependencies {
         implementation("io.insert-koin:koin-android:$koin")
         implementation("io.insert-koin:koin-androidx-compose:$koin")
 
-        implementation("com.jakewharton.timber:timber:$timber")
+        implementation("io.ktor:ktor-client-android:$ktor")
+        implementation("io.ktor:ktor-client-logging:$ktor")
+        implementation("io.ktor:ktor-client-content-negotiation:$ktor")
+        implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationJson")
 
+        implementation("com.jakewharton.timber:timber:$timber")
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")
     }

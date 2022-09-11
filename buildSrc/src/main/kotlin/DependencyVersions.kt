@@ -2,6 +2,7 @@ object DependencyVersions {
     const val gradlePlugin = "7.4.0-alpha07"
     const val kotlin = "1.7.0"
     const val kotlinxDatetime = "0.4.0"
+    const val kotlinxSerializationJson = "1.2.1"
     const val desugarSDK = "1.1.5"
     const val androidxCore = "1.7.0"
     const val androidxLifecycle = "2.6.0-alpha01"
@@ -17,4 +18,5 @@ object DependencyVersions {
     const val mapBox = "10.7.0"
     const val sqldelight = "1.5.3"
     const val playServiceLocation = "20.0.0"
+    const val ktor = "2.1.0"
 }
