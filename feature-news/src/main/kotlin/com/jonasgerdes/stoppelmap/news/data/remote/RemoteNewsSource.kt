@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.news.data.remote
 
-import com.jonasgerdes.stoppelmap.news.data.model.NewsResponse
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*

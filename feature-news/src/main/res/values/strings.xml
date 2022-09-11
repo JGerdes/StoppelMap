@@ -2,5 +2,6 @@
 <resources>
 
     <string name="news_topbar_title">News</string>
+    <string name="news_article_card_more">Mehr erfahren</string>
 
 </resources>

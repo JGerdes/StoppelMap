@@ -12,23 +12,23 @@ data class NewsResponse(
 
 @kotlinx.serialization.Serializable
 data class Pagination(
-    val previous: String?,
-    val next: String?
+    val previous: String? = null,
+    val next: String? = null,
 )
 
 @kotlinx.serialization.Serializable
 data class Article(
     val url: String,
     val title: String,
-    val teaser: String?,
+    val teaser: String? = null,
     val publishDate: LocalDate,
-    val content: String?,
+    val content: String? = null,
     val images: List<Image>
 )
 
 @kotlinx.serialization.Serializable
 data class Image(
     val url: String,
-    val author: String?,
+    val author: String? = null,
     val caption: String?
 )
