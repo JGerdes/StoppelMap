@@ -8,10 +8,19 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
-class NewsViewModel(newsRepository: NewsRepository) : ViewModel() {
+class NewsViewModel(
+    private val newsRepository: NewsRepository
+) : ViewModel() {
 
     private val articles = newsRepository.getArticles()
+
+    fun onListEndReached() {
+        viewModelScope.launch {
+            newsRepository.loadMoreArticles()
+        }
+    }
 
     val state: StateFlow<ViewState> =
         articles

@@ -11,6 +11,11 @@ class RemoteNewsSource(
     suspend fun getFirstPage(): NewsResponse =
         httpClient.get {
             url(urlString = "https://app.stoppelmap.de/news")
-            parameter("page-size", 30)
+            parameter("page-size", 10)
+        }.body()
+
+    suspend fun loadPage(pageUrl: String): NewsResponse =
+        httpClient.get {
+            url(urlString = pageUrl)
         }.body()
 }
