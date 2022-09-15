@@ -170,7 +170,10 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.News.route) {
-                    NewsScreen(Modifier.fillMaxSize())
+                    NewsScreen(
+                        onUrlTap = ::openUrl,
+                        Modifier.fillMaxSize()
+                    )
                 }
             }
         }

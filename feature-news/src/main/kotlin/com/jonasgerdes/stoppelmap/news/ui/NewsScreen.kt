@@ -12,11 +12,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -35,8 +37,9 @@ import java.time.format.DateTimeFormatter
 
 @Composable
 fun NewsScreen(
+    onUrlTap: (String) -> Unit,
     modifier: Modifier = Modifier,
-    lazyViewModel: Lazy<NewsViewModel> = viewModel()
+    lazyViewModel: Lazy<NewsViewModel> = viewModel(),
 ) {
     val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -83,12 +86,44 @@ fun NewsScreen(
                                         modifier = Modifier.fillMaxSize()
                                     )
                                 }
+                                Box(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .height(48.dp)
+                                        .align(Alignment.BottomCenter)
+                                        .background(
+                                            Brush.verticalGradient(
+                                                colors = listOf(
+                                                    MaterialTheme.colorScheme.scrim.copy(alpha = 0f),
+                                                    MaterialTheme.colorScheme.scrim.copy(alpha = 0.4f),
+                                                    MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f),
+                                                )
+                                            )
+                                        )
+                                )
+                                val currentImage by remember {
+                                    derivedStateOf { article.images[imagePagerState.currentPage] }
+                                }
+
+                                currentImage.author?.let { author ->
+                                    Text(
+                                        text = stringResource(
+                                            id = R.string.news_article_card_photo_copyright,
+                                            author
+                                        ),
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onScrim,
+                                        modifier = Modifier
+                                            .align(Alignment.BottomStart)
+                                            .padding(vertical = 8.dp, horizontal = 16.dp)
+                                    )
+                                }
                                 if (article.images.size > 1) {
                                     PageIndicator(
                                         pagerState = imagePagerState,
                                         modifier = Modifier
                                             .align(Alignment.BottomCenter)
-                                            .padding(bottom = 8.dp)
+                                            .padding(bottom = 4.dp)
                                     )
                                 }
                             }
@@ -115,7 +150,7 @@ fun NewsScreen(
                                 )
                             }
                             TextButton(
-                                onClick = { /*TODO*/ },
+                                onClick = { onUrlTap(article.url) },
                                 modifier = Modifier.align(Alignment.End)
                             ) {
                                 Text(text = stringResource(id = R.string.news_article_card_more))

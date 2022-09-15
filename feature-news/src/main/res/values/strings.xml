@@ -2,6 +2,7 @@
 <resources>
 
     <string name="news_topbar_title">News</string>
-    <string name="news_article_card_more">Mehr erfahren</string>
+    <string name="news_article_card_more">Weiter lesen</string>
+    <string name="news_article_card_photo_copyright">© %1$s</string>
 
 </resources>
