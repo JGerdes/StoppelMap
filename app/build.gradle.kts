@@ -18,7 +18,7 @@ android {
             loadProperties(
                 "./signing.properties",
                 onSuccess = { properties ->
-                    storeFile = File(properties["keystorePath"] as String)
+                    storeFile = File(projectDir, properties["keystorePath"] as String)
                     storePassword = properties["keystorePassword"] as String
                     keyAlias = properties["keyAlias"] as String
                     keyPassword = properties["keyPassword"] as String
@@ -32,8 +32,8 @@ android {
         applicationId = "com.jonasgerdes.stoppelmap"
         minSdk = SdkVersions.minSdk
         targetSdk = SdkVersions.targetSdk
-        versionCode = 54
-        versionName = "v2022.08.18.01-$commitSha"
+        versionCode = 55
+        versionName = "v2022.09.25.01-$commitSha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
