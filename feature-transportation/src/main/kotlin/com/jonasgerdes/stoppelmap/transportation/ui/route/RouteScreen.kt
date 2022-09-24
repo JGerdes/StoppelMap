@@ -36,7 +36,7 @@ import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import kotlinx.datetime.toJavaLocalDateTime
 import kotlinx.datetime.toJavaLocalTime
-import org.koin.androidx.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import timber.log.Timber
 import java.time.format.DateTimeFormatter
@@ -50,9 +50,8 @@ fun RouteScreen(
     onStationTap: (stationId: String) -> Unit,
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    lazyViewModel: Lazy<RouteViewModel> = viewModel { parametersOf(routeId) }
+    viewModel: RouteViewModel = koinViewModel { parametersOf(routeId) }
 ) {
-    val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Timber.d("new state: ${(state.routeState as? RouteViewModel.RouteState.Loaded)?.routeDetails?.stations?.firstOrNull()}")
@@ -165,6 +164,7 @@ fun RouteScreen(
                                         }
                                 )
                             }
+
                             is BusRouteDetails.Station.Destination -> {
                                 DestinationStationCard(
                                     station = station,
@@ -251,20 +251,25 @@ fun StopStationCard(
                         val departureText = when (departureTime) {
                             BusRouteDetails.DepartureTime.Immediately ->
                                 stringResource(R.string.transportation_route_card_next_departures_immediately)
+
                             is BusRouteDetails.DepartureTime.InMinutes ->
                                 stringResource(
                                     R.string.transportation_route_card_next_departures_inMinutes,
                                     departureTime.minutes
                                 )
+
                             is BusRouteDetails.DepartureTime.Today ->
                                 departureTimeFormatter.format(departureTime.time.toJavaLocalTime())
+
                             is BusRouteDetails.DepartureTime.Tomorrow ->
                                 stringResource(
                                     R.string.transportation_route_card_next_departures_tomorrow,
                                     departureTimeFormatter.format(departureTime.time.toJavaLocalTime())
                                 )
+
                             is BusRouteDetails.DepartureTime.ThisWeek ->
                                 departureWeekdayTimeFormatter.format(departureTime.dateTime.toJavaLocalDateTime())
+
                             is BusRouteDetails.DepartureTime.Absolute ->
                                 departureDateTimeFormatter.format(departureTime.dateTime.toJavaLocalDateTime())
                         }

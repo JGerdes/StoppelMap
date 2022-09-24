@@ -33,7 +33,7 @@ import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import kotlinx.datetime.toJavaLocalTime
-import org.koin.androidx.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import java.text.NumberFormat
 import java.time.DayOfWeek
@@ -46,9 +46,8 @@ fun StationScreen(
     stationId: String,
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    lazyViewModel: Lazy<StationViewModel> = viewModel { parametersOf(stationId) }
+    viewModel: StationViewModel = koinViewModel { parametersOf(stationId) }
 ) {
-    val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
 
 
@@ -169,10 +168,12 @@ private fun Price.PriceLabel.asString(resources: Resources): String =
                 minAge,
                 maxAge
             )
+
             maxAge != null -> resources.getString(
                 R.string.transportation_station_prices_children_with_limit,
                 maxAge
             )
+
             else -> resources.getString(R.string.transportation_station_prices_children)
         }
     }

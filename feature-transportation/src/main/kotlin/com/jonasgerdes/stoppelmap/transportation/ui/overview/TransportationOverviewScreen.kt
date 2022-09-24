@@ -26,6 +26,7 @@ import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel.BusRoutesState
+import org.koin.androidx.compose.koinViewModel
 import org.koin.androidx.compose.viewModel
 
 @SuppressLint("NewApi")
@@ -33,9 +34,8 @@ import org.koin.androidx.compose.viewModel
 fun TransportationOverviewScreen(
     onRouteTap: (routeId: String) -> Unit,
     modifier: Modifier = Modifier,
-    lazyViewModel: Lazy<TransportationOverviewViewModel> = viewModel(),
+    viewModel: TransportationOverviewViewModel = koinViewModel(),
 ) {
-    val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Column(

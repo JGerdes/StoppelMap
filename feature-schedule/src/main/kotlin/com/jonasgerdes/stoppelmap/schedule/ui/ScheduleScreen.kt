@@ -17,7 +17,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -35,7 +39,7 @@ import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.schedule.R
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 import java.time.DayOfWeek
 import java.time.format.DateTimeFormatter
 
@@ -43,9 +47,8 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun ScheduleScreen(
     modifier: Modifier = Modifier,
-    lazyViewModel: Lazy<ScheduleViewModel> = viewModel()
+    viewModel: ScheduleViewModel = koinViewModel()
 ) {
-    val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
     Column(
         modifier = modifier
