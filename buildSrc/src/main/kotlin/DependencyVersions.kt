@@ -17,4 +17,5 @@ object DependencyVersions {
     const val mapBox = "10.7.0"
     const val sqldelight = "1.5.3"
     const val playServiceLocation = "20.0.0"
+    const val playInAppUpdate = "2.0.0"
 }
