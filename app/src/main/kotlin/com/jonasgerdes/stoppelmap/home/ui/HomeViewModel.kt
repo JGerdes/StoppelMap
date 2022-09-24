@@ -6,15 +6,43 @@ import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
+import com.jonasgerdes.stoppelmap.update.usecase.GetAppUpdateStateUseCase
+import com.jonasgerdes.stoppelmap.update.usecase.GetAppUpdateStateUseCase.Result
 import com.jonasgerdes.stoppelmap.usecase.IsCurrentYearsSeasonJustOverUseCase
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel(
+    getAppUpdateState: GetAppUpdateStateUseCase,
     getOpeningCountDown: GetOpeningCountDownFlowUseCase,
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
     getNextOfficialEvent: GetNextOfficialEventUseCase,
     isCurrentYearsSeasonJustOver: IsCurrentYearsSeasonJustOverUseCase
 ) : ViewModel() {
+
+    private val updateState: Flow<UpdateState> =
+        getAppUpdateState().map { appUpdateState ->
+            when (appUpdateState) {
+                Result.LatestVersionInstalled -> UpdateState.Hidden
+                Result.Unknown -> UpdateState.Hidden
+                Result.UpdateAvailable -> UpdateState.UpdateAvailable
+                Result.DownloadPending -> UpdateState.UpdateDownloading(progress = UpdateState.UpdateDownloading.Progress.Indeterminate)
+                is Result.DownloadInProgress -> UpdateState.UpdateDownloading(
+                    progress = UpdateState.UpdateDownloading.Progress.Determinate(
+                        appUpdateState.bytesDownloaded / appUpdateState.totalBytesToDownload.toFloat()
+                    )
+                )
+
+                Result.DownloadCanceled -> UpdateState.UpdateAvailable
+                Result.DownloadCompleted -> UpdateState.UpdateReadyToInstall
+                Result.DownloadFailed -> UpdateState.UpdateFailed
+            }
+        }
 
     private val openingCountDownState: Flow<CountDownState> =
         getOpeningCountDown().map { countDownResult ->
@@ -44,6 +72,7 @@ class HomeViewModel(
 
     val state: StateFlow<ViewState> =
         combine(
+            updateState,
             openingCountDownState,
             countdownWidgetSuggestionState,
             nextOfficialEventState,
@@ -55,12 +84,14 @@ class HomeViewModel(
         )
 
     data class ViewState(
+        val updateState: UpdateState,
         val openingCountDownState: CountDownState,
-        val countdownWidgetSuggestionState: CountDownWidgetSuggestionState,
-        val nextOfficialEventState: GetNextOfficialEventUseCase.Result,
+        val countdownWidgetSuggestionState: CountDownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
+        val nextOfficialEventState: GetNextOfficialEventUseCase.Result = GetNextOfficialEventUseCase.Result.None,
     ) {
         companion object {
             val Default = ViewState(
+                updateState = UpdateState.Hidden,
                 openingCountDownState = CountDownState.Loading,
                 countdownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
                 nextOfficialEventState = GetNextOfficialEventUseCase.Result.None
@@ -84,5 +115,21 @@ class HomeViewModel(
         ) : CountDownState()
 
         object Over : CountDownState()
+    }
+
+    sealed interface UpdateState {
+        object Hidden : UpdateState
+        object UpdateAvailable : UpdateState
+        data class UpdateDownloading(
+            val progress: Progress
+        ) : UpdateState {
+            sealed interface Progress {
+                object Indeterminate : Progress
+                data class Determinate(val progress: Float) : Progress
+            }
+        }
+
+        object UpdateReadyToInstall : UpdateState
+        object UpdateFailed : UpdateState
     }
 }

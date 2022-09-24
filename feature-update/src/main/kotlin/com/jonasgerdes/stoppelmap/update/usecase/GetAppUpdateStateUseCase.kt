@@ -6,12 +6,13 @@ import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import timber.log.Timber
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class GetAppUpdateDownloadStateUseCase(
+class GetAppUpdateStateUseCase(
     private val appUpdateManager: AppUpdateManager,
 ) {
 
@@ -54,7 +55,7 @@ class GetAppUpdateDownloadStateUseCase(
         }
         appUpdateManager.registerListener(listener)
 
-        invokeOnClose {
+        awaitClose {
             appUpdateManager.unregisterListener(listener)
         }
     }
