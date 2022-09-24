@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.update.usecase
 
+import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
@@ -28,7 +29,7 @@ class GetAppUpdateStateUseCase(
             val result = when {
                 appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
                         && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE) ->
-                    Result.UpdateAvailable
+                    Result.UpdateAvailable(appUpdateInfo)
 
                 resultFromInstallStatus != null -> resultFromInstallStatus
                 else -> Result.LatestVersionInstalled
@@ -79,7 +80,7 @@ class GetAppUpdateStateUseCase(
 
     sealed interface Result {
         object LatestVersionInstalled : Result
-        object UpdateAvailable : Result
+        data class UpdateAvailable(val appUpdateInfo: AppUpdateInfo) : Result
         object DownloadPending : Result
         data class DownloadInProgress(
             val bytesDownloaded: Long,

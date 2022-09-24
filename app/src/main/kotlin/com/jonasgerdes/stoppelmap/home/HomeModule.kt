@@ -12,6 +12,7 @@ val homeModule = module {
     viewModel {
         HomeViewModel(
             getAppUpdateState = get(),
+            completeAppUpdate = get(),
             getOpeningCountDown = get(),
             shouldShowCountdownWidgetSuggestion = get(),
             getNextOfficialEvent = get(),

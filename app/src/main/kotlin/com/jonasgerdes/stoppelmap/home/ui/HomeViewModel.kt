@@ -6,6 +6,8 @@ import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
+import com.jonasgerdes.stoppelmap.update.model.UpdateState
+import com.jonasgerdes.stoppelmap.update.usecase.CompleteAppUpdateUseCase
 import com.jonasgerdes.stoppelmap.update.usecase.GetAppUpdateStateUseCase
 import com.jonasgerdes.stoppelmap.update.usecase.GetAppUpdateStateUseCase.Result
 import com.jonasgerdes.stoppelmap.usecase.IsCurrentYearsSeasonJustOverUseCase
@@ -19,6 +21,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel(
     getAppUpdateState: GetAppUpdateStateUseCase,
+    private val completeAppUpdate: CompleteAppUpdateUseCase,
     getOpeningCountDown: GetOpeningCountDownFlowUseCase,
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
     getNextOfficialEvent: GetNextOfficialEventUseCase,
@@ -30,17 +33,17 @@ class HomeViewModel(
             when (appUpdateState) {
                 Result.LatestVersionInstalled -> UpdateState.Hidden
                 Result.Unknown -> UpdateState.Hidden
-                Result.UpdateAvailable -> UpdateState.UpdateAvailable
-                Result.DownloadPending -> UpdateState.UpdateDownloading(progress = UpdateState.UpdateDownloading.Progress.Indeterminate)
-                is Result.DownloadInProgress -> UpdateState.UpdateDownloading(
-                    progress = UpdateState.UpdateDownloading.Progress.Determinate(
+                is Result.UpdateAvailable -> UpdateState.Available(appUpdateState.appUpdateInfo)
+                Result.DownloadPending -> UpdateState.Downloading(progress = UpdateState.Downloading.Progress.Indeterminate)
+                is Result.DownloadInProgress -> UpdateState.Downloading(
+                    progress = UpdateState.Downloading.Progress.Determinate(
                         appUpdateState.bytesDownloaded / appUpdateState.totalBytesToDownload.toFloat()
                     )
                 )
 
-                Result.DownloadCanceled -> UpdateState.UpdateAvailable
-                Result.DownloadCompleted -> UpdateState.UpdateReadyToInstall
-                Result.DownloadFailed -> UpdateState.UpdateFailed
+                Result.DownloadCanceled -> UpdateState.Failed
+                Result.DownloadCompleted -> UpdateState.ReadyToInstall
+                Result.DownloadFailed -> UpdateState.Failed
             }
         }
 
@@ -69,6 +72,11 @@ class HomeViewModel(
     }
 
     private val nextOfficialEventState = getNextOfficialEvent()
+
+
+    fun onCompleteAppUpdateTapped() {
+        completeAppUpdate()
+    }
 
     val state: StateFlow<ViewState> =
         combine(
@@ -115,21 +123,5 @@ class HomeViewModel(
         ) : CountDownState()
 
         object Over : CountDownState()
-    }
-
-    sealed interface UpdateState {
-        object Hidden : UpdateState
-        object UpdateAvailable : UpdateState
-        data class UpdateDownloading(
-            val progress: Progress
-        ) : UpdateState {
-            sealed interface Progress {
-                object Indeterminate : Progress
-                data class Determinate(val progress: Float) : Progress
-            }
-        }
-
-        object UpdateReadyToInstall : UpdateState
-        object UpdateFailed : UpdateState
     }
 }

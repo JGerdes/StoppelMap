@@ -114,6 +114,8 @@ dependencies {
 
         implementation("com.squareup.sqldelight:android-driver:$sqldelight")
 
+        implementation("com.google.android.play:app-update-ktx:$playInAppUpdate")
+
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")
 

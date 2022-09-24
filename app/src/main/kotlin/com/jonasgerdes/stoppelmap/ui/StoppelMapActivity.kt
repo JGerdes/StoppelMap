@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.ui
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -22,6 +23,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.google.android.play.core.appupdate.AppUpdateInfo
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateOptions
+import com.google.android.play.core.install.model.AppUpdateType
 import com.jonasgerdes.stoppelmap.about.ui.AboutScreen
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
@@ -41,6 +46,7 @@ import timber.log.Timber
 class StoppelMapActivity : ComponentActivity() {
 
     private val permissionRepository: PermissionRepository by inject()
+    private val appUpdateManager: AppUpdateManager by inject()
 
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -107,6 +113,8 @@ class StoppelMapActivity : ComponentActivity() {
                     HomeScreen(
                         onUrlTap = { openUrl(it) },
                         onAboutOptionTap = { navController.navigate(Screen.About.route) },
+                        onDownloadUpdateTap = { startUpdateDownload(it) },
+                        onOpenGooglePlayTap = { openGooglePlayPage() },
                         modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
@@ -170,6 +178,27 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
             }
+        }
+    }
+
+    private fun startUpdateDownload(appUpdateInfo: AppUpdateInfo) {
+        appUpdateManager.startUpdateFlow(
+            appUpdateInfo,
+            this,
+            AppUpdateOptions.newBuilder(AppUpdateType.FLEXIBLE).build()
+        )
+    }
+
+    private fun openGooglePlayPage() {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+        } catch (e: ActivityNotFoundException) {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+                )
+            )
         }
     }
 

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+    <string name="appUpdateCard_updateAvailable_title">Update verfügbar</string>
+    <string name="appUpdateCard_updateAvailable_description">Eine neue Version der App ist da!</string>
+    <string name="appUpdateCard_updateAvailable_downloadButton">Jetzt herunterladen</string>
+
+    <string name="appUpdateCard_downloading_title">Update verfügbar</string>
+    <string name="appUpdateCard_downloading_description">Update wird heruntergeladen.</string>
+
+    <string name="appUpdateCard_readyToInstall_title">Update verfügbar</string>
+    <string name="appUpdateCard_readyToInstall_description">Das Update wurde heruntergeladen und kann jetzt installiert werden. Dafür muss die App neugestartet werden.</string>
+    <string name="appUpdateCard_readyToInstall_installButton">Jetzt installieren</string>
+
+    <string name="appUpdateCard_failed_title">Update fehlgeschlagen</string>
+    <string name="appUpdateCard_failed_description">Beim Download oder der Installation des Updates ist ein Problem aufgetreten. Versuche es, direkt bei Google Play zu laden.</string>
+    <string name="appUpdateCard_failed_openGooglePlayButton">Google Play öffnen</string>
+
 </resources>

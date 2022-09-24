@@ -42,12 +42,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
 import com.jonasgerdes.stoppelmap.schedule.ui.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
+import com.jonasgerdes.stoppelmap.update.model.UpdateState
+import com.jonasgerdes.stoppelmap.update.ui.components.AppUpdateCard
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("NewApi")
@@ -55,6 +58,8 @@ import org.koin.androidx.compose.koinViewModel
 fun HomeScreen(
     onAboutOptionTap: () -> Unit,
     onUrlTap: (String) -> Unit,
+    onDownloadUpdateTap: (AppUpdateInfo) -> Unit,
+    onOpenGooglePlayTap: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
@@ -92,6 +97,17 @@ fun HomeScreen(
             state = listState,
             modifier = Modifier.fillMaxSize()
         ) {
+            if (state.updateState !is UpdateState.Hidden) {
+                item {
+                    AppUpdateCard(
+                        state.updateState,
+                        onDownloadTap = onDownloadUpdateTap,
+                        onInstallTap = viewModel::onCompleteAppUpdateTapped,
+                        onOpenGooglePlayTap = onOpenGooglePlayTap,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
             when (val nextOfficialEvent = state.nextOfficialEventState) {
                 GetNextOfficialEventUseCase.Result.None -> Unit
                 is GetNextOfficialEventUseCase.Result.Some -> {
