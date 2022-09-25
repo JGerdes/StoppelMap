@@ -7,14 +7,34 @@
 package com.jonasgerdes.stoppelmap.home.ui
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.MoreVert
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -22,23 +42,27 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
 import com.jonasgerdes.stoppelmap.schedule.ui.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
-import org.koin.androidx.compose.viewModel
+import com.jonasgerdes.stoppelmap.update.model.UpdateState
+import com.jonasgerdes.stoppelmap.update.ui.components.AppUpdateCard
+import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("NewApi")
 @Composable
 fun HomeScreen(
     onAboutOptionTap: () -> Unit,
     onUrlTap: (String) -> Unit,
+    onDownloadUpdateTap: (AppUpdateInfo) -> Unit,
+    onOpenGooglePlayTap: () -> Unit,
     modifier: Modifier = Modifier,
-    lazyViewModel: Lazy<HomeViewModel> = viewModel(),
+    viewModel: HomeViewModel = koinViewModel(),
 ) {
-    val viewModel by lazyViewModel
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Column(
@@ -73,6 +97,17 @@ fun HomeScreen(
             state = listState,
             modifier = Modifier.fillMaxSize()
         ) {
+            if (state.updateState !is UpdateState.Hidden) {
+                item {
+                    AppUpdateCard(
+                        state.updateState,
+                        onDownloadTap = onDownloadUpdateTap,
+                        onInstallTap = viewModel::onCompleteAppUpdateTapped,
+                        onOpenGooglePlayTap = onOpenGooglePlayTap,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
             when (val nextOfficialEvent = state.nextOfficialEventState) {
                 GetNextOfficialEventUseCase.Result.None -> Unit
                 is GetNextOfficialEventUseCase.Result.Some -> {
@@ -104,6 +139,7 @@ fun HomeScreen(
                         )
                     }
                 }
+
                 HomeViewModel.CountDownState.Loading -> Unit
                 HomeViewModel.CountDownState.Over -> Unit
             }

@@ -1,5 +1,5 @@
 object DependencyVersions {
-    const val gradlePlugin = "7.4.0-alpha07"
+    const val gradlePlugin = "8.0.0-alpha01"
     const val kotlin = "1.7.0"
     const val kotlinxDatetime = "0.4.0"
     const val kotlinxSerializationJson = "1.2.1"
@@ -13,11 +13,12 @@ object DependencyVersions {
     const val androidxNavigation = "2.5.1"
     const val accompoanist = "0.24.13-rc"
     const val coil = "2.2.1"
-    const val koin = "3.1.6"
+    const val koin = "3.2.1"
     const val timber = "5.0.1"
     const val lottie = "5.2.0"
     const val mapBox = "10.7.0"
     const val sqldelight = "1.5.3"
     const val playServiceLocation = "20.0.0"
+    const val playInAppUpdate = "2.0.0"
     const val ktor = "2.1.0"
 }

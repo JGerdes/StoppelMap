@@ -12,6 +12,7 @@ include(":feature-transportation")
 include(":feature-map")
 include(":feature-schedule")
 include(":feature-news")
+include(":feature-update")
 include(":app")
 
 

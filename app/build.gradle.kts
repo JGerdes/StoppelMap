@@ -18,7 +18,7 @@ android {
             loadProperties(
                 "./signing.properties",
                 onSuccess = { properties ->
-                    storeFile = File(properties["keystorePath"] as String)
+                    storeFile = File(projectDir, properties["keystorePath"] as String)
                     storePassword = properties["keystorePassword"] as String
                     keyAlias = properties["keyAlias"] as String
                     keyPassword = properties["keyPassword"] as String
@@ -32,8 +32,8 @@ android {
         applicationId = "com.jonasgerdes.stoppelmap"
         minSdk = SdkVersions.minSdk
         targetSdk = SdkVersions.targetSdk
-        versionCode = 54
-        versionName = "v2022.08.18.01-$commitSha"
+        versionCode = 56
+        versionName = "v2022.09.25.02-$commitSha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -89,6 +89,7 @@ dependencies {
     implementation(project(":feature-schedule"))
     implementation(project(":feature-transportation"))
     implementation(project(":feature-news"))
+    implementation(project(":feature-update"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
@@ -113,6 +114,8 @@ dependencies {
         implementation("com.airbnb.android:lottie-compose:$lottie")
 
         implementation("com.squareup.sqldelight:android-driver:$sqldelight")
+
+        implementation("com.google.android.play:app-update-ktx:$playInAppUpdate")
 
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")
