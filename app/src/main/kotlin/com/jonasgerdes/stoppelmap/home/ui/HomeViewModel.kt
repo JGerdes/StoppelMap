@@ -73,6 +73,13 @@ class HomeViewModel(
 
     private val nextOfficialEventState = getNextOfficialEvent()
 
+    private val instagramPromotionState = openingCountDownState.map {
+        when (it) {
+            is CountDownState.Loading -> InstagramPromotionState.Hidden
+            else -> InstagramPromotionState.Visible
+        }
+    }
+
 
     fun onCompleteAppUpdateTapped() {
         completeAppUpdate()
@@ -84,6 +91,7 @@ class HomeViewModel(
             openingCountDownState,
             countdownWidgetSuggestionState,
             nextOfficialEventState,
+            instagramPromotionState,
             ::ViewState
         ).stateIn(
             scope = viewModelScope,
@@ -96,13 +104,15 @@ class HomeViewModel(
         val openingCountDownState: CountDownState,
         val countdownWidgetSuggestionState: CountDownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
         val nextOfficialEventState: GetNextOfficialEventUseCase.Result = GetNextOfficialEventUseCase.Result.None,
+        val instagramPromotionState: InstagramPromotionState,
     ) {
         companion object {
             val Default = ViewState(
                 updateState = UpdateState.Hidden,
                 openingCountDownState = CountDownState.Loading,
                 countdownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
-                nextOfficialEventState = GetNextOfficialEventUseCase.Result.None
+                nextOfficialEventState = GetNextOfficialEventUseCase.Result.None,
+                instagramPromotionState = InstagramPromotionState.Hidden,
             )
         }
     }
@@ -123,5 +133,10 @@ class HomeViewModel(
         ) : CountDownState()
 
         object Over : CountDownState()
+    }
+
+    sealed interface InstagramPromotionState {
+        object Hidden : InstagramPromotionState
+        object Visible : InstagramPromotionState
     }
 }

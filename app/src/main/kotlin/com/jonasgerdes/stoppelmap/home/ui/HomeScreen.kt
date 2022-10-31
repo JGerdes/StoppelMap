@@ -150,23 +150,25 @@ fun HomeScreen(
                 }
             }
 
-            item {
-                Card {
-                    Column(
-                        Modifier
-                            .padding(horizontal = 16.dp)
-                            .padding(top = 16.dp, bottom = 8.dp)
-                    ) {
-                        Text(
-                            text = "Du willst auf dem Laufenden bleiben, was StoppelMap und den Stoppelmarkt angeht?",
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Spacer(modifier = Modifier.size(16.dp))
-                        Button(
-                            onClick = { onUrlTap("https://instagram.com/stoppelmap") },
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
+            if (state.instagramPromotionState == HomeViewModel.InstagramPromotionState.Visible) {
+                item {
+                    Card {
+                        Column(
+                            Modifier
+                                .padding(horizontal = 16.dp)
+                                .padding(top = 16.dp, bottom = 8.dp)
                         ) {
-                            Text("Folge StoppelMap auf Instagram")
+                            Text(
+                                text = "Du willst auf dem Laufenden bleiben, was StoppelMap und den Stoppelmarkt angeht?",
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            Spacer(modifier = Modifier.size(16.dp))
+                            Button(
+                                onClick = { onUrlTap("https://instagram.com/stoppelmap") },
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            ) {
+                                Text("Folge StoppelMap auf Instagram")
+                            }
                         }
                     }
                 }

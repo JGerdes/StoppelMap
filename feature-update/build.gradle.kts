@@ -25,7 +25,5 @@ dependencies {
         implementation("com.jakewharton.timber:timber:$timber")
 
         implementation("com.google.android.play:app-update-ktx:$playInAppUpdate")
-
-        debugImplementation("androidx.compose.ui:ui-tooling:$compose")
     }
 }
