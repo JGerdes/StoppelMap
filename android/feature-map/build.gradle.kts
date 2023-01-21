@@ -4,19 +4,17 @@ plugins {
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.countdown"
+    namespace = "com.jonasgerdes.stoppelmap.map"
 }
 
 dependencies {
-    implementation(project(":base"))
-    implementation(project(":theme"))
+    implementation(project(":data"))
+    implementation(project(":android:theme"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
         implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$desugarSDK")
-
-        implementation("com.google.accompanist:accompanist-pager:${accompoanist}")
 
         implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycle")
         implementation("androidx.lifecycle:lifecycle-runtime-compose:$androidxLifecycle")
@@ -26,6 +24,10 @@ dependencies {
         implementation("io.insert-koin:koin-androidx-compose:$koin")
 
         implementation("com.jakewharton.timber:timber:$timber")
+        implementation("com.mapbox.maps:android:$mapBox")
+        implementation("com.google.android.gms:play-services-location:$playServiceLocation")
+
+        implementation("com.squareup.sqldelight:coroutines-extensions-jvm:${sqldelight}")
 
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")

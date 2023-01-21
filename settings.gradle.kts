@@ -1,19 +1,22 @@
 // repositoriesMode etc. is marked unstable
 @file:Suppress("UnstableApiUsage")
 
+import java.io.FileInputStream
+import java.util.Properties
+
 include(":base")
 include(":data")
 
 include(":preparation")
 
-include(":theme")
-include(":feature-countdown")
-include(":feature-transportation")
-include(":feature-map")
-include(":feature-schedule")
-include(":feature-news")
-include(":feature-update")
-include(":app")
+include(":android:theme")
+include(":android:feature-countdown")
+include(":android:feature-transportation")
+include(":android:feature-map")
+include(":android:feature-schedule")
+include(":android:feature-news")
+include(":android:feature-update")
+include(":android:app")
 
 
 pluginManagement {
@@ -32,8 +35,10 @@ dependencyResolutionManagement {
             authentication {
                 create<BasicAuthentication>("basic")
             }
-            java.io.FileInputStream(File("secrets.properties")).use {
-                val properties = java.util.Properties()
+            FileInputStream(
+                File(rootProject.projectDir, "secrets.properties")
+            ).use {
+                val properties = Properties()
                 properties.load(it)
                 credentials {
                     username = "mapbox"

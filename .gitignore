@@ -60,3 +60,6 @@ signing.properties
 */google-services.json
 google_play_api_key.json
 /secrets.properties
+
+# release config
+release.keystore

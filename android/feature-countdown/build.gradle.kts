@@ -4,18 +4,18 @@ plugins {
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.transportation"
+    namespace = "com.jonasgerdes.stoppelmap.countdown"
 }
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":theme"))
+    implementation(project(":android:theme"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
         implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$desugarSDK")
-        
+
         implementation("com.google.accompanist:accompanist-pager:${accompoanist}")
 
         implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycle")

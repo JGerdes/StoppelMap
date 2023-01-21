@@ -16,7 +16,7 @@ android {
 
         create("release") {
             loadProperties(
-                "./signing.properties",
+                "./android/signing.properties",
                 onSuccess = { properties ->
                     storeFile = File(projectDir, properties["keystorePath"] as String)
                     storePassword = properties["keystorePassword"] as String
@@ -83,13 +83,13 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":data"))
 
-    implementation(project(":theme"))
-    implementation(project(":feature-countdown"))
-    implementation(project(":feature-map"))
-    implementation(project(":feature-schedule"))
-    implementation(project(":feature-transportation"))
-    implementation(project(":feature-news"))
-    implementation(project(":feature-update"))
+    implementation(project(":android:theme"))
+    implementation(project(":android:feature-countdown"))
+    implementation(project(":android:feature-map"))
+    implementation(project(":android:feature-schedule"))
+    implementation(project(":android:feature-transportation"))
+    implementation(project(":android:feature-news"))
+    implementation(project(":android:feature-update"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")

@@ -4,16 +4,19 @@ plugins {
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.update"
+    namespace = "com.jonasgerdes.stoppelmap.transportation"
 }
 
 dependencies {
     implementation(project(":base"))
-    implementation(project(":theme"))
+    implementation(project(":android:theme"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$desugarSDK")
+
+        implementation("com.google.accompanist:accompanist-pager:${accompoanist}")
 
         implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycle")
         implementation("androidx.lifecycle:lifecycle-runtime-compose:$androidxLifecycle")
@@ -24,6 +27,7 @@ dependencies {
 
         implementation("com.jakewharton.timber:timber:$timber")
 
-        implementation("com.google.android.play:app-update-ktx:$playInAppUpdate")
+
+        debugImplementation("androidx.compose.ui:ui-tooling:$compose")
     }
 }

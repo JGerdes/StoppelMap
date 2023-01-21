@@ -1,15 +1,17 @@
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.COMPOSE)
+    kotlin("plugin.serialization") version DependencyVersions.kotlin
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.map"
+    namespace = "com.jonasgerdes.stoppelmap.news"
 }
 
 dependencies {
+    implementation(project(":base"))
+    implementation(project(":android:theme"))
     implementation(project(":data"))
-    implementation(project(":theme"))
 
     with(DependencyVersions) {
         implementation("androidx.core:core-ktx:$androidxCore")
@@ -23,12 +25,16 @@ dependencies {
         implementation("io.insert-koin:koin-android:$koin")
         implementation("io.insert-koin:koin-androidx-compose:$koin")
 
+        implementation("com.google.accompanist:accompanist-pager:${accompoanist}")
+        implementation("io.coil-kt:coil-compose:$coil")
+
+        implementation("io.ktor:ktor-client-android:$ktor")
+        implementation("io.ktor:ktor-client-logging:$ktor")
+        implementation("io.ktor:ktor-client-content-negotiation:$ktor")
+        implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationJson")
+
         implementation("com.jakewharton.timber:timber:$timber")
-        implementation("com.mapbox.maps:android:$mapBox")
-        implementation("com.google.android.gms:play-services-location:$playServiceLocation")
-
-        implementation("com.squareup.sqldelight:coroutines-extensions-jvm:${sqldelight}")
-
 
         debugImplementation("androidx.compose.ui:ui-tooling:$compose")
     }
