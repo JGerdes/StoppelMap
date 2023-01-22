@@ -1,5 +1,5 @@
 object DependencyVersions {
-    const val gradlePlugin = "8.0.0-alpha06"
+    const val gradlePlugin = "8.0.0-beta01"
     const val kotlin = "1.7.0"
     const val kotlinxDatetime = "0.4.0"
     const val kotlinxSerializationJson = "1.2.1"
