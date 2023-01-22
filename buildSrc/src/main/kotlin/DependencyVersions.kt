@@ -22,5 +22,6 @@ object DependencyVersions {
     const val playInAppUpdate = "2.0.0"
     const val ktor = "2.1.0"
 
-    const val ktorServer = "2.2.0"
+    const val ktorServer = "2.2.2"
+    const val logback = "1.4.5"
 }
