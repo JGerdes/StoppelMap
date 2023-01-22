@@ -4,11 +4,11 @@
 import java.io.FileInputStream
 import java.util.Properties
 
+// Common
 include(":base")
 include(":data")
 
-include(":preparation")
-
+// Android
 include(":android:theme")
 include(":android:feature-countdown")
 include(":android:feature-transportation")
@@ -17,6 +17,12 @@ include(":android:feature-schedule")
 include(":android:feature-news")
 include(":android:feature-update")
 include(":android:app")
+
+// Server
+include(":server:api")
+
+// Preparation
+include(":preparation")
 
 
 pluginManagement {

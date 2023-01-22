@@ -21,4 +21,6 @@ object DependencyVersions {
     const val playServiceLocation = "20.0.0"
     const val playInAppUpdate = "2.0.0"
     const val ktor = "2.1.0"
+
+    const val ktorServer = "2.2.0"
 }
