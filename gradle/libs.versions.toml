@@ -6,12 +6,19 @@ sqldelight = "1.5.3"
 
 # Android dependencies
 android-gradle-plugin = "8.2.0-alpha09"
+compose = "1.2.0"
 
 
 [libraries]
 android-build-tools = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+
+compose-ui-core = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+compose-material-components = { module = "androidx.compose.material3:material3", version.ref = "compose" }
 
 [plugins]
 sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }

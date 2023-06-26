@@ -14,13 +14,10 @@ android {
 }
 
 dependencies {
-    with(DependencyVersions) {
-        implementation("androidx.compose.ui:ui:$compose")
-        implementation("androidx.compose.material3:material3:$material3compose")
-        implementation("androidx.compose.material:material-icons-extended:$compose")
-        implementation("androidx.compose.ui:ui-tooling-preview:$compose")
+    implementation(libs.compose.ui.core)
+    implementation(libs.compose.ui.preview)
+    implementation(libs.compose.material.icons)
+    implementation(libs.compose.material.components)
 
-        debugImplementation("androidx.compose.ui:ui-tooling:$compose")
-
-    }
+    debugImplementation(libs.compose.ui.tooling)
 }
