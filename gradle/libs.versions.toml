@@ -1,24 +1,92 @@
 [versions]
-# Kotlin/Common
-kotlin = "1.7.0"
-
-sqldelight = "1.5.3"
-
-# Android dependencies
 android-gradle-plugin = "8.2.0-alpha09"
+desugarSDK = "1.1.5"
+
+kotlin = "1.7.0"
+kotlinxDatetime = "0.4.0"
+kotlinxSerializationJson = "1.2.1"
+androidxCore = "1.7.0"
+androidxLifecycle = "2.6.0-alpha01"
 compose = "1.2.0"
+material3compose = "1.0.0-alpha15"
+material = "1.5.0"
+androidxActivityCompose = "1.5.1"
+androidxNavigation = "2.5.1"
+accompoanist = "0.25.0"
+coil = "2.2.1"
+koin = "3.2.1"
+timber = "5.0.1"
+lottie = "5.2.0"
+mapbox = "10.7.0"
+sqldelight = "1.5.3"
+playServiceLocation = "20.0.0"
+playInAppUpdate = "2.0.0"
+ktor = "2.1.0"
+gson = "2.8.4"
+geogson = "1.2.21"
+jsoup = "1.11.3"
+
+ktorServer = "2.2.2"
+logback = "1.4.5"
 
 
 [libraries]
 android-build-tools = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
+android-desugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarSDK" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
 
 compose-ui-core = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
-compose-material-components = { module = "androidx.compose.material3:material3", version.ref = "compose" }
+compose-material-components = { module = "androidx.compose.material3:material3", version.ref = "material3compose" }
+accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompoanist" }
+
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivityCompose" }
+
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigation" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
+sqldelight-driver-android = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-driver-sqlite = { module = "com.squareup.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-coroutines = { module = "com.squareup.sqldelight:coroutines-extensions-jvm", version.ref = "sqldelight" }
+google-play-app-update = { module = "com.google.android.play:app-update-ktx", version.ref = "playInAppUpdate" }
+google-play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServiceLocation" }
+
+mapbox = { module = "com.mapbox.maps:android", version.ref = "mapbox" }
+
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+geogson = { module = "com.github.filosganga:geogson-core", version.ref = "geogson" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
+
+ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktorServer" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktorServer" }
+ktor-server-call-logging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktorServer" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+[bundles]
+koin-compose = ["koin-android", "koin-androidx-compose"]
+androidx-runtime = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-runtime-compose"]
+ktor-android = ["ktor-client-android", "ktor-client-logging", "ktor-client-content-negotiation", "ktor-serialization-kotlinx-json", "kotlinx-serialization-json"]
+ktor-server = ["ktor-server-core", "ktor-server-netty", "ktor-server-call-logging"]
 
 [plugins]
 sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }

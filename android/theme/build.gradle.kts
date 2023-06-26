@@ -8,13 +8,8 @@ android {
 }
 
 dependencies {
+    // Needed for setting theme
+    implementation(libs.material)
 
-    with(DependencyVersions) {
-        // Needed for setting theme
-        implementation("com.google.android.material:material:$material")
-
-        implementation("androidx.core:core-ktx:$androidxCore")
-        
-        debugImplementation("androidx.compose.ui:ui-tooling:$compose")
-    }
+    implementation(libs.androidx.core.ktx)
 }

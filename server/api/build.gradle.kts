@@ -22,10 +22,6 @@ tasks {
 }
 
 dependencies {
-    with(DependencyVersions) {
-        implementation("io.ktor:ktor-server-core:$ktorServer")
-        implementation("io.ktor:ktor-server-netty:$ktorServer")
-        implementation("io.ktor:ktor-server-call-logging:$ktorServer")
-        implementation("ch.qos.logback:logback-classic:$logback")
-    }
+    implementation(libs.bundles.ktor.server)
+    implementation(libs.logback)
 }

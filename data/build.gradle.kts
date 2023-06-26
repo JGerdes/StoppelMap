@@ -14,9 +14,6 @@ sqldelight {
 }
 
 dependencies {
-
-    with(DependencyVersions) {
-        implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
-        implementation("io.insert-koin:koin-core:$koin")
-    }
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.koin.core)
 }

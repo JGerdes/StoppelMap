@@ -11,19 +11,13 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":android:theme"))
 
-    with(DependencyVersions) {
-        implementation("androidx.core:core-ktx:$androidxCore")
-        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$desugarSDK")
-
-        implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycle")
-        implementation("androidx.lifecycle:lifecycle-runtime-compose:$androidxLifecycle")
-        implementation("androidx.activity:activity-compose:$androidxActivityCompose")
-
-        implementation("io.insert-koin:koin-android:$koin")
-        implementation("io.insert-koin:koin-androidx-compose:$koin")
-
-        implementation("com.jakewharton.timber:timber:$timber")
-
-        implementation("com.google.android.play:app-update-ktx:$playInAppUpdate")
-    }
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.datetime)
+    coreLibraryDesugaring(libs.android.desugar)
+    implementation(libs.bundles.androidx.runtime)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.bundles.koin.compose)
+    implementation(libs.timber)
+    implementation(libs.accompanist.pager)
+    implementation(libs.google.play.app.update)
 }

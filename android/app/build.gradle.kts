@@ -74,7 +74,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = DependencyVersions.compose
+        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
 }
 
@@ -91,37 +91,22 @@ dependencies {
     implementation(project(":android:feature-news"))
     implementation(project(":android:feature-update"))
 
-    with(DependencyVersions) {
-        implementation("androidx.core:core-ktx:$androidxCore")
-        implementation("org.jetbrains.kotlinx:kotlinx-datetime:$kotlinxDatetime")
-        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:$desugarSDK")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.datetime)
+    coreLibraryDesugaring(libs.android.desugar)
 
-        implementation("androidx.compose.ui:ui:$compose")
-        implementation("androidx.compose.ui:ui-tooling-preview:$compose")
-        implementation("androidx.compose.material3:material3:$material3compose")
-        implementation("androidx.compose.material:material-icons-extended:$compose")
+    implementation(libs.compose.ui.core)
+    implementation(libs.compose.ui.preview)
+    implementation(libs.compose.material.components)
+    implementation(libs.compose.material.icons)
+    implementation(libs.bundles.androidx.runtime)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.bundles.koin.compose)
+    implementation(libs.timber)
+    implementation(libs.lottie.compose)
+    implementation(libs.sqldelight.driver.android)
+    implementation(libs.google.play.app.update)
 
-        implementation("androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycle")
-        implementation("androidx.lifecycle:lifecycle-runtime-compose:$androidxLifecycle")
-        implementation("androidx.activity:activity-compose:$androidxActivityCompose")
-        implementation("androidx.navigation:navigation-compose:$androidxNavigation")
-
-        implementation("io.insert-koin:koin-android:$koin")
-        implementation("io.insert-koin:koin-androidx-compose:$koin")
-
-        implementation("com.jakewharton.timber:timber:$timber")
-
-        implementation("com.airbnb.android:lottie-compose:$lottie")
-
-        implementation("com.squareup.sqldelight:android-driver:$sqldelight")
-
-        implementation("com.google.android.play:app-update-ktx:$playInAppUpdate")
-
-
-        debugImplementation("androidx.compose.ui:ui-tooling:$compose")
-
-        testImplementation("junit:junit:4.13.2")
-        androidTestImplementation("androidx.test.ext:junit:1.1.3")
-        androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    }
+    debugImplementation(libs.compose.ui.tooling)
 }
