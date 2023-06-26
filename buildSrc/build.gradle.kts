@@ -7,15 +7,13 @@ plugins {
 }
 
 repositories {
+    gradlePluginPortal()
     google()
     mavenCentral()
-    maven {
-        url = uri("https://plugins.gradle.org/m2/")
-    }
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:8.0.0-beta03")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+    implementation(libs.android.build.tools)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.kotlin.stdlib)
 }

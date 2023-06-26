@@ -1,15 +1,5 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        with(DependencyVersions) {
-            classpath("com.android.tools.build:gradle:$gradlePlugin")
-            classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
-            classpath("com.squareup.sqldelight:gradle-plugin:$sqldelight")
-        }
-    }
+plugins {
+    alias(libs.plugins.sqldelight) apply false
 }
 
 tasks.register("clean", Delete::class) {

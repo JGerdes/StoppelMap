@@ -1,0 +1,18 @@
+[versions]
+# Kotlin/Common
+kotlin = "1.7.0"
+
+sqldelight = "1.5.3"
+
+# Android dependencies
+android-gradle-plugin = "8.2.0-alpha09"
+
+
+[libraries]
+android-build-tools = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+
+[plugins]
+sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

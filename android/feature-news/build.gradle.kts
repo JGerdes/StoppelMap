@@ -1,7 +1,7 @@
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.COMPOSE)
-    kotlin("plugin.serialization") version DependencyVersions.kotlin
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
