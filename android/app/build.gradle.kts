@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdk = SdkVersions.compileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
     namespace = "com.jonasgerdes.stoppelmap"
 
     signingConfigs {
@@ -30,8 +30,8 @@ android {
 
     defaultConfig {
         applicationId = "com.jonasgerdes.stoppelmap"
-        minSdk = SdkVersions.minSdk
-        targetSdk = SdkVersions.targetSdk
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 57
         versionName = "v2022.10.31.01-$commitSha"
 
