@@ -45,6 +45,7 @@ android {
         getByName("debug") {
             signingConfig = signingConfigs.getByName("debug")
             isDebuggable = true
+            applicationIdSuffix = ".debug"
         }
 
         getByName("release") {
