@@ -83,13 +83,6 @@ private fun EventCard(
                     timeFormatter = formatter,
                     showDivider = false,
                     modifier = modifier
-                        .background(
-                            CardDefaults
-                                .cardColors()
-                                .containerColor(
-                                    enabled = true
-                                ).value
-                        )
                         .fillMaxWidth()
                 )
             }

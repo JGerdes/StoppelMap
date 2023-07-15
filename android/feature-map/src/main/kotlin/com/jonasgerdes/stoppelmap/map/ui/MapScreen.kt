@@ -1,5 +1,5 @@
 @file:OptIn(
-    ExperimentalLifecycleComposeApi::class, ExperimentalAnimationApi::class,
+    ExperimentalAnimationApi::class,
     ExperimentalMaterial3Api::class
 )
 
@@ -54,7 +54,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.map.components.MapboxMap
 import com.jonasgerdes.stoppelmap.map.model.SearchResult

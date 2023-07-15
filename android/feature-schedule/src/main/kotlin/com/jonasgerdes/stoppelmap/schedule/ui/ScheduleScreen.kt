@@ -1,7 +1,5 @@
 @file:OptIn(
     ExperimentalMaterial3Api::class,
-    ExperimentalLifecycleComposeApi::class, ExperimentalLifecycleComposeApi::class,
-    ExperimentalLifecycleComposeApi::class, ExperimentalMaterial3Api::class,
     ExperimentalPagerApi::class,
 )
 
@@ -31,7 +29,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager

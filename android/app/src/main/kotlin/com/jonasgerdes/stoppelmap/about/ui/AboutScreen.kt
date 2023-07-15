@@ -1,7 +1,5 @@
 @file:OptIn(
     ExperimentalMaterial3Api::class,
-    ExperimentalComposeUiApi::class,
-    ExperimentalLifecycleComposeApi::class
 )
 
 package com.jonasgerdes.stoppelmap.about.ui
@@ -22,13 +20,11 @@ import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import com.jonasgerdes.stoppelmap.BuildConfig
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.about.data.License

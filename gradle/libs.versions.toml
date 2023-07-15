@@ -1,21 +1,21 @@
 [versions]
-compileSdk = "32"
+compileSdk = "33"
 minSdk = "21"
-targetSdk = "32"
+targetSdk = "33"
 
 
 android-gradle-plugin = "8.2.0-alpha09"
 desugarSDK = "1.1.5"
 
-kotlin = "1.8.22"
+kotlin = "1.8.10"
 kotlinxDatetime = "0.4.0"
 kotlinxSerializationJson = "1.2.1"
 androidxCore = "1.7.0"
 androidxLifecycle = "2.6.0-alpha01"
-compose = "1.2.0"
-material3compose = "1.0.0-alpha15"
+compose = "1.4.3"
+material3compose = "1.1.1"
 material = "1.5.0"
-androidxActivityCompose = "1.5.1"
+androidxActivityCompose = "1.7.2"
 androidxNavigation = "2.5.1"
 accompoanist = "0.25.0"
 coil = "2.2.1"

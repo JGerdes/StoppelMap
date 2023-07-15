@@ -1,7 +1,5 @@
 @file:OptIn(
-    ExperimentalLifecycleComposeApi::class,
-    ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class,
-    ExperimentalLifecycleComposeApi::class,
+    ExperimentalMaterial3Api::class,
 )
 
 package com.jonasgerdes.stoppelmap.transportation.ui.route
@@ -27,7 +25,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
