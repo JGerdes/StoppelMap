@@ -9,14 +9,22 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -42,7 +50,6 @@ import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
 import org.koin.android.ext.android.inject
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 class StoppelMapActivity : ComponentActivity() {
 
     private val permissionRepository: PermissionRepository by inject()
@@ -56,6 +63,7 @@ class StoppelMapActivity : ComponentActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         setContent {
             StoppelMapTheme {
@@ -66,44 +74,44 @@ class StoppelMapActivity : ComponentActivity() {
 
     @Composable
     fun StoppelMapApp() {
-
         val navController = rememberNavController()
+        Scaffold(
+            contentWindowInsets = WindowInsets.navigationBars,
+            bottomBar = {
+                NavigationBar {
+                    val navBackStackEntry = navController.currentBackStackEntryAsState().value
+                    val currentDestination = navBackStackEntry?.destination
 
-        Scaffold(bottomBar = {
-            NavigationBar {
-                val navBackStackEntry = navController.currentBackStackEntryAsState().value
-                val currentDestination = navBackStackEntry?.destination
-
-                navigationTabs.forEach { (icon, label, startDestination) ->
-                    NavigationBarItem(
-                        icon = {
-                            Icon(imageVector = icon, contentDescription = null)
-                        },
-                        label = {
-                            Text(
-                                text = stringResource(label),
-                                textAlign = TextAlign.Center,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                        },
-                        selected = currentDestination?.hierarchy?.any {
-                            it.route?.startsWith(
-                                startDestination
-                            ) ?: false
-                        } == true,
-                        onClick = {
-                            navController.navigate(startDestination) {
-                                launchSingleTop = true
-                                restoreState = true
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+                    navigationTabs.forEach { (icon, label, startDestination) ->
+                        NavigationBarItem(
+                            icon = {
+                                Icon(imageVector = icon, contentDescription = null)
+                            },
+                            label = {
+                                Text(
+                                    text = stringResource(label),
+                                    textAlign = TextAlign.Center,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            },
+                            selected = currentDestination?.hierarchy?.any {
+                                it.route?.startsWith(
+                                    startDestination
+                                ) ?: false
+                            } == true,
+                            onClick = {
+                                navController.navigate(startDestination) {
+                                    launchSingleTop = true
+                                    restoreState = true
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
                                 }
-                            }
-                        })
+                            })
+                    }
                 }
-            }
-        }) { scaffoldPadding ->
+            }) { scaffoldPadding ->
             NavHost(
                 navController,
                 startDestination = Screen.Home.route,
