@@ -16,6 +16,11 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
+import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
+import com.jonasgerdes.stoppelmap.theme.util.supportsDynamicColor
+import com.jonasgerdes.stoppelmap.theme.util.supportsLightNavigationBarAppearance
+import com.jonasgerdes.stoppelmap.theme.util.supportsLightStatusBarAppearance
 
 private val DarkColorScheme = darkColorScheme(
     primary = StoppelPurpleBrightened,
@@ -31,11 +36,19 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun StoppelMapTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    themeSetting: ThemeSetting = ThemeSetting.Light,
+    colorSchemeSetting: ColorSchemeSetting = ColorSchemeSetting.Classic,
     content: @Composable () -> Unit
 ) {
+    val darkTheme = when (themeSetting) {
+        ThemeSetting.Light -> false
+        ThemeSetting.Dark -> true
+        ThemeSetting.System -> isSystemInDarkTheme()
+    }
+
     val colorScheme = when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        colorSchemeSetting == ColorSchemeSetting.System &&
+                Build.VERSION.SDK_INT.supportsDynamicColor() -> {
             val context = LocalContext.current
             if (darkTheme)
                 dynamicDarkColorScheme(context)
@@ -43,9 +56,10 @@ fun StoppelMapTheme(
                 dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        colorSchemeSetting == ColorSchemeSetting.Classic -> if (darkTheme) DarkColorScheme else LightColorScheme
+        else -> if (darkTheme) DarkColorScheme else LightColorScheme
     }
+
     val view = LocalView.current
     val fallbackSystemBarColor = MaterialTheme.colorScheme.primary.toArgb()
     if (!view.isInEditMode) {
@@ -54,11 +68,13 @@ fun StoppelMapTheme(
             val insetsController = WindowCompat.getInsetsController(window, view)
 
             window.navigationBarColor =
-                if (Build.VERSION.SDK_INT >= 27 || darkTheme) Color.Transparent.toArgb()
+                if (Build.VERSION.SDK_INT.supportsLightNavigationBarAppearance() || darkTheme)
+                    Color.Transparent.toArgb()
                 else fallbackSystemBarColor
 
             window.statusBarColor =
-                if (Build.VERSION.SDK_INT >= 23 || darkTheme) Color.Transparent.toArgb()
+                if (Build.VERSION.SDK_INT.supportsLightStatusBarAppearance() || darkTheme)
+                    Color.Transparent.toArgb()
                 else fallbackSystemBarColor
 
             insetsController.isAppearanceLightStatusBars = !darkTheme

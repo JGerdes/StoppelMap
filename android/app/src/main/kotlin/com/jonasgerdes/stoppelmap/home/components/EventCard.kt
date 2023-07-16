@@ -1,11 +1,15 @@
-package com.jonasgerdes.stoppelmap.schedule.ui.components
+package com.jonasgerdes.stoppelmap.home.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -16,9 +20,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.data.Event
+import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
+import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
 
 
 @Composable
@@ -37,7 +43,7 @@ fun FireworkEventCard(
     event: Event,
     modifier: Modifier = Modifier
 ) {
-    StoppelMapTheme(darkTheme = true) {
+    StoppelMapTheme(themeSetting = ThemeSetting.Dark) {
         EventCard(
             event = event,
             headerImage = R.drawable.fireworks,

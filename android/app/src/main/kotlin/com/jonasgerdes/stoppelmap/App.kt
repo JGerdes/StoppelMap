@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
 import com.jonasgerdes.stoppelmap.news.newsModule
 import com.jonasgerdes.stoppelmap.schedule.scheduleModule
+import com.jonasgerdes.stoppelmap.settings.settingsModule
 import com.jonasgerdes.stoppelmap.transportation.transportationModule
 import com.jonasgerdes.stoppelmap.update.updateModule
 import com.jonasgerdes.stoppelmap.usecase.CopyDatabaseUseCase
@@ -40,8 +41,10 @@ class App : Application() {
 
             modules(
                 appModule,
+                licenseModule,
                 dataModule,
                 homeModule,
+                settingsModule,
                 countdownModule,
                 mapModule,
                 scheduleModule,

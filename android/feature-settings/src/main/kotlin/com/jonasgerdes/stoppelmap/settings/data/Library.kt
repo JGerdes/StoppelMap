@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.about.data
+package com.jonasgerdes.stoppelmap.settings.data
 
 data class Library(
     val name: String,
@@ -7,4 +7,9 @@ data class Library(
     val gitlabUrl: String? = null,
     val githubUrl: String? = null,
     val sourceUrl: String? = null
+)
+
+
+data class Libraries(
+    val libraries: List<Library>
 )

@@ -16,13 +16,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Info
-import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,9 +27,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -42,8 +36,8 @@ import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
+import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
-import com.jonasgerdes.stoppelmap.schedule.ui.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
 import com.jonasgerdes.stoppelmap.update.ui.components.AppUpdateCard
@@ -52,7 +46,7 @@ import org.koin.androidx.compose.koinViewModel
 @SuppressLint("NewApi")
 @Composable
 fun HomeScreen(
-    onAboutOptionTap: () -> Unit,
+    onSettingsOptionTap: () -> Unit,
     onUrlTap: (String) -> Unit,
     onDownloadUpdateTap: (AppUpdateInfo) -> Unit,
     onOpenGooglePlayTap: () -> Unit,
@@ -64,24 +58,14 @@ fun HomeScreen(
     Column(
         modifier = modifier
     ) {
-        var showOptionsMenu by remember { mutableStateOf(false) }
         val listState = rememberLazyListState()
         CenterAlignedTopAppBar(
             title = { Text(text = stringResource(id = R.string.home_topbar_title)) },
             actions = {
-                DropdownMenu(
-                    expanded = showOptionsMenu,
-                    onDismissRequest = { showOptionsMenu = false }) {
-                    DropdownMenuItem(
-                        leadingIcon = { Icon(Icons.Rounded.Info, contentDescription = null) },
-                        text = { Text(stringResource(R.string.home_optionsMenu_about)) },
-                        onClick = { onAboutOptionTap() }
-                    )
-                }
-                IconButton(onClick = { showOptionsMenu = true }) {
+                IconButton(onClick = onSettingsOptionTap) {
                     Icon(
-                        Icons.Rounded.MoreVert,
-                        stringResource(R.string.home_optionsMenu_contentDescription)
+                        Icons.Rounded.Settings,
+                        stringResource(R.string.home_toolbar_action_settings_contentDescription)
                     )
                 }
             },

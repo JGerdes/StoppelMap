@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.about.data
+package com.jonasgerdes.stoppelmap.settings.data
 
 internal val contributors = listOf(
     Author(

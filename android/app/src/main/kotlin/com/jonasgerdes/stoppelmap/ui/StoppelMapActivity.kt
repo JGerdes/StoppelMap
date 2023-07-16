@@ -20,11 +20,18 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -35,7 +42,6 @@ import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
-import com.jonasgerdes.stoppelmap.about.ui.AboutScreen
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
 import com.jonasgerdes.stoppelmap.map.ui.MapScreen
@@ -43,10 +49,18 @@ import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
 import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleScreen
+import com.jonasgerdes.stoppelmap.settings.data.Settings
+import com.jonasgerdes.stoppelmap.settings.ui.SettingsScreen
+import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
+import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
+import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 
@@ -54,6 +68,7 @@ class StoppelMapActivity : ComponentActivity() {
 
     private val permissionRepository: PermissionRepository by inject()
     private val appUpdateManager: AppUpdateManager by inject()
+    private val getSettings: GetSettingsUseCase by inject()
 
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -63,10 +78,32 @@ class StoppelMapActivity : ComponentActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+
+        var settingsState: Settings? by mutableStateOf(null)
+
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                getSettings()
+                    .onEach {
+                        settingsState = it
+                    }
+                    .collect()
+            }
+        }
+
+        splashScreen.setKeepOnScreenCondition {
+            settingsState == null
+        }
+
         setContent {
-            StoppelMapTheme {
+            StoppelMapTheme(
+                themeSetting = settingsState?.themeSetting ?: ThemeSetting.Light,
+                colorSchemeSetting = settingsState?.colorSchemeSetting
+                    ?: ColorSchemeSetting.Classic
+            ) {
                 StoppelMapApp()
             }
         }
@@ -120,7 +157,7 @@ class StoppelMapActivity : ComponentActivity() {
                 composable(Screen.Home.route) {
                     HomeScreen(
                         onUrlTap = { openUrl(it) },
-                        onAboutOptionTap = { navController.navigate(Screen.About.route) },
+                        onSettingsOptionTap = { navController.navigate(Screen.About.route) },
                         onDownloadUpdateTap = { startUpdateDownload(it) },
                         onOpenGooglePlayTap = { openGooglePlayPage() },
                         modifier = Modifier
@@ -129,7 +166,7 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.About.route) {
-                    AboutScreen(
+                    SettingsScreen(
                         onNavigateBack = { navController.navigateUp() },
                         onUrlTap = { openUrl(it) },
                         Modifier.fillMaxSize()

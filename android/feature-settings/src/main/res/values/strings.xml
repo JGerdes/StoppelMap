@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_topbar_title">Einstellungen/Info</string>
+    <string name="settings_topbar_navigateBack_contentDescription">Zurück</string>
+    <string name="settings_ui_title">Erscheinungsbild</string>
+    <string name="settings_theme_title">Design</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_dark">Dunkel</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_colorScheme_title">Farben</string>
+    <string name="settings_colorScheme_classic">Klassik</string>
+    <string name="settings_colorScheme_system">System</string>
+    <string name="settings_disclaimer_title">Disclaimer</string>
+    <string name="settings_disclaimer_text">StoppelMap ist eine inoffizielle App für den Stoppelmarkt.\n\nAlle Angaben sind ohne Gewähr, es wird keine Garantie für die Richtig- und Vollständigkeit der dargestellten Informationen gegeben und keine Haftung für eventuell verursachte Schäden übernommen.</string>
+    <string name="settings_open_source">StoppelMap ist Opensource.\nQuelltext verfügbar auf https://github.com/JGerdes/StoppelMap</string>
+    <string name="settings_info_title">App-Details</string>
+    <string name="settings_info_version">Version</string>
+    <string name="settings_info_build_type">Build-Typ</string>
+    <string name="settings_contributors_title">Mitwirkende</string>
+    <string name="settings_libraries_title">Opensource Bibliotheken</string>
+    <string name="settings_images_title">Foto-/Grafikquellen</string>
+    <string name="settings_graphics_title">Grafik/Illustration</string>
+    <string name="settings_sources_title">Informationsquellen</string>
+</resources>

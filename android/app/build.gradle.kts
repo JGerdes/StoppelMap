@@ -85,6 +85,7 @@ dependencies {
     implementation(project(":data"))
 
     implementation(project(":android:theme"))
+    implementation(project(":android:feature-settings"))
     implementation(project(":android:feature-countdown"))
     implementation(project(":android:feature-map"))
     implementation(project(":android:feature-schedule"))
@@ -103,6 +104,7 @@ dependencies {
     implementation(libs.bundles.androidx.runtime)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.splashscreen)
     implementation(libs.bundles.koin.compose)
     implementation(libs.timber)
     implementation(libs.lottie.compose)

@@ -1,6 +1,6 @@
 <resources>
+    <string name="build_type" translatable="false">release</string>
     <string name="app_name">StoppelMap</string>
-
 
     <string name="fcm_news_new_article_title_one">Neuer Artikel</string>
     <string name="fcm_news_new_article_title_multiple">%s neue Artikel</string>
@@ -13,26 +13,9 @@
     <string name="main_available_soon">Bald verfügbar</string>
 
 
-    <string name="home_topbar_title">Stoppelmarkt 2022</string>
-    <string name="home_optionsMenu_contentDescription">Mehr</string>
-    <string name="home_optionsMenu_about">Über die App</string>
+    <string name="home_topbar_title">Stoppelmarkt 2023</string>
+    <string name="home_toolbar_action_settings_contentDescription">Einstellungen</string>
 
     <string name="home_officalEventCard_title">Nicht verpassen:</string>
     <string name="home_countdownCard_nextSeason_title">Stoppelmarkt schon vorbei? Nicht traurig sein, denn:</string>
-
-    <string name="about_topbar_title">Über die App</string>
-    <string name="about_topbar_navigateBack_contentDescription">Zurück</string>
-
-    <string name="about_open_source">StoppelMap ist Opensource.\nQuelltext verfügbar auf https://github.com/JGerdes/StoppelMap</string>
-    <string name="about_disclaimer_title">Disclaimer</string>
-    <string name="about_disclaimer_text">StoppelMap ist eine inoffizielle App für den Stoppelmarkt.\n\nAlle Angaben sind ohne Gewähr, es wird keine Garantie für die Richtig- und Vollständigkeit der dargestellten Informationen gegeben und keine Haftung für eventuell verursachte Schäden übernommen.</string>
-    <string name="about_contributors_title">Mitwirkende</string>
-    <string name="about_graphics_title">Grafik/Illustration</string>
-    <string name="about_sources_title">Informationsquellen</string>
-    <string name="about_libraries_title">Opensource Bibliotheken</string>
-    <string name="about_images_title">Foto-/Grafikquellen</string>
-
-    <string name="about_libraries_item_attribution">Erstellende</string>
-    <string name="about_libraries_item_license">Lizenz</string>
-    <string name="about_libraries_item_sourceUrl">Quellcode</string>
 </resources>

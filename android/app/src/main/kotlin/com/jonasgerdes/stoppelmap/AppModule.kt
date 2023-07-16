@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap
 
+import android.content.Context
+import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.base.contract.SeasonProvider
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
@@ -24,4 +26,11 @@ val appModule = module {
 
     single<ClockProvider> { StoppelmarktClockProvider() }
     single<SeasonProvider> { StoppelmarktSeasonProvider(clockProvider = get()) }
+
+    single {
+        AppInfo(
+            version = BuildConfig.VERSION_NAME,
+            buildType = get<Context>().getString(R.string.build_type),
+        )
+    }
 }

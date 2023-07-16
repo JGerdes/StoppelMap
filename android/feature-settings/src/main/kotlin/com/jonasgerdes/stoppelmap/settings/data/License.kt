@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.about.data
+package com.jonasgerdes.stoppelmap.settings.data
 
 open class License(
     val name: String,
@@ -16,5 +16,5 @@ open class License(
         License("MIT", "", url)
 
     data class Unsplash(val url: String = "https://unsplash.com/license") :
-        License("Unsplash License", "", url)
+        License("Unsplash", "", url)
 }

@@ -10,6 +10,7 @@ include(":data")
 
 // Android
 include(":android:theme")
+include(":android:feature-settings")
 include(":android:feature-countdown")
 include(":android:feature-transportation")
 include(":android:feature-map")

@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.about.data
+package com.jonasgerdes.stoppelmap.settings.data
 
 data class Author(
     val name: String,
