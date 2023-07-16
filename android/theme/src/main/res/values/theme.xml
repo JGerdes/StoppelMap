@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.StoppelMap" parent="Theme.StoppelMap.Base" />
+    <style name="Theme.StoppelMap" parent="Theme.StoppelMap.Base">
+        <item name="android:windowBackground">@drawable/splash_window_background</item>
+    </style>
 
 </resources>

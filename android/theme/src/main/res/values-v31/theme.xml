@@ -2,6 +2,7 @@
 <resources>
 
     <style name="Theme.StoppelMap" parent="Theme.StoppelMap.Base">
+        <item name="android:windowBackground">@null</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_icon_animated</item>
     </style>
 
