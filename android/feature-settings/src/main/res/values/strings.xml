@@ -10,6 +10,7 @@
     <string name="settings_colorScheme_title">Farben</string>
     <string name="settings_colorScheme_classic">Klassik</string>
     <string name="settings_colorScheme_system">System</string>
+    <string name="settings_developerMode_title">Entwicklung</string>
     <string name="settings_disclaimer_title">Disclaimer</string>
     <string name="settings_disclaimer_text">StoppelMap ist eine inoffizielle App für den Stoppelmarkt.\n\nAlle Angaben sind ohne Gewähr, es wird keine Garantie für die Richtig- und Vollständigkeit der dargestellten Informationen gegeben und keine Haftung für eventuell verursachte Schäden übernommen.</string>
     <string name="settings_open_source">StoppelMap ist Opensource.\nQuelltext verfügbar auf https://github.com/JGerdes/StoppelMap</string>

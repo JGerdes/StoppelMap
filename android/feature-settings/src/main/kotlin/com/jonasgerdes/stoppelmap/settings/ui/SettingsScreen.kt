@@ -5,6 +5,7 @@
 package com.jonasgerdes.stoppelmap.settings.ui
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +24,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.ColorLens
 import androidx.compose.material.icons.rounded.DarkMode
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -32,6 +32,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -47,7 +48,7 @@ import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun SettingsScreen(
     onNavigateBack: () -> Unit,
@@ -61,7 +62,7 @@ fun SettingsScreen(
     Column(
         modifier = modifier
     ) {
-        CenterAlignedTopAppBar(
+        TopAppBar(
             title = { Text(text = stringResource(id = R.string.settings_topbar_title)) },
             navigationIcon = {
                 IconButton(
@@ -73,7 +74,8 @@ fun SettingsScreen(
                     )
                 }
             },
-            modifier = Modifier.elevationWhenScrolled(listState)
+            modifier = Modifier
+                .elevationWhenScrolled(listState)
         )
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -103,6 +105,11 @@ fun SettingsScreen(
                     onItemSelected = { viewModel.onColorSchemeSettingSelected(it.colorSchemeSetting) },
                 )
             }
+            if (state.developerModeSettings is SettingsViewModel.DeveloperModeSettings.Active) {
+                item {
+                    SettingsSectionLabel(R.string.settings_developerMode_title)
+                }
+            }
             item {
                 SettingsSectionLabel(R.string.settings_disclaimer_title)
             }
@@ -119,6 +126,7 @@ fun SettingsScreen(
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.settings_info_version)) },
                     trailingContent = { Text(state.appInfo.version) },
+                    modifier = Modifier.clickable { viewModel.onVersionClick() }
                 )
             }
             item {

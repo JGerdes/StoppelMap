@@ -50,6 +50,9 @@ class SettingsViewModel(
                             isSelected = settings.colorSchemeSetting == it
                         )
                     },
+                    developerModeSettings = if (settings.developerModeActive) {
+                        DeveloperModeSettings.Active()
+                    } else DeveloperModeSettings.NotActive,
                     libraries = libraries,
                     imageSources = imageSources,
                 )
@@ -74,10 +77,21 @@ class SettingsViewModel(
             settingsRepository.saveColorSchemeSetting(colorSchemeSetting)
         }
 
+    private var versionClickCount = 0
+    fun onVersionClick() {
+        versionClickCount++
+        if (versionClickCount > 3) {
+            viewModelScope.launch {
+                settingsRepository.setDeveloperModeActive(true)
+            }
+        }
+    }
+
     data class ViewState(
         val appInfo: AppInfo,
         val themeSettings: List<ThemeSettingOption> = emptyList(),
         val colorSchemeSettings: List<ColorSchemeSettingOption> = emptyList(),
+        val developerModeSettings: DeveloperModeSettings = DeveloperModeSettings.NotActive,
         val libraries: List<Library>,
         val imageSources: List<ImageSource>,
     )
@@ -91,4 +105,10 @@ class SettingsViewModel(
         val colorSchemeSetting: ColorSchemeSetting,
         val isSelected: Boolean = false,
     )
+
+
+    sealed interface DeveloperModeSettings {
+        object NotActive : DeveloperModeSettings
+        class Active() : DeveloperModeSettings
+    }
 }

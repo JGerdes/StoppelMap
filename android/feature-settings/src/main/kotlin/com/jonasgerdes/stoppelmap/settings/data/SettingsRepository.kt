@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.settings.data
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.jonasgerdes.stoppelmap.settings.util.saveValueOf
@@ -15,14 +16,16 @@ class SettingsRepository(
 
     private val themeSettingKey = stringPreferencesKey("theme")
     private val colorSchemeSettingKey = stringPreferencesKey("colorScheme")
+    private val developerModeActive = booleanPreferencesKey("developerModeActive")
 
     fun getSettings() = dataStore.data.map { preferences ->
         Settings(
-            themeSetting = saveValueOf(preferences[themeSettingKey], ThemeSetting.Light),
+            themeSetting = saveValueOf(preferences[themeSettingKey], ThemeSetting.default),
             colorSchemeSetting = saveValueOf(
                 preferences[colorSchemeSettingKey],
-                ColorSchemeSetting.Classic
-            )
+                ColorSchemeSetting.default,
+            ),
+            developerModeActive = preferences[developerModeActive] ?: false,
         )
     }
 
@@ -37,9 +40,16 @@ class SettingsRepository(
             settings[colorSchemeSettingKey] = colorSchemeSetting.name
         }
     }
+
+    suspend fun setDeveloperModeActive(active: Boolean) {
+        dataStore.edit { settings ->
+            settings[developerModeActive] = active
+        }
+    }
 }
 
 data class Settings(
     val themeSetting: ThemeSetting,
     val colorSchemeSetting: ColorSchemeSetting,
+    val developerModeActive: Boolean,
 )
