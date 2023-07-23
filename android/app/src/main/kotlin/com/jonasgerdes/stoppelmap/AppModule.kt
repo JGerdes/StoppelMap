@@ -29,7 +29,8 @@ val appModule = module {
 
     single {
         AppInfo(
-            version = BuildConfig.VERSION_NAME,
+            versionName = BuildConfig.VERSION_NAME,
+            versionCode = BuildConfig.VERSION_CODE,
             buildType = get<Context>().getString(R.string.build_type),
         )
     }

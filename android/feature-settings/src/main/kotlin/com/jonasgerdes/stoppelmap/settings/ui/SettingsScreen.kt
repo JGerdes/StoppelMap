@@ -36,6 +36,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
@@ -138,7 +139,12 @@ fun SettingsScreen(
             item {
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.settings_info_version)) },
-                    trailingContent = { Text(state.appInfo.version) },
+                    trailingContent = {
+                        Column(horizontalAlignment = Alignment.End) {
+                            Text(state.appInfo.versionName)
+                            Text(state.appInfo.versionCode.toString())
+                        }
+                    },
                     modifier = Modifier.clickable { viewModel.onVersionClick() }
                 )
             }

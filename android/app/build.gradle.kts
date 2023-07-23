@@ -32,8 +32,9 @@ android {
         applicationId = "com.jonasgerdes.stoppelmap"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 57
-        versionName = "v2022.10.31.01-$commitSha"
+        val version = getVersion(commitSha)
+        versionCode = version.code
+        versionName = version.name
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -46,6 +47,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
             isDebuggable = true
             applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
         }
 
         getByName("release") {

@@ -14,8 +14,9 @@ repositories {
 
 dependencies {
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
-    
+
     implementation(libs.android.build.tools)
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlinx.datetime)
 }

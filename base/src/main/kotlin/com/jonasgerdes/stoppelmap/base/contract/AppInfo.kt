@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.base.contract
 
 data class AppInfo(
-    val version: String,
+    val versionName: String,
+    val versionCode: Int,
     val buildType: String,
 )
