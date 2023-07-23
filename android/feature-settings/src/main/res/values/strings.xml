@@ -11,6 +11,16 @@
     <string name="settings_colorScheme_classic">Klassik</string>
     <string name="settings_colorScheme_system">System</string>
     <string name="settings_developerMode_title">Entwicklung</string>
+    <string name="settings_dateOverride_title">Datum überschreiben</string>
+    <string name="settings_dateOverride_none">aus</string>
+    <string name="settings_dateOverride_todayInStomaWeek">heutiger Wochentag in StoMa-Woche</string>
+    <string name="settings_dateOverride_wed">Mi</string>
+    <string name="settings_dateOverride_thu">Do</string>
+    <string name="settings_dateOverride_fri">Fr</string>
+    <string name="settings_dateOverride_sat">Sa</string>
+    <string name="settings_dateOverride_sun">So</string>
+    <string name="settings_dateOverride_mon">Mo</string>
+    <string name="settings_dateOverride_tue">Di</string>
     <string name="settings_disclaimer_title">Disclaimer</string>
     <string name="settings_disclaimer_text">StoppelMap ist eine inoffizielle App für den Stoppelmarkt.\n\nAlle Angaben sind ohne Gewähr, es wird keine Garantie für die Richtig- und Vollständigkeit der dargestellten Informationen gegeben und keine Haftung für eventuell verursachte Schäden übernommen.</string>
     <string name="settings_open_source">StoppelMap ist Opensource.\nQuelltext verfügbar auf https://github.com/JGerdes/StoppelMap</string>

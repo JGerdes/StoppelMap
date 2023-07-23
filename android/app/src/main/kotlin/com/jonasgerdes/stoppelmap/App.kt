@@ -41,6 +41,7 @@ class App : Application() {
 
             modules(
                 appModule,
+                dateTimeModule,
                 licenseModule,
                 dataModule,
                 homeModule,

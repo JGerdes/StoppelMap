@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.base.contract.AppInfo
+import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.ImageSource
 import com.jonasgerdes.stoppelmap.settings.data.Library
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
@@ -51,7 +52,14 @@ class SettingsViewModel(
                         )
                     },
                     developerModeSettings = if (settings.developerModeActive) {
-                        DeveloperModeSettings.Active()
+                        DeveloperModeSettings.Active(
+                            dateOverrideOptions = DateOverride.values().map {
+                                DateOverrideOption(
+                                    dateOverride = it,
+                                    isSelected = it == settings.dateOverride
+                                )
+                            }
+                        )
                     } else DeveloperModeSettings.NotActive,
                     libraries = libraries,
                     imageSources = imageSources,
@@ -87,6 +95,11 @@ class SettingsViewModel(
         }
     }
 
+    fun onDateOverrideSelected(dateOverride: DateOverride) =
+        viewModelScope.launch {
+            settingsRepository.saveDateOverride(dateOverride)
+        }
+
     data class ViewState(
         val appInfo: AppInfo,
         val themeSettings: List<ThemeSettingOption> = emptyList(),
@@ -106,9 +119,15 @@ class SettingsViewModel(
         val isSelected: Boolean = false,
     )
 
-
     sealed interface DeveloperModeSettings {
         object NotActive : DeveloperModeSettings
-        class Active() : DeveloperModeSettings
+        data class Active(
+            val dateOverrideOptions: List<DateOverrideOption>,
+        ) : DeveloperModeSettings
     }
+
+    data class DateOverrideOption(
+        val dateOverride: DateOverride,
+        val isSelected: Boolean = false,
+    )
 }

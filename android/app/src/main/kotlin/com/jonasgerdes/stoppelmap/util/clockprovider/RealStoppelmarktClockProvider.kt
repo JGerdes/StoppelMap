@@ -1,16 +1,15 @@
-package com.jonasgerdes.stoppelmap.util
+package com.jonasgerdes.stoppelmap.util.clockprovider
 
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
-import kotlinx.datetime.*
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
 
-private val stoppelmarktTimeZone = TimeZone.of("Europe/Berlin")
+class RealStoppelmarktClockProvider : ClockProvider {
 
-class StoppelmarktClockProvider : ClockProvider {
-
-    private val mockDateTime: LocalDateTime? = null
-
-    override fun nowAsInstant() =
-        mockDateTime?.toInstant(stoppelmarktTimeZone) ?: Clock.System.now()
+    override fun nowAsInstant() = Clock.System.now()
 
     override fun nowAsLocalDateTime() = nowAsInstant().toLocalDateTime(stoppelmarktTimeZone)
 

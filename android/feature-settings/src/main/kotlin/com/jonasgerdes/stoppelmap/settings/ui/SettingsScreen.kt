@@ -24,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.ColorLens
 import androidx.compose.material.icons.rounded.DarkMode
+import androidx.compose.material.icons.rounded.EditCalendar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -43,6 +44,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.settings.R
+import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
@@ -105,9 +107,20 @@ fun SettingsScreen(
                     onItemSelected = { viewModel.onColorSchemeSettingSelected(it.colorSchemeSetting) },
                 )
             }
-            if (state.developerModeSettings is SettingsViewModel.DeveloperModeSettings.Active) {
+            val developerSettings = state.developerModeSettings
+            if (developerSettings is SettingsViewModel.DeveloperModeSettings.Active) {
                 item {
                     SettingsSectionLabel(R.string.settings_developerMode_title)
+                }
+                item {
+                    SelectionSettingsRow(
+                        icon = Icons.Rounded.EditCalendar,
+                        labelRes = R.string.settings_dateOverride_title,
+                        items = developerSettings.dateOverrideOptions,
+                        isItemSelected = { isSelected },
+                        itemLabelRes = { dateOverride.titleStringRes },
+                        onItemSelected = { viewModel.onDateOverrideSelected(it.dateOverride) },
+                    )
                 }
             }
             item {
@@ -258,4 +271,17 @@ private val ColorSchemeSetting.titleStringRes: Int
     get() = when (this) {
         ColorSchemeSetting.Classic -> R.string.settings_colorScheme_classic
         ColorSchemeSetting.System -> R.string.settings_colorScheme_system
+    }
+
+private val DateOverride.titleStringRes: Int
+    get() = when (this) {
+        DateOverride.None -> R.string.settings_dateOverride_none
+        DateOverride.TodayInStoMaWeek -> R.string.settings_dateOverride_todayInStomaWeek
+        DateOverride.Wednesday -> R.string.settings_dateOverride_wed
+        DateOverride.Thursday -> R.string.settings_dateOverride_thu
+        DateOverride.Friday -> R.string.settings_dateOverride_fri
+        DateOverride.Saturday -> R.string.settings_dateOverride_sat
+        DateOverride.Sunday -> R.string.settings_dateOverride_sun
+        DateOverride.Monday -> R.string.settings_dateOverride_mon
+        DateOverride.Tuesday -> R.string.settings_dateOverride_tue
     }
