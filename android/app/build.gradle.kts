@@ -1,4 +1,4 @@
-import Git.commitSha
+import Git.getCommit
 
 plugins {
     id("com.android.application")
@@ -32,7 +32,8 @@ android {
         applicationId = "com.jonasgerdes.stoppelmap"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        val version = getVersion(commitSha)
+        val commit = getCommit()
+        val version = getVersion(commit.shortSha)
         versionCode = version.code
         versionName = version.name
 
@@ -40,6 +41,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField("String", "COMMIT_SHA", "\"${commit.sha}\"")
     }
 
     buildTypes {

@@ -31,6 +31,7 @@ val appModule = module {
         AppInfo(
             versionName = BuildConfig.VERSION_NAME,
             versionCode = BuildConfig.VERSION_CODE,
+            commitSha = BuildConfig.COMMIT_SHA,
             buildType = get<Context>().getString(R.string.build_type),
         )
     }

@@ -27,9 +27,11 @@
     <string name="settings_info_title">App-Details</string>
     <string name="settings_info_version">Version</string>
     <string name="settings_info_build_type">Build-Typ</string>
+    <string name="settings_info_commit">Commit</string>
     <string name="settings_contributors_title">Mitwirkende</string>
     <string name="settings_libraries_title">Opensource Bibliotheken</string>
     <string name="settings_images_title">Foto-/Grafikquellen</string>
     <string name="settings_graphics_title">Grafik/Illustration</string>
     <string name="settings_sources_title">Informationsquellen</string>
+    <string name="settings_repo_url_commit">https://github.com/JGerdes/StoppelMap/commit/%1$s</string>
 </resources>

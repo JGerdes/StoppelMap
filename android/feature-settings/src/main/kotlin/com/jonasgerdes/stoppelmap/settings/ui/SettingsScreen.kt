@@ -155,6 +155,17 @@ fun SettingsScreen(
                 )
             }
             item {
+                val commitUrl =
+                    stringResource(id = R.string.settings_repo_url_commit, state.appInfo.commitSha)
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.settings_info_commit)) },
+                    trailingContent = { Text(state.appInfo.commitSha) },
+                    modifier = Modifier.clickable {
+                        onUrlTap(commitUrl)
+                    }
+                )
+            }
+            item {
                 SettingsSectionLabel(R.string.settings_libraries_title)
             }
             items(
