@@ -36,6 +36,7 @@ import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
+import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
@@ -86,6 +87,14 @@ fun HomeScreen(
                         onInstallTap = viewModel::onCompleteAppUpdateTapped,
                         onOpenGooglePlayTap = onOpenGooglePlayTap,
                         modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+            state.messages.forEach { message ->
+                item {
+                    MessageCard(
+                        message = message,
+                        onUrlTap = onUrlTap,
                     )
                 }
             }

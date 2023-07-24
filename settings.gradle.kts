@@ -17,6 +17,7 @@ include(":android:feature-map")
 include(":android:feature-schedule")
 include(":android:feature-news")
 include(":android:feature-update")
+include(":android:feature-data-update")
 include(":android:app")
 
 // Server

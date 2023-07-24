@@ -10,6 +10,7 @@ desugarSDK = "1.1.5"
 kotlin = "1.8.10"
 kotlinxDatetime = "0.4.0"
 kotlinxSerializationJson = "1.2.1"
+kotlinxCoroutines = "1.7.2"
 androidxCore = "1.7.0"
 androidxLifecycle = "2.6.0-alpha01"
 compose = "1.4.3"
@@ -45,6 +46,7 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "
 
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
 compose-ui-core = { module = "androidx.compose.ui:ui", version.ref = "compose" }

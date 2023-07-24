@@ -4,6 +4,8 @@ import android.app.Application
 import android.appwidget.AppWidgetManager
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
 import com.jonasgerdes.stoppelmap.data.dataModule
+import com.jonasgerdes.stoppelmap.dataupdate.dataUpdateModule
+import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigInBackgroundUseCase
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
@@ -29,6 +31,7 @@ class App : Application() {
 
     val initializeMapBox: InitializeMapBoxUseCase by inject()
     val copyDatabase: CopyDatabaseUseCase by inject()
+    val updateAppConfigInBackground: UpdateAppConfigInBackgroundUseCase by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -42,6 +45,7 @@ class App : Application() {
             modules(
                 appModule,
                 dateTimeModule,
+                dataUpdateModule,
                 licenseModule,
                 dataModule,
                 homeModule,
@@ -70,5 +74,7 @@ class App : Application() {
         GlobalScope.launch {
             copyDatabase()
         }
+
+        updateAppConfigInBackground()
     }
 }

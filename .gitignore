@@ -55,6 +55,7 @@ captures/
 *.db
 app/release/
 signing.properties
+secrets.properties
 
 # google keys
 */google-services.json

@@ -42,6 +42,18 @@ android {
             useSupportLibrary = true
         }
 
+        loadProperties(
+            "./secrets.properties",
+            onSuccess = { properties ->
+                buildConfigField(
+                    "String",
+                    "STOPPELMAP_API_KEY",
+                    "\"${properties["stoppelMapApiKey"]}\""
+                )
+            },
+            onFailure = { println("Unable to read secrets.properties") }
+        )
+
         buildConfigField("String", "COMMIT_SHA", "\"${commit.sha}\"")
     }
 
@@ -97,6 +109,7 @@ dependencies {
     implementation(project(":android:feature-transportation"))
     implementation(project(":android:feature-news"))
     implementation(project(":android:feature-update"))
+    implementation(project(":android:feature-data-update"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)

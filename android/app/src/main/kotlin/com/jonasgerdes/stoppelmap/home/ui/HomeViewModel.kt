@@ -2,9 +2,12 @@ package com.jonasgerdes.stoppelmap.home.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonasgerdes.stoppelmap.base.extensions.combine
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.model.Message
+import com.jonasgerdes.stoppelmap.home.usecase.GetRemoteMessagesUseCase
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
 import com.jonasgerdes.stoppelmap.update.usecase.CompleteAppUpdateUseCase
@@ -14,9 +17,9 @@ import com.jonasgerdes.stoppelmap.usecase.IsCurrentYearsSeasonJustOverUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel(
@@ -25,7 +28,8 @@ class HomeViewModel(
     getOpeningCountDown: GetOpeningCountDownFlowUseCase,
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
     getNextOfficialEvent: GetNextOfficialEventUseCase,
-    isCurrentYearsSeasonJustOver: IsCurrentYearsSeasonJustOverUseCase
+    isCurrentYearsSeasonJustOver: IsCurrentYearsSeasonJustOverUseCase,
+    getRemoteMessages: GetRemoteMessagesUseCase,
 ) : ViewModel() {
 
     private val updateState: Flow<UpdateState> =
@@ -88,6 +92,7 @@ class HomeViewModel(
     val state: StateFlow<ViewState> =
         combine(
             updateState,
+            getRemoteMessages().onStart { emit(emptyList()) },
             openingCountDownState,
             countdownWidgetSuggestionState,
             nextOfficialEventState,
@@ -96,26 +101,17 @@ class HomeViewModel(
         ).stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(),
-            initialValue = ViewState.Default
+            initialValue = ViewState()
         )
 
     data class ViewState(
-        val updateState: UpdateState,
-        val openingCountDownState: CountDownState,
+        val updateState: UpdateState = UpdateState.Hidden,
+        val messages: List<Message> = emptyList(),
+        val openingCountDownState: CountDownState = CountDownState.Loading,
         val countdownWidgetSuggestionState: CountDownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
         val nextOfficialEventState: GetNextOfficialEventUseCase.Result = GetNextOfficialEventUseCase.Result.None,
-        val instagramPromotionState: InstagramPromotionState,
-    ) {
-        companion object {
-            val Default = ViewState(
-                updateState = UpdateState.Hidden,
-                openingCountDownState = CountDownState.Loading,
-                countdownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
-                nextOfficialEventState = GetNextOfficialEventUseCase.Result.None,
-                instagramPromotionState = InstagramPromotionState.Hidden,
-            )
-        }
-    }
+        val instagramPromotionState: InstagramPromotionState = InstagramPromotionState.Hidden,
+    )
 
     sealed class CountDownWidgetSuggestionState {
         object Hidden : CountDownWidgetSuggestionState()
