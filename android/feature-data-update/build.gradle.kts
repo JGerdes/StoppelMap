@@ -21,4 +21,5 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.accompanist.pager)
     implementation(libs.bundles.ktor.android)
+    implementation(libs.androidx.datastore)
 }

@@ -15,6 +15,7 @@ class PrepareDatabase : KoinComponent {
         if (settings.databaseFile.exists()) {
             settings.databaseFile.delete()
         }
+        //settings.databaseFile.mkdirs()
         settings.databaseFile.createNewFile()
         StoppelMapDatabase.Schema.create(driver)
     }

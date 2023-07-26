@@ -5,7 +5,8 @@ import android.appwidget.AppWidgetManager
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
 import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.dataupdate.dataUpdateModule
-import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigInBackgroundUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.usecase.CopyAssetDatabaseUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
@@ -14,10 +15,9 @@ import com.jonasgerdes.stoppelmap.schedule.scheduleModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
 import com.jonasgerdes.stoppelmap.transportation.transportationModule
 import com.jonasgerdes.stoppelmap.update.updateModule
-import com.jonasgerdes.stoppelmap.usecase.CopyDatabaseUseCase
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.koin.android.BuildConfig
 import org.koin.android.ext.android.inject
@@ -30,8 +30,9 @@ import timber.log.Timber
 class App : Application() {
 
     val initializeMapBox: InitializeMapBoxUseCase by inject()
-    val copyDatabase: CopyDatabaseUseCase by inject()
-    val updateAppConfigInBackground: UpdateAppConfigInBackgroundUseCase by inject()
+    val copyAssetDatabase: CopyAssetDatabaseUseCase by inject()
+    val updateAppConfigAndDownloadFiles: UpdateAppConfigAndDownloadFilesUseCase by inject()
+    val scope: CoroutineScope by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -71,10 +72,9 @@ class App : Application() {
 
         initializeMapBox(this)
 
-        GlobalScope.launch {
-            copyDatabase()
+        scope.launch {
+            copyAssetDatabase()
+            updateAppConfigAndDownloadFiles()
         }
-
-        updateAppConfigInBackground()
     }
 }

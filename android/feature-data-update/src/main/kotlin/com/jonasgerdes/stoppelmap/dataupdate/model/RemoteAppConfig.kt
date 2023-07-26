@@ -32,7 +32,14 @@ data class Data(
     val version: Int,
     val data: String,
     val map: String,
-)
+    val supportedSince: SupportedSince,
+) {
+    @Serializable
+    data class SupportedSince(
+        val android: Int,
+    )
+}
+
 
 @Serializable
 data class VersionMessage(

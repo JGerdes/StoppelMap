@@ -1,9 +1,15 @@
 package com.jonasgerdes.stoppelmap.dataupdate
 
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.base.contract.Secrets
+import com.jonasgerdes.stoppelmap.dataupdate.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.dataupdate.source.remote.CdnSource
-import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigInBackgroundUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.usecase.CopyAssetDatabaseUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.UserAgent
@@ -15,6 +21,8 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 import timber.log.Timber
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "versioning")
 
 val dataUpdateModule = module {
 
@@ -40,7 +48,7 @@ val dataUpdateModule = module {
         }
 
         CdnSource(
-            baseUrl = "https://cdn.stoppelmap.de/",
+            baseUrl = "https://cdn.stoppelmap.de",
             httpClient = httpClient,
             apiKey = get<Secrets>().stoppelMapApiKey
         )
@@ -49,13 +57,30 @@ val dataUpdateModule = module {
     single {
         AppConfigRepository(
             cdnSource = get(),
-            scope = get(),
+            cacheDir = get<Context>().cacheDir
+        )
+    }
+
+    single {
+        VersioningRepository(dataStore = get<Context>().dataStore)
+    }
+
+    factory {
+        CopyAssetDatabaseUseCase(
+            appInfo = get(),
+            versioningRepository = get(),
+            context = get(),
+            databaseFile = get<DatabaseFile>().databaseFile,
         )
     }
 
     factory {
-        UpdateAppConfigInBackgroundUseCase(
-            appConfigRepository = get()
+        UpdateAppConfigAndDownloadFilesUseCase(
+            appConfigRepository = get(),
+            appInfo = get(),
+            versioningRepository = get(),
+            context = get(),
+            databaseFile = get<DatabaseFile>().databaseFile,
         )
     }
 

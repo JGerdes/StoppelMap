@@ -9,9 +9,13 @@ import io.ktor.client.request.accept
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.http.ContentType
 import io.ktor.http.isSuccess
+import io.ktor.util.cio.writeChannel
+import io.ktor.utils.io.copyAndClose
 import kotlinx.coroutines.TimeoutCancellationException
+import java.io.File
 import kotlin.coroutines.cancellation.CancellationException
 
 class CdnSource(
@@ -28,16 +32,48 @@ class CdnSource(
             }
         }
 
+    suspend fun downloadFile(
+        destinationDirectory: File,
+        name: String,
+    ): Response<File> {
+        val file = File(destinationDirectory, name)
+        return runCatchingToResponse(
+            request = {
+                get("$baseUrl/$name") {
+                    apiKeyHeader()
+                }
+            },
+            onSuccess = {
+                it.bodyAsChannel().copyAndClose(file.writeChannel())
+                Response.Success(file)
+            }
+        )
+    }
 
     private suspend inline fun <reified T> executeRequest(
         request: HttpClient.() -> HttpResponse
+    ): Response<T> = runCatchingToResponse(
+        request
+    ) {
+        Response.Success(body = it.body<T>())
+    }
+
+    private inline fun <reified T> runCatchingToResponse(
+        request: HttpClient.() -> HttpResponse,
+        onSuccess: (HttpResponse) -> Response<T>,
     ): Response<T> = try {
-        val httpResponse = httpClient.request()
-        if (httpResponse.status.isSuccess()) {
-            Response.Success(body = httpResponse.body<T>())
+        val response = httpClient.request()
+        if (response.status.isSuccess()) {
+            try {
+                onSuccess(response)
+            } catch (cancellationException: CancellationException) {
+                throw cancellationException
+            } catch (throwable: Throwable) {
+                Response.Error.Other(throwable)
+            }
         } else {
             Response.Error.HttpError(
-                status = httpResponse.status,
+                status = response.status,
             )
         }
     } catch (timeoutCancellationException: TimeoutCancellationException) {
@@ -47,6 +83,7 @@ class CdnSource(
     } catch (throwable: Throwable) {
         Response.Error.Other(throwable)
     }
+
 
     private fun HttpRequestBuilder.apiKeyHeader() = header("api-key", apiKey)
 }

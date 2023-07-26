@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.util
+package com.jonasgerdes.stoppelmap.dataupdate.util
 
 import android.content.Context
 import android.content.res.AssetManager

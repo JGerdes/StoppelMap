@@ -5,24 +5,32 @@ import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.base.contract.SeasonProvider
 import com.jonasgerdes.stoppelmap.base.contract.Secrets
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
-import com.jonasgerdes.stoppelmap.usecase.CopyDatabaseUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.util.StoppelmarktSeasonProvider
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
+import java.io.File
 
 val appModule = module {
 
-    val databaseFileName = "stoma22.db"
-
-    single<SqlDriver> {
-        AndroidSqliteDriver(StoppelMapDatabase.Schema, context = get(), databaseFileName)
+    single {
+        DatabaseFile(
+            databaseFile = File(
+                File(get<Context>().filesDir.parentFile, "databases"),
+                "shippedData.db"
+            )
+        )
     }
 
-    factory {
-        CopyDatabaseUseCase(context = get(), databaseFileName = databaseFileName)
+    single<SqlDriver> {
+        AndroidSqliteDriver(
+            schema = StoppelMapDatabase.Schema,
+            context = get(),
+            name = get<DatabaseFile>().databaseFile.name,
+        )
     }
 
     single<CoroutineScope> { CoroutineScope(Dispatchers.Main) }

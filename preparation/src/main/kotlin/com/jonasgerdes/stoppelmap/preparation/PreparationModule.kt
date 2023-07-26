@@ -9,11 +9,12 @@ import java.io.File
 val preparationModule = module {
 
     single {
-        val appAssets = File("../android/app/src/main/assets/")
-        val mapFeatureAssets = File("../android/feature-map/src/main/assets/")
-        val resources = File("../preparation/src/main/resources")
+        val appAssets = File("./android/app/src/main/assets/")
+        val dataUpdateAssets = File("./android/feature-data-update/src/main/assets/")
+        val mapFeatureAssets = File("./android/feature-map/src/main/assets/")
+        val resources = File("./preparation/src/main/resources")
         Settings(
-            databaseFile = File(appAssets, "stoma22.db"),
+            databaseFile = File(dataUpdateAssets, "shippedData.db"),
             geoJsonInput = File(resources, "stoma22.geojson"),
             geoJsonOutput = File("$mapFeatureAssets/map", "stoma22.geojson"),
             fetchedEventsFile = File(resources, "events/fetched.json"),
