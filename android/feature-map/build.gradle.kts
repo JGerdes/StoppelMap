@@ -8,6 +8,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":base"))
     implementation(project(":data"))
     implementation(project(":android:theme"))
 

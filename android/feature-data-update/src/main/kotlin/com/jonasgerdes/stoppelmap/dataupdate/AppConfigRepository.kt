@@ -58,7 +58,7 @@ class AppConfigRepository(
         }
     }
 
-    suspend fun downloadMapFile(mapFileName: String): File? {
+    suspend fun downloadMapDataFile(mapFileName: String): File? {
         Timber.d("Download geojson \"$mapFileName\"")
         return when (val response = cdnSource.downloadFile(cacheDir, mapFileName)) {
             is Response.Error.HttpError -> {

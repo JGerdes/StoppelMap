@@ -20,10 +20,6 @@
   "bearing": 0,
   "pitch": 0,
   "sources": {
-    "composite": {
-      "type": "geojson",
-      "data": "asset://map/stoma22.geojson"
-    },
     "highlight-labels-source": {
       "type": "geojson",
       "data": ""

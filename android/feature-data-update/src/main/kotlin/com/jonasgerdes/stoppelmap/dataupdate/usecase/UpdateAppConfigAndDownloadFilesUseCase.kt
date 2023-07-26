@@ -1,10 +1,8 @@
 package com.jonasgerdes.stoppelmap.dataupdate.usecase
 
-import android.content.Context
 import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.dataupdate.AppConfigRepository
 import com.jonasgerdes.stoppelmap.dataupdate.VersioningRepository
-import com.jonasgerdes.stoppelmap.dataupdate.util.removeDatabase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -13,11 +11,11 @@ import timber.log.Timber
 import java.io.File
 
 class UpdateAppConfigAndDownloadFilesUseCase(
-    private val appConfigRepository: AppConfigRepository,
     private val appInfo: AppInfo,
+    private val appConfigRepository: AppConfigRepository,
     private val versioningRepository: VersioningRepository,
-    private val context: Context,
-    private val databaseFile: File
+    private val databaseFile: File,
+    private val mapDataFile: File,
 ) {
     suspend operator fun invoke() {
         appConfigRepository.updateAppConfig()
@@ -28,14 +26,21 @@ class UpdateAppConfigAndDownloadFilesUseCase(
             && latestData.version > versioningRepository.getCurrentDatabaseVersion()
         ) {
             coroutineScope {
-                val (dbFile, mapFile) = awaitAll(
+                val (downloadedDatabaseFile, downloadedMapDataFile) = awaitAll(
                     async { appConfigRepository.downloadDatabase(latestData.data) },
-                    async { appConfigRepository.downloadMapFile(latestData.map) },
+                    async { appConfigRepository.downloadMapDataFile(latestData.map) },
                 )
-                Timber.d("Updated files. db: ${dbFile?.absoluteFile}, geojson: ${mapFile?.absoluteFile}")
-                context.removeDatabase(databaseFile.nameWithoutExtension)
-                dbFile?.copyTo(databaseFile, overwrite = true)
-                versioningRepository.setDatabaseVersion(latestData.version)
+                Timber.d("Updated files. db: ${downloadedDatabaseFile?.absoluteFile}, geojson: ${downloadedMapDataFile?.absoluteFile}")
+
+                if (downloadedDatabaseFile != null && downloadedMapDataFile != null) {
+                    downloadedDatabaseFile.copyTo(databaseFile, overwrite = true)
+                    versioningRepository.setDatabaseVersion(latestData.version)
+
+                    downloadedMapDataFile.copyTo(mapDataFile, overwrite = true)
+                    versioningRepository.setMapDataVersion(latestData.version)
+                }
+
+
             }
         }
     }

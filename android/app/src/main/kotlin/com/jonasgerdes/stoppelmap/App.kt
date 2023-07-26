@@ -5,7 +5,7 @@ import android.appwidget.AppWidgetManager
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
 import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.dataupdate.dataUpdateModule
-import com.jonasgerdes.stoppelmap.dataupdate.usecase.CopyAssetDatabaseUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.usecase.CopyAssetDataFilesUseCase
 import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
@@ -30,7 +30,7 @@ import timber.log.Timber
 class App : Application() {
 
     val initializeMapBox: InitializeMapBoxUseCase by inject()
-    val copyAssetDatabase: CopyAssetDatabaseUseCase by inject()
+    val copyAssetDatabase: CopyAssetDataFilesUseCase by inject()
     val updateAppConfigAndDownloadFiles: UpdateAppConfigAndDownloadFilesUseCase by inject()
     val scope: CoroutineScope by inject()
 

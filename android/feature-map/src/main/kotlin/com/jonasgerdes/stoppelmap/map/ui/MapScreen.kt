@@ -56,9 +56,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.base.contract.MapDataFile
 import com.jonasgerdes.stoppelmap.map.components.MapboxMap
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.SearchState
+import org.koin.androidx.compose.get
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
@@ -69,12 +71,14 @@ fun MapScreen(
     viewModel: MapViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val mapDataFile: MapDataFile = get()
 
     Box(modifier = modifier) {
         MapboxMap(
             mapState = state.mapState,
             onCameraMove = viewModel::onCameraMoved,
             onStallTap = viewModel::onStallTapped,
+            mapDataFile = "file://${mapDataFile.mapDataFile.absolutePath}".also { Timber.d("mapFile: $it") },
             modifier = Modifier.fillMaxSize()
         )
         FloatingActionButton(

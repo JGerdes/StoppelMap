@@ -34,10 +34,18 @@ import com.google.gson.JsonPrimitive
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.MapState
+import com.mapbox.bindgen.Value
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
-import com.mapbox.maps.*
+import com.mapbox.maps.CameraBoundsOptions
+import com.mapbox.maps.CameraOptions
+import com.mapbox.maps.EdgeInsets
+import com.mapbox.maps.MapInitOptions
+import com.mapbox.maps.MapView
+import com.mapbox.maps.RenderedQueryGeometry
+import com.mapbox.maps.RenderedQueryOptions
+import com.mapbox.maps.Style
 import com.mapbox.maps.extension.style.layers.generated.BackgroundLayer
 import com.mapbox.maps.extension.style.layers.generated.FillLayer
 import com.mapbox.maps.extension.style.layers.generated.SymbolLayer
@@ -51,12 +59,14 @@ import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.scalebar.scalebar
+import com.mapbox.maps.toCameraOptions
 import kotlinx.coroutines.delay
 import timber.log.Timber
 
 @Composable
 fun MapboxMap(
     mapState: MapState,
+    mapDataFile: String,
     onCameraMove: (CameraOptions) -> Unit,
     onStallTap: (String) -> Unit,
     modifier: Modifier = Modifier,
@@ -81,12 +91,20 @@ fun MapboxMap(
                 addOnCameraChangeListener {
                     onCameraMove(cameraState.toCameraOptions())
                 }
-                getStyle()?.apply {
-                    addMarkerIcons(context, density, colors, isDarkTheme)
-                    location.updateSettings {
-                        enabled = true
-                        pulsingEnabled = true
-                    }
+                getStyle {
+                    it.addStyleSource(
+                        "composite", Value.valueOf(
+                            hashMapOf(
+                                "type" to Value.valueOf("geojson"),
+                                "data" to Value.valueOf(mapDataFile),
+                            )
+                        )
+                    )
+                    it.addMarkerIcons(context, density, colors, isDarkTheme)
+                }
+                location.updateSettings {
+                    enabled = true
+                    pulsingEnabled = true
                 }
                 addOnMapClickListener { point ->
                     queryRenderedFeatures(
@@ -141,6 +159,7 @@ fun MapboxMap(
                             zoomPadding
                         )
                     )
+
                 is MapState.CameraPosition.Options -> position.cameraOptions
             }
             if (!isGestureInProgress() && !isUserAnimationInProgress()) {

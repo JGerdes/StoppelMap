@@ -11,12 +11,11 @@ val preparationModule = module {
     single {
         val appAssets = File("./android/app/src/main/assets/")
         val dataUpdateAssets = File("./android/feature-data-update/src/main/assets/")
-        val mapFeatureAssets = File("./android/feature-map/src/main/assets/")
         val resources = File("./preparation/src/main/resources")
         Settings(
             databaseFile = File(dataUpdateAssets, "shippedData.db"),
             geoJsonInput = File(resources, "stoma22.geojson"),
-            geoJsonOutput = File("$mapFeatureAssets/map", "stoma22.geojson"),
+            geoJsonOutput = File("$dataUpdateAssets", "mapdata.geojson"),
             fetchedEventsFile = File(resources, "events/fetched.json"),
             manualEventsFile = File(resources, "events/manual.json"),
             descriptionFolder = File(resources, "descriptions")

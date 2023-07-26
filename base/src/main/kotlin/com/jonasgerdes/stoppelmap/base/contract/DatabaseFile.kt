@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.dataupdate.model
+package com.jonasgerdes.stoppelmap.base.contract
 
 import java.io.File
 

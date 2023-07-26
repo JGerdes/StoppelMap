@@ -5,10 +5,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.jonasgerdes.stoppelmap.base.contract.AppInfo
+import com.jonasgerdes.stoppelmap.base.contract.DatabaseFile
+import com.jonasgerdes.stoppelmap.base.contract.MapDataFile
 import com.jonasgerdes.stoppelmap.base.contract.Secrets
-import com.jonasgerdes.stoppelmap.dataupdate.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.dataupdate.source.remote.CdnSource
-import com.jonasgerdes.stoppelmap.dataupdate.usecase.CopyAssetDatabaseUseCase
+import com.jonasgerdes.stoppelmap.dataupdate.usecase.CopyAssetDataFilesUseCase
 import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
@@ -66,21 +67,22 @@ val dataUpdateModule = module {
     }
 
     factory {
-        CopyAssetDatabaseUseCase(
+        CopyAssetDataFilesUseCase(
             appInfo = get(),
             versioningRepository = get(),
             context = get(),
             databaseFile = get<DatabaseFile>().databaseFile,
+            mapDataFile = get<MapDataFile>().mapDataFile,
         )
     }
 
     factory {
         UpdateAppConfigAndDownloadFilesUseCase(
-            appConfigRepository = get(),
             appInfo = get(),
+            appConfigRepository = get(),
             versioningRepository = get(),
-            context = get(),
             databaseFile = get<DatabaseFile>().databaseFile,
+            mapDataFile = get<MapDataFile>().mapDataFile,
         )
     }
 
