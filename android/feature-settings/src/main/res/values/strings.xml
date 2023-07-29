@@ -2,7 +2,7 @@
 <resources>
     <string name="settings_topbar_title">Einstellungen/Info</string>
     <string name="settings_topbar_navigateBack_contentDescription">Zurück</string>
-    <string name="settings_ui_title">Erscheinungsbild</string>
+    <string name="settings_ui_title">Darstellung</string>
     <string name="settings_theme_title">Design</string>
     <string name="settings_theme_light">Hell</string>
     <string name="settings_theme_dark">Dunkel</string>
@@ -21,6 +21,10 @@
     <string name="settings_dateOverride_sun">So</string>
     <string name="settings_dateOverride_mon">Mo</string>
     <string name="settings_dateOverride_tue">Di</string>
+    <string name="settings_locationOverride_title">Position überschreiben</string>
+    <string name="settings_locationOverride_none">aus</string>
+    <string name="settings_locationOverride_amtmannsbult">Amtmannsbult</string>
+    <string name="settings_locationOverride_busToEntrance">Bushaltestelle ➡ Eingang</string>
     <string name="settings_disclaimer_title">Disclaimer</string>
     <string name="settings_disclaimer_text">StoppelMap ist eine inoffizielle App für den Stoppelmarkt.\n\nAlle Angaben sind ohne Gewähr, es wird keine Garantie für die Richtig- und Vollständigkeit der dargestellten Informationen gegeben und keine Haftung für eventuell verursachte Schäden übernommen.</string>
     <string name="settings_open_source">StoppelMap ist Opensource.\nQuelltext verfügbar auf https://github.com/JGerdes/StoppelMap</string>

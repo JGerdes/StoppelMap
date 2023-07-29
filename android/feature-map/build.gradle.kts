@@ -11,6 +11,7 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":data"))
     implementation(project(":android:theme"))
+    implementation(project(":android:feature-settings"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)

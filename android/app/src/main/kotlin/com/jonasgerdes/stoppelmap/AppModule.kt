@@ -28,7 +28,7 @@ val appModule = module {
 
     single {
         MapDataFile(
-            mapDataFile = File(get<Context>().filesDir, "mapdata2.geojson")
+            mapDataFile = File(get<Context>().filesDir, "mapdata.geojson")
         )
     }
 

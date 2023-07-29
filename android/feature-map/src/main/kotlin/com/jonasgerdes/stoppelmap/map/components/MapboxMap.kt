@@ -33,6 +33,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.R
+import com.jonasgerdes.stoppelmap.map.repository.location.MapBoxLocationProvider
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.MapState
 import com.mapbox.bindgen.Value
 import com.mapbox.geojson.Feature
@@ -53,14 +54,16 @@ import com.mapbox.maps.extension.style.layers.getLayerAs
 import com.mapbox.maps.extension.style.layers.properties.generated.Visibility
 import com.mapbox.maps.extension.style.sources.generated.GeoJsonSource
 import com.mapbox.maps.extension.style.sources.getSourceAs
+import com.mapbox.maps.plugin.PuckBearingSource
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.attribution.attribution
 import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.gestures.gestures
-import com.mapbox.maps.plugin.locationcomponent.location
+import com.mapbox.maps.plugin.locationcomponent.location2
 import com.mapbox.maps.plugin.scalebar.scalebar
 import com.mapbox.maps.toCameraOptions
 import kotlinx.coroutines.delay
+import org.koin.androidx.compose.get
 import timber.log.Timber
 
 @Composable
@@ -75,6 +78,12 @@ fun MapboxMap(
     val context = LocalContext.current
     val density = LocalDensity.current
     val isDarkTheme = isSystemInDarkTheme()
+    val locationProvider: MapBoxLocationProvider = get()
+
+    LaunchedEffect(Unit) {
+        locationProvider.observeLocation()
+    }
+
     val mapView = remember {
         MapView(context, MapInitOptions(context, styleUri = "asset://map/style.json")).apply {
             getMapboxMap().apply {
@@ -91,6 +100,16 @@ fun MapboxMap(
                 addOnCameraChangeListener {
                     onCameraMove(cameraState.toCameraOptions())
                 }
+                location2.apply {
+                    setLocationProvider(locationProvider)
+                    enabled = true
+                    pulsingEnabled = true
+                    showAccuracyRing = true
+                }
+                location2.updateSettings2 {
+                    puckBearingEnabled = true
+                    puckBearingSource = PuckBearingSource.HEADING
+                }
                 getStyle {
                     it.addStyleSource(
                         "composite", Value.valueOf(
@@ -101,10 +120,6 @@ fun MapboxMap(
                         )
                     )
                     it.addMarkerIcons(context, density, colors, isDarkTheme)
-                }
-                location.updateSettings {
-                    enabled = true
-                    pulsingEnabled = true
                 }
                 addOnMapClickListener { point ->
                     queryRenderedFeatures(
@@ -230,7 +245,7 @@ fun MapboxMap(
                     R.drawable.ic_location_puck,
                     colors.locationPuckColor
                 )
-                mapState.userLocation?.let { userLocation ->
+                /*mapState.userLocation?.let { userLocation ->
                     style.getSourceAs<GeoJsonSource>("user-location-source")?.apply {
                         data(
                             FeatureCollection.fromFeatures(
@@ -240,7 +255,7 @@ fun MapboxMap(
                             ).toJson()
                         )
                     }
-                }
+                }*/
 
                 if (highlightedStalls != null) {
                     style.getSourceAs<GeoJsonSource>("highlight-labels-source")?.apply {

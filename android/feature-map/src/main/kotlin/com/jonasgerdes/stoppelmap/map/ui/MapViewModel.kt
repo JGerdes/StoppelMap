@@ -5,15 +5,21 @@ import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.data.Stall
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
-import com.jonasgerdes.stoppelmap.map.repository.LocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.StallRepository
+import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchStallsUseCase
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 

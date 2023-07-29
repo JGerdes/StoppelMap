@@ -18,6 +18,7 @@ class SettingsRepository(
     private val colorSchemeSettingKey = stringPreferencesKey("colorScheme")
     private val developerModeActiveKey = booleanPreferencesKey("developerModeActive")
     private val dateOverrideKey = stringPreferencesKey("dateOverrideKey")
+    private val locationOverrideKey = stringPreferencesKey("locationOverrideKey")
 
     fun getSettings() = dataStore.data.map { preferences ->
         Settings(
@@ -28,6 +29,10 @@ class SettingsRepository(
             ),
             developerModeActive = preferences[developerModeActiveKey] ?: false,
             dateOverride = saveValueOf(preferences[dateOverrideKey], DateOverride.default),
+            locationOverride = saveValueOf(
+                preferences[locationOverrideKey],
+                LocationOverride.default
+            ),
         )
     }
 
@@ -54,6 +59,12 @@ class SettingsRepository(
             settings[dateOverrideKey] = dateOverride.name
         }
     }
+
+    suspend fun saveLocationOverride(locationOverride: LocationOverride) {
+        dataStore.edit { settings ->
+            settings[locationOverrideKey] = locationOverride.name
+        }
+    }
 }
 
 data class Settings(
@@ -61,4 +72,5 @@ data class Settings(
     val colorSchemeSetting: ColorSchemeSetting,
     val developerModeActive: Boolean,
     val dateOverride: DateOverride,
+    val locationOverride: LocationOverride,
 )

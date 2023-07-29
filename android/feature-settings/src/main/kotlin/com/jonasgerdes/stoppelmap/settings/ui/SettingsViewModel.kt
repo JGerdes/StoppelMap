@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.ImageSource
 import com.jonasgerdes.stoppelmap.settings.data.Library
+import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
@@ -54,9 +55,15 @@ class SettingsViewModel(
                     developerModeSettings = if (settings.developerModeActive) {
                         DeveloperModeSettings.Active(
                             dateOverrideOptions = DateOverride.values().map {
-                                DateOverrideOption(
-                                    dateOverride = it,
+                                Option(
+                                    value = it,
                                     isSelected = it == settings.dateOverride
+                                )
+                            },
+                            locationOverrideOptions = LocationOverride.values().map {
+                                Option(
+                                    value = it,
+                                    isSelected = it == settings.locationOverride
                                 )
                             }
                         )
@@ -100,6 +107,11 @@ class SettingsViewModel(
             settingsRepository.saveDateOverride(dateOverride)
         }
 
+    fun onLocationOverrideSelected(locationOverride: LocationOverride) =
+        viewModelScope.launch {
+            settingsRepository.saveLocationOverride(locationOverride)
+        }
+
     data class ViewState(
         val appInfo: AppInfo,
         val themeSettings: List<ThemeSettingOption> = emptyList(),
@@ -122,12 +134,13 @@ class SettingsViewModel(
     sealed interface DeveloperModeSettings {
         object NotActive : DeveloperModeSettings
         data class Active(
-            val dateOverrideOptions: List<DateOverrideOption>,
+            val dateOverrideOptions: List<Option<DateOverride>>,
+            val locationOverrideOptions: List<Option<LocationOverride>>,
         ) : DeveloperModeSettings
     }
 
-    data class DateOverrideOption(
-        val dateOverride: DateOverride,
+    data class Option<T>(
+        val value: T,
         val isSelected: Boolean = false,
     )
 }

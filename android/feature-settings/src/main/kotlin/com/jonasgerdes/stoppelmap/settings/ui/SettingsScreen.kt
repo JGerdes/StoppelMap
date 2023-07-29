@@ -25,6 +25,7 @@ import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.ColorLens
 import androidx.compose.material.icons.rounded.DarkMode
 import androidx.compose.material.icons.rounded.EditCalendar
+import androidx.compose.material.icons.rounded.EditLocationAlt
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -46,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.settings.R
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
+import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
@@ -119,8 +121,18 @@ fun SettingsScreen(
                         labelRes = R.string.settings_dateOverride_title,
                         items = developerSettings.dateOverrideOptions,
                         isItemSelected = { isSelected },
-                        itemLabelRes = { dateOverride.titleStringRes },
-                        onItemSelected = { viewModel.onDateOverrideSelected(it.dateOverride) },
+                        itemLabelRes = { value.titleStringRes },
+                        onItemSelected = { viewModel.onDateOverrideSelected(it.value) },
+                    )
+                }
+                item {
+                    SelectionSettingsRow(
+                        icon = Icons.Rounded.EditLocationAlt,
+                        labelRes = R.string.settings_dateOverride_title,
+                        items = developerSettings.locationOverrideOptions,
+                        isItemSelected = { isSelected },
+                        itemLabelRes = { value.titleStringRes },
+                        onItemSelected = { viewModel.onLocationOverrideSelected(it.value) },
                     )
                 }
             }
@@ -301,4 +313,11 @@ private val DateOverride.titleStringRes: Int
         DateOverride.Sunday -> R.string.settings_dateOverride_sun
         DateOverride.Monday -> R.string.settings_dateOverride_mon
         DateOverride.Tuesday -> R.string.settings_dateOverride_tue
+    }
+
+private val LocationOverride.titleStringRes: Int
+    get() = when (this) {
+        LocationOverride.None -> R.string.settings_locationOverride_none
+        LocationOverride.Amtmannsbult -> R.string.settings_locationOverride_amtmannsbult
+        LocationOverride.BusToEntrance -> R.string.settings_locationOverride_busToEntrance
     }
