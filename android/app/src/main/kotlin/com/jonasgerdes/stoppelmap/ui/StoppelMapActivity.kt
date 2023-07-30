@@ -44,11 +44,9 @@ import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
-import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
-import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleScreen
 import com.jonasgerdes.stoppelmap.settings.data.Settings
 import com.jonasgerdes.stoppelmap.settings.ui.SettingsScreen
 import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
@@ -58,6 +56,7 @@ import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
+import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -173,19 +172,10 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.Map.route) {
-                    MapScreen(
-                        onRequestLocationPermission = ::requestLocationPermission,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
+                    UnderConstructionPlaceholder()
                 }
                 composable(Screen.Schedule.route) {
-                    ScheduleScreen(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
+                    UnderConstructionPlaceholder()
                 }
                 composable(Screen.TransportationOverview.route) {
                     TransportationOverviewScreen(

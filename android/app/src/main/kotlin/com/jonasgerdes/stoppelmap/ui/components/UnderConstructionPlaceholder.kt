@@ -1,8 +1,10 @@
 package com.jonasgerdes.stoppelmap.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,6 +27,8 @@ fun UnderConstructionPlaceholder(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
     ) {
         val composition by rememberLottieComposition(LottieCompositionSpec.Asset("animation/under_construction.json"))
         val animationColor = MaterialTheme.colorScheme.onBackground.toArgb()
