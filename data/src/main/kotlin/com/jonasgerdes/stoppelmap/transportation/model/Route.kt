@@ -1,14 +1,16 @@
 package com.jonasgerdes.stoppelmap.transportation.model
 
+import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 
-data class BusRoute(
+data class Route(
     val id: String,
     val title: String,
     val stations: List<Station>,
     val returnStations: List<Station>,
-    val additionalInfo: String? = null
+    val additionalInfo: String? = null,
+    val type: RouteType
 )
 
 data class Station(

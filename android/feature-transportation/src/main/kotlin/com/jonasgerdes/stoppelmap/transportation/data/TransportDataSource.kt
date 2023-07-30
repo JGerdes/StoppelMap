@@ -1,12 +1,12 @@
 package com.jonasgerdes.stoppelmap.transportation.data
 
-import com.jonasgerdes.stoppelmap.transportation.model.BusRoute
-import com.jonasgerdes.stoppelmap.transportation.model.BusRouteSummary
+import com.jonasgerdes.stoppelmap.transportation.model.Route
+import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
 import com.jonasgerdes.stoppelmap.transportation.model.Station
 import kotlinx.coroutines.flow.Flow
 
 interface TransportDataSource {
-    fun getAllRoutes(): Flow<List<BusRouteSummary>>
-    fun getRouteById(id: String): Flow<BusRoute>
+    fun getAllRoutes(): Flow<List<RouteSummary>>
+    fun getRouteById(id: String): Flow<Route>
     fun getStationById(id: String): Flow<Station>
 }

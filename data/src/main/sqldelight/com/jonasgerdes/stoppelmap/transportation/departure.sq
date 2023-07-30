@@ -1,0 +1,13 @@
+import kotlinx.datetime.LocalDateTime;
+
+CREATE TABLE departure (
+    departureDay    TEXT NOT NULL,
+    time            TEXT AS LocalDateTime NOT NULL,
+    annotation      TEXT,
+
+    FOREIGN KEY(departureDay) REFERENCES departure_day(id)
+);
+
+insert:
+INSERT INTO departure(departureDay, time, annotation)
+VALUES ?;

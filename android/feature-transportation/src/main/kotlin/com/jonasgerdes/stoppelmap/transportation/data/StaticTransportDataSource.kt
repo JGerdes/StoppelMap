@@ -1,19 +1,19 @@
 package com.jonasgerdes.stoppelmap.transportation.data
 
-import com.jonasgerdes.stoppelmap.transportation.model.BusRoute
-import com.jonasgerdes.stoppelmap.transportation.model.BusRouteSummary
+import com.jonasgerdes.stoppelmap.transportation.model.Route
+import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
 import com.jonasgerdes.stoppelmap.transportation.model.Station
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class StaticTransportDataSource : TransportDataSource {
 
-    private val routes by lazy { generateBusRoutes() }
+    private val routes by lazy { com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes() }
 
-    override fun getAllRoutes(): Flow<List<BusRouteSummary>> = flow {
+    override fun getAllRoutes(): Flow<List<RouteSummary>> = flow {
         emit(
             routes.map { route ->
-                BusRouteSummary(
+                RouteSummary(
                     id = route.id,
                     title = route.title,
                     viaStations =
@@ -31,7 +31,7 @@ class StaticTransportDataSource : TransportDataSource {
         )
     }
 
-    override fun getRouteById(id: String): Flow<BusRoute> = flow {
+    override fun getRouteById(id: String): Flow<Route> = flow {
         val route = routes.find { it.id == id }
 
         emit(route!!)

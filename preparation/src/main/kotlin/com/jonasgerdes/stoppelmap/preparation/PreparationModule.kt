@@ -13,7 +13,7 @@ val preparationModule = module {
         val dataUpdateAssets = File("./android/feature-data-update/src/main/assets/")
         val resources = File("./preparation/src/main/resources")
         Settings(
-            databaseFile = File(dataUpdateAssets, "shippedData.db"),
+            databaseFile = File(dataUpdateAssets, "database.db"),
             geoJsonInput = File(resources, "stoma22.geojson"),
             geoJsonOutput = File("$dataUpdateAssets", "mapdata.geojson"),
             fetchedEventsFile = File(resources, "events/fetched.json"),

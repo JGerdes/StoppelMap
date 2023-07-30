@@ -1,7 +1,21 @@
-package com.jonasgerdes.stoppelmap.transportation.data
+package com.jonasgerdes.stoppelmap.preparation.transportation
 
-import com.jonasgerdes.stoppelmap.transportation.model.*
-import kotlinx.datetime.*
+import com.jonasgerdes.stoppelmap.data.model.database.RouteType
+import com.jonasgerdes.stoppelmap.transportation.model.Departure
+import com.jonasgerdes.stoppelmap.transportation.model.DepartureDay
+import com.jonasgerdes.stoppelmap.transportation.model.Price
+import com.jonasgerdes.stoppelmap.transportation.model.Route
+import com.jonasgerdes.stoppelmap.transportation.model.Station
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.Month
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.plus
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.toLocalTime
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
@@ -20,18 +34,20 @@ class BusRouteScope {
     var additionalInfo: String? = null
 
     var fixedPrices: List<Price>? = null
+    var type: RouteType = RouteType.Bus
 }
 
 fun createBusRoute(builder: BusRouteScope.() -> Unit) =
     BusRouteScope().apply {
         builder()
     }.let {
-        BusRoute(
+        Route(
             id = it.id!!,
             title = it.title!!,
             stations = it.stations.toList(),
             returnStations = it.returnStations,
             additionalInfo = it.additionalInfo,
+            type = it.type
         )
     }
 
@@ -249,7 +265,11 @@ fun StationScope.prices(
     childrenAgeRange: Pair<Int?, Int>? = 3 to 11
 ) {
     prices =
-        com.jonasgerdes.stoppelmap.transportation.data.prices(adult, children, childrenAgeRange)
+        com.jonasgerdes.stoppelmap.preparation.transportation.prices(
+            adult,
+            children,
+            childrenAgeRange
+        )
 }
 
 

@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(project(":base"))
+    implementation(project(":data"))
     implementation(project(":android:theme"))
 
     implementation(libs.androidx.core.ktx)
@@ -19,4 +20,5 @@ dependencies {
     implementation(libs.bundles.koin.compose)
     implementation(libs.timber)
     implementation(libs.accompanist.pager)
+    implementation(libs.sqldelight.coroutines)
 }

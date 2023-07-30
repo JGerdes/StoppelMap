@@ -1,9 +1,9 @@
-package com.jonasgerdes.stoppelmap.transportation.data.bus
+package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
-import com.jonasgerdes.stoppelmap.transportation.data.addReturnStation
-import com.jonasgerdes.stoppelmap.transportation.data.addStation
-import com.jonasgerdes.stoppelmap.transportation.data.createBusRoute
-import com.jonasgerdes.stoppelmap.transportation.data.prices
+import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
+import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
+import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
+import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun calveslage() = createBusRoute {
     title = "Calveslage"

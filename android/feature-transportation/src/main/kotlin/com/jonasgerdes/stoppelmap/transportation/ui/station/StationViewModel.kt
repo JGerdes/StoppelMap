@@ -1,9 +1,9 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.station
 
+import Price
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
-import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.usecase.CreateTimetableUseCase
 import kotlinx.coroutines.flow.SharingStarted

@@ -1,0 +1,15 @@
+CREATE TABLE station (
+    slug            TEXT NOT NULL PRIMARY KEY,
+    route           TEXT NOT NULL,
+    title           TEXT NOT NULL,
+    lng             REAL AS Double,
+    lat             REAL AS Double,
+    isDestination   INTEGER AS Boolean NOT NULL DEFAULT 0,
+    annotateAsNew   INTEGER AS Boolean NOT NULL DEFAULT 0,
+
+    FOREIGN KEY(route) REFERENCES route(slug)
+);
+
+insert:
+INSERT INTO station(slug, route, title, lng, lat, isDestination, annotateAsNew)
+VALUES ?;

@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.transportation.usecase
 
+import Departure
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
-import com.jonasgerdes.stoppelmap.transportation.model.Departure
 import kotlinx.datetime.*
 import kotlin.time.toKotlinDuration
 
@@ -19,14 +19,19 @@ class GetNextDeparturesUseCase {
             when {
                 difference.inWholeMinutes < 1 ->
                     BusRouteDetails.DepartureTime.Immediately
+
                 difference.inWholeMinutes < 30 ->
                     BusRouteDetails.DepartureTime.InMinutes(difference.inWholeMinutes.toInt())
+
                 it.time.isConsideredSameDay(now.date) ->
                     BusRouteDetails.DepartureTime.Today(it.time.time)
+
                 it.time.isConsideredSameDay(now.date.nextDay()) ->
                     BusRouteDetails.DepartureTime.Tomorrow(it.time.time)
+
                 difference.inWholeDays < 7 ->
                     BusRouteDetails.DepartureTime.ThisWeek(it.time)
+
                 else -> BusRouteDetails.DepartureTime.Absolute(dateTime = it.time)
             }
         }

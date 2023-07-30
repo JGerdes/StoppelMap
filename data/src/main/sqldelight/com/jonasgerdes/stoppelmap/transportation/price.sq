@@ -1,0 +1,16 @@
+import com.jonasgerdes.stoppelmap.data.model.database.PriceType;
+
+CREATE TABLE price (
+    station         TEXT NOT NULL,
+    type            TEXT AS PriceType NOT NULL,
+    amount          INTEGER NOT NULL,
+    minAge          INTEGER,
+    maxAge          INTEGER,
+    additionalInfo  TEXT,
+
+    FOREIGN KEY(station) REFERENCES station(slug)
+);
+
+insert:
+INSERT INTO price(station, type, amount, minAge, maxAge, additionalInfo)
+VALUES ?;

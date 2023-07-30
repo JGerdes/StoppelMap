@@ -1,0 +1,15 @@
+import com.jonasgerdes.stoppelmap.data.model.database.RouteType;
+
+CREATE TABLE IF NOT EXISTS route(
+    slug            TEXT NOT NULL PRIMARY KEY,
+    title           TEXT NOT NULL,
+    additionalInfo  TEXT,
+    type            TEXT AS RouteType NOT NULL
+);
+
+insert:
+INSERT INTO route(slug, title, additionalInfo, type)
+VALUES ?;
+
+getAll:
+SELECT * FROM route;
