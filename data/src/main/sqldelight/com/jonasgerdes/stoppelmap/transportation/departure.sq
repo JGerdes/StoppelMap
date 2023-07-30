@@ -1,6 +1,6 @@
 import kotlinx.datetime.LocalDateTime;
 
-CREATE TABLE departure (
+CREATE TABLE IF NOT EXISTS departure (
     departureDay    TEXT NOT NULL,
     time            TEXT AS LocalDateTime NOT NULL,
     annotation      TEXT,
@@ -11,3 +11,6 @@ CREATE TABLE departure (
 insert:
 INSERT INTO departure(departureDay, time, annotation)
 VALUES ?;
+
+get:
+SELECT time, annotation FROM departure WHERE departureDay = :departureDay;

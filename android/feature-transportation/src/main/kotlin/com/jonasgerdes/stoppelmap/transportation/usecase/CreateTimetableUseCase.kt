@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.transportation.usecase
 
-import Departure
-import DepartureDay
+import com.jonasgerdes.stoppelmap.transportation.model.Departure
+import com.jonasgerdes.stoppelmap.transportation.model.DepartureDay
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -4,7 +4,6 @@
 
 package com.jonasgerdes.stoppelmap.transportation.ui.station
 
-import Price
 import android.annotation.SuppressLint
 import android.content.res.Resources
 import androidx.compose.foundation.layout.*
@@ -28,6 +27,7 @@ import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
+import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.koinViewModel
@@ -173,6 +173,8 @@ private fun Price.PriceLabel.asString(resources: Resources): String =
 
             else -> resources.getString(R.string.transportation_station_prices_children)
         }
+
+        is Price.PriceLabel.Reduced -> resources.getString(R.string.transportation_station_prices_reduced)
     }
 
 @Composable

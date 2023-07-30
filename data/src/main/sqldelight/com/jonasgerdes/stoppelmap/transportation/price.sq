@@ -1,6 +1,6 @@
 import com.jonasgerdes.stoppelmap.data.model.database.PriceType;
 
-CREATE TABLE price (
+CREATE TABLE IF NOT EXISTS price (
     station         TEXT NOT NULL,
     type            TEXT AS PriceType NOT NULL,
     amount          INTEGER NOT NULL,
@@ -14,3 +14,6 @@ CREATE TABLE price (
 insert:
 INSERT INTO price(station, type, amount, minAge, maxAge, additionalInfo)
 VALUES ?;
+
+getByStation:
+SELECT * FROM price WHERE station = :station;

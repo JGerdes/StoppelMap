@@ -1,8 +1,12 @@
 package com.jonasgerdes.stoppelmap.transportation.usecase
 
-import Departure
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
-import kotlinx.datetime.*
+import com.jonasgerdes.stoppelmap.transportation.model.Departure
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.plus
+import kotlinx.datetime.toJavaLocalDateTime
 import kotlin.time.toKotlinDuration
 
 class GetNextDeparturesUseCase {

@@ -1,4 +1,4 @@
-CREATE TABLE station (
+CREATE TABLE IF NOT EXISTS station (
     slug            TEXT NOT NULL PRIMARY KEY,
     route           TEXT NOT NULL,
     title           TEXT NOT NULL,
@@ -13,3 +13,15 @@ CREATE TABLE station (
 insert:
 INSERT INTO station(slug, route, title, lng, lat, isDestination, annotateAsNew)
 VALUES ?;
+
+getOriginStationTitlesByRoute:
+SELECT title FROM station WHERE route = :route AND isDestination = 0;
+
+getOriginByRoute:
+SELECT * FROM station WHERE route = :route AND isDestination = 0;
+
+getDestinationByRoute:
+SELECT * FROM station WHERE route = :route AND isDestination = 1;
+
+getBySlug:
+SELECT * FROM station WHERE slug = :slug;

@@ -1,7 +1,8 @@
 package com.jonasgerdes.stoppelmap.transportation
 
+import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
-import com.jonasgerdes.stoppelmap.transportation.data.StaticTransportDataSource
+import com.jonasgerdes.stoppelmap.transportation.data.DatabaseTransportDataSource
 import com.jonasgerdes.stoppelmap.transportation.data.TransportDataSource
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteViewModel
@@ -13,7 +14,16 @@ import org.koin.dsl.module
 
 val transportationModule = module {
 
-    single<TransportDataSource> { StaticTransportDataSource() }
+    single<TransportDataSource> {
+        val database = get<StoppelMapDatabase>()
+        DatabaseTransportDataSource(
+            routeQueries = database.routeQueries,
+            stationQueries = database.stationQueries,
+            priceQueries = database.priceQueries,
+            departureDayQueries = database.departure_dayQueries,
+            departureQueries = database.departureQueries,
+        )
+    }
 
     single { BusRoutesRepository(transportDataSource = get()) }
 

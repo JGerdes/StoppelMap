@@ -1,6 +1,6 @@
 import kotlinx.datetime.LocalDate;
 
-CREATE TABLE departure_day (
+CREATE TABLE IF NOT EXISTS departure_day (
     id                      TEXT NOT NULL PRIMARY KEY,
     station                 TEXT NOT NULL,
     day                     TEXT AS LocalDate NOT NULL,
@@ -12,3 +12,6 @@ CREATE TABLE departure_day (
 insert:
 INSERT INTO departure_day(id, station, day, laterDeparturesOnDemand)
 VALUES ?;
+
+getByStation:
+SELECT id, day, laterDeparturesOnDemand FROM departure_day WHERE station = :station;

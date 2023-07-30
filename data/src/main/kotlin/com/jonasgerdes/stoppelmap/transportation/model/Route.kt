@@ -26,12 +26,16 @@ data class Price(
     val label: PriceLabel,
     val amountInCents: Int,
 ) {
-    sealed class PriceLabel {
-        object Adult : PriceLabel()
+    sealed interface PriceLabel {
+        object Adult : PriceLabel
         data class Children(
             val minAge: Int?,
             val maxAge: Int?
-        ) : PriceLabel()
+        ) : PriceLabel
+
+        data class Reduced(
+            val additionalInfo: String?
+        ) : PriceLabel
     }
 }
 

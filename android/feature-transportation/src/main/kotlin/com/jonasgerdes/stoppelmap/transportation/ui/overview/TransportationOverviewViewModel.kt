@@ -3,7 +3,7 @@ package com.jonasgerdes.stoppelmap.transportation.ui.overview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
-import com.jonasgerdes.stoppelmap.transportation.model.BusRouteSummary
+import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -37,6 +37,6 @@ class TransportationOverviewViewModel(
 
     sealed class BusRoutesState {
         object Loading : BusRoutesState()
-        data class Loaded(val routes: List<BusRouteSummary>) : BusRoutesState()
+        data class Loaded(val routes: List<RouteSummary>) : BusRoutesState()
     }
 }

@@ -13,3 +13,6 @@ VALUES ?;
 
 getAll:
 SELECT * FROM route;
+
+getBySlug:
+SELECT * FROM route WHERE slug = :slug;
