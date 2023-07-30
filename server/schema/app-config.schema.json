@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cdn.stoppelmap.de/app-config.schema.json",
+  "title": "StoppelMap App configuration",
+  "description": "Configuration of StoppelMap mobile App",
+  "type": "object",
+  "properties": {
+    "supportedVersions": {
+      "type": "object",
+      "properties": {
+        "android": {
+          "type": "object",
+          "properties": {
+            "oldest": {
+              "type": "number",
+              "minimum": 230000000,
+              "maximum": 500000000
+            }
+          },
+          "required": [
+            "oldest"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "android"
+      ],
+      "additionalProperties": false
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "latest": {
+          "type": "object",
+          "properties": {
+            "version": {
+              "type": "number"
+            },
+            "data": {
+              "type": "string"
+            },
+            "map": {
+              "type": "string"
+            },
+            "supportedSince": {
+              "type": "object",
+              "properties": {
+                "android": {
+                  "type": "number",
+                  "minimum": 230000000,
+                  "maximum": 500000000
+                }
+              },
+              "required": [
+                "android"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "version",
+            "data",
+            "map",
+            "supportedSince"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "latest"
+      ],
+      "additionalProperties": false
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "number",
+            "minimum": 230000000,
+            "maximum": 500000000
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "object",
+                "properties": {
+                  "de": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "de"
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "de": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "de"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning"
+                ]
+              },
+              "buttons": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "object",
+                      "properties": {
+                        "de": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "de"
+                      ]
+                    },
+                    "url": {
+                      "type": "object",
+                      "properties": {
+                        "de": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      },
+                      "required": [
+                        "de"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "url"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "title",
+              "content"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "supportedVersions",
+    "data",
+    "messages"
+  ],
+  "additionalProperties": false
+}
