@@ -5,23 +5,27 @@ CREATE TABLE IF NOT EXISTS station (
     lng             REAL AS Double,
     lat             REAL AS Double,
     isDestination   INTEGER AS Boolean NOT NULL DEFAULT 0,
+    isReturn        INTEGER AS Boolean NOT NULL DEFAULT 0,
     annotateAsNew   INTEGER AS Boolean NOT NULL DEFAULT 0,
 
     FOREIGN KEY(route) REFERENCES route(slug)
 );
 
 insert:
-INSERT INTO station(slug, route, title, lng, lat, isDestination, annotateAsNew)
+INSERT INTO station(slug, route, title, lng, lat, isDestination, isReturn, annotateAsNew)
 VALUES ?;
 
 getOriginStationTitlesByRoute:
 SELECT title FROM station WHERE route = :route AND isDestination = 0;
 
 getOriginByRoute:
-SELECT * FROM station WHERE route = :route AND isDestination = 0;
+SELECT * FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 0;
 
 getDestinationByRoute:
-SELECT * FROM station WHERE route = :route AND isDestination = 1;
+SELECT * FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 1;
+
+getReturnByRoute:
+SELECT * FROM station WHERE route = :route AND isReturn = 1;
 
 getBySlug:
 SELECT * FROM station WHERE slug = :slug;

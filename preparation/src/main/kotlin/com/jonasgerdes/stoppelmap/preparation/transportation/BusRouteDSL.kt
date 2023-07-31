@@ -6,7 +6,9 @@ import com.jonasgerdes.stoppelmap.transportation.model.DepartureDay
 import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Route
 import com.jonasgerdes.stoppelmap.transportation.model.Station
+import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
@@ -25,7 +27,7 @@ class BusRouteScope {
     var title: String? = null
         set(value) {
             if (id == null && value != null) {
-                id = "22-" + value.toSlug()
+                id = value.toSlug()
             }
             field = value
         }
@@ -80,64 +82,63 @@ class StationScope(private val routeScope: BusRouteScope) {
         }.toMutableList()
     }
 
-
     fun thursday(builder: DepartureDayScope.() -> Unit) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 11),
+        day = weekDayMap[DayOfWeek.THURSDAY]!!,
         builder = builder
     )
 
     fun thursday(vararg departures: String) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 11),
+        day = weekDayMap[DayOfWeek.THURSDAY]!!,
         departures = departures
     )
 
     fun friday(builder: DepartureDayScope.() -> Unit) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 12),
+        day = weekDayMap[DayOfWeek.FRIDAY]!!,
         builder = builder
     )
 
     fun friday(vararg departures: String) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 12),
+        day = weekDayMap[DayOfWeek.FRIDAY]!!,
         departures = departures
     )
 
     fun saturday(builder: DepartureDayScope.() -> Unit) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 13),
+        day = weekDayMap[DayOfWeek.SATURDAY]!!,
         builder = builder
     )
 
     fun saturday(vararg departures: String) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 13),
+        day = weekDayMap[DayOfWeek.SATURDAY]!!,
         departures = departures
     )
 
     fun sunday(builder: DepartureDayScope.() -> Unit) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 14),
+        day = weekDayMap[DayOfWeek.SUNDAY]!!,
         builder = builder
     )
 
     fun sunday(vararg departures: String) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 14),
+        day = weekDayMap[DayOfWeek.SUNDAY]!!,
         departures = departures
     )
 
     fun monday(builder: DepartureDayScope.() -> Unit) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 15),
+        day = weekDayMap[DayOfWeek.MONDAY]!!,
         builder = builder
     )
 
     fun monday(vararg departures: String) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 15),
+        day = weekDayMap[DayOfWeek.MONDAY]!!,
         departures = departures
     )
 
     fun tuesday(builder: DepartureDayScope.() -> Unit) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 16),
+        day = weekDayMap[DayOfWeek.TUESDAY]!!,
         builder = builder
     )
 
     fun tuesday(vararg departures: String) = departureDay(
-        day = LocalDate(2022, Month.AUGUST, 16),
+        day = weekDayMap[DayOfWeek.TUESDAY]!!,
         departures = departures
     )
 
@@ -280,6 +281,43 @@ data class StartAndStep(
 
 
 private val timeZoneStoppelmarkt = TimeZone.of("Europe/Berlin")
+private val currentYear by lazy {
+    Clock.System.now()
+        .toLocalDateTime(timeZoneStoppelmarkt)
+        .year
+}
+private val weekDayMap by lazy {
+    val days = calculateDatesForYear(currentYear)
+    mapOf(
+        DayOfWeek.THURSDAY to days.first { it.dayOfWeek == DayOfWeek.THURSDAY },
+        DayOfWeek.FRIDAY to days.first { it.dayOfWeek == DayOfWeek.FRIDAY },
+        DayOfWeek.SATURDAY to days.first { it.dayOfWeek == DayOfWeek.SATURDAY },
+        DayOfWeek.SUNDAY to days.first { it.dayOfWeek == DayOfWeek.SUNDAY },
+        DayOfWeek.MONDAY to days.first { it.dayOfWeek == DayOfWeek.MONDAY },
+        DayOfWeek.TUESDAY to days.first { it.dayOfWeek == DayOfWeek.TUESDAY },
+    )
+}
+
+// TODO: Reuse SeasonProvider for this
+private fun calculateDatesForYear(year: Int): List<LocalDate> {
+    // On 15th of august it's always Stoppelmarkt.
+    // If 15th is a wednesday, the 16th will be first day of Stoppelmarkt
+    val anchorDay = LocalDate(year, Month.AUGUST, 15)
+    val anchorOffset = when (anchorDay.dayOfWeek) {
+        DayOfWeek.MONDAY -> -4
+        DayOfWeek.TUESDAY -> -5
+        DayOfWeek.WEDNESDAY -> 1
+        DayOfWeek.THURSDAY -> 0
+        DayOfWeek.FRIDAY -> -1
+        DayOfWeek.SATURDAY -> -2
+        DayOfWeek.SUNDAY -> -3
+    }
+
+    return (anchorOffset..anchorOffset + 5).map { offset ->
+        anchorDay.plus(offset, DateTimeUnit.DAY)
+    }
+}
+
 private const val firstHourOfNextDay = 6
 
 val Int.Minutes get() = toDuration(DurationUnit.MINUTES)

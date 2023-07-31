@@ -154,6 +154,21 @@ class FillDatabase : KoinComponent {
                             lng = null,
                             lat = null,
                             isDestination = it.isDestination,
+                            isReturn = false,
+                            annotateAsNew = it.annotateAsNew,
+                        )
+                    )
+                }
+                route.returnStations.forEach {
+                    database.stationQueries.insert(
+                        Station(
+                            slug = it.id,
+                            route = route.id,
+                            title = it.title,
+                            lng = null,
+                            lat = null,
+                            isDestination = it.isDestination,
+                            isReturn = true,
                             annotateAsNew = it.annotateAsNew,
                         )
                     )
@@ -163,7 +178,7 @@ class FillDatabase : KoinComponent {
 
         database.departure_dayQueries.transaction {
             routes.forEach { route ->
-                route.stations.forEach { station ->
+                route.allStations().forEach { station ->
                     station.departures.forEach {
                         database.departure_dayQueries.insert(
                             Departure_day(
@@ -179,7 +194,7 @@ class FillDatabase : KoinComponent {
         }
         database.departureQueries.transaction {
             routes.forEach { route ->
-                route.stations.forEach { station ->
+                route.allStations().forEach { station ->
                     station.departures.forEach { day ->
                         day.departures.forEach {
                             database.departureQueries.insert(
@@ -197,7 +212,7 @@ class FillDatabase : KoinComponent {
 
         database.priceQueries.transaction {
             routes.forEach { route ->
-                route.stations.forEach { station ->
+                route.allStations().forEach { station ->
                     station.prices.forEach {
                         database.priceQueries.insert(
                             Price(
@@ -205,6 +220,7 @@ class FillDatabase : KoinComponent {
                                 type = when (it.label) {
                                     PriceLabel.Adult -> PriceType.Adult
                                     is PriceLabel.Children -> PriceType.Child
+                                    is PriceLabel.Reduced -> PriceType.Reduced
                                 },
                                 amount = it.amountInCents.toLong(),
                                 minAge = (it.label as? PriceLabel.Children)?.minAge?.toLong(),
@@ -218,3 +234,6 @@ class FillDatabase : KoinComponent {
         }
     }
 }
+
+private fun com.jonasgerdes.stoppelmap.transportation.model.Route.allStations() =
+    (stations + returnStations)

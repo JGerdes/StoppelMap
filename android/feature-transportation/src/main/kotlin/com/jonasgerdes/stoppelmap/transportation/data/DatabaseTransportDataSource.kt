@@ -15,6 +15,7 @@ import com.jonasgerdes.stoppelmap.transportation.model.Station
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import timber.log.Timber
 
 class DatabaseTransportDataSource(
     private val routeQueries: RouteQueries,
@@ -52,10 +53,10 @@ class DatabaseTransportDataSource(
             Route(
                 id = route.slug,
                 title = route.title,
-                stations = stationQueries.getOriginByRoute(route.slug)
-                    .executeAsList()
+                stations = (stationQueries.getOriginByRoute(route.slug).executeAsList()
+                        + stationQueries.getDestinationByRoute(route.slug).executeAsList())
                     .map { mapStation(it) },
-                returnStations = stationQueries.getDestinationByRoute(route.slug)
+                returnStations = stationQueries.getReturnByRoute(route.slug)
                     .executeAsList()
                     .map { mapStation(it) },
                 type = route.type,
@@ -65,7 +66,9 @@ class DatabaseTransportDataSource(
 
     override fun getStationById(id: String): Flow<Station> =
         stationQueries.getBySlug(id).asFlow().map {
-            mapStation(it.executeAsOne())
+            mapStation(it.executeAsOne()).also {
+                Timber.d(it.toString())
+            }
         }
 
     private fun mapStation(station: com.jonasgerdes.stoppelmap.transportation.Station) =
@@ -90,6 +93,8 @@ class DatabaseTransportDataSource(
                         amountInCents = it.amount.toInt()
                     )
                 },
+            isDestination = station.isDestination,
+            annotateAsNew = station.annotateAsNew,
             departures = departureDayQueries.getByStation(station.slug)
                 .executeAsList()
                 .map {
