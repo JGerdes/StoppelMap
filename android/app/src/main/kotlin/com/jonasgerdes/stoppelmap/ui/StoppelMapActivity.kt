@@ -184,6 +184,11 @@ class StoppelMapActivity : ComponentActivity() {
                                 Screen.TransportRoute.create(routeId = it)
                             )
                         },
+                        onStationTap = {
+                            navController.navigate(
+                                Screen.TransportStation.create(stationId = it)
+                            )
+                        },
                         Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)

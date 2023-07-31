@@ -11,6 +11,8 @@ import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.StarOutline
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,7 +55,7 @@ fun StationScreen(
         Column(
             modifier = modifier
         ) {
-            SmallTopAppBar(
+            TopAppBar(
                 title = {
                     Text(
                         text = stationState.stationTitle,
@@ -70,7 +72,17 @@ fun StationScreen(
                             stringResource(id = R.string.transportation_station_topbar_navigateBack_contentDescription)
                         )
                     }
-                }
+                },
+                actions = {
+                    IconButton(onClick = viewModel::toggleFavourite) {
+                        Icon(
+                            if (stationState.isFavourite) Icons.Rounded.Star
+                            else Icons.Rounded.StarOutline,
+                            if (stationState.isFavourite) stringResource(R.string.transportation_station_topbar_action_unfavourite_contentDescription)
+                            else stringResource(R.string.transportation_station_topbar_action_favourite_contentDescription)
+                        )
+                    }
+                },
             )
             if (stationState.prices.isNotEmpty()) {
                 OutlinedCard(

@@ -5,6 +5,7 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.route
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -59,8 +60,9 @@ fun RouteScreen(
         Column(
             modifier = modifier
         ) {
-            SmallTopAppBar(
+            TopAppBar(
                 title = { Text(text = routeState.routeDetails.title) },
+                modifier = Modifier.elevationWhenScrolled(stationListState),
                 navigationIcon = {
                     IconButton(
                         onClick = { onNavigateBack() }
@@ -70,9 +72,7 @@ fun RouteScreen(
                             stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
                         )
                     }
-                },
-                modifier = Modifier.elevationWhenScrolled(stationListState)
-            )
+                })
             val stations = routeState.routeDetails.stations
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
@@ -153,7 +153,7 @@ fun RouteScreen(
                             is BusRouteDetails.Station.Stop -> {
                                 StopStationCard(
                                     station = station,
-                                    Modifier
+                                    modifier = Modifier
                                         .weight(1f)
                                         .padding(vertical = 8.dp)
                                         .clickable {
@@ -208,6 +208,7 @@ fun RouteScreen(
 @Composable
 fun StopStationCard(
     station: BusRouteDetails.Station.Stop,
+    highlight: Boolean = false,
     modifier: Modifier = Modifier
 ) {
     val departureDateTimeFormatter = remember(Locale.getDefault()) {
@@ -220,7 +221,10 @@ fun StopStationCard(
         DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault())
     }
 
-    Card(modifier = modifier) {
+    Card(
+        border = if (highlight) BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary) else null,
+        modifier = modifier,
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()

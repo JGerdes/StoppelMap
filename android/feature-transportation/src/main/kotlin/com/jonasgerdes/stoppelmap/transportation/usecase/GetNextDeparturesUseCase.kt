@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.transportation.usecase
 
+import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import com.jonasgerdes.stoppelmap.transportation.model.Departure
 import kotlinx.datetime.DateTimeUnit
@@ -9,9 +10,14 @@ import kotlinx.datetime.plus
 import kotlinx.datetime.toJavaLocalDateTime
 import kotlin.time.toKotlinDuration
 
-class GetNextDeparturesUseCase {
+class GetNextDeparturesUseCase(
+    private val clockProvider: ClockProvider
+) {
 
-    operator fun invoke(departures: List<Departure>, now: LocalDateTime) = departures
+    operator fun invoke(
+        departures: List<Departure>,
+        now: LocalDateTime = clockProvider.nowAsLocalDateTime()
+    ) = departures
         .filter { it.time > now }
         .sortedBy { it.time }
         .take(3)

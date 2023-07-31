@@ -2,6 +2,7 @@
 <resources>
 
     <string name="transportation_overview_topbar_title">An- und Abreise</string>
+    <string name="transportation_overview_section_favourite">Deine Stationen</string>
     <string name="transportation_overview_section_bus">mit dem Bus</string>
     <string name="transportation_overview_card_via">über</string>
 
@@ -17,6 +18,8 @@
     <string name="transportation_route_return_station_from">ab %1$s</string>
 
     <string name="transportation_station_topbar_navigateBack_contentDescription">Zurück</string>
+    <string name="transportation_station_topbar_action_favourite_contentDescription">Als Favorit merken</string>
+    <string name="transportation_station_topbar_action_unfavourite_contentDescription">Als Favorit entfernen</string>
     <string name="transportation_station_prices_title">Preise</string>
     <string name="transportation_station_prices_adult">Erwachsene</string>
     <string name="transportation_station_prices_children">Kinder</string>

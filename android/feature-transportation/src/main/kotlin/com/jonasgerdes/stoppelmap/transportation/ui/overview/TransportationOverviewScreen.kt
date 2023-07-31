@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DirectionsBus
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,12 +25,15 @@ import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel.BusRoutesState
+import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel.FavouriteState
+import com.jonasgerdes.stoppelmap.transportation.ui.route.StopStationCard
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("NewApi")
 @Composable
 fun TransportationOverviewScreen(
     onRouteTap: (routeId: String) -> Unit,
+    onStationTap: (stationId: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TransportationOverviewViewModel = koinViewModel(),
 ) {
@@ -49,6 +53,36 @@ fun TransportationOverviewScreen(
             state = listState,
             modifier = Modifier.fillMaxSize()
         ) {
+            val favouriteState = state.favouriteState
+            if (favouriteState is FavouriteState.Loaded && favouriteState.favouriteStations.isNotEmpty()) {
+                item {
+                    ListLineHeader(Modifier.fillMaxWidth()) {
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(Icons.Rounded.Star, contentDescription = null)
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Text(
+                                text = stringResource(R.string.transportation_overview_section_favourite),
+                                style = MaterialTheme.typography.titleLarge
+                            )
+                        }
+                    }
+                }
+                items(
+                    items = favouriteState.favouriteStations,
+                    key = { it.id },
+                    contentType = { ItemTypes.FavouriteStation }) { station ->
+                    StopStationCard(
+                        station = station,
+                        highlight = true,
+                        modifier = Modifier.clickable {
+                            onStationTap(station.id)
+                        }
+                    )
+                }
+            }
             when (val busRoutesState = state.busRoutesViewState) {
                 is BusRoutesState.Loading -> Unit
                 is BusRoutesState.Loaded -> {
@@ -109,5 +143,6 @@ fun TransportationOverviewScreen(
 
 
 enum class ItemTypes {
-    BusRoute
+    FavouriteStation,
+    BusRoute,
 }

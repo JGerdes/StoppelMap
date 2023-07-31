@@ -21,4 +21,5 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.accompanist.pager)
     implementation(libs.sqldelight.coroutines)
+    implementation(libs.androidx.datastore)
 }
