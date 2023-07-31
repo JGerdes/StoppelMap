@@ -100,7 +100,7 @@ fun StationScreen(
                         }
                         Spacer(modifier = Modifier.size(8.dp))
                         Text(
-                            text = stringResource(R.string.transportation_station_prices_hint_9_euro_ticket),
+                            text = stringResource(R.string.transportation_station_prices_hint_deutschland_ticket),
                             style = MaterialTheme.typography.labelMedium
                         )
 
