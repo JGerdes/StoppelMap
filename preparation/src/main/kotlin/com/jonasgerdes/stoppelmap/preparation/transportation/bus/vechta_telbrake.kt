@@ -12,22 +12,22 @@ internal fun vechtaTelbrake() = createBusRoute {
 
     addStation("Telbrake, Fragge") {
         thursday {
-            "18:26" every 120.Minutes until "00:26"
+            "18:26" every 60.Minutes until "02:26"
         }
         friday {
-            "15:26" every 120.Minutes until "01:26"
+            "15:26" every 60.Minutes until "02:26"
         }
         saturday {
-            "15:26" every 120.Minutes until "01:26"
+            "15:26" every 60.Minutes until "02:26"
         }
         sunday {
-            "15:26" every 120.Minutes until "21:26"
+            "15:26" every 60.Minutes until "22:26"
         }
         monday {
-            "08:26" every 120.Minutes until "00:26"
+            "08:26" every 60.Minutes until "02:26"
         }
         tuesday {
-            "15:26" every 120.Minutes until "21:26"
+            "15:26" every 60.Minutes until "20:26"
         }
     }
     addStation("Telbrake, Langer Damm", minutesAfterPrevious = 1)
@@ -35,7 +35,7 @@ internal fun vechtaTelbrake() = createBusRoute {
     addStation(
         "Telbrake, Telbraker Straße/Graf-von-Stauffenberg-Straße",
         minutesAfterPrevious = 1
-    ) { isNew = true }
+    )
     addStation("Telbrake, Hoher Esch", minutesAfterPrevious = 1)
     addStation("Oythe, Treffpunkt", minutesAfterPrevious = 1)
     addStation("Stoppelmarkt", minutesAfterPrevious = 4) { isDestination = true }
@@ -43,22 +43,23 @@ internal fun vechtaTelbrake() = createBusRoute {
     addReturnStation {
         title = "Stoppelmarkt"
         thursday {
-            "20:20" every 120.Minutes until "00:20"
+            "18:20" every 60.Minutes until "02:20"
         }
         friday {
-            "17:20" every 120.Minutes until "01:20"
+            "15:20" every 60.Minutes until "02:20"
         }
         saturday {
-            "17:20" every 120.Minutes until "01:20"
+            "15:20" every 60.Minutes until "02:20"
         }
         sunday {
-            "17:20" every 120.Minutes until "21:20"
+            "15:20" every 60.Minutes until "22:20"
         }
         monday {
-            "10:20" every 120.Minutes until "00:20"
+            "10:20" every 60.Minutes until "02:20"
         }
         tuesday {
-            "17:20" every 120.Minutes until "19:20"
+            "17:20" every 60.Minutes until "20:20"
+            departure("22:30")
         }
     }
 }

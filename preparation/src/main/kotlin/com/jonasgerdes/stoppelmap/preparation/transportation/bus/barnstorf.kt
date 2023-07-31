@@ -12,8 +12,8 @@ internal fun barnstorf() = createBusRoute {
         prices(500, 250, childrenAgeRange = 6 to 11)
 
         friday("20:00", "20:30", "21:00", "21:30")
-        saturday("16:30", "20:00", "20:30", "21:00", "21:15", "21:30")
-        monday("09:30", "10:30", "11:30", "18:30")
+        saturday("16:30", "20:00", "20:30", "21:00", "21:30")
+        monday("10:30", "11:30", "18:30")
     }
     addStation("Barnstorf, Walsen", minutesAfterPrevious = 3) {
         prices(500, 250, childrenAgeRange = 6 to 11)
@@ -27,14 +27,14 @@ internal fun barnstorf() = createBusRoute {
     addStation("Varenesch", minutesAfterPrevious = 1) {
         prices(400, 200, childrenAgeRange = 6 to 11)
     }
-    addStation("Goldenstedt, Heide", minutesAfterPrevious = 1) {
+    addStation("Goldenstedt, Heide", minutesAfterPrevious = 3) {
         prices(400, 200, childrenAgeRange = 6 to 11)
     }
     addStation("Lutten, Kirche") {
         prices(300, 150, childrenAgeRange = 6 to 11)
         friday("20:45", "21:45")
-        saturday("16:45", "20:45", "21:30", "21:45")
-        monday("09:45", "10:45", "11:45", "18:45")
+        saturday("16:45", "20:45", "21:45")
+        monday("10:45", "11:45", "18:45")
     }
     addStation("Stoppelmarkt") {
         isDestination = true

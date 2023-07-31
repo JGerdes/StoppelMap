@@ -7,10 +7,6 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun diepholz() = createBusRoute {
     title = "Diepholz"
-    additionalInfo = "Die Haltstelle Diepholz-Krankenhaus kann aufgrund einer Baustelle " +
-            "in diesem Jahr leider nicht bedient werden. " +
-            "Bitte nutzen Sie alternativ die Haltestellen Diepholz-Bahnhof " +
-            "oder Diepholz-Marktplatz."
 
     addStation("Diepholz, Schulzentrum") {
         prices(500, 370)
@@ -24,7 +20,8 @@ internal fun diepholz() = createBusRoute {
     addStation("Diepholz, Freibad", minutesAfterPrevious = 1) { prices(500, 370) }
     addStation("Diepholz, katholische Kirche", minutesAfterPrevious = 2) { prices(500, 370) }
     addStation("Diepholz, Bahnhof", minutesAfterPrevious = 2) { prices(500, 370) }
-    addStation("Diepholz, Marktplatz", minutesAfterPrevious = 4) { prices(500, 370) }
+    addStation("Diepholz, Krankenhaus", minutesAfterPrevious = 2) { prices(500, 370) }
+    addStation("Diepholz, Marktplatz", minutesAfterPrevious = 2) { prices(500, 370) }
     addStation("Diepholz, Diemastraße") {
         prices(500, 370)
         friday("23:14")
@@ -42,11 +39,11 @@ internal fun diepholz() = createBusRoute {
     addStation("Jacobidrebber, Friedhof", minutesAfterPrevious = 2) { prices(480, 350) }
     addStation("Mariendrebber, Halfbrodt", minutesAfterPrevious = 2) { prices(480, 350) }
     addStation("Aschen, Milbe", minutesAfterPrevious = 5) { prices(480, 350) }
-    addStation("Schobrink, Paradiek", minutesAfterPrevious = 6) { prices(350, 260) }
+    addStation("Schobrink, Paradiek", minutesAfterPrevious = 6) { prices(450, 330) }
     addStation("Stoppelmarkt") {
         isDestination = true
-        friday("19:35", "20:35", "20:35", "21:35", "21:35", "22:35", "22:35", "23:50")
-        saturday("19:35", "20:35", "20:35", "21:35", "21:35", "22:35", "22:35", "23:50")
+        friday("19:35", "20:35", "21:35", "22:35", "22:35", "23:50")
+        saturday("19:35", "20:35", "21:35", "22:35", "22:35", "23:50")
         monday("09:20", "10:50", "13:50", "15:35", "18:50", "20:35")
     }
 

@@ -7,10 +7,6 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun langfoerden() = createBusRoute {
     title = "Langförden"
-    additionalInfo =
-        "Die Haltstellen Langförden-Mühle und Langförden-Scheele können aufgrund " +
-                "einer Baustelle in diesem Jahr leider nicht bedient werden. " +
-                "Bitte nutzen Sie die Haltestelle Langförden-Erzeugergroßmarkt."
 
     addStation("Deindrup, Kirschenweg") {
         prices(330, 250)
@@ -28,12 +24,20 @@ internal fun langfoerden() = createBusRoute {
     addStation("Spreda, Moormann", minutesAfterPrevious = 2) { prices(330, 250) }
     addStation("Langförden, Laurentiusplatz", minutesAfterPrevious = 5) { prices(300, 220) }
     addStation("Langförden, Erzeugergroßmarkt", minutesAfterPrevious = 2) { prices(300, 220) }
-    addStation("Holtrup, Schule", minutesAfterPrevious = 5) { prices(260, 180) }
-    addStation("Stoppelmarkt (»HofGisela«)", minutesAfterPrevious = 7) { isDestination = true }
+    addStation("Langförden, Mühle", minutesAfterPrevious = 3) {
+        prices(300, 220)
+        isNew = true
+    }
+    addStation("Langförden, Scheele", minutesAfterPrevious = 2) {
+        prices(300, 220)
+        isNew = true
+    }
+    addStation("Holtrup, Schule", minutesAfterPrevious = 3) { prices(300, 220) }
+    addStation("Stoppelmarkt („Hof Gisela“)", minutesAfterPrevious = 7) { isDestination = true }
 
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        title = "Stoppelmarkt („Hof Gisela“)"
         thursday("00:00", "01:00")
         friday("19:30", "22:00", "01:00", "02:00", "03:00", "04:00", "05:00")
         saturday("19:30", "22:00", "01:00", "02:00", "03:00", "04:00", "05:00")
@@ -48,7 +52,7 @@ internal fun langfoerden() = createBusRoute {
             "23:00",
             "00:00",
             "01:00",
-            "02:00"
+            "02:00",
         )
         thursday("19:30", "23:30")
     }

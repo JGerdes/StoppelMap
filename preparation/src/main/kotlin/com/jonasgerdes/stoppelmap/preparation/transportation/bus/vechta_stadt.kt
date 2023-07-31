@@ -12,23 +12,23 @@ internal fun vechtaStadt() = createBusRoute {
 
     addStation("Sgundek") {
         thursday {
-            "18:30" every 15.Minutes until "02:45"
+            "18:00" every 30.Minutes until "02:30"
         }
         friday {
             "15:00" every 30.Minutes until "21:00"
-            "21:00" every 15.Minutes until "03:45"
+            "21:00" every 20.Minutes until "03:40"
         }
         saturday {
             "15:00" every 30.Minutes until "21:00"
-            "21:00" every 15.Minutes until "03:45"
+            "21:00" every 20.Minutes until "03:40"
         }
         sunday {
             "13:00" every 60.Minutes until "00:00"
         }
         monday {
-            "08:00" every 30.Minutes until "10:30"
-            "10:30" every 15.Minutes until "21:00"
-            "21:00" every 30.Minutes until "02:30"
+            "08:00" every 30.Minutes until "11:00"
+            "11:00" every 20.Minutes until "15:00"
+            "15:00" every 30.Minutes until "01:30"
         }
         tuesday {
             "14:00" every 60.Minutes until "20:00"
@@ -47,24 +47,25 @@ internal fun vechtaStadt() = createBusRoute {
     addReturnStation {
         title = "Stoppelmarkt"
         thursday {
-            "19:00" every 15.Minutes until "03:00"
+            "18:15" every 30.Minutes until "02:45"
         }
         friday {
-            "15:15" every 30.Minutes until "21:15"
-            "21:15" every 15.Minutes until "04:00"
+            "15:15" every 30.Minutes until "20:45"
+            "21:00" every 20.Minutes until "04:00"
             laterDeparturesOnDemand = true
         }
         saturday {
-            "15:15" every 30.Minutes until "21:15"
-            "21:15" every 15.Minutes until "04:00"
+            "15:15" every 30.Minutes until "20:45"
+            "21:00" every 20.Minutes until "04:00"
             laterDeparturesOnDemand = true
         }
         sunday {
             "13:30" every 60.Minutes until "00:30"
         }
         monday {
-            "10:30" every 15.Minutes until "21:30"
-            "21:30" every 30.Minutes until "03:00"
+            departures("10:15", "10:45")
+            "11:20" every 20.Minutes until "15:00"
+            "15:15" every 30.Minutes until "01:45"
         }
         tuesday {
             "14:30" every 60.Minutes until "20:30"

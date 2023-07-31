@@ -13,12 +13,12 @@ internal fun bakumEssen() = createBusRoute {
         saturday("14:16")
     }
     addStation("Essen, Markt", minutesAfterPrevious = 5) { prices(570, 420) }
-    addStation("Uptloh, Tellmann", minutesAfterPrevious = 3) { prices(570, 420) }
+    addStation("Uptloh, Tellmann", minutesAfterPrevious = 7) { prices(570, 420) }
     addStation("Bevern, Feuerwehr", minutesAfterPrevious = 1) { prices(530, 370) }
     addStation("Addrup, Wernsing", minutesAfterPrevious = 2) { prices(530, 370) }
     addStation("Lüsche, Büter", minutesAfterPrevious = 2) { prices(530, 370) }
     addStation("Carum, Ort") {
-        prices(480, 310)
+        prices(530, 370)
         thursday("19:30")
         friday("18:00", "19:30")
         saturday("18:00", "19:30")
@@ -46,7 +46,7 @@ internal fun bakumEssen() = createBusRoute {
         prices(370, 270)
         thursday("19:55")
         friday("18:25", "19:55")
-        saturday("13:00", "14:43", "18:25", "19:55")
+        saturday("14:43", "18:25", "19:55")
         sunday("15:25", "18:25")
         monday("08:40", "10:25", "12:25", "14:25", "18:25")
         tuesday("18:25")
@@ -57,7 +57,7 @@ internal fun bakumEssen() = createBusRoute {
         prices(350, 220)
         thursday("20:00")
         friday("18:30", "20:00", "21:00", "22:00", "23:00")
-        saturday("13:05", "14:47", "18:30", "20:00", "21:00", "22:00", "23:00")
+        saturday("14:47", "18:30", "20:00", "21:00", "22:00", "23:00")
         sunday("15:30", "18:30")
         monday("08:45", "10:30", "12:30", "14:30", "18:30")
         tuesday("18:30")
@@ -71,7 +71,7 @@ internal fun bakumEssen() = createBusRoute {
         isDestination = true
         thursday("20:20")
         friday("18:50", "20:20", "21:20", "22:20", "23:20")
-        saturday("13:25", "15:04", "18:50", "20:20", "21:20", "22:20", "23:20")
+        saturday("15:04", "18:50", "20:20", "21:20", "22:20", "23:20")
         sunday("15:50", "18:50")
         monday("09:05", "10:50", "12:50", "14:50", "18:50")
         tuesday("18:50")
@@ -93,6 +93,6 @@ internal fun bakumEssen() = createBusRoute {
         saturday("19:00", "00:30", "01:30", "02:30", "03:30", "04:30")
         sunday("19:00", "23:00")
         monday("13:00", "17:00", "20:30", "22:30", "00:30", "02:30")
-        tuesday("09:00", "22:30")
+        tuesday("19:00", "22:30")
     }
 }

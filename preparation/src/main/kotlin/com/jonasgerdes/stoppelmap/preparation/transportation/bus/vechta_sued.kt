@@ -15,21 +15,19 @@ internal fun vechtaSued() = createBusRoute {
             "18:00" every 60.Minutes until "02:00"
         }
         friday {
-            "15:00" every 60.Minutes until "22:00"
-            "22:00" every 30.Minutes until "02:00"
+            "15:00" every 60.Minutes until "02:00"
         }
         saturday {
-            "15:00" every 60.Minutes until "22:00"
-            "22:00" every 30.Minutes until "02:00"
+            "15:00" every 60.Minutes until "02:00"
         }
         sunday {
-            "14:00" every 120.Minutes until "22:00"
+            "15:00" every 60.Minutes until "22:00"
         }
         monday {
             "08:00" every 60.Minutes until "02:00"
         }
         tuesday {
-            "14:00" every 120.Minutes until "20:00"
+            "15:00" every 60.Minutes until "20:00"
         }
     }
     addStation("Tannenweg, Toncoole", minutesAfterPrevious = 1)
@@ -42,26 +40,22 @@ internal fun vechtaSued() = createBusRoute {
     addReturnStation {
         title = "Stoppelmarkt"
         thursday {
-            "18:40" every 60.Minutes until "02:00"
+            "18:40" every 60.Minutes until "02:40"
         }
         friday {
-            "15:40" every 60.Minutes until "21:40"
-            "21:40" every 30.Minutes until "03:10"
-            laterDeparturesOnDemand = true
+            "15:40" every 60.Minutes until "02:40"
         }
         saturday {
-            "15:40" every 60.Minutes until "21:40"
-            "21:40" every 30.Minutes until "03:10"
-            laterDeparturesOnDemand = true
+            "15:40" every 60.Minutes until "02:40"
         }
         sunday {
-            "14:40" every 120.Minutes until "22:40"
+            "15:40" every 60.Minutes until "22:40"
         }
         monday {
             "10:40" every 60.Minutes until "02:40"
         }
         tuesday {
-            "14:30" every 60.Minutes until "20:30"
+            "15:40" every 60.Minutes until "20:40"
             departures("23:00")
         }
     }
