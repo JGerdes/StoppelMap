@@ -7,7 +7,6 @@ package com.jonasgerdes.stoppelmap.home.ui
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,11 +23,14 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -40,6 +42,7 @@ import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
+import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
 import com.jonasgerdes.stoppelmap.update.ui.components.AppUpdateCard
 import org.koin.androidx.compose.koinViewModel
@@ -55,29 +58,33 @@ fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+    val listState = rememberLazyListState()
 
-    Column(
-        modifier = modifier
-    ) {
-        val listState = rememberLazyListState()
-        CenterAlignedTopAppBar(
-            title = { Text(text = stringResource(id = R.string.home_topbar_title)) },
-            actions = {
-                IconButton(onClick = onSettingsOptionTap) {
-                    Icon(
-                        Icons.Rounded.Settings,
-                        stringResource(R.string.home_toolbar_action_settings_contentDescription)
-                    )
-                }
-            },
-            modifier = Modifier
-                .elevationWhenScrolled(listState)
-        )
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text(text = stringResource(id = R.string.home_topbar_title)) },
+                actions = {
+                    IconButton(onClick = onSettingsOptionTap) {
+                        Icon(
+                            Icons.Rounded.Settings,
+                            stringResource(R.string.home_toolbar_action_settings_contentDescription)
+                        )
+                    }
+                },
+                scrollBehavior = scrollBehavior,
+                modifier = Modifier.elevationWhenScrolled(listState)
+            )
+        },
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+    ) { paddingValues ->
         LazyColumn(
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = defaultContentPadding(paddingValues),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             state = listState,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
         ) {
             if (state.updateState !is UpdateState.Hidden) {
                 item {
@@ -166,6 +173,7 @@ fun HomeScreen(
         }
     }
 }
+
 
 @Composable
 fun CountdownCurrentSeasonIsOverHint(modifier: Modifier, content: @Composable () -> Unit) {

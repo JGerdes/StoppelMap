@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -30,6 +31,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
+import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import kotlinx.datetime.toJavaLocalDateTime
@@ -53,30 +55,34 @@ fun RouteScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Timber.d("new state: ${(state.routeState as? RouteViewModel.RouteState.Loaded)?.routeDetails?.stations?.firstOrNull()}")
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+    val listState = rememberLazyListState()
 
     val routeState = state.routeState
     if (routeState is RouteViewModel.RouteState.Loaded) {
-        val stationListState = rememberLazyListState()
-        Column(
-            modifier = modifier
-        ) {
-            TopAppBar(
-                title = { Text(text = routeState.routeDetails.title) },
-                modifier = Modifier.elevationWhenScrolled(stationListState),
-                navigationIcon = {
-                    IconButton(
-                        onClick = { onNavigateBack() }
-                    ) {
-                        Icon(
-                            Icons.Rounded.ArrowBack,
-                            stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
-                        )
-                    }
-                })
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = routeState.routeDetails.title) },
+                    scrollBehavior = scrollBehavior,
+                    modifier = Modifier.elevationWhenScrolled(listState),
+                    navigationIcon = {
+                        IconButton(
+                            onClick = { onNavigateBack() }
+                        ) {
+                            Icon(
+                                Icons.Rounded.ArrowBack,
+                                stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
+                            )
+                        }
+                    })
+            },
+            modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+        ) { paddingValues ->
             val stations = routeState.routeDetails.stations
             LazyColumn(
-                contentPadding = PaddingValues(16.dp),
-                state = stationListState,
+                contentPadding = defaultContentPadding(paddingValues),
+                state = listState,
                 modifier = Modifier.fillMaxSize()
             ) {
                 routeState.routeDetails.additionalInfo?.let { additionalInfo ->
