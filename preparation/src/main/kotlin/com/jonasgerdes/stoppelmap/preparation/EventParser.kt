@@ -14,9 +14,10 @@ import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import java.io.File
 import java.time.LocalDateTime
+import java.time.Month
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
 
 private val eventJsonFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
@@ -122,17 +123,19 @@ fun writeEventsToFile(descriptionFolder: File, eventsFile: File, marquees: List<
             file.writeText(marquee.description)
         }
 
-        events += marquee.events?.mapIndexed { index, event ->
-            JsonEvent(
-                name = event.title,
-                start = event.start.format(eventJsonFormat),
-                end = null,
-                description = event.description,
-                uuid = stallSlug + event.title.asSlug() + index,
-                locationUuid = stallSlug,
-                locationName = marquee.title
-            )
-        } ?: emptyList()
+        events += marquee.events
+            ?.filter { it.start.year == 2023 && it.start.month == Month.AUGUST && it.start.dayOfMonth in 9..15 }
+            ?.mapIndexed { index, event ->
+                JsonEvent(
+                    name = event.title,
+                    start = event.start.format(eventJsonFormat),
+                    end = null,
+                    description = event.description,
+                    uuid = stallSlug + event.title.asSlug() + index,
+                    locationUuid = stallSlug,
+                    locationName = marquee.title
+                )
+            } ?: emptyList()
     }
 
     val wrapper = EventWrapper(events)
