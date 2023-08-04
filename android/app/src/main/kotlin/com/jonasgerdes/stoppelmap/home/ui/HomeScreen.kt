@@ -105,17 +105,6 @@ fun HomeScreen(
                     )
                 }
             }
-            when (val nextOfficialEvent = state.nextOfficialEventState) {
-                GetNextOfficialEventUseCase.Result.None -> Unit
-                is GetNextOfficialEventUseCase.Result.Some -> {
-                    item {
-                        NextOfficialEventCard(
-                            event = nextOfficialEvent.event,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                }
-            }
             when (val countDownState = state.openingCountDownState) {
                 is HomeViewModel.CountDownState.CountingDown -> item {
                     if (countDownState.showCurrentSeasonIsOverHint) {
@@ -139,6 +128,17 @@ fun HomeScreen(
 
                 HomeViewModel.CountDownState.Loading -> Unit
                 HomeViewModel.CountDownState.Over -> Unit
+            }
+            when (val nextOfficialEvent = state.nextOfficialEventState) {
+                GetNextOfficialEventUseCase.Result.None -> Unit
+                is GetNextOfficialEventUseCase.Result.Some -> {
+                    item {
+                        NextOfficialEventCard(
+                            event = nextOfficialEvent.event,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
             }
             when (state.countdownWidgetSuggestionState) {
                 HomeViewModel.CountDownWidgetSuggestionState.Hidden -> Unit

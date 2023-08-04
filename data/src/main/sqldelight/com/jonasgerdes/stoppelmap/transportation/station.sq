@@ -16,7 +16,7 @@ INSERT INTO station(slug, route, title, lng, lat, isDestination, isReturn, annot
 VALUES ?;
 
 getOriginStationTitlesByRoute:
-SELECT title FROM station WHERE route = :route AND isDestination = 0;
+SELECT title FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 0;
 
 getOriginByRoute:
 SELECT * FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 0;

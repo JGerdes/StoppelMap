@@ -2,7 +2,7 @@ package com.jonasgerdes.stoppelmap.home.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -20,9 +21,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.data.Event
-import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRowLegacy
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
+import kotlinx.datetime.toJavaLocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
@@ -76,21 +77,30 @@ private fun EventCard(
                         .aspectRatio(2.4f),
                 )
             }
-            Box(modifier = Modifier.padding(16.dp)) {
-                val formatter =
-                    remember {
-                        DateTimeFormatter.ofPattern(
-                            "EEE, HH:mm",
-                            Locale.GERMAN
-                        )
-                    }
-                EventRowLegacy(
-                    event = event,
-                    timeFormatter = formatter,
-                    showDivider = false,
-                    modifier = modifier
-                        .fillMaxWidth()
+            val timeFormatter = remember {
+                DateTimeFormatter.ofPattern(
+                    "EEE, HH:mm",
+                    Locale.GERMAN
                 )
+            }
+            Column(
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                modifier = Modifier.padding(16.dp)
+            ) {
+                event.location?.let {
+                    Text(text = it, style = MaterialTheme.typography.labelMedium)
+                }
+                Text(
+                    text = event.start.toJavaLocalDateTime().format(timeFormatter),
+                    style = MaterialTheme.typography.labelLarge
+                )
+                Text(text = event.name, style = MaterialTheme.typography.titleLarge)
+                event.description?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
             }
         }
     }

@@ -125,7 +125,7 @@ fun TransportationOverviewScreen(
                         ) {
                             Text(
                                 text = route.title,
-                                style = MaterialTheme.typography.titleMedium
+                                style = MaterialTheme.typography.bodyLarge
                             )
                             Spacer(modifier = Modifier.size(8.dp))
                             Text(

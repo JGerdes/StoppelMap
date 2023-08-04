@@ -23,6 +23,9 @@ class GetNextOfficialEventUseCase(
             val nextEvent = eventRepository.getAllOfficialEvents()
                 .filter { it.start > adjustedNow }
                 .minByOrNull { it.start }
+                ?.takeIf {
+                    clockProvider.toInstant(it.start) - now < 24.toDuration(DurationUnit.HOURS)
+                }
 
             if (nextEvent == null) {
                 emit(Result.None)
