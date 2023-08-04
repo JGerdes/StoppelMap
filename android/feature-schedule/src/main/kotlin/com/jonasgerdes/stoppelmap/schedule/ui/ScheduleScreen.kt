@@ -1,37 +1,34 @@
-@file:OptIn(
-    ExperimentalMaterial3Api::class,
-    ExperimentalPagerApi::class,
-)
-
 package com.jonasgerdes.stoppelmap.schedule.ui
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabPosition
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -39,100 +36,128 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.schedule.R
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
-import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
+import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
+import com.jonasgerdes.stoppelmap.theme.util.MeasureUnconstrainedViewWidth
 import kotlinx.coroutines.launch
+import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.koinViewModel
 import java.time.DayOfWeek
 import java.time.format.DateTimeFormatter
 
 @SuppressLint("NewApi")
+@OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalPagerApi::class, ExperimentalFoundationApi::class,
+)
 @Composable
 fun ScheduleScreen(
     modifier: Modifier = Modifier,
     viewModel: ScheduleViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-    val listState = rememberLazyListState()
 
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text(text = stringResource(id = R.string.schedule_topbar_title)) },
-                scrollBehavior = scrollBehavior
             )
         },
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     ) { paddingValues ->
-        val topShape = remember {
-            RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
-        }
-        Card(
-            shape = topShape,
-            modifier = Modifier
-                .padding(defaultContentPadding(paddingValues = paddingValues))
+        Column(
+            modifier
+                .fillMaxWidth()
+                .padding(top = paddingValues.calculateTopPadding())
         ) {
-            Card(
-                shape = topShape,
-                modifier = Modifier
-                    .padding(horizontal = 8.dp)
-            ) {
-                Column(modifier.fillMaxWidth()) {
-                    val pagerState = rememberPagerState()
-                    val scheduleDays = state.scheduleState.scheduleDays
-                    val scope = rememberCoroutineScope()
+            val pagerState = rememberPagerState()
+            val scheduleDays = state.scheduleDays
+            val scope = rememberCoroutineScope()
 
-                    state.scheduleState.selectedDay?.let { index ->
-                        scope.launch {
-                            pagerState.animateScrollToPage(index)
+            state.selectedDay?.let { index ->
+                scope.launch {
+                    pagerState.animateScrollToPage(index)
+                }
+            }
+
+            SideEffect {
+                if (pagerState.isScrollInProgress) {
+                    viewModel.onDayTap(null)
+                }
+            }
+
+            val selectedTabIndex = pagerState.currentPage
+            TabRow(
+                selectedTabIndex = selectedTabIndex,
+                indicator = { tabPositions: List<TabPosition> ->
+                    FancyAnimatedIndicator(
+                        tabPositions = tabPositions,
+                        selectedTabIndex = selectedTabIndex,
+                    )
+                },
+            ) {
+                scheduleDays.forEachIndexed { index, day ->
+                    val color by animateColorAsState(
+                        targetValue =
+                        if (selectedTabIndex == index) MaterialTheme.colorScheme.primary
+                        else MaterialTheme.colorScheme.onBackground,
+                    )
+                    Tab(
+                        selected = selectedTabIndex == index,
+                        onClick = { viewModel.onDayTap(day.date) },
+                        text = {
+                            val dayContentDescription =
+                                stringResource(day.date.dayOfWeek.toFullResourceString())
+                            Text(
+                                text = stringResource(day.date.dayOfWeek.toShortResourceString()),
+                                fontWeight = FontWeight.Bold,
+                                color = color,
+                                modifier = Modifier.semantics {
+                                    contentDescription = dayContentDescription
+
+                                }
+                            )
                         }
-                    }
-                    Card(
-                        shape = topShape,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Row(Modifier.fillMaxWidth()) {
-                            scheduleDays.forEachIndexed { index, day ->
-                                Text(
-                                    text = stringResource(day.date.dayOfWeek.toResourceString()),
-                                    textAlign = TextAlign.Center,
-                                    style = MaterialTheme.typography.titleMedium,
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .padding(vertical = 4.dp)
-                                        .clip(RoundedCornerShape(16.dp))
-                                        .clickable {
-                                            viewModel.onDayTap(day)
-                                        }
-                                        .then(
-                                            if (index == pagerState.currentPage) {
-                                                Modifier.background(MaterialTheme.colorScheme.primaryContainer)
-                                            } else Modifier
-                                        )
-                                        .padding(vertical = 12.dp)
-                                )
-                            }
-                        }
-                    }
-                    HorizontalPager(
-                        count = scheduleDays.size,
-                        state = pagerState,
-                    ) { page ->
-                        val scheduleDay = scheduleDays[page]
-                        val formatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
-                        LazyColumn(
-                            Modifier.background(MaterialTheme.colorScheme.surfaceVariant)
-                        ) {
-                            items(
-                                items = scheduleDay.events,
-                                key = { it.slug }
-                            ) { event ->
+                    )
+                }
+            }
+            HorizontalPager(
+                count = scheduleDays.size,
+                state = pagerState,
+            ) { page ->
+                val scheduleDay = scheduleDays[page]
+                val formatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
+                LazyColumn(
+                    contentPadding = PaddingValues(8.dp)
+                ) {
+                    scheduleDay.timeSlots.forEach { timeSlot ->
+                        val timeString = formatter.format(timeSlot.time.toJavaLocalTime())
+                        items(
+                            count = timeSlot.events.size,
+                            key = { timeSlot.events[it].event.slug },
+                            contentType = { "event" },
+                        ) { id ->
+                            val event = timeSlot.events[id]
+                            Row {
+                                if (id == 0) {
+                                    Time(timeString)
+                                } else {
+                                    MeasureUnconstrainedViewWidth(
+                                        viewToMeasure = { Time(timeString) }
+                                    ) {
+                                        Spacer(modifier = Modifier.width(it))
+                                    }
+                                }
                                 EventRow(
-                                    event = event,
-                                    timeFormatter = formatter,
-                                    Modifier
-                                        .fillMaxWidth()
-                                        .padding(vertical = 8.dp, horizontal = 16.dp)
+                                    scheduleEvent = event,
+                                    selected = event.event == state.selectedEvent,
+                                    onSelected = { viewModel.onEventTap(event.event) },
+                                    onNotificationToggle = {
+                                        viewModel.onEventNotificationSchedule(
+                                            event.event,
+                                            notificationActive = it
+                                        )
+                                    },
+                                    showNotificationToggle = false,
+                                    modifier = modifier.fillMaxWidth()
                                 )
                             }
                         }
@@ -143,12 +168,33 @@ fun ScheduleScreen(
     }
 }
 
-private fun DayOfWeek.toResourceString() = when (this) {
-    DayOfWeek.MONDAY -> R.string.schedule_day_monday
-    DayOfWeek.TUESDAY -> R.string.schedule_day_tuesday
-    DayOfWeek.WEDNESDAY -> R.string.schedule_day_wednesday
-    DayOfWeek.THURSDAY -> R.string.schedule_day_thursday
-    DayOfWeek.FRIDAY -> R.string.schedule_day_friday
-    DayOfWeek.SATURDAY -> R.string.schedule_day_saturday
-    DayOfWeek.SUNDAY -> R.string.schedule_day_sunday
+@Composable
+fun Time(timeString: String) {
+    Text(
+        text = timeString,
+        style = MaterialTheme.typography.titleLarge,
+        modifier = Modifier
+            .padding(horizontal = 8.dp)
+            .padding(top = 24.dp)
+    )
+}
+
+private fun DayOfWeek.toShortResourceString() = when (this) {
+    DayOfWeek.MONDAY -> R.string.schedule_day_short_monday
+    DayOfWeek.TUESDAY -> R.string.schedule_day_short_tuesday
+    DayOfWeek.WEDNESDAY -> R.string.schedule_day_short_wednesday
+    DayOfWeek.THURSDAY -> R.string.schedule_day_short_thursday
+    DayOfWeek.FRIDAY -> R.string.schedule_day_short_friday
+    DayOfWeek.SATURDAY -> R.string.schedule_day_short_saturday
+    DayOfWeek.SUNDAY -> R.string.schedule_day_short_sunday
+}
+
+private fun DayOfWeek.toFullResourceString() = when (this) {
+    DayOfWeek.MONDAY -> R.string.schedule_day_full_monday
+    DayOfWeek.TUESDAY -> R.string.schedule_day_full_tuesday
+    DayOfWeek.WEDNESDAY -> R.string.schedule_day_full_wednesday
+    DayOfWeek.THURSDAY -> R.string.schedule_day_full_thursday
+    DayOfWeek.FRIDAY -> R.string.schedule_day_full_friday
+    DayOfWeek.SATURDAY -> R.string.schedule_day_full_saturday
+    DayOfWeek.SUNDAY -> R.string.schedule_day_full_sunday
 }

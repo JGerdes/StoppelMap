@@ -20,7 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.data.Event
-import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
+import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRowLegacy
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import java.time.format.DateTimeFormatter
@@ -84,7 +84,7 @@ private fun EventCard(
                             Locale.GERMAN
                         )
                     }
-                EventRow(
+                EventRowLegacy(
                     event = event,
                     timeFormatter = formatter,
                     showDivider = false,

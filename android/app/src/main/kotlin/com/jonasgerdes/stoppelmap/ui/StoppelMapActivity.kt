@@ -47,6 +47,7 @@ import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
+import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleScreen
 import com.jonasgerdes.stoppelmap.settings.data.Settings
 import com.jonasgerdes.stoppelmap.settings.ui.SettingsScreen
 import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
@@ -175,7 +176,11 @@ class StoppelMapActivity : ComponentActivity() {
                     UnderConstructionPlaceholder()
                 }
                 composable(Screen.Schedule.route) {
-                    UnderConstructionPlaceholder()
+                    ScheduleScreen(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
+                    )
                 }
                 composable(Screen.TransportationOverview.route) {
                     TransportationOverviewScreen(

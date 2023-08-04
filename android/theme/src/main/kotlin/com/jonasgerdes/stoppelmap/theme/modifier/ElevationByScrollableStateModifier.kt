@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.grid.LazyGridState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -13,6 +14,13 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+
+@Composable
+fun LazyListState.isAtTop() = remember {
+    derivedStateOf {
+        firstVisibleItemIndex == 0 && firstVisibleItemScrollOffset == 0
+    }
+}
 
 fun Modifier.elevationWhenScrolled(
     lazyListState: LazyListState,
