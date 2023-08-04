@@ -2,10 +2,11 @@ package com.jonasgerdes.stoppelmap.transportation.ui.station
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TransportationUserDataRepository
+import com.jonasgerdes.stoppelmap.transportation.model.ExtendedStation
 import com.jonasgerdes.stoppelmap.transportation.model.Price
-import com.jonasgerdes.stoppelmap.transportation.model.Station
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.usecase.CreateTimetableUseCase
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,19 +30,22 @@ class StationViewModel(
                 .map {
                     StationWithTimetable(
                         station = it,
-                        timetable = createTimetable(it.departures)
+                        timetable = createTimetable(it.station.departures)
 
                     )
                 },
             transportationUserDataRepository.getFavouriteStations().onStart { emit(emptySet()) },
         )
         { stationWithTimetable, favouriteStations ->
-            val (station, timetable) = stationWithTimetable
+            val (extendedStation, timetable) = stationWithTimetable
             StationState.Loaded(
-                stationTitle = station.title,
+                stationTitle = extendedStation.station.title,
                 timetable = timetable,
-                prices = station.prices,
-                isFavourite = favouriteStations.contains(station.id)
+                priceState = PriceState(
+                    prices = extendedStation.station.prices,
+                    showDeutschlandTicketHint = extendedStation.routeType == RouteType.Bus,
+                ),
+                isFavourite = favouriteStations.contains(extendedStation.station.id)
             )
         }
 
@@ -81,13 +85,18 @@ class StationViewModel(
         data class Loaded(
             val stationTitle: String,
             val timetable: Timetable,
-            val prices: List<Price>,
+            val priceState: PriceState,
             val isFavourite: Boolean,
         ) : StationState()
     }
 
+    data class PriceState(
+        val prices: List<Price>,
+        val showDeutschlandTicketHint: Boolean
+    )
+
     private data class StationWithTimetable(
-        val station: Station,
+        val station: ExtendedStation,
         val timetable: Timetable,
     )
 }

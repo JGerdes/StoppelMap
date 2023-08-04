@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.transportation.RouteQueries
 import com.jonasgerdes.stoppelmap.transportation.StationQueries
 import com.jonasgerdes.stoppelmap.transportation.model.Departure
 import com.jonasgerdes.stoppelmap.transportation.model.DepartureDay
+import com.jonasgerdes.stoppelmap.transportation.model.ExtendedStation
 import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Route
 import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
@@ -16,7 +17,6 @@ import com.jonasgerdes.stoppelmap.transportation.model.Station
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
 
 class DatabaseTransportDataSource(
     private val routeQueries: RouteQueries,
@@ -69,11 +69,25 @@ class DatabaseTransportDataSource(
             )
         }
 
-    override fun getStationById(id: String): Flow<Station> =
-        stationQueries.getBySlug(id).asFlow().map {
-            mapStation(it.executeAsOne()).also {
-                Timber.d(it.toString())
-            }
+    override fun getStationById(id: String): Flow<ExtendedStation> =
+        stationQueries.getBySlugWithRoute(id).asFlow().map {
+            val result = it.executeAsOne()
+            ExtendedStation(
+                station = mapStation(
+                    com.jonasgerdes.stoppelmap.transportation.Station(
+                        slug = result.slug,
+                        route = result.route,
+                        title = result.title,
+                        lng = result.lng,
+                        lat = result.lat,
+                        isDestination = result.isDestination,
+                        isReturn = result.isReturn,
+                        annotateAsNew = result.annotateAsNew
+                    )
+                ),
+                routeTitle = result.routeTitle,
+                routeType = result.routeType,
+            )
         }
 
     private fun mapStation(station: com.jonasgerdes.stoppelmap.transportation.Station) =

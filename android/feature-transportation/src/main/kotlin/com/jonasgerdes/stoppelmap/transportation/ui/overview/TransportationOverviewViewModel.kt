@@ -48,7 +48,7 @@ class TransportationOverviewViewModel(
             timeUpdate.map {
                 FavouriteState.Loaded(
                     favs.map { stationId ->
-                        val station = busRoutesRepository.getStationById(stationId).first()
+                        val (station, _, _) = busRoutesRepository.getStationById(stationId).first()
                         BusRouteDetails.Station.Stop(
                             id = station.id,
                             title = station.title,

@@ -27,5 +27,7 @@ SELECT * FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 
 getReturnByRoute:
 SELECT * FROM station WHERE route = :route AND isReturn = 1;
 
-getBySlug:
-SELECT * FROM station WHERE slug = :slug;
+getBySlugWithRoute:
+SELECT station.*, route.title AS routeTitle, route.type AS routeType
+FROM station INNER JOIN route ON route.slug = route
+WHERE station.slug = :slug;
