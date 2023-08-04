@@ -3,6 +3,7 @@
 
     <string name="transportation_overview_topbar_title">An- und Abreise</string>
     <string name="transportation_overview_section_favourite">Deine Stationen</string>
+    <string name="transportation_overview_section_train">mit dem Zug</string>
     <string name="transportation_overview_section_bus">mit dem Bus</string>
     <string name="transportation_overview_card_via">über</string>
 

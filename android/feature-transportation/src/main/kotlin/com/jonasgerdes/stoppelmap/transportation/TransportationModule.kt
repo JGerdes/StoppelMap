@@ -7,6 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.DatabaseTransportDataSource
+import com.jonasgerdes.stoppelmap.transportation.data.TrainRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TransportDataSource
 import com.jonasgerdes.stoppelmap.transportation.data.TransportationUserDataRepository
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel
@@ -33,6 +34,7 @@ val transportationModule = module {
     }
 
     single { BusRoutesRepository(transportDataSource = get()) }
+    single { TrainRoutesRepository(transportDataSource = get()) }
 
     single {
         TransportationUserDataRepository(dataStore = get<Context>().dataStore)
@@ -44,6 +46,7 @@ val transportationModule = module {
     viewModel {
         TransportationOverviewViewModel(
             busRoutesRepository = get(),
+            trainRoutesRepository = get(),
             transportationUserDataRepository = get(),
             getNextDepartures = get(),
         )

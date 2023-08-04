@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.transportation.data
 
 import com.jonasgerdes.stoppelmap.data.model.database.PriceType
+import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import com.jonasgerdes.stoppelmap.transportation.DepartureQueries
 import com.jonasgerdes.stoppelmap.transportation.Departure_dayQueries
 import com.jonasgerdes.stoppelmap.transportation.PriceQueries
@@ -24,27 +25,31 @@ class DatabaseTransportDataSource(
     private val departureDayQueries: Departure_dayQueries,
     private val departureQueries: DepartureQueries,
 ) : TransportDataSource {
-    override fun getAllRoutes(): Flow<List<RouteSummary>> =
+    override fun getAllRoutes(type: RouteType?): Flow<List<RouteSummary>> =
         routeQueries.getAll().asFlow().map { query ->
-            query.executeAsList().map { route ->
-                RouteSummary(
-                    id = route.slug,
-                    title = route.title,
-                    viaStations = stationQueries.getOriginStationTitlesByRoute(route.slug)
-                        .executeAsList()
-                        .let { stations ->
-                            if (stations.size <= 4) {
-                                stations
-                            } else {
-                                listOf(
-                                    stations.first(),
-                                    stations[stations.size / 2],
-                                    stations.last(),
-                                )
-                            }
-                        },
-                )
-            }
+            query.executeAsList()
+                .filter {
+                    type == null || it.type == type
+                }
+                .map { route ->
+                    RouteSummary(
+                        id = route.slug,
+                        title = route.title,
+                        viaStations = stationQueries.getOriginStationTitlesByRoute(route.slug)
+                            .executeAsList()
+                            .let { stations ->
+                                if (stations.size <= 4) {
+                                    stations
+                                } else {
+                                    listOf(
+                                        stations.first(),
+                                        stations[stations.size / 2],
+                                        stations.last(),
+                                    )
+                                }
+                            },
+                    )
+                }
         }
 
     override fun getRouteById(id: String): Flow<Route> =

@@ -5,6 +5,7 @@ package com.jonasgerdes.stoppelmap.transportation.ui.overview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
+import com.jonasgerdes.stoppelmap.transportation.data.TrainRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TransportationUserDataRepository
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
@@ -23,6 +24,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class TransportationOverviewViewModel(
     busRoutesRepository: BusRoutesRepository,
+    trainRoutesRepository: TrainRoutesRepository,
     transportationUserDataRepository: TransportationUserDataRepository,
     private val getNextDepartures: GetNextDeparturesUseCase,
 ) : ViewModel() {
@@ -34,9 +36,12 @@ class TransportationOverviewViewModel(
         }
     }
 
+    private val trainRoutesState = trainRoutesRepository.getAllRoutes()
+        .map { TrainRoutesState(it) }
+
     private val busRoutesState = busRoutesRepository.getAllRoutes()
-        .map { BusRoutesState.Loaded(it) as BusRoutesState }
-        .onStart { emit(BusRoutesState.Loading) }
+        .map { BusRoutesState(it) }
+
 
     private val favouriteState = transportationUserDataRepository.getFavouriteStations()
         .flatMapLatest { favs ->
@@ -56,6 +61,7 @@ class TransportationOverviewViewModel(
 
     val state: StateFlow<ViewState> =
         combine(
+            trainRoutesState,
             busRoutesState,
             favouriteState,
             ::ViewState
@@ -67,14 +73,13 @@ class TransportationOverviewViewModel(
             )
 
     data class ViewState(
-        val busRoutesViewState: BusRoutesState = BusRoutesState.Loading,
+        val trainRoutesState: TrainRoutesState = TrainRoutesState(emptyList()),
+        val busRoutesViewState: BusRoutesState = BusRoutesState(emptyList()),
         val favouriteState: FavouriteState = FavouriteState.Loading
     )
 
-    sealed interface BusRoutesState {
-        object Loading : BusRoutesState
-        data class Loaded(val routes: List<RouteSummary>) : BusRoutesState
-    }
+    data class TrainRoutesState(val routes: List<RouteSummary>)
+    data class BusRoutesState(val routes: List<RouteSummary>)
 
     sealed interface FavouriteState {
         object Loading : FavouriteState
