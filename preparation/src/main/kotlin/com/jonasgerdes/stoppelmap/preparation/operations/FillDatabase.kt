@@ -11,7 +11,7 @@ import com.jonasgerdes.stoppelmap.data.Sub_types
 import com.jonasgerdes.stoppelmap.data.model.database.PriceType
 import com.jonasgerdes.stoppelmap.preparation.Data
 import com.jonasgerdes.stoppelmap.preparation.Settings
-import com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes
+import com.jonasgerdes.stoppelmap.preparation.transportation.generateRoutes
 import com.jonasgerdes.stoppelmap.transportation.Departure
 import com.jonasgerdes.stoppelmap.transportation.Departure_day
 import com.jonasgerdes.stoppelmap.transportation.Price
@@ -127,7 +127,7 @@ class FillDatabase : KoinComponent {
             }
         }
 
-        val routes = generateBusRoutes()
+        val routes = generateRoutes()
         System.out.println("Created ${routes.size} transportation routes")
 
         database.routeQueries.transaction {
