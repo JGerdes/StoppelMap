@@ -28,6 +28,29 @@
       "start": "2023-08-11 13:00:00"
     },
     {
+      "uuid": "stoppelmarkt_senioren_nachmittag",
+      "name": "Senioren-Nachmittag",
+      "type": 0,
+      "day": 1,
+      "start": "2023-08-11 15:00:00",
+      "description": "Die Stadt Vechta lädt zum Seniorennachmittag in Kühlings Niedersachsenzelt ein. Dort begrüßen die Traditionsfiguren Jan und Libett und die Mitglieder des Marktausschusses alle Gäste. Es gibt Lebkuchenherzen, Getränke und Live-Musik. Alle Seniorinnen und Senioren aus dem Stadtgebiet Vechta können dort in netter Gesellschaft die Kirmesatmosphäre genießen.",
+      "locationUuid": "kuehlings_niedersachsenhalle",
+      "isOfficial": true
+    },
+    {
+      "uuid": "stoppelmarkt_happy_hour",
+      "name": "Happy Hour",
+      "type": 1,
+      "day": 1,
+      "start": "2023-08-11 14:00:00",
+      "end": "2023-08-11 16:00:00",
+      "description": "1x zahlen, 2x fahren",
+      "tags": [
+        "Für Kinder"
+      ],
+      "isOfficial": true
+    },
+    {
       "uuid": "stoppelmarkt_marktbeginn_samstag",
       "name": "Marktbeginn",
       "type": 0,
@@ -48,6 +71,16 @@
       "type": 0,
       "day": 5,
       "start": "2023-08-15 13:00:00"
+    },
+    {
+      "uuid": "stoppelmarkt_familientag",
+      "name": "Familientag",
+      "type": 1,
+      "day": 5,
+      "start": "2023-08-15 13:00:00",
+      "end": "2023-08-15 18:00:00",
+      "description": "Familientag mit ermäßigten Preisen",
+      "isOfficial": true
     },
     {
       "uuid": "stoppelmarkt_feuerwerk",
