@@ -29,7 +29,7 @@ internal fun dinklage() = createBusRoute {
             "08:15" every 45.Minutes until "23:15"
         }
         tuesday {
-            departures("15:00", "16:20", "18:00", "19:10", "20:30")
+            departures("15:00", "16:30", "18:00", "19:30", "21:00")
         }
     }
 
@@ -86,7 +86,7 @@ internal fun dinklage() = createBusRoute {
             "09:05" every 45.Minutes until "03:05"
         }
         tuesday {
-            departures("15:50", "17:20", "18:40", "20:00", "21:10", "22:25", "01:10")
+            departures("16:05", "17:35", "19:05", "20:35", "22:05", "23:35", "01:05")
         }
     }
 }

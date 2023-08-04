@@ -6,7 +6,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
-internal fun lohne_stadt() = createBusRoute {
+internal fun lohneStadt() = createBusRoute {
     title = "Lohne Stadt"
     fixedPrices = prices(adult = 400, children = 200, 3 to 14)
 
@@ -50,24 +50,24 @@ internal fun lohne_stadt() = createBusRoute {
     addReturnStation {
         title = "Stoppelmarkt"
         thursday {
-            "17:40" every 30.Minutes until "02:10"
+            "17:45" every 30.Minutes until "02:15"
         }
         friday {
-            "14:40" every 30.Minutes until "20:10"
+            "14:45" every 30.Minutes until "20:15"
             "20:30" every 10.Minutes until "05:00"
         }
         saturday {
-            "13:40" every 20.Minutes until "20:30"
-            "20:30" every 10.Minutes until "05:00"
+            "13:45" every 20.Minutes until "20:25"
+            "20:40" every 10.Minutes until "05:00"
         }
         sunday {
-            "13:30" every 30.Minutes until "14:00"
+            "13:45" every 30.Minutes until "00:45"
         }
         monday {
-            "08:40" every 15.Minutes until "03:00"
+            "08:45" every 15.Minutes until "03:00"
         }
         tuesday {
-            "14:40" every 30.Minutes until "02:00"
+            "14:45" every 30.Minutes until "02:00"
         }
     }
 }

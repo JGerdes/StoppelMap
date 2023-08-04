@@ -5,8 +5,13 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.bus.barnstorf
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.bremen
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.calveslage
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.diepholz
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.dinklage
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.ellenstedtGoldenstedtLutten
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.holdorfBrockdorf
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.langenbergMuehlen
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.langfoerden
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.lohneMoorkamp
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.lohneStadt
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.osnabrueck
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.vechtaFlugplatz
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.vechtaStadt
@@ -30,9 +35,9 @@ fun generateRoutes() = listOf(
     bakumEssen(),
     visbek(),
     ellenstedtGoldenstedtLutten(),
-    //lohne_stadt(),
-    //lohne_moorkamp(),
-    //dinklage(),
-    //langenberg_muehlen(),
-    //holdorf_brockdorf()
+    lohneStadt(),
+    lohneMoorkamp(),
+    dinklage(),
+    langenbergMuehlen(),
+    holdorfBrockdorf()
 ).sortedBy { it.title }

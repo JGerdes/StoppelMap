@@ -6,7 +6,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
-internal fun langenberg_muehlen() = createBusRoute {
+internal fun langenbergMuehlen() = createBusRoute {
     title = "Langenberg - Steinfeld - Mühlen - Kroge - Südlohne"
 
     addStation("Langenberg - Kirche") {
@@ -19,14 +19,14 @@ internal fun langenberg_muehlen() = createBusRoute {
         }
     }
     addStation("Langenberg - Frilling", minutesAfterPrevious = 2) { prices(500, 200, 3 to 14) }
-    addStation("Steinfeld - Friedlandstraße", minutesAfterPrevious = 8) {
+    addStation("Steinfeld - Friedlandstraße", minutesAfterPrevious = 5) {
         prices(
             500,
             200,
             3 to 14
         )
     }
-    addStation("Steinfeld - Markt", minutesAfterPrevious = 5) { prices(500, 200, 3 to 14) }
+    addStation("Steinfeld - Markt", minutesAfterPrevious = 3) { prices(500, 200, 3 to 14) }
     addStation("Mühlen - Grundschule", minutesAfterPrevious = 10) { prices(500, 200, 3 to 14) }
     addStation("Kroge - Grundschule", minutesAfterPrevious = 5) { prices(400, 200, 3 to 14) }
     addStation("Südlohne - Haltestelle DH -Str.", minutesAfterPrevious = 5) {

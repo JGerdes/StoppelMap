@@ -6,21 +6,25 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
-internal fun holdorf_brockdorf() = createBusRoute {
-    title = "Holdorf - Langwege - Brockdorf"
+internal fun holdorfBrockdorf() = createBusRoute {
+    title = "Damme - Holdorf - Langwege - Brockdorf"
 
-    addStation("Holdorf - Kirche") {
-        prices(500, 200, 3 to 14)
+    addStation("Damme - ZOB") {
+        prices(600, 200, 3 to 14)
         friday {
-            "18:50" every 60.Minutes until "22:50"
+            "18:30" every 60.Minutes until "22:30"
         }
         saturday {
-            "18:50" every 60.Minutes until "22:50"
+            "18:30" every 60.Minutes until "22:30"
         }
         monday {
-            departures("08:15")
-            "10:00" every 120.Minutes until "00:00"
+            departures("07:55")
+            "09:40" every 120.Minutes until "23:40"
         }
+    }
+
+    addStation("Holdorf - Kirche", minutesAfterPrevious = 20) {
+        prices(500, 200, 3 to 14)
     }
     addStation("Langwege - A. d. Stadt", minutesAfterPrevious = 10) { prices(500, 200, 3 to 14) }
     addStation("Brockdorf - A.d. Kalvelage", minutesAfterPrevious = 10) {
