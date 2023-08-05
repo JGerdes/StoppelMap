@@ -14,6 +14,7 @@ import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigAndDownloadF
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.UserAgent
+import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
@@ -29,6 +30,9 @@ val dataUpdateModule = module {
 
     single {
         val httpClient = HttpClient(Android) {
+            install(ContentEncoding) {
+                gzip()
+            }
             install(ContentNegotiation) {
                 json(Json {
                     ignoreUnknownKeys = true

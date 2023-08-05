@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.theme.modifier
 
-import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.grid.LazyGridState
@@ -33,7 +32,6 @@ fun Modifier.elevationWhenScrolled(
                     && lazyListState.firstVisibleItemScrollOffset == 0
         }
     }
-    Log.d("elevationWhenScrolled", "isAtTop changed: $isAtTop")
     val effectiveElevation by animateDpAsState(targetValue = if (isAtTop) 0.dp else elevation)
 
     shadow(elevation = effectiveElevation).zIndex(1f)

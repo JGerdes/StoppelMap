@@ -80,6 +80,7 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-encoding = { module = "io.ktor:ktor-client-encoding", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
@@ -96,7 +97,7 @@ logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 [bundles]
 koin-compose = ["koin-android", "koin-androidx-compose"]
 androidx-runtime = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-runtime-compose"]
-ktor-android = ["ktor-client-android", "ktor-client-logging", "ktor-client-content-negotiation", "ktor-serialization-kotlinx-json", "kotlinx-serialization-json"]
+ktor-android = ["ktor-client-android", "ktor-client-logging", "ktor-client-content-negotiation", "ktor-serialization-kotlinx-json", "kotlinx-serialization-json", "ktor-client-encoding"]
 ktor-server = ["ktor-server-core", "ktor-server-netty", "ktor-server-call-logging"]
 
 [plugins]
