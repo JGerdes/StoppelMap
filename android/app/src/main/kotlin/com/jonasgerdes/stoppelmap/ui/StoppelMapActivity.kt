@@ -194,6 +194,9 @@ class StoppelMapActivity : ComponentActivity() {
                                 Screen.TransportStation.create(stationId = it)
                             )
                         },
+                        onPhoneNumberTap = {
+                            dialPhoneNumber(it)
+                        },
                         Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
@@ -256,6 +259,10 @@ class StoppelMapActivity : ComponentActivity() {
 
     private fun openUrl(url: String) {
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    private fun dialPhoneNumber(phoneNumber: String) {
+        startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber")))
     }
 
     private fun requestLocationPermission() {

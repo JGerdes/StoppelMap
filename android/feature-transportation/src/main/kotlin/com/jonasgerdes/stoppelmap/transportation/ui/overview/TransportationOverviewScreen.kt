@@ -13,8 +13,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Call
 import androidx.compose.material.icons.rounded.DirectionsBus
 import androidx.compose.material.icons.rounded.DirectionsTransit
+import androidx.compose.material.icons.rounded.LocalTaxi
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -41,6 +43,7 @@ import org.koin.androidx.compose.koinViewModel
 fun TransportationOverviewScreen(
     onRouteTap: (routeId: String) -> Unit,
     onStationTap: (stationId: String) -> Unit,
+    onPhoneNumberTap: (phoneNumber: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TransportationOverviewViewModel = koinViewModel(),
 ) {
@@ -61,6 +64,7 @@ fun TransportationOverviewScreen(
         val favouriteState = state.favouriteState
         val trainRoutesState = state.trainRoutesState
         val busRoutesState = state.busRoutesViewState
+        val taxiServicesState = state.taxiServicesState
 
         if (favouriteState is FavouriteState.Loaded) {
             LazyColumn(
@@ -111,7 +115,47 @@ fun TransportationOverviewScreen(
                     contentType = { ItemTypes.Route }) { route ->
                     RouteSummaryCard(onRouteTap, route)
                 }
-                
+
+                stickyHeader {
+                    SectionHeader(
+                        Icons.Rounded.LocalTaxi,
+                        stringResource(R.string.transportation_overview_section_taxi)
+                    )
+                }
+                items(
+                    items = taxiServicesState.services,
+                    key = { it.title },
+                    contentType = { ItemTypes.Route }) { service ->
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = { onPhoneNumberTap(service.phoneNumber) }
+                    ) {
+                        Row(
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                        ) {
+                            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                                Text(
+                                    text = service.title,
+                                    style = MaterialTheme.typography.bodyLarge
+                                )
+                                Text(
+                                    text = service.phoneNumberFormatted ?: service.phoneNumber,
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                            }
+                            IconButton(onClick = { onPhoneNumberTap(service.phoneNumber) }) {
+                                Icon(
+                                    Icons.Rounded.Call,
+                                    contentDescription = stringResource(R.string.transportation_overview_card_action_call_contentDescription)
+                                )
+                            }
+                        }
+                    }
+                }
+
                 stickyHeader {
                     SectionHeader(
                         Icons.Rounded.DirectionsBus,
@@ -124,6 +168,7 @@ fun TransportationOverviewScreen(
                     contentType = { ItemTypes.Route }) { route ->
                     RouteSummaryCard(onRouteTap, route)
                 }
+
             }
         } else {
             LoadingSpinner(Modifier.fillMaxSize())

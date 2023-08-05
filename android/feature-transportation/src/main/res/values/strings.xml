@@ -5,7 +5,9 @@
     <string name="transportation_overview_section_favourite">Deine Stationen</string>
     <string name="transportation_overview_section_train">mit dem Zug</string>
     <string name="transportation_overview_section_bus">mit dem Bus</string>
+    <string name="transportation_overview_section_taxi">mit dem Taxi</string>
     <string name="transportation_overview_card_via">über</string>
+    <string name="transportation_overview_card_action_call_contentDescription">anrufen</string>
 
     <string name="transportation_route_topbar_navigateBack_contentDescription">Zurück</string>
     <string name="transportation_route_section_there">Hinfahrt</string>
