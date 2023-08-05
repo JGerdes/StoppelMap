@@ -40,9 +40,12 @@ class HomeViewModel(
                 is Result.UpdateAvailable -> UpdateState.Available(appUpdateState.appUpdateInfo)
                 Result.DownloadPending -> UpdateState.Downloading(progress = UpdateState.Downloading.Progress.Indeterminate)
                 is Result.DownloadInProgress -> UpdateState.Downloading(
-                    progress = UpdateState.Downloading.Progress.Determinate(
-                        appUpdateState.bytesDownloaded / appUpdateState.totalBytesToDownload.toFloat()
-                    )
+                    progress = appUpdateState.totalBytesToDownload.let {
+                        if (it == 0L) UpdateState.Downloading.Progress.Indeterminate
+                        else UpdateState.Downloading.Progress.Determinate(
+                            appUpdateState.bytesDownloaded / appUpdateState.totalBytesToDownload.toFloat()
+                        )
+                    }
                 )
 
                 Result.DownloadCanceled -> UpdateState.Failed
