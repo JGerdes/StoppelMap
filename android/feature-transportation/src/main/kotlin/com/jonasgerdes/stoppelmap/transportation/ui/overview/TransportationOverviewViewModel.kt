@@ -22,7 +22,6 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
 class TransportationOverviewViewModel(
@@ -43,32 +42,31 @@ class TransportationOverviewViewModel(
     private val trainRoutesState = trainRoutesRepository.getAllRoutes()
         .map { TrainRoutesState(it) }
 
-    private val busRoutesState = busRoutesRepository.getAllRoutes()
-        .map { BusRoutesState(it) }
-
-
-    private val favouriteState = transportationUserDataRepository.getFavouriteStations()
-        .flatMapLatest { favs ->
-            timeUpdate.map {
-                FavouriteState.Loaded(
-                    favs.map { stationId ->
-                        val (station, _, _) = busRoutesRepository.getStationById(stationId).first()
-                        BusRouteDetails.Station.Stop(
-                            id = station.id,
-                            title = station.title,
-                            nextDepartures = getNextDepartures(station.departures.flatMap { it.departures })
-                        )
+    private val busRoutesState =
+        combine(
+            busRoutesRepository.getAllRoutes(),
+            transportationUserDataRepository.getFavouriteStations()
+                .flatMapLatest { favs ->
+                    timeUpdate.map {
+                        favs.map { stationId ->
+                            val (station, _, _) = busRoutesRepository.getStationById(stationId)
+                                .first()
+                            BusRouteDetails.Station.Stop(
+                                id = station.id,
+                                title = station.title,
+                                nextDepartures = getNextDepartures(station.departures.flatMap { it.departures })
+                            )
+                        }
                     }
-                ) as FavouriteState
-            }
-        }.onStart { emit(FavouriteState.Loading) }
+                },
+            ::BusRoutesState
+        )
 
     val state: StateFlow<ViewState> =
         combine(
             trainRoutesState,
             busRoutesState,
             flowOf(TaxiServicesState(taxiServiceRepository.getTaxiServices())),
-            favouriteState,
             ::ViewState
         )
             .stateIn(
@@ -79,18 +77,15 @@ class TransportationOverviewViewModel(
 
     data class ViewState(
         val trainRoutesState: TrainRoutesState = TrainRoutesState(emptyList()),
-        val busRoutesViewState: BusRoutesState = BusRoutesState(emptyList()),
+        val busRoutesViewState: BusRoutesState = BusRoutesState(emptyList(), emptyList()),
         val taxiServicesState: TaxiServicesState = TaxiServicesState(emptyList()),
-        val favouriteState: FavouriteState = FavouriteState.Loading
     )
 
     data class TrainRoutesState(val routes: List<RouteSummary>)
-    data class BusRoutesState(val routes: List<RouteSummary>)
-    data class TaxiServicesState(val services: List<TaxiService>)
+    data class BusRoutesState(
+        val routes: List<RouteSummary>,
+        val favouriteStations: List<BusRouteDetails.Station.Stop>
+    )
 
-    sealed interface FavouriteState {
-        object Loading : FavouriteState
-        data class Loaded(val favouriteStations: List<BusRouteDetails.Station.Stop>) :
-            FavouriteState
-    }
+    data class TaxiServicesState(val services: List<TaxiService>)
 }

@@ -5,36 +5,36 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.overview
 
 import android.annotation.SuppressLint
+import androidx.annotation.StringRes
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Call
 import androidx.compose.material.icons.rounded.DirectionsBus
 import androidx.compose.material.icons.rounded.DirectionsTransit
 import androidx.compose.material.icons.rounded.LocalTaxi
-import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
-import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
-import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
+import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
-import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewViewModel.FavouriteState
 import com.jonasgerdes.stoppelmap.transportation.ui.route.StopStationCard
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -48,152 +48,203 @@ fun TransportationOverviewScreen(
     viewModel: TransportationOverviewViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-    val listState = rememberLazyListState()
+
+    val pagerState = rememberPagerState()
+    val pages = remember {
+        listOf(
+            Page.Bus,
+            Page.Train,
+            Page.Taxi,
+        )
+    }
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
-                title = { Text(text = stringResource(id = R.string.transportation_overview_topbar_title)) },
-                scrollBehavior = scrollBehavior,
-                modifier = Modifier.elevationWhenScrolled(listState)
-            )
-        },
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
-    ) { paddingValues ->
-        val favouriteState = state.favouriteState
-        val trainRoutesState = state.trainRoutesState
-        val busRoutesState = state.busRoutesViewState
-        val taxiServicesState = state.taxiServicesState
-
-        if (favouriteState is FavouriteState.Loaded) {
-            LazyColumn(
-                contentPadding = defaultContentPadding(paddingValues),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-                state = listState,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                if (favouriteState.favouriteStations.isNotEmpty()) {
-                    stickyHeader(key = "key_your_stations") {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(MaterialTheme.colorScheme.surface)
-                                .padding(8.dp),
-                        ) {
-                            Icon(Icons.Rounded.Star, contentDescription = null)
-                            Text(
-                                text = stringResource(R.string.transportation_overview_section_favourite),
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                        }
-                    }
-                    items(
-                        items = favouriteState.favouriteStations,
-                        key = { it.id },
-                        contentType = { ItemTypes.FavouriteStation }) { station ->
-                        StopStationCard(
-                            station = station,
-                            highlight = true,
-                            modifier = Modifier.clickable {
-                                onStationTap(station.id)
+            Column {
+                CenterAlignedTopAppBar(
+                    title = { Text(text = stringResource(id = R.string.transportation_overview_topbar_title)) },
+                )
+                TabRow(
+                    selectedTabIndex = pagerState.currentPage,
+                    indicator = { tabPositions: List<TabPosition> ->
+                        FancyAnimatedIndicator(
+                            tabPositions = tabPositions,
+                            selectedTabIndex = pagerState.currentPage,
+                        )
+                    },
+                ) {
+                    val coroutineScope = rememberCoroutineScope()
+                    pages.forEachIndexed { index, page ->
+                        val color by animateColorAsState(
+                            targetValue =
+                            if (pagerState.currentPage == index) MaterialTheme.colorScheme.primary
+                            else MaterialTheme.colorScheme.onBackground,
+                        )
+                        Tab(
+                            selected = index == pagerState.currentPage,
+                            icon = {
+                                Icon(page.icon, null, tint = color)
+                            },
+                            text = {
+                                Text(
+                                    text = stringResource(page.text),
+                                    fontWeight = FontWeight.Bold,
+                                    color = color,
+                                )
+                            },
+                            onClick = {
+                                coroutineScope.launch {
+                                    pagerState.scrollToPage(index)
+                                }
                             }
                         )
                     }
                 }
-                stickyHeader {
-                    SectionHeader(
-                        Icons.Rounded.DirectionsTransit,
-                        stringResource(R.string.transportation_overview_section_train)
-                    )
-                }
-                items(
-                    items = trainRoutesState.routes,
-                    key = { it.id },
-                    contentType = { ItemTypes.Route }) { route ->
-                    RouteSummaryCard(onRouteTap, route)
-                }
-
-                stickyHeader {
-                    SectionHeader(
-                        Icons.Rounded.LocalTaxi,
-                        stringResource(R.string.transportation_overview_section_taxi)
-                    )
-                }
-                items(
-                    items = taxiServicesState.services,
-                    key = { it.title },
-                    contentType = { ItemTypes.Route }) { service ->
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        onClick = { onPhoneNumberTap(service.phoneNumber) }
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                        ) {
-                            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                Text(
-                                    text = service.title,
-                                    style = MaterialTheme.typography.bodyLarge
-                                )
-                                Text(
-                                    text = service.phoneNumberFormatted ?: service.phoneNumber,
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                            }
-                            IconButton(onClick = { onPhoneNumberTap(service.phoneNumber) }) {
-                                Icon(
-                                    Icons.Rounded.Call,
-                                    contentDescription = stringResource(R.string.transportation_overview_card_action_call_contentDescription)
-                                )
-                            }
-                        }
-                    }
-                }
-
-                stickyHeader {
-                    SectionHeader(
-                        Icons.Rounded.DirectionsBus,
-                        stringResource(R.string.transportation_overview_section_bus)
-                    )
-                }
-                items(
-                    items = busRoutesState.routes,
-                    key = { it.id },
-                    contentType = { ItemTypes.Route }) { route ->
-                    RouteSummaryCard(onRouteTap, route)
-                }
 
             }
-        } else {
-            LoadingSpinner(Modifier.fillMaxSize())
+        },
+    ) { paddingValues ->
+        HorizontalPager(
+            pageCount = pages.size,
+            state = pagerState,
+            modifier = Modifier
+                .padding(top = paddingValues.calculateTopPadding())
+                .fillMaxSize()
+        ) { pageIndex ->
+            when (pages[pageIndex]) {
+                Page.Bus -> BusPage(
+                    state = state.busRoutesViewState,
+                    onStationTap = onStationTap,
+                    onRouteTap = onRouteTap,
+                )
+
+                Page.Train -> TrainPage(state = state.trainRoutesState, onRouteTap = onRouteTap)
+                Page.Taxi -> TaxiPage(
+                    state = state.taxiServicesState,
+                    onPhoneNumberTap = onPhoneNumberTap
+                )
+            }
+        }
+
+    }
+}
+
+
+sealed class Page(
+    val icon: ImageVector,
+    @StringRes val text: Int
+) {
+    object Bus : Page(
+        Icons.Rounded.DirectionsBus,
+        R.string.transportation_overview_section_bus,
+    )
+
+    object Train : Page(
+        Icons.Rounded.DirectionsTransit,
+        R.string.transportation_overview_section_train
+    )
+
+    object Taxi : Page(
+        Icons.Rounded.LocalTaxi,
+        R.string.transportation_overview_section_taxi,
+    )
+}
+
+@Composable
+fun BusPage(
+    state: TransportationOverviewViewModel.BusRoutesState,
+    onStationTap: (stationId: String) -> Unit,
+    onRouteTap: (routeId: String) -> Unit
+) {
+    LazyColumn(
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.fillMaxSize()
+    ) {
+        items(
+            items = state.favouriteStations,
+            key = { it.id },
+            contentType = { ItemTypes.FavouriteStation }) { station ->
+            StopStationCard(
+                station = station,
+                highlight = true,
+                modifier = Modifier.clickable {
+                    onStationTap(station.id)
+                }
+            )
+        }
+        items(
+            items = state.routes,
+            key = { it.id },
+            contentType = { ItemTypes.Route }) { route ->
+            RouteSummaryCard(onRouteTap, route)
         }
     }
 }
 
 @Composable
-private fun SectionHeader(
-    icon: ImageVector,
-    title: String,
+fun TrainPage(
+    state: TransportationOverviewViewModel.TrainRoutesState,
+    onRouteTap: (routeId: String) -> Unit
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(8.dp),
+    LazyColumn(
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.fillMaxSize()
     ) {
-        Icon(icon, contentDescription = null)
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleMedium
-        )
+        items(
+            items = state.routes,
+            key = { it.id },
+            contentType = { ItemTypes.Route }) { route ->
+            RouteSummaryCard(onRouteTap, route)
+        }
+    }
+}
+
+@Composable
+fun TaxiPage(
+    state: TransportationOverviewViewModel.TaxiServicesState,
+    onPhoneNumberTap: (phoneNumber: String) -> Unit
+) {
+    LazyColumn(
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.fillMaxSize()
+    ) {
+        items(
+            items = state.services,
+            key = { it.title },
+            contentType = { ItemTypes.Route }) { service ->
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { onPhoneNumberTap(service.phoneNumber) }
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                ) {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = service.title,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Text(
+                            text = service.phoneNumberFormatted
+                                ?: service.phoneNumber,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                    IconButton(onClick = { onPhoneNumberTap(service.phoneNumber) }) {
+                        Icon(
+                            Icons.Rounded.Call,
+                            contentDescription = stringResource(R.string.transportation_overview_card_action_call_contentDescription)
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
