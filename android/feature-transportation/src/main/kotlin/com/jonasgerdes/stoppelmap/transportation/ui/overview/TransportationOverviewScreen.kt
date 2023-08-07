@@ -88,7 +88,6 @@ fun TransportationOverviewScreen(
                             text = {
                                 Text(
                                     text = stringResource(page.text),
-                                    fontWeight = FontWeight.Bold,
                                     color = color,
                                 )
                             },
