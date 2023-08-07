@@ -1,1 +1,3 @@
 /build
+src/main/assets/database.db
+src/main/assets/mapdata.geojson

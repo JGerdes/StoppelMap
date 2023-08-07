@@ -14,7 +14,7 @@ val preparationModule = module {
         val resources = File("./preparation/src/main/resources")
         Settings(
             databaseFile = File(dataUpdateAssets, "database.db"),
-            geoJsonInput = File(resources, "stoma22.geojson"),
+            geoJsonInput = File(resources, "stoma23.geojson"),
             geoJsonOutput = File("$dataUpdateAssets", "mapdata.geojson"),
             fetchedEventsFile = File(resources, "events/fetched.json"),
             manualEventsFile = File(resources, "events/manual.json"),

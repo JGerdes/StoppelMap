@@ -116,9 +116,11 @@ private fun getNameForType(type: String) = when (type) {
     "for-kids" -> "für Kinder"
     "marquee" -> "Festzelt"
     "coaster" -> "Achterbahn"
+    "slide" -> "Rutsche"
     "swing-ride" -> listOf("Kettenflieger", "Kettenkarusell")
     "funhouse" -> "Spaßhaus"
     "labyrinth" -> "Labyrinth"
+    "topspin" -> "Top-Spin"
     "bumper-cars" -> "Autoscooter"
     "twister" -> "Twister"
     "marry-go-round" -> "Karusell"
@@ -134,6 +136,7 @@ private fun getNameForType(type: String) = when (type) {
         "Barrierefreie Toilette", "Barrierefreies WC",
         "Rollstuhlgerechte Toilette"
     )
+
     "mens_restroom" -> listOf("Herren-Toilette", "Herren-WC")
     "womens_restroom" -> listOf("Damen-Toilette", "Damen-WC")
 
