@@ -79,6 +79,7 @@ fun MapScreen(
             onCameraMove = viewModel::onCameraMoved,
             onStallTap = viewModel::onStallTapped,
             mapDataFile = "file://${mapDataFile.mapDataFile.absolutePath}".also { Timber.d("mapFile: $it") },
+            colors = state.mapTheme.toMapColors(),
             modifier = Modifier.fillMaxSize()
         )
         FloatingActionButton(

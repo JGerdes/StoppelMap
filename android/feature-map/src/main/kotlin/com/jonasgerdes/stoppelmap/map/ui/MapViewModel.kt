@@ -9,6 +9,9 @@ import com.jonasgerdes.stoppelmap.map.repository.StallRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchStallsUseCase
+import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
+import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
+import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import kotlinx.coroutines.Job
@@ -19,6 +22,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -27,6 +31,7 @@ class MapViewModel(
     private val stallRepository: StallRepository,
     private val searchStalls: SearchStallsUseCase,
     private val locationRepository: LocationRepository,
+    private val settingsRepository: SettingsRepository,
     private val isLocationInArea: IsLocationInAreaUseCase,
 ) : ViewModel() {
 
@@ -69,16 +74,25 @@ class MapViewModel(
         } else mapState
     }
 
+    private val mapThemeState = settingsRepository.getSettings()
+        .map {
+            MapTheme(
+                mapColorSetting = it.mapColorSetting,
+                themeSetting = it.themeSetting,
+            )
+        }
+
     val state: StateFlow<ViewState> =
         combine(
             effectiveMapState,
+            mapThemeState,
             searchState,
             snackbarState,
             ::ViewState
         ).stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(),
-            initialValue = ViewState.Default
+            initialValue = ViewState()
         )
 
     private var fetchCurrentLocationJob: Job? = null
@@ -184,19 +198,11 @@ class MapViewModel(
     }
 
     data class ViewState(
-        val mapState: MapState,
-        val searchState: SearchState,
-        val snackbarState: SnackbarState,
-    ) {
-
-        companion object {
-            val Default = ViewState(
-                mapState = MapState.Default,
-                searchState = SearchState.Collapsed,
-                snackbarState = SnackbarState.Hidden,
-            )
-        }
-    }
+        val mapState: MapState = MapState.Default,
+        val mapTheme: MapTheme = MapTheme(),
+        val searchState: SearchState = SearchState.Collapsed,
+        val snackbarState: SnackbarState = SnackbarState.Hidden,
+    )
 
     data class MapState(
         val cameraPosition: CameraPosition,
@@ -236,6 +242,11 @@ class MapViewModel(
         data class HighlightResult(val result: SearchResult) : SearchState
     }
 }
+
+data class MapTheme(
+    val mapColorSetting: MapColorSetting = MapColorSetting.default,
+    val themeSetting: ThemeSetting = ThemeSetting.default,
+)
 
 private val initialCameraOptions = CameraOptions.Builder()
     .center(MapDefaults.center)

@@ -10,6 +10,7 @@ import com.jonasgerdes.stoppelmap.settings.data.Library
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
+import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import com.jonasgerdes.stoppelmap.theme.util.supportsDarkTheme
 import com.jonasgerdes.stoppelmap.theme.util.supportsDynamicColor
@@ -52,6 +53,15 @@ class SettingsViewModel(
                             isSelected = settings.colorSchemeSetting == it
                         )
                     },
+                    mapColorSettings = listOfNotNull(
+                        MapColorSetting.Classic,
+                        MapColorSetting.AppScheme.takeIf { Build.VERSION.SDK_INT.supportsDynamicColor() }
+                    ).map {
+                        Option(
+                            value = it,
+                            isSelected = settings.mapColorSetting == it
+                        )
+                    },
                     developerModeSettings = if (settings.developerModeActive) {
                         DeveloperModeSettings.Active(
                             dateOverrideOptions = DateOverride.values().map {
@@ -92,6 +102,11 @@ class SettingsViewModel(
             settingsRepository.saveColorSchemeSetting(colorSchemeSetting)
         }
 
+    fun onMapColorSchemeSettingSelected(mapColorSetting: MapColorSetting) =
+        viewModelScope.launch {
+            settingsRepository.saveMapColorSetting(mapColorSetting)
+        }
+
     private var versionClickCount = 0
     fun onVersionClick() {
         versionClickCount++
@@ -116,6 +131,7 @@ class SettingsViewModel(
         val appInfo: AppInfo,
         val themeSettings: List<ThemeSettingOption> = emptyList(),
         val colorSchemeSettings: List<ColorSchemeSettingOption> = emptyList(),
+        val mapColorSettings: List<Option<MapColorSetting>> = emptyList(),
         val developerModeSettings: DeveloperModeSettings = DeveloperModeSettings.NotActive,
         val libraries: List<Library>,
         val imageSources: List<ImageSource>,

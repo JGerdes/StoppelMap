@@ -85,6 +85,7 @@ val mapModule = module {
             stallRepository = get(),
             searchStalls = get(),
             locationRepository = get(),
+            settingsRepository = get(),
             isLocationInArea = get()
         )
     }

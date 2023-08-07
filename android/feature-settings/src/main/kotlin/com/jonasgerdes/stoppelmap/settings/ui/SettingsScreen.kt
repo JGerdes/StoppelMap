@@ -26,6 +26,7 @@ import androidx.compose.material.icons.rounded.ColorLens
 import androidx.compose.material.icons.rounded.DarkMode
 import androidx.compose.material.icons.rounded.EditCalendar
 import androidx.compose.material.icons.rounded.EditLocationAlt
+import androidx.compose.material.icons.rounded.Map
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -50,6 +51,7 @@ import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
+import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import org.koin.androidx.compose.koinViewModel
 
@@ -110,6 +112,16 @@ fun SettingsScreen(
                     onItemSelected = { viewModel.onColorSchemeSettingSelected(it.colorSchemeSetting) },
                 )
             }
+            item {
+                SelectionSettingsRow(
+                    icon = Icons.Rounded.Map,
+                    labelRes = R.string.settings_mapColorScheme_title,
+                    items = state.mapColorSettings,
+                    isItemSelected = { isSelected },
+                    itemLabelRes = { value.titleStringRes },
+                    onItemSelected = { viewModel.onMapColorSchemeSettingSelected(it.value) },
+                )
+            }
             val developerSettings = state.developerModeSettings
             if (developerSettings is SettingsViewModel.DeveloperModeSettings.Active) {
                 item {
@@ -128,7 +140,7 @@ fun SettingsScreen(
                 item {
                     SelectionSettingsRow(
                         icon = Icons.Rounded.EditLocationAlt,
-                        labelRes = R.string.settings_dateOverride_title,
+                        labelRes = R.string.settings_locationOverride_title,
                         items = developerSettings.locationOverrideOptions,
                         isItemSelected = { isSelected },
                         itemLabelRes = { value.titleStringRes },
@@ -300,6 +312,12 @@ private val ColorSchemeSetting.titleStringRes: Int
     get() = when (this) {
         ColorSchemeSetting.Classic -> R.string.settings_colorScheme_classic
         ColorSchemeSetting.System -> R.string.settings_colorScheme_system
+    }
+
+private val MapColorSetting.titleStringRes: Int
+    get() = when (this) {
+        MapColorSetting.Classic -> R.string.settings_mapColorScheme_classic
+        MapColorSetting.AppScheme -> R.string.settings_mapColorScheme_appScheme
     }
 
 private val DateOverride.titleStringRes: Int

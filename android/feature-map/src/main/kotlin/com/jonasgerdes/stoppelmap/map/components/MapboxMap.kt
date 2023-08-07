@@ -6,12 +6,15 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.graphics.RectF
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -22,8 +25,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.graphics.ColorUtils
@@ -34,6 +39,7 @@ import com.google.gson.JsonPrimitive
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.repository.location.MapBoxLocationProvider
+import com.jonasgerdes.stoppelmap.map.ui.MapBoxMapColors
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.MapState
 import com.mapbox.bindgen.Value
 import com.mapbox.geojson.Feature
@@ -57,6 +63,7 @@ import com.mapbox.maps.extension.style.sources.getSourceAs
 import com.mapbox.maps.plugin.PuckBearingSource
 import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.attribution.attribution
+import com.mapbox.maps.plugin.compass.compass
 import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.locationcomponent.location2
@@ -73,7 +80,7 @@ fun MapboxMap(
     onCameraMove: (CameraOptions) -> Unit,
     onStallTap: (String) -> Unit,
     modifier: Modifier = Modifier,
-    colors: MapBoxMapColors = MapBoxMapColors.fromMaterialTheme(),
+    colors: MapBoxMapColors,
 ) {
     val context = LocalContext.current
     val density = LocalDensity.current
@@ -84,12 +91,25 @@ fun MapboxMap(
         locationProvider.observeLocation()
     }
 
+    val compassMargins = with(LocalDensity.current) {
+        val layoutDir = LocalLayoutDirection.current
+        RectF(
+            /* left = */ if (layoutDir == LayoutDirection.Ltr) 0f else 16.dp.toPx(),
+            /* top = */ WindowInsets.statusBars.getTop(this) + 16.dp.toPx(),
+            /* right = */ if (layoutDir == LayoutDirection.Rtl) 0f else 16.dp.toPx(),
+            /* bottom = */ 0f
+        )
+    }
+    val compassPadding = PaddingValues()
     val mapView = remember {
         MapView(context, MapInitOptions(context, styleUri = "asset://map/style.json")).apply {
             getMapboxMap().apply {
                 scalebar.enabled = false
                 attribution.enabled = false
                 gestures.pitchEnabled = false
+                compass.marginTop = compassMargins.top
+                compass.marginLeft = compassMargins.left
+                compass.marginRight = compassMargins.right
                 setBounds(
                     CameraBoundsOptions.Builder()
                         .minZoom(MapDefaults.minZoom)
@@ -237,14 +257,6 @@ fun MapboxMap(
                     textHaloColor(colors.labelHaloColor.toArgb())
                     visibility(if (highlightedStalls.isNullOrEmpty()) Visibility.NONE else Visibility.VISIBLE)
                 }
-
-                style.addImageFromVectorResource(
-                    context,
-                    density,
-                    "location-puck",
-                    R.drawable.ic_location_puck,
-                    colors.locationPuckColor
-                )
                 /*mapState.userLocation?.let { userLocation ->
                     style.getSourceAs<GeoJsonSource>("user-location-source")?.apply {
                         data(
@@ -287,75 +299,6 @@ fun MapboxMap(
     MapLifecycle(mapView = mapView)
 }
 
-data class MapBoxMapColors(
-    val locationPuckColor: Color,
-    val backgroundColor: Color,
-    val streetColor: Color,
-    val labelColor: Color,
-    val labelHaloColor: Color,
-    val stallTypeBarColor: Color,
-    val stallTypeCandyStallColor: Color,
-    val stallTypeExpoColor: Color,
-    val stallTypeFoodStallColor: Color,
-    val stallTypeGameStallColor: Color,
-    val stallTypeMiscColor: Color,
-    val stallTypeParkingColor: Color,
-    val stallTypeRestaurantColor: Color,
-    val stallTypeRestroomColor: Color,
-    val stallTypeRideColor: Color,
-    val stallTypeSellerStallColor: Color,
-) {
-    companion object {
-
-        private fun Color.withHSL(
-            hue: Float? = null,
-            saturation: Float? = null,
-            lightness: Float? = null,
-        ) = FloatArray(3).let { hsl ->
-            ColorUtils.colorToHSL(toArgb(), hsl)
-            hue?.let { hsl[0] = it }
-            saturation?.let { hsl[1] = it }
-            lightness?.let { hsl[2] = it }
-            Color(ColorUtils.HSLToColor(hsl))
-        }
-
-        private fun Color.modify(isDarkTheme: Boolean) =
-            withHSL(lightness = if (isDarkTheme) 0.3f else 0.7f)
-
-        @Composable
-        fun fromMaterialTheme(
-            isDarkTheme: Boolean = isSystemInDarkTheme()
-        ) =
-            MapBoxMapColors(
-                locationPuckColor = MaterialTheme.colorScheme.primary,
-                backgroundColor = MaterialTheme.colorScheme.background,
-                streetColor = MaterialTheme.colorScheme.surfaceVariant,
-                labelColor = MaterialTheme.colorScheme.onSurface,
-                labelHaloColor = MaterialTheme.colorScheme.surface,
-                stallTypeBarColor = MaterialTheme.colorScheme.secondaryContainer.modify(isDarkTheme),
-                stallTypeCandyStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
-                    isDarkTheme
-                ),
-                stallTypeExpoColor = MaterialTheme.colorScheme.surfaceVariant.modify(isDarkTheme),
-                stallTypeFoodStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
-                    isDarkTheme
-                ),
-                stallTypeGameStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
-                    isDarkTheme
-                ),
-                stallTypeMiscColor = MaterialTheme.colorScheme.surfaceVariant.modify(isDarkTheme),
-                stallTypeParkingColor = MaterialTheme.colorScheme.surfaceVariant.modify(isDarkTheme),
-                stallTypeRestaurantColor = MaterialTheme.colorScheme.surfaceVariant.modify(
-                    isDarkTheme
-                ),
-                stallTypeRestroomColor = MaterialTheme.colorScheme.errorContainer.modify(isDarkTheme),
-                stallTypeRideColor = MaterialTheme.colorScheme.tertiaryContainer.modify(isDarkTheme),
-                stallTypeSellerStallColor = MaterialTheme.colorScheme.surfaceVariant.modify(
-                    isDarkTheme
-                ),
-            )
-    }
-}
 
 @Composable
 private fun MapLifecycle(mapView: MapView) {
