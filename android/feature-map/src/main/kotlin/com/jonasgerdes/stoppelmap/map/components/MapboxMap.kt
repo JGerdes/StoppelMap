@@ -239,7 +239,7 @@ fun MapboxMap(
                     fillColor(colors.stallTypeSellerStallColor.toArgb())
                 }
                 style.getLayerAs<FillLayer>("expo-stalls")?.apply {
-                    fillColor(colors.stallTypeSellerStallColor.toArgb())
+                    fillColor(colors.stallTypeExpoColor.toArgb())
                 }
 
                 val highlightedStalls = mapState.highlightedStalls
