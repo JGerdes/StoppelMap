@@ -5,15 +5,16 @@
 
 package com.jonasgerdes.stoppelmap.map.ui
 
-import android.content.Context
-import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,6 +24,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Error
 import androidx.compose.material.icons.rounded.MyLocation
 import androidx.compose.material3.CardDefaults
@@ -30,6 +32,7 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -57,6 +60,8 @@ fun MapScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val mapDataFile: MapDataFile = get()
 
+    val searchState = state.searchState
+
     Box(modifier = modifier) {
         MapboxMap(
             mapState = state.mapState,
@@ -68,32 +73,96 @@ fun MapScreen(
                 .fillMaxSize()
                 .padding(scaffoldPadding)
         )
-        FloatingActionButton(
-            onClick = {
-                onRequestLocationPermission()
-                viewModel.onMyLocationFabTap()
-            },
-            shape = CircleShape,
+        Column(
             modifier = Modifier
-                .padding(16.dp)
                 .padding(scaffoldPadding)
-                .align(Alignment.BottomEnd)
+                .align(Alignment.BottomStart)
+                .fillMaxWidth()
         ) {
-            Icon(Icons.Rounded.MyLocation, contentDescription = "Lokalisiere mich")
+            FloatingActionButton(
+                onClick = {
+                    onRequestLocationPermission()
+                    viewModel.onMyLocationFabTap()
+                },
+                shape = CircleShape,
+                modifier = Modifier
+                    .padding(16.dp)
+                    .align(Alignment.End)
+            ) {
+                Icon(Icons.Rounded.MyLocation, contentDescription = "Lokalisiere mich")
+            }
+
+            AnimatedVisibility(
+                visible = searchState is MapViewModel.SearchState.HighlightResult,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                ElevatedCard(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 32.dp)
+                        .padding(bottom = 16.dp, top = 8.dp),
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    ),
+                ) {
+                    if (searchState is MapViewModel.SearchState.HighlightResult) {
+                        Column(
+                            Modifier
+                                .padding(8.dp)
+                                .padding(bottom = 8.dp)
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.Top,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                            ) {
+                                Text(
+                                    text = searchState.result.term,
+                                    style = MaterialTheme.typography.headlineMedium,
+                                    modifier = Modifier
+                                        .padding(
+                                            horizontal = 8.dp,
+                                            vertical = 8.dp
+                                        )
+                                        .weight(1f)
+                                )
+                                IconButton(
+                                    onClick = { viewModel.onCloseSearchTapped() },
+                                ) {
+                                    Icon(Icons.Rounded.Close, contentDescription = "Schließen")
+                                }
+                            }
+                            if (searchState.result.stalls.size > 1) {
+                                Text(
+                                    text = "${searchState.result.stalls.size} mal auf dem Stoppelmarkt",
+                                    modifier = Modifier.padding(horizontal = 8.dp)
+                                )
+                            }
+                        }
+
+                    }
+                }
+            }
         }
 
-        Search(
-            query = (state.searchState as? MapViewModel.SearchState.Search)?.query ?: "",
-            results = (state.searchState as? MapViewModel.SearchState.Search)?.results
-                ?: emptyList(),
-            searchState = if (state.searchState is MapViewModel.SearchState.Search) SearchState.Expanded else SearchState.Collapsed,
-            onSearchButtonTap = viewModel::onSearchButtonTapped,
-            onCloseSearchTap = viewModel::onCloseSearchTapped,
-            onQueryChange = viewModel::onSearchQueryChanged,
-            onResultTap = viewModel::onSearchResultTapped,
-            collapsedPaddingBottom = 56.dp + 32.dp + scaffoldPadding.calculateBottomPadding(),
-            modifier = Modifier.align(Alignment.BottomEnd),
-        )
+        AnimatedVisibility(
+            visible = searchState !is MapViewModel.SearchState.HighlightResult,
+            enter = fadeIn() + scaleIn(),
+            exit = fadeOut() + scaleOut(),
+            modifier = Modifier.align(Alignment.BottomEnd)
+        ) {
+            Search(
+                query = (searchState as? MapViewModel.SearchState.Search)?.query ?: "",
+                results = (searchState as? MapViewModel.SearchState.Search)?.results
+                    ?: emptyList(),
+                searchState = if (searchState is MapViewModel.SearchState.Search) SearchState.Expanded else SearchState.Collapsed,
+                onSearchButtonTap = viewModel::onSearchButtonTapped,
+                onCloseSearchTap = viewModel::onCloseSearchTapped,
+                onQueryChange = viewModel::onSearchQueryChanged,
+                onResultTap = viewModel::onSearchResultTapped,
+                collapsedPaddingBottom = 56.dp + 32.dp + scaffoldPadding.calculateBottomPadding(),
+            )
+        }
 
         var snackbarText by remember { mutableStateOf("") }
 

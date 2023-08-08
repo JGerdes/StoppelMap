@@ -129,7 +129,7 @@ fun Search(
                 ) {
                     Icon(
                         if (searchState == SearchState.Collapsed) Icons.Rounded.Search else Icons.Rounded.ArrowBack,
-                        contentDescription = null
+                        contentDescription = if (searchState == SearchState.Collapsed) "Karte durchsuchen" else "Suche schließen",
                     )
                 }
                 TextField(
