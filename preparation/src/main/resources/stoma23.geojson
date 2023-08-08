@@ -19060,8 +19060,8 @@
         {
             "type": "Feature",
             "properties": {
-                "alias": "Beckmann",
-                "name": "Beckmann's alter Dorfplatz",
+                "alias": "Beckmann;Beckmann's alter Dorfplatz",
+                "name": "Altdeutscher Biergarten",
                 "operator": "Zelte Beckmann",
                 "slug": "beckmanns-altdeutscher-biergarten",
                 "building": "bar",
