@@ -131,7 +131,7 @@ fun StationScreen(
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
             ) {
-                Column(modifier.fillMaxWidth()) {
+                Column(Modifier.fillMaxWidth()) {
                     val gridState = rememberLazyGridState()
                     Card(
                         shape = topShape,

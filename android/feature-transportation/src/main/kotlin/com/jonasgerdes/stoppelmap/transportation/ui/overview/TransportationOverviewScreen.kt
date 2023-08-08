@@ -27,7 +27,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
@@ -102,6 +101,7 @@ fun TransportationOverviewScreen(
 
             }
         },
+        modifier = modifier
     ) { paddingValues ->
         HorizontalPager(
             pageCount = pages.size,

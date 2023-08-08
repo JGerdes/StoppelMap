@@ -152,7 +152,6 @@ class StoppelMapActivity : ComponentActivity() {
             NavHost(
                 navController,
                 startDestination = Screen.Home.route,
-                modifier = Modifier.padding(scaffoldPadding)
             ) {
                 composable(Screen.Home.route) {
                     HomeScreen(
@@ -163,18 +162,23 @@ class StoppelMapActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
+                            .padding(scaffoldPadding)
                     )
                 }
                 composable(Screen.About.route) {
                     SettingsScreen(
                         onNavigateBack = { navController.navigateUp() },
                         onUrlTap = { openUrl(it) },
-                        Modifier.fillMaxSize()
+                        Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
+                            .padding(scaffoldPadding)
                     )
                 }
                 composable(Screen.Map.route) {
                     MapScreen(
                         onRequestLocationPermission = ::requestLocationPermission,
+                        scaffoldPadding = scaffoldPadding,
                         modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
@@ -185,6 +189,7 @@ class StoppelMapActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
+                            .padding(scaffoldPadding)
                     )
                 }
                 composable(Screen.TransportationOverview.route) {
@@ -205,6 +210,7 @@ class StoppelMapActivity : ComponentActivity() {
                         Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
+                            .padding(scaffoldPadding)
                     )
                 }
                 composable(Screen.TransportRoute.route) {
@@ -220,6 +226,7 @@ class StoppelMapActivity : ComponentActivity() {
                         Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
+                            .padding(scaffoldPadding)
                     )
                 }
                 composable(Screen.TransportStation.route) {
@@ -227,7 +234,10 @@ class StoppelMapActivity : ComponentActivity() {
                     StationScreen(
                         stationId = stationId,
                         onNavigateBack = { navController.navigateUp() },
-                        Modifier.fillMaxSize()
+                        Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
+                            .padding(scaffoldPadding)
                     )
                 }
                 composable(Screen.News.route) {

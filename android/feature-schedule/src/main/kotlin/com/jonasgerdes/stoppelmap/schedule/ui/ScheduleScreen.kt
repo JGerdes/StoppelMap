@@ -62,9 +62,10 @@ fun ScheduleScreen(
                 title = { Text(text = stringResource(id = R.string.schedule_topbar_title)) },
             )
         },
+        modifier = modifier,
     ) { paddingValues ->
         Column(
-            modifier
+            Modifier
                 .fillMaxWidth()
                 .padding(top = paddingValues.calculateTopPadding())
         ) {
@@ -157,7 +158,7 @@ fun ScheduleScreen(
                                         )
                                     },
                                     showNotificationToggle = false,
-                                    modifier = modifier.fillMaxWidth()
+                                    modifier = Modifier.fillMaxWidth()
                                 )
                             }
                         }
