@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.preparation.operations
 
 import com.github.filosganga.geogson.gson.GeometryAdapterFactory
 import com.github.filosganga.geogson.model.FeatureCollection
+import com.github.filosganga.geogson.model.Point
 import com.github.filosganga.geogson.model.Polygon
 import com.google.common.collect.ImmutableMap
 import com.google.gson.GsonBuilder
@@ -10,11 +11,26 @@ import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import com.jonasgerdes.stoppelmap.preparation.Data
 import com.jonasgerdes.stoppelmap.preperation.createSlug
-import com.jonasgerdes.stoppelmap.preperation.entity.*
+import com.jonasgerdes.stoppelmap.preperation.entity.Alias
+import com.jonasgerdes.stoppelmap.preperation.entity.Image
+import com.jonasgerdes.stoppelmap.preperation.entity.Item
+import com.jonasgerdes.stoppelmap.preperation.entity.Phone
+import com.jonasgerdes.stoppelmap.preperation.entity.Restroom
+import com.jonasgerdes.stoppelmap.preperation.entity.Stall
+import com.jonasgerdes.stoppelmap.preperation.entity.StallItem
+import com.jonasgerdes.stoppelmap.preperation.entity.StallSubType
+import com.jonasgerdes.stoppelmap.preperation.entity.SubType
+import com.jonasgerdes.stoppelmap.preperation.entity.Url
+import com.jonasgerdes.stoppelmap.preperation.entity.center
+import com.jonasgerdes.stoppelmap.preperation.entity.coordinates
+import com.jonasgerdes.stoppelmap.preperation.entity.getNamesForItem
+import com.jonasgerdes.stoppelmap.preperation.entity.getNamesForType
+import com.jonasgerdes.stoppelmap.preperation.entity.max
+import com.jonasgerdes.stoppelmap.preperation.entity.min
 import com.jonasgerdes.stoppelmap.preperation.splitBy
 import com.jonasgerdes.stoppelmap.preperation.toShortHash
 import java.io.File
-import java.util.*
+import java.util.UUID
 
 fun Data.parseGeoJson(input: File, output: File, descriptionFolder: File?) {
     val gson = GsonBuilder()
@@ -27,16 +43,24 @@ fun Data.parseGeoJson(input: File, output: File, descriptionFolder: File?) {
     println("Read geojson (${input.path})")
     val updatedFeatures = geoJson.features()
         .map {
-            if (it.properties()["building"] == null
-                || it.properties()["building"]!!.asString == "yes"
+            println("Parse feature (${it.properties()}")
+            if (
+                (!it.properties().contains("building")
+                        && !it.properties().contains("public_transport")
+                        && !it.properties().contains("amenity")
+                        ) || it.properties()["building"]?.asString == "yes"
             ) {
                 it
             } else {
                 val center = it.geometry().let {
-                    if (it is Polygon) {
-                        it.coordinates().center()
-                    } else {
-                        null
+                    when (it) {
+                        is Polygon -> it.coordinates().center()
+                        is Point -> com.jonasgerdes.stoppelmap.preperation.entity.Point(
+                            longitude = it.lon(),
+                            latitude = it.lat()
+                        )
+
+                        else -> null
                     }
                 }
                 val min = it.geometry().let {
@@ -47,7 +71,9 @@ fun Data.parseGeoJson(input: File, output: File, descriptionFolder: File?) {
                 }
                 val stall = Stall(
                     slug = "placeholder",
-                    type = it.properties()["building"]!!.asString,
+                    type = it.properties()["building"]?.asString
+                        ?: it.properties()["public_transport"]?.asString
+                        ?: it.properties()["amenity"]?.asString!!,
                     name = it.properties()["name"]?.asString,
                     operator = it.properties()["operator"]?.asString,
                     priority = Integer.parseInt(

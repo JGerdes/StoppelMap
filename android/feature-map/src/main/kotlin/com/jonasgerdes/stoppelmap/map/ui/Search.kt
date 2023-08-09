@@ -52,6 +52,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import kotlinx.coroutines.delay
 import timber.log.Timber
@@ -219,14 +220,21 @@ enum class SearchState {
 
 @DrawableRes
 private fun Context.getDrawableForStallType(stallType: String): Int? =
-    "ic_stall_type_${stallType.replace("-", "_")}".let { name ->
-        val id = resources.getIdentifier(
-            name,
-            "drawable",
-            packageName
-        )
-        if (id == 0) {
-            Timber.w("Can't find icon for type [$stallType]")
-            null
-        } else id
+    when (stallType) {
+        "station" -> R.drawable.ic_bus
+        "platform" -> R.drawable.ic_train
+        "taxi" -> R.drawable.ic_taxi
+        "entrance" -> R.drawable.ic_entrance
+        else ->
+            "ic_stall_type_${stallType.replace("-", "_")}".let { name ->
+                val id = resources.getIdentifier(
+                    name,
+                    "drawable",
+                    packageName
+                )
+                if (id == 0) {
+                    Timber.w("Can't find icon for type [$stallType]")
+                    null
+                } else id
+            }
     }

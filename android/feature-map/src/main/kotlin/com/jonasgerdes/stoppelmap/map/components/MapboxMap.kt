@@ -226,6 +226,9 @@ fun MapboxMap(
                 style.getLayerAs<FillLayer>("miscs")?.apply {
                     fillColor(colors.stallTypeMiscColor.toArgb())
                 }
+                style.getLayerAs<FillLayer>("fill_public_transport")?.apply {
+                    fillColor(colors.stallTypeMiscColor.toArgb())
+                }
                 style.getLayerAs<FillLayer>("food-stalls")?.apply {
                     fillColor(colors.stallTypeFoodStallColor.toArgb())
                 }
@@ -403,6 +406,10 @@ fun Style.addMarkerIcons(
             R.drawable.ic_stall_type_seller_stall,
             colors.stallTypeSellerStallColor
         ),
+        MarkerIcon("station", R.drawable.ic_bus, colors.stallTypeMiscColor),
+        MarkerIcon("platform", R.drawable.ic_train, colors.stallTypeMiscColor),
+        MarkerIcon("taxi", R.drawable.ic_taxi, colors.stallTypeMiscColor),
+        MarkerIcon("entrance", R.drawable.ic_entrance, colors.stallTypeMiscColor),
     ).forEach { markerIcon ->
         val bitmap = with(density) {
             Bitmap.createBitmap(24.dp.roundToPx(), 24.dp.roundToPx(), Bitmap.Config.ARGB_8888)
