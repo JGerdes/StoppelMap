@@ -241,6 +241,15 @@ fun StopStationCard(
                     .padding(16.dp),
                 horizontalAlignment = Alignment.End
             ) {
+                station.routeName?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.labelMedium,
+                        modifier = Modifier
+                            .align(Alignment.Start)
+                            .padding(end = 64.dp, bottom = 8.dp)
+                    )
+                }
                 Text(
                     text = station.title,
                     style = MaterialTheme.typography.titleMedium,

@@ -18,6 +18,7 @@ data class BusRouteDetails(
         data class Stop(
             override val id: String,
             override val title: String,
+            val routeName: String? = null,
             val nextDepartures: List<DepartureTime>,
             val annotateAsNew: Boolean = false,
         ) : Station()

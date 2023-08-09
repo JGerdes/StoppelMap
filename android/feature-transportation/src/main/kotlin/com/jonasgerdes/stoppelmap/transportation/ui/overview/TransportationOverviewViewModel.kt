@@ -49,10 +49,13 @@ class TransportationOverviewViewModel(
                 .flatMapLatest { favs ->
                     timeUpdate.map {
                         favs.map { stationId ->
-                            val (station, _, _) = busRoutesRepository.getStationById(stationId)
+                            val (station, routeName, _) = busRoutesRepository.getStationById(
+                                stationId
+                            )
                                 .first()
                             BusRouteDetails.Station.Stop(
                                 id = station.id,
+                                routeName = routeName,
                                 title = station.title,
                                 nextDepartures = getNextDepartures(station.departures.flatMap { it.departures })
                             )
