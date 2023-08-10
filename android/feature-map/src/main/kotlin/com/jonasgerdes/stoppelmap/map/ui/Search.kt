@@ -26,6 +26,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -167,15 +168,25 @@ fun Search(
                             headlineContent = { Text(text = result.term) },
                             leadingContent = {
                                 val context = LocalContext.current
-                                val vectorId =
-                                    context.getDrawableForStallType(result.stalls.first().type)
-                                if (vectorId == null) {
-                                    Spacer(modifier = Modifier.size(24.dp))
-                                } else {
-                                    Icon(
-                                        painterResource(id = vectorId),
-                                        contentDescription = null
-                                    )
+
+                                when (result.type) {
+                                    SearchResult.Type.Search -> {
+                                        context.getDrawableForStallType(
+                                            result.stalls.first().type
+                                        )?.let { resourceId ->
+                                            Icon(
+                                                painterResource(id = resourceId),
+                                                contentDescription = null
+                                            )
+                                        } ?: Spacer(modifier = Modifier.size(24.dp))
+                                    }
+
+                                    SearchResult.Type.History -> {
+                                        Icon(
+                                            Icons.Rounded.History,
+                                            contentDescription = null
+                                        )
+                                    }
                                 }
                             },
                             tonalElevation = 6.dp,

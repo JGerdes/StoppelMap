@@ -1,6 +1,7 @@
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.COMPOSE)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -23,5 +24,7 @@ dependencies {
     implementation(libs.mapbox)
     implementation(libs.google.play.services.location)
     implementation(libs.sqldelight.coroutines)
+    implementation(libs.androidx.datastore)
+    implementation(libs.kotlinx.serialization.json)
 
 }

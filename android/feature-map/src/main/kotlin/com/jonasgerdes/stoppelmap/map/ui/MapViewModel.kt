@@ -5,8 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.data.Stall
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
+import com.jonasgerdes.stoppelmap.map.repository.SearchHistoryRepository
 import com.jonasgerdes.stoppelmap.map.repository.StallRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepository
+import com.jonasgerdes.stoppelmap.map.usecase.GetSearchHistoryUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchStallsUseCase
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
@@ -22,7 +24,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -30,6 +34,8 @@ import timber.log.Timber
 class MapViewModel(
     private val stallRepository: StallRepository,
     private val searchStalls: SearchStallsUseCase,
+    private val getSearchHistory: GetSearchHistoryUseCase,
+    private val searchHistoryRepository: SearchHistoryRepository,
     private val locationRepository: LocationRepository,
     private val settingsRepository: SettingsRepository,
     private val isLocationInArea: IsLocationInAreaUseCase,
@@ -50,7 +56,16 @@ class MapViewModel(
 
     private val userCameraUpdates = MutableStateFlow(initialCameraOptions)
 
+    private var searchHistory: List<SearchResult> = emptyList()
+
     init {
+        getSearchHistory()
+            .onEach {
+                searchHistory = it
+                Timber.d("searchHistory: $searchHistory")
+            }
+            .launchIn(viewModelScope)
+
         viewModelScope.launch {
             userCameraUpdates.debounce(300)
                 .collectLatest {
@@ -155,7 +170,7 @@ class MapViewModel(
     }
 
     fun onSearchButtonTapped() {
-        searchState.value = SearchState.Search()
+        searchState.value = SearchState.Search(results = searchHistory)
         mapState.value = mapState.value.copy(highlightedStalls = null)
     }
 
@@ -176,6 +191,9 @@ class MapViewModel(
             cameraMovementSource = MapState.CameraMovementSource.Computed,
             highlightedStalls = result.stalls
         )
+        viewModelScope.launch {
+            searchHistoryRepository.saveResultToHistory(result)
+        }
     }
 
     private var searchJob: Job? = null
@@ -188,13 +206,14 @@ class MapViewModel(
         }
         searchJob?.cancel()
 
-        if (query.isBlank()) return
-
-        searchJob = viewModelScope.launch {
-            val results = searchStalls(query)
-            searchState.value = SearchState.Search(query = query, results = results)
+        if (query.isBlank()) {
+            searchState.value = SearchState.Search(query = query, results = searchHistory)
+        } else {
+            searchJob = viewModelScope.launch {
+                val results = searchStalls(query)
+                searchState.value = SearchState.Search(query = query, results = results)
+            }
         }
-
     }
 
     data class ViewState(

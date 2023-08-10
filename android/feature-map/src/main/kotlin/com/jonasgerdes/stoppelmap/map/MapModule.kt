@@ -3,11 +3,15 @@ package com.jonasgerdes.stoppelmap.map
 
 import android.content.Context
 import android.location.Location
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import com.google.android.gms.location.LocationServices
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.map.repository.AliasRepository
 import com.jonasgerdes.stoppelmap.map.repository.ItemRepository
 import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
+import com.jonasgerdes.stoppelmap.map.repository.SearchHistoryRepository
 import com.jonasgerdes.stoppelmap.map.repository.StallRepository
 import com.jonasgerdes.stoppelmap.map.repository.TypeRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.FakeLocationRepository
@@ -16,12 +20,15 @@ import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryImpl
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryWrapper
 import com.jonasgerdes.stoppelmap.map.repository.location.MapBoxLocationProvider
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
+import com.jonasgerdes.stoppelmap.map.usecase.GetSearchHistoryUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchStallsUseCase
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "mapUserData")
 
 val mapModule = module {
 
@@ -80,10 +87,23 @@ val mapModule = module {
     }
     factory { IsLocationInAreaUseCase() }
 
+    single {
+        SearchHistoryRepository(dataStore = get<Context>().dataStore)
+    }
+
+    factory {
+        GetSearchHistoryUseCase(
+            searchHistoryRepository = get(),
+            stallRepository = get()
+        )
+    }
+
     viewModel {
         MapViewModel(
             stallRepository = get(),
             searchStalls = get(),
+            getSearchHistory = get(),
+            searchHistoryRepository = get(),
             locationRepository = get(),
             settingsRepository = get(),
             isLocationInArea = get()
