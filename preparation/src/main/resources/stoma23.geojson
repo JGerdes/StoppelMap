@@ -15999,7 +15999,8 @@
         "operator": "Wegener, A.",
         "building": "ride",
         "forKids": "yes",
-        "name": "Tom Der Tiger"
+        "name": "Tom Der Tiger",
+        "type": "coaster"
       },
       "geometry": {
         "type": "Polygon",
@@ -21704,7 +21705,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Fala treff",
+        "name": "FALA Treff",
         "operator": "FALA",
         "building": "bar",
         "item_shots": "yes",
