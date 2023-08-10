@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.data.Event
 import com.jonasgerdes.stoppelmap.schedule.model.ScheduleDay
 import com.jonasgerdes.stoppelmap.schedule.model.ScheduleEvent
 import com.jonasgerdes.stoppelmap.schedule.model.ScheduleTime
+import com.jonasgerdes.stoppelmap.schedule.repository.BookmarkedEventsRepository
 import com.jonasgerdes.stoppelmap.schedule.repository.EventRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,17 +16,19 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
 
 class ScheduleViewModel(
     private val eventRepository: EventRepository,
+    private val bookmarkedEventsRepository: BookmarkedEventsRepository,
     private val clockProvider: ClockProvider,
 ) : ViewModel() {
 
     private val selectedDay = MutableStateFlow<LocalDate?>(clockProvider.nowAsLocalDateTime().date)
     private val selectedEvent = MutableStateFlow<Event?>(null)
-    private val notifications = MutableStateFlow(emptySet<String>())
-    private val scheduleDays = notifications.map { notifications ->
+    private val bookmarkedEvents = bookmarkedEventsRepository.getBookmarkedEvents()
+    private val scheduleDays = bookmarkedEvents.map { notifications ->
         eventRepository.getAllEvents()
             .groupBy { it.start.date }
             .entries
@@ -41,7 +44,7 @@ class ScheduleViewModel(
                                     .map { event ->
                                         ScheduleEvent(
                                             event = event,
-                                            notificationActive = notifications.contains(
+                                            bookmarked = notifications.contains(
                                                 event.slug
                                             )
                                         )
@@ -94,11 +97,11 @@ class ScheduleViewModel(
     }
 
     fun onEventNotificationSchedule(event: Event, notificationActive: Boolean) {
-        notifications.update { current ->
+        viewModelScope.launch {
             if (notificationActive) {
-                current + event.slug
+                bookmarkedEventsRepository.addBookmarkedEvent(event.slug)
             } else {
-                current - event.slug
+                bookmarkedEventsRepository.removeBookmarkedEvent(event.slug)
             }
         }
     }

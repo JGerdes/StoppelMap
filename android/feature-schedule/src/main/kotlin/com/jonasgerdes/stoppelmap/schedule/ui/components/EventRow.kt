@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Bookmark
+import androidx.compose.material.icons.rounded.BookmarkBorder
 import androidx.compose.material.icons.rounded.NotificationsActive
 import androidx.compose.material.icons.rounded.NotificationsNone
 import androidx.compose.material3.Icon
@@ -37,7 +39,7 @@ fun EventRow(
     onSelected: () -> Unit,
     onNotificationToggle: (active: Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    showNotificationToggle: Boolean = false,
+    showNotificationToggle: Boolean = true,
 ) {
     val radius by animateDpAsState(
         targetValue = if (selected) 8.dp else 0.dp
@@ -81,15 +83,15 @@ fun EventRow(
             }
         }
         if (showNotificationToggle) {
-            if (selected || scheduleEvent.notificationActive) {
+            if (selected || scheduleEvent.bookmarked) {
                 val iconTint by animateColorAsState(
                     targetValue =
-                    if (scheduleEvent.notificationActive)
+                    if (scheduleEvent.bookmarked)
                         MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
                 IconButton(
-                    onClick = { onNotificationToggle(!scheduleEvent.notificationActive) },
+                    onClick = { onNotificationToggle(!scheduleEvent.bookmarked) },
                     modifier = Modifier
                         .padding(8.dp)
                         .align(
@@ -97,8 +99,8 @@ fun EventRow(
                         )
                 ) {
                     Icon(
-                        if (scheduleEvent.notificationActive) Icons.Rounded.NotificationsActive
-                        else Icons.Rounded.NotificationsNone,
+                        if (scheduleEvent.bookmarked) Icons.Rounded.Bookmark
+                        else Icons.Rounded.BookmarkBorder,
                         contentDescription = null,
                         tint = iconTint
                     )

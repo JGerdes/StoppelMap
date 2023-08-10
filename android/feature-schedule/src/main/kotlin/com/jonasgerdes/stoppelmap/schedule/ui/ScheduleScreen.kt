@@ -157,7 +157,7 @@ fun ScheduleScreen(
                                             notificationActive = it
                                         )
                                     },
-                                    showNotificationToggle = false,
+                                    showNotificationToggle = true,
                                     modifier = Modifier.fillMaxWidth()
                                 )
                             }
