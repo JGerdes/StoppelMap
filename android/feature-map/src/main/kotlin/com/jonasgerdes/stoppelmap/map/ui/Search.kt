@@ -3,11 +3,14 @@ package com.jonasgerdes.stoppelmap.map.ui
 import android.content.Context
 import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -138,8 +141,14 @@ fun Search(
                     value = query,
                     onValueChange = onQueryChange,
                     trailingIcon = {
-                        IconButton(onClick = { onQueryChange("") }) {
-                            Icon(Icons.Rounded.Close, contentDescription = null)
+                        AnimatedVisibility(
+                            visible = query.isNotEmpty(),
+                            enter = fadeIn(),
+                            exit = fadeOut()
+                        ) {
+                            IconButton(onClick = { onQueryChange("") }) {
+                                Icon(Icons.Rounded.Close, contentDescription = null)
+                            }
                         }
                     },
                     placeholder = { Text("Auf der Karte suchen") },
