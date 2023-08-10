@@ -2,12 +2,13 @@ package com.jonasgerdes.stoppelmap.map.repository.location
 
 import android.annotation.SuppressLint
 import android.location.Location
+import android.os.Looper
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -61,7 +62,7 @@ class LocationRepositoryImpl(
 
     @SuppressLint("MissingPermission")
     private fun getLocationUpdatesInternal(locationRequest: LocationRequest): Flow<Location> =
-        channelFlow {
+        callbackFlow {
             val locationCallback = object : LocationCallback() {
                 override fun onLocationResult(result: LocationResult) {
                     result.locations.forEach { trySend(it) }
@@ -70,8 +71,10 @@ class LocationRepositoryImpl(
             fusedLocationProviderClient.requestLocationUpdates(
                 locationRequest,
                 locationCallback,
-                null
-            )
+                Looper.getMainLooper(),
+            ).addOnFailureListener {
+                close(it)
+            }
 
             awaitClose {
                 fusedLocationProviderClient.removeLocationUpdates(locationCallback)
