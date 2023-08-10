@@ -52,7 +52,7 @@ fun getNameForItem(item: String): Any = when (item) {
 
     "item_crepe" -> "Crepé"
     "item_roasted_almonds" -> "Gebrannte Mandeln"
-    "item_ice_cream" -> "Eis"
+    "item_ice_cream" -> listOf("Eis", "Softeis")
     "item_slush" -> "Slusheis"
     "item_frozen_yogurt" -> "Frozen Yogurt"
     "item_cotton_Candy" -> "Zuckerwatte"
