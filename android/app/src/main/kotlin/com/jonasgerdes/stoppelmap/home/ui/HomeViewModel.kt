@@ -99,6 +99,7 @@ class HomeViewModel(
 
             val promotedEvents = (bookmarked + official)
                 .filterNotNull()
+                .distinctBy { it.slug }
                 .sortedBy { it.start }
             if (promotedEvents.isEmpty()) {
                 PromotedEventsState.Hidden
