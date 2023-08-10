@@ -200,7 +200,7 @@ fun Data.parseGeoJson(input: File, output: File, descriptionFolder: File?) {
                         })
                     }
                 }.let {
-                    val priority = it.properties()["priority"]?.asString?.toInt() ?: 1
+                    val priority = it.properties()["priority"]?.asString?.toInt() ?: 100
                     val props = it.properties().toMutableMap()
                     props.put("priority", JsonObject().let {
                         it.addProperty("priority", priority)
