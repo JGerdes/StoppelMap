@@ -62,7 +62,6 @@ class MapViewModel(
         getSearchHistory()
             .onEach {
                 searchHistory = it
-                Timber.d("searchHistory: $searchHistory")
             }
             .launchIn(viewModelScope)
 
