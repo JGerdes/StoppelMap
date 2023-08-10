@@ -59,48 +59,40 @@ private fun EventCard(
     modifier: Modifier = Modifier,
     @DrawableRes headerImage: Int? = null,
 ) {
-    Column(
-        Modifier.fillMaxWidth()
-    ) {
-        Text(
-            text = stringResource(id = R.string.home_officalEventCard_title),
-        )
-        Spacer(modifier = Modifier.size(8.dp))
-        Card(modifier = Modifier.fillMaxWidth()) {
-            if (headerImage != null) {
-                Image(
-                    painter = painterResource(id = R.drawable.fireworks),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .aspectRatio(2.4f),
-                )
+    Card(modifier = modifier.fillMaxWidth()) {
+        if (headerImage != null) {
+            Image(
+                painter = painterResource(id = R.drawable.fireworks),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(2.4f),
+            )
+        }
+        val timeFormatter = remember {
+            DateTimeFormatter.ofPattern(
+                "EEE, HH:mm",
+                Locale.GERMAN
+            )
+        }
+        Column(
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.padding(16.dp)
+        ) {
+            event.location?.let {
+                Text(text = it, style = MaterialTheme.typography.labelMedium)
             }
-            val timeFormatter = remember {
-                DateTimeFormatter.ofPattern(
-                    "EEE, HH:mm",
-                    Locale.GERMAN
-                )
-            }
-            Column(
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier.padding(16.dp)
-            ) {
-                event.location?.let {
-                    Text(text = it, style = MaterialTheme.typography.labelMedium)
-                }
+            Text(
+                text = event.start.toJavaLocalDateTime().format(timeFormatter),
+                style = MaterialTheme.typography.labelLarge
+            )
+            Text(text = event.name, style = MaterialTheme.typography.titleLarge)
+            event.description?.let {
                 Text(
-                    text = event.start.toJavaLocalDateTime().format(timeFormatter),
-                    style = MaterialTheme.typography.labelLarge
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
                 )
-                Text(text = event.name, style = MaterialTheme.typography.titleLarge)
-                event.description?.let {
-                    Text(
-                        text = it,
-                        style = MaterialTheme.typography.bodySmall,
-                    )
-                }
             }
         }
     }

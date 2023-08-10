@@ -20,6 +20,7 @@ val homeModule = module {
             getOpeningCountDown = get(),
             shouldShowCountdownWidgetSuggestion = get(),
             getNextOfficialEvent = get(),
+            getNextBookmarkedEvent = get(),
             isCurrentYearsSeasonJustOver = get()
         )
     }

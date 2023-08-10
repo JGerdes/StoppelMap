@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Settings
@@ -40,7 +42,6 @@ import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggest
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
-import com.jonasgerdes.stoppelmap.schedule.GetNextOfficialEventUseCase
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
@@ -129,15 +130,29 @@ fun HomeScreen(
                 HomeViewModel.CountDownState.Loading -> Unit
                 HomeViewModel.CountDownState.Over -> Unit
             }
-            when (val nextOfficialEvent = state.nextOfficialEventState) {
-                GetNextOfficialEventUseCase.Result.None -> Unit
-                is GetNextOfficialEventUseCase.Result.Some -> {
-                    item {
-                        NextOfficialEventCard(
-                            event = nextOfficialEvent.event,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
+            val promotedEventsState = state.promotedEventsState
+            if (promotedEventsState is HomeViewModel.PromotedEventsState.Visible) {
+                item {
+                    Text(
+                        text = stringResource(id = R.string.home_officalEventCard_title),
+                    )
+                }
+                itemsIndexed(
+                    promotedEventsState.events,
+                    key = { _, event -> event.slug }
+                ) { index, event ->
+                    NextOfficialEventCard(
+                        event = event,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(
+                                bottom = when {
+                                    promotedEventsState.events.size == 1 -> 0.dp
+                                    index == promotedEventsState.events.lastIndex -> 16.dp
+                                    else -> 0.dp
+                                }
+                            )
+                    )
                 }
             }
             when (state.countdownWidgetSuggestionState) {

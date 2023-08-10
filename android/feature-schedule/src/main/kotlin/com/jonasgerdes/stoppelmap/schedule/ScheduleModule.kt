@@ -32,6 +32,14 @@ val scheduleModule = module {
         )
     }
 
+    factory {
+        GetNextBookmarkedEventUseCase(
+            bookmarkedEventsRepository = get(),
+            eventsRepository = get(),
+            clockProvider = get()
+        )
+    }
+
     viewModel {
         ScheduleViewModel(
             eventRepository = get(),
