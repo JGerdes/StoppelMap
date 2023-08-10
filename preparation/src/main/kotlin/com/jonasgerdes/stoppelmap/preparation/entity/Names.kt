@@ -112,6 +112,7 @@ private fun getNameForType(type: String) = when (type) {
     "restroom" -> listOf("Toilette", "WC", "Klo")
     "ride" -> "Fahrgeschäft"
     "seller-stall" -> "Verkaufsstand"
+    "taxi" -> "Taxi"
 
     "for-kids" -> "für Kinder"
     "marquee" -> "Festzelt"

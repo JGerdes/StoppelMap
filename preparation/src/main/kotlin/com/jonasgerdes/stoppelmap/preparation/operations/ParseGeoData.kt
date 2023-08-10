@@ -234,7 +234,8 @@ fun addTypeSubTypes(data: Data) {
         "misc",
         "restroom",
         "ride",
-        "seller-stall"
+        "seller-stall",
+        "taxi",
     ).forEach { data.addSubType(it) }
 }
 
