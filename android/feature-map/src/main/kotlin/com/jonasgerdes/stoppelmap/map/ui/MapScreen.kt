@@ -5,6 +5,7 @@
 
 package com.jonasgerdes.stoppelmap.map.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.fadeIn
@@ -91,6 +92,10 @@ fun MapScreen(
                     .align(Alignment.End)
             ) {
                 Icon(Icons.Rounded.MyLocation, contentDescription = "Lokalisiere mich")
+            }
+
+            BackHandler(enabled = searchState !is MapViewModel.SearchState.Collapsed) {
+                viewModel.onCloseSearchTapped()
             }
 
             AnimatedVisibility(

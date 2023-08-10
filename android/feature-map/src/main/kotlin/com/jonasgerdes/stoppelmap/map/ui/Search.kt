@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.ui
 
 import android.content.Context
-import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
@@ -227,9 +226,6 @@ fun Search(
             onDispose {
                 focusManager.clearFocus()
             }
-        }
-        BackHandler(enabled = searchState == SearchState.Expanded) {
-            onCloseSearchTap()
         }
     }
 }
