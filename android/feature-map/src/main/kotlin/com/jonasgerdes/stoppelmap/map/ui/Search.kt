@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Close
@@ -52,6 +53,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -139,6 +141,9 @@ fun Search(
                 TextField(
                     value = query,
                     onValueChange = onQueryChange,
+                    keyboardOptions = KeyboardOptions(
+                        imeAction = ImeAction.Search
+                    ),
                     trailingIcon = {
                         AnimatedVisibility(
                             visible = query.isNotEmpty(),
@@ -150,6 +155,8 @@ fun Search(
                             }
                         }
                     },
+                    maxLines = 1,
+                    singleLine = true,
                     placeholder = { Text("Auf der Karte suchen") },
                     colors = TextFieldDefaults.colors(
                         disabledContainerColor = Color.Transparent,

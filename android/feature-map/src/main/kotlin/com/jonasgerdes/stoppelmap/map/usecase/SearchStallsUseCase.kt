@@ -14,11 +14,12 @@ class SearchStallsUseCase(
 ) {
 
     suspend operator fun invoke(query: String): List<SearchResult> {
+        val cleanQuery = query.trim().lowercase()
         val stallResults =
-            stallRepository.findByName(query).filter { it.name.isNullOrBlank().not() }
+            stallRepository.findByName(cleanQuery).filter { it.name.isNullOrBlank().not() }
                 .map { SearchResult(it.name!!, listOf(it)) }
 
-        val typeResults = typeRepository.findByName(query).map {
+        val typeResults = typeRepository.findByName(cleanQuery).map {
             SearchResult(
                 term = it.name,
                 stalls = stallRepository.findByType(it.slug)
@@ -26,14 +27,14 @@ class SearchStallsUseCase(
             )
         }
 
-        val itemResults = itemRepository.findByName(query).map {
+        val itemResults = itemRepository.findByName(cleanQuery).map {
             SearchResult(
                 term = it.name,
                 stalls = stallRepository.findByItem(it.slug)
             )
         }
 
-        val aliasResults = aliasRepository.findByName(query).mapNotNull {
+        val aliasResults = aliasRepository.findByName(cleanQuery).mapNotNull {
             stallRepository.getStall(it.stall)?.let { stall ->
                 SearchResult(
                     term = it.alias,
@@ -41,8 +42,6 @@ class SearchStallsUseCase(
                 )
             }
         }
-
-        val cleanQuery = query.trim().lowercase()
 
         return (stallResults + aliasResults + typeResults + itemResults)
             .filter { it.stalls.isNotEmpty() }
