@@ -771,6 +771,83 @@
       "isOfficial": false
     },
     {
+      "uuid": "kaponierzeltfunky-rockerz0",
+      "name": "Funky Rockerz",
+      "start": "2023-08-10 18:00:00",
+      "locationUuid": "kaponierzelt",
+      "locationName": "Kaponier",
+      "description": "",
+      "artists": [],
+      "tags": [],
+      "isOfficial": false
+    },
+    {
+      "uuid": "kaponierzeltdj-ralf-burnett1",
+      "name": "DJ Ralf Burnett",
+      "start": "2023-08-11 19:00:00",
+      "locationUuid": "kaponierzelt",
+      "locationName": "Kaponier",
+      "description": "",
+      "artists": [],
+      "tags": [],
+      "isOfficial": false
+    },
+    {
+      "uuid": "kaponierzeltdie-andersons2",
+      "name": "Die Andersons",
+      "start": "2023-08-11 21:00:00",
+      "locationUuid": "kaponierzelt",
+      "locationName": "Kaponier",
+      "description": "",
+      "artists": [],
+      "tags": [],
+      "isOfficial": false
+    },
+    {
+      "uuid": "kaponierzeltsandbox-–-techno-und-techhouse3",
+      "name": "Sandbox – Techno und Techhouse",
+      "start": "2023-08-12 19:00:00",
+      "locationUuid": "kaponierzelt",
+      "locationName": "Kaponier",
+      "description": "",
+      "artists": [],
+      "tags": [],
+      "isOfficial": false
+    },
+    {
+      "uuid": "kaponierzeltdj-ralf-burnett4",
+      "name": "DJ Ralf Burnett",
+      "start": "2023-08-13 19:00:00",
+      "locationUuid": "kaponierzelt",
+      "locationName": "Kaponier",
+      "description": "",
+      "artists": [],
+      "tags": [],
+      "isOfficial": false
+    },
+    {
+      "uuid": "kaponierzeltbuddy-and-soul5",
+      "name": "Buddy and Soul",
+      "start": "2023-08-13 21:00:00",
+      "locationUuid": "kaponierzelt",
+      "locationName": "Kaponier",
+      "description": "",
+      "artists": [],
+      "tags": [],
+      "isOfficial": false
+    },
+    {
+      "uuid": "kaponierzeltfunky-rockerz6",
+      "name": "Funky Rockerz",
+      "start": "2023-08-14 10:00:00",
+      "locationUuid": "kaponierzelt",
+      "locationName": "Kaponier",
+      "description": "",
+      "artists": [],
+      "tags": [],
+      "isOfficial": false
+    },
+    {
       "uuid": "kombinatpool-nr-9-aus-dinklage-–-dj-onkel-david0",
       "name": "Pool Nr. 9 aus Dinklage – DJ Onkel David",
       "start": "2023-08-10 19:00:00",
