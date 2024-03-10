@@ -19,7 +19,6 @@ import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import org.koin.android.BuildConfig
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
