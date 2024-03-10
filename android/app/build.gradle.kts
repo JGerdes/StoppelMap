@@ -78,8 +78,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-
-        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -113,7 +111,6 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)
-    coreLibraryDesugaring(libs.android.desugar)
 
     implementation(libs.compose.ui.core)
     implementation(libs.compose.ui.preview)

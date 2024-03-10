@@ -13,7 +13,6 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)
-    coreLibraryDesugaring(libs.android.desugar)
     implementation(libs.bundles.androidx.runtime)
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.koin.compose)
