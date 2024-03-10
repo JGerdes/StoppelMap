@@ -48,7 +48,6 @@ fun TransportationOverviewScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    val pagerState = rememberPagerState()
     val pages = remember {
         listOf(
             Page.Bus,
@@ -56,6 +55,8 @@ fun TransportationOverviewScreen(
             Page.Taxi,
         )
     }
+
+    val pagerState = rememberPagerState(pageCount = { pages.size })
 
     Scaffold(
         topBar = {
@@ -104,7 +105,6 @@ fun TransportationOverviewScreen(
         modifier = modifier
     ) { paddingValues ->
         HorizontalPager(
-            pageCount = pages.size,
             state = pagerState,
             modifier = Modifier
                 .padding(top = paddingValues.calculateTopPadding())
