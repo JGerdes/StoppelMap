@@ -2,15 +2,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "figure.dance")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hallo Stoppelmarkt!")
+        TabView{
+            HomeScreen()
+                .tabItem{
+                    Label("Info",systemImage: "house.fill")
+                }
+            Text("Karte")
+                .tabItem{
+                    Label("Karte",systemImage: "map.fill")
+                }
+            Text("Programm")
+                .tabItem{
+                    Label("Programm",systemImage: "calendar")
+                }
+            Text("Anreise")
+                .tabItem{
+                    Label("Anreise",systemImage: "bus.fill")
+                }
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()
