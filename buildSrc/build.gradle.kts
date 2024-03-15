@@ -1,6 +1,3 @@
-val kotlinVersion = "1.7.0"
-
-
 plugins {
     `kotlin-dsl`
     `kotlin-dsl-precompiled-script-plugins`

@@ -10,6 +10,7 @@ android {
 dependencies {
     implementation(project(":base"))
     implementation(project(":android:theme"))
+    implementation(project(":shared"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)

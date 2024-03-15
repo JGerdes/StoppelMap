@@ -5,10 +5,21 @@
 
 package com.jonasgerdes.stoppelmap.countdown.ui.components
 
+import Greeting
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -34,7 +45,7 @@ fun CountdownCard(
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = stringResource(id = R.string.countdownCard_prefix),
+                text = stringResource(id = R.string.countdownCard_prefix) + Greeting().greet(),
                 modifier = Modifier.align(Alignment.Start)
             )
             Spacer(modifier = Modifier.size(16.dp))

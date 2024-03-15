@@ -4,6 +4,9 @@
 import java.io.FileInputStream
 import java.util.Properties
 
+// Shared
+include(":shared")
+
 // Common
 include(":base")
 include(":data")

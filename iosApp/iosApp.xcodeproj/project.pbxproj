@@ -15,6 +15,20 @@
 		2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58C0582BA4F81000FDA014 /* CountdownCard.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		2A58C05A2BA50CE400FDA014 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		2A2A8F5B2BA4D64D008D24CE /* StoppelMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoppelMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A2A8F5E2BA4D64D008D24CE /* StoppelMapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoppelMapApp.swift; sourceTree = "<group>"; };
@@ -88,11 +102,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A2A8F692BA4D64E008D24CE /* Build configuration list for PBXNativeTarget "StoppelMap" */;
 			buildPhases = (
+				2A58C05B2BA50CF200FDA014 /* ShellScript */,
 				2A2A8F572BA4D64D008D24CE /* Sources */,
 				2A2A8F582BA4D64D008D24CE /* Frameworks */,
 				2A2A8F592BA4D64D008D24CE /* Resources */,
 			);
 			buildRules = (
+				2A58C05A2BA50CE400FDA014 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -145,6 +161,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A58C05B2BA50CF200FDA014 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A2A8F572BA4D64D008D24CE /* Sources */ = {
@@ -290,6 +326,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 7NUZ9L2CDZ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = StoppelMap;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -325,6 +363,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 7NUZ9L2CDZ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = StoppelMap;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";

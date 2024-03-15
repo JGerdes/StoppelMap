@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.sqldelight) apply false
+    id(libs.plugins.kotlin.multiplatform.get().pluginId) apply false
 }
 
 tasks.register("clean", Delete::class) {

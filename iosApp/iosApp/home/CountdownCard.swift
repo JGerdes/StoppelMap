@@ -1,11 +1,5 @@
-//
-//  CountdownCard.swift
-//  StoppelMap
-//
-//  Created by Jonas Gerdes on 15.03.24.
-//
-
 import SwiftUI
+import Shared
 
 struct CountdownCard: View {
     var days: UInt
@@ -14,7 +8,7 @@ struct CountdownCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Nur noch")
+            Text("Nur noch" + Greeting().greet())
                 .foregroundColor(.white)
             Spacer()
                 .frame(height: 8.0)
