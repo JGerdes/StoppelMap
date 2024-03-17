@@ -66,7 +66,7 @@ android {
         }
 
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = ProjectDefaults.MINIFY_RELEASE
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )

@@ -8,7 +8,7 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "11"
+                jvmTarget = ProjectDefaults.KOTLIN_JVM_TARGET
             }
         }
     }
@@ -28,8 +28,8 @@ android {
     namespace = "com.jonasgerdes.stoppelmap.shared"
     compileSdk = libs.versions.compileSdk.get().toInt()
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
+        targetCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
     }
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()

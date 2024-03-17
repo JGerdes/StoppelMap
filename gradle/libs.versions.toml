@@ -99,6 +99,7 @@ koin-compose = ["koin-android", "koin-androidx-compose"]
 androidx-runtime = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-runtime-compose"]
 ktor-android = ["ktor-client-android", "ktor-client-logging", "ktor-client-content-negotiation", "ktor-serialization-kotlinx-json", "kotlinx-serialization-json", "ktor-client-encoding"]
 ktor-server = ["ktor-server-core", "ktor-server-netty", "ktor-server-call-logging"]
+compose-ui = ["compose-ui-core", "compose-ui-preview", "compose-material-icons", "compose-material-components"]
 
 [plugins]
 sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
