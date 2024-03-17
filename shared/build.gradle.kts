@@ -26,9 +26,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            // KMM
             implementation(libs.koin.core)
             implementation(libs.skie.annotations)
             api(libs.kmm.viewmodel)
+
+            implementation(libs.kotlinx.datetime)
         }
     }
 }

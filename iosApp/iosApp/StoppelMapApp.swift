@@ -5,7 +5,7 @@ import Shared
 struct StoppelMapApp: App {
     
     init() {
-        KoinKt.doInitKoin()
+        KoinKt.doInitKoin(modules: [dateTimeModule])
     }
     
     var body: some Scene {

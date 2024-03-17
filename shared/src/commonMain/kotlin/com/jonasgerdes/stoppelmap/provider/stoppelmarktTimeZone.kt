@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.util.clockprovider
+package com.jonasgerdes.stoppelmap.provider
 
 import kotlinx.datetime.TimeZone
 

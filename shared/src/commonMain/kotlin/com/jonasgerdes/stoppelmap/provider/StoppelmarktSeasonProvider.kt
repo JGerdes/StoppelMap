@@ -1,9 +1,15 @@
-package com.jonasgerdes.stoppelmap.util
+package com.jonasgerdes.stoppelmap.provider
 
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.base.contract.Season
 import com.jonasgerdes.stoppelmap.base.contract.SeasonProvider
-import kotlinx.datetime.*
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.Month
+import kotlinx.datetime.atTime
+import kotlinx.datetime.plus
 
 private val startTime = LocalTime(18, 30)
 private val endTime = LocalTime(23, 0)
@@ -53,6 +59,7 @@ fun calculateDatesForYear(year: Int): List<LocalDate> {
         DayOfWeek.FRIDAY -> -1
         DayOfWeek.SATURDAY -> -2
         DayOfWeek.SUNDAY -> -3
+        else -> throw IllegalArgumentException("Invalid weekday: ${anchorDay.dayOfWeek}")
     }
 
     return (anchorOffset..anchorOffset + 5).map { offset ->

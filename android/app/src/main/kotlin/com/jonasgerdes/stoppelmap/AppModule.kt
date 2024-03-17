@@ -4,10 +4,8 @@ import android.content.Context
 import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.base.contract.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.contract.MapDataFile
-import com.jonasgerdes.stoppelmap.base.contract.SeasonProvider
 import com.jonasgerdes.stoppelmap.base.contract.Secrets
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
-import com.jonasgerdes.stoppelmap.util.StoppelmarktSeasonProvider
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
@@ -41,7 +39,6 @@ val appModule = module {
     }
 
     single<CoroutineScope> { CoroutineScope(Dispatchers.Main) }
-    single<SeasonProvider> { StoppelmarktSeasonProvider(clockProvider = get()) }
 
     single {
         AppInfo(

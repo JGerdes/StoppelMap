@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
     implementation(project(":base"))
     implementation(project(":data"))
     implementation(project(":android:theme"))

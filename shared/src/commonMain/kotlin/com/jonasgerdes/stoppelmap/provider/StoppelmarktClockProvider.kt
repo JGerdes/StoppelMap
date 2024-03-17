@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.util.clockprovider
+package com.jonasgerdes.stoppelmap.provider
 
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import kotlinx.datetime.Clock
@@ -7,7 +7,7 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 
-class RealStoppelmarktClockProvider : ClockProvider {
+class StoppelmarktClockProvider : ClockProvider {
 
     override fun nowAsInstant() = Clock.System.now()
 

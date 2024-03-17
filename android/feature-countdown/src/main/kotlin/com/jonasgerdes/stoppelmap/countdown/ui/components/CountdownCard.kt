@@ -29,15 +29,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.countdown.R
-import com.jonasgerdes.stoppelmap.greeting.Greeting
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
-import org.koin.androidx.compose.get
 
 @Composable
 fun CountdownCard(
     days: Int, hours: Int, minutes: Int, seasonYear: Int, modifier: Modifier = Modifier
 ) {
-    val greeting = get<Greeting>()
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -47,7 +44,7 @@ fun CountdownCard(
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = stringResource(id = R.string.countdownCard_prefix) + greeting.greet(),
+                text = stringResource(id = R.string.countdownCard_prefix),
                 modifier = Modifier.align(Alignment.Start)
             )
             Spacer(modifier = Modifier.size(16.dp))

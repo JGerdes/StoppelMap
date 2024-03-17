@@ -41,9 +41,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
     implementation(project(":base"))
     implementation(project(":android:theme"))
-    implementation(project(":shared"))
 
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)

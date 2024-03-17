@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.base.contract
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 
+
 interface ClockProvider {
 
     fun nowAsInstant(): Instant
