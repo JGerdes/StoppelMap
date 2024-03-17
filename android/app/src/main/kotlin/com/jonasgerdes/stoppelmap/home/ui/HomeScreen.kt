@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
@@ -38,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.countdown.model.CountDownState
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.home.components.MessageCard
@@ -107,7 +107,7 @@ fun HomeScreen(
                 }
             }
             when (val countDownState = state.openingCountDownState) {
-                is HomeViewModel.CountDownState.CountingDown -> item {
+                is CountDownState.CountingDown -> item {
                     if (countDownState.showCurrentSeasonIsOverHint) {
                         CountdownCurrentSeasonIsOverHint(modifier = Modifier.fillMaxWidth()) {
                             CountdownCard(
@@ -127,8 +127,8 @@ fun HomeScreen(
                     }
                 }
 
-                HomeViewModel.CountDownState.Loading -> Unit
-                HomeViewModel.CountDownState.Over -> Unit
+                CountDownState.Loading -> Unit
+                CountDownState.Over -> Unit
             }
             val promotedEventsState = state.promotedEventsState
             if (promotedEventsState is HomeViewModel.PromotedEventsState.Visible) {

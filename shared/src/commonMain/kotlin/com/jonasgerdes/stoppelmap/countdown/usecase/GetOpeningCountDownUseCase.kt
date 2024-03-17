@@ -6,8 +6,8 @@ import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.plus
 
-
-internal class GetOpeningCountDownUseCase(
+class GetOpeningCountDownUseCase
+internal constructor(
     private val clockProvider: ClockProvider,
     private val seasonProvider: SeasonProvider,
 ) {
@@ -31,6 +31,7 @@ internal class GetOpeningCountDownUseCase(
                     )
                 }
             }
+
             else -> CountDown.OnGoing(year = currentOrNextSeason.year)
         }
     }

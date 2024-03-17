@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.countdown.usecase
 
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 
 private const val UPDATE_INTERVAL_MS = 1_000L
@@ -15,7 +14,7 @@ internal constructor(
         do {
             result = getOpeningCountDown()
             emit(result)
-            delay(UPDATE_INTERVAL_MS)
+            kotlinx.coroutines.delay(UPDATE_INTERVAL_MS)
         } while (result is CountDown.InFuture)
     }
 
