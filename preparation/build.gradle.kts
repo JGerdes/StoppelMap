@@ -1,6 +1,5 @@
 plugins {
-    id("kotlin")
-    id("application")
+    alias(libs.plugins.kotlin.jvm)
 }
 
 
