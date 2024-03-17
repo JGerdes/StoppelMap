@@ -1,21 +1,25 @@
-//
-//  HomeScreen.swift
-//  StoppelMap
-//
-//  Created by Jonas Gerdes on 15.03.24.
-//
-
 import SwiftUI
+import Shared
 
 struct HomeScreen: View {
+    
+    let viewModel = HomeViewModel2(
+        getOpeningCountDownState: HomeDependencies().getCountDownStateUseCase
+    )
+    
+    @State
+    var viewState: HomeViewModel2.ViewState = HomeViewModel2.ViewState()
+    
     var body: some View {
         NavigationStack {
             VStack(){
-                CountdownCard(
-                    days: 512, 
-                    hours: 18,
-                    minutes: 44
-                )
+                if let countDown = viewState.countDownState as? CountDownState.CountingDown {
+                    CountdownCard(
+                        days: countDown.daysLeft,
+                        hours: countDown.hoursLeft,
+                        minutes: countDown.minutesLeft
+                    )
+                }
             }
             .frame(
                 maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
@@ -23,6 +27,10 @@ struct HomeScreen: View {
                 alignment: .top
             )
             .navigationBarTitle("Stoppelmarkt 2024", displayMode: .large)
+        }.task {
+            for await state in viewModel.state {
+                viewState = state
+            }
         }
     }
 }

@@ -2,9 +2,9 @@ import SwiftUI
 import Shared
 
 struct CountdownCard: View {
-    var days: UInt
-    var hours: UInt
-    var minutes: UInt
+    var days: Int32
+    var hours: Int32
+    var minutes: Int32
     
     var body: some View {
         VStack(alignment: .leading) {
