@@ -99,6 +99,8 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":data"))
 
+    implementation(project(":shared"))
+
     implementation(project(":android:theme"))
     implementation(project(":android:feature-settings"))
     implementation(project(":android:feature-countdown"))

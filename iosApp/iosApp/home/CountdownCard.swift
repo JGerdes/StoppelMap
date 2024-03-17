@@ -6,9 +6,11 @@ struct CountdownCard: View {
     var hours: UInt
     var minutes: UInt
     
+    let greeting = KoinDependencies().greeting
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Nur noch" + Greeting().greet())
+            Text("Nur noch" + greeting.greet())
                 .foregroundColor(.white)
             Spacer()
                 .frame(height: 8.0)
