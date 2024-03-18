@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap
 
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.base.contract.SeasonProvider
+import com.jonasgerdes.stoppelmap.base.model.VenueInformation
 import com.jonasgerdes.stoppelmap.provider.StoppelmarktClockProvider
 import com.jonasgerdes.stoppelmap.provider.StoppelmarktSeasonProvider
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
@@ -15,48 +16,59 @@ import org.koin.dsl.module
 val dateTimeModule = module {
     single<SeasonProvider> { StoppelmarktSeasonProvider(clockProvider = get()) }
     single<ClockProvider> {
-        val realClockProvider = StoppelmarktClockProvider()
+        val realClockProvider = StoppelmarktClockProvider(
+            localTimeZone = get<VenueInformation>().timeZone
+        )
         val realSeasonProvider = StoppelmarktSeasonProvider(clockProvider = realClockProvider)
+        val localTimeZone = get<VenueInformation>().timeZone
         ClockProviderWrapper(
             clockProviderMap = mapOf(
                 DateOverride.None to realClockProvider,
                 DateOverride.TodayInStoMaWeek to TodayInStoMaWeekClockProvider(
                     seasonProvider = realSeasonProvider,
-                    realClockProvider = realClockProvider
+                    realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                 ),
                 DateOverride.Wednesday to ExactDayClockProvider(
                     seasonProvider = realSeasonProvider,
                     realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                     DayOfWeek.WEDNESDAY
                 ),
                 DateOverride.Thursday to ExactDayClockProvider(
                     seasonProvider = realSeasonProvider,
                     realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                     DayOfWeek.THURSDAY
                 ),
                 DateOverride.Friday to ExactDayClockProvider(
                     seasonProvider = realSeasonProvider,
                     realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                     DayOfWeek.FRIDAY
                 ),
                 DateOverride.Saturday to ExactDayClockProvider(
                     seasonProvider = realSeasonProvider,
                     realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                     DayOfWeek.SATURDAY
                 ),
                 DateOverride.Sunday to ExactDayClockProvider(
                     seasonProvider = realSeasonProvider,
                     realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                     DayOfWeek.SUNDAY
                 ),
                 DateOverride.Monday to ExactDayClockProvider(
                     seasonProvider = realSeasonProvider,
                     realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                     DayOfWeek.MONDAY
                 ),
                 DateOverride.Tuesday to ExactDayClockProvider(
                     seasonProvider = realSeasonProvider,
                     realClockProvider = realClockProvider,
+                    localTimeZone = localTimeZone,
                     DayOfWeek.TUESDAY
                 ),
             ),

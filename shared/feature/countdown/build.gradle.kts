@@ -19,25 +19,27 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "Shared"
+            baseName = "CountDown"
             isStatic = true
-            export(project(":shared:base"))
-            export(project(":shared:feature:countdown"))
-            export(project(":shared:app"))
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            api(project(":shared:base"))
-            api(project(":shared:feature:countdown"))
-            api(project(":shared:app"))
+            // KMM
+            implementation(libs.koin.core)
+            implementation(libs.skie.annotations)
+            api(libs.kmm.viewmodel)
+
+            implementation(libs.kotlinx.datetime)
+
+            implementation(project(":shared:base"))
         }
     }
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.shared"
+    namespace = "com.jonasgerdes.stoppelmap.shared.countdown"
     compileSdk = libs.versions.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION

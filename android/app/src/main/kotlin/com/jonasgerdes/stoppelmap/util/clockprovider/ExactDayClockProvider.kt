@@ -2,11 +2,11 @@ package com.jonasgerdes.stoppelmap.util.clockprovider
 
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.base.contract.SeasonProvider
-import com.jonasgerdes.stoppelmap.provider.stoppelmarktTimeZone
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
 import kotlinx.datetime.minus
 import kotlinx.datetime.toInstant
@@ -15,6 +15,7 @@ import kotlinx.datetime.toLocalDateTime
 class ExactDayClockProvider(
     private val seasonProvider: SeasonProvider,
     private val realClockProvider: ClockProvider,
+    private val localTimeZone: TimeZone,
     private val dayOfWeek: DayOfWeek,
 ) : ClockProvider {
     override fun nowAsInstant(): Instant = toInstant(nowAsLocalDateTime())
@@ -31,9 +32,9 @@ class ExactDayClockProvider(
     }
 
     override fun toLocalDateTime(instant: Instant): LocalDateTime =
-        instant.toLocalDateTime(stoppelmarktTimeZone)
+        instant.toLocalDateTime(localTimeZone)
 
     override fun toInstant(localDateTime: LocalDateTime): Instant =
-        localDateTime.toInstant(stoppelmarktTimeZone)
+        localDateTime.toInstant(localTimeZone)
 
 }

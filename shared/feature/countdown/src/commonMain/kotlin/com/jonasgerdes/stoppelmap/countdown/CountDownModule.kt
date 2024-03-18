@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.countdown
 
+import com.jonasgerdes.stoppelmap.base.model.VenueInformation
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownStateUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
@@ -11,6 +12,7 @@ val countDownModule = module {
         IsCurrentYearsSeasonJustOverUseCase(
             clockProvider = get(),
             seasonProvider = get(),
+            localTimeZone = get<VenueInformation>().timeZone,
         )
     }
     factory { GetOpeningCountDownFlowUseCase(getOpeningCountDown = get()) }

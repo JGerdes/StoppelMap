@@ -27,7 +27,8 @@ struct HomeScreen: View {
                 alignment: .top
             )
             .navigationBarTitle("Stoppelmarkt 2024", displayMode: .large)
-        }.task {
+        }
+        .task {
             for await state in viewModel.state {
                 viewState = state
             }
