@@ -39,6 +39,7 @@ logback = "1.4.5"
 
 kmmViewmodel = "1.0.0-ALPHA-14"
 skie = "0.6.1"
+mokoResourcces = "0.23.0"
 
 
 [libraries]
@@ -97,8 +98,11 @@ ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktorS
 ktor-server-call-logging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktorServer" }
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
+# KMM
 kmm-viewmodel = { module = "com.rickclephas.kmm:kmm-viewmodel-core", version.ref = "kmmViewmodel" }
 skie-annotations = { module = "co.touchlab.skie:configuration-annotations", version.ref = "skie" }
+moko-resources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcces" }
+
 
 [bundles]
 koin-compose = ["koin-android", "koin-androidx-compose"]
@@ -117,3 +121,4 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 skie = { id = "co.touchlab.skie", version.ref = "skie" }
+moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "mokoResourcces" }

@@ -96,6 +96,7 @@ android {
 
 dependencies {
 
+    implementation(project(":shared:resources"))
     implementation(project(":shared:base"))
     implementation(project(":shared:feature:countdown"))
     implementation(project(":shared:app"))

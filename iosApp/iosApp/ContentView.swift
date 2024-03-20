@@ -1,23 +1,24 @@
 import SwiftUI
+import Shared
 
 struct ContentView: View {
     var body: some View {
         TabView{
             HomeScreen()
                 .tabItem{
-                    Label("Info",systemImage: "house.fill")
+                    Label(Res.strings().main_bottom_nav_item_home.desc().localized(),systemImage: "house.fill")
                 }
-            Text("Karte")
+            Text(Res.strings().main_bottom_nav_item_map.desc().localized())
                 .tabItem{
-                    Label("Karte",systemImage: "map.fill")
+                    Label(Res.strings().main_bottom_nav_item_map.desc().localized(),systemImage: "map.fill")
                 }
-            Text("Programm")
+            Text(Res.strings().main_bottom_nav_item_schedule.desc().localized())
                 .tabItem{
-                    Label("Programm",systemImage: "calendar")
+                    Label(Res.strings().main_bottom_nav_item_schedule.desc().localized(),systemImage: "calendar")
                 }
-            Text("Anreise")
+            Text(Res.strings().main_bottom_nav_item_transport.desc().localized())
                 .tabItem{
-                    Label("Anreise",systemImage: "bus.fill")
+                    Label(Res.strings().main_bottom_nav_item_transport.desc().localized(),systemImage: "bus.fill")
                 }
         }
     }

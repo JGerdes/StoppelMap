@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="my_string">Hallo Stoppelmarkt!</string>
+    <string name="main_bottom_nav_item_home">Info</string>
+    <string name="main_bottom_nav_item_map">Karte</string>
+    <string name="main_bottom_nav_item_schedule">Programm</string>
+    <string name="main_bottom_nav_item_transport">Anreise</string>
+</resources>

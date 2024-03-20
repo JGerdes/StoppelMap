@@ -47,4 +47,5 @@ dependencies {
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.moko.resources)
 }

@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
-    alias(libs.plugins.skie)
+    alias(libs.plugins.moko.resources)
 }
 
 
@@ -19,28 +19,30 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "MainApp"
+            baseName = "Resources"
             isStatic = true
         }
     }
 
     sourceSets {
+        getByName("androidMain").dependsOn(commonMain.get())
+        getByName("iosArm64Main").dependsOn(commonMain.get())
+        getByName("iosX64Main").dependsOn(commonMain.get())
+        getByName("iosSimulatorArm64Main").dependsOn(commonMain.get())
         commonMain.dependencies {
-            // KMM
-            implementation(libs.koin.core)
-            implementation(libs.skie.annotations)
-            api(libs.kmm.viewmodel)
-
-            implementation(libs.kotlinx.datetime)
-
-            implementation(project(":shared:base"))
-            implementation(project(":shared:feature:countdown"))
+            api(libs.moko.resources)
         }
     }
 }
 
+multiplatformResources {
+    multiplatformResourcesPackage = "com.jonasgerdes.stoppelmap.shared.resources"
+    iosBaseLocalizationRegion = "de"
+    multiplatformResourcesClassName = "Res"
+}
+
 android {
-    namespace = "com.jonasgerdes.stoppelmap.shared.app"
+    namespace = "com.jonasgerdes.stoppelmap.shared.resources"
     compileSdk = libs.versions.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION

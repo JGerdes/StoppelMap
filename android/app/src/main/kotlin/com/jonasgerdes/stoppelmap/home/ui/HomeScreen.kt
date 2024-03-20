@@ -42,6 +42,8 @@ import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggest
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
+import com.jonasgerdes.stoppelmap.shared.resources.Res
+import com.jonasgerdes.stoppelmap.theme.i18n.sharedStringResource
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
@@ -61,11 +63,12 @@ fun HomeScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     val listState = rememberLazyListState()
-
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text(text = stringResource(id = R.string.home_topbar_title)) },
+                title = {
+                    Text(text = sharedStringResource(Res.strings.my_string))
+                },
                 actions = {
                     IconButton(onClick = onSettingsOptionTap) {
                         Icon(

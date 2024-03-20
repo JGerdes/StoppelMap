@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.skie)
+    alias(libs.plugins.moko.resources)
 }
 
 
@@ -21,7 +22,9 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+            export(libs.moko.resources)
             export(project(":shared:base"))
+            export(project(":shared:resources"))
             export(project(":shared:feature:countdown"))
             export(project(":shared:app"))
         }
@@ -29,12 +32,20 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            api(libs.moko.resources)
             api(project(":shared:base"))
+            api(project(":shared:resources"))
             api(project(":shared:feature:countdown"))
             api(project(":shared:app"))
         }
     }
 }
+
+/*multiplatformResources {
+    multiplatformResourcesPackage = "com.jonasgerdes.stoppelmap.shared"
+    iosBaseLocalizationRegion = "de"
+    multiplatformResourcesClassName = "MRShared"
+}*/
 
 android {
     namespace = "com.jonasgerdes.stoppelmap.shared"

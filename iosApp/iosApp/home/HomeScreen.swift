@@ -26,7 +26,7 @@ struct HomeScreen: View {
                 maxHeight: .infinity,
                 alignment: .top
             )
-            .navigationBarTitle("Stoppelmarkt 2024", displayMode: .large)
+            .navigationBarTitle(Res.strings().my_string.desc().localized(), displayMode: .large)
         }
         .task {
             for await state in viewModel.state {
