@@ -42,8 +42,6 @@ import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggest
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
-import com.jonasgerdes.stoppelmap.shared.resources.Res
-import com.jonasgerdes.stoppelmap.theme.i18n.sharedStringResource
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
@@ -67,7 +65,7 @@ fun HomeScreen(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(text = sharedStringResource(Res.strings.my_string))
+                    Text(text = stringResource(R.string.home_topbar_title))
                 },
                 actions = {
                     IconButton(onClick = onSettingsOptionTap) {
@@ -117,6 +115,7 @@ fun HomeScreen(
                                 days = countDownState.daysLeft,
                                 hours = countDownState.hoursLeft,
                                 minutes = countDownState.minutesLeft,
+                                seconds = countDownState.secondsLeft,
                                 seasonYear = countDownState.year
                             )
                         }
@@ -125,6 +124,7 @@ fun HomeScreen(
                             days = countDownState.daysLeft,
                             hours = countDownState.hoursLeft,
                             minutes = countDownState.minutesLeft,
+                            seconds = countDownState.secondsLeft,
                             seasonYear = countDownState.year
                         )
                     }

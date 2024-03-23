@@ -6,6 +6,7 @@ sealed class CountDownState {
         val daysLeft: Int,
         val hoursLeft: Int,
         val minutesLeft: Int,
+        val secondsLeft: Int,
         val year: Int,
         val showCurrentSeasonIsOverHint: Boolean
     ) : CountDownState()

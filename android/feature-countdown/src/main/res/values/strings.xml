@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="countdownCard_prefix">Nur noch</string>
-    <plurals name="countdownCard_unit_day">
-        <item quantity="one">Tag</item>
-        <item quantity="other">Tage</item>
-    </plurals>
-    <plurals name="countdownCard_unit_hour">
-        <item quantity="one">Stunde</item>
-        <item quantity="other">Stunden</item>
-    </plurals>
-    <plurals name="countdownCard_unit_minute">
-        <item quantity="one">Minute</item>
-        <item quantity="other">Minuten</item>
-    </plurals>
-    <string name="countdownCard_suffix">bis zum Stoppelmarkt %1$d</string>
-
     <string name="widget_configuration_title">Widget konfigurieren</string>
     <string name="widget_configuration_button_next_contentDescription">Nächster Schritt</string>
     <string name="widget_configuration_button_save_contentDescription">Einstellungen speichern</string>

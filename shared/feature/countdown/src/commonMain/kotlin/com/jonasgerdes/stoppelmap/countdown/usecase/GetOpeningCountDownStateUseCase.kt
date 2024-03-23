@@ -16,6 +16,7 @@ internal constructor(
                 daysLeft = countDownResult.daysLeft,
                 hoursLeft = countDownResult.hoursLeft,
                 minutesLeft = countDownResult.minutesLeft,
+                secondsLeft = countDownResult.secondsLeft,
                 year = countDownResult.year,
                 showCurrentSeasonIsOverHint = isCurrentYearsSeasonJustOver()
             )

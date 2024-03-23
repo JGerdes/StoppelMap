@@ -1,26 +1,49 @@
 import SwiftUI
+import Shared
 
 struct CountdownCard: View {
     var days: Int32
     var hours: Int32
     var minutes: Int32
+    var seconds: Int32
+    var year: Int32
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Nur noch")
+            Text(Res.strings().countdownCard_prefix.desc().localized())
                 .foregroundColor(.white)
             Spacer()
                 .frame(height: 8.0)
-            HStack {
-                CountdownUnit(value: days.formatted(), unitLabel: "Tage")
-                CountdownUnit(value: hours.formatted(), unitLabel: "Stunden")
-                CountdownUnit(value: minutes.formatted(), unitLabel: "Minuten")
+            Grid() {
+                GridRow {
+                    CountdownUnit(
+                        value: days.formatted(),
+                        unitLabel: Res.plurals().countdownCard_unit_day.desc(number: hours).localized()
+                    )
+                    CountdownUnit(
+                        value: hours.formatted(),
+                        unitLabel: Res.plurals().countdownCard_unit_hour.desc(number: hours).localized()
+                    )
+                }
+                GridRow {
+                    CountdownUnit(
+                        value: minutes.formatted(),
+                        unitLabel: Res.plurals().countdownCard_unit_minute.desc(number: minutes).localized()
+                    )
+                    CountdownUnit(
+                        value: seconds.formatted(),
+                        unitLabel: Res.plurals().countdownCard_unit_second.desc(number: seconds).localized()
+                    )
+                }
             }
             Spacer()
                 .frame(height: 8.0)
             HStack{
                 Spacer()
-                Text("bis zum Stoppelmark 2024")
+                Text(String(
+                    format: Res.strings().countdownCard_suffix.desc().localized(),
+                    arguments: [year]
+                ))
                     .foregroundColor(.white)
             }
             
@@ -51,5 +74,8 @@ struct CountdownUnit: View {
     CountdownCard(
         days: 1,
         hours: 999,
-        minutes: 0)
+        minutes: 0,
+        seconds: 0,
+        year: 2024
+    )
 }

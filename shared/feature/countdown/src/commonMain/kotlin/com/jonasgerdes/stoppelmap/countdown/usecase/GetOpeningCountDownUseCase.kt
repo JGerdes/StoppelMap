@@ -22,11 +22,12 @@ internal constructor(
 
         return when {
             opening > now -> {
-                (opening - now).toComponents { days, hours, minutes, _, _ ->
+                (opening - now).toComponents { days, hours, minutes, seconds, _ ->
                     CountDown.InFuture(
                         daysLeft = days.toInt().coerceAtLeast(0),
                         hoursLeft = hours.coerceAtLeast(0),
                         minutesLeft = minutes.coerceAtLeast(0),
+                        secondsLeft = seconds.coerceAtLeast(0),
                         year = currentOrNextSeason.year
                     )
                 }

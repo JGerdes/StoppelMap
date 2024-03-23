@@ -17,7 +17,9 @@ struct HomeScreen: View {
                     CountdownCard(
                         days: countDown.daysLeft,
                         hours: countDown.hoursLeft,
-                        minutes: countDown.minutesLeft
+                        minutes: countDown.minutesLeft,
+                        seconds: countDown.secondsLeft,
+                        year: countDown.year
                     )
                 }
             }
@@ -26,7 +28,7 @@ struct HomeScreen: View {
                 maxHeight: .infinity,
                 alignment: .top
             )
-            .navigationBarTitle(Res.strings().my_string.desc().localized(), displayMode: .large)
+            .navigationBarTitle(Res.strings().home_topbar_title.desc().localized(), displayMode: .large)
         }
         .task {
             for await state in viewModel.state {

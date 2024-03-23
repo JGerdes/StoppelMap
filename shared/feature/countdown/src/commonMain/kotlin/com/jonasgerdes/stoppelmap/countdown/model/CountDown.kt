@@ -7,6 +7,7 @@ sealed interface CountDown {
         val daysLeft: Int,
         val hoursLeft: Int,
         val minutesLeft: Int,
+        val secondsLeft: Int,
         override val year: Int,
     ) : CountDown
 
