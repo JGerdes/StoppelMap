@@ -3,8 +3,8 @@ package com.jonasgerdes.stoppelmap.home.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.base.extensions.combine
-import com.jonasgerdes.stoppelmap.countdown.model.CountDown
-import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
+import com.jonasgerdes.stoppelmap.countdown.model.CountDownState
+import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownStateUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
 import com.jonasgerdes.stoppelmap.data.Event
 import com.jonasgerdes.stoppelmap.dataupdate.model.Message
@@ -15,7 +15,6 @@ import com.jonasgerdes.stoppelmap.update.model.UpdateState
 import com.jonasgerdes.stoppelmap.update.usecase.CompleteAppUpdateUseCase
 import com.jonasgerdes.stoppelmap.update.usecase.GetAppUpdateStateUseCase
 import com.jonasgerdes.stoppelmap.update.usecase.GetAppUpdateStateUseCase.Result
-import com.jonasgerdes.stoppelmap.usecase.IsCurrentYearsSeasonJustOverUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -32,11 +31,10 @@ import kotlin.time.Duration.Companion.minutes
 class HomeViewModel(
     getAppUpdateState: GetAppUpdateStateUseCase,
     private val completeAppUpdate: CompleteAppUpdateUseCase,
-    getOpeningCountDown: GetOpeningCountDownFlowUseCase,
+    getOpeningCountDownState: GetOpeningCountDownStateUseCase,
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
     getNextOfficialEvent: GetNextOfficialEventUseCase,
     getNextBookmarkedEvent: GetNextBookmarkedEventUseCase,
-    isCurrentYearsSeasonJustOver: IsCurrentYearsSeasonJustOverUseCase,
     getRemoteMessages: GetRemoteMessagesUseCase,
 ) : ViewModel() {
 
@@ -59,21 +57,6 @@ class HomeViewModel(
                 Result.DownloadCanceled -> UpdateState.Failed
                 Result.DownloadCompleted -> UpdateState.ReadyToInstall
                 Result.DownloadFailed -> UpdateState.Failed
-            }
-        }
-
-    private val openingCountDownState: Flow<CountDownState> =
-        getOpeningCountDown().map { countDownResult ->
-            if (countDownResult is CountDown.InFuture) {
-                CountDownState.CountingDown(
-                    daysLeft = countDownResult.daysLeft,
-                    hoursLeft = countDownResult.hoursLeft,
-                    minutesLeft = countDownResult.minutesLeft,
-                    year = countDownResult.year,
-                    showCurrentSeasonIsOverHint = isCurrentYearsSeasonJustOver()
-                )
-            } else {
-                CountDownState.Over
             }
         }
 
@@ -109,7 +92,7 @@ class HomeViewModel(
         }
     }
 
-    private val instagramPromotionState = openingCountDownState.map {
+    private val instagramPromotionState = getOpeningCountDownState().map {
         when (it) {
             is CountDownState.Loading -> InstagramPromotionState.Hidden
             else -> InstagramPromotionState.Visible
@@ -125,7 +108,7 @@ class HomeViewModel(
         combine(
             updateState,
             getRemoteMessages().onStart { emit(emptyList()) },
-            openingCountDownState,
+            getOpeningCountDownState(),
             countdownWidgetSuggestionState,
             promotedEventsState,
             instagramPromotionState,
@@ -148,19 +131,6 @@ class HomeViewModel(
     sealed class CountDownWidgetSuggestionState {
         object Hidden : CountDownWidgetSuggestionState()
         object Visible : CountDownWidgetSuggestionState()
-    }
-
-    sealed class CountDownState {
-        object Loading : CountDownState()
-        data class CountingDown(
-            val daysLeft: Int,
-            val hoursLeft: Int,
-            val minutesLeft: Int,
-            val year: Int,
-            val showCurrentSeasonIsOverHint: Boolean
-        ) : CountDownState()
-
-        object Over : CountDownState()
     }
 
     sealed interface PromotedEventsState {

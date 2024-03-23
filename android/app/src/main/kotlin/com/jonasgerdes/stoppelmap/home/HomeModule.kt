@@ -2,13 +2,10 @@ package com.jonasgerdes.stoppelmap.home
 
 import com.jonasgerdes.stoppelmap.home.ui.HomeViewModel
 import com.jonasgerdes.stoppelmap.home.usecase.GetRemoteMessagesUseCase
-import com.jonasgerdes.stoppelmap.usecase.IsCurrentYearsSeasonJustOverUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val homeModule = module {
-
-    factory { IsCurrentYearsSeasonJustOverUseCase(seasonProvider = get(), clockProvider = get()) }
 
     factory { GetRemoteMessagesUseCase(appConfigRepository = get(), appInfo = get()) }
 
@@ -17,11 +14,10 @@ val homeModule = module {
             getAppUpdateState = get(),
             getRemoteMessages = get(),
             completeAppUpdate = get(),
-            getOpeningCountDown = get(),
+            getOpeningCountDownState = get(),
             shouldShowCountdownWidgetSuggestion = get(),
             getNextOfficialEvent = get(),
             getNextBookmarkedEvent = get(),
-            isCurrentYearsSeasonJustOver = get()
         )
     }
 }

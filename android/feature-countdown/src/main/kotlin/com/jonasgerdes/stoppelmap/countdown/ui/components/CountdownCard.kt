@@ -1,17 +1,20 @@
-@file:OptIn(
-    ExperimentalMaterial3Api::class,
-    ExperimentalComposeUiApi::class,
-)
-
 package com.jonasgerdes.stoppelmap.countdown.ui.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -23,7 +26,12 @@ import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 
 @Composable
 fun CountdownCard(
-    days: Int, hours: Int, minutes: Int, seasonYear: Int, modifier: Modifier = Modifier
+    days: Int,
+    hours: Int,
+    minutes: Int,
+    seconds: Int,
+    seasonYear: Int,
+    modifier: Modifier = Modifier
 ) {
     Card(
         colors = CardDefaults.cardColors(
@@ -38,27 +46,40 @@ fun CountdownCard(
                 modifier = Modifier.align(Alignment.Start)
             )
             Spacer(modifier = Modifier.size(16.dp))
-            // TODO: Support large font scales better when one unit's value > 99
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (days > 0) {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     CountdownUnit(
                         unitLabel = pluralStringResource(R.plurals.countdownCard_unit_day, days),
                         value = days.toString(),
                         modifier = Modifier.weight(1f)
                     )
-                }
-                if (hours > 0 || days > 0) {
                     CountdownUnit(
-                        unitLabel = pluralStringResource(R.plurals.countdownCard_unit_hour, hours),
+                        unitLabel = pluralStringResource(
+                            R.plurals.countdownCard_unit_hour,
+                            hours
+                        ),
                         value = hours.toString(),
                         modifier = Modifier.weight(1f)
                     )
                 }
-                CountdownUnit(
-                    unitLabel = pluralStringResource(R.plurals.countdownCard_unit_minute, minutes),
-                    value = minutes.toString(),
-                    modifier = Modifier.weight(1f)
-                )
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    CountdownUnit(
+                        unitLabel = pluralStringResource(
+                            R.plurals.countdownCard_unit_minute,
+                            minutes
+                        ),
+                        value = minutes.toString(),
+                        modifier = Modifier.weight(1f)
+                    )
+                    CountdownUnit(
+                        unitLabel = pluralStringResource(
+                            R.plurals.countdownCard_unit_second,
+                            seconds
+                        ),
+                        value = seconds.toString(),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
             }
             Spacer(modifier = Modifier.size(16.dp))
             Text(
@@ -104,6 +125,6 @@ private fun CountdownUnit(
 @Composable
 private fun PreviewCountdownCard() {
     StoppelMapTheme {
-        CountdownCard(days = 129, hours = 1, minutes = 20, seasonYear = 2023)
+        CountdownCard(days = 129, hours = 1, minutes = 20, seconds = 12, seasonYear = 2024)
     }
 }

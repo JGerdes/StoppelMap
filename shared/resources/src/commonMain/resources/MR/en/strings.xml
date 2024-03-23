@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <!-- Main -->
+    <string name="main_bottom_nav_item_home">Info</string>
+    <string name="main_bottom_nav_item_map">Map</string>
+    <string name="main_bottom_nav_item_transport">Travel</string>
+    <string name="main_bottom_nav_item_schedule">Schedule</string>
+
+    <!-- Home -->
+    <string name="my_string">Hello Stoppelmarkt!</string>
+
+    <!-- Countdown -->
+    <string name="countdownCard_prefix">Only</string>
+    <string name="countdownCard_suffix">until Stoppelmarkt %1$d</string>
+</resources>

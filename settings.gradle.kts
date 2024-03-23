@@ -4,6 +4,13 @@
 import java.io.FileInputStream
 import java.util.Properties
 
+// Shared
+include(":shared:base")
+include(":shared:resources")
+include(":shared:feature:countdown")
+include(":shared:app")
+include(":shared")
+
 // Common
 include(":base")
 include(":data")

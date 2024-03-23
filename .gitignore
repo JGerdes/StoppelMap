@@ -64,3 +64,10 @@ google_play_api_key.json
 
 # release config
 release.keystore
+
+
+#XCode/iOS
+
+xcodebuild.log
+xcuserdata/
+*.pbxuser

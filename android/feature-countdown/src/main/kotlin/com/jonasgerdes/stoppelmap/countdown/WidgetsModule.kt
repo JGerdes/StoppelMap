@@ -5,8 +5,6 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import com.jonasgerdes.stoppelmap.countdown.repository.WidgetSettingsRepository
 import com.jonasgerdes.stoppelmap.countdown.usecase.CalculateGingerbreadHeartColorsFromHSLUseCase
-import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownFlowUseCase
-import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettings
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsViewModel
@@ -27,13 +25,6 @@ val countdownModule = module {
     factory { GingerbreadHeartWidgetProvider() }
     factory { SilhouetteWidgetProvider() }
 
-    factory { GetOpeningCountDownFlowUseCase(getOpeningCountDown = get()) }
-    factory {
-        GetOpeningCountDownUseCase(
-            clockProvider = get(),
-            seasonProvider = get()
-        )
-    }
     factory {
         ShouldShowCountdownWidgetSuggestionUseCase(
             gingerbreadHeartWidgetProvider = get(),

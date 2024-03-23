@@ -8,7 +8,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Resources
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Point
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -149,6 +153,7 @@ class SilhouetteWidgetProvider : AppWidgetProvider() {
                             hoursLeft,
                             hoursLeft
                         )
+
                         else -> getQuantityString(
                             R.plurals.countdownWidget_day,
                             daysLeft,
@@ -163,6 +168,7 @@ class SilhouetteWidgetProvider : AppWidgetProvider() {
                     preposition = getString(R.string.countdownWidget_preposition_still)
                 )
             }
+
             is CountDown.OnGoing -> CountdownTexts(
                 mainText = getString(R.string.countdownWidget_mainText_ongoing),
                 subText = "",

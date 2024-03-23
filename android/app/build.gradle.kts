@@ -1,8 +1,8 @@
 import Git.getCommit
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -66,7 +66,7 @@ android {
         }
 
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = ProjectDefaults.MINIFY_RELEASE
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
@@ -96,8 +96,13 @@ android {
 
 dependencies {
 
+    implementation(project(":shared:resources"))
+    implementation(project(":shared:base"))
+    implementation(project(":shared:feature:countdown"))
+    implementation(project(":shared:app"))
     implementation(project(":base"))
     implementation(project(":data"))
+
 
     implementation(project(":android:theme"))
     implementation(project(":android:feature-settings"))

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <plurals name="countdownCard_unit_day">
+        <item quantity="one">Day</item>
+        <item quantity="other">Days</item>
+    </plurals>
+    <plurals name="countdownCard_unit_hour">
+        <item quantity="one">Hour</item>
+        <item quantity="other">Hours</item>
+    </plurals>
+    <plurals name="countdownCard_unit_minute">
+        <item quantity="one">Minute</item>
+        <item quantity="other">Minutes</item>
+    </plurals>
+    <plurals name="countdownCard_unit_second">
+        <item quantity="one">Second</item>
+        <item quantity="other">Seconds</item>
+    </plurals>
+</resources>

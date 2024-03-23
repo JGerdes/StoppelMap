@@ -21,7 +21,7 @@ class ClockProviderWrapper(
         settingRepository.getSettings()
             .onEach {
                 currentProvider =
-                    clockProviderMap.getOrDefault(it.dateOverride, default)
+                    clockProviderMap.getOrElse(it.dateOverride) { default }
             }
             .launchIn(scope)
     }

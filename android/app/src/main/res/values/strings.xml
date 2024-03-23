@@ -5,15 +5,7 @@
     <string name="fcm_news_new_article_title_one">Neuer Artikel</string>
     <string name="fcm_news_new_article_title_multiple">%s neue Artikel</string>
 
-    <string name="main_bottom_nav_item_home">Info</string>
-    <string name="main_bottom_nav_item_map">Karte</string>
-    <string name="main_bottom_nav_item_schedule">Programm</string>
-    <string name="main_bottom_nav_item_transport">Anreise</string>
-    <string name="main_bottom_nav_item_news">News</string>
     <string name="main_available_soon">Bald verfügbar</string>
-
-
-    <string name="home_topbar_title">Stoppelmarkt 2023</string>
     <string name="home_toolbar_action_settings_contentDescription">Einstellungen</string>
 
     <string name="home_officalEventCard_title">Nicht verpassen:</string>

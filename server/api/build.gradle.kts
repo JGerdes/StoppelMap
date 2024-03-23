@@ -1,9 +1,7 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 plugins {
-    kotlin
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.ktor)
     application
-    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 application {
@@ -15,9 +13,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-tasks {
-    named<ShadowJar>("shadowJar") {
-        archiveBaseName.set("stoppelmap-api")
+
+ktor {
+    fatJar {
+        archiveFileName.set("stoppelmap-api.jar")
     }
 }
 
