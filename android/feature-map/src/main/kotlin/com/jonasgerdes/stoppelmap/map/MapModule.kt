@@ -18,10 +18,8 @@ import com.jonasgerdes.stoppelmap.map.repository.location.FakeLocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryImpl
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryWrapper
-import com.jonasgerdes.stoppelmap.map.repository.location.MapBoxLocationProvider
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.map.usecase.GetSearchHistoryUseCase
-import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchStallsUseCase
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
@@ -72,10 +70,6 @@ val mapModule = module {
             scope = get()
         )
     }
-
-    single { MapBoxLocationProvider(locationRepository = get()) }
-
-    single { InitializeMapBoxUseCase() }
 
     factory {
         SearchStallsUseCase(

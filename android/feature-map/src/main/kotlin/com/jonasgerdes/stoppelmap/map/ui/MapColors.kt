@@ -9,7 +9,7 @@ import androidx.core.graphics.ColorUtils
 import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 
-data class MapBoxMapColors(
+data class MapColors(
     val backgroundColor: Color,
     val streetColor: Color,
     val labelColor: Color,
@@ -32,7 +32,7 @@ data class MapBoxMapColors(
         fun fromMaterialTheme(
             isDarkTheme: Boolean,
         ) =
-            MapBoxMapColors(
+            MapColors(
                 backgroundColor = MaterialTheme.colorScheme.background,
                 streetColor = MaterialTheme.colorScheme.surfaceVariant,
                 labelColor = MaterialTheme.colorScheme.onSurface,
@@ -79,7 +79,7 @@ private fun Color.modify(isDarkTheme: Boolean) =
 
 
 @Composable
-fun MapTheme.toMapColors(): MapBoxMapColors {
+fun MapTheme.toMapColors(): MapColors {
     val isDarkTheme = when (themeSetting) {
         ThemeSetting.Light -> false
         ThemeSetting.Dark -> true
@@ -87,7 +87,7 @@ fun MapTheme.toMapColors(): MapBoxMapColors {
     }
     return when (mapColorSetting) {
         MapColorSetting.Classic ->
-            if (isDarkTheme) MapBoxMapColors(
+            if (isDarkTheme) MapColors(
                 backgroundColor = MaterialTheme.colorScheme.background,
                 streetColor = Color(0xFF5E5A5C),
                 labelColor = Color(0xFFFFFFFF),
@@ -104,7 +104,7 @@ fun MapTheme.toMapColors(): MapBoxMapColors {
                 stallTypeRideColor = Color(0xFF85D2D8).withHSL(lightness = 0.3f),
                 stallTypeSellerStallColor = Color(0xFF8B9DFE).withHSL(lightness = 0.3f),
             )
-            else MapBoxMapColors(
+            else MapColors(
                 backgroundColor = MaterialTheme.colorScheme.background,
                 streetColor = Color(0xFFE4E2E2),
                 labelColor = Color(0xFF000000),
@@ -122,7 +122,7 @@ fun MapTheme.toMapColors(): MapBoxMapColors {
                 stallTypeSellerStallColor = Color(0xFF8B9DFE),
             )
 
-        MapColorSetting.AppScheme -> MapBoxMapColors.fromMaterialTheme(isDarkTheme = isDarkTheme)
+        MapColorSetting.AppScheme -> MapColors.fromMaterialTheme(isDarkTheme = isDarkTheme)
     }
 
 }

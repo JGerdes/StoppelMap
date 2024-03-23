@@ -37,7 +37,7 @@ val licenseModule = module {
                     githubUrl = "https://github.com/airbnb/lottie-android"
                 ),
                 Library(
-                    name = "Kotlin, Kotlin Coroutines",
+                    name = "Kotlin, Kotlin Coroutines, Kotlin Multiplatform",
                     author = "JetBrains, Inc.",
                     license = License.Apache2(),
                     githubUrl = "https://github.com/JetBrains/kotlin"
@@ -55,10 +55,10 @@ val licenseModule = module {
                     githubUrl = "https://github.com/InsertKoinIO/koin"
                 ),
                 Library(
-                    name = "Mapbox",
-                    author = "Mapbox Inc.",
+                    name = "MapLibre",
+                    author = "MapLibre contributors",
                     license = License.BSD2Clause(),
-                    githubUrl = "https://github.com/mapbox/mapbox-maps-android"
+                    githubUrl = "https://github.com/maplibre/maplibre-native"
                 ),
                 Library(
                     name = "SQLDelight",

@@ -1,17 +1,6 @@
 {
   "version": 8,
   "name": "stoma22",
-  "metadata": {
-    "mapbox:autocomposite": true,
-    "mapbox:type": "template",
-    "mapbox:sdk-support": {
-      "android": "10.6.0",
-      "ios": "10.6.0",
-      "js": "2.9.0"
-    },
-    "mapbox:groups": {},
-    "mapbox:uiParadigm": "layers"
-  },
   "center": [
     8.294915363560904,
     52.747785148952005
@@ -29,7 +18,7 @@
       "data": ""
     }
   },
-  "glyphs": "asset://mapbox/font/{fontstack}/{range}.pbf",
+  "glyphs": "asset://map/font/{fontstack}/{range}.pbf",
   "projection": {
     "name": "globe"
   },

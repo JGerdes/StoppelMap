@@ -25,7 +25,7 @@ coil = "2.5.0"
 koin = "3.5.0"
 timber = "5.0.1"
 lottie = "6.4.0"
-mapbox = "10.16.6"
+maplibre = "11.0.0-pre4"
 sqldelight = "1.5.5"
 playServiceLocation = "21.2.0"
 playInAppUpdate = "2.1.0"
@@ -59,6 +59,7 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-material-icons = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
 compose-material-components = { module = "androidx.compose.material3:material3", version.ref = "material3compose" }
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompoanist" }
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompoanist" }
 
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
@@ -78,7 +79,7 @@ sqldelight-coroutines = { module = "com.squareup.sqldelight:coroutines-extension
 google-play-app-update = { module = "com.google.android.play:app-update-ktx", version.ref = "playInAppUpdate" }
 google-play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServiceLocation" }
 
-mapbox = { module = "com.mapbox.maps:android", version.ref = "mapbox" }
+maplibre = { module = "org.maplibre.gl:android-sdk", version.ref = "maplibre" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 

@@ -130,6 +130,7 @@ dependencies {
     implementation(libs.lottie.compose)
     implementation(libs.sqldelight.driver.android)
     implementation(libs.google.play.app.update)
+    implementation(libs.maplibre)
 
     debugImplementation(libs.compose.ui.tooling)
 }

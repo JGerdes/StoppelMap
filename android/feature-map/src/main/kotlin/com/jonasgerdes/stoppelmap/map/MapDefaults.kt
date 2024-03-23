@@ -1,23 +1,25 @@
 package com.jonasgerdes.stoppelmap.map
 
-import com.mapbox.geojson.Point
-import com.mapbox.maps.CoordinateBounds
+import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.geometry.LatLngBounds
 
 object MapDefaults {
-    val cameraBounds = CoordinateBounds(
-        Point.fromLngLat(
-            8.28653654801576,
-            52.7429499584193
-        ),
-        Point.fromLngLat(
-            8.301801681518555,
-            52.75185363599036
+    val cameraBounds = LatLngBounds.fromLatLngs(
+        listOf(
+            LatLng(
+                52.7429499584193,
+                8.28653654801576,
+            ),
+            LatLng(
+                52.75185363599036,
+                8.301801681518555,
+            )
         )
     )
     const val maxZoom = 19.0
     const val minZoom = 14.0
     const val defaultZoom = 16.2
     const val detailZoom = 18.0
-    val center = Point.fromLngLat(8.2956, 52.7477)
+    val center = LatLng(latitude = 52.7477, longitude = 8.2956)
 
 }

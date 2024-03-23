@@ -47,7 +47,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.base.contract.MapDataFile
-import com.jonasgerdes.stoppelmap.map.components.MapboxMap
+import com.jonasgerdes.stoppelmap.map.components.Map
 import org.koin.androidx.compose.get
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
@@ -65,9 +65,10 @@ fun MapScreen(
     val searchState = state.searchState
 
     Box(modifier = modifier) {
-        MapboxMap(
+        Map(
             mapState = state.mapState,
-            onCameraMove = viewModel::onCameraMoved,
+            onCameraUpdateDispatched = viewModel::onCameraUpdateDispatched,
+            onCameraMoved = viewModel::onCameraMoved,
             onStallTap = viewModel::onStallTapped,
             mapDataFile = "file://${mapDataFile.mapDataFile.absolutePath}".also { Timber.d("mapFile: $it") },
             colors = state.mapTheme.toMapColors(),

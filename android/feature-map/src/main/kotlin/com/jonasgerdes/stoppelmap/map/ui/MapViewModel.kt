@@ -1,3 +1,5 @@
+@file:OptIn(FlowPreview::class)
+
 package com.jonasgerdes.stoppelmap.map.ui
 
 import androidx.lifecycle.ViewModel
@@ -14,22 +16,20 @@ import com.jonasgerdes.stoppelmap.map.usecase.SearchStallsUseCase
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
 import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
-import com.mapbox.geojson.Point
-import com.mapbox.maps.CameraOptions
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
+import org.maplibre.android.geometry.LatLng
 
 class MapViewModel(
     private val stallRepository: StallRepository,
@@ -54,8 +54,6 @@ class MapViewModel(
             initialValue = null
         )
 
-    private val userCameraUpdates = MutableStateFlow(initialCameraOptions)
-
     private var searchHistory: List<SearchResult> = emptyList()
 
     init {
@@ -64,29 +62,8 @@ class MapViewModel(
                 searchHistory = it
             }
             .launchIn(viewModelScope)
-
-        viewModelScope.launch {
-            userCameraUpdates.debounce(300)
-                .collectLatest {
-                    mapState.value = mapState.value.copy(
-                        cameraPosition = MapState.CameraPosition.Options(it),
-                        cameraMovementSource = MapState.CameraMovementSource.User
-                    )
-                }
-        }
     }
 
-    private val effectiveMapState = combine(
-        mapState,
-        locationState,
-    ) { mapState, location ->
-        if (location != null) {
-            Timber.d("new location: $location")
-            mapState.copy(
-                userLocation = Point.fromLngLat(location.longitude, location.latitude)
-            )
-        } else mapState
-    }
 
     private val mapThemeState = settingsRepository.getSettings()
         .map {
@@ -98,7 +75,7 @@ class MapViewModel(
 
     val state: StateFlow<ViewState> =
         combine(
-            effectiveMapState,
+            mapState,
             mapThemeState,
             searchState,
             snackbarState,
@@ -117,16 +94,12 @@ class MapViewModel(
                 if (isLocationInArea(userLocation)) {
                     snackbarState.value = SnackbarState.Hidden
                     mapState.value = mapState.value.copy(
-                        cameraPosition = MapState.CameraPosition.Options(
-                            CameraOptions.Builder()
-                                .center(
-                                    Point.fromLngLat(
-                                        userLocation.longitude,
-                                        userLocation.latitude
-                                    )
-                                )
-                                .zoom(MapDefaults.detailZoom)
-                                .build()
+                        camera = Camera.FocusLocation(
+                            LatLng(
+                                latitude = userLocation.latitude,
+                                longitude = userLocation.longitude
+                            ),
+                            zoom = MapDefaults.detailZoom
                         ),
                         cameraMovementSource = MapState.CameraMovementSource.Computed
                     )
@@ -143,9 +116,14 @@ class MapViewModel(
         }
     }
 
-    fun onCameraMoved(updatedCameraOptions: CameraOptions) {
+    fun onCameraUpdateDispatched() {
+        mapState.update {
+            it.copy(camera = null)
+        }
+    }
+
+    fun onCameraMoved() {
         fetchCurrentLocationJob?.cancel()
-        userCameraUpdates.value = updatedCameraOptions
     }
 
     fun onStallTapped(stallSlug: String) {
@@ -156,11 +134,9 @@ class MapViewModel(
         viewModelScope.launch {
             stallRepository.getStall(stallSlug)?.let { stall ->
                 mapState.value = mapState.value.copy(
-                    cameraPosition = MapState.CameraPosition.Options(
-                        CameraOptions.Builder()
-                            .center(Point.fromLngLat(stall.center_lng, stall.center_lat))
-                            .zoom(MapDefaults.detailZoom)
-                            .build()
+                    camera = Camera.FocusLocation(
+                        LatLng(latitude = stall.center_lat, longitude = stall.center_lng),
+                        MapDefaults.detailZoom
                     ),
                     cameraMovementSource = MapState.CameraMovementSource.Computed
                 )
@@ -181,12 +157,11 @@ class MapViewModel(
     fun onSearchResultTapped(result: SearchResult) {
         searchState.value = SearchState.HighlightResult(result)
         mapState.value = mapState.value.copy(
-            cameraPosition = MapState.CameraPosition.BoundingCoordinates(result.stalls.map {
-                Point.fromLngLat(
-                    it.center_lng,
-                    it.center_lat
-                )
-            }),
+            camera = Camera.IncludeLocations(
+                result.stalls.map {
+                    LatLng(latitude = it.center_lat, longitude = it.center_lng)
+                }
+            ),
             cameraMovementSource = MapState.CameraMovementSource.Computed,
             highlightedStalls = result.stalls
         )
@@ -223,26 +198,26 @@ class MapViewModel(
     )
 
     data class MapState(
-        val cameraPosition: CameraPosition,
+        val camera: Camera?,
         val cameraMovementSource: CameraMovementSource,
-        val userLocation: Point? = null,
         val highlightedStalls: List<Stall>? = null
     ) {
+
         companion object {
             val Default = MapState(
-                cameraPosition = CameraPosition.Options(initialCameraOptions),
-                cameraMovementSource = CameraMovementSource.User
+                camera = initialCamera,
+                cameraMovementSource = CameraMovementSource.Computed
             )
-        }
-
-        sealed interface CameraPosition {
-            data class Options(val cameraOptions: CameraOptions) : CameraPosition
-            data class BoundingCoordinates(val coordinates: List<Point>) : CameraPosition
         }
 
         enum class CameraMovementSource {
             User, Computed
         }
+    }
+
+    sealed interface Camera {
+        data class FocusLocation(val location: LatLng, val zoom: Double) : Camera
+        data class IncludeLocations(val locations: List<LatLng>) : Camera
     }
 
     sealed interface SnackbarState {
@@ -266,7 +241,7 @@ data class MapTheme(
     val themeSetting: ThemeSetting = ThemeSetting.default,
 )
 
-private val initialCameraOptions = CameraOptions.Builder()
-    .center(MapDefaults.center)
-    .zoom(MapDefaults.defaultZoom)
-    .build()
+private val initialCamera = MapViewModel.Camera.FocusLocation(
+    MapDefaults.center,
+    MapDefaults.defaultZoom
+)

@@ -11,7 +11,6 @@ import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigAndDownloadF
 import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
-import com.jonasgerdes.stoppelmap.map.usecase.InitializeMapBoxUseCase
 import com.jonasgerdes.stoppelmap.news.newsModule
 import com.jonasgerdes.stoppelmap.schedule.scheduleModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
@@ -27,7 +26,6 @@ import timber.log.Timber
 
 class App : Application() {
 
-    val initializeMapBox: InitializeMapBoxUseCase by inject()
     val copyAssetDatabase: CopyAssetDataFilesUseCase by inject()
     val updateAppConfigAndDownloadFiles: UpdateAppConfigAndDownloadFilesUseCase by inject()
     val scope: CoroutineScope by inject()
@@ -67,8 +65,6 @@ class App : Application() {
             context = this,
             appWidgetManager = appWidgetManager
         )
-
-        initializeMapBox(this)
 
         scope.launch {
             copyAssetDatabase()

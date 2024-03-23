@@ -1,9 +1,6 @@
 // repositoriesMode etc. is marked unstable
 @file:Suppress("UnstableApiUsage")
 
-import java.io.FileInputStream
-import java.util.Properties
-
 // Shared
 include(":shared:base")
 include(":shared:resources")
@@ -46,21 +43,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://api.mapbox.com/downloads/v2/releases/maven") {
-            authentication {
-                create<BasicAuthentication>("basic")
-            }
-            FileInputStream(
-                File(rootProject.projectDir, "secrets.properties")
-            ).use {
-                val properties = Properties()
-                properties.load(it)
-                credentials {
-                    username = "mapbox"
-                    password = properties["mapBoxDownloadToken"] as String
-                }
-            }
-        }
     }
 }
 rootProject.name = "StoppelMap"
