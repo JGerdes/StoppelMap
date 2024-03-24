@@ -392,6 +392,9 @@
         "get",
         "priority"
       ],
+      "icon-allow-overlap": false,
+      "text-allow-overlap": false,
+      "symbol-z-order": "source",
       "layout": {
         "text-optional": true,
         "icon-offset": [
@@ -442,7 +445,7 @@
           ]
         ],
         "text-font": [
-          "Roboto Slab Regular"
+          "roboto_slab_regular"
         ],
         "text-justify": "left",
         "text-padding": [
@@ -555,7 +558,7 @@
           ]
         ],
         "text-font": [
-          "Roboto Slab Regular"
+          "roboto_slab_regular"
         ],
         "text-justify": "left",
         "text-padding": [

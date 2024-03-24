@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.dataupdate.VersioningRepository
 import com.jonasgerdes.stoppelmap.dataupdate.util.copyToFile
 import com.jonasgerdes.stoppelmap.dataupdate.util.removeDatabase
+import com.jonasgerdes.stoppelmap.shared.resources.Res
 import java.io.File
 
 class CopyAssetDataFilesUseCase(
@@ -17,11 +18,11 @@ class CopyAssetDataFilesUseCase(
     suspend operator fun invoke() {
         if (appInfo.versionCode > versioningRepository.getCurrentDatabaseVersion()) {
             context.removeDatabase(databaseFile.nameWithoutExtension)
-            context.assets.copyToFile(databaseFile.name, databaseFile)
+            Res.assets.database.getInputStream(context).copyToFile(databaseFile)
             versioningRepository.setDatabaseVersion(appInfo.versionCode)
         }
         if (appInfo.versionCode > versioningRepository.getCurrentMapDataVersion()) {
-            context.assets.copyToFile(mapDataFile.name, mapDataFile)
+            Res.assets.mapdata.getInputStream(context).copyToFile(mapDataFile)
             versioningRepository.setMapDataVersion(appInfo.versionCode)
         }
     }

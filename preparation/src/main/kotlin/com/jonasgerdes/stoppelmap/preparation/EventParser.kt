@@ -48,6 +48,7 @@ fun parseMarqueeEvents(): List<Marquee> {
     println("start parsing website for events")
     return Jsoup.connect(url).get().body()
         .select(".ce-textpic")
+        .toList()
         .filter { it.select("a").isNotEmpty() }
         .map {
             Marquee(

@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":shared:base"))
+    implementation(project(":shared:resources"))
     implementation(project(":base"))
     implementation(project(":data"))
     implementation(project(":android:theme"))

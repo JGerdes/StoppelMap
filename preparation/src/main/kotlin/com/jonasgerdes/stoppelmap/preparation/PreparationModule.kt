@@ -9,13 +9,12 @@ import java.io.File
 val preparationModule = module {
 
     single {
-        val appAssets = File("./android/app/src/main/assets/")
-        val dataUpdateAssets = File("./android/feature-data-update/src/main/assets/")
+        val sharedAssets = File("./shared/resources/src/commonMain/resources/MR/assets/")
         val resources = File("./preparation/src/main/resources")
         Settings(
-            databaseFile = File(dataUpdateAssets, "database.db"),
+            databaseFile = File(sharedAssets, "database.db"),
             geoJsonInput = File(resources, "stoma23.geojson"),
-            geoJsonOutput = File("$dataUpdateAssets", "mapdata.geojson"),
+            geoJsonOutput = File(sharedAssets, "mapdata.geojson"),
             fetchedEventsFile = File(resources, "events/fetched.json"),
             manualEventsFile = File(resources, "events/manual.json"),
             descriptionFolder = File(resources, "descriptions")

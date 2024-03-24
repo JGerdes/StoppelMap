@@ -45,6 +45,7 @@ import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.ui.MapColors
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.Camera
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.MapState
+import com.jonasgerdes.stoppelmap.shared.resources.Res
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
@@ -128,7 +129,8 @@ fun Map(
                     isCameraMoving = true
                     onCameraMoved()
                 }
-                map.setStyle(Style.Builder().fromUri("asset://map/style.json")
+                map.setStyle(Style.Builder()
+                    .fromUri("asset://${Res.assets.map.style.path}")
                     .apply {
                         sources.add(
                             GeoJsonSource(
