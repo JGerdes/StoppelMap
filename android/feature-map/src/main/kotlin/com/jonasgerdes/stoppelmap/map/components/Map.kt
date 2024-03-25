@@ -88,6 +88,8 @@ fun Map(
         android.Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
+    Timber.d("mapColors: ${colors.toSwiftDict()}")
+
     val compassMargins = with(LocalDensity.current) {
         val layoutDir = LocalLayoutDirection.current
         Rect(
@@ -309,6 +311,35 @@ fun Map(
     }
     MapLifecycle(mapView = mapView)
 }
+
+private fun MapColors.toSwiftDict(): String =
+    mapOf(
+        "backgroundColor" to "UIColor(red:${backgroundColor.red}, green:${backgroundColor.green}, blue: ${backgroundColor.blue}, alpha: 1.0)",
+        "streetColor" to "UIColor(red:${streetColor.red}, green:${streetColor.green}, blue: ${streetColor.blue}, alpha: 1.0)",
+        "labelColor" to "UIColor(red:${labelColor.red}, green:${labelColor.green}, blue: ${labelColor.blue}, alpha: 1.0)",
+        "labelHaloColor" to "UIColor(red:${labelHaloColor.red}, green:${labelHaloColor.green}, blue: ${labelHaloColor.blue}, alpha: 1.0)",
+        "stallTypeBarColor" to "UIColor(red:${stallTypeBarColor.red}, green:${stallTypeBarColor.green}, blue: ${stallTypeBarColor.blue}, alpha: 1.0)",
+        "stallTypeCandyStallColor" to "UIColor(red:${stallTypeCandyStallColor.red}, green:${stallTypeCandyStallColor.green}, blue: ${stallTypeCandyStallColor.blue}, alpha: 1.0)",
+        "stallTypeExpoColor" to "UIColor(red:${stallTypeExpoColor.red}, green:${stallTypeExpoColor.green}, blue: ${stallTypeExpoColor.blue}, alpha: 1.0)",
+        "stallTypeFoodStallColor" to "UIColor(red:${stallTypeFoodStallColor.red}, green:${stallTypeFoodStallColor.green}, blue: ${stallTypeFoodStallColor.blue}, alpha: 1.0)",
+        "stallTypeGameStallColor" to "UIColor(red:${stallTypeGameStallColor.red}, green:${stallTypeGameStallColor.green}, blue: ${stallTypeGameStallColor.blue}, alpha: 1.0)",
+        "stallTypeMiscColor" to "UIColor(red:${stallTypeMiscColor.red}, green:${stallTypeMiscColor.green}, blue: ${stallTypeMiscColor.blue}, alpha: 1.0)",
+        "stallTypeParkingColor" to "UIColor(red:${stallTypeParkingColor.red}, green:${stallTypeParkingColor.green}, blue: ${stallTypeParkingColor.blue}, alpha: 1.0)",
+        "stallTypeRestaurantColor" to "UIColor(red:${stallTypeRestaurantColor.red}, green:${stallTypeRestaurantColor.green}, blue: ${stallTypeRestaurantColor.blue}, alpha: 1.0)",
+        "stallTypeRestroomColor" to "UIColor(red:${stallTypeRestroomColor.red}, green:${stallTypeRestroomColor.green}, blue: ${stallTypeRestroomColor.blue}, alpha: 1.0)",
+        "stallTypeRideColor" to "UIColor(red:${stallTypeRideColor.red}, green:${stallTypeRideColor.green}, blue: ${stallTypeRideColor.blue}, alpha: 1.0)",
+        "stallTypeSellerStallColor" to "UIColor(red:${stallTypeSellerStallColor.red}, green:${stallTypeSellerStallColor.green}, blue: ${stallTypeSellerStallColor.blue / 255f}, alpha: 1.0)",
+    ).entries
+        .map { "\"${it.key}\": ${it.value}" }
+        .joinToString(
+            """,
+            |
+        """.trimMargin()
+        ).let {
+            """[
+            |$it
+        ]""".trimMargin()
+        }
 
 
 @Composable
