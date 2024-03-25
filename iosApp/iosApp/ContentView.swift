@@ -8,7 +8,7 @@ struct ContentView: View {
                 .tabItem{
                     Label(Res.strings().main_bottom_nav_item_home.desc().localized(),systemImage: "house.fill")
                 }
-            Text(Res.strings().main_bottom_nav_item_map.desc().localized())
+            MapScreen()
                 .tabItem{
                     Label(Res.strings().main_bottom_nav_item_map.desc().localized(),systemImage: "map.fill")
                 }

@@ -13,6 +13,9 @@
 		2A2A8F662BA4D64E008D24CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A2A8F652BA4D64E008D24CE /* Preview Assets.xcassets */; };
 		2A58C0562BA4F7C100FDA014 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58C0552BA4F7C100FDA014 /* HomeScreen.swift */; };
 		2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58C0582BA4F81000FDA014 /* CountdownCard.swift */; };
+		2A60663F2BB051B30067FB33 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 2A60663E2BB051B30067FB33 /* MapLibre */; };
+		2A6066452BB052900067FB33 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066442BB052900067FB33 /* MapView.swift */; };
+		2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066462BB0572F0067FB33 /* MapScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -37,6 +40,8 @@
 		2A2A8F652BA4D64E008D24CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A58C0552BA4F7C100FDA014 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		2A58C0582BA4F81000FDA014 /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
+		2A6066442BB052900067FB33 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2A6066462BB0572F0067FB33 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A60663F2BB051B30067FB33 /* MapLibre in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +75,7 @@
 		2A2A8F5D2BA4D64D008D24CE /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2A6066412BB052630067FB33 /* map */,
 				2A58C0542BA4F7AB00FDA014 /* home */,
 				2A2A8F5E2BA4D64D008D24CE /* StoppelMapApp.swift */,
 				2A2A8F602BA4D64D008D24CE /* ContentView.swift */,
@@ -95,6 +102,15 @@
 			path = home;
 			sourceTree = "<group>";
 		};
+		2A6066412BB052630067FB33 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				2A6066442BB052900067FB33 /* MapView.swift */,
+				2A6066462BB0572F0067FB33 /* MapScreen.swift */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,6 +130,9 @@
 			dependencies = (
 			);
 			name = StoppelMap;
+			packageProductDependencies = (
+				2A60663E2BB051B30067FB33 /* MapLibre */,
+			);
 			productName = StoppelMap;
 			productReference = 2A2A8F5B2BA4D64D008D24CE /* StoppelMap.app */;
 			productType = "com.apple.product-type.application";
@@ -135,13 +154,16 @@
 			};
 			buildConfigurationList = 2A2A8F562BA4D64D008D24CE /* Build configuration list for PBXProject "iosApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = de;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				de,
 				en,
 			);
 			mainGroup = 2A2A8F522BA4D64D008D24CE;
+			packageReferences = (
+				2A60663D2BB051B30067FB33 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
+			);
 			productRefGroup = 2A2A8F5C2BA4D64D008D24CE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -205,8 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */,
 				2A2A8F612BA4D64D008D24CE /* ContentView.swift in Sources */,
 				2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */,
+				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
 				2A2A8F5F2BA4D64D008D24CE /* StoppelMapApp.swift in Sources */,
 				2A58C0562BA4F7C100FDA014 /* HomeScreen.swift in Sources */,
 			);
@@ -341,7 +365,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "iosApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 7NUZ9L2CDZ;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -378,7 +402,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "iosApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 7NUZ9L2CDZ;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -430,6 +454,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2A60663D2BB051B30067FB33 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2A60663E2BB051B30067FB33 /* MapLibre */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A60663D2BB051B30067FB33 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
+			productName = MapLibre;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2A2A8F532BA4D64D008D24CE /* Project object */;
 }

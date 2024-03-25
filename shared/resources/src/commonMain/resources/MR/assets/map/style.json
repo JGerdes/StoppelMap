@@ -1,26 +1,15 @@
 {
-  "version": 8,
+  "id": "43f36e14-e3f5-43c1-84c0-50a9c80dc5c7",
   "name": "stoma22",
+  "zoom": 17.264392656429813,
+  "pitch": 0,
   "center": [
     8.294915363560904,
     52.747785148952005
   ],
-  "zoom": 17.264392656429813,
   "bearing": 0,
-  "pitch": 0,
+  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
   "sources": {
-    "highlight-labels-source": {
-      "type": "geojson",
-      "data": ""
-    },
-    "user-location-source": {
-      "type": "geojson",
-      "data": ""
-    }
-  },
-  "glyphs": "asset://map/font/{fontstack}/{range}.pbf",
-  "projection": {
-    "name": "globe"
   },
   "layers": [
     {
@@ -444,9 +433,6 @@
             "No default property value available."
           ]
         ],
-        "text-font": [
-          "roboto_slab_regular"
-        ],
         "text-justify": "left",
         "text-padding": [
           "interpolate",
@@ -557,9 +543,6 @@
             "No default property value available."
           ]
         ],
-        "text-font": [
-          "roboto_slab_regular"
-        ],
         "text-justify": "left",
         "text-padding": [
           "interpolate",
@@ -627,12 +610,5 @@
       },
       "interactive": true
     }
-  ],
-  "created": "2022-08-08T09:03:06.173Z",
-  "modified": "2022-08-08T09:33:11.489Z",
-  "id": "cl6kj07mx000415ruy1uha78e",
-  "owner": "stoppelmap",
-  "visibility": "private",
-  "protected": false,
-  "draft": false
+  ]
 }
