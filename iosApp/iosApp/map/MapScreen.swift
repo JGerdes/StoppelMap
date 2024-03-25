@@ -5,9 +5,7 @@ struct MapScreen: View {
     
     var body: some View {
         MapView(colorScheme: colorScheme)
-            .ignoresSafeArea(
-                edges: .top
-            )
+            .ignoresSafeArea()
     }
 }
 

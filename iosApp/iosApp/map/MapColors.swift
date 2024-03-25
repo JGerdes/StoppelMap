@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-let mapBackgroundLight = UIColor(red:1.0, green:0.9843137, blue: 0.99607843, alpha: 1.0)
+let mapBackgroundLight = UIColor(red:0.98, green:0.98, blue: 0.98, alpha: 1.0)
 let labelColorLight = UIColor(red:0.0, green:0.0, blue: 0.0, alpha: 1.0)
 let labelHaloColorLight = UIColor(red:1.0, green:1.0, blue: 1.0, alpha: 1.0)
 let mapColorsLight = [
@@ -19,7 +19,7 @@ let mapColorsLight = [
     "seller-stall": UIColor(red:0.54509807, green:0.6156863, blue: 0.00390619, alpha: 1.0)
 ]
 
-let mapBackgroundDark = UIColor(red:0.10980392, green:0.105882354, blue: 0.12156863, alpha: 1.0)
+let mapBackgroundDark = UIColor(red:0.1, green:0.1, blue: 0.1, alpha: 1.0)
 let labelColorDark = UIColor(red:1.0, green:1.0, blue: 1.0, alpha: 1.0)
 let labelHaloColorDark = UIColor(red:0.0, green:0.0, blue: 0.0, alpha: 1.0)
 let mapColorsDark = [
