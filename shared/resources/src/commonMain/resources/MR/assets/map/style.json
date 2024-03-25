@@ -8,7 +8,7 @@
     52.747785148952005
   ],
   "bearing": 0,
-  "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+  "glyphs": "asset://map/font/{fontstack}/{range}.pbf",
   "sources": {
   },
   "layers": [
@@ -432,6 +432,9 @@
             "error",
             "No default property value available."
           ]
+        ],
+        "text-font": [
+          "roboto_slab_regular"
         ],
         "text-justify": "left",
         "text-padding": [

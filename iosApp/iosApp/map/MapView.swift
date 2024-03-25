@@ -7,17 +7,15 @@ struct MapView: UIViewRepresentable {
     
     
     func makeUIView(context: Context) -> MLNMapView {
-       
-        let styleUrl = Res.assetsMap().style.url
-        print(styleUrl)
     
         // Create the map view
-        let mapView = MLNMapView(frame: .zero, styleURL: styleUrl)
+        let mapView = MLNMapView(frame: .zero, styleURL: URL(string:"asset://map/style.json"))
         mapView.delegate = context.coordinator
 
         mapView.logoView.isHidden = true
         mapView.attributionButton.isHidden = true
 
+        
         mapView.setCenter(
             CLLocationCoordinate2D(
                 latitude: 52.7477, longitude: 8.2956
