@@ -42,7 +42,7 @@ android {
 dependencies {
     implementation(project(":shared:base"))
     implementation(project(":base"))
-    implementation(project(":data"))
+    implementation(project(":shared:data"))
     implementation(project(":android:theme"))
 
     implementation(libs.bundles.compose.ui)

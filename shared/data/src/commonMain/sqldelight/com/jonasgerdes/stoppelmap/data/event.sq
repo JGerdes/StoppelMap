@@ -1,3 +1,4 @@
+import kotlin.Boolean;
 import kotlinx.datetime.LocalDateTime;
 
 CREATE TABLE IF NOT EXISTS event(

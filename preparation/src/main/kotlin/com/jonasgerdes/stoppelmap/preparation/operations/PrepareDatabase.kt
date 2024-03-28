@@ -1,8 +1,8 @@
 package com.jonasgerdes.stoppelmap.preparation.operations
 
+import app.cash.sqldelight.db.SqlDriver
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.preparation.Settings
-import com.squareup.sqldelight.db.SqlDriver
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

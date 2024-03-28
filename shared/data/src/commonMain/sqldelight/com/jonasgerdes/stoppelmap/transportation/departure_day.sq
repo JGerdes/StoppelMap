@@ -1,3 +1,4 @@
+import kotlin.Boolean;
 import kotlinx.datetime.LocalDate;
 
 CREATE TABLE IF NOT EXISTS departure_day (

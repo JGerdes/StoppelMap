@@ -4,13 +4,13 @@
 // Shared
 include(":shared:base")
 include(":shared:resources")
+include(":shared:data")
 include(":shared:feature:countdown")
 include(":shared:app")
 include(":shared")
 
 // Common
 include(":base")
-include(":data")
 
 // Android
 include(":android:theme")

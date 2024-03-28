@@ -43,7 +43,7 @@ dependencies {
     implementation(project(":shared:base"))
     implementation(project(":base"))
     implementation(project(":android:theme"))
-    implementation(project(":data"))
+    implementation(project(":shared:data"))
 
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)

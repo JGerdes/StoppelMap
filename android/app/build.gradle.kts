@@ -101,7 +101,7 @@ dependencies {
     implementation(project(":shared:feature:countdown"))
     implementation(project(":shared:app"))
     implementation(project(":base"))
-    implementation(project(":data"))
+    implementation(project(":shared:data"))
 
 
     implementation(project(":android:theme"))

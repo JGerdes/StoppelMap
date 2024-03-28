@@ -16,10 +16,18 @@ task("fetchEvents", JavaExec::class) {
     classpath = sourceSets["main"].runtimeClasspath
 }
 
+java {
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
 
 dependencies {
 
-    implementation(project(":data"))
+    implementation(project(":shared:data"))
 
     implementation(libs.kotlinx.datetime)
     implementation(libs.koin.core)

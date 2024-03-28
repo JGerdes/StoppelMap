@@ -26,7 +26,8 @@ koin = "3.5.0"
 timber = "5.0.1"
 lottie = "6.4.0"
 maplibre = "11.0.0-pre4"
-sqldelight = "1.5.5"
+sqldelight = "2.0.1"
+sqldelight-primitive-adapters = "2.0.0-alpha05"
 playServiceLocation = "21.2.0"
 playInAppUpdate = "2.1.0"
 ktor = "2.3.0"
@@ -73,9 +74,11 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
-sqldelight-driver-android = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelight" }
-sqldelight-driver-sqlite = { module = "com.squareup.sqldelight:sqlite-driver", version.ref = "sqldelight" }
-sqldelight-coroutines = { module = "com.squareup.sqldelight:coroutines-extensions-jvm", version.ref = "sqldelight" }
+sqldelight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-driver-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-driver-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions-jvm", version.ref = "sqldelight" }
+sqldelight-primitive-adapters = { module = "app.cash.sqldelight:primitive-adapters", version.ref = "sqldelight-primitive-adapters" }
 google-play-app-update = { module = "com.google.android.play:app-update-ktx", version.ref = "playInAppUpdate" }
 google-play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServiceLocation" }
 
@@ -113,7 +116,7 @@ ktor-server = ["ktor-server-core", "ktor-server-netty", "ktor-server-call-loggin
 compose-ui = ["compose-ui-core", "compose-ui-preview", "compose-material-icons", "compose-material-components"]
 
 [plugins]
-sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }

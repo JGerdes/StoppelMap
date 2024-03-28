@@ -1,9 +1,12 @@
+import kotlin.Boolean;
+import kotlin.Double;
+
 CREATE TABLE IF NOT EXISTS stall(
     slug                TEXT NOT NULL PRIMARY KEY,
     type                TEXT NOT NULL,
     name                TEXT,
-    center_lng          REAL AS Double NOT NULL,
-    center_lat          REAL AS Double NOT NULL,
+    center_lng          REAL NOT NULL,
+    center_lat          REAL NOT NULL,
     isSearchable        INTEGER AS Boolean NOT NULL DEFAULT 1
 );
 

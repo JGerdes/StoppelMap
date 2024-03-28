@@ -1,13 +1,13 @@
 package com.jonasgerdes.stoppelmap
 
 import android.content.Context
+import app.cash.sqldelight.db.SqlDriver
+import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.jonasgerdes.stoppelmap.base.contract.AppInfo
 import com.jonasgerdes.stoppelmap.base.contract.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.contract.MapDataFile
 import com.jonasgerdes.stoppelmap.base.contract.Secrets
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
-import com.squareup.sqldelight.android.AndroidSqliteDriver
-import com.squareup.sqldelight.db.SqlDriver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module

@@ -1,12 +1,12 @@
 package com.jonasgerdes.stoppelmap.data
 
+import app.cash.sqldelight.EnumColumnAdapter
 import com.jonasgerdes.stoppelmap.data.model.database.PriceType
 import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import com.jonasgerdes.stoppelmap.transportation.Departure
 import com.jonasgerdes.stoppelmap.transportation.Departure_day
 import com.jonasgerdes.stoppelmap.transportation.Price
 import com.jonasgerdes.stoppelmap.transportation.Route
-import com.squareup.sqldelight.EnumColumnAdapter
 import org.koin.dsl.module
 
 val dataModule = module {

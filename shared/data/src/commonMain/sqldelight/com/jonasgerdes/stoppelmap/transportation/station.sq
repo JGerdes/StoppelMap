@@ -1,9 +1,12 @@
+import kotlin.Boolean;
+import kotlin.Double;
+
 CREATE TABLE IF NOT EXISTS station (
     slug            TEXT NOT NULL PRIMARY KEY,
     route           TEXT NOT NULL,
     title           TEXT NOT NULL,
-    lng             REAL AS Double,
-    lat             REAL AS Double,
+    lng             REAL,
+    lat             REAL,
     isDestination   INTEGER AS Boolean NOT NULL DEFAULT 0,
     isReturn        INTEGER AS Boolean NOT NULL DEFAULT 0,
     annotateAsNew   INTEGER AS Boolean NOT NULL DEFAULT 0,
