@@ -10,6 +10,7 @@ kotlin = "1.9.22"
 kotlinxDatetime = "0.5.0"
 kotlinxSerializationJson = "1.5.1"
 kotlinxCoroutines = "1.8.0"
+okio = "3.9.0"
 androidxCore = "1.12.0"
 androidxLifecycle = "2.7.0"
 compose = "1.6.3"
@@ -18,7 +19,7 @@ material3compose = "1.2.1"
 material = "1.11.0"
 androidxActivityCompose = "1.8.2"
 androidxNavigation = "2.7.7"
-datastore = "1.0.0"
+datastore = "1.1.0-beta02"
 splashscreen = "1.0.1"
 accompoanist = "0.34.0"
 coil = "2.5.0"
@@ -30,6 +31,7 @@ sqldelight = "2.0.1"
 sqldelight-primitive-adapters = "2.0.0-alpha05"
 playServiceLocation = "21.2.0"
 playInAppUpdate = "2.1.0"
+kermit = "2.0.3"
 ktor = "2.3.0"
 gson = "2.10.1"
 geogson = "1.2.21"
@@ -68,6 +70,8 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigation" }
 androidx-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+androidx-datastore-core-okio = { module = "androidx.datastore:datastore-core-okio", version.ref = "datastore" }
+androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
@@ -86,12 +90,18 @@ maplibre = { module = "org.maplibre.gl:android-sdk", version.ref = "maplibre" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-encoding = { module = "io.ktor:ktor-client-encoding", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 geogson = { module = "com.github.filosganga:geogson-core", version.ref = "geogson" }

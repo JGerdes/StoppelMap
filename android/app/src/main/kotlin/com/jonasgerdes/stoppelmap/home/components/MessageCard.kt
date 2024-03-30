@@ -28,7 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.dataupdate.model.Message
+import com.jonasgerdes.stoppelmap.shared.dataupdate.model.Message
 import com.jonasgerdes.stoppelmap.theme.i18n.localizedString
 
 @OptIn(ExperimentalLayoutApi::class)

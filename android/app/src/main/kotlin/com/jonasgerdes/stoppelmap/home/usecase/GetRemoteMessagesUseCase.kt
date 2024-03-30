@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.home.usecase
 
-import com.jonasgerdes.stoppelmap.base.contract.AppInfo
-import com.jonasgerdes.stoppelmap.dataupdate.AppConfigRepository
+import com.jonasgerdes.stoppelmap.base.model.AppInfo
+import com.jonasgerdes.stoppelmap.shared.dataupdate.AppConfigRepository
 import kotlinx.coroutines.flow.map
 
 class GetRemoteMessagesUseCase(

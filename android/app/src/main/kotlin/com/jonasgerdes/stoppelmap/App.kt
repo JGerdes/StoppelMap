@@ -5,15 +5,16 @@ import android.appwidget.AppWidgetManager
 import android.content.Context
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
 import com.jonasgerdes.stoppelmap.data.dataModule
-import com.jonasgerdes.stoppelmap.dataupdate.dataUpdateModule
-import com.jonasgerdes.stoppelmap.dataupdate.usecase.CopyAssetDataFilesUseCase
-import com.jonasgerdes.stoppelmap.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
 import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.news.newsModule
 import com.jonasgerdes.stoppelmap.schedule.scheduleModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
+import com.jonasgerdes.stoppelmap.shared.dataupdate.dataUpdateModule
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
+import com.jonasgerdes.stoppelmap.shared.resources.Res
 import com.jonasgerdes.stoppelmap.transportation.transportationModule
 import com.jonasgerdes.stoppelmap.update.updateModule
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
@@ -67,7 +68,10 @@ class App : Application() {
         )
 
         scope.launch {
-            copyAssetDatabase()
+            copyAssetDatabase(
+                databaseAsset = Res.assets.database,
+                mapdataAsset = Res.assets.mapdata,
+            )
             updateAppConfigAndDownloadFiles()
         }
     }

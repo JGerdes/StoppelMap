@@ -7,10 +7,10 @@ import com.jonasgerdes.stoppelmap.countdown.model.CountDownState
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownStateUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
 import com.jonasgerdes.stoppelmap.data.Event
-import com.jonasgerdes.stoppelmap.dataupdate.model.Message
 import com.jonasgerdes.stoppelmap.home.usecase.GetRemoteMessagesUseCase
 import com.jonasgerdes.stoppelmap.schedule.usecase.GetNextBookmarkedEventUseCase
 import com.jonasgerdes.stoppelmap.schedule.usecase.GetNextOfficialEventUseCase
+import com.jonasgerdes.stoppelmap.shared.dataupdate.model.Message
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
 import com.jonasgerdes.stoppelmap.update.usecase.CompleteAppUpdateUseCase
 import com.jonasgerdes.stoppelmap.update.usecase.GetAppUpdateStateUseCase

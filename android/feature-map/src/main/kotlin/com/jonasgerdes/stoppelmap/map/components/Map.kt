@@ -88,8 +88,6 @@ fun Map(
         android.Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
-    Timber.d("mapColors: ${colors.toSwiftDict()}")
-
     val compassMargins = with(LocalDensity.current) {
         val layoutDir = LocalLayoutDirection.current
         Rect(

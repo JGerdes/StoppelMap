@@ -3,7 +3,7 @@ package com.jonasgerdes.stoppelmap.settings.ui
 import android.os.Build
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jonasgerdes.stoppelmap.base.contract.AppInfo
+import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.ImageSource
 import com.jonasgerdes.stoppelmap.settings.data.Library

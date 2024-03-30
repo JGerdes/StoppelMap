@@ -5,6 +5,7 @@
 include(":shared:base")
 include(":shared:resources")
 include(":shared:data")
+include(":shared:feature:data-update")
 include(":shared:feature:countdown")
 include(":shared:app")
 include(":shared")
@@ -21,7 +22,6 @@ include(":android:feature-map")
 include(":android:feature-schedule")
 include(":android:feature-news")
 include(":android:feature-update")
-include(":android:feature-data-update")
 include(":android:app")
 
 // Server

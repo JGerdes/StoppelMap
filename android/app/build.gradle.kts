@@ -112,7 +112,7 @@ dependencies {
     implementation(project(":android:feature-transportation"))
     implementation(project(":android:feature-news"))
     implementation(project(":android:feature-update"))
-    implementation(project(":android:feature-data-update"))
+    implementation(project(":shared:feature:data-update"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)
