@@ -26,6 +26,7 @@ kotlin {
             export(project(":shared:base"))
             export(project(":shared:resources"))
             export(project(":shared:feature:countdown"))
+            export(project(":shared:feature:data-update"))
             export(project(":shared:app"))
         }
     }
@@ -36,16 +37,11 @@ kotlin {
             api(project(":shared:base"))
             api(project(":shared:resources"))
             api(project(":shared:feature:countdown"))
+            api(project(":shared:feature:data-update"))
             api(project(":shared:app"))
         }
     }
 }
-
-/*multiplatformResources {
-    multiplatformResourcesPackage = "com.jonasgerdes.stoppelmap.shared"
-    iosBaseLocalizationRegion = "de"
-    multiplatformResourcesClassName = "MRShared"
-}*/
 
 android {
     namespace = "com.jonasgerdes.stoppelmap.shared"

@@ -52,8 +52,9 @@ struct MapView: UIViewRepresentable {
         
         func mapViewDidFinishLoadingMap(_ mapView: MLNMapView) {
             self.mapView = mapView
-            print("mapView, mapViewDidFinishLoadingMap")
-            let source = MLNShapeSource(identifier: "composite", url: Res.assets().mapdata.url)
+            let mapUrl = URL(string: "file://" + DataUpdateDependencies().mapDataFile.path)!
+            print("mapView, mapViewDidFinishLoadingMap. mapUrl:" + mapUrl.absoluteString)
+            let source = MLNShapeSource(identifier: "composite", url: mapUrl)
             mapView.style!.addSource(source)
             mapView.updateLayerColors(colorScheme: self.control.colorScheme)
             

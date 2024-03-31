@@ -6,7 +6,6 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
-import com.jonasgerdes.stoppelmap.base.model.Secrets
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -44,15 +43,9 @@ val appModule = module {
         AppInfo(
             versionName = BuildConfig.VERSION_NAME,
             versionCode = BuildConfig.VERSION_CODE,
-            commitSha = BuildConfig.COMMIT_SHA,
+            commitSha = CommonBuildConfig.COMMIT_SHA,
             buildType = get<Context>().getString(R.string.build_type),
             platform = "Android"
-        )
-    }
-
-    single {
-        Secrets(
-            stoppelMapApiKey = BuildConfig.STOPPELMAP_API_KEY
         )
     }
 }

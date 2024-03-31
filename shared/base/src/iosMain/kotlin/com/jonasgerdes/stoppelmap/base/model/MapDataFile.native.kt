@@ -1,3 +1,3 @@
 package com.jonasgerdes.stoppelmap.base.model
 
-actual class MapDataFile
+actual data class MapDataFile(val path: String)

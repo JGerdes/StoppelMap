@@ -4,14 +4,12 @@ import android.app.Application
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import com.jonasgerdes.stoppelmap.countdown.countdownModule
-import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.news.newsModule
 import com.jonasgerdes.stoppelmap.schedule.scheduleModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
-import com.jonasgerdes.stoppelmap.shared.dataupdate.dataUpdateModule
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
 import com.jonasgerdes.stoppelmap.shared.resources.Res
@@ -43,9 +41,7 @@ class App : Application() {
                 },
                 appModule,
                 dateTimeModule,
-                dataUpdateModule,
                 licenseModule,
-                dataModule,
                 homeModule,
                 settingsModule,
                 countdownModule,

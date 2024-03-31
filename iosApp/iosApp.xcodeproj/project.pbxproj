@@ -15,6 +15,8 @@
 		2A60663F2BB051B30067FB33 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 2A60663E2BB051B30067FB33 /* MapLibre */; };
 		2A6066452BB052900067FB33 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066442BB052900067FB33 /* MapView.swift */; };
 		2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066462BB0572F0067FB33 /* MapScreen.swift */; };
+		2A77811E2BB8AC6E00C1FC25 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 2A77811C2BB8AC6E00C1FC25 /* database.db */; };
+		2A77811F2BB8AC6E00C1FC25 /* mapdata.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 2A77811D2BB8AC6E00C1FC25 /* mapdata.geojson */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +45,8 @@
 		2A58C0582BA4F81000FDA014 /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
 		2A6066442BB052900067FB33 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2A6066462BB0572F0067FB33 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		2A77811C2BB8AC6E00C1FC25 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = ../../../shared/resources/src/commonMain/resources/MR/assets/database.db; sourceTree = "<group>"; };
+		2A77811D2BB8AC6E00C1FC25 /* mapdata.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mapdata.geojson; path = ../../../shared/resources/src/commonMain/resources/MR/assets/mapdata.geojson; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +123,8 @@
 		2ACCB0572BB21AA600DA01B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2A77811C2BB8AC6E00C1FC25 /* database.db */,
+				2A77811D2BB8AC6E00C1FC25 /* mapdata.geojson */,
 				2ACCB05C2BB21D8100DA01B6 /* map */,
 			);
 			path = Resources;
@@ -193,6 +199,8 @@
 			files = (
 				2A2A8F632BA4D64E008D24CE /* Assets.xcassets in Resources */,
 				2ACCB05D2BB21D8100DA01B6 /* map in Resources */,
+				2A77811F2BB8AC6E00C1FC25 /* mapdata.geojson in Resources */,
+				2A77811E2BB8AC6E00C1FC25 /* database.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +405,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -434,6 +443,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

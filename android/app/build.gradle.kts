@@ -41,20 +41,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-
-        loadProperties(
-            "./secrets.properties",
-            onSuccess = { properties ->
-                buildConfigField(
-                    "String",
-                    "STOPPELMAP_API_KEY",
-                    "\"${properties["stoppelMapApiKey"]}\""
-                )
-            },
-            onFailure = { println("Unable to read secrets.properties") }
-        )
-
-        buildConfigField("String", "COMMIT_SHA", "\"${commit.sha}\"")
     }
 
     buildTypes {

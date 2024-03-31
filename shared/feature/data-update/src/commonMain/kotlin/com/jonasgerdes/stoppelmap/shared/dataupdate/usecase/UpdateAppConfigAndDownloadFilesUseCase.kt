@@ -27,12 +27,14 @@ class UpdateAppConfigAndDownloadFilesUseCase(
             appInfo.versionCode >= latestData.supportedSince.android
             && latestData.version > versioningRepository.getCurrentDatabaseVersion()
         ) {
+            Logger.d { "There are new files available online. brb, downloading them." }
             coroutineScope {
                 val (downloadedDatabaseFile, downloadedMapDataFile) = awaitAll(
                     async { appConfigRepository.downloadDatabase(latestData.data) },
                     async { appConfigRepository.downloadMapDataFile(latestData.map) },
                 )
-                Logger.d { "Updated files. db: $downloadedDatabaseFile, geojson: $downloadedMapDataFile" }
+                Logger.d { "Downloaded files db: $downloadedDatabaseFile, geojson: $downloadedMapDataFile" }
+                Logger.d { "Copy successful ones to destination" }
 
                 if (downloadedDatabaseFile != null && downloadedMapDataFile != null) {
                     FileSystem.SYSTEM.copy(downloadedDatabaseFile, databaseFile)
@@ -41,7 +43,7 @@ class UpdateAppConfigAndDownloadFilesUseCase(
                     FileSystem.SYSTEM.copy(downloadedMapDataFile, mapDataFile)
                     versioningRepository.setMapDataVersion(latestData.version)
                 }
-
+                Logger.d { "Copying of new files succeeded" }
 
             }
         }

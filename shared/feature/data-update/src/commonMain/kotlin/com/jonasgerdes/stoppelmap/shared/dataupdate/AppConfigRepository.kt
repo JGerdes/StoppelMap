@@ -24,6 +24,7 @@ class AppConfigRepository(
         .map { it.messages }
 
     suspend fun updateAppConfig() {
+        Logger.d { "Update app config" }
         when (val response = cdnSource.getRemoteAppConfig()) {
             is Response.Error.HttpError ->
                 Logger.e { "Fetching app config failed: ${response.status}." }
@@ -40,7 +41,7 @@ class AppConfigRepository(
     }
 
     suspend fun downloadDatabase(databaseName: String): Path? {
-        Logger.d { "Download dbm \"$databaseName\"" }
+        Logger.d { "Download db \"$databaseName\" to $tempDatabase" }
         return when (val response = cdnSource.downloadFile(tempDatabase, databaseName)) {
             is Response.Error.HttpError -> {
                 Logger.e { "Downloading db \"$databaseName\" failed: ${response.status}." }
@@ -60,7 +61,7 @@ class AppConfigRepository(
     }
 
     suspend fun downloadMapDataFile(mapFileName: String): Path? {
-        Logger.d { "Download geojson \"$mapFileName\"" }
+        Logger.d { "Download geojson \"$mapFileName\" to $tempDatabase" }
         return when (val response = cdnSource.downloadFile(tempMapData, mapFileName)) {
             is Response.Error.HttpError -> {
                 Logger.e { "Downloading geojson \"$mapFileName\" failed: ${response.status}." }
