@@ -42,6 +42,10 @@ kotlin {
             implementation(project(":shared:feature:countdown"))
             implementation(project(":shared:feature:data-update"))
         }
+
+        iosMain.dependencies {
+            implementation(libs.sqldelight.driver.native)
+        }
     }
 }
 
