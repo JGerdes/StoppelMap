@@ -41,7 +41,6 @@ import com.jonasgerdes.stoppelmap.theme.util.MeasureUnconstrainedViewWidth
 import kotlinx.coroutines.launch
 import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.koinViewModel
-import java.time.DayOfWeek
 import java.time.format.DateTimeFormatter
 
 @SuppressLint("NewApi")
@@ -106,14 +105,13 @@ fun ScheduleScreen(
                         onClick = { viewModel.onDayTap(day.date) },
                         text = {
                             val dayContentDescription =
-                                stringResource(day.date.dayOfWeek.toFullResourceString())
+                                stringResource(day.date.dayOfWeek.toFullResourceString().resourceId)
                             Text(
-                                text = stringResource(day.date.dayOfWeek.toShortResourceString()),
+                                text = stringResource(day.date.dayOfWeek.toShortResourceString().resourceId),
                                 fontWeight = FontWeight.Bold,
                                 color = color,
                                 modifier = Modifier.semantics {
                                     contentDescription = dayContentDescription
-
                                 }
                             )
                         }
@@ -178,24 +176,4 @@ fun Time(timeString: String) {
             .padding(horizontal = 8.dp)
             .padding(top = 24.dp)
     )
-}
-
-private fun DayOfWeek.toShortResourceString() = when (this) {
-    DayOfWeek.MONDAY -> R.string.schedule_day_short_monday
-    DayOfWeek.TUESDAY -> R.string.schedule_day_short_tuesday
-    DayOfWeek.WEDNESDAY -> R.string.schedule_day_short_wednesday
-    DayOfWeek.THURSDAY -> R.string.schedule_day_short_thursday
-    DayOfWeek.FRIDAY -> R.string.schedule_day_short_friday
-    DayOfWeek.SATURDAY -> R.string.schedule_day_short_saturday
-    DayOfWeek.SUNDAY -> R.string.schedule_day_short_sunday
-}
-
-private fun DayOfWeek.toFullResourceString() = when (this) {
-    DayOfWeek.MONDAY -> R.string.schedule_day_full_monday
-    DayOfWeek.TUESDAY -> R.string.schedule_day_full_tuesday
-    DayOfWeek.WEDNESDAY -> R.string.schedule_day_full_wednesday
-    DayOfWeek.THURSDAY -> R.string.schedule_day_full_thursday
-    DayOfWeek.FRIDAY -> R.string.schedule_day_full_friday
-    DayOfWeek.SATURDAY -> R.string.schedule_day_full_saturday
-    DayOfWeek.SUNDAY -> R.string.schedule_day_full_sunday
 }

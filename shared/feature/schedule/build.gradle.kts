@@ -36,6 +36,7 @@ kotlin {
             implementation(libs.androidx.datastore.preferences.core)
 
             implementation(project(":shared:base"))
+            implementation(project(":shared:resources"))
             implementation(project(":shared:data"))
         }
     }
