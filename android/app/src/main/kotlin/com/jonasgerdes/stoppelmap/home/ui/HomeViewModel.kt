@@ -78,7 +78,7 @@ class HomeViewModel(
     }.flatMapLatest {
         getNextBookmarkedEvent().map { bookmarked ->
             val official =
-                (getNextOfficialEvent() as? GetNextOfficialEventUseCase.Result.Some)?.event
+                (getNextOfficialEvent() as? com.jonasgerdes.stoppelmap.schedule.usecase.GetNextOfficialEventUseCase.Result.Some)?.event
 
             val promotedEvents = (bookmarked + official)
                 .filterNotNull()

@@ -1,19 +1,14 @@
 package com.jonasgerdes.stoppelmap.schedule
 
-import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.schedule.repository.BookmarkedEventsRepository
 import com.jonasgerdes.stoppelmap.schedule.repository.EventRepository
-import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleViewModel
 import com.jonasgerdes.stoppelmap.schedule.usecase.GetNextBookmarkedEventUseCase
 import com.jonasgerdes.stoppelmap.schedule.usecase.GetNextOfficialEventUseCase
-import org.koin.androidx.viewmodel.dsl.viewModel
+import okio.Path.Companion.toPath
 import org.koin.dsl.module
-
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "scheduleUserData")
 
 val scheduleModule = module {
 
@@ -22,7 +17,13 @@ val scheduleModule = module {
     }
 
     single {
-        BookmarkedEventsRepository(dataStore = get<Context>().dataStore)
+        BookmarkedEventsRepository(
+            dataStore = PreferenceDataStoreFactory.createWithPath(
+                corruptionHandler = null,
+                migrations = emptyList(),
+                produceFile = { get<PreferencesPathFactory>().create("scheduleUserData").toPath() },
+            )
+        )
     }
 
     factory {
@@ -36,14 +37,6 @@ val scheduleModule = module {
         GetNextBookmarkedEventUseCase(
             bookmarkedEventsRepository = get(),
             eventsRepository = get(),
-            clockProvider = get()
-        )
-    }
-
-    viewModel {
-        ScheduleViewModel(
-            eventRepository = get(),
-            bookmarkedEventsRepository = get(),
             clockProvider = get()
         )
     }

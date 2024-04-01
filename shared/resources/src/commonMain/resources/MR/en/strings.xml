@@ -12,4 +12,23 @@
     <!-- Countdown -->
     <string name="countdownCard_prefix">Only</string>
     <string name="countdownCard_suffix">until Stoppelmarkt %1$d</string>
+
+    <!-- Schedule -->
+    <string name="schedule_topbar_title">Schedule</string>
+
+    <string name="schedule_day_short_monday">Mo</string>
+    <string name="schedule_day_short_tuesday">Tu</string>
+    <string name="schedule_day_short_wednesday">We</string>
+    <string name="schedule_day_short_thursday">Th</string>
+    <string name="schedule_day_short_friday">Fr</string>
+    <string name="schedule_day_short_saturday">Sa</string>
+    <string name="schedule_day_short_sunday">Su</string>
+
+    <string name="schedule_day_full_monday">Monday</string>
+    <string name="schedule_day_full_tuesday">Tuesday</string>
+    <string name="schedule_day_full_wednesday">Tuesday</string>
+    <string name="schedule_day_full_thursday">Thursday</string>
+    <string name="schedule_day_full_friday">Friday</string>
+    <string name="schedule_day_full_saturday">Saturday</string>
+    <string name="schedule_day_full_sunday">Sunday</string>
 </resources>

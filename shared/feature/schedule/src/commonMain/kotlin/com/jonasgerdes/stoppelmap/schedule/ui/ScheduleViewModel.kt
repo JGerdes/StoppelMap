@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.schedule.ui
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.data.Event
 import com.jonasgerdes.stoppelmap.schedule.model.ScheduleDay
@@ -9,12 +8,14 @@ import com.jonasgerdes.stoppelmap.schedule.model.ScheduleEvent
 import com.jonasgerdes.stoppelmap.schedule.model.ScheduleTime
 import com.jonasgerdes.stoppelmap.schedule.repository.BookmarkedEventsRepository
 import com.jonasgerdes.stoppelmap.schedule.repository.EventRepository
+import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.coroutineScope
+import com.rickclephas.kmm.viewmodel.stateIn
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
@@ -23,7 +24,7 @@ class ScheduleViewModel(
     private val eventRepository: EventRepository,
     private val bookmarkedEventsRepository: BookmarkedEventsRepository,
     private val clockProvider: ClockProvider,
-) : ViewModel() {
+) : KMMViewModel() {
 
     private val selectedDay = MutableStateFlow<LocalDate?>(clockProvider.nowAsLocalDateTime().date)
     private val selectedEvent = MutableStateFlow<Event?>(null)
@@ -74,12 +75,14 @@ class ScheduleViewModel(
             )
         }
             .stateIn(
-                scope = viewModelScope,
+                viewModelScope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
                 initialValue = ViewState()
             )
 
-    data class ViewState(
+    data class ViewState
+    @DefaultArgumentInterop.Enabled
+    constructor(
         val scheduleDays: List<ScheduleDay> = emptyList(),
         val selectedDay: Int? = null,
         val selectedEvent: Event? = null,
@@ -97,7 +100,7 @@ class ScheduleViewModel(
     }
 
     fun onEventNotificationSchedule(event: Event, notificationActive: Boolean) {
-        viewModelScope.launch {
+        viewModelScope.coroutineScope.launch {
             if (notificationActive) {
                 bookmarkedEventsRepository.addBookmarkedEvent(event.slug)
             } else {
@@ -106,6 +109,5 @@ class ScheduleViewModel(
         }
     }
 }
-
 
 private fun Int.mapNegative1ToNull() = if (this == -1) null else this

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.shared.dataupdate
 
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
@@ -22,11 +23,11 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import okio.Path
+import okio.Path.Companion.toPath
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
 expect fun Scope.createHttpClientEngine(): HttpClientEngine
-expect fun Scope.createDataStorePath(name: String): Path
 expect fun Scope.createTempPath(name: String): Path
 expect fun Scope.createRemoveDatabaseUseCase(): RemoveDatabaseFileUseCase
 expect fun Scope.createCopyAssetToFileUseCase(): CopyAssetToFileUseCase
@@ -77,7 +78,7 @@ val dataUpdateModule = module {
             dataStore = PreferenceDataStoreFactory.createWithPath(
                 corruptionHandler = null,
                 migrations = emptyList(),
-                produceFile = { createDataStorePath("versioning.preferences_pb") },
+                produceFile = { get<PreferencesPathFactory>().create("versioning").toPath() },
             )
         )
     }

@@ -13,10 +13,6 @@ actual fun Scope.createHttpClientEngine(): HttpClientEngine {
     return OkHttp.create()
 }
 
-actual fun Scope.createDataStorePath(name: String): Path {
-    return get<Context>().filesDir.resolve(name).absolutePath.toPath()
-}
-
 actual fun Scope.createTempPath(name: String): Path {
     return get<Context>().cacheDir.resolve(name).absolutePath.toPath()
 }

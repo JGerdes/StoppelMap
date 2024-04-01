@@ -8,7 +8,7 @@ import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.homeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.news.newsModule
-import com.jonasgerdes.stoppelmap.schedule.scheduleModule
+import com.jonasgerdes.stoppelmap.schedule.androidScheduleModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
@@ -46,7 +46,7 @@ class App : Application() {
                 settingsModule,
                 countdownModule,
                 mapModule,
-                scheduleModule,
+                androidScheduleModule,
                 transportationModule,
                 newsModule,
                 updateModule,

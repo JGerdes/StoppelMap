@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.skie)
-    alias(libs.plugins.moko.resources)
 }
 
 
@@ -20,33 +19,30 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "Shared"
+            baseName = "Schedule"
             isStatic = true
-            export(libs.moko.resources)
-            export(project(":shared:base"))
-            export(project(":shared:resources"))
-            export(project(":shared:feature:data-update"))
-            export(project(":shared:feature:countdown"))
-            export(project(":shared:feature:schedule"))
-            export(project(":shared:app"))
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            api(libs.moko.resources)
-            api(project(":shared:base"))
-            api(project(":shared:resources"))
-            api(project(":shared:feature:data-update"))
-            api(project(":shared:feature:countdown"))
-            api(project(":shared:feature:schedule"))
-            api(project(":shared:app"))
+            // KMM
+            implementation(libs.koin.core)
+            implementation(libs.skie.annotations)
+            api(libs.kmm.viewmodel)
+            api(libs.kermit)
+
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.androidx.datastore.preferences.core)
+
+            implementation(project(":shared:base"))
+            implementation(project(":shared:data"))
         }
     }
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.shared"
+    namespace = "com.jonasgerdes.stoppelmap.shared.schedule"
     compileSdk = libs.versions.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION

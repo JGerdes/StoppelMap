@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap
 import android.content.Context
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
+import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
@@ -11,6 +12,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 import java.io.File
+
+private fun preferencesPathFactory(context: Context): PreferencesPathFactory =
+    object : PreferencesPathFactory() {
+        override fun createImpl(storageFile: String): String {
+            return context.filesDir.resolve(storageFile).absolutePath
+        }
+    }
 
 val appModule = module {
 
@@ -48,4 +56,6 @@ val appModule = module {
             platform = "Android"
         )
     }
+
+    single<PreferencesPathFactory> { preferencesPathFactory(get<Context>()) }
 }
