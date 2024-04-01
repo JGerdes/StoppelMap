@@ -17,6 +17,8 @@
 		2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066462BB0572F0067FB33 /* MapScreen.swift */; };
 		2A77811E2BB8AC6E00C1FC25 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 2A77811C2BB8AC6E00C1FC25 /* database.db */; };
 		2A77811F2BB8AC6E00C1FC25 /* mapdata.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 2A77811D2BB8AC6E00C1FC25 /* mapdata.geojson */; };
+		2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */; };
+		2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781232BBB161D00C1FC25 /* Utils.swift */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +49,8 @@
 		2A6066462BB0572F0067FB33 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		2A77811C2BB8AC6E00C1FC25 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = ../../../shared/resources/src/commonMain/resources/MR/assets/database.db; sourceTree = "<group>"; };
 		2A77811D2BB8AC6E00C1FC25 /* mapdata.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mapdata.geojson; path = ../../../shared/resources/src/commonMain/resources/MR/assets/mapdata.geojson; sourceTree = "<group>"; };
+		2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
+		2A7781232BBB161D00C1FC25 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +86,7 @@
 		2A2A8F5D2BA4D64D008D24CE /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2A7781202BBB13C400C1FC25 /* schedule */,
 				2ACCB0572BB21AA600DA01B6 /* Resources */,
 				2A6066412BB052630067FB33 /* map */,
 				2A58C0542BA4F7AB00FDA014 /* home */,
@@ -89,6 +94,7 @@
 				2A2A8F602BA4D64D008D24CE /* ContentView.swift */,
 				2A2A8F622BA4D64E008D24CE /* Assets.xcassets */,
 				2A2A8F642BA4D64E008D24CE /* Preview Content */,
+				2A7781232BBB161D00C1FC25 /* Utils.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -118,6 +124,14 @@
 				2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */,
 			);
 			path = map;
+			sourceTree = "<group>";
+		};
+		2A7781202BBB13C400C1FC25 /* schedule */ = {
+			isa = PBXGroup;
+			children = (
+				2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */,
+			);
+			path = schedule;
 			sourceTree = "<group>";
 		};
 		2ACCB0572BB21AA600DA01B6 /* Resources */ = {
@@ -250,8 +264,10 @@
 			files = (
 				2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */,
 				2A2A8F612BA4D64D008D24CE /* ContentView.swift in Sources */,
+				2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */,
 				2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */,
 				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
+				2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */,
 				2A2A8F5F2BA4D64D008D24CE /* StoppelMapApp.swift in Sources */,
 				2A58C0562BA4F7C100FDA014 /* HomeScreen.swift in Sources */,
 				2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */,

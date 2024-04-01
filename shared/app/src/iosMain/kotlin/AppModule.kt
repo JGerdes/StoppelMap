@@ -2,7 +2,7 @@ package com.jonasgerdes.stoppelmap.di
 
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
-import co.touchlab.kermit.Logger
+import co.touchlab.sqliter.DatabaseConfiguration
 import com.jonasgerdes.stoppelmap.CommonBuildConfig
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
@@ -63,9 +63,18 @@ val appModule = module {
     }
 
     single<SqlDriver> {
+        val databaseName = get<DatabaseFile>().toPath().name
+        val databaseDir = get<DatabaseFile>().toPath().toString().removeSuffix("/$databaseName")
         NativeSqliteDriver(
             schema = StoppelMapDatabase.Schema,
-            name = get<DatabaseFile>().toPath().name.also { Logger.d { "database name: $it" } }
+            name = databaseName,
+            onConfiguration = {
+                it.copy(
+                    extendedConfig = DatabaseConfiguration.Extended(
+                        basePath = databaseDir
+                    )
+                )
+            }
         )
     }
 }

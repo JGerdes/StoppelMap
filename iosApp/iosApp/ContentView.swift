@@ -13,7 +13,7 @@ struct ContentView: View {
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_map.desc().localized(),systemImage: "map.fill")
                     }
-                Text(Res.strings().main_bottom_nav_item_schedule.desc().localized())
+                ScheduleScreen()
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_schedule.desc().localized(),systemImage: "calendar")
                     }
