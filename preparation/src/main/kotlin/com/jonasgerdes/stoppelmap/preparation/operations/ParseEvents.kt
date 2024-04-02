@@ -5,8 +5,15 @@ import com.google.gson.stream.JsonReader
 import com.jonasgerdes.stoppelmap.preparation.Data
 import com.jonasgerdes.stoppelmap.preperation.asSlug
 import com.jonasgerdes.stoppelmap.preperation.emptyIfNull
-import com.jonasgerdes.stoppelmap.preperation.entity.*
+import com.jonasgerdes.stoppelmap.preperation.entity.Artist
+import com.jonasgerdes.stoppelmap.preperation.entity.Event
+import com.jonasgerdes.stoppelmap.preperation.entity.EventArtist
+import com.jonasgerdes.stoppelmap.preperation.entity.EventTag
+import com.jonasgerdes.stoppelmap.preperation.entity.JsonEventWrapper
+import com.jonasgerdes.stoppelmap.preperation.entity.Tag
+import com.jonasgerdes.stoppelmap.preperation.entity.Url
 import kotlinx.datetime.toKotlinLocalDateTime
+import org.jsoup.Jsoup
 import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -38,7 +45,20 @@ fun Data.parseEventSchedule(vararg files: File) {
                 end = it.end?.let {
                     LocalDateTime.parse(it, eventJsonFormat).toKotlinLocalDateTime()
                 },
-                description = it.description,
+                description = it.description?.also { println("before: $it") }
+                    ?.replace("<li>", "<li>\u2022 ")
+                    ?.let {
+                        Jsoup.parse(it)
+                            .wholeText()
+                            .lines()
+                            .filter {
+                                it.isNotBlank()
+                            }
+                            .joinToString(separator = "\n")
+                    }
+                    ?.trim()
+                    ?.ifBlank { null }
+                    ?.also { println("after: $it") },
                 location = it.locationUuid,
                 locationName = it.locationName,
                 isOfficial = it.isOfficial

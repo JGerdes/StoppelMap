@@ -25,7 +25,7 @@ actual class CopyAssetToFileUseCase {
             val errorPtr: ObjCObjectVar<NSError?> = alloc<ObjCObjectVar<NSError?>>()
             NSFileManager.defaultManager.copyItemAtURL(
                 srcURL = asset.url,
-                toURL = NSURL.URLWithString(URLString = path.toString())!!,
+                toURL = NSURL.URLWithString(URLString = "file://$path")!!,
                 error = errorPtr.ptr
             )
             val error = errorPtr.value
