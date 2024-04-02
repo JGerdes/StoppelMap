@@ -54,8 +54,8 @@ val appModule = module {
 
     single {
         AppInfo(
-            versionName = "v0.0.1-${CommonBuildConfig.COMMIT_SHORT_SHA}-debug",
-            versionCode = 1,
+            versionName = CommonBuildConfig.VERSION_NAME,
+            versionCode = CommonBuildConfig.VERSION_CODE,
             commitSha = CommonBuildConfig.COMMIT_SHA,
             buildType = "debug",
             platform = "iOS"

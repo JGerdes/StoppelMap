@@ -1,4 +1,5 @@
 import Git.getCommit
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.INT
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 
 plugins {
@@ -78,7 +79,11 @@ buildkonfig {
             },
             onFailure = { println("Unable to read secrets.properties") }
         )
-        buildConfigField(STRING, "COMMIT_SHORT_SHA", getCommit().shortSha)
-        buildConfigField(STRING, "COMMIT_SHA", getCommit().sha)
+        val commit = getCommit()
+        val version = getVersion(commit.shortSha)
+        buildConfigField(STRING, "COMMIT_SHORT_SHA", commit.shortSha)
+        buildConfigField(STRING, "COMMIT_SHA", commit.sha)
+        buildConfigField(STRING, "VERSION_NAME", version.name)
+        buildConfigField(INT, "VERSION_CODE", version.code.toString())
     }
 }
