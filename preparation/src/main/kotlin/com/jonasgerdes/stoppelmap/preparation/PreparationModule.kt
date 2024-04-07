@@ -17,7 +17,8 @@ val preparationModule = module {
             geoJsonOutput = File(sharedAssets, "mapdata.geojson"),
             fetchedEventsFile = File(resources, "events/fetched.json"),
             manualEventsFile = File(resources, "events/manual.json"),
-            descriptionFolder = File(resources, "descriptions")
+            descriptionFolder = File(resources, "descriptions"),
+            year = 2023
         )
     }
 

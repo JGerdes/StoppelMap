@@ -1,12 +1,12 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation
 
 import com.jonasgerdes.stoppelmap.data.model.database.RouteType
+import com.jonasgerdes.stoppelmap.preparation.Settings
 import com.jonasgerdes.stoppelmap.transportation.model.Departure
 import com.jonasgerdes.stoppelmap.transportation.model.DepartureDay
 import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Route
 import com.jonasgerdes.stoppelmap.transportation.model.Station
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
@@ -18,9 +18,12 @@ import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.toLocalTime
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
+
 
 class BusRouteScope {
     var id: String? = null
@@ -279,15 +282,14 @@ data class StartAndStep(
     val step: Duration
 )
 
+object RoutesContext : KoinComponent {
+    private val settings: Settings by inject()
+    val year: Int get() = settings.year
+}
 
 private val timeZoneStoppelmarkt = TimeZone.of("Europe/Berlin")
-private val currentYear by lazy {
-    Clock.System.now()
-        .toLocalDateTime(timeZoneStoppelmarkt)
-        .year
-}
 private val weekDayMap by lazy {
-    val days = calculateDatesForYear(currentYear)
+    val days = calculateDatesForYear(RoutesContext.year)
     mapOf(
         DayOfWeek.THURSDAY to days.first { it.dayOfWeek == DayOfWeek.THURSDAY },
         DayOfWeek.FRIDAY to days.first { it.dayOfWeek == DayOfWeek.FRIDAY },

@@ -8,5 +8,7 @@ data class Settings(
     val geoJsonOutput: File,
     val fetchedEventsFile: File,
     val manualEventsFile: File,
-    val descriptionFolder: File
+    val descriptionFolder: File,
+
+    val year: Int,
 )
