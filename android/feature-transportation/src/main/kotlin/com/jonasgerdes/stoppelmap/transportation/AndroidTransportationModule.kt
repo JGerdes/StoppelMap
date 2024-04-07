@@ -19,32 +19,8 @@ import com.jonasgerdes.stoppelmap.transportation.usecase.GetNextDeparturesUseCas
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "transportationUserdata")
-
-val transportationModule = module {
-
-    single<TransportDataSource> {
-        val database = get<StoppelMapDatabase>()
-        DatabaseTransportDataSource(
-            routeQueries = database.routeQueries,
-            stationQueries = database.stationQueries,
-            priceQueries = database.priceQueries,
-            departureDayQueries = database.departure_dayQueries,
-            departureQueries = database.departureQueries,
-        )
-    }
-
-    single { BusRoutesRepository(transportDataSource = get()) }
-    single { TrainRoutesRepository(transportDataSource = get()) }
-    single { TaxiServiceRepository() }
-
-    single {
-        TransportationUserDataRepository(dataStore = get<Context>().dataStore)
-    }
-
-    factory { CreateTimetableUseCase() }
-    factory { GetNextDeparturesUseCase(clockProvider = get()) }
-
+val androidTransportationModule = module {
+    
     viewModel {
         TransportationOverviewViewModel(
             busRoutesRepository = get(),

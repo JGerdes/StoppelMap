@@ -8,6 +8,7 @@ include(":shared:data")
 include(":shared:feature:data-update")
 include(":shared:feature:countdown")
 include(":shared:feature:schedule")
+include(":shared:feature:transportation")
 include(":shared:app")
 include(":shared")
 

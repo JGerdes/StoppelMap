@@ -6,12 +6,13 @@ import com.jonasgerdes.stoppelmap.transportation.model.Departure
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
-import kotlinx.datetime.toJavaLocalDateTime
-import kotlin.time.toKotlinDuration
+import kotlinx.datetime.toInstant
 
 class GetNextDeparturesUseCase(
-    private val clockProvider: ClockProvider
+    private val clockProvider: ClockProvider,
+    private val timeZone: TimeZone,
 ) {
 
     operator fun invoke(
@@ -22,10 +23,7 @@ class GetNextDeparturesUseCase(
         .sortedBy { it.time }
         .take(3)
         .map {
-            val difference = java.time.Duration.between(
-                now.toJavaLocalDateTime(),
-                it.time.toJavaLocalDateTime()
-            ).toKotlinDuration()
+            val difference = it.time.toInstant(timeZone) - now.toInstant(timeZone)
             when {
                 difference.inWholeMinutes < 1 ->
                     BusRouteDetails.DepartureTime.Immediately

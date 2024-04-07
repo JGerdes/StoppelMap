@@ -30,6 +30,7 @@ kotlin {
             export(project(":shared:feature:data-update"))
             export(project(":shared:feature:countdown"))
             export(project(":shared:feature:schedule"))
+            export(project(":shared:feature:transportation"))
             export(project(":shared:app"))
         }
     }
@@ -42,6 +43,7 @@ kotlin {
             api(project(":shared:feature:data-update"))
             api(project(":shared:feature:countdown"))
             api(project(":shared:feature:schedule"))
+            api(project(":shared:feature:transportation"))
             api(project(":shared:app"))
         }
     }

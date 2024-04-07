@@ -43,6 +43,7 @@ kotlin {
             implementation(project(":shared:feature:data-update"))
             implementation(project(":shared:feature:countdown"))
             implementation(project(":shared:feature:schedule"))
+            implementation(project(":shared:feature:transportation"))
         }
 
         iosMain.dependencies {

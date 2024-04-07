@@ -41,8 +41,9 @@ android {
 
 dependencies {
     implementation(project(":shared:base"))
-    implementation(project(":base"))
     implementation(project(":shared:data"))
+    implementation(project(":shared:feature:transportation"))
+    implementation(project(":base"))
     implementation(project(":android:theme"))
 
     implementation(libs.bundles.compose.ui)
@@ -54,6 +55,5 @@ dependencies {
     implementation(libs.bundles.koin.compose)
     implementation(libs.timber)
     implementation(libs.accompanist.pager)
-    implementation(libs.sqldelight.coroutines)
     implementation(libs.androidx.datastore)
 }

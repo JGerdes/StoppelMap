@@ -1,7 +1,5 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.station
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TransportationUserDataRepository
@@ -9,12 +7,14 @@ import com.jonasgerdes.stoppelmap.transportation.model.ExtendedStation
 import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.usecase.CreateTimetableUseCase
+import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.coroutineScope
+import com.rickclephas.kmm.viewmodel.stateIn
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class StationViewModel(
@@ -22,7 +22,7 @@ class StationViewModel(
     busRoutesRepository: BusRoutesRepository,
     private val transportationUserDataRepository: TransportationUserDataRepository,
     createTimetable: CreateTimetableUseCase
-) : ViewModel() {
+) : KMMViewModel() {
 
     private val routeState =
         combine(
@@ -53,7 +53,7 @@ class StationViewModel(
         routeState
             .map(StationViewModel::ViewState)
             .stateIn(
-                scope = viewModelScope,
+                viewModelScope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
                 initialValue = ViewState.Default
             )
@@ -71,7 +71,7 @@ class StationViewModel(
 
     fun toggleFavourite() {
         val isFavourite = (state.value.stationState as? StationState.Loaded)?.isFavourite == true
-        viewModelScope.launch {
+        viewModelScope.coroutineScope.launch {
             if (!isFavourite) {
                 transportationUserDataRepository.addFavouriteStations(stationId)
             } else {

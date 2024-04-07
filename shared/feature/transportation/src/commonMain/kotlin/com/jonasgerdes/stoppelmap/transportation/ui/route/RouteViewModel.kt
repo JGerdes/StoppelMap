@@ -1,22 +1,26 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.route
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.ReturnStation
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.Station
 import com.jonasgerdes.stoppelmap.transportation.usecase.GetNextDeparturesUseCase
+import com.rickclephas.kmm.viewmodel.KMMViewModel
+import com.rickclephas.kmm.viewmodel.stateIn
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class RouteViewModel(
     routeId: String,
     busRoutesRepository: BusRoutesRepository,
     private val clockProvider: ClockProvider,
     private val getNextDepartures: GetNextDeparturesUseCase
-) : ViewModel() {
+) : KMMViewModel() {
 
     private val timeUpdate = flow {
         while (true) {
@@ -63,9 +67,9 @@ class RouteViewModel(
 
     val state: StateFlow<ViewState> =
         routeState
-            .map(::ViewState)
+            .map(RouteViewModel::ViewState)
             .stateIn(
-                scope = viewModelScope,
+                viewModelScope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
                 initialValue = ViewState.Default
             )

@@ -13,7 +13,7 @@ import com.jonasgerdes.stoppelmap.settings.settingsModule
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
 import com.jonasgerdes.stoppelmap.shared.resources.Res
-import com.jonasgerdes.stoppelmap.transportation.transportationModule
+import com.jonasgerdes.stoppelmap.transportation.androidTransportationModule
 import com.jonasgerdes.stoppelmap.update.updateModule
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
@@ -47,7 +47,7 @@ class App : Application() {
                 countdownModule,
                 mapModule,
                 androidScheduleModule,
-                transportationModule,
+                androidTransportationModule,
                 newsModule,
                 updateModule,
             )
