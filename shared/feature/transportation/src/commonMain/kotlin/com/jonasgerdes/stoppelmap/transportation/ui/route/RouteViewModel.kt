@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.route
 
+import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
@@ -74,7 +75,9 @@ class RouteViewModel(
                 initialValue = ViewState.Default
             )
 
-    data class ViewState(
+    data class ViewState
+    @DefaultArgumentInterop.Enabled
+    constructor(
         val routeState: RouteState,
     ) {
 

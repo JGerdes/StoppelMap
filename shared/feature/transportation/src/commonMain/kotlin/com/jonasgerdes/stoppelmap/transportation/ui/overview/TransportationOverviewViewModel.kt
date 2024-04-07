@@ -2,6 +2,7 @@
 
 package com.jonasgerdes.stoppelmap.transportation.ui.overview
 
+import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TaxiServiceRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TrainRoutesRepository
@@ -77,7 +78,9 @@ class TransportationOverviewViewModel(
                 initialValue = ViewState()
             )
 
-    data class ViewState(
+    data class ViewState
+    @DefaultArgumentInterop.Enabled
+    constructor(
         val trainRoutesState: TrainRoutesState = TrainRoutesState(emptyList()),
         val busRoutesViewState: BusRoutesState = BusRoutesState(emptyList(), emptyList()),
         val taxiServicesState: TaxiServicesState = TaxiServicesState(emptyList()),
