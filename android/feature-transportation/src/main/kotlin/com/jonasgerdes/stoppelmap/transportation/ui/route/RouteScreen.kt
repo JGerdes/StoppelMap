@@ -8,13 +8,34 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -22,7 +43,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.layout.*
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.Measurable
+import androidx.compose.ui.layout.MeasurePolicy
+import androidx.compose.ui.layout.MeasureResult
+import androidx.compose.ui.layout.MeasureScope
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
@@ -32,15 +57,13 @@ import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
+import com.jonasgerdes.stoppelmap.theme.util.stringDesc
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
-import kotlinx.datetime.toJavaLocalDateTime
-import kotlinx.datetime.toJavaLocalTime
+import com.jonasgerdes.stoppelmap.transportation.ui.getFormattedStringRes
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import timber.log.Timber
-import java.time.format.DateTimeFormatter
-import java.util.*
 import kotlin.math.roundToInt
 
 @SuppressLint("NewApi")
@@ -217,16 +240,6 @@ fun StopStationCard(
     highlight: Boolean = false,
     modifier: Modifier = Modifier
 ) {
-    val departureDateTimeFormatter = remember(Locale.getDefault()) {
-        DateTimeFormatter.ofPattern("dd.MM, HH:mm", Locale.getDefault())
-    }
-    val departureWeekdayTimeFormatter = remember(Locale.getDefault()) {
-        DateTimeFormatter.ofPattern("EE, HH:mm", Locale.getDefault())
-    }
-    val departureTimeFormatter = remember(Locale.getDefault()) {
-        DateTimeFormatter.ofPattern("HH:mm", Locale.getDefault())
-    }
-
     Card(
         border = if (highlight) BorderStroke(2.dp, MaterialTheme.colorScheme.tertiary) else null,
         modifier = modifier,
@@ -264,32 +277,7 @@ fun StopStationCard(
                 )
                 if (station.nextDepartures.isNotEmpty()) {
                     station.nextDepartures.forEach { departureTime ->
-                        val departureText = when (departureTime) {
-                            BusRouteDetails.DepartureTime.Immediately ->
-                                stringResource(R.string.transportation_route_card_next_departures_immediately)
-
-                            is BusRouteDetails.DepartureTime.InMinutes ->
-                                stringResource(
-                                    R.string.transportation_route_card_next_departures_inMinutes,
-                                    departureTime.minutes
-                                )
-
-                            is BusRouteDetails.DepartureTime.Today ->
-                                departureTimeFormatter.format(departureTime.time.toJavaLocalTime())
-
-                            is BusRouteDetails.DepartureTime.Tomorrow ->
-                                stringResource(
-                                    R.string.transportation_route_card_next_departures_tomorrow,
-                                    departureTimeFormatter.format(departureTime.time.toJavaLocalTime())
-                                )
-
-                            is BusRouteDetails.DepartureTime.ThisWeek ->
-                                departureWeekdayTimeFormatter.format(departureTime.dateTime.toJavaLocalDateTime())
-
-                            is BusRouteDetails.DepartureTime.Absolute ->
-                                departureDateTimeFormatter.format(departureTime.dateTime.toJavaLocalDateTime())
-                        }
-                        Text(text = departureText)
+                        Text(text = stringDesc(departureTime.getFormattedStringRes()))
                     }
                 } else {
                     Text(

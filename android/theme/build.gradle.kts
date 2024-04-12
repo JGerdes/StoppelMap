@@ -43,6 +43,7 @@ android {
 dependencies {
     // Needed for setting theme
     implementation(libs.material)
+    implementation(project(":shared:resources"))
 
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)

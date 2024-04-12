@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <!-- Common -->
+    <string name="common_datetime_weekday_monday">Montag</string>
+    <string name="common_datetime_weekday_tuesday">Dienstag</string>
+    <string name="common_datetime_weekday_wednesday">Mittwoch</string>
+    <string name="common_datetime_weekday_thursday">Donnerstag</string>
+    <string name="common_datetime_weekday_friday">Freitag</string>
+    <string name="common_datetime_weekday_saturday">Samstag</string>
+    <string name="common_datetime_weekday_sunday">Sonntag</string>
+    
     <!-- Main -->
     <string name="main_bottom_nav_item_home">Info</string>
     <string name="main_bottom_nav_item_map">Karte</string>
@@ -23,14 +32,6 @@
     <string name="schedule_day_short_friday">Fr</string>
     <string name="schedule_day_short_saturday">Sa</string>
     <string name="schedule_day_short_sunday">So</string>
-
-    <string name="schedule_day_full_monday">Montag</string>
-    <string name="schedule_day_full_tuesday">Dienstag</string>
-    <string name="schedule_day_full_wednesday">Mittwoch</string>
-    <string name="schedule_day_full_thursday">Donnerstag</string>
-    <string name="schedule_day_full_friday">Freitag</string>
-    <string name="schedule_day_full_saturday">Samstag</string>
-    <string name="schedule_day_full_sunday">Sonntag</string>
 
     <!-- Transportation -->
     <string name="transportation_overview_topbar_title">An- und Abreise</string>
