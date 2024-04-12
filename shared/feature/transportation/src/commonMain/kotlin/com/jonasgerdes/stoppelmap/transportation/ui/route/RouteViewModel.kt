@@ -72,21 +72,14 @@ class RouteViewModel(
             .stateIn(
                 viewModelScope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
-                initialValue = ViewState.Default
+                initialValue = ViewState()
             )
 
     data class ViewState
     @DefaultArgumentInterop.Enabled
     constructor(
-        val routeState: RouteState,
-    ) {
-
-        companion object {
-            val Default = ViewState(
-                routeState = RouteState.Loading
-            )
-        }
-    }
+        val routeState: RouteState = RouteState.Loading,
+    )
 
     sealed class RouteState {
         object Loading : RouteState()

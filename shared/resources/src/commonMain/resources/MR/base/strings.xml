@@ -8,7 +8,7 @@
     <string name="common_datetime_weekday_friday">Freitag</string>
     <string name="common_datetime_weekday_saturday">Samstag</string>
     <string name="common_datetime_weekday_sunday">Sonntag</string>
-    
+
     <!-- Main -->
     <string name="main_bottom_nav_item_home">Info</string>
     <string name="main_bottom_nav_item_map">Karte</string>
@@ -47,7 +47,7 @@
     <string name="transportation_route_section_back">Rückfahrt</string>
     <string name="transportation_route_card_next_departures_label">Nächste Abfahrten</string>
     <string name="transportation_route_card_next_departures_immediately">Sofort</string>
-    <string name="transportation_route_card_next_departures_inMinutes">in %1$d Min.</string>
+    <string name="transportation_route_card_next_departures_inMinutes">in %1$d Min</string>
     <string name="transportation_route_card_next_departures_tomorrow">morgen %1$s</string>
     <string name="transportation_route_card_next_departures_none">Keinere weiteren Fahrten</string>
     <string name="transportation_route_card_annotation_new">Neu</string>

@@ -18,6 +18,7 @@
 		2A60663F2BB051B30067FB33 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 2A60663E2BB051B30067FB33 /* MapLibre */; };
 		2A6066452BB052900067FB33 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066442BB052900067FB33 /* MapView.swift */; };
 		2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066462BB0572F0067FB33 /* MapScreen.swift */; };
+		2A6873252BC9EE43008442FC /* StationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6873242BC9EE43008442FC /* StationScreen.swift */; };
 		2A77811E2BB8AC6E00C1FC25 /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 2A77811C2BB8AC6E00C1FC25 /* database.db */; };
 		2A77811F2BB8AC6E00C1FC25 /* mapdata.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 2A77811D2BB8AC6E00C1FC25 /* mapdata.geojson */; };
 		2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */; };
@@ -25,6 +26,7 @@
 		2A7781262BBB2F7200C1FC25 /* EventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781252BBB2F7200C1FC25 /* EventPage.swift */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
+		2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE90B4D2BC87527007B7241 /* RouteScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -54,6 +56,7 @@
 		2A58C0582BA4F81000FDA014 /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
 		2A6066442BB052900067FB33 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2A6066462BB0572F0067FB33 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		2A6873242BC9EE43008442FC /* StationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationScreen.swift; sourceTree = "<group>"; };
 		2A77811C2BB8AC6E00C1FC25 /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = ../../../shared/resources/src/commonMain/resources/MR/assets/database.db; sourceTree = "<group>"; };
 		2A77811D2BB8AC6E00C1FC25 /* mapdata.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mapdata.geojson; path = ../../../shared/resources/src/commonMain/resources/MR/assets/mapdata.geojson; sourceTree = "<group>"; };
 		2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		2A7781252BBB2F7200C1FC25 /* EventPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPage.swift; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
+		2AE90B4D2BC87527007B7241 /* RouteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 		2A40405C2BC2FEC600A5B072 /* transportation */ = {
 			isa = PBXGroup;
 			children = (
+				2A6873232BC9EE34008442FC /* station */,
+				2AE90B4C2BC87512007B7241 /* route */,
 				2A4040632BC31E4600A5B072 /* overview */,
 			);
 			path = transportation;
@@ -153,6 +159,14 @@
 			path = map;
 			sourceTree = "<group>";
 		};
+		2A6873232BC9EE34008442FC /* station */ = {
+			isa = PBXGroup;
+			children = (
+				2A6873242BC9EE43008442FC /* StationScreen.swift */,
+			);
+			path = station;
+			sourceTree = "<group>";
+		};
 		2A7781202BBB13C400C1FC25 /* schedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +184,14 @@
 				2ACCB05C2BB21D8100DA01B6 /* map */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2AE90B4C2BC87512007B7241 /* route */ = {
+			isa = PBXGroup;
+			children = (
+				2AE90B4D2BC87527007B7241 /* RouteScreen.swift */,
+			);
+			path = route;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,9 +315,11 @@
 				2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */,
 				2A2A8F612BA4D64D008D24CE /* ContentView.swift in Sources */,
 				2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */,
+				2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */,
 				2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */,
 				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
 				2A4040602BC313C900A5B072 /* TransportationType.swift in Sources */,
+				2A6873252BC9EE43008442FC /* StationScreen.swift in Sources */,
 				2A40405E2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift in Sources */,
 				2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */,
 				2A4040622BC3145B00A5B072 /* TransportationBusOverviewPage.swift in Sources */,
