@@ -23,7 +23,7 @@ class CreateTimetableUseCase {
 
             Timetable(
                 departureDays = departures.map { it.day },
-                segments = Timetable.DaySegmentType.values().map { daySegmentType ->
+                daySegments = Timetable.DaySegmentType.values().map { daySegmentType ->
                     Timetable.DaySegment(
                         type = daySegmentType,
                         departureSlots =

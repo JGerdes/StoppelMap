@@ -40,7 +40,8 @@ struct RouteScreen: View {
             }
         }
         .sheet(item: $selectedStation) { item in
-            
+            StationScreen(stationId: item.id)
+                .presentationDragIndicator(.visible)
         }
         .task {
             for await state in viewModel.state {

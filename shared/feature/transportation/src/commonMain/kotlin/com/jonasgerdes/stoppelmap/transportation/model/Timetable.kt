@@ -2,10 +2,12 @@ package com.jonasgerdes.stoppelmap.transportation.model
 
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.format
+import kotlinx.datetime.format.char
 
 data class Timetable(
     val departureDays: List<LocalDate>,
-    val segments: List<DaySegment>
+    val daySegments: List<DaySegment>
 ) {
 
     data class DaySegment(
@@ -15,7 +17,11 @@ data class Timetable(
 
     data class DepartureSlot(
         val departures: List<Departure?>
-    )
+    ) {
+        fun formattedTimes() = departures.map {
+            it?.time?.time?.format(timeFormatter) ?: " "
+        }
+    }
 
     enum class DaySegmentType(val startTimeInclusive: LocalTime, val endTimeExclusive: LocalTime) {
         MORNING(LocalTime(6, 0), LocalTime(13, 0)),
@@ -23,4 +29,10 @@ data class Timetable(
         EVENING(LocalTime(18, 0), LocalTime(23, 0)),
         NIGHT(LocalTime(23, 0), LocalTime(6, 0))
     }
+}
+
+private val timeFormatter = LocalTime.Format {
+    hour()
+    char(':')
+    minute()
 }

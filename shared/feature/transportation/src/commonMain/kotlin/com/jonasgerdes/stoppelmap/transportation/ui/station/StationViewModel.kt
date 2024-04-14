@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.station
 
+import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TransportationUserDataRepository
@@ -55,19 +56,14 @@ class StationViewModel(
             .stateIn(
                 viewModelScope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
-                initialValue = ViewState.Default
+                initialValue = ViewState()
             )
 
-    data class ViewState(
-        val stationState: StationState,
-    ) {
-
-        companion object {
-            val Default = ViewState(
-                stationState = StationState.Loading
-            )
-        }
-    }
+    data class ViewState
+    @DefaultArgumentInterop.Enabled
+    constructor(
+        val stationState: StationState = StationState.Loading,
+    )
 
     fun toggleFavourite() {
         val isFavourite = (state.value.stationState as? StationState.Loaded)?.isFavourite == true

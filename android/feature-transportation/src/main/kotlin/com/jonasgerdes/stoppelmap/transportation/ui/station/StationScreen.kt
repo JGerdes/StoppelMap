@@ -51,11 +51,11 @@ import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
+import com.jonasgerdes.stoppelmap.transportation.ui.toStringResource
 import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import java.text.NumberFormat
-import java.time.DayOfWeek
 import java.time.format.DateTimeFormatter
 import java.util.Currency
 import java.util.Locale
@@ -161,7 +161,7 @@ fun StationScreen(
                         Row {
                             stationState.timetable.departureDays.forEach {
                                 Text(
-                                    text = stringResource(it.dayOfWeek.toResourceString()),
+                                    text = stringResource(it.dayOfWeek.toStringResource().resourceId),
                                     textAlign = TextAlign.Center,
                                     style = MaterialTheme.typography.titleMedium,
                                     modifier = Modifier
@@ -228,14 +228,14 @@ fun Timetable(
         state = gridState,
         modifier = modifier
     ) {
-        timetable.segments.forEach { daySegment ->
+        timetable.daySegments.forEach { daySegment ->
             item(
                 key = daySegment.type,
                 contentType = ContentType.HEADER,
                 span = { GridItemSpan(maxLineSpan) }) {
                 ListLineHeader(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = stringResource(daySegment.type.toStringResource()),
+                        text = stringResource(daySegment.type.toStringResource().resourceId),
                         style = MaterialTheme.typography.titleMedium
                     )
                 }
@@ -263,21 +263,4 @@ fun Timetable(
 
 enum class ContentType {
     HEADER, TIME
-}
-
-private fun Timetable.DaySegmentType.toStringResource() = when (this) {
-    Timetable.DaySegmentType.MORNING -> R.string.transportation_station_timetable_segment_morning
-    Timetable.DaySegmentType.AFTERNOON -> R.string.transportation_station_timetable_segment_afternoon
-    Timetable.DaySegmentType.EVENING -> R.string.transportation_station_timetable_segment_evening
-    Timetable.DaySegmentType.NIGHT -> R.string.transportation_station_timetable_segment_night
-}
-
-private fun DayOfWeek.toResourceString() = when (this) {
-    DayOfWeek.MONDAY -> R.string.transportation_station_timetable_day_monday
-    DayOfWeek.TUESDAY -> R.string.transportation_station_timetable_day_tuesday
-    DayOfWeek.WEDNESDAY -> R.string.transportation_station_timetable_day_wednesday
-    DayOfWeek.THURSDAY -> R.string.transportation_station_timetable_day_thursday
-    DayOfWeek.FRIDAY -> R.string.transportation_station_timetable_day_friday
-    DayOfWeek.SATURDAY -> R.string.transportation_station_timetable_day_saturday
-    DayOfWeek.SUNDAY -> R.string.transportation_station_timetable_day_sunday
 }
