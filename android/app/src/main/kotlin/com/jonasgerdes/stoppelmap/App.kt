@@ -3,9 +3,9 @@ package com.jonasgerdes.stoppelmap
 import android.app.Application
 import android.appwidget.AppWidgetManager
 import android.content.Context
-import com.jonasgerdes.stoppelmap.countdown.countdownModule
+import com.jonasgerdes.stoppelmap.countdown.androidCountdownModule
 import com.jonasgerdes.stoppelmap.di.initKoin
-import com.jonasgerdes.stoppelmap.home.homeModule
+import com.jonasgerdes.stoppelmap.home.androidHomeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.news.newsModule
 import com.jonasgerdes.stoppelmap.schedule.androidScheduleModule
@@ -42,9 +42,9 @@ class App : Application() {
                 appModule,
                 dateTimeModule,
                 licenseModule,
-                homeModule,
+                androidHomeModule,
                 settingsModule,
-                countdownModule,
+                androidCountdownModule,
                 mapModule,
                 androidScheduleModule,
                 androidTransportationModule,

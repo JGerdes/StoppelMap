@@ -84,6 +84,7 @@ dependencies {
 
     implementation(project(":shared:resources"))
     implementation(project(":shared:base"))
+    implementation(project(":shared:feature:home"))
     implementation(project(":shared:feature:countdown"))
     implementation(project(":shared:feature:schedule"))
     implementation(project(":shared:feature:transportation"))

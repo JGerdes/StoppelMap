@@ -5,7 +5,7 @@ import Shared
 struct StoppelMapApp: App {
     
     init() {
-        KoinKt.doInitKoin(modules: [dateTimeModule, appModule])
+        KoinKt.doInitKoin(modules: [dateTimeModule, appModule, iosCountdownModule])
         let deps = DataUpdateDependencies()
         Task {
             try! await deps.copyAssetDataFilesUseCase.invoke(

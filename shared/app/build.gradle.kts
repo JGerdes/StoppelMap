@@ -40,6 +40,7 @@ kotlin {
 
             implementation(project(":shared:base"))
             implementation(project(":shared:data"))
+            implementation(project(":shared:feature:home"))
             implementation(project(":shared:feature:data-update"))
             implementation(project(":shared:feature:countdown"))
             implementation(project(":shared:feature:schedule"))

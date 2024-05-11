@@ -44,8 +44,6 @@ import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
-import com.jonasgerdes.stoppelmap.update.model.UpdateState
-import com.jonasgerdes.stoppelmap.update.ui.components.AppUpdateCard
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("NewApi")
@@ -88,17 +86,6 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            if (state.updateState !is UpdateState.Hidden) {
-                item {
-                    AppUpdateCard(
-                        state.updateState,
-                        onDownloadTap = onDownloadUpdateTap,
-                        onInstallTap = viewModel::onCompleteAppUpdateTapped,
-                        onOpenGooglePlayTap = onOpenGooglePlayTap,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
-            }
             state.messages.forEach { message ->
                 item {
                     MessageCard(

@@ -3,18 +3,24 @@ import Shared
 
 struct HomeScreen: View {
     
-    let viewModel = HomeViewModel2(
-        getOpeningCountDownState: HomeDependencies().getCountDownStateUseCase
-    )
+    let viewModel = HomeDependencies().with{
+        HomeViewModel(
+            getOpeningCountDownState: $0.getOpeningCountDownState,
+            shouldShowCountdownWidgetSuggestion: $0.shouldShowCountdownWidgetSuggestion,
+            getNextOfficialEvent: $0.getNextOfficialEvent,
+            getNextBookmarkedEvent: $0.getNextBookmarkedEvent,
+            getRemoteMessages: $0.getRemoteMessages
+        )
+    }
     
     @State
-    var viewState: HomeViewModel2.ViewState = HomeViewModel2.ViewState()
+    var viewState: HomeViewModel.ViewState = HomeViewModel.ViewState()
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(){
-                    if let countDown = viewState.countDownState as? CountDownState.CountingDown {
+                    if let countDown = viewState.openingCountDownState as? CountDownState.CountingDown {
                         CountdownCard(
                             days: countDown.daysLeft,
                             hours: countDown.hoursLeft,

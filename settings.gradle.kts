@@ -5,6 +5,7 @@
 include(":shared:base")
 include(":shared:resources")
 include(":shared:data")
+include(":shared:feature:home")
 include(":shared:feature:data-update")
 include(":shared:feature:countdown")
 include(":shared:feature:schedule")
