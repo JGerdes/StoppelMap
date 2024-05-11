@@ -377,14 +377,11 @@
       "type": "symbol",
       "source": "composite",
       "source-layer": "stoma22",
-      "symbol-sort-key": [
-        "get",
-        "priority"
-      ],
-      "icon-allow-overlap": false,
-      "text-allow-overlap": false,
-      "symbol-z-order": "source",
       "layout": {
+        "symbol-sort-key": [
+          "get",
+          "priority"
+        ],
         "text-optional": true,
         "icon-offset": [
           0,
