@@ -4,6 +4,7 @@ import co.touchlab.kermit.Logger
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.shared.dataupdate.AppConfigRepository
 import com.jonasgerdes.stoppelmap.shared.dataupdate.VersioningRepository
+import com.jonasgerdes.stoppelmap.shared.dataupdate.model.Data
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -24,7 +25,7 @@ class UpdateAppConfigAndDownloadFilesUseCase(
         val appConfig = appConfigRepository.appConfig.first() ?: return
         val latestData = appConfig.data.latest
         if (
-            appInfo.versionCode >= latestData.supportedSince.android
+            appInfo.versionCode >= latestData.supportedSince.onCurrentPlatform()
             && latestData.version > versioningRepository.getCurrentDatabaseVersion()
         ) {
             Logger.d { "There are new files available online. brb, downloading them." }
@@ -49,3 +50,5 @@ class UpdateAppConfigAndDownloadFilesUseCase(
         }
     }
 }
+
+expect fun Data.SupportedSince.onCurrentPlatform(): Int

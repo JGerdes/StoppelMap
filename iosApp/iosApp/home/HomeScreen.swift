@@ -20,6 +20,9 @@ struct HomeScreen: View {
         NavigationStack {
             ScrollView {
                 VStack(){
+                    ForEach(viewState.messages, id: \.self){ message in
+                        MessageCard(message: message)
+                    }
                     if let countDown = viewState.openingCountDownState as? CountDownState.CountingDown {
                         CountdownCard(
                             days: countDown.daysLeft,
@@ -58,4 +61,37 @@ struct HomeScreen: View {
 
 #Preview {
     HomeScreen()
+}
+
+struct MessageCard: View {
+    var message: Message
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                let icon = switch(message.type) {
+                case .info:
+                    "info.circle.fill"
+                case .warning:
+                    "exclamationmark.triangle.fill"
+                default: "ellipsis.message.fill"
+                }
+                Image(systemName: icon)
+                Text(message.title.forCurrentLanguage()).font(.title2)
+            }
+            Text(message.content.forCurrentLanguage())
+            ForEach(message.buttons, id: \.self) { button in
+                Button(button.title.forCurrentLanguage()) {
+                    if let url = URL(string: button.url.forCurrentLanguage()) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
+        .padding()
+        .background(.thinMaterial)
+        .cornerRadius(24.0)
+        .padding()
+    }
 }

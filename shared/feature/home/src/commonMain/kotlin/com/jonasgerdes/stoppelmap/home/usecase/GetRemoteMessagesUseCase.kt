@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.home.usecase
 
+import co.touchlab.kermit.Logger
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.shared.dataupdate.AppConfigRepository
+import com.jonasgerdes.stoppelmap.shared.dataupdate.model.Platform
 import kotlinx.coroutines.flow.map
 
 class GetRemoteMessagesUseCase(
@@ -12,9 +14,25 @@ class GetRemoteMessagesUseCase(
     operator fun invoke() = appConfigRepository.messages
         .map { messages ->
             messages
-                .filter {
-                    it.version == null || it.version == appInfo.versionCode
+                .filter { message ->
+                    (message.version == null || message.version == appInfo.versionCode)
+                        .also {
+                            if (!it) Logger.v {
+                                "💬 ${message.version} didn't match app version ${appInfo.versionCode} [${message.message.title.entries.first().value}]"
+                            }
+                        }
+                }
+                .filter { message ->
+                    (message.platform.isNullOrEmpty()
+                            || message.platform?.any(Platform::isCurrentPlatform) == true)
+                        .also {
+                            if (!it) Logger.v {
+                                "💬 ${message.platform?.joinToString()} didn't match app platform [${message.message.title.entries.first().value}]"
+                            }
+                        }
                 }
                 .map { it.message }
         }
 }
+
+expect fun Platform.isCurrentPlatform(): Boolean

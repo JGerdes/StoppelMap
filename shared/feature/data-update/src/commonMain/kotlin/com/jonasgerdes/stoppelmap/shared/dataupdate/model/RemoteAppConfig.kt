@@ -8,12 +8,13 @@ import kotlinx.serialization.Serializable
 data class RemoteAppConfig(
     val supportedVersions: SupportedVersions,
     val data: DataConfig,
-    val messages: List<VersionMessage>
+    val messages: List<MessageWrapper>
 )
 
 @Serializable
 data class SupportedVersions(
     val android: SupportedVersion,
+    val iOS: SupportedVersion,
 )
 
 @Serializable
@@ -37,13 +38,15 @@ data class Data(
     @Serializable
     data class SupportedSince(
         val android: Int,
+        val iOS: Int,
     )
 }
 
 
 @Serializable
-data class VersionMessage(
+data class MessageWrapper(
     val version: Int? = null,
+    val platform: List<Platform>? = null,
     val message: Message,
 )
 
@@ -69,4 +72,14 @@ data class Message(
         @SerialName("warning")
         Warning
     }
+}
+
+@Serializable
+enum class Platform {
+
+    @SerialName("android")
+    Android,
+
+    @SerialName("iOS")
+    iOS
 }

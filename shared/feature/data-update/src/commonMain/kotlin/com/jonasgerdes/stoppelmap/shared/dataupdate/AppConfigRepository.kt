@@ -1,9 +1,9 @@
 package com.jonasgerdes.stoppelmap.shared.dataupdate
 
 import co.touchlab.kermit.Logger
+import com.jonasgerdes.stoppelmap.shared.dataupdate.model.MessageWrapper
 import com.jonasgerdes.stoppelmap.shared.dataupdate.model.RemoteAppConfig
 import com.jonasgerdes.stoppelmap.shared.dataupdate.model.Response
-import com.jonasgerdes.stoppelmap.shared.dataupdate.model.VersionMessage
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.CdnSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +19,7 @@ class AppConfigRepository(
 ) {
     private val appConfigFlow = MutableStateFlow<RemoteAppConfig?>(null)
     val appConfig = appConfigFlow.asStateFlow()
-    val messages: Flow<List<VersionMessage>> = appConfigFlow
+    val messages: Flow<List<MessageWrapper>> = appConfigFlow
         .filterNotNull()
         .map { it.messages }
 

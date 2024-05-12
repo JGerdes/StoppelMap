@@ -21,10 +21,25 @@
             "oldest"
           ],
           "additionalProperties": false
+        },
+        "iOS": {
+          "type": "object",
+          "properties": {
+            "oldest": {
+              "type": "number",
+              "minimum": 230000000,
+              "maximum": 500000000
+            }
+          },
+          "required": [
+            "oldest"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
-        "android"
+        "android",
+        "iOS"
       ],
       "additionalProperties": false
     },
@@ -50,10 +65,16 @@
                   "type": "number",
                   "minimum": 230000000,
                   "maximum": 500000000
+                },
+                "iOS": {
+                  "type": "number",
+                  "minimum": 230000000,
+                  "maximum": 500000000
                 }
               },
               "required": [
-                "android"
+                "android",
+                "iOS"
               ],
               "additionalProperties": false
             }
@@ -81,6 +102,16 @@
             "type": "number",
             "minimum": 230000000,
             "maximum": 500000000
+          },
+          "platform": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "android",
+                "iOS"
+              ]
+            }
           },
           "message": {
             "type": "object",

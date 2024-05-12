@@ -24,3 +24,14 @@ extension View {
         }
     }
 }
+
+extension Dictionary where Key: ExpressibleByStringLiteral, Value: ExpressibleByStringLiteral {
+    func forCurrentLanguage() -> Value {
+        if let currentLanguageCode = Locale.current.language.languageCode?.identifier {
+            return self[currentLanguageCode as! Key] ?? self.first!.value
+        } else {
+            return self.first!.value
+        }
+    }
+}
+
