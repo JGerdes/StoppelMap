@@ -75,8 +75,3 @@ struct CountdownWidget: Widget {
     }
 }
 
-#Preview(as: .systemSmall) {
-    CountdownWidget()
-} timeline: {
-    SimpleEntry(date: .now, state: CountDownOnGoing(year: 2024))
-}
