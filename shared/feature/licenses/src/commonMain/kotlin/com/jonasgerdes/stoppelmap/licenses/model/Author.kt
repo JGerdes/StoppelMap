@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.settings.data
+package com.jonasgerdes.stoppelmap.licenses.model
 
 data class Author(
     val name: String,

@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.settings.data
+package com.jonasgerdes.stoppelmap.licenses.model
 
 open class License(
     val name: String,

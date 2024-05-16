@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
-import com.jonasgerdes.stoppelmap.settings.data.ImageSource
-import com.jonasgerdes.stoppelmap.settings.data.Library
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
@@ -24,8 +22,6 @@ import timber.log.Timber
 class SettingsViewModel(
     private val settingsRepository: SettingsRepository,
     private val appInfo: AppInfo,
-    private val libraries: List<Library>,
-    private val imageSources: List<ImageSource>,
 ) : ViewModel() {
 
     val state: StateFlow<ViewState> =
@@ -78,8 +74,6 @@ class SettingsViewModel(
                             }
                         )
                     } else DeveloperModeSettings.NotActive,
-                    libraries = libraries,
-                    imageSources = imageSources,
                 )
             }
             .stateIn(
@@ -87,8 +81,6 @@ class SettingsViewModel(
                 started = SharingStarted.WhileSubscribed(),
                 initialValue = ViewState(
                     appInfo = appInfo,
-                    libraries = libraries,
-                    imageSources = imageSources,
                 )
             )
 
@@ -133,8 +125,6 @@ class SettingsViewModel(
         val colorSchemeSettings: List<ColorSchemeSettingOption> = emptyList(),
         val mapColorSettings: List<Option<MapColorSetting>> = emptyList(),
         val developerModeSettings: DeveloperModeSettings = DeveloperModeSettings.NotActive,
-        val libraries: List<Library>,
-        val imageSources: List<ImageSource>,
     )
 
     data class ThemeSettingOption(

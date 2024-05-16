@@ -43,6 +43,7 @@ dependencies {
     implementation(project(":shared:base"))
     implementation(project(":base"))
     implementation(project(":android:theme"))
+    implementation(project(":shared:feature:licenses"))
 
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)

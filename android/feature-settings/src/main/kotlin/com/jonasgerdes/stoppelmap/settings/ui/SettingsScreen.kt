@@ -46,6 +46,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.licenses.ui.LicensesViewModel
 import com.jonasgerdes.stoppelmap.settings.R
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
@@ -61,9 +62,11 @@ fun SettingsScreen(
     onNavigateBack: () -> Unit,
     onUrlTap: (url: String) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: SettingsViewModel = koinViewModel(),
+    settingsViewModel: SettingsViewModel = koinViewModel(),
+    licensesViewModel: LicensesViewModel = koinViewModel(),
 ) {
-    val state by viewModel.state.collectAsStateWithLifecycle()
+    val settingsState by settingsViewModel.state.collectAsStateWithLifecycle()
+    val licensesState by licensesViewModel.state.collectAsStateWithLifecycle()
 
     val listState = rememberLazyListState()
     Column(
@@ -96,33 +99,33 @@ fun SettingsScreen(
                 SelectionSettingsRow(
                     icon = Icons.Rounded.DarkMode,
                     labelRes = R.string.settings_theme_title,
-                    items = state.themeSettings,
+                    items = settingsState.themeSettings,
                     isItemSelected = { isSelected },
                     itemLabelRes = { themeSetting.titleStringRes },
-                    onItemSelected = { viewModel.onThemeSettingSelected(it.themeSetting) },
+                    onItemSelected = { settingsViewModel.onThemeSettingSelected(it.themeSetting) },
                 )
             }
             item {
                 SelectionSettingsRow(
                     icon = Icons.Rounded.ColorLens,
                     labelRes = R.string.settings_colorScheme_title,
-                    items = state.colorSchemeSettings,
+                    items = settingsState.colorSchemeSettings,
                     isItemSelected = { isSelected },
                     itemLabelRes = { colorSchemeSetting.titleStringRes },
-                    onItemSelected = { viewModel.onColorSchemeSettingSelected(it.colorSchemeSetting) },
+                    onItemSelected = { settingsViewModel.onColorSchemeSettingSelected(it.colorSchemeSetting) },
                 )
             }
             item {
                 SelectionSettingsRow(
                     icon = Icons.Rounded.Map,
                     labelRes = R.string.settings_mapColorScheme_title,
-                    items = state.mapColorSettings,
+                    items = settingsState.mapColorSettings,
                     isItemSelected = { isSelected },
                     itemLabelRes = { value.titleStringRes },
-                    onItemSelected = { viewModel.onMapColorSchemeSettingSelected(it.value) },
+                    onItemSelected = { settingsViewModel.onMapColorSchemeSettingSelected(it.value) },
                 )
             }
-            val developerSettings = state.developerModeSettings
+            val developerSettings = settingsState.developerModeSettings
             if (developerSettings is SettingsViewModel.DeveloperModeSettings.Active) {
                 item {
                     SettingsSectionLabel(R.string.settings_developerMode_title)
@@ -134,7 +137,7 @@ fun SettingsScreen(
                         items = developerSettings.dateOverrideOptions,
                         isItemSelected = { isSelected },
                         itemLabelRes = { value.titleStringRes },
-                        onItemSelected = { viewModel.onDateOverrideSelected(it.value) },
+                        onItemSelected = { settingsViewModel.onDateOverrideSelected(it.value) },
                     )
                 }
                 item {
@@ -144,7 +147,7 @@ fun SettingsScreen(
                         items = developerSettings.locationOverrideOptions,
                         isItemSelected = { isSelected },
                         itemLabelRes = { value.titleStringRes },
-                        onItemSelected = { viewModel.onLocationOverrideSelected(it.value) },
+                        onItemSelected = { settingsViewModel.onLocationOverrideSelected(it.value) },
                     )
                 }
             }
@@ -165,25 +168,28 @@ fun SettingsScreen(
                     headlineContent = { Text(stringResource(R.string.settings_info_version)) },
                     trailingContent = {
                         Column(horizontalAlignment = Alignment.End) {
-                            Text(state.appInfo.versionName)
-                            Text(state.appInfo.versionCode.toString())
+                            Text(settingsState.appInfo.versionName)
+                            Text(settingsState.appInfo.versionCode.toString())
                         }
                     },
-                    modifier = Modifier.clickable { viewModel.onVersionClick() }
+                    modifier = Modifier.clickable { settingsViewModel.onVersionClick() }
                 )
             }
             item {
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.settings_info_build_type)) },
-                    trailingContent = { Text(state.appInfo.buildType) },
+                    trailingContent = { Text(settingsState.appInfo.buildType) },
                 )
             }
             item {
                 val commitUrl =
-                    stringResource(id = R.string.settings_repo_url_commit, state.appInfo.commitSha)
+                    stringResource(
+                        id = R.string.settings_repo_url_commit,
+                        settingsState.appInfo.commitSha
+                    )
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.settings_info_commit)) },
-                    trailingContent = { Text(state.appInfo.commitSha) },
+                    trailingContent = { Text(settingsState.appInfo.commitSha) },
                     modifier = Modifier.clickable {
                         onUrlTap(commitUrl)
                     }
@@ -193,7 +199,7 @@ fun SettingsScreen(
                 SettingsSectionLabel(R.string.settings_libraries_title)
             }
             items(
-                state.libraries,
+                licensesState.libraries,
                 key = { it.name },
                 contentType = { ContentTypes.LIBRARY }
             ) {
@@ -215,7 +221,7 @@ fun SettingsScreen(
                 SettingsSectionLabel(R.string.settings_images_title)
             }
             items(
-                state.imageSources,
+                licensesState.images,
                 key = { it.work },
                 contentType = { ContentTypes.IMAGE_SOURCE }
             ) {
