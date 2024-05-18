@@ -22,6 +22,55 @@
     <string name="countdownCard_prefix">Only</string>
     <string name="countdownCard_suffix">until Stoppelmarkt %1$d</string>
 
+    <!-- Settings/Licenses -->
+    <string name="settings_topbar_title">Settings/Info</string>
+    <string name="settings_topbar_navigateBack_contentDescription">Back</string>
+    <string name="settings_ui_title">Display</string>
+    <string name="settings_theme_title">Design</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_colorScheme_title">Color scheme</string>
+    <string name="settings_colorScheme_classic">Classic</string>
+    <string name="settings_colorScheme_system">System</string>
+    <string name="settings_mapColorScheme_title">Color scheme (map)</string>
+    <string name="settings_mapColorScheme_classic">Classic</string>
+    <string name="settings_mapColorScheme_appScheme">App color scheme</string>
+    <string name="settings_developerMode_title">Development</string>
+    <string name="settings_dateOverride_title">Override date</string>
+    <string name="settings_dateOverride_none">off</string>
+    <string name="settings_dateOverride_todayInStomaWeek">Today\'s weekday in StoMa week</string>
+    <string name="settings_dateOverride_wed">We</string>
+    <string name="settings_dateOverride_thu">Th</string>
+    <string name="settings_dateOverride_fri">Fr</string>
+    <string name="settings_dateOverride_sat">Sa</string>
+    <string name="settings_dateOverride_sun">Su</string>
+    <string name="settings_dateOverride_mon">Mo</string>
+    <string name="settings_dateOverride_tue">Tu</string>
+    <string name="settings_locationOverride_title">Override location</string>
+    <string name="settings_locationOverride_none">off</string>
+    <string name="settings_locationOverride_amtmannsbult">Amtmannsbult</string>
+    <string name="settings_locationOverride_busToEntrance">bus stop ➡ entrance</string>
+    <string name="settings_disclaimer_title">Disclaimer</string>
+    <string name="settings_disclaimer_text">StoppelMap is an unofficial App for
+        Stoppelmarkt.\n\nAll data and information provided as is with no guarantee to be correct or
+        complete and without any liability.
+    </string>
+    <string name="settings_open_source">StoppelMap is open source.\Source code available at
+        https://github.com/JGerdes/StoppelMap
+    </string>
+    <string name="settings_info_title">App details</string>
+    <string name="settings_info_version">Version</string>
+    <string name="settings_info_build_type">Build type</string>
+    <string name="settings_info_commit">Commit</string>
+    <string name="settings_contributors_title">Contributor</string>
+    <string name="settings_libraries_title">Open source libraries</string>
+    <string name="settings_images_title">Photos and illustrations</string>
+    <string name="settings_graphics_title">Illustrations</string>
+    <string name="settings_sources_title">Information source</string>
+    <string name="settings_repo_url_commit">https://github.com/JGerdes/StoppelMap/commit/%1$s</string>
+    <string name="settings_statement">Made with 💚 in Hamburg &amp; Vechta\n🏳️‍🌈🏳️‍⚧️</string>
+
     <!-- Schedule -->
     <string name="schedule_topbar_title">Schedule</string>
 

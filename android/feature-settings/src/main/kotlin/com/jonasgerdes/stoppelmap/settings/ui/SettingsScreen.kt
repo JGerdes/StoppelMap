@@ -44,6 +44,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.licenses.ui.LicensesViewModel
@@ -203,7 +204,6 @@ fun SettingsScreen(
                 key = { it.name },
                 contentType = { ContentTypes.LIBRARY }
             ) {
-                val url = it.githubUrl ?: it.gitlabUrl ?: it.sourceUrl
                 ListItem(
                     headlineContent = { Text(it.name) },
                     supportingContent = { Text(it.author) },
@@ -214,7 +214,7 @@ fun SettingsScreen(
                             Text(it.license.name)
                         }
                     },
-                    modifier = url?.let { Modifier.clickable { onUrlTap(it) } } ?: Modifier
+                    modifier = it.sourceUrl?.let { Modifier.clickable { onUrlTap(it) } } ?: Modifier
                 )
             }
             item {
@@ -250,6 +250,17 @@ fun SettingsScreen(
                         }
                     },
                     modifier = Modifier.clickable { onUrlTap(it.sourceUrl) }
+                )
+            }
+            item {
+                Text(
+                    text = stringResource(R.string.settings_statement),
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .padding(top = 16.dp)
                 )
             }
         }

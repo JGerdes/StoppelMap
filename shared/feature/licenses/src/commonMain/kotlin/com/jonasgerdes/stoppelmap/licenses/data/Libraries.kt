@@ -26,42 +26,42 @@ internal val commonLibraries = listOf(
         name = "Lottie",
         author = "Airbnb, Inc., Lottie Contributors",
         license = License.Apache2(),
-        githubUrl = "https://github.com/airbnb/lottie-android"
+        sourceUrl = "https://github.com/airbnb/lottie-android"
     ),
     Library(
         name = "Kotlin, Kotlin Coroutines, Kotlin Multiplatform",
         author = "JetBrains, Inc.",
         license = License.Apache2(),
-        githubUrl = "https://github.com/JetBrains/kotlin"
+        sourceUrl = "https://github.com/JetBrains/kotlin"
     ),
     Library(
         name = "KotlinX DateTime",
         author = "JetBrains, Inc.",
         license = License.Apache2(),
-        githubUrl = "https://github.com/Kotlin/kotlinx-datetime"
+        sourceUrl = "https://github.com/Kotlin/kotlinx-datetime"
     ),
     Library(
         name = "Koin",
         author = "Kotzilla, Koin Contributors",
         license = License.Apache2(),
-        githubUrl = "https://github.com/InsertKoinIO/koin"
+        sourceUrl = "https://github.com/InsertKoinIO/koin"
     ),
     Library(
         name = "MapLibre",
         author = "MapLibre contributors",
         license = License.BSD2Clause(),
-        githubUrl = "https://github.com/maplibre/maplibre-native"
+        sourceUrl = "https://github.com/maplibre/maplibre-native"
     ),
     Library(
         name = "SQLDelight",
         author = "CashApp",
         license = License.Apache2(),
-        githubUrl = "https://github.com/cashapp/sqldelight"
+        sourceUrl = "https://github.com/cashapp/sqldelight"
     ),
     Library(
         name = "Timber",
         author = "JakeWharton, Timber Contributors",
         license = License.Apache2(),
-        githubUrl = "https://github.com/JakeWharton/timber"
+        sourceUrl = "https://github.com/JakeWharton/timber"
     ),
 )

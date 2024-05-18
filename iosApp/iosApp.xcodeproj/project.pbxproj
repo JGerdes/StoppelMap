@@ -30,6 +30,7 @@
 		2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */; };
 		2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781232BBB161D00C1FC25 /* Utils.swift */; };
 		2A7781262BBB2F7200C1FC25 /* EventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781252BBB2F7200C1FC25 /* EventPage.swift */; };
+		2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92605A2BF6799B00C57918 /* SettingsScreen.swift */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
 		2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE90B4D2BC87527007B7241 /* RouteScreen.swift */; };
@@ -99,6 +100,7 @@
 		2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		2A7781232BBB161D00C1FC25 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2A7781252BBB2F7200C1FC25 /* EventPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPage.swift; sourceTree = "<group>"; };
+		2A92605A2BF6799B00C57918 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
 		2AE90B4D2BC87527007B7241 /* RouteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteScreen.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		2A2A8F5D2BA4D64D008D24CE /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2A9260592BF6798200C57918 /* settings */,
 				2A40405C2BC2FEC600A5B072 /* transportation */,
 				2A7781202BBB13C400C1FC25 /* schedule */,
 				2ACCB0572BB21AA600DA01B6 /* Resources */,
@@ -243,6 +246,14 @@
 				2A7781252BBB2F7200C1FC25 /* EventPage.swift */,
 			);
 			path = schedule;
+			sourceTree = "<group>";
+		};
+		2A9260592BF6798200C57918 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				2A92605A2BF6799B00C57918 /* SettingsScreen.swift */,
+			);
+			path = settings;
 			sourceTree = "<group>";
 		};
 		2ACCB0572BB21AA600DA01B6 /* Resources */ = {
@@ -457,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */,
 				2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */,
 				2A2A8F612BA4D64D008D24CE /* ContentView.swift in Sources */,
 				2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */,

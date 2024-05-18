@@ -48,6 +48,15 @@ struct HomeScreen: View {
                     alignment: .top
                 )
                 .navigationBarTitle(Res.strings().home_topbar_title.desc().localized(), displayMode: .large)
+                .toolbar {
+                    ToolbarItem {
+                        NavigationLink {
+                            SettingsScreen()
+                        } label: {
+                            Image(systemName: "gear")
+                        }
+                    }
+                }
             }
         }
         .task {
