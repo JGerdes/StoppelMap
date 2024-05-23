@@ -9,8 +9,8 @@ import java.io.File
 val preparationModule = module {
 
     single {
-        val sharedAssets = File("./shared/resources/src/commonMain/resources/MR/assets/")
-        val resources = File("./preparation/src/main/resources")
+        val sharedAssets = File("../shared/resources/src/commonMain/resources/MR/assets/")
+        val resources = File("../preparation/src/main/resources")
         Settings(
             databaseFile = File(sharedAssets, "database.db"),
             geoJsonInput = File(resources, "stoma23.geojson"),
