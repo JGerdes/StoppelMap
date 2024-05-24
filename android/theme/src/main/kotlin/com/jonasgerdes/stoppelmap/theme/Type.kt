@@ -5,7 +5,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 
-val fontFamily = FontFamily(
+val stoppelMapFontFamily = FontFamily(
     Font(R.font.roboto_slab_thin, FontWeight.Thin),
     Font(R.font.roboto_slab_light, FontWeight.Light),
     Font(R.font.roboto_slab_regular, FontWeight.Normal),
@@ -14,20 +14,20 @@ val fontFamily = FontFamily(
 
 val Typography = with(Typography()) {
     copy(
-        displayLarge = displayLarge.copy(fontFamily = fontFamily),
-        displayMedium = displayMedium.copy(fontFamily = fontFamily),
-        displaySmall = displaySmall.copy(fontFamily = fontFamily),
-        headlineLarge = headlineLarge.copy(fontFamily = fontFamily),
-        headlineMedium = headlineMedium.copy(fontFamily = fontFamily),
-        headlineSmall = headlineSmall.copy(fontFamily = fontFamily),
-        titleLarge = titleLarge.copy(fontFamily = fontFamily),
-        titleMedium = titleMedium.copy(fontFamily = fontFamily),
-        titleSmall = titleSmall.copy(fontFamily = fontFamily),
-        bodyLarge = bodyLarge.copy(fontFamily = fontFamily),
-        bodyMedium = bodyMedium.copy(fontFamily = fontFamily),
-        bodySmall = bodySmall.copy(fontFamily = fontFamily),
-        labelLarge = labelLarge.copy(fontFamily = fontFamily),
-        labelMedium = labelMedium.copy(fontFamily = fontFamily),
-        labelSmall = labelSmall.copy(fontFamily = fontFamily),
+        displayLarge = displayLarge.copy(fontFamily = stoppelMapFontFamily),
+        displayMedium = displayMedium.copy(fontFamily = stoppelMapFontFamily),
+        displaySmall = displaySmall.copy(fontFamily = stoppelMapFontFamily),
+        headlineLarge = headlineLarge.copy(fontFamily = stoppelMapFontFamily),
+        headlineMedium = headlineMedium.copy(fontFamily = stoppelMapFontFamily),
+        headlineSmall = headlineSmall.copy(fontFamily = stoppelMapFontFamily),
+        titleLarge = titleLarge.copy(fontFamily = stoppelMapFontFamily),
+        titleMedium = titleMedium.copy(fontFamily = stoppelMapFontFamily),
+        titleSmall = titleSmall.copy(fontFamily = stoppelMapFontFamily),
+        bodyLarge = bodyLarge.copy(fontFamily = stoppelMapFontFamily),
+        bodyMedium = bodyMedium.copy(fontFamily = stoppelMapFontFamily),
+        bodySmall = bodySmall.copy(fontFamily = stoppelMapFontFamily),
+        labelLarge = labelLarge.copy(fontFamily = stoppelMapFontFamily),
+        labelMedium = labelMedium.copy(fontFamily = stoppelMapFontFamily),
+        labelSmall = labelSmall.copy(fontFamily = stoppelMapFontFamily),
     )
 }

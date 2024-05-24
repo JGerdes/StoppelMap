@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap
 import android.app.Application
 import android.appwidget.AppWidgetManager
 import android.content.Context
+import androidx.glance.appwidget.updateAll
 import com.jonasgerdes.stoppelmap.countdown.androidCountdownModule
 import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.androidHomeModule
@@ -16,6 +17,7 @@ import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDo
 import com.jonasgerdes.stoppelmap.shared.resources.Res
 import com.jonasgerdes.stoppelmap.transportation.androidTransportationModule
 import com.jonasgerdes.stoppelmap.update.updateModule
+import com.jonasgerdes.stoppelmap.widget.countdown.CountdownWidget
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 import kotlinx.coroutines.CoroutineScope
@@ -63,6 +65,9 @@ class App : Application() {
             context = this,
             appWidgetManager = appWidgetManager
         )
+        scope.launch {
+            CountdownWidget().updateAll(context = this@App)
+        }
 
         scope.launch {
             copyAssetDatabase(

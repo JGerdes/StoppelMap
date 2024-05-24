@@ -111,6 +111,7 @@ dependencies {
     implementation(libs.compose.ui.preview)
     implementation(libs.compose.material.components)
     implementation(libs.compose.material.icons)
+    implementation(libs.glance.appwidget)
     implementation(libs.bundles.androidx.runtime)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)

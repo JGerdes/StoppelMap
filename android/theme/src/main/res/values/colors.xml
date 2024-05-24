@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="splash_window_background_color">#FFFFFF</color>
+    <color name="stoppelfield">#E3C04C</color>
+    <color name="stoppelsky">#99C9D5</color>
 </resources>
