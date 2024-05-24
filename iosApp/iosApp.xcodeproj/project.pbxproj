@@ -11,7 +11,6 @@
 		2A1FD03A2BF2B67300335913 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1FD0392BF2B67300335913 /* SwiftUI.framework */; };
 		2A1FD03D2BF2B67300335913 /* CountdownWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1FD03C2BF2B67300335913 /* CountdownWidgetBundle.swift */; };
 		2A1FD03F2BF2B67300335913 /* CountdownWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1FD03E2BF2B67300335913 /* CountdownWidget.swift */; };
-		2A1FD0412BF2B67400335913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A1FD0402BF2B67400335913 /* Assets.xcassets */; };
 		2A1FD0452BF2B67400335913 /* CountdownWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2A1FD0352BF2B67300335913 /* CountdownWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2A2A8F5F2BA4D64D008D24CE /* StoppelMapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2A8F5E2BA4D64D008D24CE /* StoppelMapApp.swift */; };
 		2A2A8F612BA4D64D008D24CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2A8F602BA4D64D008D24CE /* ContentView.swift */; };
@@ -33,6 +32,17 @@
 		2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92605A2BF6799B00C57918 /* SettingsScreen.swift */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
+		2ACFF92A2BFFE03D00000F76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A2A8F622BA4D64E008D24CE /* Assets.xcassets */; };
+		2AD0F9942C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */; };
+		2AD0F9952C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */; };
+		2AD0F9962C0121B400FDB2A3 /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9912C0121B300FDB2A3 /* RobotoSlab-Bold.ttf */; };
+		2AD0F9972C0121B400FDB2A3 /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9912C0121B300FDB2A3 /* RobotoSlab-Bold.ttf */; };
+		2AD0F9982C0121B400FDB2A3 /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9922C0121B300FDB2A3 /* RobotoSlab-Light.ttf */; };
+		2AD0F9992C0121B400FDB2A3 /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9922C0121B300FDB2A3 /* RobotoSlab-Light.ttf */; };
+		2AD0F99A2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9932C0121B400FDB2A3 /* RobotoSlab-Thin.ttf */; };
+		2AD0F99B2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9932C0121B400FDB2A3 /* RobotoSlab-Thin.ttf */; };
+		2AD0F99E2C01281000FDB2A3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD0F99D2C01281000FDB2A3 /* Fonts.swift */; };
+		2AD0F99F2C01281000FDB2A3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD0F99D2C01281000FDB2A3 /* Fonts.swift */; };
 		2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE90B4D2BC87527007B7241 /* RouteScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +90,6 @@
 		2A1FD0392BF2B67300335913 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		2A1FD03C2BF2B67300335913 /* CountdownWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidgetBundle.swift; sourceTree = "<group>"; };
 		2A1FD03E2BF2B67300335913 /* CountdownWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidget.swift; sourceTree = "<group>"; };
-		2A1FD0402BF2B67400335913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A1FD0422BF2B67400335913 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A2A8F5B2BA4D64D008D24CE /* StoppelMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoppelMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A2A8F5E2BA4D64D008D24CE /* StoppelMapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoppelMapApp.swift; sourceTree = "<group>"; };
@@ -103,6 +112,12 @@
 		2A92605A2BF6799B00C57918 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
+		2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
+		2AD0F9912C0121B300FDB2A3 /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
+		2AD0F9922C0121B300FDB2A3 /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
+		2AD0F9932C0121B400FDB2A3 /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
+		2AD0F99C2C0124EE00FDB2A3 /* StoppelMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "StoppelMap-Info.plist"; sourceTree = "<group>"; };
+		2AD0F99D2C01281000FDB2A3 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		2AE90B4D2BC87527007B7241 /* RouteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,7 +156,6 @@
 			children = (
 				2A1FD03C2BF2B67300335913 /* CountdownWidgetBundle.swift */,
 				2A1FD03E2BF2B67300335913 /* CountdownWidget.swift */,
-				2A1FD0402BF2B67400335913 /* Assets.xcassets */,
 				2A1FD0422BF2B67400335913 /* Info.plist */,
 			);
 			path = CountdownWidget;
@@ -150,6 +164,10 @@
 		2A2A8F522BA4D64D008D24CE = {
 			isa = PBXGroup;
 			children = (
+				2AD0F99D2C01281000FDB2A3 /* Fonts.swift */,
+				2AD0F99C2C0124EE00FDB2A3 /* StoppelMap-Info.plist */,
+				2AD0F9832C01215500FDB2A3 /* fonts */,
+				2A2A8F622BA4D64E008D24CE /* Assets.xcassets */,
 				2A2A8F5D2BA4D64D008D24CE /* iosApp */,
 				2A1FD03B2BF2B67300335913 /* CountdownWidget */,
 				2A1FD0362BF2B67300335913 /* Frameworks */,
@@ -177,7 +195,6 @@
 				2A58C0542BA4F7AB00FDA014 /* home */,
 				2A2A8F5E2BA4D64D008D24CE /* StoppelMapApp.swift */,
 				2A2A8F602BA4D64D008D24CE /* ContentView.swift */,
-				2A2A8F622BA4D64E008D24CE /* Assets.xcassets */,
 				2A2A8F642BA4D64E008D24CE /* Preview Content */,
 				2A7781232BBB161D00C1FC25 /* Utils.swift */,
 			);
@@ -266,6 +283,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2AD0F9832C01215500FDB2A3 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2AD0F9912C0121B300FDB2A3 /* RobotoSlab-Bold.ttf */,
+				2AD0F9922C0121B300FDB2A3 /* RobotoSlab-Light.ttf */,
+				2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */,
+				2AD0F9932C0121B400FDB2A3 /* RobotoSlab-Thin.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		2AE90B4C2BC87512007B7241 /* route */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,11 +309,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A1FD0492BF2B67500335913 /* Build configuration list for PBXNativeTarget "CountdownWidgetExtension" */;
 			buildPhases = (
-				2A1FD04A2BF2BB5400335913 /* ShellScript */,
+				2A1FD04A2BF2BB5400335913 /* Build Shared Kotlin Framework */,
 				2A1FD0312BF2B67300335913 /* Sources */,
 				2A1FD0322BF2B67300335913 /* Frameworks */,
 				2A1FD0332BF2B67300335913 /* Resources */,
-				2A1FD04B2BF2C3CB00335913 /* ShellScript */,
+				2A1FD04B2BF2C3CB00335913 /* Copy Shared Framework Resources */,
 			);
 			buildRules = (
 			);
@@ -300,11 +328,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A2A8F692BA4D64E008D24CE /* Build configuration list for PBXNativeTarget "StoppelMap" */;
 			buildPhases = (
-				2A58C05B2BA50CF200FDA014 /* ShellScript */,
+				2A58C05B2BA50CF200FDA014 /* Build Shared Kotlin Framework */,
 				2A2A8F572BA4D64D008D24CE /* Sources */,
 				2A2A8F582BA4D64D008D24CE /* Frameworks */,
 				2A2A8F592BA4D64D008D24CE /* Resources */,
-				2AB2D12D2BAB33B5002A7A42 /* ShellScript */,
+				2AB2D12D2BAB33B5002A7A42 /* Copy Shared Framework Resources */,
 				2A1FD0462BF2B67400335913 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -366,7 +394,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A1FD0412BF2B67400335913 /* Assets.xcassets in Resources */,
+				2AD0F9992C0121B400FDB2A3 /* RobotoSlab-Light.ttf in Resources */,
+				2AD0F99B2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */,
+				2AD0F9952C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */,
+				2ACFF92A2BFFE03D00000F76 /* Assets.xcassets in Resources */,
+				2AD0F9972C0121B400FDB2A3 /* RobotoSlab-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +407,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A2A8F632BA4D64E008D24CE /* Assets.xcassets in Resources */,
+				2AD0F9982C0121B400FDB2A3 /* RobotoSlab-Light.ttf in Resources */,
+				2AD0F9942C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */,
+				2AD0F9962C0121B400FDB2A3 /* RobotoSlab-Bold.ttf in Resources */,
 				2ACCB05D2BB21D8100DA01B6 /* map in Resources */,
 				2A77811F2BB8AC6E00C1FC25 /* mapdata.geojson in Resources */,
+				2AD0F99A2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */,
 				2A77811E2BB8AC6E00C1FC25 /* database.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,7 +420,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2A1FD04A2BF2BB5400335913 /* ShellScript */ = {
+		2A1FD04A2BF2BB5400335913 /* Build Shared Kotlin Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,6 +429,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Build Shared Kotlin Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -401,7 +438,7 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
 		};
-		2A1FD04B2BF2C3CB00335913 /* ShellScript */ = {
+		2A1FD04B2BF2C3CB00335913 /* Copy Shared Framework Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,6 +447,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Copy Shared Framework Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -418,7 +456,7 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :shared:copyFrameworkResourcesToApp \\\n    -Pmoko.resources.PLATFORM_NAME=\"$PLATFORM_NAME\" \\\n    -Pmoko.resources.CONFIGURATION=\"$CONFIGURATION\" \\\n    -Pmoko.resources.ARCHS=\"$ARCHS\" \\\n    -Pmoko.resources.BUILT_PRODUCTS_DIR=\"$BUILT_PRODUCTS_DIR\" \\\n    -Pmoko.resources.CONTENTS_FOLDER_PATH=\"$CONTENTS_FOLDER_PATH\"\n";
 		};
-		2A58C05B2BA50CF200FDA014 /* ShellScript */ = {
+		2A58C05B2BA50CF200FDA014 /* Build Shared Kotlin Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,6 +465,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Build Shared Kotlin Framework";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -435,7 +474,7 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
 		};
-		2AB2D12D2BAB33B5002A7A42 /* ShellScript */ = {
+		2AB2D12D2BAB33B5002A7A42 /* Copy Shared Framework Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -444,6 +483,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Copy Shared Framework Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -460,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A1FD03D2BF2B67300335913 /* CountdownWidgetBundle.swift in Sources */,
+				2AD0F99F2C01281000FDB2A3 /* Fonts.swift in Sources */,
 				2A1FD03F2BF2B67300335913 /* CountdownWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +516,7 @@
 				2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */,
 				2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */,
 				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
+				2AD0F99E2C01281000FDB2A3 /* Fonts.swift in Sources */,
 				2A4040602BC313C900A5B072 /* TransportationType.swift in Sources */,
 				2A6873252BC9EE43008442FC /* StationScreen.swift in Sources */,
 				2A40405E2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift in Sources */,
@@ -504,7 +546,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 240523890;
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -517,7 +559,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "v24.05.23.890-6bba8a87";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -538,7 +580,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 240523890;
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -551,7 +593,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "v24.05.23.890-6bba8a87";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -692,13 +734,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 240512884;
+				CURRENT_PROJECT_VERSION = 240523890;
 				DEVELOPMENT_ASSET_PATHS = "iosApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "StoppelMap-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = StoppelMap;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -710,7 +753,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "v24.05.12.884-07d9068c";
+				MARKETING_VERSION = "v24.05.23.890-6bba8a87";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -731,13 +774,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 240512884;
+				CURRENT_PROJECT_VERSION = 240523890;
 				DEVELOPMENT_ASSET_PATHS = "iosApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "StoppelMap-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = StoppelMap;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -749,7 +793,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "v24.05.12.884-07d9068c";
+				MARKETING_VERSION = "v24.05.23.890-6bba8a87";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -56,6 +56,7 @@
         Stoppelmarkt.\n\nAll data and information provided as is with no guarantee to be correct or
         complete and without any liability.
     </string>
+
     <string name="settings_open_source">StoppelMap is open source.\Source code available at
         https://github.com/JGerdes/StoppelMap
     </string>
@@ -133,4 +134,11 @@
     <string name="transportation_station_timetable_segment_afternoon">Afternoon</string>
     <string name="transportation_station_timetable_segment_evening">Evening</string>
     <string name="transportation_station_timetable_segment_night">Night</string>
+
+    <!-- Widgets -->
+    <string name="widget_countdown_name">Stoppelmarkt Countdown</string>
+    <string name="widget_countdown_description">Displays days remaining until Stoppelmarkt.</string>
+    <string name="widget_countdown_prefix">only</string>
+    <string name="widget_countdown_footer">Stoppelmarkt %1$d</string>
+    <string name="widget_countdown_footer_multiline">Stoppelmarkt\n%1$d</string>
 </resources>

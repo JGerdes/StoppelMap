@@ -134,4 +134,11 @@
     <string name="transportation_station_timetable_segment_afternoon">Nachmittags</string>
     <string name="transportation_station_timetable_segment_evening">Abends</string>
     <string name="transportation_station_timetable_segment_night">Nachts</string>
+
+    <!-- Widgets -->
+    <string name="widget_countdown_name">Stoppelmarkt Countdown</string>
+    <string name="widget_countdown_description">Zeigt an, wie viele Tage es noch bis zum Stoppelmarkt sind.</string>
+    <string name="widget_countdown_prefix">noch</string>
+    <string name="widget_countdown_footer">Stoppelmarkt %1$d</string>
+    <string name="widget_countdown_footer_multiline">Stoppelmarkt\n%1$d</string>
 </resources>

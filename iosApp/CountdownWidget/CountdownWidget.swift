@@ -7,14 +7,14 @@ struct Provider: TimelineProvider {
     let getOpeningCountDown = CountdownDependencies().getOpeningCountDownUseCase
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), state: CountDownInFuture(daysLeft: 0, hoursLeft: 0, minutesLeft: 0, secondsLeft: 0, year: 0))
+        SimpleEntry(date: Date(), state: CountDownOnGoing(year: 2024))
     }
-
+    
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(), state: CountDownInFuture(daysLeft: 12, hoursLeft: 4, minutesLeft: 0, secondsLeft: 0, year: 2024))
         completion(entry)
     }
-
+    
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         let currentDate = Date()
@@ -37,20 +37,14 @@ struct SimpleEntry: TimelineEntry {
 
 struct CountdownWidgetEntryView : View {
     var entry: Provider.Entry
-
+    @Environment(\.widgetFamily) var family
+    
     var body: some View {
-        VStack {
-            if let inFuture = entry.state as? CountDownInFuture {
-                HStack {
-                    VStack {
-                        Text(inFuture.daysLeft.description)
-                        Text(Res.plurals().countdownCard_unit_day.desc(number: inFuture.daysLeft).localized())
-                    }
-                    VStack {
-                        Text(inFuture.hoursLeft.description)
-                        Text(Res.plurals().countdownCard_unit_hour.desc(number: inFuture.hoursLeft).localized())
-                    }
-                }
+        GeometryReader { metrics in
+            switch family {
+            case .systemSmall: SmallWidget(metrics: metrics, entry: entry)
+            case .systemMedium: MediumWidget(metrics: metrics, entry: entry)
+            default: Text("Invalid Widget size").padding()
             }
         }
     }
@@ -58,20 +52,149 @@ struct CountdownWidgetEntryView : View {
 
 struct CountdownWidget: Widget {
     let kind: String = "CountdownWidget"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 CountdownWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
+                    .containerBackground(for: .widget, content: {
+                        Background(entry: entry)
+                    })
             } else {
                 CountdownWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
+                    .background {
+                        Background(entry: entry)
+                    }
             }
         }
-        .configurationDisplayName("Countdown Widget")
-        .description("Zeigt an, wie viele Tage es noch bis zum Stoppelmarkt sind.")
+        .configurationDisplayName(Text(Res.strings().widget_countdown_name.desc().localized()))
+        .description(Text(Res.strings().widget_countdown_description.desc().localized()))
+        .supportedFamilies([.systemSmall, .systemMedium])
+        .contentMarginsDisabled()
     }
 }
 
+#Preview {
+    CountdownWidgetEntryView(
+        entry: SimpleEntry(date: Date(), state: CountDownOnGoing(year: 2024))
+    )
+}
+
+#Preview {
+    CountdownWidgetEntryView(
+        entry: SimpleEntry(date: Date(), state: CountDownInFuture(daysLeft: 12, hoursLeft: 4, minutesLeft: 0, secondsLeft: 0, year: 2024))
+    )
+}
+
+struct Background: View {
+    @Environment(\.widgetFamily) var family
+    
+    var entry: Provider.Entry
+    
+    var body: some View {
+        GeometryReader { metrics in
+            ZStack(alignment: .bottomLeading) {
+                VStack(spacing: 0) {
+                    Color("StoppelSky")
+                    Color("StoppelField").frame(height: metrics.size.height * 0.25)
+                }
+                if(family == .systemSmall) {
+                    Image(uiImage: Res.images.shared.jan_libett_corner.toUIImage()!)
+                }
+            }
+        }
+    }
+}
+
+struct SmallWidget: View {
+    var metrics: GeometryProxy
+    var entry: SimpleEntry
+    var body: some View {
+        VStack(spacing: 0) {
+            if let inFuture = entry.state as? CountDownInFuture {
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
+                    Spacer()
+                    Text(Res.strings().widget_countdown_prefix.desc().localized())
+                        .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                        .foregroundStyle(.black)
+                    Text(inFuture.daysLeft.description)
+                        .font(Font.custom("RobotoSlab-Light", fixedSize: 48))
+                        .foregroundStyle(.black)
+                        .padding(.vertical, -8)
+                    Text(Res.plurals().countdownCard_unit_day.desc(number: inFuture.daysLeft).localized())
+                        .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                        .foregroundStyle(.black)
+                    Spacer()
+                }
+                .padding(.leading, 48)
+                .frame(height: metrics.size.height * 0.75)
+                
+                ZStack(alignment: .center) {
+                    Text(Res.strings().widget_countdown_footer_multiline.format(args: [entry.state.year]).localized())
+                        .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.black)
+                }
+                .padding(.leading, 48)
+                .frame(height: metrics.size.height * 0.25)
+            }
+        }
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct MediumWidget: View {
+    var metrics: GeometryProxy
+    var entry: SimpleEntry
+    var body: some View {
+        HStack {
+            Spacer()
+            Image(uiImage: Res.images.shared.jan_libett_full.toUIImage()!)
+            Spacer()
+            VStack(spacing: 0) {
+                if let inFuture = entry.state as? CountDownInFuture {
+                    VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
+                        Spacer()
+                        Text(Res.strings().widget_countdown_prefix.desc().localized())
+                            .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                            .foregroundStyle(.black)
+                        HStack {
+                            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+                                Text(inFuture.daysLeft.description)
+                                    .font(Font.custom("RobotoSlab-Light", fixedSize: 48))
+                                    .foregroundStyle(.black)
+                                    .padding(.vertical, -8)
+                                Text(Res.plurals().countdownCard_unit_day.desc(number: inFuture.daysLeft).localized())
+                                    .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                                    .foregroundStyle(.black)
+                            }
+                            .padding(.horizontal, 4)
+                            
+                            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+                                Text(inFuture.hoursLeft.description)
+                                    .font(Font.custom("RobotoSlab-Light", fixedSize: 48))
+                                    .foregroundStyle(.black)
+                                    .padding(.vertical, -8)
+                                Text(Res.plurals().countdownCard_unit_hour.desc(number: inFuture.hoursLeft).localized())
+                                    .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                                    .foregroundStyle(.black)
+                            }
+                            .padding(.horizontal, 4)
+                        }
+                        Spacer()
+                    }
+                    .frame(height: metrics.size.height * 0.75)
+                    
+                    ZStack(alignment: .center) {
+                        Text(Res.strings().widget_countdown_footer.format(args: [entry.state.year]).localized())
+                            .font(Font.custom("RobotoSlab-Regular", fixedSize: 16))
+                            .foregroundStyle(.black)
+                    }
+                    .frame(height: metrics.size.height * 0.25)
+                }
+            }
+            Spacer()
+        }
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+    }
+}

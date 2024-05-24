@@ -68,7 +68,7 @@ android {
 task("updateIosVersion") {
     // TODO: Improve this
     doLast {
-        val projectFile = File("./iosApp/iosApp.xcodeproj/project.pbxproj")
+        val projectFile = File(project.rootDir, "iosApp/iosApp.xcodeproj/project.pbxproj")
         val versionRegex = """MARKETING_VERSION = .*?;""".toRegex()
         val buildRegex = """CURRENT_PROJECT_VERSION = .\d*?;""".toRegex()
         val version = getVersion(getCommit().shortSha)
