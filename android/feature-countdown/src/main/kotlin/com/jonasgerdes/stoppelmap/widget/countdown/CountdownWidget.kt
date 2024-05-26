@@ -60,7 +60,6 @@ class CountdownWidget : GlanceAppWidget() {
     @Composable
     private fun WidgetContent(countDownState: CountDown) {
         val size = LocalSize.current
-        val context = LocalContext.current
         val isWide = size.width > SIZE_SMALL.width
         Box(
             contentAlignment = Alignment.Center,

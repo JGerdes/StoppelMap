@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.widget.glance
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -10,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.glance.LocalContext
+import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.GlanceAppWidgetManager
 
 fun String.renderToBitmap(
     size: Float,
@@ -33,7 +36,6 @@ fun String.renderToBitmap(
     }
 }
 
-
 @Composable
 fun TextUnit.toPx() =
     if (this.isSp) {
@@ -51,3 +53,6 @@ fun Dp.toPx() =
         value,
         LocalContext.current.resources.displayMetrics
     )
+
+suspend fun GlanceAppWidget.getWidgetCount(context: Context) =
+    GlanceAppWidgetManager(context).getGlanceIds(javaClass).count()
