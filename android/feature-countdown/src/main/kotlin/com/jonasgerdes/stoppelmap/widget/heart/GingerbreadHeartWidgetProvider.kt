@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.Bitmap
@@ -14,7 +13,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Point
 import android.graphics.Rect
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
@@ -26,13 +24,16 @@ import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownUseCase
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettings
-import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsActivity
+import com.jonasgerdes.stoppelmap.widget.CreateStartAppIntentUseCase
 import org.koin.java.KoinJavaComponent.inject
 import kotlin.math.roundToInt
 
 class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
 
     private val sharedPreferences: SharedPreferences by inject(SharedPreferences::class.java)
+    private val createStartAppIntent: CreateStartAppIntentUseCase by inject(
+        CreateStartAppIntentUseCase::class.java
+    )
 
     private val getTimeLeftToOpening: GetOpeningCountDownUseCase by inject(
         GetOpeningCountDownUseCase::class.java
@@ -118,13 +119,7 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
             PendingIntent.getActivity(
                 context,
                 0,
-                Intent(context, GingerbreadWidgetSettingsActivity::class.java).apply {
-                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, settings.appWidgetId)
-                    data = Uri.withAppendedPath(
-                        Uri.parse("stoppelmap" + "://widget/id/"),
-                        settings.appWidgetId.toString()
-                    )
-                },
+                createStartAppIntent(),
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     PendingIntent.FLAG_IMMUTABLE
                 } else 0

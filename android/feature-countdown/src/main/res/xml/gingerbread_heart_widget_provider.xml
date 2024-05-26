@@ -7,4 +7,5 @@
     android:previewImage="@drawable/widget_preview_heart"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
+    android:widgetFeatures="reconfigurable"
     android:widgetCategory="home_screen" />

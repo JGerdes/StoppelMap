@@ -11,8 +11,10 @@ import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.LocalContext
 import androidx.glance.LocalSize
+import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.SizeMode
+import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.appwidget.appWidgetBackground
 import androidx.glance.appwidget.provideContent
 import androidx.glance.layout.Alignment
@@ -31,13 +33,12 @@ import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.shared.resources.Res
 import com.jonasgerdes.stoppelmap.widget.glance.CustomGlanceText
 import com.jonasgerdes.stoppelmap.widget.glance.StoppelMapGlanceTheme
-import com.jonasgerdes.stoppelmap.widget.glance.toPx
 import dev.icerock.moko.resources.PluralsResource
-import timber.log.Timber
 
 class CountdownWidget : GlanceAppWidget() {
     private val dependencies by lazy { CountdownWidgetDependencies() }
     private val getOpeningCountDown by lazy { dependencies.getOpeningCountDownUseCase }
+    private val createStartAppIntent by lazy { dependencies.createStartAppIntentUseCase }
 
 
     companion object {
@@ -60,12 +61,12 @@ class CountdownWidget : GlanceAppWidget() {
     private fun WidgetContent(countDownState: CountDown) {
         val size = LocalSize.current
         val context = LocalContext.current
-        Timber.d("WidgetContent called, size: $size, height in px is ${size.height.toPx()}")
-        val isMediumSize = size.width > 144.dp
+        val isWide = size.width > SIZE_SMALL.width
         Box(
             contentAlignment = Alignment.Center,
             modifier = GlanceModifier
                 .size(width = size.width, height = size.height)
+                .clickable(actionStartActivity(createStartAppIntent()))
         ) {
             Box(
                 contentAlignment = Alignment.BottomStart,
@@ -77,7 +78,7 @@ class CountdownWidget : GlanceAppWidget() {
                     contentScale = ContentScale.FillBounds,
                     modifier = GlanceModifier.fillMaxSize()
                 )
-                if (!isMediumSize) {
+                if (!isWide) {
                     Image(
                         ImageProvider(R.drawable.jan_libett_corner),
                         contentDescription = null,
@@ -88,7 +89,7 @@ class CountdownWidget : GlanceAppWidget() {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                if (isMediumSize) {
+                if (isWide) {
                     Image(
                         ImageProvider(R.drawable.jan_libett_full),
                         contentDescription = null,
@@ -99,11 +100,11 @@ class CountdownWidget : GlanceAppWidget() {
                     is CountDown.InFuture -> {
                         CountdownText(
                             countDownState,
-                            showHours = isMediumSize,
-                            modifier = if (isMediumSize) GlanceModifier.padding(horizontal = 16.dp)
+                            showHours = isWide,
+                            modifier = if (isWide) GlanceModifier.padding(horizontal = 16.dp)
                             else GlanceModifier.padding(start = 48.dp),
                             footer = {
-                                if (isMediumSize) {
+                                if (isWide) {
                                     CustomGlanceText(
                                         text = LocalContext.current.getString(
                                             R.string.widget_countdown_footer,
