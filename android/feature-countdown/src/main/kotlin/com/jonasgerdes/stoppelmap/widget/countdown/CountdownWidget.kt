@@ -27,7 +27,6 @@ import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.height
 import androidx.glance.layout.padding
 import androidx.glance.layout.size
-import androidx.glance.text.Text
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
 import com.jonasgerdes.stoppelmap.shared.resources.Res
@@ -68,7 +67,6 @@ class CountdownWidget : GlanceAppWidget() {
                 .clickable(actionStartActivity(createStartAppIntent()))
         ) {
             Box(
-                contentAlignment = Alignment.BottomStart,
                 modifier = GlanceModifier.appWidgetBackground()
             ) {
                 Image(
@@ -77,74 +75,94 @@ class CountdownWidget : GlanceAppWidget() {
                     contentScale = ContentScale.FillBounds,
                     modifier = GlanceModifier.fillMaxSize()
                 )
-                if (!isWide) {
-                    Image(
-                        ImageProvider(R.drawable.jan_libett_corner),
-                        contentDescription = null,
-                    )
-                }
-            }
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                if (isWide) {
-                    Image(
-                        ImageProvider(R.drawable.jan_libett_full),
-                        contentDescription = null,
-                        modifier = GlanceModifier.padding(start = 16.dp)
-                    )
-                }
                 when (countDownState) {
-                    is CountDown.InFuture -> {
-                        CountdownText(
-                            countDownState,
-                            showHours = isWide,
-                            modifier = if (isWide) GlanceModifier.padding(horizontal = 16.dp)
-                            else GlanceModifier.padding(start = 48.dp),
-                            footer = {
-                                if (isWide) {
-                                    CustomGlanceText(
-                                        text = LocalContext.current.getString(
-                                            R.string.widget_countdown_footer,
-                                            countDownState.year
-                                        ),
-                                        style = StoppelMapGlanceTheme.typography.subTitle
-                                    )
-                                } else {
-                                    CustomGlanceText(
-                                        text = LocalContext.current.getString(
-                                            R.string.widget_countdown_footer_noYear
-                                        ),
-                                        style = StoppelMapGlanceTheme.typography.body
-                                    )
-                                    CustomGlanceText(
-                                        text = countDownState.year.toString(),
-                                        style = StoppelMapGlanceTheme.typography.body
-                                    )
-                                }
-                            }
-                        )
-                    }
-
-                    is CountDown.OnGoing -> {
-                        Text("OnGoing")
-                    }
+                    is CountDown.InFuture -> CountDownContent(countDownState, isWide)
+                    is CountDown.OnGoing -> OnGoingContent(countDownState.year, isWide)
                 }
             }
+
         }
     }
 
+    @Composable
+    private fun CountDownContent(countDownState: CountDown.InFuture, isWide: Boolean) {
+        CountDownContentContainer(isWide = isWide) {
+            if (isWide) {
+                Image(
+                    ImageProvider(R.drawable.jan_libett_full),
+                    contentDescription = null,
+                    modifier = GlanceModifier.padding(start = 16.dp)
+                )
+            } else {
+                Image(
+                    ImageProvider(R.drawable.jan_libett_corner),
+                    contentDescription = null,
+                )
+            }
+
+            val context = LocalContext.current
+            CountdownWidgetScaffold(
+                modifier = if (isWide) GlanceModifier else GlanceModifier.padding(start = 48.dp),
+                content = {
+                    CustomGlanceText(
+                        text = context.getString(R.string.widget_countdown_prefix),
+                        style = StoppelMapGlanceTheme.typography.body
+                    )
+                    Row(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        CountdownItem(
+                            unitString = Res.plurals.countdownCard_unit_day,
+                            value = countDownState.daysLeft,
+                        )
+                        if (isWide) {
+                            CountdownItem(
+                                unitString = Res.plurals.countdownCard_unit_hour,
+                                value = countDownState.hoursLeft,
+                            )
+                        }
+                    }
+                },
+                footer = {
+                    if (isWide) {
+                        CustomGlanceText(
+                            text = LocalContext.current.getString(
+                                R.string.widget_countdown_footer,
+                                countDownState.year
+                            ),
+                            style = StoppelMapGlanceTheme.typography.subTitle
+                        )
+                    } else {
+                        CustomGlanceText(
+                            text = LocalContext.current.getString(
+                                R.string.widget_countdown_footer_noYear
+                            ),
+                            style = StoppelMapGlanceTheme.typography.body
+                        )
+                        CustomGlanceText(
+                            text = countDownState.year.toString(),
+                            style = StoppelMapGlanceTheme.typography.body
+                        )
+                    }
+                },
+            )
+        }
+    }
 
     @Composable
-    private fun CountdownText(
-        countDownState: CountDown.InFuture,
-        showHours: Boolean,
+    private fun CountDownContentContainer(isWide: Boolean, content: @Composable () -> Unit) {
+        if (isWide) Row(verticalAlignment = Alignment.CenterVertically) { content() }
+        else Box(contentAlignment = Alignment.BottomStart) { content() }
+    }
+
+    @Composable
+    fun CountdownWidgetScaffold(
+        modifier: GlanceModifier = GlanceModifier,
+        content: @Composable () -> Unit,
         footer: @Composable () -> Unit,
-        modifier: GlanceModifier,
     ) {
         Column(modifier = modifier) {
-            val context = LocalContext.current
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalAlignment = Alignment.CenterVertically,
@@ -152,25 +170,7 @@ class CountdownWidget : GlanceAppWidget() {
                     .height((3 * (144 / 4)).dp)
                     .fillMaxWidth()
             ) {
-                CustomGlanceText(
-                    text = context.getString(R.string.widget_countdown_prefix),
-                    style = StoppelMapGlanceTheme.typography.body
-                )
-                Row(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    CountdownItem(
-                        unitString = Res.plurals.countdownCard_unit_day,
-                        value = countDownState.daysLeft,
-                    )
-                    if (showHours) {
-                        CountdownItem(
-                            unitString = Res.plurals.countdownCard_unit_hour,
-                            value = countDownState.hoursLeft,
-                        )
-                    }
-                }
+                content()
             }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -181,27 +181,65 @@ class CountdownWidget : GlanceAppWidget() {
                 footer()
             }
         }
-    }
-}
 
-@Composable
-fun CountdownItem(unitString: PluralsResource, value: Int) {
-    val context = LocalContext.current
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = GlanceModifier.padding(horizontal = 8.dp)
-    ) {
-        CustomGlanceText(
-            text = value.toString(),
-            style = StoppelMapGlanceTheme.typography.title
-        )
-        CustomGlanceText(
-            text = unitString.getQuantityString(
-                context,
-                value
-            ),
-            style = StoppelMapGlanceTheme.typography.body
-        )
+    }
+
+    @Composable
+    fun CountdownItem(unitString: PluralsResource, value: Int) {
+        val context = LocalContext.current
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = GlanceModifier.padding(horizontal = 8.dp)
+        ) {
+            CustomGlanceText(
+                text = value.toString(),
+                style = StoppelMapGlanceTheme.typography.title
+            )
+            CustomGlanceText(
+                text = unitString.getQuantityString(
+                    context,
+                    value
+                ),
+                style = StoppelMapGlanceTheme.typography.body
+            )
+        }
+    }
+
+    @Composable
+    private fun OnGoingContent(year: Int, isWide: Boolean) {
+        val context = LocalContext.current
+        Box(contentAlignment = Alignment.Center, modifier = GlanceModifier.fillMaxSize()) {
+            Image(
+                ImageProvider(
+                    if (isWide) R.drawable.background_rides_wide
+                    else R.drawable.background_rides
+                ),
+                contentDescription = null,
+            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                CustomGlanceText(
+                    text = context.getString(R.string.widget_countdown_ongoing_title),
+                    style = StoppelMapGlanceTheme.typography.body,
+                    modifier = GlanceModifier.padding(top = 8.dp)
+                )
+                Image(
+                    ImageProvider(R.drawable.jan_libett_full),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = GlanceModifier.defaultWeight()
+                )
+                CustomGlanceText(
+                    text = context.getString(
+                        R.string.widget_countdown_footer,
+                        year
+                    ),
+                    style = StoppelMapGlanceTheme.typography.body,
+                    modifier = GlanceModifier.padding(bottom = 8.dp)
+                )
+            }
+        }
     }
 }
