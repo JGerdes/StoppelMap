@@ -145,14 +145,14 @@ class GingerbreadHeartWidgetProvider : AppWidgetProvider() {
                         ) else null,
                     ).joinToString(", "),
                     preposition = getString(R.string.countdownWidget_preposition_until),
-                    year = countdown.year.toString()
+                    year = countdown.season.year.toString()
                 )
             }
 
             is CountDown.OnGoing -> CountdownTexts(
                 mainText = getString(R.string.countdownWidget_mainText_ongoing),
                 preposition = getString(R.string.countdownWidget_preposition_ongoing),
-                year = countdown.year.toString()
+                year = countdown.season.year.toString()
             )
         }
     }

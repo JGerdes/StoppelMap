@@ -77,7 +77,7 @@ class CountdownWidget : GlanceAppWidget() {
                 )
                 when (countDownState) {
                     is CountDown.InFuture -> CountDownContent(countDownState, isWide)
-                    is CountDown.OnGoing -> OnGoingContent(countDownState.year, isWide)
+                    is CountDown.OnGoing -> OnGoingContent(countDownState, isWide)
                 }
             }
 
@@ -129,7 +129,7 @@ class CountdownWidget : GlanceAppWidget() {
                         CustomGlanceText(
                             text = LocalContext.current.getString(
                                 R.string.widget_countdown_footer,
-                                countDownState.year
+                                countDownState.season.year
                             ),
                             style = StoppelMapGlanceTheme.typography.subTitle
                         )
@@ -141,7 +141,7 @@ class CountdownWidget : GlanceAppWidget() {
                             style = StoppelMapGlanceTheme.typography.body
                         )
                         CustomGlanceText(
-                            text = countDownState.year.toString(),
+                            text = countDownState.season.year.toString(),
                             style = StoppelMapGlanceTheme.typography.body
                         )
                     }
@@ -207,7 +207,7 @@ class CountdownWidget : GlanceAppWidget() {
     }
 
     @Composable
-    private fun OnGoingContent(year: Int, isWide: Boolean) {
+    private fun OnGoingContent(data: CountDown.OnGoing, isWide: Boolean) {
         val context = LocalContext.current
         Box(contentAlignment = Alignment.Center, modifier = GlanceModifier.fillMaxSize()) {
             Image(
@@ -234,7 +234,7 @@ class CountdownWidget : GlanceAppWidget() {
                 CustomGlanceText(
                     text = context.getString(
                         R.string.widget_countdown_footer,
-                        year
+                        data.season.year
                     ),
                     style = StoppelMapGlanceTheme.typography.body,
                     modifier = GlanceModifier.padding(bottom = 8.dp)

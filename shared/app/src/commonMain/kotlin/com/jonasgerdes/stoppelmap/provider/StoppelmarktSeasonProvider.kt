@@ -14,6 +14,11 @@ import kotlinx.datetime.plus
 private val startTime = LocalTime(18, 30)
 private val endTime = LocalTime(23, 0)
 
+// Based on https://www.vechta.de/nachricht/schaustellerverein-stellt-tore-auf
+private val iterationBaseYear = 1998
+private val iterationBaseCount = 700
+private val skippedYears = setOf(2020, 2021)
+
 class StoppelmarktSeasonProvider(
     private val clockProvider: ClockProvider,
 ) : SeasonProvider {
@@ -36,11 +41,18 @@ class StoppelmarktSeasonProvider(
 
 fun getSeasonForYear(year: Int): Season = StoppelmarktSeason(
     year = year,
+    iteration = calculateIteration(year),
     days = calculateDatesForYear(year)
 )
 
+fun calculateIteration(year: Int): Int {
+    // Simplified, doesn't support years < 2022 yet
+    return (year - iterationBaseYear) + iterationBaseCount - skippedYears.size
+}
+
 data class StoppelmarktSeason(
     override val year: Int,
+    override val iteration: Int,
     override val days: List<LocalDate>
 ) : Season {
     override val start = days.first().atTime(startTime)

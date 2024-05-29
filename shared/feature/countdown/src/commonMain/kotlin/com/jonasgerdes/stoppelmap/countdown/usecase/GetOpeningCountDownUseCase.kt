@@ -31,12 +31,12 @@ internal constructor(
                         hoursLeft = hours.coerceAtLeast(0),
                         minutesLeft = minutes.coerceAtLeast(0),
                         secondsLeft = seconds.coerceAtLeast(0),
-                        year = currentOrNextSeason.year
+                        season = currentOrNextSeason,
                     )
                 }
             }
 
-            else -> CountDown.OnGoing(year = currentOrNextSeason.year)
+            else -> CountDown.OnGoing(currentOrNextSeason)
         }
     }
 }

@@ -12,6 +12,7 @@ interface SeasonProvider {
 
 interface Season {
     val year: Int
+    val iteration: Int
     val days: List<LocalDate>
 
     val start: LocalDateTime

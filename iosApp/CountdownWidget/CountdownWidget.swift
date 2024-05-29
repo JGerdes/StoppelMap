@@ -7,11 +7,11 @@ struct Provider: TimelineProvider {
     let getOpeningCountDown = CountdownDependencies().getOpeningCountDownUseCase
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), state: CountDownOnGoing(year: 2024))
+        SimpleEntry(date: Date(), state: getOpeningCountDown.invoke())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), state: CountDownInFuture(daysLeft: 12, hoursLeft: 4, minutesLeft: 0, secondsLeft: 0, year: 2024))
+        let entry = SimpleEntry(date: Date(), state: getOpeningCountDown.invoke())
         completion(entry)
     }
     
@@ -74,18 +74,6 @@ struct CountdownWidget: Widget {
     }
 }
 
-#Preview {
-    CountdownWidgetEntryView(
-        entry: SimpleEntry(date: Date(), state: CountDownOnGoing(year: 2024))
-    )
-}
-
-#Preview {
-    CountdownWidgetEntryView(
-        entry: SimpleEntry(date: Date(), state: CountDownInFuture(daysLeft: 12, hoursLeft: 4, minutesLeft: 0, secondsLeft: 0, year: 2024))
-    )
-}
-
 struct Background: View {
     @Environment(\.widgetFamily) var family
     
@@ -145,7 +133,7 @@ struct SmallWidget: View {
                 .frame(height: metrics.size.height * 0.75)
                 
                 ZStack(alignment: .center) {
-                    Text(Res.strings().widget_countdown_footer_multiline.format(args: [entry.state.year]).localized())
+                    Text(Res.strings().widget_countdown_footer_multiline.format(args: [entry.state.season.year]).localized())
                         .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.black)
@@ -203,7 +191,7 @@ struct MediumWidget: View {
                     .frame(height: metrics.size.height * 0.75)
                     
                     ZStack(alignment: .center) {
-                        Text(Res.strings().widget_countdown_footer.format(args: [entry.state.year]).localized())
+                        Text(Res.strings().widget_countdown_footer.format(args: [entry.state.season.year]).localized())
                             .font(Font.custom("RobotoSlab-Regular", fixedSize: 16))
                             .foregroundStyle(.black)
                     }
@@ -235,7 +223,7 @@ struct OnGoingView: View {
                         .scaledToFill()
                         .frame(height: metrics.size.height * 0.7)
                 }
-            Text(Res.strings().widget_countdown_footer.format(args: [entry.state.year]).localized())
+            Text(Res.strings().widget_countdown_footer.format(args: [entry.state.season.year]).localized())
                 .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
                 .foregroundStyle(.black)
                 .padding(.bottom, 8)
