@@ -93,13 +93,28 @@ struct Background: View {
     
     var body: some View {
         GeometryReader { metrics in
-            ZStack(alignment: .bottomLeading) {
+            let alignment = entry.state is CountDownInFuture ? Alignment.bottomLeading : Alignment.center
+            ZStack(alignment: alignment) {
                 VStack(spacing: 0) {
                     Color("StoppelSky")
                     Color("StoppelField").frame(height: metrics.size.height * 0.25)
                 }
-                if(family == .systemSmall) {
-                    Image(uiImage: Res.images.shared.jan_libett_corner.toUIImage()!)
+                if entry.state is CountDownInFuture {
+                    if(family == .systemSmall) {
+                        ZStack {
+                            Image(uiImage: Res.images.shared.jan_libett_corner.toUIImage()!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
+                if entry.state is CountDownOnGoing {
+                    let image = if (family == .systemSmall) { 
+                        Res.images.shared.background_rides.toUIImage()!
+                    } else { 
+                        Res.images.shared.background_rides_wide.toUIImage()!
+                    }
+                    Image(uiImage: image)
                 }
             }
         }
@@ -137,6 +152,8 @@ struct SmallWidget: View {
                 }
                 .padding(.leading, 48)
                 .frame(height: metrics.size.height * 0.25)
+            } else {
+                OnGoingView(metrics: metrics, entry: entry)
             }
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -148,11 +165,11 @@ struct MediumWidget: View {
     var entry: SimpleEntry
     var body: some View {
         HStack {
-            Spacer()
-            Image(uiImage: Res.images.shared.jan_libett_full.toUIImage()!)
-            Spacer()
-            VStack(spacing: 0) {
-                if let inFuture = entry.state as? CountDownInFuture {
+            if let inFuture = entry.state as? CountDownInFuture {
+                Spacer()
+                Image(uiImage: Res.images.shared.jan_libett_full.toUIImage()!)
+                Spacer()
+                VStack(spacing: 0) {
                     VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
                         Spacer()
                         Text(Res.strings().widget_countdown_prefix.desc().localized())
@@ -192,9 +209,37 @@ struct MediumWidget: View {
                     }
                     .frame(height: metrics.size.height * 0.25)
                 }
+                Spacer()
+            } else {
+                OnGoingView(metrics: metrics, entry: entry)
             }
-            Spacer()
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct OnGoingView: View {
+    var metrics: GeometryProxy
+    var entry: SimpleEntry
+    
+    var body: some View {
+        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
+            Text(Res.strings().widget_countdown_ongoing_title.desc().localized())
+                .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                .foregroundStyle(.black)
+                .padding(.top, 8)
+            Spacer()
+                .background {
+                    Image(uiImage: Res.images.shared.jan_libett_full.toUIImage()!)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: metrics.size.height * 0.7)
+                }
+            Text(Res.strings().widget_countdown_footer.format(args: [entry.state.year]).localized())
+                .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
+                .foregroundStyle(.black)
+                .padding(.bottom, 8)
+            
+        }
     }
 }
