@@ -9,6 +9,19 @@
     <string name="common_datetime_weekday_saturday">Samstag</string>
     <string name="common_datetime_weekday_sunday">Sonntag</string>
 
+    <string name="common_datetime_month_january">Januar</string>
+    <string name="common_datetime_month_february">Februar</string>
+    <string name="common_datetime_month_march">März</string>
+    <string name="common_datetime_month_april">April</string>
+    <string name="common_datetime_month_may">Mai</string>
+    <string name="common_datetime_month_june">Juni</string>
+    <string name="common_datetime_month_july">Juli</string>
+    <string name="common_datetime_month_august">August</string>
+    <string name="common_datetime_month_september">September</string>
+    <string name="common_datetime_month_october">Oktober</string>
+    <string name="common_datetime_month_november">November</string>
+    <string name="common_datetime_month_december">December</string>
+
     <!-- Main -->
     <string name="main_bottom_nav_item_home">Info</string>
     <string name="main_bottom_nav_item_map">Karte</string>
@@ -19,8 +32,9 @@
     <string name="home_topbar_title">Hallo Stoppelmarkt!</string>
 
     <!-- Countdown -->
-    <string name="countdownCard_prefix">Nur noch</string>
-    <string name="countdownCard_suffix">bis zum Stoppelmarkt %1$d</string>
+    <string name="countdownCard_suffix">bis zum</string>
+    <string name="countdownCard_iteration">%1$d. Stoppelmarkt</string>
+    <string name="countdownCard_dates">%1$s - %2$s</string>
 
     <!-- Settings/Licenses -->
     <string name="settings_topbar_title">Einstellungen/Info</string>

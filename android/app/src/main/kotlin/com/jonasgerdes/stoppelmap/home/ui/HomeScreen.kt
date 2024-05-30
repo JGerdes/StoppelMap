@@ -103,7 +103,7 @@ fun HomeScreen(
                                 hours = countDownState.hoursLeft,
                                 minutes = countDownState.minutesLeft,
                                 seconds = countDownState.secondsLeft,
-                                seasonYear = countDownState.season.year
+                                season = countDownState.season,
                             )
                         }
                     } else {
@@ -112,7 +112,7 @@ fun HomeScreen(
                             hours = countDownState.hoursLeft,
                             minutes = countDownState.minutesLeft,
                             seconds = countDownState.secondsLeft,
-                            seasonYear = countDownState.season.year
+                            season = countDownState.season,
                         )
                     }
                 }

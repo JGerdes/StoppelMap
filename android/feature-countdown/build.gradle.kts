@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":android:theme"))
 
     implementation(libs.bundles.compose.ui)
+    implementation(libs.compose.constraint.layout)
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.glance.appwidget)
     implementation(libs.glance.material)

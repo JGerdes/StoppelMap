@@ -22,13 +22,13 @@ import com.jonasgerdes.stoppelmap.theme.util.supportsDynamicColor
 import com.jonasgerdes.stoppelmap.theme.util.supportsLightNavigationBarAppearance
 import com.jonasgerdes.stoppelmap.theme.util.supportsLightStatusBarAppearance
 
-private val DarkColorScheme = darkColorScheme(
+val DarkColorScheme = darkColorScheme(
     primary = StoppelPurpleBrightened,
     secondary = StoppelIndigoBrightened,
     tertiary = StoppelPinkBrightened,
 )
 
-private val LightColorScheme = lightColorScheme(
+val LightColorScheme = lightColorScheme(
     primary = StoppelPurple,
     secondary = StoppelIndigo,
     tertiary = StoppelPink,
