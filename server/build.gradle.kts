@@ -5,9 +5,8 @@ plugins {
 }
 
 application {
-    mainClass.set("com.jonasgerdes.stoppelmap.server.api.ApplicationKt")
+    mainClass.set("com.jonasgerdes.stoppelmap.server.ApplicationKt")
 }
-
 
 java {
     targetCompatibility = JavaVersion.VERSION_17
@@ -16,11 +15,12 @@ java {
 
 ktor {
     fatJar {
-        archiveFileName.set("stoppelmap-api.jar")
+        archiveFileName.set("stoppelmap-server.jar")
     }
 }
 
 dependencies {
     implementation(libs.bundles.ktor.server)
     implementation(libs.logback)
+    implementation(libs.bundles.koin.server)
 }

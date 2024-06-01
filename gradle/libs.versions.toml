@@ -84,6 +84,8 @@ androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.re
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
+koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j", version.ref = "koin" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 sqldelight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
@@ -131,6 +133,7 @@ koin-compose = ["koin-android", "koin-androidx-compose"]
 androidx-runtime = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-runtime-compose"]
 ktor-android = ["ktor-client-android", "ktor-client-logging", "ktor-client-content-negotiation", "ktor-serialization-kotlinx-json", "kotlinx-serialization-json", "ktor-client-encoding"]
 ktor-server = ["ktor-server-core", "ktor-server-netty", "ktor-server-call-logging"]
+koin-server = ["koin-core", "koin-ktor", "koin-logger-slf4j"]
 compose-ui = ["compose-ui-core", "compose-ui-preview", "compose-material-icons", "compose-material-components"]
 
 [plugins]

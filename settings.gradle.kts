@@ -29,7 +29,7 @@ include(":android:feature-update")
 include(":android:app")
 
 // Server
-include(":server:api")
+include(":server")
 
 // Preparation
 include(":preparation")
