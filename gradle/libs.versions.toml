@@ -37,7 +37,7 @@ kermit = "2.0.3"
 ktor = "2.3.0"
 gson = "2.10.1"
 geogson = "1.2.21"
-jsoup = "1.16.2"
+jsoup = "1.17.2"
 
 ktorServer = "2.2.2"
 logback = "1.4.5"

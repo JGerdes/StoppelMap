@@ -3,11 +3,13 @@ package com.jonasgerdes.stoppelmap.server.config
 import io.ktor.server.config.ApplicationConfig
 
 fun ApplicationConfig.toAppConfig() = AppConfig(
-    environment = property("ktor.environment").getString().let {
+    environment = property("stoppelmap-server.environment").getString().let {
         try {
             AppConfig.Environment.valueOf(it.uppercase())
         } catch (iae: IllegalArgumentException) {
             AppConfig.Environment.PRD
         }
-    }
+    },
+    version = property("stoppelmap-server.version").getString(),
+    stoppelmarktWebsiteBaseUrl = property("stoppelmap-server.stoppelmarkt-website-url").getString()
 )

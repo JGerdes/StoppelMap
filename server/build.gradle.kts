@@ -24,4 +24,5 @@ dependencies {
     implementation(libs.logback)
     implementation(libs.bundles.koin.server)
     implementation(libs.kotlinx.datetime)
+    implementation(libs.jsoup)
 }

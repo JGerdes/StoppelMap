@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.server
 
 import com.jonasgerdes.stoppelmap.server.config.toAppConfig
+import com.jonasgerdes.stoppelmap.server.crawler.StoppelmarktWebsiteCrawler
 import com.jonasgerdes.stoppelmap.server.scheduler.ClockProvider
 import com.jonasgerdes.stoppelmap.server.scheduler.Schedule
 import com.jonasgerdes.stoppelmap.server.scheduler.Task
@@ -20,7 +21,6 @@ import org.koin.core.logger.Level
 import org.koin.dsl.module
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.Koin
-import kotlin.time.Duration.Companion.seconds
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -36,14 +36,20 @@ fun Application.ktorModule() {
                 single { environment.log }
                 single<ClockProvider> { ClockProvider { Clock.System.now() } }
                 single {
+                    StoppelmarktWebsiteCrawler(
+                        baseUrl = appConfig.stoppelmarktWebsiteBaseUrl,
+                        version = appConfig.version,
+                    )
+                }
+                single {
+                    val crawler = get<StoppelmarktWebsiteCrawler>()
                     TaskScheduler(
                         tasks = listOf(
-                            Task(Schedule.RepeatEvery(10.seconds)) {
-                                environment.log.info("Run 10s task")
-                            },
-                            Task(Schedule.Hourly()) {
-                                environment.log.info("Run hourly task")
-                            },
+                            Task(Schedule.Daily(), executeOnceImmediately = true) {
+                                val result = crawler.crawlNewsPage()
+                                result.logs.logTo(environment.log)
+                                environment.log.info(result.logs.asFormattedString())
+                            }
                         ),
                         clockProvider = get(),
                     )
