@@ -26,10 +26,10 @@ class CrawlLogs(
         logger.info("Start crawling ${title?.let { "$it " } ?: ""}of resource $resource")
         messages.forEach {
             when (it.type) {
-                Type.WARNING -> logger.warn(it.message)
-                Type.ERROR -> logger.error(it.message)
+                Type.WARNING -> logger.warn("${it.type.emoji} ${it.message}")
+                Type.ERROR -> logger.error("${it.type.emoji} ${it.message}")
                 Type.ATTACHMENT -> Unit // No-op
-                else -> logger.info(it.message)
+                else -> logger.info("${it.type.emoji} ${it.message}")
             }
         }
     }

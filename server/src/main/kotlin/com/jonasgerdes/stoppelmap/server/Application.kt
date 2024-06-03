@@ -37,18 +37,18 @@ fun Application.ktorModule() {
                 single<ClockProvider> { ClockProvider { Clock.System.now() } }
                 single {
                     StoppelmarktWebsiteCrawler(
-                        baseUrl = appConfig.stoppelmarktWebsiteBaseUrl,
+                        baseUrl = appConfig.crawler.baseUrl,
                         version = appConfig.version,
+                        logger = get(),
+                        slowMode = appConfig.crawler.slowMode,
                     )
                 }
                 single {
                     val crawler = get<StoppelmarktWebsiteCrawler>()
                     TaskScheduler(
                         tasks = listOf(
-                            Task(Schedule.Daily(), executeOnceImmediately = true) {
-                                val result = crawler.crawlNewsPage()
-                                result.logs.logTo(environment.log)
-                                environment.log.info(result.logs.asFormattedString())
+                            Task(Schedule.Hourly(), executeOnceImmediately = true) {
+                                crawler.crawlNews()
                             }
                         ),
                         clockProvider = get(),

@@ -15,9 +15,9 @@ import kotlin.time.Duration.Companion.hours
 class Task(
     val schedule: Schedule,
     val executeOnceImmediately: Boolean = false,
-    private val doWork: () -> Unit,
+    private val doWork: suspend () -> Unit,
 ) {
-    operator fun invoke() = doWork()
+    suspend operator fun invoke() = doWork()
 }
 
 sealed interface Schedule {

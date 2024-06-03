@@ -2,8 +2,8 @@ package com.jonasgerdes.stoppelmap.server.config
 
 data class AppConfig(
     val environment: Environment,
-    val stoppelmarktWebsiteBaseUrl: String,
     val version: String,
+    val crawler: Crawler,
 ) {
     enum class Environment {
         DEV,
@@ -13,4 +13,9 @@ data class AppConfig(
         val isPrd get() = this == PRD
 
     }
+
+    data class Crawler(
+        val baseUrl: String,
+        val slowMode: Boolean,
+    )
 }
