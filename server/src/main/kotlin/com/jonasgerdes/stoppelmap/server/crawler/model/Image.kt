@@ -6,6 +6,12 @@ data class Image(
     val url: String,
     val caption: String? = null,
     val author: String? = null,
-    val localFile: File? = null,
-    val blurHash: String? = null,
+    val localFile: File,
+    val blurHash: String,
+)
+
+data class ScrapedImage(
+    val url: String,
+    val caption: String? = null,
+    val author: String? = null,
 )

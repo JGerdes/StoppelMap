@@ -3,12 +3,12 @@ package com.jonasgerdes.stoppelmap.server.crawler.scraper
 import com.jonasgerdes.stoppelmap.server.crawler.PageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.model.ArticlePreview
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlLogs
-import com.jonasgerdes.stoppelmap.server.crawler.model.FullArticle
-import com.jonasgerdes.stoppelmap.server.crawler.model.Image
+import com.jonasgerdes.stoppelmap.server.crawler.model.ScrapedArticle
+import com.jonasgerdes.stoppelmap.server.crawler.model.ScrapedImage
 import org.jsoup.nodes.Document
 
 class ArticlePageScraper(private val preview: ArticlePreview) :
-    PageScraper<FullArticle>() {
+    PageScraper<ScrapedArticle>() {
     override val resourcePath = "aktuelles/detail/${preview.slug}/"
 
     override fun parseDocument(document: Document, logs: CrawlLogs) = with(logs) {
@@ -17,12 +17,12 @@ class ArticlePageScraper(private val preview: ArticlePreview) :
         val content = paragraphs.joinToString("\n\n") { it.text().trim() }
         val copyrights = extractCopyrights(content)
 
-        val images = mutableListOf<Image>()
+        val images = mutableListOf<ScrapedImage>()
 
         images += document.select("[itemprop=articleBody] img").mapIndexed { index, img ->
             val url = img.attr("src").trim()
             if (url.isNotBlank()) {
-                Image(
+                ScrapedImage(
                     url = url,
                     author = copyrights.getOrNull(index)?.trim(),
                 )
@@ -35,7 +35,7 @@ class ArticlePageScraper(private val preview: ArticlePreview) :
             val url = thumb.select("img").attr("src").trim()
             if (url.isNotBlank()) {
                 val copyright = extractCopyrights(thumb.select(".caption").text())
-                Image(
+                ScrapedImage(
                     url = url,
                     author = copyright.firstOrNull()?.trim(),
                     caption = thumb.select(".caption").text().trim()
@@ -43,7 +43,7 @@ class ArticlePageScraper(private val preview: ArticlePreview) :
             } else null
         }
 
-        FullArticle(
+        ScrapedArticle(
             slug = preview.slug,
             title = preview.title,
             content = content,

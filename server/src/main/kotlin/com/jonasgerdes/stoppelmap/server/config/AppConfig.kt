@@ -17,5 +17,6 @@ data class AppConfig(
     data class Crawler(
         val baseUrl: String,
         val slowMode: Boolean,
+        val imageCacheDir: String,
     )
 }

@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.server.crawler
 import com.jonasgerdes.stoppelmap.server.crawler.model.ArticlePreview
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlResult
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
+import com.jonasgerdes.stoppelmap.server.crawler.model.Image
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.ArticlePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsArchivePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsPageScraper
@@ -13,18 +14,12 @@ import kotlin.time.Duration.Companion.seconds
 private val slowModeDelay = 5.seconds
 
 class StoppelmarktWebsiteCrawler(
-    private val baseUrl: String,
-    version: String,
+    private val crawlerConfig: CrawlerConfig,
+    private val imageProcessor: ImageProcessor,
     private val logger: Logger,
-    private val slowMode: Boolean,
 ) {
-    private val crawlerConfig = CrawlerConfig(
-        baseUrl = baseUrl,
-        userAgent = "StoppelBot/$version (https://stoppelmap.de/bot)",
-    )
-
     suspend fun crawlNews() {
-        logger.info("Crawling news from $baseUrl${if (slowMode) " in slow mode" else ""}")
+        logger.info("Crawling news from ${crawlerConfig.baseUrl}${if (crawlerConfig.slowMode) " in slow mode" else ""}")
         val articlePreviews = mutableSetOf<ArticlePreview>()
         when (val result = NewsPageScraper().invoke(crawlerConfig)) {
             is CrawlResult.Error -> {
@@ -40,7 +35,7 @@ class StoppelmarktWebsiteCrawler(
 
         val pageIterator = archivePagesToScrape.iterator()
         while (pageIterator.hasNext()) {
-            if (slowMode) delay(slowModeDelay)
+            if (crawlerConfig.slowMode) delay(slowModeDelay)
             val resource = pageIterator.next()
             logger.debug("📥 Scraping article $resource")
             when (val result = NewsArchivePageScraper(resource).invoke(crawlerConfig)) {
@@ -54,16 +49,50 @@ class StoppelmarktWebsiteCrawler(
             }
         }
 
-        val fullArticles = articlePreviews.mapNotNull {
+        val scrapedArticles = articlePreviews.mapNotNull {
             logger.debug("Scraped article preview $it, getting full article")
             when (val result = ArticlePageScraper(preview = it).invoke(crawlerConfig)) {
-                is CrawlResult.Error -> result.logs.logTo(logger)
+                is CrawlResult.Error -> {
+                    result.logs.logTo(logger)
+                    null
+                }
+
                 is CrawlResult.Success -> result.data
             }
         }
 
+        val fullArticles = scrapedArticles.map { article ->
+            article.toFullArticle(
+                images = article.images.mapNotNull { image ->
+                    if (crawlerConfig.slowMode) delay(slowModeDelay)
+                    when (val result = imageProcessor(
+                        baseUrl = crawlerConfig.baseUrl,
+                        imageUrl = image.url,
+                        articleSlug = article.slug,
+                    )) {
+                        is ImageProcessor.Result.Error -> {
+                            logger.warn(
+                                "Failed to process image ${image.url}",
+                                result.throwable
+                            )
+                            null
+                        }
+
+                        is ImageProcessor.Result.Success -> {
+                            Image(
+                                url = image.url,
+                                caption = image.caption,
+                                author = image.author,
+                                localFile = result.localFile,
+                                blurHash = result.blurHash
+                            )
+                        }
+                    }
+                }
+            )
+        }
         fullArticles.forEach {
-            logger.debug("Scraped full article $it")
+            logger.debug("Article ${it.slug} from ${it.publishDate} ${it.description} with images ${it.images}")
         }
         logger.info("Crawled ${fullArticles.size} articles (${articlePreviews.size} previews)")
     }

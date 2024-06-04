@@ -2,7 +2,7 @@ package com.jonasgerdes.stoppelmap.server
 
 import com.jonasgerdes.stoppelmap.server.config.toAppConfig
 import com.jonasgerdes.stoppelmap.server.crawler.StoppelmarktWebsiteCrawler
-import com.jonasgerdes.stoppelmap.server.scheduler.ClockProvider
+import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.scheduler.Schedule
 import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import com.jonasgerdes.stoppelmap.server.scheduler.TaskScheduler
@@ -16,7 +16,6 @@ import io.ktor.server.routing.routing
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
 import org.koin.core.logger.Level
 import org.koin.dsl.module
 import org.koin.ktor.ext.inject
@@ -34,15 +33,6 @@ fun Application.ktorModule() {
             module {
                 single { appConfig }
                 single { environment.log }
-                single<ClockProvider> { ClockProvider { Clock.System.now() } }
-                single {
-                    StoppelmarktWebsiteCrawler(
-                        baseUrl = appConfig.crawler.baseUrl,
-                        version = appConfig.version,
-                        logger = get(),
-                        slowMode = appConfig.crawler.slowMode,
-                    )
-                }
                 single {
                     val crawler = get<StoppelmarktWebsiteCrawler>()
                     TaskScheduler(
@@ -55,6 +45,8 @@ fun Application.ktorModule() {
                     )
                 }
             },
+            applicationModule,
+            crawlerModule,
         )
     }
 

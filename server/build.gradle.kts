@@ -25,4 +25,9 @@ dependencies {
     implementation(libs.bundles.koin.server)
     implementation(libs.kotlinx.datetime)
     implementation(libs.jsoup)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.scrimage.core)
+    implementation(libs.scrimage.webp)
+    implementation(libs.blurhash.java)
 }
