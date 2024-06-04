@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.server.crawler
 import com.jonasgerdes.stoppelmap.server.crawler.model.ArticlePreview
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlResult
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
+import com.jonasgerdes.stoppelmap.server.crawler.scraper.ArticlePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsArchivePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsPageScraper
 import kotlinx.coroutines.delay
@@ -53,9 +54,17 @@ class StoppelmarktWebsiteCrawler(
             }
         }
 
-        articlePreviews.forEach {
-            logger.debug("Scraped article preview $it")
+        val fullArticles = articlePreviews.mapNotNull {
+            logger.debug("Scraped article preview $it, getting full article")
+            when (val result = ArticlePageScraper(preview = it).invoke(crawlerConfig)) {
+                is CrawlResult.Error -> result.logs.logTo(logger)
+                is CrawlResult.Success -> result.data
+            }
         }
-        logger.info("Crawled ${articlePreviews.size} articles")
+
+        fullArticles.forEach {
+            logger.debug("Scraped full article $it")
+        }
+        logger.info("Crawled ${fullArticles.size} articles (${articlePreviews.size} previews)")
     }
 }
