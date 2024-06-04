@@ -11,6 +11,7 @@ import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.seconds
 
 class Task(
     val schedule: Schedule,
@@ -33,6 +34,8 @@ class TaskScheduler(
 ) {
     suspend fun run() {
         coroutineScope {
+            // Wait 5 seconds for everything to settle
+            delay(5.seconds)
             tasks.forEach { task ->
                 launch {
                     if (task.executeOnceImmediately) {

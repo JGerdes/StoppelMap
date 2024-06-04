@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.server.crawler.scraper
 
 import com.jonasgerdes.stoppelmap.server.crawler.PageScraper
+import com.jonasgerdes.stoppelmap.server.crawler.model.ArticlePreview
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlLogs
 import org.jsoup.nodes.Document
 
@@ -17,7 +18,7 @@ class NewsArchivePageScraper(
             }
 
         val articles = articleElements
-            .map { element ->
+            .mapNotNull { element ->
                 val headline = element
                     .selectElementOrError("h3", "Missing article headline")
                     .text()
@@ -34,17 +35,24 @@ class NewsArchivePageScraper(
                     .assert({ isNotBlank() }) { warn("Article url is empty") }
 
                 val date = element
-                    .selectElementOr(".time") { warn("Missing article read more button") }
-                    ?.attribute("datetime")?.value
-                    ?.assert({ isNotBlank() }) { warn("Article date is empty") }
-                    ?.ifBlank { null }
+                    .selectElementOrError("time", "Missing article date")
+                    .attribute("datetime").value
+                    .ifBlank { null }
+                    .assertNotNull("Article date is empty")
 
-                Content.Article(
-                    headline = headline,
-                    teaser = teaser,
-                    fullArticleUrl = url.cleanPath(),
-                    date = date
-                )
+                val slug = parseArticleSlugFromPath(url)
+                if (slug == null) {
+                    warn("Error parsing slug ($url)")
+                }
+
+                slug?.let { slug ->
+                    ArticlePreview(
+                        slug = slug,
+                        title = headline,
+                        description = teaser,
+                        publishDate = articleOverviewDateFormat.parse(date)
+                    )
+                }
             }
 
         val pagination =
@@ -62,14 +70,7 @@ class NewsArchivePageScraper(
     }
 
     data class Content(
-        val articles: List<Article>,
+        val articles: List<ArticlePreview>,
         val paginationUrls: List<String>,
-    ) {
-        data class Article(
-            val headline: String,
-            val date: String?,
-            val teaser: String,
-            val fullArticleUrl: String,
-        )
-    }
+    )
 }

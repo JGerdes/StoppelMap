@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.server.crawler.scraper
 
 import com.jonasgerdes.stoppelmap.server.crawler.PageScraper
+import com.jonasgerdes.stoppelmap.server.crawler.model.ArticlePreview
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlLogs
 import org.jsoup.nodes.Document
 
@@ -14,7 +15,7 @@ class NewsPageScraper : PageScraper<NewsPageScraper.Content>() {
 
         val articles = articleList.children().also {
             if (it.size != 2) warn("Unexpected number of articles: expected 2, got ${it.size}")
-        }.map { element ->
+        }.mapNotNull { element ->
             val headline = element
                 .selectElementOrError("h3", "Missing article headline")
                 .text()
@@ -30,24 +31,31 @@ class NewsPageScraper : PageScraper<NewsPageScraper.Content>() {
                 .attribute("href").value
                 .assert({ isNotBlank() }) { warn("Article url is empty") }
 
-            Content.Article(
-                headline = headline,
-                teaser = teaser,
-                fullArticleUrl = url.cleanPath()
-            )
+            val date = element
+                .selectElementOrError(".date > time", "Missing article date")
+                .attribute("datetime").value
+                .ifBlank { null }
+                .assertNotNull("Article date is empty")
 
+            val slug = parseArticleSlugFromPath(url)
+            if (slug == null) {
+                warn("Error parsing slug ($url)")
+            }
+
+            slug?.let { slug ->
+                ArticlePreview(
+                    slug = slug,
+                    title = headline,
+                    description = teaser,
+                    publishDate = articleOverviewDateFormat.parse(date)
+                )
+            }
         }
 
         Content(articles = articles)
     }
 
     data class Content(
-        val articles: List<Article>
-    ) {
-        data class Article(
-            val headline: String,
-            val teaser: String,
-            val fullArticleUrl: String,
-        )
-    }
+        val articles: List<ArticlePreview>
+    )
 }
