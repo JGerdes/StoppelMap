@@ -11,6 +11,7 @@ fun ApplicationConfig.toAppConfig() = AppConfig(
         }
     },
     version = property("stoppelmap-server.version").getString(),
+    sqliteDirectory = property("stoppelmap-server.sqlite-dir").getString(),
     crawler = AppConfig.Crawler(
         baseUrl = property("stoppelmap-server.crawler.base-url").getString(),
         slowMode = property("stoppelmap-server.crawler.slow-mode").getString().toBoolean(),

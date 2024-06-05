@@ -7,7 +7,10 @@ import com.jonasgerdes.stoppelmap.server.crawler.model.Image
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.ArticlePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsArchivePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsPageScraper
+import com.jonasgerdes.stoppelmap.server.data.ArticleRepository
+import com.jonasgerdes.stoppelmap.server.news.Article
 import kotlinx.coroutines.delay
+import kotlinx.datetime.Clock
 import org.slf4j.Logger
 import kotlin.time.Duration.Companion.seconds
 
@@ -16,6 +19,7 @@ private val slowModeDelay = 5.seconds
 class StoppelmarktWebsiteCrawler(
     private val crawlerConfig: CrawlerConfig,
     private val imageProcessor: ImageProcessor,
+    private val articleRepository: ArticleRepository,
     private val logger: Logger,
 ) {
     suspend fun crawlNews() {
@@ -61,7 +65,21 @@ class StoppelmarktWebsiteCrawler(
             }
         }
 
-        val fullArticles = scrapedArticles.map { article ->
+        articleRepository.upsertAll(
+            scrapedArticles.map {
+                Article(
+                    slug = it.slug,
+                    title = it.title,
+                    description = it.description,
+                    publishedOn = it.publishDate,
+                    content = it.content,
+                    createdAt = Clock.System.now(),
+                    isVisible = true
+                )
+            }
+        )
+
+        /*val fullArticles = scrapedArticles.map { article ->
             article.toFullArticle(
                 images = article.images.mapNotNull { image ->
                     if (crawlerConfig.slowMode) delay(slowModeDelay)

@@ -1,0 +1,20 @@
+import kotlin.Boolean;
+import kotlinx.datetime.Instant;
+import kotlinx.datetime.LocalDate;
+
+CREATE TABLE article (
+    slug        TEXT NOT NULL PRIMARY KEY,
+    title       TEXT NOT NULL,
+    description TEXT NOT NULL,
+    publishedOn TEXT AS LocalDate NOT NULL,
+    content     TEXT NOT NULL,
+    createdAt   TEXT AS Instant NOT NULL,
+    isVisible   INTEGER AS Boolean NOT NULL
+);
+
+insert:
+INSERT OR REPLACE INTO article(slug, title, description, publishedOn, content, createdAt, isVisible)
+VALUES ?;
+
+getAll:
+SELECT * FROM article ORDER BY publishedOn DESC;

@@ -33,6 +33,7 @@ val crawlerModule = module {
             crawlerConfig = get(),
             imageProcessor = get(),
             logger = get(),
+            articleRepository = get(),
         )
     }
 

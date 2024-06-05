@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.server
 import com.jonasgerdes.stoppelmap.server.config.toAppConfig
 import com.jonasgerdes.stoppelmap.server.crawler.StoppelmarktWebsiteCrawler
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
+import com.jonasgerdes.stoppelmap.server.data.dataModule
 import com.jonasgerdes.stoppelmap.server.scheduler.Schedule
 import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import com.jonasgerdes.stoppelmap.server.scheduler.TaskScheduler
@@ -46,6 +47,7 @@ fun Application.ktorModule() {
                 }
             },
             applicationModule,
+            dataModule,
             crawlerModule,
         )
     }

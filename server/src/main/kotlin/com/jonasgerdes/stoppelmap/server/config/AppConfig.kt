@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.server.config
 data class AppConfig(
     val environment: Environment,
     val version: String,
+    val sqliteDirectory: String,
     val crawler: Crawler,
 ) {
     enum class Environment {
