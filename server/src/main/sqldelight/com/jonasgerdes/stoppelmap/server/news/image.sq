@@ -1,0 +1,30 @@
+import kotlin.Boolean;
+import kotlinx.datetime.Instant;
+import kotlinx.datetime.LocalDate;
+
+CREATE TABLE image (
+    uuid        TEXT NOT NULL PRIMARY KEY,
+    articleSlug TEXT NOT NULL,
+    caption     TEXT,
+    author      TEXT,
+    blurHash    TEXT NOT NULL,
+    originalUrl TEXT NOT NULL,
+
+    FOREIGN KEY(articleSlug) REFERENCES article(slug)
+);
+
+upsert {
+    INSERT OR IGNORE INTO image(uuid, articleSlug, caption, author, blurHash, originalUrl)
+    VALUES (:uuid, :articleSlug, :caption, :author, :blurHash, :originalUrl);
+    UPDATE image
+    SET
+        articleSlug = :articleSlug,
+        caption = :caption,
+        author = :author,
+        blurHash = :blurHash,
+        originalUrl = :originalUrl
+    WHERE uuid = :uuid;
+}
+
+getAllForarticle:
+SELECT * FROM image WHERE articleSlug = :articleSlug;

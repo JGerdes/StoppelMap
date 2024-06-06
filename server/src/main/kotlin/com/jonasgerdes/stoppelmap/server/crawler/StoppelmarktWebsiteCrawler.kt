@@ -3,14 +3,15 @@ package com.jonasgerdes.stoppelmap.server.crawler
 import com.jonasgerdes.stoppelmap.server.crawler.model.ArticlePreview
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlResult
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
-import com.jonasgerdes.stoppelmap.server.crawler.model.Image
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.ArticlePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsArchivePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsPageScraper
 import com.jonasgerdes.stoppelmap.server.data.ArticleRepository
+import com.jonasgerdes.stoppelmap.server.data.ImageRepository
 import com.jonasgerdes.stoppelmap.server.news.Article
+import com.jonasgerdes.stoppelmap.server.news.Image
+import com.jonasgerdes.stoppelmap.server.scheduler.ClockProvider
 import kotlinx.coroutines.delay
-import kotlinx.datetime.Clock
 import org.slf4j.Logger
 import kotlin.time.Duration.Companion.seconds
 
@@ -20,11 +21,19 @@ class StoppelmarktWebsiteCrawler(
     private val crawlerConfig: CrawlerConfig,
     private val imageProcessor: ImageProcessor,
     private val articleRepository: ArticleRepository,
+    private val imageRepository: ImageRepository,
+    private val clockProvider: ClockProvider,
     private val logger: Logger,
 ) {
-    suspend fun crawlNews() {
+
+    enum class Mode {
+        All,
+        Latest,
+    }
+
+    suspend fun crawlNews(mode: Mode = Mode.Latest) {
         logger.info("Crawling news from ${crawlerConfig.baseUrl}${if (crawlerConfig.slowMode) " in slow mode" else ""}")
-        val articlePreviews = mutableSetOf<ArticlePreview>()
+        val articlePreviews = mutableListOf<ArticlePreview>()
         when (val result = NewsPageScraper().invoke(crawlerConfig)) {
             is CrawlResult.Error -> {
                 result.logs.logTo(logger)
@@ -45,8 +54,10 @@ class StoppelmarktWebsiteCrawler(
             when (val result = NewsArchivePageScraper(resource).invoke(crawlerConfig)) {
                 is CrawlResult.Error -> result.logs.logTo(logger)
                 is CrawlResult.Success -> {
-                    result.data.paginationUrls.forEach {
-                        if (!archivePagesToScrape.contains(it)) archivePagesToScrape.add(it)
+                    if (mode == Mode.All) {
+                        result.data.paginationUrls.forEach {
+                            if (!archivePagesToScrape.contains(it)) archivePagesToScrape.add(it)
+                        }
                     }
                     articlePreviews.addAll(result.data.articles)
                 }
@@ -73,45 +84,50 @@ class StoppelmarktWebsiteCrawler(
                     description = it.description,
                     publishedOn = it.publishDate,
                     content = it.content,
-                    createdAt = Clock.System.now(),
+                    createdAt = clockProvider.now(),
+                    modifiedAt = clockProvider.now(),
                     isVisible = true
                 )
             }
         )
 
-        /*val fullArticles = scrapedArticles.map { article ->
-            article.toFullArticle(
-                images = article.images.mapNotNull { image ->
-                    if (crawlerConfig.slowMode) delay(slowModeDelay)
-                    when (val result = imageProcessor(
-                        baseUrl = crawlerConfig.baseUrl,
-                        imageUrl = image.url,
-                        articleSlug = article.slug,
-                    )) {
-                        is ImageProcessor.Result.Error -> {
-                            logger.warn(
-                                "Failed to process image ${image.url}",
-                                result.throwable
-                            )
-                            null
-                        }
-
-                        is ImageProcessor.Result.Success -> {
-                            Image(
-                                url = image.url,
-                                caption = image.caption,
-                                author = image.author,
-                                localFile = result.localFile,
-                                blurHash = result.blurHash
-                            )
-                        }
+        val images = scrapedArticles.map { article ->
+            article.images.mapNotNull { image ->
+                if (crawlerConfig.slowMode) delay(slowModeDelay)
+                val imageUrl = sanitizeUrl(image.url)
+                when (val result = imageProcessor(
+                    url = imageUrl,
+                    articleSlug = article.slug,
+                )) {
+                    is ImageProcessor.Result.Error -> {
+                        logger.warn(
+                            "Failed to process image ${image.url}",
+                            result.throwable
+                        )
+                        null
                     }
+
+                    is ImageProcessor.Result.Success -> Image(
+                        uuid = result.uuid,
+                        articleSlug = article.slug,
+                        caption = image.caption,
+                        author = image.author,
+                        blurHash = result.blurHash,
+                        originalUrl = imageUrl,
+                    )
                 }
-            )
-        }
-        fullArticles.forEach {
-            logger.debug("Article ${it.slug} from ${it.publishDate} ${it.description} with images ${it.images}")
-        }
-        logger.info("Crawled ${fullArticles.size} articles (${articlePreviews.size} previews)")
+            }
+        }.flatten()
+
+        imageRepository.upsertAll(images)
+
+        logger.info("Done crawling - saved ${scrapedArticles.size} articles and ${images.size} images")
     }
+
+    private fun sanitizeUrl(url: String) =
+        when {
+            url.startsWith("http") -> url
+            else -> crawlerConfig.baseUrl + url.removePrefix("/")
+        }
+
 }

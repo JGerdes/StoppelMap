@@ -1,8 +1,8 @@
-package com.jonasgerdes.stoppelmap.server.crawler.model
+package com.jonasgerdes.stoppelmap.server.news.model
 
 import kotlinx.datetime.LocalDate
 
-data class FullArticle(
+data class Article(
     val slug: String,
     val title: String,
     val content: String,

@@ -9,17 +9,4 @@ data class ScrapedArticle(
     val images: List<ScrapedImage>,
     val description: String,
     val publishDate: LocalDate,
-) {
-
-    fun toFullArticle(
-        images: List<Image>,
-    ) = FullArticle(
-        slug = slug,
-        title = title,
-        content = content,
-        images = images,
-        description = description,
-        publishDate = publishDate,
-
-        )
-}
+)

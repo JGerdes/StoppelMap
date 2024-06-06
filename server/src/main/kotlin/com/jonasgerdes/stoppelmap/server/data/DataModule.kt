@@ -19,9 +19,11 @@ val dataModule = module {
             articleAdapter = Article.Adapter(
                 publishedOnAdapter = localDateAdapter,
                 createdAtAdapter = instantAdapter,
+                modifiedAtAdapter = instantAdapter,
             )
         )
     }
 
     single<ArticleRepository> { ArticleRepository(get<Database>().articleQueries) }
+    single<ImageRepository> { ImageRepository(get<Database>().imageQueries) }
 }

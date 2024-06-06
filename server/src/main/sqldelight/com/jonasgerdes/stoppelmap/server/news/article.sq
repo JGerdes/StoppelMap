@@ -8,13 +8,24 @@ CREATE TABLE article (
     description TEXT NOT NULL,
     publishedOn TEXT AS LocalDate NOT NULL,
     content     TEXT NOT NULL,
+    isVisible   INTEGER AS Boolean NOT NULL,
     createdAt   TEXT AS Instant NOT NULL,
-    isVisible   INTEGER AS Boolean NOT NULL
+    modifiedAt   TEXT AS Instant NOT NULL
 );
 
-insert:
-INSERT OR REPLACE INTO article(slug, title, description, publishedOn, content, createdAt, isVisible)
-VALUES ?;
+upsert {
+    INSERT OR IGNORE INTO article(slug, title, description, publishedOn, content, isVisible, createdAt, modifiedAt)
+    VALUES (:slug, :title, :description, :publishedOn, :content, :isVisible, :createdAt, :modifiedAt);
+    UPDATE article
+    SET
+        title = :title,
+        description = :description,
+        publishedOn = :publishedOn,
+        content = :content,
+        isVisible = :isVisible,
+        modifiedAt = :modifiedAt
+    WHERE slug = :slug;
+}
 
 getAll:
 SELECT * FROM article ORDER BY publishedOn DESC;

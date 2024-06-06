@@ -14,6 +14,7 @@ import kotlinx.coroutines.CancellationException
 import org.slf4j.Logger
 import java.awt.image.BufferedImage
 import java.io.File
+import java.util.UUID
 
 class ImageProcessor(
     private val httpClient: HttpClient,
@@ -22,22 +23,37 @@ class ImageProcessor(
     private val imageCacheDirectory: File,
     private val logger: Logger,
 ) {
+
+    private val originalsDirectory by lazy {
+        File(imageCacheDirectory, "originals").also { it.mkdirs() }
+    }
+    private val processedDirectory by lazy {
+        File(imageCacheDirectory, "processed").also { it.mkdirs() }
+    }
+
     suspend operator fun invoke(
-        baseUrl: String,
-        imageUrl: String,
+        url: String,
         articleSlug: String,
     ): Result {
         return try {
-            val url = sanitizeUrl(url = imageUrl, baseUrl = baseUrl)
-            logger.debug("🏞️ Download $url")
-            val originalFile = downloadImage(url, articleSlug)
-            logger.debug("🏞️ Scale $url")
-            val (scaledFile, scaledImage) = scaleImage(originalFile)
-            logger.debug("🏞️ BlurHash $url")
+            val uuid = UUID.nameUUIDFromBytes(url.toByteArray()).toString()
+
+            logger.debug("🏞️ Download $uuid ($url)")
+            val originalFile = downloadImage(url, directory = File(
+                originalsDirectory,
+                articleSlug
+            ).also { it.mkdir() })
+
+            logger.debug("🏞️ Scale $uuid ($url)")
+            val scaledImage = scaleImage(originalFile, File(processedDirectory, "$uuid.webp"))
+
+            logger.debug("🏞️ BlurHash $uuid ($url)")
             val blurHash = generateBlurHash(scaledImage)
 
+            logger.debug("🏞️ Done processing $uuid ($url)")
+
             Result.Success(
-                localFile = scaledFile,
+                uuid = uuid,
                 blurHash = blurHash,
             )
         } catch (t: Throwable) {
@@ -46,14 +62,13 @@ class ImageProcessor(
         }
     }
 
-    private suspend fun downloadImage(imageUrl: String, articleSlug: String): File {
+    private suspend fun downloadImage(imageUrl: String, directory: File): File {
         val name = imageUrl.split("/").last()
-        val folder = File(imageCacheDirectory, articleSlug).also { it.mkdirs() }
-        val file = File(folder, name)
+        val file = File(directory, name)
         if (!file.exists()) {
             val httpResponse: HttpResponse = httpClient.get(imageUrl) {
                 onDownload { bytesSentTotal, contentLength ->
-                    logger.debug("Received $bytesSentTotal bytes from $contentLength")
+                    logger.trace("Received $bytesSentTotal bytes from $contentLength")
                 }
             }
             if (httpResponse.status != HttpStatusCode.OK) throw IllegalStateException("Status code was not OK (was ${httpResponse.status}).")
@@ -63,36 +78,27 @@ class ImageProcessor(
         return file
     }
 
-    private fun scaleImage(originalImage: File): Pair<File, ImmutableImage> {
-        val scaledFile = File(
-            originalImage.parent,
-            "scaled_${originalImage.nameWithoutExtension.lowercase()}.webp"
-        )
-
-        val original = imageLoader.fromFile(originalImage)
-        val targetSize = 1024
-        val modified = original.bound(targetSize, targetSize)
-        modified.output(webpWriter, scaledFile)
-        return scaledFile to modified
-    }
+    private fun scaleImage(originalImage: File, destination: File): ImmutableImage =
+        if (destination.exists()) {
+            imageLoader.fromFile(originalImage)
+        } else {
+            val original = imageLoader.fromFile(originalImage)
+            val targetSize = 1024
+            val modified = original.bound(targetSize, targetSize)
+            modified.output(webpWriter, destination)
+            modified
+        }
 
     private fun generateBlurHash(image: ImmutableImage): String {
         val newBufferedImage = image.toNewBufferedImage(BufferedImage.TYPE_INT_RGB)
         return BlurHash.encode(newBufferedImage, 4, 3)
     }
 
-    private fun sanitizeUrl(url: String, baseUrl: String) =
-        when {
-            url.startsWith("http") -> url
-            else -> baseUrl + url.removePrefix("/")
-        }
-
     sealed interface Result {
         data class Error(val throwable: Throwable) : Result
         data class Success(
-            val localFile: File,
+            val uuid: String,
             val blurHash: String,
         ) : Result
-
     }
 }
