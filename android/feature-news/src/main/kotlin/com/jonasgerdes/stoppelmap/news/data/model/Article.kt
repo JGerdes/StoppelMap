@@ -7,6 +7,5 @@ data class Article(
     val title: String,
     val teaser: String?,
     val publishDate: LocalDate,
-    val content: String?,
     val images: List<Image>
 )

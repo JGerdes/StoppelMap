@@ -6,6 +6,7 @@ import androidx.compose.material.icons.rounded.DepartureBoard
 import androidx.compose.material.icons.rounded.Event
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Map
+import androidx.compose.material.icons.rounded.Newspaper
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.jonasgerdes.stoppelmap.R
 
@@ -33,5 +34,10 @@ val navigationTabs = listOf(
         icon = Icons.Rounded.DepartureBoard,
         label = R.string.main_bottom_nav_item_transport,
         startRoute = Screen.TransportationOverview.route
+    ),
+    NavigationTab(
+        icon = Icons.Rounded.Newspaper,
+        label = R.string.main_bottom_nav_item_news,
+        startRoute = Screen.News.route
     ),
 )

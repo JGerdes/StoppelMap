@@ -4,8 +4,8 @@ import kotlinx.datetime.LocalDate
 
 @kotlinx.serialization.Serializable
 data class NewsResponse(
-    val version: Int,
-    val versionName: String,
+    val version: Int? = null,
+    val versionName: String? = null,
     val articles: List<Article>,
     val pagination: Pagination
 )
@@ -22,7 +22,6 @@ data class Article(
     val title: String,
     val teaser: String? = null,
     val publishDate: LocalDate,
-    val content: String? = null,
     val images: List<Image>
 )
 
@@ -30,5 +29,6 @@ data class Article(
 data class Image(
     val url: String,
     val author: String? = null,
-    val caption: String?
+    val caption: String? = null,
+    val blurHash: String,
 )

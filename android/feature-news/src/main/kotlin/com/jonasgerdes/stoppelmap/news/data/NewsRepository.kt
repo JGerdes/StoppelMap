@@ -31,7 +31,7 @@ class NewsRepository(
     private fun processNewsResponse(response: NewsResponse) {
         nextPage = response.pagination.next
         val newArticles = response.articles.map { it.toArticle() }
-        articles.value = (articles.value + newArticles).sortedByDescending { it.publishDate }
+        articles.value = articles.value.union(newArticles).sortedByDescending { it.publishDate }
     }
 
 }
@@ -42,7 +42,6 @@ private fun RemoteArticle.toArticle() =
         title = title,
         teaser = teaser,
         publishDate = publishDate,
-        content = content,
         images = images.map { it.toImage() }
     )
 
@@ -51,4 +50,5 @@ private fun RemoteImage.toImage() =
         url = url,
         author = author,
         caption = caption,
+        blurHash = blurHash,
     )
