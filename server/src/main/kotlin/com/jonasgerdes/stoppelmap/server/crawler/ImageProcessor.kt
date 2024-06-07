@@ -80,7 +80,7 @@ class ImageProcessor(
 
     private fun scaleImage(originalImage: File, destination: File): ImmutableImage =
         if (destination.exists()) {
-            imageLoader.fromFile(originalImage)
+            imageLoader.fromFile(destination)
         } else {
             val original = imageLoader.fromFile(originalImage)
             val targetSize = 1024

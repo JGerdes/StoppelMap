@@ -4,23 +4,26 @@ import com.jonasgerdes.stoppelmap.server.config.toAppConfig
 import com.jonasgerdes.stoppelmap.server.crawler.StoppelmarktWebsiteCrawler
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.data.dataModule
+import com.jonasgerdes.stoppelmap.server.news.newsModule
+import com.jonasgerdes.stoppelmap.server.news.newsRoutes
 import com.jonasgerdes.stoppelmap.server.scheduler.Schedule
 import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import com.jonasgerdes.stoppelmap.server.scheduler.TaskScheduler
 import io.ktor.http.CacheControl
+import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
 import io.ktor.server.application.install
+import io.ktor.server.engine.ApplicationEngineEnvironment
 import io.ktor.server.http.content.staticFiles
 import io.ktor.server.plugins.cachingheaders.CachingHeaders
 import io.ktor.server.plugins.callloging.CallLogging
-import io.ktor.server.response.respondText
-import io.ktor.server.routing.get
 import io.ktor.server.plugins.compression.Compression
+import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.routing.routing
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 import org.koin.core.logger.Level
 import org.koin.dsl.module
 import org.koin.ktor.ext.inject
@@ -35,6 +38,12 @@ fun Application.ktorModule() {
     install(CallLogging)
     install(Compression)
     install(CachingHeaders)
+    install(ContentNegotiation) {
+        json(Json {
+            prettyPrint = appConfig.environment.isDev
+            isLenient = appConfig.environment.isPrd
+        })
+    }
     install(Koin) {
         printLogger(if (appConfig.environment.isDev) Level.DEBUG else Level.INFO)
         modules(
@@ -60,8 +69,8 @@ fun Application.ktorModule() {
     }
 
     routing {
-        get("/") {
-            call.respondText("Hello Stoppelmarkt!")
+        newsRoutes()
+
         staticFiles("/static/images", File(appConfig.crawler.imageCacheDir, "processed")) {
             enableAutoHeadResponse()
             cacheControl {
