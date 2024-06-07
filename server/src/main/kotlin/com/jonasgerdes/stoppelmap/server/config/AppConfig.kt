@@ -4,6 +4,7 @@ data class AppConfig(
     val environment: Environment,
     val version: String,
     val sqliteDirectory: String,
+    val externalDomain: String,
     val crawler: Crawler,
 ) {
     enum class Environment {

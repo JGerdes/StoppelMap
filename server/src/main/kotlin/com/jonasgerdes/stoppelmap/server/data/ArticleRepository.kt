@@ -23,4 +23,13 @@ class ArticleRepository(
             }
         }
     }
+
+    fun getPage(page: Int, pageSize: Int): List<Article> {
+        return articleQueries.getVisible(
+            limit = pageSize.toLong(),
+            offset = (page * pageSize).toLong()
+        ).executeAsList()
+    }
+    
+    fun getCount() = articleQueries.countVisible().executeAsOne()
 }

@@ -26,5 +26,5 @@ upsert {
     WHERE uuid = :uuid;
 }
 
-getAllForarticle:
-SELECT * FROM image WHERE articleSlug = :articleSlug;
+getAllForArticles:
+    SELECT * FROM image WHERE articleSlug IN :articles;

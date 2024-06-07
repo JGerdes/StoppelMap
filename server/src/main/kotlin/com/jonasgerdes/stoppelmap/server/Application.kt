@@ -33,7 +33,10 @@ import java.io.File
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.ktorModule() {
-    val appConfig = environment.config.toAppConfig()
+    val appConfig = environment.config.toAppConfig(
+        host = (environment as ApplicationEngineEnvironment).connectors.first()
+            .let { "${it.host}:${it.port}" }
+    )
     environment.log.info("Starting with environment ${appConfig.environment}")
     install(CallLogging)
     install(Compression)
@@ -54,7 +57,7 @@ fun Application.ktorModule() {
                     val crawler = get<StoppelmarktWebsiteCrawler>()
                     TaskScheduler(
                         tasks = listOf(
-                            Task(Schedule.Hourly(), executeOnceImmediately = true) {
+                            Task(Schedule.Hourly()) {
                                 crawler.crawlNews()
                             }
                         ),
@@ -65,6 +68,7 @@ fun Application.ktorModule() {
             applicationModule,
             dataModule,
             crawlerModule,
+            newsModule,
         )
     }
 

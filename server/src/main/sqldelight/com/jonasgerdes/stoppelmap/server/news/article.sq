@@ -27,5 +27,8 @@ upsert {
     WHERE slug = :slug;
 }
 
-getAll:
-SELECT * FROM article ORDER BY publishedOn DESC;
+getVisible:
+    SELECT * FROM article WHERE isVisible = 1 ORDER BY publishedOn DESC LIMIT :limit OFFSET :offset;
+
+countVisible:
+    SELECT COUNT(slug) FROM article WHERE isVisible = 1;

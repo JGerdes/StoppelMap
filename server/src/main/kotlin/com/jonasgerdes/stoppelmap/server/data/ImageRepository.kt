@@ -6,7 +6,6 @@ import com.jonasgerdes.stoppelmap.server.news.ImageQueries
 class ImageRepository(
     private val imageQueries: ImageQueries,
 ) {
-
     fun upsertAll(images: List<Image>) {
         imageQueries.transaction {
             images.forEach {
@@ -21,4 +20,7 @@ class ImageRepository(
             }
         }
     }
+
+    fun getAllForArticles(articleSlugs: List<String>) =
+        imageQueries.getAllForArticles(articleSlugs).executeAsList()
 }

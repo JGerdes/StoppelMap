@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
     alias(libs.plugins.sqldelight)
+    alias(libs.plugins.kotlin.serialization)
     application
 }
 
