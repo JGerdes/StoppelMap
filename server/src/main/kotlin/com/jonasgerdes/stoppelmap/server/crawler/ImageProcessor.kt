@@ -91,7 +91,7 @@ class ImageProcessor(
 
     private fun generateBlurHash(image: ImmutableImage): String {
         val newBufferedImage = image.toNewBufferedImage(BufferedImage.TYPE_INT_RGB)
-        return BlurHash.encode(newBufferedImage, 4, 3)
+        return BlurHash.encode(newBufferedImage, 4, 4)
     }
 
     sealed interface Result {

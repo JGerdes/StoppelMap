@@ -6,7 +6,7 @@ CREATE TABLE image (
     uuid        TEXT NOT NULL PRIMARY KEY,
     articleSlug TEXT NOT NULL,
     caption     TEXT,
-    author      TEXT,
+    copyright      TEXT,
     blurHash    TEXT NOT NULL,
     originalUrl TEXT NOT NULL,
 
@@ -14,13 +14,13 @@ CREATE TABLE image (
 );
 
 upsert {
-    INSERT OR IGNORE INTO image(uuid, articleSlug, caption, author, blurHash, originalUrl)
-    VALUES (:uuid, :articleSlug, :caption, :author, :blurHash, :originalUrl);
+    INSERT OR IGNORE INTO image(uuid, articleSlug, caption, copyright, blurHash, originalUrl)
+    VALUES (:uuid, :articleSlug, :caption, :copyright, :blurHash, :originalUrl);
     UPDATE image
     SET
         articleSlug = :articleSlug,
         caption = :caption,
-        author = :author,
+        copyright = :copyright,
         blurHash = :blurHash,
         originalUrl = :originalUrl
     WHERE uuid = :uuid;

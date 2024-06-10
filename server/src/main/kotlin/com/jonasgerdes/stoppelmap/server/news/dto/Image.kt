@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 data class Image(
     val url: String,
     val caption: String? = null,
-    val author: String? = null,
+    val copyright: String? = null,
     val blurHash: String,
 )

@@ -65,6 +65,7 @@ class StoppelmarktWebsiteCrawler(
         }
 
         val scrapedArticles = articlePreviews.mapNotNull {
+            if (crawlerConfig.slowMode) delay(slowModeDelay)
             logger.debug("Scraped article preview $it, getting full article")
             when (val result = ArticlePageScraper(preview = it).invoke(crawlerConfig)) {
                 is CrawlResult.Error -> {
@@ -111,7 +112,7 @@ class StoppelmarktWebsiteCrawler(
                         uuid = result.uuid,
                         articleSlug = article.slug,
                         caption = image.caption,
-                        author = image.author,
+                        copyright = image.copyright,
                         blurHash = result.blurHash,
                         originalUrl = imageUrl,
                     )

@@ -48,7 +48,7 @@ private fun RemoteArticle.toArticle() =
 private fun RemoteImage.toImage() =
     Image(
         url = url,
-        author = author,
+        copyright = copyright,
         caption = caption,
         blurHash = blurHash,
     )

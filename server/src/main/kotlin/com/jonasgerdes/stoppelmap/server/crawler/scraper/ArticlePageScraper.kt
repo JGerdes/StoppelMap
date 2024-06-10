@@ -16,6 +16,7 @@ class ArticlePageScraper(private val preview: ArticlePreview) :
             document.selectElementsOrError(".news-text-wrap > p", "No paragraphs found")
         val content = paragraphs.joinToString("\n\n") { it.text().trim() }
         val copyrights = extractCopyrights(content)
+        var globalCopyright: String? = copyrights.firstOrNull { it.useForAllImages }?.copyright
 
         val images = mutableListOf<ScrapedImage>()
 
@@ -24,7 +25,7 @@ class ArticlePageScraper(private val preview: ArticlePreview) :
             if (url.isNotBlank()) {
                 ScrapedImage(
                     url = url,
-                    author = copyrights.getOrNull(index)?.trim(),
+                    copyright = copyrights.getOrNull(index)?.copyright,
                 )
             } else null
         }.filterNotNull()
@@ -34,20 +35,30 @@ class ArticlePageScraper(private val preview: ArticlePreview) :
         images += thumbnails.mapNotNull { thumb ->
             val url = thumb.select("img").attr("src").trim()
             if (url.isNotBlank()) {
-                val copyright = extractCopyrights(thumb.select(".caption").text())
+                val caption = thumb.select(".caption").text().trim()
+                val copyright = extractCopyrights(caption).firstOrNull()
+                if (copyright?.useForAllImages == true && globalCopyright == null) {
+                    globalCopyright = copyright.copyright
+                }
                 ScrapedImage(
                     url = url,
-                    author = copyright.firstOrNull()?.trim(),
-                    caption = thumb.select(".caption").text().trim()
+                    copyright = copyright?.copyright,
+                    caption = caption
                 )
             } else null
         }
+
+        val finalImages = globalCopyright?.let { globalCopyright ->
+            images.map {
+                if (it.copyright != null) it else it.copy(copyright = globalCopyright)
+            }
+        } ?: images.toList()
 
         ScrapedArticle(
             slug = preview.slug,
             title = preview.title,
             content = content,
-            images = images.toList(),
+            images = finalImages,
             description = preview.description,
             publishDate = preview.publishDate
         )
@@ -55,8 +66,18 @@ class ArticlePageScraper(private val preview: ArticlePreview) :
 
 
     private val copyrightRegex =
-        Regex("\\(?(?:[Ff]otos?|[Pp]hotos?|[Bb]ilde?r?|©): ?(.{1,32}?)(?:\\)|\\n|\\Z)")
+        Regex("\\(?(?:[Ff]otos?|[Pp]hotos?|[Bb]ilde?r?|©): ?©? ?(.{1,64}?)(?: ?im Auftrag der Stadt Vechta)?(?: ?\\(?honorarfrei\\)?)?(?:\\)|\\n|\\Z)")
+    private val pluralCopyrightRegex = Regex("[Ff]otos|[Pp]hotos|[Bb]ilder")
 
-    private fun extractCopyrights(content: String) =
-        copyrightRegex.find(content)?.groupValues?.drop(1) ?: emptyList()
+    private fun extractCopyrights(content: String): List<Copyright> {
+        val resultsGroups = copyrightRegex.find(content)?.groupValues ?: return emptyList()
+        return resultsGroups.drop(1).map {
+            Copyright(
+                copyright = it.trim(),
+                useForAllImages = resultsGroups.firstOrNull()?.matches(copyrightRegex) == true
+            )
+        }
+    }
+
+    private data class Copyright(val copyright: String, val useForAllImages: Boolean)
 }

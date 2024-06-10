@@ -28,7 +28,7 @@ data class Article(
 @kotlinx.serialization.Serializable
 data class Image(
     val url: String,
-    val author: String? = null,
+    val copyright: String? = null,
     val caption: String? = null,
     val blurHash: String,
 )

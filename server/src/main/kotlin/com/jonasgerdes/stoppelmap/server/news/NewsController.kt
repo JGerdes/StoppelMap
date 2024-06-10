@@ -40,7 +40,7 @@ class NewsController(
                             Image(
                                 url = "${config.externalDomain}/static/images/${it.uuid}.webp",
                                 caption = it.caption,
-                                author = it.author,
+                                copyright = it.copyright,
                                 blurHash = it.blurHash,
                             )
                         },

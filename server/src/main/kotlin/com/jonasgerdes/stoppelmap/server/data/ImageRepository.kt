@@ -13,7 +13,7 @@ class ImageRepository(
                     uuid = it.uuid,
                     articleSlug = it.articleSlug,
                     caption = it.caption,
-                    author = it.author,
+                    copyright = it.copyright,
                     blurHash = it.blurHash,
                     originalUrl = it.originalUrl
                 )
