@@ -8,7 +8,7 @@ import com.jonasgerdes.stoppelmap.countdown.androidCountdownModule
 import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.androidHomeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
-import com.jonasgerdes.stoppelmap.news.newsModule
+import com.jonasgerdes.stoppelmap.news.androidNewsModule
 import com.jonasgerdes.stoppelmap.schedule.androidScheduleModule
 import com.jonasgerdes.stoppelmap.settings.androidLicensesModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
@@ -51,7 +51,7 @@ class App : Application() {
                 mapModule,
                 androidScheduleModule,
                 androidTransportationModule,
-                newsModule,
+                androidNewsModule,
                 updateModule,
             )
         )

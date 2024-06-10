@@ -27,6 +27,7 @@
     <string name="main_bottom_nav_item_map">Map</string>
     <string name="main_bottom_nav_item_transport">Travel</string>
     <string name="main_bottom_nav_item_schedule">Schedule</string>
+    <string name="main_bottom_nav_item_news">News</string>
 
     <!-- Home -->
     <string name="my_string">Hello Stoppelmarkt!</string>
@@ -148,6 +149,11 @@
     <string name="transportation_station_timetable_segment_afternoon">Afternoon</string>
     <string name="transportation_station_timetable_segment_evening">Evening</string>
     <string name="transportation_station_timetable_segment_night">Night</string>
+
+    <!-- News -->
+    <string name="news_topbar_title">News</string>
+    <string name="news_article_card_more">Read more</string>
+    <string name="news_article_card_photo_copyright">© %1$s</string>
 
     <!-- Widgets -->
     <string name="widget_countdown_name">Stoppelmarkt Countdown</string>

@@ -7,12 +7,13 @@ import io.ktor.client.request.parameter
 import io.ktor.client.request.url
 
 class RemoteNewsSource(
+    private val baseUrl: String,
     private val httpClient: HttpClient
 ) {
 
     suspend fun getFirstPage(): NewsResponse =
         httpClient.get {
-            url(urlString = "https://app.stoppelmap.de/news")
+            url(urlString = "$baseUrl/news")
             parameter("page-size", 10)
         }.body()
 

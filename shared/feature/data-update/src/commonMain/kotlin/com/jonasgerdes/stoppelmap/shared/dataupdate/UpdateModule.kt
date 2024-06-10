@@ -35,7 +35,7 @@ expect fun Scope.createCopyAssetToFileUseCase(): CopyAssetToFileUseCase
 val dataUpdateModule = module {
 
     single {
-        val httpClient = HttpClient(createHttpClientEngine()) {
+        HttpClient(createHttpClientEngine()) {
             install(ContentEncoding) {
                 gzip()
             }
@@ -57,10 +57,12 @@ val dataUpdateModule = module {
                 agent = get<AppInfo>().userAgent
             }
         }
+    }
 
+    single {
         CdnSource(
             baseUrl = "https://cdn.stoppelmap.de",
-            httpClient = httpClient,
+            httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )
     }

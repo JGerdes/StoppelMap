@@ -43,6 +43,7 @@ android {
 
 dependencies {
     implementation(project(":shared:base"))
+    implementation(project(":shared:feature:news"))
     implementation(project(":base"))
     implementation(project(":android:theme"))
     implementation(project(":shared:data"))

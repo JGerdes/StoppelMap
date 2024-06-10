@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.transportation.transportationModule
 import com.jonasgerdes.stoppelmap.venue.venueModule
 import homeModule
 import licensesModule
+import newsModule
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 
@@ -27,6 +28,7 @@ fun initKoin(modules: List<Module> = emptyList()) {
             countDownModule,
             scheduleModule,
             transportationModule,
+            newsModule,
         )
     }
 }

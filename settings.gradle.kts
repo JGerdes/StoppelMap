@@ -11,6 +11,7 @@ include(":shared:feature:data-update")
 include(":shared:feature:countdown")
 include(":shared:feature:schedule")
 include(":shared:feature:transportation")
+include(":shared:feature:news")
 include(":shared:app")
 include(":shared")
 

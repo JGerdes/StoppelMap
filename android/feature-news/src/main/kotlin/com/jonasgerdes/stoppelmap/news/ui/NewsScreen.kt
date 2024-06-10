@@ -123,14 +123,14 @@ fun NewsScreen(
                                     Box(
                                         Modifier
                                             .fillMaxWidth()
-                                            .height(48.dp)
+                                            .height(64.dp)
                                             .align(Alignment.BottomCenter)
                                             .background(
                                                 Brush.verticalGradient(
                                                     colors = listOf(
                                                         MaterialTheme.colorScheme.scrim.copy(alpha = 0f),
-                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.4f),
-                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f),
+                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.3f),
+                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
                                                     )
                                                 )
                                             )
@@ -140,11 +140,11 @@ fun NewsScreen(
                                     derivedStateOf { article.images[imagePagerState.currentPage] }
                                 }
 
-                                currentImage.author?.let { author ->
+                                currentImage.copyright?.let { copyright ->
                                     Text(
                                         text = stringResource(
                                             id = R.string.news_article_card_photo_copyright,
-                                            author
+                                            copyright
                                         ),
                                         style = MaterialTheme.typography.labelSmall,
                                         color = MaterialTheme.colorScheme.onScrim,
