@@ -1,10 +1,10 @@
 @file:OptIn(
     ExperimentalMaterial3Api::class,
-    ExperimentalPagerApi::class
 )
 
 package com.jonasgerdes.stoppelmap.news.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,6 +22,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -33,7 +36,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,10 +49,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.PagerState
-import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.news.R
 import com.jonasgerdes.stoppelmap.theme.onScrim
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -55,6 +56,7 @@ import kotlinx.datetime.toJavaLocalDate
 import org.koin.androidx.compose.koinViewModel
 import java.time.format.DateTimeFormatter
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NewsScreen(
     onUrlTap: (String) -> Unit,
@@ -89,40 +91,51 @@ fun NewsScreen(
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         if (article.images.isNotEmpty()) {
-                            val imagePagerState = rememberPagerState()
+                            val imagePagerState = rememberPagerState(initialPage = 0, pageCount = {
+                                article.images.size
+                            })
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .aspectRatio(16 / 9f)
+                                    .aspectRatio(4 / 3f)
                             ) {
+                                var showScrim by remember { mutableStateOf(false) }
                                 HorizontalPager(
-                                    count = article.images.size,
                                     state = imagePagerState,
                                     modifier = Modifier.fillMaxSize()
                                 ) { page ->
                                     val image = article.images[page]
+                                    val blurHashPainter =
+                                        rememberBlurHashPainter(blurHash = image.blurHash)
                                     AsyncImage(
                                         model = image.url,
                                         contentDescription = image.caption,
                                         contentScale = ContentScale.Crop,
+                                        placeholder = blurHashPainter,
+                                        error = blurHashPainter,
+                                        onLoading = { showScrim = false },
+                                        onError = { showScrim = false },
+                                        onSuccess = { showScrim = true },
                                         modifier = Modifier.fillMaxSize()
                                     )
                                 }
-                                Box(
-                                    Modifier
-                                        .fillMaxWidth()
-                                        .height(48.dp)
-                                        .align(Alignment.BottomCenter)
-                                        .background(
-                                            Brush.verticalGradient(
-                                                colors = listOf(
-                                                    MaterialTheme.colorScheme.scrim.copy(alpha = 0f),
-                                                    MaterialTheme.colorScheme.scrim.copy(alpha = 0.4f),
-                                                    MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f),
+                                if (showScrim) {
+                                    Box(
+                                        Modifier
+                                            .fillMaxWidth()
+                                            .height(48.dp)
+                                            .align(Alignment.BottomCenter)
+                                            .background(
+                                                Brush.verticalGradient(
+                                                    colors = listOf(
+                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0f),
+                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.4f),
+                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.6f),
+                                                    )
                                                 )
                                             )
-                                        )
-                                )
+                                    )
+                                }
                                 val currentImage by remember {
                                     derivedStateOf { article.images[imagePagerState.currentPage] }
                                 }
@@ -189,6 +202,7 @@ fun NewsScreen(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PageIndicator(
     pagerState: PagerState,

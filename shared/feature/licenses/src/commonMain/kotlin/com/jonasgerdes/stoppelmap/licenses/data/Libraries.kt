@@ -23,6 +23,12 @@ internal val commonLibraries = listOf(
         sourceUrl = "https://android.googlesource.com/platform/frameworks/support/+/androidx-master-dev/compose/"
     ),
     Library(
+        name = "BlurHash",
+        author = "Wolt, BlurHash Contributors",
+        license = License.MIT(),
+        sourceUrl = "https://github.com/woltapp/blurhash"
+    ),
+    Library(
         name = "Lottie",
         author = "Airbnb, Inc., Lottie Contributors",
         license = License.Apache2(),
