@@ -3,26 +3,30 @@ import kotlinx.datetime.Instant;
 import kotlinx.datetime.LocalDate;
 
 CREATE TABLE image (
-    uuid        TEXT NOT NULL PRIMARY KEY,
-    articleSlug TEXT NOT NULL,
-    caption     TEXT,
-    copyright      TEXT,
-    blurHash    TEXT NOT NULL,
-    originalUrl TEXT NOT NULL,
+    uuid            TEXT NOT NULL PRIMARY KEY,
+    articleSlug     TEXT NOT NULL,
+    caption         TEXT,
+    copyright       TEXT,
+    blurHash        TEXT NOT NULL,
+    originalUrl     TEXT NOT NULL,
+    originalFile    TEXT NOT NULL,
+    processedFile   TEXT NOT NULL,
 
     FOREIGN KEY(articleSlug) REFERENCES article(slug)
 );
 
 upsert {
-    INSERT OR IGNORE INTO image(uuid, articleSlug, caption, copyright, blurHash, originalUrl)
-    VALUES (:uuid, :articleSlug, :caption, :copyright, :blurHash, :originalUrl);
+    INSERT OR IGNORE INTO image(uuid, articleSlug, caption, copyright, blurHash, originalUrl, originalFile, processedFile)
+    VALUES (:uuid, :articleSlug, :caption, :copyright, :blurHash, :originalUrl, :originalFile, :processedFile);
     UPDATE image
     SET
         articleSlug = :articleSlug,
         caption = :caption,
         copyright = :copyright,
         blurHash = :blurHash,
-        originalUrl = :originalUrl
+        originalUrl = :originalUrl,
+        originalFile = :originalFile,
+        processedFile = : processedFile
     WHERE uuid = :uuid;
 }
 

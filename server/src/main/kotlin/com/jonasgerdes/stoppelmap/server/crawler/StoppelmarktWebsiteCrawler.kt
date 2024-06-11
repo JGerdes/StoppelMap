@@ -13,6 +13,7 @@ import com.jonasgerdes.stoppelmap.server.news.Image
 import com.jonasgerdes.stoppelmap.server.scheduler.ClockProvider
 import kotlinx.coroutines.delay
 import org.slf4j.Logger
+import java.io.File
 import kotlin.time.Duration.Companion.seconds
 
 private val slowModeDelay = 5.seconds
@@ -115,6 +116,8 @@ class StoppelmarktWebsiteCrawler(
                         copyright = image.copyright,
                         blurHash = result.blurHash,
                         originalUrl = imageUrl,
+                        originalFile = result.originalFile.parent + File.separator + result.originalFile.name,
+                        processedFile = result.processedFile.name
                     )
                 }
             }

@@ -15,7 +15,9 @@ class ImageRepository(
                     caption = it.caption,
                     copyright = it.copyright,
                     blurHash = it.blurHash,
-                    originalUrl = it.originalUrl
+                    originalUrl = it.originalUrl,
+                    originalFile = it.originalFile,
+                    processedFile = it.processedFile,
                 )
             }
         }

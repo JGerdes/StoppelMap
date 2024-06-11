@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlAllNewsInitialTask
 import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlLatestNewsTask
 import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import com.sksamuel.scrimage.ImmutableImage
+import com.sksamuel.scrimage.nio.ImageIOReader
 import com.sksamuel.scrimage.webp.WebpWriter
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
@@ -46,11 +47,12 @@ val crawlerModule = module {
     single {
         ImageProcessor(
             httpClient = get(),
-            imageLoader = ImmutableImage.loader(),
-            webpWriter = WebpWriter.DEFAULT
+            imageLoader = ImmutableImage.loader().withImageReaders(listOf(ImageIOReader())),
+            imageWriter = WebpWriter.DEFAULT
                 .withQ(75)
                 .withM(6)
                 .withoutAlpha(),
+            processedImageExtension = "webp",
             imageCacheDirectory = File(get<AppConfig>().crawler.imageCacheDir),
             logger = get()
         )

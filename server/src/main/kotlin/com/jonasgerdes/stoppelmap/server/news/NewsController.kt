@@ -38,7 +38,7 @@ class NewsController(
                         title = article.title,
                         images = images.filter { it.articleSlug == article.slug }.map {
                             Image(
-                                url = "${config.externalDomain}/static/images/${it.uuid}.webp",
+                                url = "${config.externalDomain}/static/images/${it.processedFile}",
                                 caption = it.caption,
                                 copyright = it.copyright,
                                 blurHash = it.blurHash,

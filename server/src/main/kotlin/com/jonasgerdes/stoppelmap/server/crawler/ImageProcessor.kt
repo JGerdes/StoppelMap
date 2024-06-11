@@ -1,8 +1,8 @@
 package com.jonasgerdes.stoppelmap.server.crawler
 
 import com.sksamuel.scrimage.ImmutableImage
+import com.sksamuel.scrimage.nio.ImageWriter
 import com.sksamuel.scrimage.nio.ImmutableImageLoader
-import com.sksamuel.scrimage.webp.WebpWriter
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.onDownload
@@ -19,7 +19,8 @@ import java.util.UUID
 class ImageProcessor(
     private val httpClient: HttpClient,
     private val imageLoader: ImmutableImageLoader,
-    private val webpWriter: WebpWriter,
+    private val imageWriter: ImageWriter,
+    private val processedImageExtension: String,
     private val imageCacheDirectory: File,
     private val logger: Logger,
 ) {
@@ -45,7 +46,8 @@ class ImageProcessor(
             ).also { it.mkdir() })
 
             logger.debug("🏞️ Scale $uuid ($url)")
-            val scaledImage = scaleImage(originalFile, File(processedDirectory, "$uuid.webp"))
+            val processedFile = File(processedDirectory, "$uuid.$processedImageExtension")
+            val scaledImage = scaleImage(originalFile, processedFile)
 
             logger.debug("🏞️ BlurHash $uuid ($url)")
             val blurHash = generateBlurHash(scaledImage)
@@ -55,6 +57,8 @@ class ImageProcessor(
             Result.Success(
                 uuid = uuid,
                 blurHash = blurHash,
+                originalFile = originalFile,
+                processedFile = processedFile,
             )
         } catch (t: Throwable) {
             if (t is CancellationException) throw t
@@ -85,7 +89,7 @@ class ImageProcessor(
             val original = imageLoader.fromFile(originalImage)
             val targetSize = 1024
             val modified = original.bound(targetSize, targetSize)
-            modified.output(webpWriter, destination)
+            modified.output(imageWriter, destination)
             modified
         }
 
@@ -98,6 +102,8 @@ class ImageProcessor(
         data class Error(val throwable: Throwable) : Result
         data class Success(
             val uuid: String,
+            val originalFile: File,
+            val processedFile: File,
             val blurHash: String,
         ) : Result
     }
