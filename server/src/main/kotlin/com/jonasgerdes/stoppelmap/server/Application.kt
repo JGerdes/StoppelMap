@@ -1,14 +1,12 @@
 package com.jonasgerdes.stoppelmap.server
 
 import com.jonasgerdes.stoppelmap.server.config.toAppConfig
-import com.jonasgerdes.stoppelmap.server.crawler.StoppelmarktWebsiteCrawler
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.data.dataModule
 import com.jonasgerdes.stoppelmap.server.news.newsModule
 import com.jonasgerdes.stoppelmap.server.news.newsRoutes
-import com.jonasgerdes.stoppelmap.server.scheduler.Schedule
-import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import com.jonasgerdes.stoppelmap.server.scheduler.TaskScheduler
+import com.jonasgerdes.stoppelmap.server.scheduler.schedulerModule
 import io.ktor.http.CacheControl
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
@@ -53,22 +51,12 @@ fun Application.ktorModule() {
             module {
                 single { appConfig }
                 single { environment.log }
-                single {
-                    val crawler = get<StoppelmarktWebsiteCrawler>()
-                    TaskScheduler(
-                        tasks = listOf(
-                            Task(Schedule.Hourly()) {
-                                crawler.crawlNews()
-                            }
-                        ),
-                        clockProvider = get(),
-                    )
-                }
             },
             applicationModule,
             dataModule,
             crawlerModule,
             newsModule,
+            schedulerModule,
         )
     }
 

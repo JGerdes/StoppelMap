@@ -2,11 +2,15 @@ package com.jonasgerdes.stoppelmap.server.crawler
 
 import com.jonasgerdes.stoppelmap.server.config.AppConfig
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
+import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlAllNewsInitialTask
+import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlLatestNewsTask
+import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import com.sksamuel.scrimage.ImmutableImage
 import com.sksamuel.scrimage.webp.WebpWriter
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.UserAgent
+import org.koin.dsl.bind
 import org.koin.dsl.module
 import java.io.File
 
@@ -51,4 +55,18 @@ val crawlerModule = module {
             logger = get()
         )
     }
+
+    single {
+        CrawlAllNewsInitialTask(
+            articleRepository = get(),
+            stoppelmarktWebsiteCrawler = get(),
+            logger = get(),
+        )
+    } bind Task::class
+
+    single {
+        CrawlLatestNewsTask(
+            stoppelmarktWebsiteCrawler = get(),
+        )
+    } bind Task::class
 }
