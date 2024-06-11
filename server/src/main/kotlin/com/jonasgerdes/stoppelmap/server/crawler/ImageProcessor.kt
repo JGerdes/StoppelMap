@@ -37,7 +37,7 @@ class ImageProcessor(
         articleSlug: String,
     ): Result {
         return try {
-            val uuid = UUID.nameUUIDFromBytes(url.toByteArray()).toString()
+            val uuid = UUID.nameUUIDFromBytes((articleSlug + url).toByteArray()).toString()
 
             logger.debug("🏞️ Download $uuid ($url)")
             val originalFile = downloadImage(url, directory = File(

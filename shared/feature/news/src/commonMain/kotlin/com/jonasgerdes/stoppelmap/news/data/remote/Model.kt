@@ -17,15 +17,17 @@ data class Pagination(
 
 @Serializable
 data class Article(
+    val slug: String,
     val url: String,
     val title: String,
-    val teaser: String? = null,
+    val teaser: String,
     val publishDate: LocalDate,
     val images: List<Image>
 )
 
 @Serializable
 data class Image(
+    val uuid: String,
     val url: String,
     val copyright: String? = null,
     val caption: String? = null,

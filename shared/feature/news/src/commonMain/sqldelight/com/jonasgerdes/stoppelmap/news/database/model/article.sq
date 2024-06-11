@@ -1,0 +1,32 @@
+import kotlinx.datetime.Instant;
+import kotlinx.datetime.LocalDate;
+
+CREATE TABLE article (
+    slug        TEXT NOT NULL PRIMARY KEY,
+    title       TEXT NOT NULL,
+    teaser      TEXT NOT NULL,
+    publishedOn TEXT AS LocalDate NOT NULL,
+    url         TEXT NOT NULL,
+    readAt      TEXT AS Instant
+);
+
+upsert {
+    INSERT OR IGNORE INTO article(slug, title, teaser, url, publishedOn)
+    VALUES (:slug, :title, :teaser, :url,:publishedOn);
+    UPDATE article
+    SET
+        title = :title,
+        teaser = :teaser,
+        url = :url,
+        publishedOn = :publishedOn
+    WHERE slug = :slug;
+}
+
+markRead:
+    UPDATE article SET readAt = :readAt WHERE slug = :slug;
+
+getAll:
+    SELECT * FROM article ORDER BY publishedOn DESC;
+
+countUnread:
+    SELECT COUNT(slug) FROM article WHERE readAt ISNULL;

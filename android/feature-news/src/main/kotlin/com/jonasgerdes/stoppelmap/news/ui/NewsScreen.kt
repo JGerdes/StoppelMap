@@ -86,7 +86,7 @@ fun NewsScreen(
         ) {
             items(
                 items = state.articles,
-                key = { it.url },
+                key = { it.slug.slug },
             ) { article ->
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column {

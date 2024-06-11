@@ -34,10 +34,12 @@ class NewsController(
             data = GetArticlesResponse(
                 articles = articles.map { article ->
                     Article(
+                        slug = article.slug,
                         url = "https://www.stoppelmarkt.de/aktuelles/detail/${article.slug}/",
                         title = article.title,
                         images = images.filter { it.articleSlug == article.slug }.map {
                             Image(
+                                uuid = it.uuid,
                                 url = "${config.externalDomain}/static/images/${it.processedFile}",
                                 caption = it.caption,
                                 copyright = it.copyright,

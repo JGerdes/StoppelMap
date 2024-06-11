@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.skie)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.sqldelight)
 }
 
 
@@ -35,10 +36,32 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.client.core)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.sqldelight.coroutines)
 
             implementation(project(":shared:base"))
             implementation(project(":shared:network"))
             implementation(project(":shared:resources"))
+        }
+
+        androidMain.dependencies {
+            implementation(libs.sqldelight.driver.android)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.sqldelight.driver.native)
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("NewsDatabase") {
+            packageName.set("com.jonasgerdes.stoppelmap.news.database.model")
+            srcDirs.setFrom("src/commonMain/sqldelight")
+            schemaOutputDirectory =
+                file("src/commonMain/sqldelight/com/jonasgerdes/stoppelmap/news/schema")
+            version = 1
+            verifyMigrations = true
         }
     }
 }

@@ -1,0 +1,30 @@
+CREATE TABLE image (
+    uuid        TEXT NOT NULL PRIMARY KEY,
+    articleSlug TEXT NOT NULL,
+    caption     TEXT,
+    copyright   TEXT,
+    blurHash    TEXT NOT NULL,
+    url         TEXT NOT NULL,
+
+    FOREIGN KEY(articleSlug) REFERENCES article(slug)
+);
+
+upsert {
+    INSERT OR IGNORE INTO image(uuid, articleSlug, caption, copyright, blurHash, url)
+    VALUES (:uuid, :articleSlug, :caption, :copyright, :blurHash, :url);
+    UPDATE image
+    SET
+        articleSlug = :articleSlug,
+        caption = :caption,
+        copyright = :copyright,
+        blurHash = :blurHash,
+        url = :url
+    WHERE uuid = :uuid;
+}
+
+getAll:
+    SELECT * FROM image;
+
+
+deleteAllForArticle:
+    DELETE FROM image WHERE articleSlug = :articleSlug;
