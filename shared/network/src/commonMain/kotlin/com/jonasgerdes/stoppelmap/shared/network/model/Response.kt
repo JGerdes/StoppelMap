@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.shared.dataupdate.model
+package com.jonasgerdes.stoppelmap.shared.network.model
 
 import io.ktor.http.HttpStatusCode
 

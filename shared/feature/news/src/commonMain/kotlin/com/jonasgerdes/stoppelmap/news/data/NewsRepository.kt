@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.news.data.model.Article
 import com.jonasgerdes.stoppelmap.news.data.model.Image
 import com.jonasgerdes.stoppelmap.news.data.remote.NewsResponse
 import com.jonasgerdes.stoppelmap.news.data.remote.RemoteNewsSource
+import com.jonasgerdes.stoppelmap.shared.network.model.Response
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,10 +29,19 @@ class NewsRepository(
         )
     }
 
-    private fun processNewsResponse(response: NewsResponse) {
-        nextPage = response.pagination.next
-        val newArticles = response.articles.map { it.toArticle() }
-        articles.value = articles.value.union(newArticles).sortedByDescending { it.publishDate }
+    private fun processNewsResponse(response: Response<NewsResponse>) {
+        when (response) {
+            is Response.Error -> {
+                // Todo: Do something
+            }
+
+            is Response.Success -> {
+                nextPage = response.body.pagination.next
+                val newArticles = response.body.articles.map { it.toArticle() }
+                articles.value =
+                    articles.value.union(newArticles).sortedByDescending { it.publishDate }
+            }
+        }
     }
 
 }

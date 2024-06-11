@@ -5,6 +5,7 @@
 include(":shared:base")
 include(":shared:resources")
 include(":shared:data")
+include(":shared:network")
 include(":shared:feature:home")
 include(":shared:feature:licenses")
 include(":shared:feature:data-update")

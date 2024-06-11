@@ -1,22 +1,21 @@
 package com.jonasgerdes.stoppelmap.news.data.remote
 
 import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
 
-@kotlinx.serialization.Serializable
+@Serializable
 data class NewsResponse(
-    val version: Int? = null,
-    val versionName: String? = null,
     val articles: List<Article>,
     val pagination: Pagination
 )
 
-@kotlinx.serialization.Serializable
+@Serializable
 data class Pagination(
     val previous: String? = null,
     val next: String? = null,
 )
 
-@kotlinx.serialization.Serializable
+@Serializable
 data class Article(
     val url: String,
     val title: String,
@@ -25,7 +24,7 @@ data class Article(
     val images: List<Image>
 )
 
-@kotlinx.serialization.Serializable
+@Serializable
 data class Image(
     val url: String,
     val copyright: String? = null,

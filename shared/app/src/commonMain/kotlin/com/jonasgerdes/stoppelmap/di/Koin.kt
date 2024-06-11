@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.countdown.countDownModule
 import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.schedule.scheduleModule
 import com.jonasgerdes.stoppelmap.shared.dataupdate.dataUpdateModule
+import com.jonasgerdes.stoppelmap.shared.network.networkModule
 import com.jonasgerdes.stoppelmap.transportation.transportationModule
 import com.jonasgerdes.stoppelmap.venue.venueModule
 import homeModule
@@ -19,6 +20,7 @@ fun initKoin(modules: List<Module> = emptyList()) {
     startKoin {
         modules(
             *modules.toTypedArray(),
+            networkModule,
             commonAppModule,
             dataModule,
             venueModule,

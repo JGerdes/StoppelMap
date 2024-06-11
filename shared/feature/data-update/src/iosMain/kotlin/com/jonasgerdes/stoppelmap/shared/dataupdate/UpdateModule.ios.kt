@@ -4,8 +4,6 @@ package com.jonasgerdes.stoppelmap.shared.dataupdate
 
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetToFileUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.RemoveDatabaseFileUseCase
-import io.ktor.client.engine.HttpClientEngine
-import io.ktor.client.engine.darwin.Darwin
 import kotlinx.cinterop.ExperimentalForeignApi
 import okio.Path
 import okio.Path.Companion.toPath
@@ -14,10 +12,6 @@ import platform.Foundation.NSData
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
-
-actual fun Scope.createHttpClientEngine(): HttpClientEngine {
-    return Darwin.create()
-}
 
 @OptIn(ExperimentalForeignApi::class)
 actual fun Scope.createTempPath(name: String): Path {

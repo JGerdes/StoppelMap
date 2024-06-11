@@ -35,21 +35,11 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.kermit)
             implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.encoding)
-            implementation(libs.ktor.client.logging)
-            implementation(libs.ktor.serialization.kotlinx.json)
-            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.kotlinx.serialization.json)
             implementation(libs.androidx.datastore.preferences.core)
 
             implementation(project(":shared:base"))
-        }
-
-        androidMain.dependencies {
-            implementation(libs.ktor.client.okhttp)
-        }
-
-        iosMain.dependencies {
-            implementation(libs.ktor.client.darwin)
+            implementation(project(":shared:network"))
         }
     }
 }

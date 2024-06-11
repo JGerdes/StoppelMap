@@ -40,6 +40,7 @@ kotlin {
 
             implementation(project(":shared:base"))
             implementation(project(":shared:data"))
+            implementation(project(":shared:network"))
             implementation(project(":shared:feature:home"))
             implementation(project(":shared:feature:licenses"))
             implementation(project(":shared:feature:data-update"))

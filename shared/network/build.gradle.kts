@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.skie)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 
@@ -20,7 +19,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "News"
+            baseName = "Network"
             isStatic = true
         }
     }
@@ -33,18 +32,28 @@ kotlin {
             api(libs.kmm.viewmodel)
 
             implementation(libs.kotlinx.datetime)
+            implementation(libs.kermit)
             implementation(libs.ktor.client.core)
-            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.ktor.client.encoding)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.content.negotiation)
 
             implementation(project(":shared:base"))
-            implementation(project(":shared:network"))
-            implementation(project(":shared:resources"))
+        }
+
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.shared.news"
+    namespace = "com.jonasgerdes.stoppelmap.shared.network"
     compileSdk = libs.versions.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION

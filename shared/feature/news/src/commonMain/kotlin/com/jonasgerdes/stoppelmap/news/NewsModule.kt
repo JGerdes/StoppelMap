@@ -5,7 +5,7 @@ import org.koin.dsl.module
 val newsModule = module {
     single {
         RemoteNewsSource(
-            baseUrl = "https://api.stoppelmap.de",
+            baseUrl = "http://192.168.178.20:8080",
             httpClient = get()
         )
     }
