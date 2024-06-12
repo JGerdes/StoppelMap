@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Article(
-    val slug: String,
+    val sortKey: String,
     val url: String,
     val title: String,
     val teaser: String,

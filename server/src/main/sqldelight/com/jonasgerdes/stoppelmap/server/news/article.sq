@@ -9,13 +9,16 @@ CREATE TABLE article (
     publishedOn TEXT AS LocalDate NOT NULL,
     content     TEXT NOT NULL,
     isVisible   INTEGER AS Boolean NOT NULL,
+    sortKey     TEXT NOT NULL,
     createdAt   TEXT AS Instant NOT NULL,
-    modifiedAt   TEXT AS Instant NOT NULL
+    modifiedAt  TEXT AS Instant NOT NULL
 );
 
+CREATE UNIQUE INDEX sortIndex ON article(sortKey);
+
 upsert {
-    INSERT OR IGNORE INTO article(slug, title, description, publishedOn, content, isVisible, createdAt, modifiedAt)
-    VALUES (:slug, :title, :description, :publishedOn, :content, :isVisible, :createdAt, :modifiedAt);
+    INSERT OR IGNORE INTO article(slug, title, description, publishedOn, content, isVisible, sortKey, createdAt, modifiedAt)
+    VALUES (:slug, :title, :description, :publishedOn, :content, :isVisible, :sortKey, :createdAt, :modifiedAt);
     UPDATE article
     SET
         title = :title,
@@ -28,7 +31,13 @@ upsert {
 }
 
 getVisible:
-    SELECT * FROM article WHERE isVisible = 1 ORDER BY publishedOn DESC LIMIT :limit OFFSET :offset;
+    SELECT * FROM article WHERE isVisible = 1 ORDER BY sortKey DESC LIMIT :limit;
+
+getVisibleBefore:
+    SELECT * FROM article WHERE isVisible = 1 AND sortKey < :before ORDER BY sortKey DESC LIMIT :limit;
+
+countExistingPublishDates:
+    SELECT publishedOn, COUNT(*) FROM article GROUP BY publishedOn;
 
 countVisible:
     SELECT COUNT(slug) FROM article WHERE isVisible = 1;

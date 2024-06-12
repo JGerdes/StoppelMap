@@ -6,9 +6,10 @@ import com.jonasgerdes.stoppelmap.news.data.model.Article
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmm.viewmodel.stateIn
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 class NewsViewModel(
@@ -16,16 +17,24 @@ class NewsViewModel(
 ) : KMMViewModel() {
 
     private val articles = newsRepository.getArticles()
+    private val isRefreshing = MutableStateFlow(false)
+    private val isLoadingMore = MutableStateFlow(false)
 
     fun onListEndReached() {
         viewModelScope.coroutineScope.launch {
+            isLoadingMore.value = true
             newsRepository.loadMoreArticles()
+            isLoadingMore.value = false
         }
     }
 
     val state: StateFlow<ViewState> =
-        articles
-            .map(::ViewState)
+        combine(
+            articles,
+            isRefreshing,
+            isLoadingMore,
+            ::ViewState
+        )
             .stateIn(
                 viewModelScope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
@@ -35,7 +44,9 @@ class NewsViewModel(
     data class ViewState
     @DefaultArgumentInterop.Enabled
     constructor(
-        val articles: List<Article> = emptyList()
+        val articles: List<Article> = emptyList(),
+        val isRefreshing: Boolean = false,
+        val isLoadingMore: Boolean = false,
     )
 
 }

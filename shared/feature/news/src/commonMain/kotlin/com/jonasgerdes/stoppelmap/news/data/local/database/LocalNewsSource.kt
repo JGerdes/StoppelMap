@@ -5,7 +5,7 @@ import app.cash.sqldelight.coroutines.mapToList
 import app.cash.sqldelight.coroutines.mapToOne
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.news.data.model.Article
-import com.jonasgerdes.stoppelmap.news.data.model.ArticleSlug
+import com.jonasgerdes.stoppelmap.news.data.model.ArticleSortKey
 import com.jonasgerdes.stoppelmap.news.data.model.Image
 import com.jonasgerdes.stoppelmap.news.database.model.NewsDatabase
 import kotlinx.coroutines.Dispatchers
@@ -26,12 +26,12 @@ class LocalNewsSource(
         ) { articles, images ->
             articles.map { dbArticle ->
                 Article(
-                    slug = ArticleSlug(dbArticle.slug),
+                    sortKey = ArticleSortKey(dbArticle.sortKey),
                     title = dbArticle.title,
                     teaser = dbArticle.teaser,
                     publishDate = dbArticle.publishedOn,
                     url = dbArticle.url,
-                    images = images.filter { it.articleSlug == dbArticle.slug }
+                    images = images.filter { it.articleKey == dbArticle.sortKey }
                         .map {
                             Image(
                                 uuid = it.uuid,
@@ -51,17 +51,17 @@ class LocalNewsSource(
             newsDatabase.transaction {
                 articles.forEach { article ->
                     newsDatabase.articleQueries.upsert(
-                        slug = article.slug.slug,
+                        sortKey = article.sortKey.value,
                         title = article.title,
                         teaser = article.teaser,
                         url = article.url,
                         publishedOn = article.publishDate
                     )
-                    newsDatabase.imageQueries.deleteAllForArticle(article.slug.slug)
+                    newsDatabase.imageQueries.deleteAllForArticle(article.sortKey.value)
                     article.images.forEach { image ->
                         newsDatabase.imageQueries.upsert(
                             uuid = image.uuid,
-                            articleSlug = article.slug.slug,
+                            articleKey = article.sortKey.value,
                             caption = image.caption,
                             copyright = image.copyright,
                             blurHash = image.blurHash,
@@ -76,9 +76,15 @@ class LocalNewsSource(
     fun getUnreadArticleCount(): Flow<Long> =
         newsDatabase.articleQueries.countUnread().asFlow().mapToOne(Dispatchers.IO)
 
-    suspend fun markAsRead(articleSlug: ArticleSlug) {
+    suspend fun markAsRead(sortKey: ArticleSortKey) {
         withContext(Dispatchers.IO) {
-            newsDatabase.articleQueries.markRead(clockProvider.nowAsInstant(), articleSlug.slug)
+            newsDatabase.articleQueries.markRead(clockProvider.nowAsInstant(), sortKey.value)
         }
     }
+
+    suspend fun getOldestKey(): ArticleSortKey? =
+        withContext(Dispatchers.IO) {
+            newsDatabase.articleQueries.getOldestSortyKey().executeAsOneOrNull()
+                ?.let(::ArticleSortKey)
+        }
 }

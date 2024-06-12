@@ -2,7 +2,7 @@ package com.jonasgerdes.stoppelmap.news.data
 
 import com.jonasgerdes.stoppelmap.news.data.local.database.LocalNewsSource
 import com.jonasgerdes.stoppelmap.news.data.model.Article
-import com.jonasgerdes.stoppelmap.news.data.model.ArticleSlug
+import com.jonasgerdes.stoppelmap.news.data.model.ArticleSortKey
 import com.jonasgerdes.stoppelmap.news.data.model.Image
 import com.jonasgerdes.stoppelmap.news.data.remote.NewsResponse
 import com.jonasgerdes.stoppelmap.news.data.remote.RemoteNewsSource
@@ -15,16 +15,11 @@ class NewsRepository(
     private val localNewsSource: LocalNewsSource,
     private val remoteNewsSource: RemoteNewsSource,
 ) {
-
-    private var nextPage: String? = null
-
     fun getArticles(): Flow<List<Article>> = localNewsSource.getNews()
 
     suspend fun loadMoreArticles() {
-        val nextPage = nextPage
         processNewsResponse(
-            if (nextPage == null) remoteNewsSource.getFirstPage()
-            else remoteNewsSource.loadPage(nextPage)
+            remoteNewsSource.getNews(localNewsSource.getOldestKey()?.value)
         )
     }
 
@@ -35,7 +30,6 @@ class NewsRepository(
             }
 
             is Response.Success -> {
-                nextPage = response.body.pagination.next
                 val newArticles = response.body.articles.map { it.toArticle() }
                 localNewsSource.upsertNews(newArticles)
             }
@@ -46,7 +40,7 @@ class NewsRepository(
 
 private fun RemoteArticle.toArticle() =
     Article(
-        slug = ArticleSlug(slug),
+        sortKey = ArticleSortKey(sortKey),
         url = url,
         title = title,
         teaser = teaser,

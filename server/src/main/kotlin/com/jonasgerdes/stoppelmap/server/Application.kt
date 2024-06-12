@@ -35,7 +35,7 @@ fun Application.ktorModule() {
         host = (environment as ApplicationEngineEnvironment).connectors.first()
             .let { "${it.host}:${it.port}" }
     )
-    environment.log.info("Starting with environment ${appConfig.environment}")
+    environment.log.info("Starting version ${appConfig.version} with environment ${appConfig.environment}")
     install(CallLogging)
     install(Compression)
     install(CachingHeaders)

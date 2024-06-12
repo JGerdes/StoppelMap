@@ -17,6 +17,7 @@ class ArticleRepository(
                     publishedOn = it.publishedOn,
                     content = it.content,
                     isVisible = it.isVisible,
+                    sortKey = it.sortKey,
                     createdAt = it.createdAt,
                     modifiedAt = it.modifiedAt,
                 )
@@ -24,12 +25,20 @@ class ArticleRepository(
         }
     }
 
-    fun getPage(page: Int, pageSize: Int): List<Article> {
-        return articleQueries.getVisible(
-            limit = pageSize.toLong(),
-            offset = (page * pageSize).toLong()
+    fun getFirst(pageSize: Int): List<Article> =
+        articleQueries.getVisible(
+            limit = pageSize.toLong()
         ).executeAsList()
-    }
-    
+
+    fun getBefore(sortKey: String, pageSize: Int): List<Article> =
+        articleQueries.getVisibleBefore(
+            before = sortKey,
+            limit = pageSize.toLong()
+        ).executeAsList()
+
     fun getCount() = articleQueries.countVisible().executeAsOne()
+    fun getExistingPublishDates() = articleQueries
+        .countExistingPublishDates { publishedOn, count -> publishedOn to count }
+        .executeAsList()
+        .toMap()
 }

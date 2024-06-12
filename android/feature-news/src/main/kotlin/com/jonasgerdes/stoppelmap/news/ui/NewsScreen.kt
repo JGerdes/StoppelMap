@@ -32,6 +32,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -44,13 +46,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.jonasgerdes.stoppelmap.news.R
+import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.onScrim
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.datetime.toJavaLocalDate
 import org.koin.androidx.compose.koinViewModel
@@ -64,6 +69,15 @@ fun NewsScreen(
     viewModel: NewsViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val pullToRefreshState = rememberPullToRefreshState()
+    if (pullToRefreshState.isRefreshing) {
+        LaunchedEffect(true) {
+            // fetch something
+            delay(1500)
+            pullToRefreshState.endRefresh()
+        }
+    }
+
     Column(
         modifier = modifier
     ) {
@@ -74,7 +88,6 @@ fun NewsScreen(
             DateTimeFormatter.ofPattern("d. MMMM yyyy")
         }
         val listState = rememberLazyListState()
-
         LazyColumn(
             state = listState,
             contentPadding = PaddingValues(
@@ -82,18 +95,21 @@ fun NewsScreen(
                 end = 16.dp,
                 bottom = 16.dp,
             ),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .nestedScroll(pullToRefreshState.nestedScrollConnection)
         ) {
             items(
                 items = state.articles,
-                key = { it.slug.slug },
+                key = { it.sortKey.value },
             ) { article ->
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         if (article.images.isNotEmpty()) {
-                            val imagePagerState = rememberPagerState(initialPage = 0, pageCount = {
-                                article.images.size
-                            })
+                            val imagePagerState =
+                                rememberPagerState(initialPage = 0, pageCount = {
+                                    article.images.size
+                                })
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -128,9 +144,15 @@ fun NewsScreen(
                                             .background(
                                                 Brush.verticalGradient(
                                                     colors = listOf(
-                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0f),
-                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.3f),
-                                                        MaterialTheme.colorScheme.scrim.copy(alpha = 0.5f),
+                                                        MaterialTheme.colorScheme.scrim.copy(
+                                                            alpha = 0f
+                                                        ),
+                                                        MaterialTheme.colorScheme.scrim.copy(
+                                                            alpha = 0.3f
+                                                        ),
+                                                        MaterialTheme.colorScheme.scrim.copy(
+                                                            alpha = 0.5f
+                                                        ),
                                                     )
                                                 )
                                             )
@@ -177,13 +199,11 @@ fun NewsScreen(
                                 text = article.title,
                                 style = MaterialTheme.typography.titleLarge
                             )
-                            article.teaser?.let { teaser ->
-                                Spacer(modifier = Modifier.size(8.dp))
-                                Text(
-                                    text = teaser,
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                            }
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Text(
+                                text = article.teaser,
+                                style = MaterialTheme.typography.bodyMedium
+                            )
                             TextButton(
                                 onClick = { onUrlTap(article.url) },
                                 modifier = Modifier.align(Alignment.End)
@@ -194,11 +214,24 @@ fun NewsScreen(
                     }
                 }
             }
+            if (state.isLoadingMore) {
+                item {
+                    LoadingSpinner(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(64.dp)
+                    )
+                }
+            }
         }
 
         EndReachedHandler(listState) {
             viewModel.onListEndReached()
         }
+        PullToRefreshContainer(
+            state = pullToRefreshState,
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+        )
     }
 }
 

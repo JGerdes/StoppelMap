@@ -4,7 +4,7 @@ import kotlinx.datetime.LocalDate
 import kotlin.jvm.JvmInline
 
 data class Article(
-    val slug: ArticleSlug,
+    val sortKey: ArticleSortKey,
     val title: String,
     val teaser: String,
     val publishDate: LocalDate,
@@ -14,4 +14,4 @@ data class Article(
 )
 
 @JvmInline
-value class ArticleSlug(val slug: String)
+value class ArticleSortKey(val value: String)

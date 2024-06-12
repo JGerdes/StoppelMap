@@ -2,7 +2,7 @@ import kotlinx.datetime.Instant;
 import kotlinx.datetime.LocalDate;
 
 CREATE TABLE article (
-    slug        TEXT NOT NULL PRIMARY KEY,
+    sortKey     TEXT NOT NULL PRIMARY KEY,
     title       TEXT NOT NULL,
     teaser      TEXT NOT NULL,
     publishedOn TEXT AS LocalDate NOT NULL,
@@ -11,22 +11,25 @@ CREATE TABLE article (
 );
 
 upsert {
-    INSERT OR IGNORE INTO article(slug, title, teaser, url, publishedOn)
-    VALUES (:slug, :title, :teaser, :url,:publishedOn);
+    INSERT OR IGNORE INTO article(sortKey, title, teaser, url, publishedOn)
+    VALUES (:sortKey, :title, :teaser, :url,:publishedOn);
     UPDATE article
     SET
         title = :title,
         teaser = :teaser,
         url = :url,
         publishedOn = :publishedOn
-    WHERE slug = :slug;
+    WHERE sortKey = :sortKey;
 }
 
 markRead:
-    UPDATE article SET readAt = :readAt WHERE slug = :slug;
+    UPDATE article SET readAt = :readAt WHERE sortKey = :sortKey;
 
 getAll:
-    SELECT * FROM article ORDER BY publishedOn DESC;
+    SELECT * FROM article ORDER BY sortKey DESC;
 
 countUnread:
-    SELECT COUNT(slug) FROM article WHERE readAt ISNULL;
+    SELECT COUNT(sortKey) FROM article WHERE readAt ISNULL;
+
+getOldestSortyKey:
+    SELECT sortKey FROM article ORDER BY sortKey ASC LIMIT 1;

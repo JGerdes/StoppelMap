@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.server.news
 
-import io.ktor.http.HttpStatusCode
 import io.ktor.http.Parameters
 import io.ktor.server.application.call
 import io.ktor.server.plugins.BadRequestException
@@ -16,7 +15,7 @@ fun Routing.newsRoutes() {
 
     get("/news") {
         when (val result = newsController.getArticles(
-            page = call.parameters.getInt(name = "page", defaultValue = 0, minimumValue = 0),
+            before = call.parameters.get("before")?.assertNotBlank("before"),
             pageSize = call.parameters.getInt(
                 name = "page-size",
                 defaultValue = 10,
@@ -25,7 +24,7 @@ fun Routing.newsRoutes() {
             ),
         )) {
             is NewsController.Response.Error -> call.respond(result.code)
-            is NewsController.Response.Success -> call.respond(HttpStatusCode.OK, result.data)
+            is NewsController.Response.Success -> call.respond(result.code, result.data)
         }
     }
 }
@@ -46,3 +45,6 @@ private fun Int.assertIn(name: String, minimumValue: Int? = null, maximumValue: 
     maximumValue?.let { if (this > it) throw BadRequestException("Request parameter $name must be at most $maximumValue") }
     return this
 }
+
+private fun String.assertNotBlank(name: String) =
+    ifBlank { throw BadRequestException("Request parameter $name can't be blank") }

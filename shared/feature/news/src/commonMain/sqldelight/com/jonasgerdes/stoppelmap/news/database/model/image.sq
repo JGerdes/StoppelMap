@@ -1,20 +1,20 @@
 CREATE TABLE image (
     uuid        TEXT NOT NULL PRIMARY KEY,
-    articleSlug TEXT NOT NULL,
+    articleKey TEXT NOT NULL,
     caption     TEXT,
     copyright   TEXT,
     blurHash    TEXT NOT NULL,
     url         TEXT NOT NULL,
 
-    FOREIGN KEY(articleSlug) REFERENCES article(slug)
+    FOREIGN KEY(articleKey) REFERENCES article(sortKey)
 );
 
 upsert {
-    INSERT OR IGNORE INTO image(uuid, articleSlug, caption, copyright, blurHash, url)
-    VALUES (:uuid, :articleSlug, :caption, :copyright, :blurHash, :url);
+    INSERT OR IGNORE INTO image(uuid, articleKey, caption, copyright, blurHash, url)
+    VALUES (:uuid, :articleKey, :caption, :copyright, :blurHash, :url);
     UPDATE image
     SET
-        articleSlug = :articleSlug,
+        articleKey = :articleKey,
         caption = :caption,
         copyright = :copyright,
         blurHash = :blurHash,
@@ -27,4 +27,4 @@ getAll:
 
 
 deleteAllForArticle:
-    DELETE FROM image WHERE articleSlug = :articleSlug;
+    DELETE FROM image WHERE articleKey = :articleKey;

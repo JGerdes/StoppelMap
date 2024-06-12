@@ -12,18 +12,12 @@ class RemoteNewsSource(
     private val httpClient: HttpClient
 ) {
 
-    suspend fun getFirstPage(): Response<NewsResponse> =
+    suspend fun getNews(before: String? = null): Response<NewsResponse> =
         httpClient.executeRequest<NewsResponse> {
             get {
                 url(urlString = "$baseUrl/news")
+                before?.let { parameter("before", before) }
                 parameter("page-size", 10)
-            }
-        }
-
-    suspend fun loadPage(pageUrl: String): Response<NewsResponse> =
-        httpClient.executeRequest<NewsResponse> {
-            httpClient.get {
-                url(urlString = pageUrl)
             }
         }
 }
