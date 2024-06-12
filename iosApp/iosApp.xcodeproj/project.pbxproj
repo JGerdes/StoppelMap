@@ -18,6 +18,7 @@
 		2A40405E2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40405D2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift */; };
 		2A4040602BC313C900A5B072 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40405F2BC313C900A5B072 /* TransportationType.swift */; };
 		2A4040622BC3145B00A5B072 /* TransportationBusOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4040612BC3145B00A5B072 /* TransportationBusOverviewPage.swift */; };
+		2A409AF62C1A29B00061F18E /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A409AF52C1A29B00061F18E /* NewsScreen.swift */; };
 		2A58C0562BA4F7C100FDA014 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58C0552BA4F7C100FDA014 /* HomeScreen.swift */; };
 		2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58C0582BA4F81000FDA014 /* CountdownCard.swift */; };
 		2A60663F2BB051B30067FB33 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 2A60663E2BB051B30067FB33 /* MapLibre */; };
@@ -99,6 +100,7 @@
 		2A40405D2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationOverviewScreen.swift; sourceTree = "<group>"; };
 		2A40405F2BC313C900A5B072 /* TransportationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationType.swift; sourceTree = "<group>"; };
 		2A4040612BC3145B00A5B072 /* TransportationBusOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationBusOverviewPage.swift; sourceTree = "<group>"; };
+		2A409AF52C1A29B00061F18E /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
 		2A58C0552BA4F7C100FDA014 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		2A58C0582BA4F81000FDA014 /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
 		2A6066442BB052900067FB33 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		2A2A8F5D2BA4D64D008D24CE /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2A409AF42C1A29A10061F18E /* news */,
 				2A9260592BF6798200C57918 /* settings */,
 				2A40405C2BC2FEC600A5B072 /* transportation */,
 				2A7781202BBB13C400C1FC25 /* schedule */,
@@ -227,6 +230,14 @@
 				2A4040612BC3145B00A5B072 /* TransportationBusOverviewPage.swift */,
 			);
 			path = overview;
+			sourceTree = "<group>";
+		};
+		2A409AF42C1A29A10061F18E /* news */ = {
+			isa = PBXGroup;
+			children = (
+				2A409AF52C1A29B00061F18E /* NewsScreen.swift */,
+			);
+			path = news;
 			sourceTree = "<group>";
 		};
 		2A58C0542BA4F7AB00FDA014 /* home */ = {
@@ -511,6 +522,7 @@
 			files = (
 				2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */,
 				2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */,
+				2A409AF62C1A29B00061F18E /* NewsScreen.swift in Sources */,
 				2A2A8F612BA4D64D008D24CE /* ContentView.swift in Sources */,
 				2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */,
 				2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */,

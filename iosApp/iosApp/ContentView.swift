@@ -7,19 +7,23 @@ struct ContentView: View {
             Group {
                 HomeScreen()
                     .tabItem{
-                        Label(Res.strings().main_bottom_nav_item_home.desc().localized(),systemImage: "house.fill")
+                        Label(Res.strings().main_bottom_nav_item_home.desc().localized(), systemImage: "house.fill")
                     }
                 MapScreen()
                     .tabItem{
-                        Label(Res.strings().main_bottom_nav_item_map.desc().localized(),systemImage: "map.fill")
+                        Label(Res.strings().main_bottom_nav_item_map.desc().localized(), systemImage: "map.fill")
                     }
                 ScheduleScreen()
                     .tabItem{
-                        Label(Res.strings().main_bottom_nav_item_schedule.desc().localized(),systemImage: "calendar")
+                        Label(Res.strings().main_bottom_nav_item_schedule.desc().localized(), systemImage: "calendar")
                     }
                 TransportationOverviewScreen()
                     .tabItem{
-                        Label(Res.strings().main_bottom_nav_item_transport.desc().localized(),systemImage: "bus.fill")
+                        Label(Res.strings().main_bottom_nav_item_transport.desc().localized(), systemImage: "bus.fill")
+                    }
+                NewsScreen()
+                    .tabItem {
+                        Label(Res.strings().main_bottom_nav_item_news.desc().localized(), systemImage: "newspaper")
                     }
             }
             .toolbarBackground(.ultraThinMaterial, for: .tabBar)

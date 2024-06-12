@@ -10,8 +10,6 @@ struct CountdownCard: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(Res.strings().countdownCard_prefix.desc().localized())
-                .foregroundColor(.white)
             Spacer()
                 .frame(height: 8.0)
             Grid() {

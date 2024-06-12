@@ -50,6 +50,8 @@ kotlin {
 
         iosMain.dependencies {
             implementation(libs.sqldelight.driver.native)
+            implementation("co.touchlab:stately-common:2.0.6")
+            implementation("co.touchlab:stately-concurrency:2.0.6")
         }
     }
 }

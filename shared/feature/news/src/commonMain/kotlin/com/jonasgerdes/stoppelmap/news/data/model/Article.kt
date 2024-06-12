@@ -11,7 +11,9 @@ data class Article(
     val url: String,
     val images: List<Image>,
     val isUnread: Boolean = true,
-)
+) {
+    val sortKeyString get() = sortKey.value
+}
 
 @JvmInline
 value class ArticleSortKey(val value: String)
