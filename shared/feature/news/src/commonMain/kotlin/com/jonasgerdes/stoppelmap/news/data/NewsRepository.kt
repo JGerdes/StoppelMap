@@ -23,7 +23,17 @@ class NewsRepository(
         )
     }
 
-    private suspend fun processNewsResponse(response: Response<NewsResponse>) {
+    suspend fun forceRefresh() {
+        processNewsResponse(
+            remoteNewsSource.getNews(),
+            clearCache = true
+        )
+    }
+
+    private suspend fun processNewsResponse(
+        response: Response<NewsResponse>,
+        clearCache: Boolean = false
+    ) {
         when (response) {
             is Response.Error -> {
                 // Todo: Do something
@@ -31,7 +41,7 @@ class NewsRepository(
 
             is Response.Success -> {
                 val newArticles = response.body.articles.map { it.toArticle() }
-                localNewsSource.upsertNews(newArticles)
+                localNewsSource.upsertNews(newArticles, deleteExisting = clearCache)
             }
         }
     }

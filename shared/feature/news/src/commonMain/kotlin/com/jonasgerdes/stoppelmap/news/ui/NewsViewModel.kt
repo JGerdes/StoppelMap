@@ -28,6 +28,10 @@ class NewsViewModel(
         }
     }
 
+    suspend fun forceRefresh() {
+        newsRepository.forceRefresh()
+    }
+
     val state: StateFlow<ViewState> =
         combine(
             articles,

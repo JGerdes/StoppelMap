@@ -33,3 +33,6 @@ countUnread:
 
 getOldestSortyKey:
     SELECT sortKey FROM article ORDER BY sortKey ASC LIMIT 1;
+
+deleteAll:
+    DELETE FROM article;

@@ -46,9 +46,13 @@ class LocalNewsSource(
             }
         }
 
-    suspend fun upsertNews(articles: List<Article>) {
+    suspend fun upsertNews(articles: List<Article>, deleteExisting: Boolean = false) {
         withContext(Dispatchers.IO) {
             newsDatabase.transaction {
+                if (deleteExisting) {
+                    newsDatabase.imageQueries.deleteAll()
+                    newsDatabase.articleQueries.deleteAll()
+                }
                 articles.forEach { article ->
                     newsDatabase.articleQueries.upsert(
                         sortKey = article.sortKey.value,

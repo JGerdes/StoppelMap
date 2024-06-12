@@ -25,6 +25,8 @@ upsert {
 getAll:
     SELECT * FROM image;
 
-
 deleteAllForArticle:
     DELETE FROM image WHERE articleKey = :articleKey;
+
+deleteAll:
+    DELETE FROM image;
