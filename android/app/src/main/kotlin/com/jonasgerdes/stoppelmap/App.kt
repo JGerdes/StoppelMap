@@ -9,6 +9,7 @@ import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.androidHomeModule
 import com.jonasgerdes.stoppelmap.map.mapModule
 import com.jonasgerdes.stoppelmap.news.androidNewsModule
+import com.jonasgerdes.stoppelmap.news.usecase.LoadLatestNewsUseCase
 import com.jonasgerdes.stoppelmap.schedule.androidScheduleModule
 import com.jonasgerdes.stoppelmap.settings.androidLicensesModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
@@ -21,15 +22,18 @@ import com.jonasgerdes.stoppelmap.widget.countdown.CountdownWidget
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.dsl.module
 import timber.log.Timber
+import kotlin.time.Duration.Companion.seconds
 
 class App : Application() {
 
     val copyAssetDatabase: CopyAssetDataFilesUseCase by inject()
     val updateAppConfigAndDownloadFiles: UpdateAppConfigAndDownloadFilesUseCase by inject()
+    val loadLatestNews: LoadLatestNewsUseCase by inject()
     val scope: CoroutineScope by inject()
 
     override fun onCreate() {
@@ -75,6 +79,11 @@ class App : Application() {
                 mapdataAsset = Res.assets.mapdata,
             )
             updateAppConfigAndDownloadFiles()
+        }
+
+        scope.launch {
+            delay(2.seconds)
+            loadLatestNews()
         }
     }
 }

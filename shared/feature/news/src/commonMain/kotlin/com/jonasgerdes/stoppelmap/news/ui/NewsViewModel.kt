@@ -32,6 +32,12 @@ class NewsViewModel(
         newsRepository.forceRefresh()
     }
 
+    fun onShowFirstArticle() {
+        viewModelScope.coroutineScope.launch {
+            newsRepository.markAllArticlesRead()
+        }
+    }
+
     val state: StateFlow<ViewState> =
         combine(
             articles,

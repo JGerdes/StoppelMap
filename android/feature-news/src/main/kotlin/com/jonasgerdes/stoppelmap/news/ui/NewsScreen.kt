@@ -55,10 +55,12 @@ import coil.compose.AsyncImage
 import com.jonasgerdes.stoppelmap.news.R
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.onScrim
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.datetime.toJavaLocalDate
 import org.koin.androidx.compose.koinViewModel
 import java.time.format.DateTimeFormatter
+import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -87,6 +89,12 @@ fun NewsScreen(
             )
             val dateFormat = remember {
                 DateTimeFormatter.ofPattern("d. MMMM yyyy")
+            }
+            LaunchedEffect(key1 = state.articles.size) {
+                // Keep delay here, since we only want mark first as shown after this is
+                // in composition for some while
+                delay(2.seconds)
+                viewModel.onShowFirstArticle()
             }
             val listState = rememberLazyListState()
             LazyColumn(

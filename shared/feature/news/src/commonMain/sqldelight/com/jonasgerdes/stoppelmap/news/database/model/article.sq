@@ -1,4 +1,3 @@
-import kotlinx.datetime.Instant;
 import kotlinx.datetime.LocalDate;
 
 CREATE TABLE article (
@@ -6,8 +5,7 @@ CREATE TABLE article (
     title       TEXT NOT NULL,
     teaser      TEXT NOT NULL,
     publishedOn TEXT AS LocalDate NOT NULL,
-    url         TEXT NOT NULL,
-    readAt      TEXT AS Instant
+    url         TEXT NOT NULL
 );
 
 upsert {
@@ -22,17 +20,17 @@ upsert {
     WHERE sortKey = :sortKey;
 }
 
-markRead:
-    UPDATE article SET readAt = :readAt WHERE sortKey = :sortKey;
-
 getAll:
     SELECT * FROM article ORDER BY sortKey DESC;
 
-countUnread:
-    SELECT COUNT(sortKey) FROM article WHERE readAt ISNULL;
+countNewerThen:
+    SELECT COUNT(sortKey) FROM article WHERE sortKey > :sortKey;
 
 getOldestSortyKey:
     SELECT sortKey FROM article ORDER BY sortKey ASC LIMIT 1;
+
+getLatestSortyKey:
+    SELECT sortKey FROM article ORDER BY sortKey DESC LIMIT 1;
 
 deleteAll:
     DELETE FROM article;

@@ -3,7 +3,6 @@ package com.jonasgerdes.stoppelmap.news.data.local.database
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import app.cash.sqldelight.coroutines.mapToOne
-import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.news.data.model.Article
 import com.jonasgerdes.stoppelmap.news.data.model.ArticleSortKey
 import com.jonasgerdes.stoppelmap.news.data.model.Image
@@ -16,7 +15,6 @@ import kotlinx.coroutines.withContext
 
 class LocalNewsSource(
     private val newsDatabase: NewsDatabase,
-    private val clockProvider: ClockProvider,
 ) {
 
     fun getNews(): Flow<List<Article>> =
@@ -41,7 +39,6 @@ class LocalNewsSource(
                                 blurHash = it.blurHash,
                             )
                         },
-                    isUnread = dbArticle.readAt == null,
                 )
             }
         }
@@ -77,18 +74,20 @@ class LocalNewsSource(
         }
     }
 
-    fun getUnreadArticleCount(): Flow<Long> =
-        newsDatabase.articleQueries.countUnread().asFlow().mapToOne(Dispatchers.IO)
+    fun getUnreadArticleCount(sortKey: ArticleSortKey): Flow<Long> =
+        newsDatabase.articleQueries.countNewerThen(sortKey.value)
+            .asFlow().mapToOne(Dispatchers.IO)
 
-    suspend fun markAsRead(sortKey: ArticleSortKey) {
-        withContext(Dispatchers.IO) {
-            newsDatabase.articleQueries.markRead(clockProvider.nowAsInstant(), sortKey.value)
-        }
-    }
 
     suspend fun getOldestKey(): ArticleSortKey? =
         withContext(Dispatchers.IO) {
             newsDatabase.articleQueries.getOldestSortyKey().executeAsOneOrNull()
+                ?.let(::ArticleSortKey)
+        }
+
+    suspend fun getLatestKey(): ArticleSortKey? =
+        withContext(Dispatchers.IO) {
+            newsDatabase.articleQueries.getLatestSortyKey().executeAsOneOrNull()
                 ?.let(::ArticleSortKey)
         }
 }

@@ -37,6 +37,7 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.sqldelight.coroutines)
+            implementation(libs.androidx.datastore.preferences.core)
 
             implementation(project(":shared:base"))
             implementation(project(":shared:network"))

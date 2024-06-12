@@ -89,6 +89,7 @@ dependencies {
     implementation(project(":shared:feature:countdown"))
     implementation(project(":shared:feature:schedule"))
     implementation(project(":shared:feature:transportation"))
+    implementation(project(":shared:feature:news"))
     implementation(project(":shared:app"))
     implementation(project(":base"))
     implementation(project(":shared:data"))

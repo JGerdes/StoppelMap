@@ -8,11 +8,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Newspaper
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -48,6 +56,7 @@ import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
+import com.jonasgerdes.stoppelmap.news.usecase.GetUnreadNewsCountUseCase
 import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleScreen
 import com.jonasgerdes.stoppelmap.settings.data.Settings
 import com.jonasgerdes.stoppelmap.settings.ui.SettingsScreen
@@ -59,6 +68,7 @@ import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverv
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -69,6 +79,7 @@ class StoppelMapActivity : ComponentActivity() {
     private val permissionRepository: PermissionRepository by inject()
     private val appUpdateManager: AppUpdateManager by inject()
     private val getSettings: GetSettingsUseCase by inject()
+    private val getUnreadNewsCount: GetUnreadNewsCountUseCase by inject()
 
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -76,6 +87,8 @@ class StoppelMapActivity : ComponentActivity() {
         ) { isGranted: Boolean ->
             permissionRepository.update()
         }
+
+    private var unreadNewsCount: Long by mutableStateOf(0L)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -93,6 +106,12 @@ class StoppelMapActivity : ComponentActivity() {
                     .collect()
             }
         }
+
+        getUnreadNewsCount()
+            .onEach {
+                unreadNewsCount = it
+            }
+            .launchIn(lifecycleScope)
 
         splashScreen.setKeepOnScreenCondition {
             settingsState == null
@@ -122,7 +141,21 @@ class StoppelMapActivity : ComponentActivity() {
                     navigationTabs.forEach { (icon, label, startDestination) ->
                         NavigationBarItem(
                             icon = {
-                                Icon(imageVector = icon, contentDescription = null)
+                                if (icon == Icons.Rounded.Newspaper) {
+                                    BadgedBox(badge = {
+                                        androidx.compose.animation.AnimatedVisibility(
+                                            visible = unreadNewsCount > 0,
+                                            enter = fadeIn() + scaleIn(),
+                                            exit = fadeOut() + scaleOut(),
+                                        ) {
+                                            Badge {
+                                                Text(text = unreadNewsCount.toString())
+                                            }
+                                        }
+                                    }) {
+                                        Icon(imageVector = icon, contentDescription = null)
+                                    }
+                                } else Icon(imageVector = icon, contentDescription = null)
                             },
                             label = {
                                 Text(
