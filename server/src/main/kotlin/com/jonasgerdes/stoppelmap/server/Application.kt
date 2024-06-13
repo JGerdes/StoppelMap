@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.server
 
+import ch.qos.logback.classic.Logger
 import com.jonasgerdes.stoppelmap.server.config.toAppConfig
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
+import com.jonasgerdes.stoppelmap.server.crawler.crawlerTasksModule
 import com.jonasgerdes.stoppelmap.server.data.dataModule
 import com.jonasgerdes.stoppelmap.server.news.newsModule
 import com.jonasgerdes.stoppelmap.server.news.newsRoutes
@@ -26,7 +28,9 @@ import org.koin.core.logger.Level
 import org.koin.dsl.module
 import org.koin.ktor.ext.inject
 import org.koin.ktor.plugin.Koin
+import org.slf4j.LoggerFactory
 import java.io.File
+import ch.qos.logback.classic.Level as LogbackLevel
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -35,6 +39,9 @@ fun Application.ktorModule() {
         host = (environment as ApplicationEngineEnvironment).connectors.first()
             .let { "${it.host}:${it.port}" }
     )
+    (LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as Logger)
+        .level = if (appConfig.environment.isDev) LogbackLevel.ALL else LogbackLevel.INFO
+
     environment.log.info("Starting version ${appConfig.version} with environment ${appConfig.environment}")
     install(CallLogging)
     install(Compression)
@@ -55,6 +62,7 @@ fun Application.ktorModule() {
             applicationModule,
             dataModule,
             crawlerModule,
+            crawlerTasksModule(appConfig.crawler),
             newsModule,
             schedulerModule,
         )

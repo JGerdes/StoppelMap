@@ -20,5 +20,9 @@ fun ApplicationConfig.toAppConfig(
         baseUrl = property("stoppelmap-server.crawler.base-url").getString(),
         slowMode = property("stoppelmap-server.crawler.slow-mode").getString().toBoolean(),
         imageCacheDir = property("stoppelmap-server.crawler.image-cache-dir").getString(),
+        doInitialFullCrawl = property("stoppelmap-server.crawler.do-initial-full-crawl").getString()
+            .toBoolean(),
+        doPeriodicCrawl = property("stoppelmap-server.crawler.do-periodic-crawl").getString()
+            .toBoolean(),
     ),
 )

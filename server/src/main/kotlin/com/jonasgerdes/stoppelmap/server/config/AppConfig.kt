@@ -20,5 +20,7 @@ data class AppConfig(
         val baseUrl: String,
         val slowMode: Boolean,
         val imageCacheDir: String,
+        val doInitialFullCrawl: Boolean,
+        val doPeriodicCrawl: Boolean,
     )
 }

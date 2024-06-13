@@ -59,18 +59,24 @@ val crawlerModule = module {
             logger = get()
         )
     }
+}
 
-    single {
-        CrawlAllNewsInitialTask(
-            articleRepository = get(),
-            stoppelmarktWebsiteCrawler = get(),
-            logger = get(),
-        )
-    } bind Task::class
+fun crawlerTasksModule(crawlerConfig: AppConfig.Crawler) = module {
+    if (crawlerConfig.doInitialFullCrawl) {
+        single {
+            CrawlAllNewsInitialTask(
+                articleRepository = get(),
+                stoppelmarktWebsiteCrawler = get(),
+                logger = get(),
+            )
+        } bind Task::class
+    }
 
-    single {
-        CrawlLatestNewsTask(
-            stoppelmarktWebsiteCrawler = get(),
-        )
-    } bind Task::class
+    if (crawlerConfig.doPeriodicCrawl) {
+        single {
+            CrawlLatestNewsTask(
+                stoppelmarktWebsiteCrawler = get(),
+            )
+        } bind Task::class
+    }
 }

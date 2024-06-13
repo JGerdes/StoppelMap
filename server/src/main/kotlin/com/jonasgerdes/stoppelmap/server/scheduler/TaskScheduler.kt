@@ -50,6 +50,10 @@ class TaskScheduler(
     private val logger: Logger,
 ) {
     suspend fun run() {
+        logger.info("TaskScheduler - Starting with ${tasks.size} tasks:")
+        tasks.forEach {
+            logger.info("                ${it::class.simpleName} (runs ${it.schedule})")
+        }
         coroutineScope {
             // Wait 5 seconds for everything to settle
             delay(5.seconds)
