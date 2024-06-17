@@ -18,7 +18,7 @@ class CrawlAllNewsInitialTask(
         val count = articleRepository.getCount()
         if (count == 0L) {
             logger.info("No articles yet, crawling all.")
-            stoppelmarktWebsiteCrawler.crawlNews(mode = StoppelmarktWebsiteCrawler.Mode.Latest)
+            stoppelmarktWebsiteCrawler.crawlNews(mode = StoppelmarktWebsiteCrawler.Mode.All)
         } else {
             logger.info("Already have $count articles, no initial crawl.")
         }
