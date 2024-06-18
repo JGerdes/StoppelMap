@@ -1,3 +1,5 @@
+package com.jonasgerdes.stoppelmap.news
+
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import app.cash.sqldelight.db.SqlDriver
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
@@ -24,7 +26,7 @@ val newsModule = module {
     }
     single {
         RemoteNewsSource(
-            baseUrl = "http://192.168.178.20:8080",
+            baseUrl = "https://api.stoppelmap.de",
             httpClient = get()
         )
     }

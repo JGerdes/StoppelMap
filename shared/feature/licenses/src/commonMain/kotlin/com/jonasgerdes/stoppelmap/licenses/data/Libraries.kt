@@ -29,6 +29,12 @@ internal val commonLibraries = listOf(
         sourceUrl = "https://github.com/woltapp/blurhash"
     ),
     Library(
+        name = "CachedAsyncImage",
+        author = "Lorenzo Fiamingo",
+        license = License.MIT(),
+        sourceUrl = "https://github.com/lorenzofiamingo/swiftui-cached-async-image"
+    ),
+    Library(
         name = "Lottie",
         author = "Airbnb, Inc., Lottie Contributors",
         license = License.Apache2(),

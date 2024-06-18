@@ -1,3 +1,5 @@
+package com.jonasgerdes.stoppelmap.news
+
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import com.jonasgerdes.stoppelmap.news.database.model.NewsDatabase

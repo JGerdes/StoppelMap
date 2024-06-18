@@ -2,6 +2,12 @@ import SwiftUI
 import Shared
 
 struct ContentView: View {
+    
+    let getUnreadNewsCount = NewsDependencies().getUnreadNewsCount
+    
+    @State
+    var unreadNewsCount: Int = 0
+    
     var body: some View {
         TabView{
             Group {
@@ -25,9 +31,15 @@ struct ContentView: View {
                     .tabItem {
                         Label(Res.strings().main_bottom_nav_item_news.desc().localized(), systemImage: "newspaper")
                     }
+                    .badge(unreadNewsCount)
             }
             .toolbarBackground(.ultraThinMaterial, for: .tabBar)
             .toolbarBackground(.visible, for: .tabBar)
+        }
+        .task {
+            for await count in getUnreadNewsCount.invoke() {
+                unreadNewsCount = count.intValue
+            }
         }
     }
 }

@@ -44,6 +44,8 @@
 		2AD0F99B2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9932C0121B400FDB2A3 /* RobotoSlab-Thin.ttf */; };
 		2AD0F99E2C01281000FDB2A3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD0F99D2C01281000FDB2A3 /* Fonts.swift */; };
 		2AD0F99F2C01281000FDB2A3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD0F99D2C01281000FDB2A3 /* Fonts.swift */; };
+		2AE7AF222C22301600CC0FF7 /* BlurHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7AF212C22301600CC0FF7 /* BlurHash.swift */; };
+		2AE7AF252C22434D00CC0FF7 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7AF242C22434D00CC0FF7 /* CachedAsyncImage.swift */; };
 		2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE90B4D2BC87527007B7241 /* RouteScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +122,8 @@
 		2AD0F9932C0121B400FDB2A3 /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
 		2AD0F99C2C0124EE00FDB2A3 /* StoppelMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "StoppelMap-Info.plist"; sourceTree = "<group>"; };
 		2AD0F99D2C01281000FDB2A3 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		2AE7AF212C22301600CC0FF7 /* BlurHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHash.swift; sourceTree = "<group>"; };
+		2AE7AF242C22434D00CC0FF7 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		2AE90B4D2BC87527007B7241 /* RouteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +193,7 @@
 		2A2A8F5D2BA4D64D008D24CE /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2AE7AF202C22300100CC0FF7 /* utils */,
 				2A409AF42C1A29A10061F18E /* news */,
 				2A9260592BF6798200C57918 /* settings */,
 				2A40405C2BC2FEC600A5B072 /* transportation */,
@@ -199,7 +204,6 @@
 				2A2A8F5E2BA4D64D008D24CE /* StoppelMapApp.swift */,
 				2A2A8F602BA4D64D008D24CE /* ContentView.swift */,
 				2A2A8F642BA4D64E008D24CE /* Preview Content */,
-				2A7781232BBB161D00C1FC25 /* Utils.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -303,6 +307,16 @@
 				2AD0F9932C0121B400FDB2A3 /* RobotoSlab-Thin.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		2AE7AF202C22300100CC0FF7 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				2A7781232BBB161D00C1FC25 /* Utils.swift */,
+				2AE7AF212C22301600CC0FF7 /* BlurHash.swift */,
+				2AE7AF242C22434D00CC0FF7 /* CachedAsyncImage.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		2AE90B4C2BC87512007B7241 /* route */ = {
@@ -538,6 +552,8 @@
 				2A58C0562BA4F7C100FDA014 /* HomeScreen.swift in Sources */,
 				2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */,
 				2A7781262BBB2F7200C1FC25 /* EventPage.swift in Sources */,
+				2AE7AF252C22434D00CC0FF7 /* CachedAsyncImage.swift in Sources */,
+				2AE7AF222C22301600CC0FF7 /* BlurHash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

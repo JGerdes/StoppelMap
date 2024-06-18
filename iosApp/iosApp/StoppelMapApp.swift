@@ -14,6 +14,10 @@ struct StoppelMapApp: App {
             )
             try! await deps.updateAppConfigAndDownloadFilesUseCase.invoke()
         }
+
+        Task {
+            try! await NewsDependencies().loadLatestNews.invoke()
+        }
     }
     
     var body: some Scene {

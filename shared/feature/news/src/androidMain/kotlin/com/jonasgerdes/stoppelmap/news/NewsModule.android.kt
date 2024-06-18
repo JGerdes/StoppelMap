@@ -1,3 +1,5 @@
+package com.jonasgerdes.stoppelmap.news
+
 import android.content.Context
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
