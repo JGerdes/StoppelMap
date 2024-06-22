@@ -29,7 +29,7 @@ struct HomeScreen: View {
                             hours: countDown.hoursLeft,
                             minutes: countDown.minutesLeft,
                             seconds: countDown.secondsLeft,
-                            year: countDown.season.year
+                            season: countDown.season
                         )
                     }
                     Text("title").font(.title)

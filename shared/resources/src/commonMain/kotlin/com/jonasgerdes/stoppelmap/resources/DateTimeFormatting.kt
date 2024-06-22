@@ -29,3 +29,10 @@ fun LocalDate.defaultFormat() = FormattedLocalDateStringDesc(this) {
         year()
     }
 }
+
+fun LocalDate.dayOfMonthFormat() = FormattedLocalDateStringDesc(this) {
+    LocalDate.Format {
+        dayOfMonth(padding = Padding.NONE)
+        char('.')
+    }
+}

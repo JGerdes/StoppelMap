@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.countdown.ui.components
 
-import android.content.Context
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.PluralsRes
@@ -26,7 +25,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -42,8 +40,8 @@ import androidx.constraintlayout.compose.Dimension.Companion.fillToConstraints
 import androidx.constraintlayout.compose.Dimension.Companion.wrapContent
 import com.jonasgerdes.stoppelmap.base.contract.Season
 import com.jonasgerdes.stoppelmap.countdown.R
-import com.jonasgerdes.stoppelmap.resources.DateTimeStrings
-import com.jonasgerdes.stoppelmap.resources.monthNames
+import com.jonasgerdes.stoppelmap.resources.dayOfMonthFormat
+import com.jonasgerdes.stoppelmap.resources.defaultFormat
 import com.jonasgerdes.stoppelmap.theme.LightColorScheme
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.modifier.invisible
@@ -51,8 +49,6 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.Month
 import kotlinx.datetime.format
-import kotlinx.datetime.format.Padding
-import kotlinx.datetime.format.char
 
 @Composable
 fun CountdownCard(
@@ -176,14 +172,11 @@ fun CountdownCard(
                         textAlign = TextAlign.End,
                     )
                     val context = LocalContext.current
-                    val endFormat = remember {
-                        dateRangeEndFormat(context)
-                    }
                     Text(
                         text = stringResource(
                             id = R.string.countdownCard_dates,
-                            season.start.format(dateRangeStartFormat),
-                            season.end.format(endFormat),
+                            season.start.date.dayOfMonthFormat().toString(context),
+                            season.end.date.defaultFormat().toString(context),
                         ),
                         style = MaterialTheme.typography.bodySmall,
                         textAlign = TextAlign.End,
@@ -267,19 +260,3 @@ private fun PreviewCountdownCard() {
         )
     }
 }
-
-
-private val dateRangeStartFormat =
-    LocalDateTime.Format {
-        dayOfMonth(padding = Padding.NONE)
-        char('.')
-    }
-
-private fun dateRangeEndFormat(context: Context) =
-    LocalDateTime.Format {
-        dayOfMonth(Padding.NONE)
-        chars(". ")
-        monthName(DateTimeStrings.monthNames(context))
-        char(' ')
-        year(Padding.NONE)
-    }
