@@ -30,6 +30,7 @@
 		2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */; };
 		2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781232BBB161D00C1FC25 /* Utils.swift */; };
 		2A7781262BBB2F7200C1FC25 /* EventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781252BBB2F7200C1FC25 /* EventPage.swift */; };
+		2A838B212C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */; };
 		2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92605A2BF6799B00C57918 /* SettingsScreen.swift */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
@@ -113,6 +114,7 @@
 		2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		2A7781232BBB161D00C1FC25 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2A7781252BBB2F7200C1FC25 /* EventPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPage.swift; sourceTree = "<group>"; };
+		2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderConstrcutionPlaceholder.swift; sourceTree = "<group>"; };
 		2A92605A2BF6799B00C57918 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		2A2A8F5D2BA4D64D008D24CE /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				2A838B1F2C26D0AC005642A1 /* common */,
 				2AE7AF202C22300100CC0FF7 /* utils */,
 				2A409AF42C1A29A10061F18E /* news */,
 				2A9260592BF6798200C57918 /* settings */,
@@ -278,6 +281,14 @@
 				2A7781252BBB2F7200C1FC25 /* EventPage.swift */,
 			);
 			path = schedule;
+			sourceTree = "<group>";
+		};
+		2A838B1F2C26D0AC005642A1 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */,
+			);
+			path = common;
 			sourceTree = "<group>";
 		};
 		2A9260592BF6798200C57918 /* settings */ = {
@@ -540,6 +551,7 @@
 				2A2A8F612BA4D64D008D24CE /* ContentView.swift in Sources */,
 				2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */,
 				2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */,
+				2A838B212C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift in Sources */,
 				2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */,
 				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
 				2AD0F99E2C01281000FDB2A3 /* Fonts.swift in Sources */,

@@ -75,7 +75,7 @@ fun UnderConstructionPlaceholder(
         )
         Spacer(modifier = Modifier.size(24.dp))
         Text(
-            text = stringResource(id = R.string.main_available_soon),
+            text = stringResource(id = R.string.common_available_soon),
             style = MaterialTheme.typography.displaySmall
         )
     }

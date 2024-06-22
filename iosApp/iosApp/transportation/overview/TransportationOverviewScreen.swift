@@ -46,7 +46,9 @@ struct TransportationOverviewScreen: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
             }
-        }.task {
+            .overlay(UnderConstrcutionPlaceholder())
+        }
+        .task {
             for await state in viewModel.state {
                 viewState = state
             }

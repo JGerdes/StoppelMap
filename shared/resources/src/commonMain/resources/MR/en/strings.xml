@@ -22,6 +22,8 @@
     <string name="common_datetime_month_november">November</string>
     <string name="common_datetime_month_december">December</string>
 
+    <string name="common_available_soon">Comming soon</string>
+
     <!-- Main -->
     <string name="main_bottom_nav_item_home">Info</string>
     <string name="main_bottom_nav_item_map">Map</string>

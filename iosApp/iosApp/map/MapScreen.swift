@@ -6,6 +6,7 @@ struct MapScreen: View {
     var body: some View {
         MapView(colorScheme: colorScheme)
             .ignoresSafeArea()
+            .overlay(UnderConstrcutionPlaceholder())
     }
 }
 

@@ -32,15 +32,6 @@ struct HomeScreen: View {
                             season: countDown.season
                         )
                     }
-                    Text("title").font(.title)
-                    Text("title2").font(.title2)
-                    Text("title3").font(.title3)
-                    Text("body").font(.body)
-                    Text("headline").font(.headline)
-                    Text("caption").font(.caption)
-                    Text("caption2").font(.caption2)
-                    Text("subheadline").font(.subheadline)
-                    Text("callout").font(.callout)
                 }
                 .frame(
                     maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
