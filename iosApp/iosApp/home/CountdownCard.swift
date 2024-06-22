@@ -71,6 +71,7 @@ struct CountdownCard: View {
                         .padding(8)
                 )
         }
+        .environment(\.colorScheme, .light)
         .cornerRadius(24.0)
         .padding()
     }
