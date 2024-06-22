@@ -22,7 +22,7 @@ struct NewsScreen: View {
                     .task {
                         // Keep delay here, since we only want mark as shown after this view
                         // is shown for some while
-                        try! await Task.sleep(nanoseconds: 2_000_000_000)
+                        try? await Task.sleep(nanoseconds: 2_000_000_000)
                         viewModel.onShowFirstArticle()
                     }
                     Color.clear
