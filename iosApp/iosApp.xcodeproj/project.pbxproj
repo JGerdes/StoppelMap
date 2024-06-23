@@ -31,6 +31,8 @@
 		2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781232BBB161D00C1FC25 /* Utils.swift */; };
 		2A7781262BBB2F7200C1FC25 /* EventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781252BBB2F7200C1FC25 /* EventPage.swift */; };
 		2A838B212C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */; };
+		2A838B242C2809E9005642A1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2A838B232C2809E9005642A1 /* Lottie */; };
+		2A838B272C282B33005642A1 /* UnderConstruction.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A838B262C282B33005642A1 /* UnderConstruction.json */; };
 		2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92605A2BF6799B00C57918 /* SettingsScreen.swift */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
@@ -115,6 +117,7 @@
 		2A7781232BBB161D00C1FC25 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2A7781252BBB2F7200C1FC25 /* EventPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPage.swift; sourceTree = "<group>"; };
 		2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderConstrcutionPlaceholder.swift; sourceTree = "<group>"; };
+		2A838B262C282B33005642A1 /* UnderConstruction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UnderConstruction.json; sourceTree = "<group>"; };
 		2A92605A2BF6799B00C57918 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A60663F2BB051B30067FB33 /* MapLibre in Frameworks */,
+				2A838B242C2809E9005642A1 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +176,7 @@
 		2A2A8F522BA4D64D008D24CE = {
 			isa = PBXGroup;
 			children = (
+				2A838B252C282ABC005642A1 /* Animations */,
 				2AD0F99D2C01281000FDB2A3 /* Fonts.swift */,
 				2AD0F99C2C0124EE00FDB2A3 /* StoppelMap-Info.plist */,
 				2AD0F9832C01215500FDB2A3 /* fonts */,
@@ -291,6 +296,14 @@
 			path = common;
 			sourceTree = "<group>";
 		};
+		2A838B252C282ABC005642A1 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				2A838B262C282B33005642A1 /* UnderConstruction.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		2A9260592BF6798200C57918 /* settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +393,7 @@
 			name = StoppelMap;
 			packageProductDependencies = (
 				2A60663E2BB051B30067FB33 /* MapLibre */,
+				2A838B232C2809E9005642A1 /* Lottie */,
 			);
 			productName = StoppelMap;
 			productReference = 2A2A8F5B2BA4D64D008D24CE /* StoppelMap.app */;
@@ -414,6 +428,7 @@
 			mainGroup = 2A2A8F522BA4D64D008D24CE;
 			packageReferences = (
 				2A60663D2BB051B30067FB33 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
+				2A838B222C2809E9005642A1 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 2A2A8F5C2BA4D64D008D24CE /* Products */;
 			projectDirPath = "";
@@ -445,6 +460,7 @@
 				2A2A8F632BA4D64E008D24CE /* Assets.xcassets in Resources */,
 				2AD0F9982C0121B400FDB2A3 /* RobotoSlab-Light.ttf in Resources */,
 				2AD0F9942C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */,
+				2A838B272C282B33005642A1 /* UnderConstruction.json in Resources */,
 				2AD0F9962C0121B400FDB2A3 /* RobotoSlab-Bold.ttf in Resources */,
 				2ACCB05D2BB21D8100DA01B6 /* map in Resources */,
 				2A77811F2BB8AC6E00C1FC25 /* mapdata.geojson in Resources */,
@@ -888,6 +904,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
+		2A838B222C2809E9005642A1 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -895,6 +919,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2A60663D2BB051B30067FB33 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
 			productName = MapLibre;
+		};
+		2A838B232C2809E9005642A1 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A838B222C2809E9005642A1 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
