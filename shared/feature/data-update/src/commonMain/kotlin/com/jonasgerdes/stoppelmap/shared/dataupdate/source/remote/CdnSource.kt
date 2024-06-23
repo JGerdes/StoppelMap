@@ -2,11 +2,11 @@ package com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote
 
 import com.jonasgerdes.stoppelmap.shared.dataupdate.io.readFully
 import com.jonasgerdes.stoppelmap.shared.dataupdate.model.RemoteAppConfig
+import com.jonasgerdes.stoppelmap.shared.network.apiKeyHeader
 import com.jonasgerdes.stoppelmap.shared.network.executeRequest
 import com.jonasgerdes.stoppelmap.shared.network.model.Response
 import com.jonasgerdes.stoppelmap.shared.network.runCatchingToResponse
 import io.ktor.client.HttpClient
-import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.accept
 import io.ktor.client.request.get
 import io.ktor.client.request.header
@@ -26,7 +26,8 @@ class CdnSource(
     suspend fun getRemoteAppConfig(): Response<RemoteAppConfig> =
         httpClient.executeRequest<RemoteAppConfig> {
             get("$baseUrl/app-config.json") {
-                apiKeyHeader()
+                apiKeyHeader(apiKey)
+                header("api-key", apiKey)
                 accept(ContentType.Application.Json)
             }
         }
@@ -38,7 +39,8 @@ class CdnSource(
         return httpClient.runCatchingToResponse<Path>(
             request = {
                 get("$baseUrl/$name") {
-                    apiKeyHeader()
+                    apiKeyHeader(apiKey)
+                    header("api-key", apiKey)
                 }
             },
             onSuccess = { response ->
@@ -49,6 +51,4 @@ class CdnSource(
             }
         )
     }
-
-    private fun HttpRequestBuilder.apiKeyHeader() = header("api-key", apiKey)
 }
