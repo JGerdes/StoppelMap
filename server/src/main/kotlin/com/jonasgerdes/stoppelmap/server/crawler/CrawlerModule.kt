@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.server.config.AppConfig
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlAllNewsInitialTask
 import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlLatestNewsTask
+import com.jonasgerdes.stoppelmap.server.scheduler.Schedule
 import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import com.sksamuel.scrimage.ImmutableImage
 import com.sksamuel.scrimage.nio.ImageIOReader
@@ -72,10 +73,11 @@ fun crawlerTasksModule(crawlerConfig: AppConfig.Crawler) = module {
         } bind Task::class
     }
 
-    if (crawlerConfig.doPeriodicCrawl) {
+    if (crawlerConfig.periodicCrawlHours.isNotEmpty()) {
         single {
             CrawlLatestNewsTask(
                 stoppelmarktWebsiteCrawler = get(),
+                schedule = Schedule.HoursOfDay(crawlerConfig.periodicCrawlHours)
             )
         } bind Task::class
     }

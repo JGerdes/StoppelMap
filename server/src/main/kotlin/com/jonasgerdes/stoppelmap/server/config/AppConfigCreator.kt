@@ -22,7 +22,16 @@ fun ApplicationConfig.toAppConfig(
         imageCacheDir = property("stoppelmap-server.crawler.image-cache-dir").getString(),
         doInitialFullCrawl = property("stoppelmap-server.crawler.do-initial-full-crawl").getString()
             .toBoolean(),
-        doPeriodicCrawl = property("stoppelmap-server.crawler.do-periodic-crawl").getString()
-            .toBoolean(),
+        periodicCrawlHours = property("stoppelmap-server.crawler.periodic-crawl-hours")
+            .getString()
+            .split(',')
+            .mapNotNull {
+                try {
+                    it.trim().toInt()
+                } catch (nfe: NumberFormatException) {
+                    null
+                }
+            }
+            .toSet(),
     ),
 )

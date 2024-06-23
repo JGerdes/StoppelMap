@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import org.slf4j.Logger
@@ -36,6 +37,17 @@ sealed interface Schedule {
         val atMinute: Int = 0,
         override val executeOnceImmediately: Boolean = false
     ) : Schedule
+
+    data class HoursOfDay(
+        val hours: Set<Int>,
+        override val executeOnceImmediately: Boolean = false
+    ) : Schedule {
+        constructor(vararg hours: Int, executeOnceImmediately: Boolean = false) :
+                this(
+                    hours = hours.toSet(),
+                    executeOnceImmediately = executeOnceImmediately
+                )
+    }
 
     data class RepeatEvery(
         val duration: Duration,
@@ -122,4 +134,19 @@ private suspend fun Schedule.durationToNextOccurrenceAfter(now: Instant): Durati
         }
 
         is Schedule.RepeatEvery -> duration
+        is Schedule.HoursOfDay -> {
+            val localNow = now.toLocalDateTime(timeZone)
+            val hours = hours.sorted()
+            val nextHour = hours.firstOrNull { it > localNow.hour }
+
+            val nextOccurrence =
+                if (nextHour != null) {
+                    localNow.date.atTime(hour = nextHour, minute = 0)
+                } else {
+                    val localTomorrow = (now + 1.days).toLocalDateTime(timeZone).date
+                    localTomorrow.atTime(hour = hours.first(), minute = 0)
+                }.toInstant(timeZone)
+
+            nextOccurrence - now
+        }
     }

@@ -6,9 +6,8 @@ import com.jonasgerdes.stoppelmap.server.scheduler.Task
 
 class CrawlLatestNewsTask(
     private val stoppelmarktWebsiteCrawler: StoppelmarktWebsiteCrawler,
+    override val schedule: Schedule,
 ) : Task {
-
-    override val schedule = Schedule.Hourly()
 
     override suspend fun invoke() {
         stoppelmarktWebsiteCrawler.crawlNews(mode = StoppelmarktWebsiteCrawler.Mode.Latest)
