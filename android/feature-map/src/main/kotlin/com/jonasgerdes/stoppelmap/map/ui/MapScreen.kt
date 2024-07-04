@@ -48,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.map.components.Map
+import com.jonasgerdes.stoppelmap.theme.components.NoticeCard
 import org.koin.androidx.compose.get
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
@@ -75,6 +76,12 @@ fun MapScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(scaffoldPadding)
+        )
+        NoticeCard(
+            message = "Stand: 2023. Ein Update für 2024 ist in Arbeit.",
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .statusBarsPadding(),
         )
         Column(
             modifier = Modifier

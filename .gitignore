@@ -54,7 +54,7 @@ captures/
 
 # project related
 *.db
-app/release/
+android/app/release
 signing.properties
 secrets.properties
 

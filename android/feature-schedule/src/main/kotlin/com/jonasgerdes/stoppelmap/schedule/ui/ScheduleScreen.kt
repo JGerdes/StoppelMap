@@ -37,6 +37,7 @@ import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.schedule.R
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
 import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
+import com.jonasgerdes.stoppelmap.theme.components.NoticeCard
 import com.jonasgerdes.stoppelmap.theme.util.MeasureUnconstrainedViewWidth
 import kotlinx.coroutines.launch
 import kotlinx.datetime.toJavaLocalTime
@@ -60,6 +61,9 @@ fun ScheduleScreen(
             CenterAlignedTopAppBar(
                 title = { Text(text = stringResource(id = R.string.schedule_topbar_title)) },
             )
+        },
+        bottomBar = {
+            NoticeCard(message = "Stand: 2023. Ein Update für 2024 ist in Arbeit.")
         },
         modifier = modifier,
     ) { paddingValues ->
