@@ -39,6 +39,10 @@
     <string name="countdownCard_iteration">%1$d. Stoppelmarkt</string>
     <string name="countdownCard_dates">%1$s - %2$s</string>
 
+    <!-- Social media promo -->
+    <string name="social_media_promo_instagram_title">Du willst auf dem Laufenden bleiben, was StoppelMap und den Stoppelmarkt angeht?</string>
+    <string name="social_media_promo_instagram_button">Folge StoppelMap auf Instagram</string>
+
     <!-- Settings/Licenses -->
     <string name="settings_topbar_title">Einstellungen/Info</string>
     <string name="settings_topbar_navigateBack_contentDescription">Zurück</string>

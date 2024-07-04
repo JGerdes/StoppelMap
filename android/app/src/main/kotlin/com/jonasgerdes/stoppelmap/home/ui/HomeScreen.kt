@@ -44,6 +44,9 @@ import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
+import com.jonasgerdes.stoppelmap.update.model.UpdateState
+import com.jonasgerdes.stoppelmap.update.ui.AppUpdateViewModel
+import com.jonasgerdes.stoppelmap.update.ui.components.AppUpdateCard
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("NewApi")
@@ -55,8 +58,11 @@ fun HomeScreen(
     onOpenGooglePlayTap: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = koinViewModel(),
+    updateAppViewModel: AppUpdateViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val updateState by updateAppViewModel.state.collectAsStateWithLifecycle()
+
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     val listState = rememberLazyListState()
     Scaffold(
@@ -91,6 +97,17 @@ fun HomeScreen(
                     MessageCard(
                         message = message,
                         onUrlTap = onUrlTap,
+                    )
+                }
+            }
+            if (updateState.updateState !is UpdateState.Hidden) {
+                item {
+                    AppUpdateCard(
+                        updateState.updateState,
+                        onDownloadTap = onDownloadUpdateTap,
+                        onInstallTap = updateAppViewModel::onCompleteAppUpdateTapped,
+                        onOpenGooglePlayTap = onOpenGooglePlayTap,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
@@ -161,7 +178,7 @@ fun HomeScreen(
                                 .padding(top = 16.dp, bottom = 8.dp)
                         ) {
                             Text(
-                                text = "Du willst auf dem Laufenden bleiben, was StoppelMap und den Stoppelmarkt angeht?",
+                                text = stringResource(R.string.social_media_promo_instagram_title),
                                 style = MaterialTheme.typography.titleMedium
                             )
                             Spacer(modifier = Modifier.size(16.dp))
@@ -169,7 +186,7 @@ fun HomeScreen(
                                 onClick = { onUrlTap("https://instagram.com/stoppelmap") },
                                 modifier = Modifier.align(Alignment.CenterHorizontally)
                             ) {
-                                Text("Folge StoppelMap auf Instagram")
+                                Text(text = stringResource(R.string.social_media_promo_instagram_button))
                             }
                         }
                     }

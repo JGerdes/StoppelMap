@@ -3,7 +3,7 @@ package com.jonasgerdes.stoppelmap.update.model
 import com.google.android.play.core.appupdate.AppUpdateInfo
 
 sealed interface UpdateState {
-    object Hidden : UpdateState
+    data object Hidden : UpdateState
     data class Available(val appUpdateInfo: AppUpdateInfo) : UpdateState
     data class Downloading(
         val progress: Progress
@@ -14,6 +14,6 @@ sealed interface UpdateState {
         }
     }
 
-    object ReadyToInstall : UpdateState
-    object Failed : UpdateState
+    data object ReadyToInstall : UpdateState
+    data object Failed : UpdateState
 }
