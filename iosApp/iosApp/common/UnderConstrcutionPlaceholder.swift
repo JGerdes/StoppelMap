@@ -20,6 +20,7 @@ struct UnderConstrcutionPlaceholder: View {
                 .configure { lottie in
                     lottie.contentMode = .scaleAspectFit
                 }
+                .backgroundBehavior(.pauseAndRestore)
                 .resizable()
                 .frame(width: 256, height: 256)
                 .opacity(0.8)

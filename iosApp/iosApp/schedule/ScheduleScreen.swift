@@ -53,7 +53,6 @@ struct ScheduleScreen: View {
                     }
                 }
             }
-            .overlay(UnderConstrcutionPlaceholder())
         }
         .task {
             for await state in viewModel.state {

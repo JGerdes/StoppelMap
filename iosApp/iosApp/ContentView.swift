@@ -15,15 +15,19 @@ struct ContentView: View {
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_home.desc().localized(), systemImage: "house.fill")
                     }
-                MapScreen()
+                Color.clear
+                    .ignoresSafeArea()
+                    .overlay(UnderConstrcutionPlaceholder())
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_map.desc().localized(), systemImage: "map.fill")
                     }
-                ScheduleScreen()
+                Color.clear
+                .overlay(UnderConstrcutionPlaceholder())
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_schedule.desc().localized(), systemImage: "calendar")
                     }
-                TransportationOverviewScreen()
+                Color.clear
+                .overlay(UnderConstrcutionPlaceholder())
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_transport.desc().localized(), systemImage: "bus.fill")
                     }
