@@ -2,6 +2,9 @@ import SwiftUI
 import Shared
 
 struct CountdownCard: View {
+    
+    @Environment(\.colorScheme) private var colorScheme
+    
     var days: Int32
     var hours: Int32
     var minutes: Int32
@@ -45,33 +48,50 @@ struct CountdownCard: View {
                     .padding(.leading, 128)
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .background(Color("StoppelSky"))
+                .background {
+                    Color("StoppelSky")
+                        .if(colorScheme == .dark) {view in
+                            view.overlay { Color.clear.background(.ultraThickMaterial) }
+                        }
+                }
                 ZStack(alignment: .trailing) {
                     VStack(alignment: .trailing) {
                         Text(Res.strings().countdownCard_suffix.desc().localized())
+                            .multilineTextAlignment(.trailing)
                             .font(.bodySlab)
                         Text(Res.strings().countdownCard_iteration.format(args: [season.iteration]).localized())
-                            .font(.titleSlab)
+                            .multilineTextAlignment(.trailing)
+                            .font(.title2Slab)
                         Text(Res.strings().countdownCard_dates.format(args: [
                             season.start.date.dayOfMonthFormat().localized(),
                             season.end.date.defaultFormat().localized()
                         ]).localized())
+                            .multilineTextAlignment(.trailing)
                             .font(.bodySlab)
                     }
                     .padding([.vertical, .trailing])
-                    .padding(.leading, 128)
+                    .padding(.leading, 112)
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .background(Color("StoppelField"))
+                .if(colorScheme == .light) {view in
+                    view.background(Color("StoppelField"))
+                }
+                .if(colorScheme == .dark) {view in
+                    view.background(.ultraThickMaterial)
+                }
             }
             Color.clear
                 .frame(maxWidth: 128, maxHeight: .infinity)
                 .overlay(
-                    Image(uiImage: Res.images.shared.jan_libett_balloons.toUIImage()!).resizable().scaledToFit()
+                    Image(uiImage: Res.images.shared.jan_libett_balloons.toUIImage()!)
+                        .resizable()
+                        .scaledToFit()
+                        .if(colorScheme == .dark) { view in
+                            view.colorMultiply(Color.black.mix(with: Color.white, by: 0.75))
+                        }
                         .padding(8)
                 )
         }
-        .environment(\.colorScheme, .light)
         .cornerRadius(24.0)
         .padding()
     }

@@ -22,7 +22,7 @@
     <string name="common_datetime_month_november">November</string>
     <string name="common_datetime_month_december">December</string>
 
-    <string name="common_available_soon">Comming soon</string>
+    <string name="common_available_soon">Available soon</string>
 
     <!-- Main -->
     <string name="main_bottom_nav_item_home">Info</string>
@@ -32,7 +32,7 @@
     <string name="main_bottom_nav_item_news">News</string>
 
     <!-- Home -->
-    <string name="my_string">Hello Stoppelmarkt!</string>
+    <string name="home_topbar_title">Hello Stoppelmarkt!</string>
 
     <!-- Countdown -->
     <string name="countdownCard_suffix">until</string>
