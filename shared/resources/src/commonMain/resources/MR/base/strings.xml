@@ -39,6 +39,12 @@
     <string name="countdownCard_iteration">%1$d. Stoppelmarkt</string>
     <string name="countdownCard_dates">%1$s - %2$s</string>
 
+    <!-- Widget suggestion -->
+    <string name="widget_suggestion_card_title">Hast du schon die Widgets für deinen Startbildschirm ausprobiert?</string>
+    <string name="widget_suggestion_card_gingerbread_contentDescription">Vorschau des Countdown-Widgets in Form eines Lebkuchenherzens</string>
+    <string name="widget_suggestion_card_skyline_contentDescription">Vorschau des Countdown-Widgets in Form einer Skyline des Marktes</string>
+    <string name="widget_suggestion_card_add">Hinzufügen</string>
+
     <!-- Social media promo -->
     <string name="social_media_promo_instagram_title">Du willst auf dem Laufenden bleiben, was StoppelMap und den Stoppelmarkt angeht?</string>
     <string name="social_media_promo_instagram_button">Folge StoppelMap auf Instagram</string>
