@@ -93,7 +93,7 @@ struct Background: View {
                             Image(uiImage: Res.images.shared.jan_libett_corner.toUIImage()!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                        }
+                        }.frame(width: metrics.size.width * 0.45)
                     }
                 }
                 if entry.state is CountDownOnGoing {
