@@ -78,7 +78,8 @@ fun MapScreen(
                 .padding(scaffoldPadding)
         )
         NoticeCard(
-            message = "Stand: 2023. Ein Update für 2024 ist in Arbeit.",
+            title = "Stand 2023",
+            message = "Ein Update für 2024 ist in Arbeit",
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .statusBarsPadding(),

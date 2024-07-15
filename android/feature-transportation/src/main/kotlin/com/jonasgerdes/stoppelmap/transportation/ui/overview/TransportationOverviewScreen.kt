@@ -121,7 +121,7 @@ fun TransportationOverviewScreen(
             }
         },
         bottomBar = {
-            NoticeCard(message = "Stand: 2023. Ein Update für 2024 ist in Arbeit.")
+            NoticeCard(title = "Stand 2023", message = "Ein Update für 2024 ist in Arbeit")
         },
         modifier = modifier
     ) { paddingValues ->
