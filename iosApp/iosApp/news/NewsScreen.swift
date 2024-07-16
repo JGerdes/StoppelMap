@@ -74,6 +74,7 @@ struct ArticleCard: View {
                             if let copyright = image.copyright {
                                 Text(Res.strings().news_article_card_photo_copyright.format(args: [copyright]).localized())
                                     .font(.caption2)
+                                    .foregroundStyle(Color.white)
                                     .frame(maxWidth: .infinity, alignment: .bottomLeading)
                                     .padding(.horizontal)
                                     .padding(.top, 64)
