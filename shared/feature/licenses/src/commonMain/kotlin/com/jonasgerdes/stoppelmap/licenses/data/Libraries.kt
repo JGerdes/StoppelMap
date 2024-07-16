@@ -41,6 +41,12 @@ internal val commonLibraries = listOf(
         sourceUrl = "https://github.com/airbnb/lottie-android"
     ),
     Library(
+        name = "Kermit",
+        author = "Touchlab Inc., Kermit Contributors",
+        license = License.Apache2(),
+        sourceUrl = "https://github.com/touchlab/Kermit"
+    ),
+    Library(
         name = "Kotlin, Kotlin Coroutines, Kotlin Multiplatform",
         author = "JetBrains, Inc.",
         license = License.Apache2(),
