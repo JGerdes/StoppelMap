@@ -22,11 +22,11 @@ ktor {
 
 sqldelight {
     databases {
-        create("Database") {
-            packageName.set("com.jonasgerdes.stoppelmap.server")
+        create("NewsDatabase") {
+            packageName.set("com.jonasgerdes.stoppelmap.server.news.data")
             srcDirs.setFrom("src/main/sqldelight")
             schemaOutputDirectory =
-                file("src/main/sqldelight/com/jonasgerdes/stoppelmap/server/schema")
+                file("src/main/sqldelight/com/jonasgerdes/stoppelmap/server/news/data/schema")
             version = 1
             verifyMigrations = true
         }

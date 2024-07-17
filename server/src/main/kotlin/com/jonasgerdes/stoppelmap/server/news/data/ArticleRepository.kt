@@ -1,7 +1,7 @@
-package com.jonasgerdes.stoppelmap.server.data
+package com.jonasgerdes.stoppelmap.server.news.data
 
-import com.jonasgerdes.stoppelmap.server.news.Article
-import com.jonasgerdes.stoppelmap.server.news.ArticleQueries
+import com.jonasgerdes.stoppelmap.server.news.data.Article
+import com.jonasgerdes.stoppelmap.server.news.data.ArticleQueries
 
 class ArticleRepository(
     private val articleQueries: ArticleQueries,

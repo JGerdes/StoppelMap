@@ -1,7 +1,7 @@
-package com.jonasgerdes.stoppelmap.server.data
+package com.jonasgerdes.stoppelmap.server.news.data
 
-import com.jonasgerdes.stoppelmap.server.news.Image
-import com.jonasgerdes.stoppelmap.server.news.ImageQueries
+import com.jonasgerdes.stoppelmap.server.news.data.Image
+import com.jonasgerdes.stoppelmap.server.news.data.ImageQueries
 
 class ImageRepository(
     private val imageQueries: ImageQueries,

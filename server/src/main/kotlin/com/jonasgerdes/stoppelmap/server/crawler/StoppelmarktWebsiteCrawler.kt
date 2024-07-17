@@ -6,10 +6,10 @@ import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.ArticlePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsArchivePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsPageScraper
-import com.jonasgerdes.stoppelmap.server.data.ArticleRepository
-import com.jonasgerdes.stoppelmap.server.data.ImageRepository
-import com.jonasgerdes.stoppelmap.server.news.Article
-import com.jonasgerdes.stoppelmap.server.news.Image
+import com.jonasgerdes.stoppelmap.server.news.data.Article
+import com.jonasgerdes.stoppelmap.server.news.data.ArticleRepository
+import com.jonasgerdes.stoppelmap.server.news.data.Image
+import com.jonasgerdes.stoppelmap.server.news.data.ImageRepository
 import com.jonasgerdes.stoppelmap.server.scheduler.ClockProvider
 import com.jonasgerdes.stoppelmap.server.util.ULID
 import kotlinx.coroutines.delay

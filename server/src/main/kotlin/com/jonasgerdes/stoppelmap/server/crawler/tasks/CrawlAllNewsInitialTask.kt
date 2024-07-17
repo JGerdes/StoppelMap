@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.server.crawler.tasks
 
 import com.jonasgerdes.stoppelmap.server.crawler.StoppelmarktWebsiteCrawler
-import com.jonasgerdes.stoppelmap.server.data.ArticleRepository
+import com.jonasgerdes.stoppelmap.server.news.data.ArticleRepository
 import com.jonasgerdes.stoppelmap.server.scheduler.Schedule
 import com.jonasgerdes.stoppelmap.server.scheduler.Task
 import org.slf4j.Logger

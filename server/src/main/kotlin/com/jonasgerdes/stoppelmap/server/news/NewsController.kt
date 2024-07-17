@@ -1,8 +1,8 @@
 package com.jonasgerdes.stoppelmap.server.news
 
 import com.jonasgerdes.stoppelmap.server.config.AppConfig
-import com.jonasgerdes.stoppelmap.server.data.ArticleRepository
-import com.jonasgerdes.stoppelmap.server.data.ImageRepository
+import com.jonasgerdes.stoppelmap.server.news.data.ArticleRepository
+import com.jonasgerdes.stoppelmap.server.news.data.ImageRepository
 import com.jonasgerdes.stoppelmap.server.news.dto.Article
 import com.jonasgerdes.stoppelmap.server.news.dto.GetArticlesResponse
 import com.jonasgerdes.stoppelmap.server.news.dto.Image

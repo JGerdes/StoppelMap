@@ -4,7 +4,6 @@ import ch.qos.logback.classic.Logger
 import com.jonasgerdes.stoppelmap.server.config.toAppConfig
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerTasksModule
-import com.jonasgerdes.stoppelmap.server.data.dataModule
 import com.jonasgerdes.stoppelmap.server.news.newsModule
 import com.jonasgerdes.stoppelmap.server.news.newsRoutes
 import com.jonasgerdes.stoppelmap.server.scheduler.TaskScheduler
@@ -60,7 +59,6 @@ fun Application.ktorModule() {
                 single { environment.log }
             },
             applicationModule,
-            dataModule,
             crawlerModule,
             crawlerTasksModule(appConfig.crawler),
             newsModule,
