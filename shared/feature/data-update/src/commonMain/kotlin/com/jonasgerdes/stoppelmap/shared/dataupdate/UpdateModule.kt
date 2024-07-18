@@ -6,7 +6,7 @@ import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.base.model.Secrets
 import com.jonasgerdes.stoppelmap.shared.dataupdate.io.toPath
-import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.CdnSource
+import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetToFileUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.RemoveDatabaseFileUseCase
@@ -23,7 +23,7 @@ expect fun Scope.createCopyAssetToFileUseCase(): CopyAssetToFileUseCase
 val dataUpdateModule = module {
 
     single {
-        CdnSource(
+        RemoteAppConfigSource(
             baseUrl = "https://cdn.stoppelmap.de",
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
@@ -32,7 +32,7 @@ val dataUpdateModule = module {
 
     single {
         AppConfigRepository(
-            cdnSource = get(),
+            remoteAppConfigSource = get(),
             tempDatabase = createTempPath("temp_database.db"),
             tempMapData = createTempPath("temp_map_data.geojson")
         )

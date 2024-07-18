@@ -2,8 +2,8 @@ package com.jonasgerdes.stoppelmap.home.usecase
 
 import co.touchlab.kermit.Logger
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
+import com.jonasgerdes.stoppelmap.dto.Platform
 import com.jonasgerdes.stoppelmap.shared.dataupdate.AppConfigRepository
-import com.jonasgerdes.stoppelmap.shared.dataupdate.model.Platform
 import kotlinx.coroutines.flow.map
 
 class GetRemoteMessagesUseCase(

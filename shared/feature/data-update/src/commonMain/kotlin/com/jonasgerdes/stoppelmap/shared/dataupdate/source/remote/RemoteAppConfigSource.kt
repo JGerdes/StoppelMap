@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote
 
+import com.jonasgerdes.stoppelmap.dto.config.RemoteAppConfig
 import com.jonasgerdes.stoppelmap.shared.dataupdate.io.readFully
-import com.jonasgerdes.stoppelmap.shared.dataupdate.model.RemoteAppConfig
 import com.jonasgerdes.stoppelmap.shared.network.apiKeyHeader
 import com.jonasgerdes.stoppelmap.shared.network.executeRequest
 import com.jonasgerdes.stoppelmap.shared.network.model.Response
@@ -17,7 +17,7 @@ import okio.Path
 import okio.SYSTEM
 import okio.use
 
-class CdnSource(
+class RemoteAppConfigSource(
     private val baseUrl: String,
     private val httpClient: HttpClient,
     private val apiKey: String,

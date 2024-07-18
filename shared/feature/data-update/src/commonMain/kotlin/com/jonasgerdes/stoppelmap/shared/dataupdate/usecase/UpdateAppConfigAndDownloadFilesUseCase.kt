@@ -2,9 +2,9 @@ package com.jonasgerdes.stoppelmap.shared.dataupdate.usecase
 
 import co.touchlab.kermit.Logger
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
+import com.jonasgerdes.stoppelmap.dto.config.Data
 import com.jonasgerdes.stoppelmap.shared.dataupdate.AppConfigRepository
 import com.jonasgerdes.stoppelmap.shared.dataupdate.VersioningRepository
-import com.jonasgerdes.stoppelmap.shared.dataupdate.model.Data
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope

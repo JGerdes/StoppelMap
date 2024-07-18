@@ -1,6 +1,7 @@
-package com.jonasgerdes.stoppelmap.shared.dataupdate.model
+package com.jonasgerdes.stoppelmap.dto.config
 
-import com.jonasgerdes.stoppelmap.base.model.Localized
+import com.jonasgerdes.stoppelmap.dto.Localized
+import com.jonasgerdes.stoppelmap.dto.Platform
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -27,7 +28,6 @@ data class DataConfig(
     val latest: Data,
 )
 
-
 @Serializable
 data class Data(
     val version: Int,
@@ -41,7 +41,6 @@ data class Data(
         val iOS: Int,
     )
 }
-
 
 @Serializable
 data class MessageWrapper(
@@ -72,14 +71,4 @@ data class Message(
         @SerialName("warning")
         Warning
     }
-}
-
-@Serializable
-enum class Platform {
-
-    @SerialName("android")
-    Android,
-
-    @SerialName("iOS")
-    iOS
 }

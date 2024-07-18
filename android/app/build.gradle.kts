@@ -93,6 +93,7 @@ dependencies {
     implementation(project(":shared:app"))
     implementation(project(":base"))
     implementation(project(":shared:data"))
+    implementation(project(":shared:dto"))
 
 
     implementation(project(":android:theme"))

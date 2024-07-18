@@ -35,6 +35,7 @@ kotlin {
 
             implementation(project(":shared:base"))
             implementation(project(":shared:resources"))
+            implementation(project(":shared:dto"))
             implementation(project(":shared:data"))
             implementation(project(":shared:feature:countdown"))
             implementation(project(":shared:feature:data-update"))

@@ -1,9 +1,9 @@
 package com.jonasgerdes.stoppelmap.shared.dataupdate
 
 import co.touchlab.kermit.Logger
-import com.jonasgerdes.stoppelmap.shared.dataupdate.model.MessageWrapper
-import com.jonasgerdes.stoppelmap.shared.dataupdate.model.RemoteAppConfig
-import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.CdnSource
+import com.jonasgerdes.stoppelmap.dto.config.MessageWrapper
+import com.jonasgerdes.stoppelmap.dto.config.RemoteAppConfig
+import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.network.model.Response
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 import okio.Path
 
 class AppConfigRepository(
-    private val cdnSource: CdnSource,
+    private val remoteAppConfigSource: RemoteAppConfigSource,
     private val tempDatabase: Path,
     private val tempMapData: Path,
 ) {
@@ -25,7 +25,7 @@ class AppConfigRepository(
 
     suspend fun updateAppConfig() {
         Logger.d { "Update app config" }
-        when (val response = cdnSource.getRemoteAppConfig()) {
+        when (val response = remoteAppConfigSource.getRemoteAppConfig()) {
             is Response.Error.HttpError ->
                 Logger.e { "Fetching app config failed: ${response.status}." }
 
@@ -42,7 +42,8 @@ class AppConfigRepository(
 
     suspend fun downloadDatabase(databaseName: String): Path? {
         Logger.d { "Download db \"$databaseName\" to $tempDatabase" }
-        return when (val response = cdnSource.downloadFile(tempDatabase, databaseName)) {
+        return when (val response =
+            remoteAppConfigSource.downloadFile(tempDatabase, databaseName)) {
             is Response.Error.HttpError -> {
                 Logger.e { "Downloading db \"$databaseName\" failed: ${response.status}." }
                 null
@@ -62,7 +63,7 @@ class AppConfigRepository(
 
     suspend fun downloadMapDataFile(mapFileName: String): Path? {
         Logger.d { "Download geojson \"$mapFileName\" to $tempDatabase" }
-        return when (val response = cdnSource.downloadFile(tempMapData, mapFileName)) {
+        return when (val response = remoteAppConfigSource.downloadFile(tempMapData, mapFileName)) {
             is Response.Error.HttpError -> {
                 Logger.e { "Downloading geojson \"$mapFileName\" failed: ${response.status}." }
                 null
