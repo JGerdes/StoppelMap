@@ -34,6 +34,7 @@ sqldelight {
 }
 
 dependencies {
+    implementation(project(":shared:dto"))
     implementation(libs.bundles.ktor.server)
     implementation(libs.logback)
     implementation(libs.bundles.koin.server)

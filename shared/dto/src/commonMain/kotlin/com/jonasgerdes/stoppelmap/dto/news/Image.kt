@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.server.news.dto
+package com.jonasgerdes.stoppelmap.dto.news
 
 import kotlinx.serialization.Serializable
 

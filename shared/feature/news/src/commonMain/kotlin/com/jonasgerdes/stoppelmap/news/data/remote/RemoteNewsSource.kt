@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.news.data.remote
 
+import com.jonasgerdes.stoppelmap.dto.news.GetArticlesResponse
 import com.jonasgerdes.stoppelmap.shared.network.apiKeyHeader
 import com.jonasgerdes.stoppelmap.shared.network.executeRequest
 import com.jonasgerdes.stoppelmap.shared.network.model.Response
@@ -14,8 +15,8 @@ class RemoteNewsSource(
     private val apiKey: String
 ) {
 
-    suspend fun getNews(before: String? = null): Response<NewsResponse> =
-        httpClient.executeRequest<NewsResponse> {
+    suspend fun getNews(before: String? = null): Response<GetArticlesResponse> =
+        httpClient.executeRequest<GetArticlesResponse> {
             get {
                 url(urlString = "$baseUrl/news")
                 before?.let { parameter("before", before) }

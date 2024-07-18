@@ -6,11 +6,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.jonasgerdes.stoppelmap.dto.news.GetArticlesResponse
 import com.jonasgerdes.stoppelmap.news.data.local.database.LocalNewsSource
 import com.jonasgerdes.stoppelmap.news.data.model.Article
 import com.jonasgerdes.stoppelmap.news.data.model.ArticleSortKey
 import com.jonasgerdes.stoppelmap.news.data.model.Image
-import com.jonasgerdes.stoppelmap.news.data.remote.NewsResponse
 import com.jonasgerdes.stoppelmap.news.data.remote.RemoteNewsSource
 import com.jonasgerdes.stoppelmap.shared.network.model.Response
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -18,8 +18,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import com.jonasgerdes.stoppelmap.news.data.remote.Article as RemoteArticle
-import com.jonasgerdes.stoppelmap.news.data.remote.Image as RemoteImage
+import com.jonasgerdes.stoppelmap.dto.news.Article as ArticleDto
+import com.jonasgerdes.stoppelmap.dto.news.Image as ImageDto
 
 class NewsRepository(
     private val localNewsSource: LocalNewsSource,
@@ -58,7 +58,7 @@ class NewsRepository(
     }
 
     private suspend fun processNewsResponse(
-        response: Response<NewsResponse>,
+        response: Response<GetArticlesResponse>,
         clearCache: Boolean = false
     ) {
         when (response) {
@@ -84,7 +84,7 @@ class NewsRepository(
 
 }
 
-private fun RemoteArticle.toArticle() =
+private fun ArticleDto.toArticle() =
     Article(
         sortKey = ArticleSortKey(sortKey),
         url = url,
@@ -94,7 +94,7 @@ private fun RemoteArticle.toArticle() =
         images = images.map { it.toImage() }
     )
 
-private fun RemoteImage.toImage() =
+private fun ImageDto.toImage() =
     Image(
         uuid = uuid,
         url = url,
