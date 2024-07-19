@@ -16,6 +16,7 @@ fun ApplicationConfig.toServerConfig(
     externalDomain = propertyOrNull("stoppelmap-server.external-domain")
         ?.getString() ?: "http://$host",
     sqliteDirectory = property("stoppelmap-server.sqlite-dir").getString(),
+    staticDirectory = property("stoppelmap-server.static-dir").getString(),
     crawler = ServerConfig.Crawler(
         baseUrl = property("stoppelmap-server.crawler.base-url").getString(),
         slowMode = property("stoppelmap-server.crawler.slow-mode").getString().toBoolean(),

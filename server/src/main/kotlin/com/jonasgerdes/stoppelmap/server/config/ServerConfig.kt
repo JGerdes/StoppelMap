@@ -4,6 +4,7 @@ data class ServerConfig(
     val environment: Environment,
     val version: String,
     val sqliteDirectory: String,
+    val staticDirectory: String,
     val externalDomain: String,
     val crawler: Crawler,
     val apiKey: String,

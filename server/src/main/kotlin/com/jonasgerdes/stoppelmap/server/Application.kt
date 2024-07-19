@@ -40,28 +40,28 @@ fun Application.ktorModule() {
             .let { "${it.host}:${it.port}" }
     )
     (LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as Logger)
-        .level = if (appConfig.environment.isDev) LogbackLevel.ALL else LogbackLevel.INFO
+        .level = if (serverConfig.environment.isDev) LogbackLevel.ALL else LogbackLevel.INFO
 
-    environment.log.info("Starting version ${appConfig.version} with environment ${appConfig.environment}")
+    environment.log.info("Starting version ${serverConfig.version} with environment ${serverConfig.environment}")
     install(CallLogging)
     install(Compression)
     install(CachingHeaders)
     install(ContentNegotiation) {
         json(Json {
-            prettyPrint = appConfig.environment.isDev
-            isLenient = appConfig.environment.isPrd
+            prettyPrint = serverConfig.environment.isDev
+            isLenient = serverConfig.environment.isPrd
         })
     }
     install(Koin) {
-        printLogger(if (appConfig.environment.isDev) Level.DEBUG else Level.INFO)
+        printLogger(if (serverConfig.environment.isDev) Level.DEBUG else Level.INFO)
         modules(
             module {
-                single { appConfig }
+                single { serverConfig }
                 single { environment.log }
             },
             applicationModule,
             crawlerModule,
-            crawlerTasksModule(appConfig.crawler),
+            crawlerTasksModule(serverConfig.crawler),
             newsModule,
             schedulerModule,
         )
@@ -70,7 +70,7 @@ fun Application.ktorModule() {
     routing {
         newsRoutes()
 
-        staticFiles("/static/images", File(appConfig.crawler.imageCacheDir, "processed")) {
+        staticFiles("/static/images", File(serverConfig.crawler.imageCacheDir, "processed")) {
             enableAutoHeadResponse()
             cacheControl {
                 listOf(
@@ -80,6 +80,10 @@ fun Application.ktorModule() {
                     )
                 )
             }
+        }
+
+        staticFiles("/static", File(serverConfig.staticDirectory)) {
+            enableAutoHeadResponse()
         }
     }
 
