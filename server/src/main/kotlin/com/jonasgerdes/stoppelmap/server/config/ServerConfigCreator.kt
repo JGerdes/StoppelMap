@@ -35,6 +35,7 @@ fun ApplicationConfig.toServerConfig(
             }
             .toSet(),
     ),
+    appConfigFile = property("stoppelmap-server.app-config-file").getString(),
     apiKey = property("stoppelmap-server.api-key").getString().also {
         if (it.isBlank()) throw IllegalArgumentException("Please provide an API key as environment variable `API_KEY`.")
     }

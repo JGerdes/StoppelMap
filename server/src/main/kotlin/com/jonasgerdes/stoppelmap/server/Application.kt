@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.server
 
 import ch.qos.logback.classic.Logger
 import com.jonasgerdes.stoppelmap.server.appconfig.appConfigModule
+import com.jonasgerdes.stoppelmap.server.appconfig.appConfigRoutes
 import com.jonasgerdes.stoppelmap.server.config.toServerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerTasksModule
@@ -9,9 +10,12 @@ import com.jonasgerdes.stoppelmap.server.news.newsModule
 import com.jonasgerdes.stoppelmap.server.news.newsRoutes
 import com.jonasgerdes.stoppelmap.server.scheduler.TaskScheduler
 import com.jonasgerdes.stoppelmap.server.scheduler.schedulerModule
+import com.jonasgerdes.stoppelmap.server.statusexceptions.AuthorizationException
 import io.ktor.http.CacheControl
+import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
+import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.install
 import io.ktor.server.engine.ApplicationEngineEnvironment
 import io.ktor.server.http.content.staticFiles
@@ -19,6 +23,9 @@ import io.ktor.server.plugins.cachingheaders.CachingHeaders
 import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.plugins.compression.Compression
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.server.plugins.statuspages.StatusPages
+import io.ktor.server.response.respond
+import io.ktor.server.response.respondText
 import io.ktor.server.routing.routing
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -46,6 +53,20 @@ fun Application.ktorModule() {
     install(CallLogging)
     install(Compression)
     install(CachingHeaders)
+    install(StatusPages) {
+        exception<Throwable> { call: ApplicationCall, cause ->
+            val status = when (cause) {
+                is AuthorizationException -> HttpStatusCode.Forbidden
+                else -> HttpStatusCode.InternalServerError
+            }
+            if (serverConfig.environment.isDev) {
+                call.respondText(text = "${status.value}: $cause", status = status)
+            } else {
+                call.respond(status)
+
+            }
+        }
+    }
     install(ContentNegotiation) {
         json(Json {
             prettyPrint = serverConfig.environment.isDev
@@ -64,11 +85,13 @@ fun Application.ktorModule() {
             crawlerTasksModule(serverConfig.crawler),
             newsModule,
             schedulerModule,
+            appConfigModule,
         )
     }
 
     routing {
         newsRoutes()
+        appConfigRoutes()
 
         staticFiles("/static/images", File(serverConfig.crawler.imageCacheDir, "processed")) {
             enableAutoHeadResponse()

@@ -1,12 +1,11 @@
 package com.jonasgerdes.stoppelmap.server.news
 
+import com.jonasgerdes.stoppelmap.server.callextensions.assertHasApiKey
 import com.jonasgerdes.stoppelmap.server.config.ServerConfig
-import io.ktor.http.HttpStatusCode
 import io.ktor.http.Parameters
 import io.ktor.server.application.call
 import io.ktor.server.plugins.BadRequestException
 import io.ktor.server.plugins.MissingRequestParameterException
-import io.ktor.server.request.header
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Routing
 import io.ktor.server.routing.get
@@ -18,10 +17,7 @@ fun Routing.newsRoutes() {
     val config by inject<ServerConfig>()
 
     get("/news") {
-        if (call.request.header("X-API-Key") != config.apiKey) {
-            call.respond(HttpStatusCode.Forbidden)
-            return@get
-        }
+        call.assertHasApiKey(config.apiKey)
         when (val result = newsController.getArticles(
             before = call.parameters.get("before")?.assertNotBlank("before"),
             pageSize = call.parameters.getInt(

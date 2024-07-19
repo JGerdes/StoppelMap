@@ -129,6 +129,7 @@ ktor-server-call-logging = { module = "io.ktor:ktor-server-call-logging", versio
 ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
 ktor-server-compression = { module = "io.ktor:ktor-server-compression", version.ref = "ktor" }
 ktor-server-caching-headers = { module = "io.ktor:ktor-server-caching-headers", version.ref = "ktor" }
+ktor-server-status-pages = { module = "io.ktor:ktor-server-status-pages", version.ref = "ktor" }
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 # KMM
@@ -141,7 +142,8 @@ moko-resources = { module = "dev.icerock.moko:resources", version.ref = "mokoRes
 koin-compose = ["koin-android", "koin-androidx-compose"]
 androidx-runtime = ["androidx-lifecycle-runtime-ktx", "androidx-lifecycle-runtime-compose"]
 ktor-android = ["ktor-client-android", "ktor-client-logging", "ktor-client-content-negotiation", "ktor-serialization-kotlinx-json", "kotlinx-serialization-json", "ktor-client-encoding"]
-ktor-server = ["ktor-server-core", "ktor-server-netty", "ktor-server-call-logging", "ktor-server-content-negotiation", "ktor-serialization-kotlinx-json", "ktor-server-compression", "ktor-server-caching-headers"]
+ktor-server = ["ktor-server-core", "ktor-server-netty", "ktor-server-call-logging", "ktor-server-content-negotiation", "ktor-serialization-kotlinx-json", "ktor-server-compression", "ktor-server-caching-headers", "ktor-server-status-pages"]
+
 koin-server = ["koin-core", "koin-ktor", "koin-logger-slf4j"]
 compose-ui = ["compose-ui-core", "compose-ui-preview", "compose-material-icons", "compose-material-components"]
 

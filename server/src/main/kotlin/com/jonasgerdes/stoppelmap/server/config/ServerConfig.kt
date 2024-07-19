@@ -7,6 +7,7 @@ data class ServerConfig(
     val staticDirectory: String,
     val externalDomain: String,
     val crawler: Crawler,
+    val appConfigFile: String,
     val apiKey: String,
 ) {
     enum class Environment {
