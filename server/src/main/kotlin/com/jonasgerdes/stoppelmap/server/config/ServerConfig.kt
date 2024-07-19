@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap.server.config
 
-data class AppConfig(
+data class ServerConfig(
     val environment: Environment,
     val version: String,
     val sqliteDirectory: String,

@@ -1,7 +1,8 @@
 package com.jonasgerdes.stoppelmap.server
 
 import ch.qos.logback.classic.Logger
-import com.jonasgerdes.stoppelmap.server.config.toAppConfig
+import com.jonasgerdes.stoppelmap.server.appconfig.appConfigModule
+import com.jonasgerdes.stoppelmap.server.config.toServerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerTasksModule
 import com.jonasgerdes.stoppelmap.server.news.newsModule
@@ -34,7 +35,7 @@ import ch.qos.logback.classic.Level as LogbackLevel
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.ktorModule() {
-    val appConfig = environment.config.toAppConfig(
+    val serverConfig = environment.config.toServerConfig(
         host = (environment as ApplicationEngineEnvironment).connectors.first()
             .let { "${it.host}:${it.port}" }
     )

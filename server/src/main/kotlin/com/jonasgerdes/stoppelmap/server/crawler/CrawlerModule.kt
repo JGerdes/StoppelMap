@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap.server.crawler
 
-import com.jonasgerdes.stoppelmap.server.config.AppConfig
+import com.jonasgerdes.stoppelmap.server.config.ServerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlAllNewsInitialTask
 import com.jonasgerdes.stoppelmap.server.crawler.tasks.CrawlLatestNewsTask
@@ -19,11 +19,11 @@ import java.io.File
 
 val crawlerModule = module {
     single {
-        val appConfig = get<AppConfig>()
+        val serverConfig = get<ServerConfig>()
         CrawlerConfig(
-            baseUrl = appConfig.crawler.baseUrl,
-            userAgent = "StoppelBot/${appConfig.version} (https://stoppelmap.de/bot)",
-            slowMode = appConfig.crawler.slowMode
+            baseUrl = serverConfig.crawler.baseUrl,
+            userAgent = "StoppelBot/${serverConfig.version} (https://stoppelmap.de/bot)",
+            slowMode = serverConfig.crawler.slowMode
         )
     }
 
@@ -56,13 +56,13 @@ val crawlerModule = module {
                 .withM(6)
                 .withoutAlpha(),
             processedImageExtension = "webp",
-            imageCacheDirectory = File(get<AppConfig>().crawler.imageCacheDir),
+            imageCacheDirectory = File(get<ServerConfig>().crawler.imageCacheDir),
             logger = get()
         )
     }
 }
 
-fun crawlerTasksModule(crawlerConfig: AppConfig.Crawler) = module {
+fun crawlerTasksModule(crawlerConfig: ServerConfig.Crawler) = module {
     if (crawlerConfig.doInitialFullCrawl) {
         single {
             CrawlAllNewsInitialTask(

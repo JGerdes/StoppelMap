@@ -3,7 +3,7 @@ package com.jonasgerdes.stoppelmap.server.news
 import com.jonasgerdes.stoppelmap.dto.news.Article
 import com.jonasgerdes.stoppelmap.dto.news.GetArticlesResponse
 import com.jonasgerdes.stoppelmap.dto.news.Image
-import com.jonasgerdes.stoppelmap.server.config.AppConfig
+import com.jonasgerdes.stoppelmap.server.config.ServerConfig
 import com.jonasgerdes.stoppelmap.server.news.data.ArticleRepository
 import com.jonasgerdes.stoppelmap.server.news.data.ImageRepository
 import com.jonasgerdes.stoppelmap.server.util.ULID
@@ -12,7 +12,7 @@ import io.ktor.http.HttpStatusCode
 class NewsController(
     val articleRepository: ArticleRepository,
     val imageRepository: ImageRepository,
-    val config: AppConfig,
+    val config: ServerConfig,
 ) {
     fun getArticles(
         before: String?,

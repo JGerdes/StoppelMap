@@ -2,7 +2,7 @@ package com.jonasgerdes.stoppelmap.server.news
 
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
-import com.jonasgerdes.stoppelmap.server.config.AppConfig
+import com.jonasgerdes.stoppelmap.server.config.ServerConfig
 import com.jonasgerdes.stoppelmap.server.data.instantAdapter
 import com.jonasgerdes.stoppelmap.server.data.localDateAdapter
 import com.jonasgerdes.stoppelmap.server.news.data.Article
@@ -14,7 +14,7 @@ import java.io.File
 
 val newsModule = module {
     single {
-        val sqliteDirectory = File(get<AppConfig>().sqliteDirectory).also { it.mkdirs() }
+        val sqliteDirectory = File(get<ServerConfig>().sqliteDirectory).also { it.mkdirs() }
         val sqliteFile = File(sqliteDirectory, "news.db")
         val driver: SqlDriver = JdbcSqliteDriver("jdbc:sqlite:${sqliteFile.absolutePath}")
         if (!sqliteFile.exists()) NewsDatabase.Schema.create(driver)

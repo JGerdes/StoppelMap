@@ -2,21 +2,21 @@ package com.jonasgerdes.stoppelmap.server.config
 
 import io.ktor.server.config.ApplicationConfig
 
-fun ApplicationConfig.toAppConfig(
+fun ApplicationConfig.toServerConfig(
     host: String,
-) = AppConfig(
+) = ServerConfig(
     environment = property("stoppelmap-server.environment").getString().let {
         try {
-            AppConfig.Environment.valueOf(it.uppercase())
+            ServerConfig.Environment.valueOf(it.uppercase())
         } catch (iae: IllegalArgumentException) {
-            AppConfig.Environment.PRD
+            ServerConfig.Environment.PRD
         }
     },
     version = property("stoppelmap-server.version").getString(),
     externalDomain = propertyOrNull("stoppelmap-server.external-domain")
         ?.getString() ?: "http://$host",
     sqliteDirectory = property("stoppelmap-server.sqlite-dir").getString(),
-    crawler = AppConfig.Crawler(
+    crawler = ServerConfig.Crawler(
         baseUrl = property("stoppelmap-server.crawler.base-url").getString(),
         slowMode = property("stoppelmap-server.crawler.slow-mode").getString().toBoolean(),
         imageCacheDir = property("stoppelmap-server.crawler.image-cache-dir").getString(),

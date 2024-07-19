@@ -1,6 +1,6 @@
 package com.jonasgerdes.stoppelmap.server.news
 
-import com.jonasgerdes.stoppelmap.server.config.AppConfig
+import com.jonasgerdes.stoppelmap.server.config.ServerConfig
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.Parameters
 import io.ktor.server.application.call
@@ -15,7 +15,7 @@ import org.koin.ktor.ext.inject
 fun Routing.newsRoutes() {
 
     val newsController by inject<NewsController>()
-    val config by inject<AppConfig>()
+    val config by inject<ServerConfig>()
 
     get("/news") {
         if (call.request.header("X-API-Key") != config.apiKey) {
