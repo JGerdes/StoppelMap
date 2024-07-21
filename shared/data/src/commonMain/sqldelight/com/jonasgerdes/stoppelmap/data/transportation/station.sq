@@ -1,0 +1,39 @@
+import kotlin.Boolean;
+CREATE TABLE IF NOT EXISTS station (
+    slug            TEXT NOT NULL PRIMARY KEY,
+    route           TEXT NOT NULL,
+    name            TEXT NOT NULL,
+    mapEntity       TEXT,
+    isDestination   INTEGER AS Boolean NOT NULL,
+    isReturn        INTEGER AS Boolean NOT NULL,
+    annotateAsNew   INTEGER AS Boolean NOT NULL,
+
+    FOREIGN KEY(route) REFERENCES route(slug),
+    FOREIGN KEY(slug) REFERENCES location(referenceSlug),
+    FOREIGN KEY(mapEntity) REFERENCES map_entity(slug),
+    FOREIGN KEY(slug) REFERENCES fee(referenceSlug)
+);
+
+insert:
+INSERT INTO station(slug, route, name, mapEntity, isDestination,isReturn, annotateAsNew)
+VALUES ?;
+
+clear:
+DELETE FROM station;
+
+getOriginStationTitlesByRoute:
+SELECT name FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 0;
+
+getOriginByRoute:
+SELECT * FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 0;
+
+getDestinationByRoute:
+SELECT * FROM station WHERE route = :route AND isReturn = 0 AND isDestination = 1;
+
+getReturnByRoute:
+SELECT * FROM station WHERE route = :route AND isReturn = 1;
+
+getBySlugWithRoute:
+SELECT station.*, route.name AS routeTitle, route.type AS routeType
+FROM station INNER JOIN route ON route.slug = route
+WHERE station.slug = :slug;

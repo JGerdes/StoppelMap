@@ -1,0 +1,19 @@
+import com.jonasgerdes.stoppelmap.data.schedule.ParticipantType;
+
+CREATE TABLE event_person (
+    eventSlug TEXT NOT NULL,
+    personSlug TEXT NOT NULL,
+    type TEXT AS ParticipantType,
+
+    PRIMARY KEY(eventSlug, personSlug),
+    FOREIGN KEY(eventSlug) REFERENCES event(slug),
+    FOREIGN KEY(personSlug) REFERENCES person(slug)
+);
+
+
+insert:
+INSERT INTO event_person(eventSlug, personSlug, type)
+VALUES ?;
+
+clear:
+DELETE FROM event_person;

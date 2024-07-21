@@ -1,0 +1,14 @@
+CREATE TABLE sub_type (
+    slug TEXT NOT NULL PRIMARY KEY,
+    nameKey TEXT NOT NULL,
+
+    FOREIGN KEY(nameKey) REFERENCES localized_string(key),
+    FOREIGN KEY(slug) REFERENCES alias(referenceSlug)
+);
+
+insert:
+INSERT INTO sub_type(slug, nameKey)
+VALUES ?;
+
+clear:
+DELETE FROM sub_type;

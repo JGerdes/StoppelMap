@@ -1,0 +1,25 @@
+import com.jonasgerdes.stoppelmap.data.transportation.TransportationType;
+
+CREATE TABLE IF NOT EXISTS route(
+    slug                TEXT NOT NULL PRIMARY KEY,
+    name                TEXT NOT NULL,
+    operatorSlug        TEXT,
+    additionalInfoKey   TEXT,
+    type                TEXT AS TransportationType NOT NULL,
+
+    FOREIGN KEY(operatorSlug) REFERENCES operator(slug),
+    FOREIGN KEY(additionalInfoKey) REFERENCES localized_string(key)
+);
+
+insert:
+INSERT INTO route(slug, name, operatorSlug, additionalInfoKey, type)
+VALUES ?;
+
+clear:
+DELETE FROM route;
+
+getAll:
+SELECT * FROM route;
+
+getBySlug:
+SELECT * FROM route WHERE slug = :slug;

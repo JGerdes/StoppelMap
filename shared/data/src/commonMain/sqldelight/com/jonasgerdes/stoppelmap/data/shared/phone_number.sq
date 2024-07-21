@@ -1,0 +1,14 @@
+CREATE TABLE phone_number (
+    referenceSlug   TEXT NOT NULL,
+    number          TEXT NOT NULL,
+    formatted       TEXT NOT NULL,
+
+    PRIMARY KEY (referenceSlug, number)
+);
+
+insert:
+INSERT INTO phone_number(referenceSlug, number, formatted)
+VALUES ?;
+
+clear:
+DELETE FROM phone_number;

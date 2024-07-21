@@ -1,0 +1,20 @@
+import kotlinx.datetime.LocalDateTime;
+
+CREATE TABLE IF NOT EXISTS departure (
+    departureDay    TEXT NOT NULL,
+    time            TEXT AS LocalDateTime NOT NULL,
+    annotationKey   TEXT,
+
+    FOREIGN KEY(departureDay) REFERENCES departure_day(id),
+    FOREIGN KEY(annotationKey) REFERENCES localized_string(key)
+);
+
+insert:
+INSERT INTO departure(departureDay, time, annotationKey)
+VALUES ?;
+
+clear:
+DELETE FROM departure;
+
+get:
+SELECT time, annotationKey FROM departure WHERE departureDay = :departureDay;

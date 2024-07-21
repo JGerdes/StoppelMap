@@ -1,0 +1,18 @@
+import kotlin.Boolean;
+import kotlinx.datetime.LocalDateTime;
+
+CREATE TABLE event (
+    slug TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    start TEXT AS LocalDateTime NOT NULL,
+    end TEXT AS LocalDateTime,
+    descriptionKey TEXT,
+    isOfficial INTEGER AS Boolean NOT NULL
+);
+
+insert:
+INSERT INTO event(slug, name, start, end, descriptionKey, isOfficial)
+VALUES ?;
+
+clear:
+DELETE FROM event;

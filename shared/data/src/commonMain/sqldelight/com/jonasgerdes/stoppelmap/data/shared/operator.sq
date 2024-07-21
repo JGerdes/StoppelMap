@@ -1,0 +1,12 @@
+CREATE TABLE operator (
+    slug TEXT NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    website TEXT
+);
+
+insert:
+INSERT INTO operator(slug, name, website)
+VALUES ?;
+
+clear:
+DELETE FROM operator;

@@ -1,0 +1,13 @@
+CREATE TABLE alias (
+    referenceSlug TEXT NOT NULL,
+    aliasKey TEXT NOT NULL,
+
+    PRIMARY KEY (referenceSlug, aliasKey)
+);
+
+insert:
+INSERT INTO alias(referenceSlug, aliasKey)
+VALUES ?;
+
+clear:
+DELETE FROM alias;

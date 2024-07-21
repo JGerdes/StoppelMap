@@ -19,22 +19,30 @@ data class Event(
     val end: LocalDateTime? = null,
     val location: MapEntitySlug? = null,
     val description: Localized<String>? = null,
-    val artists: List<Artist> = emptyList(),
+    val participants: List<Participant> = emptyList(),
     val isOfficial: Boolean
 )
 
-typealias ArtistSlug = String
+typealias PersonSlug = String
 
 @Serializable
-data class Artist(
-    val slug: ArtistSlug,
+data class Person(
+    val slug: PersonSlug,
     val name: String,
-    val type: ArtistType = ArtistType.Unknown
+    val images: List<Image>,
+    val description: Localized<String>? = null,
 )
 
-enum class ArtistType {
+@Serializable
+data class Participant(
+    val person: PersonSlug,
+    val type: ParticipantType?,
+)
+
+enum class ParticipantType {
     Unknown,
     Band,
     DJ,
     GuestOfHonor,
+    Speaker
 }

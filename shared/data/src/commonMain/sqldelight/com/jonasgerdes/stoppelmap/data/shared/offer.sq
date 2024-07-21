@@ -1,0 +1,16 @@
+CREATE TABLE offer (
+    productSlug     TEXT NOT NULL,
+    referenceSlug   TEXT NOT NULL,
+    modifierKey     TEXT NOT NULL,
+    price           INTEGER NOT NULL,
+
+    FOREIGN KEY(productSlug) REFERENCES product(slug),
+    FOREIGN KEY(modifierKey) REFERENCES localized_string(key)
+);
+
+insert:
+INSERT INTO offer(productSlug, referenceSlug, modifierKey, price)
+VALUES ?;
+
+clear:
+DELETE FROM offer;

@@ -1,0 +1,14 @@
+CREATE TABLE localized_string (
+    key    TEXT NOT NULL,
+    string  TEXT NOT NULL,
+    locale  TEXT NOT NULL,
+
+    PRIMARY KEY (key, locale)
+);
+
+insert:
+INSERT INTO localized_string (key, string, locale)
+VALUES ?;
+
+clear:
+DELETE FROM localized_string;

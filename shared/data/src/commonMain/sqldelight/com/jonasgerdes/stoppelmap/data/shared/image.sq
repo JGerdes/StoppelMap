@@ -1,0 +1,19 @@
+import com.jonasgerdes.stoppelmap.data.shared.PreferredTheme;
+
+CREATE TABLE image (
+    url             TEXT NOT NULL PRIMARY KEY,
+    captionKey      TEXT,
+    copyrightKey    TEXT,
+    blurHash        TEXT NOT NULL,
+    preferredTheme  TEXT AS PreferredTheme,
+
+    FOREIGN KEY(captionKey) REFERENCES localized_string(key),
+    FOREIGN KEY(copyrightKey) REFERENCES localized_string(key)
+);
+
+insert:
+INSERT INTO image(url, captionKey, copyrightKey, blurHash, preferredTheme)
+VALUES ?;
+
+clear:
+DELETE FROM image;

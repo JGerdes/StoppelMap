@@ -1,0 +1,17 @@
+CREATE TABLE service (
+    slug    TEXT NOT NULL PRIMARY KEY,
+    nameKey TEXT NOT NULL,
+    noteKey TEXT,
+
+    FOREIGN KEY(nameKey) REFERENCES localized_string(key),
+    FOREIGN KEY(noteKey) REFERENCES localized_string(key),
+    FOREIGN KEY(slug) REFERENCES alias(referenceSlug),
+    FOREIGN KEY(slug) REFERENCES phone_number(referenceSlug)
+);
+
+insert:
+INSERT INTO tag(slug, nameKey)
+VALUES ?;
+
+clear:
+DELETE FROM tag;

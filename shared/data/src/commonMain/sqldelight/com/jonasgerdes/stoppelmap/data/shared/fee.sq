@@ -1,0 +1,14 @@
+CREATE TABLE fee (
+    referenceSlug   TEXT NOT NULL,
+    nameKey         TEXT NOT NULL,
+    price           INTEGER NOT NULL,
+
+    PRIMARY KEY (referenceSlug, nameKey)
+);
+
+insert:
+INSERT INTO fee
+VALUES ?;
+
+clear:
+DELETE FROM fee;

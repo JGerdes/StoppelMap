@@ -1,0 +1,16 @@
+CREATE TABLE map_entity_tag (
+    mapEntitySlug TEXT NOT NULL,
+    tagSlug TEXT NOT NULL,
+
+    PRIMARY KEY(mapEntitySlug, tagSlug),
+    FOREIGN KEY(mapEntitySlug) REFERENCES map_entity(slug),
+    FOREIGN KEY(tagSlug) REFERENCES tag(slug)
+);
+
+
+insert:
+INSERT INTO map_entity_tag(mapEntitySlug, tagSlug)
+VALUES ?;
+
+clear:
+DELETE FROM map_entity_tag;

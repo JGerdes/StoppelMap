@@ -15,6 +15,7 @@ typealias TagSlug = String
 data class Tag(
     val slug: TagSlug,
     val name: Localized<String>,
+    val aliases: List<Localized<String>>?
 )
 
 
@@ -61,10 +62,9 @@ data class PhoneNumber(
 
 @Serializable
 data class Image(
-    val uuid: String,
     val url: String,
-    val caption: String? = null,
-    val copyright: String? = null,
+    val caption: Localized<String>? = null,
+    val copyright: Localized<String>? = null,
     val blurHash: String,
     val preferredTheme: PreferredTheme? = null,
 )
@@ -73,3 +73,13 @@ enum class PreferredTheme {
     Light,
     Dark
 }
+
+
+typealias OperatorSlug = String
+
+@Serializable
+data class Operator(
+    val slug: OperatorSlug,
+    val name: String,
+    val website: String? = null,
+)

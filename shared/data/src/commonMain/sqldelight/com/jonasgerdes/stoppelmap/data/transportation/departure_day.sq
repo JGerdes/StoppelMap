@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS departure_day (
     id                      TEXT NOT NULL PRIMARY KEY,
     station                 TEXT NOT NULL,
     day                     TEXT AS LocalDate NOT NULL,
-    laterDeparturesOnDemand INTEGER AS Boolean DEFAULT 0,
+    laterDeparturesOnDemand INTEGER AS Boolean,
 
     FOREIGN KEY(station) REFERENCES station(slug)
 );
@@ -13,6 +13,9 @@ CREATE TABLE IF NOT EXISTS departure_day (
 insert:
 INSERT INTO departure_day(id, station, day, laterDeparturesOnDemand)
 VALUES ?;
+
+clear:
+DELETE FROM departure_day;
 
 getByStation:
 SELECT id, day, laterDeparturesOnDemand FROM departure_day WHERE station = :station;

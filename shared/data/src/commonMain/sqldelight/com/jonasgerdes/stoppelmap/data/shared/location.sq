@@ -1,0 +1,12 @@
+CREATE TABLE location (
+    referenceSlug   TEXT NOT NULL PRIMARY KEY,
+    latitude        REAL NOT NULL,
+    longitude       REAL NOT NULL
+);
+
+insert:
+INSERT INTO location (referenceSlug, latitude, longitude)
+VALUES ?;
+
+clear:
+DELETE FROM location;

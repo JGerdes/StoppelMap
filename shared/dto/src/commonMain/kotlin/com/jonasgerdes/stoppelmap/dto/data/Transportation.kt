@@ -18,12 +18,14 @@ typealias RouteSlug = String
 data class Route(
     val slug: RouteSlug,
     val name: String,
+    val operator: OperatorSlug? = null,
     val additionalInfo: Localized<String>? = null,
     val stations: List<Station>,
 )
 
 @Serializable
 data class Station(
+    val slug: String,
     val name: String,
     val location: Location? = null,
     val mapEntityLocation: MapEntitySlug? = null,

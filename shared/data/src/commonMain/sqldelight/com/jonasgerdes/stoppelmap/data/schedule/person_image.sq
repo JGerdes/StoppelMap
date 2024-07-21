@@ -1,0 +1,16 @@
+CREATE TABLE person_image (
+    personSlug TEXT NOT NULL,
+    image TEXT NOT NULL,
+
+    PRIMARY KEY(personSlug, image),
+    FOREIGN KEY(personSlug) REFERENCES person(slug),
+    FOREIGN KEY(image) REFERENCES image(url)
+);
+
+
+insert:
+INSERT INTO person_image(personSlug, image)
+VALUES ?;
+
+clear:
+DELETE FROM person_image;
