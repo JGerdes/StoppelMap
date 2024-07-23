@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Schedule(
-    val event: List<Event>,
+    val events: List<Event>,
     val isWorkInProgress: Boolean,
 )
 
@@ -21,6 +21,7 @@ data class Event(
     val location: MapEntitySlug? = null,
     val description: Localized<String>? = null,
     val participants: List<Participant> = emptyList(),
+    val websites: List<String> = emptyList(),
     val isOfficial: Boolean
 )
 

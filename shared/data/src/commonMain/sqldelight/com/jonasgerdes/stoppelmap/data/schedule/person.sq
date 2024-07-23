@@ -2,14 +2,13 @@ CREATE TABLE person (
     slug TEXT NOT NULL PRIMARY KEY,
     name TEXT NOT NULL,
     descriptionKey TEXT,
-    type TEXT NOT NULL,
 
     FOREIGN KEY(descriptionKey) REFERENCES localized_string(key)
 );
 
 
 insert:
-INSERT INTO person(slug, name, descriptionKey, type)
+INSERT INTO person(slug, name, descriptionKey)
 VALUES ?;
 
 clear:

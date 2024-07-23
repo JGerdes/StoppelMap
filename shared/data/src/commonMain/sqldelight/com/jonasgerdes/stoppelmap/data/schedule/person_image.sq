@@ -10,7 +10,7 @@ CREATE TABLE person_image (
 
 insert:
 INSERT INTO person_image(personSlug, image)
-VALUES ?;
+VALUES (?,?);
 
 clear:
 DELETE FROM person_image;

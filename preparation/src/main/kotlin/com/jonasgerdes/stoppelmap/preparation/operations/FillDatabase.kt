@@ -19,10 +19,15 @@ import com.jonasgerdes.stoppelmap.transportation.Route
 import com.jonasgerdes.stoppelmap.transportation.Station
 import com.jonasgerdes.stoppelmap.transportation.model.Price.PriceLabel*/
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.data.map.MapEntityType
+import com.jonasgerdes.stoppelmap.data.map.Map_entity
+import com.jonasgerdes.stoppelmap.data.shared.Alias
 import com.jonasgerdes.stoppelmap.data.shared.Fee
 import com.jonasgerdes.stoppelmap.data.shared.Image
 import com.jonasgerdes.stoppelmap.data.shared.Localized_string
+import com.jonasgerdes.stoppelmap.data.shared.Operator_
 import com.jonasgerdes.stoppelmap.data.shared.PreferredTheme
+import com.jonasgerdes.stoppelmap.data.shared.Service
 import com.jonasgerdes.stoppelmap.preparation.Settings
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -114,6 +119,14 @@ class FillDatabase : KoinComponent {
                 )
             )
 
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "image3_copyright",
+                    string = "Urheber3",
+                    locale = "de"
+                )
+            )
+
             database.imageQueries.insert(
                 Image(
                     url = "https://example.com/image.jpg",
@@ -129,10 +142,144 @@ class FillDatabase : KoinComponent {
                     url = "https://example.com/image2.jpg",
                     captionKey = null,
                     copyrightKey = null,
-                    blurHash = "fbkj349f",
+                    blurHash = "fsgaagr4",
                     preferredTheme = PreferredTheme.Light
                 )
             )
+            database.imageQueries.insert(
+                Image(
+                    url = "https://example.com/image3.jpg",
+                    captionKey = null,
+                    copyrightKey = "image3_copyright",
+                    blurHash = "sadasd",
+                    preferredTheme = PreferredTheme.Dark
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "amtmannsbult_description",
+                    string = "Am Amtmannsbult wird traditionell der Markt eröffnet",
+                    locale = "de",
+                )
+            )
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "amtmannsbult_description",
+                    string = "The Amtmannsbult is the place where the Stoppelmarkt will be officially started",
+                    locale = "en",
+                )
+            )
+
+            database.map_entityQueries.insert(
+                Map_entity(
+                    slug = "amtmannsbult",
+                    name = "Amtmannsbult",
+                    type = MapEntityType.Building,
+                    sub_type = null,
+                    descriptionKey = "amtmannsbult_description",
+                    operator_ = null,
+                    isSearchable = true,
+                )
+            )
+
+            database.serviceQueries.insert(
+                Service(
+                    slug = "polizei",
+                    nameKey = "polizei_name",
+                    noteKey = null,
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "polizei_name",
+                    string = "Polizei",
+                    locale = "de",
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "polizei_name",
+                    string = "Police",
+                    locale = "en",
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "polizei_name_alias",
+                    string = "Cops",
+                    locale = "en",
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "polizei_name_alias",
+                    string = "Bullerei",
+                    locale = "de",
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "log_flume_name",
+                    string = "Baumstammkanal",
+                    locale = "de",
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "log_flume_name",
+                    string = "Log flume",
+                    locale = "en",
+                )
+            )
+
+            database.map_entityQueries.insert(
+                Map_entity(
+                    slug = "piraten_fluss",
+                    name = "Piraten Fluss",
+                    type = MapEntityType.Ride,
+                    sub_type = "log_flume",
+                    descriptionKey = null,
+                    operator_ = "heitmann_schneider",
+                    isSearchable = true,
+                )
+            )
+
+            database.localized_stringQueries.insert(
+                Localized_string(
+                    key = "log_flume_alias",
+                    string = "Wildwasserbahn",
+                    locale = "de",
+                )
+            )
+
+            database.aliasQueries.insert(
+                Alias(
+                    referenceSlug = "piraten_fluss",
+                    aliasKey = "log_flume_alias"
+                )
+            )
+
+            database.aliasQueries.insert(
+                Alias(
+                    referenceSlug = "polizei",
+                    aliasKey = "polizei_name_alias"
+                )
+            )
+
+            database.operatorQueries.insert(
+                Operator_(
+                    slug = "heitmann_schneider",
+                    name = "Heitmann/Schneider",
+                )
+            )
+
         }
 
         /* val data = Data().apply {

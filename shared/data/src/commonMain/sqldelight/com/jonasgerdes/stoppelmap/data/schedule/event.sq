@@ -7,11 +7,15 @@ CREATE TABLE event (
     start TEXT AS LocalDateTime NOT NULL,
     end TEXT AS LocalDateTime,
     descriptionKey TEXT,
-    isOfficial INTEGER AS Boolean NOT NULL
+    locationSlug TEXT,
+    isOfficial INTEGER AS Boolean NOT NULL,
+
+    FOREIGN KEY(locationSlug) REFERENCES map_entity(slug),
+    FOREIGN KEY(slug) REFERENCES website(referenceSlug)
 );
 
 insert:
-INSERT INTO event(slug, name, start, end, descriptionKey, isOfficial)
+INSERT INTO event(slug, name, start, end, descriptionKey, locationSlug, isOfficial)
 VALUES ?;
 
 clear:

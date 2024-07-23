@@ -10,7 +10,7 @@ CREATE TABLE map_entity_image (
 
 insert:
 INSERT INTO map_entity_image(mapEntitySlug, image)
-VALUES ?;
+VALUES (?,?);
 
 clear:
 DELETE FROM map_entity_image;

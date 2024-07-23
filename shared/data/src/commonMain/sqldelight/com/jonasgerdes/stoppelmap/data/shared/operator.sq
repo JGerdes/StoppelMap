@@ -8,7 +8,7 @@ CREATE TABLE operator (
 
 insert:
 INSERT INTO operator(slug, name)
-VALUES ?;
+VALUES (?, ?);
 
 clear:
 DELETE FROM operator;

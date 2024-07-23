@@ -13,7 +13,7 @@ CREATE TABLE event_person (
 
 insert:
 INSERT INTO event_person(eventSlug, personSlug, type)
-VALUES ?;
+VALUES (?,?,?);
 
 clear:
 DELETE FROM event_person;

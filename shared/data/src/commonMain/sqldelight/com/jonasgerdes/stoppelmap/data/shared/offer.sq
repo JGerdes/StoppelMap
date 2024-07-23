@@ -1,15 +1,18 @@
+import kotlin.Boolean;
+
 CREATE TABLE offer (
     productSlug     TEXT NOT NULL,
     referenceSlug   TEXT NOT NULL,
-    modifierKey     TEXT NOT NULL,
-    price           INTEGER NOT NULL,
+    modifierKey     TEXT,
+    price           INTEGER,
+    visible         INTEGER AS Boolean NOT NULL,
 
     FOREIGN KEY(productSlug) REFERENCES product(slug),
     FOREIGN KEY(modifierKey) REFERENCES localized_string(key)
 );
 
 insert:
-INSERT INTO offer(productSlug, referenceSlug, modifierKey, price)
+INSERT INTO offer(productSlug, referenceSlug, modifierKey, price, visible)
 VALUES ?;
 
 clear:

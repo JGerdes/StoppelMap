@@ -10,7 +10,7 @@ CREATE TABLE map_entity_service (
 
 insert:
 INSERT INTO map_entity_service(mapEntitySlug, serviceSlug)
-VALUES ?;
+VALUES (?,?);
 
 clear:
 DELETE FROM map_entity_service;

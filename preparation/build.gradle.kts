@@ -28,6 +28,7 @@ kotlin {
 dependencies {
 
     implementation(project(":shared:data"))
+    implementation(project(":shared:dto"))
 
     implementation(libs.kotlinx.datetime)
     implementation(libs.koin.core)

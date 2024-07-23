@@ -10,7 +10,7 @@ CREATE TABLE map_entity_tag (
 
 insert:
 INSERT INTO map_entity_tag(mapEntitySlug, tagSlug)
-VALUES ?;
+VALUES (?,?);
 
 clear:
 DELETE FROM map_entity_tag;

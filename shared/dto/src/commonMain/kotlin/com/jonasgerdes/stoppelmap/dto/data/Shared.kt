@@ -46,6 +46,7 @@ data class Offer(
     val productSlug: ProductSlug,
     val modifier: Localized<String>? = null,
     val price: Price? = null,
+    val visible: Boolean = false,
 )
 
 @Serializable
@@ -81,5 +82,5 @@ typealias OperatorSlug = String
 data class Operator(
     val slug: OperatorSlug,
     val name: String,
-    val website: String? = null,
+    val websites: List<String> = emptyList(),
 )

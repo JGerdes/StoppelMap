@@ -12,7 +12,7 @@ CREATE TABLE metadata (
 
 insert:
 INSERT INTO metadata(version, schema_version, note, season_year, map_is_wip, schedule_is_wip, transport_is_wip)
-VALUES ?;
+VALUES (?,?,?,?,?,?,?);
 
 clear:
 DELETE FROM metadata;
