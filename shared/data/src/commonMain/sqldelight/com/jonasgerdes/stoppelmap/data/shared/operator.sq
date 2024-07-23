@@ -1,11 +1,13 @@
 CREATE TABLE operator (
     slug TEXT NOT NULL PRIMARY KEY,
     name TEXT NOT NULL,
-    website TEXT
+
+    FOREIGN KEY(slug) REFERENCES website(referenceSlug),
+    FOREIGN KEY(slug) REFERENCES phone_number(referenceSlug)
 );
 
 insert:
-INSERT INTO operator(slug, name, website)
+INSERT INTO operator(slug, name)
 VALUES ?;
 
 clear:

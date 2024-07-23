@@ -10,6 +10,7 @@ data class StoppelMapData(
     val seasonYear: Int,
     val definitions: Definitions,
     val map: Map,
+    val schedule: Schedule,
     val transportation: Transportation,
 )
 

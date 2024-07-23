@@ -6,12 +6,15 @@ CREATE TABLE map_entity (
     name TEXT NOT NULL,
     type TEXT AS MapEntityType NOT NULL,
     sub_type TEXT,
-    descriptionKey TEXT NOT NULL,
+    descriptionKey TEXT,
+    operator TEXT,
     isSearchable Integer AS Boolean NOT NULL,
 
     FOREIGN KEY(sub_type) REFERENCES sub_type(slug),
     FOREIGN KEY(descriptionKey) REFERENCES localized_string(key),
+    FOREIGN KEY(operator) REFERENCES operator(slug),
     FOREIGN KEY(slug) REFERENCES fee(referenceSlug),
+    FOREIGN KEY(slug) REFERENCES website(referenceSlug),
     FOREIGN KEY(slug) REFERENCES location(referenceSlug)
 );
 

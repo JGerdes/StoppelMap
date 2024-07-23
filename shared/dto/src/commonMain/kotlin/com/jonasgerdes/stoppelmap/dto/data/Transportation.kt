@@ -10,6 +10,7 @@ data class Transportation(
     val busRoutes: List<Route>,
     val trainRoutes: List<Route>,
     val taxiServices: List<ServiceSlug>,
+    val isWorkInProgress: Boolean,
 )
 
 typealias RouteSlug = String

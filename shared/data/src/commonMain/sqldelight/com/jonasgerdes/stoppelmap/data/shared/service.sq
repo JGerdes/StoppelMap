@@ -10,8 +10,8 @@ CREATE TABLE service (
 );
 
 insert:
-INSERT INTO tag(slug, nameKey)
+INSERT INTO service(slug, nameKey, noteKey)
 VALUES ?;
 
 clear:
-DELETE FROM tag;
+DELETE FROM service;

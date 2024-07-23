@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Map(
     val entities: List<MapEntity>,
+    val isWorkInProgress: Boolean,
 )
 
 typealias MapEntitySlug = String
@@ -14,10 +15,10 @@ typealias MapEntitySlug = String
 data class MapEntity(
     val slug: MapEntitySlug,
     val name: String,
-    val aliases: List<String>,
     val type: MapEntityType,
     val subType: SubTypeSlug? = null,
     val operator: Operator? = null,
+    val aliases: List<Localized<String>>? = null,
     val description: Localized<String>? = null,
     val center: Location,
     val offers: List<Offer> = emptyList(),
@@ -25,6 +26,7 @@ data class MapEntity(
     val services: List<ServiceSlug> = emptyList(),
     val admissionFees: List<Fee> = emptyList(),
     val images: List<Image> = emptyList(),
+    val websites: List<String> = emptyList(),
     val isSearchable: Boolean,
 )
 

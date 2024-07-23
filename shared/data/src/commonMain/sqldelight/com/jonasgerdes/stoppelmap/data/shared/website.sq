@@ -1,0 +1,13 @@
+CREATE TABLE website (
+    referenceSlug   TEXT NOT NULL,
+    url             TEXT NOT NULL,
+
+    PRIMARY KEY (referenceSlug, url)
+);
+
+insert:
+INSERT INTO website(referenceSlug, url)
+VALUES ?;
+
+clear:
+DELETE FROM website;

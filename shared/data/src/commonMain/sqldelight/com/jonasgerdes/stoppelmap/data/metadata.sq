@@ -1,12 +1,17 @@
+import kotlin.Boolean;
+
 CREATE TABLE metadata (
-    version         INTEGER NOT NULL,
-    schemaVersion   INTEGER NOT NULL,
-    note            TEXT,
-    seasonYear      INTEGER NOT NULL
+    version             INTEGER NOT NULL,
+    schema_version      INTEGER NOT NULL,
+    note                TEXT,
+    season_year         INTEGER NOT NULL,
+    map_is_wip          INTEGER AS Boolean NOT NULL,
+    schedule_is_wip     INTEGER AS Boolean NOT NULL,
+    transport_is_wip    INTEGER AS Boolean NOT NULL
 );
 
 insert:
-INSERT INTO metadata(version, schemaVersion, note, seasonYear)
+INSERT INTO metadata(version, schema_version, note, season_year, map_is_wip, schedule_is_wip, transport_is_wip)
 VALUES ?;
 
 clear:

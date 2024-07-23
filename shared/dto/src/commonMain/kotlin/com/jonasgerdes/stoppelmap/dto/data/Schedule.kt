@@ -6,7 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Schedule(
-    val event: List<Event>
+    val event: List<Event>,
+    val isWorkInProgress: Boolean,
 )
 
 typealias EventSlug = String
