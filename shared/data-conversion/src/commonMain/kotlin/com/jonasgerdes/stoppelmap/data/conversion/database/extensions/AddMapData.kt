@@ -69,7 +69,7 @@ internal fun StoppelMapDatabase.addMapData(data: Map) {
                         fee.name,
                         mapEntity.slug,
                         "admission",
-                        index.toString().padStart(2),
+                        index.toString().padStart(2, '0'),
                         "fee"
                     ),
                     price = fee.price.toLong()

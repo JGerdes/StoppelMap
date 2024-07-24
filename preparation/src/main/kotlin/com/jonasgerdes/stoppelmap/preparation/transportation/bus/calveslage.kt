@@ -1,14 +1,17 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
+import com.jonasgerdes.stoppelmap.preparation.localizedString
 import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun calveslage() = createBusRoute {
-    title = "Calveslage"
-    additionalInfo =
-        "Aufgrund der Bauarbeiten ist die Linienführung in Lohe in diesem Jahr anders als gewohnt."
+    name = "Calveslage"
+    additionalInfo = localizedString(
+        de = "Aufgrund der Bauarbeiten ist die Linienführung in Lohe in diesem Jahr anders als gewohnt.",
+        en = "Due to construction work the route in Lohe is different then usually this year."
+    )
 
     addStation("Lohe, Hölscher") {
         prices(350, 220)
@@ -27,7 +30,7 @@ internal fun calveslage() = createBusRoute {
 
 
     addReturnStation {
-        title = "Stoppelmarkt („Hof Gisela“)"
+        name = "Stoppelmarkt („Hof Gisela“)"
         thursday("23:00")
         friday("00:00")
         saturday("00:00")

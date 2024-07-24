@@ -7,10 +7,10 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun vechtaFlugplatz() = createBusRoute {
-    title = "Vechta Flugplatz"
+    name = "Vechta Flugplatz"
     fixedPrices = prices(adult = 250, children = 180)
 
-    addStation(title = "Von-Ascheberg-Straße/Kindergarten") {
+    addStation(name = "Von-Ascheberg-Straße/Kindergarten") {
         thursday {
             "17:53" every 60.Minutes until "01:53"
         }
@@ -34,22 +34,22 @@ internal fun vechtaFlugplatz() = createBusRoute {
             "13:53" every 60.Minutes until "19:53"
         }
     }
-    addStation(title = "Hagen-Ringstraße", minutesAfterPrevious = 2)
-    addStation(title = "Vechtaer Marsch/Straßburger Straße", minutesAfterPrevious = 4)
-    addStation(title = "Vechtaer Marsch/Dornierstraße", minutesAfterPrevious = 1)
-    addStation(title = "Vechtaer Marsch", minutesAfterPrevious = 1)
-    addStation(title = "Vechtaer Marsch/Wienerstraße", minutesAfterPrevious = 2)
-    addStation(title = "Stukenborg", minutesAfterPrevious = 4)
-    addStation(title = "Graskamp/Herberskamp", minutesAfterPrevious = 1)
-    addStation(title = "Graskamp/Hirsekamp", minutesAfterPrevious = 1)
-    addStation(title = "Sandeskamp/Riedenkamp", minutesAfterPrevious = 2)
-    addStation(title = "Schweriner Straße/Petersburger Straße", minutesAfterPrevious = 2)
-    addStation(title = "Allensteiner Straße/Fahrschule Moss", minutesAfterPrevious = 2)
-    addStation(title = "Allensteiner Straße/Dresdener Straße", minutesAfterPrevious = 1)
-    addStation(title = "Stoppelmarkt", minutesAfterPrevious = 4) { isDestination = true }
+    addStation(name = "Hagen-Ringstraße", minutesAfterPrevious = 2)
+    addStation(name = "Vechtaer Marsch/Straßburger Straße", minutesAfterPrevious = 4)
+    addStation(name = "Vechtaer Marsch/Dornierstraße", minutesAfterPrevious = 1)
+    addStation(name = "Vechtaer Marsch", minutesAfterPrevious = 1)
+    addStation(name = "Vechtaer Marsch/Wienerstraße", minutesAfterPrevious = 2)
+    addStation(name = "Stukenborg", minutesAfterPrevious = 4)
+    addStation(name = "Graskamp/Herberskamp", minutesAfterPrevious = 1)
+    addStation(name = "Graskamp/Hirsekamp", minutesAfterPrevious = 1)
+    addStation(name = "Sandeskamp/Riedenkamp", minutesAfterPrevious = 2)
+    addStation(name = "Schweriner Straße/Petersburger Straße", minutesAfterPrevious = 2)
+    addStation(name = "Allensteiner Straße/Fahrschule Moss", minutesAfterPrevious = 2)
+    addStation(name = "Allensteiner Straße/Dresdener Straße", minutesAfterPrevious = 1)
+    addStation(name = "Stoppelmarkt", minutesAfterPrevious = 4) { isDestination = true }
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         thursday {
             "18:30" every 60.Minutes until "02:30"
         }

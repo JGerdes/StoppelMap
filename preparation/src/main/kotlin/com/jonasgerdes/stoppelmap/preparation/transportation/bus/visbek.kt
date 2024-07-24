@@ -6,7 +6,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun visbek() = createBusRoute {
-    title = "Visbek"
+    name = "Visbek"
     fixedPrices = prices(adult = 480, children = 290)
 
     addStation("Hagstedt, Mittlere Siedlungstraße") {
@@ -75,17 +75,17 @@ internal fun visbek() = createBusRoute {
     }
 
     addReturnStation {
-        title = "Stoppelmarkt („Hof Gisela“)"
+        name = "Stoppelmarkt („Hof Gisela“)"
         friday("22:30", "00:30", "02:00", "03:00", "04:30")
         saturday("22:20", "00:30", "02:00", "03:00", "04:30")
         sunday("13:10", "15:10", "20:30", "21:30")
     }
     addReturnStation {
-        title = "Stoppelmarkt (Visbeker Damm)"
+        name = "Stoppelmarkt (Visbeker Damm)"
         saturday("16:04")
     }
     addReturnStation {
-        title = "Stoppelmarkt (Oldenburger Str.)"
+        name = "Stoppelmarkt (Oldenburger Str.)"
         saturday("15:04")
     }
 }

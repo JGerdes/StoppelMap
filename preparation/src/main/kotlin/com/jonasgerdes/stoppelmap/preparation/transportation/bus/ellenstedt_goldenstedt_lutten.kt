@@ -1,12 +1,13 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
+import com.jonasgerdes.stoppelmap.preparation.localizedString
 import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun ellenstedtGoldenstedtLutten() = createBusRoute {
-    title = "Ellenstedt - Goldenstedt - Lutten"
+    name = "Ellenstedt - Goldenstedt - Lutten"
 
     addStation("Goldenstedt, Friedt") {
         prices(400, 200, 6 to 11)
@@ -106,9 +107,12 @@ internal fun ellenstedtGoldenstedtLutten() = createBusRoute {
         )
     }
 
-    val returnNotToEllenstedt = "Rückfahrt nicht nach Ellenstedt"
+    val returnNotToEllenstedt = localizedString(
+        de = "Rückfahrt nicht nach Ellenstedt",
+        en = "No return trip to Ellenstedt"
+    )
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         thursday {
             departure("19:30", annotation = returnNotToEllenstedt)
             departures(

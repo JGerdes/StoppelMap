@@ -4,7 +4,7 @@ import com.google.gson.JsonElement
 import com.jonasgerdes.stoppelmap.preperation.entity.Stall
 import java.math.BigInteger
 import java.security.MessageDigest
-import java.util.*
+import java.util.Base64
 
 fun String.asMd5(): String {
     val digest = MessageDigest.getInstance("MD5").apply {
@@ -21,29 +21,31 @@ fun String.toShortHash(): String {
 
 fun String.asSlug(): String {
     var clean = replace("ß".toRegex(), "ss")
-            .replace("ä".toRegex(), "ae")
-            .replace("ö".toRegex(), "oe")
-            .replace("ü".toRegex(), "ue")
-            .replace("Ä".toRegex(), "Ae")
-            .replace("Ö".toRegex(), "Oe")
-            .replace("Ü".toRegex(), "Ue")
-            .replace("/".toRegex(), "-")
-            .replace("&".toRegex(), "-")
-            .replace(",".toRegex(), "-")
-            .replace("\\.".toRegex(), "-")
-            .replace("\"".toRegex(), "")
-            .replace(" ".toRegex(), "-")
-            .replace("'".toRegex(), "-")
-            .replace("_".toRegex(), "-")
+        .replace("ä".toRegex(), "ae")
+        .replace("ö".toRegex(), "oe")
+        .replace("ü".toRegex(), "ue")
+        .replace("Ä".toRegex(), "Ae")
+        .replace("Ö".toRegex(), "Oe")
+        .replace("Ü".toRegex(), "Ue")
+        .replace("/".toRegex(), "_")
+        .replace("&".toRegex(), "_")
+        .replace(",".toRegex(), "_")
+        .replace("\\.".toRegex(), "_")
+        .replace("\"".toRegex(), "")
+        .replace(" ".toRegex(), "_")
+        .replace("'".toRegex(), "_")
+        .replace("-".toRegex(), "_")
     do {
-        clean = clean.replace("--".toRegex(), "-")
-    } while (clean.contains("--"))
-    return clean.toLowerCase()
+        clean = clean.replace("__".toRegex(), "_")
+    } while (clean.contains("__"))
+    return clean.lowercase()
 }
 
 
-fun <T> JsonElement?.splitBy(primaryDelimiter: String, secondaryDelimiter: String,
-                             action: (List<String>) -> T): List<T> {
+fun <T> JsonElement?.splitBy(
+    primaryDelimiter: String, secondaryDelimiter: String,
+    action: (List<String>) -> T
+): List<T> {
     return if (this != null) {
         asString.split(primaryDelimiter).map {
             action(it.split(secondaryDelimiter))

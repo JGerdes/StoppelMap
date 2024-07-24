@@ -7,7 +7,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun langenbergMuehlen() = createBusRoute {
-    title = "Langenberg - Steinfeld - Mühlen - Kroge - Südlohne"
+    name = "Langenberg - Steinfeld - Mühlen - Kroge - Südlohne"
 
     addStation("Langenberg - Kirche") {
         prices(500, 200, 3 to 14)
@@ -40,7 +40,7 @@ internal fun langenbergMuehlen() = createBusRoute {
 
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         friday {
             "00:50" every 60.Minutes until "03:50"
         }

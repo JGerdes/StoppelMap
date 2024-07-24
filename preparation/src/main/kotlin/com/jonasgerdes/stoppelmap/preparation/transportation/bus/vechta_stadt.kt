@@ -1,13 +1,15 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
 import com.jonasgerdes.stoppelmap.preparation.transportation.Minutes
+import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperators.wilmering
 import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun vechtaStadt() = createBusRoute {
-    title = "Vechta Stadt"
+    name = "Vechta Stadt"
+    operatorSlug = wilmering.slug
     fixedPrices = prices(adult = 250, children = 180)
 
     addStation("Sgundek") {
@@ -45,7 +47,7 @@ internal fun vechtaStadt() = createBusRoute {
     addStation("Stoppelmarkt", minutesAfterPrevious = 2) { isDestination = true }
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         thursday {
             "18:15" every 30.Minutes until "02:45"
         }

@@ -1,14 +1,12 @@
-package com.jonasgerdes.stoppelmap.preparation.transportation.bus
+package com.jonasgerdes.stoppelmap.preparation.transportation.train
 
-import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import com.jonasgerdes.stoppelmap.preparation.transportation.Minutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 
 fun osnabrueck() = createBusRoute {
-    title = "RB58 Osnabrück"
-    type = RouteType.Train
+    name = "RB58 Osnabrück"
 
     addStation("Osnabrück Hbf") {
         thursday {
@@ -29,8 +27,8 @@ fun osnabrueck() = createBusRoute {
         }
         monday {
             "06:24" every 60.Minutes until "20:24"
-            departure("20:38", annotation = "Schienenersatzverkehr")
-            departure("22:38", annotation = "Schienenersatzverkehr")
+            departure("20:38", annotation = sevAnnotation)
+            departure("22:38", annotation = sevAnnotation)
         }
         tuesday {
             "06:24" every 60.Minutes until "21:24"
@@ -57,8 +55,8 @@ fun osnabrueck() = createBusRoute {
         }
         monday {
             "06:26" every 60.Minutes until "20:26"
-            departure("20:44", annotation = "Schienenersatzverkehr")
-            departure("22:44", annotation = "Schienenersatzverkehr")
+            departure("20:44", annotation = sevAnnotation)
+            departure("22:44", annotation = sevAnnotation)
         }
         tuesday {
             "06:26" every 60.Minutes until "21:26"
@@ -85,8 +83,8 @@ fun osnabrueck() = createBusRoute {
         }
         monday {
             "06:33" every 60.Minutes until "20:33"
-            departure("21:03", annotation = "Schienenersatzverkehr")
-            departure("23:03", annotation = "Schienenersatzverkehr")
+            departure("21:03", annotation = sevAnnotation)
+            departure("23:03", annotation = sevAnnotation)
         }
         tuesday {
             "06:33" every 60.Minutes until "21:33"
@@ -113,8 +111,8 @@ fun osnabrueck() = createBusRoute {
         }
         monday {
             "06:38" every 60.Minutes until "20:38"
-            departure("21:18", annotation = "Schienenersatzverkehr")
-            departure("23:18", annotation = "Schienenersatzverkehr")
+            departure("21:18", annotation = sevAnnotation)
+            departure("23:18", annotation = sevAnnotation)
         }
         tuesday {
             "06:38" every 60.Minutes until "21:38"
@@ -240,7 +238,7 @@ fun osnabrueck() = createBusRoute {
         isDestination = true
     }
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
 
         thursday {
             "06:21" every 60.Minutes until "00:21"

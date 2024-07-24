@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 
@@ -32,6 +33,7 @@ dependencies {
     implementation(project(":shared:data-conversion"))
 
     implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.koin.core)
     implementation(libs.sqldelight.driver.sqlite)
     implementation(libs.gson)

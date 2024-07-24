@@ -6,7 +6,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun langfoerden() = createBusRoute {
-    title = "Langförden"
+    name = "Langförden"
 
     addStation("Deindrup, Kirschenweg") {
         prices(330, 250)
@@ -37,7 +37,7 @@ internal fun langfoerden() = createBusRoute {
 
 
     addReturnStation {
-        title = "Stoppelmarkt („Hof Gisela“)"
+        name = "Stoppelmarkt („Hof Gisela“)"
         thursday("00:00", "01:00")
         friday("19:30", "22:00", "01:00", "02:00", "03:00", "04:00", "05:00")
         saturday("19:30", "22:00", "01:00", "02:00", "03:00", "04:00", "05:00")

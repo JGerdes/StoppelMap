@@ -5,10 +5,10 @@ import com.jonasgerdes.stoppelmap.data.map.Sub_type
 import com.jonasgerdes.stoppelmap.data.schedule.Person
 import com.jonasgerdes.stoppelmap.data.shared.Product
 import com.jonasgerdes.stoppelmap.data.shared.Service
-import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
+import com.jonasgerdes.stoppelmap.dto.data.Definitions
 
-internal fun StoppelMapDatabase.addDefinitions(data: StoppelMapData) {
-    data.definitions.tags.forEach {
+internal fun StoppelMapDatabase.addDefinitions(definitions: Definitions) = with(definitions) {
+    tags.forEach {
         tagQueries.insert(
             slug = it.slug,
             nameKey = addLocalizedString(it.name, it.slug, "name")
@@ -16,7 +16,7 @@ internal fun StoppelMapDatabase.addDefinitions(data: StoppelMapData) {
         addAliases(it.slug, it.aliases)
     }
 
-    data.definitions.subTypes.forEach {
+    subTypes.forEach {
         sub_typeQueries.insert(
             Sub_type(
                 slug = it.slug,
@@ -26,7 +26,7 @@ internal fun StoppelMapDatabase.addDefinitions(data: StoppelMapData) {
         addAliases(it.slug, it.aliases)
     }
 
-    data.definitions.products.forEach {
+    products.forEach {
         productQueries.insert(
             Product(
                 slug = it.slug,
@@ -36,18 +36,18 @@ internal fun StoppelMapDatabase.addDefinitions(data: StoppelMapData) {
         addAliases(it.slug, it.aliases)
     }
 
-    data.definitions.services.forEach {
+    services.forEach { service ->
         serviceQueries.insert(
             Service(
-                slug = it.slug,
-                nameKey = addLocalizedString(it.name, it.slug, "name"),
-                noteKey = addLocalizedString(it.name, it.slug, "note")
+                slug = service.slug,
+                nameKey = addLocalizedString(service.name, service.slug, "name"),
+                noteKey = service.note?.let { addLocalizedString(it, service.slug, "note") }
             )
         )
-        addAliases(it.slug, it.aliases)
+        addAliases(service.slug, service.aliases)
     }
 
-    data.definitions.persons.forEach {
+    persons.forEach {
         personQueries.insert(
             Person(
                 slug = it.slug,
@@ -63,7 +63,7 @@ internal fun StoppelMapDatabase.addDefinitions(data: StoppelMapData) {
         }
     }
 
-    data.definitions.operators.forEach {
+    operators.forEach {
         operatorQueries.insert(
             slug = it.slug,
             name = it.name,

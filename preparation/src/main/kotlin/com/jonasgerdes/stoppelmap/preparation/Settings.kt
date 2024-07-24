@@ -6,6 +6,7 @@ data class Settings(
     val databaseFile: File,
     val geoJsonInput: File,
     val geoJsonOutput: File,
+    val stoppelMapDataJsonOutput: File,
     val fetchedEventsFile: File,
     val manualEventsFile: File,
     val descriptionFolder: File,

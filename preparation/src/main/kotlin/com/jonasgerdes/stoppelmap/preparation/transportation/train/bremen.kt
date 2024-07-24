@@ -1,14 +1,12 @@
-package com.jonasgerdes.stoppelmap.preparation.transportation.bus
+package com.jonasgerdes.stoppelmap.preparation.transportation.train
 
-import com.jonasgerdes.stoppelmap.data.model.database.RouteType
 import com.jonasgerdes.stoppelmap.preparation.transportation.Minutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 
 fun bremen() = createBusRoute {
-    title = "RB58 Bremen"
-    type = RouteType.Train
+    name = "RB58 Bremen"
 
     addStation("Bremen Hbf") {
         thursday {
@@ -123,7 +121,7 @@ fun bremen() = createBusRoute {
         isDestination = true
     }
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
 
         thursday {
             departures("04:33", "05:33", "06:33", "07:34")

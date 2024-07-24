@@ -55,7 +55,8 @@ internal fun StoppelMapDatabase.addTransportationData(transportation: Transporta
                         nameKey = addLocalizedString(
                             fee.name,
                             station.slug,
-                            index.toString().padStart(2),
+                            "fee",
+                            index.toString().padStart(2, '0'),
                             "name"
                         ),
                         price = fee.price.toLong(),

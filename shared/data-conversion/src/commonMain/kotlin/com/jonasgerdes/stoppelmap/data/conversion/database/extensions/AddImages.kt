@@ -14,7 +14,7 @@ internal fun StoppelMapDatabase.addImages(referenceSlug: String, images: List<Im
                         it,
                         referenceSlug,
                         "image",
-                        index.toString().padStart(2),
+                        index.toString().padStart(2, '0'),
                         "caption"
                     )
                 },
@@ -23,7 +23,7 @@ internal fun StoppelMapDatabase.addImages(referenceSlug: String, images: List<Im
                         it,
                         referenceSlug,
                         "image",
-                        index.toString().padStart(2),
+                        index.toString().padStart(2, '0'),
                         "copyright"
                     )
                 },

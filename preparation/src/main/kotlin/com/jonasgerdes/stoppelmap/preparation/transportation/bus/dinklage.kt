@@ -7,7 +7,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun dinklage() = createBusRoute {
-    title = "Dinlage - Märschendorf"
+    name = "Dinlage - Märschendorf"
 
     addStation("Rathausplatz") {
         prices(500, 200, 3 to 14)
@@ -56,7 +56,7 @@ internal fun dinklage() = createBusRoute {
 
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         thursday {
             "19:50" every 60.Minutes until "23:50"
             departure("01:10")

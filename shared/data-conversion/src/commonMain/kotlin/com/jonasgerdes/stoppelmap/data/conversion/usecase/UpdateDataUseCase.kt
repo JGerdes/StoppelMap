@@ -9,10 +9,11 @@ import com.jonasgerdes.stoppelmap.data.conversion.database.extensions.clearData
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 
 class UpdateDatabaseUseCase(
-    private val data: StoppelMapData,
     private val stoppelMapDatabase: StoppelMapDatabase,
 ) {
-    operator fun invoke() = with(stoppelMapDatabase) {
+    operator fun invoke(
+        data: StoppelMapData,
+    ) = with(stoppelMapDatabase) {
         transaction {
             clearData()
 
@@ -26,7 +27,7 @@ class UpdateDatabaseUseCase(
                 transport_is_wip = data.transportation.isWorkInProgress,
             )
 
-            addDefinitions(data)
+            addDefinitions(data.definitions)
             addMapData(data.map)
             addScheduleData(data.schedule)
             addTransportationData(data.transportation)

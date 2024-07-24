@@ -6,7 +6,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun bakumEssen() = createBusRoute {
-    title = "Bakum und Essen"
+    name = "Bakum und Essen"
 
     addStation("Essen, Bahnhof") {
         prices(570, 420)
@@ -78,16 +78,16 @@ internal fun bakumEssen() = createBusRoute {
     }
 
     addReturnStation {
-        title = "Stoppelmarkt bis Bakum"
+        name = "Stoppelmarkt bis Bakum"
         friday("20:30", "21:30", "22:30")
         saturday("20:30", "21:30", "22:30")
     }
     addReturnStation {
-        title = "Stoppelmarkt bis Vestrup (über Bakum)"
+        name = "Stoppelmarkt bis Vestrup (über Bakum)"
         thursday("23:00")
     }
     addReturnStation {
-        title = "Stoppelmarkt bis Carum (über Bakum und Vestrup)"
+        name = "Stoppelmarkt bis Carum (über Bakum und Vestrup)"
         thursday("01:00")
         friday("19:00", "00:30", "01:30", "02:30", "03:30", "04:30")
         saturday("19:00", "00:30", "01:30", "02:30", "03:30", "04:30")

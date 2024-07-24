@@ -1,12 +1,14 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation
 
-import com.jonasgerdes.stoppelmap.data.model.database.RouteType
+import com.jonasgerdes.stoppelmap.dto.Localized
+import com.jonasgerdes.stoppelmap.dto.data.Departure
+import com.jonasgerdes.stoppelmap.dto.data.DepartureDay
+import com.jonasgerdes.stoppelmap.dto.data.Fee
+import com.jonasgerdes.stoppelmap.dto.data.Location
+import com.jonasgerdes.stoppelmap.dto.data.Route
+import com.jonasgerdes.stoppelmap.dto.data.Station
 import com.jonasgerdes.stoppelmap.preparation.Settings
-import com.jonasgerdes.stoppelmap.transportation.model.Departure
-import com.jonasgerdes.stoppelmap.transportation.model.DepartureDay
-import com.jonasgerdes.stoppelmap.transportation.model.Price
-import com.jonasgerdes.stoppelmap.transportation.model.Route
-import com.jonasgerdes.stoppelmap.transportation.model.Station
+import com.jonasgerdes.stoppelmap.preparation.localizedString
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
@@ -26,20 +28,20 @@ import kotlin.time.toDuration
 
 
 class BusRouteScope {
-    var id: String? = null
-    var title: String? = null
+    var slug: String? = null
+    var name: String? = null
         set(value) {
-            if (id == null && value != null) {
-                id = value.toSlug()
+            if (slug == null && value != null) {
+                slug = value.toSlug()
             }
             field = value
         }
+    var operatorSlug: String? = null
     val stations: MutableList<Station> = mutableListOf()
     val returnStations: MutableList<Station> = mutableListOf()
-    var additionalInfo: String? = null
+    var additionalInfo: Localized<String>? = null
 
-    var fixedPrices: List<Price>? = null
-    var type: RouteType = RouteType.Bus
+    var fixedPrices: List<Fee>? = null
 }
 
 fun createBusRoute(builder: BusRouteScope.() -> Unit) =
@@ -47,25 +49,24 @@ fun createBusRoute(builder: BusRouteScope.() -> Unit) =
         builder()
     }.let {
         Route(
-            id = it.id!!,
-            title = it.title!!,
-            stations = it.stations.toList(),
-            returnStations = it.returnStations,
+            slug = it.slug!!,
+            name = it.name!!,
+            stations = it.stations + it.returnStations,
             additionalInfo = it.additionalInfo,
-            type = it.type
+            operator = it.operatorSlug,
         )
     }
 
 class StationScope(private val routeScope: BusRouteScope) {
-    var id: String? = null
-    var title: String? = null
+    var slug: String? = null
+    var name: String? = null
         set(value) {
-            if (id == null && value != null) {
-                id = routeScope.id + "-" + value.toSlug()
+            if (slug == null && value != null) {
+                slug = routeScope.slug + "_" + value.toSlug()
             }
             field = value
         }
-    var prices: List<Price> = routeScope.fixedPrices ?: emptyList()
+    var prices: List<Fee> = routeScope.fixedPrices ?: emptyList()
     var departures: MutableList<DepartureDay> = mutableListOf()
     var isDestination: Boolean = false
     var isNew: Boolean = false
@@ -162,7 +163,7 @@ class StationScope(private val routeScope: BusRouteScope) {
                 DepartureDay(
                     day = it.day,
                     departures = it.departures.distinctBy { it.time },
-                    laterDeparturesOnDemand = it.laterDeparturesOnDemand
+                    laterDepartureOnDemand = it.laterDeparturesOnDemand
                 )
             )
         }
@@ -170,25 +171,30 @@ class StationScope(private val routeScope: BusRouteScope) {
 }
 
 fun BusRouteScope.addStation(
-    title: String? = null,
+    name: String,
     minutesAfterPrevious: Int? = null,
+    location: Location? = null,
+    locationSlug: String? = null,
     builder: (StationScope.() -> Unit)? = null
 ) {
     stations.add(
         StationScope(this).apply {
-            this.title = title
+            this.name = name
             minutesAfterPrevious?.let {
                 departuresAfterPreviousStation(it.Minutes)
             }
             builder?.invoke(this)
         }.let {
             Station(
-                id = it.id!!,
-                title = it.title!!,
-                prices = it.prices,
-                departures = it.departures,
+                slug = it.slug!!,
+                name = it.name!!,
                 isDestination = it.isDestination,
-                annotateAsNew = it.isNew,
+                isReturn = false,
+                isNew = it.isNew,
+                departures = it.departures,
+                location = location,
+                mapEntityLocation = locationSlug,
+                prices = it.prices,
             )
         }
     )
@@ -200,10 +206,12 @@ fun BusRouteScope.addReturnStation(builder: StationScope.() -> Unit) {
             builder()
         }.let {
             Station(
-                id = it.id!! + "-return",
-                title = it.title!!,
-                prices = it.prices,
-                departures = it.departures,
+                slug = it.slug!! + "_return",
+                name = it.name!!,
+                isDestination = it.isDestination,
+                isReturn = true,
+                isNew = it.isNew,
+                departures = it.departures
             )
         }
     )
@@ -217,11 +225,11 @@ class DepartureDayScope(val day: LocalDate) {
         departures.addAll(departureTimes.map { Departure(it.toLocalTime().atDay()) })
     }
 
-    fun departure(time: LocalDateTime, annotation: String? = null) {
+    fun departure(time: LocalDateTime, annotation: Localized<String>? = null) {
         departures.add(Departure(time, annotation))
     }
 
-    fun departure(time: String, annotation: String? = null) {
+    fun departure(time: String, annotation: Localized<String>? = null) {
         departures.add(Departure(time.toLocalTime().atDay(), annotation))
     }
 
@@ -253,14 +261,25 @@ fun prices(
     children: Int,
     childrenAgeRange: Pair<Int?, Int>? = 3 to 11
 ) = listOf(
-    Price(label = Price.PriceLabel.Adult, amountInCents = adult),
-    Price(
-        label = Price.PriceLabel.Children(
-            minAge = childrenAgeRange?.first,
-            maxAge = childrenAgeRange?.second
-        ),
-        amountInCents = children
+    Fee(
+        name = localizedString(de = "Erwachsene", en = "Adults"),
+        price = adult
     ),
+    Fee(
+        name = when {
+            childrenAgeRange == null -> localizedString(de = "Kinder", en = "Children")
+            childrenAgeRange.first == null -> localizedString(
+                de = "Kinder (bis ${childrenAgeRange.second} Jahre)",
+                en = "Children (up to ${childrenAgeRange.second} years old)"
+            )
+
+            else -> localizedString(
+                de = "Kinder (${childrenAgeRange.first}-${childrenAgeRange.second} Jahre)",
+                en = "Children (${childrenAgeRange.first}-${childrenAgeRange.second} years old)"
+            )
+        },
+        price = children
+    )
 )
 
 fun StationScope.prices(

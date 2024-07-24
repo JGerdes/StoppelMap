@@ -7,7 +7,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun holdorfBrockdorf() = createBusRoute {
-    title = "Damme - Holdorf - Langwege - Brockdorf"
+    name = "Damme - Holdorf - Langwege - Brockdorf"
 
     addStation("Damme - ZOB") {
         prices(600, 200, 3 to 14)
@@ -39,7 +39,7 @@ internal fun holdorfBrockdorf() = createBusRoute {
 
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         friday {
             departures("01:10", "02:10", "03:10")
         }

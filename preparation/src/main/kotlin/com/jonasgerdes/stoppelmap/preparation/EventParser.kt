@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.preparation
 
 import com.google.gson.GsonBuilder
 import com.google.gson.stream.JsonWriter
+import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.preparation.entity.marqueMappings
 import com.jonasgerdes.stoppelmap.preperation.asSlug
 import com.jonasgerdes.stoppelmap.preperation.entity.JsonEvent
@@ -170,7 +171,10 @@ class EventParser : KoinComponent {
 
 fun main(args: Array<String>) {
     startKoin {
-        modules(preparationModule)
+        modules(
+            dataModule,
+            preparationModule
+        )
     }
 
     EventParser().fetchAndParseEvents()

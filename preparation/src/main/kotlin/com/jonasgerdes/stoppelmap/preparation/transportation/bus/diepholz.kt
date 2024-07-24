@@ -1,12 +1,13 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
+import com.jonasgerdes.stoppelmap.preparation.localizedString
 import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun diepholz() = createBusRoute {
-    title = "Diepholz"
+    name = "Diepholz"
 
     addStation("Diepholz, Schulzentrum") {
         prices(500, 370)
@@ -48,12 +49,18 @@ internal fun diepholz() = createBusRoute {
     }
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         friday("23:30", "01:00", "02:30", "04:00")
         saturday("23:30", "01:00", "02:30", "04:00")
         monday {
             departures("12:00", "14:00", "17:00", "19:00", "00:00")
-            departure("22:30", annotation = "nur nach Diepholz")
+            departure(
+                "22:30",
+                annotation = localizedString(
+                    de = "nur nach Diepholz",
+                    en = "only to Diepholz"
+                )
+            )
         }
     }
 }

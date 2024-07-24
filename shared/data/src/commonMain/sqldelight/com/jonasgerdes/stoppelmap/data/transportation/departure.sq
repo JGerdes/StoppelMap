@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS departure (
     time            TEXT AS LocalDateTime NOT NULL,
     annotationKey   TEXT,
 
-    FOREIGN KEY(departureDay) REFERENCES departure_day(id),
+    FOREIGN KEY(departureDay) REFERENCES departure_day(slug),
     FOREIGN KEY(annotationKey) REFERENCES localized_string(key)
 );
 

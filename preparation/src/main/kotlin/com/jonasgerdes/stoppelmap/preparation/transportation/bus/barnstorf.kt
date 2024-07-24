@@ -6,7 +6,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun barnstorf() = createBusRoute {
-    title = "Barnstorf"
+    name = "Barnstorf"
 
     addStation("Barnstorf, Markt") {
         prices(500, 250, childrenAgeRange = 6 to 11)
@@ -41,7 +41,7 @@ internal fun barnstorf() = createBusRoute {
     }
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         friday("20:30", "21:00", "01:00", "02:00")
         saturday("20:30", "21:00", "01:00", "02:00", "03:00")
         monday("18:00", "20:00", "22:00", "00:00")

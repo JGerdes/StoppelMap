@@ -7,7 +7,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun lohneMoorkamp() = createBusRoute {
-    title = "Lohne (Voßberg - Moorkamp - Rießel)"
+    name = "Lohne (Voßberg - Moorkamp - Rießel)"
     fixedPrices = prices(adult = 400, children = 200, 3 to 14)
 
     addStation("Jägerstraße/ Wangerooger Str.") {
@@ -44,7 +44,7 @@ internal fun lohneMoorkamp() = createBusRoute {
     addStation("Stoppelmarkt", minutesAfterPrevious = 15) { isDestination = true }
 
     addReturnStation {
-        title = "Stoppelmarkt"
+        name = "Stoppelmarkt"
         thursday {
             "17:55" every 30.Minutes until "01:55"
         }
