@@ -2,7 +2,7 @@ import kotlin.Boolean;
 import kotlinx.datetime.LocalDate;
 
 CREATE TABLE IF NOT EXISTS departure_day (
-    id                      TEXT NOT NULL PRIMARY KEY,
+    slug                      TEXT NOT NULL PRIMARY KEY,
     station                 TEXT NOT NULL,
     day                     TEXT AS LocalDate NOT NULL,
     laterDeparturesOnDemand INTEGER AS Boolean,
@@ -11,11 +11,11 @@ CREATE TABLE IF NOT EXISTS departure_day (
 );
 
 insert:
-INSERT INTO departure_day(id, station, day, laterDeparturesOnDemand)
+INSERT INTO departure_day(slug, station, day, laterDeparturesOnDemand)
 VALUES ?;
 
 clear:
 DELETE FROM departure_day;
 
 getByStation:
-SELECT id, day, laterDeparturesOnDemand FROM departure_day WHERE station = :station;
+SELECT slug, day, laterDeparturesOnDemand FROM departure_day WHERE station = :station;

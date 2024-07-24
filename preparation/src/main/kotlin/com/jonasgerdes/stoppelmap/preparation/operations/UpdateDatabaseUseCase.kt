@@ -17,10 +17,16 @@ import com.jonasgerdes.stoppelmap.data.shared.PreferredTheme
 import com.jonasgerdes.stoppelmap.data.shared.Product
 import com.jonasgerdes.stoppelmap.data.shared.Service
 import com.jonasgerdes.stoppelmap.data.shared.Website
+import com.jonasgerdes.stoppelmap.data.transportation.Departure
+import com.jonasgerdes.stoppelmap.data.transportation.Departure_day
+import com.jonasgerdes.stoppelmap.data.transportation.Route
+import com.jonasgerdes.stoppelmap.data.transportation.Station
+import com.jonasgerdes.stoppelmap.data.transportation.TransportationType
 import com.jonasgerdes.stoppelmap.dto.Localized
 import com.jonasgerdes.stoppelmap.dto.data.Map
 import com.jonasgerdes.stoppelmap.dto.data.Schedule
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
+import com.jonasgerdes.stoppelmap.dto.data.Transportation
 import com.jonasgerdes.stoppelmap.dto.data.Image as DtoImage
 import com.jonasgerdes.stoppelmap.dto.data.MapEntityType as DtoMapEntityType
 import com.jonasgerdes.stoppelmap.dto.data.ParticipantType as DtoParticipantType
@@ -47,39 +53,7 @@ class UpdateDatabaseUseCase(
             addDefinitions(data)
             addMapData(data.map)
             addScheduleData(data.schedule)
-        }
-    }
-
-    private fun StoppelMapDatabase.addScheduleData(schedule: Schedule) {
-        schedule.events.forEach { event ->
-            eventQueries.insert(
-                Event(
-                    slug = event.slug,
-                    name = event.name,
-                    start = event.start,
-                    end = event.end,
-                    descriptionKey = event.description?.let {
-                        addLocalizedString(it, event.slug, "description")
-                    },
-                    locationSlug = event.location,
-                    isOfficial = event.isOfficial
-                )
-            )
-            event.participants.forEach {
-                event_personQueries.insert(
-                    eventSlug = event.slug,
-                    personSlug = it.person,
-                    type = when (it.type) {
-                        DtoParticipantType.Unknown -> ParticipantType.Unknown
-                        DtoParticipantType.Band -> ParticipantType.Band
-                        DtoParticipantType.DJ -> ParticipantType.DJ
-                        DtoParticipantType.GuestOfHonor -> ParticipantType.GuestOfHonor
-                        DtoParticipantType.Speaker -> ParticipantType.Speaker
-                        null -> null
-                    }
-                )
-            }
-            addWebsites(event.slug, event.websites)
+            addTransportationData(data.transportation)
         }
     }
 
@@ -220,6 +194,122 @@ class UpdateDatabaseUseCase(
                 map_entity_imageQueries.insert(mapEntity.slug, it.url)
             }
             addWebsites(mapEntity.slug, mapEntity.websites)
+        }
+    }
+
+    private fun StoppelMapDatabase.addScheduleData(schedule: Schedule) {
+        schedule.events.forEach { event ->
+            eventQueries.insert(
+                Event(
+                    slug = event.slug,
+                    name = event.name,
+                    start = event.start,
+                    end = event.end,
+                    descriptionKey = event.description?.let {
+                        addLocalizedString(it, event.slug, "description")
+                    },
+                    locationSlug = event.location,
+                    isOfficial = event.isOfficial
+                )
+            )
+            event.participants.forEach {
+                event_personQueries.insert(
+                    eventSlug = event.slug,
+                    personSlug = it.person,
+                    type = when (it.type) {
+                        DtoParticipantType.Unknown -> ParticipantType.Unknown
+                        DtoParticipantType.Band -> ParticipantType.Band
+                        DtoParticipantType.DJ -> ParticipantType.DJ
+                        DtoParticipantType.GuestOfHonor -> ParticipantType.GuestOfHonor
+                        DtoParticipantType.Speaker -> ParticipantType.Speaker
+                        null -> null
+                    }
+                )
+            }
+            addWebsites(event.slug, event.websites)
+        }
+    }
+
+    private fun StoppelMapDatabase.addTransportationData(transportation: Transportation) {
+        transportation.busRoutes.forEach { route ->
+            routeQueries.insert(
+                Route(
+                    slug = route.slug,
+                    name = route.name,
+                    operatorSlug = route.operator,
+                    additionalInfoKey = route.additionalInfo?.let {
+                        addLocalizedString(
+                            it,
+                            route.slug,
+                            "additional_info"
+                        )
+                    },
+                    type = TransportationType.Bus
+                )
+            )
+            route.stations.forEach { station ->
+                stationQueries.insert(
+                    Station(
+                        slug = station.slug,
+                        route = route.slug,
+                        name = station.name,
+                        mapEntity = station.mapEntityLocation,
+                        isDestination = station.isDestination,
+                        isReturn = station.isReturn,
+                        annotateAsNew = station.isNew,
+                    )
+                )
+                station.location?.let {
+                    locationQueries.insert(
+                        Location(
+                            referenceSlug = station.slug,
+                            latitude = it.lat,
+                            longitude = it.lng
+                        )
+                    )
+                }
+                station.prices.forEachIndexed { index, fee ->
+                    feeQueries.insert(
+                        Fee(
+                            referenceSlug = station.slug,
+                            nameKey = addLocalizedString(
+                                fee.name,
+                                station.slug,
+                                index.toString().padStart(2),
+                                "name"
+                            ),
+                            price = fee.price.toLong(),
+                        )
+                    )
+                }
+                station.departures.forEach { departureDay ->
+                    val departureDaySlug = "${station.slug}_${departureDay.day}"
+                    departure_dayQueries.insert(
+                        Departure_day(
+                            slug = departureDaySlug,
+                            station = station.slug,
+                            day = departureDay.day,
+                            laterDeparturesOnDemand = departureDay.laterDepartureOnDemand
+                        )
+                    )
+                    departureDay.departures.forEach { departure ->
+                        departureQueries.insert(
+                            Departure(
+                                departureDay = departureDaySlug,
+                                time = departure.time,
+                                annotationKey = departure.annotation?.let {
+                                    addLocalizedString(
+                                        it,
+                                        departureDaySlug,
+                                        departure.time.time.toString(),
+                                        "annotation"
+                                    )
+                                }
+                            )
+                        )
+                    }
+                }
+            }
         }
     }
 }
