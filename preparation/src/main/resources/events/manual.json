@@ -1,95 +1,179 @@
-{
-  "events": [
-    {
-      "uuid": "stoppelmarkt_umzug",
-      "name": "Festumzug",
-      "type": 0,
-      "day": 0,
-      "start": "2023-08-10 16:30:00",
-      "end": "2023-08-10 18:30:00",
-      "description": "Vom Rathaus durch die Innenstadt bis zum Stoppelmarkt präsentieren sich während des historischen Festumzugs zahlreiche Motivwagen, Fußgruppen und Musikkapellen.",
-      "isOfficial": true
+[
+  {
+    "slug": "stoppelmarkt_umzug",
+    "name": "Festumzug",
+    "start": "2024-08-15T16:30",
+    "end": "2024-08-15T18:30",
+    "location": null,
+    "description": {
+      "de": "Vom Rathaus durch die Innenstadt bis zum Stoppelmarkt präsentieren sich während des historischen Festumzugs zahlreiche Motivwagen, Fußgruppen und Musikkapellen."
     },
-    {
-      "uuid": "stoppelmarkt_eroeffnung",
-      "name": "Feierliche Eröffnung",
-      "type": 0,
-      "day": 0,
-      "start": "2023-08-10 18:30:00",
-      "locationUuid": "amtmannsbult",
-      "description": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet.",
-      "isOfficial": true
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_eroeffnung",
+    "name": "Feierliche Eröffnung",
+    "start": "2024-08-15T18:30",
+    "end": null,
+    "location": "amtmannsbult",
+    "description": {
+      "de": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet."
     },
-    {
-      "uuid": "stoppelmarkt_marktbeginn_freitag",
-      "name": "Marktbeginn",
-      "type": 0,
-      "day": 1,
-      "start": "2023-08-11 13:00:00"
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_marktbeginn_fr",
+    "name": "Marktbeginn",
+    "start": "2024-08-16T14:00",
+    "end": null,
+    "location": null,
+    "description": null,
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_happy_hour",
+    "name": "Happy Hour",
+    "start": "2024-08-16T14:00",
+    "end": "2024-08-16T16:00",
+    "location": null,
+    "description": {
+      "de": "1x zahlen, 2x fahren",
+      "en": "Pay once, ride twice"
     },
-    {
-      "uuid": "stoppelmarkt_senioren_nachmittag",
-      "name": "Senioren-Nachmittag",
-      "type": 0,
-      "day": 1,
-      "start": "2023-08-11 15:00:00",
-      "description": "Die Stadt Vechta lädt zum Seniorennachmittag in Kühlings Niedersachsenzelt ein. Dort begrüßen die Traditionsfiguren Jan und Libett und die Mitglieder des Marktausschusses alle Gäste. Es gibt Lebkuchenherzen, Getränke und Live-Musik. Alle Seniorinnen und Senioren aus dem Stadtgebiet Vechta können dort in netter Gesellschaft die Kirmesatmosphäre genießen.",
-      "locationUuid": "kuehlings_niedersachsenhalle",
-      "isOfficial": true
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_marktbeginn_sa",
+    "name": "Marktbeginn",
+    "start": "2024-08-17T14:00",
+    "end": null,
+    "location": null,
+    "description": null,
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_marktbeginn_so",
+    "name": "Marktbeginn",
+    "start": "2024-08-18T11:00",
+    "end": null,
+    "location": null,
+    "description": null,
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_viewmarkt",
+    "name": "Tierschau auf dem Viehmarktgelände",
+    "start": "2024-08-19T07:00",
+    "end": null,
+    "location": null,
+    "description": null,
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_marktbeginn_mo",
+    "name": "Marktbeginn",
+    "start": "2024-08-19T09:00",
+    "end": null,
+    "location": null,
+    "description": null,
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_marktbeginn_di",
+    "name": "Marktbeginn",
+    "start": "2024-08-19T13:00",
+    "end": null,
+    "location": null,
+    "description": null,
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_familientag",
+    "name": "Familientag",
+    "start": "2024-08-20T13:00",
+    "end": "2024-08-20T18:00",
+    "location": null,
+    "description": {
+      "de": "Familientag mit ermäßigten Preisen",
+      "en": "Day for families with reduced prices"
     },
-    {
-      "uuid": "stoppelmarkt_happy_hour",
-      "name": "Happy Hour",
-      "type": 1,
-      "day": 1,
-      "start": "2023-08-11 14:00:00",
-      "end": "2023-08-11 16:00:00",
-      "description": "1x zahlen, 2x fahren",
-      "tags": [
-        "Für Kinder"
-      ],
-      "isOfficial": true
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  },
+  {
+    "slug": "stoppelmarkt_feuerwerk",
+    "name": "Abschlussfeuerwerk",
+    "start": "2024-08-20T22:00",
+    "end": null,
+    "location": null,
+    "description": {
+      "de": "Großes Brillant-Höhenfeuerwerk, zu sehen in Richtung Osten des Marktgeländes"
     },
-    {
-      "uuid": "stoppelmarkt_marktbeginn_samstag",
-      "name": "Marktbeginn",
-      "type": 0,
-      "day": 2,
-      "start": "2023-08-12 13:00:00"
-    },
-    {
-      "uuid": "stoppelmarkt_viehmarkt",
-      "name": "Pferde- und Viehmarkt",
-      "type": 0,
-      "day": 4,
-      "start": "2023-08-14 07:00:00",
-      "description": "Anschließend ist Marktbeginn."
-    },
-    {
-      "uuid": "stoppelmarkt_marktbeginn_dienstag",
-      "name": "Marktbeginn",
-      "type": 0,
-      "day": 5,
-      "start": "2023-08-15 13:00:00"
-    },
-    {
-      "uuid": "stoppelmarkt_familientag",
-      "name": "Familientag",
-      "type": 1,
-      "day": 5,
-      "start": "2023-08-15 13:00:00",
-      "end": "2023-08-15 18:00:00",
-      "description": "Familientag mit ermäßigten Preisen",
-      "isOfficial": true
-    },
-    {
-      "uuid": "stoppelmarkt_feuerwerk",
-      "name": "Brillant-Feuerwerk",
-      "type": 0,
-      "day": 5,
-      "start": "2023-08-15 22:00:00",
-      "description": "Großes Brillant-Höhenfeuerwerk, zu sehen in Richtung Osten des Marktgeländes",
-      "isOfficial": true
-    }
-  ]
-}
+    "participants": [
+    ],
+    "tags": [
+    ],
+    "websites": [
+    ],
+    "isOfficial": true
+  }
+]
