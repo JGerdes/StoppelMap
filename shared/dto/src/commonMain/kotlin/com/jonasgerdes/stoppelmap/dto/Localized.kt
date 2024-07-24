@@ -1,8 +1,9 @@
 package com.jonasgerdes.stoppelmap.dto
 
-typealias Localized<T> = Map<String, T>
+typealias Locale = String
+typealias Localized<T> = Map<Locale, T>
 
-object Locale {
+object Locales {
     const val de = "de"
     const val en = "en"
 }

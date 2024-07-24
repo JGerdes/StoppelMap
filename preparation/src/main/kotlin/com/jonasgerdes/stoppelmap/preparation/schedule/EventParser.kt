@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.preparation.schedule
 
 import com.jonasgerdes.stoppelmap.data.dataModule
-import com.jonasgerdes.stoppelmap.dto.Locale.de
+import com.jonasgerdes.stoppelmap.dto.Locales.de
 import com.jonasgerdes.stoppelmap.preparation.Settings
 import com.jonasgerdes.stoppelmap.preparation.preparationModule
 import com.jonasgerdes.stoppelmap.preperation.asSlug

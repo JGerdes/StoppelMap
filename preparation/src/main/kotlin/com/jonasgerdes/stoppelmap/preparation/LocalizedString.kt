@@ -1,13 +1,13 @@
 package com.jonasgerdes.stoppelmap.preparation
 
-import com.jonasgerdes.stoppelmap.dto.Locale
+import com.jonasgerdes.stoppelmap.dto.Locales
 
 fun localizedString(
     de: String,
     en: String,
 ) = mapOf(
-    Locale.de to de,
-    Locale.en to en,
+    Locales.de to de,
+    Locales.en to en,
 )
 
 fun localizedString(

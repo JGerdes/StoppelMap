@@ -18,7 +18,7 @@ data class MapEntity(
     val type: MapEntityType,
     val subType: SubTypeSlug? = null,
     val operator: OperatorSlug? = null,
-    val aliases: List<Localized<String>>? = null,
+    val aliases: List<Alias> = emptyList(),
     val description: Localized<String>? = null,
     val center: Location,
     val tags: List<TagSlug> = emptyList(),
@@ -56,5 +56,5 @@ typealias SubTypeSlug = String
 data class SubType(
     val slug: SubTypeSlug,
     val name: Localized<String>,
-    val aliases: List<Localized<String>>? = null,
+    val aliases: List<Alias>? = null,
 )

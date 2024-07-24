@@ -1,12 +1,14 @@
 CREATE TABLE alias (
     referenceSlug TEXT NOT NULL,
-    aliasKey TEXT NOT NULL,
+    string TEXT NOT NULL,
+    locale TEXT,
 
-    PRIMARY KEY (referenceSlug, aliasKey)
+    PRIMARY KEY (referenceSlug, string)
+
 );
 
 insert:
-INSERT INTO alias(referenceSlug, aliasKey)
+INSERT INTO alias(referenceSlug, string, locale)
 VALUES ?;
 
 clear:

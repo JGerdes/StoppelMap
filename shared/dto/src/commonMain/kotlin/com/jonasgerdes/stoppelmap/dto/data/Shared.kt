@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.dto.data
 
+import com.jonasgerdes.stoppelmap.dto.Locale
 import com.jonasgerdes.stoppelmap.dto.Localized
 import kotlinx.serialization.Serializable
 
@@ -9,13 +10,19 @@ data class Location(
     val lng: Double,
 )
 
+@Serializable
+data class Alias(
+    val string: String,
+    val locale: Locale? = null,
+)
+
 typealias TagSlug = String
 
 @Serializable
 data class Tag(
     val slug: TagSlug,
     val name: Localized<String>,
-    val aliases: List<Localized<String>>?
+    val aliases: List<Alias>? = emptyList(),
 )
 
 
@@ -28,7 +35,7 @@ data class Service(
     val slug: ServiceSlug,
     val name: Localized<String>,
     val note: Localized<String>?,
-    val aliases: List<Localized<String>>? = null,
+    val aliases: List<Alias>? = emptyList(),
     val phoneNumbers: List<PhoneNumber>? = null
 )
 
@@ -38,7 +45,7 @@ typealias ProductSlug = String
 data class Product(
     val slug: ProductSlug,
     val name: Localized<String>,
-    val aliases: List<Localized<String>>? = null,
+    val aliases: List<Alias>? = emptyList(),
 )
 
 @Serializable
