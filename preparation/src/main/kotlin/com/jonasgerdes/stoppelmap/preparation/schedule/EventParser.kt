@@ -1,33 +1,38 @@
-package com.jonasgerdes.stoppelmap.preparation
+package com.jonasgerdes.stoppelmap.preparation.schedule
 
-import com.google.gson.GsonBuilder
-import com.google.gson.stream.JsonWriter
 import com.jonasgerdes.stoppelmap.data.dataModule
-import com.jonasgerdes.stoppelmap.preparation.entity.marqueMappings
+import com.jonasgerdes.stoppelmap.dto.Locale.de
+import com.jonasgerdes.stoppelmap.preparation.Settings
+import com.jonasgerdes.stoppelmap.preparation.preparationModule
 import com.jonasgerdes.stoppelmap.preperation.asSlug
 import com.jonasgerdes.stoppelmap.preperation.entity.JsonEvent
-import com.jonasgerdes.stoppelmap.preperation.genericType
-import com.jonasgerdes.stoppelmap.preperation.toOffsetAtStoppelmarkt
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.format.char
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToStream
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import java.io.File
-import java.time.LocalDateTime
-import java.time.Month
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
-private val eventJsonFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-
-//format: Do 15.08.2019 18:01
+//format: 15.08.2019 18:01
 //val EVENT_DATETIME_FORMAT = DateTimeFormatter.ofPattern("EE dd.MM.yyyy HH:mm", Locale.GERMAN)
-val EVENT_DATETIME_FORMAT = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm", Locale.GERMAN)
-const val baseUrl = "https://www.stoppelmarkt.de/"
+val websiteEventLocalDateTimeFormat = LocalDateTime.Format {
+    dayOfMonth()
+    char('.')
+    monthNumber()
+    char('.')
+    year()
+    char(' ')
+    hour()
+    char(':')
+    minute()
+}
+const val baseUrl = "https://www.stoppelmarkt.de"
 
-data class Marquee(
+data class EventLocation(
     val title: String,
     val url: String,
     val shortDescription: String? = null,
@@ -37,14 +42,14 @@ data class Marquee(
 
 data class Event(
     val title: String,
-    val start: OffsetDateTime,
+    val start: LocalDateTime,
     val description: String?
 )
 
 
-fun parseMarqueeEvents(): List<Marquee> {
+fun parsePartyTentEvents(): List<EventLocation> {
 
-    val url = baseUrl + "zelte/"
+    val url = baseUrl + "/zelte/"
 
     println("start parsing website for events")
     return Jsoup.connect(url).get().body()
@@ -52,7 +57,7 @@ fun parseMarqueeEvents(): List<Marquee> {
         .toList()
         .filter { it.select("a").isNotEmpty() }
         .map {
-            Marquee(
+            EventLocation(
                 title = it.select("a").text(),
                 url = it.select("a").attr("href"),
                 shortDescription = it.select("p").firstOrNull()?.html()
@@ -60,7 +65,7 @@ fun parseMarqueeEvents(): List<Marquee> {
         }.map { it.fillWithEvents() }
 }
 
-fun Marquee.fillWithEvents(): Marquee {
+fun EventLocation.fillWithEvents(): EventLocation {
     val body = Jsoup.connect(baseUrl + url).get().body()
     println("fetch and parse ${baseUrl + url}")
 
@@ -84,9 +89,9 @@ fun parseEvents(eventContainer: Elements?): List<Event>? {
     val element = eventContainer?.firstOrNull() ?: return emptyList()
 
     return element.select(".news-list-item").map { item ->
-        val date: OffsetDateTime = item.select("time").attr("datetime").let {
+        val date: LocalDateTime = item.select("time").attr("datetime").let {
             val date = it.drop(3)
-            LocalDateTime.parse(date, EVENT_DATETIME_FORMAT).toOffsetAtStoppelmarkt()
+            websiteEventLocalDateTimeFormat.parse(date)
         }
 
         val link = item.select("h3 > a")
@@ -100,7 +105,7 @@ fun parseEvents(eventContainer: Elements?): List<Event>? {
         Event(
             title = title,
             start = date,
-            description = detailHtml
+            description = detailHtml.takeIf { it.isNotBlank() }
         )
     }
 
@@ -109,46 +114,56 @@ fun parseEvents(eventContainer: Elements?): List<Event>? {
 
 data class EventWrapper(val events: List<JsonEvent>)
 
-fun writeEventsToFile(descriptionFolder: File, eventsFile: File, marquees: List<Marquee>) {
+fun writeEventsToFile(
+    descriptionFolder: File,
+    eventsFile: File,
+    eventLocations: List<EventLocation>
+) {
 
     eventsFile.run {
         if (exists()) delete()
         createNewFile()
     }
 
-    val events = mutableListOf<JsonEvent>()
+    val events = mutableListOf<com.jonasgerdes.stoppelmap.dto.data.Event>()
 
-    marquees.forEach { marquee ->
-        val stallSlug = marqueMappings[marquee.url]
+    eventLocations.forEach { location ->
+        val stallSlug = location.url
+            .removePrefix("https://www.stoppelmarkt.de/")
+            .removePrefix("/zelte")
+            .removePrefix("/")
+            .removeSuffix("/")
+            .removeSuffix(".html")
         val file = File(descriptionFolder, "$stallSlug.html")
-        if (marquee.description != null) {
-            file.writeText(marquee.description)
+        if (location.description != null) {
+            println("Write description of [$stallSlug] to $file (url was ${location.url})")
+            file.writeText(location.description)
         }
 
-        events += marquee.events
-            ?.filter { it.start.year == 2023 && it.start.month == Month.AUGUST && it.start.dayOfMonth in 9..15 }
+        events += location.events
             ?.mapIndexed { index, event ->
-                JsonEvent(
+                com.jonasgerdes.stoppelmap.dto.data.Event(
+                    slug = "${stallSlug}_${event.title.asSlug()}_${
+                        index.toString().padStart(2, '0')
+                    }",
                     name = event.title,
-                    start = event.start.format(eventJsonFormat),
+                    start = event.start,
                     end = null,
-                    description = event.description,
-                    uuid = stallSlug + event.title.asSlug() + index,
-                    locationUuid = stallSlug,
-                    locationName = marquee.title
+                    location = stallSlug,
+                    description = event.description?.let {
+                        mapOf(de to it)
+                    },
+                    participants = listOf(),
+                    websites = listOf(),
+                    isOfficial = false,
                 )
             } ?: emptyList()
     }
-
-    val wrapper = EventWrapper(events)
-
-    val gson = GsonBuilder()
-        .setPrettyPrinting()
-        .create()
-
-    val jsonWriter = JsonWriter(eventsFile.writer())
-    gson.toJson(wrapper, genericType<EventWrapper>(), jsonWriter)
-    jsonWriter.close()
+    Json {
+        prettyPrint = true
+        explicitNulls = true
+        encodeDefaults = true
+    }.encodeToStream(events, eventsFile.outputStream())
 
 }
 
@@ -158,12 +173,12 @@ class EventParser : KoinComponent {
     fun fetchAndParseEvents() {
         val folder = settings.descriptionFolder.apply { mkdirs() }
         val eventsFile = settings.fetchedEventsFile.apply { createNewFile() }
-        val marquees = parseMarqueeEvents()
+        val marquees = parsePartyTentEvents()
 
         writeEventsToFile(
             descriptionFolder = folder,
             eventsFile = eventsFile,
-            marquees = marquees
+            eventLocations = marquees
         )
     }
 }

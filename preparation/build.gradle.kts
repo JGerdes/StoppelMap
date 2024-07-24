@@ -13,7 +13,7 @@ task("runPreparation", JavaExec::class) {
 
 task("fetchEvents", JavaExec::class) {
     group = "preparation"
-    mainClass.set("com.jonasgerdes.stoppelmap.preparation.EventParserKt")
+    mainClass.set("com.jonasgerdes.stoppelmap.preparation.schedule.EventParserKt")
     classpath = sourceSets["main"].runtimeClasspath
 }
 
