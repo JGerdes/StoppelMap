@@ -82,5 +82,11 @@ typealias OperatorSlug = String
 data class Operator(
     val slug: OperatorSlug,
     val name: String,
-    val websites: List<String> = emptyList(),
+    val websites: List<Website> = emptyList(),
+)
+
+@Serializable
+data class Website(
+    val url: String,
+    val label: Localized<String>? = null,
 )

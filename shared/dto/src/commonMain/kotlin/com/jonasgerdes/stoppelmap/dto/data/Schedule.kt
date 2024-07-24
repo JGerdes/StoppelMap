@@ -21,7 +21,8 @@ data class Event(
     val location: MapEntitySlug? = null,
     val description: Localized<String>? = null,
     val participants: List<Participant> = emptyList(),
-    val websites: List<String> = emptyList(),
+    val tags: List<TagSlug> = emptyList(),
+    val websites: List<Website> = emptyList(),
     val isOfficial: Boolean
 )
 

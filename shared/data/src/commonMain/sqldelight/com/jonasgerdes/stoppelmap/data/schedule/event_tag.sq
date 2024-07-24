@@ -1,0 +1,16 @@
+CREATE TABLE event_tag (
+    eventSlug TEXT NOT NULL,
+    tagSlug TEXT NOT NULL,
+
+    PRIMARY KEY(eventSlug, tagSlug),
+    FOREIGN KEY(eventSlug) REFERENCES event(slug),
+    FOREIGN KEY(tagSlug) REFERENCES tag(slug)
+);
+
+
+insert:
+INSERT INTO event_tag(eventSlug, tagSlug)
+VALUES (?,?);
+
+clear:
+DELETE FROM event_tag;

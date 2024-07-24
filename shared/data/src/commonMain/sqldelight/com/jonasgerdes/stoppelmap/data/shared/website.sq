@@ -1,8 +1,10 @@
 CREATE TABLE website (
     referenceSlug   TEXT NOT NULL,
     url             TEXT NOT NULL,
+    labelKey        TEXT,
 
-    PRIMARY KEY (referenceSlug, url)
+    PRIMARY KEY (referenceSlug, url),
+    FOREIGN KEY(labelKey) REFERENCES localized_string(key)
 );
 
 insert:

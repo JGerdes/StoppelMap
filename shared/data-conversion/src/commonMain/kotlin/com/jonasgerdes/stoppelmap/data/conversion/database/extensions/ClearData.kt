@@ -8,6 +8,7 @@ internal fun StoppelMapDatabase.clearData() {
     departure_dayQueries.clear()
     eventQueries.clear()
     event_personQueries.clear()
+    event_tagQueries.clear()
     feeQueries.clear()
     imageQueries.clear()
     localized_stringQueries.clear()

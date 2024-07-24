@@ -26,7 +26,7 @@ data class MapEntity(
     val services: List<ServiceSlug> = emptyList(),
     val admissionFees: List<Fee> = emptyList(),
     val images: List<Image> = emptyList(),
-    val websites: List<String> = emptyList(),
+    val websites: List<Website> = emptyList(),
     val isSearchable: Boolean,
 )
 

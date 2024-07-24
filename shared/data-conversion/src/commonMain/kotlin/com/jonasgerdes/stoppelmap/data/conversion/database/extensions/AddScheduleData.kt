@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.data.schedule.Event
 import com.jonasgerdes.stoppelmap.data.schedule.ParticipantType
 import com.jonasgerdes.stoppelmap.dto.data.Schedule
+import com.jonasgerdes.stoppelmap.dto.data.ParticipantType as DtoParticipantType
 
 internal fun StoppelMapDatabase.addScheduleData(schedule: Schedule) {
     schedule.events.forEach { event ->
@@ -25,15 +26,18 @@ internal fun StoppelMapDatabase.addScheduleData(schedule: Schedule) {
                 eventSlug = event.slug,
                 personSlug = it.person,
                 type = when (it.type) {
-                    com.jonasgerdes.stoppelmap.dto.data.ParticipantType.Unknown -> ParticipantType.Unknown
-                    com.jonasgerdes.stoppelmap.dto.data.ParticipantType.Band -> ParticipantType.Band
-                    com.jonasgerdes.stoppelmap.dto.data.ParticipantType.DJ -> ParticipantType.DJ
-                    com.jonasgerdes.stoppelmap.dto.data.ParticipantType.GuestOfHonor -> ParticipantType.GuestOfHonor
-                    com.jonasgerdes.stoppelmap.dto.data.ParticipantType.Speaker -> ParticipantType.Speaker
+                    DtoParticipantType.Unknown -> ParticipantType.Unknown
+                    DtoParticipantType.Band -> ParticipantType.Band
+                    DtoParticipantType.DJ -> ParticipantType.DJ
+                    DtoParticipantType.GuestOfHonor -> ParticipantType.GuestOfHonor
+                    DtoParticipantType.Speaker -> ParticipantType.Speaker
                     null -> null
                 }
             )
         }
         addWebsites(event.slug, event.websites)
+        event.tags.forEach {
+            event_tagQueries.insert(event.slug, it)
+        }
     }
 }
