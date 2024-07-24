@@ -29,6 +29,7 @@ dependencies {
 
     implementation(project(":shared:data"))
     implementation(project(":shared:dto"))
+    implementation(project(":shared:data-conversion"))
 
     implementation(libs.kotlinx.datetime)
     implementation(libs.koin.core)
