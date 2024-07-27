@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.data.conversion.database.extensions
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entity
+import com.jonasgerdes.stoppelmap.data.shared.Bounding_box
 import com.jonasgerdes.stoppelmap.data.shared.Fee
 import com.jonasgerdes.stoppelmap.data.shared.Location
 import com.jonasgerdes.stoppelmap.data.shared.Offer
@@ -25,6 +26,7 @@ internal fun StoppelMapDatabase.addMapData(data: Map) {
                     )
                 },
                 operator_ = mapEntity.operator,
+                priority = mapEntity.priority.toLong(),
                 isSearchable = mapEntity.isSearchable,
             )
         )
@@ -34,6 +36,15 @@ internal fun StoppelMapDatabase.addMapData(data: Map) {
                 referenceSlug = mapEntity.slug,
                 latitude = mapEntity.center.lat,
                 longitude = mapEntity.center.lng,
+            )
+        )
+        bounding_boxQueries.insert(
+            Bounding_box(
+                referenceSlug = mapEntity.slug,
+                southLatitude = mapEntity.bbox.southLat,
+                westLongitude = mapEntity.bbox.westLng,
+                northLatitude = mapEntity.bbox.northLat,
+                eastLongitude = mapEntity.bbox.eastLng,
             )
         )
         mapEntity.tags.forEach {

@@ -1,0 +1,14 @@
+CREATE TABLE bounding_box (
+    referenceSlug   TEXT NOT NULL PRIMARY KEY,
+    southLatitude   REAL NOT NULL,
+    westLongitude   REAL NOT NULL,
+    northLatitude   REAL NOT NULL,
+    eastLongitude   REAL NOT NULL
+);
+
+insert:
+INSERT INTO bounding_box (referenceSlug, southLatitude, westLongitude, northLatitude, eastLongitude)
+VALUES ?;
+
+clear:
+DELETE FROM bounding_box;

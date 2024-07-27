@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 
 internal fun StoppelMapDatabase.clearData() {
     aliasQueries.clear()
+    bounding_boxQueries.clear()
     departureQueries.clear()
     departure_dayQueries.clear()
     eventQueries.clear()
