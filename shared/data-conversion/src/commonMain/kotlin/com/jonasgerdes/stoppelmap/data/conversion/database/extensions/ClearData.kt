@@ -29,6 +29,7 @@ internal fun StoppelMapDatabase.clearData() {
     serviceQueries.clear()
     stationQueries.clear()
     sub_typeQueries.clear()
+    tag_associated_typeQueries.clear()
     tagQueries.clear()
     websiteQueries.clear()
 }

@@ -8,12 +8,19 @@ import com.jonasgerdes.stoppelmap.data.shared.Service
 import com.jonasgerdes.stoppelmap.dto.data.Definitions
 
 internal fun StoppelMapDatabase.addDefinitions(definitions: Definitions) = with(definitions) {
-    tags.forEach {
+    tags.forEach { tag ->
         tagQueries.insert(
-            slug = it.slug,
-            nameKey = addLocalizedString(it.name, it.slug, "name")
+            slug = tag.slug,
+            nameKey = addLocalizedString(tag.name, tag.slug, "name"),
+            isSearchable = tag.isSearchable,
         )
-        addAliases(it.slug, it.aliases)
+        addAliases(tag.slug, tag.aliases)
+        tag.associatedTypes.forEach {
+            tag_associated_typeQueries.insertTypeAssociation(tag.slug, it.toMapEntityType())
+        }
+        tag.associatedSubTypes.forEach {
+            tag_associated_typeQueries.insertSubTypeAssociation(tag.slug, it)
+        }
     }
 
     subTypes.forEach {

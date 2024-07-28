@@ -37,6 +37,5 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.sqldelight.driver.sqlite)
     implementation(libs.gson)
-    implementation(libs.geogson)
     implementation(libs.jsoup)
 }

@@ -12,6 +12,7 @@ import com.jonasgerdes.stoppelmap.dto.data.MapEntityType as DtoMapEntityType
 
 internal fun StoppelMapDatabase.addMapData(data: Map) {
     data.entities.forEach { mapEntity ->
+        println("Insert MapEntity $mapEntity")
         map_entityQueries.insert(
             Map_entity(
                 slug = mapEntity.slug,
@@ -95,13 +96,13 @@ internal fun StoppelMapDatabase.addMapData(data: Map) {
     }
 }
 
-private fun DtoMapEntityType.toMapEntityType() = when (this) {
+fun DtoMapEntityType.toMapEntityType() = when (this) {
     DtoMapEntityType.Misc -> MapEntityType.Misc
     DtoMapEntityType.Bar -> MapEntityType.Bar
     DtoMapEntityType.Building -> MapEntityType.Building
     DtoMapEntityType.CandyStall -> MapEntityType.CandyStall
     DtoMapEntityType.Entrance -> MapEntityType.Entrance
-    DtoMapEntityType.Expo -> MapEntityType.Expo
+    DtoMapEntityType.Exhibition -> MapEntityType.Exhibition
     DtoMapEntityType.FoodStall -> MapEntityType.FoodStall
     DtoMapEntityType.GameStall -> MapEntityType.GameStall
     DtoMapEntityType.Info -> MapEntityType.Info

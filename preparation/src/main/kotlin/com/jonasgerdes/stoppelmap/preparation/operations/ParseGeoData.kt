@@ -1,254 +1,230 @@
 package com.jonasgerdes.stoppelmap.preparation.operations
 
-import com.github.filosganga.geogson.gson.GeometryAdapterFactory
-import com.github.filosganga.geogson.model.FeatureCollection
-import com.github.filosganga.geogson.model.Point
-import com.github.filosganga.geogson.model.Polygon
-import com.google.common.collect.ImmutableMap
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
-import com.google.gson.stream.JsonReader
-import com.google.gson.stream.JsonWriter
-import com.jonasgerdes.stoppelmap.preparation.Data
-import com.jonasgerdes.stoppelmap.preperation.createSlug
-import com.jonasgerdes.stoppelmap.preperation.entity.Alias
-import com.jonasgerdes.stoppelmap.preperation.entity.Image
-import com.jonasgerdes.stoppelmap.preperation.entity.Item
-import com.jonasgerdes.stoppelmap.preperation.entity.Phone
-import com.jonasgerdes.stoppelmap.preperation.entity.Restroom
-import com.jonasgerdes.stoppelmap.preperation.entity.Stall
-import com.jonasgerdes.stoppelmap.preperation.entity.StallItem
-import com.jonasgerdes.stoppelmap.preperation.entity.StallSubType
-import com.jonasgerdes.stoppelmap.preperation.entity.SubType
-import com.jonasgerdes.stoppelmap.preperation.entity.Url
-import com.jonasgerdes.stoppelmap.preperation.entity.center
-import com.jonasgerdes.stoppelmap.preperation.entity.coordinates
-import com.jonasgerdes.stoppelmap.preperation.entity.getNamesForItem
-import com.jonasgerdes.stoppelmap.preperation.entity.getNamesForType
-import com.jonasgerdes.stoppelmap.preperation.entity.max
-import com.jonasgerdes.stoppelmap.preperation.entity.min
+import com.jonasgerdes.stoppelmap.dto.data.Alias
+import com.jonasgerdes.stoppelmap.dto.data.BoundingBox
+import com.jonasgerdes.stoppelmap.dto.data.Image
+import com.jonasgerdes.stoppelmap.dto.data.Location
+import com.jonasgerdes.stoppelmap.dto.data.MapEntity
+import com.jonasgerdes.stoppelmap.dto.data.MapEntityType
+import com.jonasgerdes.stoppelmap.dto.data.Offer
+import com.jonasgerdes.stoppelmap.dto.data.Operator
+import com.jonasgerdes.stoppelmap.dto.data.PreferredTheme
+import com.jonasgerdes.stoppelmap.dto.data.Website
+import com.jonasgerdes.stoppelmap.preparation.definitions.SubTypeSlugs
+import com.jonasgerdes.stoppelmap.preparation.definitions.TagSlugs
+import com.jonasgerdes.stoppelmap.preparation.definitions.gameSubTypes
+import com.jonasgerdes.stoppelmap.preparation.definitions.products
+import com.jonasgerdes.stoppelmap.preparation.definitions.rideSubTypes
+import com.jonasgerdes.stoppelmap.preparation.util.center
+import com.jonasgerdes.stoppelmap.preparation.util.position
+import com.jonasgerdes.stoppelmap.preperation.asSlug
 import com.jonasgerdes.stoppelmap.preperation.splitBy
+import com.jonasgerdes.stoppelmap.preperation.splitSafe
 import com.jonasgerdes.stoppelmap.preperation.toShortHash
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
+import kotlinx.serialization.json.encodeToStream
+import mobi.waterdog.kgeojson.Feature
+import mobi.waterdog.kgeojson.FeatureCollection
+import mobi.waterdog.kgeojson.GeoJson
+import mobi.waterdog.kgeojson.Point
+import mobi.waterdog.kgeojson.Polygon
 import java.io.File
-import java.util.UUID
 
-fun Data.parseGeoJson(input: File, output: File, descriptionFolder: File?) {
-    val gson = GsonBuilder()
-        .setPrettyPrinting()
-        .registerTypeAdapterFactory(GeometryAdapterFactory())
-        .create()
-    val reader = JsonReader(input.reader())
-    val geoJson = gson.fromJson<FeatureCollection>(reader, FeatureCollection::class.java)
-    addTypeSubTypes(this)
-    println("Read geojson (${input.path})")
-    val updatedFeatures = geoJson.features()
-        .map {
-            println("Parse feature (${it.properties()}")
-            if (
-                (!it.properties().contains("building")
-                        && !it.properties().contains("public_transport")
-                        && !it.properties().contains("amenity")
-                        ) || it.properties()["building"]?.asString == "yes"
-            ) {
-                it
-            } else {
-                val center = it.geometry().let {
-                    when (it) {
-                        is Polygon -> it.coordinates().center()
-                        is Point -> com.jonasgerdes.stoppelmap.preperation.entity.Point(
-                            longitude = it.lon(),
-                            latitude = it.lat()
-                        )
+@OptIn(ExperimentalSerializationApi::class)
+class ParseGeoData(
+    private val input: File,
+    private val output: File,
+    private val descriptionFolder: File?
+) {
+    val mapEntities = mutableListOf<MapEntity>()
+    val operators = mutableListOf<Operator>()
+    private val json = Json { ignoreUnknownKeys = true }
 
+    private val typesToProcess = setOf("building", "public_transport", "amenity")
+
+    operator fun invoke() {
+        val geoJson: FeatureCollection =
+            json.decodeFromStream<GeoJson>(input.inputStream()) as FeatureCollection
+
+        val updatedFeatures = geoJson
+            .features
+            .map {
+                val feature = it as Feature
+                if (feature.properties.keys.any(typesToProcess::contains)
+                    && feature.properties["building"] != "yes"
+                ) {
+                    mapEntities.add(feature.parseMapEntity())
+                    feature
+                } else {
+                    feature
+                }
+            }
+        Json.encodeToStream(geoJson as GeoJson, output.outputStream())
+    }
+
+    private fun Feature.parseMapEntity(): MapEntity {
+        println("Parse feature (${properties}")
+        val center = when (geometry) {
+            is Point -> geometry.position
+            is Polygon -> geometry.coordinates.flatten().center()
+            else -> throw InvalidGeoJsonFeature(this, "center")
+        }
+
+        val min = when (geometry) {
+            is Point -> geometry.position
+            is Polygon -> geometry.coordinates.flatten().center()
+            else -> throw InvalidGeoJsonFeature(this, "min")
+        }
+
+        val max = when (geometry) {
+            is Point -> geometry.position
+            is Polygon -> geometry.coordinates.flatten().center()
+            else -> throw InvalidGeoJsonFeature(this, "max")
+        }
+        val type = MapEntityType.fromId(
+            properties.firstValue(typesToProcess)
+                ?.replace("-", "_")
+                ?.replace("house", "building")
+                ?: throw InvalidGeoJsonFeature(this, "type")
+        ) ?: throw InvalidGeoJsonFeature(this, "type")
+
+        val mapEntity = MapEntity(
+            slug = "placeholder",
+            name = properties["name"],
+            type = type,
+            subType = when (type) {
+                MapEntityType.Bar -> {
+                    SubTypeSlugs.partyTent.takeIf { properties["isTent"] == "yes" }
+                }
+
+                MapEntityType.GameStall -> {
+                    gameSubTypes.firstOrNull {
+                        properties.getOrDefault("game_${it.slug}", null) == "yes"
+                    }?.slug.also { if (it == null) System.err.println("WARN: No matching game type found for $properties") }
+                }
+
+                MapEntityType.Ride -> {
+                    rideSubTypes.firstOrNull {
+                        properties["type"] == it.slug
+                    }?.slug.also { if (it == null) System.err.println("WARN: No matching ride type found for $properties") }
+                }
+
+                MapEntityType.Restroom -> {
+                    when {
+                        properties["accessible"] == "yes" -> SubTypeSlugs.accessibleRestroom
+                        properties["women"] == "yes" -> SubTypeSlugs.womensRestroom
+                        properties["men"] == "yes" -> SubTypeSlugs.urinalRestroom
                         else -> null
                     }
                 }
-                val min = it.geometry().let {
-                    (it as? Polygon)?.coordinates()?.min()
-                }
-                val max = it.geometry().let {
-                    (it as? Polygon)?.coordinates()?.max()
-                }
-                val stall = Stall(
-                    slug = "placeholder",
-                    type = it.properties()["building"]?.asString
-                        ?: it.properties()["public_transport"]?.asString
-                        ?: it.properties()["amenity"]?.asString!!,
-                    name = it.properties()["name"]?.asString,
-                    operator = it.properties()["operator"]?.asString,
-                    priority = Integer.parseInt(
-                        it.properties()["priority"]?.asString
-                            ?: "0"
-                    ),
-                    description = it.properties()["description"]?.asString,
-                    centerLng = center?.longitude,
-                    centerLat = center?.latitude,
-                    minLng = min?.longitude,
-                    maxLng = max?.longitude,
-                    minLat = min?.latitude,
-                    maxLat = max?.latitude
-                ).run {
-                    var slug = it.properties()["slug"]?.asString ?: createSlug()
-                    if (stalls.map { it.slug }.contains(slug)) {
-                        System.err.println("duplicate slug found: $slug")
-                        slug += "-" + UUID.randomUUID().toString().toShortHash()
-                    }
-                    val description = if (descriptionFolder != null) {
-                        val descriptionFile = File(descriptionFolder, "$slug.html")
-                        if (descriptionFile.exists()) descriptionFile.readText()
-                        else this.description
-                    } else this.description
 
-                    copy(slug = slug, description = description)
-                }
-                stalls += stall
-
-                images += it.properties()["pictures"].splitBy(";", ":") {
-                    Image(
-                        reference = stall.slug,
-                        file = it[0],
-                        type = it[1],
-                        author = it.getOrNull(2),
-                        license = it.getOrNull(3)
-                    )
-                }
-
-                it.properties()["alias"]?.let {
-                    alias += it.asString.split(";").map {
-                        Alias(stall = stall.slug, alias = it)
-                    }
-                }
-
-                it.properties()["website"]?.let {
-                    urls += Url(stall.slug, it.asString, "website")
-                }
-
-                phones += it.properties()["phone"].splitBy(";", ":") {
-                    Phone(
-                        stall = stall.slug,
-                        name = it[0],
-                        number = it[1],
-                        numberReadable = it[2]
-                    )
-                }
-
-                if (stall.type == "restroom") {
-                    restrooms += Restroom(
-                        stall = stall.slug,
-                        accessible = it.properties()["accessible"]?.asString ?: "no" == "yes",
-                        forWomen = it.properties()["women"]?.asString ?: "no" == "yes",
-                        forMen = it.properties()["men"]?.asString ?: "no" == "yes"
-                    )
-                }
-
-                it.properties().filter {
-                    it.key.startsWith("item_")
-                            || it.key.startsWith("game_")
-                }
-                    .forEach {
-                        val names = getNamesForItem(it.key)
-                        if (!items.containsKey(it.key)) {
-                            items[it.key] = names.map { name ->
-                                Item(
-                                    slug = it.key.removePrefix("item_")
-                                        .removePrefix("game_"),
-                                    name = name
-                                )
-                            }
-                        }
-                        stallItems += StallItem(
-                            stall = stall.slug,
-                            item = items[it.key]!!.first().slug
+                else -> null
+            },
+            operator = properties["operator"]?.let { operator ->
+                if (operator.contains(";")) {
+                    val (slug, name, websites) = operator.splitSafe(";", 3)
+                    if (operators.none { it.slug == slug }) {
+                        operators += Operator(
+                            slug = slug!!, name = name!!, websites = websites?.split("|")?.map {
+                                Website(url = it)
+                            } ?: emptyList()
                         )
                     }
+                    slug
+                } else {
+                    val slug = operator.asSlug()
+                    if (operators.none { it.slug == slug }) {
+                        operators += Operator(slug = slug, name = operator, websites = emptyList())
+                    }
+                    slug
+                }
+            },
+            aliases = properties["alias"]?.splitBy(";", "|") {
+                Alias(string = it[0], locale = it.getOrNull(1))
+            } ?: emptyList(),
+            description = mapOf(),
+            center = Location(
+                lat = center.lat,
+                lng = center.lng,
+            ),
+            bbox = BoundingBox(
+                southLat = min.lat,
+                westLng = min.lng,
+                northLat = max.lat,
+                eastLng = max.lng
+            ),
+            priority = properties["priority"]?.toIntOrNull() ?: 100,
+            tags = listOfNotNull(
+                TagSlugs.forKids.takeIf { properties["forKids"] == "yes" },
+                TagSlugs.wheelchairAccessible.takeIf { properties["accessible"] == "yes" },
+            ),
+            offers = products
+                .filter { properties.getOrDefault(it.slug, null) == "yes" }
+                .map { product ->
+                    Offer(
+                        productSlug = product.slug,
+                        modifier = null,
+                        price = null,
+                        visible = false
+                    )
+                },
+            services = listOf(),
+            admissionFees = listOf(),
+            images = properties["pictures"]?.split(";")
+                ?.map { image ->
+                    val (url, blurHash, captions, copyrights, preferredTheme)
+                            = image.splitSafe("|", 3)
+                    Image(
+                        url = url!!,
+                        caption = captions?.splitBy("+", ">") {
+                            it[0] to it[1]
+                        }?.toMap(),
+                        copyright = copyrights?.splitBy("+", ">") {
+                            it[0] to it[1]
+                        }?.toMap(),
+                        blurHash = blurHash!!,
+                        preferredTheme = preferredTheme?.let(PreferredTheme::fromId)
+                    )
+                } ?: emptyList(),
+            websites = properties["website"]?.split("|")?.map {
+                Website(url = it)
+            } ?: emptyList(),
+            isSearchable = properties["searchable"]?.toBooleanStrictOrNull() ?: true
 
-                it.properties()["type"]?.asString?.let { subType ->
-                    saveSubType(subType, stall)
-                }
+        )
 
-                //todo add special subtypes like Festzelt, Ausschank etc
-                if (stall.type == "bar") {
-                    if (it.properties()["isTent"]?.asString ?: "no" == "yes") {
-                        saveSubType("marquee", stall)
-                    } else {
-                        saveSubType("bar", stall)
-                    }
-                }
-                if (it.properties()["forKids"]?.asString ?: "no" == "yes") {
-                    saveSubType("for-kids", stall)
-                }
-                if (stall.type == "restroom") {
-                    saveSubType("restroom", stall)
-                    if (it.properties()["accessible"]?.asString ?: "no" == "yes") {
-                        saveSubType("accessible_restroom", stall)
-                    }
-                    if (it.properties()["women"]?.asString ?: "no" == "yes") {
-                        saveSubType("womens_restroom", stall)
-                    }
-                    if (it.properties()["men"]?.asString ?: "no" == "yes") {
-                        saveSubType("mens_restroom", stall)
-                    }
-                }
+        return mapEntity.copy(
+            slug = properties["slug"] ?: mapEntity.createSlug()
+        )
+    }
+}
 
-                it.let {
-                    if (it.properties().containsKey("slug")) {
-                        it
-                    } else {
-                        it.withProperty("slug", JsonObject().let {
-                            it.addProperty("slug", stall.slug)
-                            it.get("slug")
-                        })
-                    }
-                }.let {
-                    val priority = it.properties()["priority"]?.asString?.toInt() ?: 100
-                    val props = it.properties().toMutableMap()
-                    props.put("priority", JsonObject().let {
-                        it.addProperty("priority", priority)
-                        it.get("priority")
-                    })
-                    it.withProperties(ImmutableMap.copyOf(props))
-                }
-            }
 
+fun kotlin.collections.Map<String, String>.firstValue(
+    keys: Set<String>
+) = keys
+    .firstOrNull { !get(it).isNullOrBlank() }
+    ?.let { get(it) }
+
+class InvalidGeoJsonFeature(feature: Feature, propertyName: String? = null) : Exception(
+    "Invalid${propertyName?.let { " property $it on" }} feature with name ${feature.properties["name"]}, slug ${feature.properties["slug"]}. Feature: $feature"
+)
+
+private fun MapEntity.createSlug(): String {
+    val name = this.name
+    var slug = ""
+
+    if (name != null) {
+        val nameSlug = name.asSlug()
+        slug += nameSlug
+        if (operator != null && !nameSlug.contains(operator.toString())) {
+            slug += "_" + operator.toString().asSlug()
         }
-
-    if (output.parentFile.exists()) {
-        val jsonWriter = JsonWriter(output.writer())
-        gson.toJson(FeatureCollection(updatedFeatures), FeatureCollection::class.java, jsonWriter)
-        jsonWriter.close()
     } else {
-        System.err.println("output file for mapdata (${output.path}) doesn't exist, ignore geo output")
+        slug += "${type.id}_${"${center.lat}, ${center.lng}".toShortHash()}"
     }
-    println("Created ${stalls.size} stalls from geojson")
 
-}
-
-fun addTypeSubTypes(data: Data) {
-    listOf(
-        "bar",
-        "building",
-        "candy-stall",
-        "exhibition",
-        "food-stall",
-        "game-stall",
-        "misc",
-        "restroom",
-        "ride",
-        "seller-stall",
-        "taxi",
-    ).forEach { data.addSubType(it) }
-}
-
-private fun Data.saveSubType(subType: String, stall: Stall) {
-    if (subType != "flat") {
-        addSubType(subType)
-        stallSubTypes += StallSubType(stall = stall.slug, subType = subType)
-    }
-}
-
-private fun Data.addSubType(subType: String) {
-    if (subTypes.none { it.slug == subType }) {
-        subTypes += getNamesForType(subType)
-            .map { SubType(subType, it) }
-    }
+    return slug.lowercase()
 }

@@ -3,7 +3,7 @@ CREATE TABLE alias (
     string TEXT NOT NULL,
     locale TEXT,
 
-    PRIMARY KEY (referenceSlug, string)
+    PRIMARY KEY (referenceSlug, string, locale)
 
 );
 

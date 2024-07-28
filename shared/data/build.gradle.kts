@@ -10,7 +10,7 @@ sqldelight {
             packageName.set("com.jonasgerdes.stoppelmap.data")
             srcDirs.setFrom("src/commonMain/sqldelight")
             schemaOutputDirectory =
-                file("src/main/sqldelight/com/jonasgerdes/stoppelmap/data/schema")
+                file("src/commonMain/sqldelight/com/jonasgerdes/stoppelmap/data/schema")
             version = 1
             verifyMigrations = true
         }

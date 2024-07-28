@@ -38,7 +38,7 @@ enum class MapEntityType(val id: String) {
     Building("building"),
     CandyStall("candy_stall"),
     Entrance("entrance"),
-    Expo("expo"),
+    Exhibition("exhibition"),
     FoodStall("food_stall"),
     GameStall("game_stall"),
     Info("info"),

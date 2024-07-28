@@ -22,7 +22,10 @@ typealias TagSlug = String
 data class Tag(
     val slug: TagSlug,
     val name: Localized<String>,
-    val aliases: List<Alias>? = emptyList(),
+    val aliases: List<Alias> = emptyList(),
+    val associatedTypes: List<MapEntityType> = emptyList(),
+    val associatedSubTypes: List<SubTypeSlug> = emptyList(),
+    val isSearchable: Boolean = true,
 )
 
 
@@ -77,9 +80,13 @@ data class Image(
     val preferredTheme: PreferredTheme? = null,
 )
 
-enum class PreferredTheme {
-    Light,
-    Dark
+enum class PreferredTheme(val id: String) {
+    Light("light"),
+    Dark("dark");
+
+    companion object {
+        fun fromId(id: String) = entries.first { it.id == id }
+    }
 }
 
 

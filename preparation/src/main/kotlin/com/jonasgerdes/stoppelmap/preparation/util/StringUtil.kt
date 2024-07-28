@@ -1,7 +1,6 @@
 package com.jonasgerdes.stoppelmap.preperation
 
 import com.google.gson.JsonElement
-import com.jonasgerdes.stoppelmap.preperation.entity.Stall
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.Base64
@@ -55,34 +54,18 @@ fun <T> JsonElement?.splitBy(
     }
 }
 
-
-fun Stall.createSlug(): String {
-    var slug = ""
-    var addHash = true
-
-    if (name != null) {
-        slug = name + "-"
-        addHash = true
+fun <T> String.splitBy(
+    primaryDelimiter: String,
+    secondaryDelimiter: String,
+    action: (List<String>) -> T
+): List<T> =
+    split(primaryDelimiter).map {
+        action(it.split(secondaryDelimiter))
     }
 
-    if (operator != null) {
-        if (name == null || !name.contains(operator)) {
-            slug += operator + "-"
-        }
-        if (name != null) {
-            addHash = false
-        }
-    }
+fun String.splitSafe(delimiter: String, expectedSize: Int) =
+    split(delimiter).padWithNulls(expectedSize)
 
-    if (operator == null && name == null) {
-        slug = type + "-"
-        addHash = true
-    }
-
-    if (addHash) {
-        val id = "$centerLat $centerLng $minLat $minLng $maxLat $maxLng"
-        slug += id.toShortHash()
-    }
-
-    return slug.removeSuffix("-").asSlug()
+private fun List<String>.padWithNulls(length: Int): List<String?> {
+    return this + arrayOfNulls<String>(length - size).toList()
 }

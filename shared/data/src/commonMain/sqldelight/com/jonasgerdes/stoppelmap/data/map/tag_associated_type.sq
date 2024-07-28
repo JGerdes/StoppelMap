@@ -1,0 +1,25 @@
+import com.jonasgerdes.stoppelmap.data.map.MapEntityType;
+
+CREATE TABLE tag_associated_type (
+    tagSlug TEXT NOT NULL,
+    type TEXT AS MapEntityType,
+    subTypeSlug TEXT,
+
+    PRIMARY KEY(tagSlug, type, subTypeSlug),
+    FOREIGN KEY(tagSlug) REFERENCES tag(slug),
+    FOREIGN KEY(subTypeSlug) REFERENCES sub_type(slug),
+
+    CHECK (type IS NOT NULL OR subTypeSlug IS NOT NULL)
+);
+
+
+insertTypeAssociation:
+INSERT INTO tag_associated_type(tagSlug, type)
+VALUES (?,?);
+
+insertSubTypeAssociation:
+INSERT INTO tag_associated_type(tagSlug, subTypeSlug)
+VALUES (?,?);
+
+clear:
+DELETE FROM tag_associated_type;

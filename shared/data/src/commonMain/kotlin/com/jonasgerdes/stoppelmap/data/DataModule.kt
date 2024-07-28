@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.data
 import app.cash.sqldelight.ColumnAdapter
 import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entity
+import com.jonasgerdes.stoppelmap.data.map.Tag_associated_type
 import com.jonasgerdes.stoppelmap.data.schedule.Event
 import com.jonasgerdes.stoppelmap.data.schedule.Event_person
 import com.jonasgerdes.stoppelmap.data.schedule.ParticipantType
@@ -45,12 +46,7 @@ val dataModule = module {
                 }
             ),
             map_entityAdapter = Map_entity.Adapter(
-                typeAdapter = object : ColumnAdapter<MapEntityType, String> {
-                    override fun decode(databaseValue: String) =
-                        MapEntityType.entries.first { it.id == databaseValue }
-
-                    override fun encode(value: MapEntityType) = value.id
-                }
+                typeAdapter = EntityTypeAdapter
             ),
             routeAdapter = Route.Adapter(
                 typeAdapter = object : ColumnAdapter<TransportationType, String> {
@@ -60,6 +56,16 @@ val dataModule = module {
                     override fun encode(value: TransportationType) = value.id
                 }
             ),
+            tag_associated_typeAdapter = Tag_associated_type.Adapter(
+                typeAdapter = EntityTypeAdapter
+            )
         )
     }
+}
+
+private object EntityTypeAdapter : ColumnAdapter<MapEntityType, String> {
+    override fun decode(databaseValue: String) =
+        MapEntityType.entries.first { it.id == databaseValue }
+
+    override fun encode(value: MapEntityType) = value.id
 }

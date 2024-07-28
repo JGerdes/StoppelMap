@@ -5,7 +5,6 @@ import com.jonasgerdes.stoppelmap.dto.Locales.de
 import com.jonasgerdes.stoppelmap.preparation.Settings
 import com.jonasgerdes.stoppelmap.preparation.preparationModule
 import com.jonasgerdes.stoppelmap.preperation.asSlug
-import com.jonasgerdes.stoppelmap.preperation.entity.JsonEvent
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.format.char
 import kotlinx.serialization.json.Json
@@ -110,9 +109,6 @@ fun parseEvents(eventContainer: Elements?): List<Event>? {
     }
 
 }
-
-
-data class EventWrapper(val events: List<JsonEvent>)
 
 fun writeEventsToFile(
     descriptionFolder: File,

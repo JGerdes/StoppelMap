@@ -1,14 +1,17 @@
+import kotlin.Boolean;
+
 CREATE TABLE tag (
-    slug    TEXT NOT NULL PRIMARY KEY,
-    nameKey TEXT NOT NULL,
+    slug            TEXT NOT NULL PRIMARY KEY,
+    nameKey         TEXT NOT NULL,
+    isSearchable    Integer AS Boolean NOT NULL,
 
     FOREIGN KEY(nameKey) REFERENCES localized_string(key),
     FOREIGN KEY(slug) REFERENCES alias(referenceSlug)
 );
 
 insert:
-INSERT INTO tag(slug, nameKey)
-VALUES (?, ?);
+INSERT INTO tag(slug, nameKey, isSearchable)
+VALUES (?, ?, ?);
 
 clear:
 DELETE FROM tag;

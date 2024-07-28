@@ -7,6 +7,9 @@ import com.jonasgerdes.stoppelmap.dto.data.Schedule
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 import com.jonasgerdes.stoppelmap.dto.data.Transportation
 import com.jonasgerdes.stoppelmap.preparation.Settings
+import com.jonasgerdes.stoppelmap.preparation.definitions.products
+import com.jonasgerdes.stoppelmap.preparation.definitions.subTypes
+import com.jonasgerdes.stoppelmap.preparation.definitions.tags
 import com.jonasgerdes.stoppelmap.preparation.schedule.utils.cleanUpEventDescription
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperators
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes
@@ -26,22 +29,27 @@ class PrepareStoppelMapData : KoinComponent {
 
     operator fun invoke(): StoppelMapData {
 
+        val parseGeoData =
+            ParseGeoData(settings.geoJsonInput, settings.geoJsonOutput, settings.descriptionFolder)
+
         val taxiServices = generateTaxiServices()
+
+        parseGeoData()
 
         return StoppelMapData(
             version = 0, // TODO: generate version
             schemaVersion = 0, // TODO: generate version
             seasonYear = 2024, // TODO: put to settings?
             definitions = Definitions(
-                tags = listOf(),
-                subTypes = listOf(),
-                products = listOf(),
+                tags = tags,
+                subTypes = subTypes,
+                products = products,
                 services = taxiServices,
                 persons = listOf(),
-                operators = TransportOperators.all()
+                operators = TransportOperators.all() + parseGeoData.operators
             ),
             map = Map(
-                entities = listOf(),
+                entities = parseGeoData.mapEntities,
                 isWorkInProgress = true
             ),
             schedule = prepareSchedule(

@@ -9,6 +9,7 @@ internal fun StoppelMapDatabase.addAliases(
     aliases: List<DtoAlias>?
 ) {
     aliases?.forEachIndexed { index, alias ->
+        println("Insert alias $index: $alias for $referenceSlug")
         aliasQueries.insert(
             Alias(
                 referenceSlug = referenceSlug,
