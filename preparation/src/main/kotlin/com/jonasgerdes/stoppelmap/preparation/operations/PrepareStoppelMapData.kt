@@ -17,6 +17,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateTrainRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.taxi.generateTaxiServices
 import com.jonasgerdes.stoppelmap.preparation.transportation.transportOperators
+import com.jonasgerdes.stoppelmap.preparation.util.Version
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
@@ -28,6 +29,7 @@ import java.io.File
 class PrepareStoppelMapData : KoinComponent {
 
     private val settings: Settings by inject()
+    private val version: Version by inject()
 
     operator fun invoke(): StoppelMapData {
 
@@ -39,7 +41,7 @@ class PrepareStoppelMapData : KoinComponent {
         parseGeoData()
 
         return StoppelMapData(
-            version = 0, // TODO: generate version
+            version = version.code,
             seasonYear = 2023,
             definitions = Definitions(
                 tags = tags,

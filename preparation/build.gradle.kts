@@ -8,6 +8,8 @@ plugins {
 task("runPreparation", JavaExec::class) {
     group = "preparation"
     mainClass.set("com.jonasgerdes.stoppelmap.preparation.PreparationKt")
+    val versions = loadVersions()
+    setArgs(listOf("versionCode=${versions.code}"))
     classpath = sourceSets["main"].runtimeClasspath
 }
 
