@@ -7,14 +7,16 @@ import com.jonasgerdes.stoppelmap.dto.data.Schedule
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 import com.jonasgerdes.stoppelmap.dto.data.Transportation
 import com.jonasgerdes.stoppelmap.preparation.Settings
-import com.jonasgerdes.stoppelmap.preparation.definitions.products
+import com.jonasgerdes.stoppelmap.preparation.definitions.foodProducts
+import com.jonasgerdes.stoppelmap.preparation.definitions.services
 import com.jonasgerdes.stoppelmap.preparation.definitions.subTypes
 import com.jonasgerdes.stoppelmap.preparation.definitions.tags
+import com.jonasgerdes.stoppelmap.preparation.definitions.typeAliases
 import com.jonasgerdes.stoppelmap.preparation.schedule.utils.cleanUpEventDescription
-import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperators
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateTrainRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.taxi.generateTaxiServices
+import com.jonasgerdes.stoppelmap.preparation.transportation.transportOperators
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
@@ -38,19 +40,19 @@ class PrepareStoppelMapData : KoinComponent {
 
         return StoppelMapData(
             version = 0, // TODO: generate version
-            schemaVersion = 0, // TODO: generate version
-            seasonYear = 2024, // TODO: put to settings?
+            seasonYear = 2023,
             definitions = Definitions(
                 tags = tags,
                 subTypes = subTypes,
-                products = products,
-                services = taxiServices,
+                products = foodProducts,
+                services = services + taxiServices,
                 persons = listOf(),
-                operators = TransportOperators.all() + parseGeoData.operators
+                operators = transportOperators + parseGeoData.operators
             ),
             map = Map(
                 entities = parseGeoData.mapEntities,
-                isWorkInProgress = true
+                typeAliases = typeAliases,
+                isWorkInProgress = true,
             ),
             schedule = prepareSchedule(
                 listOf(

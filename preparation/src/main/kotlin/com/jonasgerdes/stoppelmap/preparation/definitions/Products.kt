@@ -7,7 +7,7 @@ import com.jonasgerdes.stoppelmap.dto.data.Alias
 import com.jonasgerdes.stoppelmap.dto.data.Product
 import com.jonasgerdes.stoppelmap.preparation.localizedString
 
-val products = listOf(
+val foodProducts = listOf(
     product(slug = "item_beer", de = "Bier", en = "Beer"),
     product(slug = "item_softdrinks", de = "Softdrinks", en = "Soft drinks", de to "Limonaden"),
     product(slug = "item_shots", de = "Kurze", en = "Shots", de to "Shots"),

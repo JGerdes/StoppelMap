@@ -6,7 +6,14 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Map(
     val entities: List<MapEntity>,
+    val typeAliases: List<TypeAliases>,
     val isWorkInProgress: Boolean,
+)
+
+@Serializable
+data class TypeAliases(
+    val type: MapEntityType,
+    val aliases: List<Alias>,
 )
 
 typealias MapEntitySlug = String

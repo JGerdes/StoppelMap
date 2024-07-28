@@ -12,8 +12,8 @@ import com.jonasgerdes.stoppelmap.dto.data.PreferredTheme
 import com.jonasgerdes.stoppelmap.dto.data.Website
 import com.jonasgerdes.stoppelmap.preparation.definitions.SubTypeSlugs
 import com.jonasgerdes.stoppelmap.preparation.definitions.TagSlugs
+import com.jonasgerdes.stoppelmap.preparation.definitions.foodProducts
 import com.jonasgerdes.stoppelmap.preparation.definitions.gameSubTypes
-import com.jonasgerdes.stoppelmap.preparation.definitions.products
 import com.jonasgerdes.stoppelmap.preparation.definitions.rideSubTypes
 import com.jonasgerdes.stoppelmap.preparation.util.center
 import com.jonasgerdes.stoppelmap.preparation.util.position
@@ -160,7 +160,7 @@ class ParseGeoData(
                 TagSlugs.forKids.takeIf { properties["forKids"] == "yes" },
                 TagSlugs.wheelchairAccessible.takeIf { properties["accessible"] == "yes" },
             ),
-            offers = products
+            offers = foodProducts
                 .filter { properties.getOrDefault(it.slug, null) == "yes" }
                 .map { product ->
                     Offer(
@@ -170,7 +170,9 @@ class ParseGeoData(
                         visible = false
                     )
                 },
-            services = listOf(),
+            services = properties["services"]?.split(",")?.map {
+                it
+            } ?: emptyList(),
             admissionFees = listOf(),
             images = properties["pictures"]?.split(";")
                 ?.map { image ->

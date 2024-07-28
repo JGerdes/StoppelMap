@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.data.conversion.database.extensions
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entity
+import com.jonasgerdes.stoppelmap.data.shared.Alias
 import com.jonasgerdes.stoppelmap.data.shared.Bounding_box
 import com.jonasgerdes.stoppelmap.data.shared.Fee
 import com.jonasgerdes.stoppelmap.data.shared.Location
@@ -11,8 +12,19 @@ import com.jonasgerdes.stoppelmap.dto.data.Map
 import com.jonasgerdes.stoppelmap.dto.data.MapEntityType as DtoMapEntityType
 
 internal fun StoppelMapDatabase.addMapData(data: Map) {
+    data.typeAliases.forEach { typeAlias ->
+        typeAlias.aliases.forEach { alias ->
+            aliasQueries.insert(
+                Alias(
+                    referenceSlug = typeAlias.type.id,
+                    string = alias.string,
+                    locale = alias.locale
+
+                )
+            )
+        }
+    }
     data.entities.forEach { mapEntity ->
-        println("Insert MapEntity $mapEntity")
         map_entityQueries.insert(
             Map_entity(
                 slug = mapEntity.slug,

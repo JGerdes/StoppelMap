@@ -18,13 +18,14 @@ fun OperatorScope.website(
 
 fun operator(
     name: String,
+    slug: String? = null,
     builder: (OperatorScope.() -> Unit)? = null
 ): Operator =
     OperatorScope().apply {
         builder?.invoke(this)
     }.let {
         Operator(
-            slug = "operator_${name.asSlug()}",
+            slug = slug ?: "operator_${name.asSlug()}",
             name = name,
             websites = it.websites
         )

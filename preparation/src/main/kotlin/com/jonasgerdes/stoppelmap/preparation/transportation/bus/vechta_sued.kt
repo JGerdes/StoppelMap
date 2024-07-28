@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
 import com.jonasgerdes.stoppelmap.preparation.transportation.Minutes
-import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperators.wilmering
+import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs
 import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
@@ -9,7 +9,7 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun vechtaSued() = createBusRoute {
     name = "Vechta Süd"
-    operatorSlug = wilmering.slug
+    operatorSlug = TransportOperatorSlugs.wilmering
     fixedPrices = prices(adult = 250, children = 180)
 
     addStation(name = "An der hohen Bank") {

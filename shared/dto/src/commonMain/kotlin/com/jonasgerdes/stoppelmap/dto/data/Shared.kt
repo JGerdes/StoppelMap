@@ -37,7 +37,7 @@ typealias ServiceSlug = String
 data class Service(
     val slug: ServiceSlug,
     val name: Localized<String>,
-    val note: Localized<String>?,
+    val note: Localized<String>? = null,
     val aliases: List<Alias>? = emptyList(),
     val phoneNumbers: List<PhoneNumber>? = null
 )

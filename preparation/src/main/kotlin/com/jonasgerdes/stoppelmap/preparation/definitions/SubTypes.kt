@@ -49,6 +49,12 @@ val rideSubTypes = listOf(
     subType(slug = "break_dancer", de = "Break Dancer", en = "Break Dancer"),
     subType(slug = "ferris_wheel", de = "Riesenrad", en = "Ferris wheel"),
     subType(slug = "flying_carpet", de = "Fliegender Teppich", en = "Flying carpet"),
+    subType(slug = "free_fall_tower", de = "Freifallturm", en = "Free fall tower"),
+    subType(slug = "x_drive", de = "X-Drive", en = "X-Drive"),
+    subType(slug = "booster", de = "Booster", en = "Booster"),
+    subType(slug = "jump_n_smile", de = "Jump & Smile", en = "Jump & Smile"),
+    subType(slug = "escape", de = "Escape", en = "Escape"),
+    subType(slug = "caterpillar", de = "Berg- und Talbahn", en = "Caterpillar", de to "Raupenbahn"),
 )
 
 val gameSubTypes = listOf(
@@ -62,7 +68,7 @@ val gameSubTypes = listOf(
     subType(slug = "flying_frogs", de = "Fliegende Frösche", en = "Flying frogs"),
     subType(slug = "pull_strings", de = "Fädenziehen", en = "Pull strings"),
     subType(slug = "football", de = "Fußball", en = "football"),
-    subType(slug = "claw_crane", de = "Greifarm", en = "Claw crane"),
+    subType(slug = "claw_crane", de = "Greifer", en = "Claw machine", de to "Greifautomat"),
     subType(slug = "high_striker", de = "Hau-den-Lukas", en = "High striker"),
     subType(slug = "lottery", de = "Losbude", en = "Lottery"),
     subType(slug = "horse_race", de = "Pferderennen", en = "Horse race"),

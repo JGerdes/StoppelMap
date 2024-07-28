@@ -2,17 +2,19 @@ package com.jonasgerdes.stoppelmap.dto.data
 
 import kotlinx.serialization.Serializable
 
+// NOTE: For changes that a not backwards compatible, increase schemaVersion
 @Serializable
 data class StoppelMapData(
     val version: Int,
-    val schemaVersion: Int,
     val note: String? = null,
     val seasonYear: Int,
     val definitions: Definitions,
     val map: Map,
     val schedule: Schedule,
     val transportation: Transportation,
-)
+) {
+    val schemaVersion: Int = 1
+}
 
 @Serializable
 data class Definitions(
