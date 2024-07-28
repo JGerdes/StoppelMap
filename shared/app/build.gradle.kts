@@ -85,10 +85,10 @@ buildkonfig {
             onFailure = { println("Unable to read secrets.properties") }
         )
         val commit = getCommit()
-        val version = getVersion(commit.shortSha)
+        val version = loadVersions()
         buildConfigField(STRING, "COMMIT_SHORT_SHA", commit.shortSha)
         buildConfigField(STRING, "COMMIT_SHA", commit.sha)
-        buildConfigField(STRING, "VERSION_NAME", version.name)
+        buildConfigField(STRING, "VERSION_NAME", "${version.name}-${commit.shortSha}")
         buildConfigField(INT, "VERSION_CODE", version.code.toString())
     }
 }

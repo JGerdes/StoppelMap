@@ -33,9 +33,9 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         val commit = getCommit()
-        val version = getVersion(commit.shortSha)
+        val version = loadVersions()
         versionCode = version.code
-        versionName = version.name
+        versionName = "${version.name}-${commit.shortSha}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

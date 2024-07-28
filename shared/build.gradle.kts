@@ -1,5 +1,3 @@
-import Git.getCommit
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
@@ -68,16 +66,17 @@ android {
 }
 
 task("updateIosVersion") {
+    group = "versioning"
     // TODO: Improve this
     doLast {
         val projectFile = File(project.rootDir, "iosApp/iosApp.xcodeproj/project.pbxproj")
         val versionRegex = """MARKETING_VERSION = .*?;""".toRegex()
         val buildRegex = """CURRENT_PROJECT_VERSION = .\d*?;""".toRegex()
-        val version = getVersion(getCommit().shortSha)
+        val version = loadVersions()
         val lines = projectFile.readLines()
             .map { original ->
                 original
-                    .replace(versionRegex, """MARKETING_VERSION = "${version.name}";""")
+                    .replace(versionRegex, """MARKETING_VERSION = "${version.semanticName}";""")
                     .replace(buildRegex, """CURRENT_PROJECT_VERSION = ${version.code};""")
                     .also {
                         if (original != it) {

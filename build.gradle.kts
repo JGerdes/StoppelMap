@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.kotlin.serialization) apply false
@@ -12,4 +14,24 @@ plugins {
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
+}
+
+task("updateVersion") {
+    group = "versioning"
+    doFirst {
+        val versionFile = File(project.rootDir, "version.properties").also {
+            if (!it.exists()) it.createNewFile()
+        }
+        val versionProperties =
+            Properties().also {
+                it.load(versionFile.inputStream())
+            }
+        val version = generateVersions()
+
+        versionProperties.setProperty("code", version.code.toString())
+        versionProperties.setProperty("semanticName", version.semanticName)
+        versionProperties.setProperty("name", version.name)
+
+        versionProperties.store(versionFile.outputStream(), null)
+    }
 }
