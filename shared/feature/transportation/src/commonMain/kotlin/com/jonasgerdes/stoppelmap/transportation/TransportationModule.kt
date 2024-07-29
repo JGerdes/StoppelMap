@@ -3,9 +3,8 @@ package com.jonasgerdes.stoppelmap.transportation
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.VenueInformation
-import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
-import com.jonasgerdes.stoppelmap.transportation.data.DatabaseTransportDataSource
+import com.jonasgerdes.stoppelmap.transportation.data.DummyTransportDataSource
 import com.jonasgerdes.stoppelmap.transportation.data.TaxiServiceRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TrainRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TransportDataSource
@@ -18,14 +17,7 @@ import org.koin.dsl.module
 val transportationModule = module {
 
     single<TransportDataSource> {
-        val database = get<StoppelMapDatabase>()
-        DatabaseTransportDataSource(
-            routeQueries = database.routeQueries,
-            stationQueries = database.stationQueries,
-            priceQueries = database.feeQueries,
-            departureDayQueries = database.departure_dayQueries,
-            departureQueries = database.departureQueries,
-        )
+        DummyTransportDataSource()
     }
 
     single { BusRoutesRepository(transportDataSource = get()) }
