@@ -20,3 +20,22 @@ VALUES ?;
 
 clear:
 DELETE FROM event;
+
+getAll:
+SELECT event.*, map_entity.name AS locationName FROM event
+LEFT JOIN map_entity ON map_entity.slug = event.locationSlug;
+
+getAllAfter:
+SELECT event.*, map_entity.name AS locationName FROM event
+LEFT JOIN map_entity ON map_entity.slug = event.locationSlug
+WHERE start > ? ORDER BY start;
+
+getAllOfficial:
+SELECT event.*, map_entity.name AS locationName FROM event
+LEFT JOIN map_entity ON map_entity.slug = event.locationSlug
+WHERE isOfficial = 1;
+
+getAllOfficialAfter:
+SELECT event.*, map_entity.name AS locationName FROM event
+LEFT JOIN map_entity ON map_entity.slug = event.locationSlug
+WHERE isOfficial = 1 AND start > ? ORDER BY start;

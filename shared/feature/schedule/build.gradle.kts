@@ -33,6 +33,7 @@ kotlin {
             api(libs.kermit)
 
             implementation(libs.kotlinx.datetime)
+            implementation(libs.sqldelight.coroutines)
             implementation(libs.androidx.datastore.preferences.core)
 
             implementation(project(":shared:base"))

@@ -28,11 +28,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.schedule.model.ScheduleEvent
+import com.jonasgerdes.stoppelmap.schedule.model.Event
+import com.jonasgerdes.stoppelmap.theme.util.localizedString
 
 @Composable
 fun EventRow(
-    scheduleEvent: ScheduleEvent,
+    event: Event,
     selected: Boolean,
     onSelected: () -> Unit,
     onNotificationToggle: (active: Boolean) -> Unit,
@@ -49,8 +50,6 @@ fun EventRow(
         else MaterialTheme.colorScheme.surfaceColorAtElevation(0.dp)
     )
 
-    val event = scheduleEvent.event
-
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier
@@ -66,13 +65,13 @@ fun EventRow(
                 .padding(vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            event.location?.let {
+            event.locationName?.let {
                 Text(text = it, style = MaterialTheme.typography.labelMedium)
             }
             Text(text = event.name, style = MaterialTheme.typography.bodyLarge)
             event.description?.let {
                 Text(
-                    text = it,
+                    text = localizedString(it),
                     maxLines = if (selected) Int.MAX_VALUE else 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodySmall,
@@ -81,15 +80,15 @@ fun EventRow(
             }
         }
         if (showNotificationToggle) {
-            if (selected || scheduleEvent.bookmarked) {
+            if (selected || event.isBookmarked) {
                 val iconTint by animateColorAsState(
                     targetValue =
-                    if (scheduleEvent.bookmarked)
+                    if (event.isBookmarked)
                         MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                 )
                 IconButton(
-                    onClick = { onNotificationToggle(!scheduleEvent.bookmarked) },
+                    onClick = { onNotificationToggle(!event.isBookmarked) },
                     modifier = Modifier
                         .padding(8.dp)
                         .align(
@@ -97,7 +96,7 @@ fun EventRow(
                         )
                 ) {
                     Icon(
-                        if (scheduleEvent.bookmarked) Icons.Rounded.Bookmark
+                        if (event.isBookmarked) Icons.Rounded.Bookmark
                         else Icons.Rounded.BookmarkBorder,
                         contentDescription = null,
                         tint = iconTint

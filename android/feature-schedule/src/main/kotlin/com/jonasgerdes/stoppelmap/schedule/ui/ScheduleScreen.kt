@@ -135,7 +135,7 @@ fun ScheduleScreen(
                         val timeString = formatter.format(timeSlot.time.toJavaLocalTime())
                         items(
                             count = timeSlot.events.size,
-                            key = { timeSlot.events[it].event.slug },
+                            key = { timeSlot.events[it].slug },
                             contentType = { "event" },
                         ) { id ->
                             val event = timeSlot.events[id]
@@ -150,12 +150,12 @@ fun ScheduleScreen(
                                     }
                                 }
                                 EventRow(
-                                    scheduleEvent = event,
-                                    selected = event.event == state.selectedEvent,
-                                    onSelected = { viewModel.onEventTap(event.event) },
+                                    event = event,
+                                    selected = event == state.selectedEvent,
+                                    onSelected = { viewModel.onEventTap(event) },
                                     onNotificationToggle = {
                                         viewModel.onEventNotificationSchedule(
-                                            event.event,
+                                            event,
                                             notificationActive = it
                                         )
                                     },

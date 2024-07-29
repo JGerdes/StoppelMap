@@ -12,3 +12,6 @@ VALUES ?;
 
 clear:
 DELETE FROM localized_string;
+
+getByKeys:
+SELECT * FROM localized_string WHERE key IN ?;

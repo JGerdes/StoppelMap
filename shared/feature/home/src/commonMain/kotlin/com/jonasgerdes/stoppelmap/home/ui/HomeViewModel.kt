@@ -6,14 +6,14 @@ import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.countdown.model.CountDownState
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownStateUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
-import com.jonasgerdes.stoppelmap.data.Event
 import com.jonasgerdes.stoppelmap.dto.config.Message
+import com.jonasgerdes.stoppelmap.home.usecase.GetPromotedEventsUseCase
 import com.jonasgerdes.stoppelmap.home.usecase.GetRemoteMessagesUseCase
-import com.jonasgerdes.stoppelmap.schedule.usecase.GetNextBookmarkedEventUseCase
-import com.jonasgerdes.stoppelmap.schedule.usecase.GetNextOfficialEventUseCase
+import com.jonasgerdes.stoppelmap.schedule.model.Event
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.stateIn
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
@@ -23,13 +23,13 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.isActive
 import kotlin.time.Duration.Companion.minutes
 
 class HomeViewModel(
     getOpeningCountDownState: GetOpeningCountDownStateUseCase,
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
-    getNextOfficialEvent: GetNextOfficialEventUseCase,
-    getNextBookmarkedEvent: GetNextBookmarkedEventUseCase,
+    getPromotedEvents: GetPromotedEventsUseCase,
     getRemoteMessages: GetRemoteMessagesUseCase,
 ) : KMMViewModel() {
 
@@ -44,24 +44,17 @@ class HomeViewModel(
 
     private val promotedEventsState = flow {
         emit(Unit)
-        while (true) {
+        while (currentCoroutineContext().isActive) {
             delay(1.minutes)
             emit(Unit)
         }
     }.flatMapLatest {
-        getNextBookmarkedEvent().map { bookmarked ->
-            val official =
-                (getNextOfficialEvent() as? GetNextOfficialEventUseCase.Result.Some)?.event
-
-            val promotedEvents = (bookmarked + official)
-                .filterNotNull()
-                .distinctBy { it.slug }
-                .sortedBy { it.start }
-            if (promotedEvents.isEmpty()) {
-                PromotedEventsState.Hidden
-            } else {
-                PromotedEventsState.Visible(events = promotedEvents)
-            }
+        getPromotedEvents()
+    }.map { promotedEvents ->
+        if (promotedEvents.isEmpty()) {
+            PromotedEventsState.Hidden
+        } else {
+            PromotedEventsState.Visible(events = promotedEvents)
         }
     }
 

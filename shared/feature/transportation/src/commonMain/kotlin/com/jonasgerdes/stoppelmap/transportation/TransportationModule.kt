@@ -22,7 +22,7 @@ val transportationModule = module {
         DatabaseTransportDataSource(
             routeQueries = database.routeQueries,
             stationQueries = database.stationQueries,
-            priceQueries = database.priceQueries,
+            priceQueries = database.feeQueries,
             departureDayQueries = database.departure_dayQueries,
             departureQueries = database.departureQueries,
         )

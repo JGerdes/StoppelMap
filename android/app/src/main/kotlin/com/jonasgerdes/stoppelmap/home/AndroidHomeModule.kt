@@ -8,11 +8,10 @@ val androidHomeModule = module {
 
     viewModel {
         HomeViewModel(
-            getRemoteMessages = get(),
             getOpeningCountDownState = get(),
             shouldShowCountdownWidgetSuggestion = get(),
-            getNextOfficialEvent = get(),
-            getNextBookmarkedEvent = get(),
+            getPromotedEvents = get(),
+            getRemoteMessages = get(),
         )
     }
 }

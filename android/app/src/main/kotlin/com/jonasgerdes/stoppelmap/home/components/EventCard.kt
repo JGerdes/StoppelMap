@@ -17,8 +17,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.R
-import com.jonasgerdes.stoppelmap.data.Event
+import com.jonasgerdes.stoppelmap.schedule.model.Event
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
+import com.jonasgerdes.stoppelmap.theme.i18n.localizedString
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import kotlinx.datetime.toJavaLocalDateTime
 import java.time.format.DateTimeFormatter
@@ -77,7 +78,7 @@ private fun EventCard(
             verticalArrangement = Arrangement.spacedBy(4.dp),
             modifier = Modifier.padding(16.dp)
         ) {
-            event.location?.let {
+            event.locationName?.let {
                 Text(text = it, style = MaterialTheme.typography.labelMedium)
             }
             Text(
@@ -87,7 +88,7 @@ private fun EventCard(
             Text(text = event.name, style = MaterialTheme.typography.titleLarge)
             event.description?.let {
                 Text(
-                    text = it,
+                    text = localizedString(it),
                     style = MaterialTheme.typography.bodySmall,
                 )
             }

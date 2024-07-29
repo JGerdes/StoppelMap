@@ -12,3 +12,12 @@ fun stringDesc(stringDesc: StringDesc): String {
     LocalConfiguration.current
     return stringDesc.toString(LocalContext.current)
 }
+
+@Composable
+@ReadOnlyComposable
+fun localizedString(localizedString: Map<String, String>): String {
+    LocalConfiguration.current
+    val locale =
+        LocalConfiguration.current.locales.getFirstMatch(localizedString.keys.toTypedArray())
+    return localizedString.getOrDefault(locale ?: "de", localizedString.values.first())
+}
