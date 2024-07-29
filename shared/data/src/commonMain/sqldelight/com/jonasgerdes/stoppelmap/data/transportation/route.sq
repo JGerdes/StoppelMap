@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS route(
     type                TEXT AS TransportationType NOT NULL,
 
     FOREIGN KEY(operatorSlug) REFERENCES operator(slug),
-    FOREIGN KEY(additionalInfoKey) REFERENCES localized_string(key)
+    FOREIGN KEY(additionalInfoKey) REFERENCES localized_string(key),
+    FOREIGN KEY(slug) REFERENCES website(referenceSlug)
 );
 
 insert:

@@ -21,6 +21,7 @@ data class Route(
     val name: String,
     val operator: OperatorSlug? = null,
     val additionalInfo: Localized<String>? = null,
+    val ticketWebsites: List<Website> = emptyList(),
     val stations: List<Station>,
 )
 
@@ -34,6 +35,7 @@ data class Station(
     val isReturn: Boolean,
     val isNew: Boolean,
     val prices: List<Fee> = emptyList(),
+    val ticketWebsites: List<Website> = emptyList(),
     val departures: List<DepartureDay>,
 )
 

@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS station (
     FOREIGN KEY(route) REFERENCES route(slug),
     FOREIGN KEY(slug) REFERENCES location(referenceSlug),
     FOREIGN KEY(mapEntity) REFERENCES map_entity(slug),
-    FOREIGN KEY(slug) REFERENCES fee(referenceSlug)
+    FOREIGN KEY(slug) REFERENCES fee(referenceSlug),
+    FOREIGN KEY(slug) REFERENCES website(referenceSlug)
 );
 
 insert:

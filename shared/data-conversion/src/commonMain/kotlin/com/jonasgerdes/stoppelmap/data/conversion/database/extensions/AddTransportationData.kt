@@ -27,6 +27,7 @@ internal fun StoppelMapDatabase.addTransportationData(transportation: Transporta
                 type = TransportationType.Bus
             )
         )
+        addWebsites(route.slug, route.ticketWebsites)
         route.stations.forEach { station ->
             stationQueries.insert(
                 Station(
@@ -63,6 +64,7 @@ internal fun StoppelMapDatabase.addTransportationData(transportation: Transporta
                     )
                 )
             }
+            addWebsites(station.slug, station.ticketWebsites)
             station.departures.forEach { departureDay ->
                 val departureDaySlug = "${station.slug}_${departureDay.day}"
                 departure_dayQueries.insert(
