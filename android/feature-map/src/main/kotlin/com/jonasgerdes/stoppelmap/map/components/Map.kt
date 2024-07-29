@@ -38,17 +38,13 @@ import androidx.lifecycle.LifecycleEventObserver
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import com.google.gson.JsonObject
-import com.google.gson.JsonPrimitive
 import com.jonasgerdes.stoppelmap.map.MapDefaults
 import com.jonasgerdes.stoppelmap.map.R
+import com.jonasgerdes.stoppelmap.map.ui.Camera
 import com.jonasgerdes.stoppelmap.map.ui.MapColors
-import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.Camera
-import com.jonasgerdes.stoppelmap.map.ui.MapViewModel.MapState
+import com.jonasgerdes.stoppelmap.map.ui.MapState
 import com.jonasgerdes.stoppelmap.shared.resources.Res
-import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
-import com.mapbox.geojson.Point
 import org.maplibre.android.MapLibre
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.camera.CameraUpdateFactory
@@ -266,12 +262,12 @@ fun Map(
                         fillColor(colors.stallTypeExpoColor.toArgb())
                     )
 
-                    val highlightedStalls = mapState.highlightedStalls
+                    val highlightedEntities = mapState.highlightedEntities
 
                     style.getLayerAs<SymbolLayer>("labels")?.withProperties(
                         textColor(colors.labelColor.toArgb()),
                         textHaloColor(colors.labelHaloColor.toArgb()),
-                        visibility(if (highlightedStalls.isNullOrEmpty()) Property.VISIBLE else Property.NONE)
+                        visibility(if (highlightedEntities.isNullOrEmpty()) Property.VISIBLE else Property.NONE)
                     )
 
                     style.addMarkerIcons(context, density, colors, isDarkTheme)
@@ -279,14 +275,14 @@ fun Map(
                     style.getLayerAs<SymbolLayer>("highlight-labels")?.withProperties(
                         textColor(colors.labelColor.toArgb()),
                         textHaloColor(colors.labelHaloColor.toArgb()),
-                        visibility(if (highlightedStalls.isNullOrEmpty()) Property.NONE else Property.VISIBLE),
+                        visibility(if (highlightedEntities.isNullOrEmpty()) Property.NONE else Property.VISIBLE),
                     )
-                    if (highlightedStalls != null) {
+                    if (highlightedEntities != null) {
                         style.getSourceAs<GeoJsonSource>("highlight-labels-source")?.apply {
                             setGeoJson(
                                 FeatureCollection.fromFeatures(
-                                    highlightedStalls.map { stall ->
-                                        Feature.fromGeometry(
+                                    highlightedEntities.mapNotNull { mapEntity ->
+                                        /*Feature.fromGeometry(
                                             Point.fromLngLat(
                                                 stall.center_lng,
                                                 stall.center_lat
@@ -297,7 +293,8 @@ fun Map(
                                                     add("name", JsonPrimitive(name))
                                                 }
                                             }
-                                        )
+                                        )*/
+                                        null
                                     }
                                 ).toJson()
                             )
