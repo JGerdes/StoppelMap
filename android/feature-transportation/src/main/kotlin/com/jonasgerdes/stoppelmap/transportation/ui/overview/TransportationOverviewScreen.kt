@@ -48,7 +48,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
-import com.jonasgerdes.stoppelmap.theme.components.NoticeCard
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
 import com.jonasgerdes.stoppelmap.transportation.ui.route.StopStationCard
@@ -119,9 +118,6 @@ fun TransportationOverviewScreen(
                     }
                 }
             }
-        },
-        bottomBar = {
-            NoticeCard(title = "Stand 2023", message = "Ein Update für 2024 ist in Arbeit")
         },
         modifier = modifier
     ) { paddingValues ->

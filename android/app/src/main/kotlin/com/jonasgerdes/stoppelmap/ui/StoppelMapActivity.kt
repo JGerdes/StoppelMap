@@ -52,7 +52,6 @@ import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
-import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
@@ -64,9 +63,9 @@ import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
-import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
+import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -209,13 +208,7 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.Map.route) {
-                    MapScreen(
-                        onRequestLocationPermission = ::requestLocationPermission,
-                        scaffoldPadding = scaffoldPadding,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
+                    UnderConstructionPlaceholder(Modifier.fillMaxSize())
                 }
                 composable(Screen.Schedule.route) {
                     ScheduleScreen(
@@ -226,25 +219,7 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.TransportationOverview.route) {
-                    TransportationOverviewScreen(
-                        onRouteTap = {
-                            navController.navigate(
-                                Screen.TransportRoute.create(routeId = it)
-                            )
-                        },
-                        onStationTap = {
-                            navController.navigate(
-                                Screen.TransportStation.create(stationId = it)
-                            )
-                        },
-                        onPhoneNumberTap = {
-                            dialPhoneNumber(it)
-                        },
-                        Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                            .padding(scaffoldPadding)
-                    )
+                    UnderConstructionPlaceholder(Modifier.fillMaxSize())
                 }
                 composable(Screen.TransportRoute.route) {
                     val routeId = it.arguments?.getString("routeId")!!
