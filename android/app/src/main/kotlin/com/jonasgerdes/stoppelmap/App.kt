@@ -7,7 +7,7 @@ import androidx.glance.appwidget.updateAll
 import com.jonasgerdes.stoppelmap.countdown.androidCountdownModule
 import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.androidHomeModule
-import com.jonasgerdes.stoppelmap.map.mapModule
+import com.jonasgerdes.stoppelmap.map.androidMapModule
 import com.jonasgerdes.stoppelmap.news.androidNewsModule
 import com.jonasgerdes.stoppelmap.news.usecase.LoadLatestNewsUseCase
 import com.jonasgerdes.stoppelmap.schedule.androidScheduleModule
@@ -49,7 +49,7 @@ class App : Application() {
                 androidHomeModule,
                 settingsModule,
                 androidCountdownModule,
-                mapModule,
+                androidMapModule,
                 androidScheduleModule,
                 androidTransportationModule,
                 androidNewsModule,

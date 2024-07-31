@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":shared:resources"))
     implementation(project(":base"))
     implementation(project(":shared:data"))
+    implementation(project(":shared:feature:map"))
     implementation(project(":android:theme"))
     implementation(project(":android:feature-settings"))
 

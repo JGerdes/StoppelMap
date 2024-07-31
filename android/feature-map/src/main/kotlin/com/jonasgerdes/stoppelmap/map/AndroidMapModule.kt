@@ -18,7 +18,7 @@ import org.koin.dsl.module
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "mapUserData")
 
-val mapModule = module {
+val androidMapModule = module {
 
     single { PermissionRepository(context = get()) }
 

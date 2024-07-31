@@ -45,6 +45,7 @@ kotlin {
             implementation(project(":shared:feature:licenses"))
             implementation(project(":shared:feature:data-update"))
             implementation(project(":shared:feature:countdown"))
+            implementation(project(":shared:feature:map"))
             implementation(project(":shared:feature:schedule"))
             implementation(project(":shared:feature:transportation"))
             implementation(project(":shared:feature:news"))
