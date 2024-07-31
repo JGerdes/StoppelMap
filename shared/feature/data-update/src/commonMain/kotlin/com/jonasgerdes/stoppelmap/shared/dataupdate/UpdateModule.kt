@@ -11,20 +11,24 @@ import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.DataUpdateReposit
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteStaticFileSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateDataUseCase
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateRemoteAppConfigUseCase
 import com.jonasgerdes.stoppelmap.shared.resources.Res
+import dev.icerock.moko.resources.AssetResource
 import okio.FileSystem
+import okio.Path
 import okio.Path.Companion.toPath
 import okio.SYSTEM
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
 expect fun Scope.bundledDataFileSystem(): FileSystem
+expect fun Scope.getPathForAssetResource(assetResource: AssetResource): Path
 
 val dataUpdateModule = module {
 
     single {
         RemoteAppConfigSource(
-            baseUrl = "https://api.stoppelmap.de",
+            baseUrl = "http://192.168.178.20:8080",
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )
@@ -32,7 +36,7 @@ val dataUpdateModule = module {
 
     single {
         RemoteStaticFileSource(
-            baseUrl = "https://api.stoppelmap.de",
+            baseUrl = "http://192.168.178.20:8080",
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )
@@ -55,10 +59,16 @@ val dataUpdateModule = module {
         )
     }
 
-    single {
+    factory {
+        UpdateRemoteAppConfigUseCase(
+            appConfigRepository = get()
+        )
+    }
+
+    factory {
         UpdateDataUseCase(
             appInfo = get(),
-            bundledDataPath = Res.assets.data.originalPath.toPath(),
+            bundledDataPath = getPathForAssetResource(Res.assets.data),
             bundledDataFileSystem = bundledDataFileSystem(),
             persistentDataDirectory = get<PathFactory>().create("map").toPath(),
             dataUpdateRepository = get(),

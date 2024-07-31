@@ -3,9 +3,9 @@ import Shared
 
 struct EventPage: View {
     var scheduleDay: ScheduleDay
-    var selectedEvent: DataEvent?
-    var onEventTap: (DataEvent) -> ()
-    var onNotificationToggle: (_ event: DataEvent, _ isActive: Bool) -> ()
+    var selectedEvent: Event?
+    var onEventTap: (Event) -> ()
+    var onNotificationToggle: (_ event: Event, _ isActive: Bool) -> ()
     
     var body: some View {
         ScrollView(.vertical) {
@@ -47,13 +47,13 @@ struct SectionHeader: View {
 struct TimeSlot: View {
     
     var slot: ScheduleTime
-    var selectedEvent: DataEvent?
-    var onEventTap: (DataEvent) -> ()
-    var onNotificationToggle: (_ event: DataEvent, _ isActive: Bool) -> ()
+    var selectedEvent: Event?
+    var onEventTap: (Event) -> ()
+    var onNotificationToggle: (_ event: Event, _ isActive: Bool) -> ()
     
     var body: some View {
         Section(header: SectionHeader(slot: slot).listRowInsets(.none)) {
-            ForEach(slot.events, id: \.event.slug) { event in
+            ForEach(slot.events, id: \.slug) { event in
                 HStack(alignment: .top, spacing: 0) {
                     ZStack {
                         Text("00:00")
@@ -69,12 +69,12 @@ struct TimeSlot: View {
                     VStack(spacing: 0) {
                         EventRow(
                             event: event,
-                            selected: event.event == selectedEvent,
+                            selected: event == selectedEvent,
                             onSelect: {
-                                onEventTap(event.event)
+                                onEventTap(event)
                             },
                             onNotificationToggle: { active in
-                                onNotificationToggle(event.event, active)
+                                onNotificationToggle(event, active)
                             }
                         )
                         Divider()
@@ -87,7 +87,7 @@ struct TimeSlot: View {
 
 struct EventRow: View {
     
-    var event: ScheduleEvent
+    var event: Event
     var selected: Bool
     var onSelect: () -> ()
     var onNotificationToggle: (Bool) -> ()
@@ -95,12 +95,12 @@ struct EventRow: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
-                if let location = event.event.location {
+                if let location = event.locationName {
                     Text(location).font(.subheadline)
                 }
-                Text(event.event.name).font(.headline)
-                if let description_ = event.event.description_ {
-                    Text(description_)
+                Text(event.name).font(.headline)
+                if let description_ = event.description_ {
+                    Text(description_.localized())
                         .lineLimit(selected ? nil : 1)
                         .font(.footnote)
                 }
@@ -110,11 +110,11 @@ struct EventRow: View {
                 alignment: .topLeading
             )
             Button(
-                action: { onNotificationToggle(!event.bookmarked) }
+                action: { onNotificationToggle(!event.isBookmarked) }
             ){
-                Image(systemName: event.bookmarked ? "bookmark.fill" : "bookmark")
+                Image(systemName: event.isBookmarked ? "bookmark.fill" : "bookmark")
             }
-            .opacity((selected || event.bookmarked) ? 1 : 0)
+            .opacity((selected || event.isBookmarked) ? 1 : 0)
         }
         .padding(.horizontal)
         .padding(.vertical, selected ? 16 : 8)

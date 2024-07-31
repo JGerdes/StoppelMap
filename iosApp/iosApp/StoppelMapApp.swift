@@ -8,6 +8,8 @@ struct StoppelMapApp: App {
         KoinKt.doInitKoin(modules: [dateTimeModule, appModule, iosCountdownModule])
         
         Task {
+            try! await DataUpdateDependencies().updateRemoteAppConfigUseCase.invoke()
+            try! await DataUpdateDependencies().updateDataUseCase.invoke()
             try! await NewsDependencies().loadLatestNews.invoke()
         }
     }

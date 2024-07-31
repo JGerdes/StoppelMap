@@ -78,7 +78,7 @@ val appModule = module {
 
     single<SqlDriver> {
         val databaseDir = documentDirectory.path!!
-        val databaseFile = "$databaseDir/database.db".toPath()
+        val databaseFile = "$databaseDir/stoppelMapData.db".toPath()
         val databaseName = databaseFile.name
         NativeSqliteDriver(
             schema = StoppelMapDatabase.Schema,

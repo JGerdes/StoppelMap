@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import Shared
 
 protocol ScopeFunc {}
 extension ScopeFunc {
@@ -49,6 +50,12 @@ extension Color {
         let alpha = (1.0 - clampedPercentage) * components1[3] + clampedPercentage * components2[3]
         
         return Color(red: red, green: green, blue: blue, opacity: alpha)
+    }
+}
+
+extension Dictionary<String, String> {
+    func localized() -> String {
+        return ExtensionsKt.localized(self)
     }
 }
 

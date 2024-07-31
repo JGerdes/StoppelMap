@@ -5,8 +5,8 @@ struct ScheduleScreen: View {
     
     let viewModel = ScheduleDependencies().with{
         ScheduleViewModel(
+            getScheduleDays: $0.getScheduleDays,
             eventRepository: $0.eventRepository,
-            bookmarkedEventsRepository: $0.bookmarkedEventsRepository,
             clockProvider: $0.clockProvider
         )
     }
@@ -28,7 +28,7 @@ struct ScheduleScreen: View {
                                 onEventTap: { event in
                                     viewModel.onEventTap(event: event)
                                 },
-                                onNotificationToggle: {(event: DataEvent, isActive: Bool) in
+                                onNotificationToggle: {(event: Event, isActive: Bool) in
                                     viewModel.onEventNotificationSchedule(
                                         event: event,
                                         notificationActive: isActive

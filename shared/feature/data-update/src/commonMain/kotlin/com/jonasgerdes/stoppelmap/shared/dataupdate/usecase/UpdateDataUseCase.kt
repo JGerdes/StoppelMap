@@ -41,6 +41,7 @@ class UpdateDataUseCase(
 ) {
 
     suspend operator fun invoke() {
+        Logger.d { "UpdateData: Start updates with bundledDataPath: $bundledDataPath and persistentDataDirectory: $persistentDataDirectory" }
         var currentDataVersion = dataUpdateRepository.currentDataVersion.first()
         if (currentDataVersion == null || appInfo.versionCode > currentDataVersion) {
             Logger.d { "UpdateData: Bundled data is newer then existing (or none exists). Apply data from bundle" }
@@ -74,28 +75,28 @@ class UpdateDataUseCase(
     private suspend fun updateDataFromRemote(latestRemoteData: Data) = withContext(Dispatchers.IO) {
         val remoteDataZip = dataUpdateRepository.downloadFile(latestRemoteData.file, persistentFileSystem)
         if (remoteDataZip != null) {
-            Logger.d { "Downloaded remote data sucessfully, appling it" }
+            Logger.d { "UpdateData: Downloaded remote data sucessfully, appling it" }
             updateDataFromZipFile(persistentFileSystem, remoteDataZip)
         } else {
-            Logger.d { "Failed to download remote data" }
+            Logger.d { "UpdateData: Failed to download remote data" }
         }
     }
 
     private suspend fun updateDataFromZipFile(fileSystem: FileSystem, zipPath: Path) = withContext(Dispatchers.IO) {
         val bundledData = fileSystem.openZip(zipPath)
-        Logger.d { "Copy map data" }
+        Logger.d { "UpdateData: Copy map data" }
         persistentFileSystem.createDirectories(persistentDataDirectory)
         val mapDataDestination = persistentDataDirectory.resolve("mapdata_${appInfo.versionCode}.geojson")
         bundledData.source("mapdata.geojson".toPath()).copyTo(persistentFileSystem.sink(mapDataDestination))
-        Logger.d { "Read stoppelMapData.json" }
+        Logger.d { "UpdateData: Read stoppelMapData.json" }
         val stoppelMapData = bundledData.source("stoppelMapData.json".toPath())
             .buffer()
             .use {
                 Json.decodeFromBufferedSource<StoppelMapData>(it)
             }
-        Logger.d { "Update database" }
+        Logger.d { "UpdateData: Update database" }
         updateDatabase(stoppelMapData)
-        Logger.d { "Set new map file $mapDataDestination" }
+        Logger.d { "UpdateData: Set new map file $mapDataDestination" }
         dataUpdateRepository.setMapFile(mapDataDestination)
     }
 

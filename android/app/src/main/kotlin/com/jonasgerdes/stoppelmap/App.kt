@@ -13,25 +13,23 @@ import com.jonasgerdes.stoppelmap.news.usecase.LoadLatestNewsUseCase
 import com.jonasgerdes.stoppelmap.schedule.androidScheduleModule
 import com.jonasgerdes.stoppelmap.settings.androidLicensesModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
-import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.AppConfigRepository
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateDataUseCase
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateRemoteAppConfigUseCase
 import com.jonasgerdes.stoppelmap.transportation.androidTransportationModule
 import com.jonasgerdes.stoppelmap.update.updateModule
 import com.jonasgerdes.stoppelmap.widget.countdown.CountdownWidget
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.dsl.module
 import timber.log.Timber
-import kotlin.time.Duration.Companion.seconds
 
 class App : Application() {
 
     val scope: CoroutineScope by inject()
-    val appConfigRepository: AppConfigRepository by inject()
+    val updateRemoteAppConfig: UpdateRemoteAppConfigUseCase by inject()
     val updateData: UpdateDataUseCase by inject()
     val loadLatestNews: LoadLatestNewsUseCase by inject()
 
@@ -77,8 +75,7 @@ class App : Application() {
         }
 
         scope.launch {
-            appConfigRepository.updateAppConfig()
-            delay(2.seconds)
+            updateRemoteAppConfig()
             loadLatestNews()
         }
     }

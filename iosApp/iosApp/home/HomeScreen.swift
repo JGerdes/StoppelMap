@@ -6,9 +6,8 @@ struct HomeScreen: View {
     let viewModel = HomeDependencies().with{
         HomeViewModel(
             getOpeningCountDownState: $0.getOpeningCountDownState,
-            shouldShowCountdownWidgetSuggestion: $0.shouldShowCountdownWidgetSuggestion,
-            getNextOfficialEvent: $0.getNextOfficialEvent,
-            getNextBookmarkedEvent: $0.getNextBookmarkedEvent,
+            shouldShowCountdownWidgetSuggestion:$0.shouldShowCountdownWidgetSuggestion,
+            getPromotedEvents: $0.getPromotedEventsUseCase,
             getRemoteMessages: $0.getRemoteMessages
         )
     }
@@ -64,7 +63,7 @@ struct HomeScreen: View {
 }
 
 struct MessageCard: View {
-    var message: Message
+    var message: DtoMessage
     var body: some View {
         VStack(alignment: .leading) {
             HStack {

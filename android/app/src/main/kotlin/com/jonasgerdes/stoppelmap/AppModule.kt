@@ -48,7 +48,7 @@ val appModule = module {
         AndroidSqliteDriver(
             schema = StoppelMapDatabase.Schema,
             context = get(),
-            name = "stoppelmapData.db",
+            name = "stoppelMapData.db",
         )
     }
 
