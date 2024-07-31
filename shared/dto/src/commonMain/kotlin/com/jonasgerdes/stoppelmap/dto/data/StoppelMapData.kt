@@ -13,7 +13,11 @@ data class StoppelMapData(
     val schedule: Schedule,
     val transportation: Transportation,
 ) {
-    val schemaVersion: Int = 1
+    val schemaVersion: Int = StoppelMapData.schemaVersion
+
+    companion object {
+        const val schemaVersion: Int = 1
+    }
 }
 
 @Serializable

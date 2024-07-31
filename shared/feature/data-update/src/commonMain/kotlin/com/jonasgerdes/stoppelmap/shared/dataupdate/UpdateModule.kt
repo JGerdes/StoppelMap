@@ -1,71 +1,71 @@
 package com.jonasgerdes.stoppelmap.shared.dataupdate
 
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import com.jonasgerdes.stoppelmap.base.contract.PathFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
-import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
-import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.base.model.Secrets
-import com.jonasgerdes.stoppelmap.shared.dataupdate.io.toPath
+import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.data.conversion.usecase.UpdateDatabaseUseCase
+import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.AppConfigRepository
+import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.DataUpdateRepository
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteAppConfigSource
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetToFileUseCase
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.RemoveDatabaseFileUseCase
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
-import okio.Path
+import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteStaticFileSource
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateDataUseCase
+import com.jonasgerdes.stoppelmap.shared.resources.Res
+import okio.FileSystem
 import okio.Path.Companion.toPath
+import okio.SYSTEM
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
-expect fun Scope.createTempPath(name: String): Path
-expect fun Scope.createRemoveDatabaseUseCase(): RemoveDatabaseFileUseCase
-expect fun Scope.createCopyAssetToFileUseCase(): CopyAssetToFileUseCase
+expect fun Scope.bundledDataFileSystem(): FileSystem
 
 val dataUpdateModule = module {
 
     single {
         RemoteAppConfigSource(
-            baseUrl = "https://cdn.stoppelmap.de",
+            baseUrl = "https://api.stoppelmap.de",
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )
     }
 
     single {
-        AppConfigRepository(
-            remoteAppConfigSource = get(),
-            tempDatabase = createTempPath("temp_database.db"),
-            tempMapData = createTempPath("temp_map_data.geojson")
+        RemoteStaticFileSource(
+            baseUrl = "https://api.stoppelmap.de",
+            httpClient = get(),
+            apiKey = get<Secrets>().stoppelMapApiKey
         )
     }
 
     single {
-        VersioningRepository(
+        AppConfigRepository(remoteAppConfigSource = get())
+    }
+
+    single {
+        DataUpdateRepository(
             dataStore = PreferenceDataStoreFactory.createWithPath(
                 corruptionHandler = null,
                 migrations = emptyList(),
-                produceFile = { get<PreferencesPathFactory>().create("versioning").toPath() },
-            )
+                produceFile = { get<PreferencesPathFactory>().create("dataUpdate").toPath() },
+            ),
+            metadataQueries = get<StoppelMapDatabase>().metadataQueries,
+            remoteStaticFileSource = get(),
+            tempFileDirectory = get<PathFactory>().create("download").toPath()
         )
     }
 
-    factory {
-        CopyAssetDataFilesUseCase(
+    single {
+        UpdateDataUseCase(
             appInfo = get(),
-            versioningRepository = get(),
-            removeDatabaseFile = createRemoveDatabaseUseCase(),
-            copyAssetToFile = createCopyAssetToFileUseCase(),
-            databaseFile = get<DatabaseFile>().toPath(),
-            mapDataFile = get<MapDataFile>().toPath(),
-        )
-    }
-
-    factory {
-        UpdateAppConfigAndDownloadFilesUseCase(
-            appInfo = get(),
+            bundledDataPath = Res.assets.data.originalPath.toPath(),
+            bundledDataFileSystem = bundledDataFileSystem(),
+            persistentDataDirectory = get<PathFactory>().create("map").toPath(),
+            dataUpdateRepository = get(),
             appConfigRepository = get(),
-            versioningRepository = get(),
-            databaseFile = get<DatabaseFile>().toPath(),
-            mapDataFile = get<MapDataFile>().toPath(),
+            updateDatabase = UpdateDatabaseUseCase(stoppelMapDatabase = get()),
+            persistentFileSystem = FileSystem.SYSTEM
+
         )
     }
 

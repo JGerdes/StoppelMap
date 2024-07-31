@@ -35,7 +35,7 @@ dependencies {
     implementation(project(":shared:data-conversion"))
 
     implementation(libs.kotlinx.datetime)
-    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.json.core)
     implementation(libs.koin.core)
     implementation(libs.sqldelight.driver.sqlite)
     implementation(libs.gson)

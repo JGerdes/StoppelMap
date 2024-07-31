@@ -31,15 +31,21 @@ kotlin {
             api(libs.kmm.viewmodel)
             api(libs.moko.resources)
 
-            implementation(libs.okio)
+            implementation(libs.okio.core)
+            implementation(libs.okio.assets)
             implementation(libs.kotlinx.datetime)
             implementation(libs.kermit)
             implementation(libs.ktor.client.core)
-            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.serialization.json.core)
+            implementation(libs.kotlinx.serialization.json.okio)
+            implementation(libs.sqldelight.coroutines)
             implementation(libs.androidx.datastore.preferences.core)
 
             implementation(project(":shared:base"))
             implementation(project(":shared:dto"))
+            implementation(project(":shared:data"))
+            implementation(project(":shared:data-conversion"))
+            implementation(project(":shared:resources"))
             implementation(project(":shared:network"))
         }
     }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
+import com.jonasgerdes.stoppelmap.base.contract.PathFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
@@ -22,6 +23,9 @@ private fun preferencesPathFactory(context: Context): PreferencesPathFactory =
             return context.filesDir.resolve(storageFile).absolutePath
         }
     }
+
+private fun pathFactory(context: Context): PathFactory =
+    PathFactory { file -> context.filesDir.resolve(file).absolutePath }
 
 val appModule = module {
 
@@ -44,7 +48,7 @@ val appModule = module {
         AndroidSqliteDriver(
             schema = StoppelMapDatabase.Schema,
             context = get(),
-            name = get<DatabaseFile>().file.name,
+            name = "stoppelmapData.db",
         )
     }
 
@@ -61,6 +65,7 @@ val appModule = module {
     }
 
     single<PreferencesPathFactory> { preferencesPathFactory(get<Context>()) }
+    single<PathFactory> { pathFactory(get()) }
 
     single<CreateStartAppIntentUseCase> {
         val context = get<Context>()

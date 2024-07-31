@@ -18,4 +18,4 @@ clear:
 DELETE FROM metadata;
 
 get:
-SELECT * FROM metadata;
+SELECT * FROM metadata LIMIT 1;

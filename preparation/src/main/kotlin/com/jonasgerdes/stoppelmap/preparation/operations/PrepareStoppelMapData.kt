@@ -41,7 +41,7 @@ class PrepareStoppelMapData : KoinComponent {
         parseGeoData()
 
         return StoppelMapData(
-            version = version.code,
+            version = version.code + 2,
             seasonYear = 2023,
             definitions = Definitions(
                 tags = tags,
@@ -59,7 +59,7 @@ class PrepareStoppelMapData : KoinComponent {
             schedule = prepareSchedule(
                 listOf(
                     settings.manualEventsFile,
-                    settings.fetchedEventsFile
+                    settings.fetchedEventsFile,
                 ),
                 isWorkInProgress = true
             ),

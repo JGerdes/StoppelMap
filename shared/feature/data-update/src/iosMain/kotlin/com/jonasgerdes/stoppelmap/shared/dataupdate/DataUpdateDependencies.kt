@@ -1,8 +1,7 @@
 package com.jonasgerdes.stoppelmap.shared.dataupdate
 
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
+import com.jonasgerdes.stoppelmap.shared.dataupdate.data.UpdateAppConfigAndDownloadFilesUseCase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

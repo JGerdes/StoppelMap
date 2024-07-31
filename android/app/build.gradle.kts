@@ -125,5 +125,7 @@ dependencies {
     implementation(libs.google.play.app.update)
     implementation(libs.maplibre)
 
+    implementation(libs.okio.assets)
+
     debugImplementation(libs.compose.ui.tooling)
 }

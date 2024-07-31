@@ -1,2 +1,4 @@
 src/commonMain/resources/MR/assets/database.db
+src/commonMain/resources/MR/assets/stoppelMapData.json
+src/commonMain/resources/MR/assets/*.zip
 src/commonMain/resources/MR/assets/mapdata.geojson

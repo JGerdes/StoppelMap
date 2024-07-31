@@ -62,6 +62,6 @@ dependencies {
     implementation(libs.google.play.services.location)
     implementation(libs.sqldelight.coroutines)
     implementation(libs.androidx.datastore)
-    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.json.core)
 
 }

@@ -77,6 +77,7 @@ fun Map(
     modifier: Modifier = Modifier,
     colors: MapColors,
 ) {
+    Timber.d("Map", "mapDataFile: $mapDataFile")
     val context = LocalContext.current
     val density = LocalDensity.current
     val isDarkTheme = isSystemInDarkTheme()

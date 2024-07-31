@@ -13,9 +13,8 @@ import com.jonasgerdes.stoppelmap.news.usecase.LoadLatestNewsUseCase
 import com.jonasgerdes.stoppelmap.schedule.androidScheduleModule
 import com.jonasgerdes.stoppelmap.settings.androidLicensesModule
 import com.jonasgerdes.stoppelmap.settings.settingsModule
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.CopyAssetDataFilesUseCase
-import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateAppConfigAndDownloadFilesUseCase
-import com.jonasgerdes.stoppelmap.shared.resources.Res
+import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.AppConfigRepository
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateDataUseCase
 import com.jonasgerdes.stoppelmap.transportation.androidTransportationModule
 import com.jonasgerdes.stoppelmap.update.updateModule
 import com.jonasgerdes.stoppelmap.widget.countdown.CountdownWidget
@@ -31,10 +30,10 @@ import kotlin.time.Duration.Companion.seconds
 
 class App : Application() {
 
-    val copyAssetDatabase: CopyAssetDataFilesUseCase by inject()
-    val updateAppConfigAndDownloadFiles: UpdateAppConfigAndDownloadFilesUseCase by inject()
-    val loadLatestNews: LoadLatestNewsUseCase by inject()
     val scope: CoroutineScope by inject()
+    val appConfigRepository: AppConfigRepository by inject()
+    val updateData: UpdateDataUseCase by inject()
+    val loadLatestNews: LoadLatestNewsUseCase by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -74,14 +73,11 @@ class App : Application() {
         }
 
         scope.launch {
-            copyAssetDatabase(
-                databaseAsset = Res.assets.database,
-                mapdataAsset = Res.assets.mapdata,
-            )
-            updateAppConfigAndDownloadFiles()
+            updateData()
         }
 
         scope.launch {
+            appConfigRepository.updateAppConfig()
             delay(2.seconds)
             loadLatestNews()
         }

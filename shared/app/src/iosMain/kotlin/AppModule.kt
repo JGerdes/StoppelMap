@@ -4,13 +4,14 @@ import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import co.touchlab.sqliter.DatabaseConfiguration
 import com.jonasgerdes.stoppelmap.CommonBuildConfig
+import com.jonasgerdes.stoppelmap.base.contract.PathFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
-import com.jonasgerdes.stoppelmap.shared.dataupdate.io.toPath
 import kotlinx.cinterop.ExperimentalForeignApi
+import okio.Path.Companion.toPath
 import org.koin.dsl.module
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
@@ -29,6 +30,18 @@ private val preferencesPathFactory: PreferencesPathFactory = object : Preference
         )
         return documentDirectory!!.path + "/$storageFile"
     }
+}
+
+@OptIn(ExperimentalForeignApi::class)
+private val pathFactory: PathFactory = PathFactory { file ->
+    val documentDirectory: NSURL? = NSFileManager.defaultManager.URLForDirectory(
+        directory = NSDocumentDirectory,
+        inDomain = NSUserDomainMask,
+        appropriateForURL = null,
+        create = false,
+        error = null,
+    )
+    documentDirectory!!.path + "/$file"
 }
 
 @OptIn(ExperimentalForeignApi::class)
@@ -51,6 +64,7 @@ val appModule = module {
     }
 
     single<PreferencesPathFactory> { preferencesPathFactory }
+    single<PathFactory> { pathFactory }
 
     single {
         AppInfo(
@@ -63,8 +77,9 @@ val appModule = module {
     }
 
     single<SqlDriver> {
-        val databaseName = get<DatabaseFile>().toPath().name
-        val databaseDir = get<DatabaseFile>().toPath().toString().removeSuffix("/$databaseName")
+        val databaseDir = documentDirectory.path!!
+        val databaseFile = "$databaseDir/database.db".toPath()
+        val databaseName = databaseFile.name
         NativeSqliteDriver(
             schema = StoppelMapDatabase.Schema,
             name = databaseName,

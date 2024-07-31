@@ -31,8 +31,7 @@ data class DataConfig(
 @Serializable
 data class Data(
     val version: Int,
-    val data: String,
-    val map: String,
+    val file: String,
     val supportedSince: SupportedSince,
 ) {
     @Serializable

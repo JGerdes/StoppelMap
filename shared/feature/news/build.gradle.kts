@@ -35,7 +35,7 @@ kotlin {
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.client.core)
-            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.serialization.json.core)
             implementation(libs.sqldelight.coroutines)
             implementation(libs.androidx.datastore.preferences.core)
 
