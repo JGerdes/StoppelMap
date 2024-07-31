@@ -34,14 +34,18 @@ class PrepareStoppelMapData : KoinComponent {
     operator fun invoke(): StoppelMapData {
 
         val parseGeoData =
-            ParseGeoData(settings.geoJsonInput, settings.geoJsonOutput, settings.descriptionFolder)
+            ParseGeoData(
+                settings.geoJsonInput,
+                File(settings.tempDir, "mapdata.geojson"),
+                settings.descriptionFolder
+            )
 
         val taxiServices = generateTaxiServices()
 
         parseGeoData()
 
         return StoppelMapData(
-            version = version.code + 2,
+            version = version.code,
             seasonYear = 2023,
             definitions = Definitions(
                 tags = tags,

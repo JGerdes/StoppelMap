@@ -15,8 +15,8 @@ val preparationModule = module {
         Settings(
             databaseFile = File("database.db"),
             geoJsonInput = File(resources, "stoma23.geojson"),
-            geoJsonOutput = File(sharedAssets, "mapdata.geojson"),
-            stoppelMapDataJsonOutput = File(sharedAssets, "stoppelMapData.json"),
+            dataOutputDir = sharedAssets,
+            tempDir = File("temp").also { it.mkdirs() },
             fetchedEventsFile = File(resources, "events/fetched.json"),
             manualEventsFile = File(resources, "events/manual.json"),
             descriptionFolder = File(resources, "descriptions"),

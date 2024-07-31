@@ -7,6 +7,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.encodeToStream
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import java.io.File
 
 @OptIn(ExperimentalSerializationApi::class)
 class WriteStoppelMapData : KoinComponent {
@@ -16,7 +17,7 @@ class WriteStoppelMapData : KoinComponent {
     operator fun invoke(data: StoppelMapData) {
         Json.encodeToStream(
             value = data,
-            stream = settings.stoppelMapDataJsonOutput.outputStream()
+            stream = File(settings.tempDir, "stoppelMapData.json").outputStream()
         )
     }
 }
