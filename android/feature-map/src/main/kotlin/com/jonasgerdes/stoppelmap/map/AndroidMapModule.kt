@@ -12,13 +12,21 @@ import com.jonasgerdes.stoppelmap.map.repository.location.FakeLocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryImpl
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryWrapper
+import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "mapUserData")
 
 val androidMapModule = module {
+
+    viewModel {
+        MapViewModel(
+            getMapFilePath = get(),
+        )
+    }
 
     single { PermissionRepository(context = get()) }
 

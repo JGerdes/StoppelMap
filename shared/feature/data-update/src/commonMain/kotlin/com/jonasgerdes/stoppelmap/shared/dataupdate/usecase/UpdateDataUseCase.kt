@@ -45,7 +45,7 @@ class UpdateDataUseCase(
         var currentDataVersion = dataUpdateRepository.currentDataVersion.first()
         if (currentDataVersion == null || appInfo.versionCode > currentDataVersion) {
             Logger.d { "UpdateData: Bundled data is newer then existing (or none exists). Apply data from bundle" }
-            updateDataFromZipFile(bundledDataFileSystem, bundledDataPath)
+            updateDataFromZipFile(bundledDataFileSystem, bundledDataPath, appInfo.versionCode)
         } else {
             Logger.d { "UpdateData: Existing data is newer (or same version) as bundled (bundled data: ${appInfo.versionCode}, existing data: $currentDataVersion" }
         }
@@ -76,29 +76,30 @@ class UpdateDataUseCase(
         val remoteDataZip = dataUpdateRepository.downloadFile(latestRemoteData.file, persistentFileSystem)
         if (remoteDataZip != null) {
             Logger.d { "UpdateData: Downloaded remote data sucessfully, appling it" }
-            updateDataFromZipFile(persistentFileSystem, remoteDataZip)
+            updateDataFromZipFile(persistentFileSystem, remoteDataZip, latestRemoteData.version)
         } else {
             Logger.d { "UpdateData: Failed to download remote data" }
         }
     }
 
-    private suspend fun updateDataFromZipFile(fileSystem: FileSystem, zipPath: Path) = withContext(Dispatchers.IO) {
-        val bundledData = fileSystem.openZip(zipPath)
-        Logger.d { "UpdateData: Copy map data" }
-        persistentFileSystem.createDirectories(persistentDataDirectory)
-        val mapDataDestination = persistentDataDirectory.resolve("mapdata_${appInfo.versionCode}.geojson")
-        bundledData.source("mapdata.geojson".toPath()).copyTo(persistentFileSystem.sink(mapDataDestination))
-        Logger.d { "UpdateData: Read stoppelMapData.json" }
-        val stoppelMapData = bundledData.source("stoppelMapData.json".toPath())
-            .buffer()
-            .use {
-                Json.decodeFromBufferedSource<StoppelMapData>(it)
-            }
-        Logger.d { "UpdateData: Update database" }
-        updateDatabase(stoppelMapData)
-        Logger.d { "UpdateData: Set new map file $mapDataDestination" }
-        dataUpdateRepository.setMapFile(mapDataDestination)
-    }
+    private suspend fun updateDataFromZipFile(fileSystem: FileSystem, zipPath: Path, versionCode: Int) =
+        withContext(Dispatchers.IO) {
+            val bundledData = fileSystem.openZip(zipPath)
+            Logger.d { "UpdateData: Copy map data" }
+            //persistentFileSystem.createDirectories(persistentDataDirectory)
+            val mapDataDestination = persistentDataDirectory.resolve("mapdata_${versionCode}.geojson")
+            bundledData.source("mapdata.geojson".toPath()).copyTo(persistentFileSystem.sink(mapDataDestination))
+            Logger.d { "UpdateData: Read stoppelMapData.json" }
+            val stoppelMapData = bundledData.source("stoppelMapData.json".toPath())
+                .buffer()
+                .use {
+                    Json.decodeFromBufferedSource<StoppelMapData>(it)
+                }
+            Logger.d { "UpdateData: Update database" }
+            updateDatabase(stoppelMapData)
+            Logger.d { "UpdateData: Set new map file $mapDataDestination" }
+            dataUpdateRepository.setMapFile(mapDataDestination)
+        }
 
 
     private fun Source.copyTo(sink: Sink) =

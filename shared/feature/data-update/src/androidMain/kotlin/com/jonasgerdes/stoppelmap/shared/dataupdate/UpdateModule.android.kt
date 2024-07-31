@@ -10,3 +10,4 @@ import org.koin.core.scope.Scope
 
 actual fun Scope.bundledDataFileSystem() = get<Context>().assets.asFileSystem()
 actual fun Scope.getPathForAssetResource(assetResource: AssetResource): Path = assetResource.originalPath.toPath()
+actual fun Scope.getMapDirectory(): String = "map"

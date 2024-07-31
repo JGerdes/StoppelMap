@@ -6,6 +6,7 @@ import Shared
 struct MapView: UIViewRepresentable {
     typealias UIViewType = MLNMapView
     
+    var mapDataPath: OkioPath
     var colorScheme: ColorScheme
     
     func makeUIView(context: Context) -> MLNMapView {
@@ -31,7 +32,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: MLNMapView, context: Context) {
-        context.coordinator.update(colorScheme: colorScheme)
+        context.coordinator.update(mapDataPath: mapDataPath, colorScheme: colorScheme)
     }
     
     func makeCoordinator() -> MapView.Coordinator {
@@ -46,16 +47,18 @@ struct MapView: UIViewRepresentable {
             self.control = control
         }
         
-        func update(colorScheme: ColorScheme) {
+        func update(mapDataPath: OkioPath, colorScheme: ColorScheme) {
+            mapView?.updateSource(mapDataPath: mapDataPath)
             mapView?.updateLayerColors(colorScheme: colorScheme)
         }
         
         func mapViewDidFinishLoadingMap(_ mapView: MLNMapView) {
             self.mapView = mapView
-            let mapUrl = URL(string: "file://" + DataUpdateDependencies().mapDataFile.path)!
-            print("mapView, mapViewDidFinishLoadingMap. mapUrl:" + mapUrl.absoluteString)
-            let source = MLNShapeSource(identifier: "composite", url: mapUrl)
-            mapView.style!.addSource(source)
+//            let mapUrl = URL(string: "file://" + DataUpdateDependencies().mapDataFile.path)!
+//            print("mapView, mapViewDidFinishLoadingMap. mapUrl:" + mapUrl.absoluteString)
+//            let source = MLNShapeSource(identifier: "composite", url: mapUrl)
+//            mapView.style!.addSource(source)
+            mapView.updateSource(mapDataPath: self.control.mapDataPath)
             mapView.updateLayerColors(colorScheme: self.control.colorScheme)
             
         }
@@ -68,6 +71,17 @@ struct MapView: UIViewRepresentable {
 
 
 extension MLNMapView {
+    func updateSource(mapDataPath: OkioPath) {
+       if let existingSource = style!.source(withIdentifier: "composite") {
+            print("mapView, found existing source, deleting it")
+            style!.removeSource(existingSource)
+        }
+        let mapUrl = URL(string: "file://" + mapDataPath.description())!
+        print("mapView, mapViewDidFinishLoadingMap. mapUrl:" + mapUrl.absoluteString)
+        let source = MLNShapeSource(identifier: "composite", url: mapUrl)
+        style!.addSource(source)
+    }
+    
     func updateLayerColors(colorScheme: ColorScheme) {
         let mapBackground = colorScheme == .dark ? mapBackgroundDark : mapBackgroundLight
         let mapColors = colorScheme == .dark ? mapColorsDark : mapColorsLight

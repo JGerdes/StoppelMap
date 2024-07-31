@@ -22,6 +22,7 @@ import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
 expect fun Scope.bundledDataFileSystem(): FileSystem
+expect fun Scope.getMapDirectory(): String
 expect fun Scope.getPathForAssetResource(assetResource: AssetResource): Path
 
 val dataUpdateModule = module {
@@ -70,7 +71,7 @@ val dataUpdateModule = module {
             appInfo = get(),
             bundledDataPath = getPathForAssetResource(Res.assets.data),
             bundledDataFileSystem = bundledDataFileSystem(),
-            persistentDataDirectory = get<PathFactory>().create("map").toPath(),
+            persistentDataDirectory = get<PathFactory>().create(getMapDirectory()).toPath(),
             dataUpdateRepository = get(),
             appConfigRepository = get(),
             updateDatabase = UpdateDatabaseUseCase(stoppelMapDatabase = get()),
