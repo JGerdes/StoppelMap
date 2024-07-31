@@ -29,7 +29,7 @@ val dataUpdateModule = module {
 
     single {
         RemoteAppConfigSource(
-            baseUrl = "http://192.168.178.20:8080",
+            baseUrl = "https://api.stoppelmap.de",
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )
@@ -37,7 +37,7 @@ val dataUpdateModule = module {
 
     single {
         RemoteStaticFileSource(
-            baseUrl = "http://192.168.178.20:8080",
+            baseUrl = "https://api.stoppelmap.de",
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )

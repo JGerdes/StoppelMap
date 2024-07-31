@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.jonasgerdes.stoppelmap.base.contract.PathFactory
@@ -60,7 +61,7 @@ val appModule = module {
             versionCode = BuildConfig.VERSION_CODE,
             commitSha = CommonBuildConfig.COMMIT_SHA,
             buildType = get<Context>().getString(R.string.build_type),
-            platform = "Android"
+            platform = "Android(${Build.VERSION.SDK_INT} on ${Build.MANUFACTURER}/${Build.MODEL})"
         )
     }
 

@@ -7,5 +7,5 @@ data class AppInfo(
     val commitSha: String,
     val platform: String,
 ) {
-    val userAgent get() = "StoppelMap $platform $versionName"
+    val userAgent get() = "StoppelMap $versionName $platform"
 }

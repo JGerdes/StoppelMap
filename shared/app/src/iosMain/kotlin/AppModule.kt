@@ -17,6 +17,7 @@ import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
+import platform.UIKit.UIDevice
 
 @OptIn(ExperimentalForeignApi::class)
 private val preferencesPathFactory: PreferencesPathFactory = object : PreferencesPathFactory() {
@@ -72,7 +73,7 @@ val appModule = module {
             versionCode = CommonBuildConfig.VERSION_CODE,
             commitSha = CommonBuildConfig.COMMIT_SHA,
             buildType = "debug",
-            platform = "iOS"
+            platform = "iOS(${UIDevice.currentDevice().systemVersion} on Apple/${UIDevice.currentDevice().name})",
         )
     }
 
