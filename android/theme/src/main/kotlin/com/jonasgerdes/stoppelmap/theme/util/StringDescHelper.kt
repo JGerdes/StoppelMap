@@ -18,6 +18,8 @@ fun stringDesc(stringDesc: StringDesc): String {
 fun localizedString(localizedString: Map<String, String>): String {
     LocalConfiguration.current
     val locale =
-        LocalConfiguration.current.locales.getFirstMatch(localizedString.keys.toTypedArray())
-    return localizedString.getOrDefault(locale ?: "de", localizedString.values.first())
+        LocalConfiguration.current.locales.getFirstMatch(
+            localizedString.keys.toTypedArray()
+        )
+    return localizedString.getOrDefault(locale?.language ?: "de", localizedString.values.first())
 }
