@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.preparation.preparationModule
 import com.jonasgerdes.stoppelmap.preperation.asSlug
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.format.char
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.encodeToStream
 import org.jsoup.Jsoup
@@ -31,7 +32,9 @@ val websiteEventLocalDateTimeFormat = LocalDateTime.Format {
 }
 const val baseUrl = "https://www.stoppelmarkt.de"
 
+@Serializable
 data class EventLocation(
+    val slug: String,
     val title: String,
     val url: String,
     val shortDescription: String? = null,
@@ -39,6 +42,7 @@ data class EventLocation(
     val events: List<Event>? = null
 )
 
+@Serializable
 data class Event(
     val title: String,
     val start: LocalDateTime,
@@ -56,9 +60,16 @@ fun parsePartyTentEvents(): List<EventLocation> {
         .toList()
         .filter { it.select("a").isNotEmpty() }
         .map {
+            val locationUrl = it.select("a").attr("href")
             EventLocation(
+                slug = locationUrl
+                    .removePrefix("https://www.stoppelmarkt.de/")
+                    .removePrefix("/zelte")
+                    .removePrefix("/")
+                    .removeSuffix("/")
+                    .removeSuffix(".html"),
                 title = it.select("a").text(),
-                url = it.select("a").attr("href"),
+                url = locationUrl,
                 shortDescription = it.select("p").firstOrNull()?.html()
             )
         }.map { it.fillWithEvents() }
@@ -113,6 +124,7 @@ fun parseEvents(eventContainer: Elements?): List<Event>? {
 fun writeEventsToFile(
     descriptionFolder: File,
     eventsFile: File,
+    eventsLocationFile: File,
     eventLocations: List<EventLocation>
 ) {
 
@@ -124,28 +136,23 @@ fun writeEventsToFile(
     val events = mutableListOf<com.jonasgerdes.stoppelmap.dto.data.Event>()
 
     eventLocations.forEach { location ->
-        val stallSlug = location.url
-            .removePrefix("https://www.stoppelmarkt.de/")
-            .removePrefix("/zelte")
-            .removePrefix("/")
-            .removeSuffix("/")
-            .removeSuffix(".html")
-        val file = File(descriptionFolder, "$stallSlug.html")
+
+        val file = File(descriptionFolder, "${location.slug}.html")
         if (location.description != null) {
-            println("Write description of [$stallSlug] to $file (url was ${location.url})")
+            println("Write description of [${location.slug}] to $file (url was ${location.url})")
             file.writeText(location.description)
         }
 
         events += location.events
             ?.mapIndexed { index, event ->
                 com.jonasgerdes.stoppelmap.dto.data.Event(
-                    slug = "${stallSlug}_${event.title.asSlug()}_${
+                    slug = "${location.slug}_${event.title.asSlug()}_${
                         index.toString().padStart(2, '0')
                     }",
-                    name = event.title,
+                    name = mapOf(de to event.title),
                     start = event.start,
                     end = null,
-                    location = stallSlug,
+                    location = location.slug,
                     description = event.description?.let {
                         mapOf(de to it)
                     },
@@ -155,11 +162,19 @@ fun writeEventsToFile(
                 )
             } ?: emptyList()
     }
-    Json {
+
+    val locations = eventLocations.map { it.copy(events = null) }
+
+
+    val json = Json {
         prettyPrint = true
         explicitNulls = true
         encodeDefaults = true
-    }.encodeToStream(events, eventsFile.outputStream())
+    }
+
+    json.encodeToStream(events, eventsFile.outputStream())
+    json.encodeToStream(locations, eventsLocationFile.outputStream())
+
 
 }
 
@@ -174,7 +189,8 @@ class EventParser : KoinComponent {
         writeEventsToFile(
             descriptionFolder = folder,
             eventsFile = eventsFile,
-            eventLocations = marquees
+            eventLocations = marquees,
+            eventsLocationFile = settings.eventLocationsFile
         )
     }
 }

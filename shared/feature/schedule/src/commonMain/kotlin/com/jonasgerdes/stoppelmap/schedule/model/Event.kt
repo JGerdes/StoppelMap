@@ -7,7 +7,7 @@ typealias EventSlug = String
 
 data class Event(
     val slug: EventSlug,
-    val name: String,
+    val name: Localized<String>,
     val start: LocalDateTime,
     val end: LocalDateTime?,
     val locationSlug: String?,

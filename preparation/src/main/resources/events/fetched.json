@@ -1,7 +1,802 @@
 [
     {
+        "slug": "alkoholfreies-zelt_fussgruppe_festumzug_„manege_frei_fuer_genuss_gute_laune_und_ehrenamt“_00",
+        "name": {
+            "de": "Fußgruppe Festumzug „Manege frei für Genuss, gute Laune und Ehrenamt“"
+        },
+        "start": "2024-08-15T16:30",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": {
+            "de": "<p>Fußgruppe Festumzug „Manege frei für Genuss, gute Laune und Ehrenamt“ -Mitmacher passend zum Zirkusmotto willkommen!</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_ein_wiedersehen_im_alkoholfreien_zelt_01",
+        "name": {
+            "de": "Ein Wiedersehen im Alkoholfreien Zelt"
+        },
+        "start": "2024-08-15T18:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": {
+            "de": "<p>Ein Wiedersehen im Alkoholfreien Zelt mit schmackhaften Cocktails, eiskalten Sommerlimonaden und hausgemachten Flammkuchen</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_kaffee_und_kuchen_02",
+        "name": {
+            "de": "Kaffee und Kuchen"
+        },
+        "start": "2024-08-16T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_kreativangebote_fuer_kinder_03",
+        "name": {
+            "de": "Kreativangebote für Kinder"
+        },
+        "start": "2024-08-16T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": {
+            "de": "<p>tolle Kreativangebote für Kinder mit dem Mütter-Kinder-Zentrum Bassum e.V.</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_alkoholfreies_pub_quiz_mit_digitalen_mitspielern_aus_altenpflegeeinrichtungen_04",
+        "name": {
+            "de": "Alkoholfreies Pub-Quiz mit digitalen Mitspielern aus Altenpflegeeinrichtungen"
+        },
+        "start": "2024-08-16T16:30",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_speisen_klassiker_vegetarische_leckereien_und_erfrischende_cocktails_05",
+        "name": {
+            "de": "Speisen-Klassiker, vegetarische Leckereien und erfrischende Cocktails"
+        },
+        "start": "2024-08-17T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_kaffee_und_hausgemachter_kuchen_06",
+        "name": {
+            "de": "Kaffee und hausgemachter Kuchen"
+        },
+        "start": "2024-08-17T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_kreatives_bemalen_von_textilien_fuer_den_guten_zweck_mit_studierenden_der_uni_vechta_07",
+        "name": {
+            "de": "kreatives Bemalen von Textilien für den guten Zweck mit Studierenden der Uni Vechta"
+        },
+        "start": "2024-08-17T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": {
+            "de": "<p>kreatives Bemalen von Textilien für den guten Zweck mit Studierenden der Uni Vechta</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_dkms_typisierungsaktion_08",
+        "name": {
+            "de": "DKMS Typisierungsaktion"
+        },
+        "start": "2024-08-17T16:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_grosses_fruehstuecksangebot__09",
+        "name": {
+            "de": "Großes Frühstücksangebot "
+        },
+        "start": "2024-08-18T10:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_generationsuebergreifendes_bingo_fruehstueck_(anmeldung_erforderlich)_10",
+        "name": {
+            "de": "Generationsübergreifendes Bingo-Frühstück (Anmeldung erforderlich)"
+        },
+        "start": "2024-08-18T11:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_speisen_klassiker_11",
+        "name": {
+            "de": "Speisen-Klassiker"
+        },
+        "start": "2024-08-18T12:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": {
+            "de": "<p>Speisen-Klassiker (Koteletts mit Kartoffelsalat), hausgemachte Flammkuchen, vegetarische Leckereien und erfrischende Cocktails</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_episches_schachturnier_fuer_alle_(anmeldung_erwuenscht)_12",
+        "name": {
+            "de": "Episches Schachturnier für Alle (Anmeldung erwünscht)"
+        },
+        "start": "2024-08-18T18:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_grosses_fruehstuecksangebot_13",
+        "name": {
+            "de": "großes Frühstücksangebot"
+        },
+        "start": "2024-08-19T07:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_speisen_klassiker_14",
+        "name": {
+            "de": "Speisen-Klassiker"
+        },
+        "start": "2024-08-19T11:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": {
+            "de": "<p>Speisen-Klassiker (Koteletts mit Kartoffelsalat), hausgemachte Flammkuchen, vegetarische Leckereien und erfrischende Cocktails</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_kaffee_und_hausgemachter_kuchen_15",
+        "name": {
+            "de": "Kaffee und hausgemachter Kuchen"
+        },
+        "start": "2024-08-19T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_pusten_fuer_den_guten_zweck:_promilletests_gegen_spende_16",
+        "name": {
+            "de": "Pusten für den Guten Zweck: Promilletests gegen Spende"
+        },
+        "start": "2024-08-19T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_demokratiedeckel_17",
+        "name": {
+            "de": "Demokratiedeckel"
+        },
+        "start": "2024-08-19T16:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_alkoholfreies_pubquiz_18",
+        "name": {
+            "de": "Alkoholfreies Pubquiz"
+        },
+        "start": "2024-08-19T19:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_speisen_klassiker_vegetarische_leckereien_und_erfrischende_cocktails_19",
+        "name": {
+            "de": "Speisen-Klassiker, vegetarische Leckereien und erfrischende Cocktails"
+        },
+        "start": "2024-08-20T13:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_tolle_kreativangebote_nicht_nur_fuer_kinder_20",
+        "name": {
+            "de": "Tolle Kreativangebote nicht nur für Kinder"
+        },
+        "start": "2024-08-20T14:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "alkoholfreies-zelt_resteverzehr_zu_besonders_guenstigen_preisen_21",
+        "name": {
+            "de": "Resteverzehr zu besonders günstigen Preisen"
+        },
+        "start": "2024-08-20T17:00",
+        "end": null,
+        "location": "alkoholfreies-zelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "beckmanns-altdeutscher-biergarten_dj_charlie_und_band_cadillac_00",
+        "name": {
+            "de": "DJ Charlie und Band Cadillac"
+        },
+        "start": "2024-08-15T20:00",
+        "end": null,
+        "location": "beckmanns-altdeutscher-biergarten",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "beckmanns-altdeutscher-biergarten_dj_charlie_und_band_cadillac_01",
+        "name": {
+            "de": "DJ Charlie und Band Cadillac"
+        },
+        "start": "2024-08-16T20:00",
+        "end": null,
+        "location": "beckmanns-altdeutscher-biergarten",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "beckmanns-altdeutscher-biergarten_dj_charlie_und_band_casablanca_02",
+        "name": {
+            "de": "DJ Charlie und Band Casablanca"
+        },
+        "start": "2024-08-17T20:00",
+        "end": null,
+        "location": "beckmanns-altdeutscher-biergarten",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "beckmanns-altdeutscher-biergarten_dj_charlie_und_musikverein_bakum_03",
+        "name": {
+            "de": "DJ Charlie und Musikverein Bakum"
+        },
+        "start": "2024-08-18T14:00",
+        "end": null,
+        "location": "beckmanns-altdeutscher-biergarten",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "beckmanns-altdeutscher-biergarten_dj_charlie_und_band_casablanca_04",
+        "name": {
+            "de": "DJ Charlie und Band Casablanca"
+        },
+        "start": "2024-08-19T11:00",
+        "end": null,
+        "location": "beckmanns-altdeutscher-biergarten",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "beckmanns-altdeutscher-biergarten_dj_charlie_05",
+        "name": {
+            "de": "DJ Charlie"
+        },
+        "start": "2024-08-20T14:00",
+        "end": null,
+        "location": "beckmanns-altdeutscher-biergarten",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_stoppelmarkt_24_opening__00",
+        "name": {
+            "de": "Stoppelmarkt '24-Opening "
+        },
+        "start": "2024-08-15T18:00",
+        "end": null,
+        "location": "brackmann",
+        "description": {
+            "de": "<p>Do. 15.08.24, 18:00 Uhr - Fr. 16.08.24, 03:00 Uhr</p>\n<p>DJ-Team: \"50 Shapes of Disco\" (\"Michael Disco\" &amp; \"Mark 50\")</p>\n<p>Live: \"Musikverein Oythe\" | \"Kolpingorchester Vechta\" | \"Samba Landaya\" &amp; \"Sambalaon\"</p>\n<p>Die Stoppelmarkt '24-Auftaktparty bei BRACKMANN!</p>\n<p>Wir starten in Vechtas 5. Jahreszeit mit allem Pipapo: Nach der traditionellen Eröffnung durch den \"Musikverein Oythe\" und das \"Kolpingorchester Vechta\" heizen euch die beiden Samba-Formationen \"Samba&nbsp; Landaya\" und \"Sambalaon\" ordentlich ein. Freut euch auf unsere hausgemachten Shots wie \"Brackmann's Apfelstrudel“, \"Split Shot“, \"Mexikaner“ oder \"Hot Wheel“ und tanzt euch langsam warm. Der perfekte Start in den Stoppelmarkt '24!</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_stoppelmarkt_clubbing_01",
+        "name": {
+            "de": "Stoppelmarkt-Clubbing"
+        },
+        "start": "2024-08-16T20:00",
+        "end": null,
+        "location": "brackmann",
+        "description": {
+            "de": "<p>Fr. 16.08.24, 20:00 Uhr - Sa. 17.08.24, 03:00 Uhr</p>\n<p>DJ: \"Michael Disco\"</p>\n<p>Live: \"Guru da Beat\" (Percussion)</p>\n<p>Coole Clubsounds mit live Percussion-Sets. Ein episches, tanzbares Erlebnis!</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_wiedersehen_macht_freude!_|_stoppelmarkt_clubbing_02",
+        "name": {
+            "de": "\"Wiedersehen macht Freude!\"  |  Stoppelmarkt-Clubbing"
+        },
+        "start": "2024-08-17T16:00",
+        "end": null,
+        "location": "brackmann",
+        "description": {
+            "de": "<p><strong>\"Wiedersehen macht Freude!\" - Das Fachkräfte-Event des Landkreises Vechta (ab 16:00 Uhr) | Stoppelmarkt-Clubbing</strong></p>\n<p>Sa. 17.08.24, 16:00 Uhr - So. 18.08.24, 03:00 Uhr</p>\n<p>DJs: \"Nicky Jones\" | \"Maximal\"</p>\n<p>Von 16:00 Uhr - 19:00 Uhr: 'Wiedersehen macht Freude!' – Das Fachkräfte-Event des Landkreises Vechta findet bereits zum zweiten mal in lockerer Atmosphäre direkt auf dem Stoppelmarkt statt. Anmeldung und Infos im Web: <a href=\"https://wiedersehen.starke-argumente.de/\" target=\"_blank\" rel=\"noreferrer\">wiedersehen.starkeargumente.de</a></p>\n<p>Anschließend: Stoppelmarkt-Clubbing u.a. mit Nicky Jones ('Tante Mia tanzt') und Maximal. Einfach der beste Sound auf dem Stoppelmarkt!</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_fruehschoppen_|_brackmann_s_bierzeltreden_24_03",
+        "name": {
+            "de": "Frühschoppen | BRACKMANN'S Bierzeltreden '24"
+        },
+        "start": "2024-08-18T11:00",
+        "end": null,
+        "location": "brackmann",
+        "description": {
+            "de": "<p><strong>Frühschoppen | BRACKMANN'S Bierzeltreden '24 // Der Stoppelmarkt-Poetry-Slam (ab 18:00 Uhr)</strong></p>\n<p>So. 18.08.24, 11:00 Uhr - Mo. 19.08.24, 00:00 Uhr</p>\n<p>DJ: \"Michael Disco\"</p>\n<p>Vormittags: Frühschoppen</p>\n<p>Ab 18:00 Uhr starten \"BRACKMANN'S Bierzeltreden '24\". Der Stoppelmarkt-Poetry-Slam geht bereits in die 4. Runde! Die Slammerinnen und Slammer rund um Benedikt Feldhaus und Peter Havers von \"Bleib laut!\" erobern auch in diesem Jahr die Westerheide. Es gibt zünftige Bierzeltreden: politisch und derb, lustig und bisweilen schmerzhaft, echt und manchmal auch</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_glitzerbox_day_04",
+        "name": {
+            "de": "Glitzerbox-Day"
+        },
+        "start": "2024-08-19T10:00",
+        "end": null,
+        "location": "brackmann",
+        "description": {
+            "de": "<p>Mo. 19.08.24, 10:00 Uhr - Di. 20.08.24, 01:00 Uhr</p>\n<p>DJs: \"50 Shapes of Disco\" (\"Michael Disco\" &amp; \"Mark 50\") | \"Herr Mehl\"</p>\n<p>Live: \"Mister Heavysax\" (Saxophon)</p>\n<p>Die längste Party des Jahres mit den besten Danceclassics-Stoppelhits! ... Party all day/night long! Bei BRACKMANN!</p>\n<p>Dazu erstmals am Montag bei uns als Live-Act: Mister Heavysax! Coole Clubsounds mit live Saxophon-Sets!</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_familientag_(15:00_18:00_uhr)_05",
+        "name": {
+            "de": "Familientag (15:00 - 18:00 Uhr)"
+        },
+        "start": "2024-08-20T15:00",
+        "end": null,
+        "location": "brackmann",
+        "description": {
+            "de": "<p>Di. 20.08.24, 15:00 Uhr - Di. 20.08.24, 23:00 Uhr</p>\n<p>Zum Familientag (15:00 bis 18:00 Uhr) gibt es alle Softdrinks (Coca-Cola, Fanta, Sprite, Mineralwasser) zum familienfreundlichen Rabatt-Preis!</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_opening_–_treffen_der_versch_vereine_und_gruppen_00",
+        "name": {
+            "de": "Opening – Treffen der versch. Vereine und Gruppen"
+        },
+        "start": "2024-08-15T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>Opening – Treffen der versch. Vereine und Gruppen --&nbsp; Party bis nach Mitternacht</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_party_mit_mobildisco_rolf_brell_und_seinem_team_01",
+        "name": {
+            "de": "Party mit Mobildisco Rolf Brell und seinem Team"
+        },
+        "start": "2024-08-16T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer__kaffee_und_kuchen_02",
+        "name": {
+            "de": " Kaffee und Kuchen"
+        },
+        "start": "2024-08-17T14:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_party_mit_mobildisco_rolf_brell_03",
+        "name": {
+            "de": "Party mit Mobildisco Rolf Brell"
+        },
+        "start": "2024-08-17T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_fruehstueck_mittagstisch_kaffee_und_kuchen_04",
+        "name": {
+            "de": "Frühstück, Mittagstisch, Kaffee und Kuchen"
+        },
+        "start": "2024-08-18T10:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_showact_black_sheep_linedancers_05",
+        "name": {
+            "de": "Showact Black Sheep Linedancers"
+        },
+        "start": "2024-08-18T14:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_party_mit_mobildisco_rolf_brell_06",
+        "name": {
+            "de": "Party mit Mobildisco Rolf Brell"
+        },
+        "start": "2024-08-18T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_fruehstueck_mittagstisch_07",
+        "name": {
+            "de": "Frühstück & Mittagstisch"
+        },
+        "start": "2024-08-19T08:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_musik_und_spass_bis_zum_abwinken_mit_der_mobildisco_08",
+        "name": {
+            "de": "Musik und Spaß bis zum Abwinken mit der Mobildisco"
+        },
+        "start": "2024-08-19T11:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_familientag_mit_ermaessigten_preisen_09",
+        "name": {
+            "de": "Familientag mit ermäßigten Preisen"
+        },
+        "start": "2024-08-20T13:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_mobildisco_rolf_brell_10",
+        "name": {
+            "de": "Mobildisco Rolf Brell"
+        },
+        "start": "2024-08-20T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>Die Mobildisco spielt eure <strong>Wunschlieder</strong> bis um Mitternacht.&nbsp;</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
         "slug": "festzelt-grieshop_eroeffnungsparty_mit_dj_und_musikverein_00",
-        "name": "Eröffnungsparty mit DJ und Musikverein",
+        "name": {
+            "de": "Eröffnungsparty mit DJ und Musikverein"
+        },
         "start": "2024-08-15T18:01",
         "end": null,
         "location": "festzelt-grieshop",
@@ -16,7 +811,9 @@
     },
     {
         "slug": "festzelt-grieshop_andreas_gabalier_double_dj_party_fuer_vereine_01",
-        "name": "Andreas Gabalier Double, DJ, Party für Vereine",
+        "name": {
+            "de": "Andreas Gabalier Double, DJ, Party für Vereine"
+        },
         "start": "2024-08-16T14:00",
         "end": null,
         "location": "festzelt-grieshop",
@@ -31,7 +828,9 @@
     },
     {
         "slug": "festzelt-grieshop_kaffee_kuchen_musik_vom_feinsten_mit_dj_amazing_02",
-        "name": "Kaffee & Kuchen, Musik vom Feinsten mit DJ Amazing",
+        "name": {
+            "de": "Kaffee & Kuchen, Musik vom Feinsten mit DJ Amazing"
+        },
         "start": "2024-08-17T14:00",
         "end": null,
         "location": "festzelt-grieshop",
@@ -46,7 +845,9 @@
     },
     {
         "slug": "festzelt-grieshop_jugendgottesdienst_03",
-        "name": "Jugendgottesdienst",
+        "name": {
+            "de": "Jugendgottesdienst"
+        },
         "start": "2024-08-17T17:15",
         "end": null,
         "location": "festzelt-grieshop",
@@ -63,7 +864,9 @@
     },
     {
         "slug": "festzelt-grieshop_familienfruehschoppen_mit_dem_kolping_orchester_vechta_04",
-        "name": "Familienfrühschoppen mit dem Kolping-Orchester Vechta",
+        "name": {
+            "de": "Familienfrühschoppen mit dem Kolping-Orchester Vechta"
+        },
         "start": "2024-08-18T11:00",
         "end": null,
         "location": "festzelt-grieshop",
@@ -78,7 +881,9 @@
     },
     {
         "slug": "festzelt-grieshop_om_swing_band_05",
-        "name": "OM Swing Band",
+        "name": {
+            "de": "OM Swing Band"
+        },
         "start": "2024-08-18T14:00",
         "end": null,
         "location": "festzelt-grieshop",
@@ -93,7 +898,9 @@
     },
     {
         "slug": "festzelt-grieshop_hotlips_projekt_06",
-        "name": "HotLips Projekt",
+        "name": {
+            "de": "HotLips Projekt"
+        },
         "start": "2024-08-18T20:00",
         "end": null,
         "location": "festzelt-grieshop",
@@ -108,7 +915,9 @@
     },
     {
         "slug": "festzelt-grieshop_fruehstueck_kaffee_kuchen_party_07",
-        "name": "Frühstück, Kaffee & Kuchen, Party",
+        "name": {
+            "de": "Frühstück, Kaffee & Kuchen, Party"
+        },
         "start": "2024-08-19T09:00",
         "end": null,
         "location": "festzelt-grieshop",
@@ -123,7 +932,9 @@
     },
     {
         "slug": "festzelt-grieshop_familientag_08",
-        "name": "Familientag",
+        "name": {
+            "de": "Familientag"
+        },
         "start": "2024-08-20T13:00",
         "end": null,
         "location": "festzelt-grieshop",
@@ -138,7 +949,9 @@
     },
     {
         "slug": "hogebacks-festzelt_marktbeginn_00",
-        "name": "Marktbeginn",
+        "name": {
+            "de": "Marktbeginn"
+        },
         "start": "2024-08-15T18:00",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -155,7 +968,9 @@
     },
     {
         "slug": "hogebacks-festzelt_dj_tim_01",
-        "name": "DJ Tim",
+        "name": {
+            "de": "DJ Tim"
+        },
         "start": "2024-08-16T19:00",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -172,7 +987,9 @@
     },
     {
         "slug": "hogebacks-festzelt_dj_tim_02",
-        "name": "DJ Tim",
+        "name": {
+            "de": "DJ Tim"
+        },
         "start": "2024-08-17T19:00",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -189,7 +1006,9 @@
     },
     {
         "slug": "hogebacks-festzelt_fruehschoppen_03",
-        "name": "Frühschoppen",
+        "name": {
+            "de": "Frühschoppen"
+        },
         "start": "2024-08-18T11:00",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -204,7 +1023,9 @@
     },
     {
         "slug": "hogebacks-festzelt_kaffee_kuchen_04",
-        "name": "Kaffee & Kuchen",
+        "name": {
+            "de": "Kaffee & Kuchen"
+        },
         "start": "2024-08-18T14:30",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -221,7 +1042,9 @@
     },
     {
         "slug": "hogebacks-festzelt_dj_tim_05",
-        "name": "DJ Tim",
+        "name": {
+            "de": "DJ Tim"
+        },
         "start": "2024-08-18T19:00",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -238,7 +1061,9 @@
     },
     {
         "slug": "hogebacks-festzelt_fruehstuecksbuffet_06",
-        "name": "Frühstücksbuffet",
+        "name": {
+            "de": "Frühstücksbuffet"
+        },
         "start": "2024-08-19T08:00",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -255,7 +1080,9 @@
     },
     {
         "slug": "hogebacks-festzelt_kaffee_kuchen_07",
-        "name": "Kaffee & Kuchen",
+        "name": {
+            "de": "Kaffee & Kuchen"
+        },
         "start": "2024-08-20T14:30",
         "end": null,
         "location": "hogebacks-festzelt",
@@ -271,8 +1098,97 @@
         "isOfficial": false
     },
     {
+        "slug": "kaponierzelt_funky_rockerz_00",
+        "name": {
+            "de": "Funky Rockerz"
+        },
+        "start": "2024-08-15T18:00",
+        "end": null,
+        "location": "kaponierzelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "kaponierzelt_die_andersons_ralf_burnett_01",
+        "name": {
+            "de": "Die Andersons / Ralf Burnett"
+        },
+        "start": "2024-08-16T19:00",
+        "end": null,
+        "location": "kaponierzelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "kaponierzelt_sandbox_goes_stoppelmarkt_02",
+        "name": {
+            "de": "Sandbox goes Stoppelmarkt"
+        },
+        "start": "2024-08-17T19:00",
+        "end": null,
+        "location": "kaponierzelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "kaponierzelt_buddy_soul_mit_dj_ohrwurm_03",
+        "name": {
+            "de": "Buddy & Soul mit DJ Ohrwurm"
+        },
+        "start": "2024-08-18T19:00",
+        "end": null,
+        "location": "kaponierzelt",
+        "description": {
+            "de": "<p><strong>Zum letzten Mal Buddy &amp; Soul auf dem Stoppelmarkt!</strong></p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "kaponierzelt_funky_rockerz_04",
+        "name": {
+            "de": "Funky Rockerz"
+        },
+        "start": "2024-08-19T10:00",
+        "end": null,
+        "location": "kaponierzelt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
         "slug": "kombinat_pool_nr_9_aus_dinklage_–_dj_ansi_00",
-        "name": "Pool Nr. 9 aus Dinklage – Dj Ansi",
+        "name": {
+            "de": "Pool Nr. 9 aus Dinklage – Dj Ansi"
+        },
         "start": "2024-08-15T19:00",
         "end": null,
         "location": "kombinat",
@@ -287,7 +1203,9 @@
     },
     {
         "slug": "kombinat_best_of_alternative_90´s_–_vps_dj_team_01",
-        "name": "Best of alternative 90´s – VPS Dj Team",
+        "name": {
+            "de": "Best of alternative 90´s – VPS Dj Team"
+        },
         "start": "2024-08-16T14:00",
         "end": null,
         "location": "kombinat",
@@ -302,7 +1220,9 @@
     },
     {
         "slug": "kombinat_„30_grad_im_schatten“_aus_osna_–_dj_ansi_02",
-        "name": "„30 Grad im Schatten“ aus Osna – Dj Ansi",
+        "name": {
+            "de": "„30 Grad im Schatten“ aus Osna – Dj Ansi"
+        },
         "start": "2024-08-17T14:00",
         "end": null,
         "location": "kombinat",
@@ -317,7 +1237,9 @@
     },
     {
         "slug": "kombinat_„cantantes_del_puerto“_vechta_–_dj_ansi_03",
-        "name": "„Cantantes del Puerto“, Vechta – DJ Ansi",
+        "name": {
+            "de": "„Cantantes del Puerto“, Vechta – DJ Ansi"
+        },
         "start": "2024-08-18T11:00",
         "end": null,
         "location": "kombinat",
@@ -332,7 +1254,9 @@
     },
     {
         "slug": "kombinat_dj_onkel_david_04",
-        "name": "DJ Onkel David",
+        "name": {
+            "de": "DJ Onkel David"
+        },
         "start": "2024-08-19T09:00",
         "end": null,
         "location": "kombinat",
@@ -347,7 +1271,9 @@
     },
     {
         "slug": "kombinat_familientag_mit_ermaessigten_preisen_05",
-        "name": "Familientag mit ermäßigten Preisen",
+        "name": {
+            "de": "Familientag mit ermäßigten Preisen"
+        },
         "start": "2024-08-20T13:00",
         "end": null,
         "location": "kombinat",
@@ -362,7 +1288,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_00",
-        "name": "Hallenöffnung",
+        "name": {
+            "de": "Hallenöffnung"
+        },
         "start": "2024-08-15T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -377,7 +1305,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_hashtag_partyband_01",
-        "name": "Hashtag Partyband",
+        "name": {
+            "de": "Hashtag Partyband"
+        },
         "start": "2024-08-15T18:01",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -392,7 +1322,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_dj_ernesto_02",
-        "name": "DJ Ernesto",
+        "name": {
+            "de": "DJ Ernesto"
+        },
         "start": "2024-08-15T18:01",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -407,7 +1339,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_ballermann_star_honk!_03",
-        "name": "Ballermann-Star HONK!",
+        "name": {
+            "de": "Ballermann-Star HONK!"
+        },
         "start": "2024-08-15T21:30",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -422,7 +1356,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_04",
-        "name": "Hallenöffnung",
+        "name": {
+            "de": "Hallenöffnung"
+        },
         "start": "2024-08-16T14:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -437,7 +1373,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_seniorenkaffee_05",
-        "name": "Seniorenkaffee",
+        "name": {
+            "de": "Seniorenkaffee"
+        },
         "start": "2024-08-16T15:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -454,7 +1392,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_dj_ernesto_06",
-        "name": "DJ Ernesto",
+        "name": {
+            "de": "DJ Ernesto"
+        },
         "start": "2024-08-16T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -469,7 +1409,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_hashtag_partyband_07",
-        "name": "Hashtag Partyband",
+        "name": {
+            "de": "Hashtag Partyband"
+        },
         "start": "2024-08-16T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -484,7 +1426,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_08",
-        "name": "Hallenöffnung",
+        "name": {
+            "de": "Hallenöffnung"
+        },
         "start": "2024-08-17T14:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -499,7 +1443,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_partyband_sweet_dreams_09",
-        "name": "Partyband SWEET DREAMS",
+        "name": {
+            "de": "Partyband SWEET DREAMS"
+        },
         "start": "2024-08-17T14:01",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -514,7 +1460,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_dj_ernesto_10",
-        "name": "DJ Ernesto",
+        "name": {
+            "de": "DJ Ernesto"
+        },
         "start": "2024-08-17T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -529,7 +1477,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_play_high_partyband_11",
-        "name": "Play High Partyband",
+        "name": {
+            "de": "Play High Partyband"
+        },
         "start": "2024-08-17T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -544,7 +1494,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_gottesdienst_12",
-        "name": "Gottesdienst",
+        "name": {
+            "de": "Gottesdienst"
+        },
         "start": "2024-08-18T10:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -561,7 +1513,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_mannschaftstag_13",
-        "name": "MANNSCHAFTSTAG",
+        "name": {
+            "de": "MANNSCHAFTSTAG"
+        },
         "start": "2024-08-18T12:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -578,7 +1532,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_dj_ernesto_14",
-        "name": "DJ Ernesto",
+        "name": {
+            "de": "DJ Ernesto"
+        },
         "start": "2024-08-18T13:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -593,7 +1549,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_newcomer_frank_fokuhila_15",
-        "name": "Newcomer FRANK FOKUHILA",
+        "name": {
+            "de": "Newcomer FRANK FOKUHILA"
+        },
         "start": "2024-08-18T13:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -608,7 +1566,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_ballermann_star_isi_glueck_16",
-        "name": "Ballermann-Star ISI GLÜCK",
+        "name": {
+            "de": "Ballermann-Star ISI GLÜCK"
+        },
         "start": "2024-08-18T13:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -623,7 +1583,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_ballermann_stars_biana_ronny_becker_17",
-        "name": "Ballermann-Stars BIANA & RONNY BECKER",
+        "name": {
+            "de": "Ballermann-Stars BIANA & RONNY BECKER"
+        },
         "start": "2024-08-18T13:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -638,7 +1600,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_18",
-        "name": "Hallenöffnung",
+        "name": {
+            "de": "Hallenöffnung"
+        },
         "start": "2024-08-19T08:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -653,7 +1617,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_montagsempfang_mit_olaf_scholz_19",
-        "name": "Montagsempfang mit Olaf Scholz",
+        "name": {
+            "de": "Montagsempfang mit Olaf Scholz"
+        },
         "start": "2024-08-19T11:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -670,7 +1636,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_dj_ernesto_20",
-        "name": "DJ Ernesto",
+        "name": {
+            "de": "DJ Ernesto"
+        },
         "start": "2024-08-19T14:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -685,7 +1653,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_play_high_partyband_21",
-        "name": "Play High Partyband",
+        "name": {
+            "de": "Play High Partyband"
+        },
         "start": "2024-08-19T14:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -700,7 +1670,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_ballermann_star_micky_krause_–_25_jahre_auf_dem_stoppelmarkt_22",
-        "name": "Ballermann-Star MICKY KRAUSE – 25 Jahre auf dem Stoppelmarkt",
+        "name": {
+            "de": "Ballermann-Star MICKY KRAUSE – 25 Jahre auf dem Stoppelmarkt"
+        },
         "start": "2024-08-19T22:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -715,7 +1687,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_23",
-        "name": "Hallenöffnung",
+        "name": {
+            "de": "Hallenöffnung"
+        },
         "start": "2024-08-20T13:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -730,7 +1704,9 @@
     },
     {
         "slug": "kuehlings-niedersachsenhalle_dj_ernesto_24",
-        "name": "DJ Ernesto",
+        "name": {
+            "de": "DJ Ernesto"
+        },
         "start": "2024-08-20T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
@@ -745,7 +1721,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_dj_dodo_00",
-        "name": "DJ Dodo",
+        "name": {
+            "de": "DJ Dodo"
+        },
         "start": "2024-08-15T18:30",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -760,7 +1738,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_dj_dodo_01",
-        "name": "DJ Dodo",
+        "name": {
+            "de": "DJ Dodo"
+        },
         "start": "2024-08-16T20:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -775,7 +1755,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_dj_flo_02",
-        "name": "DJ FLO",
+        "name": {
+            "de": "DJ FLO"
+        },
         "start": "2024-08-17T20:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -790,7 +1772,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_blasmusik_mit_dem_musikverein_lutten_den_sprenegpiel_pipers_aus_vechta_03",
-        "name": "Blasmusik mit dem Musikverein Lutten & den Sprenegpiel-Pipers aus Vechta",
+        "name": {
+            "de": "Blasmusik mit dem Musikverein Lutten & den Sprenegpiel-Pipers aus Vechta"
+        },
         "start": "2024-08-18T12:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -807,7 +1791,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_dj_westi_04",
-        "name": "DJ Westi",
+        "name": {
+            "de": "DJ Westi"
+        },
         "start": "2024-08-18T19:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -822,7 +1808,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_dj_westi_dj_dodo_05",
-        "name": "DJ Westi & DJ Dodo",
+        "name": {
+            "de": "DJ Westi & DJ Dodo"
+        },
         "start": "2024-08-19T11:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -837,7 +1825,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_familientag_06",
-        "name": "Familientag",
+        "name": {
+            "de": "Familientag"
+        },
         "start": "2024-08-20T13:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -854,7 +1844,9 @@
     },
     {
         "slug": "pickers-lutten-das-partyzelt_dj_flo_07",
-        "name": "DJ FLO",
+        "name": {
+            "de": "DJ FLO"
+        },
         "start": "2024-08-20T20:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
@@ -869,7 +1861,9 @@
     },
     {
         "slug": "rastas-genuss-quartier_offizieller_fassbier_anstich!_musik_mit_dj_smackx_und_alberto_saxo!__00",
-        "name": "Offizieller Fassbier-Anstich! Musik mit DJ Smackx und Alberto Saxo! ",
+        "name": {
+            "de": "Offizieller Fassbier-Anstich! Musik mit DJ Smackx und Alberto Saxo! "
+        },
         "start": "2024-08-15T18:31",
         "end": null,
         "location": "rastas-genuss-quartier",
@@ -884,7 +1878,9 @@
     },
     {
         "slug": "rastas-genuss-quartier_musik_und_tanz_mit_der_party_band_real_spirit_sowie_dj_smackx_01",
-        "name": "Musik und Tanz mit der Party Band Real Spirit sowie DJ Smackx",
+        "name": {
+            "de": "Musik und Tanz mit der Party Band Real Spirit sowie DJ Smackx"
+        },
         "start": "2024-08-16T19:00",
         "end": null,
         "location": "rastas-genuss-quartier",
@@ -899,7 +1895,9 @@
     },
     {
         "slug": "rastas-genuss-quartier_„sauna_seb“_philipp_bock_sowie_alberto_saxo_02",
-        "name": "„Sauna Seb“ & Philipp Bock sowie Alberto Saxo",
+        "name": {
+            "de": "„Sauna Seb“ & Philipp Bock sowie Alberto Saxo"
+        },
         "start": "2024-08-17T19:00",
         "end": null,
         "location": "rastas-genuss-quartier",
@@ -914,7 +1912,9 @@
     },
     {
         "slug": "rastas-genuss-quartier_fruehschoppen_mit_dem_musikverein_visbek_03",
-        "name": "Frühschoppen mit dem Musikverein Visbek",
+        "name": {
+            "de": "Frühschoppen mit dem Musikverein Visbek"
+        },
         "start": "2024-08-18T11:00",
         "end": null,
         "location": "rastas-genuss-quartier",
@@ -931,7 +1931,9 @@
     },
     {
         "slug": "rastas-genuss-quartier_akustik_musik_mit_den_real_spirits_04",
-        "name": "Akustik Musik mit den Real Spirits",
+        "name": {
+            "de": "Akustik Musik mit den Real Spirits"
+        },
         "start": "2024-08-18T19:00",
         "end": null,
         "location": "rastas-genuss-quartier",
@@ -946,7 +1948,9 @@
     },
     {
         "slug": "rastas-genuss-quartier_den_ganzen_tag_„the_art_of_music_mixture“_mit_dj_smackx_05",
-        "name": "Den ganzen Tag „the art of music mixture“ mit DJ Smackx",
+        "name": {
+            "de": "Den ganzen Tag „the art of music mixture“ mit DJ Smackx"
+        },
         "start": "2024-08-19T09:00",
         "end": null,
         "location": "rastas-genuss-quartier",
@@ -961,7 +1965,9 @@
     },
     {
         "slug": "rastas-genuss-quartier_familientag_06",
-        "name": "Familientag",
+        "name": {
+            "de": "Familientag"
+        },
         "start": "2024-08-20T13:00",
         "end": null,
         "location": "rastas-genuss-quartier",
@@ -976,7 +1982,9 @@
     },
     {
         "slug": "schaefers-fetenscheune_two4beats_00",
-        "name": "two4beats",
+        "name": {
+            "de": "two4beats"
+        },
         "start": "2024-08-15T19:00",
         "end": null,
         "location": "schaefers-fetenscheune",
@@ -991,7 +1999,9 @@
     },
     {
         "slug": "schaefers-fetenscheune_two4beats_01",
-        "name": "two4beats",
+        "name": {
+            "de": "two4beats"
+        },
         "start": "2024-08-16T19:00",
         "end": null,
         "location": "schaefers-fetenscheune",
@@ -1006,7 +2016,9 @@
     },
     {
         "slug": "schaefers-fetenscheune_two4beats_02",
-        "name": "two4beats",
+        "name": {
+            "de": "two4beats"
+        },
         "start": "2024-08-17T19:00",
         "end": null,
         "location": "schaefers-fetenscheune",
@@ -1021,7 +2033,9 @@
     },
     {
         "slug": "schaefers-fetenscheune_fruehstueck_von_10:00_bis_12:00_uhr__03",
-        "name": "Frühstück von 10:00 bis 12:00 Uhr ",
+        "name": {
+            "de": "Frühstück von 10:00 bis 12:00 Uhr "
+        },
         "start": "2024-08-19T10:00",
         "end": null,
         "location": "schaefers-fetenscheune",
@@ -1036,7 +2050,9 @@
     },
     {
         "slug": "schaefers-fetenscheune_two4beats_04",
-        "name": "two4beats",
+        "name": {
+            "de": "two4beats"
+        },
         "start": "2024-08-19T13:00",
         "end": null,
         "location": "schaefers-fetenscheune",
@@ -1051,7 +2067,9 @@
     },
     {
         "slug": "stratmanns-echt-stoppelmarkt_take_five_und_dj_sascha_schulze_00",
-        "name": "Take Five und DJ Sascha Schulze",
+        "name": {
+            "de": "Take Five und DJ Sascha Schulze"
+        },
         "start": "2024-08-15T19:00",
         "end": null,
         "location": "stratmanns-echt-stoppelmarkt",
@@ -1066,7 +2084,9 @@
     },
     {
         "slug": "stratmanns-echt-stoppelmarkt_play_high_und_dj_sascha_schulze_01",
-        "name": "Play High und DJ Sascha Schulze",
+        "name": {
+            "de": "Play High und DJ Sascha Schulze"
+        },
         "start": "2024-08-16T19:00",
         "end": null,
         "location": "stratmanns-echt-stoppelmarkt",
@@ -1081,7 +2101,9 @@
     },
     {
         "slug": "stratmanns-echt-stoppelmarkt_hashtag_partyband_und_dj_sascha_schulze_02",
-        "name": "Hashtag Partyband und DJ Sascha Schulze",
+        "name": {
+            "de": "Hashtag Partyband und DJ Sascha Schulze"
+        },
         "start": "2024-08-17T19:00",
         "end": null,
         "location": "stratmanns-echt-stoppelmarkt",
@@ -1096,7 +2118,9 @@
     },
     {
         "slug": "stratmanns-echt-stoppelmarkt_dj_sascha_schulze_fruehschoppen_03",
-        "name": "DJ Sascha Schulze, Frühschoppen",
+        "name": {
+            "de": "DJ Sascha Schulze, Frühschoppen"
+        },
         "start": "2024-08-18T11:00",
         "end": null,
         "location": "stratmanns-echt-stoppelmarkt",
@@ -1113,7 +2137,9 @@
     },
     {
         "slug": "stratmanns-echt-stoppelmarkt_hashtag_partyband_und_dj_sascha_schulze_fruehschoppen_04",
-        "name": "Hashtag Partyband und DJ Sascha Schulze, Frühschoppen",
+        "name": {
+            "de": "Hashtag Partyband und DJ Sascha Schulze, Frühschoppen"
+        },
         "start": "2024-08-19T09:00",
         "end": null,
         "location": "stratmanns-echt-stoppelmarkt",
@@ -1130,7 +2156,9 @@
     },
     {
         "slug": "stratmanns-echt-stoppelmarkt_dj_sascha_schulze_05",
-        "name": "DJ Sascha Schulze",
+        "name": {
+            "de": "DJ Sascha Schulze"
+        },
         "start": "2024-08-20T13:00",
         "end": null,
         "location": "stratmanns-echt-stoppelmarkt",

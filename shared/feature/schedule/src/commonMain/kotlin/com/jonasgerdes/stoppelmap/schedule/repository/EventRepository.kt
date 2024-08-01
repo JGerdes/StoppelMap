@@ -47,13 +47,17 @@ class EventRepository(
             .asFlow()
             .mapToList(Dispatchers.IO)
     ) { bookmarkedEventSlugs, events ->
+        val nameStrings =
+            localizedStringQueries
+                .getLocalesForKeys(events.map { it.nameKey })
+
         val descriptionStrings =
             localizedStringQueries
                 .getLocalesForKeys(events.mapNotNull { it.descriptionKey })
         events.map {
             Event(
                 slug = it.slug,
-                name = it.name,
+                name = nameStrings[it.nameKey] ?: mapOf("de" to it.nameKey), //TODO: Improve this
                 start = it.start,
                 end = it.end,
                 locationSlug = it.locationSlug,
@@ -72,6 +76,9 @@ class EventRepository(
                 .mapToList(Dispatchers.IO)
         ) { bookmarkedEventSlugs, events ->
             val bookmarkedEvents = events.filter { bookmarkedEventSlugs.contains(it.slug) }
+            val nameStrings =
+                localizedStringQueries
+                    .getLocalesForKeys(events.map { it.nameKey })
             val descriptionStrings =
                 localizedStringQueries.getLocalesForKeys(
                     bookmarkedEvents.mapNotNull { it.descriptionKey }
@@ -79,7 +86,7 @@ class EventRepository(
             bookmarkedEvents.map {
                 Event(
                     slug = it.slug,
-                    name = it.name,
+                    name = nameStrings[it.nameKey] ?: mapOf("de" to it.nameKey), //TODO: Improve this
                     start = it.start,
                     end = it.end,
                     locationSlug = it.locationSlug,
@@ -97,13 +104,16 @@ class EventRepository(
                 .asFlow()
                 .mapToList(Dispatchers.IO)
         ) { bookmarkedEventSlugs, events ->
+            val nameStrings =
+                localizedStringQueries
+                    .getLocalesForKeys(events.map { it.nameKey })
             val descriptionStrings =
                 localizedStringQueries
                     .getLocalesForKeys(events.mapNotNull { it.descriptionKey })
             events.map {
                 Event(
                     slug = it.slug,
-                    name = it.name,
+                    name = nameStrings[it.nameKey] ?: mapOf("de" to it.nameKey), //TODO: Improve this
                     start = it.start,
                     end = it.end,
                     locationSlug = it.locationSlug,

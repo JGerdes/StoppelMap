@@ -8,6 +8,7 @@ data class Settings(
     val dataOutputDir: File,
     val tempDir: File,
     val fetchedEventsFile: File,
+    val eventLocationsFile: File,
     val manualEventsFile: File,
     val descriptionFolder: File,
 

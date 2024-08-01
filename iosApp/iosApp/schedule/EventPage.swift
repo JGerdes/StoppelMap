@@ -98,7 +98,7 @@ struct EventRow: View {
                 if let location = event.locationName {
                     Text(location).font(.subheadline)
                 }
-                Text(event.name).font(.headline)
+                Text(event.name.localized()).font(.headline)
                 if let description_ = event.description_ {
                     Text(description_.localized())
                         .lineLimit(selected ? nil : 1)

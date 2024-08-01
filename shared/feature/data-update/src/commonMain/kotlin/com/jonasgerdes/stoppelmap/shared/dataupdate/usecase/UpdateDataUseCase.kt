@@ -27,6 +27,7 @@ import okio.Source
 import okio.buffer
 import okio.openZip
 import okio.use
+import kotlin.coroutines.cancellation.CancellationException
 
 @OptIn(ExperimentalSerializationApi::class)
 class UpdateDataUseCase(
@@ -64,7 +65,13 @@ class UpdateDataUseCase(
             && appInfo.versionCode > latestRemoteData.supportedSince.onCurrentPlatform()
         ) {
             Logger.d { "UpdateData: Remote data available that is newer then existing. Downloading it" }
-            updateDataFromRemote(latestRemoteData)
+            try {
+                updateDataFromRemote(latestRemoteData)
+            } catch (cancellationException: CancellationException) {
+                throw cancellationException
+            } catch (throwable: Throwable) {
+                Logger.e(throwable) { "UpdateData: Failed to update data from remote" }
+            }
         } else {
             Logger.d { "UpdateData: Existing data is newer (or same version) as remote data (remote data: ${latestRemoteData?.version}, existing data: $currentDataVersion" }
         }
@@ -86,7 +93,7 @@ class UpdateDataUseCase(
         withContext(Dispatchers.IO) {
             val bundledData = fileSystem.openZip(zipPath)
             Logger.d { "UpdateData: Copy map data" }
-            //persistentFileSystem.createDirectories(persistentDataDirectory)
+            persistentFileSystem.createDirectories(persistentDataDirectory)
             val mapDataDestination = persistentDataDirectory.resolve("mapdata_${versionCode}.geojson")
             bundledData.source("mapdata.geojson".toPath()).copyTo(persistentFileSystem.sink(mapDataDestination))
             Logger.d { "UpdateData: Read stoppelMapData.json" }

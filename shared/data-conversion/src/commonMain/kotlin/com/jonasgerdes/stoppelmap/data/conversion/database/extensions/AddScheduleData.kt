@@ -11,7 +11,7 @@ internal fun StoppelMapDatabase.addScheduleData(schedule: Schedule) {
         eventQueries.insert(
             Event(
                 slug = event.slug,
-                name = event.name,
+                nameKey = addLocalizedString(event.name, event.slug, "name"),
                 start = event.start,
                 end = event.end,
                 descriptionKey = event.description?.let {

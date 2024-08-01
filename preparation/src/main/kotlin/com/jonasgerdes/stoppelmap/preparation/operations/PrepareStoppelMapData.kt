@@ -1,8 +1,12 @@
 package com.jonasgerdes.stoppelmap.preparation.operations
 
+import com.jonasgerdes.stoppelmap.dto.data.BoundingBox
 import com.jonasgerdes.stoppelmap.dto.data.Definitions
 import com.jonasgerdes.stoppelmap.dto.data.Event
+import com.jonasgerdes.stoppelmap.dto.data.Location
 import com.jonasgerdes.stoppelmap.dto.data.Map
+import com.jonasgerdes.stoppelmap.dto.data.MapEntity
+import com.jonasgerdes.stoppelmap.dto.data.MapEntityType
 import com.jonasgerdes.stoppelmap.dto.data.Schedule
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 import com.jonasgerdes.stoppelmap.dto.data.Transportation
@@ -12,6 +16,7 @@ import com.jonasgerdes.stoppelmap.preparation.definitions.services
 import com.jonasgerdes.stoppelmap.preparation.definitions.subTypes
 import com.jonasgerdes.stoppelmap.preparation.definitions.tags
 import com.jonasgerdes.stoppelmap.preparation.definitions.typeAliases
+import com.jonasgerdes.stoppelmap.preparation.schedule.EventLocation
 import com.jonasgerdes.stoppelmap.preparation.schedule.utils.cleanUpEventDescription
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateTrainRoutes
@@ -44,9 +49,23 @@ class PrepareStoppelMapData : KoinComponent {
 
         parseGeoData()
 
+        val scheduleData = prepareSchedule(
+            listOf(
+                settings.manualEventsFile,
+                settings.fetchedEventsFile,
+            ),
+            isWorkInProgress = true
+        )
+
+        val missingEventLocations = generateMissingEventLocations(
+            scheduleData.events,
+            parseGeoData.mapEntities,
+            settings.eventLocationsFile
+        )
+
         return StoppelMapData(
             version = version.code,
-            seasonYear = 2023,
+            seasonYear = 2024,
             definitions = Definitions(
                 tags = tags,
                 subTypes = subTypes,
@@ -56,17 +75,11 @@ class PrepareStoppelMapData : KoinComponent {
                 operators = transportOperators + parseGeoData.operators
             ),
             map = Map(
-                entities = parseGeoData.mapEntities,
+                entities = parseGeoData.mapEntities + missingEventLocations,
                 typeAliases = typeAliases,
                 isWorkInProgress = true,
             ),
-            schedule = prepareSchedule(
-                listOf(
-                    settings.manualEventsFile,
-                    settings.fetchedEventsFile,
-                ),
-                isWorkInProgress = true
-            ),
+            schedule = scheduleData,
             transportation = Transportation(
                 busRoutes = generateBusRoutes(),
                 trainRoutes = generateTrainRoutes(),
@@ -95,5 +108,43 @@ class PrepareStoppelMapData : KoinComponent {
             },
             isWorkInProgress = isWorkInProgress
         )
+    }
+
+    private fun generateMissingEventLocations(
+        events: List<Event>,
+        mapEntities: List<MapEntity>,
+        eventLocationsFile: File
+    ): List<MapEntity> {
+        val missingLocations = mutableListOf<MapEntity>()
+        val eventLocations: List<EventLocation> = Json.decodeFromStream(eventLocationsFile.inputStream().buffered())
+
+        events
+            .filter { it.location != null }
+            .forEach { event ->
+                if (mapEntities.none { it.slug == event.location } && missingLocations.none { it.slug == event.location }) {
+                    val eventLocation = eventLocations.firstOrNull { it.slug == event.location }
+                    if (eventLocation == null) return@forEach
+                    missingLocations += MapEntity(
+                        slug = eventLocation.slug,
+                        name = eventLocation.title,
+                        type = MapEntityType.Misc,
+                        center = Location(
+                            lat = 0.0,
+                            lng = 0.0,
+                        ),
+                        bbox = BoundingBox(
+                            southLat = 0.0,
+                            westLng = 0.0,
+                            northLat = 0.0,
+                            eastLng = 0.0,
+                        ),
+                        priority = 9999,
+                        isSearchable = false
+
+                    )
+                }
+            }
+
+        return missingLocations.toList()
     }
 }

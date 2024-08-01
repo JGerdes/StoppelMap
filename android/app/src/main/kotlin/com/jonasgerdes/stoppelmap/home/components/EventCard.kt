@@ -85,7 +85,7 @@ private fun EventCard(
                 text = event.start.toJavaLocalDateTime().format(timeFormatter),
                 style = MaterialTheme.typography.labelLarge
             )
-            Text(text = event.name, style = MaterialTheme.typography.titleLarge)
+            Text(text = localizedString(event.name), style = MaterialTheme.typography.titleLarge)
             event.description?.let {
                 Text(
                     text = localizedString(it),

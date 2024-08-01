@@ -3,7 +3,7 @@ import kotlinx.datetime.LocalDateTime;
 
 CREATE TABLE event (
     slug TEXT NOT NULL PRIMARY KEY,
-    name TEXT NOT NULL,
+    nameKey TEXT NOT NULL,
     start TEXT AS LocalDateTime NOT NULL,
     end TEXT AS LocalDateTime,
     descriptionKey TEXT,
@@ -11,11 +11,13 @@ CREATE TABLE event (
     isOfficial INTEGER AS Boolean NOT NULL,
 
     FOREIGN KEY(locationSlug) REFERENCES map_entity(slug),
+    FOREIGN KEY(nameKey) REFERENCES localized_string(key),
+    FOREIGN KEY(descriptionKey) REFERENCES localized_string(key),
     FOREIGN KEY(slug) REFERENCES website(referenceSlug)
 );
 
 insert:
-INSERT INTO event(slug, name, start, end, descriptionKey, locationSlug, isOfficial)
+INSERT INTO event(slug, nameKey, start, end, descriptionKey, locationSlug, isOfficial)
 VALUES ?;
 
 clear:

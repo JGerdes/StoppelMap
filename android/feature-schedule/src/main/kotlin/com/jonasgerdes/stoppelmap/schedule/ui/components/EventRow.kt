@@ -68,7 +68,7 @@ fun EventRow(
             event.locationName?.let {
                 Text(text = it, style = MaterialTheme.typography.labelMedium)
             }
-            Text(text = event.name, style = MaterialTheme.typography.bodyLarge)
+            Text(text = localizedString(event.name), style = MaterialTheme.typography.bodyLarge)
             event.description?.let {
                 Text(
                     text = localizedString(it),

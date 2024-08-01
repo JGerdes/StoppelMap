@@ -15,7 +15,7 @@ typealias EventSlug = String
 @Serializable
 data class Event(
     val slug: EventSlug,
-    val name: String,
+    val name: Localized<String>,
     val start: LocalDateTime,
     val end: LocalDateTime? = null,
     val location: MapEntitySlug? = null,

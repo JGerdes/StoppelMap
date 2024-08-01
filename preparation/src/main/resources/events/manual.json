@@ -1,7 +1,9 @@
 [
   {
     "slug": "stoppelmarkt_umzug",
-    "name": "Festumzug",
+    "name": {
+      "de": "Festumzug"
+    },
     "start": "2024-08-15T16:30",
     "end": "2024-08-15T18:30",
     "location": null,
@@ -19,12 +21,16 @@
   },
   {
     "slug": "stoppelmarkt_eroeffnung",
-    "name": "Feierliche Eröffnung",
+    "name": {
+      "de": "Feierliche Eröffnung",
+      "en": "Stoppelmarkt opening"
+    },
     "start": "2024-08-15T18:30",
     "end": null,
     "location": "amtmannsbult",
     "description": {
-      "de": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet."
+      "de": "Am Amtmannsbult, wo früher das Marktgericht seinen Sitz hatte, wird vom Bürgermeister feierlich der Markt eröffnet.",
+      "en": "Stoppelmarkt is opened by the mayor at Amtmannsbult, where the market court used to be located."
     },
     "participants": [
     ],
@@ -36,7 +42,9 @@
   },
   {
     "slug": "stoppelmarkt_marktbeginn_fr",
-    "name": "Marktbeginn",
+    "name": {
+      "de": "Marktbeginn"
+    },
     "start": "2024-08-16T14:00",
     "end": null,
     "location": null,
@@ -51,7 +59,9 @@
   },
   {
     "slug": "stoppelmarkt_happy_hour",
-    "name": "Happy Hour",
+    "name": {
+      "de": "Happy Hour"
+    },
     "start": "2024-08-16T14:00",
     "end": "2024-08-16T16:00",
     "location": null,
@@ -70,7 +80,9 @@
   },
   {
     "slug": "stoppelmarkt_marktbeginn_sa",
-    "name": "Marktbeginn",
+    "name": {
+      "de": "Marktbeginn"
+    },
     "start": "2024-08-17T14:00",
     "end": null,
     "location": null,
@@ -85,7 +97,9 @@
   },
   {
     "slug": "stoppelmarkt_marktbeginn_so",
-    "name": "Marktbeginn",
+    "name": {
+      "de": "Marktbeginn"
+    },
     "start": "2024-08-18T11:00",
     "end": null,
     "location": null,
@@ -99,23 +113,10 @@
     "isOfficial": true
   },
   {
-    "slug": "stoppelmarkt_viewmarkt",
-    "name": "Tierschau auf dem Viehmarktgelände",
-    "start": "2024-08-19T07:00",
-    "end": null,
-    "location": null,
-    "description": null,
-    "participants": [
-    ],
-    "tags": [
-    ],
-    "websites": [
-    ],
-    "isOfficial": true
-  },
-  {
     "slug": "stoppelmarkt_marktbeginn_mo",
-    "name": "Marktbeginn",
+    "name": {
+      "de": "Marktbeginn"
+    },
     "start": "2024-08-19T09:00",
     "end": null,
     "location": null,
@@ -130,7 +131,9 @@
   },
   {
     "slug": "stoppelmarkt_marktbeginn_di",
-    "name": "Marktbeginn",
+    "name": {
+      "de": "Marktbeginn"
+    },
     "start": "2024-08-19T13:00",
     "end": null,
     "location": null,
@@ -145,7 +148,10 @@
   },
   {
     "slug": "stoppelmarkt_familientag",
-    "name": "Familientag",
+    "name": {
+      "de": "Familientag",
+      "en": "Family day"
+    },
     "start": "2024-08-20T13:00",
     "end": "2024-08-20T18:00",
     "location": null,
@@ -164,7 +170,9 @@
   },
   {
     "slug": "stoppelmarkt_feuerwerk",
-    "name": "Abschlussfeuerwerk",
+    "name": {
+      "de": "Abschlussfeuerwerk"
+    },
     "start": "2024-08-20T22:00",
     "end": null,
     "location": null,

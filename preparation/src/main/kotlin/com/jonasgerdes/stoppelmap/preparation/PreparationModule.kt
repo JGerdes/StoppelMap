@@ -14,10 +14,11 @@ val preparationModule = module {
         val resources = File("../preparation/src/main/resources")
         Settings(
             databaseFile = File("database.db"),
-            geoJsonInput = File(resources, "stoma23.geojson"),
+            geoJsonInput = File(resources, "stoma24.geojson"),
             dataOutputDir = sharedAssets,
             tempDir = File("temp").also { it.mkdirs() },
             fetchedEventsFile = File(resources, "events/fetched.json"),
+            eventLocationsFile = File(resources, "events/locations.json"),
             manualEventsFile = File(resources, "events/manual.json"),
             descriptionFolder = File(resources, "descriptions"),
             year = 2023
