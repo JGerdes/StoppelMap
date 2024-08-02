@@ -52,10 +52,7 @@
             "version": {
               "type": "number"
             },
-            "data": {
-              "type": "string"
-            },
-            "map": {
+            "file": {
               "type": "string"
             },
             "supportedSince": {
@@ -81,8 +78,7 @@
           },
           "required": [
             "version",
-            "data",
-            "map",
+            "file",
             "supportedSince"
           ],
           "additionalProperties": false
