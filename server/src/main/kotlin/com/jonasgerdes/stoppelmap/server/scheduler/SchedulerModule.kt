@@ -7,7 +7,8 @@ val schedulerModule = module {
         TaskScheduler(
             tasks = getAll<Task>(),
             clockProvider = get(),
-            logger = get()
+            logger = get(),
+            monitoring = get()
         )
     }
 }

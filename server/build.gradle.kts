@@ -42,6 +42,8 @@ dependencies {
     implementation(libs.jsoup)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.server.metrics.micrometer)
+    implementation(libs.micrometer.registry.prometheus)
     implementation(libs.scrimage.core)
     implementation(libs.scrimage.webp)
     implementation(libs.blurhash.java)

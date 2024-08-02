@@ -13,10 +13,11 @@ class CrawlAllNewsInitialTask(
 ) : Task {
 
     override val schedule = Schedule.Once
+    override val name: String = "CrawlAllNewsInitial"
 
     override suspend fun invoke() {
         val count = articleRepository.getCount()
-        if (count == 0L) {
+        if (count == 0) {
             logger.info("No articles yet, crawling all.")
             stoppelmarktWebsiteCrawler.crawlNews(mode = StoppelmarktWebsiteCrawler.Mode.All)
         } else {

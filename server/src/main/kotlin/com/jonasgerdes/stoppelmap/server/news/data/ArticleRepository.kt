@@ -1,8 +1,5 @@
 package com.jonasgerdes.stoppelmap.server.news.data
 
-import com.jonasgerdes.stoppelmap.server.news.data.Article
-import com.jonasgerdes.stoppelmap.server.news.data.ArticleQueries
-
 class ArticleRepository(
     private val articleQueries: ArticleQueries,
 ) {
@@ -36,7 +33,9 @@ class ArticleRepository(
             limit = pageSize.toLong()
         ).executeAsList()
 
-    fun getCount() = articleQueries.countVisible().executeAsOne()
+    fun getVisibleCount() = articleQueries.countVisible().executeAsOne().toInt()
+
+    fun getCount() = articleQueries.countAll().executeAsOne().toInt()
     fun getExistingPublishDates() = articleQueries
         .countExistingPublishDates { publishedOn, count -> publishedOn to count }
         .executeAsList()

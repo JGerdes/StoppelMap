@@ -38,5 +38,8 @@ fun ApplicationConfig.toServerConfig(
     appConfigFile = property("stoppelmap-server.app-config-file").getString(),
     apiKey = property("stoppelmap-server.api-key").getString().also {
         if (it.isBlank()) throw IllegalArgumentException("Please provide an API key as environment variable `API_KEY`.")
+    },
+    metricCredentials = property("stoppelmap-server.metric-credentials").getString().also {
+        if (it.isBlank()) throw IllegalArgumentException("Please provide credentials for metrics as environment variable `METRIC_CREDENTIALS`.")
     }
 )

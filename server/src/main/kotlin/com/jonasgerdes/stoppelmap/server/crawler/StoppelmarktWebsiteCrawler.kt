@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.ArticlePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsArchivePageScraper
 import com.jonasgerdes.stoppelmap.server.crawler.scraper.NewsPageScraper
+import com.jonasgerdes.stoppelmap.server.monitoring.Monitoring
 import com.jonasgerdes.stoppelmap.server.news.data.Article
 import com.jonasgerdes.stoppelmap.server.news.data.ArticleRepository
 import com.jonasgerdes.stoppelmap.server.news.data.Image
@@ -30,6 +31,7 @@ class StoppelmarktWebsiteCrawler(
     private val imageRepository: ImageRepository,
     private val clockProvider: ClockProvider,
     private val logger: Logger,
+    private val monitoring: Monitoring,
 ) {
 
     enum class Mode {
@@ -40,7 +42,7 @@ class StoppelmarktWebsiteCrawler(
     suspend fun crawlNews(mode: Mode = Mode.Latest) {
         logger.info("Crawling news from ${crawlerConfig.baseUrl}${if (crawlerConfig.slowMode) " in slow mode" else ""}")
         val articlePreviews = mutableListOf<ArticlePreview>()
-        when (val result = NewsPageScraper().invoke(crawlerConfig)) {
+        when (val result = NewsPageScraper().invoke(crawlerConfig, monitoring)) {
             is CrawlResult.Error -> {
                 result.logs.logTo(logger)
             }
@@ -57,7 +59,7 @@ class StoppelmarktWebsiteCrawler(
             if (crawlerConfig.slowMode) delay(slowModeDelay)
             val resource = pageIterator.next()
             logger.debug("📥 Scraping article $resource")
-            when (val result = NewsArchivePageScraper(resource).invoke(crawlerConfig)) {
+            when (val result = NewsArchivePageScraper(resource).invoke(crawlerConfig, monitoring)) {
                 is CrawlResult.Error -> result.logs.logTo(logger)
                 is CrawlResult.Success -> {
                     if (mode == Mode.All) {
@@ -73,7 +75,7 @@ class StoppelmarktWebsiteCrawler(
         val scrapedArticles = articlePreviews.mapNotNull {
             if (crawlerConfig.slowMode) delay(slowModeDelay)
             logger.debug("Scraped article preview $it, getting full article")
-            when (val result = ArticlePageScraper(preview = it).invoke(crawlerConfig)) {
+            when (val result = ArticlePageScraper(preview = it).invoke(crawlerConfig, monitoring)) {
                 is CrawlResult.Error -> {
                     result.logs.logTo(logger)
                     null
@@ -148,7 +150,12 @@ class StoppelmarktWebsiteCrawler(
 
         imageRepository.upsertAll(images)
 
-        logger.info("Done crawling - saved ${scrapedArticles.size} articles and ${images.size} images")
+        val visibleArticles = articleRepository.getCount()
+        val totalArticles = articleRepository.getVisibleCount()
+        monitoring.visibleNewsCounter?.set(visibleArticles)
+        monitoring.newsCounter?.set(totalArticles)
+        logger.info("Done crawling - saved ${scrapedArticles.size} articles and ${images.size} images. Total $totalArticles with $visibleArticles visible")
+
     }
 
     private fun sanitizeUrl(url: String) =

@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.server.crawler
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlLogs
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlResult
 import com.jonasgerdes.stoppelmap.server.crawler.model.CrawlerConfig
+import com.jonasgerdes.stoppelmap.server.monitoring.Monitoring
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -21,7 +22,7 @@ abstract class PageScraper<T> {
 
     abstract fun parseDocument(document: Document, logs: CrawlLogs): T
 
-    operator fun invoke(crawlerConfig: CrawlerConfig): CrawlResult<T> {
+    operator fun invoke(crawlerConfig: CrawlerConfig, monitoring: Monitoring): CrawlResult<T> {
         val resource = crawlerConfig.baseUrl + resourcePath
         val logs = CrawlLogs(resource = resource, title = title)
         val start = Clock.System.now()
@@ -37,9 +38,11 @@ abstract class PageScraper<T> {
             pending("Jsoup connect and fetch")
         }
         val document = try {
-            Jsoup.connect(resource)
-                .userAgent(crawlerConfig.userAgent)
-                .get()
+            monitoring.newsFetchArticleTimer.recordCallable {
+                Jsoup.connect(resource)
+                    .userAgent(crawlerConfig.userAgent)
+                    .get()
+            }
         } catch (t: Throwable) {
             val done = Clock.System.now()
             logs.info(

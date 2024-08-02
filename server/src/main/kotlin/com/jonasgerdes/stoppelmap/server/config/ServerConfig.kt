@@ -9,6 +9,7 @@ data class ServerConfig(
     val crawler: Crawler,
     val appConfigFile: String,
     val apiKey: String,
+    val metricCredentials: String,
 ) {
     enum class Environment {
         DEV,

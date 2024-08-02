@@ -43,6 +43,7 @@ val crawlerModule = module {
             articleRepository = get(),
             imageRepository = get(),
             clockProvider = get(),
+            monitoring = get()
         )
     }
 
@@ -77,7 +78,8 @@ fun crawlerTasksModule(crawlerConfig: ServerConfig.Crawler) = module {
         single {
             CrawlLatestNewsTask(
                 stoppelmarktWebsiteCrawler = get(),
-                schedule = Schedule.HoursOfDay(crawlerConfig.periodicCrawlHours)
+                schedule = Schedule.HoursOfDay(crawlerConfig.periodicCrawlHours, executeOnceImmediately = true),
+                monitoring = get()
             )
         } bind Task::class
     }

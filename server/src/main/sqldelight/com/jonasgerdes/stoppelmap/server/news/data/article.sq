@@ -41,3 +41,6 @@ countExistingPublishDates:
 
 countVisible:
     SELECT COUNT(slug) FROM article WHERE isVisible = 1;
+
+countAll:
+    SELECT COUNT(slug) FROM article;

@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.server.scheduler
 
+import com.jonasgerdes.stoppelmap.server.monitoring.Monitoring
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -16,6 +17,7 @@ import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
 
 interface Task {
+    val name: String
     val schedule: Schedule
     suspend operator fun invoke()
 }
@@ -60,6 +62,7 @@ class TaskScheduler(
     private val tasks: List<Task>,
     private val clockProvider: ClockProvider,
     private val logger: Logger,
+    private val monitoring: Monitoring,
 ) {
     suspend fun run() {
         logger.info("TaskScheduler - Starting with ${tasks.size} tasks:")
@@ -72,8 +75,7 @@ class TaskScheduler(
             tasks.forEach { task ->
                 launch {
                     if (task.schedule.executeOnceImmediately) {
-                        logger.info("Running task ${task::class.simpleName}")
-                        task()
+                        runTask(task)
                     }
                     var done = false
                     while (!done) {
@@ -85,18 +87,24 @@ class TaskScheduler(
                         } else {
                             logger.trace("Waiting $delayDuration for next occurrence of task ${task::class.simpleName}")
                             delay(delayDuration)
-                            logger.info("Running task ${task::class.simpleName}")
-                            task()
+                            runTask(task)
                         }
                     }
                 }
             }
         }
     }
+
+    private suspend fun runTask(task: Task) {
+        logger.info("Running task ${task::class.simpleName}")
+        monitoring.recordTask(task.name) {
+            task()
+        }
+    }
 }
 
 private val timeZone = TimeZone.UTC
-private suspend fun Schedule.durationToNextOccurrenceAfter(now: Instant): Duration? =
+private fun Schedule.durationToNextOccurrenceAfter(now: Instant): Duration? =
     when (this) {
         is Schedule.Once -> null
         is Schedule.Daily -> {
