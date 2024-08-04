@@ -6,6 +6,9 @@ import com.jonasgerdes.stoppelmap.server.appconfig.appConfigRoutes
 import com.jonasgerdes.stoppelmap.server.config.toServerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerTasksModule
+import com.jonasgerdes.stoppelmap.server.monitoring.Monitoring
+import com.jonasgerdes.stoppelmap.server.monitoring.monitoringModule
+import com.jonasgerdes.stoppelmap.server.monitoring.monitoringRoutes
 import com.jonasgerdes.stoppelmap.server.news.newsModule
 import com.jonasgerdes.stoppelmap.server.news.newsRoutes
 import com.jonasgerdes.stoppelmap.server.scheduler.TaskScheduler
@@ -19,6 +22,7 @@ import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.install
 import io.ktor.server.engine.ApplicationEngineEnvironment
 import io.ktor.server.http.content.staticFiles
+import io.ktor.server.metrics.micrometer.MicrometerMetrics
 import io.ktor.server.plugins.cachingheaders.CachingHeaders
 import io.ktor.server.plugins.callloging.CallLogging
 import io.ktor.server.plugins.compression.Compression
@@ -50,6 +54,7 @@ fun Application.ktorModule() {
         .level = if (serverConfig.environment.isDev) LogbackLevel.ALL else LogbackLevel.INFO
 
     environment.log.info("Starting version ${serverConfig.version} with environment ${serverConfig.environment}")
+
     install(CallLogging)
     install(Compression)
     install(CachingHeaders)
@@ -73,6 +78,7 @@ fun Application.ktorModule() {
             isLenient = serverConfig.environment.isPrd
         })
     }
+
     install(Koin) {
         printLogger(if (serverConfig.environment.isDev) Level.DEBUG else Level.INFO)
         modules(
@@ -81,6 +87,7 @@ fun Application.ktorModule() {
                 single { environment.log }
             },
             applicationModule,
+            monitoringModule,
             crawlerModule,
             crawlerTasksModule(serverConfig.crawler),
             newsModule,
@@ -89,7 +96,13 @@ fun Application.ktorModule() {
         )
     }
 
+    install(MicrometerMetrics) {
+        val monitoring: Monitoring by this@ktorModule.inject()
+        monitoring.install(this)
+    }
+
     routing {
+        monitoringRoutes()
         newsRoutes()
         appConfigRoutes()
 
