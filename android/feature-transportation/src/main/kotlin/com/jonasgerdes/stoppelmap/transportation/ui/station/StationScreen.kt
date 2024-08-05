@@ -6,7 +6,6 @@ package com.jonasgerdes.stoppelmap.transportation.ui.station
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -19,7 +18,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -38,21 +36,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.data.shared.Fee
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
-import com.jonasgerdes.stoppelmap.transportation.model.Price
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.ui.toStringResource
-import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import java.text.NumberFormat
@@ -118,7 +114,7 @@ fun StationScreen(
                             style = MaterialTheme.typography.labelMedium
                         )
                         Spacer(modifier = Modifier.size(8.dp))
-                        priceState.prices.forEach { price ->
+                        /*priceState.prices.forEach { price ->
                             Row(
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 modifier = Modifier.fillMaxWidth()
@@ -131,7 +127,7 @@ fun StationScreen(
                                     text = price.formatAmount(LocalContext.current.resources)
                                 )
                             }
-                        }
+                        }*/
                         if (priceState.showDeutschlandTicketHint) {
                             Spacer(modifier = Modifier.size(8.dp))
                             Text(
@@ -184,34 +180,14 @@ fun StationScreen(
     }
 }
 
-private fun Price.formatAmount(resources: Resources) =
+private fun Fee.formatAmount(resources: Resources) =
     NumberFormat.getCurrencyInstance(
         ConfigurationCompat.getLocales(resources.configuration)[0] ?: Locale.getDefault()
     ).apply {
         maximumFractionDigits = 2
         currency = Currency.getInstance("EUR")
-    }.format(amountInCents / 100f)
+    }.format(price / 100f)
 
-private fun Price.PriceLabel.asString(resources: Resources): String =
-    when (this) {
-        Price.PriceLabel.Adult -> resources.getString(R.string.transportation_station_prices_adult)
-        is Price.PriceLabel.Children -> when {
-            minAge != null && maxAge != null -> resources.getString(
-                R.string.transportation_station_prices_children_with_range,
-                minAge,
-                maxAge
-            )
-
-            maxAge != null -> resources.getString(
-                R.string.transportation_station_prices_children_with_limit,
-                maxAge
-            )
-
-            else -> resources.getString(R.string.transportation_station_prices_children)
-        }
-
-        is Price.PriceLabel.Reduced -> resources.getString(R.string.transportation_station_prices_reduced)
-    }
 
 @Composable
 fun Timetable(
@@ -240,7 +216,7 @@ fun Timetable(
                     )
                 }
             }
-            items(
+            /*items(
                 items = daySegment.departureSlots.flatMap { dslot -> dslot.departures.mapIndexed() { id, it -> it to id.toString() + "-" + dslot.departures.first { it != null }!!.time } },
                 key = { it.second },
                 contentType = { ContentType.TIME }
@@ -256,7 +232,7 @@ fun Timetable(
                             .padding(2.dp)
                     )
                 }
-            }
+            }*/
         }
     }
 }

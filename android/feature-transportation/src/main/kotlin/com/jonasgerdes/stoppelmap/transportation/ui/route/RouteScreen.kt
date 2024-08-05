@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,11 +31,11 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,7 +54,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
@@ -78,15 +78,15 @@ fun RouteScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Timber.d("new state: ${(state.routeState as? RouteViewModel.RouteState.Loaded)?.routeDetails?.stations?.firstOrNull()}")
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val listState = rememberLazyListState()
 
     val routeState = state.routeState
     if (routeState is RouteViewModel.RouteState.Loaded) {
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = { Text(text = routeState.routeDetails.title) },
+                LargeTopAppBar(
+                    title = { Text(text = routeState.routeDetails.name) },
                     scrollBehavior = scrollBehavior,
                     modifier = Modifier.elevationWhenScrolled(listState),
                     navigationIcon = {
@@ -120,112 +120,34 @@ fun RouteScreen(
                         }
                     }
                 }
-                item(key = "section_there", contentType = ItemTypes.SectionTitle) {
-                    ListLineHeader(Modifier.fillMaxWidth()) {
-                        Text(
-                            text = stringResource(R.string.transportation_route_section_there),
-                            style = MaterialTheme.typography.titleLarge
-                        )
-                    }
-                }
                 items(
                     count = stations.size,
-                    key = { stations[it].id },
-                    contentType = {
-                        when (stations[it]) {
-                            is BusRouteDetails.Station.Stop -> ItemTypes.Station
-                            is BusRouteDetails.Station.Destination -> ItemTypes.DestinationStation
-                        }
-                    }
+                    key = { stations[it].slug },
+                    contentType = { ItemTypes.Station }
                 ) { index ->
                     val station = stations[index]
-                    val isFirst = index == 0
-                    val isLast = index == stations.lastIndex
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(IntrinsicSize.Min)
-                    ) {
-                        Box(
+                    StationRow(isFirst = index == 0, isLast = false) {
+                        StopStationCard(
+                            station = station,
                             modifier = Modifier
-                                .width(16.dp)
-                                .fillMaxHeight(),
-                            contentAlignment = Alignment.TopCenter
-                        ) {
-                            val color = MaterialTheme.colorScheme.primary
-                            Box(
-                                modifier = Modifier
-                                    .width(2.dp)
-                                    .padding(
-                                        top = if (isFirst) 32.dp else 0.dp,
-                                    )
-                                    .fillMaxHeight(fraction = if (isLast) 0.5f else 1f)
-                                    .background(color)
-                                    .align(
-                                        when {
-                                            isFirst -> Alignment.BottomCenter
-                                            isLast -> Alignment.TopCenter
-                                            else -> Alignment.Center
-                                        }
-                                    )
-                            )
-                            Box(
-                                modifier = Modifier
-                                    .padding(top = 32.dp)
-                                    .size(8.dp)
-                                    .background(color, CircleShape)
-                            )
-
-                        }
-                        Spacer(modifier = Modifier.size(16.dp))
-                        when (station) {
-                            is BusRouteDetails.Station.Stop -> {
-                                StopStationCard(
-                                    station = station,
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .padding(vertical = 8.dp)
-                                        .clickable {
-                                            onStationTap(station.id)
-                                        }
-                                )
-                            }
-
-                            is BusRouteDetails.Station.Destination -> {
-                                DestinationStationCard(
-                                    station = station,
-                                    Modifier
-                                        .weight(1f)
-                                        .padding(vertical = 8.dp)
-                                )
-                            }
-                        }
-                    }
-                }
-                item(key = "section_back", contentType = ItemTypes.SectionTitle) {
-                    ListLineHeader(Modifier.fillMaxWidth()) {
-                        Text(
-                            text = stringResource(R.string.transportation_route_section_back),
-                            style = MaterialTheme.typography.titleLarge
+                                .weight(1f)
+                                .padding(vertical = 8.dp)
+                                .clickable {
+                                    onStationTap(station.slug)
+                                }
                         )
                     }
                 }
-                val returnStations = routeState.routeDetails.returnStations
-                items(
-                    count = returnStations.size,
-                    key = { returnStations[it].id },
-                    contentType = { ItemTypes.ReturnStation }
-                ) {
-                    val station = returnStations[it]
-                    ReturnStationCard(
-                        station = station,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 8.dp)
-                            .clickable {
-                                onStationTap(station.id)
-                            }
-                    )
+
+                item {
+                    StationRow(isFirst = false, isLast = true) {
+                        DestinationStationCard(
+                            destination = routeState.routeDetails.destination,
+                            Modifier
+                                .weight(1f)
+                                .padding(vertical = 8.dp)
+                        )
+                    }
                 }
             }
         }
@@ -235,8 +157,56 @@ fun RouteScreen(
 }
 
 @Composable
+private fun StationRow(
+    isFirst: Boolean,
+    isLast: Boolean,
+    content: @Composable RowScope.() -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(IntrinsicSize.Min)
+    ) {
+        Box(
+            modifier = Modifier
+                .width(16.dp)
+                .fillMaxHeight(),
+            contentAlignment = Alignment.TopCenter
+        ) {
+            val color = MaterialTheme.colorScheme.primary
+            Box(
+                modifier = Modifier
+                    .width(2.dp)
+                    .padding(
+                        top = if (isFirst) 32.dp else 0.dp,
+                        bottom = if (isLast) 32.dp else 0.dp,
+                    )
+                    .fillMaxHeight(fraction = if (isLast) 0.5f else 1f)
+                    .background(color)
+                    .align(
+                        when {
+                            isFirst -> Alignment.BottomCenter
+                            isLast -> Alignment.TopCenter
+                            else -> Alignment.Center
+                        }
+                    )
+            )
+            Box(
+                modifier = Modifier
+                    .padding(top = 32.dp)
+                    .size(8.dp)
+                    .background(color, CircleShape)
+            )
+
+        }
+        Spacer(modifier = Modifier.size(16.dp))
+        content()
+    }
+}
+
+@Composable
 fun StopStationCard(
-    station: BusRouteDetails.Station.Stop,
+    station: BusRouteDetails.Station,
     highlight: Boolean = false,
     modifier: Modifier = Modifier
 ) {
@@ -254,17 +224,8 @@ fun StopStationCard(
                     .padding(16.dp),
                 horizontalAlignment = Alignment.End
             ) {
-                station.routeName?.let {
-                    Text(
-                        text = it,
-                        style = MaterialTheme.typography.labelMedium,
-                        modifier = Modifier
-                            .align(Alignment.Start)
-                            .padding(end = 64.dp, bottom = 8.dp)
-                    )
-                }
                 Text(
-                    text = station.title,
+                    text = station.name,
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier
                         .align(Alignment.Start)
@@ -336,7 +297,7 @@ private class CornerRibbonMeasurePolicy : MeasurePolicy {
 
 @Composable
 fun DestinationStationCard(
-    station: BusRouteDetails.Station.Destination,
+    destination: BusRouteDetails.Destination,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -351,45 +312,24 @@ fun DestinationStationCard(
                 .padding(16.dp)
         ) {
             Text(
-                text = station.title,
+                text = "Stoppelmarkt",
                 style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )
-        }
-    }
-}
-
-
-@Composable
-fun ReturnStationCard(
-    station: BusRouteDetails.ReturnStation,
-    modifier: Modifier = Modifier
-) {
-    Card(modifier = modifier) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.End
-        ) {
-            Text(
-                text = stringResource(
-                    R.string.transportation_route_return_station_from,
-                    station.title
-                ),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier
-                    .align(Alignment.Start)
-                    .padding(end = 64.dp)
-            )
+            destination.name?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.titleSmall,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }
 
 enum class ItemTypes {
     Station,
-    SectionTitle,
-    DestinationStation,
-    ReturnStation,
+    Destination,
 }

@@ -13,17 +13,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Call
+import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.DirectionsBus
 import androidx.compose.material.icons.rounded.DirectionsTransit
 import androidx.compose.material.icons.rounded.LocalTaxi
@@ -32,6 +31,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
@@ -50,7 +50,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
-import com.jonasgerdes.stoppelmap.transportation.ui.route.StopStationCard
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -173,27 +172,25 @@ fun BusPage(
     onRouteTap: (routeId: String) -> Unit
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(
+        /*items(
             items = state.favouriteStations,
-            key = { it.id },
+            key = { it.slug },
             contentType = { ItemTypes.FavouriteStation }) { station ->
             StopStationCard(
                 station = station,
                 highlight = true,
                 modifier = Modifier.clickable {
-                    onStationTap(station.id)
+                    onStationTap(station.slug)
                 }
             )
-        }
+        }*/
         items(
             items = state.routes,
-            key = { it.id },
+            key = { it.slug },
             contentType = { ItemTypes.Route }) { route ->
-            RouteSummaryCard(onRouteTap, route)
+            RouteRow(route = route, onRouteTap = onRouteTap)
         }
     }
 }
@@ -201,20 +198,32 @@ fun BusPage(
 @Composable
 fun TrainPage(
     state: TransportationOverviewViewModel.TrainRoutesState,
-    onRouteTap: (routeId: String) -> Unit
+    onRouteTap: (routeSlug: String) -> Unit
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
         items(
             items = state.routes,
-            key = { it.id },
+            key = { it.slug },
             contentType = { ItemTypes.Route }) { route ->
-            RouteSummaryCard(onRouteTap, route)
+            RouteRow(route = route, onRouteTap = onRouteTap)
         }
     }
+}
+
+@Composable
+private fun RouteRow(
+    route: RouteSummary,
+    onRouteTap: (routeSlug: String) -> Unit
+) {
+    ListItem(
+        headlineContent = { Text(route.name) },
+        trailingContent = {
+            Icon(Icons.Rounded.ChevronRight, null)
+        },
+        modifier = Modifier.clickable { onRouteTap(route.slug) }
+    )
 }
 
 @Composable
@@ -263,43 +272,6 @@ fun TaxiPage(
         }
     }
 }
-
-@Composable
-private fun RouteSummaryCard(
-    onRouteTap: (routeId: String) -> Unit,
-    route: RouteSummary
-) {
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .clickable {
-            onRouteTap(route.id)
-        }
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Text(
-                text = route.title,
-                style = MaterialTheme.typography.bodyLarge
-            )
-            Spacer(modifier = Modifier.size(8.dp))
-            Text(
-                text = stringResource(R.string.transportation_overview_card_via),
-                style = MaterialTheme.typography.labelSmall
-            )
-            route.viaStations.forEach { station ->
-                Text(
-                    text = station,
-                    style = MaterialTheme.typography.labelMedium,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            }
-        }
-    }
-}
-
 
 enum class ItemTypes {
     FavouriteStation,

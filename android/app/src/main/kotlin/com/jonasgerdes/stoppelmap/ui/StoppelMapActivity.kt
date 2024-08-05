@@ -63,6 +63,7 @@ import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
+import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
 import com.jonasgerdes.stoppelmap.ui.components.UnderConstructionPlaceholder
@@ -219,7 +220,25 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.TransportationOverview.route) {
-                    UnderConstructionPlaceholder(Modifier.fillMaxSize())
+                    TransportationOverviewScreen(
+                        onRouteTap = {
+                            navController.navigate(
+                                Screen.TransportRoute.create(routeId = it)
+                            )
+                        },
+                        onStationTap = {
+                            navController.navigate(
+                                Screen.TransportStation.create(stationId = it)
+                            )
+                        },
+                        onPhoneNumberTap = {
+                            dialPhoneNumber(it)
+                        },
+                        Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
+                            .padding(scaffoldPadding)
+                    )
                 }
                 composable(Screen.TransportRoute.route) {
                     val routeId = it.arguments?.getString("routeId")!!

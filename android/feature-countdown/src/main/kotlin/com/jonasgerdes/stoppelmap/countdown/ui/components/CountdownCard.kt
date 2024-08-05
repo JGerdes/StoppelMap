@@ -70,7 +70,7 @@ fun CountdownCard(
             val (barrierHelper, skyBackground, fieldBackground,
                 illustration, countdown, footer) = createRefs()
 
-            val illustrationGuideline = createGuidelineFromStart(144.dp)
+            val illustrationGuideline = createGuidelineFromStart(128.dp)
             val illustrationBarrier = createStartBarrier(countdown, barrierHelper)
 
             // This is just here so we can constraint the barrier to the the guideline,
@@ -208,7 +208,7 @@ fun CountdownCard(
                     .constrainAs(illustration) {
                         start.linkTo(parent.start, 16.dp)
                         bottom.linkTo(parent.bottom, 16.dp)
-                        end.linkTo(illustrationBarrier)
+                        end.linkTo(illustrationBarrier, 8.dp)
                         top.linkTo(parent.top, 16.dp)
                         width = fillToConstraints
                         height = fillToConstraints
