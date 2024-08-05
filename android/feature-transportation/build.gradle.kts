@@ -56,5 +56,6 @@ dependencies {
     implementation(libs.bundles.koin.compose)
     implementation(libs.timber)
     implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.placeholder)
     implementation(libs.androidx.datastore)
 }

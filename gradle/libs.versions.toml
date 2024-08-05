@@ -71,6 +71,7 @@ compose-material-components = { module = "androidx.compose.material3:material3",
 compose-constraint-layout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintLayoutCompose" }
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompoanist" }
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompoanist" }
+accompanist-placeholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompoanist" }
 
 glance-appwidget = { group = "androidx.glance", name = "glance-appwidget", version.ref = "glance" }
 glance-material = { group = "androidx.glance", name = "glance-material3", version.ref = "glance" }

@@ -54,12 +54,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.accompanist.placeholder.PlaceholderHighlight
+import com.google.accompanist.placeholder.fade
+import com.google.accompanist.placeholder.placeholder
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.theme.util.stringDesc
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
+import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.Station.NextDepartures
 import com.jonasgerdes.stoppelmap.transportation.ui.getFormattedStringRes
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -236,17 +240,38 @@ fun StopStationCard(
                     text = stringResource(R.string.transportation_route_card_next_departures_label),
                     style = MaterialTheme.typography.labelMedium
                 )
-                if (station.nextDepartures.isNotEmpty()) {
-                    station.nextDepartures.forEach { departureTime ->
-                        Text(text = stringDesc(departureTime.getFormattedStringRes()))
+                when (val nextDepartures = station.nextDepartures) {
+                    is NextDepartures.Loaded -> {
+                        if (nextDepartures.departures.isNotEmpty()) {
+                            nextDepartures.departures.forEach { departureTime ->
+                                Text(text = stringDesc(departureTime.getFormattedStringRes()))
+                            }
+                        } else {
+                            Text(
+                                text = stringResource(
+                                    R.string.transportation_route_card_next_departures_none
+                                )
+                            )
+                        }
                     }
-                } else {
-                    Text(
-                        text = stringResource(
-                            R.string.transportation_route_card_next_departures_none
-                        )
-                    )
+
+                    NextDepartures.Loading -> {
+                        listOf("Loading", "the", "times").forEach {
+                            Text(
+                                it,
+                                Modifier
+                                    .placeholder(
+                                        visible = true,
+                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                                        highlight = PlaceholderHighlight.fade(
+                                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+                                        ),
+                                    )
+                            )
+                        }
+                    }
                 }
+
             }
             if (station.annotateAsNew) {
                 CornerRibbon(text = stringResource(R.string.transportation_route_card_annotation_new))
