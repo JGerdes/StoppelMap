@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.dto.data.Location
 import com.jonasgerdes.stoppelmap.dto.data.Map
 import com.jonasgerdes.stoppelmap.dto.data.MapEntity
 import com.jonasgerdes.stoppelmap.dto.data.MapEntityType
+import com.jonasgerdes.stoppelmap.dto.data.Route
 import com.jonasgerdes.stoppelmap.dto.data.Schedule
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 import com.jonasgerdes.stoppelmap.dto.data.Transportation
@@ -81,7 +82,7 @@ class PrepareStoppelMapData : KoinComponent {
             ),
             schedule = scheduleData,
             transportation = Transportation(
-                busRoutes = generateBusRoutes(),
+                busRoutes = generateBusRoutes() + readCrawledRoutes(settings.crawledRoutesDirectory),
                 trainRoutes = generateTrainRoutes(),
                 taxiServices = taxiServices.map { it.slug },
                 isWorkInProgress = true,
@@ -109,6 +110,13 @@ class PrepareStoppelMapData : KoinComponent {
             isWorkInProgress = isWorkInProgress
         )
     }
+
+    private fun readCrawledRoutes(crawledRoutesDirectory: File): List<Route> =
+        crawledRoutesDirectory
+            .listFiles { f: File -> f.name.endsWith(".json") }!!
+            .map {
+                Json.decodeFromStream<Route>(it.inputStream())
+            }
 
     private fun generateMissingEventLocations(
         events: List<Event>,

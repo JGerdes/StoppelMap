@@ -1,0 +1,960 @@
+{
+    "slug": "vechta_telbrake",
+    "name": "Vechta-Telbrake",
+    "operator": "operator_wilmering",
+    "additionalInfo": {
+    },
+    "ticketWebsites": [
+    ],
+    "stations": [
+        {
+            "slug": "vechta_telbrake_telbrake-fragge",
+            "name": "Telbrake, Fragge",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 250
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:26",
+                            "arrival": "2024-08-15T18:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:26",
+                            "arrival": "2024-08-17T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:26",
+                            "arrival": "2024-08-18T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:26",
+                            "arrival": "2024-08-19T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:26",
+                            "arrival": "2024-08-19T08:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:26",
+                            "arrival": "2024-08-21T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T10:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "vechta_telbrake_telbrake-langer-damm",
+            "name": "Telbrake, Langer Damm",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 250
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:26",
+                            "arrival": "2024-08-15T18:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:27",
+                            "arrival": "2024-08-17T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:27",
+                            "arrival": "2024-08-18T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:27",
+                            "arrival": "2024-08-19T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:27",
+                            "arrival": "2024-08-19T08:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:27",
+                            "arrival": "2024-08-21T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T10:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "vechta_telbrake_telbrake-straepel",
+            "name": "Telbrake, Sträpel",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 250
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:29",
+                            "arrival": "2024-08-15T18:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:29",
+                            "arrival": "2024-08-17T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:29",
+                            "arrival": "2024-08-18T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:29",
+                            "arrival": "2024-08-19T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:29",
+                            "arrival": "2024-08-19T08:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:29",
+                            "arrival": "2024-08-21T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T10:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "vechta_telbrake_telbrake-telbraker-str-graf-von-stauffenberg-str",
+            "name": "Telbrake, Telbraker Str./Graf-von-Stauffenberg-Str.",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 250
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:30",
+                            "arrival": "2024-08-15T18:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:30",
+                            "arrival": "2024-08-17T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": "2024-08-18T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": "2024-08-19T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:30",
+                            "arrival": "2024-08-19T08:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": "2024-08-21T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T10:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "vechta_telbrake_telbrake-hoher-esch",
+            "name": "Telbrake, Hoher Esch",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 250
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:31",
+                            "arrival": "2024-08-15T18:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:31",
+                            "arrival": "2024-08-17T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:31",
+                            "arrival": "2024-08-18T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:31",
+                            "arrival": "2024-08-19T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:31",
+                            "arrival": "2024-08-19T08:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:31",
+                            "arrival": "2024-08-21T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T10:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "vechta_telbrake_oythe-treffpunkt",
+            "name": "Oythe, Treffpunkt",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 250
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:32",
+                            "arrival": "2024-08-15T18:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:32",
+                            "arrival": "2024-08-17T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:32",
+                            "arrival": "2024-08-18T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:32",
+                            "arrival": "2024-08-19T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:32",
+                            "arrival": "2024-08-19T08:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:32",
+                            "arrival": "2024-08-21T00:36",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T18:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T10:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:20",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        }
+    ],
+    "arrivalStationSlug": "busbahnhof_ost"
+}

@@ -1,0 +1,1072 @@
+{
+    "slug": "visbek",
+    "name": "Visbek",
+    "operator": "operator_wilmering",
+    "additionalInfo": {
+    },
+    "ticketWebsites": [
+    ],
+    "stations": [
+        {
+            "slug": "visbek_hagstedt-mittlere-siedlungstr",
+            "name": "Hagstedt, Mittlere Siedlungstr.",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T19:50",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:44",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:50",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_hagstedt-hagstedt",
+            "name": "Hagstedt, Hagstedt",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T19:51",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:42",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:51",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_erlte-abzweig-meyerhoefen",
+            "name": "Erlte, Abzweig Meyerhöfen",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T19:52",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:40",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:52",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_erlte-hogeback",
+            "name": "Erlte, Hogeback",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T19:55",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:38",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:55",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_visbek-elektro-schulz",
+            "name": "Visbek, Elektro Schulz",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T19:57",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:35",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:57",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_visbek-markt",
+            "name": "Visbek, Markt",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T20:00",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:33",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T09:00",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_visbek-zur-traenke",
+            "name": "Visbek, Zur Tränke",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T20:03",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:23",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T09:03",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_astrup-witte",
+            "name": "Astrup, Witte",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T20:06",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T19:06",
+                            "arrival": "2024-08-17T19:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T09:06",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_astrup-luebberding",
+            "name": "Astrup, Lübberding",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T20:10",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:11",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T09:10",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_norddoellen-frilling",
+            "name": "Norddöllen, Frilling",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T20:12",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:13",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T09:12",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_norddoellen-wempe",
+            "name": "Norddöllen, Wempe",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T20:15",
+                            "arrival": "2024-08-16T20:25",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:15",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T09:15",
+                            "arrival": "2024-08-19T09:23",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T22:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T13:10",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "visbek_woestendoellen",
+            "name": "Wöstendöllen",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 480
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 290
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T12:18",
+                            "arrival": "2024-08-17T12:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T15:04",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        }
+    ],
+    "arrivalStationSlug": "bushaltestelle_oldenburgerstr"
+}

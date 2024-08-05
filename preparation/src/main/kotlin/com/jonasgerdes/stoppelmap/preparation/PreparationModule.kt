@@ -20,6 +20,7 @@ val preparationModule = module {
             fetchedEventsFile = File(resources, "events/fetched.json"),
             eventLocationsFile = File(resources, "events/locations.json"),
             manualEventsFile = File(resources, "events/manual.json"),
+            crawledRoutesDirectory = File(resources, "routes").also { if (it.exists().not()) it.mkdirs() },
             descriptionFolder = File(resources, "descriptions"),
             year = 2023
         )

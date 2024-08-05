@@ -1,0 +1,3259 @@
+{
+    "slug": "bakum_und_essen",
+    "name": "Bakum und Essen",
+    "operator": "operator_wilmering",
+    "additionalInfo": {
+    },
+    "ticketWebsites": [
+    ],
+    "stations": [
+        {
+            "slug": "bakum_und_essen_essen-grundschule",
+            "name": "Essen, Grundschule",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 570
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 420
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:23",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T14:38",
+                            "arrival": "2024-08-19T15:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_essen-bahnhof",
+            "name": "Essen, Bahnhof",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 570
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 420
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:16",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T14:35",
+                            "arrival": "2024-08-19T15:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_essen-markt",
+            "name": "Essen, Markt",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 570
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 420
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:21",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_uptloh-tellmann",
+            "name": "Uptloh, Tellmann",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 570
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 420
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:28",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T14:43",
+                            "arrival": "2024-08-19T15:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_bevern-feuerwehr",
+            "name": "Bevern, Feuerwehr",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 530
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 370
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:29",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T14:44",
+                            "arrival": "2024-08-19T15:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_addrup-wernsing",
+            "name": "Addrup, Wernsing",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 530
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 370
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:31",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T14:45",
+                            "arrival": "2024-08-19T15:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_luesche-bueter",
+            "name": "Lüsche, Büter",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 530
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 370
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:33",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T14:47",
+                            "arrival": "2024-08-19T15:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_carum-ort",
+            "name": "Carum, Ort",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 530
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 370
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:30",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:00",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T18:00",
+                            "arrival": "2024-08-17T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:00",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:15",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:00",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_luesche-post",
+            "name": "Lüsche, Post",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 510
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 340
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:40",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:10",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:34",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:10",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:25",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:10",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_luesche-abeln",
+            "name": "Lüsche, Abeln",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 510
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 340
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:41",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:11",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:35",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T15:11",
+                            "arrival": "2024-08-18T15:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:26",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:00",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_hausstette-kreuz",
+            "name": "Hausstette, Kreuz",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:43",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:13",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:36",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:13",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:28",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:13",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_hausstette-buehrmann",
+            "name": "Hausstette, Bührmann",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:45",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:15",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:37",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:15",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:30",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:15",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_hausstette-tiemerding",
+            "name": "Hausstette, Tiemerding",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:50",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:20",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:34",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:20",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:35",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:20",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_hausstette-schule",
+            "name": "Hausstette, Schule",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:51",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:21",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:39",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:21",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:36",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:21",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_hausstette-koops-muehle",
+            "name": "Hausstette, Koops Mühle",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:52",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:22",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:40",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:22",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:37",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:22",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_vestrup-kellermann",
+            "name": "Vestrup, Kellermann",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:54",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:24",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:42",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:24",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:39",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:24",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_vestrup-kirche",
+            "name": "Vestrup, Kirche",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:55",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:25",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:43",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:25",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:40",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:25",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_vestrup-bahnhof",
+            "name": "Vestrup, Bahnhof",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 370
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 270
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:56",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:26",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:44",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:26",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:41",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:26",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_westerbakum-viehverwertung",
+            "name": "Westerbakum, Viehverwertung",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 350
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 220
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T19:57",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:27",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:45",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:27",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:42",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:27",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_bakum-rathaus",
+            "name": "Bakum, Rathaus",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 350
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 220
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T20:00",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:30",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:47",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:30",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:45",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:30",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_bakum-kirchesch",
+            "name": "Bakum, Kirchesch",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 350
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 220
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T20:02",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:32",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:49",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:32",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:47",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:32",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_elmelage",
+            "name": "Elmelage",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 350
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 220
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T20:03",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:33",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:50",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:33",
+                            "arrival": "2024-08-18T19:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:48",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:33",
+                            "arrival": "2024-08-20T18:55",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_schledehausen-kreuz",
+            "name": "Schledehausen, Kreuz",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 300
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T20:05",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:35",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:51",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:35",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:50",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:35",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_schledehausen-buessing",
+            "name": "Schledehausen, Büssing",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 300
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T20:08",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:38",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:52",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:38",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:53",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:38",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        },
+        {
+            "slug": "bakum_und_essen_schledehausen-toebben",
+            "name": "Schledehausen, Többen",
+            "location": null,
+            "isNew": false,
+            "prices": [
+                {
+                    "name": {
+                        "de": "Erwachsene"
+                    },
+                    "price": 300
+                },
+                {
+                    "name": {
+                        "de": "Kinder (3–11 Jahre)"
+                    },
+                    "price": 180
+                }
+            ],
+            "ticketWebsites": [
+            ],
+            "outward": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T20:10",
+                            "arrival": "2024-08-15T20:20",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-16T18:40",
+                            "arrival": "2024-08-16T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T14:53",
+                            "arrival": "2024-08-17T15:04",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T16:40",
+                            "arrival": "2024-08-18T16:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T08:55",
+                            "arrival": "2024-08-19T09:05",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-20T18:40",
+                            "arrival": "2024-08-20T18:50",
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ],
+            "returns": [
+                {
+                    "day": "2024-08-15",
+                    "departures": [
+                        {
+                            "time": "2024-08-15T23:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-16",
+                    "departures": [
+                        {
+                            "time": "2024-08-17T01:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-17",
+                    "departures": [
+                        {
+                            "time": "2024-08-18T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-18",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-19",
+                    "departures": [
+                        {
+                            "time": "2024-08-19T17:00",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                },
+                {
+                    "day": "2024-08-20",
+                    "departures": [
+                        {
+                            "time": "2024-08-21T00:30",
+                            "arrival": null,
+                            "annotation": null
+                        }
+                    ],
+                    "laterDepartureOnDemand": false
+                }
+            ]
+        }
+    ],
+    "arrivalStationSlug": "busbahnhof_west"
+}

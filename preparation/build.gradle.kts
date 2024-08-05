@@ -19,6 +19,12 @@ task("fetchEvents", JavaExec::class) {
     classpath = sourceSets["main"].runtimeClasspath
 }
 
+task("crawlBusRoutes", JavaExec::class) {
+    group = "preparation"
+    mainClass.set("com.jonasgerdes.stoppelmap.preparation.transportation.crawler.CrawlBusWebsitesKt")
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
 java {
     targetCompatibility = JavaVersion.VERSION_17
 }
@@ -35,6 +41,7 @@ dependencies {
     implementation(project(":shared:data-conversion"))
 
     implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.json.core)
     implementation(libs.koin.core)
     implementation(libs.sqldelight.driver.sqlite)

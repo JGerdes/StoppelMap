@@ -10,6 +10,7 @@ data class Settings(
     val fetchedEventsFile: File,
     val eventLocationsFile: File,
     val manualEventsFile: File,
+    val crawledRoutesDirectory: File,
     val descriptionFolder: File,
 
     val year: Int,

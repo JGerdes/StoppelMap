@@ -1,0 +1,1439 @@
+{
+  "slug": "langfoerden",
+  "name": "Langförden",
+  "operator": "operator_wilmering",
+  "additionalInfo": {
+    "de": "Aufgrund von Bauarbeiten ist die Linienführung in Langförden in diesem Jahr anders als gewohnt."
+  },
+  "ticketWebsites": [
+  ],
+  "stations": [
+    {
+      "slug": "langfoerden_deindrup-kirschenweg",
+      "name": "Deindrup, Kirschenweg",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 330
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 250
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:30",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:00",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:00",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:30",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:00",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:30",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_deindrup-schule",
+      "name": "Deindrup, Schule",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 330
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 250
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:32",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:02",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:02",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:32",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:02",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:32",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_deindrup-spelgenweg",
+      "name": "Deindrup, Spelgenweg",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 330
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 250
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:34",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:04",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:04",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:34",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:04",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:34",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_spreda-dr-siemer",
+      "name": "Spreda, Dr. Siemer",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 330
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 250
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:36",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:06",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:06",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:36",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:06",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:36",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_spreda-moormann",
+      "name": "Spreda, Moormann",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 330
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 250
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:38",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:08",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:08",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:38",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:08",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:38",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_langfoerden-laurentiusplatz",
+      "name": "Langförden, Laurentiusplatz (Ersatzhaltestelle)",
+      "location": null,
+      "isNew": false,
+      "additionalInfo": {
+        "de": "Die Ersatzhaltestelle befindet sich an der Ecke Am Gastland/Hauptstraße",
+        "en": "The alternative stop is located at the corner of Am Gastland and Hauptstraße"
+      },
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 300
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:43",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:13",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:13",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:43",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:13",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:43",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_langfoerden-muehle",
+      "name": "Langförden, Mühle",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 300
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:48",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:18",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:18",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:48",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:18",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:48",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_langfoerden-scheele",
+      "name": "Langförden, Scheele",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 300
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:50",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:20",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:20",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:50",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:20",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:50",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "langfoerden_holtrup-schule",
+      "name": "Holtrup, Schule",
+      "location": null,
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 300
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "ticketWebsites": [
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:53",
+              "arrival": "2024-08-15T19:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:23",
+              "arrival": "2024-08-16T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:23",
+              "arrival": "2024-08-17T15:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T14:53",
+              "arrival": "2024-08-18T15:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:23",
+              "arrival": "2024-08-19T09:30",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T16:53",
+              "arrival": "2024-08-20T17:00",
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-16T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-19T01:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-21T00:00",
+              "arrival": null,
+              "annotation": null
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    }
+  ],
+  "arrivalStationSlug": "busbahnhof_west"
+}
