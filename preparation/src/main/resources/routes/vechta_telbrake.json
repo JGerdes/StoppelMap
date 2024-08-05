@@ -1,960 +1,3178 @@
 {
-    "slug": "vechta_telbrake",
-    "name": "Vechta-Telbrake",
-    "operator": "operator_wilmering",
-    "additionalInfo": {
-    },
-    "ticketWebsites": [
-    ],
-    "stations": [
+  "slug": "vechta_telbrake",
+  "name": "Vechta-Telbrake",
+  "operator": "operator_wilmering",
+  "additionalInfo": {
+  },
+  "stations": [
+    {
+      "slug": "vechta_telbrake_telbrake-fragge",
+      "name": "Telbrake, Fragge",
+      "isNew": false,
+      "prices": [
         {
-            "slug": "vechta_telbrake_telbrake-fragge",
-            "name": "Telbrake, Fragge",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 250
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 180
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:26",
-                            "arrival": "2024-08-15T18:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:26",
-                            "arrival": "2024-08-17T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:26",
-                            "arrival": "2024-08-18T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:26",
-                            "arrival": "2024-08-19T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:26",
-                            "arrival": "2024-08-19T08:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:26",
-                            "arrival": "2024-08-21T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 250
         },
         {
-            "slug": "vechta_telbrake_telbrake-langer-damm",
-            "name": "Telbrake, Langer Damm",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 250
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 180
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:26",
-                            "arrival": "2024-08-15T18:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:27",
-                            "arrival": "2024-08-17T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:27",
-                            "arrival": "2024-08-18T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:27",
-                            "arrival": "2024-08-19T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:27",
-                            "arrival": "2024-08-19T08:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:27",
-                            "arrival": "2024-08-21T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "vechta_telbrake_telbrake-straepel",
-            "name": "Telbrake, Sträpel",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 250
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 180
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:29",
-                            "arrival": "2024-08-15T18:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:29",
-                            "arrival": "2024-08-17T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:29",
-                            "arrival": "2024-08-18T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:29",
-                            "arrival": "2024-08-19T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:29",
-                            "arrival": "2024-08-19T08:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:29",
-                            "arrival": "2024-08-21T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "vechta_telbrake_telbrake-telbraker-str-graf-von-stauffenberg-str",
-            "name": "Telbrake, Telbraker Str./Graf-von-Stauffenberg-Str.",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 250
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 180
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:30",
-                            "arrival": "2024-08-15T18:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:30",
-                            "arrival": "2024-08-17T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:30",
-                            "arrival": "2024-08-18T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:30",
-                            "arrival": "2024-08-19T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:30",
-                            "arrival": "2024-08-19T08:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:30",
-                            "arrival": "2024-08-21T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "vechta_telbrake_telbrake-hoher-esch",
-            "name": "Telbrake, Hoher Esch",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 250
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 180
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:31",
-                            "arrival": "2024-08-15T18:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:31",
-                            "arrival": "2024-08-17T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:31",
-                            "arrival": "2024-08-18T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:31",
-                            "arrival": "2024-08-19T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:31",
-                            "arrival": "2024-08-19T08:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:31",
-                            "arrival": "2024-08-21T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "vechta_telbrake_oythe-treffpunkt",
-            "name": "Oythe, Treffpunkt",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 250
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 180
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:32",
-                            "arrival": "2024-08-15T18:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:32",
-                            "arrival": "2024-08-17T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:32",
-                            "arrival": "2024-08-18T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:32",
-                            "arrival": "2024-08-19T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:32",
-                            "arrival": "2024-08-19T08:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:32",
-                            "arrival": "2024-08-21T00:36",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T18:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-18",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-20",
-                    "departures": [
-                        {
-                            "time": "2024-08-21T00:20",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
         }
-    ],
-    "arrivalStationSlug": "busbahnhof_ost"
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:26",
+              "arrival": "2024-08-15T18:36"
+            },
+            {
+              "time": "2024-08-15T19:26",
+              "arrival": "2024-08-15T19:36"
+            },
+            {
+              "time": "2024-08-15T20:26",
+              "arrival": "2024-08-15T20:36"
+            },
+            {
+              "time": "2024-08-15T21:26",
+              "arrival": "2024-08-15T21:36"
+            },
+            {
+              "time": "2024-08-15T22:26",
+              "arrival": "2024-08-15T22:36"
+            },
+            {
+              "time": "2024-08-15T23:26",
+              "arrival": "2024-08-15T23:36"
+            },
+            {
+              "time": "2024-08-16T00:26",
+              "arrival": "2024-08-16T00:36"
+            },
+            {
+              "time": "2024-08-16T01:26",
+              "arrival": "2024-08-16T01:36"
+            },
+            {
+              "time": "2024-08-16T02:26",
+              "arrival": "2024-08-16T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:26",
+              "arrival": "2024-08-16T15:36"
+            },
+            {
+              "time": "2024-08-16T16:26",
+              "arrival": "2024-08-16T16:36"
+            },
+            {
+              "time": "2024-08-16T17:26",
+              "arrival": "2024-08-16T17:36"
+            },
+            {
+              "time": "2024-08-16T18:26",
+              "arrival": "2024-08-16T18:36"
+            },
+            {
+              "time": "2024-08-16T19:26",
+              "arrival": "2024-08-16T19:36"
+            },
+            {
+              "time": "2024-08-16T20:26",
+              "arrival": "2024-08-16T20:36"
+            },
+            {
+              "time": "2024-08-16T21:26",
+              "arrival": "2024-08-16T21:36"
+            },
+            {
+              "time": "2024-08-16T22:26",
+              "arrival": "2024-08-16T22:36"
+            },
+            {
+              "time": "2024-08-16T23:26",
+              "arrival": "2024-08-16T23:36"
+            },
+            {
+              "time": "2024-08-17T00:26",
+              "arrival": "2024-08-17T00:36"
+            },
+            {
+              "time": "2024-08-17T01:26",
+              "arrival": "2024-08-17T01:36"
+            },
+            {
+              "time": "2024-08-17T02:26",
+              "arrival": "2024-08-17T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:26",
+              "arrival": "2024-08-17T15:36"
+            },
+            {
+              "time": "2024-08-17T16:26",
+              "arrival": "2024-08-17T16:36"
+            },
+            {
+              "time": "2024-08-17T17:26",
+              "arrival": "2024-08-17T17:36"
+            },
+            {
+              "time": "2024-08-17T18:26",
+              "arrival": "2024-08-17T18:36"
+            },
+            {
+              "time": "2024-08-17T19:26",
+              "arrival": "2024-08-17T19:36"
+            },
+            {
+              "time": "2024-08-17T20:26",
+              "arrival": "2024-08-17T20:36"
+            },
+            {
+              "time": "2024-08-17T21:26",
+              "arrival": "2024-08-17T21:36"
+            },
+            {
+              "time": "2024-08-17T22:26",
+              "arrival": "2024-08-17T22:36"
+            },
+            {
+              "time": "2024-08-17T23:26",
+              "arrival": "2024-08-17T23:36"
+            },
+            {
+              "time": "2024-08-18T00:26",
+              "arrival": "2024-08-18T00:36"
+            },
+            {
+              "time": "2024-08-18T01:26",
+              "arrival": "2024-08-18T01:36"
+            },
+            {
+              "time": "2024-08-18T02:26",
+              "arrival": "2024-08-18T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:26",
+              "arrival": "2024-08-18T13:36"
+            },
+            {
+              "time": "2024-08-18T15:26",
+              "arrival": "2024-08-18T15:36"
+            },
+            {
+              "time": "2024-08-18T17:26",
+              "arrival": "2024-08-18T17:36"
+            },
+            {
+              "time": "2024-08-18T19:26",
+              "arrival": "2024-08-18T19:36"
+            },
+            {
+              "time": "2024-08-18T21:26",
+              "arrival": "2024-08-18T21:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:26",
+              "arrival": "2024-08-19T08:36"
+            },
+            {
+              "time": "2024-08-19T09:26",
+              "arrival": "2024-08-19T09:36"
+            },
+            {
+              "time": "2024-08-19T10:26",
+              "arrival": "2024-08-19T10:36"
+            },
+            {
+              "time": "2024-08-19T11:26",
+              "arrival": "2024-08-19T11:36"
+            },
+            {
+              "time": "2024-08-19T12:26",
+              "arrival": "2024-08-19T12:36"
+            },
+            {
+              "time": "2024-08-19T13:26",
+              "arrival": "2024-08-19T13:36"
+            },
+            {
+              "time": "2024-08-19T14:26",
+              "arrival": "2024-08-19T14:36"
+            },
+            {
+              "time": "2024-08-19T15:26",
+              "arrival": "2024-08-19T15:36"
+            },
+            {
+              "time": "2024-08-19T16:26",
+              "arrival": "2024-08-19T16:36"
+            },
+            {
+              "time": "2024-08-19T17:26",
+              "arrival": "2024-08-19T17:36"
+            },
+            {
+              "time": "2024-08-19T18:26",
+              "arrival": "2024-08-19T18:36"
+            },
+            {
+              "time": "2024-08-19T19:26",
+              "arrival": "2024-08-19T19:36"
+            },
+            {
+              "time": "2024-08-19T20:26",
+              "arrival": "2024-08-19T20:36"
+            },
+            {
+              "time": "2024-08-19T21:26",
+              "arrival": "2024-08-19T21:36"
+            },
+            {
+              "time": "2024-08-19T22:26",
+              "arrival": "2024-08-19T22:36"
+            },
+            {
+              "time": "2024-08-19T23:26",
+              "arrival": "2024-08-19T23:36"
+            },
+            {
+              "time": "2024-08-20T00:26",
+              "arrival": "2024-08-20T00:36"
+            },
+            {
+              "time": "2024-08-20T01:26",
+              "arrival": "2024-08-20T01:36"
+            },
+            {
+              "time": "2024-08-20T02:26",
+              "arrival": "2024-08-20T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T15:26",
+              "arrival": "2024-08-20T15:36"
+            },
+            {
+              "time": "2024-08-20T16:26",
+              "arrival": "2024-08-20T16:36"
+            },
+            {
+              "time": "2024-08-20T17:26",
+              "arrival": "2024-08-20T17:36"
+            },
+            {
+              "time": "2024-08-20T18:26",
+              "arrival": "2024-08-20T18:36"
+            },
+            {
+              "time": "2024-08-20T19:26",
+              "arrival": "2024-08-20T19:36"
+            },
+            {
+              "time": "2024-08-20T20:26",
+              "arrival": "2024-08-20T20:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:20"
+            },
+            {
+              "time": "2024-08-15T19:20"
+            },
+            {
+              "time": "2024-08-15T20:20"
+            },
+            {
+              "time": "2024-08-15T21:20"
+            },
+            {
+              "time": "2024-08-15T22:20"
+            },
+            {
+              "time": "2024-08-15T23:20"
+            },
+            {
+              "time": "2024-08-16T00:20"
+            },
+            {
+              "time": "2024-08-16T01:20"
+            },
+            {
+              "time": "2024-08-16T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:20"
+            },
+            {
+              "time": "2024-08-16T16:20"
+            },
+            {
+              "time": "2024-08-16T17:20"
+            },
+            {
+              "time": "2024-08-16T18:20"
+            },
+            {
+              "time": "2024-08-16T19:20"
+            },
+            {
+              "time": "2024-08-16T20:20"
+            },
+            {
+              "time": "2024-08-16T21:20"
+            },
+            {
+              "time": "2024-08-16T22:20"
+            },
+            {
+              "time": "2024-08-16T23:20"
+            },
+            {
+              "time": "2024-08-17T00:20"
+            },
+            {
+              "time": "2024-08-17T01:20"
+            },
+            {
+              "time": "2024-08-17T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:20"
+            },
+            {
+              "time": "2024-08-17T16:20"
+            },
+            {
+              "time": "2024-08-17T17:20"
+            },
+            {
+              "time": "2024-08-17T18:20"
+            },
+            {
+              "time": "2024-08-17T19:20"
+            },
+            {
+              "time": "2024-08-17T20:20"
+            },
+            {
+              "time": "2024-08-17T21:20"
+            },
+            {
+              "time": "2024-08-17T22:20"
+            },
+            {
+              "time": "2024-08-17T23:20"
+            },
+            {
+              "time": "2024-08-18T00:20"
+            },
+            {
+              "time": "2024-08-18T01:20"
+            },
+            {
+              "time": "2024-08-18T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:20"
+            },
+            {
+              "time": "2024-08-18T15:20"
+            },
+            {
+              "time": "2024-08-18T17:20"
+            },
+            {
+              "time": "2024-08-18T18:20"
+            },
+            {
+              "time": "2024-08-18T19:20"
+            },
+            {
+              "time": "2024-08-18T20:20"
+            },
+            {
+              "time": "2024-08-18T21:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:20"
+            },
+            {
+              "time": "2024-08-19T11:20"
+            },
+            {
+              "time": "2024-08-19T12:20"
+            },
+            {
+              "time": "2024-08-19T13:20"
+            },
+            {
+              "time": "2024-08-19T14:20"
+            },
+            {
+              "time": "2024-08-19T15:20"
+            },
+            {
+              "time": "2024-08-19T16:20"
+            },
+            {
+              "time": "2024-08-19T17:20"
+            },
+            {
+              "time": "2024-08-19T18:20"
+            },
+            {
+              "time": "2024-08-19T19:20"
+            },
+            {
+              "time": "2024-08-19T20:20"
+            },
+            {
+              "time": "2024-08-19T21:20"
+            },
+            {
+              "time": "2024-08-19T22:20"
+            },
+            {
+              "time": "2024-08-19T23:20"
+            },
+            {
+              "time": "2024-08-20T00:20"
+            },
+            {
+              "time": "2024-08-20T01:20"
+            },
+            {
+              "time": "2024-08-20T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T17:20"
+            },
+            {
+              "time": "2024-08-20T18:20"
+            },
+            {
+              "time": "2024-08-20T19:20"
+            },
+            {
+              "time": "2024-08-20T20:20"
+            },
+            {
+              "time": "2024-08-20T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "vechta_telbrake_telbrake-langer-damm",
+      "name": "Telbrake, Langer Damm",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 250
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:26",
+              "arrival": "2024-08-15T18:36"
+            },
+            {
+              "time": "2024-08-15T19:27",
+              "arrival": "2024-08-15T19:36"
+            },
+            {
+              "time": "2024-08-15T20:27",
+              "arrival": "2024-08-15T20:36"
+            },
+            {
+              "time": "2024-08-15T21:27",
+              "arrival": "2024-08-15T21:36"
+            },
+            {
+              "time": "2024-08-15T22:27",
+              "arrival": "2024-08-15T22:36"
+            },
+            {
+              "time": "2024-08-15T23:27",
+              "arrival": "2024-08-15T23:36"
+            },
+            {
+              "time": "2024-08-16T00:27",
+              "arrival": "2024-08-16T00:36"
+            },
+            {
+              "time": "2024-08-16T01:27",
+              "arrival": "2024-08-16T01:36"
+            },
+            {
+              "time": "2024-08-16T02:27",
+              "arrival": "2024-08-16T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:27",
+              "arrival": "2024-08-16T15:36"
+            },
+            {
+              "time": "2024-08-16T16:27",
+              "arrival": "2024-08-16T16:36"
+            },
+            {
+              "time": "2024-08-16T17:27",
+              "arrival": "2024-08-16T17:36"
+            },
+            {
+              "time": "2024-08-16T18:27",
+              "arrival": "2024-08-16T18:36"
+            },
+            {
+              "time": "2024-08-16T19:27",
+              "arrival": "2024-08-16T19:36"
+            },
+            {
+              "time": "2024-08-16T20:27",
+              "arrival": "2024-08-16T20:36"
+            },
+            {
+              "time": "2024-08-16T21:27",
+              "arrival": "2024-08-16T21:36"
+            },
+            {
+              "time": "2024-08-16T22:27",
+              "arrival": "2024-08-16T22:36"
+            },
+            {
+              "time": "2024-08-16T23:27",
+              "arrival": "2024-08-16T23:36"
+            },
+            {
+              "time": "2024-08-17T00:27",
+              "arrival": "2024-08-17T00:36"
+            },
+            {
+              "time": "2024-08-17T01:27",
+              "arrival": "2024-08-17T01:36"
+            },
+            {
+              "time": "2024-08-17T02:27",
+              "arrival": "2024-08-17T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:27",
+              "arrival": "2024-08-17T15:36"
+            },
+            {
+              "time": "2024-08-17T16:27",
+              "arrival": "2024-08-17T16:36"
+            },
+            {
+              "time": "2024-08-17T17:27",
+              "arrival": "2024-08-17T17:36"
+            },
+            {
+              "time": "2024-08-17T18:27",
+              "arrival": "2024-08-17T18:36"
+            },
+            {
+              "time": "2024-08-17T19:27",
+              "arrival": "2024-08-17T19:36"
+            },
+            {
+              "time": "2024-08-17T20:27",
+              "arrival": "2024-08-17T20:36"
+            },
+            {
+              "time": "2024-08-17T21:27",
+              "arrival": "2024-08-17T21:36"
+            },
+            {
+              "time": "2024-08-17T22:27",
+              "arrival": "2024-08-17T22:36"
+            },
+            {
+              "time": "2024-08-17T23:27",
+              "arrival": "2024-08-17T23:36"
+            },
+            {
+              "time": "2024-08-18T00:27",
+              "arrival": "2024-08-18T00:36"
+            },
+            {
+              "time": "2024-08-18T01:27",
+              "arrival": "2024-08-18T01:36"
+            },
+            {
+              "time": "2024-08-18T02:27",
+              "arrival": "2024-08-18T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:27",
+              "arrival": "2024-08-18T13:36"
+            },
+            {
+              "time": "2024-08-18T15:27",
+              "arrival": "2024-08-18T15:36"
+            },
+            {
+              "time": "2024-08-18T17:27",
+              "arrival": "2024-08-18T17:36"
+            },
+            {
+              "time": "2024-08-18T19:27",
+              "arrival": "2024-08-18T19:36"
+            },
+            {
+              "time": "2024-08-18T21:27",
+              "arrival": "2024-08-18T21:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:27",
+              "arrival": "2024-08-19T08:36"
+            },
+            {
+              "time": "2024-08-19T09:27",
+              "arrival": "2024-08-19T09:36"
+            },
+            {
+              "time": "2024-08-19T10:27",
+              "arrival": "2024-08-19T10:36"
+            },
+            {
+              "time": "2024-08-19T11:27",
+              "arrival": "2024-08-19T11:36"
+            },
+            {
+              "time": "2024-08-19T12:27",
+              "arrival": "2024-08-19T12:36"
+            },
+            {
+              "time": "2024-08-19T13:27",
+              "arrival": "2024-08-19T13:36"
+            },
+            {
+              "time": "2024-08-19T14:27",
+              "arrival": "2024-08-19T14:36"
+            },
+            {
+              "time": "2024-08-19T15:27",
+              "arrival": "2024-08-19T15:36"
+            },
+            {
+              "time": "2024-08-19T16:27",
+              "arrival": "2024-08-19T16:36"
+            },
+            {
+              "time": "2024-08-19T17:27",
+              "arrival": "2024-08-19T17:36"
+            },
+            {
+              "time": "2024-08-19T18:27",
+              "arrival": "2024-08-19T18:36"
+            },
+            {
+              "time": "2024-08-19T19:27",
+              "arrival": "2024-08-19T19:36"
+            },
+            {
+              "time": "2024-08-19T20:27",
+              "arrival": "2024-08-19T20:36"
+            },
+            {
+              "time": "2024-08-19T21:27",
+              "arrival": "2024-08-19T21:36"
+            },
+            {
+              "time": "2024-08-19T22:27",
+              "arrival": "2024-08-19T22:36"
+            },
+            {
+              "time": "2024-08-19T23:27",
+              "arrival": "2024-08-19T23:36"
+            },
+            {
+              "time": "2024-08-20T00:27",
+              "arrival": "2024-08-20T00:36"
+            },
+            {
+              "time": "2024-08-20T01:27",
+              "arrival": "2024-08-20T01:36"
+            },
+            {
+              "time": "2024-08-20T02:27",
+              "arrival": "2024-08-20T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T15:27",
+              "arrival": "2024-08-20T15:36"
+            },
+            {
+              "time": "2024-08-20T16:27",
+              "arrival": "2024-08-20T16:36"
+            },
+            {
+              "time": "2024-08-20T17:27",
+              "arrival": "2024-08-20T17:36"
+            },
+            {
+              "time": "2024-08-20T18:27",
+              "arrival": "2024-08-20T18:36"
+            },
+            {
+              "time": "2024-08-20T19:27",
+              "arrival": "2024-08-20T19:36"
+            },
+            {
+              "time": "2024-08-20T20:27",
+              "arrival": "2024-08-20T20:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:20"
+            },
+            {
+              "time": "2024-08-15T19:20"
+            },
+            {
+              "time": "2024-08-15T20:20"
+            },
+            {
+              "time": "2024-08-15T21:20"
+            },
+            {
+              "time": "2024-08-15T22:20"
+            },
+            {
+              "time": "2024-08-15T23:20"
+            },
+            {
+              "time": "2024-08-16T00:20"
+            },
+            {
+              "time": "2024-08-16T01:20"
+            },
+            {
+              "time": "2024-08-16T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:20"
+            },
+            {
+              "time": "2024-08-16T16:20"
+            },
+            {
+              "time": "2024-08-16T17:20"
+            },
+            {
+              "time": "2024-08-16T18:20"
+            },
+            {
+              "time": "2024-08-16T19:20"
+            },
+            {
+              "time": "2024-08-16T20:20"
+            },
+            {
+              "time": "2024-08-16T21:20"
+            },
+            {
+              "time": "2024-08-16T22:20"
+            },
+            {
+              "time": "2024-08-16T23:20"
+            },
+            {
+              "time": "2024-08-17T00:20"
+            },
+            {
+              "time": "2024-08-17T01:20"
+            },
+            {
+              "time": "2024-08-17T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:20"
+            },
+            {
+              "time": "2024-08-17T16:20"
+            },
+            {
+              "time": "2024-08-17T17:20"
+            },
+            {
+              "time": "2024-08-17T18:20"
+            },
+            {
+              "time": "2024-08-17T19:20"
+            },
+            {
+              "time": "2024-08-17T20:20"
+            },
+            {
+              "time": "2024-08-17T21:20"
+            },
+            {
+              "time": "2024-08-17T22:20"
+            },
+            {
+              "time": "2024-08-17T23:20"
+            },
+            {
+              "time": "2024-08-18T00:20"
+            },
+            {
+              "time": "2024-08-18T01:20"
+            },
+            {
+              "time": "2024-08-18T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:20"
+            },
+            {
+              "time": "2024-08-18T15:20"
+            },
+            {
+              "time": "2024-08-18T17:20"
+            },
+            {
+              "time": "2024-08-18T19:20"
+            },
+            {
+              "time": "2024-08-18T21:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:20"
+            },
+            {
+              "time": "2024-08-19T11:20"
+            },
+            {
+              "time": "2024-08-19T12:20"
+            },
+            {
+              "time": "2024-08-19T13:20"
+            },
+            {
+              "time": "2024-08-19T14:20"
+            },
+            {
+              "time": "2024-08-19T15:20"
+            },
+            {
+              "time": "2024-08-19T16:20"
+            },
+            {
+              "time": "2024-08-19T17:20"
+            },
+            {
+              "time": "2024-08-19T18:20"
+            },
+            {
+              "time": "2024-08-19T19:20"
+            },
+            {
+              "time": "2024-08-19T20:20"
+            },
+            {
+              "time": "2024-08-19T21:20"
+            },
+            {
+              "time": "2024-08-19T22:20"
+            },
+            {
+              "time": "2024-08-19T23:20"
+            },
+            {
+              "time": "2024-08-20T00:20"
+            },
+            {
+              "time": "2024-08-20T01:20"
+            },
+            {
+              "time": "2024-08-20T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T17:20"
+            },
+            {
+              "time": "2024-08-20T18:20"
+            },
+            {
+              "time": "2024-08-20T19:20"
+            },
+            {
+              "time": "2024-08-20T20:20"
+            },
+            {
+              "time": "2024-08-20T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "vechta_telbrake_telbrake-straepel",
+      "name": "Telbrake, Sträpel",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 250
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:29",
+              "arrival": "2024-08-15T18:36"
+            },
+            {
+              "time": "2024-08-15T19:29",
+              "arrival": "2024-08-15T19:36"
+            },
+            {
+              "time": "2024-08-15T20:29",
+              "arrival": "2024-08-15T20:36"
+            },
+            {
+              "time": "2024-08-15T21:29",
+              "arrival": "2024-08-15T21:36"
+            },
+            {
+              "time": "2024-08-15T22:29",
+              "arrival": "2024-08-15T22:36"
+            },
+            {
+              "time": "2024-08-15T23:29",
+              "arrival": "2024-08-15T23:36"
+            },
+            {
+              "time": "2024-08-16T00:29",
+              "arrival": "2024-08-16T00:36"
+            },
+            {
+              "time": "2024-08-16T01:29",
+              "arrival": "2024-08-16T01:36"
+            },
+            {
+              "time": "2024-08-16T02:29",
+              "arrival": "2024-08-16T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:29",
+              "arrival": "2024-08-16T15:36"
+            },
+            {
+              "time": "2024-08-16T16:29",
+              "arrival": "2024-08-16T16:36"
+            },
+            {
+              "time": "2024-08-16T17:29",
+              "arrival": "2024-08-16T17:36"
+            },
+            {
+              "time": "2024-08-16T18:29",
+              "arrival": "2024-08-16T18:36"
+            },
+            {
+              "time": "2024-08-16T19:29",
+              "arrival": "2024-08-16T19:36"
+            },
+            {
+              "time": "2024-08-16T20:29",
+              "arrival": "2024-08-16T20:36"
+            },
+            {
+              "time": "2024-08-16T21:29",
+              "arrival": "2024-08-16T21:36"
+            },
+            {
+              "time": "2024-08-16T22:29",
+              "arrival": "2024-08-16T22:36"
+            },
+            {
+              "time": "2024-08-16T23:29",
+              "arrival": "2024-08-16T23:36"
+            },
+            {
+              "time": "2024-08-17T00:29",
+              "arrival": "2024-08-17T00:36"
+            },
+            {
+              "time": "2024-08-17T01:29",
+              "arrival": "2024-08-17T01:36"
+            },
+            {
+              "time": "2024-08-17T02:29",
+              "arrival": "2024-08-17T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:29",
+              "arrival": "2024-08-17T15:36"
+            },
+            {
+              "time": "2024-08-17T16:29",
+              "arrival": "2024-08-17T16:36"
+            },
+            {
+              "time": "2024-08-17T17:29",
+              "arrival": "2024-08-17T17:36"
+            },
+            {
+              "time": "2024-08-17T18:29",
+              "arrival": "2024-08-17T18:36"
+            },
+            {
+              "time": "2024-08-17T19:29",
+              "arrival": "2024-08-17T19:36"
+            },
+            {
+              "time": "2024-08-17T20:29",
+              "arrival": "2024-08-17T20:36"
+            },
+            {
+              "time": "2024-08-17T21:29",
+              "arrival": "2024-08-17T21:36"
+            },
+            {
+              "time": "2024-08-17T22:29",
+              "arrival": "2024-08-17T22:36"
+            },
+            {
+              "time": "2024-08-17T23:29",
+              "arrival": "2024-08-17T23:36"
+            },
+            {
+              "time": "2024-08-18T00:29",
+              "arrival": "2024-08-18T00:36"
+            },
+            {
+              "time": "2024-08-18T01:29",
+              "arrival": "2024-08-18T01:36"
+            },
+            {
+              "time": "2024-08-18T02:29",
+              "arrival": "2024-08-18T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:29",
+              "arrival": "2024-08-18T13:36"
+            },
+            {
+              "time": "2024-08-18T15:29",
+              "arrival": "2024-08-18T15:36"
+            },
+            {
+              "time": "2024-08-18T17:29",
+              "arrival": "2024-08-18T17:36"
+            },
+            {
+              "time": "2024-08-18T19:29",
+              "arrival": "2024-08-18T19:36"
+            },
+            {
+              "time": "2024-08-18T21:29",
+              "arrival": "2024-08-18T21:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:29",
+              "arrival": "2024-08-19T08:36"
+            },
+            {
+              "time": "2024-08-19T09:29",
+              "arrival": "2024-08-19T09:36"
+            },
+            {
+              "time": "2024-08-19T10:29",
+              "arrival": "2024-08-19T10:36"
+            },
+            {
+              "time": "2024-08-19T11:29",
+              "arrival": "2024-08-19T11:36"
+            },
+            {
+              "time": "2024-08-19T12:29",
+              "arrival": "2024-08-19T12:36"
+            },
+            {
+              "time": "2024-08-19T13:29",
+              "arrival": "2024-08-19T13:36"
+            },
+            {
+              "time": "2024-08-19T14:29",
+              "arrival": "2024-08-19T14:36"
+            },
+            {
+              "time": "2024-08-19T15:29",
+              "arrival": "2024-08-19T15:36"
+            },
+            {
+              "time": "2024-08-19T16:29",
+              "arrival": "2024-08-19T16:36"
+            },
+            {
+              "time": "2024-08-19T17:29",
+              "arrival": "2024-08-19T17:36"
+            },
+            {
+              "time": "2024-08-19T18:29",
+              "arrival": "2024-08-19T18:36"
+            },
+            {
+              "time": "2024-08-19T19:29",
+              "arrival": "2024-08-19T19:36"
+            },
+            {
+              "time": "2024-08-19T20:29",
+              "arrival": "2024-08-19T20:36"
+            },
+            {
+              "time": "2024-08-19T21:29",
+              "arrival": "2024-08-19T21:36"
+            },
+            {
+              "time": "2024-08-19T22:29",
+              "arrival": "2024-08-19T22:36"
+            },
+            {
+              "time": "2024-08-19T23:29",
+              "arrival": "2024-08-19T23:36"
+            },
+            {
+              "time": "2024-08-20T00:29",
+              "arrival": "2024-08-20T00:36"
+            },
+            {
+              "time": "2024-08-20T01:29",
+              "arrival": "2024-08-20T01:36"
+            },
+            {
+              "time": "2024-08-20T02:29",
+              "arrival": "2024-08-20T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T15:29",
+              "arrival": "2024-08-20T15:36"
+            },
+            {
+              "time": "2024-08-20T16:29",
+              "arrival": "2024-08-20T16:36"
+            },
+            {
+              "time": "2024-08-20T17:29",
+              "arrival": "2024-08-20T17:36"
+            },
+            {
+              "time": "2024-08-20T18:29",
+              "arrival": "2024-08-20T18:36"
+            },
+            {
+              "time": "2024-08-20T19:29",
+              "arrival": "2024-08-20T19:36"
+            },
+            {
+              "time": "2024-08-20T20:29",
+              "arrival": "2024-08-20T20:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:20"
+            },
+            {
+              "time": "2024-08-15T19:20"
+            },
+            {
+              "time": "2024-08-15T20:20"
+            },
+            {
+              "time": "2024-08-15T21:20"
+            },
+            {
+              "time": "2024-08-15T22:20"
+            },
+            {
+              "time": "2024-08-15T23:20"
+            },
+            {
+              "time": "2024-08-16T00:20"
+            },
+            {
+              "time": "2024-08-16T01:20"
+            },
+            {
+              "time": "2024-08-16T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:20"
+            },
+            {
+              "time": "2024-08-16T16:20"
+            },
+            {
+              "time": "2024-08-16T17:20"
+            },
+            {
+              "time": "2024-08-16T18:20"
+            },
+            {
+              "time": "2024-08-16T19:20"
+            },
+            {
+              "time": "2024-08-16T20:20"
+            },
+            {
+              "time": "2024-08-16T21:20"
+            },
+            {
+              "time": "2024-08-16T22:20"
+            },
+            {
+              "time": "2024-08-16T23:20"
+            },
+            {
+              "time": "2024-08-17T00:20"
+            },
+            {
+              "time": "2024-08-17T01:20"
+            },
+            {
+              "time": "2024-08-17T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:20"
+            },
+            {
+              "time": "2024-08-17T16:20"
+            },
+            {
+              "time": "2024-08-17T17:20"
+            },
+            {
+              "time": "2024-08-17T18:20"
+            },
+            {
+              "time": "2024-08-17T19:20"
+            },
+            {
+              "time": "2024-08-17T20:20"
+            },
+            {
+              "time": "2024-08-17T21:20"
+            },
+            {
+              "time": "2024-08-17T22:20"
+            },
+            {
+              "time": "2024-08-17T23:20"
+            },
+            {
+              "time": "2024-08-18T00:20"
+            },
+            {
+              "time": "2024-08-18T01:20"
+            },
+            {
+              "time": "2024-08-18T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:20"
+            },
+            {
+              "time": "2024-08-18T15:20"
+            },
+            {
+              "time": "2024-08-18T17:20"
+            },
+            {
+              "time": "2024-08-18T19:20"
+            },
+            {
+              "time": "2024-08-18T21:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:20"
+            },
+            {
+              "time": "2024-08-19T11:20"
+            },
+            {
+              "time": "2024-08-19T12:20"
+            },
+            {
+              "time": "2024-08-19T13:20"
+            },
+            {
+              "time": "2024-08-19T14:20"
+            },
+            {
+              "time": "2024-08-19T15:20"
+            },
+            {
+              "time": "2024-08-19T16:20"
+            },
+            {
+              "time": "2024-08-19T17:20"
+            },
+            {
+              "time": "2024-08-19T18:20"
+            },
+            {
+              "time": "2024-08-19T19:20"
+            },
+            {
+              "time": "2024-08-19T20:20"
+            },
+            {
+              "time": "2024-08-19T21:20"
+            },
+            {
+              "time": "2024-08-19T22:20"
+            },
+            {
+              "time": "2024-08-19T23:20"
+            },
+            {
+              "time": "2024-08-20T00:20"
+            },
+            {
+              "time": "2024-08-20T01:20"
+            },
+            {
+              "time": "2024-08-20T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T17:20"
+            },
+            {
+              "time": "2024-08-20T18:20"
+            },
+            {
+              "time": "2024-08-20T19:20"
+            },
+            {
+              "time": "2024-08-20T20:20"
+            },
+            {
+              "time": "2024-08-20T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "vechta_telbrake_telbrake-telbraker-str-graf-von-stauffenberg-str",
+      "name": "Telbrake, Telbraker Str./Graf-von-Stauffenberg-Str.",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 250
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:30",
+              "arrival": "2024-08-15T18:36"
+            },
+            {
+              "time": "2024-08-15T19:30",
+              "arrival": "2024-08-15T19:36"
+            },
+            {
+              "time": "2024-08-15T20:30",
+              "arrival": "2024-08-15T20:36"
+            },
+            {
+              "time": "2024-08-15T21:30",
+              "arrival": "2024-08-15T21:36"
+            },
+            {
+              "time": "2024-08-15T22:30",
+              "arrival": "2024-08-15T22:36"
+            },
+            {
+              "time": "2024-08-15T23:30",
+              "arrival": "2024-08-15T23:36"
+            },
+            {
+              "time": "2024-08-16T00:30",
+              "arrival": "2024-08-16T00:36"
+            },
+            {
+              "time": "2024-08-16T01:30",
+              "arrival": "2024-08-16T01:36"
+            },
+            {
+              "time": "2024-08-16T02:30",
+              "arrival": "2024-08-16T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:30",
+              "arrival": "2024-08-16T15:36"
+            },
+            {
+              "time": "2024-08-16T16:30",
+              "arrival": "2024-08-16T16:36"
+            },
+            {
+              "time": "2024-08-16T17:30",
+              "arrival": "2024-08-16T17:36"
+            },
+            {
+              "time": "2024-08-16T18:30",
+              "arrival": "2024-08-16T18:36"
+            },
+            {
+              "time": "2024-08-16T19:30",
+              "arrival": "2024-08-16T19:36"
+            },
+            {
+              "time": "2024-08-16T20:30",
+              "arrival": "2024-08-16T20:36"
+            },
+            {
+              "time": "2024-08-16T21:30",
+              "arrival": "2024-08-16T21:36"
+            },
+            {
+              "time": "2024-08-16T22:30",
+              "arrival": "2024-08-16T22:36"
+            },
+            {
+              "time": "2024-08-16T23:30",
+              "arrival": "2024-08-16T23:36"
+            },
+            {
+              "time": "2024-08-17T00:30",
+              "arrival": "2024-08-17T00:36"
+            },
+            {
+              "time": "2024-08-17T01:30",
+              "arrival": "2024-08-17T01:36"
+            },
+            {
+              "time": "2024-08-17T02:30",
+              "arrival": "2024-08-17T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:30",
+              "arrival": "2024-08-17T15:36"
+            },
+            {
+              "time": "2024-08-17T16:30",
+              "arrival": "2024-08-17T16:36"
+            },
+            {
+              "time": "2024-08-17T17:30",
+              "arrival": "2024-08-17T17:36"
+            },
+            {
+              "time": "2024-08-17T18:30",
+              "arrival": "2024-08-17T18:36"
+            },
+            {
+              "time": "2024-08-17T19:30",
+              "arrival": "2024-08-17T19:36"
+            },
+            {
+              "time": "2024-08-17T20:30",
+              "arrival": "2024-08-17T20:36"
+            },
+            {
+              "time": "2024-08-17T21:30",
+              "arrival": "2024-08-17T21:36"
+            },
+            {
+              "time": "2024-08-17T22:30",
+              "arrival": "2024-08-17T22:36"
+            },
+            {
+              "time": "2024-08-17T23:30",
+              "arrival": "2024-08-17T23:36"
+            },
+            {
+              "time": "2024-08-18T00:30",
+              "arrival": "2024-08-18T00:36"
+            },
+            {
+              "time": "2024-08-18T01:30",
+              "arrival": "2024-08-18T01:36"
+            },
+            {
+              "time": "2024-08-18T02:30",
+              "arrival": "2024-08-18T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:30",
+              "arrival": "2024-08-18T13:36"
+            },
+            {
+              "time": "2024-08-18T15:30",
+              "arrival": "2024-08-18T15:36"
+            },
+            {
+              "time": "2024-08-18T17:30",
+              "arrival": "2024-08-18T17:36"
+            },
+            {
+              "time": "2024-08-18T19:30",
+              "arrival": "2024-08-18T19:36"
+            },
+            {
+              "time": "2024-08-18T21:30",
+              "arrival": "2024-08-18T21:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:30",
+              "arrival": "2024-08-19T08:36"
+            },
+            {
+              "time": "2024-08-19T09:30",
+              "arrival": "2024-08-19T09:36"
+            },
+            {
+              "time": "2024-08-19T10:30",
+              "arrival": "2024-08-19T10:36"
+            },
+            {
+              "time": "2024-08-19T11:30",
+              "arrival": "2024-08-19T11:36"
+            },
+            {
+              "time": "2024-08-19T12:30",
+              "arrival": "2024-08-19T12:36"
+            },
+            {
+              "time": "2024-08-19T13:30",
+              "arrival": "2024-08-19T13:36"
+            },
+            {
+              "time": "2024-08-19T14:30",
+              "arrival": "2024-08-19T14:36"
+            },
+            {
+              "time": "2024-08-19T15:30",
+              "arrival": "2024-08-19T15:36"
+            },
+            {
+              "time": "2024-08-19T16:30",
+              "arrival": "2024-08-19T16:36"
+            },
+            {
+              "time": "2024-08-19T17:30",
+              "arrival": "2024-08-19T17:36"
+            },
+            {
+              "time": "2024-08-19T18:30",
+              "arrival": "2024-08-19T18:36"
+            },
+            {
+              "time": "2024-08-19T19:30",
+              "arrival": "2024-08-19T19:36"
+            },
+            {
+              "time": "2024-08-19T20:30",
+              "arrival": "2024-08-19T20:36"
+            },
+            {
+              "time": "2024-08-19T21:30",
+              "arrival": "2024-08-19T21:36"
+            },
+            {
+              "time": "2024-08-19T22:30",
+              "arrival": "2024-08-19T22:36"
+            },
+            {
+              "time": "2024-08-19T23:30",
+              "arrival": "2024-08-19T23:36"
+            },
+            {
+              "time": "2024-08-20T00:30",
+              "arrival": "2024-08-20T00:36"
+            },
+            {
+              "time": "2024-08-20T01:30",
+              "arrival": "2024-08-20T01:36"
+            },
+            {
+              "time": "2024-08-20T02:30",
+              "arrival": "2024-08-20T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T15:30",
+              "arrival": "2024-08-20T15:36"
+            },
+            {
+              "time": "2024-08-20T16:30",
+              "arrival": "2024-08-20T16:36"
+            },
+            {
+              "time": "2024-08-20T17:30",
+              "arrival": "2024-08-20T17:36"
+            },
+            {
+              "time": "2024-08-20T18:30",
+              "arrival": "2024-08-20T18:36"
+            },
+            {
+              "time": "2024-08-20T19:30",
+              "arrival": "2024-08-20T19:36"
+            },
+            {
+              "time": "2024-08-20T20:30",
+              "arrival": "2024-08-20T20:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:20"
+            },
+            {
+              "time": "2024-08-15T19:20"
+            },
+            {
+              "time": "2024-08-15T20:20"
+            },
+            {
+              "time": "2024-08-15T21:20"
+            },
+            {
+              "time": "2024-08-15T22:20"
+            },
+            {
+              "time": "2024-08-15T23:20"
+            },
+            {
+              "time": "2024-08-16T00:20"
+            },
+            {
+              "time": "2024-08-16T01:20"
+            },
+            {
+              "time": "2024-08-16T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:20"
+            },
+            {
+              "time": "2024-08-16T16:20"
+            },
+            {
+              "time": "2024-08-16T17:20"
+            },
+            {
+              "time": "2024-08-16T18:20"
+            },
+            {
+              "time": "2024-08-16T19:20"
+            },
+            {
+              "time": "2024-08-16T20:20"
+            },
+            {
+              "time": "2024-08-16T21:20"
+            },
+            {
+              "time": "2024-08-16T22:20"
+            },
+            {
+              "time": "2024-08-16T23:20"
+            },
+            {
+              "time": "2024-08-17T00:20"
+            },
+            {
+              "time": "2024-08-17T01:20"
+            },
+            {
+              "time": "2024-08-17T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:20"
+            },
+            {
+              "time": "2024-08-17T16:20"
+            },
+            {
+              "time": "2024-08-17T17:20"
+            },
+            {
+              "time": "2024-08-17T18:20"
+            },
+            {
+              "time": "2024-08-17T19:20"
+            },
+            {
+              "time": "2024-08-17T20:20"
+            },
+            {
+              "time": "2024-08-17T21:20"
+            },
+            {
+              "time": "2024-08-17T22:20"
+            },
+            {
+              "time": "2024-08-17T23:20"
+            },
+            {
+              "time": "2024-08-18T00:20"
+            },
+            {
+              "time": "2024-08-18T01:20"
+            },
+            {
+              "time": "2024-08-18T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:20"
+            },
+            {
+              "time": "2024-08-18T15:20"
+            },
+            {
+              "time": "2024-08-18T17:20"
+            },
+            {
+              "time": "2024-08-18T19:20"
+            },
+            {
+              "time": "2024-08-18T21:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:20"
+            },
+            {
+              "time": "2024-08-19T11:20"
+            },
+            {
+              "time": "2024-08-19T12:20"
+            },
+            {
+              "time": "2024-08-19T13:20"
+            },
+            {
+              "time": "2024-08-19T14:20"
+            },
+            {
+              "time": "2024-08-19T15:20"
+            },
+            {
+              "time": "2024-08-19T16:20"
+            },
+            {
+              "time": "2024-08-19T17:20"
+            },
+            {
+              "time": "2024-08-19T18:20"
+            },
+            {
+              "time": "2024-08-19T19:20"
+            },
+            {
+              "time": "2024-08-19T20:20"
+            },
+            {
+              "time": "2024-08-19T21:20"
+            },
+            {
+              "time": "2024-08-19T22:20"
+            },
+            {
+              "time": "2024-08-19T23:20"
+            },
+            {
+              "time": "2024-08-20T00:20"
+            },
+            {
+              "time": "2024-08-20T01:20"
+            },
+            {
+              "time": "2024-08-20T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T17:20"
+            },
+            {
+              "time": "2024-08-20T18:20"
+            },
+            {
+              "time": "2024-08-20T19:20"
+            },
+            {
+              "time": "2024-08-20T20:20"
+            },
+            {
+              "time": "2024-08-20T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "vechta_telbrake_telbrake-hoher-esch",
+      "name": "Telbrake, Hoher Esch",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 250
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:31",
+              "arrival": "2024-08-15T18:36"
+            },
+            {
+              "time": "2024-08-15T19:31",
+              "arrival": "2024-08-15T19:36"
+            },
+            {
+              "time": "2024-08-15T20:31",
+              "arrival": "2024-08-15T20:36"
+            },
+            {
+              "time": "2024-08-15T21:31",
+              "arrival": "2024-08-15T21:36"
+            },
+            {
+              "time": "2024-08-15T22:31",
+              "arrival": "2024-08-15T22:36"
+            },
+            {
+              "time": "2024-08-15T23:31",
+              "arrival": "2024-08-15T23:36"
+            },
+            {
+              "time": "2024-08-16T00:31",
+              "arrival": "2024-08-16T00:36"
+            },
+            {
+              "time": "2024-08-16T01:31",
+              "arrival": "2024-08-16T01:36"
+            },
+            {
+              "time": "2024-08-16T02:31",
+              "arrival": "2024-08-16T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:31",
+              "arrival": "2024-08-16T15:36"
+            },
+            {
+              "time": "2024-08-16T16:31",
+              "arrival": "2024-08-16T16:36"
+            },
+            {
+              "time": "2024-08-16T17:31",
+              "arrival": "2024-08-16T17:36"
+            },
+            {
+              "time": "2024-08-16T18:31",
+              "arrival": "2024-08-16T18:36"
+            },
+            {
+              "time": "2024-08-16T19:31",
+              "arrival": "2024-08-16T19:36"
+            },
+            {
+              "time": "2024-08-16T20:31",
+              "arrival": "2024-08-16T20:36"
+            },
+            {
+              "time": "2024-08-16T21:31",
+              "arrival": "2024-08-16T21:36"
+            },
+            {
+              "time": "2024-08-16T22:31",
+              "arrival": "2024-08-16T22:36"
+            },
+            {
+              "time": "2024-08-16T23:31",
+              "arrival": "2024-08-16T23:36"
+            },
+            {
+              "time": "2024-08-17T00:31",
+              "arrival": "2024-08-17T00:36"
+            },
+            {
+              "time": "2024-08-17T01:31",
+              "arrival": "2024-08-17T01:36"
+            },
+            {
+              "time": "2024-08-17T02:31",
+              "arrival": "2024-08-17T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:31",
+              "arrival": "2024-08-17T15:36"
+            },
+            {
+              "time": "2024-08-17T16:31",
+              "arrival": "2024-08-17T16:36"
+            },
+            {
+              "time": "2024-08-17T17:31",
+              "arrival": "2024-08-17T17:36"
+            },
+            {
+              "time": "2024-08-17T18:31",
+              "arrival": "2024-08-17T18:36"
+            },
+            {
+              "time": "2024-08-17T19:31",
+              "arrival": "2024-08-17T19:36"
+            },
+            {
+              "time": "2024-08-17T20:31",
+              "arrival": "2024-08-17T20:36"
+            },
+            {
+              "time": "2024-08-17T21:31",
+              "arrival": "2024-08-17T21:36"
+            },
+            {
+              "time": "2024-08-17T22:31",
+              "arrival": "2024-08-17T22:36"
+            },
+            {
+              "time": "2024-08-17T23:31",
+              "arrival": "2024-08-17T23:36"
+            },
+            {
+              "time": "2024-08-18T00:31",
+              "arrival": "2024-08-18T00:36"
+            },
+            {
+              "time": "2024-08-18T01:31",
+              "arrival": "2024-08-18T01:36"
+            },
+            {
+              "time": "2024-08-18T02:31",
+              "arrival": "2024-08-18T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:31",
+              "arrival": "2024-08-18T13:36"
+            },
+            {
+              "time": "2024-08-18T15:31",
+              "arrival": "2024-08-18T15:36"
+            },
+            {
+              "time": "2024-08-18T17:31",
+              "arrival": "2024-08-18T17:36"
+            },
+            {
+              "time": "2024-08-18T19:31",
+              "arrival": "2024-08-18T19:36"
+            },
+            {
+              "time": "2024-08-18T21:31",
+              "arrival": "2024-08-18T21:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:31",
+              "arrival": "2024-08-19T08:36"
+            },
+            {
+              "time": "2024-08-19T09:31",
+              "arrival": "2024-08-19T09:36"
+            },
+            {
+              "time": "2024-08-19T10:31",
+              "arrival": "2024-08-19T10:36"
+            },
+            {
+              "time": "2024-08-19T11:31",
+              "arrival": "2024-08-19T11:36"
+            },
+            {
+              "time": "2024-08-19T12:31",
+              "arrival": "2024-08-19T12:36"
+            },
+            {
+              "time": "2024-08-19T13:31",
+              "arrival": "2024-08-19T13:36"
+            },
+            {
+              "time": "2024-08-19T14:31",
+              "arrival": "2024-08-19T14:36"
+            },
+            {
+              "time": "2024-08-19T15:31",
+              "arrival": "2024-08-19T15:36"
+            },
+            {
+              "time": "2024-08-19T16:31",
+              "arrival": "2024-08-19T16:36"
+            },
+            {
+              "time": "2024-08-19T17:31",
+              "arrival": "2024-08-19T17:36"
+            },
+            {
+              "time": "2024-08-19T18:31",
+              "arrival": "2024-08-19T18:36"
+            },
+            {
+              "time": "2024-08-19T19:31",
+              "arrival": "2024-08-19T19:36"
+            },
+            {
+              "time": "2024-08-19T20:31",
+              "arrival": "2024-08-19T20:36"
+            },
+            {
+              "time": "2024-08-19T21:31",
+              "arrival": "2024-08-19T21:36"
+            },
+            {
+              "time": "2024-08-19T22:31",
+              "arrival": "2024-08-19T22:36"
+            },
+            {
+              "time": "2024-08-19T23:31",
+              "arrival": "2024-08-19T23:36"
+            },
+            {
+              "time": "2024-08-20T00:31",
+              "arrival": "2024-08-20T00:36"
+            },
+            {
+              "time": "2024-08-20T01:31",
+              "arrival": "2024-08-20T01:36"
+            },
+            {
+              "time": "2024-08-20T02:31",
+              "arrival": "2024-08-20T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T15:31",
+              "arrival": "2024-08-20T15:36"
+            },
+            {
+              "time": "2024-08-20T16:31",
+              "arrival": "2024-08-20T16:36"
+            },
+            {
+              "time": "2024-08-20T17:31",
+              "arrival": "2024-08-20T17:36"
+            },
+            {
+              "time": "2024-08-20T18:31",
+              "arrival": "2024-08-20T18:36"
+            },
+            {
+              "time": "2024-08-20T19:31",
+              "arrival": "2024-08-20T19:36"
+            },
+            {
+              "time": "2024-08-20T20:31",
+              "arrival": "2024-08-20T20:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:20"
+            },
+            {
+              "time": "2024-08-15T19:20"
+            },
+            {
+              "time": "2024-08-15T20:20"
+            },
+            {
+              "time": "2024-08-15T21:20"
+            },
+            {
+              "time": "2024-08-15T22:20"
+            },
+            {
+              "time": "2024-08-15T23:20"
+            },
+            {
+              "time": "2024-08-16T00:20"
+            },
+            {
+              "time": "2024-08-16T01:20"
+            },
+            {
+              "time": "2024-08-16T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:20"
+            },
+            {
+              "time": "2024-08-16T16:20"
+            },
+            {
+              "time": "2024-08-16T17:20"
+            },
+            {
+              "time": "2024-08-16T18:20"
+            },
+            {
+              "time": "2024-08-16T19:20"
+            },
+            {
+              "time": "2024-08-16T20:20"
+            },
+            {
+              "time": "2024-08-16T21:20"
+            },
+            {
+              "time": "2024-08-16T22:20"
+            },
+            {
+              "time": "2024-08-16T23:20"
+            },
+            {
+              "time": "2024-08-17T00:20"
+            },
+            {
+              "time": "2024-08-17T01:20"
+            },
+            {
+              "time": "2024-08-17T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:20"
+            },
+            {
+              "time": "2024-08-17T16:20"
+            },
+            {
+              "time": "2024-08-17T17:20"
+            },
+            {
+              "time": "2024-08-17T18:20"
+            },
+            {
+              "time": "2024-08-17T19:20"
+            },
+            {
+              "time": "2024-08-17T20:20"
+            },
+            {
+              "time": "2024-08-17T21:20"
+            },
+            {
+              "time": "2024-08-17T22:20"
+            },
+            {
+              "time": "2024-08-17T23:20"
+            },
+            {
+              "time": "2024-08-18T00:20"
+            },
+            {
+              "time": "2024-08-18T01:20"
+            },
+            {
+              "time": "2024-08-18T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:20"
+            },
+            {
+              "time": "2024-08-18T15:20"
+            },
+            {
+              "time": "2024-08-18T17:20"
+            },
+            {
+              "time": "2024-08-18T19:20"
+            },
+            {
+              "time": "2024-08-18T21:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:20"
+            },
+            {
+              "time": "2024-08-19T11:20"
+            },
+            {
+              "time": "2024-08-19T12:20"
+            },
+            {
+              "time": "2024-08-19T13:20"
+            },
+            {
+              "time": "2024-08-19T14:20"
+            },
+            {
+              "time": "2024-08-19T15:20"
+            },
+            {
+              "time": "2024-08-19T16:20"
+            },
+            {
+              "time": "2024-08-19T17:20"
+            },
+            {
+              "time": "2024-08-19T18:20"
+            },
+            {
+              "time": "2024-08-19T19:20"
+            },
+            {
+              "time": "2024-08-19T20:20"
+            },
+            {
+              "time": "2024-08-19T21:20"
+            },
+            {
+              "time": "2024-08-19T22:20"
+            },
+            {
+              "time": "2024-08-19T23:20"
+            },
+            {
+              "time": "2024-08-20T00:20"
+            },
+            {
+              "time": "2024-08-20T01:20"
+            },
+            {
+              "time": "2024-08-20T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T17:20"
+            },
+            {
+              "time": "2024-08-20T18:20"
+            },
+            {
+              "time": "2024-08-20T19:20"
+            },
+            {
+              "time": "2024-08-20T20:20"
+            },
+            {
+              "time": "2024-08-20T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "vechta_telbrake_oythe-treffpunkt",
+      "name": "Oythe, Treffpunkt",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 250
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:32",
+              "arrival": "2024-08-15T18:36"
+            },
+            {
+              "time": "2024-08-15T19:32",
+              "arrival": "2024-08-15T19:36"
+            },
+            {
+              "time": "2024-08-15T20:32",
+              "arrival": "2024-08-15T20:36"
+            },
+            {
+              "time": "2024-08-15T21:32",
+              "arrival": "2024-08-15T21:36"
+            },
+            {
+              "time": "2024-08-15T22:32",
+              "arrival": "2024-08-15T22:36"
+            },
+            {
+              "time": "2024-08-15T23:32",
+              "arrival": "2024-08-15T23:36"
+            },
+            {
+              "time": "2024-08-16T00:32",
+              "arrival": "2024-08-16T00:36"
+            },
+            {
+              "time": "2024-08-16T01:32",
+              "arrival": "2024-08-16T01:36"
+            },
+            {
+              "time": "2024-08-16T02:32",
+              "arrival": "2024-08-16T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:32",
+              "arrival": "2024-08-16T15:36"
+            },
+            {
+              "time": "2024-08-16T16:32",
+              "arrival": "2024-08-16T16:36"
+            },
+            {
+              "time": "2024-08-16T17:32",
+              "arrival": "2024-08-16T17:36"
+            },
+            {
+              "time": "2024-08-16T18:32",
+              "arrival": "2024-08-16T18:36"
+            },
+            {
+              "time": "2024-08-16T19:32",
+              "arrival": "2024-08-16T19:36"
+            },
+            {
+              "time": "2024-08-16T20:32",
+              "arrival": "2024-08-16T20:36"
+            },
+            {
+              "time": "2024-08-16T21:32",
+              "arrival": "2024-08-16T21:36"
+            },
+            {
+              "time": "2024-08-16T22:32",
+              "arrival": "2024-08-16T22:36"
+            },
+            {
+              "time": "2024-08-16T23:32",
+              "arrival": "2024-08-16T23:36"
+            },
+            {
+              "time": "2024-08-17T00:32",
+              "arrival": "2024-08-17T00:36"
+            },
+            {
+              "time": "2024-08-17T01:32",
+              "arrival": "2024-08-17T01:36"
+            },
+            {
+              "time": "2024-08-17T02:32",
+              "arrival": "2024-08-17T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:32",
+              "arrival": "2024-08-17T15:36"
+            },
+            {
+              "time": "2024-08-17T16:32",
+              "arrival": "2024-08-17T16:36"
+            },
+            {
+              "time": "2024-08-17T17:32",
+              "arrival": "2024-08-17T17:36"
+            },
+            {
+              "time": "2024-08-17T18:32",
+              "arrival": "2024-08-17T18:36"
+            },
+            {
+              "time": "2024-08-17T19:32",
+              "arrival": "2024-08-17T19:36"
+            },
+            {
+              "time": "2024-08-17T20:32",
+              "arrival": "2024-08-17T20:36"
+            },
+            {
+              "time": "2024-08-17T21:32",
+              "arrival": "2024-08-17T21:36"
+            },
+            {
+              "time": "2024-08-17T22:32",
+              "arrival": "2024-08-17T22:36"
+            },
+            {
+              "time": "2024-08-17T23:32",
+              "arrival": "2024-08-17T23:36"
+            },
+            {
+              "time": "2024-08-18T00:32",
+              "arrival": "2024-08-18T00:36"
+            },
+            {
+              "time": "2024-08-18T01:32",
+              "arrival": "2024-08-18T01:36"
+            },
+            {
+              "time": "2024-08-18T02:32",
+              "arrival": "2024-08-18T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:32",
+              "arrival": "2024-08-18T13:36"
+            },
+            {
+              "time": "2024-08-18T15:32",
+              "arrival": "2024-08-18T15:36"
+            },
+            {
+              "time": "2024-08-18T17:32",
+              "arrival": "2024-08-18T17:36"
+            },
+            {
+              "time": "2024-08-18T19:32",
+              "arrival": "2024-08-18T19:36"
+            },
+            {
+              "time": "2024-08-18T21:32",
+              "arrival": "2024-08-18T21:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:32",
+              "arrival": "2024-08-19T08:36"
+            },
+            {
+              "time": "2024-08-19T09:32",
+              "arrival": "2024-08-19T09:36"
+            },
+            {
+              "time": "2024-08-19T10:32",
+              "arrival": "2024-08-19T10:36"
+            },
+            {
+              "time": "2024-08-19T11:32",
+              "arrival": "2024-08-19T11:36"
+            },
+            {
+              "time": "2024-08-19T12:32",
+              "arrival": "2024-08-19T12:36"
+            },
+            {
+              "time": "2024-08-19T13:32",
+              "arrival": "2024-08-19T13:36"
+            },
+            {
+              "time": "2024-08-19T14:32",
+              "arrival": "2024-08-19T14:36"
+            },
+            {
+              "time": "2024-08-19T15:32",
+              "arrival": "2024-08-19T15:36"
+            },
+            {
+              "time": "2024-08-19T16:32",
+              "arrival": "2024-08-19T16:36"
+            },
+            {
+              "time": "2024-08-19T17:32",
+              "arrival": "2024-08-19T17:36"
+            },
+            {
+              "time": "2024-08-19T18:32",
+              "arrival": "2024-08-19T18:36"
+            },
+            {
+              "time": "2024-08-19T19:32",
+              "arrival": "2024-08-19T19:36"
+            },
+            {
+              "time": "2024-08-19T20:32",
+              "arrival": "2024-08-19T20:36"
+            },
+            {
+              "time": "2024-08-19T21:32",
+              "arrival": "2024-08-19T21:36"
+            },
+            {
+              "time": "2024-08-19T22:32",
+              "arrival": "2024-08-19T22:36"
+            },
+            {
+              "time": "2024-08-19T23:32",
+              "arrival": "2024-08-19T23:36"
+            },
+            {
+              "time": "2024-08-20T00:32",
+              "arrival": "2024-08-20T00:36"
+            },
+            {
+              "time": "2024-08-20T01:32",
+              "arrival": "2024-08-20T01:36"
+            },
+            {
+              "time": "2024-08-20T02:32",
+              "arrival": "2024-08-20T02:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T15:32",
+              "arrival": "2024-08-20T15:36"
+            },
+            {
+              "time": "2024-08-20T16:32",
+              "arrival": "2024-08-20T16:36"
+            },
+            {
+              "time": "2024-08-20T17:32",
+              "arrival": "2024-08-20T17:36"
+            },
+            {
+              "time": "2024-08-20T18:32",
+              "arrival": "2024-08-20T18:36"
+            },
+            {
+              "time": "2024-08-20T19:32",
+              "arrival": "2024-08-20T19:36"
+            },
+            {
+              "time": "2024-08-20T20:32",
+              "arrival": "2024-08-20T20:36"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T18:20"
+            },
+            {
+              "time": "2024-08-15T19:20"
+            },
+            {
+              "time": "2024-08-15T20:20"
+            },
+            {
+              "time": "2024-08-15T21:20"
+            },
+            {
+              "time": "2024-08-15T22:20"
+            },
+            {
+              "time": "2024-08-15T23:20"
+            },
+            {
+              "time": "2024-08-16T00:20"
+            },
+            {
+              "time": "2024-08-16T01:20"
+            },
+            {
+              "time": "2024-08-16T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T15:20"
+            },
+            {
+              "time": "2024-08-16T16:20"
+            },
+            {
+              "time": "2024-08-16T17:20"
+            },
+            {
+              "time": "2024-08-16T18:20"
+            },
+            {
+              "time": "2024-08-16T19:20"
+            },
+            {
+              "time": "2024-08-16T20:20"
+            },
+            {
+              "time": "2024-08-16T21:20"
+            },
+            {
+              "time": "2024-08-16T22:20"
+            },
+            {
+              "time": "2024-08-16T23:20"
+            },
+            {
+              "time": "2024-08-17T00:20"
+            },
+            {
+              "time": "2024-08-17T01:20"
+            },
+            {
+              "time": "2024-08-17T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T15:20"
+            },
+            {
+              "time": "2024-08-17T16:20"
+            },
+            {
+              "time": "2024-08-17T17:20"
+            },
+            {
+              "time": "2024-08-17T18:20"
+            },
+            {
+              "time": "2024-08-17T19:20"
+            },
+            {
+              "time": "2024-08-17T20:20"
+            },
+            {
+              "time": "2024-08-17T21:20"
+            },
+            {
+              "time": "2024-08-17T22:20"
+            },
+            {
+              "time": "2024-08-17T23:20"
+            },
+            {
+              "time": "2024-08-18T00:20"
+            },
+            {
+              "time": "2024-08-18T01:20"
+            },
+            {
+              "time": "2024-08-18T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-18",
+          "departures": [
+            {
+              "time": "2024-08-18T13:20"
+            },
+            {
+              "time": "2024-08-18T15:20"
+            },
+            {
+              "time": "2024-08-18T17:20"
+            },
+            {
+              "time": "2024-08-18T19:20"
+            },
+            {
+              "time": "2024-08-18T21:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:20"
+            },
+            {
+              "time": "2024-08-19T11:20"
+            },
+            {
+              "time": "2024-08-19T12:20"
+            },
+            {
+              "time": "2024-08-19T13:20"
+            },
+            {
+              "time": "2024-08-19T14:20"
+            },
+            {
+              "time": "2024-08-19T15:20"
+            },
+            {
+              "time": "2024-08-19T16:20"
+            },
+            {
+              "time": "2024-08-19T17:20"
+            },
+            {
+              "time": "2024-08-19T18:20"
+            },
+            {
+              "time": "2024-08-19T19:20"
+            },
+            {
+              "time": "2024-08-19T20:20"
+            },
+            {
+              "time": "2024-08-19T21:20"
+            },
+            {
+              "time": "2024-08-19T22:20"
+            },
+            {
+              "time": "2024-08-19T23:20"
+            },
+            {
+              "time": "2024-08-20T00:20"
+            },
+            {
+              "time": "2024-08-20T01:20"
+            },
+            {
+              "time": "2024-08-20T02:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-20",
+          "departures": [
+            {
+              "time": "2024-08-20T17:20"
+            },
+            {
+              "time": "2024-08-20T18:20"
+            },
+            {
+              "time": "2024-08-20T19:20"
+            },
+            {
+              "time": "2024-08-20T20:20"
+            },
+            {
+              "time": "2024-08-20T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    }
+  ],
+  "arrivalStationSlug": "busbahnhof_ost"
 }

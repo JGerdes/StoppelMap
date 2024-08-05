@@ -1,1484 +1,2381 @@
 {
-    "slug": "diepholz_und_umland",
-    "name": "Diepholz und Umland",
-    "operator": "operator_wilmering",
-    "additionalInfo": {
-    },
-    "ticketWebsites": [
-    ],
-    "stations": [
+  "slug": "diepholz_und_umland",
+  "name": "Diepholz und Umland",
+  "operator": "operator_wilmering",
+  "additionalInfo": {
+  },
+  "stations": [
+    {
+      "slug": "diepholz_und_umland_diepholz-schulzentrum",
+      "name": "Diepholz, Schulzentrum",
+      "isNew": false,
+      "prices": [
         {
-            "slug": "diepholz_und_umland_diepholz-schulzentrum",
-            "name": "Diepholz, Schulzentrum",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:00",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:00",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:30",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
         },
         {
-            "slug": "diepholz_und_umland_diepholz-abzweig-moorstr",
-            "name": "Diepholz, Abzweig Moorstr.",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:02",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:02",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:32",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_diepholz-kk-markt-luederstr",
-            "name": "Diepholz, K+K Markt, Lüderstr.",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:03",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:03",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:33",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_diepholz-freibad",
-            "name": "Diepholz, Freibad",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:04",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:04",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:34",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_diepholz-katholische-kirche",
-            "name": "Diepholz, Katholische Kirche",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:06",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:06",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:36",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_diepholz-bahnhof",
-            "name": "Diepholz, Bahnhof",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:08",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:08",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:38",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_diepholz-krankenhaus",
-            "name": "Diepholz, Krankenhaus",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:10",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:10",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:40",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_diepholz-marktplatz",
-            "name": "Diepholz, Marktplatz",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:12",
-                            "arrival": "2024-08-16T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:12",
-                            "arrival": "2024-08-17T19:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:42",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_diepholz-diemastr",
-            "name": "Diepholz, Diemastr.",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 500
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 370
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:14",
-                            "arrival": "2024-08-16T23:50",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T23:14",
-                            "arrival": "2024-08-17T23:50",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:44",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_st-huelfe-b-51",
-            "name": "St. Hülfe, B 51",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 480
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 350
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T20:00",
-                            "arrival": "2024-08-16T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T20:00",
-                            "arrival": "2024-08-17T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:46",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_heede-ripking",
-            "name": "Heede, Ripking",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 480
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 350
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T20:04",
-                            "arrival": "2024-08-16T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T20:04",
-                            "arrival": "2024-08-17T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:50",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_heede-liegertsiedlung",
-            "name": "Heede, Liegertsiedlung",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 480
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 350
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T20:05",
-                            "arrival": "2024-08-16T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T20:05",
-                            "arrival": "2024-08-17T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:51",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_jacobidrebber-friedhof",
-            "name": "Jacobidrebber, Friedhof",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 480
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 350
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T20:07",
-                            "arrival": "2024-08-16T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T20:07",
-                            "arrival": "2024-08-17T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:53",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_mariendrebber-halfbrodt",
-            "name": "Mariendrebber, Halfbrodt",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 480
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 350
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T20:09",
-                            "arrival": "2024-08-16T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T20:09",
-                            "arrival": "2024-08-17T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T08:55",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_aschen-milbe",
-            "name": "Aschen, Milbe",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 480
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 350
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T20:14",
-                            "arrival": "2024-08-16T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T20:14",
-                            "arrival": "2024-08-17T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T09:00",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "diepholz_und_umland_schobrink-paradiek",
-            "name": "Schobrink, Paradiek",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 450
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 330
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T20:20",
-                            "arrival": "2024-08-16T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T20:20",
-                            "arrival": "2024-08-17T20:35",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T09:05",
-                            "arrival": "2024-08-19T09:20",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T23:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T01:30",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T12:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
         }
-    ],
-    "arrivalStationSlug": "busbahnhof_ost"
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:00",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:00",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:00",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:00",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:00",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:00",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:00",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:00",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:00",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:00",
+              "arrival": "2024-08-17T23:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:30",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:00",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:00",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:00",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:00",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:00",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-abzweig-moorstr",
+      "name": "Diepholz, Abzweig Moorstr.",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:02",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:02",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:02",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:02",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:02",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:02",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:02",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:02",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:02",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:02",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:32",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:02",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:02",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:02",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:02",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:02",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-kk-markt-luederstr",
+      "name": "Diepholz, K+K Markt, Lüderstr.",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:03",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:03",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:03",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:03",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:03",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:03",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:03",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:03",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:03",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:03",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:33",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:03",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:03",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:03",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:03",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:03",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-freibad",
+      "name": "Diepholz, Freibad",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:04",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:04",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:04",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:04",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:04",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:04",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:04",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:04",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:04",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:04",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:34",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:04",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:04",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:04",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:04",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:04",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-katholische-kirche",
+      "name": "Diepholz, Katholische Kirche",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:06",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:06",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:06",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:06",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:06",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:06",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:06",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:06",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:06",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:06",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:36",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:06",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:06",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:06",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:06",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:06",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-bahnhof",
+      "name": "Diepholz, Bahnhof",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:08",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:08",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:08",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:08",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:08",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:08",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:08",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:08",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:08",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:08",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:38",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:08",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:08",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:08",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:08",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:08",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-krankenhaus",
+      "name": "Diepholz, Krankenhaus",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:10",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:10",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:10",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:10",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:10",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:10",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:10",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:10",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:10",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:10",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:40",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:10",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:10",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:10",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:10",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:10",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-marktplatz",
+      "name": "Diepholz, Marktplatz",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:12",
+              "arrival": "2024-08-16T19:35"
+            },
+            {
+              "time": "2024-08-16T20:12",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:12",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:12",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:12",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:12",
+              "arrival": "2024-08-17T19:35"
+            },
+            {
+              "time": "2024-08-17T20:12",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:12",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:12",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:12",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:42",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:12",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:12",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T15:12",
+              "arrival": "2024-08-19T15:35"
+            },
+            {
+              "time": "2024-08-19T18:12",
+              "arrival": "2024-08-19T18:50"
+            },
+            {
+              "time": "2024-08-19T20:12",
+              "arrival": "2024-08-19T20:35"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_diepholz-diemastr",
+      "name": "Diepholz, Diemastr.",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:14",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:14",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:44",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:14",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:14",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:14",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-19T22:30"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_st-huelfe-b-51",
+      "name": "St. Hülfe, B 51",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 480
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 350
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T20:00",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:00",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:00",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:16",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T20:00",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:00",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:00",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:16",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:46",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:16",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:16",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:16",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_heede-ripking",
+      "name": "Heede, Ripking",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 480
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 350
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T20:04",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:04",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:04",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:20",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T20:04",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:04",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:04",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:20",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:50",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:20",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:20",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:20",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_heede-liegertsiedlung",
+      "name": "Heede, Liegertsiedlung",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 480
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 350
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T20:05",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:05",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:05",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:21",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T20:05",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:05",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:05",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:21",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:51",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:21",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:21",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:21",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_jacobidrebber-friedhof",
+      "name": "Jacobidrebber, Friedhof",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 480
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 350
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T20:07",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:07",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:07",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:23",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T20:07",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:07",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:07",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:23",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:53",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:23",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:23",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:23",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_mariendrebber-halfbrodt",
+      "name": "Mariendrebber, Halfbrodt",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 480
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 350
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T20:09",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:09",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:09",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:25",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T20:09",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:09",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:09",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:25",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T08:55",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:25",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:25",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:25",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_aschen-milbe",
+      "name": "Aschen, Milbe",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 480
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 350
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T20:14",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:14",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:14",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:30",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T20:14",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:14",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:15",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:30",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:00",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:30",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:30",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:30",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "diepholz_und_umland_schobrink-paradiek",
+      "name": "Schobrink, Paradiek",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 450
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 330
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T20:20",
+              "arrival": "2024-08-16T20:35"
+            },
+            {
+              "time": "2024-08-16T21:20",
+              "arrival": "2024-08-16T21:35"
+            },
+            {
+              "time": "2024-08-16T22:20",
+              "arrival": "2024-08-16T22:35"
+            },
+            {
+              "time": "2024-08-16T23:35",
+              "arrival": "2024-08-16T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T20:20",
+              "arrival": "2024-08-17T20:35"
+            },
+            {
+              "time": "2024-08-17T21:20",
+              "arrival": "2024-08-17T21:35"
+            },
+            {
+              "time": "2024-08-17T22:20",
+              "arrival": "2024-08-17T22:35"
+            },
+            {
+              "time": "2024-08-17T23:35",
+              "arrival": "2024-08-17T23:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T09:05",
+              "arrival": "2024-08-19T09:20"
+            },
+            {
+              "time": "2024-08-19T10:35",
+              "arrival": "2024-08-19T10:50"
+            },
+            {
+              "time": "2024-08-19T13:35",
+              "arrival": "2024-08-19T13:50"
+            },
+            {
+              "time": "2024-08-19T18:35",
+              "arrival": "2024-08-19T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T23:30"
+            },
+            {
+              "time": "2024-08-17T01:30"
+            },
+            {
+              "time": "2024-08-17T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T23:30"
+            },
+            {
+              "time": "2024-08-18T01:30"
+            },
+            {
+              "time": "2024-08-18T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T12:00"
+            },
+            {
+              "time": "2024-08-19T14:00"
+            },
+            {
+              "time": "2024-08-19T17:00"
+            },
+            {
+              "time": "2024-08-19T19:00"
+            },
+            {
+              "time": "2024-08-20T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    }
+  ],
+  "arrivalStationSlug": "busbahnhof_ost"
 }

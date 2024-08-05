@@ -1,810 +1,787 @@
 {
-    "slug": "calveslage",
-    "name": "Calveslage",
-    "operator": "operator_wilmering",
-    "additionalInfo": {
-    },
-    "ticketWebsites": [
-    ],
-    "stations": [
+  "slug": "calveslage",
+  "name": "Calveslage",
+  "operator": "operator_wilmering",
+  "additionalInfo": {
+  },
+  "stations": [
+    {
+      "slug": "calveslage_lohe-baumann",
+      "name": "Lohe, Baumann",
+      "isNew": false,
+      "prices": [
         {
-            "slug": "calveslage_lohe-baumann",
-            "name": "Lohe, Baumann",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 350
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 220
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T19:13",
-                            "arrival": "2024-08-15T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:13",
-                            "arrival": "2024-08-16T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:13",
-                            "arrival": "2024-08-17T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:47",
-                            "arrival": "2024-08-19T11:08",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T23:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T21:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
         },
         {
-            "slug": "calveslage_lohe-koenig",
-            "name": "Lohe, König",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 350
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 220
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T19:12",
-                            "arrival": "2024-08-15T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:12",
-                            "arrival": "2024-08-16T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:12",
-                            "arrival": "2024-08-17T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:47",
-                            "arrival": "2024-08-19T11:08",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T23:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T21:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "calveslage_lohe-hoelscher",
-            "name": "Lohe, Hölscher",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 350
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 220
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T19:10",
-                            "arrival": "2024-08-15T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:10",
-                            "arrival": "2024-08-16T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:10",
-                            "arrival": "2024-08-17T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:45",
-                            "arrival": "2024-08-19T11:08",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T23:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T21:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "calveslage_lohe-moeller",
-            "name": "Lohe, Möller",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 350
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 220
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T19:14",
-                            "arrival": "2024-08-15T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:14",
-                            "arrival": "2024-08-16T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:14",
-                            "arrival": "2024-08-17T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:49",
-                            "arrival": "2024-08-19T11:08",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T23:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T21:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "calveslage_calveslage-rispenweg",
-            "name": "Calveslage, Rispenweg",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 280
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 200
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T19:19",
-                            "arrival": "2024-08-15T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:19",
-                            "arrival": "2024-08-16T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:19",
-                            "arrival": "2024-08-17T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:54",
-                            "arrival": "2024-08-19T11:08",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T23:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T21:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "calveslage_calveslage-wiesenweg",
-            "name": "Calveslage, Wiesenweg",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 280
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 200
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T19:21",
-                            "arrival": "2024-08-15T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:21",
-                            "arrival": "2024-08-16T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:21",
-                            "arrival": "2024-08-17T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:56",
-                            "arrival": "2024-08-19T11:08",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T23:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T21:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
-        },
-        {
-            "slug": "calveslage_calveslage-bakumer-str",
-            "name": "Calveslage, Bakumer Str.",
-            "location": null,
-            "isNew": false,
-            "prices": [
-                {
-                    "name": {
-                        "de": "Erwachsene"
-                    },
-                    "price": 280
-                },
-                {
-                    "name": {
-                        "de": "Kinder (3–11 Jahre)"
-                    },
-                    "price": 200
-                }
-            ],
-            "ticketWebsites": [
-            ],
-            "outward": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T19:23",
-                            "arrival": "2024-08-15T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-16T19:23",
-                            "arrival": "2024-08-16T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T19:23",
-                            "arrival": "2024-08-17T19:33",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T10:58",
-                            "arrival": "2024-08-19T11:08",
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ],
-            "returns": [
-                {
-                    "day": "2024-08-15",
-                    "departures": [
-                        {
-                            "time": "2024-08-15T23:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-16",
-                    "departures": [
-                        {
-                            "time": "2024-08-17T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-17",
-                    "departures": [
-                        {
-                            "time": "2024-08-18T00:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                },
-                {
-                    "day": "2024-08-19",
-                    "departures": [
-                        {
-                            "time": "2024-08-19T21:00",
-                            "arrival": null,
-                            "annotation": null
-                        }
-                    ],
-                    "laterDepartureOnDemand": false
-                }
-            ]
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
         }
-    ],
-    "arrivalStationSlug": "busbahnhof_west"
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T19:13",
+              "arrival": "2024-08-15T19:33"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:13",
+              "arrival": "2024-08-16T19:33"
+            },
+            {
+              "time": "2024-08-16T20:43",
+              "arrival": "2024-08-16T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:13",
+              "arrival": "2024-08-17T19:33"
+            },
+            {
+              "time": "2024-08-17T20:43",
+              "arrival": "2024-08-17T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:47",
+              "arrival": "2024-08-19T11:08"
+            },
+            {
+              "time": "2024-08-19T15:48",
+              "arrival": "2024-08-19T16:08"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "calveslage_lohe-koenig",
+      "name": "Lohe, König",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T19:12",
+              "arrival": "2024-08-15T19:33"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:12",
+              "arrival": "2024-08-16T19:33"
+            },
+            {
+              "time": "2024-08-16T20:42",
+              "arrival": "2024-08-16T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:12",
+              "arrival": "2024-08-17T19:33"
+            },
+            {
+              "time": "2024-08-17T20:42",
+              "arrival": "2024-08-17T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:47",
+              "arrival": "2024-08-19T11:08"
+            },
+            {
+              "time": "2024-08-19T15:47",
+              "arrival": "2024-08-19T16:08"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "calveslage_lohe-hoelscher",
+      "name": "Lohe, Hölscher",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T19:10",
+              "arrival": "2024-08-15T19:33"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:10",
+              "arrival": "2024-08-16T19:33"
+            },
+            {
+              "time": "2024-08-16T20:40",
+              "arrival": "2024-08-16T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:10",
+              "arrival": "2024-08-17T19:33"
+            },
+            {
+              "time": "2024-08-17T20:40",
+              "arrival": "2024-08-17T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:45",
+              "arrival": "2024-08-19T11:08"
+            },
+            {
+              "time": "2024-08-19T15:45",
+              "arrival": "2024-08-19T16:08"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "calveslage_lohe-moeller",
+      "name": "Lohe, Möller",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T19:14",
+              "arrival": "2024-08-15T19:33"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:14",
+              "arrival": "2024-08-16T19:33"
+            },
+            {
+              "time": "2024-08-16T20:44",
+              "arrival": "2024-08-16T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:14",
+              "arrival": "2024-08-17T19:33"
+            },
+            {
+              "time": "2024-08-17T20:44",
+              "arrival": "2024-08-17T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:49",
+              "arrival": "2024-08-19T11:08"
+            },
+            {
+              "time": "2024-08-19T15:49",
+              "arrival": "2024-08-19T16:08"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "calveslage_calveslage-rispenweg",
+      "name": "Calveslage, Rispenweg",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 280
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 200
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T19:19",
+              "arrival": "2024-08-15T19:33"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:19",
+              "arrival": "2024-08-16T19:33"
+            },
+            {
+              "time": "2024-08-16T20:49",
+              "arrival": "2024-08-16T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:19",
+              "arrival": "2024-08-17T19:33"
+            },
+            {
+              "time": "2024-08-17T20:49",
+              "arrival": "2024-08-17T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:54",
+              "arrival": "2024-08-19T11:08"
+            },
+            {
+              "time": "2024-08-19T15:54",
+              "arrival": "2024-08-19T16:08"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "calveslage_calveslage-wiesenweg",
+      "name": "Calveslage, Wiesenweg",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 280
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 200
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T19:21",
+              "arrival": "2024-08-15T19:33"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:21",
+              "arrival": "2024-08-16T19:33"
+            },
+            {
+              "time": "2024-08-16T20:51",
+              "arrival": "2024-08-16T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:21",
+              "arrival": "2024-08-17T19:33"
+            },
+            {
+              "time": "2024-08-17T20:51",
+              "arrival": "2024-08-17T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:56",
+              "arrival": "2024-08-19T11:08"
+            },
+            {
+              "time": "2024-08-19T15:56",
+              "arrival": "2024-08-19T16:08"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "calveslage_calveslage-bakumer-str",
+      "name": "Calveslage, Bakumer Str.",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 280
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 200
+        }
+      ],
+      "outward": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T19:23",
+              "arrival": "2024-08-15T19:33"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-16T19:23",
+              "arrival": "2024-08-16T19:33"
+            },
+            {
+              "time": "2024-08-16T20:53",
+              "arrival": "2024-08-16T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-17T19:23",
+              "arrival": "2024-08-17T19:33"
+            },
+            {
+              "time": "2024-08-17T20:53",
+              "arrival": "2024-08-17T21:03"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T10:58",
+              "arrival": "2024-08-19T11:08"
+            },
+            {
+              "time": "2024-08-19T15:58",
+              "arrival": "2024-08-19T16:08"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2024-08-15",
+          "departures": [
+            {
+              "time": "2024-08-15T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-16",
+          "departures": [
+            {
+              "time": "2024-08-17T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-17",
+          "departures": [
+            {
+              "time": "2024-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2024-08-19",
+          "departures": [
+            {
+              "time": "2024-08-19T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    }
+  ],
+  "arrivalStationSlug": "busbahnhof_west"
 }
