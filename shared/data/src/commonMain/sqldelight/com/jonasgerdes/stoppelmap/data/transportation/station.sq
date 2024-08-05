@@ -19,3 +19,6 @@ VALUES ?;
 
 clear:
 DELETE FROM station;
+
+getBasicByRoute:
+SELECT slug, name, annotateAsNew FROM station WHERE route = :routeSlug;

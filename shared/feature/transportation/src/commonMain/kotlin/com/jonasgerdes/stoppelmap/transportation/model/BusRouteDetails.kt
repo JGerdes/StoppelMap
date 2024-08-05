@@ -1,47 +1,26 @@
 package com.jonasgerdes.stoppelmap.transportation.model
 
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.LocalTime
-
 data class BusRouteDetails(
-    val routeId: String,
-    val title: String,
+    val name: String,
     val additionalInfo: String? = null,
+    val operator: Operator,
     val stations: List<Station>,
-    val returnStations: List<ReturnStation>,
+    val destination: Destination
 ) {
-
-    sealed class Station {
-        abstract val id: String
-        abstract val title: String
-
-        data class Stop(
-            override val id: String,
-            override val title: String,
-            val routeName: String? = null,
-            val nextDepartures: List<DepartureTime>,
-            val annotateAsNew: Boolean = false,
-        ) : Station()
-
-        data class Destination(
-            override val id: String,
-            override val title: String
-        ) : Station()
-    }
-
-    data class ReturnStation(
-        val id: String,
-        val title: String,
+    data class Operator(
+        val slug: String,
+        val name: String,
     )
 
+    data class Station(
+        val slug: String,
+        val name: String,
+        val nextDepartures: List<DepartureTime>,
+        val annotateAsNew: Boolean = false,
+    )
 
-    sealed class DepartureTime {
-        object Immediately : DepartureTime()
-        data class InMinutes(val minutes: Int) : DepartureTime()
-        data class Today(val time: LocalTime) : DepartureTime()
-        data class Tomorrow(val time: LocalTime) : DepartureTime()
-        data class ThisWeek(val dateTime: LocalDateTime) : DepartureTime()
-        data class Absolute(val dateTime: LocalDateTime) : DepartureTime()
-    }
-
+    data class Destination(
+        val slug: String,
+        val name: String?,
+    )
 }

@@ -1,26 +1,25 @@
 package com.jonasgerdes.stoppelmap.transportation.usecase
 
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
-import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
-import com.jonasgerdes.stoppelmap.transportation.model.Departure
+import com.jonasgerdes.stoppelmap.transportation.data.TransportDataSource
+import com.jonasgerdes.stoppelmap.transportation.model.DepartureTime
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
-import kotlinx.datetime.toInstant
 
 class GetNextDeparturesUseCase(
     private val clockProvider: ClockProvider,
     private val timeZone: TimeZone,
+    private val transportDataSource: TransportDataSource,
 ) {
 
     operator fun invoke(
-        departures: List<Departure>,
+        stationSlugs: List<String>,
+        maxDepartures: Int = 3,
         now: LocalDateTime = clockProvider.nowAsLocalDateTime(),
-    ): List<BusRouteDetails.DepartureTime> {
-        val now = LocalDateTime(2023, Month.AUGUST, 12, 21, 0)
+    ): Map<String, List<DepartureTime>> {
         return departures
             .filter { it.time > now }
             .sortedBy { it.time }
@@ -29,21 +28,21 @@ class GetNextDeparturesUseCase(
                 val difference = it.time.toInstant(timeZone) - now.toInstant(timeZone)
                 when {
                     difference.inWholeMinutes < 1 ->
-                        BusRouteDetails.DepartureTime.Immediately
+                        DepartureTime.Immediately
 
                     difference.inWholeMinutes < 30 ->
-                        BusRouteDetails.DepartureTime.InMinutes(difference.inWholeMinutes.toInt())
+                        DepartureTime.InMinutes(difference.inWholeMinutes.toInt())
 
                     it.time.isConsideredSameDay(now.date) ->
-                        BusRouteDetails.DepartureTime.Today(it.time.time)
+                        DepartureTime.Today(it.time.time)
 
                     it.time.isConsideredSameDay(now.date.nextDay()) ->
-                        BusRouteDetails.DepartureTime.Tomorrow(it.time.time)
+                        DepartureTime.Tomorrow(it.time.time)
 
                     difference.inWholeDays < 7 ->
-                        BusRouteDetails.DepartureTime.ThisWeek(it.time)
+                        DepartureTime.ThisWeek(it.time)
 
-                    else -> BusRouteDetails.DepartureTime.Absolute(dateTime = it.time)
+                    else -> DepartureTime.Absolute(dateTime = it.time)
                 }
             }
     }

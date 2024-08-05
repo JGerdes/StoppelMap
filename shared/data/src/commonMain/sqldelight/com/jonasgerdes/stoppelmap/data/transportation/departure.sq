@@ -19,3 +19,6 @@ DELETE FROM departure;
 
 get:
 SELECT time, annotationKey FROM departure WHERE departureDay = :departureDay;
+
+
+getBasicAfter:

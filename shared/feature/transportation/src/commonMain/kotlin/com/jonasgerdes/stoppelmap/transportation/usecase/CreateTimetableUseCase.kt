@@ -1,20 +1,11 @@
 package com.jonasgerdes.stoppelmap.transportation.usecase
 
-import com.jonasgerdes.stoppelmap.transportation.model.Departure
-import com.jonasgerdes.stoppelmap.transportation.model.DepartureDay
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
-import kotlinx.datetime.toLocalDateTime
-import kotlin.time.DurationUnit
-import kotlin.time.toDuration
 
 class CreateTimetableUseCase {
 
-    suspend operator fun invoke(departures: List<DepartureDay>): Timetable =
+    /*suspend operator fun invoke(departures: List<DepartureDay>): Timetable =
         withContext(Dispatchers.Default) {
             val allDepartures: List<DepartureWithDay> =
                 departures.flatMap { day -> day.departures.map { DepartureWithDay(it, day) } }
@@ -44,13 +35,15 @@ class CreateTimetableUseCase {
                     )
                 }.filter { it.departureSlots.isNotEmpty() }
             )
-        }
+        }*/
 }
 
+/*
 private data class DepartureWithDay(
     val departure: Departure,
     val day: DepartureDay
 )
+*/
 
 private fun Timetable.DaySegmentType.containsTime(localTime: LocalTime) =
     if (startTimeInclusive < endTimeExclusive) {

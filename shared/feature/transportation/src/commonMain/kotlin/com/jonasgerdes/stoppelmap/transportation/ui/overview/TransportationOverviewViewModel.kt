@@ -18,8 +18,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
@@ -44,24 +42,8 @@ class TransportationOverviewViewModel(
 
     private val busRoutesState =
         combine(
-            busRoutesRepository.getAllRoutes(),
-            transportationUserDataRepository.getFavouriteStations()
-                .flatMapLatest { favs ->
-                    timeUpdate.map {
-                        favs.map { stationId ->
-                            val (station, routeName, _) = busRoutesRepository.getStationById(
-                                stationId
-                            )
-                                .first()
-                            BusRouteDetails.Station.Stop(
-                                id = station.id,
-                                routeName = routeName,
-                                title = station.title,
-                                nextDepartures = getNextDepartures(station.departures.flatMap { it.departures })
-                            )
-                        }
-                    }
-                },
+            busRoutesRepository.getRouteSummaries(),
+            flowOf(emptyList()),
             TransportationOverviewViewModel::BusRoutesState
         )
 
@@ -89,7 +71,7 @@ class TransportationOverviewViewModel(
     data class TrainRoutesState(val routes: List<RouteSummary>)
     data class BusRoutesState(
         val routes: List<RouteSummary>,
-        val favouriteStations: List<BusRouteDetails.Station.Stop>
+        val favouriteStations: List<BusRouteDetails.Station>
     )
 
     data class TaxiServicesState(val services: List<TaxiService>)

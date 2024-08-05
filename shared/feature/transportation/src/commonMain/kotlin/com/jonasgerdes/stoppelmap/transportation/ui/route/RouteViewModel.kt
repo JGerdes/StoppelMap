@@ -4,8 +4,6 @@ import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
-import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.ReturnStation
-import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.Station
 import com.jonasgerdes.stoppelmap.transportation.usecase.GetNextDeparturesUseCase
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.stateIn
@@ -29,45 +27,41 @@ class RouteViewModel(
             delay(10_000)
         }
     }
-    private val routeState =
+    val state: StateFlow<ViewState> =
         combine(
-            busRoutesRepository.getRouteById(routeId),
-            timeUpdate
-        ) { route, now ->
-            BusRouteDetails(
-                routeId = route.id,
-                title = route.title,
-                stations = route.stations.map { station ->
-                    if (station.isDestination) {
-                        Station.Destination(
-                            id = station.id,
-                            title = station.title
-                        )
-                    } else {
-                        Station.Stop(
-                            id = station.id,
-                            title = station.title,
-                            nextDepartures = getNextDepartures(
-                                departures = station.departures.flatMap { it.departures },
-                                now = now
-                            ),
+            busRoutesRepository.getDetailedRoute(routeId),
+            busRoutesRepository.getStationSummaries(routeId),
+        ) { route, stations ->
+            RouteState.Loaded(
+                BusRouteDetails(
+                    name = route.name,
+                    additionalInfo = route.additionalInfo,
+                    stations = stations.map { station ->
+                        BusRouteDetails.Station(
+                            slug = station.slug,
+                            name = station.name,
+                            nextDepartures = listOf(),
                             annotateAsNew = station.annotateAsNew
                         )
-                    }
-                },
-                additionalInfo = route.additionalInfo,
-                returnStations = route.returnStations.map {
-                    ReturnStation(
-                        id = it.id,
-                        title = it.title,
+                    },
+                    operator = BusRouteDetails.Operator(
+                        slug = route.operatorSlug,
+                        name = route.operatorName,
+                    ),
+                    destination = BusRouteDetails.Destination(
+                        slug = route.arrivalStationSlug,
+                        //TODO: Read real value from database, once bus station map entities are there
+                        name = when (route.arrivalStationSlug) {
+                            "busbahnhof_ost" -> "Busbahnhof Ost"
+                            "busbahnhof_nord" -> "Bustbahnhof Nord"
+                            "busbahnhof_west" -> "Busbahnhof West"
+                            "bushaltestelle_oldenburgerstr" -> "Oldenburgerstr."
+                            else -> null
+                        }
                     )
-                }
+                )
             )
         }
-            .map(RouteState::Loaded)
-
-    val state: StateFlow<ViewState> =
-        routeState
             .map(RouteViewModel::ViewState)
             .stateIn(
                 viewModelScope = viewModelScope,

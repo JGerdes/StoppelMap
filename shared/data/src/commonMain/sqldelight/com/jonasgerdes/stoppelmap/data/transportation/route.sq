@@ -22,8 +22,19 @@ VALUES ?;
 clear:
 DELETE FROM route;
 
-getAll:
-SELECT * FROM route;
+getBasicByType:
+SELECT slug, name FROM route WHERE type = :type ORDER BY name;
+
+getDetailedBySlug:
+SELECT  route.name,
+        operator.name AS operatorName,
+        operator.slug AS operatorSlug,
+        route.arivalStationSlug AS arivalStationSlug,
+        localized_string.string AS additionalInfo
+FROM route
+JOIN operator ON operator.slug = route.operatorSlug
+LEFT JOIN localized_string ON localized_string.key = route.additionalInfoKey AND localized_string.locale = "de"
+WHERE route.slug = :slug;
 
 getBySlug:
 SELECT * FROM route WHERE slug = :slug;
