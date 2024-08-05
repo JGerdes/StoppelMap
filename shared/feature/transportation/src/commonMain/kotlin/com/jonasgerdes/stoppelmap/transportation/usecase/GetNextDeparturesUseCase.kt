@@ -8,6 +8,7 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
+import kotlinx.datetime.toInstant
 
 class GetNextDeparturesUseCase(
     private val clockProvider: ClockProvider,
@@ -15,15 +16,16 @@ class GetNextDeparturesUseCase(
     private val transportDataSource: TransportDataSource,
 ) {
 
-    operator fun invoke(
-        stationSlugs: List<String>,
+    suspend operator fun invoke(
+        stationSlug: String,
         maxDepartures: Int = 3,
         now: LocalDateTime = clockProvider.nowAsLocalDateTime(),
-    ): Map<String, List<DepartureTime>> {
-        return departures
-            .filter { it.time > now }
-            .sortedBy { it.time }
-            .take(3)
+    ): List<DepartureTime> {
+        return transportDataSource.getDeparturesAfterByStation(
+            stationSlug = stationSlug,
+            after = now,
+            limit = maxDepartures.toLong()
+        )
             .map {
                 val difference = it.time.toInstant(timeZone) - now.toInstant(timeZone)
                 when {

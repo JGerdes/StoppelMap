@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.transportation.data
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import app.cash.sqldelight.coroutines.mapToOne
+import com.jonasgerdes.stoppelmap.data.transportation.DepartureQueries
 import com.jonasgerdes.stoppelmap.data.transportation.RouteQueries
 import com.jonasgerdes.stoppelmap.data.transportation.StationQueries
 import com.jonasgerdes.stoppelmap.data.transportation.TransportationType
@@ -12,10 +13,13 @@ import com.jonasgerdes.stoppelmap.transportation.model.StationSummary
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
+import kotlinx.datetime.LocalDateTime
 
 class TransportDataSource(
     private val routeQueries: RouteQueries,
     private val stationQueries: StationQueries,
+    private val departureQueries: DepartureQueries,
 ) {
     fun getRouteSummariesByType(type: TransportationType): Flow<List<RouteSummary>> =
         routeQueries.getBasicByType(type, ::RouteSummary)
@@ -31,5 +35,13 @@ class TransportDataSource(
         stationQueries.getBasicByRoute(routeSlug, ::StationSummary)
             .asFlow()
             .mapToList(Dispatchers.IO)
+
+
+    suspend fun getDeparturesAfterByStation(stationSlug: String, after: LocalDateTime, limit: Long) =
+        withContext(Dispatchers.IO) {
+            departureQueries.getTimesAfterByStation(after = after, station = stationSlug, limit = limit)
+                .executeAsList()
+        }
+
 
 }

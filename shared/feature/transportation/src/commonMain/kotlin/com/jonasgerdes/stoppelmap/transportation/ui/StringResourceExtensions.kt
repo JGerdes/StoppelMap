@@ -2,7 +2,7 @@ package com.jonasgerdes.stoppelmap.transportation.ui
 
 import com.jonasgerdes.stoppelmap.resources.FormattedLocalDateTimeStringDesc
 import com.jonasgerdes.stoppelmap.shared.resources.Res
-import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
+import com.jonasgerdes.stoppelmap.transportation.model.DepartureTime
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import dev.icerock.moko.resources.desc.Raw
 import dev.icerock.moko.resources.desc.Resource
@@ -39,28 +39,28 @@ val departureTimeFormatter = LocalTime.Format {
     minute()
 }
 
-fun BusRouteDetails.DepartureTime.getFormattedStringRes(): StringDesc =
+fun DepartureTime.getFormattedStringRes(): StringDesc =
     when (this) {
-        BusRouteDetails.DepartureTime.Immediately ->
+        DepartureTime.Immediately ->
             StringDesc.Resource(Res.strings.transportation_route_card_next_departures_immediately)
 
-        is BusRouteDetails.DepartureTime.InMinutes ->
+        is DepartureTime.InMinutes ->
             Res.strings.transportation_route_card_next_departures_inMinutes.format(minutes)
 
-        is BusRouteDetails.DepartureTime.Today -> StringDesc.Raw(time.format(departureTimeFormatter))
+        is DepartureTime.Today -> StringDesc.Raw(time.format(departureTimeFormatter))
 
-        is BusRouteDetails.DepartureTime.Tomorrow ->
+        is DepartureTime.Tomorrow ->
             Res.strings.transportation_route_card_next_departures_tomorrow.format(
                 time.format(departureTimeFormatter)
             )
 
-        is BusRouteDetails.DepartureTime.ThisWeek ->
+        is DepartureTime.ThisWeek ->
             FormattedLocalDateTimeStringDesc(
                 dateTime = dateTime,
                 formatter = ::departureWeekdayTimeFormatter,
             )
 
-        is BusRouteDetails.DepartureTime.Absolute -> StringDesc.Raw(
+        is DepartureTime.Absolute -> StringDesc.Raw(
             dateTime.format(
                 departureDateTimeFormatter
             )

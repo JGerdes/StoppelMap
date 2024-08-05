@@ -20,5 +20,13 @@ DELETE FROM departure;
 get:
 SELECT time, annotationKey FROM departure WHERE departureDay = :departureDay;
 
+getTimesAfterByStation:
+SELECT departure.time, departure_day.station
+    FROM departure
+    JOIN departure_day
+        ON departure_day.slug = departure.departureDay
+        AND departure_day.departureType = "outward"
+WHERE departure.time > :after AND departure_day.station = :station
+ORDER BY departure.time
+LIMIT :limit;
 
-getBasicAfter:

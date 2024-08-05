@@ -15,9 +15,14 @@ data class BusRouteDetails(
     data class Station(
         val slug: String,
         val name: String,
-        val nextDepartures: List<DepartureTime>,
+        val nextDepartures: NextDepartures,
         val annotateAsNew: Boolean = false,
-    )
+    ) {
+        sealed interface NextDepartures {
+            data object Loading : NextDepartures
+            data class Loaded(val departures: List<DepartureTime>) : NextDepartures
+        }
+    }
 
     data class Destination(
         val slug: String,

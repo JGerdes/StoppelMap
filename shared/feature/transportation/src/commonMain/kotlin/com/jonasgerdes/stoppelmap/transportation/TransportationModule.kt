@@ -20,6 +20,7 @@ val transportationModule = module {
         TransportDataSource(
             routeQueries = get<StoppelMapDatabase>().routeQueries,
             stationQueries = get<StoppelMapDatabase>().stationQueries,
+            departureQueries = get<StoppelMapDatabase>().departureQueries,
         )
     }
 
@@ -43,7 +44,9 @@ val transportationModule = module {
     factory {
         GetNextDeparturesUseCase(
             clockProvider = get(),
-            timeZone = get<VenueInformation>().timeZone
-        )
+            timeZone = get<VenueInformation>().timeZone,
+            transportDataSource = get(),
+
+            )
     }
 }
