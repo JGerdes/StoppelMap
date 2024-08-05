@@ -25,8 +25,9 @@ class CrawlBusWebsites : KoinComponent {
 
         val json = Json {
             prettyPrint = true
-            explicitNulls = true
-            encodeDefaults = true
+            prettyPrintIndent = "  "
+            explicitNulls = false
+            encodeDefaults = false
         }
 
         busRoutes.forEach { route ->

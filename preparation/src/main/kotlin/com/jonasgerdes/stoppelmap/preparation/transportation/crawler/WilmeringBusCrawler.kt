@@ -96,11 +96,11 @@ class WilmeringBusCrawler(
                 isNew = false,
                 outward = document.select(".haltestelle_fahrten")
                     .map {
-                        parseDepartureDay(it, "fahrten--hinfahrten")
+                        parseDepartureDay(it, ".fahrten--hinfahrten .fahrten__list__row")
                     },
                 returns = document.select(".haltestelle_fahrten")
                     .map {
-                        parseDepartureDay(it, "fahrten--rueckfahrten")
+                        parseDepartureDay(it, ".fahrten--rueckfahrten .fahrten__list__row")
                     },
                 location = null,
                 prices = document.select(".haltestellen_infos__fahrpreise dl").first()!!.children()
@@ -121,22 +121,33 @@ class WilmeringBusCrawler(
         )
     }
 
-    private fun parseDepartureDay(container: Element, className: String): DepartureDay {
+    private fun parseDepartureDay(container: Element, selector: String): DepartureDay {
         val day = dateFormat.parse(container.select("h3").text().split(",")[1].trim())
         return DepartureDay(
             day = day,
-            departures = container.select(".$className").map {
-                Departure(
-                    time = parseTime(it.select(".fahrten__list__row__abfahrt h4").first()!!, day),
-                    arrival = it.select(".fahrten__list__row__ankunft h4").first()?.let { parseTime(it, day) },
-                )
-            }.sortedBy { it.time },
+            departures = container.select(selector).mapNotNull {
+                val departureText = it.select(".fahrten__list__row__abfahrt h4").first()!!.text()
+                val time = parseTime(departureText, day)
+                // Times after midnight are listed twice: Once for the previous day (with added braces)
+                // and once for the actual day it belongs to.
+                // We associate departure times with "departure days", not actual days. So filter for the latter.
+                if (time.date != day && !departureText.contains("(")) {
+                    null
+                } else {
+                    Departure(
+                        time = time,
+                        arrival = it.select(".fahrten__list__row__ankunft h4").first()
+                            ?.let { parseTime(it.text(), day) },
+                    )
+                }
+            }
+                .sortedBy { it.time },
             laterDepartureOnDemand = false
         )
     }
 
-    private fun parseTime(element: Element, date: LocalDate): LocalDateTime =
-        timeFormat.parse(timeRegex.find(element.text())!!.value).let {
+    private fun parseTime(text: String, date: LocalDate): LocalDateTime =
+        timeFormat.parse(timeRegex.find(text)!!.value).let {
             LocalDateTime(
                 time = it,
                 date = if (it.hour < firstHourOfNextDay) date.plus(DatePeriod(days = 1)) else date

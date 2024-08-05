@@ -115,7 +115,7 @@ class PrepareStoppelMapData : KoinComponent {
         crawledRoutesDirectory
             .listFiles { f: File -> f.name.endsWith(".json") }!!
             .map {
-                Json.decodeFromStream<Route>(it.inputStream())
+                Json { explicitNulls = false }.decodeFromStream<Route>(it.inputStream())
             }
 
     private fun generateMissingEventLocations(
