@@ -6,14 +6,17 @@ CREATE TABLE IF NOT EXISTS route(
     operatorSlug        TEXT,
     additionalInfoKey   TEXT,
     type                TEXT AS TransportationType NOT NULL,
+    arivalStationSlug   TEXT NOT NULL,
 
     FOREIGN KEY(operatorSlug) REFERENCES operator(slug),
     FOREIGN KEY(additionalInfoKey) REFERENCES localized_string(key),
-    FOREIGN KEY(slug) REFERENCES website(referenceSlug)
+    FOREIGN KEY(slug) REFERENCES website(referenceSlug),
+    FOREIGN KEY(arivalStationSlug) REFERENCES map_entity(slug)
+
 );
 
 insert:
-INSERT INTO route(slug, name, operatorSlug, additionalInfoKey, type)
+INSERT INTO route(slug, name, operatorSlug, additionalInfoKey, type, arivalStationSlug)
 VALUES ?;
 
 clear:

@@ -23,6 +23,7 @@ data class Route(
     val additionalInfo: Localized<String>? = null,
     val ticketWebsites: List<Website> = emptyList(),
     val stations: List<Station>,
+    val arrivalStationSlug: MapEntitySlug,
 )
 
 @Serializable
@@ -30,13 +31,12 @@ data class Station(
     val slug: String,
     val name: String,
     val location: Location? = null,
-    val mapEntityLocation: MapEntitySlug? = null,
-    val isDestination: Boolean,
-    val isReturn: Boolean,
     val isNew: Boolean,
+    val additionalInfo: Localized<String>? = null,
     val prices: List<Fee> = emptyList(),
     val ticketWebsites: List<Website> = emptyList(),
-    val departures: List<DepartureDay>,
+    val outward: List<DepartureDay>,
+    val returns: List<DepartureDay>,
 )
 
 
@@ -50,5 +50,6 @@ data class DepartureDay(
 @Serializable
 data class Departure(
     val time: LocalDateTime,
+    val arrival: LocalDateTime?,
     val annotation: Localized<String>? = null
 )

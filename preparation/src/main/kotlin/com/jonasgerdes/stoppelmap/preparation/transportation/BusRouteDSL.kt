@@ -7,25 +7,31 @@ import com.jonasgerdes.stoppelmap.dto.data.Fee
 import com.jonasgerdes.stoppelmap.dto.data.Location
 import com.jonasgerdes.stoppelmap.dto.data.Route
 import com.jonasgerdes.stoppelmap.dto.data.Station
+import com.jonasgerdes.stoppelmap.dto.data.Website
 import com.jonasgerdes.stoppelmap.preparation.Settings
 import com.jonasgerdes.stoppelmap.preparation.localizedString
-import kotlinx.datetime.DateTimeUnit
-import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.format.char
 import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
-import kotlinx.datetime.toLocalTime
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import java.time.DayOfWeek
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
+private val timeFormat = LocalTime.Format {
+    hour()
+    char(':')
+    minute()
+}
 
 class BusRouteScope {
     var slug: String? = null
@@ -37,11 +43,17 @@ class BusRouteScope {
             field = value
         }
     var operatorSlug: String? = null
-    val stations: MutableList<Station> = mutableListOf()
-    val returnStations: MutableList<Station> = mutableListOf()
+    var arrivalStationSlug: String? = null
+    val stations: MutableList<Station> = mutableListOf<Station>()
+    var commonReturns: MutableList<DepartureDay> = mutableListOf()
     var additionalInfo: Localized<String>? = null
 
     var fixedPrices: List<Fee>? = null
+    var ticketWebsites: MutableList<Website> = mutableListOf()
+
+    fun returns(builder: DepartureScope.() -> Unit) {
+        commonReturns = DepartureScope(null).apply(builder).departures
+    }
 }
 
 fun createBusRoute(builder: BusRouteScope.() -> Unit) =
@@ -51,9 +63,11 @@ fun createBusRoute(builder: BusRouteScope.() -> Unit) =
         Route(
             slug = it.slug!!,
             name = it.name!!,
-            stations = it.stations + it.returnStations,
+            stations = it.stations,
             additionalInfo = it.additionalInfo,
             operator = it.operatorSlug,
+            ticketWebsites = it.ticketWebsites,
+            arrivalStationSlug = it.arrivalStationSlug!!,
         )
     }
 
@@ -67,12 +81,17 @@ class StationScope(private val routeScope: BusRouteScope) {
             field = value
         }
     var prices: List<Fee> = routeScope.fixedPrices ?: emptyList()
-    var departures: MutableList<DepartureDay> = mutableListOf()
-    var isDestination: Boolean = false
+    var outward: MutableList<DepartureDay> = mutableListOf()
+    var returns: List<DepartureDay> = routeScope.commonReturns.toList()
     var isNew: Boolean = false
+    var location: Location? = null
+    var additionalInfo: Localized<String>? = null
+    var ticketWebsites: List<Website> = mutableListOf()
+
+    var durationToDestination: Duration? = null
 
     fun departuresAfterPreviousStation(offset: Duration) {
-        departures = routeScope.stations.last().departures.map { departureDay ->
+        outward = routeScope.stations.last().outward.map { departureDay ->
             departureDay.copy(
                 departures = departureDay.departures.map { departure ->
                     departure.copy(
@@ -85,6 +104,20 @@ class StationScope(private val routeScope: BusRouteScope) {
             )
         }.toMutableList()
     }
+
+    fun outward(builder: DepartureScope.() -> Unit) {
+        outward = DepartureScope(this).apply(builder).departures
+    }
+
+    fun returns(builder: DepartureScope.() -> Unit) {
+        returns = DepartureScope(this).apply(builder).departures
+    }
+}
+
+class DepartureScope(
+    private val stationScope: StationScope?
+) {
+    var departures: MutableList<DepartureDay> = mutableListOf()
 
     fun thursday(builder: DepartureDayScope.() -> Unit) = departureDay(
         day = weekDayMap[DayOfWeek.THURSDAY]!!,
@@ -154,7 +187,8 @@ class StationScope(private val routeScope: BusRouteScope) {
 
     private fun departureDay(day: LocalDate, builder: DepartureDayScope.() -> Unit) {
         DepartureDayScope(
-            day = day
+            day = day,
+            stationScope = stationScope,
         ).apply {
             builder()
         }.let {
@@ -168,13 +202,12 @@ class StationScope(private val routeScope: BusRouteScope) {
             )
         }
     }
+
 }
 
 fun BusRouteScope.addStation(
     name: String,
     minutesAfterPrevious: Int? = null,
-    location: Location? = null,
-    locationSlug: String? = null,
     builder: (StationScope.() -> Unit)? = null
 ) {
     stations.add(
@@ -188,72 +221,81 @@ fun BusRouteScope.addStation(
             Station(
                 slug = it.slug!!,
                 name = it.name!!,
-                isDestination = it.isDestination,
-                isReturn = false,
                 isNew = it.isNew,
-                departures = it.departures,
-                location = location,
-                mapEntityLocation = locationSlug,
+                additionalInfo = it.additionalInfo,
+                location = it.location,
                 prices = it.prices,
+                ticketWebsites = it.ticketWebsites,
+                outward = it.outward,
+                returns = it.returns,
             )
         }
     )
 }
 
-fun BusRouteScope.addReturnStation(builder: StationScope.() -> Unit) {
-    returnStations.add(
-        StationScope(this).apply {
-            builder()
-        }.let {
-            Station(
-                slug = it.slug!! + "_return",
-                name = it.name!!,
-                isDestination = it.isDestination,
-                isReturn = true,
-                isNew = it.isNew,
-                departures = it.departures
-            )
-        }
-    )
-}
-
-class DepartureDayScope(val day: LocalDate) {
+class DepartureDayScope(val day: LocalDate, val stationScope: StationScope?) {
     val departures: MutableList<Departure> = mutableListOf()
     var laterDeparturesOnDemand: Boolean = false
 
     fun departures(vararg departureTimes: String) {
-        departures.addAll(departureTimes.map { Departure(it.toLocalTime().atDay()) })
+        departures.addAll(
+            departureTimes
+                .map { timeFormat.parse(it) }
+                .map { time ->
+                    Departure(
+                        time = time.atDay(),
+                        arrival = stationScope?.durationToDestination?.let { time.atDay().plus(it) },
+                        annotation = null
+                    )
+                })
     }
 
     fun departure(time: LocalDateTime, annotation: Localized<String>? = null) {
-        departures.add(Departure(time, annotation))
+        departures.add(
+            Departure(
+                time = time,
+                arrival = stationScope?.durationToDestination?.let { time.plus(it) },
+                annotation = annotation
+            )
+        )
     }
 
     fun departure(time: String, annotation: Localized<String>? = null) {
-        departures.add(Departure(time.toLocalTime().atDay(), annotation))
+        val time = timeFormat.parse(time)
+        departures.add(
+            Departure(
+                time = time.atDay(),
+                arrival = stationScope?.durationToDestination?.let { time.atDay().plus(it) },
+                annotation = null
+            )
+        )
     }
 
     private fun LocalTime.atDay() =
         LocalDateTime(
-            date = if (hour < firstHourOfNextDay) day.plus(1, DateTimeUnit.DAY) else day,
+            date = if (hour < firstHourOfNextDay) day.plus(DatePeriod(days = 1)) else day,
             time = this
         )
 
     infix fun LocalTime.every(step: Duration) = StartAndStep(this, step)
-    infix fun String.every(step: Duration) = StartAndStep(toLocalTime(), step)
+    infix fun String.every(step: Duration) = StartAndStep(timeFormat.parse(this), step)
 
     infix fun StartAndStep.until(inclusiveEnd: LocalTime) {
         var next = start.atDay()
         val end = inclusiveEnd.atDay()
         while (next <= end) {
-            departures.add(Departure(next))
-            next = next.toInstant(timeZoneStoppelmarkt).plus(step).toLocalDateTime(
-                timeZoneStoppelmarkt
+            departures.add(
+                Departure(
+                    time = next,
+                    arrival = stationScope?.durationToDestination?.let { next.plus(it) },
+                    annotation = null
+                )
             )
+            next = next.plus(step)
         }
     }
 
-    infix fun StartAndStep.until(inclusiveEnd: String) = until(inclusiveEnd.toLocalTime())
+    infix fun StartAndStep.until(inclusiveEnd: String) = until(timeFormat.parse(inclusiveEnd))
 }
 
 fun prices(
@@ -319,6 +361,11 @@ private val weekDayMap by lazy {
     )
 }
 
+private fun LocalDateTime.plus(duration: Duration) =
+    toInstant(timeZoneStoppelmarkt)
+        .plus(duration)
+        .toLocalDateTime(timeZoneStoppelmarkt)
+
 // TODO: Reuse SeasonProvider for this
 private fun calculateDatesForYear(year: Int): List<LocalDate> {
     // On 15th of august it's always Stoppelmarkt.
@@ -335,11 +382,11 @@ private fun calculateDatesForYear(year: Int): List<LocalDate> {
     }
 
     return (anchorOffset..anchorOffset + 5).map { offset ->
-        anchorDay.plus(offset, DateTimeUnit.DAY)
+        anchorDay.plus(DatePeriod(days = offset))
     }
 }
 
-private const val firstHourOfNextDay = 6
+const val firstHourOfNextDay = 6
 
 val Int.Minutes get() = toDuration(DurationUnit.MINUTES)
 

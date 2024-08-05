@@ -3,6 +3,7 @@ import kotlinx.datetime.LocalDateTime;
 CREATE TABLE IF NOT EXISTS departure (
     departureDay    TEXT NOT NULL,
     time            TEXT AS LocalDateTime NOT NULL,
+    arrival         TEXT AS LocalDateTime,
     annotationKey   TEXT,
 
     FOREIGN KEY(departureDay) REFERENCES departure_day(slug),
@@ -10,7 +11,7 @@ CREATE TABLE IF NOT EXISTS departure (
 );
 
 insert:
-INSERT INTO departure(departureDay, time, annotationKey)
+INSERT INTO departure(departureDay, time, arrival, annotationKey)
 VALUES ?;
 
 clear:

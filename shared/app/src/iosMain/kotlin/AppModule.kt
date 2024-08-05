@@ -7,9 +7,9 @@ import com.jonasgerdes.stoppelmap.CommonBuildConfig
 import com.jonasgerdes.stoppelmap.base.contract.PathFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
-import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 import kotlinx.cinterop.ExperimentalForeignApi
 import okio.Path.Companion.toPath
 import org.koin.dsl.module
@@ -57,10 +57,6 @@ val appModule = module {
     )!!
 
     single {
-        DatabaseFile(documentDirectory.path!! + "/database.db")
-    }
-
-    single {
         MapDataFile(documentDirectory.path!! + "/mapdata.geojson")
     }
 
@@ -79,7 +75,7 @@ val appModule = module {
 
     single<SqlDriver> {
         val databaseDir = documentDirectory.path!!
-        val databaseFile = "$databaseDir/stoppelMapData.db".toPath()
+        val databaseFile = "$databaseDir/stoppelMapData_v${StoppelMapData.schemaVersion}.db".toPath()
         val databaseName = databaseFile.name
         NativeSqliteDriver(
             schema = StoppelMapDatabase.Schema,

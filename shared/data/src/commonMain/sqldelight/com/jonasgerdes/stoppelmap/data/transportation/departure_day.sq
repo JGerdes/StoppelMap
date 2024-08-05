@@ -1,9 +1,11 @@
 import kotlin.Boolean;
 import kotlinx.datetime.LocalDate;
+import com.jonasgerdes.stoppelmap.data.transportation.DepartureType;
 
 CREATE TABLE IF NOT EXISTS departure_day (
-    slug                      TEXT NOT NULL PRIMARY KEY,
+    slug                    TEXT NOT NULL PRIMARY KEY,
     station                 TEXT NOT NULL,
+    departureType           TEXT AS DepartureType NOT NULL,
     day                     TEXT AS LocalDate NOT NULL,
     laterDeparturesOnDemand INTEGER AS Boolean,
 
@@ -11,7 +13,7 @@ CREATE TABLE IF NOT EXISTS departure_day (
 );
 
 insert:
-INSERT INTO departure_day(slug, station, day, laterDeparturesOnDemand)
+INSERT INTO departure_day(slug, station, departureType, day, laterDeparturesOnDemand)
 VALUES ?;
 
 clear:

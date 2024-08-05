@@ -4,11 +4,14 @@ import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.data.shared.Fee
 import com.jonasgerdes.stoppelmap.data.shared.Location
 import com.jonasgerdes.stoppelmap.data.transportation.Departure
+import com.jonasgerdes.stoppelmap.data.transportation.DepartureType
 import com.jonasgerdes.stoppelmap.data.transportation.Departure_day
 import com.jonasgerdes.stoppelmap.data.transportation.Route
 import com.jonasgerdes.stoppelmap.data.transportation.Station
 import com.jonasgerdes.stoppelmap.data.transportation.TransportationType
+import com.jonasgerdes.stoppelmap.dto.data.DepartureDay
 import com.jonasgerdes.stoppelmap.dto.data.Transportation
+import com.jonasgerdes.stoppelmap.dto.data.Station as DtoStation
 
 internal fun StoppelMapDatabase.addTransportationData(transportation: Transportation) {
     transportation.busRoutes.forEach { route ->
@@ -24,7 +27,8 @@ internal fun StoppelMapDatabase.addTransportationData(transportation: Transporta
                         "additional_info"
                     )
                 },
-                type = TransportationType.Bus
+                arivalStationSlug = route.arrivalStationSlug,
+                type = TransportationType.Bus,
             )
         )
         addWebsites(route.slug, route.ticketWebsites)
@@ -34,10 +38,14 @@ internal fun StoppelMapDatabase.addTransportationData(transportation: Transporta
                     slug = station.slug,
                     route = route.slug,
                     name = station.name,
-                    mapEntity = station.mapEntityLocation,
-                    isDestination = station.isDestination,
-                    isReturn = station.isReturn,
                     annotateAsNew = station.isNew,
+                    additionalInfoKey = station.additionalInfo?.let {
+                        addLocalizedString(
+                            it,
+                            station.slug,
+                            "additionalInfo"
+                        )
+                    }
                 )
             )
             station.location?.let {
@@ -65,33 +73,46 @@ internal fun StoppelMapDatabase.addTransportationData(transportation: Transporta
                 )
             }
             addWebsites(station.slug, station.ticketWebsites)
-            station.departures.forEach { departureDay ->
-                val departureDaySlug = "${station.slug}_${departureDay.day}"
-                departure_dayQueries.insert(
-                    Departure_day(
-                        slug = departureDaySlug,
-                        station = station.slug,
-                        day = departureDay.day,
-                        laterDeparturesOnDemand = departureDay.laterDepartureOnDemand
-                    )
-                )
-                departureDay.departures.forEach { departure ->
-                    departureQueries.insert(
-                        Departure(
-                            departureDay = departureDaySlug,
-                            time = departure.time,
-                            annotationKey = departure.annotation?.let {
-                                addLocalizedString(
-                                    it,
-                                    departureDaySlug,
-                                    departure.time.time.toString(),
-                                    "annotation"
-                                )
-                            }
-                        )
-                    )
-                }
+            station.outward.forEach { departureDay ->
+                addDepartureDay(station, departureDay, DepartureType.Outward)
+            }
+            station.returns.forEach { departureDay ->
+                addDepartureDay(station, departureDay, DepartureType.Return)
             }
         }
+    }
+}
+
+private fun StoppelMapDatabase.addDepartureDay(
+    station: DtoStation,
+    departureDay: DepartureDay,
+    type: DepartureType
+) {
+    val departureDaySlug = "${station.slug}_${type.id}_${departureDay.day}"
+    departure_dayQueries.insert(
+        Departure_day(
+            slug = departureDaySlug,
+            station = station.slug,
+            day = departureDay.day,
+            departureType = type,
+            laterDeparturesOnDemand = departureDay.laterDepartureOnDemand
+        )
+    )
+    departureDay.departures.forEach { departure ->
+        departureQueries.insert(
+            Departure(
+                departureDay = departureDaySlug,
+                time = departure.time,
+                arrival = departure.arrival,
+                annotationKey = departure.annotation?.let {
+                    addLocalizedString(
+                        it,
+                        departureDaySlug,
+                        departure.time.time.toString(),
+                        "annotation"
+                    )
+                }
+            )
+        )
     }
 }

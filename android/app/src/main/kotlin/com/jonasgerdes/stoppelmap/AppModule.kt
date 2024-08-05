@@ -8,9 +8,9 @@ import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.jonasgerdes.stoppelmap.base.contract.PathFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
-import com.jonasgerdes.stoppelmap.base.model.DatabaseFile
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 import com.jonasgerdes.stoppelmap.ui.StoppelMapActivity
 import com.jonasgerdes.stoppelmap.widget.CreateStartAppIntentUseCase
 import kotlinx.coroutines.CoroutineScope
@@ -31,25 +31,17 @@ private fun pathFactory(context: Context): PathFactory =
 val appModule = module {
 
     single {
-        DatabaseFile(
-            file = File(
-                File(get<Context>().filesDir.parentFile, "databases"),
-                "database.db"
-            )
-        )
-    }
-
-    single {
         MapDataFile(
             file = File(get<Context>().filesDir, "mapdata.geojson")
         )
     }
 
+    // TODO: Clean up old database files
     single<SqlDriver> {
         AndroidSqliteDriver(
             schema = StoppelMapDatabase.Schema,
             context = get(),
-            name = "stoppelMapData.db",
+            name = "stoppelMapData_v${StoppelMapData.schemaVersion}.db",
         )
     }
 

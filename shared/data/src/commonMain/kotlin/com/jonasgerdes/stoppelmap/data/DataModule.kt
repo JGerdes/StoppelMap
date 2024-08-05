@@ -10,6 +10,7 @@ import com.jonasgerdes.stoppelmap.data.schedule.ParticipantType
 import com.jonasgerdes.stoppelmap.data.shared.Image
 import com.jonasgerdes.stoppelmap.data.shared.PreferredTheme
 import com.jonasgerdes.stoppelmap.data.transportation.Departure
+import com.jonasgerdes.stoppelmap.data.transportation.DepartureType
 import com.jonasgerdes.stoppelmap.data.transportation.Departure_day
 import com.jonasgerdes.stoppelmap.data.transportation.Route
 import com.jonasgerdes.stoppelmap.data.transportation.TransportationType
@@ -21,9 +22,16 @@ val dataModule = module {
             driver = get(),
             departureAdapter = Departure.Adapter(
                 timeAdapter = localDateTimeAdapter,
+                arrivalAdapter = localDateTimeAdapter,
             ),
             departure_dayAdapter = Departure_day.Adapter(
                 dayAdapter = localDateAdapter,
+                departureTypeAdapter = object : ColumnAdapter<DepartureType, String> {
+                    override fun decode(databaseValue: String) =
+                        DepartureType.entries.first { it.id == databaseValue }
+
+                    override fun encode(value: DepartureType) = value.id
+                },
             ),
             eventAdapter = Event.Adapter(
                 startAdapter = localDateTimeAdapter,
