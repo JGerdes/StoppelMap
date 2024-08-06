@@ -16,46 +16,51 @@ struct StationScreen: View {
     @State
     var viewState: StationViewModel.ViewState = StationViewModel.ViewState()
     
+    @State private var selection = 0
+    
     var body: some View {
         NavigationStack {
             if let state = viewState.stationState as? StationViewModel.StationStateLoaded {
                 ScrollView {
                     VStack {
-                        //                        ForEach(state.timetable.daySegments, id: \.self.type) { segment in
-                        //                            Section {
-                        //                                ForEach(segment.departureSlots, id: \.self) { slot in
-                        //                                    HStack {
-                        //                                        ForEach(slot.test(), id: \.self) { time in
-                        //                                            Text(time).frame(maxWidth: .infinity)
-                        //                                        }
-                        //                                    }
-                        //                                    .fixedSize(horizontal: true, vertical: true)
-                        //                                    .frame(maxWidth: .infinity)
-                        //                                }
-                        //
-                        //                            }
-                        //                        }
-                        Grid {
-                            GridRow {
-                                ForEach(state.timetable.departureDays, id: \.self) { day in
-                                    Text(day.dayOfWeek.toStringResource().desc().localized()).font(.headline)
-                                }
-                            }.padding(.bottom)
-                            ForEach(state.timetable.daySegments, id: \.self.type) { segment in
-                                Section(header: Text(segment.type.toStringResource().desc().localized()).padding(.bottom, 8).padding(.top)) {
-                                    ForEach(segment.departureSlots, id: \.self) { slot in
-                                        GridRow {
-                                            ForEach(slot.formattedTimes(), id: \.self) {time in
-                                                Text(time)
-                                            }
-                                        }
-                                    }
-                                    
-                                }
-                            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        Button {
+                            viewModel.toggleFavourite()
+                        } label: {
+                            Label(state.isFavourite ? Res.strings().transportation_station_topbar_action_unfavourite_contentDescription.desc().localized() : Res.strings().transportation_station_topbar_action_favourite_contentDescription.desc().localized()
+                                  , systemImage: state.isFavourite ? "star.fill" : "star")
+                        }.buttonStyle(.borderedProminent)
+                        
+                        if(!state.priceState.prices.isEmpty) {
+                            PriceCard(state: state.priceState)
+                        }
+                        
+                        if let info = state.additionalInfo {
+                            Text(info)
+                                .padding()
+                                .background(.thinMaterial)
+                                .cornerRadius(10)
+                                .padding([.horizontal, .top])
+                        }
+                        
+                        Picker(selection: $selection, label: Text("")) {
+                            Text(Res.strings().transportation_station_timetable_outward.desc().localized()).tag(0)
+                            if(state.returnTimetable != nil) {
+                                Text(Res.strings().transportation_station_timetable_return.desc().localized()).tag(1)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.horizontal)
+                        .padding(.top)
+                        
+                        if($selection.wrappedValue == 0) {
+                            TimetableView(state: state.outwardTimetable)
+                        } else if ($selection.wrappedValue == 1) {
+                            if let returnTimetable = state.returnTimetable {
+                                TimetableView(state: returnTimetable).tag(1)
+                            }
+                        }
                     }
-                }.navigationTitle(state.stationTitle)
+                }.navigationTitle(state.stationName)
             } else {
                 Text("Lade Daten")
             }
@@ -64,5 +69,79 @@ struct StationScreen: View {
                 viewState = state
             }
         }
+    }
+}
+
+struct PriceCard: View {
+    
+    let state: StationViewModel.PriceState
+    let numberFormatter = NumberFormatter()
+    
+    init(state: StationViewModel.PriceState) {
+        self.state = state
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 2
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(Res.strings().transportation_station_prices_title.desc().localized()).font(.caption)
+            
+            
+            ForEach(state.prices, id: \.self.name) { fee in
+                HStack {
+                    Text(fee.name)
+                    Spacer()
+                    if let priceText = numberFormatter.string(from: NSNumber(value: fee.price / 100)) {
+                        Text(priceText + " €")
+                    }
+                }.frame(maxWidth: .infinity)
+            }
+            Text(Res.strings().transportation_station_prices_hint_cash.desc().localized())
+                .font(.footnote)
+                .padding(.top)
+            if(state.showDeutschlandTicketHint) {
+                Text(Res.strings().transportation_station_prices_hint_deutschland_ticket.desc().localized())
+                    .font(.footnote)
+            }
+        }
+        .padding()
+        .background(.thinMaterial)
+        .cornerRadius(10)
+        .padding([.horizontal, .top])
+    }
+}
+
+
+struct TimetableView: View {
+    
+    var state: Timetable
+    
+    var body: some View {
+        Grid {
+            GridRow {
+                ForEach(state.departureDays, id: \.self) { day in
+                    Text(day.dayOfWeek.toStringResource().desc().localized()).font(.headline)
+                }
+            }.padding(.vertical)
+            ForEach(state.daySegments, id: \.self.type) { segment in
+                Section(header: Text(segment.type.toStringResource().desc().localized()).padding(.bottom, 8).padding(.top)) {
+                    ForEach(segment.departureSlots, id: \.self) { slot in
+                        GridRow {
+                            ForEach(slot.formattedTimes(), id: \.self) {formatted in
+                                Text(formatted.time)
+                                    .opacity(formatted.isInPast ? 0.4 : 1.0)
+                            }
+                        }.padding(.vertical, 2)
+                    }
+                    
+                }
+            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+            .padding(.bottom)
+            .background(.thinMaterial)
+            .cornerRadius(24.0)
+            .padding(2)
     }
 }

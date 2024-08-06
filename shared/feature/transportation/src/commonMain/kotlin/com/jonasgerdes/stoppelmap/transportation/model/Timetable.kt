@@ -19,10 +19,19 @@ data class Timetable(
     data class DepartureSlot(
         val departures: List<Departure?>
     ) {
+        // For iOS
         fun formattedTimes() = departures.map {
-            it?.time?.time?.format(timeFormatter) ?: " "
+            FormattedDeparture(
+                time = it?.time?.time?.format(timeFormatter) ?: " ",
+                isInPast = it?.isInPast ?: false
+            )
         }
     }
+
+    data class FormattedDeparture(
+        val time: String,
+        val isInPast: Boolean,
+    )
 
     data class Departure(
         val time: LocalDateTime,

@@ -25,8 +25,7 @@ struct ContentView: View {
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_schedule.desc().localized(), systemImage: "calendar")
                     }
-                Color.clear
-                .overlay(UnderConstrcutionPlaceholder())
+                TransportationOverviewScreen()
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_transport.desc().localized(), systemImage: "bus.fill")
                     }

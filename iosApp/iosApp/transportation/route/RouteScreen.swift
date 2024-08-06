@@ -58,8 +58,13 @@ struct RouteDetailView: View {
     
     var body: some View {
         List {
+            if let info = routeDetails.additionalInfo {
+                Text(info)
+            }
             Section("Haltestellen") {
-                ForEach(Array(routeDetails.stations.enumerated()), id: \.element.id) { index, station in
+                let stations = routeDetails.stations
+                ForEach(0..<stations.count, id: \.self) { index in
+                    let station = routeDetails.stations[index]
                     HStack {
                         ZStack {
                             VStack(spacing: 0) {
@@ -71,21 +76,18 @@ struct RouteDetailView: View {
                             }
                             Circle().frame(width: 8, height: 16)
                         }
-                        if let stop = station as? BusRouteDetails.StationStop {
-                            Text(stop.title).padding([.vertical, .leading])
-                            Spacer()
-                            if let nextDeparture = stop.nextDepartures.first {
+                        Text(station.name).padding([.vertical, .leading])
+                        Spacer()
+                        if let nextDepartures = station.nextDepartures as? BusRouteDetailsStationNextDeparturesLoaded {
+                            if let nextDeparture = nextDepartures.departures.first {
                                 Text(nextDeparture.getFormattedStringRes().localized())
                                     .font(.callout)
                             }
-                        } else if let destination = station as? BusRouteDetails.StationDestination {
-                            Text(destination.title)
-                                .frame(maxWidth: .infinity ,alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         }
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        onStationTap(station.id)
+                        onStationTap(station.slug)
                     }
                     .listRowSeparator(.hidden)
                 }.listRowInsets(EdgeInsets.init(top: 0, leading: 16, bottom: 0, trailing: 16))
@@ -102,32 +104,3 @@ extension Binding where Value == String? {
     }
 }
 
-#Preview {
-    RouteDetailView(routeDetails: BusRouteDetails(routeId: "id", title: "Route", additionalInfo: nil, stations: [
-        BusRouteDetails.StationStop(
-            id: "stop-1",
-            title: "Stop 1",
-            routeName: "Route",
-            nextDepartures: [
-                BusRouteDetails.DepartureTimeImmediately(),
-            ], annotateAsNew: false
-        ),
-        BusRouteDetails.StationStop(
-            id: "stop-2",
-            title: "Haltestelle 2",
-            routeName: "Route",
-            nextDepartures: [
-                BusRouteDetails.DepartureTimeToday(time: Kotlinx_datetimeLocalTime(hour: 22, minute: 22, second: 0, nanosecond: 0)),
-            ], annotateAsNew: false
-        ),
-        BusRouteDetails.StationStop(
-            id: "stop-3",
-            title: "Very very long stop name",
-            routeName: "Route",
-            nextDepartures: [
-                BusRouteDetails.DepartureTimeToday(time: Kotlinx_datetimeLocalTime(hour: 22, minute: 33, second: 0, nanosecond: 0)),
-            ], annotateAsNew: true
-        ),
-        
-    ], returnStations: []), onStationTap: {_ in})
-}
