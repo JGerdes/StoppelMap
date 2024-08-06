@@ -43,7 +43,7 @@ class StationViewModel(
             StationState.Loaded(
                 stationName = station.name,
                 outwardTimetable = createTimetable(station.outwardDepartures),
-                returnTimetable = createTimetable(station.returnDepartures),
+                returnTimetable = station.returnDepartures.takeIf { it.isNotEmpty() }?.let { createTimetable(it) },
                 priceState = PriceState(prices = station.fees, showDeutschlandTicketHint = true),
                 additionalInfo = station.additionalInfo,
                 isFavourite = favoriteStations.contains(station.slug),
@@ -78,7 +78,7 @@ class StationViewModel(
         data class Loaded(
             val stationName: String,
             val outwardTimetable: Timetable,
-            val returnTimetable: Timetable,
+            val returnTimetable: Timetable?,
             val priceState: PriceState,
             val additionalInfo: String?,
             val isFavourite: Boolean,

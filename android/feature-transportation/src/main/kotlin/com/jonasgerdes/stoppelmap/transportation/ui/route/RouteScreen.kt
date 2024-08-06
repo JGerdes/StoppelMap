@@ -67,7 +67,6 @@ import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.Station.N
 import com.jonasgerdes.stoppelmap.transportation.ui.getFormattedStringRes
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import timber.log.Timber
 import kotlin.math.roundToInt
 
 @SuppressLint("NewApi")
@@ -81,7 +80,6 @@ fun RouteScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    Timber.d("new state: ${(state.routeState as? RouteViewModel.RouteState.Loaded)?.routeDetails?.stations?.firstOrNull()}")
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val listState = rememberLazyListState()
 

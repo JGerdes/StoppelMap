@@ -14,11 +14,9 @@ import com.jonasgerdes.stoppelmap.transportation.usecase.GetNextDeparturesUseCas
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.stateIn
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
@@ -29,13 +27,6 @@ class TransportationOverviewViewModel(
     transportationUserDataRepository: TransportationUserDataRepository,
     private val getNextDepartures: GetNextDeparturesUseCase,
 ) : KMMViewModel() {
-
-    private val timeUpdate = flow {
-        while (true) {
-            emit(Unit)
-            delay(10_000)
-        }
-    }
 
     private val trainRoutesState = trainRoutesRepository.getAllRoutes()
         .map { TrainRoutesState(it) }

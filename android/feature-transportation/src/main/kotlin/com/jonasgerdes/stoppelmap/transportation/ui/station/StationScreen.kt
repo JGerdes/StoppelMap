@@ -132,30 +132,33 @@ fun StationScreen(
                             MaterialTheme.colorScheme.surfaceColorAtElevation(4.dp),
                         )
                 ) {
+                    val buttonCount = if (stationState.returnTimetable == null) 1 else 2
                     Spacer(modifier = Modifier.height(8.dp))
                     SingleChoiceSegmentedButtonRow {
                         SegmentedButton(
                             selected = departureType == DepartureType.Outward,
                             onClick = { departureType = DepartureType.Outward },
-                            shape = SegmentedButtonDefaults.itemShape(index = 0, count = 2),
+                            shape = SegmentedButtonDefaults.itemShape(index = 0, count = buttonCount),
                             icon = { Icon(Icons.Rounded.Attractions, null) }
                         ) {
                             Text("Hinfahrt")
                         }
-                        SegmentedButton(
-                            selected = departureType == DepartureType.Return,
-                            onClick = { departureType = DepartureType.Return },
-                            shape = SegmentedButtonDefaults.itemShape(index = 1, count = 2),
-                            icon = { Icon(Icons.Rounded.Home, null) }
-                        ) {
-                            Text("Rückfahrt")
+                        if (stationState.returnTimetable != null) {
+                            SegmentedButton(
+                                selected = departureType == DepartureType.Return,
+                                onClick = { departureType = DepartureType.Return },
+                                shape = SegmentedButtonDefaults.itemShape(index = 1, count = buttonCount),
+                                icon = { Icon(Icons.Rounded.Home, null) }
+                            ) {
+                                Text("Rückfahrt")
+                            }
                         }
                     }
                     Row {
                         when (departureType) {
                             DepartureType.Outward -> stationState.outwardTimetable
                             DepartureType.Return -> stationState.returnTimetable
-                        }.departureDays.forEach {
+                        }?.departureDays?.forEach {
                             Text(
                                 text = stringResource(it.dayOfWeek.toStringResource().resourceId),
                                 textAlign = TextAlign.Center,
@@ -167,16 +170,19 @@ fun StationScreen(
                         }
                     }
                 }
-                Timetable(
-                    timetable = when (departureType) {
-                        DepartureType.Outward -> stationState.outwardTimetable
-                        DepartureType.Return -> stationState.returnTimetable
-                    },
-                    gridState = gridState,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(padding)
-                )
+                val timetable = when (departureType) {
+                    DepartureType.Outward -> stationState.outwardTimetable
+                    DepartureType.Return -> stationState.returnTimetable
+                }
+                timetable?.let {
+                    Timetable(
+                        timetable = it,
+                        gridState = gridState,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(padding)
+                    )
+                }
             },
             topBar = {
                 TopAppBar(
