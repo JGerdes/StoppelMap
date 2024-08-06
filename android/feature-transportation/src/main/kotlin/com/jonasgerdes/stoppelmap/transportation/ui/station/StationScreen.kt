@@ -141,7 +141,7 @@ fun StationScreen(
                             shape = SegmentedButtonDefaults.itemShape(index = 0, count = buttonCount),
                             icon = { Icon(Icons.Rounded.Attractions, null) }
                         ) {
-                            Text("Hinfahrt")
+                            Text(stringResource(R.string.transportation_station_timetable_outward))
                         }
                         if (stationState.returnTimetable != null) {
                             SegmentedButton(
@@ -150,7 +150,7 @@ fun StationScreen(
                                 shape = SegmentedButtonDefaults.itemShape(index = 1, count = buttonCount),
                                 icon = { Icon(Icons.Rounded.Home, null) }
                             ) {
-                                Text("Rückfahrt")
+                                Text(stringResource(R.string.transportation_station_timetable_return))
                             }
                         }
                     }
@@ -253,6 +253,11 @@ fun StationScreen(
                                         )
                                     }
                                 }
+                                Spacer(modifier = Modifier.size(8.dp))
+                                Text(
+                                    text = stringResource(R.string.transportation_station_prices_hint_cash),
+                                    style = MaterialTheme.typography.labelMedium
+                                )
                                 if (priceState.showDeutschlandTicketHint) {
                                     Spacer(modifier = Modifier.size(8.dp))
                                     Text(

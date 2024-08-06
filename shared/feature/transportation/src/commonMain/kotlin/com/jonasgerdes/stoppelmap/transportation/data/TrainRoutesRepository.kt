@@ -9,7 +9,7 @@ class TrainRoutesRepository(
 ) {
 
     fun getAllRoutes(): Flow<List<RouteSummary>> =
-        transportDataSource.getRouteSummariesByType(TransportationType.Bus)
+        transportDataSource.getRouteSummariesByType(TransportationType.Train)
 
 
 }

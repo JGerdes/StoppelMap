@@ -145,10 +145,13 @@
     <string name="transportation_station_prices_children_with_range">Children (%1$d-%2$d years old)
     </string>
     <string name="transportation_station_prices_reduced">Reduced</string>
+    <string name="transportation_station_prices_hint_cash">Only cash. Please pay the exact amount.</string>
     <string name="transportation_station_prices_hint_deutschland_ticket">The Deutschland-Ticket
         („49€-Ticket“) is not valid for the Stoppelmarkt shuttle busses!
     </string>
 
+    <string name="transportation_station_timetable_outward">Outward</string>
+    <string name="transportation_station_timetable_return">Return</string>
     <string name="transportation_station_timetable_day_monday">Mo</string>
     <string name="transportation_station_timetable_day_tuesday">Tu</string>
     <string name="transportation_station_timetable_day_wednesday">We</string>

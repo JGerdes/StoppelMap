@@ -145,10 +145,13 @@
     <string name="transportation_station_prices_children_with_range">Kinder (%1$d-%2$d Jahre)
     </string>
     <string name="transportation_station_prices_reduced">Ermäßigt</string>
+    <string name="transportation_station_prices_hint_cash">Nur Barzahlung. Bitte möglichst passend bezahlen.</string>
     <string name="transportation_station_prices_hint_deutschland_ticket">Das Deutschland-Ticket
-        („49€-Ticket“) gilt nicht für die Shuttle-Busse des Stoppelmarkts!
+        („49€-Ticket“) gilt nicht für die Pendelbusse des Stoppelmarkts!
     </string>
 
+    <string name="transportation_station_timetable_outward">Hinfahrt</string>
+    <string name="transportation_station_timetable_return">Rückfahrt</string>
     <string name="transportation_station_timetable_day_monday">Mo</string>
     <string name="transportation_station_timetable_day_tuesday">Di</string>
     <string name="transportation_station_timetable_day_wednesday">Mi</string>
