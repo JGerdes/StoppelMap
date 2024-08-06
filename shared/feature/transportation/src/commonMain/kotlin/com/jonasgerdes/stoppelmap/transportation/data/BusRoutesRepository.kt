@@ -22,6 +22,9 @@ class BusRoutesRepository(
     fun getStationSummaries(routeSlug: String): Flow<List<StationSummary>> =
         transportDataSource.getStationSummariesByRoute(routeSlug)
 
+    fun getStationSummariesBySlugs(stationSlugs: Set<String>) =
+        transportDataSource.getStationSummariesBySlugs(stationSlugs)
+
     fun getStationDetails(stationSlug: String): Flow<StationDetails> = combine(
         transportDataSource.getDetailedStation(stationSlug),
         transportDataSource.getDepartureDaysByStation(stationSlug, DepartureType.Outward),

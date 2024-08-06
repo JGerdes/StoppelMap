@@ -41,6 +41,11 @@ class TransportDataSource(
             .asFlow()
             .mapToList(Dispatchers.IO)
 
+    fun getStationSummariesBySlugs(stationSlugs: Set<String>): Flow<List<StationSummary>> =
+        stationQueries.getBasicBySlugs(stationSlugs, ::StationSummary)
+            .asFlow()
+            .mapToList(Dispatchers.IO)
+
 
     suspend fun getDeparturesAfterByStation(stationSlug: String, after: LocalDateTime, limit: Long) =
         withContext(Dispatchers.IO) {

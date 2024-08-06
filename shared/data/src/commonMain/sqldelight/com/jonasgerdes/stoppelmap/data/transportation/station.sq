@@ -23,6 +23,9 @@ DELETE FROM station;
 getBasicByRoute:
 SELECT slug, name, annotateAsNew FROM station WHERE route = :routeSlug;
 
+getBasicBySlugs:
+SELECT slug, name, annotateAsNew FROM station WHERE slug IN :slugs;
+
 getDetailedById:
 SELECT station.slug, station.name, station.annotateAsNew, localized_string.string AS additionalInfo
 FROM station

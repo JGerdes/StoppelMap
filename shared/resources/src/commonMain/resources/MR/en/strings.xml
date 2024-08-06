@@ -124,7 +124,7 @@
     <string name="transportation_route_section_back">Return</string>
     <string name="transportation_route_card_next_departures_label">Next departure</string>
     <string name="transportation_route_card_next_departures_immediately">Now</string>
-    <string name="transportation_route_card_next_departures_inMinutes">in %1$d min.</string>
+    <string name="transportation_route_card_next_departures_inMinutes">in %1$d minutes</string>
     <string name="transportation_route_card_next_departures_tomorrow">tomorrow %1$s</string>
     <string name="transportation_route_card_next_departures_none">No further departures</string>
     <string name="transportation_route_card_annotation_new">New</string>
