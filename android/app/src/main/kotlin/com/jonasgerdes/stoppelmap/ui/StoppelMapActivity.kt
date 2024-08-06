@@ -261,10 +261,10 @@ class StoppelMapActivity : ComponentActivity() {
                     StationScreen(
                         stationId = stationId,
                         onNavigateBack = { navController.navigateUp() },
+                        padding = scaffoldPadding,
                         Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
-                            .padding(scaffoldPadding)
                     )
                 }
                 composable(Screen.News.route) {

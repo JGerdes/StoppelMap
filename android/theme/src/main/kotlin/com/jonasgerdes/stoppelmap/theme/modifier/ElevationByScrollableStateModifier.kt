@@ -1,6 +1,8 @@
 package com.jonasgerdes.stoppelmap.theme.modifier
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.runtime.Composable
@@ -10,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
@@ -51,4 +54,21 @@ fun Modifier.elevationWhenScrolled(
     val effectiveElevation by animateDpAsState(targetValue = if (isAtTop) 0.dp else elevation)
 
     shadow(elevation = effectiveElevation)
+}
+
+fun Modifier.backgroundWhenScrolled(
+    lazyGridState: LazyGridState,
+    defaultBackground: Color,
+    scrolledBackground: Color,
+): Modifier = composed {
+
+    val isAtTop by remember {
+        derivedStateOf {
+            lazyGridState.firstVisibleItemIndex == 0
+                    && lazyGridState.firstVisibleItemScrollOffset == 0
+        }
+    }
+    val effectiveColor by animateColorAsState(targetValue = if (isAtTop) defaultBackground else scrolledBackground)
+
+    background(effectiveColor)
 }

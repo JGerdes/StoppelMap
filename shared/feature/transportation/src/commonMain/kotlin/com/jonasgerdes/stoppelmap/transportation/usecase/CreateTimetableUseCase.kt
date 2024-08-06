@@ -21,6 +21,8 @@ class CreateTimetableUseCase(
             val allSlots: Map<LocalTime, List<DepartureWithDay>> =
                 allDepartures.groupBy { it.departure.time.time }
 
+            val now = clockProvider.nowAsInstant()
+
             Timetable(
                 departureDays = departures.map { it.day },
                 daySegments = Timetable.DaySegmentType.entries.map { daySegmentType ->
@@ -33,7 +35,11 @@ class CreateTimetableUseCase(
                                 val departuresWithDay = allSlots[slotTime]!!
                                 Timetable.DepartureSlot(departures = departures.associate { day ->
                                     day.day to departuresWithDay.find { it.day.day == day.day }?.departure
-                                }.values.toList())
+                                }.values.toList().map {
+                                    it?.let {
+                                        Timetable.Departure(it.time, isInPast = clockProvider.toInstant(it.time) < now)
+                                    }
+                                })
                             }
                             .sortedBy {
                                 with(clockProvider) {

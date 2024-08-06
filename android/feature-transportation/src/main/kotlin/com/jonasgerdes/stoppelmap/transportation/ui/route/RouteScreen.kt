@@ -326,9 +326,7 @@ fun DestinationStationCard(
     modifier: Modifier = Modifier
 ) {
     Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        ),
+        colors = CardDefaults.cardColors(),
         modifier = modifier
     ) {
         Column(

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.transportation.model
 
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.format
 import kotlinx.datetime.format.char
@@ -22,6 +23,11 @@ data class Timetable(
             it?.time?.time?.format(timeFormatter) ?: " "
         }
     }
+
+    data class Departure(
+        val time: LocalDateTime,
+        val isInPast: Boolean,
+    )
 
     enum class DaySegmentType(val startTimeInclusive: LocalTime, val endTimeExclusive: LocalTime) {
         MORNING(LocalTime(6, 0), LocalTime(13, 0)),
