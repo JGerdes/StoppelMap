@@ -21,3 +21,9 @@ DELETE FROM departure_day;
 
 getByStation:
 SELECT slug, day, laterDeparturesOnDemand FROM departure_day WHERE station = :station;
+
+getDeparturesByStation:
+SELECT slug, day, time, arrival  FROM departure_day
+JOIN departure ON departure.departureDay = departure_day.slug
+WHERE station = :station  AND departureType = :departureType
+ORDER BY time;

@@ -12,3 +12,9 @@ VALUES ?;
 
 clear:
 DELETE FROM fee;
+
+getByReferenceSlugs:
+SELECT referenceSlug, localized_string.string AS name, price
+FROM fee
+JOIN localized_string ON localized_string.key = fee.nameKey AND locale = "de"
+WHERE fee.referenceSlug IN :referenceSlugs;

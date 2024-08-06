@@ -6,6 +6,7 @@ package com.jonasgerdes.stoppelmap.transportation.ui.station
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -36,19 +38,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jonasgerdes.stoppelmap.data.shared.Fee
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
+import com.jonasgerdes.stoppelmap.transportation.model.StationDetails
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.ui.toStringResource
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.format
+import kotlinx.datetime.format.char
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import java.text.NumberFormat
@@ -75,7 +81,7 @@ fun StationScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = stationState.stationTitle,
+                        text = stationState.stationName,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -114,20 +120,20 @@ fun StationScreen(
                             style = MaterialTheme.typography.labelMedium
                         )
                         Spacer(modifier = Modifier.size(8.dp))
-                        /*priceState.prices.forEach { price ->
+                        priceState.prices.forEach { fee ->
                             Row(
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Text(
-                                    text = price.label.asString(LocalContext.current.resources)
+                                    text = fee.name
                                 )
                                 Spacer(modifier = Modifier.size(8.dp))
                                 Text(
-                                    text = price.formatAmount(LocalContext.current.resources)
+                                    text = fee.formatAmount(LocalContext.current.resources)
                                 )
                             }
-                        }*/
+                        }
                         if (priceState.showDeutschlandTicketHint) {
                             Spacer(modifier = Modifier.size(8.dp))
                             Text(
@@ -180,7 +186,7 @@ fun StationScreen(
     }
 }
 
-private fun Fee.formatAmount(resources: Resources) =
+private fun StationDetails.Fee.formatAmount(resources: Resources) =
     NumberFormat.getCurrencyInstance(
         ConfigurationCompat.getLocales(resources.configuration)[0] ?: Locale.getDefault()
     ).apply {
@@ -188,6 +194,12 @@ private fun Fee.formatAmount(resources: Resources) =
         currency = Currency.getInstance("EUR")
     }.format(price / 100f)
 
+
+private val timeFormat = LocalTime.Format {
+    hour()
+    char(':')
+    minute()
+}
 
 @Composable
 fun Timetable(
@@ -216,15 +228,15 @@ fun Timetable(
                     )
                 }
             }
-            /*items(
-                items = daySegment.departureSlots.flatMap { dslot -> dslot.departures.mapIndexed() { id, it -> it to id.toString() + "-" + dslot.departures.first { it != null }!!.time } },
+            items(
+                daySegment.departureSlots.flatMap { dslot -> dslot.departures.mapIndexed() { id, it -> it to id.toString() + "-" + dslot.departures.first { it != null }!!.time } },
                 key = { it.second },
                 contentType = { ContentType.TIME }
             ) { slotPair ->
                 val slot = slotPair.first
                 if (slot != null) {
                     Text(
-                        text = slot.time.time.toJavaLocalTime().format(timeFormatter),
+                        text = slot.time.time.format(timeFormat),
                         style = MaterialTheme.typography.bodyMedium,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
@@ -232,7 +244,7 @@ fun Timetable(
                             .padding(2.dp)
                     )
                 }
-            }*/
+            }
         }
     }
 }

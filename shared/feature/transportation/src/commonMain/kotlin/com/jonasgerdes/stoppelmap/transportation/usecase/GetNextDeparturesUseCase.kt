@@ -6,13 +6,10 @@ import com.jonasgerdes.stoppelmap.transportation.model.DepartureTime
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
-import kotlinx.datetime.toInstant
 
 class GetNextDeparturesUseCase(
     private val clockProvider: ClockProvider,
-    private val timeZone: TimeZone,
     private val transportDataSource: TransportDataSource,
 ) {
 
@@ -27,24 +24,26 @@ class GetNextDeparturesUseCase(
             limit = maxDepartures.toLong()
         )
             .map {
-                val difference = it.time.toInstant(timeZone) - now.toInstant(timeZone)
-                when {
-                    difference.inWholeMinutes < 1 ->
-                        DepartureTime.Immediately
+                with(clockProvider) {
+                    val difference = it.time.asInstant() - now.asInstant()
+                    when {
+                        difference.inWholeMinutes < 1 ->
+                            DepartureTime.Immediately
 
-                    difference.inWholeMinutes < 30 ->
-                        DepartureTime.InMinutes(difference.inWholeMinutes.toInt())
+                        difference.inWholeMinutes < 30 ->
+                            DepartureTime.InMinutes(difference.inWholeMinutes.toInt())
 
-                    it.time.isConsideredSameDay(now.date) ->
-                        DepartureTime.Today(it.time.time)
+                        it.time.isConsideredSameDay(now.date) ->
+                            DepartureTime.Today(it.time.time)
 
-                    it.time.isConsideredSameDay(now.date.nextDay()) ->
-                        DepartureTime.Tomorrow(it.time.time)
+                        it.time.isConsideredSameDay(now.date.nextDay()) ->
+                            DepartureTime.Tomorrow(it.time.time)
 
-                    difference.inWholeDays < 7 ->
-                        DepartureTime.ThisWeek(it.time)
+                        difference.inWholeDays < 7 ->
+                            DepartureTime.ThisWeek(it.time)
 
-                    else -> DepartureTime.Absolute(dateTime = it.time)
+                        else -> DepartureTime.Absolute(dateTime = it.time)
+                    }
                 }
             }
     }

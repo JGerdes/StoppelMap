@@ -13,4 +13,8 @@ interface ClockProvider {
     fun toLocalDateTime(instant: Instant): LocalDateTime
 
     fun toInstant(localDateTime: LocalDateTime): Instant
+
+
+    fun Instant.asLocalDateTime() = toLocalDateTime(this)
+    fun LocalDateTime.asInstant() = toInstant(this)
 }

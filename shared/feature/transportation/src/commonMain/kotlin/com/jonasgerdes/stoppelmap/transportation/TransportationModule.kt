@@ -2,7 +2,6 @@ package com.jonasgerdes.stoppelmap.transportation
 
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
-import com.jonasgerdes.stoppelmap.base.model.VenueInformation
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.transportation.data.BusRoutesRepository
 import com.jonasgerdes.stoppelmap.transportation.data.TaxiServiceRepository
@@ -21,6 +20,8 @@ val transportationModule = module {
             routeQueries = get<StoppelMapDatabase>().routeQueries,
             stationQueries = get<StoppelMapDatabase>().stationQueries,
             departureQueries = get<StoppelMapDatabase>().departureQueries,
+            departureDayQueries = get<StoppelMapDatabase>().departure_dayQueries,
+            feeQueries = get<StoppelMapDatabase>().feeQueries,
         )
     }
 
@@ -40,13 +41,15 @@ val transportationModule = module {
         )
     }
 
-    factory { CreateTimetableUseCase() }
+    factory {
+        CreateTimetableUseCase(
+            clockProvider = get()
+        )
+    }
     factory {
         GetNextDeparturesUseCase(
             clockProvider = get(),
-            timeZone = get<VenueInformation>().timeZone,
             transportDataSource = get(),
-
-            )
+        )
     }
 }

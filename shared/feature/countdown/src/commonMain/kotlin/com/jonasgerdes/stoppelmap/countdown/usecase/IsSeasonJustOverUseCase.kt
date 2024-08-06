@@ -4,7 +4,6 @@ import com.jonasgerdes.stoppelmap.base.contract.ClockProvider
 import com.jonasgerdes.stoppelmap.base.contract.SeasonProvider
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.daysUntil
-import kotlinx.datetime.toInstant
 
 internal class IsCurrentYearsSeasonJustOverUseCase(
     private val seasonProvider: SeasonProvider,
@@ -12,10 +11,10 @@ internal class IsCurrentYearsSeasonJustOverUseCase(
     private val localTimeZone: TimeZone,
 ) {
 
-    operator fun invoke(): Boolean {
-        val daysSinceEnd = seasonProvider.getThisYearsSeason().end.toInstant(localTimeZone)
+    operator fun invoke(): Boolean = with(clockProvider) {
+        val daysSinceEnd = seasonProvider.getThisYearsSeason().end.asInstant()
             .daysUntil(
-                clockProvider.nowAsLocalDateTime().toInstant(localTimeZone),
+                clockProvider.nowAsLocalDateTime().asInstant(),
                 localTimeZone
             )
         return daysSinceEnd in 1..2

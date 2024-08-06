@@ -30,7 +30,7 @@ class RouteViewModel(
     private val timeUpdate = flow {
         while (true) {
             emit(clockProvider.nowAsLocalDateTime())
-            delay(20.seconds)
+            delay(10.seconds)
         }
     }
     val state: StateFlow<ViewState> =
