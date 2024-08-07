@@ -602,6 +602,93 @@
         "isOfficial": false
     },
     {
+        "slug": "die-flotte-das-partyschiff_david_dauerbreit_live_sensation_00",
+        "name": {
+            "de": "David Dauerbreit & Live Sensation"
+        },
+        "start": "2024-08-15T22:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_milla_pink_live_sensation_01",
+        "name": {
+            "de": "Milla Pink & Live Sensation"
+        },
+        "start": "2024-08-16T23:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_party_mit_dj_thom_k_02",
+        "name": {
+            "de": "Party mit DJ THOM-K"
+        },
+        "start": "2024-08-17T18:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_vereinstag_03",
+        "name": {
+            "de": "Vereinstag"
+        },
+        "start": "2024-08-18T11:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": {
+            "de": "<p>Meldet eure Mannschaft zum Torwandschiessen an und gewinnt frei trinken.</p>\n<p>Anmeldungen unter 0175-1621465 oder <a href=\"#\" data-mailto-token=\"nbjmup+jogpAlspfhfst.hspttfscsvefs/ef\" data-mailto-vector=\"1\">info@kroegers-grosserbruder.de</a></p>\n<ul>\n <li>Torwandschiessen</li>\n <li>Würfel Hubi für alle Mannschaften</li>\n <li>Karaoke</li>\n <li>Das wird ein Spaß :-)</li>\n</ul>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_david_dauerbreit_04",
+        "name": {
+            "de": "David Dauerbreit"
+        },
+        "start": "2024-08-18T14:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
         "slug": "festzelt-bloemer_opening_–_treffen_der_versch_vereine_und_gruppen_00",
         "name": {
             "de": "Opening – Treffen der versch. Vereine und Gruppen"
@@ -1911,15 +1998,15 @@
         "isOfficial": false
     },
     {
-        "slug": "rastas-genuss-quartier_fruehschoppen_mit_dem_musikverein_visbek_03",
+        "slug": "rastas-genuss-quartier_fruehschoppen_03",
         "name": {
-            "de": "Frühschoppen mit dem Musikverein Visbek"
+            "de": "Frühschoppen"
         },
         "start": "2024-08-18T11:00",
         "end": null,
         "location": "rastas-genuss-quartier",
         "description": {
-            "de": "<p>Frühschoppen ab 11 Uhr mit dem Musikverein Visbek</p>\n<p>&nbsp;</p>"
+            "de": "<p>Frühschoppen ab 11 Uhr</p>\n<p>&nbsp;</p>"
         },
         "participants": [
         ],
@@ -1930,7 +2017,26 @@
         "isOfficial": false
     },
     {
-        "slug": "rastas-genuss-quartier_akustik_musik_mit_den_real_spirits_04",
+        "slug": "rastas-genuss-quartier_musikverein_visbek_04",
+        "name": {
+            "de": "Musikverein Visbek"
+        },
+        "start": "2024-08-18T14:00",
+        "end": null,
+        "location": "rastas-genuss-quartier",
+        "description": {
+            "de": "<p>&nbsp;</p>\n<p>&nbsp;</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "rastas-genuss-quartier_akustik_musik_mit_den_real_spirits_05",
         "name": {
             "de": "Akustik Musik mit den Real Spirits"
         },
@@ -1947,7 +2053,7 @@
         "isOfficial": false
     },
     {
-        "slug": "rastas-genuss-quartier_den_ganzen_tag_„the_art_of_music_mixture“_mit_dj_smackx_05",
+        "slug": "rastas-genuss-quartier_den_ganzen_tag_„the_art_of_music_mixture“_mit_dj_smackx_06",
         "name": {
             "de": "Den ganzen Tag „the art of music mixture“ mit DJ Smackx"
         },
@@ -1964,7 +2070,7 @@
         "isOfficial": false
     },
     {
-        "slug": "rastas-genuss-quartier_familientag_06",
+        "slug": "rastas-genuss-quartier_familientag_07",
         "name": {
             "de": "Familientag"
         },
