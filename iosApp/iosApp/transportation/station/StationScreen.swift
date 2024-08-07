@@ -23,12 +23,19 @@ struct StationScreen: View {
             if let state = viewState.stationState as? StationViewModel.StationStateLoaded {
                 ScrollView {
                     VStack {
-                        Button {
-                            viewModel.toggleFavourite()
-                        } label: {
-                            Label(state.isFavourite ? Res.strings().transportation_station_topbar_action_unfavourite_contentDescription.desc().localized() : Res.strings().transportation_station_topbar_action_favourite_contentDescription.desc().localized()
-                                  , systemImage: state.isFavourite ? "star.fill" : "star")
-                        }.buttonStyle(.borderedProminent)
+                        HStack {
+                            Spacer()
+                            Button {
+                                viewModel.toggleFavourite()
+                            } label: {
+                                Image(systemName: state.isFavourite ? "star.fill" : "star")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .accessibilityLabel(Text(
+                                state.isFavourite ? Res.strings().transportation_station_topbar_action_unfavourite_contentDescription.desc().localized() : Res.strings().transportation_station_topbar_action_favourite_contentDescription.desc().localized()
+                            ))
+                            .padding(.horizontal)
+                        }
                         
                         if(!state.priceState.prices.isEmpty) {
                             PriceCard(state: state.priceState)

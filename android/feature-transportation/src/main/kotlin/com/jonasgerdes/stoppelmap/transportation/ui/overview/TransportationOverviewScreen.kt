@@ -51,6 +51,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
+import com.jonasgerdes.stoppelmap.theme.components.UnderConstructionPlaceholder
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
 import com.jonasgerdes.stoppelmap.transportation.ui.route.StopStationCard
@@ -137,7 +138,7 @@ fun TransportationOverviewScreen(
                     onRouteTap = onRouteTap,
                 )
 
-                Page.Train -> TrainPage(state = state.trainRoutesState, onRouteTap = onRouteTap)
+                Page.Train -> UnderConstructionPlaceholder()
                 Page.Taxi -> TaxiPage(
                     state = state.taxiServicesState,
                     onPhoneNumberTap = onPhoneNumberTap

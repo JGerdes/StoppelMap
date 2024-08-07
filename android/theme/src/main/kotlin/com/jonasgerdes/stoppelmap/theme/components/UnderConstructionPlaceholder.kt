@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.ui.components
+package com.jonasgerdes.stoppelmap.theme.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,8 +16,13 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.LottieProperty
-import com.airbnb.lottie.compose.*
-import com.jonasgerdes.stoppelmap.R
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.rememberLottieComposition
+import com.airbnb.lottie.compose.rememberLottieDynamicProperties
+import com.airbnb.lottie.compose.rememberLottieDynamicProperty
+import com.jonasgerdes.stoppelmap.shared.resources.R
 
 @Composable
 fun UnderConstructionPlaceholder(

@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":shared:resources"))
 
     implementation(libs.bundles.compose.ui)
+    implementation(libs.lottie.compose)
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.androidx.core.ktx)
     implementation(libs.moko.resources)
