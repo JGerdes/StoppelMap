@@ -4,6 +4,8 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 
 sealed class DepartureTime {
+    val iOSId get() = toString()
+
     object Immediately : DepartureTime()
     data class InMinutes(val minutes: Int) : DepartureTime()
     data class Today(val time: LocalTime) : DepartureTime()

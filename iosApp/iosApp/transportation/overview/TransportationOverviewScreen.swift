@@ -16,6 +16,9 @@ struct TransportationOverviewScreen: View {
     @State
     var viewState: TransportationOverviewViewModel.ViewState = TransportationOverviewViewModel.ViewState()
     
+    @State
+    var selectedStation: SelectedStation?
+    
     @State private var selectedTab: TransportationType = .bus
 
     
@@ -24,8 +27,13 @@ struct TransportationOverviewScreen: View {
             TabView(selection: $selectedTab) {
                 ForEach(TransportationType.allCases, id: \.self) { tab in
                     if(tab == TransportationType.bus) {
-                        TransportationBusOverviewPage(viewState: viewState.busRoutesViewState, onRouteTap: { routeId in
-                            print("🚏 route: " + routeId)
+                        TransportationBusOverviewPage(
+                            viewState: viewState.busRoutesViewState,
+                            onRouteTap: { routeId in
+                                print("🚏 route: " + routeId)
+                            }, 
+                            onStationTap: { stationId in
+                            selectedStation = SelectedStation(id: stationId)
                         }
                         ).tag(tab)
                     } else {
@@ -46,6 +54,10 @@ struct TransportationOverviewScreen: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
             }
+        }
+        .sheet(item: $selectedStation) { item in
+            StationScreen(stationId: item.id)
+                .presentationDragIndicator(.visible)
         }
         .task {
             for await state in viewModel.state {

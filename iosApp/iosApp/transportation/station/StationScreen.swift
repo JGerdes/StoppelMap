@@ -141,7 +141,7 @@ struct TimetableView: View {
         }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             .padding(.bottom)
             .background(.thinMaterial)
-            .cornerRadius(24.0)
-            .padding(2)
+            .cornerRadius(10.0)
+            .padding(4)
     }
 }

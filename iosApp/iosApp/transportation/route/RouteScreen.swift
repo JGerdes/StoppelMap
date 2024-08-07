@@ -60,6 +60,7 @@ struct RouteDetailView: View {
         List {
             if let info = routeDetails.additionalInfo {
                 Text(info)
+
             }
             Section("Haltestellen") {
                 let stations = routeDetails.stations
