@@ -117,14 +117,16 @@ struct SmallWidget: View {
             if let inFuture = entry.state as? CountDownInFuture {
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0) {
                     Spacer()
+                    let label = inFuture.daysLeft < 1 ? Res.plurals().countdownCard_unit_hour : Res.plurals().countdownCard_unit_day
+                    let value = inFuture.daysLeft < 1 ? inFuture.hoursLeft : inFuture.daysLeft
                     Text(Res.strings().widget_countdown_prefix.desc().localized())
                         .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
                         .foregroundStyle(.black)
-                    Text(inFuture.daysLeft.description)
+                    Text(value.description)
                         .font(Font.custom("RobotoSlab-Light", fixedSize: 48))
                         .foregroundStyle(.black)
                         .padding(.vertical, -8)
-                    Text(Res.plurals().countdownCard_unit_day.desc(number: inFuture.daysLeft).localized())
+                    Text(label.desc(number: value).localized())
                         .font(Font.custom("RobotoSlab-Regular", fixedSize: 12))
                         .foregroundStyle(.black)
                     Spacer()

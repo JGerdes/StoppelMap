@@ -45,8 +45,10 @@ struct HomeScreen: View {
                                 }.buttonStyle(.bordered)
                             }
                             .padding()
+                            .frame(maxWidth: .infinity)
                             .background(.thinMaterial)
                             .cornerRadius(24.0)
+                            .padding(.horizontal)
                         }
                         if let feedbackState = viewState.feedbackState as? HomeViewModelFeedbackStateVisible {
                             VStack {
@@ -60,8 +62,10 @@ struct HomeScreen: View {
                                 }.buttonStyle(.bordered)
                             }
                             .padding()
+                            .frame(maxWidth: .infinity)
                             .background(.thinMaterial)
                             .cornerRadius(24.0)
+                            .padding(.horizontal)
                         }
                     }
                 }

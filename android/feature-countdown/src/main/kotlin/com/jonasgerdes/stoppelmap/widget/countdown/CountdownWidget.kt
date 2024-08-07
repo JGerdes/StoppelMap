@@ -112,11 +112,13 @@ class CountdownWidget : GlanceAppWidget() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        CountdownItem(
-                            unitString = Res.plurals.countdownCard_unit_day,
-                            value = countDownState.daysLeft,
-                        )
-                        if (isWide) {
+                        if (isWide || countDownState.daysLeft > 0) {
+                            CountdownItem(
+                                unitString = Res.plurals.countdownCard_unit_day,
+                                value = countDownState.daysLeft,
+                            )
+                        }
+                        if (isWide || countDownState.daysLeft <= 0) {
                             CountdownItem(
                                 unitString = Res.plurals.countdownCard_unit_hour,
                                 value = countDownState.hoursLeft,
