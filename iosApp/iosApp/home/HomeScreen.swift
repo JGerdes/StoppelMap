@@ -33,6 +33,28 @@ struct HomeScreen: View {
                                 season: countDown.season
                             )
                         }
+                        if let promotedEventsState = viewState.promotedEventsState as? HomeViewModelPromotedEventsStateVisible {
+                            Text(Res.strings().home_officalEventCard_title.desc().localized())
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.top, .horizontal])
+                            ForEach(promotedEventsState.events, id: \.slug) { event in
+                                VStack(alignment: .leading, spacing: 10.0) {
+                                    Text(event.start.defaultFormat().localized())
+                                    if let locationName = event.locationName {
+                                        Text(locationName)
+                                    }
+                                    Text(event.name.localized()).font(.title)
+                                    if let eventDescription = event.description_ {
+                                        Text(eventDescription.localized()).font(.caption)
+                                    }
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(.thinMaterial)
+                                .cornerRadius(24.0)
+                                .padding(.horizontal)
+                            }
+                        }
                         if let socialState = viewState.instagramPromotionState as? HomeViewModelInstagramPromotionStateVisible {
                             VStack {
                                 Text(Res.strings().social_media_promo_instagram_title.desc().localized())

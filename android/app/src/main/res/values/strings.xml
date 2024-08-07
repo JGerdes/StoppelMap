@@ -4,9 +4,8 @@
 
     <string name="fcm_news_new_article_title_one">Neuer Artikel</string>
     <string name="fcm_news_new_article_title_multiple">%s neue Artikel</string>
-    
+
     <string name="home_toolbar_action_settings_contentDescription">Einstellungen</string>
 
-    <string name="home_officalEventCard_title">Nicht verpassen:</string>
     <string name="home_countdownCard_nextSeason_title">Stoppelmarkt schon vorbei? Nicht traurig sein, denn:</string>
 </resources>

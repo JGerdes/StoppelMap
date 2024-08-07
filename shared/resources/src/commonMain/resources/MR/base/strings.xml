@@ -33,6 +33,7 @@
 
     <!-- Home -->
     <string name="home_topbar_title">Hallo Stoppelmarkt!</string>
+    <string name="home_officalEventCard_title">Nicht verpassen:</string>
 
     <!-- Countdown -->
     <string name="countdownCard_suffix">bis zum</string>
@@ -52,7 +53,7 @@
 
     <!-- Feedback -->
     <string name="feedback_card_title">Du hast Feedback oder hast einen Fehler gefunden?</string>
-    <string name="feedback_card_button">Schreib us</string>
+    <string name="feedback_card_button">Schreib uns</string>
 
     <!-- Settings/Licenses -->
     <string name="settings_topbar_title">Einstellungen/Info</string>

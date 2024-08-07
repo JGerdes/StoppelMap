@@ -44,3 +44,13 @@ fun LocalDate.dayOfMonthFormat() = FormattedLocalDateStringDesc(this) {
         char('.')
     }
 }
+
+fun LocalDateTime.defaultFormat() = FormattedLocalDateTimeStringDesc(this) {
+    LocalDateTime.Format {
+        dayOfWeek(it)
+        chars(" ,")
+        hour()
+        char(':')
+        minute()
+    }
+}
