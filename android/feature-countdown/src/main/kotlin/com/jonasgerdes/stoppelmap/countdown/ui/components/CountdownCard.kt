@@ -43,6 +43,7 @@ import com.jonasgerdes.stoppelmap.base.contract.Season
 import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.resources.dayOfMonthFormat
 import com.jonasgerdes.stoppelmap.resources.defaultFormat
+import com.jonasgerdes.stoppelmap.resources.defaultFormatWithoutYear
 import com.jonasgerdes.stoppelmap.theme.LocalThemeSetting
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.isDarkTheme
@@ -173,8 +174,8 @@ fun CountdownCard(
                 )
                 Text(
                     text = stringResource(
-                        id = R.string.countdownCard_iteration,
-                        season.iteration,
+                        id = R.string.countdownCard_year,
+                        season.year,
                     ),
                     style = MaterialTheme.typography.titleLarge,
                     textAlign = TextAlign.End,
@@ -184,7 +185,7 @@ fun CountdownCard(
                     text = stringResource(
                         id = R.string.countdownCard_dates,
                         season.start.date.dayOfMonthFormat().toString(context),
-                        season.end.date.defaultFormat().toString(context),
+                        season.end.date.defaultFormatWithoutYear().toString(context),
                     ),
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.End,
@@ -270,7 +271,7 @@ private fun PreviewCountdownCard() {
             seconds = 12,
             season = object : Season {
                 override val year = 2024
-                override val iteration = 724
+                override val iteration = 726
                 override val days: List<LocalDate> = emptyList()
                 override val start: LocalDateTime = LocalDateTime(2024, Month.AUGUST, 15, 18, 30)
                 override val end: LocalDateTime = LocalDateTime(2024, Month.AUGUST, 20, 23, 0)

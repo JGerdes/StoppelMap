@@ -37,6 +37,7 @@
     <!-- Countdown -->
     <string name="countdownCard_suffix">bis zum</string>
     <string name="countdownCard_iteration">%1$d. Stoppelmarkt</string>
+    <string name="countdownCard_year">Stoppelmarkt %1$d</string>
     <string name="countdownCard_dates">%1$s - %2$s</string>
 
     <!-- Widget suggestion -->

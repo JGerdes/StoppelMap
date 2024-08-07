@@ -30,6 +30,14 @@ fun LocalDate.defaultFormat() = FormattedLocalDateStringDesc(this) {
     }
 }
 
+fun LocalDate.defaultFormatWithoutYear() = FormattedLocalDateStringDesc(this) {
+    LocalDate.Format {
+        dayOfMonth(Padding.NONE)
+        chars(". ")
+        monthName(it)
+    }
+}
+
 fun LocalDate.dayOfMonthFormat() = FormattedLocalDateStringDesc(this) {
     LocalDate.Format {
         dayOfMonth(padding = Padding.NONE)

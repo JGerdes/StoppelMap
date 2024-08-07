@@ -59,12 +59,12 @@ struct CountdownCard: View {
                         Text(Res.strings().countdownCard_suffix.desc().localized())
                             .multilineTextAlignment(.trailing)
                             .font(.bodySlab)
-                        Text(Res.strings().countdownCard_iteration.format(args: [season.iteration]).localized())
+                        Text(Res.strings().countdownCard_year.format(args: [season.year]).localized())
                             .multilineTextAlignment(.trailing)
                             .font(.title2Slab)
                         Text(Res.strings().countdownCard_dates.format(args: [
                             season.start.date.dayOfMonthFormat().localized(),
-                            season.end.date.defaultFormat().localized()
+                            season.end.date.defaultFormatWithoutYear().localized()
                         ]).localized())
                             .multilineTextAlignment(.trailing)
                             .font(.bodySlab)

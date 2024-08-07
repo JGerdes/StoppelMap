@@ -17,7 +17,6 @@ private val endTime = LocalTime(23, 0)
 // Based on https://www.vechta.de/nachricht/schaustellerverein-stellt-tore-auf
 private val iterationBaseYear = 1998
 private val iterationBaseCount = 700
-private val skippedYears = setOf(2020, 2021)
 
 class StoppelmarktSeasonProvider(
     private val clockProvider: ClockProvider,
@@ -46,8 +45,7 @@ fun getSeasonForYear(year: Int): Season = StoppelmarktSeason(
 )
 
 fun calculateIteration(year: Int): Int {
-    // Simplified, doesn't support years < 2022 yet
-    return (year - iterationBaseYear) + iterationBaseCount - skippedYears.size
+    return (year - iterationBaseYear) + iterationBaseCount
 }
 
 data class StoppelmarktSeason(
