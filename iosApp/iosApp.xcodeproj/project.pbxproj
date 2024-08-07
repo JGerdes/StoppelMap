@@ -32,6 +32,7 @@
 		2A838B212C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */; };
 		2A838B242C2809E9005642A1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2A838B232C2809E9005642A1 /* Lottie */; };
 		2A838B272C282B33005642A1 /* UnderConstruction.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A838B262C282B33005642A1 /* UnderConstruction.json */; };
+		2A84E39E2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */; };
 		2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92605A2BF6799B00C57918 /* SettingsScreen.swift */; };
 		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
@@ -116,6 +117,7 @@
 		2A7781252BBB2F7200C1FC25 /* EventPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPage.swift; sourceTree = "<group>"; };
 		2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderConstrcutionPlaceholder.swift; sourceTree = "<group>"; };
 		2A838B262C282B33005642A1 /* UnderConstruction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UnderConstruction.json; sourceTree = "<group>"; };
+		2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationTaxiOverviewPage.swift; sourceTree = "<group>"; };
 		2A92605A2BF6799B00C57918 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
 		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				2A40405D2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift */,
 				2A40405F2BC313C900A5B072 /* TransportationType.swift */,
 				2A4040612BC3145B00A5B072 /* TransportationBusOverviewPage.swift */,
+				2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */,
 			);
 			path = overview;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
 				2AD0F99E2C01281000FDB2A3 /* Fonts.swift in Sources */,
 				2A4040602BC313C900A5B072 /* TransportationType.swift in Sources */,
+				2A84E39E2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift in Sources */,
 				2A6873252BC9EE43008442FC /* StationScreen.swift in Sources */,
 				2A40405E2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift in Sources */,
 				2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */,

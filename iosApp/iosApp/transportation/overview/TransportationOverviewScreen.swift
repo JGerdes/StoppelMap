@@ -36,8 +36,10 @@ struct TransportationOverviewScreen: View {
                             selectedStation = SelectedStation(id: stationId)
                         }
                         ).tag(tab)
+                    } else if(tab == TransportationType.taxi) {
+                        TransportationTaxiOverviewPage(viewState: viewState.taxiServicesState).tag(tab)
                     } else {
-                        Text("Taxi").tag(tab)
+                        UnderConstrcutionPlaceholder().tag(tab)
                     }
                 }
             }
