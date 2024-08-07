@@ -1,35 +1,65 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
 import com.jonasgerdes.stoppelmap.preparation.transportation.Minutes
-import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
+import com.jonasgerdes.stoppelmap.preparation.transportation.TransportMapEntitySlugs.busbahnhofOst
+import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.schomaker
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun dinklage() = createBusRoute {
     name = "Dinlage - Märschendorf"
+    operatorSlug = schomaker
+    arrivalStationSlug = busbahnhofOst
+
+    returns {
+        thursday {
+            departures("21:50", "22:50", "23:50", "00:50")
+        }
+        friday {
+            departures("17:05")
+            "18:35" every 30.Minutes until "04:35"
+        }
+        saturday {
+            departures("16:05", "17:20")
+            "18:35" every 30.Minutes until "04:35"
+        }
+        sunday {
+            departures("16:05", "17:35", "19:05", "20:35", "21:55", "23:10")
+        }
+        monday {
+            "11:35" every 30.Minutes until "18:05"
+            "19:05" every 30.Minutes until "01:35"
+            departures("02:35")
+        }
+        tuesday {
+            departures("17:35", "19:05", "20:35", "21:55", "23:10", "01:50")
+        }
+    }
 
     addStation("Rathausplatz") {
         prices(500, 200, 3 to 14)
-        thursday {
-            "19:00" every 60.Minutes until "23:00"
-        }
-        friday {
-            departures("15:00", "16:15", "17:45")
-            "19:00" every 30.Minutes until "00:00"
-        }
-        saturday {
-            departures("14:00", "15:15", "16:30", "17:45")
-            "19:00" every 30.Minutes until "00:00"
-        }
-        sunday {
-            departures("13:30", "15:00", "16:45", "18:15", "19:20", "20:40", "21:45", "23:00")
-        }
-        monday {
-            "08:15" every 45.Minutes until "23:15"
-        }
-        tuesday {
-            departures("15:00", "16:30", "18:00", "19:30", "21:00")
+        outward {
+            thursday {
+                "19:00" every 60.Minutes until "22:00"
+            }
+            friday {
+                departures("15:00", "16:15", "17:45")
+                "19:00" every 30.Minutes until "00:00"
+            }
+            saturday {
+                departures("14:00", "15:15", "16:30", "17:45")
+                "19:00" every 30.Minutes until "00:00"
+            }
+            sunday {
+                departures("13:30", "15:00", "16:30", "18:00", "19:30", "21:00")
+            }
+            monday {
+                "09:00" every 30.Minutes until "22:00"
+            }
+            tuesday {
+                departures("15:00", "16:30", "18:00", "19:30", "21:00")
+            }
         }
     }
 
@@ -52,41 +82,5 @@ internal fun dinklage() = createBusRoute {
             3 to 14
         )
     }
-    addStation("Stoppelmarkt", minutesAfterPrevious = 14) { isDestination = true }
 
-
-    addReturnStation {
-        name = "Stoppelmarkt"
-        thursday {
-            "19:50" every 60.Minutes until "23:50"
-            departure("01:10")
-        }
-        friday {
-            departures("15:50", "17:10", "18:40")
-            "19:55" every 30.Minutes until "04:55"
-        }
-        saturday {
-            departures("14:40", "15:55", "17:20", "18:40")
-            "19:55" every 30.Minutes until "04:55"
-        }
-        sunday {
-            departures(
-                "14:25",
-                "15:55",
-                "17:40",
-                "19:10",
-                "20:10",
-                "21:30",
-                "22:40",
-                "00:10",
-                "01:25"
-            )
-        }
-        monday {
-            "09:05" every 45.Minutes until "03:05"
-        }
-        tuesday {
-            departures("16:05", "17:35", "19:05", "20:35", "22:05", "23:35", "01:05")
-        }
-    }
 }

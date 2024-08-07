@@ -5,7 +5,8 @@ data class BusRouteDetails(
     val additionalInfo: String? = null,
     val operator: Operator,
     val stations: List<Station>,
-    val destination: Destination
+    val destination: Destination,
+    val ticketWebsites: List<TicketWebsite>
 ) {
     data class Operator(
         val slug: String,

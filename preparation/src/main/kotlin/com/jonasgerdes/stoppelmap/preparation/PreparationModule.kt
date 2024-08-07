@@ -22,7 +22,7 @@ val preparationModule = module {
             manualEventsFile = File(resources, "events/manual.json"),
             crawledRoutesDirectory = File(resources, "routes").also { if (it.exists().not()) it.mkdirs() },
             descriptionFolder = File(resources, "descriptions"),
-            year = 2023
+            year = 2024
         )
     }
 

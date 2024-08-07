@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation
 
+import com.jonasgerdes.stoppelmap.dto.Locales
 import com.jonasgerdes.stoppelmap.dto.Localized
 import com.jonasgerdes.stoppelmap.dto.data.Departure
 import com.jonasgerdes.stoppelmap.dto.data.DepartureDay
@@ -299,6 +300,15 @@ class DepartureDayScope(val day: LocalDate, val stationScope: StationScope?) {
 }
 
 fun prices(
+    vararg fees: Pair<String, Int>
+) = fees.map {
+    Fee(
+        name = mapOf(Locales.de to it.first),
+        price = it.second
+    )
+}
+
+fun prices(
     adult: Int,
     children: Int,
     childrenAgeRange: Pair<Int?, Int>? = 3 to 11
@@ -323,6 +333,33 @@ fun prices(
         price = children
     )
 )
+
+fun pricesPerTrip(
+    oneWay: Int,
+    roundTrip: Int
+) = listOf(
+    Fee(
+        name = localizedString(de = "Einfache Fahrt", en = "One way"),
+        price = oneWay
+    ),
+    Fee(
+        name = localizedString(de = "Hin- und Rückfahrt", en = "Round trip"),
+        price = roundTrip
+    )
+)
+
+fun StationScope.prices(
+    vararg fees: Pair<String, Int>
+) {
+    prices = com.jonasgerdes.stoppelmap.preparation.transportation.prices(*fees)
+}
+
+fun StationScope.pricesPerTrip(
+    oneWay: Int,
+    roundTrip: Int
+) {
+    prices = com.jonasgerdes.stoppelmap.preparation.transportation.pricesPerTrip(oneWay = oneWay, roundTrip = roundTrip)
+}
 
 fun StationScope.prices(
     adult: Int,

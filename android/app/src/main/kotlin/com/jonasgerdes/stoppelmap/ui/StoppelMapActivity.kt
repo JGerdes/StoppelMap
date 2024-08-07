@@ -250,7 +250,8 @@ class StoppelMapActivity : ComponentActivity() {
                             )
                         },
                         onNavigateBack = { navController.navigateUp() },
-                        Modifier
+                        onWebsiteTap = ::openUrl,
+                        modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
                             .padding(scaffoldPadding)

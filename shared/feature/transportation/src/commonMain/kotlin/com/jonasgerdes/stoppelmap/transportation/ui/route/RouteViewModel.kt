@@ -68,6 +68,7 @@ class RouteViewModel(
                     name = route.name,
                     additionalInfo = route.additionalInfo,
                     stations = stations,
+                    ticketWebsites = route.ticketWebsites,
                     operator = BusRouteDetails.Operator(
                         slug = route.operatorSlug,
                         name = route.operatorName,

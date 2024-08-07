@@ -1,37 +1,63 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
 import com.jonasgerdes.stoppelmap.preparation.transportation.Minutes
-import com.jonasgerdes.stoppelmap.preparation.transportation.addReturnStation
+import com.jonasgerdes.stoppelmap.preparation.transportation.TransportMapEntitySlugs.busbahnhofOst
+import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.schomaker
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
 
 internal fun lohneMoorkamp() = createBusRoute {
     name = "Lohne (Voßberg - Moorkamp - Rießel)"
+    operatorSlug = schomaker
+    arrivalStationSlug = busbahnhofOst
     fixedPrices = prices(adult = 400, children = 200, 3 to 14)
 
-    addStation("Jägerstraße/ Wangerooger Str.") {
+    returns {
         thursday {
-            "17:15" every 30.Minutes until "00:15"
+            "19:10" every 30.Minutes until "02:10"
         }
         friday {
-            "15:15" every 30.Minutes until "18:45"
-            "19:00" every 15.Minutes until "20:00"
-            "20:00" every 12.Minutes until "01:00"
+            "16:40" every 30.Minutes until "20:10"
+            "20:40" every 15.Minutes until "04:55"
         }
         saturday {
-            "14:10" every 20.Minutes until "18:50"
-            "19:00" every 15.Minutes until "20:00"
-            "20:00" every 12.Minutes until "01:00"
+            "15:40" every 30.Minutes until "20:10"
+            "20:40" every 15.Minutes until "04:55"
         }
         sunday {
-            "14:15" every 30.Minutes until "23:15"
+            "15:40" every 30.Minutes until "23:40"
         }
         monday {
-            "08:00" every 15.Minutes until "00:00"
+            "11:40" every 15.Minutes until "02:55"
         }
         tuesday {
-            "15:15" every 30.Minutes until "00:15"
+            "17:10" every 30.Minutes until "02:10"
+        }
+    }
+
+    addStation("Jägerstraße/ Wangerooger Str.") {
+        outward {
+            thursday {
+                "17:00" every 30.Minutes until "23:00"
+            }
+            friday {
+                "15:00" every 30.Minutes until "20:00"
+                "20:00" every 15.Minutes until "01:00"
+            }
+            saturday {
+                "14:00" every 30.Minutes until "20:00"
+                "20:00" every 15.Minutes until "01:00"
+            }
+            sunday {
+                "14:00" every 30.Minutes until "22:00"
+            }
+            monday {
+                "08:30" every 15.Minutes until "22:00"
+            }
+            tuesday {
+                "15:00" every 30.Minutes until "22:00"
+            }
         }
     }
 
@@ -41,31 +67,5 @@ internal fun lohneMoorkamp() = createBusRoute {
     addStation("Brandstraße/ Stratmanns Hotel", minutesAfterPrevious = 1)
     addStation("Brandstraße/ Unter den Erlen", minutesAfterPrevious = 1)
     addStation("Rießel/ Dorfplatz", minutesAfterPrevious = 2)
-    addStation("Stoppelmarkt", minutesAfterPrevious = 15) { isDestination = true }
 
-    addReturnStation {
-        name = "Stoppelmarkt"
-        thursday {
-            "17:55" every 30.Minutes until "01:55"
-        }
-        friday {
-            "15:55" every 30.Minutes until "19:25"
-            "19:40" every 15.Minutes until "20:25"
-            "20:40" every 12.Minutes until "05:00"
-        }
-        saturday {
-            "14:50" every 20.Minutes until "19:30"
-            "19:40" every 15.Minutes until "20:25"
-            "20:40" every 12.Minutes until "05:00"
-        }
-        sunday {
-            "14:55" every 30.Minutes until "00:45"
-        }
-        monday {
-            "08:40" every 15.Minutes until "03:00"
-        }
-        tuesday {
-            "15:55" every 30.Minutes until "01:55"
-        }
-    }
 }

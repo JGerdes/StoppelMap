@@ -10,7 +10,13 @@ data class DetailedRoute(
     val operatorName: String,
     val operatorSlug: String,
     val arrivalStationSlug: String,
-    val additionalInfo: String?
+    val additionalInfo: String?,
+    val ticketWebsites: List<TicketWebsite>,
+)
+
+data class TicketWebsite(
+    val url: String,
+    val label: String?,
 )
 
 data class StationSummary(

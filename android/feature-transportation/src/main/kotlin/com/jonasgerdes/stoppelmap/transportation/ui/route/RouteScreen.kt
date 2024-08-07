@@ -8,6 +8,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -26,6 +27,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.ConfirmationNumber
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -74,6 +77,7 @@ import kotlin.math.roundToInt
 fun RouteScreen(
     routeId: String,
     onStationTap: (stationId: String) -> Unit,
+    onWebsiteTap: (url: String) -> Unit,
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: RouteViewModel = koinViewModel { parametersOf(routeId) }
@@ -110,17 +114,40 @@ fun RouteScreen(
                 state = listState,
                 modifier = Modifier.fillMaxSize()
             ) {
-                routeState.routeDetails.additionalInfo?.let { additionalInfo ->
-                    item {
-                        OutlinedCard(
-                            modifier = Modifier.padding(bottom = 16.dp)
-                        ) {
-                            Text(
-                                text = additionalInfo,
-                                modifier = Modifier.padding(16.dp)
-                            )
+                with(routeState.routeDetails) {
+                    if (additionalInfo != null || ticketWebsites.isNotEmpty())
+                        item {
+                            OutlinedCard(
+                                modifier = Modifier
+                                    .padding(bottom = 16.dp)
+                                    .fillMaxWidth()
+                            ) {
+                                Column(
+                                    verticalArrangement = spacedBy(8.dp),
+                                    modifier = Modifier
+                                        .padding(16.dp)
+                                        .fillMaxWidth()
+                                ) {
+                                    additionalInfo?.let {
+                                        Text(text = it)
+                                    }
+                                    ticketWebsites.forEach {
+                                        Button(
+                                            onClick = { onWebsiteTap(it.url) },
+                                            modifier = Modifier.align(Alignment.End)
+                                        ) {
+                                            Row(horizontalArrangement = spacedBy(8.dp)) {
+                                                Icon(Icons.Rounded.ConfirmationNumber, null)
+                                                Text(
+                                                    it.label
+                                                        ?: stringResource(id = R.string.transportation_route_ticket_website_label)
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                    }
                 }
                 items(
                     count = stations.size,
@@ -148,6 +175,22 @@ fun RouteScreen(
                             Modifier
                                 .weight(1f)
                                 .padding(vertical = 8.dp)
+                        )
+                    }
+                }
+
+                item {
+                    Box(
+                        contentAlignment = Alignment.CenterEnd,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    ) {
+                        Text(
+                            text = stringResource(
+                                id = R.string.transportation_route_operated_by,
+                                routeState.routeDetails.operator.name
+                            ),
+                            style = MaterialTheme.typography.labelSmall
                         )
                     }
                 }

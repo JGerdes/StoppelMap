@@ -1,46 +1,37 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation
 
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.bakumEssen
+import com.jonasgerdes.stoppelmap.dto.data.Route
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.barnstorf
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.calveslage
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.diepholz
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.cloppenburg
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.dinklage
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.ellenstedtGoldenstedtLutten
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.essen
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.friesoythe
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.holdorfBrockdorf
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.langenbergMuehlen
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.langfoerden
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.lindern
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.loeningen
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.lohneMoorkamp
 import com.jonasgerdes.stoppelmap.preparation.transportation.bus.lohneStadt
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.vechtaFlugplatz
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.vechtaStadt
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.vechtaSued
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.vechtaTelbrake
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.vechtaWest
-import com.jonasgerdes.stoppelmap.preparation.transportation.bus.visbek
-import com.jonasgerdes.stoppelmap.preparation.transportation.train.bremen
-import com.jonasgerdes.stoppelmap.preparation.transportation.train.osnabrueck
+import com.jonasgerdes.stoppelmap.preparation.transportation.bus.oldenburg
 
-fun generateBusRoutes() = listOf(
-    vechtaStadt(),
-    vechtaFlugplatz(),
-    vechtaSued(),
-    vechtaTelbrake(),
-    vechtaWest(),
-    langfoerden(),
-    calveslage(),
-    diepholz(),
-    barnstorf(),
-    bakumEssen(),
-    visbek(),
-    ellenstedtGoldenstedtLutten(),
+fun generateBusRoutes() = listOf<Route>(
     lohneStadt(),
     lohneMoorkamp(),
     dinklage(),
     langenbergMuehlen(),
-    holdorfBrockdorf()
+    holdorfBrockdorf(),
+    barnstorf(),
+    ellenstedtGoldenstedtLutten(),
+    cloppenburg(),
+    lindern(),
+    essen(),
+    loeningen(),
+    friesoythe(),
+    oldenburg()
 ).sortedBy { it.name }
 
-fun generateTrainRoutes() = listOf(
-    bremen(),
-    osnabrueck(),
+fun generateTrainRoutes() = listOf<Route>(
+    /*bremen(),
+    osnabrueck(),*/
 ).sortedBy { it.name }

@@ -62,6 +62,19 @@ struct RouteDetailView: View {
                 Text(info)
 
             }
+            ForEach(routeDetails.ticketWebsites, id: \.url) { website in
+                HStack {
+                    Text(website.label ?? Res.strings().transportation_route_ticket_website_label.desc().localized())
+                    Spacer()
+                    Image(systemName: "ticket")
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    if let url = URL(string: website.url) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
             Section("Haltestellen") {
                 let stations = routeDetails.stations
                 ForEach(0..<stations.count, id: \.self) { index in
@@ -92,6 +105,10 @@ struct RouteDetailView: View {
                     }
                     .listRowSeparator(.hidden)
                 }.listRowInsets(EdgeInsets.init(top: 0, leading: 16, bottom: 0, trailing: 16))
+            }
+            
+            Section {
+                Text(Res.strings().transportation_route_operated_by.format(args: [routeDetails.operator.name]).localized())
             }
         }
         

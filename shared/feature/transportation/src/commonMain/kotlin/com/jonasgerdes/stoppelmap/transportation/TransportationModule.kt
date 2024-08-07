@@ -22,6 +22,7 @@ val transportationModule = module {
             departureQueries = get<StoppelMapDatabase>().departureQueries,
             departureDayQueries = get<StoppelMapDatabase>().departure_dayQueries,
             feeQueries = get<StoppelMapDatabase>().feeQueries,
+            websiteQueries = get<StoppelMapDatabase>().websiteQueries,
         )
     }
 

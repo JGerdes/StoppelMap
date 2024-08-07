@@ -13,3 +13,8 @@ VALUES ?;
 
 clear:
 DELETE FROM website;
+
+getAllBySlug:
+SELECT website.url, localized_string.string AS label FROM website
+LEFT JOIN localized_string ON localized_string.key = labelKey AND locale = "de"
+WHERE referenceSlug = :slug;

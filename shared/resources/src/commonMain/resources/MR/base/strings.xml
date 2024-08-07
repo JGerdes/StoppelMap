@@ -133,6 +133,8 @@
     <string name="transportation_route_card_next_departures_tomorrow">morgen %1$s</string>
     <string name="transportation_route_card_next_departures_none">Keinere weiteren Fahrten</string>
     <string name="transportation_route_card_annotation_new">Neu</string>
+    <string name="transportation_route_operated_by">Betrieben von %1$s</string>
+    <string name="transportation_route_ticket_website_label">Tickets kaufen</string>
     <string name="transportation_route_return_station_from">ab %1$s</string>
 
     <string name="transportation_station_topbar_navigateBack_contentDescription">Zurück</string>
