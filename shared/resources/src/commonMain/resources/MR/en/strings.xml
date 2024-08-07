@@ -50,6 +50,10 @@
     <string name="social_media_promo_instagram_title">Want to keep up with everything StoppelMap and Stoppelmarkt?</string>
     <string name="social_media_promo_instagram_button">Follow StoppelMap on Instagram</string>
 
+    <!-- Feedback -->
+    <string name="feedback_card_title">You have feedback or found a mistake?</string>
+    <string name="feedback_card_button">Contact us</string>
+
     <!-- Settings/Licenses -->
     <string name="settings_topbar_title">Settings/Info</string>
     <string name="settings_topbar_navigateBack_contentDescription">Back</string>

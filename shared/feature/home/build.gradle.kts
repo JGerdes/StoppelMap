@@ -32,6 +32,7 @@ kotlin {
             api(libs.kmm.viewmodel)
 
             implementation(libs.kotlinx.datetime)
+            implementation(libs.ktor.client.core)
 
             implementation(project(":shared:base"))
             implementation(project(":shared:resources"))

@@ -12,6 +12,7 @@ val androidHomeModule = module {
             shouldShowCountdownWidgetSuggestion = get(),
             getPromotedEvents = get(),
             getRemoteMessages = get(),
+            getFeedbackEmailUrl = get(),
         )
     }
 }

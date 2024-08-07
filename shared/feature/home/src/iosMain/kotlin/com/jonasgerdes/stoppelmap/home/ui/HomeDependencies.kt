@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.home.ui
 
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownStateUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
+import com.jonasgerdes.stoppelmap.home.usecase.GetFeedbackEmailUrlUseCase
 import com.jonasgerdes.stoppelmap.home.usecase.GetPromotedEventsUseCase
 import com.jonasgerdes.stoppelmap.home.usecase.GetRemoteMessagesUseCase
 import org.koin.core.component.KoinComponent
@@ -12,4 +13,5 @@ class HomeDependencies : KoinComponent {
     val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase by inject()
     val getPromotedEventsUseCase: GetPromotedEventsUseCase by inject()
     val getRemoteMessages: GetRemoteMessagesUseCase by inject()
+    val getFeedbackEmailUrl: GetFeedbackEmailUrlUseCase by inject()
 }

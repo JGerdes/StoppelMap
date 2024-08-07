@@ -192,6 +192,31 @@ fun HomeScreen(
                     }
                 }
             }
+
+            val feedbackState = state.feedbackState
+            if (feedbackState is HomeViewModel.FeedbackState.Visible) {
+                item {
+                    Card {
+                        Column(
+                            Modifier
+                                .padding(horizontal = 16.dp)
+                                .padding(top = 16.dp, bottom = 8.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.feedback_card_title),
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            Spacer(modifier = Modifier.size(16.dp))
+                            Button(
+                                onClick = { onUrlTap(feedbackState.url) },
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            ) {
+                                Text(text = stringResource(R.string.feedback_card_button))
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -8,28 +8,61 @@ struct HomeScreen: View {
             getOpeningCountDownState: $0.getOpeningCountDownState,
             shouldShowCountdownWidgetSuggestion:$0.shouldShowCountdownWidgetSuggestion,
             getPromotedEvents: $0.getPromotedEventsUseCase,
-            getRemoteMessages: $0.getRemoteMessages
+            getRemoteMessages: $0.getRemoteMessages,
+            getFeedbackEmailUrl: $0.getFeedbackEmailUrl
         )
     }
     
     @State
-    var viewState: HomeViewModel.ViewState = HomeViewModel.ViewState()
+    var viewState: HomeViewModel.ViewState? = nil //TODO: Replace this with empty constructor call again. No clue why xcode decided it's not working anymore.
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(){
-                    ForEach(viewState.messages, id: \.self){ message in
-                        MessageCard(message: message)
-                    }
-                    if let countDown = viewState.openingCountDownState as? CountDownState.CountingDown {
-                        CountdownCard(
-                            days: countDown.daysLeft,
-                            hours: countDown.hoursLeft,
-                            minutes: countDown.minutesLeft,
-                            seconds: countDown.secondsLeft,
-                            season: countDown.season
-                        )
+                    if let viewState = viewState {
+                        ForEach(viewState.messages, id: \.self){ message in
+                            MessageCard(message: message)
+                        }
+                        if let countDown = viewState.openingCountDownState as? CountDownState.CountingDown {
+                            CountdownCard(
+                                days: countDown.daysLeft,
+                                hours: countDown.hoursLeft,
+                                minutes: countDown.minutesLeft,
+                                seconds: countDown.secondsLeft,
+                                season: countDown.season
+                            )
+                        }
+                        if let socialState = viewState.instagramPromotionState as? HomeViewModelInstagramPromotionStateVisible {
+                            VStack {
+                                Text(Res.strings().social_media_promo_instagram_title.desc().localized())
+                                Button {
+                                    if let url = URL(string: "https://instagram.com/stoppelmap") {
+                                        UIApplication.shared.open(url)
+                                    }
+                                } label: {
+                                    Text(Res.strings().social_media_promo_instagram_button.desc().localized())
+                                }.buttonStyle(.bordered)
+                            }
+                            .padding()
+                            .background(.thinMaterial)
+                            .cornerRadius(24.0)
+                        }
+                        if let feedbackState = viewState.feedbackState as? HomeViewModelFeedbackStateVisible {
+                            VStack {
+                                Text(Res.strings().feedback_card_title.desc().localized())
+                                Button {
+                                    if let url = URL(string: feedbackState.url) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                } label: {
+                                    Text(Res.strings().feedback_card_button.desc().localized())
+                                }.buttonStyle(.bordered)
+                            }
+                            .padding()
+                            .background(.thinMaterial)
+                            .cornerRadius(24.0)
+                        }
                     }
                 }
                 .frame(

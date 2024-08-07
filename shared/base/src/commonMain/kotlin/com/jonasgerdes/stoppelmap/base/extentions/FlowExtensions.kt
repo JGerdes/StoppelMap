@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.base.extensions
+package com.jonasgerdes.stoppelmap.base.extentions
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

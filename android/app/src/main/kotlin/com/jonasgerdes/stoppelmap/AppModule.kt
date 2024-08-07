@@ -53,6 +53,8 @@ val appModule = module {
             versionCode = BuildConfig.VERSION_CODE,
             commitSha = CommonBuildConfig.COMMIT_SHA,
             buildType = get<Context>().getString(R.string.build_type),
+            os = "Android ${Build.VERSION.RELEASE}",
+            device = "${Build.MANUFACTURER} ${Build.MODEL}",
             platform = "Android(${Build.VERSION.SDK_INT} on ${Build.MANUFACTURER}/${Build.MODEL})"
         )
     }

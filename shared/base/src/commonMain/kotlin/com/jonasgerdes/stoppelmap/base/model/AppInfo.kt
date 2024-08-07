@@ -6,6 +6,8 @@ data class AppInfo(
     val buildType: String,
     val commitSha: String,
     val platform: String,
+    val os: String,
+    val device: String,
 ) {
     val userAgent get() = "StoppelMap $versionName $platform"
 }
