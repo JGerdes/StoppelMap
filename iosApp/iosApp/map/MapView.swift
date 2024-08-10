@@ -5,7 +5,7 @@ import Shared
 
 struct MapView: UIViewRepresentable {
     typealias UIViewType = MLNMapView
-    
+
     var mapDataPath: OkioPath
     var colorScheme: ColorScheme
     
@@ -32,7 +32,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: MLNMapView, context: Context) {
-        context.coordinator.update(mapDataPath: mapDataPath, colorScheme: colorScheme)
+        context.coordinator.update(colorScheme: colorScheme)
     }
     
     func makeCoordinator() -> MapView.Coordinator {
@@ -47,18 +47,16 @@ struct MapView: UIViewRepresentable {
             self.control = control
         }
         
-        func update(mapDataPath: OkioPath, colorScheme: ColorScheme) {
-            mapView?.updateSource(mapDataPath: mapDataPath)
+        func update(colorScheme: ColorScheme) {
             mapView?.updateLayerColors(colorScheme: colorScheme)
         }
         
         func mapViewDidFinishLoadingMap(_ mapView: MLNMapView) {
             self.mapView = mapView
-//            let mapUrl = URL(string: "file://" + DataUpdateDependencies().mapDataFile.path)!
-//            print("mapView, mapViewDidFinishLoadingMap. mapUrl:" + mapUrl.absoluteString)
-//            let source = MLNShapeSource(identifier: "composite", url: mapUrl)
-//            mapView.style!.addSource(source)
-            mapView.updateSource(mapDataPath: self.control.mapDataPath)
+            let mapUrl = URL(string: "file://" + self.control.mapDataPath.description())!
+            print("mapView, mapViewDidFinishLoadingMap. mapUrl:" + mapUrl.absoluteString)
+            let source = MLNShapeSource(identifier: "composite", url: mapUrl)
+            mapView.style!.addSource(source)
             mapView.updateLayerColors(colorScheme: self.control.colorScheme)
             
         }
@@ -71,20 +69,11 @@ struct MapView: UIViewRepresentable {
 
 
 extension MLNMapView {
-    func updateSource(mapDataPath: OkioPath) {
-       if let existingSource = style!.source(withIdentifier: "composite") {
-            print("mapView, found existing source, deleting it")
-            style!.removeSource(existingSource)
-        }
-        let mapUrl = URL(string: "file://" + mapDataPath.description())!
-        print("mapView, mapViewDidFinishLoadingMap. mapUrl:" + mapUrl.absoluteString)
-        let source = MLNShapeSource(identifier: "composite", url: mapUrl)
-        style!.addSource(source)
-    }
-    
     func updateLayerColors(colorScheme: ColorScheme) {
         let mapBackground = colorScheme == .dark ? mapBackgroundDark : mapBackgroundLight
         let mapColors = colorScheme == .dark ? mapColorsDark : mapColorsLight
+        let mapSymbolBackgroundColors = colorScheme == .dark ? mapSymbolBackgroundDark : mapSymbolBackgroundLight
+        let iconColor = colorScheme == .dark ? Color.black : Color.white
         
         if let backgroundLayer = style!.layers.first(where: {$0.identifier == "background"}) as? MLNBackgroundStyleLayer {
             backgroundLayer.backgroundColor = NSExpression(forConstantValue: mapBackground)
@@ -100,5 +89,45 @@ extension MLNMapView {
                 layer.fillColor = NSExpression(forConstantValue: color)
             }
         }
+        
+        style!.setImage(UIImage(systemName: "bus")!, forName: "station")
+        style!.setImage(UIImage(systemName: "info")!, forName: "misc")
+        
+        let icons = [
+            "bar",
+            "candy_stall",
+            "expo",
+            "food_stall",
+            "game_stall",
+            "misc",
+            "parking",
+            "restaurant",
+            "restroom",
+            "ride",
+            "seller_stall",
+            "entrance",
+            "station",
+            "platform",
+            "taxi"
+        ];
+        
+        icons.forEach {id in
+            
+            let renderer = ImageRenderer(content: Image(id)
+                .resizable()
+                .renderingMode(.template)
+                .foregroundColor(iconColor)
+                .scaledToFill()
+                .frame(width: 12, height: 12)
+                .padding(4.0)
+                .background(Color(uiColor: mapSymbolBackgroundColors[id] ?? mapSymbolBackgroundColors["misc"]!))
+                .cornerRadius(24.0)
+            )
+            renderer.scale = UIScreen.main.scale
+            
+            style!.setImage(renderer.uiImage!, forName: id)
+        }
+        
+        
     }
 }

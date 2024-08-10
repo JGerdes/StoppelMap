@@ -18,6 +18,23 @@ let mapColorsLight = [
     "rides": UIColor(red:0.52156866, green:0.8235294, blue: 0.84705883, alpha: 1.0),
     "seller-stalls": UIColor(red:0.54509807, green:0.6156863, blue: 0.00390619, alpha: 1.0)
 ]
+let mapSymbolBackgroundLight = [
+    "bar": UIColor(red:0.12109375, green:0.2890625, blue: 0.67578125, alpha: 1.0),
+    "candy_stall": UIColor(red:0.31640625, green:0.12109375, blue: 0.67578125, alpha: 1.0),
+    "expo": UIColor(red:0.67578125, green:0.12109375, blue: 0.12109375, alpha: 1.0),
+    "food_stall": UIColor(red:0.67578125, green:0.58984375, blue: 0.12109375, alpha: 1.0),
+    "game_stall": UIColor(red:0.421875, green:0.67578125, blue: 0.12109375, alpha: 1.0),
+    "misc": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "parking": UIColor(red:0.171875, green:0.67578125, blue: 0.12109375, alpha: 1.0),
+    "restaurant": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "restroom": UIColor(red:0.67578125, green:0.12109375, blue: 0.3671875, alpha: 1.0),
+    "ride": UIColor(red:0.12109375, green:0.63671875, blue: 0.67578125, alpha: 1.0),
+    "seller_stall": UIColor(red:0.12109375, green:0.20703125, blue: 0.67578125, alpha: 1.0),
+    "station": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "platform": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "taxi": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "entrance": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+]
 
 let mapBackgroundDark = UIColor(red:0.1, green:0.1, blue: 0.1, alpha: 1.0)
 let labelColorDark = UIColor(red:1.0, green:1.0, blue: 1.0, alpha: 1.0)
@@ -35,4 +52,21 @@ let mapColorsDark = [
     "restrooms": UIColor(red:0.5372549, green:0.0627451, blue: 0.27058825, alpha: 1.0),
     "rides": UIColor(red:0.14509805, green:0.43137255, blue: 0.45490196, alpha: 1.0),
     "seller-stalls": UIColor(red:0.003921569, green:0.09803922, blue: 0.0023375626, alpha: 1.0)
+]
+let mapSymbolBackgroundDark = [
+    "bar": UIColor(red:0.12109375, green:0.2890625, blue: 0.67578125, alpha: 1.0),
+    "candy_stall": UIColor(red:0.31640625, green:0.12109375, blue: 0.67578125, alpha: 1.0),
+    "expo": UIColor(red:0.67578125, green:0.12109375, blue: 0.12109375, alpha: 1.0),
+    "food_stall": UIColor(red:0.67578125, green:0.58984375, blue: 0.12109375, alpha: 1.0),
+    "game_stall": UIColor(red:0.421875, green:0.67578125, blue: 0.12109375, alpha: 1.0),
+    "misc": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "parking": UIColor(red:0.171875, green:0.67578125, blue: 0.12109375, alpha: 1.0),
+    "restaurant": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "restroom": UIColor(red:0.67578125, green:0.12109375, blue: 0.3671875, alpha: 1.0),
+    "ride": UIColor(red:0.12109375, green:0.63671875, blue: 0.67578125, alpha: 1.0),
+    "seller_stall": UIColor(red:0.12109375, green:0.20703125, blue: 0.67578125, alpha: 1.0),
+    "station": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "platform": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "taxi": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
+    "entrance": UIColor(red:0.67578125, green:0.33203125, blue: 0.12109375, alpha: 1.0),
 ]

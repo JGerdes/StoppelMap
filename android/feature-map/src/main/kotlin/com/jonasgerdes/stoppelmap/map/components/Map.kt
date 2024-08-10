@@ -33,6 +33,9 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.graphics.ColorUtils
+import androidx.core.graphics.blue
+import androidx.core.graphics.green
+import androidx.core.graphics.red
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -442,7 +445,9 @@ fun Style.addMarkerIcons(
             ColorUtils.colorToHSL(markerIcon.tintColor.toArgb(), colorHSL)
             colorHSL[1] = 0.7f
             colorHSL[2] = if (isDarkTheme) 0.6f else 0.4f
-            setTint(ColorUtils.HSLToColor(colorHSL))
+            setTint(
+                ColorUtils.HSLToColor(colorHSL)
+                    .also { Timber.d(""""${markerIcon.id}": UIColor(red:${it.red / 256f}, green:${it.green / 256f}, blue: ${it.blue / 256f}, alpha: 1.0)) """) })
             bounds = canvas.clipBounds
             draw(canvas)
         }

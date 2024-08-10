@@ -15,9 +15,8 @@ struct ContentView: View {
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_home.desc().localized(), systemImage: "house.fill")
                     }
-                Color.clear
+                MapScreen()
                     .ignoresSafeArea()
-                    .overlay(UnderConstrcutionPlaceholder())
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_map.desc().localized(), systemImage: "map.fill")
                     }

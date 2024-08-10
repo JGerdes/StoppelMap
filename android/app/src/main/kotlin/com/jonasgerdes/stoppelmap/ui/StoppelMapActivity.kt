@@ -52,6 +52,7 @@ import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
+import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
 import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
@@ -61,7 +62,6 @@ import com.jonasgerdes.stoppelmap.settings.data.Settings
 import com.jonasgerdes.stoppelmap.settings.ui.SettingsScreen
 import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
-import com.jonasgerdes.stoppelmap.theme.components.UnderConstructionPlaceholder
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
@@ -209,7 +209,13 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.Map.route) {
-                    UnderConstructionPlaceholder(Modifier.fillMaxSize())
+                    MapScreen(
+                        onRequestLocationPermission = ::requestLocationPermission,
+                        scaffoldPadding = scaffoldPadding,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(MaterialTheme.colorScheme.background)
+                    )
                 }
                 composable(Screen.Schedule.route) {
                     ScheduleScreen(
