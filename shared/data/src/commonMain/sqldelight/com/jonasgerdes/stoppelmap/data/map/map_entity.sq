@@ -26,3 +26,11 @@ VALUES ?;
 
 clear:
 DELETE FROM map_entity;
+
+searchByName:
+SELECT slug FROM map_entity WHERE name LIKE ( '%' || :name || '%') AND isSearchable = 1;
+
+getSummaryBySlug:
+SELECT slug, name, type, sub_type
+FROM map_entity
+WHERE slug IN :slugs;

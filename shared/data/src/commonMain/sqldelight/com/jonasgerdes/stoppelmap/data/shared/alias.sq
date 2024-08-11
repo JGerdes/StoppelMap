@@ -13,3 +13,6 @@ VALUES ?;
 
 clear:
 DELETE FROM alias;
+
+getByReferenceSlug:
+SELECT referenceSlug, string FROM alias WHERE referenceSlug IN :slug AND locale = "de";

@@ -12,3 +12,8 @@ VALUES ?;
 
 clear:
 DELETE FROM sub_type;
+
+getSubTypeBySlugs:
+SELECT sub_type.slug, localized_string.string AS name FROM sub_type
+JOIN localized_string ON sub_type.nameKey = localized_string.key AND localized_string.locale = "de"
+WHERE sub_type.slug IN :slugs;
