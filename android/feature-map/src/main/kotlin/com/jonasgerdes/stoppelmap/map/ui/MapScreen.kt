@@ -61,7 +61,6 @@ import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.components.Map
 import com.jonasgerdes.stoppelmap.map.components.MapTheme
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
-import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
@@ -216,12 +215,7 @@ fun MapScreen(
                                 }
                             },
                             supportingContent = {
-                                when (result.type) {
-                                    SearchResult.Type.SingleStall -> result.resultEntities.first().typeName?.let { type ->
-                                        val subType = result.resultEntities.first().subTypeName
-                                        Text(if (subType == null) type else "$subType ($type)")
-                                    }
-                                }
+                                result.supportingText()?.let { Text(it) }
                             },
                             modifier = Modifier.clickable {
                                 searchIsActive.value = false
@@ -268,9 +262,8 @@ private fun SheetContent(
                         }
                 ) {
                     Text(text = mapEntity.name, style = MaterialTheme.typography.headlineLarge)
-                    mapEntity.type?.let {
-                        val typeText = if (mapEntity.subType != null) "${mapEntity.subType} ($it)" else it
-                        Text(text = typeText, style = MaterialTheme.typography.labelLarge)
+                    mapEntity.subline()?.let {
+                        Text(text = it, style = MaterialTheme.typography.labelLarge)
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                 }

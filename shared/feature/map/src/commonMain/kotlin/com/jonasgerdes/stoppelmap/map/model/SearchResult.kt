@@ -10,4 +10,11 @@ data class SearchResult(
     enum class Type {
         SingleStall
     }
+
+    fun supportingText() = when (type) {
+        Type.SingleStall -> resultEntities.first().typeName?.let { type ->
+            val subType = resultEntities.first().subTypeName
+            if (subType == null) type else "$subType ($type)"
+        }
+    }
 }

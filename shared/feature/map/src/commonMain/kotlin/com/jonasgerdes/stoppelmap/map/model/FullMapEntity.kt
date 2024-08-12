@@ -9,4 +9,8 @@ data class FullMapEntity(
     val location: Location,
     val bounds: BoundingBox,
     val icon: MapIcon,
-)
+) {
+    fun subline() = type?.let {
+        if (subType != null) "${subType} ($it)" else it
+    }
+}

@@ -44,13 +44,20 @@ struct MapScreen: View {
                 if(isSearchActive && !viewState.searchState.results.isEmpty) {
                     List {
                         ForEach(viewState.searchState.results, id: \.term) { result in
-                            HStack {
+                            HStack(spacing: 16) {
                                 if let icon = result.icon {
                                     Image(icon.id).resizable().frame(width: 24, height: 24)
                                 } else {
                                     Color.clear.frame(width: 24, height: 24)
                                 }
-                                Text(result.term)
+                                if let supportingText = result.supportingText() {
+                                    VStack(alignment: .leading) {
+                                        Text(result.term)
+                                        Text(supportingText).font(.footnote)
+                                    }
+                                } else {
+                                    Text(result.term)
+                                }
                                 Spacer()
                             }
                             .contentShape(Rectangle())
@@ -79,8 +86,11 @@ struct MapScreen: View {
                 ScrollView {
                     ZStack(alignment: .topLeading) {
                         if let singleStation = viewState.bottomSheetState as? MapViewModelBottomSheetStateSingleStall {
-                            VStack(alignment: .leading, spacing: 16.0) {
+                            VStack(alignment: .leading, spacing: 8) {
                                 Text(singleStation.fullMapEntity.name).font(.title)
+                                if let subline = singleStation.fullMapEntity.subline() {
+                                    Text(subline).font(.caption)
+                                }
                                 if let description = singleStation.fullMapEntity.description_ {
                                     Text(description).fixedSize(horizontal: false, vertical: true)
                                 }
@@ -102,11 +112,9 @@ struct MapScreen: View {
                 }
                 .presentationDetents([.height(min(128, bottomSheetContentHeight)), .height(bottomSheetContentHeight)])
                 .presentationDragIndicator(.visible)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .apply {
                     if #available(iOS 16.4, *) {
                         $0.presentationBackgroundInteraction(.enabled)
-                            .presentationBackground(.clear)
                     } else {
                         $0
                     }
