@@ -53,6 +53,7 @@ import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.geometry.LatLngBounds
 import org.maplibre.android.location.LocationComponentActivationOptions
 import org.maplibre.android.location.LocationComponentOptions
+import org.maplibre.android.location.engine.LocationEngineRequest
 import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.layers.BackgroundLayer
@@ -229,6 +230,7 @@ fun Map(
                     }
                 }
 
+                Timber.d("locationPermissionState.status.isGranted: ${locationPermissionState.status.isGranted}")
                 if (locationPermissionState.status.isGranted) {
                     map.getStyle { style ->
                         map.locationComponent.activateLocationComponent(
@@ -239,6 +241,12 @@ fun Map(
                                 .locationComponentOptions(
                                     LocationComponentOptions.builder(context)
                                         .pulseEnabled(true)
+                                        .build()
+                                )
+                                .locationEngineRequest(
+                                    LocationEngineRequest.Builder(10_000)
+                                        .setDisplacement(50f)
+                                        .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
                                         .build()
                                 )
                                 .build()

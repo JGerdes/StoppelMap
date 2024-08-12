@@ -16,3 +16,6 @@ DELETE FROM alias;
 
 getByReferenceSlug:
 SELECT referenceSlug, string FROM alias WHERE referenceSlug IN :slug AND locale = "de";
+
+searchByReference:
+SELECT referenceSlug, string FROM alias WHERE referenceSlug IN :slugs AND locale = "de" AND string LIKE ( '%' || :name || '%');

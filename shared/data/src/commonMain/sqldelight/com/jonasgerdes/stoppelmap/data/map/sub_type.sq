@@ -17,3 +17,15 @@ getSubTypeBySlugs:
 SELECT sub_type.slug, localized_string.string AS name FROM sub_type
 JOIN localized_string ON sub_type.nameKey = localized_string.key AND localized_string.locale = "de"
 WHERE sub_type.slug IN :slugs;
+
+searchByName:
+SELECT sub_type.slug, localized_string.string AS name FROM sub_type
+JOIN localized_string ON sub_type.nameKey = localized_string.key
+AND localized_string.locale = "de"
+AND localized_string.string LIKE ( '%' || :name || '%');
+
+searchByAlias:
+SELECT sub_type.slug, alias.string AS alias FROM sub_type
+JOIN alias ON sub_type.slug = alias.referenceSlug
+AND alias.locale = "de"
+AND alias.string LIKE ( '%' || :name || '%');

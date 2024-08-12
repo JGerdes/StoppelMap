@@ -14,6 +14,7 @@ let mapColorsLight = [
     "miscs": UIColor(red:0.827451, green:0.68235296, blue: 0.5921569, alpha: 1.0),
     "fill_public_transport": UIColor(red:0.827451, green:0.68235296, blue: 0.5921569, alpha: 1.0),
     "restaurants": UIColor(red:0.827451, green:0.68235296, blue: 0.5921569, alpha: 1.0),
+    "buildings": UIColor(red:0.827451, green:0.68235296, blue: 0.5921569, alpha: 1.0),
     "restrooms": UIColor(red:0.6745098, green:0.078431375, blue: 0.34117648, alpha: 1.0),
     "rides": UIColor(red:0.52156866, green:0.8235294, blue: 0.84705883, alpha: 1.0),
     "seller-stalls": UIColor(red:0.54509807, green:0.6156863, blue: 0.00390619, alpha: 1.0)
@@ -49,6 +50,7 @@ let mapColorsDark = [
     "miscs": UIColor(red:0.42352942, green:0.27058825, blue: 0.1764706, alpha: 1.0),
     "fill_public_transport": UIColor(red:0.42352942, green:0.27058825, blue: 0.1764706, alpha: 1.0),
     "restaurants": UIColor(red:0.42352942, green:0.27058825, blue: 0.1764706, alpha: 1.0),
+    "buildings": UIColor(red:0.42352942, green:0.27058825, blue: 0.1764706, alpha: 1.0),
     "restrooms": UIColor(red:0.5372549, green:0.0627451, blue: 0.27058825, alpha: 1.0),
     "rides": UIColor(red:0.14509805, green:0.43137255, blue: 0.45490196, alpha: 1.0),
     "seller-stalls": UIColor(red:0.003921569, green:0.09803922, blue: 0.0023375626, alpha: 1.0)

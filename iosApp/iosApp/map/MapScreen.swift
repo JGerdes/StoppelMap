@@ -96,6 +96,12 @@ struct MapScreen: View {
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .topLeading)
+                        } else if let collection = viewState.bottomSheetState as? MapViewModelBottomSheetStateCollection {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(collection.name).font(.title)
+                                Text(collection.subline()).font(.caption)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
                         }
                     }
                     .padding()

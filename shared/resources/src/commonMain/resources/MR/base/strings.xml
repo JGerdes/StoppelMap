@@ -106,7 +106,7 @@
     <string name="settings_statement">Made with 💚 in Hamburg &amp; Vechta\n🏳️‍🌈🏳️‍⚧️</string>
 
     <!-- Map -->
-    <string name="map_search_placeholder">Suche nach Fahrgeschäften, Zelten…</string>
+    <string name="map_search_placeholder">Suche nach Ständen, Fahrgeschäften, Zelten…</string>
 
     <!-- Schedule -->
     <string name="schedule_topbar_title">Programm</string>

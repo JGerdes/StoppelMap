@@ -8,7 +8,8 @@ data class SearchResult(
     val type: Type
 ) {
     enum class Type {
-        SingleStall
+        SingleStall,
+        Collection,
     }
 
     fun supportingText() = when (type) {
@@ -16,5 +17,7 @@ data class SearchResult(
             val subType = resultEntities.first().subTypeName
             if (subType == null) type else "$subType ($type)"
         }
+
+        Type.Collection -> "${resultEntities.size} mal auf dem Stoppelmarkt" //TODO: localize
     }
 }

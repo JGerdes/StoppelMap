@@ -81,7 +81,7 @@ fun MapScreen(
             when (state.bottomSheetState) {
                 MapViewModel.BottomSheetState.Hidden -> false
                 is MapViewModel.BottomSheetState.Idle -> it != SheetValue.Hidden
-                is MapViewModel.BottomSheetState.SearchResult -> true
+                is MapViewModel.BottomSheetState.Collection -> true
                 is MapViewModel.BottomSheetState.SingleStall -> true
             }
         },
@@ -91,7 +91,7 @@ fun MapScreen(
         when (state.bottomSheetState) {
             MapViewModel.BottomSheetState.Hidden -> bottomSheetState.hide()
             is MapViewModel.BottomSheetState.Idle -> bottomSheetState.requireOffset()
-            is MapViewModel.BottomSheetState.SearchResult -> bottomSheetState.show()
+            is MapViewModel.BottomSheetState.Collection -> bottomSheetState.show()
             is MapViewModel.BottomSheetState.SingleStall -> bottomSheetState.show()
         }
     }
@@ -101,8 +101,8 @@ fun MapScreen(
     val bottomSheetMainContentHeight = remember { mutableStateOf(BottomSheetDefaults.SheetPeekHeight) }
     val bottomSheetMainContentHeightAnimated = animateDpAsState(targetValue = bottomSheetMainContentHeight.value)
     val mapPadding = PaddingValues(
-        start = 32.dp,
-        end = 32.dp,
+        start = 64.dp,
+        end = 64.dp,
         top = 56.dp /* = DockedHeaderContainerHeight*/ + 32.dp + WindowInsets.statusBars.asPaddingValues()
             .calculateTopPadding(),
         bottom = bottomSheetMainContentHeight.value + 32.dp
@@ -236,19 +236,37 @@ private fun SheetContent(
     bottomSheetState: MapViewModel.BottomSheetState,
     onMainContentHeightChange: (Dp) -> Unit,
 ) {
-    when (bottomSheetState) {
-        MapViewModel.BottomSheetState.Hidden -> Unit
-        is MapViewModel.BottomSheetState.Idle -> Unit
-        is MapViewModel.BottomSheetState.SearchResult -> TODO()
-        is MapViewModel.BottomSheetState.SingleStall -> {
-            val mapEntity = bottomSheetState.fullMapEntity
-            Column(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 16.dp)
-            ) {
-                val density = LocalDensity.current
+    val density = LocalDensity.current
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 16.dp)
+    ) {
+        when (bottomSheetState) {
+            MapViewModel.BottomSheetState.Hidden -> Unit
+            is MapViewModel.BottomSheetState.Idle -> Unit
+            is MapViewModel.BottomSheetState.Collection -> {
+                Column(
+                    verticalArrangement = spacedBy(8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .onGloballyPositioned {
+                            with(density) {
+                                onMainContentHeightChange(
+                                    it.size.height.toDp()
+                                )
+                            }
+                        }
+                ) {
+                    Text(text = bottomSheetState.name, style = MaterialTheme.typography.headlineLarge)
+                    Text(text = bottomSheetState.subline(), style = MaterialTheme.typography.labelLarge)
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+            }
+
+            is MapViewModel.BottomSheetState.SingleStall -> {
+                val mapEntity = bottomSheetState.fullMapEntity
                 Column(
                     verticalArrangement = spacedBy(8.dp),
                     modifier = Modifier

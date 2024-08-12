@@ -20,11 +20,25 @@ struct MapView: UIViewRepresentable {
         
         mapView.logoView.isHidden = true
         mapView.attributionButton.isHidden = true
-        
+        mapView.allowsTilting = false
+        mapView.minimumZoomLevel = MapDefaults.shared.minZoom
+        mapView.maximumZoomLevel = MapDefaults.shared.maxZoom
+        mapView.visibleCoordinateBounds = MLNCoordinateBounds(
+            sw: CLLocationCoordinate2D(
+                    latitude: MapDefaults.shared.cameraBounds.southLat,
+                    longitude: MapDefaults.shared.cameraBounds.westLng
+            ),
+            ne: CLLocationCoordinate2D(
+                latitude: MapDefaults.shared.cameraBounds.northLat,
+                longitude: MapDefaults.shared.cameraBounds.eastLng
+            )
+        )
+    
         
         mapView.setCenter(
             CLLocationCoordinate2D(
-                latitude: 52.7477, longitude: 8.2956
+                latitude: MapDefaults.shared.center.lat,
+                longitude: MapDefaults.shared.center.lng
             ),
             animated: false
         )
@@ -147,7 +161,7 @@ extension MLNMapView {
                     sw: CLLocationCoordinate2D(latitude: cameraView.bounds.southLat, longitude: cameraView.bounds.westLng),
                     ne: CLLocationCoordinate2D(latitude: cameraView.bounds.northLat, longitude: cameraView.bounds.eastLng)
                 ),
-                edgePadding: UIEdgeInsets(top: 192, left: 16, bottom: 128, right: 16),
+                edgePadding: UIEdgeInsets(top: 192, left: 48, bottom: 128, right: 48),
                 animated: true
             )
             onCameraDispatched()

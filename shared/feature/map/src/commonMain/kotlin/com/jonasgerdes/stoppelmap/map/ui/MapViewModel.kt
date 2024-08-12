@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import com.jonasgerdes.stoppelmap.map.model.StallPromotion
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
+import com.jonasgerdes.stoppelmap.map.model.reduceBoundingBox
 import com.jonasgerdes.stoppelmap.map.usecase.GetMapFilePathUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchMapUseCase
 import com.rickclephas.kmm.viewmodel.KMMViewModel
@@ -76,6 +77,7 @@ class MapViewModel(
         viewModelScope.coroutineScope.launch {
             when (searchResult.type) {
                 SearchResult.Type.SingleStall -> showFullMapEntity(searchResult.resultEntities.first().slug)
+                SearchResult.Type.Collection -> showCollection(searchResult.term, searchResult.resultEntities)
             }
         }
     }
@@ -84,10 +86,31 @@ class MapViewModel(
         clearSelectedEntity()
     }
 
-    fun clearSelectedEntity() {
+    private fun clearSelectedEntity() {
         mapState.update { it.copy(highlightedEntities = null) }
         bottomSheetState.update { BottomSheetState.Hidden }
         //TODO: bottomSheetState.update { BottomSheetState.Idle() }
+    }
+
+    suspend fun showCollection(name: String, stalls: List<StallSummary>) {
+        val geoData = mapEntityRepository.getGeoDataBySlugs(stalls.map { it.slug }.toSet())
+        mapState.update {
+            it.copy(
+                camera = CameraView.Bounding(
+                    bounds = geoData.values.reduceBoundingBox { boundingBox }
+                ),
+                highlightedEntities = stalls.mapNotNull { summary ->
+                    geoData[summary.slug]?.center?.let { location ->
+                        MapState.HighlightedEntity(
+                            location = location,
+                            name = summary.name,
+                            icon = summary.icon,
+                        )
+                    }
+                }
+            )
+        }
+        bottomSheetState.update { BottomSheetState.Collection(name = name, stalls) }
     }
 
     private suspend fun showFullMapEntity(slug: String, keepZoom: Boolean = false) {
@@ -141,6 +164,8 @@ class MapViewModel(
 
         data class SingleStall(val fullMapEntity: FullMapEntity) : BottomSheetState
 
-        data class SearchResult(val searchResult: com.jonasgerdes.stoppelmap.map.model.SearchResult) : BottomSheetState
+        data class Collection(val name: String, val stalls: List<StallSummary>) : BottomSheetState {
+            fun subline() = "${stalls.size} mal auf dem Stoppelmarkt" //TODO: localize
+        }
     }
 }

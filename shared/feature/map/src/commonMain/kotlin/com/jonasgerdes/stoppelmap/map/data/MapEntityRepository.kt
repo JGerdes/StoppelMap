@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.data.map.Sub_typeQueries
 import com.jonasgerdes.stoppelmap.data.shared.AliasQueries
 import com.jonasgerdes.stoppelmap.map.model.BoundingBox
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
+import com.jonasgerdes.stoppelmap.map.model.GeoData
 import com.jonasgerdes.stoppelmap.map.model.Location
 import com.jonasgerdes.stoppelmap.map.model.MapIcon
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
@@ -14,9 +15,9 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
 
 class MapEntityRepository(
-    val mapEntityQueries: Map_entityQueries,
-    val aliasQueries: AliasQueries,
-    val subTypeQueries: Sub_typeQueries,
+    private val mapEntityQueries: Map_entityQueries,
+    private val aliasQueries: AliasQueries,
+    private val subTypeQueries: Sub_typeQueries,
 ) {
 
     suspend fun searchMapEntitiesByName(query: String): List<String> = withContext(Dispatchers.IO) {
@@ -60,6 +61,41 @@ class MapEntityRepository(
             ),
             icon = mapEntity.type.getIcon()
         )
+    }
+
+    suspend fun searchByAlias(query: String) = withContext(Dispatchers.IO) {
+        mapEntityQueries.searchByAlias(query).executeAsList()
+    }
+
+    suspend fun getSummaryBySubType(subtypes: Set<String>): Map<String, List<StallSummary>> =
+        withContext(Dispatchers.IO) {
+            mapEntityQueries.getBySubTypes(subtypes).executeAsList().filter { it.sub_type != null }
+        }.let { bySubType ->
+            val summaries = getSummaryBySlugs(bySubType.map { it.slug }.toSet())
+            bySubType.groupBy({ it.sub_type!! }, { summaries.first { summary -> it.slug == summary.slug } })
+        }
+
+    suspend fun searchAliasBy(referenceSlugs: Set<String>, query: String) = withContext(Dispatchers.IO) {
+        aliasQueries.searchByReference(referenceSlugs, query).executeAsList()
+    }
+
+    suspend fun searchByType(type: MapEntityType) = withContext(Dispatchers.IO) {
+        mapEntityQueries.searchType(type).executeAsList()
+    }
+
+    suspend fun getGeoDataBySlugs(slugs: Set<String>) = withContext(Dispatchers.IO) {
+        mapEntityQueries.getGeoDataBySlugs(slugs).executeAsList()
+            .map {
+                it.slug to GeoData(
+                    center = Location(lat = it.latitude, lng = it.longitude),
+                    boundingBox = BoundingBox(
+                        southLat = it.southLatitude,
+                        westLng = it.westLongitude,
+                        northLat = it.northLatitude,
+                        eastLng = it.eastLongitude
+                    )
+                )
+            }.toMap()
     }
 }
 

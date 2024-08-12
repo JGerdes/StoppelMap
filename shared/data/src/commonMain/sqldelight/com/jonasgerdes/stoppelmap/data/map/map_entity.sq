@@ -30,6 +30,9 @@ DELETE FROM map_entity;
 searchByName:
 SELECT slug FROM map_entity WHERE name LIKE ( '%' || :name || '%') AND isSearchable = 1;
 
+searchType:
+SELECT slug FROM map_entity WHERE type = :type AND isSearchable = 1;
+
 getSummaryBySlug:
 SELECT slug, name, type, sub_type
 FROM map_entity
@@ -44,3 +47,19 @@ JOIN bounding_box ON map_entity.slug = bounding_box.referenceSlug
 JOIN location ON map_entity.slug = location.referenceSlug
 LEFT JOIN localized_string ON map_entity.descriptionKey = localized_string.key AND localized_string.locale = "de"
 WHERE slug = :slug;
+
+getGeoDataBySlugs:
+SELECT map_entity.slug, bounding_box.*, location.*
+FROM map_entity
+JOIN bounding_box ON map_entity.slug = bounding_box.referenceSlug
+JOIN location ON map_entity.slug = location.referenceSlug
+WHERE slug IN :slugs;
+
+searchByAlias:
+SELECT map_entity.slug, alias.string AS alias FROM map_entity
+JOIN alias ON map_entity.slug = alias.referenceSlug
+AND alias.locale = "de"
+AND alias.string LIKE ( '%' || :name || '%') AND isSearchable = 1;
+
+getBySubTypes:
+SELECT slug, sub_type FROM map_entity WHERE sub_type IN :subTypes AND isSearchable = 1;
