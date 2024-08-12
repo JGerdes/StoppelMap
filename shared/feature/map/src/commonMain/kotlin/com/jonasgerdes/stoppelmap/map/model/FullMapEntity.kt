@@ -8,4 +8,5 @@ data class FullMapEntity(
     val description: String?,
     val location: Location,
     val bounds: BoundingBox,
+    val icon: MapIcon,
 )

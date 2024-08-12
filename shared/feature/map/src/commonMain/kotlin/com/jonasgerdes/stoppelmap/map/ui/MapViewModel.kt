@@ -50,7 +50,7 @@ class MapViewModel(
     fun onSearch(query: String) {
         searchJob?.cancel()
 
-        if (query.length < 3) {
+        if (query.length < 2) {
             searchState.update { it.copy(results = emptyList(), inProgress = false) }
             return
         }
@@ -62,9 +62,13 @@ class MapViewModel(
         }
     }
 
-    fun onMapTap(entitySlug: String) {
-        viewModelScope.coroutineScope.launch {
-            showFullMapEntity(entitySlug)
+    fun onMapTap(entitySlug: String?) {
+        if (entitySlug == null) {
+            clearSelectedEntity()
+        } else {
+            viewModelScope.coroutineScope.launch {
+                showFullMapEntity(entitySlug, keepZoom = true)
+            }
         }
     }
 
@@ -76,9 +80,31 @@ class MapViewModel(
         }
     }
 
-    private suspend fun showFullMapEntity(slug: String) {
-        val fullMapEntity = mapEntityRepository.getDetailedMapEntity(slug)
-        mapState.update { it.copy(camera = CameraView.Bounding(fullMapEntity.bounds)) }
+    fun onBottomSheetClose() {
+        clearSelectedEntity()
+    }
+
+    fun clearSelectedEntity() {
+        mapState.update { it.copy(highlightedEntities = null) }
+        bottomSheetState.update { BottomSheetState.Hidden }
+        //TODO: bottomSheetState.update { BottomSheetState.Idle() }
+    }
+
+    private suspend fun showFullMapEntity(slug: String, keepZoom: Boolean = false) {
+        val fullMapEntity = mapEntityRepository.getDetailedMapEntity(slug) ?: return
+        mapState.update {
+            it.copy(
+                camera = if (keepZoom) CameraView.FocusLocation(fullMapEntity.location)
+                else CameraView.Bounding(fullMapEntity.bounds),
+                highlightedEntities = listOf(
+                    MapState.HighlightedEntity(
+                        location = fullMapEntity.location,
+                        name = fullMapEntity.name,
+                        icon = fullMapEntity.icon,
+                    )
+                )
+            )
+        }
         bottomSheetState.update { BottomSheetState.SingleStall(fullMapEntity) }
     }
 

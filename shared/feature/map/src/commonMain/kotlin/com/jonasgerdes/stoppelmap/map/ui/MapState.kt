@@ -22,7 +22,7 @@ data class MapState(
 }
 
 sealed interface CameraView {
-    data class FocusLocation(val location: Location, val zoom: Double) : CameraView
+    data class FocusLocation(val location: Location, val zoom: Double? = null) : CameraView
     data class Bounding(val bounds: BoundingBox) : CameraView
 }
 

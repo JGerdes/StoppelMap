@@ -12,12 +12,17 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
@@ -53,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.map.components.Map
 import com.jonasgerdes.stoppelmap.map.components.MapTheme
+import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
@@ -93,6 +99,19 @@ fun MapScreen(
     )
     val bottomSheetMainContentHeight = remember { mutableStateOf(BottomSheetDefaults.SheetPeekHeight) }
     val bottomSheetMainContentHeightAnimated = animateDpAsState(targetValue = bottomSheetMainContentHeight.value)
+    val mapPadding = PaddingValues(
+        start = 32.dp,
+        end = 32.dp,
+        top = 56.dp /* = DockedHeaderContainerHeight*/ + 32.dp + WindowInsets.statusBars.asPaddingValues()
+            .calculateTopPadding(),
+        bottom = bottomSheetMainContentHeight.value + 32.dp
+    )
+
+    LaunchedEffect(bottomSheetState.isVisible) {
+        if (!bottomSheetState.isVisible) {
+            viewModel.onBottomSheetClose()
+        }
+    }
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
         sheetContent = {
@@ -111,17 +130,17 @@ fun MapScreen(
     ) {
         Box {
             val mapDataPath = state.mapDataPath
-            Timber.d("mapDataPath: $mapDataPath")
             if (mapDataPath != null) {
                 Map(
                     onCameraUpdateDispatched = { viewModel.onCameraUpdateDispatched() },
                     onCameraMoved = { viewModel.onCameraMoved() },
-                    onStallTap = {
+                    onMapTap = {
                         viewModel.onMapTap(it)
                     },
                     mapDataFile = "file://$mapDataPath".also { Timber.d("mapFile: $it") },
                     colors = MapTheme().toMapColors(),
                     mapState = state.mapState,
+                    padding = mapPadding,
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(scaffoldPadding)
@@ -164,7 +183,6 @@ fun MapScreen(
                 onSearch = {},
                 active = searchIsActive.value,
                 onActiveChange = {
-                    Timber.d("onActiveChange: $it")
                     searchIsActive.value = it
                 },
                 modifier = Modifier
@@ -175,35 +193,40 @@ fun MapScreen(
                     if (searchInProgress) LinearProgressIndicator(Modifier.fillMaxWidth())
                     else Spacer(modifier = Modifier.height(4.dp))
                 }
-                state.searchState.results.forEach { result ->
-                    ListItem(
-                        headlineContent = { Text(result.term) },
-                        leadingContent = {
-                            val iconRes = result.icon?.iconRes
-                            if (iconRes != null) {
-                                Icon(
-                                    painterResource(id = iconRes),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(24.dp)
-                                )
-                            } else {
-                                Spacer(modifier = Modifier.size(24.dp))
-                            }
-                        },
-                        supportingContent = {
-                            when (result.type) {
-                                SearchResult.Type.SingleStall -> result.resultEntities.first().typeName?.let { type ->
-                                    val subType = result.resultEntities.first().subTypeName
-                                    Text(if (subType == null) type else "$subType ($type)")
+                LazyColumn {
+                    items(
+                        state.searchState.results,
+                        key = { it.term + it.resultEntities.joinToString { it.slug } }
+                    ) { result ->
+                        ListItem(
+                            headlineContent = { Text(result.term) },
+                            leadingContent = {
+                                val iconRes = result.icon?.iconRes
+                                if (iconRes != null) {
+                                    Icon(
+                                        painterResource(id = iconRes),
+                                        contentDescription = null,
+                                        modifier = Modifier.size(24.dp)
+                                    )
+                                } else {
+                                    Spacer(modifier = Modifier.size(24.dp))
                                 }
+                            },
+                            supportingContent = {
+                                when (result.type) {
+                                    SearchResult.Type.SingleStall -> result.resultEntities.first().typeName?.let { type ->
+                                        val subType = result.resultEntities.first().subTypeName
+                                        Text(if (subType == null) type else "$subType ($type)")
+                                    }
+                                }
+                            },
+                            modifier = Modifier.clickable {
+                                searchIsActive.value = false
+                                searchQuery.value = result.term
+                                viewModel.onSearchResultTap(result)
                             }
-                        },
-                        modifier = Modifier.clickable {
-                            searchIsActive.value = false
-                            searchQuery.value = result.term
-                            viewModel.onSearchResultTap(result)
-                        }
-                    )
+                        )
+                    }
                 }
             }
         }
@@ -226,6 +249,7 @@ private fun SheetContent(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
+                    .padding(bottom = 16.dp)
             ) {
                 val density = LocalDensity.current
                 Column(
@@ -234,7 +258,9 @@ private fun SheetContent(
                         .fillMaxWidth()
                         .onGloballyPositioned {
                             with(density) {
-                                onMainContentHeightChange(it.size.height.toDp())
+                                onMainContentHeightChange(
+                                    it.size.height.toDp() + if (mapEntity.hasRichContent()) 64.dp else 0.dp
+                                )
                             }
                         }
                 ) {
@@ -243,13 +269,15 @@ private fun SheetContent(
                         val typeText = if (mapEntity.subType != null) "${mapEntity.subType} ($it)" else it
                         Text(text = typeText, style = MaterialTheme.typography.labelLarge)
                     }
+                    Spacer(modifier = Modifier.height(16.dp))
                 }
                 mapEntity.description?.let {
                     Text(it)
                 }
-
             }
         }
     }
 
 }
+
+private fun FullMapEntity.hasRichContent() = description != null

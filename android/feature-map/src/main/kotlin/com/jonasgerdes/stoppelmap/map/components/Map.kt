@@ -9,8 +9,7 @@ import android.graphics.Canvas
 import android.graphics.Rect
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -27,20 +26,15 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.graphics.ColorUtils
-import androidx.core.graphics.blue
-import androidx.core.graphics.green
-import androidx.core.graphics.red
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.gson.JsonObject
-import com.google.gson.JsonPrimitive
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.model.BoundingBox
 import com.jonasgerdes.stoppelmap.map.model.Location
@@ -82,9 +76,10 @@ fun Map(
     mapState: MapState,
     onCameraUpdateDispatched: () -> Unit,
     onCameraMoved: () -> Unit,
-    onStallTap: (String) -> Unit,
+    onMapTap: (String?) -> Unit,
     modifier: Modifier = Modifier,
     colors: MapColors,
+    padding: PaddingValues,
 ) {
     Timber.d("Map", "mapDataFile: $mapDataFile")
     val context = LocalContext.current
@@ -94,18 +89,24 @@ fun Map(
         android.Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
-    val compassMargins = with(LocalDensity.current) {
+    val mapPadding = with(LocalDensity.current) {
         val layoutDir = LocalLayoutDirection.current
         Rect(
-            /* left = */ if (layoutDir == LayoutDirection.Ltr) 0 else 16.dp.roundToPx(),
-            /* top = */ WindowInsets.statusBars.getTop(this) + 16.dp.roundToPx(),
-            /* right = */ if (layoutDir == LayoutDirection.Rtl) 0 else 16.dp.roundToPx(),
-            /* bottom = */ 0
+            /* left = */ padding.calculateLeftPadding(layoutDir).roundToPx(),
+            /* top = */ padding.calculateTopPadding().roundToPx(),
+            /* right = */ padding.calculateRightPadding(layoutDir).roundToPx(),
+            /* bottom = */ padding.calculateBottomPadding().roundToPx()
         )
     }
+    Timber.d("padding: $padding -> $mapPadding")
     var isCameraMoving by remember { mutableStateOf(false) }
     var cameraPosition by rememberSaveable {
-        mutableStateOf(CameraPosition.DEFAULT)
+        mutableStateOf(
+            CameraPosition.Builder()
+                .target(MapDefaults.center.toLatLng())
+                .zoom(MapDefaults.defaultZoom)
+                .build()
+        )
     }
     val mapView = remember {
         Timber.d("new Mapview")
@@ -114,10 +115,10 @@ fun Map(
             getMapAsync { map ->
                 map.uiSettings.apply {
                     setCompassMargins(
-                        compassMargins.left,
-                        compassMargins.top,
-                        compassMargins.right,
-                        compassMargins.bottom,
+                        mapPadding.left,
+                        mapPadding.top,
+                        mapPadding.right,
+                        mapPadding.bottom,
                     )
                     isAttributionEnabled = false
                     isLogoEnabled = false
@@ -162,9 +163,7 @@ fun Map(
                     )
                     val tappedStall = result.firstOrNull()
                     val slug = tappedStall?.getStringProperty("slug")
-                    if (slug != null) {
-                        onStallTap(slug)
-                    }
+                    onMapTap(slug)
                     true
                 }
             }
@@ -188,23 +187,42 @@ fun Map(
 
     AndroidView(factory = { mapView }, modifier = modifier) {
         it.getMapAsync { map ->
+            map.uiSettings.apply {
+                setCompassMargins(
+                    mapPadding.left,
+                    mapPadding.top,
+                    mapPadding.right,
+                    mapPadding.bottom,
+                )
+            }
             map.apply {
                 if (!isCameraMoving) {
                     when (val camera = mapState.camera) {
                         null -> Unit
                         is CameraView.FocusLocation -> {
-                            map.animateCamera(
-                                CameraUpdateFactory.newLatLngZoom(
-                                    camera.location.toLatLng(),
-                                    camera.zoom
+                            val zoom = camera.zoom
+                            if (zoom == null) {
+                                map.animateCamera(CameraUpdateFactory.newLatLng(camera.location.toLatLng()))
+                            } else {
+                                map.animateCamera(
+                                    CameraUpdateFactory.newLatLngZoom(
+                                        camera.location.toLatLng(),
+                                        zoom
+                                    )
                                 )
-                            )
+                            }
                             onCameraUpdateDispatched()
                         }
 
                         is CameraView.Bounding -> {
                             map.animateCamera(
-                                CameraUpdateFactory.newLatLngBounds(camera.bounds.toLatLngBounds(), zoomPadding)
+                                CameraUpdateFactory.newLatLngBounds(
+                                    camera.bounds.toLatLngBounds().also { Timber.d("bounds: $it") },
+                                    mapPadding.left,
+                                    mapPadding.top,
+                                    mapPadding.right,
+                                    mapPadding.bottom
+                                )
                             )
                             onCameraUpdateDispatched()
                         }
@@ -243,6 +261,9 @@ fun Map(
                         fillColor(colors.stallTypeBarColor.toArgb())
                     )
                     style.getLayerAs<FillLayer>("restaurants")?.withProperties(
+                        fillColor(colors.stallTypeRestaurantColor.toArgb())
+                    )
+                    style.getLayerAs<FillLayer>("buildings")?.withProperties(
                         fillColor(colors.stallTypeRestaurantColor.toArgb())
                     )
                     style.getLayerAs<FillLayer>("restrooms")?.withProperties(
@@ -286,26 +307,22 @@ fun Map(
                         visibility(if (highlightedEntities.isNullOrEmpty()) Property.NONE else Property.VISIBLE),
                     )
                     if (highlightedEntities != null) {
-                        style.getSourceAs<GeoJsonSource>("highlight-labels-source")?.apply {
-                            setGeoJson(
-                                FeatureCollection.fromFeatures(
-                                    highlightedEntities.mapNotNull { mapEntity ->
-                                        Feature.fromGeometry(
-                                            Point.fromLngLat(
-                                                mapEntity.location.lng,
-                                                mapEntity.location.lat
-                                            ),
-                                            JsonObject().apply {
-                                                add("building", JsonPrimitive(mapEntity.icon.id))
-                                                mapEntity.name?.let { name ->
-                                                    add("name", JsonPrimitive(name))
-                                                }
-                                            }
-                                        )
-                                    }
-                                ).toJson()
+                        style.getSourceAs<GeoJsonSource>("geojson-marker")!!.setGeoJson(
+                            FeatureCollection.fromFeatures(
+                                highlightedEntities.map {
+                                    Feature.fromGeometry(
+                                        Point.fromLngLat(
+                                            it.location.lng,
+                                            it.location.lat
+                                        ),
+                                        JsonObject().apply {
+                                            addProperty("building", it.icon.id)
+                                            addProperty("name", it.name)
+                                        }
+                                    )
+                                }
                             )
-                        }
+                        )
                     }
                 }
             }
@@ -457,9 +474,7 @@ fun Style.addMarkerIcons(
             ColorUtils.colorToHSL(markerIcon.tintColor.toArgb(), colorHSL)
             colorHSL[1] = 0.7f
             colorHSL[2] = if (isDarkTheme) 0.6f else 0.4f
-            setTint(
-                ColorUtils.HSLToColor(colorHSL)
-                    .also { Timber.d(""""${markerIcon.id}": UIColor(red:${it.red / 256f}, green:${it.green / 256f}, blue: ${it.blue / 256f}, alpha: 1.0)) """) })
+            setTint(ColorUtils.HSLToColor(colorHSL))
             bounds = canvas.clipBounds
             draw(canvas)
         }

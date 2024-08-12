@@ -39,9 +39,10 @@ class MapEntityRepository(
         }
     }
 
-    suspend fun getDetailedMapEntity(slug: String): FullMapEntity = withContext(Dispatchers.IO) {
-        val mapEntity = mapEntityQueries.getFullBySlug(slug).executeAsOne()
-        val type = aliasQueries.getByReferenceSlug(setOf(mapEntity.type.id)).executeAsOneOrNull()
+    suspend fun getDetailedMapEntity(slug: String): FullMapEntity? = withContext(Dispatchers.IO) {
+        val mapEntity = mapEntityQueries.getFullBySlug(slug).executeAsList().firstOrNull() ?: return@withContext null
+        val type =
+            aliasQueries.getByReferenceSlug(setOf(mapEntity.type.id)).executeAsList().maxByOrNull { it.string.length }
         val subType = mapEntity.sub_type?.let { subTypeQueries.getSubTypeBySlugs(setOf(it)) }?.executeAsOneOrNull()
         val displayName = mapEntity.name ?: subType?.name ?: type?.string ?: mapEntity.type.id
         FullMapEntity(
@@ -56,7 +57,8 @@ class MapEntityRepository(
                 westLng = mapEntity.westLongitude,
                 northLat = mapEntity.northLatitude,
                 eastLng = mapEntity.eastLongitude,
-            )
+            ),
+            icon = mapEntity.type.getIcon()
         )
     }
 }
