@@ -56,7 +56,8 @@ val dataUpdateModule = module {
             ),
             metadataQueries = get<StoppelMapDatabase>().metadataQueries,
             remoteStaticFileSource = get(),
-            tempFileDirectory = get<PathFactory>().create("download").toPath()
+            tempFileDirectory = get<PathFactory>().create("download").toPath(),
+            persistentDataDirectory = get<PathFactory>().create(getMapDirectory()).toPath(),
         )
     }
 

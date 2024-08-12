@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import okio.FileSystem
 import okio.Path
-import okio.Path.Companion.toPath
 
 
 class DataUpdateRepository(
@@ -24,6 +23,7 @@ class DataUpdateRepository(
     private val metadataQueries: MetadataQueries,
     private val remoteStaticFileSource: RemoteStaticFileSource,
     private val tempFileDirectory: Path,
+    private val persistentDataDirectory: Path
 ) {
 
     private val mapFileKey = stringPreferencesKey("mapFile")
@@ -34,7 +34,10 @@ class DataUpdateRepository(
                 .mapToOneOrNull(Dispatchers.IO)
                 .map { it?.version }
 
-    val mapFile: Flow<Path?> = dataStore.data.map { it[mapFileKey]?.toPath() }
+    val mapFile: Flow<Path?> = currentDataVersion
+        .map { version ->
+            version?.let { persistentDataDirectory.resolve("mapdata_${it}.geojson") }
+        }
 
     suspend fun setMapFile(mapFilePath: Path) {
         dataStore.edit { it[mapFileKey] = mapFilePath.toString() }
