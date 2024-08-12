@@ -100,7 +100,7 @@ struct PriceCard: View {
                 HStack {
                     Text(fee.name)
                     Spacer()
-                    if let priceText = numberFormatter.string(from: NSNumber(value: fee.price / 100)) {
+                    if let priceText = numberFormatter.string(from: NSNumber(value: Double(fee.price) / 100.0)) {
                         Text(priceText + " €")
                     }
                 }.frame(maxWidth: .infinity)
