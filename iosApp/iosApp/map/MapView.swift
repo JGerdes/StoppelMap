@@ -123,21 +123,21 @@ extension MLNMapView {
         if let symbolLayer = style!.layers.first(where: {$0.identifier == "highlight-labels"}) as? MLNSymbolStyleLayer {
             symbolLayer.isVisible = !(mapState.highlightedEntities?.isEmpty ?? true)
         }
-        
+
         if let highlights = mapState.highlightedEntities {
             if(!highlights.isEmpty) {
-                if let highlightSource = style!.sources.first(where: {$0.identifier == "marker-geojson"}) as? MLNShapeSource {
+                if let highlightSource = style!.source(withIdentifier: "geojson-marker") as? MLNShapeSource {
                     highlightSource.shape = MLNShapeCollectionFeature(shapes: highlights.map{ entity in
-                        let feature = MLNPointFeature()
-                        feature.coordinate = CLLocationCoordinate2D(latitude: entity.location.lat, longitude: entity.location.lng)
-                        feature.attributes["building"] = entity.icon.id
-                        feature.attributes["name"] = entity.name
-                        return feature
+                        MLNPointFeature().apply{
+                            $0.coordinate = CLLocationCoordinate2D(latitude: entity.location.lat, longitude: entity.location.lng)
+                            $0.attributes["building"] = entity.icon.id
+                            $0.attributes["name"] = entity.name
+                        }
                     })
                 }
             }
         }
-        
+
         if let cameraView = mapState.camera as? CameraViewFocusLocation {
             self.setCenter(CLLocationCoordinate2D(latitude: cameraView.location.lat, longitude: cameraView.location.lng), animated: true)
             onCameraDispatched()
