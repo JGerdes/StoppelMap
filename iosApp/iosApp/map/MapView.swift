@@ -7,7 +7,10 @@ struct MapView: UIViewRepresentable {
     typealias UIViewType = MLNMapView
 
     var mapDataPath: OkioPath
+    var mapState: MapState
     var colorScheme: ColorScheme
+    var onMapTap: (String?) -> ()
+    var onCameraDispatched: () -> ()
     
     func makeUIView(context: Context) -> MLNMapView {
         
@@ -26,13 +29,25 @@ struct MapView: UIViewRepresentable {
             animated: false
         )
         
+        let singleTap = UITapGestureRecognizer(
+            target: context.coordinator,
+            action: #selector(Coordinator.handleMapTap(sender:))
+        )
+        for recognizer in mapView.gestureRecognizers! where recognizer is UITapGestureRecognizer {
+            singleTap.require(toFail: recognizer)
+        }
+        mapView.addGestureRecognizer(singleTap)
+    
+        
         mapView.setZoomLevel(16.2, animated: false)
+        
+        
         return mapView
         
     }
     
     func updateUIView(_ mapView: MLNMapView, context: Context) {
-        context.coordinator.update(colorScheme: colorScheme)
+        context.coordinator.update(colorScheme: colorScheme, mapState: mapState)
     }
     
     func makeCoordinator() -> MapView.Coordinator {
@@ -47,8 +62,9 @@ struct MapView: UIViewRepresentable {
             self.control = control
         }
         
-        func update(colorScheme: ColorScheme) {
+        func update(colorScheme: ColorScheme, mapState: MapState) {
             mapView?.updateLayerColors(colorScheme: colorScheme)
+            mapView?.updateWithState(mapState: mapState, onCameraDispatched: control.onCameraDispatched)
         }
         
         func mapViewDidFinishLoadingMap(_ mapView: MLNMapView) {
@@ -64,11 +80,80 @@ struct MapView: UIViewRepresentable {
         func mapViewDidFailLoadingMap(_ mapView: MLNMapView, withError error: any Error) {
             print("mapView, failed loading: " + error.localizedDescription)
         }
+        
+        @objc func handleMapTap(sender: UITapGestureRecognizer) {
+            guard let mapView = sender.view as? MLNMapView else { return }
+
+
+            // Convert tap location (CGPoint) to geographic coordinate (CLLocationCoordinate2D).
+            let tapPoint: CGPoint = sender.location(in: mapView)
+            let tapCoordinate: CLLocationCoordinate2D = mapView.convert(tapPoint, toCoordinateFrom: nil)
+            print("You tapped at: \(tapCoordinate.latitude), \(tapCoordinate.longitude)")
+
+            let results = mapView.visibleFeatures(at: tapPoint, styleLayerIdentifiers: [
+                "rides",
+               "bars",
+               "restaurants",
+               "restrooms",
+               "miscs",
+               "food-stalls",
+               "candy-stalls",
+               "game-stalls",
+               "seller-stalls",
+               "expo-stalls"
+            ])
+            
+            let slug = results.first?.attributes["slug"] as? String
+            control.onMapTap(slug)
+        
+        }
     }
 }
 
 
+
 extension MLNMapView {
+    func updateWithState(mapState: MapState, onCameraDispatched: () -> ()) {
+        print("mapView, updateWithState: "+mapState.description())
+        
+        if let symbolLayer = style!.layers.first(where: {$0.identifier == "labels"}) as? MLNSymbolStyleLayer {
+            symbolLayer.isVisible = mapState.highlightedEntities?.isEmpty ?? true
+        }
+        
+        if let symbolLayer = style!.layers.first(where: {$0.identifier == "highlight-labels"}) as? MLNSymbolStyleLayer {
+            symbolLayer.isVisible = !(mapState.highlightedEntities?.isEmpty ?? true)
+        }
+        
+        if let highlights = mapState.highlightedEntities {
+            if(!highlights.isEmpty) {
+                if let highlightSource = style!.sources.first(where: {$0.identifier == "marker-geojson"}) as? MLNShapeSource {
+                    highlightSource.shape = MLNShapeCollectionFeature(shapes: highlights.map{ entity in
+                        let feature = MLNPointFeature()
+                        feature.coordinate = CLLocationCoordinate2D(latitude: entity.location.lat, longitude: entity.location.lng)
+                        feature.attributes["building"] = entity.icon.id
+                        feature.attributes["name"] = entity.name
+                        return feature
+                    })
+                }
+            }
+        }
+        
+        if let cameraView = mapState.camera as? CameraViewFocusLocation {
+            self.setCenter(CLLocationCoordinate2D(latitude: cameraView.location.lat, longitude: cameraView.location.lng), animated: true)
+            onCameraDispatched()
+        } else if let cameraView = mapState.camera as? CameraViewBounding {
+            self.setVisibleCoordinateBounds(
+                MLNCoordinateBounds(
+                    sw: CLLocationCoordinate2D(latitude: cameraView.bounds.southLat, longitude: cameraView.bounds.westLng),
+                    ne: CLLocationCoordinate2D(latitude: cameraView.bounds.northLat, longitude: cameraView.bounds.eastLng)
+                ),
+                edgePadding: UIEdgeInsets(top: 192, left: 16, bottom: 128, right: 16),
+                animated: true
+            )
+            onCameraDispatched()
+        }
+    }
+    
     func updateLayerColors(colorScheme: ColorScheme) {
         let mapBackground = colorScheme == .dark ? mapBackgroundDark : mapBackgroundLight
         let mapColors = colorScheme == .dark ? mapColorsDark : mapColorsLight
@@ -80,6 +165,11 @@ extension MLNMapView {
         }
         
         if let symbolLayer = style!.layers.first(where: {$0.identifier == "labels"}) as? MLNSymbolStyleLayer {
+            symbolLayer.textColor = NSExpression(forConstantValue: colorScheme == .dark ? labelColorDark : labelColorLight)
+            symbolLayer.textHaloColor = NSExpression(forConstantValue: colorScheme == .dark ? labelHaloColorDark : labelHaloColorLight)
+        }
+        
+        if let symbolLayer = style!.layers.first(where: {$0.identifier == "highlight-labels"}) as? MLNSymbolStyleLayer {
             symbolLayer.textColor = NSExpression(forConstantValue: colorScheme == .dark ? labelColorDark : labelColorLight)
             symbolLayer.textHaloColor = NSExpression(forConstantValue: colorScheme == .dark ? labelHaloColorDark : labelHaloColorLight)
         }

@@ -53,9 +53,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.components.Map
 import com.jonasgerdes.stoppelmap.map.components.MapTheme
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
@@ -175,6 +177,7 @@ fun MapScreen(
                         }
                     }
                 },
+                placeholder = { Text(stringResource(R.string.map_search_placeholder)) },
                 query = searchQuery.value,
                 onQueryChange = {
                     searchQuery.value = it

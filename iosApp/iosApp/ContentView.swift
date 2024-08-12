@@ -8,6 +8,8 @@ struct ContentView: View {
     @State
     var unreadNewsCount: Int = 0
     
+    @Environment(\.dismissSearch) var dismissSearch
+    
     var body: some View {
         TabView{
             Group {
@@ -15,8 +17,7 @@ struct ContentView: View {
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_home.desc().localized(), systemImage: "house.fill")
                     }
-                MapScreen()
-                    .ignoresSafeArea()
+                MapScreen(onDismissSearch: {dismissSearch()})
                     .tabItem{
                         Label(Res.strings().main_bottom_nav_item_map.desc().localized(), systemImage: "map.fill")
                     }

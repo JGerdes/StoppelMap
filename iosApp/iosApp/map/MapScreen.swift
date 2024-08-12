@@ -5,27 +5,116 @@ struct MapScreen: View {
     @Environment(\.colorScheme) var colorScheme
     
     let viewModel = MapDependencies().with {
-        MapViewModel(getMapFilePath: $0.getMapFilePathUseCase)
+        MapViewModel(
+            getMapFilePath: $0.getMapFilePathUseCase,
+            searchMap: $0.searchMapUseCase,
+            mapEntityRepository: $0.mapEntityRepository
+        )
     }
+    
+    var onDismissSearch: () -> ()
     
     @State
     var viewState: MapViewModel.ViewState = MapViewModel.ViewState()
     
+    @State
+    private var showSheet = false
+    
+    @State
+    private var searchQuery = ""
+    
+    @State
+    private var isSearchActive = false
+    
+    @State
+    var bottomSheetContentHeight = CGFloat(0)
+    
     var body: some View {
-        ZStack {
-            if let mapDataPath = viewState.mapDataPath {
-                MapView(mapDataPath: mapDataPath, colorScheme: colorScheme)
-                    .ignoresSafeArea()
-            }
+        NavigationStack {
+            ZStack {
+                if let mapDataPath = viewState.mapDataPath {
+                    MapView(mapDataPath: mapDataPath,  
+                            mapState: viewState.mapState,
+                            colorScheme: colorScheme,
+                            onMapTap: {viewModel.onMapTap(entitySlug: $0)},
+                            onCameraDispatched: {viewModel.onCameraUpdateDispatched()}
+                    )
+                        .ignoresSafeArea()
+                }
+                if(isSearchActive && !viewState.searchState.results.isEmpty) {
+                    List {
+                        ForEach(viewState.searchState.results, id: \.term) { result in
+                            HStack {
+                                if let icon = result.icon {
+                                    Image(icon.id).resizable().frame(width: 24, height: 24)
+                                } else {
+                                    Color.clear.frame(width: 24, height: 24)
+                                }
+                                Text(result.term)
+                                Spacer()
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                onDismissSearch()
+                                searchQuery = ""
+                                isSearchActive = false
+                                viewModel.onSearchResultTap(searchResult: result)
+                            }
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                    .background(.ultraThinMaterial)
+                }
                 
-        }.task {
+            }.apply{
+                if #available(iOS 17.0, *) {
+                    $0.searchable(text: $searchQuery, isPresented: $isSearchActive, prompt: Res.strings().map_search_placeholder.desc().localized())
+                } else {
+                    $0.searchable(text: $searchQuery, prompt: Res.strings().map_search_placeholder.desc().localized())
+                }
+            }
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
+            .sheet(isPresented: $showSheet, onDismiss: {viewModel.onBottomSheetClose()}, content: {
+                ZStack(alignment: .topLeading) {
+                    GeometryReader { proxy in
+                        if let singleStation = viewState.bottomSheetState as? MapViewModelBottomSheetStateSingleStall {
+                            VStack(alignment: .leading, spacing: 16.0) {
+                                Text(singleStation.fullMapEntity.name).font(.title)
+                                if let description = singleStation.fullMapEntity.description_ {
+                                    Text(description).fixedSize(horizontal: false, vertical: true)
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .onAppear {
+                                bottomSheetContentHeight = proxy.size.height
+                                print("updated bottomSheetContentHeight to "+bottomSheetContentHeight.description)
+                            }
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .presentationDetents([.height(max(bottomSheetContentHeight, 192)), .large])
+                .presentationDragIndicator(.visible)
+                .apply {
+                    if #available(iOS 16.4, *) {
+                        $0.presentationBackgroundInteraction(.enabled)
+                    } else {
+                        $0
+                    }
+                }
+            })
+        }
+        .onChange(of: searchQuery) { query in
+            viewModel.onSearch(query: query)
+        }
+        .task {
             for await state in viewModel.state {
                 viewState = state
+                showSheet = !(viewState.bottomSheetState is MapViewModelBottomSheetStateHidden)
             }
         }
     }
 }
 
-#Preview {
-    MapScreen()
-}

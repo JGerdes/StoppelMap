@@ -10,6 +10,25 @@
   "bearing": 0,
   "glyphs": "asset://map/font/{fontstack}/{range}.pbf",
   "sources": {
+    "geojson-marker": {
+      "type": "geojson",
+      "data": {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            8.295733258268884,
+            52.749128157787254
+          ]
+        },
+        "properties": {
+          "title": "Somewhere",
+          "marker-symbol": "monument",
+          "name": "Test",
+          "building": "ride"
+        }
+      }
+    }
   },
   "layers": [
     {
@@ -44,6 +63,32 @@
       "paint": {
         "fill-color": "#AAAAAA"
       }
+    },
+    {
+      "id": "buildings",
+      "type": "fill",
+      "source": "composite",
+      "source-layer": "stoma22",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Polygon"
+        ],
+        [
+          "==",
+          "building",
+          "yes"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#83D8C5"
+      },
+      "interactive": false
     },
     {
       "id": "public_transport_1",
@@ -376,7 +421,6 @@
       "id": "labels",
       "type": "symbol",
       "source": "composite",
-      "source-layer": "stoma22",
       "layout": {
         "symbol-sort-key": [
           "get",
@@ -471,8 +515,7 @@
           8,
           19,
           0
-        ],
-        "text-max-width": 20
+        ]
       },
       "paint": {
         "text-halo-color": "hsl(0, 0%, 100%)",
@@ -492,9 +535,13 @@
     {
       "id": "highlight-labels",
       "type": "symbol",
-      "source": "highlight-labels-source",
-      "source-layer": "highlight-labels-source",
+      "source": "geojson-marker",
       "layout": {
+        "visibility": "none",
+        "symbol-sort-key": [
+          "get",
+          "priority"
+        ],
         "text-optional": true,
         "icon-offset": [
           0,
@@ -506,19 +553,19 @@
             "get",
             "building"
           ],
-          "misc",
-          "misc",
           "taxi",
           "taxi",
           "platform",
           "platform",
           "station",
           "station",
+          "misc",
+          "misc",
           "entrance",
           "entrance",
           "bar",
           "bar",
-          "food-stall",
+          "food_stall",
           "food_stall",
           "ride",
           "ride",
@@ -526,13 +573,13 @@
           "restroom",
           "restaurant",
           "restaurant",
-          "candy-stall",
           "candy_stall",
-          "game-stall",
+          "candy_stall",
           "game_stall",
-          "seller-stall",
+          "game_stall",
           "seller_stall",
-          "exhibition",
+          "seller_stall",
+          "expo",
           "expo",
           "parking",
           "parking",
@@ -543,20 +590,11 @@
             "No default property value available."
           ]
         ],
-        "text-justify": "left",
-        "text-padding": [
-          "interpolate",
-          [
-            "linear"
-          ],
-          [
-            "zoom"
-          ],
-          16,
-          8,
-          20,
-          0
+        "text-font": [
+          "roboto_slab_regular"
         ],
+        "text-justify": "left",
+        "text-padding": 24,
         "text-offset": [
           0,
           0
@@ -581,8 +619,7 @@
           8,
           19,
           0
-        ],
-        "text-max-width": 20
+        ]
       },
       "paint": {
         "text-halo-color": "hsl(0, 0%, 100%)",
