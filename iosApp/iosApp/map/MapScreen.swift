@@ -33,13 +33,13 @@ struct MapScreen: View {
         NavigationStack {
             ZStack {
                 if let mapDataPath = viewState.mapDataPath {
-                    MapView(mapDataPath: mapDataPath,  
+                    MapView(mapDataPath: mapDataPath,
                             mapState: viewState.mapState,
                             colorScheme: colorScheme,
                             onMapTap: {viewModel.onMapTap(entitySlug: $0)},
                             onCameraDispatched: {viewModel.onCameraUpdateDispatched()}
                     )
-                        .ignoresSafeArea()
+                    .ignoresSafeArea()
                 }
                 if(isSearchActive && !viewState.searchState.results.isEmpty) {
                     List {
@@ -76,8 +76,8 @@ struct MapScreen: View {
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
             .sheet(isPresented: $showSheet, onDismiss: {viewModel.onBottomSheetClose()}, content: {
-                ZStack(alignment: .topLeading) {
-                    GeometryReader { proxy in
+                ScrollView {
+                    ZStack(alignment: .topLeading) {
                         if let singleStation = viewState.bottomSheetState as? MapViewModelBottomSheetStateSingleStall {
                             VStack(alignment: .leading, spacing: 16.0) {
                                 Text(singleStation.fullMapEntity.name).font(.title)
@@ -85,21 +85,28 @@ struct MapScreen: View {
                                     Text(description).fixedSize(horizontal: false, vertical: true)
                                 }
                             }
-                            .frame(maxWidth: .infinity)
-                            .onAppear {
-                                bottomSheetContentHeight = proxy.size.height
-                                print("updated bottomSheetContentHeight to "+bottomSheetContentHeight.description)
-                            }
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                        }
+                    }
+                    .padding()
+                    .background {
+                        //This is done in the background otherwise GeometryReader tends to expand to all the space given to it  like color or shape.
+                        GeometryReader { proxy in
+                            Color.clear
+                                .onChange(of: proxy.size) { size in
+                                    bottomSheetContentHeight = size.height
+                                    print("updated bottomSheetContentHeight to "+bottomSheetContentHeight.description)
+                                }
                         }
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .presentationDetents([.height(max(bottomSheetContentHeight, 192)), .large])
+                .presentationDetents([.height(min(128, bottomSheetContentHeight)), .height(bottomSheetContentHeight)])
                 .presentationDragIndicator(.visible)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .apply {
                     if #available(iOS 16.4, *) {
                         $0.presentationBackgroundInteraction(.enabled)
+                            .presentationBackground(.clear)
                     } else {
                         $0
                     }
