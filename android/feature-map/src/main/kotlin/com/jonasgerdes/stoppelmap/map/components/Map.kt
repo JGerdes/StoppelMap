@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalPermissionsApi::class)
-
 package com.jonasgerdes.stoppelmap.map.components
 
 import android.annotation.SuppressLint
@@ -41,16 +39,23 @@ import androidx.lifecycle.LifecycleEventObserver
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import com.jonasgerdes.stoppelmap.map.MapDefaults
+import com.google.gson.JsonObject
+import com.google.gson.JsonPrimitive
 import com.jonasgerdes.stoppelmap.map.R
-import com.jonasgerdes.stoppelmap.map.ui.Camera
+import com.jonasgerdes.stoppelmap.map.model.BoundingBox
+import com.jonasgerdes.stoppelmap.map.model.Location
+import com.jonasgerdes.stoppelmap.map.ui.CameraView
 import com.jonasgerdes.stoppelmap.map.ui.MapColors
+import com.jonasgerdes.stoppelmap.map.ui.MapDefaults
 import com.jonasgerdes.stoppelmap.map.ui.MapState
 import com.jonasgerdes.stoppelmap.shared.resources.Res
+import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.Point
 import org.maplibre.android.MapLibre
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.camera.CameraUpdateFactory
+import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.geometry.LatLngBounds
 import org.maplibre.android.location.LocationComponentActivationOptions
 import org.maplibre.android.location.LocationComponentOptions
@@ -70,10 +75,11 @@ import timber.log.Timber
 import java.net.URI
 
 @SuppressLint("MissingPermission")
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun Map(
-    mapState: MapState,
     mapDataFile: String,
+    mapState: MapState,
     onCameraUpdateDispatched: () -> Unit,
     onCameraMoved: () -> Unit,
     onStallTap: (String) -> Unit,
@@ -118,7 +124,7 @@ fun Map(
                 }
                 map.setMinPitchPreference(0.0)
                 map.setMaxPitchPreference(0.0)
-                map.setLatLngBoundsForCameraTarget(MapDefaults.cameraBounds)
+                map.setLatLngBoundsForCameraTarget(MapDefaults.cameraBounds.toLatLngBounds())
                 map.setMinZoomPreference(MapDefaults.minZoom)
                 map.setMaxZoomPreference(MapDefaults.maxZoom)
                 map.addOnCameraIdleListener {
@@ -186,21 +192,19 @@ fun Map(
                 if (!isCameraMoving) {
                     when (val camera = mapState.camera) {
                         null -> Unit
-                        is Camera.FocusLocation -> {
+                        is CameraView.FocusLocation -> {
                             map.animateCamera(
                                 CameraUpdateFactory.newLatLngZoom(
-                                    camera.location,
+                                    camera.location.toLatLng(),
                                     camera.zoom
                                 )
                             )
                             onCameraUpdateDispatched()
                         }
 
-                        is Camera.IncludeLocations -> {
+                        is CameraView.Bounding -> {
                             map.animateCamera(
-                                CameraUpdateFactory.newLatLngBounds(
-                                    LatLngBounds.fromLatLngs(camera.locations), zoomPadding
-                                )
+                                CameraUpdateFactory.newLatLngBounds(camera.bounds.toLatLngBounds(), zoomPadding)
                             )
                             onCameraUpdateDispatched()
                         }
@@ -286,19 +290,18 @@ fun Map(
                             setGeoJson(
                                 FeatureCollection.fromFeatures(
                                     highlightedEntities.mapNotNull { mapEntity ->
-                                        /*Feature.fromGeometry(
+                                        Feature.fromGeometry(
                                             Point.fromLngLat(
-                                                stall.center_lng,
-                                                stall.center_lat
+                                                mapEntity.location.lng,
+                                                mapEntity.location.lat
                                             ),
                                             JsonObject().apply {
-                                                add("building", JsonPrimitive(stall.type))
-                                                stall.name?.let { name ->
+                                                add("building", JsonPrimitive(mapEntity.icon.id))
+                                                mapEntity.name?.let { name ->
                                                     add("name", JsonPrimitive(name))
                                                 }
                                             }
-                                        )*/
-                                        null
+                                        )
                                     }
                                 ).toJson()
                             )
@@ -310,6 +313,15 @@ fun Map(
     }
     MapLifecycle(mapView = mapView)
 }
+
+private fun BoundingBox.toLatLngBounds() = LatLngBounds.from(
+    latNorth = northLat,
+    lonEast = eastLng,
+    latSouth = southLat,
+    lonWest = westLng
+)
+
+private fun Location.toLatLng() = LatLng(latitude = lat, longitude = lng)
 
 private fun MapColors.toSwiftDict(): String =
     mapOf(

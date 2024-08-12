@@ -24,7 +24,9 @@ val androidMapModule = module {
 
     viewModel {
         MapViewModel(
-            getMapFilePath = get(), searchMap = get(),
+            getMapFilePath = get(),
+            searchMap = get(),
+            mapEntityRepository = get(),
         )
     }
 

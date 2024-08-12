@@ -4,6 +4,9 @@ import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entityQueries
 import com.jonasgerdes.stoppelmap.data.map.Sub_typeQueries
 import com.jonasgerdes.stoppelmap.data.shared.AliasQueries
+import com.jonasgerdes.stoppelmap.map.model.BoundingBox
+import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
+import com.jonasgerdes.stoppelmap.map.model.Location
 import com.jonasgerdes.stoppelmap.map.model.MapIcon
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +37,21 @@ class MapEntityRepository(
                 subTypeName = subTypes.firstOrNull { it.slug == summary.sub_type }?.name
             )
         }
+    }
+
+    suspend fun getDetailedMapEntity(slug: String): FullMapEntity = withContext(Dispatchers.IO) {
+        val mapEntity = mapEntityQueries.getFullBySlug(slug).executeAsOne()
+        FullMapEntity(
+            slug = slug,
+            name = mapEntity.name,
+            location = Location(lat = mapEntity.latitude, lng = mapEntity.longitude),
+            bounds = BoundingBox(
+                southLat = mapEntity.southLatitude,
+                westLng = mapEntity.westLongitude,
+                northLat = mapEntity.northLatitude,
+                eastLng = mapEntity.eastLongitude,
+            )
+        )
     }
 }
 

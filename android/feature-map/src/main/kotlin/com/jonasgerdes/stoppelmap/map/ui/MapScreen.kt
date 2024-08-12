@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.jonasgerdes.stoppelmap.map.ui
 
 import androidx.compose.animation.AnimatedContent
@@ -7,6 +5,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -21,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -48,10 +48,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.map.components.Map
+import com.jonasgerdes.stoppelmap.map.components.MapTheme
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
-import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
+
+@OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
 fun MapScreen(
@@ -74,13 +76,9 @@ fun MapScreen(
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
         sheetContent = {
-            SheetContent(modifier = Modifier.padding(scaffoldPadding), onActiveChange = {
-                scope.launch {
-                    bottomSheetState.expand()
-                }
-            })
+            SheetContent(modifier = Modifier.padding(scaffoldPadding), state.bottomSheetState)
         },
-        sheetPeekHeight = scaffoldPadding.calculateBottomPadding(),
+        sheetPeekHeight = BottomSheetDefaults.SheetPeekHeight + scaffoldPadding.calculateBottomPadding(),
         modifier = modifier,
     ) {
         Box {
@@ -88,20 +86,22 @@ fun MapScreen(
             Timber.d("mapDataPath: $mapDataPath")
             if (mapDataPath != null) {
                 Map(
-                    mapState = MapState(),
-                    onCameraUpdateDispatched = { },
-                    onCameraMoved = { },
-                    onStallTap = { },
+                    onCameraUpdateDispatched = { viewModel.onCameraUpdateDispatched() },
+                    onCameraMoved = { viewModel.onCameraMoved() },
+                    onStallTap = {
+                        viewModel.onMapTap(it)
+                    },
                     mapDataFile = "file://$mapDataPath".also { Timber.d("mapFile: $it") },
                     colors = MapTheme().toMapColors(),
+                    mapState = state.mapState,
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(scaffoldPadding)
                 )
             }
             val searchQuery = rememberSaveable { mutableStateOf("") }
-            val active = rememberSaveable { mutableStateOf(false) }
-            AnimatedVisibility(visible = active.value, enter = fadeIn(), exit = fadeOut()) {
+            val searchIsActive = rememberSaveable { mutableStateOf(false) }
+            AnimatedVisibility(visible = searchIsActive.value, enter = fadeIn(), exit = fadeOut()) {
                 Box(
                     Modifier
                         .fillMaxSize()
@@ -110,9 +110,9 @@ fun MapScreen(
             }
             SearchBar(
                 leadingIcon = {
-                    AnimatedContent(targetState = active.value) { isActive ->
+                    AnimatedContent(targetState = searchIsActive.value) { isActive ->
                         if (!isActive) Icon(Icons.Rounded.Search, null)
-                        else IconButton(onClick = { active.value = false }) {
+                        else IconButton(onClick = { searchIsActive.value = false }) {
                             Icon(Icons.AutoMirrored.Rounded.ArrowBack, null)
                         }
                     }
@@ -134,10 +134,10 @@ fun MapScreen(
                     viewModel.onSearch(it)
                 },
                 onSearch = {},
-                active = active.value,
+                active = searchIsActive.value,
                 onActiveChange = {
                     Timber.d("onActiveChange: $it")
-                    active.value = it
+                    searchIsActive.value = it
                 },
                 modifier = Modifier
                     .align(Alignment.TopCenter)
@@ -169,6 +169,11 @@ fun MapScreen(
                                     Text(if (subType == null) type else "$subType ($type)")
                                 }
                             }
+                        },
+                        modifier = Modifier.clickable {
+                            searchIsActive.value = false
+                            searchQuery.value = result.term
+                            viewModel.onSearchResultTap(result)
                         }
                     )
                 }
@@ -178,12 +183,23 @@ fun MapScreen(
 }
 
 @Composable
-private fun SheetContent(modifier: Modifier = Modifier, onActiveChange: (Boolean) -> Unit) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(Color.Red)
-    ) {
-        Text(text = "Hello Bottomsheet")
+private fun SheetContent(modifier: Modifier = Modifier, bottomSheetState: MapViewModel.BottomSheetState) {
+    when (bottomSheetState) {
+        MapViewModel.BottomSheetState.Hidden -> Unit
+        is MapViewModel.BottomSheetState.Idle -> Unit
+        is MapViewModel.BottomSheetState.SearchResult -> TODO()
+        is MapViewModel.BottomSheetState.SingleStall -> {
+            val mapEntity = bottomSheetState.fullMapEntity
+            Column(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .background(Color.Red)
+            ) {
+                mapEntity.name?.let {
+                    Text(text = it, style = MaterialTheme.typography.titleLarge)
+                }
+            }
+        }
     }
+
 }

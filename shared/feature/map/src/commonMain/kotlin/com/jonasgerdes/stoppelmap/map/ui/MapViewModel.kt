@@ -1,7 +1,8 @@
 package com.jonasgerdes.stoppelmap.map.ui
 
 import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
-import com.jonasgerdes.stoppelmap.map.model.FullStall
+import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
+import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import com.jonasgerdes.stoppelmap.map.model.StallPromotion
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
@@ -24,17 +25,20 @@ import kotlin.time.Duration.Companion.milliseconds
 class MapViewModel(
     private val getMapFilePath: GetMapFilePathUseCase,
     private val searchMap: SearchMapUseCase,
+    private val mapEntityRepository: MapEntityRepository,
 ) : KMMViewModel() {
 
     private var searchJob: Job? = null
     private val searchState = MutableStateFlow(SearchState())
     private val bottomSheetState = MutableStateFlow<BottomSheetState>(BottomSheetState.Hidden)
+    private val mapState = MutableStateFlow(MapState())
 
     val state: StateFlow<ViewState> =
         combine(
             getMapFilePath(),
             searchState,
             bottomSheetState,
+            mapState,
             ::ViewState
         )
             .stateIn(
@@ -52,18 +56,38 @@ class MapViewModel(
         }
         searchState.update { it.copy(inProgress = true) }
         searchJob = viewModelScope.coroutineScope.launch {
-            delay(300.milliseconds) // debounce user inpute
+            delay(300.milliseconds) // debounce user input
             val results = searchMap(query)
             searchState.update { it.copy(results = results, inProgress = false) }
         }
     }
 
     fun onMapTap(entitySlug: String) {
-
+        viewModelScope.coroutineScope.launch {
+            showFullMapEntity(entitySlug)
+        }
     }
 
     fun onSearchResultTap(searchResult: SearchResult) {
+        viewModelScope.coroutineScope.launch {
+            when (searchResult.type) {
+                SearchResult.Type.SingleStall -> showFullMapEntity(searchResult.resultEntities.first().slug)
+            }
+        }
+    }
 
+    private suspend fun showFullMapEntity(slug: String) {
+        val fullMapEntity = mapEntityRepository.getDetailedMapEntity(slug)
+        mapState.update { it.copy(camera = CameraView.Bounding(fullMapEntity.bounds)) }
+        bottomSheetState.update { BottomSheetState.SingleStall(fullMapEntity) }
+    }
+
+    fun onCameraMoved() {
+
+    }
+
+    fun onCameraUpdateDispatched() {
+        mapState.update { it.copy(camera = null) }
     }
 
     data class ViewState
@@ -71,7 +95,8 @@ class MapViewModel(
     constructor(
         val mapDataPath: Path? = null,
         val searchState: SearchState = SearchState(),
-        val bottomSheetState: BottomSheetState = BottomSheetState.Hidden
+        val bottomSheetState: BottomSheetState = BottomSheetState.Hidden,
+        val mapState: MapState = MapState()
     )
 
     data class SearchState(
@@ -88,7 +113,7 @@ class MapViewModel(
             val promotions: List<StallPromotion> = emptyList()
         ) : BottomSheetState
 
-        data class SingleStall(val fullStall: FullStall) : BottomSheetState
+        data class SingleStall(val fullMapEntity: FullMapEntity) : BottomSheetState
 
         data class SearchResult(val searchResult: com.jonasgerdes.stoppelmap.map.model.SearchResult) : BottomSheetState
     }

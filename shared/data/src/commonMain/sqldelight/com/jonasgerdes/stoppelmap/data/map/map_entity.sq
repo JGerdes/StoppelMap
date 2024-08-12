@@ -34,3 +34,10 @@ getSummaryBySlug:
 SELECT slug, name, type, sub_type
 FROM map_entity
 WHERE slug IN :slugs;
+
+getFullBySlug:
+SELECT map_entity.slug, map_entity.name, map_entity.type, map_entity.sub_type, bounding_box.*, location.*
+FROM map_entity
+JOIN bounding_box ON map_entity.slug = bounding_box.referenceSlug
+JOIN location ON map_entity.slug = location.referenceSlug
+WHERE slug = :slug;

@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.graphics.ColorUtils
+import com.jonasgerdes.stoppelmap.map.components.MapTheme
 import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 
