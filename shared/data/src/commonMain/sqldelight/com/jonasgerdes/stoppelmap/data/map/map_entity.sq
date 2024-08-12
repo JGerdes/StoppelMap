@@ -36,8 +36,11 @@ FROM map_entity
 WHERE slug IN :slugs;
 
 getFullBySlug:
-SELECT map_entity.slug, map_entity.name, map_entity.type, map_entity.sub_type, bounding_box.*, location.*
+SELECT map_entity.slug, map_entity.name, map_entity.type, map_entity.sub_type,
+localized_string.string AS description,
+bounding_box.*, location.*
 FROM map_entity
 JOIN bounding_box ON map_entity.slug = bounding_box.referenceSlug
 JOIN location ON map_entity.slug = location.referenceSlug
+LEFT JOIN localized_string ON map_entity.descriptionKey = localized_string.key AND localized_string.locale = "de"
 WHERE slug = :slug;

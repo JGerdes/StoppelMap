@@ -2,10 +2,12 @@ package com.jonasgerdes.stoppelmap.map.ui
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,16 +37,18 @@ import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.map.components.Map
@@ -66,19 +70,43 @@ fun MapScreen(
 
     val bottomSheetState = rememberStandardBottomSheetState(
         initialValue = SheetValue.PartiallyExpanded,
-        confirmValueChange = { it != SheetValue.Hidden },
-        skipHiddenState = true,
+        confirmValueChange = {
+            when (state.bottomSheetState) {
+                MapViewModel.BottomSheetState.Hidden -> false
+                is MapViewModel.BottomSheetState.Idle -> it != SheetValue.Hidden
+                is MapViewModel.BottomSheetState.SearchResult -> true
+                is MapViewModel.BottomSheetState.SingleStall -> true
+            }
+        },
+        skipHiddenState = state.bottomSheetState is MapViewModel.BottomSheetState.Idle,
     )
+    LaunchedEffect(state.bottomSheetState) {
+        when (state.bottomSheetState) {
+            MapViewModel.BottomSheetState.Hidden -> bottomSheetState.hide()
+            is MapViewModel.BottomSheetState.Idle -> bottomSheetState.requireOffset()
+            is MapViewModel.BottomSheetState.SearchResult -> bottomSheetState.show()
+            is MapViewModel.BottomSheetState.SingleStall -> bottomSheetState.show()
+        }
+    }
     val scaffoldState = rememberBottomSheetScaffoldState(
         bottomSheetState = bottomSheetState
     )
-    val scope = rememberCoroutineScope()
+    val bottomSheetMainContentHeight = remember { mutableStateOf(BottomSheetDefaults.SheetPeekHeight) }
+    val bottomSheetMainContentHeightAnimated = animateDpAsState(targetValue = bottomSheetMainContentHeight.value)
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
         sheetContent = {
-            SheetContent(modifier = Modifier.padding(scaffoldPadding), state.bottomSheetState)
+            SheetContent(
+                modifier = Modifier.padding(scaffoldPadding),
+                onMainContentHeightChange = {
+                    bottomSheetMainContentHeight.value = it
+                },
+                bottomSheetState = state.bottomSheetState
+            )
         },
-        sheetPeekHeight = BottomSheetDefaults.SheetPeekHeight + scaffoldPadding.calculateBottomPadding(),
+        sheetPeekHeight = bottomSheetMainContentHeightAnimated.value +
+                scaffoldPadding.calculateBottomPadding() +
+                BottomSheetDefaults.SheetPeekHeight, // account for handle etc
         modifier = modifier,
     ) {
         Box {
@@ -183,7 +211,11 @@ fun MapScreen(
 }
 
 @Composable
-private fun SheetContent(modifier: Modifier = Modifier, bottomSheetState: MapViewModel.BottomSheetState) {
+private fun SheetContent(
+    modifier: Modifier = Modifier,
+    bottomSheetState: MapViewModel.BottomSheetState,
+    onMainContentHeightChange: (Dp) -> Unit,
+) {
     when (bottomSheetState) {
         MapViewModel.BottomSheetState.Hidden -> Unit
         is MapViewModel.BottomSheetState.Idle -> Unit
@@ -193,11 +225,29 @@ private fun SheetContent(modifier: Modifier = Modifier, bottomSheetState: MapVie
             Column(
                 modifier = modifier
                     .fillMaxWidth()
-                    .background(Color.Red)
+                    .padding(horizontal = 16.dp)
             ) {
-                mapEntity.name?.let {
-                    Text(text = it, style = MaterialTheme.typography.titleLarge)
+                val density = LocalDensity.current
+                Column(
+                    verticalArrangement = spacedBy(8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .onGloballyPositioned {
+                            with(density) {
+                                onMainContentHeightChange(it.size.height.toDp())
+                            }
+                        }
+                ) {
+                    Text(text = mapEntity.name, style = MaterialTheme.typography.headlineLarge)
+                    mapEntity.type?.let {
+                        val typeText = if (mapEntity.subType != null) "${mapEntity.subType} ($it)" else it
+                        Text(text = typeText, style = MaterialTheme.typography.labelLarge)
+                    }
                 }
+                mapEntity.description?.let {
+                    Text(it)
+                }
+
             }
         }
     }

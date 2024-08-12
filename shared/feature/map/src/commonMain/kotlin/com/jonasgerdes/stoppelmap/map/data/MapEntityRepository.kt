@@ -41,10 +41,16 @@ class MapEntityRepository(
 
     suspend fun getDetailedMapEntity(slug: String): FullMapEntity = withContext(Dispatchers.IO) {
         val mapEntity = mapEntityQueries.getFullBySlug(slug).executeAsOne()
+        val type = aliasQueries.getByReferenceSlug(setOf(mapEntity.type.id)).executeAsOneOrNull()
+        val subType = mapEntity.sub_type?.let { subTypeQueries.getSubTypeBySlugs(setOf(it)) }?.executeAsOneOrNull()
+        val displayName = mapEntity.name ?: subType?.name ?: type?.string ?: mapEntity.type.id
         FullMapEntity(
             slug = slug,
-            name = mapEntity.name,
+            name = displayName,
+            type = type?.string?.takeIf { it != displayName },
+            subType = subType?.name?.takeIf { it != displayName },
             location = Location(lat = mapEntity.latitude, lng = mapEntity.longitude),
+            description = mapEntity.description,
             bounds = BoundingBox(
                 southLat = mapEntity.southLatitude,
                 westLng = mapEntity.westLongitude,
