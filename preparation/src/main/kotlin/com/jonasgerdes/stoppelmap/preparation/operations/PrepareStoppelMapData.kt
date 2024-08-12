@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preparation.operations
 
+import com.jonasgerdes.stoppelmap.dto.Locales.de
 import com.jonasgerdes.stoppelmap.dto.data.BoundingBox
 import com.jonasgerdes.stoppelmap.dto.data.Definitions
 import com.jonasgerdes.stoppelmap.dto.data.Event
@@ -18,7 +19,7 @@ import com.jonasgerdes.stoppelmap.preparation.definitions.subTypes
 import com.jonasgerdes.stoppelmap.preparation.definitions.tags
 import com.jonasgerdes.stoppelmap.preparation.definitions.typeAliases
 import com.jonasgerdes.stoppelmap.preparation.schedule.EventLocation
-import com.jonasgerdes.stoppelmap.preparation.schedule.utils.cleanUpEventDescription
+import com.jonasgerdes.stoppelmap.preparation.schedule.utils.htmlToText
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateTrainRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.taxi.generateTaxiServices
@@ -50,6 +51,19 @@ class PrepareStoppelMapData : KoinComponent {
 
         parseGeoData()
 
+        val geoEntities = parseGeoData.mapEntities.map {
+            val descriptionFile = File(settings.descriptionFolder, it.slug + ".html")
+            if (descriptionFile.exists()) {
+                val description = descriptionFile.readText().htmlToText()
+                if (description == null) it
+                else it.copy(
+                    description = mapOf(de to description)
+                )
+            } else {
+                it
+            }
+        }
+
         val scheduleData = prepareSchedule(
             listOf(
                 settings.manualEventsFile,
@@ -76,7 +90,7 @@ class PrepareStoppelMapData : KoinComponent {
                 operators = transportOperators + parseGeoData.operators
             ),
             map = Map(
-                entities = parseGeoData.mapEntities + missingEventLocations,
+                entities = geoEntities + missingEventLocations,
                 typeAliases = typeAliases,
                 isWorkInProgress = true,
             ),
@@ -103,7 +117,7 @@ class PrepareStoppelMapData : KoinComponent {
             events = fetchedEvents.map {
                 it.copy(
                     description = it.description?.entries?.mapNotNull { entry ->
-                        entry.value.cleanUpEventDescription()?.let { entry.key to it }
+                        entry.value.htmlToText()?.let { entry.key to it }
                     }?.takeIf { it.isNotEmpty() }?.toMap()
                 )
             },

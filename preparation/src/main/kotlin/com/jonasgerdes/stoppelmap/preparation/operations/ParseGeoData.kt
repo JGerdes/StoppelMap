@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preparation.operations
 
+import com.jonasgerdes.stoppelmap.dto.Locales.de
 import com.jonasgerdes.stoppelmap.dto.data.Alias
 import com.jonasgerdes.stoppelmap.dto.data.BoundingBox
 import com.jonasgerdes.stoppelmap.dto.data.Image
@@ -16,6 +17,8 @@ import com.jonasgerdes.stoppelmap.preparation.definitions.foodProducts
 import com.jonasgerdes.stoppelmap.preparation.definitions.gameSubTypes
 import com.jonasgerdes.stoppelmap.preparation.definitions.rideSubTypes
 import com.jonasgerdes.stoppelmap.preparation.util.center
+import com.jonasgerdes.stoppelmap.preparation.util.max
+import com.jonasgerdes.stoppelmap.preparation.util.min
 import com.jonasgerdes.stoppelmap.preparation.util.position
 import com.jonasgerdes.stoppelmap.preperation.asSlug
 import com.jonasgerdes.stoppelmap.preperation.splitBy
@@ -48,17 +51,17 @@ class ParseGeoData(
         val geoJson: FeatureCollection =
             json.decodeFromStream<GeoJson>(input.inputStream()) as FeatureCollection
 
-        val updatedFeatures = geoJson
+        geoJson
             .features
-            .map {
+            .forEach {
                 val feature = it as Feature
                 if (feature.properties.keys.any(typesToProcess::contains)
                     && feature.properties["building"] != "yes"
                 ) {
-                    mapEntities.add(feature.parseMapEntity())
-                    feature
-                } else {
-                    feature
+                    val updated = feature.parseMapEntity()
+                    mapEntities.add(updated)
+                    feature.properties["slug"] = updated.slug
+                    feature.properties["priority"] = updated.priority.toString()
                 }
             }
         Json.encodeToStream(geoJson as GeoJson, output.outputStream())
@@ -74,13 +77,13 @@ class ParseGeoData(
 
         val min = when (geometry) {
             is Point -> geometry.position
-            is Polygon -> geometry.coordinates.flatten().center()
+            is Polygon -> geometry.coordinates.flatten().min()
             else -> throw InvalidGeoJsonFeature(this, "min")
         }
 
         val max = when (geometry) {
             is Point -> geometry.position
-            is Polygon -> geometry.coordinates.flatten().center()
+            is Polygon -> geometry.coordinates.flatten().max()
             else -> throw InvalidGeoJsonFeature(this, "max")
         }
         val type = MapEntityType.fromId(
@@ -144,7 +147,7 @@ class ParseGeoData(
             aliases = properties["alias"]?.splitBy(";", "|") {
                 Alias(string = it[0], locale = it.getOrNull(1))
             } ?: emptyList(),
-            description = mapOf(),
+            description = properties["description"]?.let { mapOf(de to it) },
             center = Location(
                 lat = center.lat,
                 lng = center.lng,
@@ -155,7 +158,7 @@ class ParseGeoData(
                 northLat = max.lat,
                 eastLng = max.lng
             ),
-            priority = properties["priority"]?.toIntOrNull() ?: 100,
+            priority = properties["priority"]?.toIntOrNull() ?: 95,
             tags = listOfNotNull(
                 TagSlugs.forKids.takeIf { properties["forKids"] == "yes" },
                 TagSlugs.wheelchairAccessible.takeIf { properties["accessible"] == "yes" },

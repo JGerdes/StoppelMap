@@ -42,7 +42,7 @@ val rideSubTypes = listOf(
     subType(slug = "top_spin", de = "Top Spin", en = "Top spin"),
     subType(slug = "bumper_cars", de = "Autoscooter", en = "Bumper cars", en to "Dodgems"),
     subType(slug = "twister", de = "Twister", en = "Twister"),
-    subType(slug = "marry_go_round", de = "Karusell", en = "Marry go round"),
+    subType(slug = "merry_go_round", de = "Karusell", en = "Merry go round"),
     subType(slug = "log_flume", de = "Baumstammkanal", en = "Log flume", de to "Wasserbahn"),
     subType(slug = "live_show", de = "Show", en = "Show"),
     subType(slug = "tunnel_of_horror", de = "Geisterbahn", en = "Tunnel of horror"),
@@ -54,7 +54,13 @@ val rideSubTypes = listOf(
     subType(slug = "booster", de = "Booster", en = "Booster"),
     subType(slug = "jump_n_smile", de = "Jump & Smile", en = "Jump & Smile"),
     subType(slug = "escape", de = "Escape", en = "Escape"),
+    subType(slug = "polyp", de = "Polyp", en = "Polyp", de to "Krake", en to "Octopus"),
     subType(slug = "caterpillar", de = "Berg- und Talbahn", en = "Caterpillar", de to "Raupenbahn"),
+    subType(slug = "junior_jets", de = "Baby-Flug", en = "Junior Jets"),
+    subType(slug = "4d_cinema", de = "4D-Kino", en = "4D Cinema"),
+    subType(slug = "junior_bumper_cars", de = "Kinder-Autoscooter", en = "Junior bumper cars"),
+    subType(slug = "kiddie_ride", de = "Kinderschleife", en = "Kiddie ride"),
+    subType(slug = "top_star", de = "Top Star", en = "Top Star"),
 )
 
 val gameSubTypes = listOf(
@@ -75,6 +81,7 @@ val gameSubTypes = listOf(
     subType(slug = "ring_toss", de = "Ringewerfen", en = "Ring toss"),
     subType(slug = "shooting", de = "Schießbude", en = "Shooting gallery", en to "Aunt Sally"),
     subType(slug = "skee_ball", de = "Skee-Ball", en = "Skee-Ball"),
+    subType(slug = "nail", de = "Nagelbalken", en = "Hammer"),
 )
 
 val subTypes = rideSubTypes + gameSubTypes + restroomSubTypes + barSubTypes
