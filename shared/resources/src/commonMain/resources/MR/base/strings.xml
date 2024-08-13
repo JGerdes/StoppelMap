@@ -51,6 +51,12 @@
     <string name="social_media_promo_instagram_title">Du willst auf dem Laufenden bleiben, was StoppelMap und den Stoppelmarkt angeht?</string>
     <string name="social_media_promo_instagram_button">Folge StoppelMap auf Instagram</string>
 
+    <!-- Panama -->
+    <string name="panama_card_title">Fühlst du dich unsicher, unwohl oder bedrängt? \n\nMelde dich beim Thekenpersonal mit der Frage "Wo geht\'s nach Panama?" und dir wird geholfen. \n\nWähle in Notfällen die 110 oder 112!</string>
+    <string name="panama_card_button_url">Erfahre mehr</string>
+    <string name="panama_card_button_police">Polizei anrufen</string>
+    <string name="panama_card_button_medical">Sanitätsdients anrufen</string>
+
     <!-- Feedback -->
     <string name="feedback_card_title">Du hast Feedback oder hast einen Fehler gefunden?</string>
     <string name="feedback_card_button">Schreib uns</string>
@@ -90,7 +96,8 @@
         Vollständigkeit der dargestellten Informationen gegeben und keine Haftung für eventuell
         verursachte Schäden übernommen.
     </string>
-    <string name="settings_open_source">StoppelMap ist Opensource.\nQuelltext verfügbar auf
+
+    <string name="settings_open_source">StoppelMap is open source.\Source code available at
         https://github.com/JGerdes/StoppelMap
     </string>
     <string name="settings_info_title">App-Details</string>

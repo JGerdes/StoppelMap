@@ -54,6 +54,7 @@ import org.koin.androidx.compose.koinViewModel
 fun HomeScreen(
     onSettingsOptionTap: () -> Unit,
     onUrlTap: (String) -> Unit,
+    onCallPhoneNumber: (String) -> Unit,
     onDownloadUpdateTap: (AppUpdateInfo) -> Unit,
     onOpenGooglePlayTap: () -> Unit,
     modifier: Modifier = Modifier,
@@ -166,6 +167,45 @@ fun HomeScreen(
                 HomeViewModel.CountDownWidgetSuggestionState.Hidden -> Unit
                 HomeViewModel.CountDownWidgetSuggestionState.Visible -> item {
                     CountDownWidgetSuggestionCard()
+                }
+            }
+
+            val panamaState = state.panamaState
+            if (panamaState is HomeViewModel.PanamaState.Visible) {
+                item {
+                    Card {
+                        Column(
+                            Modifier
+                                .padding(horizontal = 16.dp)
+                                .padding(top = 16.dp, bottom = 8.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.panama_card_title),
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            Spacer(modifier = Modifier.size(16.dp))
+                            Button(
+                                onClick = { onUrlTap(panamaState.url) },
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            ) {
+                                Text(text = stringResource(R.string.panama_card_button_url))
+                            }
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Button(
+                                onClick = { onCallPhoneNumber(panamaState.policeNumber) },
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            ) {
+                                Text(text = stringResource(R.string.panama_card_button_police))
+                            }
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Button(
+                                onClick = { onCallPhoneNumber(panamaState.medicalNumber) },
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            ) {
+                                Text(text = stringResource(R.string.panama_card_button_medical))
+                            }
+                        }
+                    }
                 }
             }
 

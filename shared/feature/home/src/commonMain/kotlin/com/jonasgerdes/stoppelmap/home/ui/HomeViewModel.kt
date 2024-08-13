@@ -73,6 +73,13 @@ class HomeViewModel(
             url = getFeedbackEmailUrl()
         )
     )
+    private val panamaState = flowOf<PanamaState>(
+        PanamaState.Visible(
+            url = "https://www.stoppelmarkt.de/aktuelles/detail/sicherheit-auf-dem-stoppelmarkt/",
+            policeNumber = "+4944418547800",
+            medicalNumber = "+4944418547770",
+        )
+    )
 
     val state: StateFlow<ViewState> =
         combine(
@@ -82,6 +89,7 @@ class HomeViewModel(
             promotedEventsState,
             instagramPromotionState,
             feedbackState,
+            panamaState,
             ::ViewState
         ).stateIn(
             viewModelScope = viewModelScope,
@@ -98,6 +106,7 @@ class HomeViewModel(
         val promotedEventsState: PromotedEventsState = PromotedEventsState.Loading,
         val instagramPromotionState: InstagramPromotionState = InstagramPromotionState.Visible,
         val feedbackState: FeedbackState = FeedbackState.Hidden,
+        val panamaState: PanamaState = PanamaState.Hidden,
     )
 
     sealed class CountDownWidgetSuggestionState {
@@ -125,5 +134,14 @@ class HomeViewModel(
         data class Visible(
             val url: String,
         ) : FeedbackState
+    }
+
+    sealed interface PanamaState {
+        object Hidden : PanamaState
+        data class Visible(
+            val url: String,
+            val policeNumber: String,
+            val medicalNumber: String,
+        ) : PanamaState
     }
 }

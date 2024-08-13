@@ -192,6 +192,7 @@ class StoppelMapActivity : ComponentActivity() {
                         onSettingsOptionTap = { navController.navigate(Screen.About.route) },
                         onDownloadUpdateTap = { startUpdateDownload(it) },
                         onOpenGooglePlayTap = { openGooglePlayPage() },
+                        onCallPhoneNumber = { dialPhoneNumber(it) },
                         modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)

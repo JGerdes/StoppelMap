@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.data.conversion.database.extensions
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.data.map.Sub_type
 import com.jonasgerdes.stoppelmap.data.schedule.Person
+import com.jonasgerdes.stoppelmap.data.shared.Phone_number
 import com.jonasgerdes.stoppelmap.data.shared.Product
 import com.jonasgerdes.stoppelmap.data.shared.Service
 import com.jonasgerdes.stoppelmap.dto.data.Definitions
@@ -52,6 +53,15 @@ internal fun StoppelMapDatabase.addDefinitions(definitions: Definitions) = with(
             )
         )
         addAliases(service.slug, service.aliases)
+        service.phoneNumbers?.forEach {
+            phone_numberQueries.insert(
+                phone_number = Phone_number(
+                    referenceSlug = service.slug,
+                    number = it.number,
+                    formatted = it.formatted,
+                )
+            )
+        }
     }
 
     persons.forEach {

@@ -55,6 +55,37 @@ struct HomeScreen: View {
                                 .padding(.horizontal)
                             }
                         }
+                        if let panamaState = viewState.panamaState as? HomeViewModelPanamaStateVisible {
+                            VStack {
+                                Text(Res.strings().panama_card_title.desc().localized())
+                                Button {
+                                    if let url = URL(string: panamaState.url) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                } label: {
+                                    Text(Res.strings().panama_card_button_url.desc().localized())
+                                }.buttonStyle(.bordered)
+                                Button {
+                                    if let url = URL(string: "tel:\(panamaState.policeNumber)") {
+                                        UIApplication.shared.open(url   )
+                                    }
+                                } label: {
+                                    Text(Res.strings().panama_card_button_police.desc().localized())
+                                }.buttonStyle(.bordered)
+                                Button {
+                                    if let url = URL(string: "tel:\(panamaState.medicalNumber)") {
+                                        UIApplication.shared.open(url   )
+                                    }
+                                } label: {
+                                    Text(Res.strings().panama_card_button_medical.desc().localized())
+                                }.buttonStyle(.bordered)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(.thinMaterial)
+                            .cornerRadius(24.0)
+                            .padding(.horizontal)
+                        }
                         if let socialState = viewState.instagramPromotionState as? HomeViewModelInstagramPromotionStateVisible {
                             VStack {
                                 Text(Res.strings().social_media_promo_instagram_title.desc().localized())
