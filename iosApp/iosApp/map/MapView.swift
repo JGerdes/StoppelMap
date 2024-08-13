@@ -105,7 +105,8 @@ struct MapView: UIViewRepresentable {
             print("You tapped at: \(tapCoordinate.latitude), \(tapCoordinate.longitude)")
 
             let results = mapView.visibleFeatures(at: tapPoint, styleLayerIdentifiers: [
-                "rides",
+               "labels",
+               "rides",
                "bars",
                "restaurants",
                "restrooms",

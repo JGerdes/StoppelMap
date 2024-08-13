@@ -151,6 +151,7 @@ fun Map(
                 map.addOnMapClickListener { point ->
                     val result = map.queryRenderedFeatures(
                         map.projection.toScreenLocation(point),
+                        "labels",
                         "rides",
                         "bars",
                         "restaurants",
