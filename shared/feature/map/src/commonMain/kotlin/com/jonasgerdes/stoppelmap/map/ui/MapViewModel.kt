@@ -33,7 +33,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import okio.Path
 import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
 
 class MapViewModel(
     private val getMapFilePath: GetMapFilePathUseCase,
@@ -177,27 +176,23 @@ class MapViewModel(
         mapState.update { it.copy(camera = null) }
     }
 
-    private var locationButtonJob: Job? = null
     fun onLocationButtonTap() {
-        locationButtonJob?.cancel()
-        locationButtonJob = viewModelScope.coroutineScope.launch {
-            mapState.value.ownLocation?.let { location ->
-                if (MapDefaults.cameraBounds.contains(location.toLocation())) {
-                    ownLocationState.update { it.copy(isFollowingLocation = true) }
-                    mapState.update {
-                        it.copy(
-                            camera = CameraView.FocusLocation(
-                                location.toLocation()
-                            ),
-                        )
-                    }
-                } else {
-                    ownLocationState.update { it.copy(showNotInAreaHint = true) }
-                    delay(4.seconds)
-                    ownLocationState.update { it.copy(showNotInAreaHint = false) }
+        val currentLocation = mapState.value.ownLocation?.toLocation()
+        ownLocationState.update {
+            when {
+                it.isFollowingLocation || currentLocation == null -> it.copy(isFollowingLocation = false)
+                MapDefaults.cameraBounds.contains(currentLocation) -> {
+                    mapState.update { it.copy(camera = CameraView.FocusLocation(currentLocation)) }
+                    it.copy(isFollowingLocation = true)
                 }
+
+                else -> it.copy(showNotInAreaHint = true)
             }
         }
+    }
+
+    fun onNotInAreaHintShow() {
+        ownLocationState.update { it.copy(showNotInAreaHint = false) }
     }
 
     data class ViewState

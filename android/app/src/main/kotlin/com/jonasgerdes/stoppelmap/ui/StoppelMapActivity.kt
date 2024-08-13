@@ -13,6 +13,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
@@ -210,13 +211,14 @@ class StoppelMapActivity : ComponentActivity() {
                     )
                 }
                 composable(Screen.Map.route) {
-                    MapScreen(
-                        onRequestLocationPermission = ::requestLocationPermission,
-                        scaffoldPadding = scaffoldPadding,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
+                    Box(Modifier.padding(scaffoldPadding)) {
+                        MapScreen(
+                            onRequestLocationPermission = ::requestLocationPermission,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.colorScheme.background)
+                        )
+                    }
                 }
                 composable(Screen.Schedule.route) {
                     ScheduleScreen(

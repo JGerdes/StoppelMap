@@ -40,6 +40,8 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SheetValue
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
@@ -72,7 +74,6 @@ import timber.log.Timber
 @Composable
 fun MapScreen(
     modifier: Modifier = Modifier,
-    scaffoldPadding: PaddingValues,
     onRequestLocationPermission: () -> Unit,
     viewModel: MapViewModel = koinViewModel(),
 ) {
@@ -98,8 +99,10 @@ fun MapScreen(
             is MapViewModel.BottomSheetState.SingleStall -> bottomSheetState.show()
         }
     }
+    val snackbarHostState = remember { SnackbarHostState() }
     val scaffoldState = rememberBottomSheetScaffoldState(
-        bottomSheetState = bottomSheetState
+        bottomSheetState = bottomSheetState,
+        snackbarHostState = snackbarHostState,
     )
     val bottomSheetMainContentHeight = remember { mutableStateOf(BottomSheetDefaults.SheetPeekHeight) }
     val bottomSheetMainContentHeightAnimated = animateDpAsState(targetValue = bottomSheetMainContentHeight.value)
@@ -123,11 +126,19 @@ fun MapScreen(
             viewModel.onBottomSheetClose()
         }
     }
+
+    val notInAreaString = stringResource(id = R.string.map_location_not_in_area)
+    LaunchedEffect(state.locationState.showNotInAreaHint) {
+        if (state.locationState.showNotInAreaHint) {
+            snackbarHostState.showSnackbar(notInAreaString, duration = SnackbarDuration.Long)
+            viewModel.onNotInAreaHintShow()
+        }
+    }
+
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
         sheetContent = {
             SheetContent(
-                modifier = Modifier.padding(scaffoldPadding),
                 onMainContentHeightChange = {
                     bottomSheetMainContentHeight.value = it
                 },
@@ -135,7 +146,6 @@ fun MapScreen(
             )
         },
         sheetPeekHeight = bottomSheetMainContentHeightAnimated.value +
-                scaffoldPadding.calculateBottomPadding() +
                 BottomSheetDefaults.SheetPeekHeight, // account for handle etc
         modifier = modifier,
     ) {
@@ -152,9 +162,7 @@ fun MapScreen(
                     colors = MapTheme().toMapColors(),
                     mapState = state.mapState,
                     padding = mapPadding,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(scaffoldPadding)
+                    modifier = Modifier.fillMaxSize()
                 )
             }
             FloatingActionButton(
@@ -171,7 +179,7 @@ fun MapScreen(
                 },
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(bottom = locationFabBottomPadding.value + scaffoldPadding.calculateBottomPadding())
+                    .padding(bottom = locationFabBottomPadding.value)
                     .padding(16.dp)
             )
 
