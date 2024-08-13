@@ -56,7 +56,9 @@ class SearchMapUseCase(
         return typeAliases.mapNotNull { typeAlias ->
             MapEntityType.entries.firstOrNull { typeAlias.referenceSlug == it.id }?.let { type ->
                 val summaries = mapEntityRepository.getSummaryBySlugs(mapEntityRepository.searchByType(type).toSet())
-                SearchResult(
+
+                if (summaries.isEmpty()) null
+                else SearchResult(
                     term = typeAlias.string,
                     icon = summaries.first().icon,
                     score = 0.6f,
