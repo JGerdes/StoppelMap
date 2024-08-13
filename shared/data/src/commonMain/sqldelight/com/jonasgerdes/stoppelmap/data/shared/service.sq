@@ -15,3 +15,12 @@ VALUES ?;
 
 clear:
 DELETE FROM service;
+
+getAllSlugs: SELECT slug FROM service;
+
+getBySlug:
+SELECT localized_string.string AS name, phone_number.number AS phoneNumber, phone_number.formatted AS formattedNumber
+FROM service
+JOIN localized_string ON service.nameKey = localized_string.key AND locale = "de"
+JOIN phone_number ON service.slug = phone_number.referenceSlug
+WHERE service.slug = :slug;

@@ -16,7 +16,7 @@ class SearchMapUseCase(
             searchByAlias(cleanQuery),
             searchByType(cleanQuery),
             searchBySubType(cleanQuery),
-        ).flatten()
+        ).flatten().sortedBy { it.term }
     }
 
     private suspend fun searchByName(query: String): List<SearchResult> {

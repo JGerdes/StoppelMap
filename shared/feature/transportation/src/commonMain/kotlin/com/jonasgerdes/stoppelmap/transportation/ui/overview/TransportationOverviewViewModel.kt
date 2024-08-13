@@ -21,7 +21,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlin.time.Duration.Companion.seconds
@@ -84,7 +83,7 @@ class TransportationOverviewViewModel(
         combine(
             trainRoutesState,
             busRoutesState,
-            flowOf(TaxiServicesState(taxiServiceRepository.getTaxiServices())),
+            taxiServiceRepository.getTaxiServices().map { TaxiServicesState(it) },
             TransportationOverviewViewModel::ViewState
         )
             .stateIn(

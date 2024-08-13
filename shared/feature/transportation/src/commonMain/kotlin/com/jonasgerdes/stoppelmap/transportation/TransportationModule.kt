@@ -28,7 +28,7 @@ val transportationModule = module {
 
     single { BusRoutesRepository(transportDataSource = get()) }
     single { TrainRoutesRepository(transportDataSource = get()) }
-    single { TaxiServiceRepository() }
+    single { TaxiServiceRepository(serviceQueries = get<StoppelMapDatabase>().serviceQueries) }
 
     single {
         TransportationUserDataRepository(
