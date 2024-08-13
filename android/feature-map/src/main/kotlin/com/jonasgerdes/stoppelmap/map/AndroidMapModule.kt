@@ -13,6 +13,7 @@ import com.jonasgerdes.stoppelmap.map.repository.AndroidPermissionRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.AndroidFusedLocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.FakeLocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryWrapper
+import com.jonasgerdes.stoppelmap.map.ui.MapColorViewModel
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
@@ -71,4 +72,8 @@ val androidMapModule = module {
 
 
     factory { IsLocationInAreaUseCase() }
+
+    viewModel {
+        MapColorViewModel(get())
+    }
 }

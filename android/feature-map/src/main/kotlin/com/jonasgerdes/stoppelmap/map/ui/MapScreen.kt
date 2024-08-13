@@ -64,7 +64,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.components.Map
-import com.jonasgerdes.stoppelmap.map.components.MapTheme
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
@@ -76,8 +75,10 @@ fun MapScreen(
     modifier: Modifier = Modifier,
     onRequestLocationPermission: () -> Unit,
     viewModel: MapViewModel = koinViewModel(),
+    mapColorViewModel: MapColorViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val mapTheme by mapColorViewModel.mapColorState.collectAsStateWithLifecycle()
 
     val bottomSheetState = rememberStandardBottomSheetState(
         initialValue = SheetValue.PartiallyExpanded,
@@ -159,7 +160,7 @@ fun MapScreen(
                         viewModel.onMapTap(it)
                     },
                     mapDataFile = "file://$mapDataPath".also { Timber.d("mapFile: $it") },
-                    colors = MapTheme().toMapColors(),
+                    colors = mapTheme.toMapColors(),
                     mapState = state.mapState,
                     padding = mapPadding,
                     modifier = Modifier.fillMaxSize()
