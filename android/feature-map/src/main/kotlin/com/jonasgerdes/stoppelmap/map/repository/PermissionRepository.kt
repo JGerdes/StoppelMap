@@ -4,16 +4,17 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
+import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
-class PermissionRepository(
+class AndroidPermissionRepository(
     private val context: Context,
-) {
+) : PermissionRepository {
 
     private val locationPermissionGranted = MutableStateFlow(isLocationPermissionGranted())
 
-    fun getLocationPermissionState(): StateFlow<Boolean> =
+    override fun hasLocationPermission(): Flow<Boolean> =
         locationPermissionGranted.also { update() }
 
 

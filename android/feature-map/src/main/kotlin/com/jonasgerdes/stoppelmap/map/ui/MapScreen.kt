@@ -26,10 +26,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
+import androidx.compose.material.icons.rounded.LocationSearching
+import androidx.compose.material.icons.rounded.MyLocation
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
@@ -100,9 +103,16 @@ fun MapScreen(
     )
     val bottomSheetMainContentHeight = remember { mutableStateOf(BottomSheetDefaults.SheetPeekHeight) }
     val bottomSheetMainContentHeightAnimated = animateDpAsState(targetValue = bottomSheetMainContentHeight.value)
+
+    val locationFabBottomPadding = animateDpAsState(
+        targetValue =
+        if (bottomSheetState.targetValue != SheetValue.Hidden) bottomSheetMainContentHeight.value + BottomSheetDefaults.SheetPeekHeight
+        else 0.dp
+    )
+
     val mapPadding = PaddingValues(
-        start = 64.dp,
-        end = 64.dp,
+        start = 32.dp,
+        end = 32.dp,
         top = 56.dp /* = DockedHeaderContainerHeight*/ + 32.dp + WindowInsets.statusBars.asPaddingValues()
             .calculateTopPadding(),
         bottom = bottomSheetMainContentHeight.value + 32.dp
@@ -147,6 +157,24 @@ fun MapScreen(
                         .padding(scaffoldPadding)
                 )
             }
+            FloatingActionButton(
+                onClick = {
+                    if (state.locationState.hasPermission) viewModel.onLocationButtonTap()
+                    else onRequestLocationPermission()
+                },
+                content = {
+                    Icon(
+                        if (state.locationState.isFollowingLocation) Icons.Rounded.MyLocation
+                        else Icons.Rounded.LocationSearching,
+                        contentDescription = stringResource(id = R.string.map_location_button_contentDescription),
+                    )
+                },
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(bottom = locationFabBottomPadding.value + scaffoldPadding.calculateBottomPadding())
+                    .padding(16.dp)
+            )
+
             val searchQuery = rememberSaveable { mutableStateOf("") }
             val searchIsActive = rememberSaveable { mutableStateOf(false) }
             AnimatedVisibility(visible = searchIsActive.value, enter = fadeIn(), exit = fadeOut()) {

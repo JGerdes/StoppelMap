@@ -114,6 +114,7 @@
 
     <!-- Map -->
     <string name="map_search_placeholder">Suche nach Ständen, Fahrgeschäften, Zelten…</string>
+    <string name="map_location_button_contentDescription">Lokalisiere mich</string>
 
     <!-- Schedule -->
     <string name="schedule_topbar_title">Programm</string>

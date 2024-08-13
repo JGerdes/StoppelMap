@@ -38,6 +38,7 @@ import com.google.gson.JsonObject
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.model.BoundingBox
 import com.jonasgerdes.stoppelmap.map.model.Location
+import com.jonasgerdes.stoppelmap.map.repository.location.toAndroidLocation
 import com.jonasgerdes.stoppelmap.map.ui.CameraView
 import com.jonasgerdes.stoppelmap.map.ui.MapColors
 import com.jonasgerdes.stoppelmap.map.ui.MapDefaults
@@ -53,7 +54,7 @@ import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.geometry.LatLngBounds
 import org.maplibre.android.location.LocationComponentActivationOptions
 import org.maplibre.android.location.LocationComponentOptions
-import org.maplibre.android.location.engine.LocationEngineRequest
+import org.maplibre.android.maps.MapLibreMap.OnCameraMoveStartedListener.REASON_API_GESTURE
 import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.layers.BackgroundLayer
@@ -99,7 +100,6 @@ fun Map(
             /* bottom = */ padding.calculateBottomPadding().roundToPx()
         )
     }
-    Timber.d("padding: $padding -> $mapPadding")
     var isCameraMoving by remember { mutableStateOf(false) }
     var cameraPosition by rememberSaveable {
         mutableStateOf(
@@ -133,9 +133,9 @@ fun Map(
                     isCameraMoving = false
                     cameraPosition = map.cameraPosition
                 }
-                map.addOnCameraMoveStartedListener {
+                map.addOnCameraMoveStartedListener { reason ->
                     isCameraMoving = true
-                    onCameraMoved()
+                    if (reason == REASON_API_GESTURE) onCameraMoved()
                 }
                 map.setStyle(Style.Builder()
                     .fromUri("asset://${Res.assets.map.style.path}")
@@ -171,20 +171,11 @@ fun Map(
         }
     }
 
-    val zoomPadding = remember(density) { with(density) { 64.dp.roundToPx() } }
-    // Map flashes white for some frames, work around that by fading it in after some time
-    /*val mapAlpha = remember { Animatable(0f) }
-    LaunchedEffect(Unit) {
-        delay(100)
-        mapAlpha.animateTo(1f, tween(durationMillis = 300, easing = LinearEasing))
-    }*/
-
     LaunchedEffect(Unit) {
         mapView.getMapAsync {
             it.cameraPosition = cameraPosition
         }
     }
-
 
     AndroidView(factory = { mapView }, modifier = modifier) {
         it.getMapAsync { map ->
@@ -218,7 +209,7 @@ fun Map(
                         is CameraView.Bounding -> {
                             map.animateCamera(
                                 CameraUpdateFactory.newLatLngBounds(
-                                    camera.bounds.toLatLngBounds().also { Timber.d("bounds: $it") },
+                                    camera.bounds.toLatLngBounds(),
                                     mapPadding.left,
                                     mapPadding.top,
                                     mapPadding.right,
@@ -230,8 +221,7 @@ fun Map(
                     }
                 }
 
-                Timber.d("locationPermissionState.status.isGranted: ${locationPermissionState.status.isGranted}")
-                if (locationPermissionState.status.isGranted) {
+                if (locationPermissionState.status.isGranted && !map.locationComponent.isLocationComponentActivated) {
                     map.getStyle { style ->
                         map.locationComponent.activateLocationComponent(
                             LocationComponentActivationOptions.builder(
@@ -243,16 +233,14 @@ fun Map(
                                         .pulseEnabled(true)
                                         .build()
                                 )
-                                .locationEngineRequest(
-                                    LocationEngineRequest.Builder(10_000)
-                                        .setDisplacement(50f)
-                                        .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
-                                        .build()
-                                )
+                                .useDefaultLocationEngine(false)
                                 .build()
                         )
                         map.locationComponent.isLocationComponentEnabled = true
                     }
+                }
+                if (map.locationComponent.isLocationComponentActivated) {
+                    map.locationComponent.forceLocationUpdate(mapState.ownLocation?.toAndroidLocation())
                 }
 
                 getStyle { style ->

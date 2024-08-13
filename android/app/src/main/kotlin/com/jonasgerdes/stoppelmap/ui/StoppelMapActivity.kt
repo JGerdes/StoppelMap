@@ -51,7 +51,7 @@ import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
-import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
+import com.jonasgerdes.stoppelmap.map.repository.AndroidPermissionRepository
 import com.jonasgerdes.stoppelmap.map.ui.MapScreen
 import com.jonasgerdes.stoppelmap.navigation.Screen
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
@@ -76,7 +76,7 @@ import org.koin.android.ext.android.inject
 
 class StoppelMapActivity : ComponentActivity() {
 
-    private val permissionRepository: PermissionRepository by inject()
+    private val permissionRepository: AndroidPermissionRepository by inject()
     private val appUpdateManager: AppUpdateManager by inject()
     private val getSettings: GetSettingsUseCase by inject()
     private val getUnreadNewsCount: GetUnreadNewsCountUseCase by inject()

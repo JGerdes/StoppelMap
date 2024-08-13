@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.map.repository.location
 
-import android.location.Location
-import com.google.android.gms.location.LocationRequest
+import com.jonasgerdes.stoppelmap.map.location.LocationRepository
+import com.jonasgerdes.stoppelmap.map.model.SensorLocation
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
 import kotlinx.coroutines.CoroutineScope
@@ -30,16 +30,15 @@ class LocationRepositoryWrapper(
             .launchIn(scope)
     }
 
-    override suspend fun getLastKnownLocation(): Location? {
+    override suspend fun getLastKnownLocation(): SensorLocation? {
         Timber.d("getLastKnownLocation() with $currentRepository")
         return currentRepository.getLastKnownLocation()
     }
 
-    override fun getLocationUpdates(locationRequest: LocationRequest): Flow<Location> {
+    override fun getLocationUpdates(): Flow<SensorLocation> {
         Timber.d("getLocationUpdates() with $currentRepository")
         return settingRepository.getSettings().flatMapLatest {
-            locationRepoMap.getOrDefault(it.locationOverride, default)
-                .getLocationUpdates(locationRequest)
+            locationRepoMap.getOrDefault(it.locationOverride, default).getLocationUpdates()
         }
     }
 

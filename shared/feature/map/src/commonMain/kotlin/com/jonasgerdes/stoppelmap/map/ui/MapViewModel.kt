@@ -1,38 +1,75 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package com.jonasgerdes.stoppelmap.map.ui
 
 import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
+import com.jonasgerdes.stoppelmap.map.location.LocationRepository
+import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import com.jonasgerdes.stoppelmap.map.model.StallPromotion
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
+import com.jonasgerdes.stoppelmap.map.model.contains
 import com.jonasgerdes.stoppelmap.map.model.reduceBoundingBox
+import com.jonasgerdes.stoppelmap.map.model.toLocation
 import com.jonasgerdes.stoppelmap.map.usecase.GetMapFilePathUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchMapUseCase
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmm.viewmodel.stateIn
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import okio.Path
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 class MapViewModel(
     private val getMapFilePath: GetMapFilePathUseCase,
     private val searchMap: SearchMapUseCase,
     private val mapEntityRepository: MapEntityRepository,
+    private val locationRepository: LocationRepository,
+    private val permissionRepository: PermissionRepository,
 ) : KMMViewModel() {
 
     private var searchJob: Job? = null
     private val searchState = MutableStateFlow(SearchState())
     private val bottomSheetState = MutableStateFlow<BottomSheetState>(BottomSheetState.Hidden)
     private val mapState = MutableStateFlow(MapState())
+    private val ownLocationState = MutableStateFlow(OwnLocationState())
+
+    init {
+        permissionRepository.hasLocationPermission()
+            .flatMapLatest { hasPermission ->
+                ownLocationState.update { it.copy(hasPermission = hasPermission) }
+                if (hasPermission) {
+                    locationRepository.getLocationUpdates()
+                } else {
+                    flowOf()
+                }
+            }
+            .onEach { location ->
+                mapState.update { currentState ->
+                    if (ownLocationState.value.isFollowingLocation && MapDefaults.cameraBounds.contains(location.toLocation())) {
+                        currentState.copy(camera = CameraView.FocusLocation(location.toLocation()))
+                    } else {
+                        currentState
+                    }.copy(ownLocation = location)
+                }
+            }
+            .launchIn(viewModelScope.coroutineScope)
+    }
 
     val state: StateFlow<ViewState> =
         combine(
@@ -40,6 +77,7 @@ class MapViewModel(
             searchState,
             bottomSheetState,
             mapState,
+            ownLocationState,
             ::ViewState
         )
             .stateIn(
@@ -132,11 +170,34 @@ class MapViewModel(
     }
 
     fun onCameraMoved() {
-
+        ownLocationState.update { it.copy(isFollowingLocation = false) }
     }
 
     fun onCameraUpdateDispatched() {
         mapState.update { it.copy(camera = null) }
+    }
+
+    private var locationButtonJob: Job? = null
+    fun onLocationButtonTap() {
+        locationButtonJob?.cancel()
+        locationButtonJob = viewModelScope.coroutineScope.launch {
+            mapState.value.ownLocation?.let { location ->
+                if (MapDefaults.cameraBounds.contains(location.toLocation())) {
+                    ownLocationState.update { it.copy(isFollowingLocation = true) }
+                    mapState.update {
+                        it.copy(
+                            camera = CameraView.FocusLocation(
+                                location.toLocation()
+                            ),
+                        )
+                    }
+                } else {
+                    ownLocationState.update { it.copy(showNotInAreaHint = true) }
+                    delay(4.seconds)
+                    ownLocationState.update { it.copy(showNotInAreaHint = false) }
+                }
+            }
+        }
     }
 
     data class ViewState
@@ -145,7 +206,8 @@ class MapViewModel(
         val mapDataPath: Path? = null,
         val searchState: SearchState = SearchState(),
         val bottomSheetState: BottomSheetState = BottomSheetState.Hidden,
-        val mapState: MapState = MapState()
+        val mapState: MapState = MapState(),
+        val locationState: OwnLocationState = OwnLocationState()
     )
 
     data class SearchState(
@@ -168,4 +230,10 @@ class MapViewModel(
             fun subline() = "${stalls.size} mal auf dem Stoppelmarkt" //TODO: localize
         }
     }
+
+    data class OwnLocationState(
+        val hasPermission: Boolean = false,
+        val showNotInAreaHint: Boolean = false,
+        val isFollowingLocation: Boolean = false,
+    )
 }

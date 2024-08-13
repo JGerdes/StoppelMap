@@ -1,7 +1,8 @@
 package com.jonasgerdes.stoppelmap.map.repository.location
 
 import android.location.Location
-import com.google.android.gms.location.LocationRequest
+import com.jonasgerdes.stoppelmap.map.location.LocationRepository
+import com.jonasgerdes.stoppelmap.map.model.SensorLocation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,23 +16,23 @@ class FakeLocationRepository(
     private val duration: Duration = 1.toDuration(DurationUnit.MINUTES),
 ) : LocationRepository {
     private var lastKnownLocation: Location = startLocation
-    override suspend fun getLastKnownLocation(): Location? = lastKnownLocation
+    override suspend fun getLastKnownLocation(): SensorLocation = lastKnownLocation.toLocation()
 
     private val stepDuration = 5.toDuration(DurationUnit.SECONDS)
 
-    override fun getLocationUpdates(locationRequest: LocationRequest): Flow<Location> = flow {
-        emit(startLocation)
+    override fun getLocationUpdates(): Flow<SensorLocation> = flow {
+        emit(startLocation.toLocation())
         lastKnownLocation = startLocation
         if (endLocation != null) {
             val steps = (duration / stepDuration).toInt()
             for (i in 0 until steps) {
                 delay(stepDuration)
                 val newLocation = lerp(startLocation, endLocation, i / steps.toFloat())
-                emit(newLocation)
+                emit(newLocation.toLocation())
                 lastKnownLocation = newLocation
             }
             delay(stepDuration)
-            emit(endLocation)
+            emit(endLocation.toLocation())
             lastKnownLocation = endLocation
         }
     }

@@ -21,3 +21,11 @@ inline fun <T> Collection<T>.reduceBoundingBox(accessor: T.() -> BoundingBox) = 
     northLat = maxBy { it.accessor().northLat }.accessor().northLat,
     eastLng = maxBy { it.accessor().eastLng }.accessor().eastLng
 )
+
+fun BoundingBox.contains(location: Location): Boolean {
+    if (location.lat < southLat) return false
+    if (location.lng < westLng) return false
+    if (location.lat > northLat) return false
+    if (location.lng > eastLng) return false
+    return true
+}

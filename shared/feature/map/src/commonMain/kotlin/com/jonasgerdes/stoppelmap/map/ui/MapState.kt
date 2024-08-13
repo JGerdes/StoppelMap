@@ -3,11 +3,13 @@ package com.jonasgerdes.stoppelmap.map.ui
 import com.jonasgerdes.stoppelmap.map.model.BoundingBox
 import com.jonasgerdes.stoppelmap.map.model.Location
 import com.jonasgerdes.stoppelmap.map.model.MapIcon
+import com.jonasgerdes.stoppelmap.map.model.SensorLocation
 
 data class MapState(
     val camera: CameraView? = initialCamera,
     val cameraMovementSource: CameraMovementSource = CameraMovementSource.Computed,
-    val highlightedEntities: List<HighlightedEntity>? = null
+    val highlightedEntities: List<HighlightedEntity>? = null,
+    val ownLocation: SensorLocation? = null
 ) {
 
     enum class CameraMovementSource {

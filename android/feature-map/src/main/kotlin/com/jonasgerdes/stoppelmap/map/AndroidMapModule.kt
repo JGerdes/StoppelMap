@@ -7,10 +7,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.google.android.gms.location.LocationServices
-import com.jonasgerdes.stoppelmap.map.repository.PermissionRepository
+import com.jonasgerdes.stoppelmap.map.location.LocationRepository
+import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
+import com.jonasgerdes.stoppelmap.map.repository.AndroidPermissionRepository
+import com.jonasgerdes.stoppelmap.map.repository.location.AndroidFusedLocationRepository
 import com.jonasgerdes.stoppelmap.map.repository.location.FakeLocationRepository
-import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepository
-import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryImpl
 import com.jonasgerdes.stoppelmap.map.repository.location.LocationRepositoryWrapper
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
@@ -27,18 +28,20 @@ val androidMapModule = module {
             getMapFilePath = get(),
             searchMap = get(),
             mapEntityRepository = get(),
+            permissionRepository = get(),
+            locationRepository = get(),
         )
     }
 
-    single { PermissionRepository(context = get()) }
+    single { AndroidPermissionRepository(context = get()) }
+    single<PermissionRepository> { get<AndroidPermissionRepository>() }
 
     single { LocationServices.getFusedLocationProviderClient(get<Context>()) }
     single<LocationRepository> {
         LocationRepositoryWrapper(
             locationRepoMap = mapOf(
-                LocationOverride.None to LocationRepositoryImpl(
-                    fusedLocationProviderClient = get(),
-                    permissionRepository = get()
+                LocationOverride.None to AndroidFusedLocationRepository(
+                    fusedLocationProviderClient = get()
                 ),
                 LocationOverride.Amtmannsbult to FakeLocationRepository(
                     Location("FakeProvider").apply {

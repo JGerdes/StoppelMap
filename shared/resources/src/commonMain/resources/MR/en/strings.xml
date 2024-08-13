@@ -113,6 +113,7 @@
 
     <!-- Map -->
     <string name="map_search_placeholder">Search for Stalls, Rides, Locations…</string>
+    <string name="map_location_button_contentDescription">Locate me</string>
 
     <!-- Schedule -->
     <string name="schedule_topbar_title">Schedule</string>
