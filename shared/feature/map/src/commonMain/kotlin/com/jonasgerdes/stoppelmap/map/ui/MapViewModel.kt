@@ -2,12 +2,16 @@
 
 package com.jonasgerdes.stoppelmap.map.ui
 
+import co.touchlab.kermit.Logger
 import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
+import com.jonasgerdes.stoppelmap.map.model.PermissionState
+import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
+import com.jonasgerdes.stoppelmap.map.model.SensorLocation
 import com.jonasgerdes.stoppelmap.map.model.StallPromotion
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
 import com.jonasgerdes.stoppelmap.map.model.contains
@@ -48,17 +52,25 @@ class MapViewModel(
     private val mapState = MutableStateFlow(MapState())
     private val ownLocationState = MutableStateFlow(OwnLocationState())
 
+    private var switchToFollowOwnLocationPending = false
+
     init {
-        permissionRepository.hasLocationPermission()
-            .flatMapLatest { hasPermission ->
-                ownLocationState.update { it.copy(hasPermission = hasPermission) }
-                if (hasPermission) {
+        Logger.d { "🗺️ MapViewModel init" }
+        permissionRepository.getLocationPermissionState()
+            .flatMapLatest { permissionState ->
+                ownLocationState.update { it.copy(permissionState = permissionState) }
+                Logger.d { "🛡️Permission State: $permissionState" }
+                if (permissionState == Granted) {
                     locationRepository.getLocationUpdates()
                 } else {
                     flowOf()
                 }
             }
             .onEach { location ->
+                Logger.d { "📍Location: $location" }
+                if (switchToFollowOwnLocationPending) {
+                    centerOnOwnLocation(location)
+                }
                 mapState.update { currentState ->
                     if (ownLocationState.value.isFollowingLocation && MapDefaults.cameraBounds.contains(location.toLocation())) {
                         currentState.copy(camera = CameraView.FocusLocation(location.toLocation()))
@@ -123,6 +135,11 @@ class MapViewModel(
         clearSelectedEntity()
     }
 
+    fun requestLocationPermission() {
+        permissionRepository.requestLocationPermission()
+        switchToFollowOwnLocationPending = true
+    }
+
     private fun clearSelectedEntity() {
         mapState.update { it.copy(highlightedEntities = null) }
         bottomSheetState.update { BottomSheetState.Hidden }
@@ -169,6 +186,7 @@ class MapViewModel(
     }
 
     fun onCameraMoved() {
+        switchToFollowOwnLocationPending = false
         ownLocationState.update { it.copy(isFollowingLocation = false) }
     }
 
@@ -177,7 +195,12 @@ class MapViewModel(
     }
 
     fun onLocationButtonTap() {
-        val currentLocation = mapState.value.ownLocation?.toLocation()
+        centerOnOwnLocation(mapState.value.ownLocation)
+    }
+
+    private fun centerOnOwnLocation(location: SensorLocation?) {
+        val currentLocation = location?.toLocation()
+        switchToFollowOwnLocationPending = false
         ownLocationState.update {
             when {
                 it.isFollowingLocation || currentLocation == null -> it.copy(isFollowingLocation = false)
@@ -227,7 +250,7 @@ class MapViewModel(
     }
 
     data class OwnLocationState(
-        val hasPermission: Boolean = false,
+        val permissionState: PermissionState = PermissionState.NotDetermined,
         val showNotInAreaHint: Boolean = false,
         val isFollowingLocation: Boolean = false,
     )

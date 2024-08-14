@@ -10,6 +10,11 @@ import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
+import com.jonasgerdes.stoppelmap.map.location.IosLocationRepository
+import com.jonasgerdes.stoppelmap.map.location.IosPermissionRepository
+import com.jonasgerdes.stoppelmap.map.location.LocationAndPermissionDependencies.locationAndPermissionService
+import com.jonasgerdes.stoppelmap.map.location.LocationRepository
+import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
 import kotlinx.cinterop.ExperimentalForeignApi
 import okio.Path.Companion.toPath
 import org.koin.dsl.module
@@ -91,4 +96,7 @@ val appModule = module {
             }
         )
     }
+
+    single<LocationRepository> { IosLocationRepository(locationAndPermissionService = locationAndPermissionService) }
+    single<PermissionRepository> { IosPermissionRepository(locationAndPermissionService = locationAndPermissionService) }
 }

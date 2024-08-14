@@ -1,8 +1,11 @@
 package com.jonasgerdes.stoppelmap.map.location
 
+import com.jonasgerdes.stoppelmap.map.model.PermissionState
 import kotlinx.coroutines.flow.Flow
 
 interface PermissionRepository {
 
-    fun hasLocationPermission(): Flow<Boolean>
+    fun getLocationPermissionState(): Flow<PermissionState>
+
+    fun requestLocationPermission() = Unit
 }

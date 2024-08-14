@@ -800,6 +800,8 @@
 				INFOPLIST_FILE = "StoppelMap-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = StoppelMap;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = "Die genaue Position ermöglicht StoppelMap, exakt anzuzeigen, wo du dich auf dem Markgelände befindest.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "StoppelMap greift während der Verwendung auf deine Position zu, um deinen Standort auf der Karte anzuzeigen, damit du dich besser orientieren kannst. Die Position wird nur auf deinem Gerät verarbeitet.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -840,6 +842,8 @@
 				INFOPLIST_FILE = "StoppelMap-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = StoppelMap;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationTemporaryUsageDescriptionDictionary = "Die genaue Position ermöglicht StoppelMap, exakt anzuzeigen, wo du dich auf dem Markgelände befindest.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "StoppelMap greift während der Verwendung auf deine Position zu, um deinen Standort auf der Karte anzuzeigen, damit du dich besser orientieren kannst. Die Position wird nur auf deinem Gerät verarbeitet.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

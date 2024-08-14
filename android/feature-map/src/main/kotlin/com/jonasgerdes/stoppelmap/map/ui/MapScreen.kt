@@ -65,6 +65,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.components.Map
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
+import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 
@@ -168,8 +169,11 @@ fun MapScreen(
             }
             FloatingActionButton(
                 onClick = {
-                    if (state.locationState.hasPermission) viewModel.onLocationButtonTap()
-                    else onRequestLocationPermission()
+                    if (state.locationState.permissionState == Granted) viewModel.onLocationButtonTap()
+                    else {
+                        viewModel.requestLocationPermission()
+                        onRequestLocationPermission()
+                    }
                 },
                 content = {
                     Icon(

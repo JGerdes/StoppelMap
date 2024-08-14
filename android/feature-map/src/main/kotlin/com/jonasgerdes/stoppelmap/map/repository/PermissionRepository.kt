@@ -5,8 +5,12 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
+import com.jonasgerdes.stoppelmap.map.model.PermissionState
+import com.jonasgerdes.stoppelmap.map.model.PermissionState.Denied
+import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.map
 
 class AndroidPermissionRepository(
     private val context: Context,
@@ -14,8 +18,8 @@ class AndroidPermissionRepository(
 
     private val locationPermissionGranted = MutableStateFlow(isLocationPermissionGranted())
 
-    override fun hasLocationPermission(): Flow<Boolean> =
-        locationPermissionGranted.also { update() }
+    override fun getLocationPermissionState(): Flow<PermissionState> =
+        locationPermissionGranted.also { update() }.map { it.toPermissionState() }
 
 
     fun update() {
@@ -30,4 +34,7 @@ class AndroidPermissionRepository(
             context,
             Manifest.permission.ACCESS_COARSE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
+
+
+    private fun Boolean.toPermissionState() = if (this) Granted else Denied
 }

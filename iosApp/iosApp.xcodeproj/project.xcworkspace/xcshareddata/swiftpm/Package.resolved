@@ -1,0 +1,24 @@
+{
+  "originHash" : "773eac60c32fbe3c96bcb1592a9955b26674167d1a25b1e507898b7b340dba7f",
+  "pins" : [
+    {
+      "identity" : "lottie-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-spm.git",
+      "state" : {
+        "revision" : "1d29eccc24cc8b75bff9f6804155112c0ffc9605",
+        "version" : "4.4.3"
+      }
+    },
+    {
+      "identity" : "maplibre-gl-native-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maplibre/maplibre-gl-native-distribution",
+      "state" : {
+        "revision" : "92505cfbad5c5ed6a93e0f3cd70872aaa98a12ac",
+        "version" : "6.2.0"
+      }
+    }
+  ],
+  "version" : 3
+}

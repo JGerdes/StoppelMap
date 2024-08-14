@@ -11,6 +11,8 @@ struct MapView: UIViewRepresentable {
     var colorScheme: ColorScheme
     var onMapTap: (String?) -> ()
     var onCameraDispatched: () -> ()
+    var onCameraMoved: () -> ()
+    var permissionState: PermissionState
     
     func makeUIView(context: Context) -> MLNMapView {
         
@@ -23,6 +25,7 @@ struct MapView: UIViewRepresentable {
         mapView.allowsTilting = false
         mapView.minimumZoomLevel = MapDefaults.shared.minZoom
         mapView.maximumZoomLevel = MapDefaults.shared.maxZoom
+        mapView.compassViewMargins = CGPoint(x: 15, y: 64)
         mapView.visibleCoordinateBounds = MLNCoordinateBounds(
             sw: CLLocationCoordinate2D(
                     latitude: MapDefaults.shared.cameraBounds.southLat,
@@ -51,6 +54,7 @@ struct MapView: UIViewRepresentable {
             singleTap.require(toFail: recognizer)
         }
         mapView.addGestureRecognizer(singleTap)
+
     
         
         mapView.setZoomLevel(16.2, animated: false)
@@ -61,7 +65,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: MLNMapView, context: Context) {
-        context.coordinator.update(colorScheme: colorScheme, mapState: mapState)
+        context.coordinator.update(colorScheme: colorScheme, mapState: mapState, permissionState: permissionState)
     }
     
     func makeCoordinator() -> MapView.Coordinator {
@@ -76,11 +80,23 @@ struct MapView: UIViewRepresentable {
             self.control = control
         }
         
-        func update(colorScheme: ColorScheme, mapState: MapState) {
+        func update(colorScheme: ColorScheme, mapState: MapState, permissionState: PermissionState) {
             mapView?.updateLayerColors(colorScheme: colorScheme)
             mapView?.updateWithState(mapState: mapState, onCameraDispatched: control.onCameraDispatched)
+            
+            if(permissionState == PermissionState.granted) {
+                if let mapView = mapView {
+                    mapView.showsUserLocation = true
+                    mapView.userTrackingMode = .none
+                    if let location = mapState.ownLocation {
+                        mapView.locationManager.delegate?.locationManager(mapView.locationManager, didUpdate: [CLLocation(latitude: location.latitude, longitude: location.longitude)])
+                    }
+                }
+            } else {
+                mapView?.showsUserLocation = true
+            }
+            
         }
-        
         func mapViewDidFinishLoadingMap(_ mapView: MLNMapView) {
             self.mapView = mapView
             let mapUrl = URL(string: "file://" + self.control.mapDataPath.description())!
@@ -121,6 +137,14 @@ struct MapView: UIViewRepresentable {
             let slug = results.first?.attributes["slug"] as? String
             control.onMapTap(slug)
         
+        }
+        
+        
+        func mapView(_ mapView: MLNMapView, regionWillChangeWith reason: MLNCameraChangeReason, animated: Bool) {
+            print("mapViewRegionWillChangeWithReason: ")
+            if(reason != .programmatic) {
+                control.onCameraMoved()
+            }
         }
     }
 }

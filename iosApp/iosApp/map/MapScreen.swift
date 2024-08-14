@@ -8,7 +8,9 @@ struct MapScreen: View {
         MapViewModel(
             getMapFilePath: $0.getMapFilePathUseCase,
             searchMap: $0.searchMapUseCase,
-            mapEntityRepository: $0.mapEntityRepository
+            mapEntityRepository: $0.mapEntityRepository,
+            locationRepository: $0.locationRepository,
+            permissionRepository: $0.permissionRepository
         )
     }
     
@@ -31,13 +33,15 @@ struct MapScreen: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
+            ZStack(alignment: .topTrailing) {
                 if let mapDataPath = viewState.mapDataPath {
                     MapView(mapDataPath: mapDataPath,
                             mapState: viewState.mapState,
                             colorScheme: colorScheme,
                             onMapTap: {viewModel.onMapTap(entitySlug: $0)},
-                            onCameraDispatched: {viewModel.onCameraUpdateDispatched()}
+                            onCameraDispatched: {viewModel.onCameraUpdateDispatched()},
+                            onCameraMoved: {viewModel.onCameraMoved()},
+                            permissionState: viewState.locationState.permissionState
                     )
                     .ignoresSafeArea()
                 }
@@ -71,6 +75,40 @@ struct MapScreen: View {
                     }
                     .scrollContentBackground(.hidden)
                     .background(.ultraThinMaterial)
+                }
+                
+                Button(action: {
+                    if(viewState.locationState.permissionState == PermissionState.notDetermined) {
+                        viewModel.requestLocationPermission()
+                    } else {
+                        viewModel.onLocationButtonTap()
+                    }
+                }, label: {
+                    ZStack {
+                        Image(systemName: viewState.locationState.isFollowingLocation ? "location.fill" : "location")
+                    }
+                    .foregroundColor(viewState.locationState.isFollowingLocation ? .accent : .primary)
+                    .frame(width: 40, height: 40)
+                    .background(.thickMaterial)
+                    .cornerRadius(8.0)
+                    .shadow(radius: 8.0)
+                })
+                .padding()
+                
+                if(viewState.locationState.showNotInAreaHint) {
+                    HStack {
+                        Text(Res.strings().map_location_not_in_area.desc().localized())
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.regularMaterial)
+                    .cornerRadius(8.0)
+                    .padding()
+                    .environment(\.colorScheme, (colorScheme == .dark) ? .light : .dark)
+                    .task {
+                        try? await Task.sleep(nanoseconds: 4_000_000_000)
+                        viewModel.onNotInAreaHintShow()
+                    }
                 }
                 
             }.apply{
