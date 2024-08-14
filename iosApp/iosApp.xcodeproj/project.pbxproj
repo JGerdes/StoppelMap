@@ -602,7 +602,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 240813065;
+				CURRENT_PROJECT_VERSION = 240814531;
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -615,7 +615,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "24.8.13065";
+				MARKETING_VERSION = "24.8.14531";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -636,7 +636,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 240813065;
+				CURRENT_PROJECT_VERSION = 240814531;
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -649,7 +649,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "24.8.13065";
+				MARKETING_VERSION = "24.8.14531";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -790,7 +790,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 240813065;
+				CURRENT_PROJECT_VERSION = 240814531;
 				DEVELOPMENT_ASSET_PATHS = "iosApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				ENABLE_PREVIEWS = YES;
@@ -811,7 +811,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "24.8.13065";
+				MARKETING_VERSION = "24.8.14531";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -832,7 +832,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 240813065;
+				CURRENT_PROJECT_VERSION = 240814531;
 				DEVELOPMENT_ASSET_PATHS = "iosApp/Preview\\ Content";
 				DEVELOPMENT_TEAM = 34ATLT5LH3;
 				ENABLE_PREVIEWS = YES;
@@ -853,7 +853,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "24.8.13065";
+				MARKETING_VERSION = "24.8.14531";
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
