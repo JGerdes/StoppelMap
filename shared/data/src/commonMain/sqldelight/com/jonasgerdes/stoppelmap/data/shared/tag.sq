@@ -15,3 +15,13 @@ VALUES (?, ?, ?);
 
 clear:
 DELETE FROM tag;
+
+searchByAlias:
+SELECT tag.slug, alias.string AS alias FROM tag
+JOIN alias ON tag.slug = alias.referenceSlug AND alias.locale = "de"
+AND alias.string LIKE ( '%' || :name || '%');
+
+searchByName:
+SELECT tag.slug, localized_string.string AS name FROM tag
+JOIN localized_string ON tag.nameKey = localized_string.key AND localized_string.locale = "de"
+AND localized_string.string LIKE ( '%' || :name || '%');

@@ -16,4 +16,7 @@ enum class MapIcon(val id: String) {
     Station("station"),
     Platform("platform"),
     Taxi("taxi"),
+    Kids("kids"),
+    Wheelchair("wheelchair"),
+    Plant("plant")
 }

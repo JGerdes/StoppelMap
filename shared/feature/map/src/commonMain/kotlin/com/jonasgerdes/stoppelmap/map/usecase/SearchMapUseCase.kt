@@ -4,6 +4,7 @@ import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.data.OfferRepository
 import com.jonasgerdes.stoppelmap.map.data.SubTypeRepository
+import com.jonasgerdes.stoppelmap.map.data.TagRepository
 import com.jonasgerdes.stoppelmap.map.model.MapIcon
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 import kotlin.math.max
@@ -12,6 +13,7 @@ class SearchMapUseCase(
     val mapEntityRepository: MapEntityRepository,
     val subTypeRepository: SubTypeRepository,
     val offerRepository: OfferRepository,
+    val tagRepository: TagRepository,
 ) {
     suspend operator fun invoke(query: String): List<SearchResult> {
         val cleanQuery = query.trim().lowercase()
@@ -21,6 +23,7 @@ class SearchMapUseCase(
             searchByType(cleanQuery),
             searchBySubType(cleanQuery),
             searchByProduct(cleanQuery),
+            searchByTag(cleanQuery),
         )
             .flatten()
             .distinctBy { it.term + it.resultEntities.joinToString { it.slug } }
@@ -135,6 +138,35 @@ class SearchMapUseCase(
                             else -> summaries.groupingBy { it.icon }.eachCount().entries.minByOrNull { it.value }?.key
                         },
                         score = calculateScore(0.2f, query = query, term = product.name),
+                        resultEntities = summaries,
+                        type = SearchResult.Type.Collection
+                    )
+                }
+        }
+    }
+
+    private suspend fun searchByTag(query: String): List<SearchResult> {
+        val tags = tagRepository.search(query)
+        val mapEntitiesTags = mapEntityRepository.getByTag(tags.map { it.slug }.toSet())
+        val mapEntityByTag = mapEntitiesTags.groupBy { it.tagSlug }
+        val summaries = mapEntityRepository
+            .getSummaryBySlugs(mapEntitiesTags.map { it.mapEntitySlug }.toSet())
+            .associateBy { it.slug }
+
+        return tags.mapNotNull { tag ->
+            mapEntityByTag[tag.slug]
+                ?.mapNotNull { summaries[it.mapEntitySlug] }
+                ?.takeIf { it.isNotEmpty() }
+                ?.let { summaries ->
+                    SearchResult(
+                        term = tag.name,
+                        icon = when (tag.slug) {
+                            "for_kids" -> MapIcon.Kids
+                            "wheelchair_accessible" -> MapIcon.Wheelchair
+                            "vegan" -> MapIcon.Plant
+                            else -> summaries.groupingBy { it.icon }.eachCount().entries.minByOrNull { it.value }?.key
+                        },
+                        score = calculateScore(0.2f, query = query, term = tag.name),
                         resultEntities = summaries,
                         type = SearchResult.Type.Collection
                     )

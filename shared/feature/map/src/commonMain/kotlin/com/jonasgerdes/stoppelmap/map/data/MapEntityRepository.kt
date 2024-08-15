@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.map.data
 
 import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entityQueries
+import com.jonasgerdes.stoppelmap.data.map.Map_entity_tagQueries
 import com.jonasgerdes.stoppelmap.data.map.Sub_typeQueries
 import com.jonasgerdes.stoppelmap.data.shared.AliasQueries
 import com.jonasgerdes.stoppelmap.data.shared.OfferQueries
@@ -23,6 +24,7 @@ class MapEntityRepository(
     private val aliasQueries: AliasQueries,
     private val subTypeQueries: Sub_typeQueries,
     private val offerQueries: OfferQueries,
+    private val mapMapTagQueries: Map_entity_tagQueries,
 ) {
 
     suspend fun searchMapEntitiesByName(query: String): List<String> = withContext(Dispatchers.IO) {
@@ -124,6 +126,10 @@ class MapEntityRepository(
                     )
                 )
             }.toMap()
+    }
+
+    suspend fun getByTag(tagSlugs: Set<String>) = withContext(Dispatchers.IO) {
+        mapMapTagQueries.getByTag(tagSlugs).executeAsList()
     }
 }
 

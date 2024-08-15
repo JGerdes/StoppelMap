@@ -20,4 +20,7 @@ val MapIcon.iconRes
         MapIcon.Station -> R.drawable.ic_bus
         MapIcon.Platform -> R.drawable.ic_train
         MapIcon.Taxi -> R.drawable.ic_taxi
+        MapIcon.Kids -> R.drawable.ic_kids
+        MapIcon.Wheelchair -> R.drawable.ic_wheelchair
+        MapIcon.Plant -> R.drawable.ic_plan
     }
