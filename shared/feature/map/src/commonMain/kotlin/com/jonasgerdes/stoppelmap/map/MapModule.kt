@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.map
 
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
+import com.jonasgerdes.stoppelmap.map.data.OfferRepository
 import com.jonasgerdes.stoppelmap.map.data.SubTypeRepository
 import com.jonasgerdes.stoppelmap.map.usecase.GetMapFilePathUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchMapUseCase
@@ -27,10 +28,18 @@ val mapModule = module {
         SubTypeRepository(subTypeQueries = get<StoppelMapDatabase>().sub_typeQueries)
     }
 
+    single {
+        OfferRepository(
+            productQueries = get<StoppelMapDatabase>().productQueries,
+            offerQueries = get<StoppelMapDatabase>().offerQueries,
+        )
+    }
+
     factory {
         SearchMapUseCase(
             mapEntityRepository = get(),
             subTypeRepository = get(),
+            offerRepository = get(),
         )
     }
 }

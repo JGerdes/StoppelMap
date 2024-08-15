@@ -17,3 +17,8 @@ VALUES ?;
 
 clear:
 DELETE FROM offer;
+
+getEntitiesOfferingProducts:
+SELECT offer.productSlug, map_entity.slug AS mapEntitySlug FROM offer
+JOIN map_entity ON offer.referenceSlug = map_entity.slug
+WHERE offer.productSlug IN :products;

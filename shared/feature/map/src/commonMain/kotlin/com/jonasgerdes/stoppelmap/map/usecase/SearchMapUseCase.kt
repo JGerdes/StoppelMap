@@ -2,12 +2,14 @@ package com.jonasgerdes.stoppelmap.map.usecase
 
 import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
+import com.jonasgerdes.stoppelmap.map.data.OfferRepository
 import com.jonasgerdes.stoppelmap.map.data.SubTypeRepository
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
 
 class SearchMapUseCase(
     val mapEntityRepository: MapEntityRepository,
     val subTypeRepository: SubTypeRepository,
+    val offerRepository: OfferRepository,
 ) {
     suspend operator fun invoke(query: String): List<SearchResult> {
         val cleanQuery = query.trim().lowercase()
@@ -16,6 +18,7 @@ class SearchMapUseCase(
             searchByAlias(cleanQuery),
             searchByType(cleanQuery),
             searchBySubType(cleanQuery),
+            searchByProduct(cleanQuery),
         ).flatten().sortedBy { it.term }
     }
 
@@ -96,6 +99,30 @@ class SearchMapUseCase(
                     type = SearchResult.Type.Collection,
                 )
             }
+        }
+    }
+
+    private suspend fun searchByProduct(query: String): List<SearchResult> {
+        val products = offerRepository.searchProducts(query)
+        val mapEntitiesProducts = offerRepository.getMapEntitiesOffering(products.map { it.slug }.toSet())
+        val mapEntityByProduct = mapEntitiesProducts.groupBy { it.productSlug }
+        val summaries = mapEntityRepository
+            .getSummaryBySlugs(mapEntitiesProducts.map { it.mapEntitySlug }.toSet())
+            .associateBy { it.slug }
+
+        return products.mapNotNull { product ->
+            mapEntityByProduct[product.slug]
+                ?.mapNotNull { summaries[it.mapEntitySlug] }
+                ?.takeIf { it.isNotEmpty() }
+                ?.let { summaries ->
+                    SearchResult(
+                        term = product.name,
+                        icon = summaries.groupingBy { it.icon }.eachCount().entries.minByOrNull { it.value }?.key,
+                        score = 0.1f,
+                        resultEntities = summaries,
+                        type = SearchResult.Type.Collection
+                    )
+                }
         }
     }
 }

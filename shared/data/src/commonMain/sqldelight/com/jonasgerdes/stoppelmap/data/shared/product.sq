@@ -12,3 +12,16 @@ VALUES ?;
 
 clear:
 DELETE FROM product;
+
+
+searchByName:
+SELECT product.slug, localized_string.string AS name FROM product
+JOIN localized_string ON product.nameKey = localized_string.key
+    AND locale = "de"
+    AND localized_string.string LIKE ( '%' || :name || '%');
+
+searchByAlias:
+SELECT product.slug, alias.string AS name FROM product
+JOIN alias ON product.slug = alias.referenceSlug
+    AND locale = "de"
+    AND alias.string LIKE ( '%' || :name || '%');
