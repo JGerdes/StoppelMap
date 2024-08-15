@@ -73,7 +73,6 @@ fun TransportationOverviewScreen(
     val pages = remember {
         listOf(
             Page.Bus,
-            Page.Train,
             Page.Taxi,
         )
     }
