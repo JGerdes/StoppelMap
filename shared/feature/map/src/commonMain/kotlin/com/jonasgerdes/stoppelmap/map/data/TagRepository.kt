@@ -1,5 +1,7 @@
 package com.jonasgerdes.stoppelmap.map.data
 
+import app.cash.sqldelight.coroutines.asFlow
+import app.cash.sqldelight.coroutines.mapToList
 import com.jonasgerdes.stoppelmap.data.shared.TagQueries
 import com.jonasgerdes.stoppelmap.map.model.Tag
 import kotlinx.coroutines.Dispatchers
@@ -14,5 +16,7 @@ class TagRepository(
         tagQueries.searchByName(query, ::Tag).executeAsList() +
                 tagQueries.searchByAlias(query, ::Tag).executeAsList()
     }
+
+    fun getAll() = tagQueries.getAllWithName(::Tag).asFlow().mapToList(Dispatchers.IO)
 
 }

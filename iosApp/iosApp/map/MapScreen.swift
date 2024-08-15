@@ -10,7 +10,8 @@ struct MapScreen: View {
             searchMap: $0.searchMapUseCase,
             mapEntityRepository: $0.mapEntityRepository,
             locationRepository: $0.locationRepository,
-            permissionRepository: $0.permissionRepository
+            permissionRepository: $0.permissionRepository,
+            getQuickSearchItems: $0.getQuickSearchSuggestionsUseCase
         )
     }
     
@@ -77,23 +78,55 @@ struct MapScreen: View {
                     .background(.ultraThinMaterial)
                 }
                 
-                Button(action: {
-                    if(viewState.locationState.permissionState == PermissionState.notDetermined) {
-                        viewModel.requestLocationPermission()
-                    } else {
-                        viewModel.onLocationButtonTap()
+                VStack(alignment: .trailing) {
+                    if((viewState.bottomSheetState is MapViewModelBottomSheetStateIdle || viewState.bottomSheetState is MapViewModelBottomSheetStateHidden) && !viewState.searchState.quickSearchChips.isEmpty) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8) {
+                                ForEach(viewState.searchState.quickSearchChips, id: \.term) { suggestion in
+                                    HStack {
+                                        if let image = suggestion.icon?.id {
+                                            Image(image).resizable().frame(width: 18, height: 18)
+                                        }
+                                        Text(suggestion.term).foregroundStyle(.primary)
+                                    }
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(.thickMaterial)
+                                    .clipShape(.capsule)
+                                    .shadow(radius: 4)
+                                    .padding(.top)
+                                    .padding(.bottom, 5)
+                                    .onTapGesture {
+                                        viewModel.onSearchResultTap(searchResult: suggestion)
+                                    }
+                                    
+                                }
+                            }.padding(.horizontal)
+                        }.frame(maxWidth: .infinity)
                     }
-                }, label: {
-                    ZStack {
-                        Image(systemName: viewState.locationState.isFollowingLocation ? "location.fill" : "location")
-                    }
-                    .foregroundColor(viewState.locationState.isFollowingLocation ? .accent : .primary)
-                    .frame(width: 40, height: 40)
-                    .background(.thickMaterial)
-                    .cornerRadius(8.0)
-                    .shadow(radius: 8.0)
-                })
-                .padding()
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            if(viewState.locationState.permissionState == PermissionState.notDetermined) {
+                                viewModel.requestLocationPermission()
+                            } else {
+                                viewModel.onLocationButtonTap()
+                            }
+                        }, label: {
+                            ZStack {
+                                Image(systemName: viewState.locationState.isFollowingLocation ? "location.fill" : "location")
+                            }
+                            .foregroundColor(viewState.locationState.isFollowingLocation ? .accent : .primary)
+                            .frame(width: 40, height: 40)
+                            .background(.thickMaterial)
+                            .cornerRadius(8.0)
+                            .shadow(radius: 8.0)
+                        })
+                        .padding(.horizontal)
+                        .padding(.top, 5)
+                    }.transition(.move(edge: .top)).animation(.default)
+                }.frame(maxWidth: .infinity)
                 
                 if(viewState.locationState.showNotInAreaHint) {
                     HStack {

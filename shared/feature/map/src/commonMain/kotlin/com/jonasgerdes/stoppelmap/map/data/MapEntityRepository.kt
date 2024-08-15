@@ -89,7 +89,8 @@ class MapEntityRepository(
                 eastLng = mapEntity.eastLongitude,
             ),
             icon = mapEntity.type.getIcon(),
-            offers = offers
+            offers = offers,
+            tags = emptyList()
         )
     }
 

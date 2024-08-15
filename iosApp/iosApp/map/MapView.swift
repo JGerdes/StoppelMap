@@ -25,7 +25,7 @@ struct MapView: UIViewRepresentable {
         mapView.allowsTilting = false
         mapView.minimumZoomLevel = MapDefaults.shared.minZoom
         mapView.maximumZoomLevel = MapDefaults.shared.maxZoom
-        mapView.compassViewMargins = CGPoint(x: 15, y: 64)
+        mapView.compassViewMargins = CGPoint(x: 15, y: 128)
         mapView.visibleCoordinateBounds = MLNCoordinateBounds(
             sw: CLLocationCoordinate2D(
                     latitude: MapDefaults.shared.cameraBounds.southLat,

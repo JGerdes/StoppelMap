@@ -17,3 +17,9 @@ DELETE FROM map_entity_tag;
 
 getByTag:
 SELECT * FROM map_entity_tag WHERE tagSlug IN :tagSlugs;
+
+getByMapEntity:
+SELECT * FROM map_entity_tag
+JOIN tag ON map_entity_tag.tagSlug = tag.slug
+JOIN localized_string ON localized_string.key = tag.nameKey AND locale = "de"
+WHERE mapEntitySlug = :mapEntitySlug;

@@ -22,7 +22,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Clear
@@ -31,6 +33,7 @@ import androidx.compose.material.icons.rounded.MyLocation
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.BottomSheetScaffold
+import androidx.compose.material3.ElevatedSuggestionChip
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -118,8 +121,10 @@ fun MapScreen(
     val mapPadding = PaddingValues(
         start = 32.dp,
         end = 32.dp,
-        top = 56.dp /* = DockedHeaderContainerHeight*/ + 32.dp + WindowInsets.statusBars.asPaddingValues()
-            .calculateTopPadding(),
+        top = 56.dp /* = DockedHeaderContainerHeight*/ + 32.dp
+                + WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+                + 32.dp /* = SuggestionChipTokens.ContainerHeight */,
+
         bottom = bottomSheetMainContentHeight.value + 32.dp
     )
 
@@ -197,73 +202,107 @@ fun MapScreen(
                         .background(MaterialTheme.colorScheme.surfaceColorAtElevation(6.dp))
                 )
             }
-            SearchBar(
-                leadingIcon = {
-                    AnimatedContent(targetState = searchIsActive.value) { isActive ->
-                        if (!isActive) Icon(Icons.Rounded.Search, null)
-                        else IconButton(onClick = { searchIsActive.value = false }) {
-                            Icon(Icons.AutoMirrored.Rounded.ArrowBack, null)
-                        }
-                    }
-                },
-                trailingIcon = {
-                    val showClear by remember { derivedStateOf { searchQuery.value.isNotEmpty() } }
-                    AnimatedVisibility(visible = showClear, enter = fadeIn(), exit = fadeOut()) {
-                        IconButton(onClick = {
-                            searchQuery.value = ""
-                            viewModel.onSearch("")
-                        }) {
-                            Icon(Icons.Rounded.Clear, null)
-                        }
-                    }
-                },
-                placeholder = { Text(stringResource(R.string.map_search_placeholder)) },
-                query = searchQuery.value,
-                onQueryChange = {
-                    searchQuery.value = it
-                    viewModel.onSearch(it)
-                },
-                onSearch = {},
-                active = searchIsActive.value,
-                onActiveChange = {
-                    searchIsActive.value = it
-                },
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .align(Alignment.TopCenter)
-                    .statusBarsPadding()
+                    .statusBarsPadding(),
             ) {
-                AnimatedContent(targetState = state.searchState.inProgress) { searchInProgress ->
-                    if (searchInProgress) LinearProgressIndicator(Modifier.fillMaxWidth())
-                    else Spacer(modifier = Modifier.height(4.dp))
-                }
-                LazyColumn {
-                    items(
-                        state.searchState.results,
-                        key = { it.term + it.resultEntities.joinToString { it.slug } }
-                    ) { result ->
-                        ListItem(
-                            headlineContent = { Text(result.term) },
-                            leadingContent = {
-                                val iconRes = result.icon?.iconRes
-                                if (iconRes != null) {
-                                    Icon(
-                                        painterResource(id = iconRes),
-                                        contentDescription = null,
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                } else {
-                                    Spacer(modifier = Modifier.size(24.dp))
-                                }
-                            },
-                            supportingContent = {
-                                result.supportingText()?.let { Text(it) }
-                            },
-                            modifier = Modifier.clickable {
-                                searchIsActive.value = false
-                                searchQuery.value = result.term
-                                viewModel.onSearchResultTap(result)
+                SearchBar(
+                    leadingIcon = {
+                        AnimatedContent(targetState = searchIsActive.value) { isActive ->
+                            if (!isActive) Icon(Icons.Rounded.Search, null)
+                            else IconButton(onClick = { searchIsActive.value = false }) {
+                                Icon(Icons.AutoMirrored.Rounded.ArrowBack, null)
                             }
-                        )
+                        }
+                    },
+                    trailingIcon = {
+                        val showClear by remember { derivedStateOf { searchQuery.value.isNotEmpty() } }
+                        AnimatedVisibility(visible = showClear, enter = fadeIn(), exit = fadeOut()) {
+                            IconButton(onClick = {
+                                searchQuery.value = ""
+                                viewModel.onSearch("")
+                            }) {
+                                Icon(Icons.Rounded.Clear, null)
+                            }
+                        }
+                    },
+                    placeholder = { Text(stringResource(R.string.map_search_placeholder)) },
+                    query = searchQuery.value,
+                    onQueryChange = {
+                        searchQuery.value = it
+                        viewModel.onSearch(it)
+                    },
+                    onSearch = {},
+                    active = searchIsActive.value,
+                    onActiveChange = {
+                        searchIsActive.value = it
+                    }
+                ) {
+                    AnimatedContent(targetState = state.searchState.inProgress) { searchInProgress ->
+                        if (searchInProgress) LinearProgressIndicator(Modifier.fillMaxWidth())
+                        else Spacer(modifier = Modifier.height(4.dp))
+                    }
+                    LazyColumn {
+                        items(
+                            state.searchState.results,
+                            key = { it.term + it.resultEntities.joinToString { it.slug } }
+                        ) { result ->
+                            ListItem(
+                                headlineContent = { Text(result.term) },
+                                leadingContent = {
+                                    val iconRes = result.icon?.iconRes
+                                    if (iconRes != null) {
+                                        Icon(
+                                            painterResource(id = iconRes),
+                                            contentDescription = null,
+                                            modifier = Modifier.size(24.dp)
+                                        )
+                                    } else {
+                                        Spacer(modifier = Modifier.size(24.dp))
+                                    }
+                                },
+                                supportingContent = {
+                                    result.supportingText()?.let { Text(it) }
+                                },
+                                modifier = Modifier.clickable {
+                                    searchIsActive.value = false
+                                    searchQuery.value = result.term
+                                    viewModel.onSearchResultTap(result)
+                                }
+                            )
+                        }
+                    }
+                }
+                AnimatedVisibility(
+                    visible =
+                    (state.bottomSheetState is MapViewModel.BottomSheetState.Idle || state.bottomSheetState is MapViewModel.BottomSheetState.Hidden)
+                            && state.searchState.quickSearchChips.isNotEmpty()
+                ) {
+
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(vertical = 8.dp, horizontal = 32.dp),
+                        horizontalArrangement = spacedBy(4.dp)
+                    ) {
+                        items(
+                            state.searchState.quickSearchChips,
+                            key = { it.term + it.resultEntities.joinToString { it.slug } }) { suggestion ->
+                            ElevatedSuggestionChip(
+                                shape = RoundedCornerShape(100),
+                                onClick = { viewModel.onSearchResultTap(suggestion) },
+                                label = { Text(suggestion.term) },
+                                icon = {
+                                    suggestion.icon?.iconRes?.let { res ->
+                                        Icon(
+                                            painterResource(id = res),
+                                            contentDescription = null
+                                        )
+                                    }
+                                }
+                            )
+                        }
                     }
                 }
             }

@@ -18,6 +18,7 @@ import com.jonasgerdes.stoppelmap.map.model.contains
 import com.jonasgerdes.stoppelmap.map.model.reduceBoundingBox
 import com.jonasgerdes.stoppelmap.map.model.toLocation
 import com.jonasgerdes.stoppelmap.map.usecase.GetMapFilePathUseCase
+import com.jonasgerdes.stoppelmap.map.usecase.GetQuickSearchSuggestionsUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchMapUseCase
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.coroutineScope
@@ -44,6 +45,7 @@ class MapViewModel(
     private val mapEntityRepository: MapEntityRepository,
     private val locationRepository: LocationRepository,
     private val permissionRepository: PermissionRepository,
+    private val getQuickSearchItems: GetQuickSearchSuggestionsUseCase,
 ) : KMMViewModel() {
 
     private var searchJob: Job? = null
@@ -78,6 +80,12 @@ class MapViewModel(
                         currentState
                     }.copy(ownLocation = location)
                 }
+            }
+            .launchIn(viewModelScope.coroutineScope)
+
+        getQuickSearchItems()
+            .onEach { quickSearchChips ->
+                searchState.update { it.copy(quickSearchChips = quickSearchChips) }
             }
             .launchIn(viewModelScope.coroutineScope)
     }
@@ -225,12 +233,13 @@ class MapViewModel(
         val searchState: SearchState = SearchState(),
         val bottomSheetState: BottomSheetState = BottomSheetState.Hidden,
         val mapState: MapState = MapState(),
-        val locationState: OwnLocationState = OwnLocationState()
+        val locationState: OwnLocationState = OwnLocationState(),
     )
 
     data class SearchState(
         val results: List<SearchResult> = emptyList(),
         val history: List<SearchResult> = emptyList(),
+        val quickSearchChips: List<SearchResult> = emptyList(),
         val inProgress: Boolean = false,
     )
 

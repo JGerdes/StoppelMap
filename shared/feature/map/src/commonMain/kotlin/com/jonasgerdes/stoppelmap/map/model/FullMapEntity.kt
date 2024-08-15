@@ -14,6 +14,7 @@ data class FullMapEntity(
     val bounds: BoundingBox,
     val icon: MapIcon,
     val offers: List<Offer>,
+    val tags: List<Tag>,
 ) {
     fun subline() = when {
         type == MapEntityType.FoodStall && offers.any { barProducts.contains(it.productSlug) } -> "Imbiss mit Ausschank" //TODO: localize
