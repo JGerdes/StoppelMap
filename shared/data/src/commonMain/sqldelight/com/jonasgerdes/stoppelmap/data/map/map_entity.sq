@@ -34,7 +34,7 @@ searchType:
 SELECT slug FROM map_entity WHERE type = :type AND isSearchable = 1;
 
 getSummaryBySlug:
-SELECT slug, name, type, sub_type
+SELECT slug, name, type, sub_type, priority
 FROM map_entity
 WHERE slug IN :slugs;
 
