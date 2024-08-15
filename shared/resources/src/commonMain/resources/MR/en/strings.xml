@@ -52,10 +52,10 @@
     <string name="social_media_promo_instagram_button">Follow StoppelMap on Instagram</string>
 
     <!-- Panama -->
-    <string name="panama_card_title">Fühlst du dich unsicher, unwohl oder bedrängt? \n\nMelde dich beim Thekenpersonal mit der Frage \"Wo geht\'s nach Panama?\" und dir wird geholfen. \n\nWähle in Notfällen die 110 oder 112!</string>
-    <string name="panama_card_button_url">Erfahre mehr</string>
-    <string name="panama_card_button_police">Polizei anrufen</string>
-    <string name="panama_card_button_medical">Sanitätsdients anrufen</string>
+    <string name="panama_card_title">Don\'t feel well or somebody harasses you? \n\nAsk someone working at the bar \"Wo geht\'s nach Panama?\" (\"What way to panama?\") And you will get help. \n\nCall 110 or 112 im emergencies, though!</string>
+    <string name="panama_card_button_url">Read more</string>
+    <string name="panama_card_button_police">Call the police</string>
+    <string name="panama_card_button_medical">Call medical help</string>
 
     <!-- Feedback -->
     <string name="feedback_card_title">You have feedback or found a mistake?</string>
