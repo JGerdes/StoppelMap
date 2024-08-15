@@ -1,16 +1,24 @@
 package com.jonasgerdes.stoppelmap.map.model
 
+import com.jonasgerdes.stoppelmap.data.map.MapEntityType
+import com.jonasgerdes.stoppelmap.map.model.Offer.Companion.barProducts
+
 data class FullMapEntity(
     val slug: String,
     val name: String,
-    val type: String?,
+    val typeName: String?,
+    val type: MapEntityType,
     val subType: String?,
     val description: String?,
     val location: Location,
     val bounds: BoundingBox,
     val icon: MapIcon,
+    val offers: List<Offer>,
 ) {
-    fun subline() = type?.let {
-        if (subType != null) "${subType} ($it)" else it
+    fun subline() = when {
+        type == MapEntityType.FoodStall && offers.any { barProducts.contains(it.productSlug) } -> "Imbiss mit Ausschank" //TODO: localize
+        subType != null && typeName != null -> "$subType ($typeName)"
+        typeName != null -> typeName
+        else -> null
     }
 }

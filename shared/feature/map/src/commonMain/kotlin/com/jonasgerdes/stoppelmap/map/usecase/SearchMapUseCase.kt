@@ -131,7 +131,7 @@ class SearchMapUseCase(
                             // Work around for food stalls that are also bars
                             "item_beer" -> MapIcon.Bar
                             "item_shots" -> MapIcon.Bar
-                            "item_softdrink" -> MapIcon.Bar
+                            "item_softdrinks" -> MapIcon.Bar
                             else -> summaries.groupingBy { it.icon }.eachCount().entries.minByOrNull { it.value }?.key
                         },
                         score = calculateScore(0.2f, query = query, term = product.name),

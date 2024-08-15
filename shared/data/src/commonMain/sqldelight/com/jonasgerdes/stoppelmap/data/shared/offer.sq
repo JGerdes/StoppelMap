@@ -22,3 +22,11 @@ getEntitiesOfferingProducts:
 SELECT offer.productSlug, map_entity.slug AS mapEntitySlug FROM offer
 JOIN map_entity ON offer.referenceSlug = map_entity.slug
 WHERE offer.productSlug IN :products;
+
+offersByReferenceSlug:
+SELECT product.slug AS productSlug, name_string.string AS name, mod_string.string AS modifier, offer.price
+FROM offer
+JOIN product ON offer.productSlug = product.slug
+JOIN localized_string AS name_string ON product.nameKey = name_string.key AND  name_string.locale = "de"
+LEFT JOIN localized_string AS mod_string ON offer.modifierKey = mod_string.key AND mod_string.locale = "de"
+WHERE referenceSlug = :referenceSlug;

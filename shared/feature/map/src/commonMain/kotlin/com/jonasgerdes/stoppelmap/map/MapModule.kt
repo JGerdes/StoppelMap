@@ -21,6 +21,7 @@ val mapModule = module {
             mapEntityQueries = get<StoppelMapDatabase>().map_entityQueries,
             aliasQueries = get<StoppelMapDatabase>().aliasQueries,
             subTypeQueries = get<StoppelMapDatabase>().sub_typeQueries,
+            offerQueries = get<StoppelMapDatabase>().offerQueries,
         )
     }
 

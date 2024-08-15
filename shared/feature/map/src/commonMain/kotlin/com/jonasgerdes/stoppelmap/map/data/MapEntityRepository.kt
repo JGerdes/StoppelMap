@@ -4,11 +4,15 @@ import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entityQueries
 import com.jonasgerdes.stoppelmap.data.map.Sub_typeQueries
 import com.jonasgerdes.stoppelmap.data.shared.AliasQueries
+import com.jonasgerdes.stoppelmap.data.shared.OfferQueries
 import com.jonasgerdes.stoppelmap.map.model.BoundingBox
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.GeoData
 import com.jonasgerdes.stoppelmap.map.model.Location
 import com.jonasgerdes.stoppelmap.map.model.MapIcon
+import com.jonasgerdes.stoppelmap.map.model.Offer
+import com.jonasgerdes.stoppelmap.map.model.Offer.Companion.barProducts
+import com.jonasgerdes.stoppelmap.map.model.Offer.Companion.imbissProducts
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -18,6 +22,7 @@ class MapEntityRepository(
     private val mapEntityQueries: Map_entityQueries,
     private val aliasQueries: AliasQueries,
     private val subTypeQueries: Sub_typeQueries,
+    private val offerQueries: OfferQueries,
 ) {
 
     suspend fun searchMapEntitiesByName(query: String): List<String> = withContext(Dispatchers.IO) {
@@ -32,11 +37,31 @@ class MapEntityRepository(
         entities.map { summary ->
             StallSummary(
                 slug = summary.slug,
-                name = summary.name ?: types[summary.type.id]?.first() ?: summary.type.id,
+                name = summary.name ?: getNameFallback(
+                    summary.slug,
+                    null,
+                    types[summary.type.id]?.first()
+                ),
                 icon = summary.type.getIcon(),
                 typeName = types[summary.type.id]?.first(),
                 subTypeName = subTypes.firstOrNull { it.slug == summary.sub_type }?.name
             )
+        }
+    }
+
+    private fun getNameFallback(
+        stallSlug: String,
+        subTypeName: String?,
+        typeName: String?,
+    ): String {
+        val offers = offerQueries.offersByReferenceSlug(stallSlug, ::Offer).executeAsList()
+            .filter { !barProducts.contains(it.productSlug) }
+        return when {
+            imbissProducts.all { productSlug -> offers.any { it.productSlug == productSlug } } -> "Imbiss" //TODO: localize
+            offers.isNotEmpty() -> offers.first().name + if (offers.size > 1) " etc." else ""
+            subTypeName != null -> subTypeName
+            typeName != null -> typeName
+            else -> "Stand" //TODO: localize
         }
     }
 
@@ -45,11 +70,13 @@ class MapEntityRepository(
         val type =
             aliasQueries.getByReferenceSlug(setOf(mapEntity.type.id)).executeAsList().maxByOrNull { it.string.length }
         val subType = mapEntity.sub_type?.let { subTypeQueries.getSubTypeBySlugs(setOf(it)) }?.executeAsOneOrNull()
-        val displayName = mapEntity.name ?: subType?.name ?: type?.string ?: mapEntity.type.id
+        val offers = offerQueries.offersByReferenceSlug(slug, ::Offer).executeAsList()
+        val displayName = mapEntity.name ?: getNameFallback(slug, subType?.name, type?.string)
         FullMapEntity(
             slug = slug,
             name = displayName,
-            type = type?.string?.takeIf { it != displayName },
+            typeName = type?.string?.takeIf { it != displayName },
+            type = mapEntity.type,
             subType = subType?.name?.takeIf { it != displayName },
             location = Location(lat = mapEntity.latitude, lng = mapEntity.longitude),
             description = mapEntity.description,
@@ -59,7 +86,8 @@ class MapEntityRepository(
                 northLat = mapEntity.northLatitude,
                 eastLng = mapEntity.eastLongitude,
             ),
-            icon = mapEntity.type.getIcon()
+            icon = mapEntity.type.getIcon(),
+            offers = offers
         )
     }
 
