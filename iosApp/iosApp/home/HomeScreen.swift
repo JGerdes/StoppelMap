@@ -49,7 +49,7 @@ struct HomeScreen: View {
                                     }
                                 }
                                 .padding()
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(.thinMaterial)
                                 .cornerRadius(24.0)
                                 .padding(.horizontal)

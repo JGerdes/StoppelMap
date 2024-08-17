@@ -5,9 +5,10 @@ struct ScheduleScreen: View {
     
     let viewModel = ScheduleDependencies().with{
         ScheduleViewModel(
-            getScheduleDays: $0.getScheduleDays,
+            getScheduleDays: $0.getScheduleDaysUseCase,
             eventRepository: $0.eventRepository,
-            clockProvider: $0.clockProvider
+            clockProvider: $0.clockProvider,
+            getBookmarkedEvents: $0.getBookmarkedEventsUseCase
         )
     }
     
@@ -15,6 +16,8 @@ struct ScheduleScreen: View {
     var viewState: ScheduleViewModel.ViewState = ScheduleViewModel.ViewState()
     
     @State private var selection = 0
+    
+    @State private var showBookmarkSheet = false
     
     var body: some View {
         NavigationStack {
@@ -30,7 +33,7 @@ struct ScheduleScreen: View {
                                 },
                                 onNotificationToggle: {(event: Event, isActive: Bool) in
                                     viewModel.onEventNotificationSchedule(
-                                        event: event,
+                                        eventSlug: event.slug,
                                         notificationActive: isActive
                                     )
                                 }
@@ -50,6 +53,63 @@ struct ScheduleScreen: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .padding(.horizontal)
+                    }
+                }
+            }.sheet(isPresented: $showBookmarkSheet, content: {
+                VStack {
+                    if let bookmarkedEvents = viewState.bookmarkedEvents as? BookmarkedEventsSome {
+                        Text(Res.strings().schedule_bookmarked_list_title.desc().localized())
+                            .font(.title)
+                            .padding()
+                        List {
+                            Section {
+                                ForEach(bookmarkedEvents.upcoming, id: \.slug) {event in
+                                    VStack(alignment: .leading, spacing: 5.0) {
+                                        Text(event.start.defaultFormat().localized()).font(.subheadline)
+                                        if let locationName = event.locationName {
+                                            Text(locationName).font(.subheadline)
+                                        }
+                                        Text(event.name.localized()).font(.headline)
+                                        if let eventDescription = event.description_ {
+                                            Text(eventDescription.localized()).font(.footnote)
+                                        }
+                                    }.frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }.frame(maxWidth: .infinity, alignment: .leading)
+                            if(!bookmarkedEvents.past.isEmpty) {
+                                Section(Res.strings().schedule_bookmarked_list_past.desc().localized()) {
+                                    ForEach(bookmarkedEvents.past, id: \.slug) {event in
+                                        VStack(alignment: .leading) {
+                                            Text(event.start.defaultFormat().localized()).font(.subheadline)
+                                            if let locationName = event.locationName {
+                                                Text(locationName).font(.subheadline)
+                                            }
+                                            Text(event.name.localized()).font(.headline)
+                                            if let eventDescription = event.description_ {
+                                                Text(eventDescription.localized()).font(.footnote)
+                                            }
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                    }
+                }
+                //.presentationDetents([.medium, .large])
+                //.presentationDragIndicator(.visible)
+                .apply {
+                    if #available(iOS 16.4, *) {
+                        $0.presentationBackgroundInteraction(.enabled)
+                    } else {
+                        $0
+                    }
+                }
+            })
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button(Res.strings().schedule_bookmarked_list_title.desc().localized()) {
+                        showBookmarkSheet = true
                     }
                 }
             }

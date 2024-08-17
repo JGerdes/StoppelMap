@@ -12,9 +12,11 @@ import com.jonasgerdes.stoppelmap.data.shared.getLocalesForKeys
 import com.jonasgerdes.stoppelmap.schedule.model.Event
 import com.jonasgerdes.stoppelmap.schedule.model.EventSlug
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.datetime.LocalDateTime
 
@@ -40,6 +42,37 @@ class EventRepository(
             it[bookmarkedEventKey] = (it[bookmarkedEventKey] ?: emptySet()) - eventSlug
         }
     }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun getAllBookmarkedEvents() = getBookmarkedEventsSlugs()
+        .flatMapLatest {
+            eventQueries.getAllBySlug(it)
+                .asFlow()
+                .mapToList(Dispatchers.IO)
+                .map { events ->
+                    val nameStrings =
+                        localizedStringQueries
+                            .getLocalesForKeys(events.map { it.nameKey })
+
+                    val descriptionStrings =
+                        localizedStringQueries
+                            .getLocalesForKeys(events.mapNotNull { it.descriptionKey })
+
+                    events.map {
+                        Event(
+                            slug = it.slug,
+                            name = nameStrings[it.nameKey] ?: mapOf("de" to it.nameKey), //TODO: Improve this
+                            start = it.start,
+                            end = it.end,
+                            locationSlug = it.locationSlug,
+                            locationName = it.locationName,
+                            description = descriptionStrings[it.descriptionKey],
+                            isBookmarked = true
+                        )
+                    }
+                }
+        }
+
 
     fun getAllEvents() = combine(
         getBookmarkedEventsSlugs(),

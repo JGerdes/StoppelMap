@@ -1,9 +1,10 @@
-package com.jonasgerdes.stoppelmap.home.components
+package com.jonasgerdes.stoppelmap.schedule.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,51 +17,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.schedule.model.Event
-import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.i18n.localizedString
-import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import kotlinx.datetime.toJavaLocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-
 @Composable
-fun NextOfficialEventCard(
+fun EventCard(
     event: Event,
     modifier: Modifier = Modifier,
-) {
-    when (event.slug) {
-        "stoppelmarkt_feuerwerk" -> FireworkEventCard(event = event, modifier)
-        else -> EventCard(event = event, modifier = modifier)
-    }
-}
-
-@Composable
-fun FireworkEventCard(
-    event: Event,
-    modifier: Modifier = Modifier
-) {
-    StoppelMapTheme(themeSetting = ThemeSetting.Dark) {
-        EventCard(
-            event = event,
-            headerImage = R.drawable.fireworks,
-            modifier = modifier
-        )
-    }
-}
-
-@Composable
-private fun EventCard(
-    event: Event,
-    modifier: Modifier = Modifier,
+    onBookmarkToggle: ((isBookmarked: Boolean) -> Unit)? = null,
     @DrawableRes headerImage: Int? = null,
 ) {
     Card(modifier = modifier.fillMaxWidth()) {
         if (headerImage != null) {
             Image(
-                painter = painterResource(id = R.drawable.fireworks),
+                painter = painterResource(id = headerImage),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -76,20 +49,35 @@ private fun EventCard(
         }
         Column(
             verticalArrangement = Arrangement.spacedBy(4.dp),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)
         ) {
-            event.locationName?.let {
-                Text(text = it, style = MaterialTheme.typography.labelMedium)
+            Row(horizontalArrangement = Arrangement.SpaceBetween) {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(top = 16.dp)
+                ) {
+                    event.locationName?.let {
+                        Text(text = it, style = MaterialTheme.typography.labelMedium)
+                    }
+                    Text(
+                        text = event.start.toJavaLocalDateTime().format(timeFormatter),
+                        style = MaterialTheme.typography.labelLarge
+                    )
+                    Text(text = localizedString(event.name), style = MaterialTheme.typography.titleLarge)
+                }
+                BookmarkIconButton(
+                    isBookmarked = event.isBookmarked,
+                    onBookmarkToggled = onBookmarkToggle ?: {},
+                    show = onBookmarkToggle != null,
+                )
             }
-            Text(
-                text = event.start.toJavaLocalDateTime().format(timeFormatter),
-                style = MaterialTheme.typography.labelLarge
-            )
-            Text(text = localizedString(event.name), style = MaterialTheme.typography.titleLarge)
             event.description?.let {
                 Text(
                     text = localizedString(it),
                     style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(end = 16.dp)
                 )
             }
         }

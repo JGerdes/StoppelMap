@@ -6,21 +6,14 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Bookmark
-import androidx.compose.material.icons.rounded.BookmarkBorder
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -80,33 +73,17 @@ fun EventRow(
             }
         }
         if (showNotificationToggle) {
-            if (selected || event.isBookmarked) {
-                val iconTint by animateColorAsState(
-                    targetValue =
-                    if (event.isBookmarked)
-                        MaterialTheme.colorScheme.primary
-                    else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+            BookmarkIconButton(
+                show = selected || event.isBookmarked,
+                isBookmarked = event.isBookmarked,
+                onBookmarkToggled = onNotificationToggle,
+                modifier = Modifier.align(
+                    if (event.description != null) Alignment.Top else Alignment.CenterVertically
                 )
-                IconButton(
-                    onClick = { onNotificationToggle(!event.isBookmarked) },
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .align(
-                            if (event.description != null) Alignment.Top else Alignment.CenterVertically
-                        )
-                ) {
-                    Icon(
-                        if (event.isBookmarked) Icons.Rounded.Bookmark
-                        else Icons.Rounded.BookmarkBorder,
-                        contentDescription = null,
-                        tint = iconTint
-                    )
-                }
-            } else {
-                Box(Modifier.minimumInteractiveComponentSize())
-            }
+            )
         } else {
             Spacer(modifier = Modifier.width(8.dp))
         }
     }
 }
+

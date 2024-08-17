@@ -27,6 +27,11 @@ getAll:
 SELECT event.*, map_entity.name AS locationName FROM event
 LEFT JOIN map_entity ON map_entity.slug = event.locationSlug;
 
+getAllBySlug:
+SELECT event.*, map_entity.name AS locationName FROM event
+LEFT JOIN map_entity ON map_entity.slug = event.locationSlug
+WHERE event.slug IN :slugs;
+
 getAllAfter:
 SELECT event.*, map_entity.name AS locationName FROM event
 LEFT JOIN map_entity ON map_entity.slug = event.locationSlug

@@ -128,6 +128,15 @@
     <string name="schedule_day_short_saturday">Sa</string>
     <string name="schedule_day_short_sunday">So</string>
 
+    <string name="schedule_bookmark_save_contentDescription">merken</string>
+    <string name="schedule_bookmark_unsave_contentDescription">nicht mehr merken</string>
+    <string name="schedule_bookmarked_unsave_dialog_title">Aus deinem Programm entfernen?</string>
+    <string name="schedule_bookmarked_unsave_dialog_confirm">Entfernen</string>
+    <string name="schedule_bookmarked_unsave_dialog_dismiss">Behalten</string>
+
+    <string name="schedule_bookmarked_list_title">Mein Programm</string>
+    <string name="schedule_bookmarked_list_past">vorbei</string>
+
     <!-- Transportation -->
     <string name="transportation_overview_topbar_title">An- und Abreise</string>
     <string name="transportation_overview_section_favourite">Deine Haltestellen</string>

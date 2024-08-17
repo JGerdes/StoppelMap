@@ -11,7 +11,8 @@ val androidScheduleModule = module {
         ScheduleViewModel(
             getScheduleDays = get(),
             eventRepository = get(),
-            clockProvider = get()
+            clockProvider = get(),
+            getBookmarkedEvents = get(),
         )
     }
 }

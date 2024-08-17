@@ -222,6 +222,7 @@ class StoppelMapActivity : ComponentActivity() {
                 }
                 composable(Screen.Schedule.route) {
                     ScheduleScreen(
+                        scaffoldPadding = scaffoldPadding,
                         modifier = Modifier
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
