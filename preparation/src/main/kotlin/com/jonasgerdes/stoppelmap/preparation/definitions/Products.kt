@@ -17,6 +17,7 @@ val foodProducts = listOf(
     product(slug = "item_wine", de = "Wein", en = "Wine"),
     product(slug = "item_pizza", de = "Pizza", en = "Pizza"),
     product(slug = "item_fries", de = "Pommes", en = "Fries"),
+    product(slug = "item_fries_sweetpotato", de = "Süßkartoffelpommes", en = "Sweetpotato fries"),
     product(slug = "item_tornado_potato", de = "Kartoffeltwister", en = "Tornado potato"),
     product(slug = "item_sausauge", de = "Bratwurst", en = "Bratwurst"),
     product(slug = "item_currywurst", de = "Currywurst", en = "Currywurst"),
@@ -62,6 +63,7 @@ val foodProducts = listOf(
     product(slug = "item_bruschetta", de = "Bruschetta", en = "Bruschetta"),
     product(slug = "item_langos", de = "Lángos", en = "Lángos"),
     product(slug = "item_vegetables", de = "Gemüse", en = "Vegetables"),
+    product(slug = "item_cauliflower", de = "Blumenkohl", en = "Cauliflower"),
     product(
         slug = "item_pickles",
         de = "Essiggurken",

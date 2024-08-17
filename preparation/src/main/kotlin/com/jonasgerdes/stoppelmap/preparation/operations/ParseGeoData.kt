@@ -162,6 +162,7 @@ class ParseGeoData(
             tags = listOfNotNull(
                 TagSlugs.forKids.takeIf { properties["forKids"] == "yes" },
                 TagSlugs.wheelchairAccessible.takeIf { properties["accessible"] == "yes" },
+                TagSlugs.vegan.takeIf { properties["vegan_options"] == "yes" },
             ),
             offers = foodProducts
                 .filter { properties.getOrDefault(it.slug, null) == "yes" }
