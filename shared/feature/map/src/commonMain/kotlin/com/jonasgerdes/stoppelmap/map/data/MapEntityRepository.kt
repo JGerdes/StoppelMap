@@ -42,7 +42,7 @@ class MapEntityRepository(
                 name = summary.name ?: getNameFallback(
                     summary.slug,
                     null,
-                    types[summary.type.id]?.first()
+                    types[summary.type.id]?.maxByOrNull { it.length }
                 ),
                 icon = summary.type.getIcon(),
                 typeName = types[summary.type.id]?.first(),

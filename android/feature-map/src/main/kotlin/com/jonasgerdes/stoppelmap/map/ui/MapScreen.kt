@@ -297,7 +297,8 @@ fun MapScreen(
                                     suggestion.icon?.iconRes?.let { res ->
                                         Icon(
                                             painterResource(id = res),
-                                            contentDescription = null
+                                            contentDescription = null,
+                                            modifier = Modifier.size(18.dp)
                                         )
                                     }
                                 }
