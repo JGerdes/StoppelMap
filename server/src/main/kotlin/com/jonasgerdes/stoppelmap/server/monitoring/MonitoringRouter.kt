@@ -9,8 +9,8 @@ import io.ktor.server.request.userAgent
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Routing
 import io.ktor.server.routing.get
-import io.ktor.util.logging.Logger
 import org.koin.ktor.ext.inject
+import org.slf4j.Logger
 
 fun Routing.monitoringRoutes() {
     val monitoring: Monitoring by inject()

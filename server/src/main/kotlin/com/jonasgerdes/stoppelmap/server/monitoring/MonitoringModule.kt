@@ -5,7 +5,7 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val monitoringModule = module {
-    single { Monitoring() }
+    single { Monitoring(get()) }
     single {
         InitMetricsTask(
             articleRepository = get(),

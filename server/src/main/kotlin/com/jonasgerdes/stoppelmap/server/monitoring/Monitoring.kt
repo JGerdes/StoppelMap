@@ -8,10 +8,13 @@ import io.micrometer.core.instrument.Tag
 import io.micrometer.core.instrument.Timer
 import io.micrometer.prometheusmetrics.PrometheusConfig
 import io.micrometer.prometheusmetrics.PrometheusMeterRegistry
+import org.slf4j.Logger
 import java.util.concurrent.atomic.AtomicInteger
 
 
-class Monitoring {
+class Monitoring(
+    private val logger: Logger
+) {
 
     private val registry: PrometheusMeterRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT)
     private val taskCounter = registry.gauge("stoppemap.server.tasks.running", AtomicInteger(0))
@@ -36,12 +39,17 @@ class Monitoring {
             if (call.request.path() == "/static/app-config.json") {
                 tag("route", "/static/app-config.json")
             }
-            val userAgent = call.request.userAgent()?.parseUserAgent()
+            val userAgentString = call.request.userAgent()
+            val userAgent = userAgentString?.parseUserAgent()
             tag("app.version", userAgent?.appVersion ?: "n/a")
             tag("build.type", userAgent?.buildType ?: "n/a")
             tag("os", userAgent?.os ?: "n/a")
             tag("manufacturer", userAgent?.manufacturer ?: "n/a")
             tag("device", userAgent?.device ?: "n/a")
+
+            if (userAgent == null && call.request.path() != "/metrics") {
+                logger.info("Unrecognized user agent $userAgentString")
+            }
         }
     }
 
