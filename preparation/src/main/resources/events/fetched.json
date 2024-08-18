@@ -545,11 +545,28 @@
         "isOfficial": false
     },
     {
-        "slug": "brackmann_fruehschoppen_|_brackmann_s_bierzeltreden_24_03",
+        "slug": "brackmann_fruehschoppen_24_03",
         "name": {
-            "de": "Frühschoppen | BRACKMANN'S Bierzeltreden '24"
+            "de": "Frühschoppen"
         },
         "start": "2024-08-18T11:00",
+        "end": null,
+        "location": "brackmann",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_brackmann_s_bierzeltreden_24_03a",
+        "name": {
+            "de": "BRACKMANN'S Bierzeltreden '24 // Der Poetry-Slam 2.0"
+        },
+        "start": "2024-08-18T18:00",
         "end": null,
         "location": "brackmann",
         "description": {
@@ -1652,9 +1669,9 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_ballermann_star_isi_glueck_16",
+        "slug": "kuehlings-niedersachsenhalle_ballermann_stars_biana_ronny_becker_16",
         "name": {
-            "de": "Ballermann-Star ISI GLÜCK"
+            "de": "Ballermann-Stars BIANA & RONNY BECKER"
         },
         "start": "2024-08-18T13:00",
         "end": null,
@@ -1669,14 +1686,16 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_ballermann_stars_biana_ronny_becker_17",
+        "slug": "kuehlings-niedersachsenhalle_ballermann_star_isi_glueck_17",
         "name": {
-            "de": "Ballermann-Stars BIANA & RONNY BECKER"
+            "de": "Ballermann-Star ISI GLÜCK"
         },
-        "start": "2024-08-18T13:00",
+        "start": "2024-08-18T14:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
-        "description": null,
+        "description": {
+            "de": "<p>&nbsp;</p>\n<p>&nbsp;</p>"
+        },
         "participants": [
         ],
         "tags": [
@@ -1756,7 +1775,24 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_ballermann_star_micky_krause_–_25_jahre_auf_dem_stoppelmarkt_22",
+        "slug": "kuehlings-niedersachsenhalle_die_toddy_ernesto_show_22",
+        "name": {
+            "de": "Die TODDY & ERNESTO SHOW"
+        },
+        "start": "2024-08-19T17:00",
+        "end": null,
+        "location": "kuehlings-niedersachsenhalle",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "kuehlings-niedersachsenhalle_ballermann_star_micky_krause_–_25_jahre_auf_dem_stoppelmarkt_23",
         "name": {
             "de": "Ballermann-Star MICKY KRAUSE – 25 Jahre auf dem Stoppelmarkt"
         },
@@ -1773,7 +1809,7 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_23",
+        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_24",
         "name": {
             "de": "Hallenöffnung"
         },
@@ -1790,7 +1826,7 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_dj_ernesto_24",
+        "slug": "kuehlings-niedersachsenhalle_dj_ernesto_25",
         "name": {
             "de": "DJ Ernesto"
         },
@@ -2172,6 +2208,114 @@
         "isOfficial": false
     },
     {
+        "slug": "sir-george_schlager_meets_charts_mit_dj_tommi_00",
+        "name": {
+            "de": "Schlager meets Charts mit DJ Tommi"
+        },
+        "start": "2024-08-15T18:31",
+        "end": null,
+        "location": "sir-george",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "sir-george_wednesday_overdrive_01",
+        "name": {
+            "de": "Wednesday Overdrive"
+        },
+        "start": "2024-08-16T21:00",
+        "end": null,
+        "location": "sir-george",
+        "description": {
+            "de": "<p>Live Musik - Motto \"Rock-Nacht\"</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "sir-george_old_school_disco_musik_02",
+        "name": {
+            "de": "Old School Disco Musik"
+        },
+        "start": "2024-08-17T21:00",
+        "end": null,
+        "location": "sir-george",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "sir-george_vereinsnacht_einen_rein_fuer_n_verein_03",
+        "name": {
+            "de": "Vereinsnacht - Einen rein für'n Verein"
+        },
+        "start": "2024-08-18T21:00",
+        "end": null,
+        "location": "sir-george",
+        "description": {
+            "de": "<p>vergünstigte Preise</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "sir-george_classic_monday_mit_dj_tommi_04",
+        "name": {
+            "de": "Classic Monday mit DJ Tommi"
+        },
+        "start": "2024-08-19T20:00",
+        "end": null,
+        "location": "sir-george",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "sir-george_resteverzehr_05",
+        "name": {
+            "de": "Resteverzehr"
+        },
+        "start": "2024-08-20T13:00",
+        "end": null,
+        "location": "sir-george",
+        "description": {
+            "de": "<p>Alles muss raus!</p>"
+        },
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
         "slug": "stratmanns-echt-stoppelmarkt_take_five_und_dj_sascha_schulze_00",
         "name": {
             "de": "Take Five und DJ Sascha Schulze"
@@ -2268,6 +2412,108 @@
         "start": "2024-08-20T13:00",
         "end": null,
         "location": "stratmanns-echt-stoppelmarkt",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "wein-ellendorff_karaoke_00",
+        "name": {
+            "de": "Karaoke"
+        },
+        "start": "2024-08-15T20:00",
+        "end": null,
+        "location": "wein-ellendorff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "wein-ellendorff_karaoke_01",
+        "name": {
+            "de": "Karaoke"
+        },
+        "start": "2024-08-16T20:00",
+        "end": null,
+        "location": "wein-ellendorff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "wein-ellendorff_karaoke_02",
+        "name": {
+            "de": "Karaoke"
+        },
+        "start": "2024-08-17T20:00",
+        "end": null,
+        "location": "wein-ellendorff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "wein-ellendorff_familienpreise_03",
+        "name": {
+            "de": "Familienpreise"
+        },
+        "start": "2024-08-18T11:00",
+        "end": null,
+        "location": "wein-ellendorff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "wein-ellendorff_karaoke_04",
+        "name": {
+            "de": "Karaoke"
+        },
+        "start": "2024-08-19T10:00",
+        "end": null,
+        "location": "wein-ellendorff",
+        "description": null,
+        "participants": [
+        ],
+        "tags": [
+        ],
+        "websites": [
+        ],
+        "isOfficial": false
+    },
+    {
+        "slug": "wein-ellendorff_familienpreise_05",
+        "name": {
+            "de": "Familienpreise"
+        },
+        "start": "2024-08-20T13:00",
+        "end": null,
+        "location": "wein-ellendorff",
         "description": null,
         "participants": [
         ],
