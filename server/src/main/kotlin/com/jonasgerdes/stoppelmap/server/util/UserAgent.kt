@@ -1,7 +1,7 @@
 package com.jonasgerdes.stoppelmap.server.util
 
 private const val userAgentRegexString =
-    "^StoppelMap (.*?)(-debug|-release|) (Android|iOS)\\(([\\d.,]{1,4}) on (.*)\\/(.*)\\)"
+    "^StoppelMap (.*?)(-debug|-release|) (Android|iOS)\\(([\\d.,]{1,10}) on (.*)\\/(.*)\\)"
 private val userAgentRegex = userAgentRegexString.toRegex()
 
 fun String.parseUserAgent(): UserAgent? = userAgentRegex.find(this)?.groupValues
