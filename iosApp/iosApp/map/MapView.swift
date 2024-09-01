@@ -199,62 +199,65 @@ extension MLNMapView {
         let mapSymbolBackgroundColors = colorScheme == .dark ? mapSymbolBackgroundDark : mapSymbolBackgroundLight
         let iconColor = colorScheme == .dark ? Color.black : Color.white
         
-        if let backgroundLayer = style!.layers.first(where: {$0.identifier == "background"}) as? MLNBackgroundStyleLayer {
-            backgroundLayer.backgroundColor = NSExpression(forConstantValue: mapBackground)
-        }
-        
-        if let symbolLayer = style!.layers.first(where: {$0.identifier == "labels"}) as? MLNSymbolStyleLayer {
-            symbolLayer.textColor = NSExpression(forConstantValue: colorScheme == .dark ? labelColorDark : labelColorLight)
-            symbolLayer.textHaloColor = NSExpression(forConstantValue: colorScheme == .dark ? labelHaloColorDark : labelHaloColorLight)
-        }
-        
-        if let symbolLayer = style!.layers.first(where: {$0.identifier == "highlight-labels"}) as? MLNSymbolStyleLayer {
-            symbolLayer.textColor = NSExpression(forConstantValue: colorScheme == .dark ? labelColorDark : labelColorLight)
-            symbolLayer.textHaloColor = NSExpression(forConstantValue: colorScheme == .dark ? labelHaloColorDark : labelHaloColorLight)
-        }
-        
-        mapColors.forEach { (layerId: String, color: UIColor) in
-            if let layer = style!.layers.first(where: {$0.identifier == layerId}) as? MLNFillStyleLayer {
-                layer.fillColor = NSExpression(forConstantValue: color)
+        if let style = self.style {
+            
+            if let backgroundLayer = style.layers.first(where: {$0.identifier == "background"}) as? MLNBackgroundStyleLayer {
+                backgroundLayer.backgroundColor = NSExpression(forConstantValue: mapBackground)
             }
-        }
-        
-        style!.setImage(UIImage(systemName: "bus")!, forName: "station")
-        style!.setImage(UIImage(systemName: "info")!, forName: "misc")
-        
-        let icons = [
-            "bar",
-            "candy_stall",
-            "expo",
-            "food_stall",
-            "game_stall",
-            "misc",
-            "parking",
-            "restaurant",
-            "restroom",
-            "ride",
-            "seller_stall",
-            "entrance",
-            "station",
-            "platform",
-            "taxi"
-        ];
-        
-        icons.forEach {id in
             
-            let renderer = ImageRenderer(content: Image(id)
-                .resizable()
-                .renderingMode(.template)
-                .foregroundColor(iconColor)
-                .scaledToFill()
-                .frame(width: 12, height: 12)
-                .padding(4.0)
-                .background(Color(uiColor: mapSymbolBackgroundColors[id] ?? mapSymbolBackgroundColors["misc"]!))
-                .cornerRadius(24.0)
-            )
-            renderer.scale = UIScreen.main.scale
+            if let symbolLayer = style.layers.first(where: {$0.identifier == "labels"}) as? MLNSymbolStyleLayer {
+                symbolLayer.textColor = NSExpression(forConstantValue: colorScheme == .dark ? labelColorDark : labelColorLight)
+                symbolLayer.textHaloColor = NSExpression(forConstantValue: colorScheme == .dark ? labelHaloColorDark : labelHaloColorLight)
+            }
             
-            style!.setImage(renderer.uiImage!, forName: id)
+            if let symbolLayer = style.layers.first(where: {$0.identifier == "highlight-labels"}) as? MLNSymbolStyleLayer {
+                symbolLayer.textColor = NSExpression(forConstantValue: colorScheme == .dark ? labelColorDark : labelColorLight)
+                symbolLayer.textHaloColor = NSExpression(forConstantValue: colorScheme == .dark ? labelHaloColorDark : labelHaloColorLight)
+            }
+            
+            mapColors.forEach { (layerId: String, color: UIColor) in
+                if let layer = style.layers.first(where: {$0.identifier == layerId}) as? MLNFillStyleLayer {
+                    layer.fillColor = NSExpression(forConstantValue: color)
+                }
+            }
+            
+            style.setImage(UIImage(systemName: "bus")!, forName: "station")
+            style.setImage(UIImage(systemName: "info")!, forName: "misc")
+            
+            let icons = [
+                "bar",
+                "candy_stall",
+                "expo",
+                "food_stall",
+                "game_stall",
+                "misc",
+                "parking",
+                "restaurant",
+                "restroom",
+                "ride",
+                "seller_stall",
+                "entrance",
+                "station",
+                "platform",
+                "taxi"
+            ];
+            
+            icons.forEach {id in
+                
+                let renderer = ImageRenderer(content: Image(id)
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(iconColor)
+                    .scaledToFill()
+                    .frame(width: 12, height: 12)
+                    .padding(4.0)
+                    .background(Color(uiColor: mapSymbolBackgroundColors[id] ?? mapSymbolBackgroundColors["misc"]!))
+                    .cornerRadius(24.0)
+                )
+                renderer.scale = UIScreen.main.scale
+                
+                style.setImage(renderer.uiImage!, forName: id)
+            }
         }
         
         
