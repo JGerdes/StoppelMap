@@ -4,7 +4,7 @@ minSdk = "26"
 targetSdk = "34"
 
 
-android-gradle-plugin = "8.3.0"
+android-gradle-plugin = "8.10.1"
 
 kotlin = "1.9.22"
 kotlinxDatetime = "0.6.0-RC"
