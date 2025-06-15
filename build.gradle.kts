@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.ktor) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.moko.resources) apply false
+    alias(libs.plugins.kotlin.compose) apply false
 }
 
 tasks.register("clean", Delete::class) {
