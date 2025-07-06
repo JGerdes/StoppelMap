@@ -4,7 +4,7 @@ minSdk = "26"
 targetSdk = "34"
 
 
-android-gradle-plugin = "8.10.1"
+android-gradle-plugin = "8.11.0"
 
 kotlin = "2.1.21"
 kotlinxDatetime = "0.6.2"
@@ -46,7 +46,7 @@ logback = "1.4.5"
 micrometerPrometheus = "1.13.2"
 
 kmmViewmodel = "1.0.0-ALPHA-14"
-skie = "0.6.1"
+skie = "0.10.4"
 mokoResourcces = "0.23.0"
 buildkonfig = "0.15.1"
 
