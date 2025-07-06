@@ -54,6 +54,5 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.koin.compose)
     implementation(libs.timber)
-    implementation(libs.accompanist.pager)
     implementation(libs.google.play.app.update)
 }

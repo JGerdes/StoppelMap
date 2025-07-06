@@ -57,7 +57,6 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)
-    implementation(libs.accompanist.pager)
     implementation(libs.bundles.androidx.runtime)
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.koin.compose)

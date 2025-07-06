@@ -114,8 +114,8 @@ fun MapScreen(
 
     val locationFabBottomPadding = animateDpAsState(
         targetValue =
-        if (bottomSheetState.targetValue != SheetValue.Hidden) bottomSheetMainContentHeight.value + BottomSheetDefaults.SheetPeekHeight
-        else 0.dp
+            if (bottomSheetState.targetValue != SheetValue.Hidden) bottomSheetMainContentHeight.value + BottomSheetDefaults.SheetPeekHeight
+            else 0.dp
     )
 
     val mapPadding = PaddingValues(
@@ -228,7 +228,7 @@ fun MapScreen(
                             }
                         }
                     },
-                    placeholder = { Text(stringResource(R.string.map_search_placeholder)) },
+                    placeholder = { Text(stringResource(R.string.map_search_placeholder), maxLines = 1) },
                     query = searchQuery.value,
                     onQueryChange = {
                         searchQuery.value = it
@@ -238,7 +238,8 @@ fun MapScreen(
                     active = searchIsActive.value,
                     onActiveChange = {
                         searchIsActive.value = it
-                    }
+                    },
+                    modifier = Modifier.padding(horizontal = 16.dp)
                 ) {
                     AnimatedContent(targetState = state.searchState.inProgress) { searchInProgress ->
                         if (searchInProgress) LinearProgressIndicator(Modifier.fillMaxWidth())
@@ -277,8 +278,8 @@ fun MapScreen(
                 }
                 AnimatedVisibility(
                     visible =
-                    (state.bottomSheetState is MapViewModel.BottomSheetState.Idle || state.bottomSheetState is MapViewModel.BottomSheetState.Hidden)
-                            && state.searchState.quickSearchChips.isNotEmpty()
+                        (state.bottomSheetState is MapViewModel.BottomSheetState.Idle || state.bottomSheetState is MapViewModel.BottomSheetState.Hidden)
+                                && state.searchState.quickSearchChips.isNotEmpty()
                 ) {
 
                     LazyRow(

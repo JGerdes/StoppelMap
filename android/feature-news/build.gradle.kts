@@ -57,7 +57,6 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.koin.compose)
     implementation(libs.timber)
-    implementation(libs.accompanist.pager)
     implementation(libs.coil.compose)
     implementation(libs.bundles.ktor.android)
 }

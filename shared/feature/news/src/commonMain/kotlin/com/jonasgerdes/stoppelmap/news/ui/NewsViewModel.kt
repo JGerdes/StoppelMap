@@ -28,8 +28,12 @@ class NewsViewModel(
         }
     }
 
-    suspend fun forceRefresh() {
-        newsRepository.forceRefresh()
+    fun forceRefresh() {
+        viewModelScope.coroutineScope.launch {
+            isRefreshing.value = true
+            newsRepository.forceRefresh()
+            isRefreshing.value = false
+        }
     }
 
     fun onShowFirstArticle() {

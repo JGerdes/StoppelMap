@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.BottomSheetScaffold
@@ -45,9 +47,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.schedule.R
 import com.jonasgerdes.stoppelmap.schedule.model.BookmarkedEvents
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventCard
@@ -63,7 +62,7 @@ import java.time.format.DateTimeFormatter
 @SuppressLint("NewApi")
 @OptIn(
     ExperimentalMaterial3Api::class,
-    ExperimentalPagerApi::class, ExperimentalFoundationApi::class,
+    ExperimentalFoundationApi::class,
 )
 @Composable
 fun ScheduleScreen(
@@ -75,7 +74,7 @@ fun ScheduleScreen(
 
 
     val sheetState = rememberStandardBottomSheetState(
-        initialValue = SheetValue.Hidden,
+        initialValue = if (state.bookmarkedEvents is BookmarkedEvents.Some) SheetValue.PartiallyExpanded else SheetValue.Hidden,
         confirmValueChange = { it != SheetValue.Hidden || state.bookmarkedEvents is BookmarkedEvents.None },
         skipHiddenState = state.bookmarkedEvents is BookmarkedEvents.Some
     )
@@ -127,8 +126,11 @@ fun ScheduleScreen(
                     .fillMaxWidth()
                     .padding(top = paddingValues.calculateTopPadding())
             ) {
-                val pagerState = rememberPagerState()
                 val scheduleDays = state.scheduleDays
+                val pagerState = rememberPagerState(
+                    initialPage = 0,
+                    pageCount = { scheduleDays.size }
+                )
                 val scope = rememberCoroutineScope()
 
                 state.selectedDay?.let { index ->
@@ -156,8 +158,8 @@ fun ScheduleScreen(
                     scheduleDays.forEachIndexed { index, day ->
                         val color by animateColorAsState(
                             targetValue =
-                            if (selectedTabIndex == index) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.onBackground,
+                                if (selectedTabIndex == index) MaterialTheme.colorScheme.primary
+                                else MaterialTheme.colorScheme.onBackground,
                         )
                         Tab(
                             selected = selectedTabIndex == index,
@@ -178,7 +180,6 @@ fun ScheduleScreen(
                     }
                 }
                 HorizontalPager(
-                    count = scheduleDays.size,
                     state = pagerState,
                 ) { page ->
                     val scheduleDay = scheduleDays[page]

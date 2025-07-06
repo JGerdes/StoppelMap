@@ -1,9 +1,21 @@
-@file:OptIn(ExperimentalPagerApi::class, ExperimentalAnimationApi::class)
+@file:OptIn(ExperimentalAnimationApi::class)
 
 package com.jonasgerdes.stoppelmap.countdown.ui.components.settings
 
-import androidx.compose.animation.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowForward
@@ -16,9 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.jonasgerdes.stoppelmap.countdown.R
 import kotlinx.coroutines.launch
 
@@ -29,16 +38,14 @@ fun WidgetSettingsPager(
     settingsCards: List<@Composable (Modifier) -> Unit>,
     modifier: Modifier = Modifier
 ) {
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(pageCount = { settingsCards.size })
     val scope = rememberCoroutineScope()
     val isLastPage = pagerState.currentPage == pagerState.pageCount - 1
     Column(modifier = modifier) {
         Spacer(modifier = Modifier.size(16.dp))
         HorizontalPager(
-            count = settingsCards.size,
             state = pagerState,
             contentPadding = PaddingValues(16.dp),
-            itemSpacing = 16.dp,
             verticalAlignment = Alignment.Bottom
         ) { page ->
             Box {

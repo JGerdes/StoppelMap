@@ -35,6 +35,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
@@ -57,9 +58,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.google.accompanist.placeholder.PlaceholderHighlight
-import com.google.accompanist.placeholder.fade
-import com.google.accompanist.placeholder.placeholder
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
@@ -300,14 +298,7 @@ fun StopStationCard(
                         listOf("Loading", "the", "times").forEach {
                             Text(
                                 it,
-                                Modifier
-                                    .placeholder(
-                                        visible = true,
-                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
-                                        highlight = PlaceholderHighlight.fade(
-                                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
-                                        ),
-                                    )
+                                Modifier.background(LocalContentColor.current)
                             )
                         }
                     }
