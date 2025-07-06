@@ -19,12 +19,13 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationCall
+import io.ktor.server.application.host
 import io.ktor.server.application.install
-import io.ktor.server.engine.ApplicationEngineEnvironment
+import io.ktor.server.application.port
 import io.ktor.server.http.content.staticFiles
 import io.ktor.server.metrics.micrometer.MicrometerMetrics
 import io.ktor.server.plugins.cachingheaders.CachingHeaders
-import io.ktor.server.plugins.callloging.CallLogging
+import io.ktor.server.plugins.calllogging.CallLogging
 import io.ktor.server.plugins.compression.Compression
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.plugins.statuspages.StatusPages
@@ -47,8 +48,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.ktorModule() {
     val serverConfig = environment.config.toServerConfig(
-        host = (environment as ApplicationEngineEnvironment).connectors.first()
-            .let { "${it.host}:${it.port}" }
+        host = environment.config.let { "${it.host}:${it.port}" }
     )
     (LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME) as Logger)
         .level = if (serverConfig.environment.isDev) LogbackLevel.ALL else LogbackLevel.INFO
