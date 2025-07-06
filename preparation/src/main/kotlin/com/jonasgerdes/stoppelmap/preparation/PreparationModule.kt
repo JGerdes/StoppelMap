@@ -10,7 +10,7 @@ import java.io.File
 val preparationModule = module {
 
     single {
-        val sharedAssets = File("../shared/resources/src/commonMain/resources/MR/assets/")
+        val sharedAssets = File("../shared/resources/src/commonMain/moko-resources/assets/")
         val resources = File("../preparation/src/main/resources")
         Settings(
             databaseFile = File("database.db"),
