@@ -27,6 +27,7 @@ import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettings
 import com.jonasgerdes.stoppelmap.widget.CreateStartAppIntentUseCase
 import org.koin.java.KoinJavaComponent.inject
 import kotlin.math.roundToInt
+import androidx.core.graphics.createBitmap
 
 class SilhouetteWidgetProvider : AppWidgetProvider() {
 
@@ -120,9 +121,7 @@ class SilhouetteWidgetProvider : AppWidgetProvider() {
                 context,
                 0,
                 createStartAppIntent(),
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    PendingIntent.FLAG_IMMUTABLE
-                } else 0
+                PendingIntent.FLAG_IMMUTABLE
             )
 
         views.setOnClickPendingIntent(R.id.widget_countdown, intent)
@@ -189,7 +188,7 @@ private fun createCountdownBitmap(
     font: Font,
     fontColor: Int
 ): Bitmap {
-    val bitmap = Bitmap.createBitmap(size.x, size.y, Bitmap.Config.ARGB_8888)
+    val bitmap = createBitmap(size.x, size.y)
     val canvas = Canvas(bitmap)
     val centerOffset = 0.065f * size.y
     var countDownSize = size.y / 10f

@@ -34,9 +34,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun WidgetSettingsPager(
-    onSave: () -> Unit,
-    settingsCards: List<@Composable (Modifier) -> Unit>,
-    modifier: Modifier = Modifier
+    onSave: () -> Unit, settingsCards: List<@Composable (Modifier) -> Unit>, modifier: Modifier = Modifier
 ) {
     val pagerState = rememberPagerState(pageCount = { settingsCards.size })
     val scope = rememberCoroutineScope()
@@ -45,10 +43,10 @@ fun WidgetSettingsPager(
         Spacer(modifier = Modifier.size(16.dp))
         HorizontalPager(
             state = pagerState,
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(vertical = 16.dp, horizontal = 8.dp),
             verticalAlignment = Alignment.Bottom
         ) { page ->
-            Box {
+            Box(Modifier.padding(horizontal = 8.dp)) {
                 settingsCards[page](Modifier.padding(top = 28.dp))
                 Box(
                     modifier = Modifier
@@ -56,14 +54,11 @@ fun WidgetSettingsPager(
                         .padding(end = 16.dp)
                 ) {
                     WidgetSettingsPageFab(
-                        isVisible = !pagerState.isScrollInProgress,
-                        isLastPage = isLastPage,
-                        onNext = {
+                        isVisible = !pagerState.isScrollInProgress, isLastPage = isLastPage, onNext = {
                             scope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage + 1)
                             }
-                        },
-                        onSave = onSave
+                        }, onSave = onSave
                     )
                 }
             }
@@ -93,15 +88,13 @@ private fun WidgetSettingsPageFab(
         ) {
             if (isLastPage) {
                 Icon(
-                    Icons.Rounded.Save,
-                    contentDescription = stringResource(
+                    Icons.Rounded.Save, contentDescription = stringResource(
                         id = R.string.widget_configuration_button_save_contentDescription
                     )
                 )
             } else {
                 Icon(
-                    Icons.Rounded.ArrowForward,
-                    contentDescription = stringResource(
+                    Icons.Rounded.ArrowForward, contentDescription = stringResource(
                         id = R.string.widget_configuration_button_next_contentDescription
                     )
                 )

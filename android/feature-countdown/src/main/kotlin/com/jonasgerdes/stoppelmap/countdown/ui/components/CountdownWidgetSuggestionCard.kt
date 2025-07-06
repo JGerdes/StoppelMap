@@ -2,6 +2,9 @@
 
 package com.jonasgerdes.stoppelmap.countdown.ui.components
 
+import android.app.ActivityOptions
+import android.app.ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED
+import android.app.ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOW_ALWAYS
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -166,6 +169,14 @@ private fun addSkylineWidget(context: Context) {
     val provider = ComponentName(context, SilhouetteWidgetProvider::class.java)
 
     if (appWidgetManager.isRequestPinAppWidgetSupported) {
+        // TODO: Fix this, it still doesn't work
+        val options =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) ActivityOptions.makeBasic().apply {
+                setPendingIntentBackgroundActivityStartMode(
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) MODE_BACKGROUND_ACTIVITY_START_ALLOW_ALWAYS
+                    else MODE_BACKGROUND_ACTIVITY_START_ALLOWED
+                )
+            }.toBundle() else null
         val successCallback: PendingIntent =
             PendingIntent.getActivity(
                 context,
@@ -175,7 +186,8 @@ private fun addSkylineWidget(context: Context) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                         it or PendingIntent.FLAG_MUTABLE
                     } else it
-                }
+                },
+                options
             )
         appWidgetManager.requestPinAppWidget(provider, null, successCallback)
     }
