@@ -19,7 +19,7 @@
 		2A4040602BC313C900A5B072 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40405F2BC313C900A5B072 /* TransportationType.swift */; };
 		2A4040622BC3145B00A5B072 /* TransportationBusOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4040612BC3145B00A5B072 /* TransportationBusOverviewPage.swift */; };
 		2A409AF62C1A29B00061F18E /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A409AF52C1A29B00061F18E /* NewsScreen.swift */; };
-		2A43D7692C5ABE630004EBEA /* data.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2A43D7682C5ABE630004EBEA /* data.zip */; };
+		2A46BEAB2E1AA0B000FF92B8 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2A46BEAA2E1AA07300FF92B8 /* map */; };
 		2A58C0562BA4F7C100FDA014 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58C0552BA4F7C100FDA014 /* HomeScreen.swift */; };
 		2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A58C0582BA4F81000FDA014 /* CountdownCard.swift */; };
 		2A60663F2BB051B30067FB33 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 2A60663E2BB051B30067FB33 /* MapLibre */; };
@@ -34,7 +34,6 @@
 		2A838B272C282B33005642A1 /* UnderConstruction.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A838B262C282B33005642A1 /* UnderConstruction.json */; };
 		2A84E39E2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */; };
 		2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92605A2BF6799B00C57918 /* SettingsScreen.swift */; };
-		2ACCB05D2BB21D8100DA01B6 /* map in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCB05C2BB21D8100DA01B6 /* map */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
 		2ACFF92A2BFFE03D00000F76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A2A8F622BA4D64E008D24CE /* Assets.xcassets */; };
 		2AD0F9942C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */; };
@@ -106,7 +105,7 @@
 		2A40405F2BC313C900A5B072 /* TransportationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationType.swift; sourceTree = "<group>"; };
 		2A4040612BC3145B00A5B072 /* TransportationBusOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationBusOverviewPage.swift; sourceTree = "<group>"; };
 		2A409AF52C1A29B00061F18E /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
-		2A43D7682C5ABE630004EBEA /* data.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = data.zip; path = ../../../shared/resources/src/commonMain/resources/MR/assets/data.zip; sourceTree = "<group>"; };
+		2A46BEAA2E1AA07300FF92B8 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../shared/resources/src/androidMain/assets/map; sourceTree = "<group>"; };
 		2A58C0552BA4F7C100FDA014 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		2A58C0582BA4F81000FDA014 /* CountdownCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCard.swift; sourceTree = "<group>"; };
 		2A6066442BB052900067FB33 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -119,7 +118,6 @@
 		2A838B262C282B33005642A1 /* UnderConstruction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UnderConstruction.json; sourceTree = "<group>"; };
 		2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationTaxiOverviewPage.swift; sourceTree = "<group>"; };
 		2A92605A2BF6799B00C57918 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
-		2ACCB05C2BB21D8100DA01B6 /* map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = map; path = ../../../shared/resources/src/commonMain/resources/MR/assets/map; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
 		2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
 		2AD0F9912C0121B300FDB2A3 /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
@@ -176,6 +174,7 @@
 		2A2A8F522BA4D64D008D24CE = {
 			isa = PBXGroup;
 			children = (
+				2A46BEAA2E1AA07300FF92B8 /* map */,
 				2A838B252C282ABC005642A1 /* Animations */,
 				2AD0F99D2C01281000FDB2A3 /* Fonts.swift */,
 				2AD0F99C2C0124EE00FDB2A3 /* StoppelMap-Info.plist */,
@@ -316,8 +315,6 @@
 		2ACCB0572BB21AA600DA01B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2A43D7682C5ABE630004EBEA /* data.zip */,
-				2ACCB05C2BB21D8100DA01B6 /* map */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -462,9 +459,8 @@
 				2AD0F9942C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */,
 				2A838B272C282B33005642A1 /* UnderConstruction.json in Resources */,
 				2AD0F9962C0121B400FDB2A3 /* RobotoSlab-Bold.ttf in Resources */,
-				2ACCB05D2BB21D8100DA01B6 /* map in Resources */,
 				2AD0F99A2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */,
-				2A43D7692C5ABE630004EBEA /* data.zip in Resources */,
+				2A46BEAB2E1AA0B000FF92B8 /* map in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,7 +611,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "24.8.17811";
+				MARKETING_VERSION = 24.8.17811;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -649,7 +645,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "24.8.17811";
+				MARKETING_VERSION = 24.8.17811;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -811,7 +807,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "24.8.17811";
+				MARKETING_VERSION = 24.8.17811;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -853,7 +849,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "24.8.17811";
+				MARKETING_VERSION = 24.8.17811;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";

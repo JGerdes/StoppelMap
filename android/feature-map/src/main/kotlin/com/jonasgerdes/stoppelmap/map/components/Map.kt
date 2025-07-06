@@ -137,16 +137,17 @@ fun Map(
                     isCameraMoving = true
                     if (reason == REASON_API_GESTURE) onCameraMoved()
                 }
-                map.setStyle(Style.Builder()
-                    .fromUri("asset://${Res.assets.map.style.path}")
-                    .apply {
-                        sources.add(
-                            GeoJsonSource(
-                                id = "composite",
-                                uri = URI.create(mapDataFile)
+                map.setStyle(
+                    Style.Builder()
+                        .fromUri("asset://map/style.json")
+                        .apply {
+                            sources.add(
+                                GeoJsonSource(
+                                    id = "composite",
+                                    uri = URI.create(mapDataFile)
+                                )
                             )
-                        )
-                    })
+                        })
 
                 map.addOnMapClickListener { point ->
                     val result = map.queryRenderedFeatures(

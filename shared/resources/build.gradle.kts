@@ -46,9 +46,9 @@ kotlin {
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "com.jonasgerdes.stoppelmap.shared.resources"
-    iosBaseLocalizationRegion = "de"
-    multiplatformResourcesClassName = "Res"
+    resourcesPackage.set("com.jonasgerdes.stoppelmap.shared.resources")
+    iosBaseLocalizationRegion.set("de")
+    resourcesClassName.set("Res")
 }
 
 android {

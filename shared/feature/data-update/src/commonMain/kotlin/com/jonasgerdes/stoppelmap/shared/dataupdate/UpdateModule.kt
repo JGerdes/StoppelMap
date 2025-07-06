@@ -70,7 +70,7 @@ val dataUpdateModule = module {
     factory {
         UpdateDataUseCase(
             appInfo = get(),
-            bundledDataPath = getPathForAssetResource(Res.assets.data),
+            bundledDataPath = getPathForAssetResource(Res.assets.data_zip),
             bundledDataFileSystem = bundledDataFileSystem(),
             persistentDataDirectory = get<PathFactory>().create(getMapDirectory()).toPath(),
             dataUpdateRepository = get(),
