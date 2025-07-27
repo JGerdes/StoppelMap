@@ -6,11 +6,13 @@ import com.jonasgerdes.stoppelmap.news.data.model.Article
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmm.viewmodel.stateIn
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 class NewsViewModel(
     private val newsRepository: NewsRepository
@@ -32,6 +34,8 @@ class NewsViewModel(
         viewModelScope.coroutineScope.launch {
             isRefreshing.value = true
             newsRepository.forceRefresh()
+            // Ensure we show refresh spinner at least for some small duration.
+            delay(500.milliseconds)
             isRefreshing.value = false
         }
     }

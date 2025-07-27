@@ -4,7 +4,10 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.MaterialExpressiveTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MotionScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -36,6 +39,7 @@ val LightColorScheme = lightColorScheme(
     tertiary = StoppelPink,
 )
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun StoppelMapTheme(
     themeSetting: ThemeSetting = ThemeSetting.Light,
@@ -80,8 +84,11 @@ fun StoppelMapTheme(
                 insetsController.isAppearanceLightNavigationBars = !darkTheme
             }
         }
-        MaterialTheme(
-            colorScheme = colorScheme, typography = Typography, content = content
+        MaterialExpressiveTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            motionScheme = MotionScheme.expressive(),
+            content = content
         )
     }
 }

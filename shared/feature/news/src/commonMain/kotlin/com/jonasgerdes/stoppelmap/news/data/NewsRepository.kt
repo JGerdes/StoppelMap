@@ -41,6 +41,7 @@ class NewsRepository(
     suspend fun loadLatestArticles() {
         processNewsResponse(
             remoteNewsSource.getNews(),
+            clearCache = true,
         )
     }
 
