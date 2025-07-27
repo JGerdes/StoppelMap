@@ -68,7 +68,6 @@ import java.time.format.DateTimeFormatter
 fun ScheduleScreen(
     modifier: Modifier = Modifier,
     viewModel: ScheduleViewModel = koinViewModel(),
-    scaffoldPadding: PaddingValues
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -101,12 +100,11 @@ fun ScheduleScreen(
     Box(modifier = Modifier.fillMaxSize()) {
         BottomSheetScaffold(
             scaffoldState = scaffoldState,
-            sheetPeekHeight = scaffoldPadding.calculateBottomPadding() + peekHeight,
+            sheetPeekHeight = peekHeight,
             sheetContent = {
                 (state.bookmarkedEvents as? BookmarkedEvents.Some)?.let {
                     SheetContent(
                         it,
-                        modifier = Modifier.padding(scaffoldPadding),
                         onBookmarkToggle = { slug, isBookmarked ->
                             if (isBookmarked) viewModel.onEventNotificationSchedule(slug, true)
                             else pendingBookmarkRemoval.value = slug
@@ -260,8 +258,8 @@ fun ScheduleScreen(
 @Composable
 fun SheetContent(
     bookmarkedEvents: BookmarkedEvents.Some,
-    modifier: Modifier,
-    onBookmarkToggle: (String, Boolean) -> Unit
+    onBookmarkToggle: (String, Boolean) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier.fillMaxWidth()) {
         Text(

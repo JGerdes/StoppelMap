@@ -85,16 +85,8 @@ fun MapScreen(
     val mapTheme by mapColorViewModel.mapColorState.collectAsStateWithLifecycle()
 
     val bottomSheetState = rememberStandardBottomSheetState(
-        initialValue = SheetValue.PartiallyExpanded,
-        confirmValueChange = {
-            when (state.bottomSheetState) {
-                MapViewModel.BottomSheetState.Hidden -> false
-                is MapViewModel.BottomSheetState.Idle -> it != SheetValue.Hidden
-                is MapViewModel.BottomSheetState.Collection -> true
-                is MapViewModel.BottomSheetState.SingleStall -> true
-            }
-        },
-        skipHiddenState = state.bottomSheetState is MapViewModel.BottomSheetState.Idle,
+        initialValue = SheetValue.Hidden,
+        skipHiddenState = false,
     )
     LaunchedEffect(state.bottomSheetState) {
         when (state.bottomSheetState) {

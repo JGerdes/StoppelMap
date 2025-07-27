@@ -46,6 +46,7 @@ import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,7 +54,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onLayoutRectChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -75,6 +76,7 @@ import kotlinx.datetime.format
 import kotlinx.datetime.format.char
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
+import timber.log.Timber
 import java.text.NumberFormat
 import java.util.Currency
 import java.util.Locale
@@ -84,7 +86,6 @@ import java.util.Locale
 fun StationScreen(
     stationId: String,
     onNavigateBack: () -> Unit,
-    padding: PaddingValues,
     modifier: Modifier = Modifier,
     viewModel: StationViewModel = koinViewModel { parametersOf(stationId) }
 ) {
@@ -106,6 +107,15 @@ fun StationScreen(
         var contentHeight by remember {
             mutableStateOf(128.dp)
         }
+        val peekHeight by remember(availableHeight, contentHeight) {
+            derivedStateOf {
+                androidx.compose.ui.unit.max(
+                    (availableHeight - contentHeight),
+                    128.dp
+                )
+                    .also { Timber.d("Derived peekHeight: $it (availableHeight: $availableHeight, contentHeight: $contentHeight)") }
+            }
+        }
         val density = LocalDensity.current
 
         var departureType: DepartureType by remember {
@@ -113,14 +123,11 @@ fun StationScreen(
         }
 
         BottomSheetScaffold(
-            modifier = modifier.onGloballyPositioned {
-                availableHeight = with(density) { it.size.height.toDp() }
+            modifier = modifier.onLayoutRectChanged {
+                availableHeight = with(density) { it.height.toDp() }
             },
             scaffoldState = scaffoldState,
-            sheetPeekHeight = androidx.compose.ui.unit.max(
-                availableHeight - contentHeight,
-                padding.calculateBottomPadding() + 128.dp
-            ),
+            sheetPeekHeight = peekHeight,
             sheetContent = {
                 val gridState = rememberLazyGridState()
                 Column(
@@ -180,7 +187,6 @@ fun StationScreen(
                         gridState = gridState,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(padding)
                     )
                 }
             },
@@ -217,73 +223,69 @@ fun StationScreen(
             }
         ) {
             Column(
-                Modifier.padding(it)
+                Modifier
+                    .onLayoutRectChanged {
+                        contentHeight = with(density) { it.height.toDp() }
+                    }
             ) {
-                Column(
-                    Modifier
-                        .onGloballyPositioned {
-                            contentHeight = with(density) { it.size.height.toDp() }
-                        },
-                ) {
-                    val priceState = stationState.priceState
-                    if (priceState.prices.isNotEmpty()) {
-                        OutlinedCard(
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp)
-                                .padding(vertical = 8.dp)
-                        ) {
-                            Column(Modifier.padding(16.dp)) {
-                                Text(
-                                    text = stringResource(R.string.transportation_station_prices_title),
-                                    style = MaterialTheme.typography.labelMedium
-                                )
-                                Spacer(modifier = Modifier.size(8.dp))
-                                priceState.prices.forEach { fee ->
-                                    Row(
-                                        horizontalArrangement = Arrangement.SpaceBetween,
-                                        modifier = Modifier.fillMaxWidth()
-                                    ) {
-                                        Text(
-                                            text = fee.name
-                                        )
-                                        Spacer(modifier = Modifier.size(8.dp))
-                                        Text(
-                                            text = fee.formatAmount(LocalContext.current.resources)
-                                        )
-                                    }
-                                }
-                                Spacer(modifier = Modifier.size(16.dp))
-                                Text(
-                                    text = stringResource(R.string.transportation_station_prices_hint_cash),
-                                    style = MaterialTheme.typography.labelMedium
-                                )
-                                if (priceState.showDeutschlandTicketHint) {
+                val priceState = stationState.priceState
+                if (priceState.prices.isNotEmpty()) {
+                    OutlinedCard(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                            .padding(vertical = 8.dp)
+                    ) {
+                        Column(Modifier.padding(16.dp)) {
+                            Text(
+                                text = stringResource(R.string.transportation_station_prices_title),
+                                style = MaterialTheme.typography.labelMedium
+                            )
+                            Spacer(modifier = Modifier.size(8.dp))
+                            priceState.prices.forEach { fee ->
+                                Row(
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    Text(
+                                        text = fee.name
+                                    )
                                     Spacer(modifier = Modifier.size(8.dp))
                                     Text(
-                                        text = stringResource(R.string.transportation_station_prices_hint_deutschland_ticket),
-                                        style = MaterialTheme.typography.labelMedium
+                                        text = fee.formatAmount(LocalContext.current.resources)
                                     )
                                 }
-
                             }
-                        }
-                    }
-                    stationState.additionalInfo?.let { info ->
-                        OutlinedCard(
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 8.dp)
-                        ) {
+                            Spacer(modifier = Modifier.size(16.dp))
                             Text(
-                                text = info,
-                                modifier = Modifier.padding(16.dp)
+                                text = stringResource(R.string.transportation_station_prices_hint_cash),
+                                style = MaterialTheme.typography.labelMedium
                             )
+                            if (priceState.showDeutschlandTicketHint) {
+                                Spacer(modifier = Modifier.size(8.dp))
+                                Text(
+                                    text = stringResource(R.string.transportation_station_prices_hint_deutschland_ticket),
+                                    style = MaterialTheme.typography.labelMedium
+                                )
+                            }
+
                         }
                     }
-
-                    Spacer(modifier = Modifier.height(8.dp))
                 }
+                stationState.additionalInfo?.let { info ->
+                    OutlinedCard(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 8.dp)
+                    ) {
+                        Text(
+                            text = info,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     } else {

@@ -91,8 +91,7 @@ fun HomeScreen(
             contentPadding = defaultContentPadding(paddingValues),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             state = listState,
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
             state.messages.forEach { message ->
                 item {
