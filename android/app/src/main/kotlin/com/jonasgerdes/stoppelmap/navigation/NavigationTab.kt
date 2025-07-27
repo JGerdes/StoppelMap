@@ -9,35 +9,39 @@ import androidx.compose.material.icons.rounded.Map
 import androidx.compose.material.icons.rounded.Newspaper
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.jonasgerdes.stoppelmap.R
+import com.jonasgerdes.stoppelmap.map.MapDestination
+import com.jonasgerdes.stoppelmap.news.NewsDestination
+import com.jonasgerdes.stoppelmap.schedule.ScheduleDestination
+import com.jonasgerdes.stoppelmap.transportation.TransportationDestination
 
 data class NavigationTab(
-    val icon: ImageVector, @StringRes val label: Int, val startRoute: String
+    val icon: ImageVector, @StringRes val label: Int, val startDestination: Any
 )
 
 val navigationTabs = listOf(
     NavigationTab(
         icon = Icons.Rounded.Home,
         label = R.string.main_bottom_nav_item_home,
-        startRoute = Screen.Home.route
+        startDestination = StartDestination,
     ),
     NavigationTab(
         icon = Icons.Rounded.Map,
         label = R.string.main_bottom_nav_item_map,
-        startRoute = Screen.Map.route
+        startDestination = MapDestination
     ),
     NavigationTab(
         icon = Icons.Rounded.Event,
         label = R.string.main_bottom_nav_item_schedule,
-        startRoute = Screen.Schedule.route
+        startDestination = ScheduleDestination
     ),
     NavigationTab(
         icon = Icons.Rounded.DepartureBoard,
         label = R.string.main_bottom_nav_item_transport,
-        startRoute = Screen.TransportationOverview.route
+        startDestination = TransportationDestination
     ),
     NavigationTab(
         icon = Icons.Rounded.Newspaper,
         label = R.string.main_bottom_nav_item_news,
-        startRoute = Screen.News.route
+        startDestination = NewsDestination
     ),
 )

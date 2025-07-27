@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
@@ -41,33 +42,35 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
+import com.jonasgerdes.stoppelmap.map.mapDestinations
 import com.jonasgerdes.stoppelmap.map.repository.AndroidPermissionRepository
-import com.jonasgerdes.stoppelmap.map.ui.MapScreen
-import com.jonasgerdes.stoppelmap.navigation.Screen
+import com.jonasgerdes.stoppelmap.navigation.AboutDestination
+import com.jonasgerdes.stoppelmap.navigation.HomeDestination
+import com.jonasgerdes.stoppelmap.navigation.StartDestination
 import com.jonasgerdes.stoppelmap.navigation.navigationTabs
-import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
+import com.jonasgerdes.stoppelmap.news.newsDestinations
 import com.jonasgerdes.stoppelmap.news.usecase.GetUnreadNewsCountUseCase
-import com.jonasgerdes.stoppelmap.schedule.ui.ScheduleScreen
+import com.jonasgerdes.stoppelmap.schedule.scheduleDestinations
 import com.jonasgerdes.stoppelmap.settings.data.Settings
 import com.jonasgerdes.stoppelmap.settings.ui.SettingsScreen
 import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
-import com.jonasgerdes.stoppelmap.transportation.ui.overview.TransportationOverviewScreen
-import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteScreen
-import com.jonasgerdes.stoppelmap.transportation.ui.station.StationScreen
+import com.jonasgerdes.stoppelmap.transportation.transportationDestinations
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -144,7 +147,7 @@ class StoppelMapActivity : ComponentActivity() {
                             icon = {
                                 if (icon == Icons.Rounded.Newspaper) {
                                     BadgedBox(badge = {
-                                        androidx.compose.animation.AnimatedVisibility(
+                                        this@NavigationBar.AnimatedVisibility(
                                             visible = unreadNewsCount > 0,
                                             enter = fadeIn() + scaleIn(),
                                             exit = fadeOut() + scaleOut(),
@@ -167,9 +170,7 @@ class StoppelMapActivity : ComponentActivity() {
                                 )
                             },
                             selected = currentDestination?.hierarchy?.any {
-                                it.route?.startsWith(
-                                    startDestination
-                                ) ?: false
+                                it.hasRoute(startDestination::class)
                             } == true,
                             onClick = {
                                 navController.navigate(startDestination) {
@@ -188,95 +189,45 @@ class StoppelMapActivity : ComponentActivity() {
                 modifier = Modifier
                     .padding(scaffoldPadding)
                     .consumeWindowInsets(scaffoldPadding),
-                startDestination = Screen.Home.route,
+                startDestination = StartDestination,
             ) {
-                composable(Screen.Home.route) {
-                    HomeScreen(
-                        onUrlTap = { openUrl(it) },
-                        onSettingsOptionTap = { navController.navigate(Screen.About.route) },
-                        onDownloadUpdateTap = { startUpdateDownload(it) },
-                        onOpenGooglePlayTap = { openGooglePlayPage() },
-                        onCallPhoneNumber = { dialPhoneNumber(it) },
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
+                navigation<StartDestination>(
+                    startDestination = HomeDestination
+                ) {
+                    composable<HomeDestination> {
+                        HomeScreen(
+                            onUrlTap = { openUrl(it) },
+                            onSettingsOptionTap = { navController.navigate(AboutDestination) },
+                            onDownloadUpdateTap = { startUpdateDownload(it) },
+                            onOpenGooglePlayTap = { openGooglePlayPage() },
+                            onCallPhoneNumber = { dialPhoneNumber(it) },
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.colorScheme.background)
+                        )
+                    }
+                    composable<AboutDestination> {
+                        SettingsScreen(
+                            onNavigateBack = { navController.navigateUp() },
+                            onUrlTap = { openUrl(it) },
+                            Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.colorScheme.background)
+                        )
+                    }
                 }
-                composable(Screen.About.route) {
-                    SettingsScreen(
-                        onNavigateBack = { navController.navigateUp() },
-                        onUrlTap = { openUrl(it) },
-                        Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
-                }
-                composable(Screen.Map.route) {
-                    MapScreen(
-                        onRequestLocationPermission = ::requestLocationPermission,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
-                }
-                composable(Screen.Schedule.route) {
-                    ScheduleScreen(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
-                }
-                composable(Screen.TransportationOverview.route) {
-                    TransportationOverviewScreen(
-                        onRouteTap = {
-                            navController.navigate(
-                                Screen.TransportRoute.create(routeId = it)
-                            )
-                        },
-                        onStationTap = {
-                            navController.navigate(
-                                Screen.TransportStation.create(stationId = it)
-                            )
-                        },
-                        onPhoneNumberTap = {
-                            dialPhoneNumber(it)
-                        },
-                        Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
-                }
-                composable(Screen.TransportRoute.route) {
-                    val routeId = it.arguments?.getString("routeId")!!
-                    RouteScreen(
-                        routeId = routeId,
-                        onStationTap = {
-                            navController.navigate(
-                                Screen.TransportStation.create(stationId = it)
-                            )
-                        },
-                        onNavigateBack = { navController.navigateUp() },
-                        onWebsiteTap = ::openUrl,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
-                }
-                composable(Screen.TransportStation.route) {
-                    val stationId = it.arguments?.getString("stationId")!!
-                    StationScreen(
-                        stationId = stationId,
-                        onNavigateBack = { navController.navigateUp() },
-                        Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background)
-                    )
-                }
-                composable(Screen.News.route) {
-                    NewsScreen(
-                        onUrlTap = ::openUrl,
-                    )
-                }
+                mapDestinations(
+                    onRequestLocationPermission = ::requestLocationPermission,
+                )
+                scheduleDestinations()
+                transportationDestinations(
+                    navController = navController,
+                    onDialPhoneNumber = ::dialPhoneNumber,
+                    onOpenUrl = ::openUrl,
+                )
+                newsDestinations(
+                    onOpenUrl = ::openUrl,
+                )
             }
         }
     }

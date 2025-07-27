@@ -26,7 +26,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.ConfirmationNumber
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -76,7 +76,7 @@ fun RouteScreen(
     routeId: String,
     onStationTap: (stationId: String) -> Unit,
     onWebsiteTap: (url: String) -> Unit,
-    onNavigateBack: () -> Unit,
+    onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: RouteViewModel = koinViewModel { parametersOf(routeId) }
 ) {
@@ -95,10 +95,10 @@ fun RouteScreen(
                     modifier = Modifier.elevationWhenScrolled(listState),
                     navigationIcon = {
                         IconButton(
-                            onClick = { onNavigateBack() }
+                            onClick = { onNavigateUp() }
                         ) {
                             Icon(
-                                Icons.Rounded.ArrowBack,
+                                Icons.AutoMirrored.Rounded.ArrowBack,
                                 stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
                             )
                         }

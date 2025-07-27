@@ -1,20 +1,12 @@
 package com.jonasgerdes.stoppelmap.navigation
 
-sealed class Screen(val route: String) {
+import kotlinx.serialization.Serializable
 
-    object Home : Screen("home")
-    object About : Screen("about")
-    object Map : Screen("map")
-    object Schedule : Screen("schedule")
-    object TransportationOverview : Screen("transportation")
-    object TransportRoute : Screen("transportation/route/{routeId}") {
-        fun create(routeId: String) = "transportation/route/$routeId"
-    }
+@Serializable
+data object StartDestination
 
-    object TransportStation : Screen("transportation/station/{stationId}") {
-        fun create(stationId: String) = "transportation/station/$stationId"
-    }
+@Serializable
+data object HomeDestination
 
-    object News : Screen("news")
-
-}
+@Serializable
+data object AboutDestination

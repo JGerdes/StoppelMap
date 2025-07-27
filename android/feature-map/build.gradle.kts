@@ -65,5 +65,6 @@ dependencies {
     implementation(libs.sqldelight.coroutines)
     implementation(libs.androidx.datastore)
     implementation(libs.kotlinx.serialization.json.core)
+    implementation(libs.androidx.navigation.compose)
 
 }

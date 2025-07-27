@@ -59,4 +59,5 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.coil.compose)
     implementation(libs.bundles.ktor.android)
+    implementation(libs.androidx.navigation.compose)
 }
