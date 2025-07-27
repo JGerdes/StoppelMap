@@ -28,13 +28,13 @@ accompoanist = "0.37.3"
 coil = "2.7.0"
 koin = "4.1.0"
 timber = "5.0.1"
-lottie = "6.4.0"
-maplibre = "11.0.0-pre4"
+lottie = "6.6.7"
+maplibre = "11.11.0"
 sqldelight = "2.1.0"
 sqldelight-primitive-adapters = "2.1.0"
-playServiceLocation = "21.2.0"
+playServiceLocation = "21.3.0"
 playInAppUpdate = "2.1.0"
-kermit = "2.0.3"
+kermit = "2.0.6"
 ktor = "3.2.1"
 gson = "2.10.1"
 geogson = "1.2.21"
@@ -99,7 +99,7 @@ sqldelight-primitive-adapters = { module = "app.cash.sqldelight:primitive-adapte
 google-play-app-update = { module = "com.google.android.play:app-update-ktx", version.ref = "playInAppUpdate" }
 google-play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServiceLocation" }
 
-maplibre = { module = "org.maplibre.gl:android-sdk", version.ref = "maplibre" }
+maplibre = { module = "org.maplibre.gl:android-sdk-vulkan", version.ref = "maplibre" }
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 

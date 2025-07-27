@@ -43,10 +43,6 @@ import com.jonasgerdes.stoppelmap.map.ui.CameraView
 import com.jonasgerdes.stoppelmap.map.ui.MapColors
 import com.jonasgerdes.stoppelmap.map.ui.MapDefaults
 import com.jonasgerdes.stoppelmap.map.ui.MapState
-import com.jonasgerdes.stoppelmap.shared.resources.Res
-import com.mapbox.geojson.Feature
-import com.mapbox.geojson.FeatureCollection
-import com.mapbox.geojson.Point
 import org.maplibre.android.MapLibre
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.camera.CameraUpdateFactory
@@ -67,6 +63,9 @@ import org.maplibre.android.style.layers.PropertyFactory.textHaloColor
 import org.maplibre.android.style.layers.PropertyFactory.visibility
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
+import org.maplibre.geojson.Feature
+import org.maplibre.geojson.FeatureCollection
+import org.maplibre.geojson.Point
 import timber.log.Timber
 import java.net.URI
 
@@ -83,7 +82,7 @@ fun Map(
     colors: MapColors,
     padding: PaddingValues,
 ) {
-    Timber.d("Map", "mapDataFile: $mapDataFile")
+    Timber.d("mapDataFile: $mapDataFile")
     val context = LocalContext.current
     val density = LocalDensity.current
     val isDarkTheme = isSystemInDarkTheme()
