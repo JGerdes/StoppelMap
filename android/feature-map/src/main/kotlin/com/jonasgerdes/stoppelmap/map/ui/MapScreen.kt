@@ -56,6 +56,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -69,8 +70,10 @@ import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.components.Map
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
+import kotlin.time.Duration.Companion.milliseconds
 
 @OptIn(ExperimentalMaterial3Api::class)
 
@@ -148,6 +151,11 @@ fun MapScreen(
                 BottomSheetDefaults.SheetPeekHeight, // account for handle etc
         modifier = modifier,
     ) {
+        var showMap by remember { mutableStateOf(false) }
+        LaunchedEffect(Unit) {
+            delay(200.milliseconds)
+            showMap = true
+        }
         Box {
             val mapDataPath = state.mapDataPath
             if (mapDataPath != null) {
@@ -162,6 +170,13 @@ fun MapScreen(
                     mapState = state.mapState,
                     padding = mapPadding,
                     modifier = Modifier.fillMaxSize()
+                )
+            }
+            AnimatedVisibility(!showMap, exit = fadeOut()) {
+                Box(
+                    modifier = Modifier
+                        .background(MaterialTheme.colorScheme.background)
+                        .fillMaxSize()
                 )
             }
             FloatingActionButton(
