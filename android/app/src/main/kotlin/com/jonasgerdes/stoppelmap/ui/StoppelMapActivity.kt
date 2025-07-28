@@ -8,22 +8,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Newspaper
-import androidx.compose.material3.Badge
-import androidx.compose.material3.BadgedBox
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -72,7 +62,6 @@ import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import com.jonasgerdes.stoppelmap.transportation.transportationDestinations
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -92,8 +81,6 @@ class StoppelMapActivity : ComponentActivity() {
             permissionRepository.update()
         }
 
-    private var unreadNewsCount: Long by mutableStateOf(0L)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -110,12 +97,6 @@ class StoppelMapActivity : ComponentActivity() {
                     .collect()
             }
         }
-
-        getUnreadNewsCount()
-            .onEach {
-                unreadNewsCount = it
-            }
-            .launchIn(lifecycleScope)
 
         splashScreen.setKeepOnScreenCondition {
             settingsState == null
@@ -142,38 +123,22 @@ class StoppelMapActivity : ComponentActivity() {
                     val navBackStackEntry = navController.currentBackStackEntryAsState().value
                     val currentDestination = navBackStackEntry?.destination
 
-                    navigationTabs.forEach { (icon, label, startDestination) ->
+                    navigationTabs.forEach { tab ->
                         NavigationBarItem(
-                            icon = {
-                                if (icon == Icons.Rounded.Newspaper) {
-                                    BadgedBox(badge = {
-                                        this@NavigationBar.AnimatedVisibility(
-                                            visible = unreadNewsCount > 0,
-                                            enter = fadeIn() + scaleIn(),
-                                            exit = fadeOut() + scaleOut(),
-                                        ) {
-                                            Badge {
-                                                Text(text = unreadNewsCount.toString())
-                                            }
-                                        }
-                                    }) {
-                                        Icon(imageVector = icon, contentDescription = null)
-                                    }
-                                } else Icon(imageVector = icon, contentDescription = null)
-                            },
+                            icon = tab.iconComposable,
                             label = {
                                 Text(
-                                    text = stringResource(label),
+                                    text = stringResource(tab.label),
                                     textAlign = TextAlign.Center,
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis
                                 )
                             },
                             selected = currentDestination?.hierarchy?.any {
-                                it.hasRoute(startDestination::class)
+                                it.hasRoute(tab.startDestination::class)
                             } == true,
                             onClick = {
-                                navController.navigate(startDestination) {
+                                navController.navigate(tab.startDestination) {
                                     launchSingleTop = true
                                     restoreState = true
                                     popUpTo(navController.graph.findStartDestination().id) {
