@@ -36,22 +36,23 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabPosition
-import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
 import com.jonasgerdes.stoppelmap.theme.components.UnderConstructionPlaceholder
+import com.jonasgerdes.stoppelmap.theme.material.appBarContainerColor
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.RouteSummary
 import com.jonasgerdes.stoppelmap.transportation.ui.route.StopStationCard
@@ -62,8 +63,8 @@ import org.koin.androidx.compose.koinViewModel
 @SuppressLint("NewApi")
 @Composable
 fun TransportationOverviewScreen(
-    onRouteTap: (routeId: String) -> Unit,
-    onStationTap: (stationId: String) -> Unit,
+    onRouteTap: (routeId: String, routeName: String) -> Unit,
+    onStationTap: (stationId: String, stationName: String) -> Unit,
     onPhoneNumberTap: (phoneNumber: String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TransportationOverviewViewModel = koinViewModel(),
@@ -78,28 +79,28 @@ fun TransportationOverviewScreen(
     }
 
     val pagerState = rememberPagerState(pageCount = { pages.size })
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+
+
 
     Scaffold(
         topBar = {
             Column {
                 CenterAlignedTopAppBar(
                     title = { Text(text = stringResource(id = R.string.transportation_overview_topbar_title)) },
+                    scrollBehavior = scrollBehavior,
                 )
-                TabRow(
+                val containerColor by appBarContainerColor(scrollBehavior)
+                PrimaryTabRow(
                     selectedTabIndex = pagerState.currentPage,
-                    indicator = { tabPositions: List<TabPosition> ->
-                        FancyAnimatedIndicator(
-                            tabPositions = tabPositions,
-                            selectedTabIndex = pagerState.currentPage,
-                        )
-                    },
+                    containerColor = containerColor,
                 ) {
                     val coroutineScope = rememberCoroutineScope()
                     pages.forEachIndexed { index, page ->
                         val color by animateColorAsState(
                             targetValue =
-                            if (pagerState.currentPage == index) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.onBackground,
+                                if (pagerState.currentPage == index) MaterialTheme.colorScheme.primary
+                                else MaterialTheme.colorScheme.onBackground,
                         )
                         Tab(
                             selected = index == pagerState.currentPage,
@@ -114,7 +115,7 @@ fun TransportationOverviewScreen(
                             },
                             onClick = {
                                 coroutineScope.launch {
-                                    pagerState.scrollToPage(index)
+                                    pagerState.animateScrollToPage(index)
                                 }
                             }
                         )
@@ -122,7 +123,7 @@ fun TransportationOverviewScreen(
                 }
             }
         },
-        modifier = modifier
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { paddingValues ->
         HorizontalPager(
             state = pagerState,
@@ -172,8 +173,8 @@ sealed class Page(
 @Composable
 fun BusPage(
     state: TransportationOverviewViewModel.BusRoutesState,
-    onStationTap: (stationId: String) -> Unit,
-    onRouteTap: (routeId: String) -> Unit
+    onStationTap: (stationId: String, stationName: String) -> Unit,
+    onRouteTap: (routeId: String, routeName: String) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -197,7 +198,7 @@ fun BusPage(
                 station = station,
                 modifier = Modifier
                     .clickable {
-                        onStationTap(station.slug)
+                        onStationTap(station.slug, station.name)
                     }
                     .padding(horizontal = 16.dp, vertical = 8.dp)
             )
@@ -220,7 +221,7 @@ fun BusPage(
 @Composable
 fun TrainPage(
     state: TransportationOverviewViewModel.TrainRoutesState,
-    onRouteTap: (routeSlug: String) -> Unit
+    onRouteTap: (routeSlug: String, routeName: String) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize()
@@ -237,14 +238,14 @@ fun TrainPage(
 @Composable
 private fun RouteRow(
     route: RouteSummary,
-    onRouteTap: (routeSlug: String) -> Unit
+    onRouteTap: (routeSlug: String, routeName: String) -> Unit
 ) {
     ListItem(
         headlineContent = { Text(route.name) },
         trailingContent = {
             Icon(Icons.Rounded.ChevronRight, null)
         },
-        modifier = Modifier.clickable { onRouteTap(route.slug) }
+        modifier = Modifier.clickable { onRouteTap(route.slug, route.name) }
     )
 }
 
@@ -299,3 +300,5 @@ enum class ItemTypes {
     FavouriteStation,
     Route,
 }
+
+

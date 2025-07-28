@@ -175,8 +175,7 @@
     </string>
     <string name="transportation_station_prices_reduced">Ermäßigt</string>
     <string name="transportation_station_prices_hint_cash">Nur Barzahlung. Bitte möglichst passend bezahlen.</string>
-    <string name="transportation_station_prices_hint_deutschland_ticket">Das Deutschland-Ticket
-        („49€-Ticket“) gilt nicht für die Pendelbusse des Stoppelmarkts!
+    <string name="transportation_station_prices_hint_deutschland_ticket">Das Deutschland-Ticket gilt nicht für die Pendelbusse des Stoppelmarkts!
     </string>
 
     <string name="transportation_station_timetable_outward">Hinfahrt</string>

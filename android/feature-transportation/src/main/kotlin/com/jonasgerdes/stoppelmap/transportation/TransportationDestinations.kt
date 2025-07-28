@@ -24,10 +24,16 @@ data object TransportationDestination
 data object TransportationOverviewDestination
 
 @Serializable
-data class TransportRouteDestination(val routeId: String)
+data class TransportRouteDestination(
+    val routeId: String,
+    val routeName: String?
+)
 
 @Serializable
-data class TransportStationDestination(val stationId: String)
+data class TransportStationDestination(
+    val stationId: String,
+    val stationName: String?,
+)
 
 val transportationNavigationTab = NavigationTab(
     icon = Icons.Rounded.DepartureBoard,
@@ -45,11 +51,16 @@ fun NavGraphBuilder.transportationDestinations(
     ) {
         composable<TransportationOverviewDestination> {
             TransportationOverviewScreen(
-                onRouteTap = {
-                    navController.navigate(TransportRouteDestination(routeId = it))
+                onRouteTap = { id, name ->
+                    navController.navigate(
+                        TransportRouteDestination(
+                            routeId = id,
+                            routeName = name,
+                        )
+                    )
                 },
-                onStationTap = {
-                    navController.navigate(TransportStationDestination(stationId = it))
+                onStationTap = { id, name ->
+                    navController.navigate(TransportStationDestination(stationId = id, stationName = name))
                 },
                 onPhoneNumberTap = onDialPhoneNumber,
                 Modifier
@@ -61,8 +72,9 @@ fun NavGraphBuilder.transportationDestinations(
             val transportRouteDestination: TransportRouteDestination = backStackEntry.toRoute()
             RouteScreen(
                 routeId = transportRouteDestination.routeId,
-                onStationTap = {
-                    navController.navigate(TransportStationDestination(stationId = it))
+                routeName = transportRouteDestination.routeName,
+                onStationTap = { id, name ->
+                    navController.navigate(TransportStationDestination(stationId = id, stationName = name))
                 },
                 onNavigateUp = { navController.navigateUp() },
                 onWebsiteTap = onOpenUrl,
@@ -75,6 +87,7 @@ fun NavGraphBuilder.transportationDestinations(
             val transportStationDestination: TransportStationDestination = backStackEntry.toRoute()
             StationScreen(
                 stationId = transportStationDestination.stationId,
+                stationName = transportStationDestination.stationName,
                 onNavigateBack = { navController.navigateUp() },
                 Modifier
                     .fillMaxSize()

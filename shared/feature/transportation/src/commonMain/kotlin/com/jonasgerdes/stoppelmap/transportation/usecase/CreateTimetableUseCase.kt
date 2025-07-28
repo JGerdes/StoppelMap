@@ -22,35 +22,44 @@ class CreateTimetableUseCase(
                 allDepartures.groupBy { it.departure.time.time }
 
             val now = clockProvider.nowAsInstant()
+            val today = clockProvider.toLocalDateTime(now).date
 
             Timetable(
-                departureDays = departures.map { it.day },
+                departureDays = departures.map {
+                    Timetable.DepartureDay(
+                        date = it.day,
+                        isToday = it.day == today,
+                    )
+                },
                 daySegments = Timetable.DaySegmentType.entries.map { daySegmentType ->
                     Timetable.DaySegment(
                         type = daySegmentType,
                         departureSlots =
-                        allSlots.keys
-                            .filter { daySegmentType.containsTime(it) }
-                            .map { slotTime ->
-                                val departuresWithDay = allSlots[slotTime]!!
-                                Timetable.DepartureSlot(departures = departures.associate { day ->
-                                    day.day to departuresWithDay.find { it.day.day == day.day }?.departure
-                                }.values.toList().map {
-                                    it?.let {
-                                        Timetable.Departure(it.time, isInPast = clockProvider.toInstant(it.time) < now)
-                                    }
-                                })
-                            }
-                            .sortedBy {
-                                with(clockProvider) {
-                                    val firstIndex = it.departures.indexOfFirst { it != null }
-                                    it.departures[firstIndex]!!.time.asInstant().minus(
-                                        firstIndex.toDuration(
-                                            DurationUnit.DAYS
-                                        )
-                                    ).asLocalDateTime()
+                            allSlots.keys
+                                .filter { daySegmentType.containsTime(it) }
+                                .map { slotTime ->
+                                    val departuresWithDay = allSlots[slotTime]!!
+                                    Timetable.DepartureSlot(departures = departures.associate { day ->
+                                        day.day to departuresWithDay.find { it.day.day == day.day }?.departure
+                                    }.values.toList().map {
+                                        it?.let {
+                                            Timetable.Departure(
+                                                it.time,
+                                                isInPast = clockProvider.toInstant(it.time) < now
+                                            )
+                                        }
+                                    })
                                 }
-                            }
+                                .sortedBy {
+                                    with(clockProvider) {
+                                        val firstIndex = it.departures.indexOfFirst { it != null }
+                                        it.departures[firstIndex]!!.time.asInstant().minus(
+                                            firstIndex.toDuration(
+                                                DurationUnit.DAYS
+                                            )
+                                        ).asLocalDateTime()
+                                    }
+                                }
                     )
                 }.filter { it.departureSlots.isNotEmpty() }
             )

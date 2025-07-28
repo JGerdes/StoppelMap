@@ -66,6 +66,7 @@ import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails
 import com.jonasgerdes.stoppelmap.transportation.model.BusRouteDetails.Station.NextDepartures
 import com.jonasgerdes.stoppelmap.transportation.ui.getFormattedStringRes
+import com.jonasgerdes.stoppelmap.transportation.ui.route.RouteViewModel.RouteState
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import kotlin.math.roundToInt
@@ -74,7 +75,8 @@ import kotlin.math.roundToInt
 @Composable
 fun RouteScreen(
     routeId: String,
-    onStationTap: (stationId: String) -> Unit,
+    routeName: String?,
+    onStationTap: (stationId: String, stationName: String) -> Unit,
     onWebsiteTap: (url: String) -> Unit,
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
@@ -86,29 +88,33 @@ fun RouteScreen(
     val listState = rememberLazyListState()
 
     val routeState = state.routeState
-    if (routeState is RouteViewModel.RouteState.Loaded) {
-        Scaffold(
-            topBar = {
-                LargeTopAppBar(
-                    title = { Text(text = routeState.routeDetails.name) },
-                    scrollBehavior = scrollBehavior,
-                    modifier = Modifier.elevationWhenScrolled(listState),
-                    navigationIcon = {
-                        IconButton(
-                            onClick = { onNavigateUp() }
-                        ) {
-                            Icon(
-                                Icons.AutoMirrored.Rounded.ArrowBack,
-                                stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
-                            )
-                        }
-                    })
-            },
-            modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
-        ) { paddingValues ->
+    Scaffold(
+        topBar = {
+            LargeTopAppBar(
+                title = {
+                    ((routeState as? RouteState.Loaded)?.routeDetails?.name ?: routeName)?.let {
+                        Text(text = it)
+                    }
+                },
+                scrollBehavior = scrollBehavior,
+                modifier = Modifier.elevationWhenScrolled(listState),
+                navigationIcon = {
+                    IconButton(
+                        onClick = { onNavigateUp() }
+                    ) {
+                        Icon(
+                            Icons.AutoMirrored.Rounded.ArrowBack,
+                            stringResource(id = R.string.transportation_route_topbar_navigateBack_contentDescription)
+                        )
+                    }
+                })
+        },
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+    ) { paddingValues ->
+        if (routeState is RouteState.Loaded) {
             val stations = routeState.routeDetails.stations
             LazyColumn(
-                contentPadding = defaultContentPadding(paddingValues),
+                contentPadding = defaultContentPadding(paddingValues, bottom = 8.dp),
                 state = listState,
                 modifier = Modifier.fillMaxSize()
             ) {
@@ -160,7 +166,7 @@ fun RouteScreen(
                                 .weight(1f)
                                 .padding(vertical = 8.dp)
                                 .clickable {
-                                    onStationTap(station.slug)
+                                    onStationTap(station.slug, station.name)
                                 }
                         )
                     }
@@ -193,9 +199,9 @@ fun RouteScreen(
                     }
                 }
             }
+        } else {
+            LoadingSpinner(modifier.fillMaxSize())
         }
-    } else {
-        LoadingSpinner(modifier.fillMaxSize())
     }
 }
 
@@ -212,14 +218,15 @@ private fun StationRow(
     ) {
         Box(
             modifier = Modifier
-                .width(16.dp)
+                // 24.dp + spacer below + defaultContentPadding.start = 56.dp = start of topbar title
+                .width(24.dp)
                 .fillMaxHeight(),
             contentAlignment = Alignment.TopCenter
         ) {
             val color = MaterialTheme.colorScheme.primary
             Box(
                 modifier = Modifier
-                    .width(2.dp)
+                    .width(4.dp)
                     .padding(
                         top = if (isFirst) 32.dp else 0.dp,
                         bottom = if (isLast) 32.dp else 0.dp,
@@ -236,13 +243,16 @@ private fun StationRow(
             )
             Box(
                 modifier = Modifier
-                    .padding(top = 32.dp)
-                    .size(8.dp)
+                    .padding(top = 28.dp)
+                    .size(16.dp)
                     .background(color, CircleShape)
             )
 
         }
-        Spacer(modifier = Modifier.size(16.dp))
+        Spacer(
+            modifier = Modifier
+                .size(16.dp)
+        )
         content()
     }
 }

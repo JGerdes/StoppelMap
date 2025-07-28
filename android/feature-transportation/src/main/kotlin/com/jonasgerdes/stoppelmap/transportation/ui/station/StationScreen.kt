@@ -6,11 +6,14 @@ package com.jonasgerdes.stoppelmap.transportation.ui.station
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,69 +25,74 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Attractions
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarOutline
-import androidx.compose.material3.BottomSheetScaffold
-import androidx.compose.material3.BottomSheetScaffoldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.OutlinedCard
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SheetState
-import androidx.compose.material3.SheetValue
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SecondaryTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.rememberBottomSheetScaffoldState
-import androidx.compose.material3.rememberStandardBottomSheetState
-import androidx.compose.material3.surfaceColorAtElevation
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onLayoutRectChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jonasgerdes.stoppelmap.data.transportation.DepartureType
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
-import com.jonasgerdes.stoppelmap.theme.modifier.backgroundWhenScrolled
 import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.StationDetails
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
+import com.jonasgerdes.stoppelmap.transportation.ui.station.StationViewModel.StationState
 import com.jonasgerdes.stoppelmap.transportation.ui.toStringResource
+import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.format
 import kotlinx.datetime.format.char
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import timber.log.Timber
 import java.text.NumberFormat
 import java.util.Currency
 import java.util.Locale
+import kotlin.math.abs
 
 @SuppressLint("NewApi")
 @Composable
 fun StationScreen(
     stationId: String,
+    stationName: String?,
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: StationViewModel = koinViewModel { parametersOf(stationId) }
@@ -92,124 +100,51 @@ fun StationScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     val stationState = state.stationState
-    if (stationState is StationViewModel.StationState.Loaded) {
-        val bottomSheetState: SheetState = rememberStandardBottomSheetState(
-            initialValue = SheetValue.PartiallyExpanded,
-            confirmValueChange = { it != SheetValue.Hidden },
-            skipHiddenState = true,
-        )
-        val scaffoldState: BottomSheetScaffoldState = rememberBottomSheetScaffoldState(
-            bottomSheetState = bottomSheetState,
-        )
-        var availableHeight by remember {
-            mutableStateOf(128.dp)
+    var availableHeight by remember {
+        mutableStateOf(0.dp)
+    }
+    var topBarBottomY by remember {
+        mutableIntStateOf(0)
+    }
+    var dayRowTopY by remember {
+        mutableIntStateOf(100)
+    }
+    val dayRowReachedTop by remember(topBarBottomY, dayRowTopY) {
+        derivedStateOf {
+            abs(topBarBottomY - dayRowTopY) < 24
         }
-        var contentHeight by remember {
-            mutableStateOf(128.dp)
-        }
-        val peekHeight by remember(availableHeight, contentHeight) {
-            derivedStateOf {
-                androidx.compose.ui.unit.max(
-                    (availableHeight - contentHeight),
-                    128.dp
-                )
-                    .also { Timber.d("Derived peekHeight: $it (availableHeight: $availableHeight, contentHeight: $contentHeight)") }
-            }
-        }
-        val density = LocalDensity.current
+    }
+    val dynamicContainerColor by animateColorAsState(
+        if (dayRowReachedTop) TopAppBarDefaults.topAppBarColors().scrolledContainerColor
+        else TopAppBarDefaults.topAppBarColors().containerColor,
+    )
 
-        var departureType: DepartureType by remember {
-            mutableStateOf(DepartureType.Outward)
-        }
-
-        BottomSheetScaffold(
-            modifier = modifier.onLayoutRectChanged {
-                availableHeight = with(density) { it.height.toDp() }
-            },
-            scaffoldState = scaffoldState,
-            sheetPeekHeight = peekHeight,
-            sheetContent = {
-                val gridState = rememberLazyGridState()
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .backgroundWhenScrolled(
-                            gridState,
-                            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
-                            MaterialTheme.colorScheme.surfaceColorAtElevation(4.dp),
-                        )
-                ) {
-                    val buttonCount = if (stationState.returnTimetable == null) 1 else 2
-                    Spacer(modifier = Modifier.height(8.dp))
-                    SingleChoiceSegmentedButtonRow {
-                        SegmentedButton(
-                            selected = departureType == DepartureType.Outward,
-                            onClick = { departureType = DepartureType.Outward },
-                            shape = SegmentedButtonDefaults.itemShape(index = 0, count = buttonCount),
-                            icon = { Icon(Icons.Rounded.Attractions, null) }
-                        ) {
-                            Text(stringResource(R.string.transportation_station_timetable_outward))
-                        }
-                        if (stationState.returnTimetable != null) {
-                            SegmentedButton(
-                                selected = departureType == DepartureType.Return,
-                                onClick = { departureType = DepartureType.Return },
-                                shape = SegmentedButtonDefaults.itemShape(index = 1, count = buttonCount),
-                                icon = { Icon(Icons.Rounded.Home, null) }
-                            ) {
-                                Text(stringResource(R.string.transportation_station_timetable_return))
-                            }
-                        }
-                    }
-                    Row {
-                        when (departureType) {
-                            DepartureType.Outward -> stationState.outwardTimetable
-                            DepartureType.Return -> stationState.returnTimetable
-                        }?.departureDays?.forEach {
-                            Text(
-                                text = stringResource(it.dayOfWeek.toStringResource().resourceId),
-                                textAlign = TextAlign.Center,
-                                style = MaterialTheme.typography.titleMedium,
-                                modifier = Modifier
-                                    .padding(vertical = 16.dp)
-                                    .weight(1f)
-                            )
-                        }
-                    }
-                }
-                val timetable = when (departureType) {
-                    DepartureType.Outward -> stationState.outwardTimetable
-                    DepartureType.Return -> stationState.returnTimetable
-                }
-                timetable?.let {
-                    Timetable(
-                        timetable = it,
-                        gridState = gridState,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    )
-                }
-            },
-            topBar = {
-                TopAppBar(
-                    title = {
+    val density = LocalDensity.current
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = {
+                    ((stationState as? StationState.Loaded)?.stationName ?: stationName)?.let {
                         Text(
-                            text = stationState.stationName,
+                            text = it,
                             maxLines = 2,
                             overflow = TextOverflow.Ellipsis
                         )
-                    },
-                    navigationIcon = {
-                        IconButton(
-                            onClick = { onNavigateBack() }
-                        ) {
-                            Icon(
-                                Icons.Rounded.ArrowBack,
-                                stringResource(id = R.string.transportation_station_topbar_navigateBack_contentDescription)
-                            )
-                        }
-                    },
-                    actions = {
+                    }
+                },
+                navigationIcon = {
+                    IconButton(
+                        onClick = { onNavigateBack() }
+                    ) {
+                        Icon(
+                            Icons.Rounded.ArrowBack,
+                            stringResource(id = R.string.transportation_station_topbar_navigateBack_contentDescription)
+                        )
+                    }
+                },
+                actions = {
+                    if (stationState is StationState.Loaded) {
                         IconButton(onClick = viewModel::toggleFavourite) {
                             Icon(
                                 if (stationState.isFavourite) Icons.Rounded.Star
@@ -218,15 +153,27 @@ fun StationScreen(
                                 else stringResource(R.string.transportation_station_topbar_action_favourite_contentDescription)
                             )
                         }
-                    },
-                )
-            }
-        ) {
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = dynamicContainerColor,
+                ),
+                modifier = Modifier
+                    .onLayoutRectChanged(throttleMillis = 100) {
+                        topBarBottomY = it.boundsInRoot.bottom
+                    }
+            )
+        }
+    ) { paddingValues ->
+        if (stationState is StationState.Loaded) {
             Column(
                 Modifier
-                    .onLayoutRectChanged {
-                        contentHeight = with(density) { it.height.toDp() }
+                    .padding(paddingValues)
+                    .fillMaxHeight()
+                    .onGloballyPositioned {
+                        availableHeight = with(density) { it.size.height.toDp() }
                     }
+                    .verticalScroll(state = rememberScrollState())
             ) {
                 val priceState = stationState.priceState
                 if (priceState.prices.isNotEmpty()) {
@@ -286,10 +233,69 @@ fun StationScreen(
                 }
 
                 Spacer(modifier = Modifier.height(8.dp))
+
+                val pages = listOfNotNull(stationState.outwardTimetable, stationState.returnTimetable)
+                val pagerState = rememberPagerState(pageCount = { pages.size })
+                val coroutineScope = rememberCoroutineScope()
+
+                SecondaryTabRow(
+                    selectedTabIndex = pagerState.currentPage,
+                ) {
+                    Tab(
+                        selected = pagerState.currentPage == 0,
+                        icon = { Icon(Icons.Rounded.Attractions, null) },
+                        text = {
+                            Text(stringResource(R.string.transportation_station_timetable_outward))
+                        },
+                        onClick = {
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(0)
+                            }
+                        },
+                    )
+                    if (stationState.returnTimetable != null) {
+                        Tab(
+                            selected = pagerState.currentPage == 1,
+                            icon = { Icon(Icons.Rounded.Home, null) },
+                            text = {
+                                Text(stringResource(R.string.transportation_station_timetable_return))
+                            },
+                            onClick = {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(1)
+                                }
+                            },
+                        )
+                    }
+                }
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier
+                        .height(availableHeight)
+                        .fillMaxWidth()
+                ) { pageIndex ->
+                    val timetable = pages[pageIndex]
+                    Column {
+                        DayHeaderRow(
+                            departureDays = timetable.departureDays,
+                            containerColor = dynamicContainerColor,
+                            modifier = Modifier
+                                .onLayoutRectChanged(throttleMillis = 100) {
+                                    dayRowTopY = it.boundsInRoot.top
+                                }
+                        )
+                        Timetable(
+                            timetable = timetable,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        )
+                    }
+                }
             }
+
+        } else {
+            LoadingSpinner(Modifier.fillMaxSize())
         }
-    } else {
-        LoadingSpinner(Modifier.fillMaxSize())
     }
 }
 
@@ -306,6 +312,38 @@ private val timeFormat = LocalTime.Format {
     hour()
     char(':')
     minute()
+}
+
+@Composable
+fun DayHeaderRow(
+    departureDays: List<Timetable.DepartureDay>,
+    containerColor: Color,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier
+            .background(containerColor)
+            .padding(vertical = 8.dp)
+    ) {
+        departureDays.forEach {
+            val backgroundModifier =
+                if (it.isToday) Modifier
+                    .padding(horizontal = 4.dp)
+                    .background(
+                        NavigationBarItemDefaults.colors().selectedIndicatorColor,
+                        CircleShape
+                    )
+                else Modifier.padding(horizontal = 4.dp)
+            Text(
+                text = stringResource(it.date.dayOfWeek.toStringResource().resourceId),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = backgroundModifier
+                    .padding(vertical = 8.dp)
+                    .weight(1f)
+            )
+        }
+    }
 }
 
 @Composable
@@ -341,7 +379,9 @@ fun Timetable(
                 if (slot != null) {
                     Text(
                         text = slot.time.time.format(timeFormat),
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            textDecoration = if (slot.isInPast) TextDecoration.LineThrough else TextDecoration.None
+                        ),
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .alpha(if (slot.isInPast) 0.4f else 1f)

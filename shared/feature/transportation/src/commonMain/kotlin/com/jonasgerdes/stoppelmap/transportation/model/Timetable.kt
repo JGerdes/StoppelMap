@@ -7,9 +7,14 @@ import kotlinx.datetime.format
 import kotlinx.datetime.format.char
 
 data class Timetable(
-    val departureDays: List<LocalDate>,
+    val departureDays: List<DepartureDay>,
     val daySegments: List<DaySegment>
 ) {
+
+    data class DepartureDay(
+        val date: LocalDate,
+        val isToday: Boolean,
+    )
 
     data class DaySegment(
         val type: DaySegmentType,
