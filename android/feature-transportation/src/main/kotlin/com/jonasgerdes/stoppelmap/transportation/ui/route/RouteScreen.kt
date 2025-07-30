@@ -59,7 +59,6 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
-import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.theme.util.stringDesc
 import com.jonasgerdes.stoppelmap.transportation.R
@@ -97,7 +96,6 @@ fun RouteScreen(
                     }
                 },
                 scrollBehavior = scrollBehavior,
-                modifier = Modifier.elevationWhenScrolled(listState),
                 navigationIcon = {
                     IconButton(
                         onClick = { onNavigateUp() }

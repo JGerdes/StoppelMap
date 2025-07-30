@@ -43,7 +43,6 @@ import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggest
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
-import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
 import com.jonasgerdes.stoppelmap.update.ui.AppUpdateViewModel
@@ -82,7 +81,6 @@ fun HomeScreen(
                     }
                 },
                 scrollBehavior = scrollBehavior,
-                modifier = Modifier.elevationWhenScrolled(listState)
             )
         },
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)

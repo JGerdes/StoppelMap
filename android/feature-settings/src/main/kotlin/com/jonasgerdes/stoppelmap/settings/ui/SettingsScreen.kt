@@ -33,14 +33,17 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -51,7 +54,6 @@ import com.jonasgerdes.stoppelmap.licenses.ui.LicensesViewModel
 import com.jonasgerdes.stoppelmap.settings.R
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
-import com.jonasgerdes.stoppelmap.theme.modifier.elevationWhenScrolled
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
@@ -69,29 +71,34 @@ fun SettingsScreen(
     val settingsState by settingsViewModel.state.collectAsStateWithLifecycle()
     val licensesState by licensesViewModel.state.collectAsStateWithLifecycle()
 
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+
     val listState = rememberLazyListState()
-    Column(
-        modifier = modifier
-    ) {
-        TopAppBar(
-            title = { Text(text = stringResource(id = R.string.settings_topbar_title)) },
-            navigationIcon = {
-                IconButton(
-                    onClick = { onNavigateBack() }
-                ) {
-                    Icon(
-                        Icons.Rounded.ArrowBack,
-                        stringResource(id = R.string.settings_topbar_navigateBack_contentDescription)
-                    )
-                }
-            },
-            modifier = Modifier
-                .elevationWhenScrolled(listState)
-        )
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = stringResource(id = R.string.settings_topbar_title)) },
+                navigationIcon = {
+                    IconButton(
+                        onClick = { onNavigateBack() }
+                    ) {
+                        Icon(
+                            Icons.Rounded.ArrowBack,
+                            stringResource(id = R.string.settings_topbar_navigateBack_contentDescription)
+                        )
+                    }
+                },
+                scrollBehavior = scrollBehavior,
+            )
+        }
+    ) { padding ->
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             state = listState,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .nestedScroll(scrollBehavior.nestedScrollConnection)
         ) {
             item {
                 SettingsSectionLabel(R.string.settings_ui_title)
