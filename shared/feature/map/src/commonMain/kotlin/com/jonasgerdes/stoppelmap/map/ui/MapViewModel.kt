@@ -126,6 +126,7 @@ class MapViewModel(
         } else {
             viewModelScope.coroutineScope.launch {
                 showFullMapEntity(entitySlug, keepZoom = true)
+                cancelCenterOnOwnLocation()
             }
         }
     }
@@ -196,8 +197,7 @@ class MapViewModel(
     }
 
     fun onCameraMoved() {
-        switchToFollowOwnLocationPending = false
-        ownLocationState.update { it.copy(isFollowingLocation = false) }
+        cancelCenterOnOwnLocation()
     }
 
     fun onCameraUpdateDispatched() {
@@ -222,6 +222,12 @@ class MapViewModel(
                 else -> it.copy(showNotInAreaHint = true)
             }
         }
+    }
+
+
+    private fun cancelCenterOnOwnLocation() {
+        switchToFollowOwnLocationPending = false
+        ownLocationState.update { it.copy(isFollowingLocation = false) }
     }
 
     fun onNotInAreaHintShow() {
