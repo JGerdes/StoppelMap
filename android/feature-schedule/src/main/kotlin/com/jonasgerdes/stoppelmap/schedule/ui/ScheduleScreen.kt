@@ -23,12 +23,12 @@ import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabPosition
-import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
@@ -41,6 +41,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -51,8 +52,8 @@ import com.jonasgerdes.stoppelmap.schedule.R
 import com.jonasgerdes.stoppelmap.schedule.model.BookmarkedEvents
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventCard
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
-import com.jonasgerdes.stoppelmap.theme.components.FancyAnimatedIndicator
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
+import com.jonasgerdes.stoppelmap.theme.material.appBarContainerColor
 import com.jonasgerdes.stoppelmap.theme.util.MeasureUnconstrainedViewWidth
 import kotlinx.coroutines.launch
 import kotlinx.datetime.toJavaLocalTime
@@ -97,6 +98,7 @@ fun ScheduleScreen(
         mutableStateOf<String?>(null)
     }
     val peekHeight = BottomSheetDefaults.SheetPeekHeight + 96.dp
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Box(modifier = Modifier.fillMaxSize()) {
         BottomSheetScaffold(
             scaffoldState = scaffoldState,
@@ -115,6 +117,7 @@ fun ScheduleScreen(
             topBar = {
                 CenterAlignedTopAppBar(
                     title = { Text(text = stringResource(id = R.string.schedule_topbar_title)) },
+                    scrollBehavior = scrollBehavior,
                 )
             },
             modifier = modifier,
@@ -144,14 +147,10 @@ fun ScheduleScreen(
                 }
 
                 val selectedTabIndex = pagerState.currentPage
-                TabRow(
+                val containerColor by appBarContainerColor(scrollBehavior)
+                PrimaryTabRow(
                     selectedTabIndex = selectedTabIndex,
-                    indicator = { tabPositions: List<TabPosition> ->
-                        FancyAnimatedIndicator(
-                            tabPositions = tabPositions,
-                            selectedTabIndex = selectedTabIndex,
-                        )
-                    },
+                    containerColor = containerColor,
                 ) {
                     scheduleDays.forEachIndexed { index, day ->
                         val color by animateColorAsState(
@@ -182,13 +181,19 @@ fun ScheduleScreen(
                 ) { page ->
                     val scheduleDay = scheduleDays[page]
                     val formatter = remember { DateTimeFormatter.ofPattern("HH:mm") }
+                    val bottomPadding by remember(state.bookmarkedEvents) {
+                        derivedStateOf {
+                            8.dp + if (state.bookmarkedEvents is BookmarkedEvents.Some) peekHeight else 0.dp
+                        }
+                    }
                     LazyColumn(
                         contentPadding = PaddingValues(
                             start = 8.dp,
                             top = 8.dp,
                             end = 8.dp,
-                            bottom = 8.dp + peekHeight
-                        )
+                            bottom = bottomPadding
+                        ),
+                        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
                     ) {
                         scheduleDay.timeSlots.forEach { timeSlot ->
                             val timeString = formatter.format(timeSlot.time.toJavaLocalTime())
