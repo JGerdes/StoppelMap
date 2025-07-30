@@ -108,7 +108,7 @@ class MapViewModel(
     fun onSearch(query: String) {
         searchJob?.cancel()
 
-        if (query.length < 2) {
+        if (query.isBlank()) {
             searchState.update { it.copy(results = emptyList(), inProgress = false) }
             return
         }

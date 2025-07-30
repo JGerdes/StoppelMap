@@ -114,6 +114,7 @@
 
     <!-- Map -->
     <string name="map_search_placeholder">Suche Stände, Fahrgeschäfte, Zelte…</string>
+    <string name="map_search_suggestions_title">Vorschläge</string>
     <string name="map_location_button_contentDescription">Lokalisiere mich</string>
     <string name="map_location_not_in_area">Du befindest dich nicht auf dem Stoppelmarktsgelände</string>
 

@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.ui.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -21,6 +23,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
@@ -115,35 +118,70 @@ fun SearchResults(
     LazyColumn(
         modifier = modifier,
     ) {
+        if (searchState.results.isEmpty() && searchState.quickSearchChips.isNotEmpty()) {
+            item(key = "suggestions_title") {
+                Text(
+                    stringResource(R.string.map_search_suggestions_title),
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .padding(horizontal = 16.dp)
+                )
+            }
+            items(
+                searchState.quickSearchChips,
+                key = { "suggestions_" + it.term + it.resultEntities.joinToString { it.slug } }
+            ) { result ->
+                SearchResult(
+                    result = result,
+                    onSearchResultTap = onSearchResultTap,
+                    modifier = Modifier.animateItem()
+                )
+            }
+        }
         items(
             searchState.results,
             key = { it.term + it.resultEntities.joinToString { it.slug } }
         ) { result ->
-            ListItem(
-                headlineContent = { Text(result.term) },
-                leadingContent = {
-                    val iconRes = result.icon?.iconRes
-                    if (iconRes != null) {
-                        Icon(
-                            painterResource(id = iconRes),
-                            contentDescription = null,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    } else {
-                        Spacer(modifier = Modifier.size(24.dp))
-                    }
-                },
-                supportingContent = {
-                    result.supportingText()?.let { Text(it) }
-                },
-                colors = ListItemDefaults.colors(containerColor = SearchBarDefaults.colors().containerColor),
-                modifier = Modifier
-                    .clickable {
-                        onSearchResultTap(result)
-                    }
-                    .animateItem()
+            SearchResult(
+                result = result,
+                onSearchResultTap = onSearchResultTap,
+                modifier = Modifier.animateItem()
             )
         }
     }
 
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun SearchResult(
+    result: SearchResult,
+    onSearchResultTap: (SearchResult) -> Unit,
+    modifier: Modifier = Modifier,
+    @DrawableRes iconOverrideRes: Int? = null,
+) {
+    ListItem(
+        headlineContent = { Text(result.term) },
+        leadingContent = {
+            val iconRes = iconOverrideRes ?: result.icon?.iconRes
+            if (iconRes != null) {
+                Icon(
+                    painterResource(id = iconRes),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp)
+                )
+            } else {
+                Spacer(modifier = Modifier.size(24.dp))
+            }
+        },
+        supportingContent = {
+            result.supportingText()?.let { Text(it) }
+        },
+        colors = ListItemDefaults.colors(containerColor = SearchBarDefaults.colors().containerColor),
+        modifier = modifier
+            .clickable {
+                onSearchResultTap(result)
+            }
+    )
 }
