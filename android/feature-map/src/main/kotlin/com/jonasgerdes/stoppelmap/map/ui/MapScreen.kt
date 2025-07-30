@@ -2,7 +2,10 @@ package com.jonasgerdes.stoppelmap.map.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,12 +33,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onLayoutRectChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -60,11 +67,25 @@ fun MapScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val mapTheme by mapColorViewModel.mapColorState.collectAsStateWithLifecycle()
+    val density = LocalDensity.current
 
     val bottomSheetState = rememberStandardBottomSheetState(
         initialValue = SheetValue.Hidden,
         skipHiddenState = false,
     )
+
+    var bottomSheetTopY by remember { mutableIntStateOf(9999) }
+    var searchContainerHeight by remember { mutableIntStateOf(0) }
+    val minMapHeight = remember { with(density) { 256.dp.toPx() } }
+
+    var searchExpanded by rememberSaveable { mutableStateOf(false) }
+    // Hide search when bottom sheet is fully expanded and larger then half of screen
+    val searchHidden by remember(searchExpanded, bottomSheetState, bottomSheetTopY, searchContainerHeight) {
+        derivedStateOf {
+            Timber.d("bottomSheetState.targetValue = ${bottomSheetState.targetValue}, bottomSheetTopY: $bottomSheetTopY, searchContainerHeight: $searchContainerHeight, minMapHeight: $minMapHeight")
+            !searchExpanded && bottomSheetState.targetValue == SheetValue.Expanded && bottomSheetTopY < searchContainerHeight + minMapHeight
+        }
+    }
     LaunchedEffect(state.bottomSheetState) {
         when (state.bottomSheetState) {
             MapViewModel.BottomSheetState.Hidden -> bottomSheetState.hide()
@@ -94,7 +115,7 @@ fun MapScreen(
                 + WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
                 + 32.dp /* = SuggestionChipTokens.ContainerHeight */,
 
-        bottom = bottomSheetMainContentHeight.value + 32.dp
+        bottom = bottomSheetMainContentHeight.value + 64.dp
     )
 
     LaunchedEffect(bottomSheetState.isVisible) {
@@ -115,10 +136,13 @@ fun MapScreen(
         scaffoldState = scaffoldState,
         sheetContent = {
             MapBottomSheetContent(
-                onMainContentHeightChange = {
+                onPrimaryContentHeightChange = {
                     bottomSheetMainContentHeight.value = it
                 },
-                bottomSheetState = state.bottomSheetState
+                bottomSheetState = state.bottomSheetState,
+                modifier = Modifier.onLayoutRectChanged {
+                    bottomSheetTopY = it.positionInScreen.y
+                }
             )
         },
         sheetPeekHeight = bottomSheetMainContentHeightAnimated.value +
@@ -174,31 +198,36 @@ fun MapScreen(
                     .padding(16.dp)
             )
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
+            AnimatedVisibility(
+                visible = !searchHidden,
+                enter = slideInVertically(initialOffsetY = { -it }),
+                exit = slideOutVertically(targetOffsetY = { -it }),
             ) {
-                var searchExpanded by rememberSaveable { mutableStateOf(false) }
-                SearchView(
-                    expanded = searchExpanded,
-                    onExpandedChange = { searchExpanded = it },
-                    searchState = state.searchState,
-                    onSearch = viewModel::onSearch,
-                    onSearchResultTap = viewModel::onSearchResultTap,
-                )
-                val showSuggestions by remember(bottomSheetState, state.searchState) {
-                    derivedStateOf {
-                        bottomSheetState.targetValue != SheetValue.Expanded && state.searchState.quickSearchChips.isNotEmpty()
-                    }
-                }
-                AnimatedVisibility(
-                    visible = showSuggestions,
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .onGloballyPositioned {
+                            searchContainerHeight = it.size.height
+                        }
                 ) {
-                    SuggestionRow(
-                        suggestions = state.searchState.quickSearchChips,
-                        onSuggestionSelected = viewModel::onSearchResultTap,
+                    SearchView(
+                        expanded = searchExpanded,
+                        onExpandedChange = { searchExpanded = it },
+                        searchState = state.searchState,
+                        onSearch = viewModel::onSearch,
+                        onSearchResultTap = viewModel::onSearchResultTap,
                     )
+                    AnimatedVisibility(
+                        visible = state.searchState.quickSearchChips.isNotEmpty(),
+                        enter = fadeIn(),
+                        exit = fadeOut(),
+                    ) {
+                        SuggestionRow(
+                            suggestions = state.searchState.quickSearchChips,
+                            onSuggestionSelected = viewModel::onSearchResultTap,
+                        )
+                    }
                 }
             }
         }
