@@ -132,6 +132,8 @@ class MapViewModel(
 
     fun onSearchResultTap(searchResult: SearchResult) {
         viewModelScope.coroutineScope.launch {
+            searchJob?.cancel()
+            searchState.update { it.copy(inProgress = false, results = emptyList()) }
             when (searchResult.type) {
                 SearchResult.Type.SingleStall -> showFullMapEntity(searchResult.resultEntities.first().slug)
                 SearchResult.Type.Collection -> showCollection(searchResult.term, searchResult.resultEntities)
