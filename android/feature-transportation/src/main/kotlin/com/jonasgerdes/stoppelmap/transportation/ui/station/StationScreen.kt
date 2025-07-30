@@ -52,7 +52,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -67,6 +66,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -101,25 +101,48 @@ fun StationScreen(
 
     val stationState = state.stationState
     var availableHeight by remember {
-        mutableStateOf(0.dp)
+        mutableIntStateOf(0)
     }
+    var directionTabHeight by remember {
+        mutableIntStateOf(0)
+    }
+
+    val density = LocalDensity.current
+    val timetableHeight: Dp by remember(availableHeight, directionTabHeight, density) {
+        derivedStateOf {
+            with(density) { (availableHeight - directionTabHeight).toDp() }
+        }
+    }
+
     var topBarBottomY by remember {
         mutableIntStateOf(0)
     }
-    var dayRowTopY by remember {
+    var directionTabTopY by remember {
         mutableIntStateOf(100)
     }
-    val dayRowReachedTop by remember(topBarBottomY, dayRowTopY) {
+    val directionTabReachedTop by remember(topBarBottomY, directionTabTopY) {
         derivedStateOf {
-            abs(topBarBottomY - dayRowTopY) < 24
+            abs(topBarBottomY - directionTabTopY) < 24
         }
     }
     val dynamicContainerColor by animateColorAsState(
-        if (dayRowReachedTop) TopAppBarDefaults.topAppBarColors().scrolledContainerColor
+        if (directionTabReachedTop) TopAppBarDefaults.topAppBarColors().scrolledContainerColor
         else TopAppBarDefaults.topAppBarColors().containerColor,
     )
 
-    val density = LocalDensity.current
+    var priceCardTopY by remember {
+        mutableIntStateOf(100)
+    }
+    val mainContentScrolled by remember(topBarBottomY, priceCardTopY, directionTabReachedTop) {
+        derivedStateOf {
+            priceCardTopY < topBarBottomY || directionTabReachedTop
+        }
+    }
+
+    val topBarContainerColor by animateColorAsState(
+        if (mainContentScrolled) TopAppBarDefaults.topAppBarColors().scrolledContainerColor
+        else TopAppBarDefaults.topAppBarColors().containerColor,
+    )
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -156,10 +179,10 @@ fun StationScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = dynamicContainerColor,
+                    containerColor = topBarContainerColor,
                 ),
                 modifier = Modifier
-                    .onLayoutRectChanged(throttleMillis = 100) {
+                    .onLayoutRectChanged(debounceMillis = 0, throttleMillis = 16) {
                         topBarBottomY = it.boundsInRoot.bottom
                     }
             )
@@ -171,7 +194,7 @@ fun StationScreen(
                     .padding(paddingValues)
                     .fillMaxHeight()
                     .onGloballyPositioned {
-                        availableHeight = with(density) { it.size.height.toDp() }
+                        availableHeight = it.size.height
                     }
                     .verticalScroll(state = rememberScrollState())
             ) {
@@ -180,8 +203,10 @@ fun StationScreen(
                     OutlinedCard(
                         Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                            .padding(vertical = 8.dp)
+                            .padding(horizontal = 16.dp, vertical = 8.dp)
+                            .onLayoutRectChanged(debounceMillis = 0, throttleMillis = 16) {
+                                priceCardTopY = it.boundsInRoot.top
+                            }
                     ) {
                         Column(Modifier.padding(16.dp)) {
                             Text(
@@ -240,6 +265,14 @@ fun StationScreen(
 
                 SecondaryTabRow(
                     selectedTabIndex = pagerState.currentPage,
+                    containerColor = dynamicContainerColor,
+                    modifier = Modifier
+                        .onGloballyPositioned {
+                            directionTabHeight = it.size.height
+                        }
+                        .onLayoutRectChanged(debounceMillis = 0, throttleMillis = 16) {
+                            directionTabTopY = it.boundsInRoot.top
+                        }
                 ) {
                     Tab(
                         selected = pagerState.currentPage == 0,
@@ -271,7 +304,7 @@ fun StationScreen(
                 HorizontalPager(
                     state = pagerState,
                     modifier = Modifier
-                        .height(availableHeight)
+                        .height(timetableHeight)
                         .fillMaxWidth()
                 ) { pageIndex ->
                     val timetable = pages[pageIndex]
@@ -279,10 +312,6 @@ fun StationScreen(
                         DayHeaderRow(
                             departureDays = timetable.departureDays,
                             containerColor = dynamicContainerColor,
-                            modifier = Modifier
-                                .onLayoutRectChanged(throttleMillis = 100) {
-                                    dayRowTopY = it.boundsInRoot.top
-                                }
                         )
                         Timetable(
                             timetable = timetable,
