@@ -12,10 +12,12 @@ val preparationModule = module {
     single {
         val sharedAssets = File("../shared/resources/src/commonMain/moko-resources/assets/")
         val resources = File("../preparation/src/main/resources")
+        val staticServerDir = System.getenv("SERVER_STATIC_DIR")?.let { File(it) }
         Settings(
             databaseFile = File("database.db"),
             geoJsonInput = File(resources, "stoma24.geojson"),
             dataOutputDir = sharedAssets,
+            staticServerDir = staticServerDir,
             tempDir = File("temp").also { it.mkdirs() },
             fetchedEventsFile = File(resources, "events/fetched.json"),
             eventLocationsFile = File(resources, "events/locations.json"),

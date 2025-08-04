@@ -6,6 +6,7 @@ data class Settings(
     val databaseFile: File,
     val geoJsonInput: File,
     val dataOutputDir: File,
+    val staticServerDir: File?,
     val tempDir: File,
     val fetchedEventsFile: File,
     val eventLocationsFile: File,

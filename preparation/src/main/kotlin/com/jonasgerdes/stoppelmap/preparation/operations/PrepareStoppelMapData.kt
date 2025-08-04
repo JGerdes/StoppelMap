@@ -92,7 +92,7 @@ class PrepareStoppelMapData : KoinComponent {
             map = Map(
                 entities = geoEntities + missingEventLocations,
                 typeAliases = typeAliases,
-                isWorkInProgress = true,
+                isWorkInProgress = false,
             ),
             schedule = scheduleData,
             transportation = Transportation(
