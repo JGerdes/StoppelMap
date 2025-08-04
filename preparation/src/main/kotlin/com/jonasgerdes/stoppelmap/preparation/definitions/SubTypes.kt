@@ -68,7 +68,7 @@ val gameSubTypes = listOf(
     subType(slug = "machines", de = "Automaten", en = "Machines"),
     subType(slug = "basketball", de = "Basketball", en = "Basketball"),
     subType(slug = "archery", de = "Bogenschießen", en = "archery"),
-    subType(slug = "darts", de = "Darts", en = "Darts"),
+    subType(slug = "darts", de = "Pfeilwerfen", en = "Darts", de to "Darts"),
     subType(slug = "can_knockdown", de = "Dosenwerfen", en = "Can knockdown"),
     subType(slug = "duck_pond", de = "Ententeich", en = "Duck pond"),
     subType(slug = "flying_frogs", de = "Fliegende Frösche", en = "Flying frogs"),
@@ -82,6 +82,7 @@ val gameSubTypes = listOf(
     subType(slug = "shooting", de = "Schießbude", en = "Shooting gallery", en to "Aunt Sally"),
     subType(slug = "skee_ball", de = "Skee-Ball", en = "Skee-Ball"),
     subType(slug = "nail", de = "Nagelbalken", en = "Hammer"),
+    subType(slug = "flower_picking", de = "Blumenpflücken", en = "Flower picking"),
 )
 
 val subTypes = rideSubTypes + gameSubTypes + restroomSubTypes + barSubTypes

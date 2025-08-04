@@ -31,8 +31,9 @@ val foodProducts = listOf(
         null to "Champignons",
     ),
     product(slug = "item_fish", de = "Fisch", en = "Fish"),
-    product(slug = "item_salmon", de = "Lachs", en = "Salmon", de to "Räucherlachs"),
+    product(slug = "item_salmon", de = "Flammlachs", en = "Smoked salmon"),
     product(slug = "item_steak", de = "Steak", en = "Steak"),
+    product(slug = "item_meat", de = "Fleisch", en = "Meat"),
     product(slug = "item_bread", de = "Brote", en = "Bread"),
     product(slug = "item_ham", de = "Schinken", en = "Ham"),
     product(slug = "item_pretzel", de = "Brezel", en = "Pretzel"),
@@ -64,6 +65,7 @@ val foodProducts = listOf(
     product(slug = "item_langos", de = "Lángos", en = "Lángos"),
     product(slug = "item_vegetables", de = "Gemüse", en = "Vegetables"),
     product(slug = "item_cauliflower", de = "Blumenkohl", en = "Cauliflower"),
+    product(slug = "item_corndogs", de = "Corn-Dogs", en = "Corn dogs"),
     product(
         slug = "item_pickles",
         de = "Essiggurken",
@@ -97,7 +99,9 @@ val foodProducts = listOf(
         en = "Kürtőskalács",
         en to "Kurtosh Kolach"
     ),
-    product(slug = "item_bubble_tea", de = "Bubble Tea", en = "Bubble tea"),
+    product(slug = "item_coconut", de = "Kokusnuss", en = "Coconut"),
+    product(slug = "item_bubble_tea", de = "Bubble-Tea", en = "Bubble tea"),
+    product(slug = "item_popcorn", de = "Popcorn", en = "Popcorn"),
 )
 
 private fun product(
