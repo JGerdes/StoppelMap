@@ -18,21 +18,21 @@ internal fun lohneStadt() = createBusRoute {
             "19:15" every 30.Minutes until "02:15"
         }
         friday {
-            "16:45" every 30.Minutes until "20:15"
-            "20:30" every 15.Minutes until "05:00"
+            "16:45" every 30.Minutes until "19:15"
+            "19:45" every 15.Minutes until "03:45"
         }
         saturday {
-            "15:45" every 30.Minutes until "20:15"
-            "20:15" every 15.Minutes until "05:00"
+            "16:45" every 30.Minutes until "19:15"
+            "19:45" every 15.Minutes until "03:45"
         }
         sunday {
-            "16:15" every 30.Minutes until "23:45"
+            "17:15" every 30.Minutes until "23:45"
         }
         monday {
-            "11:45" every 15.Minutes until "03:00"
+            "11:45" every 15.Minutes until "02:15"
         }
         tuesday {
-            "17:15" every 30.Minutes until "02:00"
+            "17:15" every 30.Minutes until "02:15"
         }
     }
 
@@ -42,27 +42,27 @@ internal fun lohneStadt() = createBusRoute {
                 "17:00" every 30.Minutes until "23:00"
             }
             friday {
-                "15:00" every 30.Minutes until "20:00"
-                "20:00" every 15.Minutes until "01:00"
+                "15:00" every 30.Minutes until "19:00"
+                "19:00" every 15.Minutes until "23:30"
             }
             saturday {
-                "14:00" every 30.Minutes until "20:00"
-                "20:00" every 15.Minutes until "01:00"
+                "14:00" every 30.Minutes until "19:00"
+                "19:00" every 15.Minutes until "23:30"
             }
             sunday {
-                "14:00" every 30.Minutes until "22:00"
+                "14:00" every 30.Minutes until "21:00"
             }
             monday {
-                "08:30" every 15.Minutes until "22:00"
+                "09:00" every 15.Minutes until "21:00"
             }
             tuesday {
-                "15:00" every 30.Minutes until "22:00"
+                "15:00" every 30.Minutes until "21:00"
             }
         }
     }
 
 
-    addStation("Brinkstraße, K+K, Landwehr", minutesAfterPrevious = 3)
+    addStation("Brinkstraße, Landwehr", minutesAfterPrevious = 3)
     addStation("Hamberg, Haltestelle", minutesAfterPrevious = 3)
     addStation("Bergweg, Bruno Kleine", minutesAfterPrevious = 3)
     addStation("Bergweg, Felta-Tankstelle", minutesAfterPrevious = 2)

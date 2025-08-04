@@ -27,23 +27,19 @@ internal fun holdorfBrockdorf() = createBusRoute {
     addStation("Damme - ZOB") {
         prices(600, 200, 3 to 14)
         outward {
-            friday {
-                "18:30" every 60.Minutes until "22:30"
-            }
-            saturday {
-                "18:30" every 60.Minutes until "22:30"
-            }
+            friday("18:30", "19:30", "20:30", "21:30", "22:30")
+            saturday("18:30", "19:30", "20:30", "21:30", "22:30")
             monday {
                 "09:00" every 120.Minutes until "21:00"
             }
         }
     }
 
-    addStation("Holdorf - Kirche", minutesAfterPrevious = 15) {
+    addStation("Holdorf - Kirche", minutesAfterPrevious = 13) {
         prices(500, 200, 3 to 14)
     }
-    addStation("Langwege - A. d. Stadt", minutesAfterPrevious = 10) { prices(500, 200, 3 to 14) }
-    addStation("Brockdorf - A.d. Kalvelage", minutesAfterPrevious = 15) {
+    addStation("Langwege - A. d. Stadt", minutesAfterPrevious = 7) { prices(500, 200, 3 to 14) }
+    addStation("Brockdorf - A.d. Kalvelage", minutesAfterPrevious = 8) {
         prices(
             400,
             200,
