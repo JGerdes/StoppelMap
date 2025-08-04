@@ -100,7 +100,7 @@ fun parseEvents(eventContainer: Elements?): List<Event>? {
 
     return element.select(".news-list-item").map { item ->
         val date: LocalDateTime = item.select("time").attr("datetime").let {
-            val date = it.drop(3)
+            val date = it.drop(3).trim()
             websiteEventLocalDateTimeFormat.parse(date)
         }
 
