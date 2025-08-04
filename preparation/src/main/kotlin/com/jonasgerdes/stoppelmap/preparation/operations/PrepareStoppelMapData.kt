@@ -80,7 +80,7 @@ class PrepareStoppelMapData : KoinComponent {
 
         return StoppelMapData(
             version = version.code,
-            seasonYear = 2024,
+            seasonYear = settings.year,
             definitions = Definitions(
                 tags = tags,
                 subTypes = subTypes,
@@ -99,7 +99,7 @@ class PrepareStoppelMapData : KoinComponent {
                 busRoutes = generateBusRoutes() + readCrawledRoutes(settings.crawledRoutesDirectory),
                 trainRoutes = generateTrainRoutes(),
                 taxiServices = taxiServices.map { it.slug },
-                isWorkInProgress = true,
+                isWorkInProgress = false,
             ),
             note = null,
         )

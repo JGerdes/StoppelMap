@@ -15,7 +15,7 @@ val preparationModule = module {
         val staticServerDir = System.getenv("SERVER_STATIC_DIR")?.let { File(it) }
         Settings(
             databaseFile = File("database.db"),
-            geoJsonInput = File(resources, "stoma24.geojson"),
+            geoJsonInput = File(resources, "stoma25.geojson"),
             dataOutputDir = sharedAssets,
             staticServerDir = staticServerDir,
             tempDir = File("temp").also { it.mkdirs() },
@@ -24,7 +24,7 @@ val preparationModule = module {
             manualEventsFile = File(resources, "events/manual.json"),
             crawledRoutesDirectory = File(resources, "routes").also { if (it.exists().not()) it.mkdirs() },
             descriptionFolder = File(resources, "descriptions"),
-            year = 2024
+            year = 2025
         )
     }
 
