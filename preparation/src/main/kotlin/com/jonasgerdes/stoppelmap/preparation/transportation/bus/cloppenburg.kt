@@ -19,7 +19,7 @@ internal fun cloppenburg() = createBusRoute {
         saturday("23:00", "00:00", "01:00", "02:00", "03:00", "04:00")
         sunday("19:00", "21:00", "23:00", "01:00")
         monday {
-            departures("14:40")
+            departures("14:30")
             "16:00" every 60.Minutes until "03:00"
         }
         tuesday("19:00", "22:45")
