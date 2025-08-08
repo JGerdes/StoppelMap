@@ -28,13 +28,13 @@ import com.jonasgerdes.stoppelmap.theme.util.supportsLightNavigationBarAppearanc
 import com.jonasgerdes.stoppelmap.theme.util.supportsLightStatusBarAppearance
 
 val DarkColorScheme = darkColorScheme(
-    primary = StoppelPurpleBrightened,
+    primary = StoppelIndigoBrightened,
     secondary = StoppelIndigoBrightened,
     tertiary = StoppelPinkBrightened,
 )
 
 val LightColorScheme = lightColorScheme(
-    primary = StoppelPurple,
+    primary = StoppelIndigo,
     secondary = StoppelIndigo,
     tertiary = StoppelPink,
 )
