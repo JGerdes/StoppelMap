@@ -1,5 +1,97 @@
 [
     {
+        "slug": "artmann_kaufe_5_bier_erhalte_einen_stoppelschnaps_gratis_00",
+        "name": {
+            "de": "Kaufe 5 Bier erhalte einen Stoppelschnaps gratis"
+        },
+        "start": "2025-08-14T18:00",
+        "end": null,
+        "location": "artmann",
+        "description": {
+            "de": "<p>18-20 Uhr Kaufe 5 Bier erhalte einen Stoppelschnaps gratis</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "artmann_kaufe_5_bier_erhalte_einen_stoppelschnaps_gratis_01",
+        "name": {
+            "de": "Kaufe 5 Bier erhalte einen Stoppelschnaps gratis"
+        },
+        "start": "2025-08-15T18:00",
+        "end": null,
+        "location": "artmann",
+        "description": {
+            "de": "<p>18-19 Uhr Kaufe 5 Bier erhalte einen Stoppelschnaps gratis</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "artmann_kaufe_5_bier_erhalte_einen_stoppelschnaps_gratis_02",
+        "name": {
+            "de": "Kaufe 5 Bier erhalte einen Stoppelschnaps gratis"
+        },
+        "start": "2025-08-16T18:00",
+        "end": null,
+        "location": "artmann",
+        "description": {
+            "de": "<p>18-19 Uhr Kaufe 5 Bier erhalte einen Stoppelschnaps gratis</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "artmann_auftritt_des_musikvereins_visbek_03",
+        "name": {
+            "de": "Auftritt des Musikvereins Visbek"
+        },
+        "start": "2025-08-17T14:00",
+        "end": null,
+        "location": "artmann",
+        "description": {
+            "de": "<p>14-16 Uhr Auftritt des Musikvereins Visbek</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "artmann_bier_und_schnaps_artmann_hat_s!_04",
+        "name": {
+            "de": "Bier und Schnaps, Artmann hat's!"
+        },
+        "start": "2025-08-18T09:00",
+        "end": null,
+        "location": "artmann",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "artmann_familientag_05",
+        "name": {
+            "de": "Familientag"
+        },
+        "start": "2025-08-19T14:00",
+        "end": null,
+        "location": "artmann",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
         "slug": "beckmanns-altdeutscher-biergarten_dj_torsten_hueser_00",
         "name": {
             "de": "DJ Torsten Hüser"
@@ -8,12 +100,9 @@
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -25,12 +114,9 @@
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -42,12 +128,9 @@
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -59,12 +142,9 @@
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -76,12 +156,9 @@
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -93,12 +170,9 @@
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -112,12 +186,9 @@
         "description": {
             "de": "<p>Do. 14.08.25, 18:00 Uhr – Fr. 15.08.25, 04:00 Uhr</p>\n<p>DJ-Team: \"50 Shapes of Disco\" (\"Michael Disco\" &amp; \"Mark 50\")</p>\n<p>Live: \"Musikverein Oythe\" | \"Kolpingorchester Vechta\" | \"Samba Landaya\" &amp; \"Sambalaon\"</p>\n<p>Die Stoppelmarkt '25-Auftaktparty bei BRACKMANN!</p>\n<p>Wir starten in Vechtas 5. Jahreszeit mit allem Pipapo: Nach der traditionellen Eröffnung durch den \"Musikverein Oythe\" und das \"Kolpingorchester Vechta\" heizen euch die beiden Samba-Formationen \"Samba Landaya\" und \"Sambalaon\" ordentlich ein. Freut euch auf unsere hausgemachten Shots wie \"Brackmann's Apfelstrudel\", \"Split Shot\", \"Mexikaner\" oder \"Hot Wheel\" und tanzt euch langsam warm. Der perfekte Start in den Stoppelmarkt '25!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -131,12 +202,9 @@
         "description": {
             "de": "<p>Fr. 15.08.25, 20:00 Uhr – Sa. 16.08.25, 03:00 Uhr</p>\n<p>DJs: \"Michael Disco\" | \"SaunaSeb\"</p>\n<p>Live: \"Zerobaddays\" (Saxophon)</p>\n<p>Coole Clubsounds mit live Saxophon-Sets. Ein episches, tanzbares Erlebnis!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -150,12 +218,9 @@
         "description": {
             "de": "<p>Sa. 16.08.25, 20:00 Uhr – So. 17.08.25, 03:00 Uhr</p>\n<p>DJs: \"Nicky Jones\" | \"Maximal\"</p>\n<p>Stoppelmarkt-Clubbing u.a. mit Nicky Jones ('Tante Mia tanzt') und Maximal ('Green Circle'). Einfach der beste Sound auf dem Stoppelmarkt!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -169,12 +234,9 @@
         "description": {
             "de": "<p>Vormittags: Frühschoppen</p>\n<p>Hinweis: Unser jährlicher Poetry-Slam \"BRACKMANN'S Bierzeltreden\" pausiert ein Jahr und ist 2026 wieder am Start!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -188,12 +250,9 @@
         "description": {
             "de": "<p>So. 17.08.25, 20:00 Uhr – Mo. 18.08.25, 01:00 Uhr</p>\n<p>DJs: \"Gordon Hollenga (The Disco Boys)\" | \"50 Shapes of Disco\" (\"Michael Disco\"&amp; \"Mark 50\")</p>\n<p>Die neue Ü30-Party mit den besten ClassicHouse-Hits der 80er-, 90er- und 00er-Jahre! Live Schallplatten-Sets! Und als Special-Guest live on stage: Gordon Hollenga von 'The Disco Boys'! - Sensationell!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -207,12 +266,9 @@
         "description": {
             "de": "<p>Mo. 18.08.25, 10:00 Uhr – Di. 19.08.25, 01:00 Uhr</p>\n<p>DJs: \"Gordon Hollenga (The Disco Boys)\" | \"Michael Disco\" | \"Niklas Cue\"</p>\n<p>Die längste Party des Jahres mit den besten Danceclassics-Stoppelhits! ... Party all day/night long! Bei BRACKMANN!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -226,12 +282,9 @@
         "description": {
             "de": "<p>Di. 19.08.25, 15:00 Uhr – Di. 19.08.25, 23:00 Uhr</p>\n<p>Zum Familientag (15:00 bis 18:00 Uhr) gibt es alle Softdrinks (Coca-Cola, Fanta, Sprite, Mineralwasser) zu einem familienfreundlichen Preis!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -245,12 +298,9 @@
         "description": {
             "de": "<p>DJ NIKLAS CUE eröffnet den musikalischen Abend</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -264,12 +314,9 @@
         "description": {
             "de": "<p>DJ Rolf Brell sorgt für beste Partylaune</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -281,29 +328,23 @@
         "end": null,
         "location": "festzelt-bloemer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "festzelt-bloemer__kaffee_und_kuchen_03",
+        "slug": "festzelt-bloemer_kaffee_und_kuchen_03",
         "name": {
-            "de": " Kaffee und Kuchen"
+            "de": "Kaffee und Kuchen"
         },
         "start": "2025-08-16T14:00",
         "end": null,
         "location": "festzelt-bloemer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -315,12 +356,9 @@
         "end": null,
         "location": "festzelt-bloemer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -332,12 +370,9 @@
         "end": null,
         "location": "festzelt-bloemer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -351,12 +386,9 @@
         "description": {
             "de": "<p>mit frischen Brötchen, gluten- und laktosefreien Produkten, Gruppen gerne auf Anmeldung</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -370,12 +402,9 @@
         "description": {
             "de": "<p>Nach der Premiere letztes Jahr, wieder ab 11.00 – 18.00 Uhr die Black Sheep Linedancers. Wer sich angesprochen fühlt darf gerne mitmachen.</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -387,12 +416,9 @@
         "end": null,
         "location": "festzelt-bloemer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -406,12 +432,9 @@
         "description": {
             "de": "<p>DJ NIKLAS CUE spielt Wunschlieder, das ist „Euer“ Abend</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -425,12 +448,9 @@
         "description": {
             "de": "<p>mit frischen Brötchen, heißem Kaffee, der Grundstock für diesen Tag ( Gruppen unbedingt anmelden )</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -444,12 +464,9 @@
         "description": {
             "de": "<p>ab 11.00 Uhr startet DJ Rolf Brell gemütlich die Musik, beste Laune den ganzen Tag</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -461,12 +478,9 @@
         "end": null,
         "location": "festzelt-bloemer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -478,12 +492,9 @@
         "end": null,
         "location": "festzelt-bloemer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -495,29 +506,23 @@
         "end": null,
         "location": "festzelt-grieshop",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "festzelt-grieshop_tag_der_vereine_dj_dennis+jimmy_01",
+        "slug": "festzelt-grieshop_tag_der_vereine_dj_s_dennis+jimmy_01",
         "name": {
-            "de": "Tag der Vereine, DJ' Dennis+Jimmy"
+            "de": "Tag der Vereine, DJ's Dennis+Jimmy"
         },
         "start": "2025-08-15T14:00",
         "end": null,
         "location": "festzelt-grieshop",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -529,12 +534,9 @@
         "end": null,
         "location": "festzelt-grieshop",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -546,33 +548,45 @@
         "end": null,
         "location": "festzelt-grieshop",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "festzelt-grieshop_south_o_burger_big_band_und_die_funky_fly_04",
+        "slug": "festzelt-grieshop_south_o_burger_big_band_04",
         "name": {
-            "de": "South-O-Burger Big Band und die Funky Fly"
+            "de": "South-O-Burger Big Band"
         },
         "start": "2025-08-17T14:00",
         "end": null,
         "location": "festzelt-grieshop",
-        "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "description": {
+            "de": "<p>Die South-O-Burger Big Band spielt am Sonntag Nachmittag von 14:00 Uhr bis 17:00 Uhr.</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "festzelt-grieshop_fruehstueck_kaffee_kuchen_party_dj_laif_05",
+        "slug": "festzelt-grieshop_band_funky_fly_05",
+        "name": {
+            "de": "Band \"Funky Fly\""
+        },
+        "start": "2025-08-17T20:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": {
+            "de": "<p><strong>Groove pur: Funky Fly bringt den Funk!</strong></p>\n<p>Macht euch bereit für den Sound, der direkt in die Beine geht! \"Funky Fly\" ist die Anlaufstelle für unwiderstehlichen Funk, der die Tanzfläche zum Beben bringt.</p>\n<p>Sie servieren euch knackige Grooves, messerscharfe Riffs und eine geballte Ladung Soul. Inspiriert von den Größen des Genres, aber immer mit ihrem eigenen, frischen Twist.</p>\n<p>Wenn sie die Bühne betreten, gibt es nur ein Ziel: Euch zum Tanzen zu bringen und den Alltag vergessen zu lassen.&nbsp;</p>\n<p>\"Funky Fly\" ist ehrlich, handgemacht und mitreißend!</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_fruehstueck_kaffee_kuchen_party_dj_laif_06",
         "name": {
             "de": "Frühstück, Kaffee&Kuchen, Party DJ Laif"
         },
@@ -580,16 +594,13 @@
         "end": null,
         "location": "festzelt-grieshop",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "festzelt-grieshop_familientag_06",
+        "slug": "festzelt-grieshop_familientag_07",
         "name": {
             "de": "Familientag"
         },
@@ -597,12 +608,9 @@
         "end": null,
         "location": "festzelt-grieshop",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -616,12 +624,9 @@
         "description": {
             "de": "<p>Direkt nach dem Umzug kann die Party losgehen!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -633,12 +638,9 @@
         "end": null,
         "location": "hogebacks-festzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -650,12 +652,9 @@
         "end": null,
         "location": "hogebacks-festzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -669,12 +668,9 @@
         "description": {
             "de": "<p>DJ Tim feiert mit euch durch die Nacht.</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -686,12 +682,9 @@
         "end": null,
         "location": "hogebacks-festzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -703,12 +696,9 @@
         "end": null,
         "location": "hogebacks-festzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -722,12 +712,9 @@
         "description": {
             "de": "<p>DJ Tim feiert mit euch durch die Nacht.</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -739,12 +726,9 @@
         "end": null,
         "location": "hogebacks-festzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -756,12 +740,9 @@
         "end": null,
         "location": "hogebacks-festzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -775,12 +756,9 @@
         "description": {
             "de": "<p>DJ Tim lässt das Wochenende ausklingen.</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -794,12 +772,9 @@
         "description": {
             "de": "<p>Ein deftiges Frühstück wartet auf Sie! Mit frischem Kaffee, Kilmerstuten und reichlich belegten Brötchen. Leider bereits ausgebucht! Danach Party bis der neue Tag anbricht!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -811,12 +786,9 @@
         "end": null,
         "location": "hogebacks-festzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -830,12 +802,9 @@
         "description": {
             "de": "<p>Leckerer hausgebackener Kuchen und frischer Kaffee laden zum Verweilen ein!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -843,33 +812,27 @@
         "name": {
             "de": "Funky Rockerz"
         },
-        "start": "2025-08-14T18:00",
+        "start": "2025-08-14T18:30",
         "end": null,
         "location": "kaponierzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "kaponierzelt_die_andersons_01",
+        "slug": "kaponierzelt_die_andersons_dj_maik_horney_01",
         "name": {
-            "de": "Die Andersons"
+            "de": "Die Andersons & DJ Maik Horney"
         },
         "start": "2025-08-15T21:00",
         "end": null,
         "location": "kaponierzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -881,12 +844,9 @@
         "end": null,
         "location": "kaponierzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -898,29 +858,23 @@
         "end": null,
         "location": "kaponierzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "kaponierzelt_volle_moehre_04",
+        "slug": "kaponierzelt_volle_moehre_dj_ralf_burnett_04",
         "name": {
-            "de": "Volle Möhre"
+            "de": "Volle Möhre & DJ Ralf Burnett"
         },
         "start": "2025-08-17T20:00",
         "end": null,
         "location": "kaponierzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -932,12 +886,9 @@
         "end": null,
         "location": "kaponierzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -949,12 +900,9 @@
         "end": null,
         "location": "kombinat",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -966,29 +914,23 @@
         "end": null,
         "location": "kombinat",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
         "slug": "kombinat_„30_grad_im_schatten“_aus_osna_–_dj_ansi_02",
         "name": {
-            "de": "„30 Grad im Schatten“ aus Osna – Dj Ansi"
+            "de": "„30 Grad im Schatten“ aus Osna – DJ Ansi"
         },
         "start": "2025-08-16T14:00",
         "end": null,
         "location": "kombinat",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1000,12 +942,9 @@
         "end": null,
         "location": "kombinat",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1017,12 +956,9 @@
         "end": null,
         "location": "kombinat",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1034,12 +970,9 @@
         "end": null,
         "location": "kombinat",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1051,12 +984,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1068,12 +998,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1085,12 +1012,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1102,12 +1026,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1119,12 +1040,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1138,12 +1056,9 @@
         "description": {
             "de": "<p>mit der Oldies-Band <strong>Anni &amp; ihre Goldigen 50er</strong></p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1155,12 +1070,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1172,12 +1084,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1189,12 +1098,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1206,12 +1112,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1223,12 +1126,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1240,12 +1140,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1259,12 +1156,9 @@
         "description": {
             "de": "<p>vormittags ab 10:00 Uhr<br><br>\n Pfarrer Ellinghaus wird in Kühling's Niedersachenhalle auf dem Marktgelände einen Gottesdienst abhalten - wohl auch aufgrund seiner besonderen Atmosphäre hat dieser Gottesdienst in den zurückliegenden Jahren mehr und mehr Zulauf gefunden.</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1276,12 +1170,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1293,12 +1184,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1310,12 +1198,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1327,12 +1212,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1346,12 +1228,9 @@
         "description": {
             "de": "<p>Traditioneller Montagsempfang der Stadt Vechta.</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1363,12 +1242,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1380,29 +1256,23 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_micky_krause_20",
+        "slug": "kuehlings-niedersachsenhalle_mickie_krause_20",
         "name": {
-            "de": "MICKY KRAUSE"
+            "de": "MICKIE KRAUSE"
         },
         "start": "2025-08-18T22:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1414,12 +1284,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1431,12 +1298,9 @@
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1448,12 +1312,9 @@
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1465,12 +1326,9 @@
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1482,18 +1340,15 @@
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "pickers-lutten-das-partyzelt_blasmusik_mit_dem_musikverein_lutten_den_sprenegpiel_pipers_aus_vechta_03",
+        "slug": "pickers-lutten-das-partyzelt_blasmusik_mit_dem_musikverein_lutten_den_sprengepiel_pipers_aus_vechta_03",
         "name": {
-            "de": "Blasmusik mit dem Musikverein Lutten & den Sprenegpiel-Pipers aus Vechta"
+            "de": "Blasmusik mit dem Musikverein Lutten & den Sprengepiel-Pipers aus Vechta"
         },
         "start": "2025-08-17T12:00",
         "end": null,
@@ -1501,12 +1356,9 @@
         "description": {
             "de": "<p>Mittags feinste Blasmusik mit dem Musikverein Lutten, unterstützt durch die Sprenegpiel-Pipers aus Vechta</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1518,12 +1370,9 @@
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1535,12 +1384,9 @@
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1554,12 +1400,9 @@
         "description": {
             "de": "<p>Familientag mit ermäßigten Preisen</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1571,12 +1414,9 @@
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1588,12 +1428,9 @@
         "end": null,
         "location": "rastas-genuss-quartier",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1605,12 +1442,9 @@
         "end": null,
         "location": "rastas-genuss-quartier",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1622,12 +1456,9 @@
         "end": null,
         "location": "rastas-genuss-quartier",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1639,12 +1470,9 @@
         "end": null,
         "location": "rastas-genuss-quartier",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1656,12 +1484,9 @@
         "end": null,
         "location": "rastas-genuss-quartier",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1673,12 +1498,9 @@
         "end": null,
         "location": "rastas-genuss-quartier",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1692,12 +1514,9 @@
         "description": {
             "de": "<p>Alle alkoholfreien Getränke zum kleinen Preis</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1709,12 +1528,9 @@
         "end": null,
         "location": "ritzer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1726,12 +1542,9 @@
         "end": null,
         "location": "ritzer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1743,12 +1556,9 @@
         "end": null,
         "location": "ritzer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1762,12 +1572,9 @@
         "description": {
             "de": "<p>Von 10 Uhr bis 13 Uhr Schalker Fan Club Ritzer Knappen auf dem Stoppelmarkt mit Spielerlegende <strong>Olaf Thon</strong></p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1779,12 +1586,9 @@
         "end": null,
         "location": "ritzer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1796,12 +1600,9 @@
         "end": null,
         "location": "ritzer",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1813,12 +1614,9 @@
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1830,12 +1628,9 @@
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1847,12 +1642,9 @@
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1864,12 +1656,9 @@
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1881,12 +1670,9 @@
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1900,12 +1686,9 @@
         "description": {
             "de": "<p>Live Musik</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1919,12 +1702,9 @@
         "description": {
             "de": "<p>Live Musik - Motto \"Rock-Nacht\"</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1936,12 +1716,9 @@
         "end": null,
         "location": "sir-george",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1955,12 +1732,9 @@
         "description": {
             "de": "<p>Unsere Vereine. Unser Tag. Unser Stoppelmarkt.</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1972,12 +1746,9 @@
         "end": null,
         "location": "sir-george",
         "description": null,
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     },
     {
@@ -1991,12 +1762,95 @@
         "description": {
             "de": "<p>Alles muss raus!</p>"
         },
-        "participants": [
-        ],
-        "tags": [
-        ],
-        "websites": [
-        ],
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "stratmanns-zelt_take_five_und_dj_sascha_schulze_00",
+        "name": {
+            "de": "Take Five und DJ Sascha Schulze"
+        },
+        "start": "2025-08-14T19:00",
+        "end": null,
+        "location": "stratmanns-zelt",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "stratmanns-zelt_play_high_und_dj_sascha_schulze_01",
+        "name": {
+            "de": "Play High und DJ Sascha Schulze"
+        },
+        "start": "2025-08-15T19:00",
+        "end": null,
+        "location": "stratmanns-zelt",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "stratmanns-zelt_sound_traffic_und_dj_sascha_schulze_02",
+        "name": {
+            "de": "Sound Traffic und DJ Sascha Schulze"
+        },
+        "start": "2025-08-16T19:00",
+        "end": null,
+        "location": "stratmanns-zelt",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "stratmanns-zelt_dj_sascha_schulze_03",
+        "name": {
+            "de": "DJ Sascha Schulze"
+        },
+        "start": "2025-08-17T11:00",
+        "end": null,
+        "location": "stratmanns-zelt",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "stratmanns-zelt_sound_traffic_und_dj_sascha_schulze_fruehstueck_und_mittagessen_04",
+        "name": {
+            "de": "Sound Traffic und DJ Sascha Schulze, Frühstück und Mittagessen"
+        },
+        "start": "2025-08-18T09:00",
+        "end": null,
+        "location": "stratmanns-zelt",
+        "description": {
+            "de": "<p>Sound Traffic und DJ Sascha Schulze</p>\n<p>Frühstück und Mittagessen</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "stratmanns-zelt_dj_sascha_schulze_05",
+        "name": {
+            "de": "DJ Sascha Schulze"
+        },
+        "start": "2025-08-19T14:00",
+        "end": null,
+        "location": "stratmanns-zelt",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
         "isOfficial": false
     }
 ]
