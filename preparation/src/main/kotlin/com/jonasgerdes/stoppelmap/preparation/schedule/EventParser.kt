@@ -5,6 +5,8 @@ import com.jonasgerdes.stoppelmap.dto.Locales.de
 import com.jonasgerdes.stoppelmap.preparation.Settings
 import com.jonasgerdes.stoppelmap.preparation.preparationModule
 import com.jonasgerdes.stoppelmap.preperation.asSlug
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.format.char
 import kotlinx.serialization.Serializable
@@ -16,6 +18,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import java.io.File
+import kotlin.time.Duration.Companion.seconds
 
 //format: 15.08.2019 18:01
 //val EVENT_DATETIME_FORMAT = DateTimeFormatter.ofPattern("EE dd.MM.yyyy HH:mm", Locale.GERMAN)
@@ -50,7 +53,7 @@ data class Event(
 )
 
 
-fun parsePartyTentEvents(): List<EventLocation> {
+suspend fun parsePartyTentEvents(): List<EventLocation> {
 
     val url = baseUrl + "/zelte/"
 
@@ -75,7 +78,12 @@ fun parsePartyTentEvents(): List<EventLocation> {
         }.map { it.fillWithEvents() }
 }
 
-fun EventLocation.fillWithEvents(): EventLocation {
+suspend fun EventLocation.fillWithEvents(): EventLocation {
+    print(" - waiting.")
+    delay(1.seconds)
+    print(".")
+    delay(1.seconds)
+    print(".")
     val body = Jsoup.connect(baseUrl + url).get().body()
     println("fetch and parse ${baseUrl + url}")
 
@@ -181,7 +189,7 @@ fun writeEventsToFile(
 class EventParser : KoinComponent {
     val settings: Settings by inject()
 
-    fun fetchAndParseEvents() {
+    suspend fun fetchAndParseEvents() {
         val folder = settings.descriptionFolder.apply { mkdirs() }
         val eventsFile = settings.fetchedEventsFile.apply { createNewFile() }
         val marquees = parsePartyTentEvents()
@@ -204,5 +212,7 @@ fun main(args: Array<String>) {
         )
     }
 
-    EventParser().fetchAndParseEvents()
+    runBlocking {
+        EventParser().fetchAndParseEvents()
+    }
 }
