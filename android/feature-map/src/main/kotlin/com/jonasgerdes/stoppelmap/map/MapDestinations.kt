@@ -21,10 +21,14 @@ val mapNavigationTab = NavigationTab(
     startDestination = MapDestination
 )
 
-fun NavGraphBuilder.mapDestinations(onRequestLocationPermission: () -> Unit) {
+fun NavGraphBuilder.mapDestinations(
+    onRequestLocationPermission: () -> Unit,
+    onShareText: (String) -> Unit,
+) {
     composable<MapDestination> {
         MapScreen(
             onRequestLocationPermission = onRequestLocationPermission,
+            onShareText = onShareText,
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)

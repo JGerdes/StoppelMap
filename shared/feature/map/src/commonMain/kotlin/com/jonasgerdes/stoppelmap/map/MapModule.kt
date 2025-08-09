@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.map
 
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
+import com.jonasgerdes.stoppelmap.map.data.DeeplinkRepository
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.data.OfferRepository
 import com.jonasgerdes.stoppelmap.map.data.SubTypeRepository
@@ -43,6 +44,10 @@ val mapModule = module {
         TagRepository(
             tagQueries = get<StoppelMapDatabase>().tagQueries,
         )
+    }
+
+    single {
+        DeeplinkRepository()
     }
 
     factory {

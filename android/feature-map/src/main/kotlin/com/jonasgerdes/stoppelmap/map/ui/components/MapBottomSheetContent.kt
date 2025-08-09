@@ -7,24 +7,36 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Share
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun MapBottomSheetContent(
     bottomSheetState: MapViewModel.BottomSheetState,
     onPrimaryContentHeightChange: (Dp) -> Unit,
+    onShareText: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     AnimatedContent(
@@ -52,7 +64,25 @@ fun MapBottomSheetContent(
                 SheetContent(
                     onPrimaryContentHeightChange = onPrimaryContentHeightChange,
                     primaryContent = {
-                        Text(text = mapEntity.name, style = MaterialTheme.typography.headlineLarge)
+                        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                text = mapEntity.name,
+                                style = MaterialTheme.typography.headlineLarge,
+                                modifier = Modifier.weight(1f)
+                            )
+                            val shareText = stringResource(R.string.map_sheet_share_text, mapEntity.slug)
+                            FilledTonalIconButton(
+                                onClick = {
+                                    onShareText(shareText)
+                                },
+                                modifier = Modifier.size(IconButtonDefaults.smallContainerSize())
+                            ) {
+                                Icon(
+                                    Icons.Rounded.Share,
+                                    contentDescription = stringResource(R.string.map_sheet_share_button_contentDescription)
+                                )
+                            }
+                        }
                         mapEntity.subline()?.let {
                             Text(text = it, style = MaterialTheme.typography.labelLarge)
                         }

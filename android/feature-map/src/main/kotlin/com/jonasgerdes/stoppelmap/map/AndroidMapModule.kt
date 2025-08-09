@@ -17,7 +17,7 @@ import com.jonasgerdes.stoppelmap.map.ui.MapColorViewModel
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.map.usecase.IsLocationInAreaUseCase
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "mapUserData")
@@ -26,12 +26,13 @@ val androidMapModule = module {
 
     viewModel {
         MapViewModel(
+            deeplinkRepository = get(),
             getMapFilePath = get(),
             searchMap = get(),
             mapEntityRepository = get(),
             permissionRepository = get(),
             locationRepository = get(),
-            getQuickSearchItems = get()
+            getQuickSearchItems = get(),
         )
     }
 

@@ -24,6 +24,8 @@
 
     <string name="common_available_soon">Bald verfügbar</string>
 
+    <string name="share_text">Teilen über</string>
+
     <!-- Main -->
     <string name="main_bottom_nav_item_home">Info</string>
     <string name="main_bottom_nav_item_map">Karte</string>
@@ -117,6 +119,8 @@
     <string name="map_search_suggestions_title">Vorschläge</string>
     <string name="map_location_button_contentDescription">Lokalisiere mich</string>
     <string name="map_location_not_in_area">Du befindest dich nicht auf dem Stoppelmarktsgelände</string>
+    <string name="map_sheet_share_button_contentDescription">Teilen</string>
+    <string name="map_sheet_share_text">Schau mal, was ich auf dem Stoppelmarkt gefunden habe: https://stoppelmap.de/share/%1$s</string>
 
     <!-- Schedule -->
     <string name="schedule_topbar_title">Programm</string>

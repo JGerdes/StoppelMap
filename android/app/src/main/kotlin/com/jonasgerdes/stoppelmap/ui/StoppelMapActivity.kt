@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.ui
 
 import android.Manifest
+import android.app.ComponentCaller
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -20,6 +21,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -30,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDestination.Companion.hasRoute
@@ -45,6 +48,8 @@ import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
+import com.jonasgerdes.stoppelmap.map.MapDestination
+import com.jonasgerdes.stoppelmap.map.data.DeeplinkRepository
 import com.jonasgerdes.stoppelmap.map.mapDestinations
 import com.jonasgerdes.stoppelmap.map.repository.AndroidPermissionRepository
 import com.jonasgerdes.stoppelmap.navigation.AboutDestination
@@ -57,6 +62,7 @@ import com.jonasgerdes.stoppelmap.schedule.scheduleDestinations
 import com.jonasgerdes.stoppelmap.settings.data.Settings
 import com.jonasgerdes.stoppelmap.settings.ui.SettingsScreen
 import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
@@ -65,6 +71,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 
 class StoppelMapActivity : ComponentActivity() {
@@ -74,6 +81,8 @@ class StoppelMapActivity : ComponentActivity() {
     private val getSettings: GetSettingsUseCase by inject()
     private val getUnreadNewsCount: GetUnreadNewsCountUseCase by inject()
 
+    private val deeplinkRepository: DeeplinkRepository by inject()
+
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -81,7 +90,16 @@ class StoppelMapActivity : ComponentActivity() {
             permissionRepository.update()
         }
 
+
+    override fun onNewIntent(intent: Intent, caller: ComponentCaller) {
+        super.onNewIntent(intent, caller)
+        Timber.d("onNewIntent: ${intent.data}")
+        deeplinkRepository.postDeeplink(intent.data?.toString())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        Timber.d("onCreate: ${intent.data}")
+        deeplinkRepository.postDeeplink(intent.data?.toString())
         val splashScreen = installSplashScreen()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
@@ -103,19 +121,24 @@ class StoppelMapActivity : ComponentActivity() {
         }
 
         setContent {
+            val deepLink by deeplinkRepository.pendingDeeplink.collectAsStateWithLifecycle()
+
             StoppelMapTheme(
                 themeSetting = settingsState?.themeSetting ?: ThemeSetting.Light,
                 colorSchemeSetting = settingsState?.colorSchemeSetting
                     ?: ColorSchemeSetting.Classic
             ) {
-                StoppelMapApp()
+                StoppelMapApp(deepLink = deepLink)
             }
         }
     }
 
     @Composable
-    fun StoppelMapApp() {
+    fun StoppelMapApp(
+        deepLink: String?,
+    ) {
         val navController = rememberNavController()
+
         Scaffold(
             contentWindowInsets = WindowInsets.navigationBars,
             bottomBar = {
@@ -183,6 +206,7 @@ class StoppelMapActivity : ComponentActivity() {
                 }
                 mapDestinations(
                     onRequestLocationPermission = ::requestLocationPermission,
+                    onShareText = ::shareText,
                 )
                 scheduleDestinations()
                 transportationDestinations(
@@ -193,6 +217,18 @@ class StoppelMapActivity : ComponentActivity() {
                 newsDestinations(
                     onOpenUrl = ::openUrl,
                 )
+            }
+
+            LaunchedEffect(deepLink) {
+                deepLink?.let { uri ->
+                    navController.navigate(MapDestination) {
+                        launchSingleTop = true
+                        restoreState = true
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                    }
+                }
             }
         }
     }
@@ -230,5 +266,17 @@ class StoppelMapActivity : ComponentActivity() {
     private fun requestLocationPermission() {
         if (permissionRepository.isLocationPermissionGranted()) return
         requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+    }
+
+    private fun shareText(text: String) {
+        startActivity(
+            Intent.createChooser(
+                Intent(android.content.Intent.ACTION_SEND).apply {
+                    setType("text/plain")
+                    putExtra(android.content.Intent.EXTRA_TEXT, text)
+                },
+                getString(R.string.share_text)
+            )
+        )
     }
 }

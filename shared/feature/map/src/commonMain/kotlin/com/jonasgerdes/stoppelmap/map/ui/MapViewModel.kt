@@ -4,6 +4,7 @@ package com.jonasgerdes.stoppelmap.map.ui
 
 import co.touchlab.kermit.Logger
 import co.touchlab.skie.configuration.annotations.DefaultArgumentInterop
+import com.jonasgerdes.stoppelmap.map.data.DeeplinkRepository
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
@@ -40,6 +41,7 @@ import okio.Path
 import kotlin.time.Duration.Companion.milliseconds
 
 class MapViewModel(
+    private val deeplinkRepository: DeeplinkRepository,
     private val getMapFilePath: GetMapFilePathUseCase,
     private val searchMap: SearchMapUseCase,
     private val mapEntityRepository: MapEntityRepository,
@@ -87,6 +89,15 @@ class MapViewModel(
             .onEach { quickSearchChips ->
                 searchState.update { it.copy(quickSearchChips = quickSearchChips) }
             }
+            .launchIn(viewModelScope.coroutineScope)
+
+        deeplinkRepository.pendingMapEntity.onEach {
+            if (it != null) {
+                showFullMapEntity(it)
+                cancelCenterOnOwnLocation()
+                deeplinkRepository.clearDeeplink()
+            }
+        }
             .launchIn(viewModelScope.coroutineScope)
     }
 

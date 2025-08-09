@@ -62,6 +62,7 @@ import kotlin.time.Duration.Companion.milliseconds
 fun MapScreen(
     modifier: Modifier = Modifier,
     onRequestLocationPermission: () -> Unit,
+    onShareText: (String) -> Unit,
     viewModel: MapViewModel = koinViewModel(),
     mapColorViewModel: MapColorViewModel = koinViewModel(),
 ) {
@@ -140,6 +141,7 @@ fun MapScreen(
                     bottomSheetMainContentHeight.value = it
                 },
                 bottomSheetState = state.bottomSheetState,
+                onShareText = onShareText,
                 modifier = Modifier.onLayoutRectChanged {
                     bottomSheetTopY = it.positionInScreen.y
                 }
