@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.sqldelight)
@@ -19,15 +21,13 @@ sqldelight {
 
 kotlin {
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "17"
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
     }
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = ProjectDefaults.KOTLIN_JVM_TARGET
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
     iosX64()

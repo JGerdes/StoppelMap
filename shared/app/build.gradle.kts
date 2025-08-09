@@ -1,6 +1,7 @@
 import Git.getCommit
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.INT
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -11,11 +12,10 @@ plugins {
 
 
 kotlin {
+
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = ProjectDefaults.KOTLIN_JVM_TARGET
-            }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
     listOf(

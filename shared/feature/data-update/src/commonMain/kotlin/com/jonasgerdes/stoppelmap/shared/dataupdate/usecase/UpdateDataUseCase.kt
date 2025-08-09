@@ -100,6 +100,7 @@ class UpdateDataUseCase(
             val stoppelMapData = bundledData.source("stoppelMapData.json".toPath())
                 .buffer()
                 .use {
+                    Logger.d { "UpdateData: got file, decode buffered json" }
                     Json.decodeFromBufferedSource<StoppelMapData>(it)
                 }
             Logger.d { "UpdateData: Update database" }
