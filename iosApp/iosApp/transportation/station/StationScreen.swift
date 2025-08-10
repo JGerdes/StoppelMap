@@ -129,7 +129,7 @@ struct TimetableView: View {
         Grid {
             GridRow {
                 ForEach(state.departureDays, id: \.self) { day in
-                    Text(day.dayOfWeek.toStringResource().desc().localized()).font(.headline)
+                    Text(day.date.dayOfWeek.toStringResource().desc().localized()).font(.headline)
                 }
             }.padding(.vertical)
             ForEach(state.daySegments, id: \.self.type) { segment in

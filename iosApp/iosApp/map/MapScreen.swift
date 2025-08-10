@@ -6,6 +6,7 @@ struct MapScreen: View {
     
     let viewModel = MapDependencies().with {
         MapViewModel(
+            deeplinkRepository: $0.deeplinkRepository,
             getMapFilePath: $0.getMapFilePathUseCase,
             searchMap: $0.searchMapUseCase,
             mapEntityRepository: $0.mapEntityRepository,

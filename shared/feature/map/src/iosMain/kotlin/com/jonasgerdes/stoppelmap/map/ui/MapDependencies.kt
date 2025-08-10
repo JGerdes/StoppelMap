@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.ui
 
+import com.jonasgerdes.stoppelmap.map.data.DeeplinkRepository
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
@@ -10,6 +11,8 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class MapDependencies : KoinComponent {
+
+    val deeplinkRepository: DeeplinkRepository by inject()
     val getMapFilePathUseCase: GetMapFilePathUseCase by inject()
     val searchMapUseCase: SearchMapUseCase by inject()
     val mapEntityRepository: MapEntityRepository by inject()
