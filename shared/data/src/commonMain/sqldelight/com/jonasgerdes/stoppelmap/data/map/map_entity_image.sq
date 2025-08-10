@@ -14,3 +14,8 @@ VALUES (?,?);
 
 clear:
 DELETE FROM map_entity_image;
+
+getByMapEntity:
+SELECT * FROM map_entity_image
+JOIN image ON map_entity_image.image = image.url
+WHERE mapEntitySlug = :mapEntitySlug;

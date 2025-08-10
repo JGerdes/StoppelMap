@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.preparation.operations
 import com.jonasgerdes.stoppelmap.dto.Locales.de
 import com.jonasgerdes.stoppelmap.dto.data.Alias
 import com.jonasgerdes.stoppelmap.dto.data.BoundingBox
+import com.jonasgerdes.stoppelmap.dto.data.Fee
 import com.jonasgerdes.stoppelmap.dto.data.Image
 import com.jonasgerdes.stoppelmap.dto.data.Location
 import com.jonasgerdes.stoppelmap.dto.data.MapEntity
@@ -177,7 +178,19 @@ class ParseGeoData(
             services = properties["services"]?.split(",")?.map {
                 it
             } ?: emptyList(),
-            admissionFees = listOf(),
+            admissionFees = properties["fees"]?.split(";")
+                ?.mapNotNull { fee ->
+                    val (price, names) = fee.splitSafe("|", 2)
+                    if (price == null || names == null) null
+                    else {
+                        Fee(
+                            name = names.splitBy("+", ">") {
+                                it[0] to it[1]
+                            }.toMap(),
+                            price = price.toInt()
+                        )
+                    }
+                } ?: emptyList(),
             images = properties["pictures"]?.split(";")
                 ?.map { image ->
                     val (url, blurHash, captions, copyrights, preferredTheme)
@@ -208,7 +221,7 @@ class ParseGeoData(
 }
 
 
-fun kotlin.collections.Map<String, String>.firstValue(
+fun Map<String, String>.firstValue(
     keys: Set<String>
 ) = keys
     .firstOrNull { !get(it).isNullOrBlank() }

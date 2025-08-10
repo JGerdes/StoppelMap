@@ -24,11 +24,13 @@ val mapNavigationTab = NavigationTab(
 fun NavGraphBuilder.mapDestinations(
     onRequestLocationPermission: () -> Unit,
     onShareText: (String) -> Unit,
+    onOpenUrl: (String) -> Unit,
 ) {
     composable<MapDestination> {
         MapScreen(
             onRequestLocationPermission = onRequestLocationPermission,
             onShareText = onShareText,
+            onOpenUrl = onOpenUrl,
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)

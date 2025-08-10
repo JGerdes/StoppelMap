@@ -5,10 +5,8 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.station
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -60,7 +58,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onLayoutRectChanged
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -68,12 +65,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.core.os.ConfigurationCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.theme.components.Fee
+import com.jonasgerdes.stoppelmap.theme.components.FeeList
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import com.jonasgerdes.stoppelmap.transportation.R
-import com.jonasgerdes.stoppelmap.transportation.model.StationDetails
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationViewModel.StationState
 import com.jonasgerdes.stoppelmap.transportation.ui.toStringResource
@@ -83,9 +80,6 @@ import kotlinx.datetime.format
 import kotlinx.datetime.format.char
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import java.text.NumberFormat
-import java.util.Currency
-import java.util.Locale
 import kotlin.math.abs
 
 @SuppressLint("NewApi")
@@ -208,26 +202,11 @@ fun StationScreen(
                                 priceCardTopY = it.boundsInRoot.top
                             }
                     ) {
-                        Column(Modifier.padding(16.dp)) {
-                            Text(
-                                text = stringResource(R.string.transportation_station_prices_title),
-                                style = MaterialTheme.typography.labelMedium
-                            )
-                            Spacer(modifier = Modifier.size(8.dp))
-                            priceState.prices.forEach { fee ->
-                                Row(
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    modifier = Modifier.fillMaxWidth()
-                                ) {
-                                    Text(
-                                        text = fee.name
-                                    )
-                                    Spacer(modifier = Modifier.size(8.dp))
-                                    Text(
-                                        text = fee.formatAmount(LocalContext.current.resources)
-                                    )
-                                }
-                            }
+                        FeeList(
+                            title = stringResource(R.string.transportation_station_prices_title),
+                            fees = priceState.prices.map { Fee(it.name, it.price) },
+                            modifier = Modifier.padding(16.dp)
+                        ) {
                             Spacer(modifier = Modifier.size(16.dp))
                             Text(
                                 text = stringResource(R.string.transportation_station_prices_hint_cash),
@@ -240,7 +219,6 @@ fun StationScreen(
                                     style = MaterialTheme.typography.labelMedium
                                 )
                             }
-
                         }
                     }
                 }
@@ -327,15 +305,6 @@ fun StationScreen(
         }
     }
 }
-
-private fun StationDetails.Fee.formatAmount(resources: Resources) =
-    NumberFormat.getCurrencyInstance(
-        ConfigurationCompat.getLocales(resources.configuration)[0] ?: Locale.getDefault()
-    ).apply {
-        maximumFractionDigits = 2
-        currency = Currency.getInstance("EUR")
-    }.format(price / 100f)
-
 
 private val timeFormat = LocalTime.Format {
     hour()

@@ -121,6 +121,8 @@
     <string name="map_location_not_in_area">Du befindest dich nicht auf dem Stoppelmarktsgelände</string>
     <string name="map_sheet_share_button_contentDescription">Teilen</string>
     <string name="map_sheet_share_text">Schau mal, was ich auf dem Stoppelmarkt gefunden habe: https://stoppelmap.de/share/%1$s</string>
+    <string name="map_sheet_prices_title">Preise</string>
+    <string name="map_sheet_websites_title">Mehr Informationen unter</string>
 
     <!-- Schedule -->
     <string name="schedule_topbar_title">Programm</string>

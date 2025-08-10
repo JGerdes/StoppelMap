@@ -63,6 +63,7 @@ fun MapScreen(
     modifier: Modifier = Modifier,
     onRequestLocationPermission: () -> Unit,
     onShareText: (String) -> Unit,
+    onOpenUrl: (String) -> Unit,
     viewModel: MapViewModel = koinViewModel(),
     mapColorViewModel: MapColorViewModel = koinViewModel(),
 ) {
@@ -142,6 +143,7 @@ fun MapScreen(
                 },
                 bottomSheetState = state.bottomSheetState,
                 onShareText = onShareText,
+                onOpenUrl = onOpenUrl,
                 modifier = Modifier.onLayoutRectChanged {
                     bottomSheetTopY = it.positionInScreen.y
                 }

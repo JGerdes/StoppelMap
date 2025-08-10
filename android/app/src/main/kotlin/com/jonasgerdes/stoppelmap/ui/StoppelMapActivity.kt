@@ -207,6 +207,7 @@ class StoppelMapActivity : ComponentActivity() {
                 mapDestinations(
                     onRequestLocationPermission = ::requestLocationPermission,
                     onShareText = ::shareText,
+                    onOpenUrl = ::openUrl,
                 )
                 scheduleDestinations()
                 transportationDestinations(

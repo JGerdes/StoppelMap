@@ -2,19 +2,25 @@ package com.jonasgerdes.stoppelmap.map.data
 
 import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entityQueries
+import com.jonasgerdes.stoppelmap.data.map.Map_entity_imageQueries
 import com.jonasgerdes.stoppelmap.data.map.Map_entity_tagQueries
 import com.jonasgerdes.stoppelmap.data.map.Sub_typeQueries
 import com.jonasgerdes.stoppelmap.data.shared.AliasQueries
+import com.jonasgerdes.stoppelmap.data.shared.FeeQueries
 import com.jonasgerdes.stoppelmap.data.shared.OfferQueries
+import com.jonasgerdes.stoppelmap.data.shared.WebsiteQueries
 import com.jonasgerdes.stoppelmap.map.model.BoundingBox
+import com.jonasgerdes.stoppelmap.map.model.Fee
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.GeoData
+import com.jonasgerdes.stoppelmap.map.model.Image
 import com.jonasgerdes.stoppelmap.map.model.Location
 import com.jonasgerdes.stoppelmap.map.model.MapIcon
 import com.jonasgerdes.stoppelmap.map.model.Offer
 import com.jonasgerdes.stoppelmap.map.model.Offer.Companion.barProducts
 import com.jonasgerdes.stoppelmap.map.model.Offer.Companion.imbissProducts
 import com.jonasgerdes.stoppelmap.map.model.StallSummary
+import com.jonasgerdes.stoppelmap.map.model.Website
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
@@ -25,6 +31,9 @@ class MapEntityRepository(
     private val subTypeQueries: Sub_typeQueries,
     private val offerQueries: OfferQueries,
     private val mapMapTagQueries: Map_entity_tagQueries,
+    private val websiteQueries: WebsiteQueries,
+    private val imageQueries: Map_entity_imageQueries,
+    private val feeQueries: FeeQueries,
 ) {
 
     suspend fun searchMapEntitiesByName(query: String): List<String> = withContext(Dispatchers.IO) {
@@ -74,6 +83,21 @@ class MapEntityRepository(
         val subType = mapEntity.sub_type?.let { subTypeQueries.getSubTypeBySlugs(setOf(it)) }?.executeAsOneOrNull()
         val offers = offerQueries.offersByReferenceSlug(slug, ::Offer).executeAsList()
         val displayName = mapEntity.name ?: getNameFallback(slug, subType?.name, type?.string)
+        val images = imageQueries.getByMapEntity(slug).executeAsList().map {
+            Image(
+                url = it.url,
+                blurHash = it.blurHash,
+            )
+        }
+        val websites = websiteQueries.getAllBySlug(slug).executeAsList().map {
+            Website(url = it.url)
+        }
+        val fees = feeQueries.getByReferenceSlugs(listOf(slug)).executeAsList().map {
+            Fee(
+                name = it.name,
+                price = it.price.toInt(),
+            )
+        }
         FullMapEntity(
             slug = slug,
             name = displayName,
@@ -90,7 +114,11 @@ class MapEntityRepository(
             ),
             icon = mapEntity.type.getIcon(),
             offers = offers,
-            tags = emptyList()
+            tags = emptyList(),
+            admissionFees = fees,
+            images = images,
+            websites = websites,
+            events = emptyList(),
         )
     }
 
@@ -115,18 +143,17 @@ class MapEntityRepository(
     }
 
     suspend fun getGeoDataBySlugs(slugs: Set<String>) = withContext(Dispatchers.IO) {
-        mapEntityQueries.getGeoDataBySlugs(slugs).executeAsList()
-            .map {
-                it.slug to GeoData(
-                    center = Location(lat = it.latitude, lng = it.longitude),
-                    boundingBox = BoundingBox(
-                        southLat = it.southLatitude,
-                        westLng = it.westLongitude,
-                        northLat = it.northLatitude,
-                        eastLng = it.eastLongitude
-                    )
+        mapEntityQueries.getGeoDataBySlugs(slugs).executeAsList().associate {
+            it.slug to GeoData(
+                center = Location(lat = it.latitude, lng = it.longitude),
+                boundingBox = BoundingBox(
+                    southLat = it.southLatitude,
+                    westLng = it.westLongitude,
+                    northLat = it.northLatitude,
+                    eastLng = it.eastLongitude
                 )
-            }.toMap()
+            )
+        }
     }
 
     suspend fun getByTag(tagSlugs: Set<String>) = withContext(Dispatchers.IO) {
