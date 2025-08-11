@@ -22,7 +22,7 @@ val typeAliases = MapEntityType.entries.mapNotNull { type ->
 
         MapEntityType.Entrance -> null
         MapEntityType.Exhibition -> listOf(
-            Alias("Gewerbezelt", de),
+            Alias("Gewerbestand", de),
             Alias("Gewerbeschau", de)
         )
 

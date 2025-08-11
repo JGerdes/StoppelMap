@@ -26,18 +26,12 @@ fun String.asSlug(): String {
         .replace("Ä".toRegex(), "Ae")
         .replace("Ö".toRegex(), "Oe")
         .replace("Ü".toRegex(), "Ue")
-        .replace("/".toRegex(), "_")
-        .replace("&".toRegex(), "_")
-        .replace(",".toRegex(), "_")
-        .replace("\\.".toRegex(), "_")
-        .replace("\"".toRegex(), "")
-        .replace(" ".toRegex(), "_")
-        .replace("'".toRegex(), "_")
-        .replace("-".toRegex(), "_")
+        .replace(Regex("[^a-zA-Z0-9_]"), "-")
+        .replace("_".toRegex(), "-")
     do {
-        clean = clean.replace("__".toRegex(), "_")
-    } while (clean.contains("__"))
-    return clean.lowercase()
+        clean = clean.replace("--".toRegex(), "-")
+    } while (clean.contains("--"))
+    return clean.removePrefix("-").removeSuffix("-").lowercase()
 }
 
 
@@ -69,3 +63,15 @@ fun String.splitSafe(delimiter: String, expectedSize: Int) =
 private fun List<String>.padWithNulls(length: Int): List<String?> {
     return this + arrayOfNulls<String>(length - size).toList()
 }
+
+fun String.toSlug() =
+    this
+        .trim().lowercase()
+        .replace("ä", "ae")
+        .replace("ö", "oe")
+        .replace("ü", "ue")
+        .replace("ß", "s")
+        .replace(Regex("\\W"), "-")
+        .replace("--", "-")
+        .replace("--", "-")
+        .replace("--", "-")

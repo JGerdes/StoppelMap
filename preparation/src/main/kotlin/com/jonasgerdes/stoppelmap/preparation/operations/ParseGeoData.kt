@@ -17,6 +17,7 @@ import com.jonasgerdes.stoppelmap.preparation.definitions.TagSlugs
 import com.jonasgerdes.stoppelmap.preparation.definitions.foodProducts
 import com.jonasgerdes.stoppelmap.preparation.definitions.gameSubTypes
 import com.jonasgerdes.stoppelmap.preparation.definitions.rideSubTypes
+import com.jonasgerdes.stoppelmap.preparation.definitions.typeAliases
 import com.jonasgerdes.stoppelmap.preparation.util.center
 import com.jonasgerdes.stoppelmap.preparation.util.max
 import com.jonasgerdes.stoppelmap.preparation.util.min
@@ -35,6 +36,7 @@ import mobi.waterdog.kgeojson.GeoJson
 import mobi.waterdog.kgeojson.Point
 import mobi.waterdog.kgeojson.Polygon
 import java.io.File
+import kotlin.system.exitProcess
 
 @OptIn(ExperimentalSerializationApi::class)
 class ParseGeoData(
@@ -60,6 +62,10 @@ class ParseGeoData(
                     && feature.properties["building"] != "yes"
                 ) {
                     val updated = feature.parseMapEntity()
+                    if (mapEntities.any { it.slug == updated.slug }) {
+                        System.err.println("Duplicate slug: ${updated.slug}")
+                        exitProcess(0)
+                    }
                     mapEntities.add(updated)
                     feature.properties["slug"] = updated.slug
                     feature.properties["priority"] = updated.priority.toString()
@@ -232,18 +238,17 @@ class InvalidGeoJsonFeature(feature: Feature, propertyName: String? = null) : Ex
 )
 
 private fun MapEntity.createSlug(): String {
-    val name = this.name
-    var slug = ""
-
-    if (name != null) {
-        val nameSlug = name.asSlug()
-        slug += nameSlug
-        if (operator != null && !nameSlug.contains(operator.toString())) {
-            slug += "_" + operator.toString().asSlug()
-        }
-    } else {
-        slug += "${type.id}_${"${center.lat}, ${center.lng}".toShortHash()}"
-    }
+    val slug = name?.asSlug()?.let {
+        if (type in listOf(MapEntityType.Bar)) it else "${type.toGermanSlug()}-$it"
+    } ?: "${type.toGermanSlug()}-${"${center.lat}, ${center.lng}".toShortHash()}"
 
     return slug.lowercase()
 }
+
+private fun MapEntityType.toGermanSlug() = typeAliases
+    .firstOrNull { it.type == this }
+    ?.aliases
+    ?.firstOrNull { it.locale == de }
+    ?.string
+    ?.asSlug()
+    ?: id
