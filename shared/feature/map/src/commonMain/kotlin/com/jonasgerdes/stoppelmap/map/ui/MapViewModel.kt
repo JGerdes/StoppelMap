@@ -8,6 +8,8 @@ import com.jonasgerdes.stoppelmap.map.data.DeeplinkRepository
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
+import com.jonasgerdes.stoppelmap.map.model.Event
+import com.jonasgerdes.stoppelmap.map.model.EventDay
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.PermissionState
 import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
@@ -21,6 +23,7 @@ import com.jonasgerdes.stoppelmap.map.model.toLocation
 import com.jonasgerdes.stoppelmap.map.usecase.GetMapFilePathUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.GetQuickSearchSuggestionsUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchMapUseCase
+import com.jonasgerdes.stoppelmap.schedule.repository.EventRepository
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmm.viewmodel.stateIn
@@ -31,6 +34,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
@@ -46,6 +50,7 @@ class MapViewModel(
     private val searchMap: SearchMapUseCase,
     private val mapEntityRepository: MapEntityRepository,
     private val locationRepository: LocationRepository,
+    private val eventRepository: EventRepository,
     private val permissionRepository: PermissionRepository,
     private val getQuickSearchItems: GetQuickSearchSuggestionsUseCase,
 ) : KMMViewModel() {
@@ -190,7 +195,29 @@ class MapViewModel(
     }
 
     private suspend fun showFullMapEntity(slug: String, keepZoom: Boolean = false) {
-        val fullMapEntity = mapEntityRepository.getDetailedMapEntity(slug) ?: return
+        bottomSheetState.update { BottomSheetState.SingleStall.Loading }
+        val tempEntity = mapEntityRepository.getDetailedMapEntity(slug) ?: return
+        val events = eventRepository.getAllForLocation(slug).first()
+
+        val fullMapEntity = tempEntity.copy(
+            events = events
+                .map { event ->
+                    Event(
+                        slug = event.slug,
+                        name = event.name,
+                        start = event.start,
+                        end = event.end,
+                        description = event.description,
+                        isBookmarked = event.isBookmarked,
+                    )
+                }.groupBy { it.start.date }
+                .map {
+                    EventDay(
+                        date = it.key,
+                        events = it.value
+                    )
+                }.sortedBy { it.date }
+        )
         mapState.update {
             it.copy(
                 camera = if (keepZoom) CameraView.FocusLocation(fullMapEntity.location)
@@ -204,7 +231,7 @@ class MapViewModel(
                 )
             )
         }
-        bottomSheetState.update { BottomSheetState.SingleStall(fullMapEntity) }
+        bottomSheetState.update { BottomSheetState.SingleStall.Loaded(fullMapEntity) }
     }
 
     fun onCameraMoved() {
@@ -266,11 +293,14 @@ class MapViewModel(
         data object Hidden : BottomSheetState
         data class Idle(
             val favourites: List<StallSummary> = emptyList(),
-            val latestSearchResults: List<com.jonasgerdes.stoppelmap.map.model.SearchResult> = emptyList(),
+            val latestSearchResults: List<SearchResult> = emptyList(),
             val promotions: List<StallPromotion> = emptyList()
         ) : BottomSheetState
 
-        data class SingleStall(val fullMapEntity: FullMapEntity) : BottomSheetState
+        sealed interface SingleStall : BottomSheetState {
+            data object Loading : SingleStall
+            data class Loaded(val fullMapEntity: FullMapEntity) : SingleStall
+        }
 
         data class Collection(val name: String, val stalls: List<StallSummary>) : BottomSheetState {
             fun subline() = "${stalls.size} mal auf dem Stoppelmarkt" //TODO: localize

@@ -48,13 +48,15 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.resources.toFullResourceString
 import com.jonasgerdes.stoppelmap.schedule.R
 import com.jonasgerdes.stoppelmap.schedule.model.BookmarkedEvents
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventCard
-import com.jonasgerdes.stoppelmap.schedule.ui.components.EventRow
+import com.jonasgerdes.stoppelmap.theme.components.EventRow
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.material.appBarContainerColor
 import com.jonasgerdes.stoppelmap.theme.util.MeasureUnconstrainedViewWidth
+import com.jonasgerdes.stoppelmap.theme.util.localizedString
 import kotlinx.coroutines.launch
 import kotlinx.datetime.toJavaLocalTime
 import org.koin.androidx.compose.koinViewModel
@@ -214,7 +216,10 @@ fun ScheduleScreen(
                                         }
                                     }
                                     EventRow(
-                                        event = event,
+                                        name = localizedString(event.name),
+                                        description = event.description?.let { localizedString(it) },
+                                        locationName = event.locationName,
+                                        isBookmarked = event.isBookmarked,
                                         selected = event == state.selectedEvent,
                                         onSelected = { viewModel.onEventTap(event) },
                                         onNotificationToggle = {
@@ -224,7 +229,7 @@ fun ScheduleScreen(
                                             )
                                         },
                                         showNotificationToggle = true,
-                                        modifier = Modifier.fillMaxWidth()
+                                        modifier = Modifier.fillMaxWidth(),
                                     )
                                 }
                             }

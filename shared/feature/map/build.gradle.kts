@@ -40,6 +40,8 @@ kotlin {
             implementation(project(":shared:resources"))
             implementation(project(":shared:data"))
             implementation(project(":shared:feature:data-update"))
+            // TODO: Resolve this in a better way
+            implementation(project(":shared:feature:schedule"))
         }
     }
 }

@@ -48,6 +48,8 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":shared:data"))
     implementation(project(":shared:feature:map"))
+    // TODO: Resolve this in a better way
+    implementation(project(":shared:feature:schedule"))
     implementation(project(":android:theme"))
     implementation(project(":android:feature-settings"))
 

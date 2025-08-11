@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.schedule.ui.components
+package com.jonasgerdes.stoppelmap.theme.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
@@ -19,19 +19,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.schedule.model.Event
-import com.jonasgerdes.stoppelmap.theme.util.localizedString
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun EventRow(
-    event: Event,
+    name: String,
+    description: String?,
+    locationName: String?,
     selected: Boolean,
     onSelected: () -> Unit,
+    isBookmarked: Boolean,
     onNotificationToggle: (active: Boolean) -> Unit,
     modifier: Modifier = Modifier,
     showNotificationToggle: Boolean = true,
+    unSelectedBackgroundColor: Color? = null,
+    padding: Dp = 16.dp,
 ) {
     val radius by animateDpAsState(
         targetValue = if (selected) 8.dp else 0.dp
@@ -39,8 +45,8 @@ fun EventRow(
 
     val backgroundColor by animateColorAsState(
         targetValue =
-        if (selected) MaterialTheme.colorScheme.surfaceColorAtElevation(8.dp)
-        else MaterialTheme.colorScheme.surfaceColorAtElevation(0.dp)
+            if (selected) MaterialTheme.colorScheme.surfaceColorAtElevation(8.dp)
+            else unSelectedBackgroundColor ?: MaterialTheme.colorScheme.surfaceColorAtElevation(0.dp)
     )
 
     Row(
@@ -54,17 +60,17 @@ fun EventRow(
         Column(
             Modifier
                 .weight(1f)
-                .padding(start = 16.dp)
-                .padding(vertical = 16.dp),
+                .padding(start = padding)
+                .padding(vertical = padding),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            event.locationName?.let {
+            locationName?.let {
                 Text(text = it, style = MaterialTheme.typography.labelMedium)
             }
-            Text(text = localizedString(event.name), style = MaterialTheme.typography.bodyLarge)
-            event.description?.let {
+            Text(text = name, style = MaterialTheme.typography.bodyLarge)
+            description?.let {
                 Text(
-                    text = localizedString(it),
+                    text = it,
                     maxLines = if (selected) Int.MAX_VALUE else 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodySmall,
@@ -74,15 +80,15 @@ fun EventRow(
         }
         if (showNotificationToggle) {
             BookmarkIconButton(
-                show = selected || event.isBookmarked,
-                isBookmarked = event.isBookmarked,
+                show = selected || isBookmarked,
+                isBookmarked = isBookmarked,
                 onBookmarkToggled = onNotificationToggle,
                 modifier = Modifier.align(
-                    if (event.description != null) Alignment.Top else Alignment.CenterVertically
+                    if (description != null) Alignment.Top else Alignment.CenterVertically
                 )
             )
         } else {
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.padding(8.dp))
         }
     }
 }

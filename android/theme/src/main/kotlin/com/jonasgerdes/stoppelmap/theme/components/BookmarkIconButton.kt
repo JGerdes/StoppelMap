@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.schedule.ui.components
+package com.jonasgerdes.stoppelmap.theme.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.Box
@@ -15,7 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.schedule.R
+import com.jonasgerdes.stoppelmap.shared.resources.R
 
 @Composable
 fun BookmarkIconButton(
@@ -27,8 +27,8 @@ fun BookmarkIconButton(
     if (show) {
         val iconTint by animateColorAsState(
             targetValue =
-            if (isBookmarked) MaterialTheme.colorScheme.primary
-            else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                if (isBookmarked) MaterialTheme.colorScheme.primary
+                else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
         )
         IconButton(
             onClick = { onBookmarkToggled(!isBookmarked) },

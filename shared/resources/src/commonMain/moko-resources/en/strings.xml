@@ -120,6 +120,9 @@
     <string name="map_location_not_in_area">You\'re not in the Stoppelmarkt area</string>
     <string name="map_sheet_share_button_contentDescription">Share</string>
     <string name="map_sheet_share_text">Check out what I found at Stoppelmarkt: https://stoppelmap.de/share/%1$s</string>
+    <string name="map_sheet_prices_title">Prices</string>
+    <string name="map_sheet_websites_title">More information at</string>
+    <string name="map_sheet_events_title">Schedule</string>
 
     <!-- Schedule -->
     <string name="schedule_topbar_title">Schedule</string>

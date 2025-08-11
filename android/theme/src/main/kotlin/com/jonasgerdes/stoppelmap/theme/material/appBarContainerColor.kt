@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.theme.material
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.foundation.ScrollState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +31,26 @@ fun appBarContainerColor(scrollBehavior: TopAppBarScrollBehavior): State<Color> 
                 colors[1],
                 FastOutLinearInEasing.transform(if (overlappingFraction > 0.01f) 1f else 0f)
             )
+        }
+    }
+
+    return animateColorAsState(
+        targetColor,
+        animationSpec = MaterialTheme.motionScheme.defaultEffectsSpec(),
+    )
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
+@Composable
+fun appBarContainerColor(
+    scrollState: ScrollState,
+    initialColor: Color = TopAppBarDefaults.topAppBarColors().containerColor,
+    elevatedColor: Color = TopAppBarDefaults.topAppBarColors().scrolledContainerColor,
+
+    ): State<Color> {
+    val targetColor by remember(initialColor, elevatedColor, scrollState) {
+        derivedStateOf {
+            if (scrollState.value > 1) elevatedColor else initialColor
         }
     }
 

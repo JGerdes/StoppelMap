@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.fadeIn
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.LocationSearching
 import androidx.compose.material.icons.rounded.MyLocation
@@ -36,6 +38,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -53,6 +56,7 @@ import com.jonasgerdes.stoppelmap.map.ui.components.MapBottomSheetContent
 import com.jonasgerdes.stoppelmap.map.ui.components.SearchView
 import com.jonasgerdes.stoppelmap.map.ui.components.SuggestionRow
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 import timber.log.Timber
 import kotlin.time.Duration.Companion.milliseconds
@@ -101,6 +105,13 @@ fun MapScreen(
         bottomSheetState = bottomSheetState,
         snackbarHostState = snackbarHostState,
     )
+    val bottomSheetScrollState = rememberScrollState()
+    LaunchedEffect(bottomSheetState.targetValue) {
+        if (bottomSheetState.targetValue != SheetValue.Expanded) {
+            bottomSheetScrollState.animateScrollTo(0)
+        }
+    }
+
     val bottomSheetMainContentHeight = remember { mutableStateOf(BottomSheetDefaults.SheetPeekHeight) }
     val bottomSheetMainContentHeightAnimated = animateDpAsState(targetValue = bottomSheetMainContentHeight.value)
 
@@ -120,17 +131,24 @@ fun MapScreen(
         bottom = bottomSheetMainContentHeight.value + 64.dp
     )
 
-    LaunchedEffect(bottomSheetState.isVisible) {
-        if (!bottomSheetState.isVisible) {
-            viewModel.onBottomSheetClose()
-        }
-    }
-
     val notInAreaString = stringResource(id = R.string.map_location_not_in_area)
     LaunchedEffect(state.locationState.showNotInAreaHint) {
         if (state.locationState.showNotInAreaHint) {
             snackbarHostState.showSnackbar(notInAreaString, duration = SnackbarDuration.Long)
             viewModel.onNotInAreaHintShow()
+        }
+    }
+
+    val coroutineScope = rememberCoroutineScope()
+    BackHandler(enabled = bottomSheetState.isVisible) {
+        coroutineScope.launch {
+            bottomSheetState.hide()
+        }
+    }
+
+    LaunchedEffect(bottomSheetState.isVisible) {
+        if (!bottomSheetState.isVisible) {
+            viewModel.onBottomSheetClose()
         }
     }
 
@@ -144,9 +162,10 @@ fun MapScreen(
                 bottomSheetState = state.bottomSheetState,
                 onShareText = onShareText,
                 onOpenUrl = onOpenUrl,
+                scrollState = bottomSheetScrollState,
                 modifier = Modifier.onLayoutRectChanged {
                     bottomSheetTopY = it.positionInScreen.y
-                }
+                },
             )
         },
         sheetPeekHeight = bottomSheetMainContentHeightAnimated.value +

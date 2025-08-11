@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.schedule.model.Event
+import com.jonasgerdes.stoppelmap.theme.components.BookmarkIconButton
 import com.jonasgerdes.stoppelmap.theme.i18n.localizedString
 import kotlinx.datetime.toJavaLocalDateTime
 import java.time.format.DateTimeFormatter

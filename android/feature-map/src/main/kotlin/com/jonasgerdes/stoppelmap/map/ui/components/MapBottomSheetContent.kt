@@ -4,6 +4,8 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -15,6 +17,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.OpenInBrowser
 import androidx.compose.material.icons.rounded.Share
@@ -27,7 +31,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,8 +48,16 @@ import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
+import com.jonasgerdes.stoppelmap.resources.defaultFormat
+import com.jonasgerdes.stoppelmap.resources.toFullResourceString
+import com.jonasgerdes.stoppelmap.theme.components.EventRow
 import com.jonasgerdes.stoppelmap.theme.components.Fee
 import com.jonasgerdes.stoppelmap.theme.components.FeeList
+import com.jonasgerdes.stoppelmap.theme.material.appBarContainerColor
+import com.jonasgerdes.stoppelmap.theme.util.MeasureUnconstrainedViewWidth
+import com.jonasgerdes.stoppelmap.theme.util.localizedString
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.format
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -50,6 +67,7 @@ fun MapBottomSheetContent(
     onShareText: (String) -> Unit,
     onOpenUrl: (String) -> Unit,
     modifier: Modifier = Modifier,
+    scrollState: ScrollState = rememberScrollState()
 ) {
     AnimatedContent(
         bottomSheetState,
@@ -67,16 +85,31 @@ fun MapBottomSheetContent(
                         Text(text = state.name, style = MaterialTheme.typography.headlineLarge)
                         Text(text = state.subline(), style = MaterialTheme.typography.labelLarge)
                     },
+                    scrollState = scrollState,
                     modifier = modifier,
                 )
             }
 
-            is MapViewModel.BottomSheetState.SingleStall -> {
+            is MapViewModel.BottomSheetState.SingleStall.Loading -> {
+                SheetContent(
+                    onPrimaryContentHeightChange = onPrimaryContentHeightChange,
+                    primaryContent = {
+                        Spacer(Modifier.size(32.dp))
+                    },
+                    scrollState = scrollState,
+                )
+            }
+
+            is MapViewModel.BottomSheetState.SingleStall.Loaded -> {
                 val mapEntity = state.fullMapEntity
                 SheetContent(
                     onPrimaryContentHeightChange = onPrimaryContentHeightChange,
                     primaryContent = {
-                        Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+                        Row(
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
                             Text(
                                 text = mapEntity.name,
                                 style = MaterialTheme.typography.headlineLarge,
@@ -87,7 +120,8 @@ fun MapBottomSheetContent(
                                 onClick = {
                                     onShareText(shareText)
                                 },
-                                modifier = Modifier.size(IconButtonDefaults.smallContainerSize())
+                                modifier = Modifier
+                                    .size(IconButtonDefaults.smallContainerSize())
                             ) {
                                 Icon(
                                     Icons.Rounded.Share,
@@ -109,6 +143,7 @@ fun MapBottomSheetContent(
                                 )
                             }
                         } else null,
+                    scrollState = scrollState,
                     modifier = modifier,
                 )
             }
@@ -131,10 +166,7 @@ fun SingleMapEntityDetails(
             Text(it)
         }
         if (mapEntity.admissionFees.isNotEmpty()) {
-            OutlinedCard(
-                Modifier.fillMaxWidth(),
-                colors = CardDefaults.outlinedCardColors().copy(containerColor = Color.Transparent)
-            ) {
+            InfoCard {
                 FeeList(
                     title = stringResource(R.string.map_sheet_prices_title),
                     fees = mapEntity.admissionFees.map { Fee(it.name, it.price) },
@@ -142,6 +174,64 @@ fun SingleMapEntityDetails(
                 )
             }
         }
+        if (mapEntity.events.isNotEmpty()) {
+            val timeFormat = remember { LocalTime.defaultFormat() }
+            InfoCard {
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp)
+                        .padding(vertical = 16.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.map_sheet_events_title),
+                        style = MaterialTheme.typography.labelMedium,
+                    )
+                    Spacer(Modifier.size(8.dp))
+                    var selectedEvent by remember { mutableStateOf<String?>(null) }
+                    mapEntity.events.forEachIndexed { index, eventDay ->
+                        Text(
+                            stringResource(eventDay.date.dayOfWeek.toFullResourceString().resourceId),
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                        eventDay.events.forEach { event ->
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = spacedBy(8.dp),
+                            ) {
+                                MeasureUnconstrainedViewWidth({
+                                    Text(
+                                        "00000",
+                                        modifier = Modifier.padding(horizontal = 4.dp)
+                                    )
+                                }) { measuredWidth ->
+                                    Text(
+                                        event.start.time.format(timeFormat),
+                                        modifier = Modifier.width(measuredWidth)
+                                    )
+                                }
+                                EventRow(
+                                    name = localizedString(event.name),
+                                    description = event.description?.let { localizedString(it) },
+                                    locationName = null,
+                                    isBookmarked = event.isBookmarked,
+                                    selected = selectedEvent == event.slug,
+                                    onSelected = {
+                                        selectedEvent = if (selectedEvent == event.slug) null else event.slug
+                                    },
+                                    onNotificationToggle = {},
+                                    showNotificationToggle = selectedEvent == event.slug || event.isBookmarked,
+                                    unSelectedBackgroundColor = Color.Transparent,
+                                    padding = 4.dp,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         if (mapEntity.websites.isNotEmpty()) {
             Text(
                 text = stringResource(R.string.map_sheet_websites_title),
@@ -173,18 +263,24 @@ private fun SheetContent(
     primaryContent: @Composable ColumnScope.() -> Unit,
     modifier: Modifier = Modifier,
     secondaryContent: (@Composable ColumnScope.() -> Unit)? = null,
+    scrollState: ScrollState,
 ) {
+    val containerColor by appBarContainerColor(
+        scrollState = scrollState,
+        initialColor = MaterialTheme.colorScheme.surfaceColorAtElevation(8.dp).copy(alpha = 0f),
+        elevatedColor = MaterialTheme.colorScheme.surfaceColorAtElevation(8.dp)
+    )
     Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 16.dp)
+        modifier = modifier.fillMaxWidth()
     ) {
         val density = LocalDensity.current
         Column(
             verticalArrangement = spacedBy(8.dp),
             modifier = Modifier
                 .fillMaxWidth()
+                .background(containerColor)
+                .padding(horizontal = 16.dp)
+                .padding(top = 4.dp, bottom = 8.dp)
                 .onGloballyPositioned {
                     with(density) {
                         onPrimaryContentHeightChange(
@@ -194,8 +290,27 @@ private fun SheetContent(
                 }
         ) {
             primaryContent()
-            Spacer(modifier = Modifier.height(16.dp))
         }
-        secondaryContent?.invoke(this@Column)
+        if (secondaryContent != null) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(scrollState)
+                    .padding(horizontal = 16.dp)
+            ) {
+                secondaryContent()
+                Spacer(Modifier.height(16.dp))
+            }
+        }
+    }
+}
+
+@Composable
+private fun InfoCard(modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) {
+    OutlinedCard(
+        modifier = modifier.fillMaxWidth(),
+        colors = CardDefaults.outlinedCardColors().copy(containerColor = Color.Transparent)
+    ) {
+        content()
     }
 }

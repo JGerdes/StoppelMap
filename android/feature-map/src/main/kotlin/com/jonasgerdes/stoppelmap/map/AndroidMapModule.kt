@@ -33,6 +33,7 @@ val androidMapModule = module {
             permissionRepository = get(),
             locationRepository = get(),
             getQuickSearchItems = get(),
+            eventRepository = get(),
         )
     }
 

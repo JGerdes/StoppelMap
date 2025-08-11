@@ -11,6 +11,7 @@ import com.jonasgerdes.stoppelmap.data.shared.Localized_stringQueries
 import com.jonasgerdes.stoppelmap.data.shared.getLocalesForKeys
 import com.jonasgerdes.stoppelmap.schedule.model.Event
 import com.jonasgerdes.stoppelmap.schedule.model.EventSlug
+import com.jonasgerdes.stoppelmap.schedule.model.LocationEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
@@ -151,6 +152,31 @@ class EventRepository(
                     end = it.end,
                     locationSlug = it.locationSlug,
                     locationName = it.locationName,
+                    description = descriptionStrings[it.descriptionKey],
+                    isBookmarked = bookmarkedEventSlugs.contains(it.slug)
+                )
+            }
+        }
+
+    fun getAllForLocation(mapEntitySlug: String): Flow<List<LocationEvent>> =
+        combine(
+            getBookmarkedEventsSlugs(),
+            eventQueries.getAllByLocation(mapEntitySlug)
+                .asFlow()
+                .mapToList(Dispatchers.IO)
+        ) { bookmarkedEventSlugs, events ->
+            val nameStrings =
+                localizedStringQueries
+                    .getLocalesForKeys(events.map { it.nameKey })
+            val descriptionStrings =
+                localizedStringQueries
+                    .getLocalesForKeys(events.mapNotNull { it.descriptionKey })
+            events.map {
+                LocationEvent(
+                    slug = it.slug,
+                    name = nameStrings[it.nameKey] ?: mapOf("de" to it.nameKey), //TODO: Improve this
+                    start = it.start,
+                    end = it.end,
                     description = descriptionStrings[it.descriptionKey],
                     isBookmarked = bookmarkedEventSlugs.contains(it.slug)
                 )
