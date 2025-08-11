@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.preparation
 
 import com.jonasgerdes.stoppelmap.data.dataModule
+import com.jonasgerdes.stoppelmap.preparation.operations.GenerateDeeplinkConfig
 import com.jonasgerdes.stoppelmap.preparation.operations.PrepareStoppelMapData
 import com.jonasgerdes.stoppelmap.preparation.operations.VerifyStoppelMapDataConversion
 import com.jonasgerdes.stoppelmap.preparation.operations.WriteStoppelMapData
@@ -17,9 +18,10 @@ fun main(vararg args: String) {
             preparationModule,
             module {
                 single {
-                    Version(code = args
-                        .first { it.startsWith("versionCode=") }
-                        .removePrefix("versionCode=").toInt())
+                    Version(
+                        code = args
+                            .first { it.startsWith("versionCode=") }
+                            .removePrefix("versionCode=").toInt())
                 }
             }
         )
@@ -32,11 +34,13 @@ fun main(vararg args: String) {
     val writeData = WriteStoppelMapData()
     val verify = VerifyStoppelMapDataConversion()
     val zipData = ZipData()
+    val generateDeeplinkConfig = GenerateDeeplinkConfig()
 
     val data = generateData()
     verify(data)
     writeData(data)
     zipData()
+    generateDeeplinkConfig(data)
 
 
     settings.tempDir.deleteRecursively()
