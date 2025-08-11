@@ -6,6 +6,8 @@ import com.jonasgerdes.stoppelmap.server.appconfig.appConfigRoutes
 import com.jonasgerdes.stoppelmap.server.config.toServerConfig
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerModule
 import com.jonasgerdes.stoppelmap.server.crawler.crawlerTasksModule
+import com.jonasgerdes.stoppelmap.server.deeplink.deeplinkModule
+import com.jonasgerdes.stoppelmap.server.deeplink.deeplinkRoutes
 import com.jonasgerdes.stoppelmap.server.monitoring.Monitoring
 import com.jonasgerdes.stoppelmap.server.monitoring.monitoringModule
 import com.jonasgerdes.stoppelmap.server.monitoring.monitoringRoutes
@@ -31,6 +33,7 @@ import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.plugins.statuspages.StatusPages
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
+import io.ktor.server.routing.host
 import io.ktor.server.routing.routing
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -91,6 +94,7 @@ fun Application.ktorModule() {
             crawlerModule,
             crawlerTasksModule(serverConfig.crawler),
             newsModule,
+            deeplinkModule,
             schedulerModule,
             appConfigModule,
         )
@@ -103,23 +107,29 @@ fun Application.ktorModule() {
 
     routing {
         monitoringRoutes()
-        newsRoutes()
-        appConfigRoutes()
+        host(serverConfig.apiDomain) {
+            newsRoutes()
+            appConfigRoutes()
 
-        staticFiles("/static/images", File(serverConfig.crawler.imageCacheDir, "processed")) {
-            enableAutoHeadResponse()
-            cacheControl {
-                listOf(
-                    CacheControl.MaxAge(
-                        maxAgeSeconds = 604800, // year
-                        visibility = CacheControl.Visibility.Public,
+            staticFiles("/static/images", File(serverConfig.crawler.imageCacheDir, "processed")) {
+                enableAutoHeadResponse()
+                cacheControl {
+                    listOf(
+                        CacheControl.MaxAge(
+                            maxAgeSeconds = 604800, // year
+                            visibility = CacheControl.Visibility.Public,
+                        )
                     )
-                )
+                }
+            }
+
+            staticFiles("/static", File(serverConfig.staticDirectory)) {
+                enableAutoHeadResponse()
             }
         }
 
-        staticFiles("/static", File(serverConfig.staticDirectory)) {
-            enableAutoHeadResponse()
+        host(serverConfig.deeplinkDomain) {
+            deeplinkRoutes()
         }
     }
 

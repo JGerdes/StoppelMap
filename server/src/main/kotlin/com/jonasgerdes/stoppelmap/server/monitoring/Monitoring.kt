@@ -41,14 +41,15 @@ class Monitoring(
             }
             val userAgentString = call.request.userAgent()
             val userAgent = userAgentString?.parseUserAgent()
-            tag("app.version", userAgent?.appVersion ?: "n/a")
-            tag("build.type", userAgent?.buildType ?: "n/a")
-            tag("os", userAgent?.os ?: "n/a")
-            tag("manufacturer", userAgent?.manufacturer ?: "n/a")
-            tag("device", userAgent?.device ?: "n/a")
 
             if (userAgent == null && call.request.path() != "/metrics") {
                 logger.info("Unrecognized user agent $userAgentString")
+            } else {
+                tag("app.version", userAgent?.appVersion ?: "n/a")
+                tag("build.type", userAgent?.buildType ?: "n/a")
+                tag("os", userAgent?.os ?: "n/a")
+                tag("manufacturer", userAgent?.manufacturer ?: "n/a")
+                tag("device", userAgent?.device ?: "n/a")
             }
         }
     }

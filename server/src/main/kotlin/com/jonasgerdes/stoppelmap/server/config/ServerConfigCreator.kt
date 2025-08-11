@@ -13,10 +13,11 @@ fun ApplicationConfig.toServerConfig(
         }
     },
     version = property("stoppelmap-server.version").getString(),
-    externalDomain = propertyOrNull("stoppelmap-server.external-domain")
-        ?.getString() ?: "http://$host",
     sqliteDirectory = property("stoppelmap-server.sqlite-dir").getString(),
     staticDirectory = property("stoppelmap-server.static-dir").getString(),
+    websiteDirectory = property("stoppelmap-server.website-dir").getString(),
+    templatesDirectory = property("stoppelmap-server.templates-dir").getString(),
+    deeplinkConfigFile = property("stoppelmap-server.deeplink-config-file").getString(),
     crawler = ServerConfig.Crawler(
         baseUrl = property("stoppelmap-server.crawler.base-url").getString(),
         slowMode = property("stoppelmap-server.crawler.slow-mode").getString().toBoolean(),
@@ -36,6 +37,8 @@ fun ApplicationConfig.toServerConfig(
             .toSet(),
     ),
     appConfigFile = property("stoppelmap-server.app-config-file").getString(),
+    apiDomain = propertyOrNull("stoppelmap-server.api-domain")?.getString()?.removePrefix("https://") ?: host,
+    deeplinkDomain = propertyOrNull("stoppelmap-server.deeplink-domain")?.getString()?.removePrefix("https://") ?: host,
     apiKey = property("stoppelmap-server.api-key").getString().also {
         if (it.isBlank()) throw IllegalArgumentException("Please provide an API key as environment variable `API_KEY`.")
     },

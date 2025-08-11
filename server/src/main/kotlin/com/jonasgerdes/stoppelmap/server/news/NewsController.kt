@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.dto.news.Image
 import com.jonasgerdes.stoppelmap.server.config.ServerConfig
 import com.jonasgerdes.stoppelmap.server.news.data.ArticleRepository
 import com.jonasgerdes.stoppelmap.server.news.data.ImageRepository
+import com.jonasgerdes.stoppelmap.server.util.Response
 import com.jonasgerdes.stoppelmap.server.util.ULID
 import io.ktor.http.HttpStatusCode
 
@@ -42,7 +43,7 @@ class NewsController(
                         images = images.filter { it.articleSlug == article.slug }.map {
                             Image(
                                 uuid = it.uuid,
-                                url = "${config.externalDomain}/static/images/${it.processedFile}",
+                                url = "https://${config.apiDomain}/static/images/${it.processedFile}",
                                 caption = it.caption,
                                 copyright = it.copyright,
                                 blurHash = it.blurHash,
@@ -54,16 +55,5 @@ class NewsController(
                 }
             )
         )
-    }
-
-
-    sealed interface Response<T> {
-        data class Success<T>(val code: HttpStatusCode = HttpStatusCode.OK, val data: T) :
-            Response<T>
-
-        data class Error<T>(
-            val code: HttpStatusCode,
-            val message: String? = null
-        ) : Response<T>
     }
 }

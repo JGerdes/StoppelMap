@@ -2,16 +2,16 @@ package com.jonasgerdes.stoppelmap.server.news
 
 import com.jonasgerdes.stoppelmap.server.callextensions.assertHasApiKey
 import com.jonasgerdes.stoppelmap.server.config.ServerConfig
+import com.jonasgerdes.stoppelmap.server.util.Response
 import io.ktor.http.Parameters
-import io.ktor.server.application.call
 import io.ktor.server.plugins.BadRequestException
 import io.ktor.server.plugins.MissingRequestParameterException
 import io.ktor.server.response.respond
-import io.ktor.server.routing.Routing
+import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import org.koin.ktor.ext.inject
 
-fun Routing.newsRoutes() {
+fun Route.newsRoutes() {
 
     val newsController by inject<NewsController>()
     val config by inject<ServerConfig>()
@@ -27,8 +27,8 @@ fun Routing.newsRoutes() {
                 maximumValue = 30
             ),
         )) {
-            is NewsController.Response.Error -> call.respond(result.code)
-            is NewsController.Response.Success -> call.respond(result.code, result.data)
+            is Response.Error -> call.respond(result.code)
+            is Response.Success -> call.respond(result.code, result.data)
         }
     }
 }

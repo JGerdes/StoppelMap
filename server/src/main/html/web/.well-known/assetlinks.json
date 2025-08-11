@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jonasgerdes.stoppelmap",
+      "sha256_cert_fingerprints": [
+        "18:61:D4:66:5B:FC:A8:19:E4:73:5C:E8:9E:FC:71:51:8B:9D:CC:7A:49:5D:A9:5B:65:D7:2A:98:15:DE:F1:B3"
+      ]
+    }
+  }
+]

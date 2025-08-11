@@ -5,10 +5,14 @@ data class ServerConfig(
     val version: String,
     val sqliteDirectory: String,
     val staticDirectory: String,
-    val externalDomain: String,
+    val templatesDirectory: String,
+    val deeplinkConfigFile: String,
+    val websiteDirectory: String,
     val crawler: Crawler,
     val appConfigFile: String,
     val apiKey: String,
+    val apiDomain: String,
+    val deeplinkDomain: String,
     val metricCredentials: String,
 ) {
     enum class Environment {

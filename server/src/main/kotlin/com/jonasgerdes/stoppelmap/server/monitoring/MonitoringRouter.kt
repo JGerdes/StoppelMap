@@ -3,16 +3,15 @@ package com.jonasgerdes.stoppelmap.server.monitoring
 import com.jonasgerdes.stoppelmap.server.config.ServerConfig
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.auth.AuthScheme.Bearer
-import io.ktor.server.application.call
 import io.ktor.server.request.header
 import io.ktor.server.request.userAgent
 import io.ktor.server.response.respond
-import io.ktor.server.routing.Routing
+import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import org.koin.ktor.ext.inject
 import org.slf4j.Logger
 
-fun Routing.monitoringRoutes() {
+fun Route.monitoringRoutes() {
     val monitoring: Monitoring by inject()
     val serverConfig: ServerConfig by inject()
     val logger: Logger by inject()
