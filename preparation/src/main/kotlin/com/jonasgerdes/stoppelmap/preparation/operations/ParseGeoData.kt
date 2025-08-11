@@ -42,7 +42,8 @@ import kotlin.system.exitProcess
 class ParseGeoData(
     private val input: File,
     private val output: File,
-    private val descriptionFolder: File?
+    private val descriptionFolder: File?,
+    private val debugLogging: Boolean = false,
 ) {
     val mapEntities = mutableListOf<MapEntity>()
     val operators = mutableListOf<Operator>()
@@ -63,7 +64,7 @@ class ParseGeoData(
                 ) {
                     val updated = feature.parseMapEntity()
                     if (mapEntities.any { it.slug == updated.slug }) {
-                        System.err.println("Duplicate slug: ${updated.slug}")
+                        System.err.println("ERR: Duplicate slug: ${updated.slug}")
                         exitProcess(0)
                     }
                     mapEntities.add(updated)
@@ -75,7 +76,7 @@ class ParseGeoData(
     }
 
     private fun Feature.parseMapEntity(): MapEntity {
-        println("Parse feature (${properties}")
+        if (debugLogging) println("Parse feature (${properties}")
         val center = when (geometry) {
             is Point -> geometry.position
             is Polygon -> geometry.coordinates.flatten().center()
@@ -112,13 +113,13 @@ class ParseGeoData(
                 MapEntityType.GameStall -> {
                     gameSubTypes.firstOrNull {
                         properties.getOrDefault("game_${it.slug}", null) == "yes"
-                    }?.slug.also { if (it == null) System.err.println("WARN: No matching game type found for $properties") }
+                    }?.slug.also { if (it == null) println("WARN: No matching game type found for $properties") }
                 }
 
                 MapEntityType.Ride -> {
                     rideSubTypes.firstOrNull {
                         properties["type"] == it.slug
-                    }?.slug.also { if (it == null) System.err.println("WARN: No matching ride type found for $properties") }
+                    }?.slug.also { if (it == null) println("WARN: No matching ride type found for $properties") }
                 }
 
                 MapEntityType.Restroom -> {
