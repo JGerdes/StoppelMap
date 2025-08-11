@@ -40,8 +40,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="https" />
-                <data android:host="stoppelmap.de" />
-                <data android:pathPrefix="/share/" />
+                <data android:host="link.stoppelmap.de" />
+                <data android:pathPrefix="/" />
             </intent-filter>
 
         </activity-alias>

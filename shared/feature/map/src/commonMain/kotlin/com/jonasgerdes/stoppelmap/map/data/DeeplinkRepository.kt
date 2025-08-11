@@ -12,7 +12,7 @@ class DeeplinkRepository {
     val pendingMapEntity = _pendingDeeplink.map {
         it?.removePrefix("https://")
             ?.removePrefix("http://")
-            ?.removePrefix("stoppelmap.de/share/")
+            ?.removePrefix("link.stoppelmap.de/")
     }
 
     fun postDeeplink(url: String?) {
