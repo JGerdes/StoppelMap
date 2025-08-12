@@ -1,4 +1,4 @@
-package com.jonasgerdes.stoppelmap.news.ui
+package com.jonasgerdes.stoppelmap.theme.components
 
 import android.graphics.Bitmap
 import android.graphics.Rect

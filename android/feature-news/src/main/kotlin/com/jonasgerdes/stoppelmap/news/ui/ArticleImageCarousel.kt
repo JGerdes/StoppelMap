@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jonasgerdes.stoppelmap.news.R
 import com.jonasgerdes.stoppelmap.news.data.model.Image
+import com.jonasgerdes.stoppelmap.theme.components.rememberBlurHashPainter
 import com.jonasgerdes.stoppelmap.theme.onScrim
 
 @Composable

@@ -1,6 +1,7 @@
 package com.jonasgerdes.stoppelmap.preparation
 
 import com.jonasgerdes.stoppelmap.data.dataModule
+import com.jonasgerdes.stoppelmap.preparation.operations.AddEntityImages
 import com.jonasgerdes.stoppelmap.preparation.operations.GenerateDeeplinkConfig
 import com.jonasgerdes.stoppelmap.preparation.operations.PrepareStoppelMapData
 import com.jonasgerdes.stoppelmap.preparation.operations.VerifyStoppelMapData
@@ -32,13 +33,20 @@ fun main(vararg args: String) {
 
     val settings = koin.koin.get<Settings>()
     val generateData = PrepareStoppelMapData()
+    val addEntityImages = AddEntityImages()
     val writeData = WriteStoppelMapData()
     val verifyData = VerifyStoppelMapData()
     val verifyConversion = VerifyStoppelMapDataConversion()
     val zipData = ZipData()
     val generateDeeplinkConfig = GenerateDeeplinkConfig()
 
-    val data = generateData()
+    val generatedData = generateData()
+    val data = generatedData.copy(
+        map = generatedData.map.copy(
+            entities = addEntityImages(generatedData.map.entities)
+        )
+    )
+
     verifyData(data)
     verifyConversion(data)
     writeData(data)

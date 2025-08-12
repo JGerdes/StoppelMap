@@ -26,6 +26,8 @@ fun String.asSlug(): String {
         .replace("Ä".toRegex(), "Ae")
         .replace("Ö".toRegex(), "Oe")
         .replace("Ü".toRegex(), "Ue")
+        .replace(Regex("'"), "")
+        .replace(Regex(" "), "-")
         .replace(Regex("[^a-zA-Z0-9_]"), "-")
         .replace("_".toRegex(), "-")
     do {

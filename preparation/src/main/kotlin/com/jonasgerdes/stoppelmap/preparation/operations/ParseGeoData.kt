@@ -222,7 +222,7 @@ class ParseGeoData(
         )
 
         return mapEntity.copy(
-            slug = properties["slug"] ?: mapEntity.createSlug()
+            slug = properties["slug"]?.replace("_", "-") ?: mapEntity.createSlug()
         )
     }
 }
@@ -240,7 +240,13 @@ class InvalidGeoJsonFeature(feature: Feature, propertyName: String? = null) : Ex
 
 private fun MapEntity.createSlug(): String {
     val slug = name?.asSlug()?.let {
-        if (type in listOf(MapEntityType.Bar)) it else "${type.toGermanSlug()}-$it"
+        if (type in listOf(
+                MapEntityType.Bar,
+                MapEntityType.Misc,
+                MapEntityType.Info,
+                MapEntityType.Platform
+            )
+        ) it else "${type.toGermanSlug()}-$it"
     } ?: "${type.toGermanSlug()}-${"${center.lat}, ${center.lng}".toShortHash()}"
 
     return slug.lowercase()

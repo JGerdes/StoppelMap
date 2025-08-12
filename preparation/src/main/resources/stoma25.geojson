@@ -15658,7 +15658,8 @@
       "properties": {
         "name": "Geldautomat",
         "building": "misc",
-        "item_atm": "yes"
+        "item_atm": "yes",
+        "slug": "geldautomat-amtmannsbult"
       },
       "geometry": {
         "type": "Polygon",
@@ -17769,6 +17770,7 @@
         "type": "ferris_wheel",
         "priority": "60",
         "name": "Riesenrad",
+        "website": "http://www.riesenrad-hannover.de/",
         "operator": "Wilhelm & Söhne Bgr",
         "building": "ride"
       },
@@ -19287,7 +19289,8 @@
         "name": "Amtmannsbult",
         "building": "misc",
         "description": "Am Amtmannsbult saß früher das Marktgericht, das für Ordnungen auf dem Markt zuständig war. Heute ist es während des Stoppemarktes das Büro der Marktverwaltung. Außerdem findet hier die feierliche Eröffnung durch die/den Bürgermeister*in statt.",
-        "priority": "5"
+        "priority": "5",
+        "slug": "amtmannsbult"
       },
       "geometry": {
         "type": "Polygon",

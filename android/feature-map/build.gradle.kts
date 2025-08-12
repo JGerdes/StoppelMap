@@ -68,5 +68,6 @@ dependencies {
     implementation(libs.androidx.datastore)
     implementation(libs.kotlinx.serialization.json.core)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
 
 }

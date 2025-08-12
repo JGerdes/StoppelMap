@@ -47,4 +47,7 @@ dependencies {
     implementation(libs.sqldelight.driver.sqlite)
     implementation(libs.gson)
     implementation(libs.jsoup)
+    implementation(libs.scrimage.core)
+    implementation(libs.scrimage.webp)
+    implementation(libs.blurhash.java)
 }

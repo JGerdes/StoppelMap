@@ -24,7 +24,8 @@ val preparationModule = module {
             manualEventsFile = File(resources, "events/manual.json"),
             crawledRoutesDirectory = File(resources, "routes").also { if (it.exists().not()) it.mkdirs() },
             descriptionFolder = File(resources, "descriptions"),
-            year = 2025
+            year = 2025,
+            imageSettings = ImageSettings.fromEnv(),
         )
     }
 
@@ -37,5 +38,16 @@ val preparationModule = module {
         UpdateDatabaseUseCase(
             stoppelMapDatabase = get()
         )
+    }
+
+    single<ImmutableImageLoader> {
+        ImmutableImage.loader()
+            .withImageReaders(listOf(ImageIOReader(), WebpImageReader()))
+    }
+    single<ImageWriter> {
+        WebpWriter.DEFAULT
+            .withQ(75)
+            .withM(6)
+            .withoutAlpha()
     }
 }
