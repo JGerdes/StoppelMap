@@ -358,6 +358,7 @@ private fun SheetContent(
                     .verticalScroll(scrollState)
                     .padding(horizontal = 16.dp)
             ) {
+                Spacer(Modifier.height(16.dp))
                 secondaryContent()
                 Spacer(Modifier.height(16.dp))
             }

@@ -195,7 +195,12 @@ class MapViewModel(
     }
 
     private suspend fun showFullMapEntity(slug: String, keepZoom: Boolean = false) {
+        val shouldDelay = bottomSheetState.value !is BottomSheetState.Hidden
         bottomSheetState.update { BottomSheetState.SingleStall.Loading }
+        if (shouldDelay) {
+            // Give bottom sheet some time to settle if it was not hidden before
+            delay(300)
+        }
         val tempEntity = mapEntityRepository.getDetailedMapEntity(slug) ?: return
         val events = eventRepository.getAllForLocation(slug).first()
 

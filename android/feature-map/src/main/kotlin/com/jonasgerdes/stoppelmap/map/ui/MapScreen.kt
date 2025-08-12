@@ -236,7 +236,12 @@ fun MapScreen(
                 ) {
                     SearchView(
                         expanded = searchExpanded,
-                        onExpandedChange = { searchExpanded = it },
+                        onExpandedChange = {
+                            searchExpanded = it
+                            if (it) {
+                                viewModel.onBottomSheetClose()
+                            }
+                        },
                         searchState = state.searchState,
                         onSearch = viewModel::onSearch,
                         onSearchResultTap = viewModel::onSearchResultTap,
