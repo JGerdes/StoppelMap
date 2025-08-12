@@ -1,0 +1,10 @@
+{
+    "applinks": {
+        "details": [{
+            "appIDs": ["34ATLT5LH3.com.jonasgerdes.StoppelMap", "63FHH378N5.com.jonasgerdes.StoppelMap"],
+            "components": [{
+                "/": "/*"
+            }]
+        }]
+    }
+}

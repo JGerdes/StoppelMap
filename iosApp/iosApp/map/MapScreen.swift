@@ -11,6 +11,7 @@ struct MapScreen: View {
             searchMap: $0.searchMapUseCase,
             mapEntityRepository: $0.mapEntityRepository,
             locationRepository: $0.locationRepository,
+            eventRepository: $0.eventRepository,
             permissionRepository: $0.permissionRepository,
             getQuickSearchItems: $0.getQuickSearchSuggestionsUseCase
         )
@@ -157,9 +158,13 @@ struct MapScreen: View {
             .sheet(isPresented: $showSheet, onDismiss: {viewModel.onBottomSheetClose()}, content: {
                 ScrollView {
                     ZStack(alignment: .topLeading) {
-                        if let singleStation = viewState.bottomSheetState as? MapViewModelBottomSheetStateSingleStall {
+                        if let singleStation = viewState.bottomSheetState as? MapViewModelBottomSheetStateSingleStallLoaded {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text(singleStation.fullMapEntity.name).font(.title)
+                                HStack(alignment: .center) {
+                                    Text(singleStation.fullMapEntity.name).font(.title)
+                                    Spacer()
+                                    ShareLink(item: Res.strings().map_sheet_share_text.format(args: [singleStation.fullMapEntity.slug]).localized()).labelStyle(.iconOnly)
+                                }
                                 if let subline = singleStation.fullMapEntity.subline() {
                                     Text(subline).font(.caption)
                                 }
@@ -167,7 +172,8 @@ struct MapScreen: View {
                                     Text(description).fixedSize(horizontal: false, vertical: true)
                                 }
                             }
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            Spacer()
+                                .frame(maxWidth: .infinity, alignment: .topLeading)
                         } else if let collection = viewState.bottomSheetState as? MapViewModelBottomSheetStateCollection {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(collection.name).font(.title)
@@ -177,6 +183,8 @@ struct MapScreen: View {
                         }
                     }
                     .padding()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                     .background {
                         //This is done in the background otherwise GeometryReader tends to expand to all the space given to it  like color or shape.
                         GeometryReader { proxy in
@@ -187,12 +195,16 @@ struct MapScreen: View {
                                 }
                         }
                     }
-                }
-                .presentationDetents([.height(min(128, bottomSheetContentHeight)), .height(bottomSheetContentHeight)])
+                //}
+                    //.frame(maxWidth: .infinity, maxHeight: bottomSheetContentHeight, alignment: .top)
+                //.presentationDetents([.height(min(128, bottomSheetContentHeight)), .height(bottomSheetContentHeight)])
+                    .presentationDetents([.fraction(0.2), .large])
                 .presentationDragIndicator(.visible)
                 .apply {
                     if #available(iOS 16.4, *) {
-                        $0.presentationBackgroundInteraction(.enabled)
+                        $0
+                            .presentationBackgroundInteraction(.enabled)
+                            .presentationBackground(.thinMaterial)
                     } else {
                         $0
                     }
