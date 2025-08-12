@@ -75,6 +75,7 @@ fun MapBottomSheetContent(
     onPrimaryContentHeightChange: (Dp) -> Unit,
     onShareText: (String) -> Unit,
     onOpenUrl: (String) -> Unit,
+    onEventToggle: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
     scrollState: ScrollState = rememberScrollState()
 ) {
@@ -148,6 +149,7 @@ fun MapBottomSheetContent(
                                 SingleMapEntityDetails(
                                     mapEntity = mapEntity,
                                     onOpenUrl = onOpenUrl,
+                                    onEventToggle = onEventToggle,
                                     modifier = Modifier.fillMaxWidth()
                                 )
                             }
@@ -169,6 +171,7 @@ private fun FullMapEntity.hasSecondaryContent() =
 fun SingleMapEntityDetails(
     mapEntity: FullMapEntity,
     onOpenUrl: (String) -> Unit,
+    onEventToggle: (String, Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier, verticalArrangement = spacedBy(32.dp)) {
@@ -274,10 +277,12 @@ fun SingleMapEntityDetails(
                                     isBookmarked = event.isBookmarked,
                                     selected = selectedEvent == event.slug,
                                     onSelected = {
-                                        selectedEvent = if (selectedEvent == event.slug) null else event.slug
+                                        if (event.description != null) {
+                                            selectedEvent = if (selectedEvent == event.slug) null else event.slug
+                                        }
                                     },
-                                    onNotificationToggle = {},
-                                    showNotificationToggle = selectedEvent == event.slug || event.isBookmarked,
+                                    onNotificationToggle = { onEventToggle(event.slug, it) },
+                                    showNotificationToggle = false, //selectedEvent == event.slug || event.isBookmarked,
                                     unSelectedBackgroundColor = Color.Transparent,
                                     padding = 4.dp,
                                 )

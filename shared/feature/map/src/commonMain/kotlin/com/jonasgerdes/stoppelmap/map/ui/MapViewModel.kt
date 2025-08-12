@@ -162,6 +162,13 @@ class MapViewModel(
         clearSelectedEntity()
     }
 
+    fun onEventBookmarkToggle(eventSlug: String, toggled: Boolean) {
+        viewModelScope.coroutineScope.launch {
+            if (toggled) eventRepository.addBookmark(eventSlug)
+            else eventRepository.removeBookmark(eventSlug)
+        }
+    }
+
     fun requestLocationPermission() {
         permissionRepository.requestLocationPermission()
         switchToFollowOwnLocationPending = true

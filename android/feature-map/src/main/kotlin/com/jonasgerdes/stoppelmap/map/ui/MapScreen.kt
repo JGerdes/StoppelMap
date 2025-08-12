@@ -162,6 +162,7 @@ fun MapScreen(
                 bottomSheetState = state.bottomSheetState,
                 onShareText = onShareText,
                 onOpenUrl = onOpenUrl,
+                onEventToggle = viewModel::onEventBookmarkToggle,
                 scrollState = bottomSheetScrollState,
                 modifier = Modifier.onLayoutRectChanged {
                     bottomSheetTopY = it.positionInScreen.y
