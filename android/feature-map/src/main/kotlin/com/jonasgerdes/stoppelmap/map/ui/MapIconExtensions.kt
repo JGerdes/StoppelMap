@@ -23,4 +23,10 @@ val MapIcon.iconRes
         MapIcon.Kids -> R.drawable.ic_kids
         MapIcon.Wheelchair -> R.drawable.ic_wheelchair
         MapIcon.Plant -> R.drawable.ic_plant
+        MapIcon.RedCross -> R.drawable.ic_red_cross
+        MapIcon.Police -> R.drawable.ic_police
+        MapIcon.Atm -> R.drawable.ic_atm
+        MapIcon.WaterFountain -> R.drawable.ic_water_fountain
+        MapIcon.TransitTickets -> R.drawable.ic_transit_ticket
+        MapIcon.Bike -> R.drawable.ic_bike
     }

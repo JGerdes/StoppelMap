@@ -69,6 +69,16 @@ val typeAliases = MapEntityType.entries.mapNotNull { type ->
         MapEntityType.Taxi -> listOf(
             Alias("Taxi")
         )
+
+        MapEntityType.RedCross -> null
+        MapEntityType.Police -> null
+        MapEntityType.Atm -> null
+        MapEntityType.WaterFountain -> null
+        MapEntityType.TransitTickets -> null
+        MapEntityType.Bike -> listOf(
+            Alias("Fahrradparkplatz", de),
+            Alias("Bike parking", en),
+        )
     }
     aliases?.let { TypeAliases(type, it) }
 }

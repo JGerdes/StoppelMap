@@ -239,7 +239,13 @@ extension MLNMapView {
                 "entrance",
                 "station",
                 "platform",
-                "taxi"
+                "taxi",
+                "atm",
+                "red_cross",
+                "police",
+                "water_fountain",
+                "bike",
+                "transit_ticket"
             ];
             
             icons.forEach {id in

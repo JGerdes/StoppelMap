@@ -56,7 +56,13 @@ enum class MapEntityType(val id: String) {
     Ride("ride"),
     SellerStall("seller_stall"),
     Station("station"),
-    Taxi("taxi");
+    Taxi("taxi"),
+    RedCross("red_cross"),
+    Police("police"),
+    Atm("atm"),
+    WaterFountain("water_fountain"),
+    TransitTickets("transit_tickets"),
+    Bike("bike");
 
     companion object {
         fun fromId(id: String) = MapEntityType.entries

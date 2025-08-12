@@ -8257,7 +8257,8 @@
       "properties": {
         "name": "Musik-Express",
         "building": "ride",
-        "type": "caterpillar"
+        "type": "caterpillar",
+        "slug": "musik-express"
       },
       "geometry": {
         "type": "Polygon",
@@ -9433,7 +9434,8 @@
         "priority": "3",
         "name": "Commander",
         "building": "ride",
-        "operator": "Hanstein"
+        "operator": "Hanstein",
+        "slug": "commander"
       },
       "geometry": {
         "type": "Polygon",
@@ -9573,7 +9575,8 @@
       "properties": {
         "name": "Heroes",
         "building": "ride",
-        "operator": "M. Fick"
+        "operator": "M. Fick",
+        "slug": "hereos"
       },
       "geometry": {
         "type": "Polygon",
@@ -10125,7 +10128,8 @@
       "properties": {
         "type": "coaster",
         "building": "ride",
-        "name": "Wilde Maus"
+        "name": "Wilde Maus",
+        "slug": "wilde-maus"
       },
       "geometry": {
         "type": "Polygon",
@@ -10368,7 +10372,7 @@
     {
       "type": "Feature",
       "properties": {
-        "building": "misc",
+        "building": "red_cross",
         "priority": "50",
         "alias": "Deutsches Rotes Kreuz;Erste Hilfe",
         "name": "DRK"
@@ -10970,7 +10974,8 @@
         "name": "Mr. Gravity",
         "operator": "Frank Oberschelp",
         "building": "ride",
-        "website": "https://www.facebook.com/Mr.GravityOberschelp/"
+        "website": "https://www.facebook.com/Mr.GravityOberschelp/",
+        "slug": "mr-gravity"
       },
       "geometry": {
         "type": "Polygon",
@@ -12459,7 +12464,8 @@
         "name": "Die verrückte Farm",
         "type": "fun_house",
         "operator": "Walter Adriano Hortz",
-        "building": "ride"
+        "building": "ride",
+        "slug": "die-verrueckte-farm"
       },
       "geometry": {
         "type": "Polygon",
@@ -13141,7 +13147,8 @@
       "properties": {
         "type": "polyp",
         "name": "Octopussy",
-        "building": "ride"
+        "building": "ride",
+        "slug": "octopussy"
       },
       "geometry": {
         "type": "Polygon",
@@ -13600,7 +13607,8 @@
       "properties": {
         "operator": "Bruch",
         "building": "ride",
-        "name": "Excalibur"
+        "name": "Excalibur",
+        "slug": "excalibur"
       },
       "geometry": {
         "type": "Polygon",
@@ -13920,7 +13928,8 @@
         "name": "Renn-Piste",
         "building": "ride",
         "type": "slide",
-        "forKids": "yes"
+        "forKids": "yes",
+        "slug": "renn-piste"
       },
       "geometry": {
         "type": "Polygon",
@@ -14449,7 +14458,8 @@
       "properties": {
         "building": "ride",
         "operator": "Ahrend",
-        "name": "The Beast - Hulk vs Thanos"
+        "name": "The Beast",
+        "slug": "the-beast"
       },
       "geometry": {
         "type": "Polygon",
@@ -14740,7 +14750,7 @@
     {
       "type": "Feature",
       "properties": {
-        "building": "misc",
+        "building": "transit_tickets",
         "name": "NordWestBahn"
       },
       "geometry": {
@@ -14887,7 +14897,8 @@
         "name": "Break Dancer",
         "building": "ride",
         "type": "break_dancer",
-        "website": "https://www.instagram.com/break_dancer_das_original/"
+        "website": "https://www.instagram.com/break_dancer_das_original/",
+        "slug": "break-dancer"
       },
       "geometry": {
         "type": "Polygon",
@@ -15518,7 +15529,7 @@
     {
       "type": "Feature",
       "properties": {
-        "building": "misc",
+        "building": "water_fountain",
         "name": "Trinkwasserspender",
         "description": "Dieses Jahr gibt es erstmalig einen kostenlosen Trinkwasserspender vor dem Amtmannsbult. Dieser steht über den kompletten Stoppelmarkt für alle Besucher*innen zur Verfügung.",
         "slug": "wasserspender-amtmannsbult"
@@ -15657,7 +15668,7 @@
       "type": "Feature",
       "properties": {
         "name": "Geldautomat",
-        "building": "misc",
+        "building": "atm",
         "item_atm": "yes",
         "slug": "geldautomat-amtmannsbult"
       },
@@ -16232,7 +16243,8 @@
       "properties": {
         "type": "swing_ride",
         "building": "ride",
-        "name": "Wellenflug"
+        "name": "Wellenflug",
+        "slug": "wellenflug"
       },
       "geometry": {
         "type": "Polygon",
@@ -16392,7 +16404,8 @@
       "properties": {
         "operator": "Hoefnagels",
         "name": "Infinity",
-        "building": "ride"
+        "building": "ride",
+        "slug": "infinity"
       },
       "geometry": {
         "type": "Polygon",
@@ -17769,10 +17782,11 @@
       "properties": {
         "type": "ferris_wheel",
         "priority": "60",
-        "name": "Riesenrad",
+        "name": "Wilhelm's Riesenrad",
         "website": "http://www.riesenrad-hannover.de/",
         "operator": "Wilhelm & Söhne Bgr",
-        "building": "ride"
+        "building": "ride",
+        "slug": "wilhelms-riesenrad"
       },
       "geometry": {
         "type": "Polygon",
@@ -18600,7 +18614,8 @@
       "properties": {
         "building": "ride",
         "name": "Hangover - The Tower",
-        "type": "free_fall_tower"
+        "type": "free_fall_tower",
+        "slug": "hangover-the-tower"
       },
       "geometry": {
         "type": "Polygon",
@@ -20138,7 +20153,8 @@
         "type": "tunnel_of_horror",
         "building": "ride",
         "website": "https://www.fellerhoff-geisterbahn.de/geisterdorf.html",
-        "operator": "H.Fellerhoff"
+        "operator": "H.Fellerhoff",
+        "slug": "geisterdorf"
       },
       "geometry": {
         "type": "Polygon",
@@ -20464,7 +20480,8 @@
         "building": "ride",
         "website": "https://www.vorlop.info/achterbahn-high-explosive-der-coaster/",
         "operator": "Vorlop",
-        "name": "High Explosive"
+        "name": "High Explosive",
+        "slug": "high-explosive"
       },
       "geometry": {
         "type": "Polygon",
@@ -20601,7 +20618,7 @@
     {
       "type": "Feature",
       "properties": {
-        "building": "misc",
+        "building": "police",
         "name": "Polizei"
       },
       "geometry": {
@@ -21246,7 +21263,8 @@
         "operator": "M. Böttger",
         "type": "fun_house",
         "building": "ride",
-        "name": "Kaleidoskop"
+        "name": "Kaleidoskop",
+        "slug": "kaleidoskop"
       },
       "geometry": {
         "type": "Polygon",
@@ -21412,7 +21430,8 @@
         "website": "https://www.mama-caramba.de/",
         "building": "ride",
         "name": "Mama Caramba",
-        "operator": "Jansen"
+        "operator": "Jansen",
+        "slug": "mama-caramba"
       },
       "geometry": {
         "type": "Polygon",
@@ -21616,7 +21635,8 @@
       "properties": {
         "operator": "Fischer",
         "building": "ride",
-        "name": "The Aviator"
+        "name": "The Aviator",
+        "slug": "the-aviator"
       },
       "geometry": {
         "type": "Polygon",
@@ -21869,7 +21889,8 @@
         "type": "bumper_cars",
         "building": "ride",
         "operator": "Scheinder, A.",
-        "name": "Formel Eins"
+        "name": "Formel Eins",
+        "slug": "autoscooter-formel-eins"
       },
       "geometry": {
         "type": "Polygon",
@@ -22473,7 +22494,8 @@
       "properties": {
         "name": "Top In",
         "type": "bumper_cars",
-        "building": "ride"
+        "building": "ride",
+        "slug": "autoscooter-top-in"
       },
       "geometry": {
         "type": "Polygon",
@@ -23054,7 +23076,8 @@
         "type": "fun_house",
         "building": "ride",
         "operator": "Rasch",
-        "name": "Schlossallee"
+        "name": "Spaßallee",
+        "slug": "schlossallee"
       },
       "geometry": {
         "type": "Polygon",

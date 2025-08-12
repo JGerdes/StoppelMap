@@ -18,4 +18,10 @@ enum class MapEntityType(val id: String) {
     SellerStall("seller_stall"),
     Station("station"),
     Taxi("taxi"),
+    RedCross("red_cross"),
+    Police("police"),
+    Atm("atm"),
+    WaterFountain("water_fountain"),
+    TransitTickets("transit_tickets"),
+    Bike("bike")
 }

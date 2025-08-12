@@ -18,5 +18,11 @@ enum class MapIcon(val id: String) {
     Taxi("taxi"),
     Kids("kids"),
     Wheelchair("wheelchair"),
-    Plant("plant")
+    Plant("plant"),
+    RedCross("red_cross"),
+    Police("police"),
+    Atm("atm"),
+    WaterFountain("water_fountain"),
+    TransitTickets("transit_tickets"),
+    Bike("bike"),
 }

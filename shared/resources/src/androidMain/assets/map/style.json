@@ -379,9 +379,37 @@
           "Polygon"
         ],
         [
-          "==",
-          "building",
-          "misc"
+          "any",
+          [
+            "==",
+            "building",
+            "misc"
+          ],
+          [
+            "==",
+            "building",
+            "atm"
+          ],
+          [
+            "==",
+            "building",
+            "red_cross"
+          ],
+          [
+            "==",
+            "building",
+            "police"
+          ],
+          [
+            "==",
+            "building",
+            "water_fountain"
+          ],
+          [
+            "==",
+            "building",
+            "transit_tickets"
+          ]
         ]
       ],
       "layout": {
@@ -470,6 +498,18 @@
           "expo",
           "parking",
           "parking",
+          "red_cross",
+          "red_cross",
+          "police",
+          "police",
+          "atm",
+          "atm",
+          "water_fountain",
+          "water_fountain",
+          "transit_tickets",
+          "transit_tickets",
+          "bike",
+          "bike",
           "ignore",
           "misc",
           [
@@ -562,6 +602,18 @@
           "expo",
           "parking",
           "parking",
+          "red_cross",
+          "red_cross",
+          "police",
+          "police",
+          "atm",
+          "atm",
+          "water_fountain",
+          "water_fountain",
+          "transit_tickets",
+          "transit_tickets",
+          "bike",
+          "bike",
           "ignore",
           "misc",
           [

@@ -179,4 +179,10 @@ private fun MapEntityType.getIcon() = when (this) {
     MapEntityType.SellerStall -> MapIcon.SellerStall
     MapEntityType.Station -> MapIcon.Station
     MapEntityType.Taxi -> MapIcon.Taxi
+    MapEntityType.RedCross -> MapIcon.RedCross
+    MapEntityType.Police -> MapIcon.Police
+    MapEntityType.Atm -> MapIcon.Atm
+    MapEntityType.WaterFountain -> MapIcon.WaterFountain
+    MapEntityType.TransitTickets -> MapIcon.TransitTickets
+    MapEntityType.Bike -> MapIcon.Bike
 }

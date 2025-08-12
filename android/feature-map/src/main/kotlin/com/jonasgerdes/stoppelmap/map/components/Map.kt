@@ -457,6 +457,12 @@ fun Style.addMarkerIcons(
         MarkerIcon("platform", R.drawable.ic_train, colors.stallTypeMiscColor),
         MarkerIcon("taxi", R.drawable.ic_taxi, colors.stallTypeMiscColor),
         MarkerIcon("entrance", R.drawable.ic_entrance, colors.stallTypeMiscColor),
+        MarkerIcon("red_cross", R.drawable.ic_red_cross, colors.stallTypeMiscColor),
+        MarkerIcon("police", R.drawable.ic_police, colors.stallTypeMiscColor),
+        MarkerIcon("atm", R.drawable.ic_atm, colors.stallTypeMiscColor),
+        MarkerIcon("water_fountain", R.drawable.ic_water_fountain, colors.stallTypeMiscColor),
+        MarkerIcon("transit_tickets", R.drawable.ic_transit_ticket, colors.stallTypeMiscColor),
+        MarkerIcon("bike", R.drawable.ic_bike, colors.stallTypeMiscColor),
     ).forEach { markerIcon ->
         val bitmap = with(density) {
             Bitmap.createBitmap(24.dp.roundToPx(), 24.dp.roundToPx(), Bitmap.Config.ARGB_8888)

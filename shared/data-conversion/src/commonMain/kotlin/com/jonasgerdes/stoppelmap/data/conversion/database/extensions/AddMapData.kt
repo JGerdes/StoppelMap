@@ -126,4 +126,10 @@ fun DtoMapEntityType.toMapEntityType() = when (this) {
     DtoMapEntityType.SellerStall -> MapEntityType.SellerStall
     DtoMapEntityType.Station -> MapEntityType.Station
     DtoMapEntityType.Taxi -> MapEntityType.Taxi
+    DtoMapEntityType.RedCross -> MapEntityType.RedCross
+    DtoMapEntityType.Police -> MapEntityType.Police
+    DtoMapEntityType.Atm -> MapEntityType.Atm
+    DtoMapEntityType.WaterFountain -> MapEntityType.WaterFountain
+    DtoMapEntityType.TransitTickets -> MapEntityType.TransitTickets
+    DtoMapEntityType.Bike -> MapEntityType.Bike
 }
