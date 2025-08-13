@@ -13,7 +13,8 @@ struct MapScreen: View {
             locationRepository: $0.locationRepository,
             eventRepository: $0.eventRepository,
             permissionRepository: $0.permissionRepository,
-            getQuickSearchItems: $0.getQuickSearchSuggestionsUseCase
+            getQuickSearchItems: $0.getQuickSearchSuggestionsUseCase,
+            getEventsForMapEntity: $0.getEventsForMapEntityUseCase
         )
     }
 
@@ -61,8 +62,7 @@ struct MapScreen: View {
                                 } else {
                                     Color.clear.frame(width: 24, height: 24)
                                 }
-                                if let supportingText = result.supportingText()
-                                {
+                                if let supportingText = result.supportingText() {
                                     VStack(alignment: .leading) {
                                         Text(result.term)
                                         Text(supportingText).font(.footnote)
@@ -91,9 +91,8 @@ struct MapScreen: View {
                     if (viewState.bottomSheetState
                         is MapViewModelBottomSheetStateIdle
                         || viewState.bottomSheetState
-                            is MapViewModelBottomSheetStateHidden)
-                        && !viewState.searchState.quickSearchChips.isEmpty
-                    {
+                        is MapViewModelBottomSheetStateHidden)
+                           && !viewState.searchState.quickSearchChips.isEmpty {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 8) {
                                 ForEach(
@@ -125,8 +124,10 @@ struct MapScreen: View {
                                     }
 
                                 }
-                            }.padding(.horizontal)
-                        }.frame(maxWidth: .infinity)
+                            }
+                            .padding(.horizontal)
+                        }
+                        .frame(maxWidth: .infinity)
                     }
 
                     HStack {
@@ -134,8 +135,7 @@ struct MapScreen: View {
                         Button(
                             action: {
                                 if viewState.locationState.permissionState
-                                    == PermissionState.notDetermined
-                                {
+                                       == PermissionState.notDetermined {
                                     viewModel.requestLocationPermission()
                                 } else {
                                     viewModel.onLocationButtonTap()
@@ -161,8 +161,10 @@ struct MapScreen: View {
                         )
                         .padding(.horizontal)
                         .padding(.top, 5)
-                    }.transition(.move(edge: .top)).animation(.default)
-                }.frame(maxWidth: .infinity)
+                    }
+                    .transition(.move(edge: .top)).animation(.default)
+                }
+                .frame(maxWidth: .infinity)
 
                 if viewState.locationState.showNotInAreaHint {
                     HStack {
@@ -186,7 +188,8 @@ struct MapScreen: View {
                     }
                 }
 
-            }.apply {
+            }
+            .apply {
                 if #available(iOS 17.0, *) {
                     $0.searchable(
                         text: $searchQuery,
@@ -253,20 +256,20 @@ struct MapScreen: View {
                 viewState = state
                 showSheet =
                     !(viewState.bottomSheetState
-                    is MapViewModelBottomSheetStateHidden)
+                        is MapViewModelBottomSheetStateHidden)
             }
         }
     }
 }
 
 struct SingleStallBottomSheetContent: View {
-    
+
     let entity: FullMapEntity
-    
+
     init(entity: FullMapEntity) {
         self.entity = entity
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .center) {
@@ -280,8 +283,7 @@ struct SingleStallBottomSheetContent: View {
                             ]).localized()
                 ).labelStyle(.iconOnly)
             }
-            if let subline = entity.subline()
-            {
+            if let subline = entity.subline() {
                 Text(subline).font(.caption)
             }
             if entity.images.count > 0 {
@@ -290,7 +292,7 @@ struct SingleStallBottomSheetContent: View {
                         ZStack(alignment: .bottomLeading) {
                             if let url = URL(string: image.url) {
                                 Color.clear.overlay(
-                                    CachedAsyncImage(url: url) {image in
+                                    CachedAsyncImage(url: url) { image in
                                         image
                                             .resizable()
                                             .scaledToFill()
@@ -301,7 +303,8 @@ struct SingleStallBottomSheetContent: View {
                                                 .scaledToFill()
                                         }
                                     }
-                                ).clipped()
+                                )
+                                .clipped()
                             }
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -311,8 +314,7 @@ struct SingleStallBottomSheetContent: View {
                 .tabViewStyle(PageTabViewStyle())
                 .cornerRadius(8)
             }
-            if let description = entity.description_
-            {
+            if let description = entity.description_ {
                 Text(description).fixedSize(
                     horizontal: false,
                     vertical: true
@@ -340,7 +342,8 @@ struct SingleStallBottomSheetContent: View {
                                     Text(event.start.time.description())
                                 }
                                 Text(event.name.localized())
-                            }.padding(.horizontal)
+                            }
+                            .padding(.horizontal)
                         }
                     }
                 }
@@ -362,24 +365,23 @@ struct SingleStallBottomSheetContent: View {
 }
 
 
-
 struct FeesCard: View {
-    
+
     let state: FullMapEntity
     let numberFormatter = NumberFormatter()
-    
+
     init(state: FullMapEntity) {
         self.state = state
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumFractionDigits = 2
     }
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(Res.strings().map_sheet_prices_title.desc().localized()).font(.caption)
-            
-            
+
+
             ForEach(state.admissionFees, id: \.self.name) { fee in
                 HStack {
                     Text(fee.name)
@@ -387,7 +389,8 @@ struct FeesCard: View {
                     if let priceText = numberFormatter.string(from: NSNumber(value: Double(fee.price) / 100.0)) {
                         Text(priceText + " €")
                     }
-                }.frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity)
             }
         }
         .padding()

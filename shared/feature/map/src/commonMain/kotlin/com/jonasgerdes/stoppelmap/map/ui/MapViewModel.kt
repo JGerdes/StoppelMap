@@ -8,8 +8,6 @@ import com.jonasgerdes.stoppelmap.map.data.DeeplinkRepository
 import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.location.LocationRepository
 import com.jonasgerdes.stoppelmap.map.location.PermissionRepository
-import com.jonasgerdes.stoppelmap.map.model.Event
-import com.jonasgerdes.stoppelmap.map.model.EventDay
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.model.PermissionState
 import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
@@ -20,6 +18,7 @@ import com.jonasgerdes.stoppelmap.map.model.StallSummary
 import com.jonasgerdes.stoppelmap.map.model.contains
 import com.jonasgerdes.stoppelmap.map.model.reduceBoundingBox
 import com.jonasgerdes.stoppelmap.map.model.toLocation
+import com.jonasgerdes.stoppelmap.map.usecase.GetEventsForMapEntityUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.GetMapFilePathUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.GetQuickSearchSuggestionsUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchMapUseCase
@@ -34,7 +33,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
@@ -53,6 +51,7 @@ class MapViewModel(
     private val eventRepository: EventRepository,
     private val permissionRepository: PermissionRepository,
     private val getQuickSearchItems: GetQuickSearchSuggestionsUseCase,
+    private val getEventsForMapEntity: GetEventsForMapEntityUseCase,
 ) : KMMViewModel() {
 
     private var searchJob: Job? = null
@@ -166,6 +165,16 @@ class MapViewModel(
         viewModelScope.coroutineScope.launch {
             if (toggled) eventRepository.addBookmark(eventSlug)
             else eventRepository.removeBookmark(eventSlug)
+
+            // TODO: Rather subscribe to database updates
+            bottomSheetState.update {
+                if (it is BottomSheetState.SingleStall.Loaded && it.fullMapEntity.events.flatMap { it.events }
+                        .any { it.slug == eventSlug }) {
+                    it.copy(
+                        fullMapEntity = it.fullMapEntity.copy(events = getEventsForMapEntity(it.fullMapEntity.slug))
+                    )
+                } else it
+            }
         }
     }
 
@@ -208,28 +217,10 @@ class MapViewModel(
             // Give bottom sheet some time to settle if it was not hidden before
             delay(300)
         }
-        val tempEntity = mapEntityRepository.getDetailedMapEntity(slug) ?: return
-        val events = eventRepository.getAllForLocation(slug).first()
+        val fullMapEntity = mapEntityRepository.getDetailedMapEntity(slug)?.copy(
+            events = getEventsForMapEntity(slug)
+        ) ?: return
 
-        val fullMapEntity = tempEntity.copy(
-            events = events
-                .map { event ->
-                    Event(
-                        slug = event.slug,
-                        name = event.name,
-                        start = event.start,
-                        end = event.end,
-                        description = event.description,
-                        isBookmarked = event.isBookmarked,
-                    )
-                }.groupBy { it.start.date }
-                .map {
-                    EventDay(
-                        date = it.key,
-                        events = it.value
-                    )
-                }.sortedBy { it.date }
-        )
         mapState.update {
             it.copy(
                 camera = if (keepZoom) CameraView.FocusLocation(fullMapEntity.location)

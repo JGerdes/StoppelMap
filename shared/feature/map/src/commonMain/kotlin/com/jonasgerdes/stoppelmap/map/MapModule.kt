@@ -6,6 +6,7 @@ import com.jonasgerdes.stoppelmap.map.data.MapEntityRepository
 import com.jonasgerdes.stoppelmap.map.data.OfferRepository
 import com.jonasgerdes.stoppelmap.map.data.SubTypeRepository
 import com.jonasgerdes.stoppelmap.map.data.TagRepository
+import com.jonasgerdes.stoppelmap.map.usecase.GetEventsForMapEntityUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.GetMapFilePathUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.GetQuickSearchSuggestionsUseCase
 import com.jonasgerdes.stoppelmap.map.usecase.SearchMapUseCase
@@ -67,6 +68,12 @@ val mapModule = module {
             tagRepository = get(),
             mapEntityRepository = get(),
             aliasQueries = get<StoppelMapDatabase>().aliasQueries
+        )
+    }
+
+    factory {
+        GetEventsForMapEntityUseCase(
+            eventRepository = get()
         )
     }
 }

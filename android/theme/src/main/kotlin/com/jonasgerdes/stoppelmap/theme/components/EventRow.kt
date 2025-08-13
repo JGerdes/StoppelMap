@@ -83,9 +83,11 @@ fun EventRow(
                 show = selected || isBookmarked,
                 isBookmarked = isBookmarked,
                 onBookmarkToggled = onNotificationToggle,
-                modifier = Modifier.align(
-                    if (description != null) Alignment.Top else Alignment.CenterVertically
-                )
+                modifier = Modifier
+                    .align(
+                        if (description != null) Alignment.Top else Alignment.CenterVertically
+                    )
+                    .padding(8.dp)
             )
         } else {
             Spacer(modifier = Modifier.padding(8.dp))

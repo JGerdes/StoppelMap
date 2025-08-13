@@ -2,7 +2,6 @@ package com.jonasgerdes.stoppelmap.theme.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Bookmark
 import androidx.compose.material.icons.rounded.BookmarkBorder
@@ -14,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.shared.resources.R
 
 @Composable
@@ -23,6 +21,7 @@ fun BookmarkIconButton(
     onBookmarkToggled: (active: Boolean) -> Unit,
     modifier: Modifier = Modifier,
     show: Boolean = true,
+    stableSize: Boolean = true
 ) {
     if (show) {
         val iconTint by animateColorAsState(
@@ -32,7 +31,7 @@ fun BookmarkIconButton(
         )
         IconButton(
             onClick = { onBookmarkToggled(!isBookmarked) },
-            modifier = modifier.padding(8.dp)
+            modifier = modifier
         ) {
             Icon(
                 if (isBookmarked) Icons.Rounded.Bookmark
@@ -44,7 +43,7 @@ fun BookmarkIconButton(
                 tint = iconTint
             )
         }
-    } else {
+    } else if (stableSize) {
         Box(Modifier.minimumInteractiveComponentSize())
     }
 }

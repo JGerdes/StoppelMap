@@ -72,6 +72,7 @@ fun EventCard(
                     isBookmarked = event.isBookmarked,
                     onBookmarkToggled = onBookmarkToggle ?: {},
                     show = onBookmarkToggle != null,
+                    modifier = Modifier.padding(8.dp)
                 )
             }
             event.description?.let {

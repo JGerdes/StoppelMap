@@ -34,6 +34,7 @@ val androidMapModule = module {
             locationRepository = get(),
             getQuickSearchItems = get(),
             eventRepository = get(),
+            getEventsForMapEntity = get(),
         )
     }
 

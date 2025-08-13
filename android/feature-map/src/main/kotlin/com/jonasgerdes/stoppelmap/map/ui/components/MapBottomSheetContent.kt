@@ -1,11 +1,14 @@
 package com.jonasgerdes.stoppelmap.map.ui.components
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import androidx.compose.foundation.layout.Column
@@ -19,8 +22,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Bookmark
+import androidx.compose.material.icons.rounded.BookmarkBorder
 import androidx.compose.material.icons.rounded.OpenInBrowser
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.CardDefaults
@@ -49,6 +55,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -57,7 +64,7 @@ import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.resources.defaultFormat
 import com.jonasgerdes.stoppelmap.resources.toFullResourceString
-import com.jonasgerdes.stoppelmap.theme.components.EventRow
+import com.jonasgerdes.stoppelmap.shared.resources.R.string
 import com.jonasgerdes.stoppelmap.theme.components.Fee
 import com.jonasgerdes.stoppelmap.theme.components.FeeList
 import com.jonasgerdes.stoppelmap.theme.components.rememberBlurHashPainter
@@ -237,55 +244,93 @@ fun SingleMapEntityDetails(
             val timeFormat = remember { LocalTime.defaultFormat() }
             InfoCard {
                 Column(
-                    Modifier
+                    modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 16.dp)
-                        .padding(vertical = 16.dp)
+                        .padding(vertical = 16.dp, horizontal = 8.dp)
                 ) {
                     Text(
                         text = stringResource(R.string.map_sheet_events_title),
                         style = MaterialTheme.typography.labelMedium,
+                        modifier = Modifier.padding(horizontal = 8.dp)
                     )
-                    Spacer(Modifier.size(8.dp))
                     var selectedEvent by remember { mutableStateOf<String?>(null) }
                     mapEntity.events.forEachIndexed { index, eventDay ->
                         Text(
                             stringResource(eventDay.date.dayOfWeek.toFullResourceString().resourceId),
-                            modifier = Modifier.padding(top = 8.dp)
+                            style = MaterialTheme.typography.labelLarge,
+                            modifier = Modifier.padding(top = 12.dp, start = 8.dp)
                         )
                         eventDay.events.forEach { event ->
                             Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = spacedBy(8.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(MaterialTheme.shapes.small)
+                                    .clickable(onClick = {
+                                        selectedEvent = if (selectedEvent == event.slug) null else event.slug
+                                    })
+                                    .padding(horizontal = 8.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.Top,
                             ) {
                                 MeasureUnconstrainedViewWidth({
                                     Text(
                                         "00000",
-                                        modifier = Modifier.padding(horizontal = 4.dp)
+                                        modifier = Modifier
+                                            .padding(horizontal = 8.dp)
                                     )
                                 }) { measuredWidth ->
                                     Text(
                                         event.start.time.format(timeFormat),
-                                        modifier = Modifier.width(measuredWidth)
+                                        modifier = Modifier
+                                            .width(measuredWidth)
+                                            .padding(vertical = 4.dp)
                                     )
                                 }
-                                EventRow(
-                                    name = localizedString(event.name),
-                                    description = event.description?.let { localizedString(it) },
-                                    locationName = null,
-                                    isBookmarked = event.isBookmarked,
-                                    selected = selectedEvent == event.slug,
-                                    onSelected = {
-                                        if (event.description != null) {
-                                            selectedEvent = if (selectedEvent == event.slug) null else event.slug
-                                        }
-                                    },
-                                    onNotificationToggle = { onEventToggle(event.slug, it) },
-                                    showNotificationToggle = false, //selectedEvent == event.slug || event.isBookmarked,
-                                    unSelectedBackgroundColor = Color.Transparent,
-                                    padding = 4.dp,
+                                Column(
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .padding(vertical = 4.dp)
+                                ) {
+                                    Text(localizedString(event.name))
+                                    event.description?.let { description ->
+                                        Text(
+                                            text = localizedString(description),
+                                            maxLines = if (selectedEvent == event.slug) Int.MAX_VALUE else 1,
+                                            style = MaterialTheme.typography.bodySmall,
+                                            overflow = TextOverflow.Ellipsis,
+                                            modifier = Modifier
+                                                .animateContentSize()
+                                        )
+                                    }
+                                }
+                                val isBookmarked = event.isBookmarked
+                                val iconTint by animateColorAsState(
+                                    targetValue =
+                                        if (isBookmarked) MaterialTheme.colorScheme.primary
+                                        else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                                 )
+                                AnimatedContent(event.isBookmarked || selectedEvent == event.slug) { visible ->
+                                    if (visible) {
+                                        Icon(
+                                            if (isBookmarked) Icons.Rounded.Bookmark else Icons.Rounded.BookmarkBorder,
+                                            contentDescription = stringResource(
+                                                if (isBookmarked) string.schedule_bookmark_unsave_contentDescription
+                                                else string.schedule_bookmark_save_contentDescription
+                                            ),
+                                            tint = iconTint,
+                                            modifier = Modifier
+                                                .clip(CircleShape)
+                                                .clickable(onClick = { onEventToggle(event.slug, !event.isBookmarked) })
+                                                .padding(4.dp)
+                                        )
+                                    } else {
+                                        Spacer(
+                                            Modifier
+                                                .size(24.dp)
+                                                .padding(4.dp)
+                                        )
+                                    }
+                                }
                             }
                         }
                     }
