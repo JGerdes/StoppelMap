@@ -22,6 +22,7 @@ class Monitoring(
     val visibleNewsCounter = registry.gauge("stoppemap.server.news.visible", AtomicInteger(0))
     val newsCrawlLatestTimer = registry.timer("stoppemap.server.news.crawl.latest")
     val newsFetchArticleTimer = registry.timer("stoppemap.server.news.fetch.article")
+    val deeplinkPreviewsOpened = registry.counter("stoppemap.server.deeplink.preview.opened")
 
     suspend fun recordTask(taskName: String, block: suspend () -> Unit) {
         taskCounter?.getAndIncrement()

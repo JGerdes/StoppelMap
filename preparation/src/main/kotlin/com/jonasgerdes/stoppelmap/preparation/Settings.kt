@@ -22,6 +22,7 @@ data class ImageSettings(
     val originalImageDir: File,
     val processedImageDir: File,
     val hostedImageBaseUrl: String,
+    val deeplinkThumbOverlayImage: File?,
 ) {
     companion object {
         fun fromEnv(): ImageSettings? {
@@ -29,6 +30,7 @@ data class ImageSettings(
                 originalImageDir = System.getenv("IMAGE_ORIGINAL_DIR")?.let { File(it) } ?: return null,
                 processedImageDir = System.getenv("IMAGE_PROCESSED_DIR")?.let { File(it) } ?: return null,
                 hostedImageBaseUrl = System.getenv("IMAGE_HOST_BASE_URL") ?: return null,
+                deeplinkThumbOverlayImage = System.getenv("DEEPLINK_THUMB_OVERLAY")?.let { File(it) } ?: return null,
             )
         }
     }

@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.preparation.operations
 import com.jonasgerdes.stoppelmap.dto.Locales
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
 import com.jonasgerdes.stoppelmap.preparation.Settings
+import com.jonasgerdes.stoppelmap.preparation.util.Version
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -15,9 +16,11 @@ import java.io.File
 class GenerateDeeplinkConfig : KoinComponent {
 
     private val settings: Settings by inject()
+    private val version: Version by inject()
 
-    operator fun invoke(data: StoppelMapData) {
+    operator fun invoke(data: StoppelMapData, deeplinkThumbnails: List<Pair<String, String>>) {
         val deeplinkConfig = DeeplinkConfig(
+            versionCode = version.code,
             previewData = data.map.entities.mapNotNull { entity ->
                 val title = entity.name
                     ?: entity.subType?.let { subTypeSlug ->
@@ -32,10 +35,11 @@ class GenerateDeeplinkConfig : KoinComponent {
                             System.err.println("No german alias found for $entity")
                         }
                     }?.string
-                
+
                 if (title == null) null
                 else entity.slug to PreviewData(
                     title = title,
+                    image = deeplinkThumbnails.firstOrNull { it.first == entity.slug }?.second
                 )
             }.toMap()
         )
@@ -51,9 +55,11 @@ class GenerateDeeplinkConfig : KoinComponent {
 data class PreviewData(
     val title: String,
     val slug: String? = null,
+    val image: String? = null
 )
 
 @Serializable
 data class DeeplinkConfig(
+    val versionCode: Int,
     val previewData: Map<String, PreviewData>
 )

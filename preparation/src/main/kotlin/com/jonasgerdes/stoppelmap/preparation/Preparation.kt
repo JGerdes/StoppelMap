@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.preparation
 
 import com.jonasgerdes.stoppelmap.data.dataModule
 import com.jonasgerdes.stoppelmap.preparation.operations.AddEntityImages
+import com.jonasgerdes.stoppelmap.preparation.operations.CreateDeeplinkThumbnails
 import com.jonasgerdes.stoppelmap.preparation.operations.GenerateDeeplinkConfig
 import com.jonasgerdes.stoppelmap.preparation.operations.PrepareStoppelMapData
 import com.jonasgerdes.stoppelmap.preparation.operations.VerifyStoppelMapData
@@ -9,6 +10,8 @@ import com.jonasgerdes.stoppelmap.preparation.operations.VerifyStoppelMapDataCon
 import com.jonasgerdes.stoppelmap.preparation.operations.WriteStoppelMapData
 import com.jonasgerdes.stoppelmap.preparation.operations.ZipData
 import com.jonasgerdes.stoppelmap.preparation.util.Version
+import com.sksamuel.scrimage.nio.JpegWriter
+import com.sksamuel.scrimage.webp.WebpWriter
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -33,11 +36,19 @@ fun main(vararg args: String) {
 
     val settings = koin.koin.get<Settings>()
     val generateData = PrepareStoppelMapData()
-    val addEntityImages = AddEntityImages()
+    val addEntityImages = AddEntityImages(
+        WebpWriter.DEFAULT
+            .withQ(75)
+            .withM(6)
+            .withoutAlpha()
+    )
     val writeData = WriteStoppelMapData()
     val verifyData = VerifyStoppelMapData()
     val verifyConversion = VerifyStoppelMapDataConversion()
     val zipData = ZipData()
+    val createDeeplinkThumbnails = CreateDeeplinkThumbnails(
+        imageWriter = JpegWriter.Default.withCompression(90)
+    )
     val generateDeeplinkConfig = GenerateDeeplinkConfig()
 
     val generatedData = generateData()
@@ -51,7 +62,8 @@ fun main(vararg args: String) {
     verifyConversion(data)
     writeData(data)
     zipData()
-    generateDeeplinkConfig(data)
+    val deeplinkThumbnails = createDeeplinkThumbnails()
+    generateDeeplinkConfig(data, deeplinkThumbnails)
 
 
     settings.tempDir.deleteRecursively()

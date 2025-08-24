@@ -3,6 +3,11 @@ package com.jonasgerdes.stoppelmap.preparation
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import com.jonasgerdes.stoppelmap.data.conversion.usecase.UpdateDatabaseUseCase
+import com.sksamuel.scrimage.ImmutableImage
+import com.sksamuel.scrimage.nio.ImageIOReader
+import com.sksamuel.scrimage.nio.ImmutableImageLoader
+import com.sksamuel.scrimage.nio.PngReader
+import com.sksamuel.scrimage.webp.WebpImageReader
 import org.koin.dsl.module
 import java.io.File
 
@@ -42,12 +47,6 @@ val preparationModule = module {
 
     single<ImmutableImageLoader> {
         ImmutableImage.loader()
-            .withImageReaders(listOf(ImageIOReader(), WebpImageReader()))
-    }
-    single<ImageWriter> {
-        WebpWriter.DEFAULT
-            .withQ(75)
-            .withM(6)
-            .withoutAlpha()
+            .withImageReaders(listOf(ImageIOReader(), WebpImageReader(), PngReader()))
     }
 }

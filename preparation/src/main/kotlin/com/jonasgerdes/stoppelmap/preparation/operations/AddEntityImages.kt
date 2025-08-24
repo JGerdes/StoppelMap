@@ -12,13 +12,12 @@ import org.koin.core.component.inject
 import java.awt.image.BufferedImage
 import java.io.File
 
-class AddEntityImages : KoinComponent {
+class AddEntityImages(private val imageWriter: ImageWriter) : KoinComponent {
 
     private val supportedExtensions = setOf("jpg", "jpeg")
 
     private val settings: Settings by inject()
     private val imageLoader: ImmutableImageLoader by inject()
-    private val imageWriter: ImageWriter by inject()
 
     operator fun invoke(input: List<MapEntity>): List<MapEntity> {
         val imageSettings = settings.imageSettings ?: return input.also {
@@ -28,6 +27,7 @@ class AddEntityImages : KoinComponent {
         val updatedEntities = mutableListOf<MapEntity>()
         imageSettings.originalImageDir
             .listFiles { it.isDirectory }
+            .also { print("processing images for ${it.size} entities") }
             .forEach { directory ->
                 val entity = input.firstOrNull { it.slug == directory.name }
                 if (entity == null) {
@@ -37,7 +37,7 @@ class AddEntityImages : KoinComponent {
                 val newImages = mutableListOf<Image>()
                 directory.listFiles { it.isFile && it.extension.lowercase() in supportedExtensions }
                     .forEachIndexed { index, imageFile ->
-                        val processedName = "${entity.slug}-${index.toString().padStart(2, '0')}.webp"
+                        val processedName = "${imageFile.nameWithoutExtension}.webp"
                         val procssedImageFile = File(imageSettings.processedImageDir, processedName)
                         val result = scaleImage(imageFile, procssedImageFile)
                         val blurHash = generateBlurHash(result)
@@ -48,22 +48,27 @@ class AddEntityImages : KoinComponent {
                             blurHash = blurHash,
                             preferredTheme = null,
                         )
+                        print(".")
                     }
                 updatedEntities += entity.copy(
                     images = entity.images + newImages
                 )
             }
+        println(" done")
         return input.map { og ->
             updatedEntities.firstOrNull { it.slug == og.slug } ?: og
         }
     }
 
-    private fun scaleImage(originalImage: File, destination: File): ImmutableImage =
+    private fun scaleImage(
+        originalImage: File,
+        destination: File,
+        targetSize: Int = 1024,
+    ): ImmutableImage =
         if (destination.exists()) {
             imageLoader.fromFile(destination)
         } else {
             val original = imageLoader.fromFile(originalImage)
-            val targetSize = 1024
             val modified = original.bound(targetSize, targetSize)
             modified.output(imageWriter, destination)
             modified

@@ -12,7 +12,8 @@ val deeplinkModule = module {
                 ignoreUnknownKeys = true
                 isLenient = true
             },
-            clockProvider = get()
+            clockProvider = get(),
+            logger = get()
         )
     }
 
@@ -20,6 +21,8 @@ val deeplinkModule = module {
         DeeplinkController(
             deeplinkRepository = get(),
             serverConfig = get(),
+            monitoring = get(),
+            logger = get()
         )
     }
 }
