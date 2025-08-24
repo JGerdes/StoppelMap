@@ -166,7 +166,12 @@ class ParseGeoData(
                 northLat = max.lat,
                 eastLng = max.lng
             ),
-            priority = properties["priority"]?.toIntOrNull() ?: 95,
+            priority = properties["priority"]?.toIntOrNull() ?: when (type) {
+
+                MapEntityType.Bar -> 93
+                MapEntityType.Ride -> 92
+                else -> 95
+            },
             tags = listOfNotNull(
                 TagSlugs.forKids.takeIf { properties["forKids"] == "yes" },
                 TagSlugs.wheelchairAccessible.takeIf { properties["accessible"] == "yes" },

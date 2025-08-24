@@ -29,7 +29,11 @@ class ZipData : KoinComponent {
         }
 
         settings.staticServerDir?.also { staticServerDir ->
-            outputFile.copyTo(File(staticServerDir, "data_${version.code}.zip"))
+            try {
+                outputFile.copyTo(File(staticServerDir, "data_${version.code}.zip"))
+            } catch (fae: FileAlreadyExistsException) {
+                System.err.println("File data_${version.code}.zip already existed, it was overwritten")
+            }
         }
     }
 }
