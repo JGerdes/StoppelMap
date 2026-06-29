@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.jonasgerdes.stoppelmap.settings.appicon.AppIconViewModel
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
 import com.jonasgerdes.stoppelmap.settings.ui.SettingsViewModel
 import com.jonasgerdes.stoppelmap.settings.usecase.GetSettingsUseCase
@@ -26,6 +27,12 @@ val settingsModule = module {
         SettingsViewModel(
             settingsRepository = get(),
             appInfo = get(),
+        )
+    }
+
+    viewModel {
+        AppIconViewModel(
+            appIconRepository = get(),
         )
     }
 }

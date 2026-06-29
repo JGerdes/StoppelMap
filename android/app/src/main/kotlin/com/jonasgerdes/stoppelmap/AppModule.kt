@@ -11,6 +11,7 @@ import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.MapDataFile
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.dto.data.StoppelMapData
+import com.jonasgerdes.stoppelmap.settings.appicon.AppIconRepository
 import com.jonasgerdes.stoppelmap.ui.StoppelMapActivity
 import com.jonasgerdes.stoppelmap.widget.CreateStartAppIntentUseCase
 import kotlinx.coroutines.CoroutineScope
@@ -66,4 +67,7 @@ val appModule = module {
         val context = get<Context>()
         CreateStartAppIntentUseCase { Intent(context, StoppelMapActivity::class.java) }
     }
+
+    single<AppIconRepositoryImpl> { AppIconRepositoryImpl(packageManager = get<Context>().packageManager) }
+    single<AppIconRepository> { get<AppIconRepositoryImpl>() }
 }

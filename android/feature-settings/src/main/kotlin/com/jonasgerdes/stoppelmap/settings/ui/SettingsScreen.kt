@@ -52,6 +52,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jonasgerdes.stoppelmap.licenses.ui.LicensesViewModel
 import com.jonasgerdes.stoppelmap.settings.R
+import com.jonasgerdes.stoppelmap.settings.appicon.AppIconViewModel
+import com.jonasgerdes.stoppelmap.settings.appicon.ui.AppIconsList
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
@@ -66,9 +68,11 @@ fun SettingsScreen(
     onUrlTap: (url: String) -> Unit,
     modifier: Modifier = Modifier,
     settingsViewModel: SettingsViewModel = koinViewModel(),
+    appIconViewModel: AppIconViewModel = koinViewModel(),
     licensesViewModel: LicensesViewModel = koinViewModel(),
 ) {
     val settingsState by settingsViewModel.state.collectAsStateWithLifecycle()
+    val appIconState by appIconViewModel.state.collectAsStateWithLifecycle()
     val licensesState by licensesViewModel.state.collectAsStateWithLifecycle()
 
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -132,6 +136,15 @@ fun SettingsScreen(
                     itemLabelRes = { value.titleStringRes },
                     onItemSelected = { settingsViewModel.onMapColorSchemeSettingSelected(it.value) },
                 )
+            }
+            item {
+                val icons = (appIconState as? AppIconViewModel.ViewState.Loaded)?.appIcons
+                if (icons != null) {
+                    AppIconsList(
+                        icons = icons,
+                        onIconSelect = appIconViewModel::onAppIconSelect
+                    )
+                }
             }
             val developerSettings = settingsState.developerModeSettings
             if (developerSettings is SettingsViewModel.DeveloperModeSettings.Active) {
@@ -309,6 +322,7 @@ fun <T> SelectionSettingsRow(
         }
     )
 }
+
 
 @Composable
 fun SettingsSectionLabel(

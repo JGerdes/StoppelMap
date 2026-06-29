@@ -47,6 +47,7 @@ import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateOptions
 import com.google.android.play.core.install.model.AppUpdateType
+import com.jonasgerdes.stoppelmap.AppIconRepositoryImpl
 import com.jonasgerdes.stoppelmap.home.ui.HomeScreen
 import com.jonasgerdes.stoppelmap.map.MapDestination
 import com.jonasgerdes.stoppelmap.map.data.DeeplinkRepository
@@ -80,6 +81,7 @@ class StoppelMapActivity : ComponentActivity() {
     private val appUpdateManager: AppUpdateManager by inject()
     private val getSettings: GetSettingsUseCase by inject()
     private val getUnreadNewsCount: GetUnreadNewsCountUseCase by inject()
+    private val appIconRepositoryImpl: AppIconRepositoryImpl by inject()
 
     private val deeplinkRepository: DeeplinkRepository by inject()
 
@@ -272,9 +274,9 @@ class StoppelMapActivity : ComponentActivity() {
     private fun shareText(text: String) {
         startActivity(
             Intent.createChooser(
-                Intent(android.content.Intent.ACTION_SEND).apply {
+                Intent(Intent.ACTION_SEND).apply {
                     setType("text/plain")
-                    putExtra(android.content.Intent.EXTRA_TEXT, text)
+                    putExtra(Intent.EXTRA_TEXT, text)
                 },
                 getString(R.string.share_text)
             )
