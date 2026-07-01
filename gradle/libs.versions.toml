@@ -4,12 +4,12 @@ minSdk = "26"
 targetSdk = "36"
 
 
-android-gradle-plugin = "9.0.1"
+android-gradle-plugin = "9.2.1"
 
-kotlin = "2.3.20"
+kotlin = "2.3.21"
 kotlinxDatetime = "0.6.2"
 kotlinxSerializationJson = "1.9.0"
-kotlinxCoroutines = "1.10.2"
+kotlinxCoroutines = "1.11.0"
 okio = "3.16.0"
 androidxCore = "1.16.0"
 androidxLifecycle = "2.9.1"
@@ -47,14 +47,12 @@ logback = "1.4.5"
 micrometerPrometheus = "1.13.2"
 
 kmmViewmodel = "1.0.0-ALPHA-14"
-skie = "0.10.11"
+skie = "0.10.12"
 mokoResourcces = "0.26.4"
 buildkonfig = "0.21.2"
 
 
 [libraries]
-android-build-tools = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
