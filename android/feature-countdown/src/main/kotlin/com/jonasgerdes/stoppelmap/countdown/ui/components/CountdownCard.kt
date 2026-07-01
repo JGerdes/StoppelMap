@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,9 +61,9 @@ fun CountdownCard(
     minutes: Int,
     seconds: Int,
     season: Season,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    colors: CountdownCardColors = countdownCardColors(),
 ) {
-    val isDarkTheme = LocalThemeSetting.current.isDarkTheme()
     Card(modifier = modifier) {
         // We want the illustration next to the countdown and info,
         // the background colors matching the height of the countdown and info
@@ -74,7 +75,7 @@ fun CountdownCard(
             val illustrationGuideline = createGuidelineFromStart(128.dp)
             val illustrationBarrier = createStartBarrier(countdown, barrierHelper)
 
-            // This is just here so we can constraint the barrier to the the guideline,
+            // This is just here so we can constrain the barrier to the guideline,
             // which isn't supported by ConstraintLayout out-of-the-box.
             Box(Modifier.constrainAs(barrierHelper) {
                 top.linkTo(parent.top)
@@ -83,10 +84,7 @@ fun CountdownCard(
             })
             Box(
                 Modifier
-                    .background(
-                        if (isDarkTheme) MaterialTheme.colorScheme.surfaceContainer
-                        else colorResource(id = ThemeR.color.stoppelsky)
-                    )
+                    .background(colors.skyBackground)
                     .constrainAs(skyBackground) {
                         top.linkTo(parent.top)
                         end.linkTo(parent.end)
@@ -98,10 +96,7 @@ fun CountdownCard(
             )
             Box(
                 Modifier
-                    .background(
-                        if (isDarkTheme) MaterialTheme.colorScheme.surfaceContainerHigh
-                        else colorResource(id = ThemeR.color.stoppelfield)
-                    )
+                    .background(colors.fieldBackground)
                     .constrainAs(fieldBackground) {
                         top.linkTo(countdown.bottom)
                         end.linkTo(parent.end)
@@ -130,11 +125,13 @@ fun CountdownCard(
                     CountdownUnit(
                         unitLabel = R.plurals.countdownCard_unit_day,
                         value = days,
+                        textColor = colors.skyContent,
                         modifier = Modifier.weight(1f)
                     )
                     CountdownUnit(
                         unitLabel = R.plurals.countdownCard_unit_hour,
                         value = hours,
+                        textColor = colors.skyContent,
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -142,11 +139,13 @@ fun CountdownCard(
                     CountdownUnit(
                         unitLabel = R.plurals.countdownCard_unit_minute,
                         value = minutes,
+                        textColor = colors.skyContent,
                         modifier = Modifier.weight(1f)
                     )
                     CountdownUnit(
                         unitLabel = R.plurals.countdownCard_unit_second,
                         value = seconds,
+                        textColor = colors.skyContent,
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -171,6 +170,7 @@ fun CountdownCard(
                     ),
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.End,
+                    color = colors.fieldContent,
                 )
                 Text(
                     text = stringResource(
@@ -179,6 +179,7 @@ fun CountdownCard(
                     ),
                     style = MaterialTheme.typography.titleLarge,
                     textAlign = TextAlign.End,
+                    color = colors.fieldContent,
                 )
                 val context = LocalContext.current
                 Text(
@@ -189,12 +190,13 @@ fun CountdownCard(
                     ),
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.End,
+                    color = colors.fieldContent,
                 )
             }
             Image(
                 painter = painterResource(R.drawable.jan_libett_balloons),
                 contentDescription = null,
-                colorFilter = if (isDarkTheme) {
+                colorFilter = if (LocalThemeSetting.current.isDarkTheme()) {
                     // Darkens the illustration a little bit, so we don't need sunglasses to look at it.
                     ColorFilter.lighting(
                         lerp(
@@ -221,7 +223,10 @@ fun CountdownCard(
 
 @Composable
 private fun CountdownUnit(
-    @PluralsRes unitLabel: Int, value: Int, modifier: Modifier = Modifier
+    @PluralsRes unitLabel: Int,
+    value: Int,
+    textColor: Color,
+    modifier: Modifier = Modifier,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -237,6 +242,7 @@ private fun CountdownUnit(
             Text(
                 text = count.toString(),
                 style = MaterialTheme.typography.displayMedium,
+                color = textColor,
                 textAlign = TextAlign.Center,
             )
         }
@@ -244,6 +250,7 @@ private fun CountdownUnit(
             Text(
                 text = pluralStringResource(unitLabel, value),
                 textAlign = TextAlign.Center,
+                color = textColor,
             )
             // Always keep one invisible plural string to prevent "jumping" of text
             Text(
@@ -253,6 +260,31 @@ private fun CountdownUnit(
             )
         }
     }
+}
+
+data class CountdownCardColors(
+    val skyBackground: Color,
+    val skyContent: Color,
+    val fieldBackground: Color,
+    val fieldContent: Color,
+)
+
+@Composable
+fun countdownCardColors(): CountdownCardColors = if (LocalThemeSetting.current.isDarkTheme())
+    with(MaterialTheme.colorScheme) {
+        CountdownCardColors(
+            skyBackground = surfaceContainer,
+            skyContent = contentColorFor(surfaceContainer),
+            fieldBackground = surfaceContainerHigh,
+            fieldContent = contentColorFor(surfaceContainerHigh)
+        )
+    } else {
+    CountdownCardColors(
+        skyBackground = colorResource(id = ThemeR.color.stoppelsky),
+        skyContent = lerp(colorResource(id = ThemeR.color.stoppelsky), Color.Black, 0.6f),
+        fieldBackground = colorResource(id = ThemeR.color.stoppelfield),
+        fieldContent = lerp(colorResource(id = ThemeR.color.stoppelfield), Color.Black, 0.6f)
+    )
 }
 
 
