@@ -1,5 +1,5 @@
 {
-  "originHash" : "773eac60c32fbe3c96bcb1592a9955b26674167d1a25b1e507898b7b340dba7f",
+  "originHash" : "814ee1b1450b7385c59af605193fa11a353c934d8aa583ccf899f0abc5e8bde5",
   "pins" : [
     {
       "identity" : "lottie-spm",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/maplibre/maplibre-gl-native-distribution",
       "state" : {
-        "revision" : "92505cfbad5c5ed6a93e0f3cd70872aaa98a12ac",
-        "version" : "6.2.0"
+        "revision" : "84a79bc375a301169390ac110c868f06c857b83f",
+        "version" : "6.27.0"
       }
     }
   ],

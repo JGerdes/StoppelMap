@@ -904,8 +904,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.0;
+				kind = exactVersion;
+				version = 6.27.0;
 			};
 		};
 		2A838B222C2809E9005642A1 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
