@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.countdown.ui
 import androidx.annotation.FontRes
 import androidx.annotation.StringRes
 import com.jonasgerdes.stoppelmap.countdown.R
+import com.jonasgerdes.stoppelmap.theme.R as ThemeR
 
 enum class Font(
     val originalAsset: String,
@@ -14,7 +15,7 @@ enum class Font(
     Roboto("Roboto-Thin.ttf", R.font.roboto_thin, R.string.widget_configuration_font_name_roboto),
     RobotoSlab(
         "RobotoSlab-Light.ttf",
-        R.font.roboto_slab_light,
+        ThemeR.font.roboto_slab_light,
         R.string.widget_configuration_font_name_roboto_slab
     ),
     Damion("Damion-Regular.ttf", R.font.damion, R.string.widget_configuration_font_name_damion);

@@ -1,8 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+    }
 }
 
 android {
@@ -25,26 +30,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
-        targetCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
-    }
-
-    kotlinOptions {
-        jvmTarget = ProjectDefaults.KOTLIN_JVM_TARGET
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 }
 
 dependencies {
     implementation(project(":shared:base"))
     implementation(project(":shared:feature:news"))
+    implementation(project(":shared:resources"))
     implementation(project(":base"))
     implementation(project(":android:theme"))
     implementation(project(":shared:data"))

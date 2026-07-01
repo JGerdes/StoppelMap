@@ -20,8 +20,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.createBitmap
-import com.jonasgerdes.stoppelmap.settings.R
 import com.jonasgerdes.stoppelmap.settings.appicon.AppIcon
+import com.jonasgerdes.stoppelmap.shared.resources.R
 
 @Composable
 fun AppIconsList(

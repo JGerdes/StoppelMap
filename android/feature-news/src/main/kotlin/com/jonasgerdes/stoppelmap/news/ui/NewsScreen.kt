@@ -38,7 +38,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jonasgerdes.stoppelmap.news.R
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged

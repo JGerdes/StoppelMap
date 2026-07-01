@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.kotlin.serialization)
 }
 
@@ -13,10 +13,14 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_17)
         }
     }
-    androidTarget {
+    android {
+        namespace = "com.jonasgerdes.stoppelmap.dto"
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
+        androidResources { enable = true }
     }
     iosX64()
     iosArm64()
@@ -27,17 +31,5 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.serialization.json.core)
         }
-    }
-}
-
-android {
-    namespace = "com.jonasgerdes.stoppelmap.dto"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    compileOptions {
-        sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
-        targetCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
-    }
-    defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
     }
 }

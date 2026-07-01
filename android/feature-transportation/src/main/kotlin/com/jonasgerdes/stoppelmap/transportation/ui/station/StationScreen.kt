@@ -66,11 +66,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.components.Fee
 import com.jonasgerdes.stoppelmap.theme.components.FeeList
 import com.jonasgerdes.stoppelmap.theme.components.ListLineHeader
 import com.jonasgerdes.stoppelmap.theme.components.LoadingSpinner
-import com.jonasgerdes.stoppelmap.transportation.R
 import com.jonasgerdes.stoppelmap.transportation.model.Timetable
 import com.jonasgerdes.stoppelmap.transportation.ui.station.StationViewModel.StationState
 import com.jonasgerdes.stoppelmap.transportation.ui.toStringResource

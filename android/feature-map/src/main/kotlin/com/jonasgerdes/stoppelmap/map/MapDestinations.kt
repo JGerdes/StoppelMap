@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.jonasgerdes.stoppelmap.map.ui.MapScreen
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.navigation.NavigationTab
 import kotlinx.serialization.Serializable
 

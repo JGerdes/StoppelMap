@@ -49,12 +49,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.components.Map
 import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
 import com.jonasgerdes.stoppelmap.map.ui.components.MapBottomSheetContent
 import com.jonasgerdes.stoppelmap.map.ui.components.SearchView
 import com.jonasgerdes.stoppelmap.map.ui.components.SuggestionRow
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel

@@ -40,10 +40,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension.Companion.fillToConstraints
 import androidx.constraintlayout.compose.Dimension.Companion.wrapContent
 import com.jonasgerdes.stoppelmap.base.contract.Season
-import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.resources.dayOfMonthFormat
-import com.jonasgerdes.stoppelmap.resources.defaultFormat
 import com.jonasgerdes.stoppelmap.resources.defaultFormatWithoutYear
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.LocalThemeSetting
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.theme.isDarkTheme
@@ -52,6 +51,7 @@ import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.Month
+import com.jonasgerdes.stoppelmap.theme.R as ThemeR
 
 @Composable
 fun CountdownCard(
@@ -85,7 +85,7 @@ fun CountdownCard(
                 Modifier
                     .background(
                         if (isDarkTheme) MaterialTheme.colorScheme.surfaceContainer
-                        else colorResource(id = R.color.stoppelsky)
+                        else colorResource(id = ThemeR.color.stoppelsky)
                     )
                     .constrainAs(skyBackground) {
                         top.linkTo(parent.top)
@@ -100,7 +100,7 @@ fun CountdownCard(
                 Modifier
                     .background(
                         if (isDarkTheme) MaterialTheme.colorScheme.surfaceContainerHigh
-                        else colorResource(id = R.color.stoppelfield)
+                        else colorResource(id = ThemeR.color.stoppelfield)
                     )
                     .constrainAs(fieldBackground) {
                         top.linkTo(countdown.bottom)

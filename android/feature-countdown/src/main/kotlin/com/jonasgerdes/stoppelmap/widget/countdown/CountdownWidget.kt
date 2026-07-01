@@ -27,12 +27,13 @@ import androidx.glance.layout.fillMaxWidth
 import androidx.glance.layout.height
 import androidx.glance.layout.padding
 import androidx.glance.layout.size
-import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.model.CountDown
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.shared.resources.Res
 import com.jonasgerdes.stoppelmap.widget.glance.CustomGlanceText
 import com.jonasgerdes.stoppelmap.widget.glance.StoppelMapGlanceTheme
 import dev.icerock.moko.resources.PluralsResource
+import com.jonasgerdes.stoppelmap.countdown.R as CountdownR
 
 class CountdownWidget : GlanceAppWidget() {
     private val dependencies by lazy { CountdownWidgetDependencies() }
@@ -70,7 +71,7 @@ class CountdownWidget : GlanceAppWidget() {
                 modifier = GlanceModifier.appWidgetBackground()
             ) {
                 Image(
-                    ImageProvider(R.drawable.widget_countdown_background),
+                    ImageProvider(CountdownR.drawable.widget_countdown_background),
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
                     modifier = GlanceModifier.fillMaxSize()

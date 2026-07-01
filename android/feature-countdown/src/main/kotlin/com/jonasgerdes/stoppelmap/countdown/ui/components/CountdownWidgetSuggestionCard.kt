@@ -43,13 +43,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.countdown.R
 import com.jonasgerdes.stoppelmap.countdown.widget.heart.GingerbreadWidgetSettingsActivity
 import com.jonasgerdes.stoppelmap.countdown.widget.skyline.SkylineWidgetSettingsActivity
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.StoppelMapTheme
 import com.jonasgerdes.stoppelmap.widget.countdown.CountdownWidgetReceiver
 import com.jonasgerdes.stoppelmap.widget.heart.GingerbreadHeartWidgetProvider
 import com.jonasgerdes.stoppelmap.widget.silhouette.SilhouetteWidgetProvider
+import com.jonasgerdes.stoppelmap.countdown.R as CountdownR
 
 @Preview
 @Composable
@@ -76,19 +77,19 @@ fun CountDownWidgetSuggestionCard(modifier: Modifier = Modifier) {
                     .height(IntrinsicSize.Max)
             ) {
                 WidgetSuggestion(
-                    previewDrawable = R.drawable.widget_countdown_preview,
+                    previewDrawable = CountdownR.drawable.widget_countdown_preview,
                     previewContentDescription = R.string.widget_countdown_description,
                     onAddTap = { addCountdownWidget(context) },
                     modifier = Modifier.fillMaxHeight()
                 )
                 WidgetSuggestion(
-                    previewDrawable = R.drawable.widget_preview_heart,
+                    previewDrawable = CountdownR.drawable.widget_preview_heart,
                     previewContentDescription = R.string.widget_suggestion_card_gingerbread_contentDescription,
                     onAddTap = { addGingerbreadWidget(context) },
                     modifier = Modifier.fillMaxHeight()
                 )
                 WidgetSuggestion(
-                    previewDrawable = R.drawable.widget_preview_skyline,
+                    previewDrawable = CountdownR.drawable.widget_preview_skyline,
                     previewContentDescription = R.string.widget_suggestion_card_skyline_contentDescription,
                     onAddTap = { addSkylineWidget(context) },
                     modifier = Modifier.fillMaxHeight()

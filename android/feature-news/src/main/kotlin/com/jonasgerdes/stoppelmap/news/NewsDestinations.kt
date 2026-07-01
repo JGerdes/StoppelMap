@@ -4,6 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.jonasgerdes.stoppelmap.news.ui.NewsScreen
 import com.jonasgerdes.stoppelmap.news.ui.navigation.NewsNavigationIcon
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.navigation.NavigationTab
 import kotlinx.serialization.Serializable
 

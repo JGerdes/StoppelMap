@@ -2,10 +2,10 @@ package com.jonasgerdes.stoppelmap.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Home
-import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.map.mapNavigationTab
 import com.jonasgerdes.stoppelmap.news.newsNavigationTab
 import com.jonasgerdes.stoppelmap.schedule.scheduleNavigationTab
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.navigation.NavigationTab
 import com.jonasgerdes.stoppelmap.transportation.transportationNavigationTab
 

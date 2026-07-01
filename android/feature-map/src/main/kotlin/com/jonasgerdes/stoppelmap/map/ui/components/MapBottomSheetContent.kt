@@ -59,11 +59,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.jonasgerdes.stoppelmap.map.R
 import com.jonasgerdes.stoppelmap.map.model.FullMapEntity
 import com.jonasgerdes.stoppelmap.map.ui.MapViewModel
 import com.jonasgerdes.stoppelmap.resources.defaultFormat
 import com.jonasgerdes.stoppelmap.resources.toFullResourceString
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.shared.resources.R.string
 import com.jonasgerdes.stoppelmap.theme.components.Fee
 import com.jonasgerdes.stoppelmap.theme.components.FeeList

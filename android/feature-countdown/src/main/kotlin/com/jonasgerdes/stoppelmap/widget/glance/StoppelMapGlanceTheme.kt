@@ -4,7 +4,7 @@ import androidx.annotation.FontRes
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.jonasgerdes.stoppelmap.countdown.R
+import com.jonasgerdes.stoppelmap.theme.R
 
 @Stable
 object StoppelMapGlanceTheme {

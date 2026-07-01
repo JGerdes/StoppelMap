@@ -2,16 +2,20 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.skie)
 }
 
 
 kotlin {
-    androidTarget {
+    android {
+        namespace = "com.jonasgerdes.stoppelmap.shared.licenses"
+        compileSdk = libs.versions.compileSdk.get().toInt()
+        minSdk = libs.versions.minSdk.get().toInt()
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
+        androidResources { enable = true }
     }
     listOf(
         iosX64(),
@@ -36,17 +40,5 @@ kotlin {
             implementation(project(":shared:base"))
             implementation(project(":shared:resources"))
         }
-    }
-}
-
-android {
-    namespace = "com.jonasgerdes.stoppelmap.shared.licenses"
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    compileOptions {
-        sourceCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
-        targetCompatibility = ProjectDefaults.JAVA_COMPATIBILITY_VERSION
-    }
-    defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
     }
 }

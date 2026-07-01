@@ -37,17 +37,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.android.play.core.appupdate.AppUpdateInfo
-import com.jonasgerdes.stoppelmap.R
 import com.jonasgerdes.stoppelmap.countdown.model.CountDownState
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
 import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
+import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.spacing.defaultContentPadding
 import com.jonasgerdes.stoppelmap.update.model.UpdateState
 import com.jonasgerdes.stoppelmap.update.ui.AppUpdateViewModel
 import com.jonasgerdes.stoppelmap.update.ui.components.AppUpdateCard
 import org.koin.androidx.compose.koinViewModel
+import com.jonasgerdes.stoppelmap.R as AppR
 
 @SuppressLint("NewApi")
 @Composable
@@ -76,7 +77,7 @@ fun HomeScreen(
                     IconButton(onClick = onSettingsOptionTap) {
                         Icon(
                             Icons.Rounded.Settings,
-                            stringResource(R.string.home_toolbar_action_settings_contentDescription)
+                            stringResource(AppR.string.home_toolbar_action_settings_contentDescription)
                         )
                     }
                 },
@@ -266,7 +267,7 @@ fun CountdownCurrentSeasonIsOverHint(modifier: Modifier, content: @Composable ()
         modifier
     ) {
         Text(
-            text = stringResource(id = R.string.home_countdownCard_nextSeason_title),
+            text = stringResource(id = AppR.string.home_countdownCard_nextSeason_title),
         )
         Spacer(modifier = Modifier.size(8.dp))
         content()
