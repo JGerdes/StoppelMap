@@ -3,17 +3,20 @@ package com.jonasgerdes.stoppelmap.shared.dataupdate
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import com.jonasgerdes.stoppelmap.base.contract.PathFactory
 import com.jonasgerdes.stoppelmap.base.contract.PreferencesPathFactory
+import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.base.model.Secrets
 import com.jonasgerdes.stoppelmap.data.StoppelMapDatabase
 import com.jonasgerdes.stoppelmap.data.conversion.usecase.UpdateDatabaseUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.AppConfigRepository
 import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.DataUpdateRepository
+import com.jonasgerdes.stoppelmap.shared.dataupdate.source.local.LocalAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteStaticFileSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateDataUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateRemoteAppConfigUseCase
 import com.jonasgerdes.stoppelmap.shared.resources.Res
 import dev.icerock.moko.resources.AssetResource
+import kotlinx.serialization.json.Json
 import okio.FileSystem
 import okio.Path
 import okio.Path.Companion.toPath
@@ -29,7 +32,7 @@ val dataUpdateModule = module {
 
     single {
         RemoteAppConfigSource(
-            baseUrl = "https://api.stoppelmap.de",
+            baseUrl = get<AppInfo>().apiHost,
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )
@@ -37,14 +40,30 @@ val dataUpdateModule = module {
 
     single {
         RemoteStaticFileSource(
-            baseUrl = "https://api.stoppelmap.de",
+            baseUrl = get<AppInfo>().apiHost,
             httpClient = get(),
             apiKey = get<Secrets>().stoppelMapApiKey
         )
     }
 
     single {
-        AppConfigRepository(remoteAppConfigSource = get())
+        LocalAppConfigSource(
+            dataStore = PreferenceDataStoreFactory.createWithPath(
+                corruptionHandler = null,
+                migrations = emptyList(),
+                produceFile = {
+                    get<PreferencesPathFactory>().create("appConfigCache").toPath()
+                },
+            ),
+            json = get<Json>(),
+        )
+    }
+
+    single {
+        AppConfigRepository(
+            remoteAppConfigSource = get(),
+            localAppConfigSource = get(),
+        )
     }
 
     single {

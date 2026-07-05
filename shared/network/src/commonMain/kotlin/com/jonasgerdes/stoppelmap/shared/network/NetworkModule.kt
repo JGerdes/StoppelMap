@@ -18,14 +18,17 @@ expect fun Scope.createHttpClientEngine(): HttpClientEngine
 
 val networkModule = module {
     single {
+        Json {
+            ignoreUnknownKeys = true
+        }
+    }
+    single {
         HttpClient(createHttpClientEngine()) {
             install(ContentEncoding) {
                 gzip()
             }
             install(ContentNegotiation) {
-                json(Json {
-                    ignoreUnknownKeys = true
-                })
+                json(get<Json>())
             }
             install(Logging) {
                 logger = object : Logger {
