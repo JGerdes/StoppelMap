@@ -56,7 +56,8 @@ val appModule = module {
             buildType = get<Context>().getString(R.string.build_type),
             os = "Android ${Build.VERSION.RELEASE}",
             device = "${Build.MANUFACTURER} ${Build.MODEL}",
-            platform = "Android(${Build.VERSION.SDK_INT} on ${Build.MANUFACTURER}/${Build.MODEL})"
+            platform = "Android(${Build.VERSION.SDK_INT} on ${Build.MANUFACTURER}/${Build.MODEL})",
+            apiHost = get<Context>().getString(R.string.api_host),
         )
     }
 

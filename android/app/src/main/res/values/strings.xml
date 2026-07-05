@@ -1,5 +1,6 @@
 <resources>
     <string name="build_type" translatable="false">release</string>
+    <string name="api_host" translatable="false">https://api.stoppelmap.de</string>
     <string name="app_name">StoppelMap</string>
 
     <string name="fcm_news_new_article_title_one">Neuer Artikel</string>

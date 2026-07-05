@@ -8,6 +8,7 @@ data class AppInfo(
     val platform: String,
     val os: String,
     val device: String,
+    val apiHost: String,
 ) {
     val userAgent get() = "StoppelMap $versionName $platform"
 }

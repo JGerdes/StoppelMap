@@ -77,6 +77,7 @@ val appModule = module {
             os = "iOS ${UIDevice.currentDevice().systemVersion}",
             device = "Apple ${UIDevice.currentDevice().name}",
             platform = "iOS(${UIDevice.currentDevice().systemVersion} on Apple/${UIDevice.currentDevice().name})",
+            apiHost = "https://api.stoppelmap.de",
         )
     }
 
