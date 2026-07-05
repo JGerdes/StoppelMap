@@ -178,9 +178,10 @@ struct MessageCard: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(.thinMaterial)
         .cornerRadius(24.0)
-        .padding()
+        .padding(.horizontal)
     }
 }
