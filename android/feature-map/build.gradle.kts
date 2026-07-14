@@ -49,6 +49,7 @@ dependencies {
     implementation(project(":shared:feature:schedule"))
     implementation(project(":android:theme"))
     implementation(project(":android:feature-settings"))
+    implementation(project(":android:feature-data-notice"))
 
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)

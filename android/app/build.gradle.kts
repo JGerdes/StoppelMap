@@ -100,6 +100,7 @@ dependencies {
     implementation(project(":android:theme"))
     implementation(project(":android:feature-settings"))
     implementation(project(":android:feature-countdown"))
+    implementation(project(":android:feature-data-notice"))
     implementation(project(":android:feature-map"))
     implementation(project(":android:feature-schedule"))
     implementation(project(":android:feature-transportation"))

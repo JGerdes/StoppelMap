@@ -48,6 +48,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.datanotice.ui.components.DataNoticeWrapper
 import com.jonasgerdes.stoppelmap.resources.toFullResourceString
 import com.jonasgerdes.stoppelmap.schedule.model.BookmarkedEvents
 import com.jonasgerdes.stoppelmap.schedule.ui.components.EventCard
@@ -117,10 +118,12 @@ fun ScheduleScreen(
                 }
             },
             topBar = {
-                CenterAlignedTopAppBar(
-                    title = { Text(text = stringResource(id = R.string.schedule_topbar_title)) },
-                    scrollBehavior = scrollBehavior,
-                )
+                DataNoticeWrapper {
+                    CenterAlignedTopAppBar(
+                        title = { Text(text = stringResource(id = R.string.schedule_topbar_title)) },
+                        scrollBehavior = scrollBehavior,
+                    )
+                }
             },
             modifier = modifier,
         ) { paddingValues ->
@@ -136,9 +139,11 @@ fun ScheduleScreen(
                 )
                 val scope = rememberCoroutineScope()
 
-                state.selectedDay?.let { index ->
-                    scope.launch {
-                        pagerState.animateScrollToPage(index)
+                LaunchedEffect(state.selectedDay) {
+                    state.selectedDay?.let { index ->
+                        scope.launch {
+                            pagerState.animateScrollToPage(index)
+                        }
                     }
                 }
 

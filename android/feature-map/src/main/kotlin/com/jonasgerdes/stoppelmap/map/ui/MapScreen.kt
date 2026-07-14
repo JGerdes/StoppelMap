@@ -49,6 +49,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.datanotice.ui.components.DataNoticeWrapper
 import com.jonasgerdes.stoppelmap.map.components.Map
 import com.jonasgerdes.stoppelmap.map.model.PermissionState.Granted
 import com.jonasgerdes.stoppelmap.map.ui.components.MapBottomSheetContent
@@ -221,41 +222,42 @@ fun MapScreen(
                     .padding(bottom = locationFabBottomPadding.value)
                     .padding(16.dp)
             )
-
             AnimatedVisibility(
                 visible = !searchHidden,
                 enter = slideInVertically(initialOffsetY = { -it }),
                 exit = slideOutVertically(targetOffsetY = { -it }),
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .align(Alignment.TopCenter)
-                        .onGloballyPositioned {
-                            searchContainerHeight = it.size.height
-                        }
-                ) {
-                    SearchView(
-                        expanded = searchExpanded,
-                        onExpandedChange = {
-                            searchExpanded = it
-                            if (it) {
-                                viewModel.onBottomSheetClose()
+                DataNoticeWrapper {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .onGloballyPositioned {
+                                searchContainerHeight = it.size.height
                             }
-                        },
-                        searchState = state.searchState,
-                        onSearch = viewModel::onSearch,
-                        onSearchResultTap = viewModel::onSearchResultTap,
-                    )
-                    AnimatedVisibility(
-                        visible = state.searchState.quickSearchChips.isNotEmpty(),
-                        enter = fadeIn(),
-                        exit = fadeOut(),
                     ) {
-                        SuggestionRow(
-                            suggestions = state.searchState.quickSearchChips,
-                            onSuggestionSelected = viewModel::onSearchResultTap,
+                        SearchView(
+                            expanded = searchExpanded,
+                            onExpandedChange = {
+                                searchExpanded = it
+                                if (it) {
+                                    viewModel.onBottomSheetClose()
+                                }
+                            },
+                            searchState = state.searchState,
+                            onSearch = viewModel::onSearch,
+                            onSearchResultTap = viewModel::onSearchResultTap,
                         )
+                        AnimatedVisibility(
+                            visible = state.searchState.quickSearchChips.isNotEmpty(),
+                            enter = fadeIn(),
+                            exit = fadeOut(),
+                        ) {
+                            SuggestionRow(
+                                suggestions = state.searchState.quickSearchChips,
+                                onSuggestionSelected = viewModel::onSearchResultTap,
+                            )
+                        }
                     }
                 }
             }

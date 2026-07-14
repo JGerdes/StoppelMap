@@ -2,6 +2,7 @@ package com.jonasgerdes.stoppelmap.shared.dataupdate.repository
 
 import co.touchlab.kermit.Logger
 import com.jonasgerdes.stoppelmap.dto.config.MessageWrapper
+import com.jonasgerdes.stoppelmap.dto.config.NoticeWrapper
 import com.jonasgerdes.stoppelmap.dto.config.RemoteAppConfig
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.local.LocalAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteAppConfigSource
@@ -30,6 +31,10 @@ class AppConfigRepository(
     val messages: Flow<List<MessageWrapper>> = appConfig
         .filterIsInstance<AppConfigState.Available>()
         .map { it.appConfig.messages }
+
+    val notices: Flow<List<NoticeWrapper>> = appConfig
+        .filterIsInstance<AppConfigState.Available>()
+        .map { it.appConfig.notices ?: emptyList() }
 
     suspend fun updateAppConfig() {
         Logger.d { "Update app config" }

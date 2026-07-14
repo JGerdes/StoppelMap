@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":base"))
     implementation(project(":android:theme"))
     implementation(project(":shared:data"))
+    implementation(project(":android:feature-data-notice"))
 
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)

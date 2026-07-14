@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager
 import android.content.Context
 import androidx.glance.appwidget.updateAll
 import com.jonasgerdes.stoppelmap.countdown.androidCountdownModule
+import com.jonasgerdes.stoppelmap.datanotice.dataNoticeModule
 import com.jonasgerdes.stoppelmap.di.initKoin
 import com.jonasgerdes.stoppelmap.home.androidHomeModule
 import com.jonasgerdes.stoppelmap.map.androidMapModule
@@ -48,6 +49,7 @@ class App : Application() {
                 androidLicensesModule,
                 androidHomeModule,
                 settingsModule,
+                dataNoticeModule,
                 androidCountdownModule,
                 androidMapModule,
                 androidScheduleModule,

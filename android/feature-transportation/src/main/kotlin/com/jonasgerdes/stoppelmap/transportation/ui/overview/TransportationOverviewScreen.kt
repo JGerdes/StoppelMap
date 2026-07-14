@@ -51,6 +51,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jonasgerdes.stoppelmap.datanotice.ui.components.DataNoticeWrapper
 import com.jonasgerdes.stoppelmap.shared.resources.R
 import com.jonasgerdes.stoppelmap.theme.components.UnderConstructionPlaceholder
 import com.jonasgerdes.stoppelmap.theme.material.appBarContainerColor
@@ -81,44 +82,44 @@ fun TransportationOverviewScreen(
     val pagerState = rememberPagerState(pageCount = { pages.size })
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
-
-
     Scaffold(
         topBar = {
-            Column {
-                CenterAlignedTopAppBar(
-                    title = { Text(text = stringResource(id = R.string.transportation_overview_topbar_title)) },
-                    scrollBehavior = scrollBehavior,
-                )
-                val containerColor by appBarContainerColor(scrollBehavior)
-                PrimaryTabRow(
-                    selectedTabIndex = pagerState.currentPage,
-                    containerColor = containerColor,
-                ) {
-                    val coroutineScope = rememberCoroutineScope()
-                    pages.forEachIndexed { index, page ->
-                        val color by animateColorAsState(
-                            targetValue =
-                                if (pagerState.currentPage == index) MaterialTheme.colorScheme.primary
-                                else MaterialTheme.colorScheme.onBackground,
-                        )
-                        Tab(
-                            selected = index == pagerState.currentPage,
-                            icon = {
-                                Icon(page.icon, null, tint = color)
-                            },
-                            text = {
-                                Text(
-                                    text = stringResource(page.text),
-                                    color = color,
-                                )
-                            },
-                            onClick = {
-                                coroutineScope.launch {
-                                    pagerState.animateScrollToPage(index)
+            DataNoticeWrapper {
+                Column {
+                    CenterAlignedTopAppBar(
+                        title = { Text(text = stringResource(id = R.string.transportation_overview_topbar_title)) },
+                        scrollBehavior = scrollBehavior,
+                    )
+                    val containerColor by appBarContainerColor(scrollBehavior)
+                    PrimaryTabRow(
+                        selectedTabIndex = pagerState.currentPage,
+                        containerColor = containerColor,
+                    ) {
+                        val coroutineScope = rememberCoroutineScope()
+                        pages.forEachIndexed { index, page ->
+                            val color by animateColorAsState(
+                                targetValue =
+                                    if (pagerState.currentPage == index) MaterialTheme.colorScheme.primary
+                                    else MaterialTheme.colorScheme.onBackground,
+                            )
+                            Tab(
+                                selected = index == pagerState.currentPage,
+                                icon = {
+                                    Icon(page.icon, null, tint = color)
+                                },
+                                text = {
+                                    Text(
+                                        text = stringResource(page.text),
+                                        color = color,
+                                    )
+                                },
+                                onClick = {
+                                    coroutineScope.launch {
+                                        pagerState.animateScrollToPage(index)
+                                    }
                                 }
-                            }
-                        )
+                            )
+                        }
                     }
                 }
             }

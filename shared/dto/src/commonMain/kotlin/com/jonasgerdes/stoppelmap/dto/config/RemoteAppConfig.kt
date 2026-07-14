@@ -9,7 +9,8 @@ import kotlinx.serialization.Serializable
 data class RemoteAppConfig(
     val supportedVersions: SupportedVersions,
     val data: DataConfig,
-    val messages: List<MessageWrapper>
+    val messages: List<MessageWrapper>,
+    val notices: List<NoticeWrapper>? = null
 )
 
 @Serializable
@@ -61,6 +62,29 @@ data class Message(
         val url: Localized<String>,
     )
 
+    @Serializable
+    enum class Type {
+
+        @SerialName("info")
+        Info,
+
+        @SerialName("warning")
+        Warning
+    }
+}
+
+@Serializable
+data class NoticeWrapper(
+    val version: Int? = null,
+    val platform: List<Platform>? = null,
+    val notice: Notice,
+)
+
+@Serializable
+data class Notice(
+    val title: Localized<String>,
+    val content: Localized<String>,
+) {
     @Serializable
     enum class Type {
 

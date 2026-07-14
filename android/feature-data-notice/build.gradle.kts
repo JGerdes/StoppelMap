@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -11,7 +10,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.jonasgerdes.stoppelmap.transportation"
+    namespace = "com.jonasgerdes.stoppelmap.datanotice"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -41,12 +40,11 @@ android {
 
 dependencies {
     implementation(project(":shared:base"))
-    implementation(project(":shared:data"))
+    implementation(project(":shared:dto"))
+    implementation(project(":shared:feature:data-update"))
     implementation(project(":shared:resources"))
-    implementation(project(":shared:feature:transportation"))
     implementation(project(":base"))
     implementation(project(":android:theme"))
-    implementation(project(":android:feature-data-notice"))
 
     implementation(libs.bundles.compose.ui)
     debugImplementation(libs.compose.ui.tooling)
@@ -56,6 +54,5 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.bundles.koin.compose)
     implementation(libs.timber)
-    implementation(libs.androidx.datastore)
-    implementation(libs.androidx.navigation.compose)
+    implementation(libs.google.play.app.update)
 }
