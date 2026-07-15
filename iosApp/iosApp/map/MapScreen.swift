@@ -88,6 +88,7 @@ struct MapScreen: View {
                 }
 
                 VStack(alignment: .trailing) {
+                    DataNoticeBar()
                     if (viewState.bottomSheetState
                         is MapViewModelBottomSheetStateIdle
                         || viewState.bottomSheetState

@@ -24,37 +24,40 @@ struct TransportationOverviewScreen: View {
     
     var body: some View {
         NavigationStack {
-            TabView(selection: $selectedTab) {
-                ForEach(TransportationType.allCases, id: \.self) { tab in
-                    if(tab == TransportationType.bus) {
-                        TransportationBusOverviewPage(
-                            viewState: viewState.busRoutesViewState,
-                            onRouteTap: { routeId in
-                                print("🚏 route: " + routeId)
-                            }, 
-                            onStationTap: { stationId in
-                            selectedStation = SelectedStation(id: stationId)
-                        }
-                        ).tag(tab)
-                    } else if(tab == TransportationType.taxi) {
-                        TransportationTaxiOverviewPage(viewState: viewState.taxiServicesState).tag(tab)
-                    } else {
-                        UnderConstrcutionPlaceholder().tag(tab)
-                    }
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .animation(.easeOut(duration: 0.2), value: selectedTab)
-            .transition(.slide)
-            .navigationBarTitle(Res.strings().transportation_overview_topbar_title.desc().localized(), displayMode: .inline)
-            .safeAreaInset(edge: .top) {
-                Picker(selection: $selectedTab, label: Text("")) {
+            VStack(spacing: 0) {
+                DataNoticeBar()
+                TabView(selection: $selectedTab) {
                     ForEach(TransportationType.allCases, id: \.self) { tab in
-                        Text(tab.titleStringDesc.localized()).tag(tab)
+                        if(tab == TransportationType.bus) {
+                            TransportationBusOverviewPage(
+                                viewState: viewState.busRoutesViewState,
+                                onRouteTap: { routeId in
+                                    print("🚏 route: " + routeId)
+                                },
+                                onStationTap: { stationId in
+                                    selectedStation = SelectedStation(id: stationId)
+                                }
+                            ).tag(tab)
+                        } else if(tab == TransportationType.taxi) {
+                            TransportationTaxiOverviewPage(viewState: viewState.taxiServicesState).tag(tab)
+                        } else {
+                            UnderConstrcutionPlaceholder().tag(tab)
+                        }
                     }
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal)
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .animation(.easeOut(duration: 0.2), value: selectedTab)
+                .transition(.slide)
+                .navigationBarTitle(Res.strings().transportation_overview_topbar_title.desc().localized(), displayMode: .inline)
+                .safeAreaInset(edge: .top) {
+                    Picker(selection: $selectedTab, label: Text("")) {
+                        ForEach(TransportationType.allCases, id: \.self) { tab in
+                            Text(tab.titleStringDesc.localized()).tag(tab)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal)
+                }
             }
         }
         .sheet(item: $selectedStation) { item in

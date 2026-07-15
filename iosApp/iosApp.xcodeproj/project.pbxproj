@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A05145E3008052A00B40969 /* DataNoticeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A05145D3008050B00B40969 /* DataNoticeBar.swift */; };
 		2A1FD0382BF2B67300335913 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1FD0372BF2B67300335913 /* WidgetKit.framework */; };
 		2A1FD03A2BF2B67300335913 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A1FD0392BF2B67300335913 /* SwiftUI.framework */; };
 		2A1FD03D2BF2B67300335913 /* CountdownWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1FD03C2BF2B67300335913 /* CountdownWidgetBundle.swift */; };
@@ -90,6 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A05145D3008050B00B40969 /* DataNoticeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataNoticeBar.swift; sourceTree = "<group>"; };
 		2A1FD0352BF2B67300335913 /* CountdownWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CountdownWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A1FD0372BF2B67300335913 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2A1FD0392BF2B67300335913 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -293,6 +295,7 @@
 		2A838B1F2C26D0AC005642A1 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				2A05145D3008050B00B40969 /* DataNoticeBar.swift */,
 				2A838B202C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift */,
 			);
 			path = common;
@@ -569,6 +572,7 @@
 				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
 				2AD0F99E2C01281000FDB2A3 /* Fonts.swift in Sources */,
 				2A4040602BC313C900A5B072 /* TransportationType.swift in Sources */,
+				2A05145E3008052A00B40969 /* DataNoticeBar.swift in Sources */,
 				2A84E39E2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift in Sources */,
 				2A6873252BC9EE43008442FC /* StationScreen.swift in Sources */,
 				2A40405E2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift in Sources */,
@@ -613,7 +617,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "25.8.13020";
+				MARKETING_VERSION = 25.8.13020;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -647,7 +651,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = "25.8.13020";
+				MARKETING_VERSION = 25.8.13020;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap.CountdownWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -810,7 +814,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "25.8.13020";
+				MARKETING_VERSION = 25.8.13020;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -853,7 +857,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "25.8.13020";
+				MARKETING_VERSION = 25.8.13020;
 				OTHER_LDFLAGS = "-lsqlite3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonasgerdes.StoppelMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";

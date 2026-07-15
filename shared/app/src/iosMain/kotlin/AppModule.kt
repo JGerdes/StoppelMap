@@ -73,11 +73,11 @@ val appModule = module {
             versionName = CommonBuildConfig.VERSION_NAME,
             versionCode = CommonBuildConfig.VERSION_CODE,
             commitSha = CommonBuildConfig.COMMIT_SHA,
-            buildType = "debug",
+            buildType = "release",
             os = "iOS ${UIDevice.currentDevice().systemVersion}",
             device = "Apple ${UIDevice.currentDevice().name}",
             platform = "iOS(${UIDevice.currentDevice().systemVersion} on Apple/${UIDevice.currentDevice().name})",
-            apiHost = "https://api.staging.stoppelmap.de",
+            apiHost = "https://api.stoppelmap.de",
         )
     }
 

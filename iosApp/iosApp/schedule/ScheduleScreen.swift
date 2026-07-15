@@ -22,6 +22,7 @@ struct ScheduleScreen: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
+                DataNoticeBar()
                 if(!viewState.scheduleDays.isEmpty) {
                     TabView(selection: $selection) {
                         ForEach(0..<viewState.scheduleDays.count, id: \.self) { index in
