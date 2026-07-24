@@ -9,6 +9,7 @@ struct HomeScreen: View {
             shouldShowCountdownWidgetSuggestion:$0.shouldShowCountdownWidgetSuggestion,
             getPromotedEvents: $0.getPromotedEventsUseCase,
             getRemoteMessages: $0.getRemoteMessages,
+            getHomeCards: $0.getHomeCardsUseCase,
             getFeedbackEmailUrl: $0.getFeedbackEmailUrl
         )
     }
@@ -55,70 +56,14 @@ struct HomeScreen: View {
                                 .padding(.horizontal)
                             }
                         }
-                        if let panamaState = viewState.panamaState as? HomeViewModelPanamaStateVisible {
-                            VStack {
-                                Text(Res.strings().panama_card_title.desc().localized())
-                                Button {
-                                    if let url = URL(string: panamaState.url) {
-                                        UIApplication.shared.open(url)
-                                    }
-                                } label: {
-                                    Text(Res.strings().panama_card_button_url.desc().localized())
-                                }.buttonStyle(.bordered)
-                                Button {
-                                    if let url = URL(string: "tel:\(panamaState.policeNumber)") {
-                                        UIApplication.shared.open(url   )
-                                    }
-                                } label: {
-                                    Text(Res.strings().panama_card_button_police.desc().localized())
-                                }.buttonStyle(.bordered)
-                                Button {
-                                    if let url = URL(string: "tel:\(panamaState.medicalNumber)") {
-                                        UIApplication.shared.open(url   )
-                                    }
-                                } label: {
-                                    Text(Res.strings().panama_card_button_medical.desc().localized())
-                                }.buttonStyle(.bordered)
+                        ForEach(viewState.cards, id: \.id){ card in
+                            switch card {
+                            case let contentCard as DtoHomeCardContent:
+                                ContentCard(card: contentCard)
+                            default:
+                                // TODO: Handle other HomeCard types
+                                Text("Unsupported")
                             }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.thinMaterial)
-                            .cornerRadius(24.0)
-                            .padding(.horizontal)
-                        }
-                        if let socialState = viewState.instagramPromotionState as? HomeViewModelInstagramPromotionStateVisible {
-                            VStack {
-                                Text(Res.strings().social_media_promo_instagram_title.desc().localized())
-                                Button {
-                                    if let url = URL(string: "https://instagram.com/stoppelmap") {
-                                        UIApplication.shared.open(url)
-                                    }
-                                } label: {
-                                    Text(Res.strings().social_media_promo_instagram_button.desc().localized())
-                                }.buttonStyle(.bordered)
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.thinMaterial)
-                            .cornerRadius(24.0)
-                            .padding(.horizontal)
-                        }
-                        if let feedbackState = viewState.feedbackState as? HomeViewModelFeedbackStateVisible {
-                            VStack {
-                                Text(Res.strings().feedback_card_title.desc().localized())
-                                Button {
-                                    if let url = URL(string: feedbackState.url) {
-                                        UIApplication.shared.open(url)
-                                    }
-                                } label: {
-                                    Text(Res.strings().feedback_card_button.desc().localized())
-                                }.buttonStyle(.bordered)
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(.thinMaterial)
-                            .cornerRadius(24.0)
-                            .padding(.horizontal)
                         }
                     }
                 }
@@ -168,6 +113,7 @@ struct MessageCard: View {
                 Text(message.title.forCurrentLanguage()).font(.title2)
             }
             Text(message.content.forCurrentLanguage())
+                .frame(maxWidth: .infinity, alignment: .leading)
             ForEach(message.buttons, id: \.self) { button in
                 Button(button.title.forCurrentLanguage()) {
                     if let url = URL(string: button.url.forCurrentLanguage()) {
@@ -184,4 +130,93 @@ struct MessageCard: View {
         .cornerRadius(24.0)
         .padding(.horizontal)
     }
+}
+
+
+struct ContentCard: View {
+    
+    @Environment(\.colorScheme) private var colorScheme
+    
+    var card: DtoHomeCardContent
+    var feedbackUrl: String?
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            let headerImage = (colorScheme == .dark ? card.headerImageDark : card.headerImage) ?? card.headerImage
+            if let image = headerImage, let url = URL(string: image.url) {
+                AsyncImage(url: url) { result in
+                    result.image?.resizable()
+                        .scaledToFill()
+                }
+            }
+            VStack(alignment: .leading) {
+                if let title = card.title {
+                    Text(title.forCurrentLanguage()).font(.title2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                Text(card.text.forCurrentLanguage())
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                if let buttons = card.buttons {
+                    ForEach(buttons, id: \.self) { button in
+                        Button {
+                            let action = switch button.action {
+                            case let openUrl as DtoHomeCardContentContentButtonActionOpenUrl: {
+                                if let url = URL(string: openUrl.url.forCurrentLanguage()) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                            case let callNumber as DtoHomeCardContentContentButtonActionCallPhoneNumber: {
+                                if let url = URL(string: "tel:\(callNumber.phoneNumber)") {
+                                    UIApplication.shared.open(url   )
+                                }
+                            }
+                            case is DtoHomeCardContentContentButtonActionSendFeedback: {
+                                if let urlString = feedbackUrl, let url = URL(string: urlString) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                            default: {}
+                            }
+                            action()
+                        } label: {
+                            if let image = iconName(for: button.icon) {
+                                Label(button.label.forCurrentLanguage(), image: image)
+                            } else {
+                                Text(button.label.forCurrentLanguage())
+                            }
+                        }.if(
+                            button.type == .primary) { view in
+                                view.buttonStyle(.borderedProminent)
+                            } else: { view in
+                                view.buttonStyle(.bordered)
+                            }
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+        }
+        .frame(maxWidth: .infinity)
+        .background(.thinMaterial)
+        .cornerRadius(24.0)
+        .padding(.horizontal)
+    }
+    
+    private func iconName(for icon: DtoHomeCardIcon?) -> String? {
+        switch icon {
+        case .phone:
+            return "phone.fill"
+        case .insta:
+            return "inst"
+        case .bsky:
+            return "bsky"
+        case .masto:
+            return "masto"
+        case .ghub:
+            return "ghub"
+        default:
+            return nil
+        }
+    }
+        
 }

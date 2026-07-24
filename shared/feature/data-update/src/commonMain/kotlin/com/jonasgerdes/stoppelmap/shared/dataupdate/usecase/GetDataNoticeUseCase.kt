@@ -3,6 +3,7 @@ package com.jonasgerdes.stoppelmap.shared.dataupdate.usecase
 import co.touchlab.kermit.Logger
 import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.dto.Platform
+import com.jonasgerdes.stoppelmap.shared.dataupdate.data.isCurrentPlatform
 import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.AppConfigRepository
 import kotlinx.coroutines.flow.map
 
@@ -34,5 +35,3 @@ class GetDataNoticeUseCase(
                 .map { it.notice }
         }
 }
-
-expect fun Platform.isCurrentPlatform(): Boolean

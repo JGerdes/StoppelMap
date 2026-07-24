@@ -190,12 +190,267 @@
         ],
         "additionalProperties": false
       }
+    },
+    "notices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "number",
+            "minimum": 230000000,
+            "maximum": 500000000
+          },
+          "platform": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "android",
+                "iOS"
+              ]
+            }
+          },
+          "notice": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "object",
+                "properties": {
+                  "de": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "de"
+                ]
+              },
+              "content": {
+                "type": "object",
+                "properties": {
+                  "de": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "de"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "info",
+                  "warning"
+                ]
+              }
+            },
+            "required": [
+              "title",
+              "content"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "notice"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "homeCards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "type": "object",
+            "properties": {
+              "platform": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "android",
+                    "iOS"
+                  ]
+                }
+              },
+              "version": {
+                "type": "integer",
+                "minimum": 230000000,
+                "maximum": 500000000
+              },
+              "minVersion": {
+                "type": "integer",
+                "minimum": 230000000,
+                "maximum": 500000000
+              },
+              "maxVersion": {
+                "type": "integer",
+                "minimum": 230000000,
+                "maximum": 500000000
+              }
+            },
+            "additionalProperties": false,
+            "minProperties": 1
+          }
+        },
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "const": "content"
+              },
+              "headerImage": {
+                "url": "string",
+                "pattern": "https?://.+"
+              },
+              "headerImageDark": {
+                "url": "string",
+                "pattern": "https?://.+"
+              },
+              "title": {
+                "type": "object",
+                "patternProperties": {
+                  "^\\w{2}$": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "de"
+                ]
+              },
+              "text": {
+                "type": "object",
+                "patternProperties": {
+                  "^\\w{2}$": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "de"
+                ]
+              },
+              "buttons": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "icon": {
+                      "type": "string",
+                      "enum": [
+                        "Phone",
+                        "Insta",
+                        "Bsky",
+                        "Masto",
+                        "GHub"
+                      ]
+                    },
+                    "label": {
+                      "type": "object",
+                      "patternProperties": {
+                        "^\\w{2}$": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "de"
+                      ]
+                    },
+                    "action": {
+                      "type": "object",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "const": "call_phone_number"
+                            },
+                            "phoneNumber": {
+                              "type": "string",
+                              "pattern": "\\+\\d+"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "phoneNumber"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "const": "open_url"
+                            },
+                            "url": {
+                              "type": "object",
+                              "patternProperties": {
+                                "^\\w{2}$": {
+                                  "type": "string",
+                                  "pattern": "https?://.+"
+                                }
+                              },
+                              "required": [
+                                "de"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type",
+                            "url"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "const": "send_feedback"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "type"
+                          ]
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "Primary",
+                        "Secondary"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "action"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      }
     }
   },
   "required": [
     "supportedVersions",
     "data",
-    "messages"
+    "messages",
+    "homeCards"
   ],
   "additionalProperties": false
 }

@@ -183,7 +183,7 @@ fun SingleMapEntityDetails(
 ) {
     Column(modifier, verticalArrangement = spacedBy(32.dp)) {
         if (mapEntity.images.isNotEmpty()) {
-            if (mapEntity.images.size < 3) {
+            if (mapEntity.images.size == 1) {
                 Row(
                     modifier = Modifier.fillMaxWidth()
                 ) {

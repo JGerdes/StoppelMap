@@ -13,24 +13,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
@@ -40,6 +36,8 @@ import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.jonasgerdes.stoppelmap.countdown.model.CountDownState
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountDownWidgetSuggestionCard
 import com.jonasgerdes.stoppelmap.countdown.ui.components.CountdownCard
+import com.jonasgerdes.stoppelmap.dto.config.HomeCard
+import com.jonasgerdes.stoppelmap.home.components.ContentCard
 import com.jonasgerdes.stoppelmap.home.components.MessageCard
 import com.jonasgerdes.stoppelmap.home.components.NextOfficialEventCard
 import com.jonasgerdes.stoppelmap.shared.resources.R
@@ -87,7 +85,7 @@ fun HomeScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { paddingValues ->
         LazyColumn(
-            contentPadding = defaultContentPadding(paddingValues),
+            contentPadding = defaultContentPadding(paddingValues, bottom = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             state = listState,
             modifier = Modifier.fillMaxSize()
@@ -169,97 +167,19 @@ fun HomeScreen(
                 }
             }
 
-            val panamaState = state.panamaState
-            if (panamaState is HomeViewModel.PanamaState.Visible) {
-                item {
-                    Card {
-                        Column(
-                            Modifier
-                                .padding(horizontal = 16.dp)
-                                .padding(top = 16.dp, bottom = 8.dp)
-                        ) {
-                            Text(
-                                text = stringResource(R.string.panama_card_title),
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                            Spacer(modifier = Modifier.size(16.dp))
-                            OutlinedButton(
-                                onClick = { onUrlTap(panamaState.url) },
-                                modifier = Modifier.align(Alignment.CenterHorizontally)
-                            ) {
-                                Text(text = stringResource(R.string.panama_card_button_url))
-                            }
-                            Spacer(modifier = Modifier.size(8.dp))
-                            Button(
-                                onClick = { onCallPhoneNumber(panamaState.policeNumber) },
-                                modifier = Modifier.align(Alignment.CenterHorizontally)
-                            ) {
-                                Text(text = stringResource(R.string.panama_card_button_police))
-                            }
-                            Spacer(modifier = Modifier.size(8.dp))
-                            Button(
-                                onClick = { onCallPhoneNumber(panamaState.medicalNumber) },
-                                modifier = Modifier.align(Alignment.CenterHorizontally)
-                            ) {
-                                Text(text = stringResource(R.string.panama_card_button_medical))
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (state.instagramPromotionState == HomeViewModel.InstagramPromotionState.Visible) {
-                item {
-                    Card {
-                        Column(
-                            Modifier
-                                .padding(horizontal = 16.dp)
-                                .padding(top = 16.dp, bottom = 8.dp)
-                        ) {
-                            Text(
-                                text = stringResource(R.string.social_media_promo_instagram_title),
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                            Spacer(modifier = Modifier.size(16.dp))
-                            Button(
-                                onClick = { onUrlTap("https://instagram.com/stoppelmap") },
-                                modifier = Modifier.align(Alignment.CenterHorizontally)
-                            ) {
-                                Text(text = stringResource(R.string.social_media_promo_instagram_button))
-                            }
-                        }
-                    }
-                }
-            }
-
-            val feedbackState = state.feedbackState
-            if (feedbackState is HomeViewModel.FeedbackState.Visible) {
-                item {
-                    Card {
-                        Column(
-                            Modifier
-                                .padding(horizontal = 16.dp)
-                                .padding(top = 16.dp, bottom = 8.dp)
-                        ) {
-                            Text(
-                                text = stringResource(R.string.feedback_card_title),
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                            Spacer(modifier = Modifier.size(16.dp))
-                            Button(
-                                onClick = { onUrlTap(feedbackState.url) },
-                                modifier = Modifier.align(Alignment.CenterHorizontally)
-                            ) {
-                                Text(text = stringResource(R.string.feedback_card_button))
-                            }
-                        }
-                    }
+            items(items = state.cards, key = { it.hashCode() }, contentType = { it.javaClass }) { card ->
+                when (card) {
+                    is HomeCard.Content -> ContentCard(
+                        content = card,
+                        onUrlTap = onUrlTap,
+                        onCallPhoneNumber = onCallPhoneNumber,
+                        onSendFeedbackTap = { onUrlTap(state.feedbackUrl!!) }
+                    )
                 }
             }
         }
     }
 }
-
 
 @Composable
 fun CountdownCurrentSeasonIsOverHint(modifier: Modifier, content: @Composable () -> Unit) {

@@ -7,8 +7,10 @@ import com.jonasgerdes.stoppelmap.base.extentions.combine
 import com.jonasgerdes.stoppelmap.countdown.model.CountDownState
 import com.jonasgerdes.stoppelmap.countdown.usecase.GetOpeningCountDownStateUseCase
 import com.jonasgerdes.stoppelmap.countdown.usecase.ShouldShowCountdownWidgetSuggestionUseCase
+import com.jonasgerdes.stoppelmap.dto.config.HomeCard
 import com.jonasgerdes.stoppelmap.dto.config.Message
 import com.jonasgerdes.stoppelmap.home.usecase.GetFeedbackEmailUrlUseCase
+import com.jonasgerdes.stoppelmap.home.usecase.GetHomeCardsUseCase
 import com.jonasgerdes.stoppelmap.home.usecase.GetPromotedEventsUseCase
 import com.jonasgerdes.stoppelmap.home.usecase.GetRemoteMessagesUseCase
 import com.jonasgerdes.stoppelmap.schedule.model.Event
@@ -22,7 +24,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.isActive
@@ -33,7 +34,8 @@ class HomeViewModel(
     private val shouldShowCountdownWidgetSuggestion: ShouldShowCountdownWidgetSuggestionUseCase,
     getPromotedEvents: GetPromotedEventsUseCase,
     getRemoteMessages: GetRemoteMessagesUseCase,
-    getFeedbackEmailUrl: GetFeedbackEmailUrlUseCase,
+    getHomeCards: GetHomeCardsUseCase,
+    private val getFeedbackEmailUrl: GetFeedbackEmailUrlUseCase,
 ) : KMMViewModel() {
 
     private val countdownWidgetSuggestionState: Flow<CountDownWidgetSuggestionState> = flow {
@@ -61,35 +63,14 @@ class HomeViewModel(
         }
     }
 
-    private val instagramPromotionState = getOpeningCountDownState().map {
-        when (it) {
-            is CountDownState.Loading -> InstagramPromotionState.Hidden
-            else -> InstagramPromotionState.Visible
-        }
-    }
-
-    private val feedbackState = flowOf<FeedbackState>(
-        FeedbackState.Visible(
-            url = getFeedbackEmailUrl()
-        )
-    )
-    private val panamaState = flowOf<PanamaState>(
-        PanamaState.Visible(
-            url = "https://www.stoppelmarkt.de/aktuelles/detail/sicherheit-auf-dem-stoppelmarkt/",
-            policeNumber = "+4944418547800",
-            medicalNumber = "+4944418547770",
-        )
-    )
-
     val state: StateFlow<ViewState> =
         combine(
             getRemoteMessages().onStart { emit(emptyList()) },
             getOpeningCountDownState(),
             countdownWidgetSuggestionState,
             promotedEventsState,
-            instagramPromotionState,
-            feedbackState,
-            panamaState,
+            getHomeCards(),
+            getFeedbackEmailUrl(),
             ::ViewState
         ).stateIn(
             viewModelScope = viewModelScope,
@@ -104,9 +85,8 @@ class HomeViewModel(
         val openingCountDownState: CountDownState = CountDownState.Loading,
         val countdownWidgetSuggestionState: CountDownWidgetSuggestionState = CountDownWidgetSuggestionState.Hidden,
         val promotedEventsState: PromotedEventsState = PromotedEventsState.Loading,
-        val instagramPromotionState: InstagramPromotionState = InstagramPromotionState.Visible,
-        val feedbackState: FeedbackState = FeedbackState.Hidden,
-        val panamaState: PanamaState = PanamaState.Hidden,
+        val cards: List<HomeCard> = emptyList(),
+        val feedbackUrl: String? = null,
     )
 
     sealed class CountDownWidgetSuggestionState {
@@ -124,24 +104,4 @@ class HomeViewModel(
         ) : PromotedEventsState
     }
 
-    sealed interface InstagramPromotionState {
-        object Hidden : InstagramPromotionState
-        object Visible : InstagramPromotionState
-    }
-
-    sealed interface FeedbackState {
-        object Hidden : FeedbackState
-        data class Visible(
-            val url: String,
-        ) : FeedbackState
-    }
-
-    sealed interface PanamaState {
-        object Hidden : PanamaState
-        data class Visible(
-            val url: String,
-            val policeNumber: String,
-            val medicalNumber: String,
-        ) : PanamaState
-    }
 }

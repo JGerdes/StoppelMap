@@ -111,6 +111,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.datetime)
 
+    implementation(libs.coil.compose)
     implementation(libs.compose.ui.core)
     implementation(libs.compose.ui.preview)
     implementation(libs.compose.material.components)
