@@ -11,35 +11,49 @@ import com.jonasgerdes.stoppelmap.shared.network.model.Response
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.map
 
 class AppConfigRepository(
     private val remoteAppConfigSource: RemoteAppConfigSource,
     private val localAppConfigSource: LocalAppConfigSource,
 ) {
-    private val remoteStateFlow = MutableStateFlow<AppConfigState>(AppConfigState.Pending)
+    private val remoteStateFlow = MutableStateFlow<AppConfigState>(AppConfigState.Pending())
     val appConfig = combine(
         remoteStateFlow,
         localAppConfigSource.getAppConfig()
     ) { remoteState, cached ->
-        if (remoteState == AppConfigState.FailedToFetch && cached != null) {
-            AppConfigState.Available(cached)
-        } else {
-            remoteState
+        when (remoteState) {
+            is AppConfigState.FailedToFetch if cached != null -> AppConfigState.Available(cached)
+            is AppConfigState.Pending -> AppConfigState.Pending(cache = cached)
+            else -> remoteState
         }
     }
     val messages: Flow<List<MessageWrapper>> = appConfig
-        .filterIsInstance<AppConfigState.Available>()
-        .map { it.appConfig.messages }
+        .map {
+            when (it) {
+                is AppConfigState.Available -> it.appConfig.messages
+                is AppConfigState.Pending -> it.cache?.messages ?: emptyList()
+                is AppConfigState.FailedToFetch -> emptyList()
+            }
+        }
 
     val notices: Flow<List<NoticeWrapper>> = appConfig
-        .filterIsInstance<AppConfigState.Available>()
-        .map { it.appConfig.notices ?: emptyList() }
+        .map {
+            when (it) {
+                is AppConfigState.Available -> it.appConfig.notices ?: emptyList()
+                is AppConfigState.Pending -> it.cache?.notices ?: emptyList()
+                is AppConfigState.FailedToFetch -> emptyList()
+            }
+        }
 
     val homeCards: Flow<List<HomeCard>> = appConfig
-        .filterIsInstance<AppConfigState.Available>()
-        .map { it.appConfig.homeCards ?: emptyList() }
+        .map {
+            when (it) {
+                is AppConfigState.Available -> it.appConfig.homeCards ?: emptyList()
+                is AppConfigState.Pending -> it.cache?.homeCards ?: emptyList()
+                is AppConfigState.FailedToFetch -> emptyList()
+            }
+        }
 
     suspend fun updateAppConfig() {
         Logger.d { "Update app config" }
@@ -64,7 +78,7 @@ class AppConfigRepository(
     }
 
     sealed interface AppConfigState {
-        data object Pending : AppConfigState
+        data class Pending(val cache: RemoteAppConfig? = null) : AppConfigState
         data object FailedToFetch : AppConfigState
         data class Available(val appConfig: RemoteAppConfig) : AppConfigState
     }

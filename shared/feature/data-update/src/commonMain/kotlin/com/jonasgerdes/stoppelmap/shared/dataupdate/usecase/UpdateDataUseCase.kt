@@ -56,8 +56,11 @@ class UpdateDataUseCase(
             .map {
                 when (it) {
                     is AppConfigState.Available -> it.appConfig.data.latest
-                    AppConfigState.FailedToFetch -> null
-                    AppConfigState.Pending -> null
+                    is AppConfigState.FailedToFetch -> null
+                    is AppConfigState.Pending -> {
+                        Logger.w { "DataUpdate: Received AppConfigState.Pending, this should have been filtered out." }
+                        null
+                    }
                 }
             }.first()
 
