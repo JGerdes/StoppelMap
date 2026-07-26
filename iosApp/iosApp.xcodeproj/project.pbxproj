@@ -35,6 +35,8 @@
 		2A838B272C282B33005642A1 /* UnderConstruction.json in Resources */ = {isa = PBXBuildFile; fileRef = 2A838B262C282B33005642A1 /* UnderConstruction.json */; };
 		2A84E39E2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */; };
 		2A92605B2BF6799B00C57918 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92605A2BF6799B00C57918 /* SettingsScreen.swift */; };
+		2AC742C83015446A0023B2D8 /* AppIconGlass.icon in Resources */ = {isa = PBXBuildFile; fileRef = 2AC742C73015446A0023B2D8 /* AppIconGlass.icon */; };
+		2AC742C93015446A0023B2D8 /* AppIconGlass.icon in Resources */ = {isa = PBXBuildFile; fileRef = 2AC742C73015446A0023B2D8 /* AppIconGlass.icon */; };
 		2ACCB05F2BB2227D00DA01B6 /* MapColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */; };
 		2ACFF92A2BFFE03D00000F76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A2A8F622BA4D64E008D24CE /* Assets.xcassets */; };
 		2AD0F9942C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */; };
@@ -121,6 +123,7 @@
 		2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationTaxiOverviewPage.swift; sourceTree = "<group>"; };
 		2A8D2FB72E4B465100E96008 /* StoppelMap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoppelMap.entitlements; sourceTree = "<group>"; };
 		2A92605A2BF6799B00C57918 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		2AC742C73015446A0023B2D8 /* AppIconGlass.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIconGlass.icon; sourceTree = "<group>"; };
 		2ACCB05E2BB2227D00DA01B6 /* MapColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapColors.swift; sourceTree = "<group>"; };
 		2AD0F9902C0121B300FDB2A3 /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
 		2AD0F9912C0121B300FDB2A3 /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
@@ -188,6 +191,7 @@
 				2A1FD03B2BF2B67300335913 /* CountdownWidget */,
 				2A1FD0362BF2B67300335913 /* Frameworks */,
 				2A2A8F5C2BA4D64D008D24CE /* Products */,
+				2AC742C73015446A0023B2D8 /* AppIconGlass.icon */,
 			);
 			sourceTree = "<group>";
 		};
@@ -447,6 +451,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AC742C83015446A0023B2D8 /* AppIconGlass.icon in Resources */,
 				2AD0F9992C0121B400FDB2A3 /* RobotoSlab-Light.ttf in Resources */,
 				2AD0F99B2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */,
 				2AD0F9952C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */,
@@ -463,6 +468,7 @@
 				2AD0F9982C0121B400FDB2A3 /* RobotoSlab-Light.ttf in Resources */,
 				2AD0F9942C0121B400FDB2A3 /* RobotoSlab-Regular.ttf in Resources */,
 				2A838B272C282B33005642A1 /* UnderConstruction.json in Resources */,
+				2AC742C93015446A0023B2D8 /* AppIconGlass.icon in Resources */,
 				2AD0F9962C0121B400FDB2A3 /* RobotoSlab-Bold.ttf in Resources */,
 				2AD0F99A2C0121B400FDB2A3 /* RobotoSlab-Thin.ttf in Resources */,
 				2A46BEAB2E1AA0B000FF92B8 /* map in Resources */,
@@ -789,7 +795,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGlass;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StoppelMap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -832,7 +838,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGlass;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = StoppelMap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
