@@ -1,102 +1,10 @@
 [
     {
-        "slug": "artmann_kaufe-5-bier-erhalte-einen-stoppelschnaps-gratis_00",
-        "name": {
-            "de": "Kaufe 5 Bier erhalte einen Stoppelschnaps gratis"
-        },
-        "start": "2025-08-14T18:00",
-        "end": null,
-        "location": "artmann",
-        "description": {
-            "de": "<p>18-20 Uhr Kaufe 5 Bier erhalte einen Stoppelschnaps gratis</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "artmann_kaufe-5-bier-erhalte-einen-stoppelschnaps-gratis_01",
-        "name": {
-            "de": "Kaufe 5 Bier erhalte einen Stoppelschnaps gratis"
-        },
-        "start": "2025-08-15T18:00",
-        "end": null,
-        "location": "artmann",
-        "description": {
-            "de": "<p>18-19 Uhr Kaufe 5 Bier erhalte einen Stoppelschnaps gratis</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "artmann_kaufe-5-bier-erhalte-einen-stoppelschnaps-gratis_02",
-        "name": {
-            "de": "Kaufe 5 Bier erhalte einen Stoppelschnaps gratis"
-        },
-        "start": "2025-08-16T18:00",
-        "end": null,
-        "location": "artmann",
-        "description": {
-            "de": "<p>18-19 Uhr Kaufe 5 Bier erhalte einen Stoppelschnaps gratis</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "artmann_auftritt-des-musikvereins-visbek_03",
-        "name": {
-            "de": "Auftritt des Musikvereins Visbek"
-        },
-        "start": "2025-08-17T14:00",
-        "end": null,
-        "location": "artmann",
-        "description": {
-            "de": "<p>14-16 Uhr Auftritt des Musikvereins Visbek</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "artmann_bier-und-schnaps-artmann-hats_04",
-        "name": {
-            "de": "Bier und Schnaps, Artmann hat's!"
-        },
-        "start": "2025-08-18T09:00",
-        "end": null,
-        "location": "artmann",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "artmann_familientag_05",
-        "name": {
-            "de": "Familientag"
-        },
-        "start": "2025-08-19T14:00",
-        "end": null,
-        "location": "artmann",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
         "slug": "beckmanns-altdeutscher-biergarten_dj-torsten-hueser_00",
         "name": {
             "de": "DJ Torsten Hüser"
         },
-        "start": "2025-08-14T20:00",
+        "start": "2026-08-13T20:00",
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
@@ -110,7 +18,7 @@
         "name": {
             "de": "DJ Torsten Hüser und Band Cadillac"
         },
-        "start": "2025-08-15T20:00",
+        "start": "2026-08-14T20:00",
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
@@ -124,7 +32,7 @@
         "name": {
             "de": "DJ Torsten Hüser und Band Casablanca"
         },
-        "start": "2025-08-16T20:00",
+        "start": "2026-08-15T20:00",
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
@@ -134,11 +42,11 @@
         "isOfficial": false
     },
     {
-        "slug": "beckmanns-altdeutscher-biergarten_dj-torsten-hueser-und-musikverein-bakum_03",
+        "slug": "beckmanns-altdeutscher-biergarten_musikverein-bakum-und-dj-torsten-hueser_03",
         "name": {
-            "de": "DJ Torsten Hüser und Musikverein Bakum"
+            "de": "Musikverein Bakum und DJ Torsten Hüser"
         },
-        "start": "2025-08-17T14:00",
+        "start": "2026-08-16T14:00",
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
@@ -152,7 +60,7 @@
         "name": {
             "de": "DJ Torsten Hüser und Band Casablanca"
         },
-        "start": "2025-08-18T11:00",
+        "start": "2026-08-17T11:00",
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
@@ -166,7 +74,7 @@
         "name": {
             "de": "DJ Torsten Hüser"
         },
-        "start": "2025-08-19T14:00",
+        "start": "2026-08-18T14:00",
         "end": null,
         "location": "beckmanns-altdeutscher-biergarten",
         "description": null,
@@ -176,15 +84,85 @@
         "isOfficial": false
     },
     {
-        "slug": "brackmann_lets-get-it-started-opening-25_00",
+        "slug": "brackmann_50-shapes-of-disco_00",
         "name": {
-            "de": "LET'S GET IT STARTED (OPENING '25)"
+            "de": "50 Shapes of Disco"
         },
-        "start": "2025-08-14T18:00",
+        "start": "2026-08-13T18:00",
+        "end": null,
+        "location": "brackmann",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_michael-disco-mr-heavysax_01",
+        "name": {
+            "de": "Michael Disco & Mr. HeavySax"
+        },
+        "start": "2026-08-14T20:00",
+        "end": null,
+        "location": "brackmann",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_maximal-saunaseb_02",
+        "name": {
+            "de": "Maximal & Saunaseb"
+        },
+        "start": "2026-08-15T20:00",
+        "end": null,
+        "location": "brackmann",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_saunaseb-herr-mehl_03",
+        "name": {
+            "de": "Saunaseb & Herr Mehl"
+        },
+        "start": "2026-08-16T20:00",
+        "end": null,
+        "location": "brackmann",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_michael-disco-niklas-cue_04",
+        "name": {
+            "de": "Michael Disco & Niklas Cue"
+        },
+        "start": "2026-08-17T10:00",
+        "end": null,
+        "location": "brackmann",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "brackmann_familientag-14-00-18-00-uhr_05",
+        "name": {
+            "de": "Familientag (14:00 - 18:00 Uhr)"
+        },
+        "start": "2026-08-18T14:00",
         "end": null,
         "location": "brackmann",
         "description": {
-            "de": "<p>Do. 14.08.25, 18:00 Uhr – Fr. 15.08.25, 04:00 Uhr</p>\n<p>DJ-Team: \"50 Shapes of Disco\" (\"Michael Disco\" &amp; \"Mark 50\")</p>\n<p>Live: \"Musikverein Oythe\" | \"Kolpingorchester Vechta\" | \"Samba Landaya\" &amp; \"Sambalaon\"</p>\n<p>Die Stoppelmarkt '25-Auftaktparty bei BRACKMANN!</p>\n<p>Wir starten in Vechtas 5. Jahreszeit mit allem Pipapo: Nach der traditionellen Eröffnung durch den \"Musikverein Oythe\" und das \"Kolpingorchester Vechta\" heizen euch die beiden Samba-Formationen \"Samba Landaya\" und \"Sambalaon\" ordentlich ein. Freut euch auf unsere hausgemachten Shots wie \"Brackmann's Apfelstrudel\", \"Split Shot\", \"Mexikaner\" oder \"Hot Wheel\" und tanzt euch langsam warm. Der perfekte Start in den Stoppelmarkt '25!</p>"
+            "de": "<p>Zum Familientag (14:00 bis 18:00 Uhr) gibt es alle Softdrinks (Coca-Cola, Fanta, Sprite, Mineralwasser) zu einem familienfreundlichen Preis!</p>"
         },
         "participants": [],
         "tags": [],
@@ -192,711 +170,11 @@
         "isOfficial": false
     },
     {
-        "slug": "brackmann_thank-god-its-friday_01",
+        "slug": "kombinat_dj-ansi_00",
         "name": {
-            "de": "THANK GOD IT'S FRIDAY"
+            "de": "DJ Ansi"
         },
-        "start": "2025-08-15T20:00",
-        "end": null,
-        "location": "brackmann",
-        "description": {
-            "de": "<p>Fr. 15.08.25, 20:00 Uhr – Sa. 16.08.25, 03:00 Uhr</p>\n<p>DJs: \"Michael Disco\" | \"SaunaSeb\"</p>\n<p>Live: \"Zerobaddays\" (Saxophon)</p>\n<p>Coole Clubsounds mit live Saxophon-Sets. Ein episches, tanzbares Erlebnis!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "brackmann_get-down-saturday-night_02",
-        "name": {
-            "de": "GET DOWN SATURDAY NIGHT"
-        },
-        "start": "2025-08-16T20:00",
-        "end": null,
-        "location": "brackmann",
-        "description": {
-            "de": "<p>Sa. 16.08.25, 20:00 Uhr – So. 17.08.25, 03:00 Uhr</p>\n<p>DJs: \"Nicky Jones\" | \"Maximal\"</p>\n<p>Stoppelmarkt-Clubbing u.a. mit Nicky Jones ('Tante Mia tanzt') und Maximal ('Green Circle'). Einfach der beste Sound auf dem Stoppelmarkt!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "brackmann_fruehschoppen_03",
-        "name": {
-            "de": "Frühschoppen"
-        },
-        "start": "2025-08-17T11:00",
-        "end": null,
-        "location": "brackmann",
-        "description": {
-            "de": "<p>Vormittags: Frühschoppen</p>\n<p>Hinweis: Unser jährlicher Poetry-Slam \"BRACKMANN'S Bierzeltreden\" pausiert ein Jahr und ist 2026 wieder am Start!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "brackmann_gold-glitterbox-die-ue30-classichouse-specialparty_04",
-        "name": {
-            "de": "GOLD & GLITTERBOX – Die Ü30 ClassicHouse-SpecialParty !!!"
-        },
-        "start": "2025-08-17T20:00",
-        "end": null,
-        "location": "brackmann",
-        "description": {
-            "de": "<p>So. 17.08.25, 20:00 Uhr – Mo. 18.08.25, 01:00 Uhr</p>\n<p>DJs: \"Gordon Hollenga (The Disco Boys)\" | \"50 Shapes of Disco\" (\"Michael Disco\"&amp; \"Mark 50\")</p>\n<p>Die neue Ü30-Party mit den besten ClassicHouse-Hits der 80er-, 90er- und 00er-Jahre! Live Schallplatten-Sets! Und als Special-Guest live on stage: Gordon Hollenga von 'The Disco Boys'! - Sensationell!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "brackmann_i-do-like-mondays_05",
-        "name": {
-            "de": "I DO LIKE MONDAYS"
-        },
-        "start": "2025-08-18T10:00",
-        "end": null,
-        "location": "brackmann",
-        "description": {
-            "de": "<p>Mo. 18.08.25, 10:00 Uhr – Di. 19.08.25, 01:00 Uhr</p>\n<p>DJs: \"Gordon Hollenga (The Disco Boys)\" | \"Michael Disco\" | \"Niklas Cue\"</p>\n<p>Die längste Party des Jahres mit den besten Danceclassics-Stoppelhits! ... Party all day/night long! Bei BRACKMANN!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "brackmann_familientag-15-00-18-00-uhr_06",
-        "name": {
-            "de": "Familientag (15:00 - 18:00 Uhr)"
-        },
-        "start": "2025-08-19T15:00",
-        "end": null,
-        "location": "brackmann",
-        "description": {
-            "de": "<p>Di. 19.08.25, 15:00 Uhr – Di. 19.08.25, 23:00 Uhr</p>\n<p>Zum Familientag (15:00 bis 18:00 Uhr) gibt es alle Softdrinks (Coca-Cola, Fanta, Sprite, Mineralwasser) zu einem familienfreundlichen Preis!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_dj-niklas-cue_00",
-        "name": {
-            "de": "DJ NIKLAS CUE"
-        },
-        "start": "2025-08-14T19:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": {
-            "de": "<p>DJ NIKLAS CUE eröffnet den musikalischen Abend</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_haake-beck-bloemer-gewinnspiel_01",
-        "name": {
-            "de": "Haake Beck/Blömer Gewinnspiel"
-        },
-        "start": "2025-08-14T20:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_dj-rolf-brell_02",
-        "name": {
-            "de": "DJ Rolf Brell"
-        },
-        "start": "2025-08-15T19:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": {
-            "de": "<p>DJ Rolf Brell sorgt für beste Partylaune</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_kaffee-und-kuchen_03",
-        "name": {
-            "de": "Kaffee und Kuchen"
-        },
-        "start": "2025-08-16T14:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_dj-rolf-brell_04",
-        "name": {
-            "de": "DJ Rolf Brell"
-        },
-        "start": "2025-08-16T19:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_haake-beck-bloemer-gewinnspiel_05",
-        "name": {
-            "de": "Haake Beck/Blömer Gewinnspiel"
-        },
-        "start": "2025-08-16T21:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_fruehstueck_06",
-        "name": {
-            "de": "Frühstück"
-        },
-        "start": "2025-08-17T10:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": {
-            "de": "<p>mit frischen Brötchen, gluten- und laktosefreien Produkten, Gruppen gerne auf Anmeldung</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_black-sheep-linedancers_07",
-        "name": {
-            "de": "Black Sheep Linedancers"
-        },
-        "start": "2025-08-17T11:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": {
-            "de": "<p>Nach der Premiere letztes Jahr, wieder ab 11.00 – 18.00 Uhr die Black Sheep Linedancers. Wer sich angesprochen fühlt darf gerne mitmachen.</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_kaffee-und-kuchen_08",
-        "name": {
-            "de": "Kaffee und Kuchen"
-        },
-        "start": "2025-08-17T13:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_dj-niklas-cue_09",
-        "name": {
-            "de": "DJ NIKLAS CUE"
-        },
-        "start": "2025-08-17T18:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": {
-            "de": "<p>DJ NIKLAS CUE spielt Wunschlieder, das ist „Euer“ Abend</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_fruehstueck_10",
-        "name": {
-            "de": "Frühstück"
-        },
-        "start": "2025-08-18T08:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": {
-            "de": "<p>mit frischen Brötchen, heißem Kaffee, der Grundstock für diesen Tag ( Gruppen unbedingt anmelden )</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_dj-rolf-brell_11",
-        "name": {
-            "de": "DJ Rolf Brell"
-        },
-        "start": "2025-08-18T11:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": {
-            "de": "<p>ab 11.00 Uhr startet DJ Rolf Brell gemütlich die Musik, beste Laune den ganzen Tag</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_familientag-mit-ermaessigten-preisen_12",
-        "name": {
-            "de": "Familientag mit ermäßigten Preisen"
-        },
-        "start": "2025-08-19T14:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-bloemer_kaffee-und-kuchen_13",
-        "name": {
-            "de": "Kaffee und Kuchen"
-        },
-        "start": "2025-08-19T14:00",
-        "end": null,
-        "location": "festzelt-bloemer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_eroeffnungsparty-mit-dj-laif-und-kurzauftritte-verschiedener-musikvereine_00",
-        "name": {
-            "de": "Eröffnungsparty mit DJ Laif und Kurzauftritte verschiedener Musikvereine"
-        },
-        "start": "2025-08-14T18:01",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_tag-der-vereine-djs-dennis-jimmy_01",
-        "name": {
-            "de": "Tag der Vereine, DJ's Dennis+Jimmy"
-        },
-        "start": "2025-08-15T14:00",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_dj-laif_02",
-        "name": {
-            "de": "DJ Laif"
-        },
-        "start": "2025-08-16T14:00",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_traditioneller-fruehschoppen-kolpingorchester_03",
-        "name": {
-            "de": "Traditioneller Frühschoppen, Kolpingorchester"
-        },
-        "start": "2025-08-17T11:00",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_south-o-burger-big-band_04",
-        "name": {
-            "de": "South-O-Burger Big Band"
-        },
-        "start": "2025-08-17T14:00",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": {
-            "de": "<p>Die South-O-Burger Big Band spielt am Sonntag Nachmittag von 14:00 Uhr bis 17:00 Uhr.</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_band-funky-fly_05",
-        "name": {
-            "de": "Band \"Funky Fly\""
-        },
-        "start": "2025-08-17T20:00",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": {
-            "de": "<p><strong>Groove pur: Funky Fly bringt den Funk!</strong></p>\n<p>Macht euch bereit für den Sound, der direkt in die Beine geht! \"Funky Fly\" ist die Anlaufstelle für unwiderstehlichen Funk, der die Tanzfläche zum Beben bringt.</p>\n<p>Sie servieren euch knackige Grooves, messerscharfe Riffs und eine geballte Ladung Soul. Inspiriert von den Größen des Genres, aber immer mit ihrem eigenen, frischen Twist.</p>\n<p>Wenn sie die Bühne betreten, gibt es nur ein Ziel: Euch zum Tanzen zu bringen und den Alltag vergessen zu lassen.&nbsp;</p>\n<p>\"Funky Fly\" ist ehrlich, handgemacht und mitreißend!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_fruehstueck-kaffee-kuchen-party-dj-laif_06",
-        "name": {
-            "de": "Frühstück, Kaffee&Kuchen, Party DJ Laif"
-        },
-        "start": "2025-08-18T09:00",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "festzelt-grieshop_familientag_07",
-        "name": {
-            "de": "Familientag"
-        },
-        "start": "2025-08-19T14:00",
-        "end": null,
-        "location": "festzelt-grieshop",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_marktbeginn_00",
-        "name": {
-            "de": "Marktbeginn"
-        },
-        "start": "2025-08-14T18:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": {
-            "de": "<p>Direkt nach dem Umzug kann die Party losgehen!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_marktbeginn_01",
-        "name": {
-            "de": "Marktbeginn"
-        },
-        "start": "2025-08-15T14:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_leckerer-hausgebackener-kuchen-und-frischer-kaffee_02",
-        "name": {
-            "de": "Leckerer hausgebackener Kuchen und frischer Kaffee"
-        },
-        "start": "2025-08-15T14:30",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_dj-tim_03",
-        "name": {
-            "de": "DJ Tim"
-        },
-        "start": "2025-08-15T19:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": {
-            "de": "<p>DJ Tim feiert mit euch durch die Nacht.</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_marktbeginn_04",
-        "name": {
-            "de": "Marktbeginn"
-        },
-        "start": "2025-08-16T14:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_leckerer-hausgebackener-kuchen-und-frischer-kaffee_05",
-        "name": {
-            "de": "Leckerer hausgebackener Kuchen und frischer Kaffee"
-        },
-        "start": "2025-08-16T14:30",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_dj-tim_06",
-        "name": {
-            "de": "DJ Tim"
-        },
-        "start": "2025-08-16T19:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": {
-            "de": "<p>DJ Tim feiert mit euch durch die Nacht.</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_fruehschoppen_07",
-        "name": {
-            "de": "Frühschoppen"
-        },
-        "start": "2025-08-17T11:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_leckerer-hausgebackener-kuchen-und-frischer-kaffee_08",
-        "name": {
-            "de": "Leckerer hausgebackener Kuchen und frischer Kaffee"
-        },
-        "start": "2025-08-17T14:30",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_dj-tim_09",
-        "name": {
-            "de": "DJ Tim"
-        },
-        "start": "2025-08-17T19:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": {
-            "de": "<p>DJ Tim lässt das Wochenende ausklingen.</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_fruehstuecksbuffet_10",
-        "name": {
-            "de": "Frühstücksbuffet"
-        },
-        "start": "2025-08-18T08:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": {
-            "de": "<p>Ein deftiges Frühstück wartet auf Sie! Mit frischem Kaffee, Kilmerstuten und reichlich belegten Brötchen. Leider bereits ausgebucht! Danach Party bis der neue Tag anbricht!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_marktbeginn_11",
-        "name": {
-            "de": "Marktbeginn"
-        },
-        "start": "2025-08-19T14:00",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "hogebacks-festzelt_leckerer-hausgebackener-kuchen-und-frischer-kaffee_12",
-        "name": {
-            "de": "Leckerer hausgebackener Kuchen und frischer Kaffee"
-        },
-        "start": "2025-08-19T14:30",
-        "end": null,
-        "location": "hogebacks-festzelt",
-        "description": {
-            "de": "<p>Leckerer hausgebackener Kuchen und frischer Kaffee laden zum Verweilen ein!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kaponierzelt_funky-rockerz_00",
-        "name": {
-            "de": "Funky Rockerz"
-        },
-        "start": "2025-08-14T18:30",
-        "end": null,
-        "location": "kaponierzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kaponierzelt_die-andersons-dj-maik-horney_01",
-        "name": {
-            "de": "Die Andersons & DJ Maik Horney"
-        },
-        "start": "2025-08-15T21:00",
-        "end": null,
-        "location": "kaponierzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kaponierzelt_sandbox-goes-stoppelmarkt_02",
-        "name": {
-            "de": "Sandbox goes Stoppelmarkt"
-        },
-        "start": "2025-08-16T14:00",
-        "end": null,
-        "location": "kaponierzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kaponierzelt_musikverein-oythe_03",
-        "name": {
-            "de": "Musikverein Oythe"
-        },
-        "start": "2025-08-17T12:00",
-        "end": null,
-        "location": "kaponierzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kaponierzelt_volle-moehre-dj-ralf-burnett_04",
-        "name": {
-            "de": "Volle Möhre & DJ Ralf Burnett"
-        },
-        "start": "2025-08-17T20:00",
-        "end": null,
-        "location": "kaponierzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kaponierzelt_funky-rockerz_05",
-        "name": {
-            "de": "Funky Rockerz"
-        },
-        "start": "2025-08-18T09:00",
-        "end": null,
-        "location": "kaponierzelt",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kombinat_pictures-of-lily-dj-ansi_00",
-        "name": {
-            "de": "Pictures of Lily – DJ Ansi"
-        },
-        "start": "2025-08-14T19:00",
+        "start": "2026-08-13T19:00",
         "end": null,
         "location": "kombinat",
         "description": null,
@@ -906,11 +184,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kombinat_best-of-alternative-90-s-dj-ansi_01",
+        "slug": "kombinat_pictures-of-lily_01",
         "name": {
-            "de": "Best of alternative 90´s – DJ Ansi"
+            "de": "Pictures of Lily"
         },
-        "start": "2025-08-15T14:00",
+        "start": "2026-08-13T20:00",
         "end": null,
         "location": "kombinat",
         "description": null,
@@ -920,11 +198,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kombinat_30-grad-im-schatten-aus-osna-dj-ansi_02",
+        "slug": "kombinat_dj-ansi_02",
         "name": {
-            "de": "„30 Grad im Schatten“ aus Osna – DJ Ansi"
+            "de": "DJ Ansi"
         },
-        "start": "2025-08-16T14:00",
+        "start": "2026-08-14T19:00",
         "end": null,
         "location": "kombinat",
         "description": null,
@@ -934,11 +212,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kombinat_cantantes-del-puerto-vechta-dj-ansi_03",
+        "slug": "kombinat_dj-ansi_03",
         "name": {
-            "de": "Cantantes del Puerto“, Vechta – DJ Ansi"
+            "de": "DJ Ansi"
         },
-        "start": "2025-08-17T11:00",
+        "start": "2026-08-15T19:00",
         "end": null,
         "location": "kombinat",
         "description": null,
@@ -948,25 +226,53 @@
         "isOfficial": false
     },
     {
-        "slug": "kombinat_dj-onkel-david_04",
+        "slug": "kombinat_30-grad-im-schatten_04",
+        "name": {
+            "de": "30 Grad im Schatten"
+        },
+        "start": "2026-08-15T21:00",
+        "end": null,
+        "location": "kombinat",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kombinat_dj-ansi_05",
+        "name": {
+            "de": "DJ Ansi"
+        },
+        "start": "2026-08-16T11:00",
+        "end": null,
+        "location": "kombinat",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kombinat_crazy-dave-the-rock-a-fellas_06",
+        "name": {
+            "de": "Crazy Dave & the Rock 'a' Fellas"
+        },
+        "start": "2026-08-16T17:00",
+        "end": null,
+        "location": "kombinat",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kombinat_dj-onkel-david_07",
         "name": {
             "de": "DJ Onkel David"
         },
-        "start": "2025-08-18T09:00",
-        "end": null,
-        "location": "kombinat",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kombinat_familientag-mit-ermaessigten-preisen_05",
-        "name": {
-            "de": "Familientag mit ermäßigten Preisen"
-        },
-        "start": "2025-08-19T14:00",
+        "start": "2026-08-17T09:00",
         "end": null,
         "location": "kombinat",
         "description": null,
@@ -980,7 +286,7 @@
         "name": {
             "de": "Hallenöffnung"
         },
-        "start": "2025-08-14T18:00",
+        "start": "2026-08-13T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -994,7 +300,7 @@
         "name": {
             "de": "Hashtag Partyband"
         },
-        "start": "2025-08-14T18:01",
+        "start": "2026-08-13T18:01",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1008,7 +314,7 @@
         "name": {
             "de": "DJ Ernesto"
         },
-        "start": "2025-08-14T18:01",
+        "start": "2026-08-13T18:01",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1022,7 +328,7 @@
         "name": {
             "de": "Starsängerin Nancy Franck"
         },
-        "start": "2025-08-14T22:00",
+        "start": "2026-08-13T22:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1036,7 +342,7 @@
         "name": {
             "de": "Hallenöffnung"
         },
-        "start": "2025-08-15T14:00",
+        "start": "2026-08-14T14:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1050,7 +356,7 @@
         "name": {
             "de": "Seniorenkaffee"
         },
-        "start": "2025-08-15T15:00",
+        "start": "2026-08-14T15:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": {
@@ -1066,7 +372,7 @@
         "name": {
             "de": "DJ Ernesto"
         },
-        "start": "2025-08-15T18:00",
+        "start": "2026-08-14T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1080,7 +386,7 @@
         "name": {
             "de": "Hashtag Partyband"
         },
-        "start": "2025-08-15T18:00",
+        "start": "2026-08-14T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1094,7 +400,7 @@
         "name": {
             "de": "Hallenöffnung"
         },
-        "start": "2025-08-16T14:00",
+        "start": "2026-08-15T14:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1108,7 +414,7 @@
         "name": {
             "de": "Partyband SWEET DREAMS"
         },
-        "start": "2025-08-16T14:01",
+        "start": "2026-08-15T14:01",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1122,7 +428,7 @@
         "name": {
             "de": "DJ Ernesto"
         },
-        "start": "2025-08-16T18:00",
+        "start": "2026-08-15T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1132,11 +438,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_play-high-partyband_11",
+        "slug": "kuehlings-niedersachsenhalle_partyband-play-high_11",
         "name": {
-            "de": "Play High Partyband"
+            "de": "Partyband PLAY HIGH"
         },
-        "start": "2025-08-16T18:00",
+        "start": "2026-08-15T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1150,7 +456,7 @@
         "name": {
             "de": "Gottesdienst"
         },
-        "start": "2025-08-17T10:00",
+        "start": "2026-08-16T10:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": {
@@ -1162,25 +468,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_dj-ernesto_13",
-        "name": {
-            "de": "DJ Ernesto"
-        },
-        "start": "2025-08-17T11:00",
-        "end": null,
-        "location": "kuehlings-niedersachsenhalle",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_14",
+        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_13",
         "name": {
             "de": "Hallenöffnung"
         },
-        "start": "2025-08-17T14:00",
+        "start": "2026-08-16T11:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1190,43 +482,15 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_starsaenger-tobee_15",
+        "slug": "kuehlings-niedersachsenhalle_menschenkicker-turnier-im-zelt_14",
         "name": {
-            "de": "Starsänger TOBEE"
+            "de": "MENSCHENKICKER-TURNIER IM ZELT "
         },
-        "start": "2025-08-17T18:00",
-        "end": null,
-        "location": "kuehlings-niedersachsenhalle",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_16",
-        "name": {
-            "de": "Hallenöffnung"
-        },
-        "start": "2025-08-18T08:00",
-        "end": null,
-        "location": "kuehlings-niedersachsenhalle",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kuehlings-niedersachsenhalle_montagsempfang-der-stadt-vechta_17",
-        "name": {
-            "de": "Montagsempfang der Stadt Vechta"
-        },
-        "start": "2025-08-18T11:00",
+        "start": "2026-08-16T12:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": {
-            "de": "<p>Traditioneller Montagsempfang der Stadt Vechta.</p>"
+            "de": "<p>Anmeldungen und Informationen unter Tel. 0444193800 oder per Mail an <a href=\"mailto:zentrale@otto-kuehling.de\">zentrale@otto-kuehling.de</a></p>"
         },
         "participants": [],
         "tags": [],
@@ -1234,11 +498,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_dj-ernesto_18",
+        "slug": "kuehlings-niedersachsenhalle_dj-ernesto_15",
         "name": {
             "de": "DJ Ernesto"
         },
-        "start": "2025-08-18T14:00",
+        "start": "2026-08-16T13:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1248,11 +512,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_partyband-play-high_19",
+        "slug": "kuehlings-niedersachsenhalle_starsaengerin-anna-maria-zimmermann_16",
         "name": {
-            "de": "Partyband PLAY HIGH"
+            "de": "Starsängerin ANNA-MARIA ZIMMERMANN"
         },
-        "start": "2025-08-18T14:00",
+        "start": "2026-08-16T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1262,25 +526,11 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_mickie-krause_20",
-        "name": {
-            "de": "MICKIE KRAUSE"
-        },
-        "start": "2025-08-18T22:00",
-        "end": null,
-        "location": "kuehlings-niedersachsenhalle",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_21",
+        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_17",
         "name": {
             "de": "Hallenöffnung"
         },
-        "start": "2025-08-19T13:00",
+        "start": "2026-08-17T08:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1290,11 +540,83 @@
         "isOfficial": false
     },
     {
-        "slug": "kuehlings-niedersachsenhalle_dj-ernesto_22",
+        "slug": "kuehlings-niedersachsenhalle_montagsempfang-der-stadt-vechta_18",
+        "name": {
+            "de": "Montagsempfang der Stadt Vechta"
+        },
+        "start": "2026-08-17T11:00",
+        "end": null,
+        "location": "kuehlings-niedersachsenhalle",
+        "description": {
+            "de": "<p>11:00 – 14:00: Traditioneller Montagsempfang der Stadt Vechta.</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kuehlings-niedersachsenhalle_dj-ernesto_19",
         "name": {
             "de": "DJ Ernesto"
         },
-        "start": "2025-08-19T18:00",
+        "start": "2026-08-17T14:00",
+        "end": null,
+        "location": "kuehlings-niedersachsenhalle",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kuehlings-niedersachsenhalle_partyband-play-high_20",
+        "name": {
+            "de": "Partyband PLAY HIGH"
+        },
+        "start": "2026-08-17T14:00",
+        "end": null,
+        "location": "kuehlings-niedersachsenhalle",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kuehlings-niedersachsenhalle_starsaenger-julian-sommer_21",
+        "name": {
+            "de": "Starsänger JULIAN SOMMER"
+        },
+        "start": "2026-08-17T22:00",
+        "end": null,
+        "location": "kuehlings-niedersachsenhalle",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kuehlings-niedersachsenhalle_hallenoeffnung_22",
+        "name": {
+            "de": "Hallenöffnung"
+        },
+        "start": "2026-08-18T13:00",
+        "end": null,
+        "location": "kuehlings-niedersachsenhalle",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "kuehlings-niedersachsenhalle_dj-ernesto_23",
+        "name": {
+            "de": "DJ Ernesto"
+        },
+        "start": "2026-08-18T18:00",
         "end": null,
         "location": "kuehlings-niedersachsenhalle",
         "description": null,
@@ -1308,7 +630,7 @@
         "name": {
             "de": "DJ Dodo"
         },
-        "start": "2025-08-14T18:30",
+        "start": "2026-08-13T18:30",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
@@ -1322,7 +644,7 @@
         "name": {
             "de": "DJ Dodo"
         },
-        "start": "2025-08-15T20:00",
+        "start": "2026-08-14T20:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
@@ -1336,7 +658,7 @@
         "name": {
             "de": "DJ FLO"
         },
-        "start": "2025-08-16T20:00",
+        "start": "2026-08-15T20:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
@@ -1350,7 +672,7 @@
         "name": {
             "de": "Blasmusik mit dem Musikverein Lutten & den Sprengepiel-Pipers aus Vechta"
         },
-        "start": "2025-08-17T12:00",
+        "start": "2026-08-16T12:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": {
@@ -1366,7 +688,7 @@
         "name": {
             "de": "DJ HD"
         },
-        "start": "2025-08-17T19:00",
+        "start": "2026-08-16T19:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
@@ -1380,7 +702,7 @@
         "name": {
             "de": "DJ Dodo & DJ FLO"
         },
-        "start": "2025-08-18T11:00",
+        "start": "2026-08-17T11:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
@@ -1394,7 +716,7 @@
         "name": {
             "de": "Familientag"
         },
-        "start": "2025-08-19T13:00",
+        "start": "2026-08-18T14:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": {
@@ -1406,11 +728,27 @@
         "isOfficial": false
     },
     {
-        "slug": "pickers-lutten-das-partyzelt_dj-flo_07",
+        "slug": "pickers-lutten-das-partyzelt_kinderdisco_07",
         "name": {
-            "de": "DJ FLO"
+            "de": "Kinderdisco"
         },
-        "start": "2025-08-19T20:00",
+        "start": "2026-08-18T16:00",
+        "end": null,
+        "location": "pickers-lutten-das-partyzelt",
+        "description": {
+            "de": "<p>von 16 - 18 Uhr</p>\n<p>mit tollen Überraschungen!</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "pickers-lutten-das-partyzelt_dj-hd_08",
+        "name": {
+            "de": "DJ HD"
+        },
+        "start": "2026-08-18T20:00",
         "end": null,
         "location": "pickers-lutten-das-partyzelt",
         "description": null,
@@ -1420,157 +758,15 @@
         "isOfficial": false
     },
     {
-        "slug": "rastas-genuss-quartier_party-mit-dj-smackx_00",
+        "slug": "ritzer_das-grosse-stoppelmarktss-opening_00",
         "name": {
-            "de": "Party mit DJ Smackx"
+            "de": "Das große Stoppelmarkts's Opening"
         },
-        "start": "2025-08-14T18:00",
-        "end": null,
-        "location": "rastas-genuss-quartier",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "rastas-genuss-quartier_party-mit-dj-smackx_01",
-        "name": {
-            "de": "Party mit DJ Smackx"
-        },
-        "start": "2025-08-15T18:00",
-        "end": null,
-        "location": "rastas-genuss-quartier",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "rastas-genuss-quartier_party-mit-saunaseb-dj-philipp-bock_02",
-        "name": {
-            "de": "Party mit saunaseb & DJ Philipp Bock"
-        },
-        "start": "2025-08-16T19:00",
-        "end": null,
-        "location": "rastas-genuss-quartier",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "rastas-genuss-quartier_blues-brunch-mit-beggars-banquet-blues-jam-experience_03",
-        "name": {
-            "de": "Blues Brunch mit „Beggars Banquet Blues Jam Experience“ "
-        },
-        "start": "2025-08-17T11:00",
-        "end": null,
-        "location": "rastas-genuss-quartier",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "rastas-genuss-quartier_alberto-saxo_04",
-        "name": {
-            "de": "Alberto Saxo"
-        },
-        "start": "2025-08-17T14:00",
-        "end": null,
-        "location": "rastas-genuss-quartier",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "rastas-genuss-quartier_party-mit-dj-smackx-alberto-saxo_05",
-        "name": {
-            "de": "Party mit Dj Smackx  & Alberto Saxo"
-        },
-        "start": "2025-08-18T09:00",
-        "end": null,
-        "location": "rastas-genuss-quartier",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "rastas-genuss-quartier_familientag_06",
-        "name": {
-            "de": "Familientag"
-        },
-        "start": "2025-08-19T14:00",
-        "end": null,
-        "location": "rastas-genuss-quartier",
-        "description": {
-            "de": "<p>Alle alkoholfreien Getränke zum kleinen Preis</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "ritzer_dj-maximal-und-play-cue_00",
-        "name": {
-            "de": "DJ Maximal und Play & Cue"
-        },
-        "start": "2025-08-14T19:00",
-        "end": null,
-        "location": "ritzer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "ritzer_der-honkomp-henk_01",
-        "name": {
-            "de": "Der Honkomp & Henk"
-        },
-        "start": "2025-08-15T19:00",
-        "end": null,
-        "location": "ritzer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "ritzer_dj-flowz-und-play-cue_02",
-        "name": {
-            "de": "DJ Flowz und Play & Cue"
-        },
-        "start": "2025-08-16T19:00",
-        "end": null,
-        "location": "ritzer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "ritzer_10-jaehriges-jubilaeum_03",
-        "name": {
-            "de": "10 Jähriges Jubiläum"
-        },
-        "start": "2025-08-17T11:00",
+        "start": "2026-08-13T19:00",
         "end": null,
         "location": "ritzer",
         "description": {
-            "de": "<p>Von 10 Uhr bis 13 Uhr Schalker Fan Club Ritzer Knappen auf dem Stoppelmarkt mit Spielerlegende <strong>Olaf Thon</strong></p>"
+            "de": "<p>DJ's: DJ Maximal &amp; Play&amp;Cue</p>"
         },
         "participants": [],
         "tags": [],
@@ -1578,11 +774,75 @@
         "isOfficial": false
     },
     {
-        "slug": "ritzer_dj-timtom-dj-smacks_04",
+        "slug": "ritzer_die-ritzer-club-night_01",
         "name": {
-            "de": "DJ TimTom & DJ Smacks"
+            "de": "Die Ritzer Club Night"
         },
-        "start": "2025-08-17T19:00",
+        "start": "2026-08-14T19:00",
+        "end": null,
+        "location": "ritzer",
+        "description": {
+            "de": "<p>DJ's: Henk &amp; der Honkomp&nbsp;</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "ritzer_pulse-of-the-night-beats-vibes_02",
+        "name": {
+            "de": "Pulse of the Night - Beats&Vibes"
+        },
+        "start": "2026-08-15T19:00",
+        "end": null,
+        "location": "ritzer",
+        "description": {
+            "de": "<p>DJ: Juls Weck</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "ritzer_teamplayer-tag-der-vereine_03",
+        "name": {
+            "de": "Teamplayer-  Tag der Vereine"
+        },
+        "start": "2026-08-16T11:00",
+        "end": null,
+        "location": "ritzer",
+        "description": {
+            "de": "<p>DJ's: TimTom &amp; Outrage</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "ritzer_feuerwerk-der-firmen-ein-tag-voller-erfolg_04",
+        "name": {
+            "de": "Feuerwerk der Firmen - ein Tag voller Erfolg"
+        },
+        "start": "2026-08-17T11:00",
+        "end": null,
+        "location": "ritzer",
+        "description": {
+            "de": "<p>DJ's: Big-T &amp; der Honkomp</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "ritzer_heimatgefuehle-der-letzte-abend-auf-dem-stoppelmarkt_05",
+        "name": {
+            "de": "Heimatgefühle - der letzte Abend auf dem Stoppelmarkt"
+        },
+        "start": "2026-08-18T19:00",
         "end": null,
         "location": "ritzer",
         "description": null,
@@ -1592,25 +852,11 @@
         "isOfficial": false
     },
     {
-        "slug": "ritzer_dj-flowz-dj-big-t_05",
+        "slug": "schaefers-fetenscheune_party-two4beats_00",
         "name": {
-            "de": "DJ Flowz & DJ Big T"
+            "de": "Party Two4Beats"
         },
-        "start": "2025-08-18T19:00",
-        "end": null,
-        "location": "ritzer",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "schaefers-fetenscheune_two4beats_00",
-        "name": {
-            "de": "two4beats"
-        },
-        "start": "2025-08-14T19:00",
+        "start": "2026-08-13T19:00",
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
@@ -1620,11 +866,11 @@
         "isOfficial": false
     },
     {
-        "slug": "schaefers-fetenscheune_two4beats_01",
+        "slug": "schaefers-fetenscheune_party-two4beats_01",
         "name": {
-            "de": "two4beats"
+            "de": "Party Two4Beats"
         },
-        "start": "2025-08-15T19:00",
+        "start": "2026-08-14T19:00",
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
@@ -1634,11 +880,11 @@
         "isOfficial": false
     },
     {
-        "slug": "schaefers-fetenscheune_two4beats_02",
+        "slug": "schaefers-fetenscheune_party-two4beats_02",
         "name": {
-            "de": "two4beats"
+            "de": "Party Two4Beats"
         },
-        "start": "2025-08-16T19:00",
+        "start": "2026-08-15T19:00",
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
@@ -1648,11 +894,27 @@
         "isOfficial": false
     },
     {
-        "slug": "schaefers-fetenscheune_fruehstueck-von-10-00-bis-12-00-uhr_03",
+        "slug": "schaefers-fetenscheune_fruehstueck-fruehstueck-auf-anmeldung_03",
         "name": {
-            "de": "Frühstück von 10:00 bis 12:00 Uhr "
+            "de": "Frühstück Frühstück auf Anmeldung"
         },
-        "start": "2025-08-18T10:00",
+        "start": "2026-08-17T10:00",
+        "end": null,
+        "location": "schaefers-fetenscheune",
+        "description": {
+            "de": "<p>von 10:00 bis 12:00 Uhr&nbsp;</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "schaefers-fetenscheune_party-two4beats_04",
+        "name": {
+            "de": "Party Two4Beats"
+        },
+        "start": "2026-08-17T13:00",
         "end": null,
         "location": "schaefers-fetenscheune",
         "description": null,
@@ -1662,117 +924,11 @@
         "isOfficial": false
     },
     {
-        "slug": "schaefers-fetenscheune_two4beats_04",
+        "slug": "stratmanns-zelt_take-five_00",
         "name": {
-            "de": "two4beats"
+            "de": "Take Five"
         },
-        "start": "2025-08-18T13:00",
-        "end": null,
-        "location": "schaefers-fetenscheune",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "sir-george_wednesday-overdrive_00",
-        "name": {
-            "de": "Wednesday Overdrive"
-        },
-        "start": "2025-08-14T18:31",
-        "end": null,
-        "location": "sir-george",
-        "description": {
-            "de": "<p>Live Musik</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "sir-george_wednesday-overdrive_01",
-        "name": {
-            "de": "Wednesday Overdrive"
-        },
-        "start": "2025-08-15T21:00",
-        "end": null,
-        "location": "sir-george",
-        "description": {
-            "de": "<p>Live Musik - Motto \"Rock-Nacht\"</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "sir-george_old-school-disco-musik_02",
-        "name": {
-            "de": "Old School Disco Musik"
-        },
-        "start": "2025-08-16T21:00",
-        "end": null,
-        "location": "sir-george",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "sir-george_tag-der-vereine_03",
-        "name": {
-            "de": "Tag der Vereine"
-        },
-        "start": "2025-08-17T21:00",
-        "end": null,
-        "location": "sir-george",
-        "description": {
-            "de": "<p>Unsere Vereine. Unser Tag. Unser Stoppelmarkt.</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "sir-george_classic-monday-mit-dj-tommi_04",
-        "name": {
-            "de": "Classic Monday mit DJ Tommi"
-        },
-        "start": "2025-08-18T20:00",
-        "end": null,
-        "location": "sir-george",
-        "description": null,
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "sir-george_resteverzehr_05",
-        "name": {
-            "de": "Resteverzehr"
-        },
-        "start": "2025-08-19T14:00",
-        "end": null,
-        "location": "sir-george",
-        "description": {
-            "de": "<p>Alles muss raus!</p>"
-        },
-        "participants": [],
-        "tags": [],
-        "websites": [],
-        "isOfficial": false
-    },
-    {
-        "slug": "stratmanns-zelt_take-five-und-dj-sascha-schulze_00",
-        "name": {
-            "de": "Take Five und DJ Sascha Schulze"
-        },
-        "start": "2025-08-14T19:00",
+        "start": "2026-08-13T19:00",
         "end": null,
         "location": "stratmanns-zelt",
         "description": null,
@@ -1782,11 +938,11 @@
         "isOfficial": false
     },
     {
-        "slug": "stratmanns-zelt_play-high-und-dj-sascha-schulze_01",
+        "slug": "stratmanns-zelt_play-high_01",
         "name": {
-            "de": "Play High und DJ Sascha Schulze"
+            "de": "Play High"
         },
-        "start": "2025-08-15T19:00",
+        "start": "2026-08-14T19:00",
         "end": null,
         "location": "stratmanns-zelt",
         "description": null,
@@ -1796,11 +952,11 @@
         "isOfficial": false
     },
     {
-        "slug": "stratmanns-zelt_sound-traffic-und-dj-sascha-schulze_02",
+        "slug": "stratmanns-zelt_sound-traffic_02",
         "name": {
-            "de": "Sound Traffic und DJ Sascha Schulze"
+            "de": "Sound Traffic"
         },
-        "start": "2025-08-16T19:00",
+        "start": "2026-08-15T19:00",
         "end": null,
         "location": "stratmanns-zelt",
         "description": null,
@@ -1810,11 +966,11 @@
         "isOfficial": false
     },
     {
-        "slug": "stratmanns-zelt_dj-sascha-schulze_03",
+        "slug": "stratmanns-zelt_dj-sascha-schulz_03",
         "name": {
-            "de": "DJ Sascha Schulze"
+            "de": "DJ Sascha Schulz"
         },
-        "start": "2025-08-17T11:00",
+        "start": "2026-08-16T11:00",
         "end": null,
         "location": "stratmanns-zelt",
         "description": null,
@@ -1824,27 +980,25 @@
         "isOfficial": false
     },
     {
-        "slug": "stratmanns-zelt_sound-traffic-und-dj-sascha-schulze-fruehstueck-und-mittagessen_04",
+        "slug": "stratmanns-zelt_sound-traffic_04",
         "name": {
-            "de": "Sound Traffic und DJ Sascha Schulze, Frühstück und Mittagessen"
+            "de": "Sound Traffic"
         },
-        "start": "2025-08-18T09:00",
+        "start": "2026-08-17T09:00",
         "end": null,
         "location": "stratmanns-zelt",
-        "description": {
-            "de": "<p>Sound Traffic und DJ Sascha Schulze</p>\n<p>Frühstück und Mittagessen</p>"
-        },
+        "description": null,
         "participants": [],
         "tags": [],
         "websites": [],
         "isOfficial": false
     },
     {
-        "slug": "stratmanns-zelt_dj-sascha-schulze_05",
+        "slug": "stratmanns-zelt_dj-sascha-schulz_05",
         "name": {
-            "de": "DJ Sascha Schulze"
+            "de": "DJ Sascha Schulz"
         },
-        "start": "2025-08-19T14:00",
+        "start": "2026-08-18T14:00",
         "end": null,
         "location": "stratmanns-zelt",
         "description": null,
