@@ -1,0 +1,4309 @@
+{
+  "slug": "bakum-und-essen",
+  "name": "Bakum und Essen",
+  "operator": "operator_wilmering",
+  "additionalInfo": {},
+  "stations": [
+    {
+      "slug": "bakum-und-essen_essen-grundschule",
+      "name": "Essen, Grundschule",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 570
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 420
+        }
+      ],
+      "outward": [],
+      "returns": []
+    },
+    {
+      "slug": "bakum-und-essen_essen-bahnhof",
+      "name": "Essen, Bahnhof",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 570
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 420
+        }
+      ],
+      "outward": [],
+      "returns": []
+    },
+    {
+      "slug": "bakum-und-essen_essen-markt",
+      "name": "Essen, Markt",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 570
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 420
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:21",
+              "arrival": "2026-08-15T15:04"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-15",
+          "departures": [],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_uptloh-tellmann",
+      "name": "Uptloh, Tellmann",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 570
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 420
+        }
+      ],
+      "outward": [],
+      "returns": []
+    },
+    {
+      "slug": "bakum-und-essen_bevern-feuerwehr",
+      "name": "Bevern, Feuerwehr",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 530
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [],
+      "returns": []
+    },
+    {
+      "slug": "bakum-und-essen_addrup-wernsing",
+      "name": "Addrup, Wernsing",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 530
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:31",
+              "arrival": "2026-08-15T15:04"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T14:45",
+              "arrival": "2026-08-17T15:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-15",
+          "departures": [],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_luesche-bueter",
+      "name": "Lüsche, Büter",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 530
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:33",
+              "arrival": "2026-08-15T15:04"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T14:47",
+              "arrival": "2026-08-17T15:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-15",
+          "departures": [],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_carum-ort",
+      "name": "Carum, Ort",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 530
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 370
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:30",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:00",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:30",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T18:00",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:30",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:00",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:00",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:15",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:00",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T18:00",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:00",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_luesche-post",
+      "name": "Lüsche, Post",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 510
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 340
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:40",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:10",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:40",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:34",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:10",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:40",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:10",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:10",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:25",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:10",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:48",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:10",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:10",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_luesche-abeln",
+      "name": "Lüsche, Abeln",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 510
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 340
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:41",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:11",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:41",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:35",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:11",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:41",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:11",
+              "arrival": "2026-08-16T15:50"
+            },
+            {
+              "time": "2026-08-16T18:11",
+              "arrival": "2026-08-16T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:26",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:11",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:49",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:11",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:00",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T19:00"
+            },
+            {
+              "time": "2026-08-16T23:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_hausstette-kreuz",
+      "name": "Hausstette, Kreuz",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:43",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:13",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:43",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:36",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:13",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:43",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:13",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:13",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:28",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:13",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:50",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:13",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:13",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_hausstette-buehrmann",
+      "name": "Hausstette, Bührmann",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:45",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:15",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:45",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:37",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:15",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:45",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:15",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:15",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:30",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:15",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:51",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:15",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:15",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_hausstette-tiemerding",
+      "name": "Hausstette, Tiemerding",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:50",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:20",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:50",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:34",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:10",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:40",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:20",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:20",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:35",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:20",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:52",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:20",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:20",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_hausstette-schule",
+      "name": "Hausstette, Schule",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:51",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:21",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:51",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:39",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:21",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:51",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:21",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:21",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:36",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:21",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:53",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:21",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:21",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_hausstette-koops-muehle",
+      "name": "Hausstette, Koops Mühle",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:52",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:22",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:52",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:40",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:22",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:52",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:22",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:22",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:37",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:22",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:54",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:22",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:22",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_vestrup-kellermann",
+      "name": "Vestrup, Kellermann",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:54",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:24",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:54",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:42",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:24",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:54",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:24",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:24",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:39",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:24",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:56",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:24",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:24",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_vestrup-kirche",
+      "name": "Vestrup, Kirche",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:55",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:25",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:55",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:43",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:25",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:55",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:25",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:25",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:40",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:25",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:57",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:25",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:25",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_vestrup-bahnhof",
+      "name": "Vestrup, Bahnhof",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 370
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 270
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:56",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:26",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:56",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:44",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:26",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:56",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:26",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:26",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:41",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:26",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:58",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:26",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:26",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_westerbakum-viehverwertung",
+      "name": "Westerbakum, Viehverwertung",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T19:57",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:27",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T19:57",
+              "arrival": "2026-08-14T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:45",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:27",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T19:57",
+              "arrival": "2026-08-15T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:27",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:27",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:42",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:27",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T14:59",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:27",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:27",
+              "arrival": "2026-08-18T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_bakum-rathaus",
+      "name": "Bakum, Rathaus",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T20:00",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:30",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T20:00",
+              "arrival": "2026-08-14T20:20"
+            },
+            {
+              "time": "2026-08-14T21:00",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T22:00",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:00",
+              "arrival": "2026-08-14T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:47",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:30",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T20:00",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T21:00",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T22:00",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:00",
+              "arrival": "2026-08-15T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:30",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:30",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:45",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:30",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T15:01",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:30",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:30",
+              "arrival": "2026-08-18T18:50"
+            },
+            {
+              "time": "2026-08-18T20:30",
+              "arrival": "2026-08-18T20:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-14T20:30"
+            },
+            {
+              "time": "2026-08-14T21:30"
+            },
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-15T20:30"
+            },
+            {
+              "time": "2026-08-15T21:30"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T19:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_bakum-kirchesch",
+      "name": "Bakum, Kirchesch",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T20:02",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:32",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T20:02",
+              "arrival": "2026-08-14T20:20"
+            },
+            {
+              "time": "2026-08-14T21:02",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T22:02",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:02",
+              "arrival": "2026-08-14T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:49",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:32",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T20:02",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T21:02",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T22:02",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:02",
+              "arrival": "2026-08-15T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:32",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:32",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:47",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:32",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T15:03",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:32",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:32",
+              "arrival": "2026-08-18T18:50"
+            },
+            {
+              "time": "2026-08-18T20:32",
+              "arrival": "2026-08-18T20:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-14T20:30"
+            },
+            {
+              "time": "2026-08-14T21:30"
+            },
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-15T20:30"
+            },
+            {
+              "time": "2026-08-15T21:30"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T19:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_elmelage",
+      "name": "Elmelage",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 350
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 220
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T20:03",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:33",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T20:03",
+              "arrival": "2026-08-14T20:20"
+            },
+            {
+              "time": "2026-08-14T21:03",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T22:03",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:03",
+              "arrival": "2026-08-14T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:50",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:33",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T20:03",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T21:03",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T22:03",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:03",
+              "arrival": "2026-08-15T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:33",
+              "arrival": "2026-08-16T19:50"
+            },
+            {
+              "time": "2026-08-16T19:33",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:48",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:33",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T15:04",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:33",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:33",
+              "arrival": "2026-08-18T18:55"
+            },
+            {
+              "time": "2026-08-18T20:33",
+              "arrival": "2026-08-18T20:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-14T20:30"
+            },
+            {
+              "time": "2026-08-14T21:30"
+            },
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-15T20:30"
+            },
+            {
+              "time": "2026-08-15T21:30"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T19:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_schledehausen-kreuz",
+      "name": "Schledehausen, Kreuz",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 300
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T20:05",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:35",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T20:05",
+              "arrival": "2026-08-14T20:20"
+            },
+            {
+              "time": "2026-08-14T21:05",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T22:05",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:05",
+              "arrival": "2026-08-14T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:51",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:35",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T20:05",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T21:05",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T22:05",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:05",
+              "arrival": "2026-08-15T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:35",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:35",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:50",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:35",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T15:05",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:35",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:35",
+              "arrival": "2026-08-18T18:50"
+            },
+            {
+              "time": "2026-08-18T20:35",
+              "arrival": "2026-08-18T20:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-14T20:30"
+            },
+            {
+              "time": "2026-08-14T21:30"
+            },
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-15T20:30"
+            },
+            {
+              "time": "2026-08-15T21:30"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T19:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_schledehausen-buessing",
+      "name": "Schledehausen, Büssing",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 300
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T20:08",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:38",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T20:08",
+              "arrival": "2026-08-14T20:20"
+            },
+            {
+              "time": "2026-08-14T21:08",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T22:08",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:08",
+              "arrival": "2026-08-14T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:52",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:38",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T20:08",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T21:08",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T22:08",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:08",
+              "arrival": "2026-08-15T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:38",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:38",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:53",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:38",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T15:06",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:38",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:38",
+              "arrival": "2026-08-18T18:50"
+            },
+            {
+              "time": "2026-08-18T20:38",
+              "arrival": "2026-08-18T20:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-14T20:30"
+            },
+            {
+              "time": "2026-08-14T21:30"
+            },
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-15T20:30"
+            },
+            {
+              "time": "2026-08-15T21:30"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T19:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "bakum-und-essen_schledehausen-toebben",
+      "name": "Schledehausen, Többen",
+      "isNew": false,
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 300
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 180
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T20:10",
+              "arrival": "2026-08-13T20:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T18:40",
+              "arrival": "2026-08-14T18:50"
+            },
+            {
+              "time": "2026-08-14T20:10",
+              "arrival": "2026-08-14T20:20"
+            },
+            {
+              "time": "2026-08-14T21:10",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T22:10",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:10",
+              "arrival": "2026-08-14T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T14:53",
+              "arrival": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T18:40",
+              "arrival": "2026-08-15T18:50"
+            },
+            {
+              "time": "2026-08-15T20:10",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T21:10",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T22:10",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:10",
+              "arrival": "2026-08-15T23:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T16:40",
+              "arrival": "2026-08-16T16:50"
+            },
+            {
+              "time": "2026-08-16T19:40",
+              "arrival": "2026-08-16T19:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:55",
+              "arrival": "2026-08-17T09:05"
+            },
+            {
+              "time": "2026-08-17T10:40",
+              "arrival": "2026-08-17T10:50"
+            },
+            {
+              "time": "2026-08-17T15:07",
+              "arrival": "2026-08-17T15:20"
+            },
+            {
+              "time": "2026-08-17T18:40",
+              "arrival": "2026-08-17T18:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T18:40",
+              "arrival": "2026-08-18T18:50"
+            },
+            {
+              "time": "2026-08-18T20:40",
+              "arrival": "2026-08-18T20:50"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-13",
+          "departures": [
+            {
+              "time": "2026-08-13T23:00"
+            },
+            {
+              "time": "2026-08-14T01:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:00"
+            },
+            {
+              "time": "2026-08-14T20:30"
+            },
+            {
+              "time": "2026-08-14T21:30"
+            },
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T01:30"
+            },
+            {
+              "time": "2026-08-15T02:30"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T19:00"
+            },
+            {
+              "time": "2026-08-15T20:30"
+            },
+            {
+              "time": "2026-08-15T21:30"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T01:30"
+            },
+            {
+              "time": "2026-08-16T02:30"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-16",
+          "departures": [
+            {
+              "time": "2026-08-16T15:00"
+            },
+            {
+              "time": "2026-08-16T18:00"
+            },
+            {
+              "time": "2026-08-16T21:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T17:00"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:30"
+            },
+            {
+              "time": "2026-08-18T02:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-18",
+          "departures": [
+            {
+              "time": "2026-08-18T17:00"
+            },
+            {
+              "time": "2026-08-18T19:00"
+            },
+            {
+              "time": "2026-08-18T22:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    }
+  ],
+  "arrivalStationSlug": "busbahnhof_west"
+}

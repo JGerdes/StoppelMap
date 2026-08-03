@@ -2,8 +2,7 @@
   "slug": "calveslage",
   "name": "Calveslage",
   "operator": "operator_wilmering",
-  "additionalInfo": {
-  },
+  "additionalInfo": {},
   "stations": [
     {
       "slug": "calveslage_lohe-baumann",
@@ -25,53 +24,53 @@
       ],
       "outward": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T19:33",
-              "arrival": "2025-08-14T19:53"
+              "time": "2026-08-13T19:33",
+              "arrival": "2026-08-13T19:53"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-15T19:33",
-              "arrival": "2025-08-15T19:53"
+              "time": "2026-08-14T19:33",
+              "arrival": "2026-08-14T19:53"
             },
             {
-              "time": "2025-08-15T20:43",
-              "arrival": "2025-08-15T21:03"
+              "time": "2026-08-14T20:43",
+              "arrival": "2026-08-14T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-16T19:33",
-              "arrival": "2025-08-16T19:53"
+              "time": "2026-08-15T19:33",
+              "arrival": "2026-08-15T19:53"
             },
             {
-              "time": "2025-08-16T20:43",
-              "arrival": "2025-08-16T21:03"
+              "time": "2026-08-15T20:43",
+              "arrival": "2026-08-15T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T10:48",
-              "arrival": "2025-08-18T11:08"
+              "time": "2026-08-17T10:48",
+              "arrival": "2026-08-17T11:08"
             },
             {
-              "time": "2025-08-18T15:48",
-              "arrival": "2025-08-18T16:08"
+              "time": "2026-08-17T15:48",
+              "arrival": "2026-08-17T16:08"
             }
           ],
           "laterDepartureOnDemand": false
@@ -79,37 +78,37 @@
       ],
       "returns": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T23:00"
+              "time": "2026-08-13T23:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-16T00:00"
+              "time": "2026-08-15T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-17T00:00"
+              "time": "2026-08-16T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T20:30"
+              "time": "2026-08-17T20:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -136,53 +135,53 @@
       ],
       "outward": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T19:32",
-              "arrival": "2025-08-14T19:53"
+              "time": "2026-08-13T19:32",
+              "arrival": "2026-08-13T19:53"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-15T19:32",
-              "arrival": "2025-08-15T19:53"
+              "time": "2026-08-14T19:32",
+              "arrival": "2026-08-14T19:53"
             },
             {
-              "time": "2025-08-15T20:42",
-              "arrival": "2025-08-15T21:03"
+              "time": "2026-08-14T20:42",
+              "arrival": "2026-08-14T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-16T19:32",
-              "arrival": "2025-08-16T19:53"
+              "time": "2026-08-15T19:32",
+              "arrival": "2026-08-15T19:53"
             },
             {
-              "time": "2025-08-16T20:42",
-              "arrival": "2025-08-16T21:03"
+              "time": "2026-08-15T20:42",
+              "arrival": "2026-08-15T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T10:47",
-              "arrival": "2025-08-18T11:08"
+              "time": "2026-08-17T10:47",
+              "arrival": "2026-08-17T11:08"
             },
             {
-              "time": "2025-08-18T15:47",
-              "arrival": "2025-08-18T16:08"
+              "time": "2026-08-17T15:47",
+              "arrival": "2026-08-17T16:08"
             }
           ],
           "laterDepartureOnDemand": false
@@ -190,37 +189,37 @@
       ],
       "returns": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T23:00"
+              "time": "2026-08-13T23:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-16T00:00"
+              "time": "2026-08-15T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-17T00:00"
+              "time": "2026-08-16T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T20:30"
+              "time": "2026-08-17T20:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -247,53 +246,53 @@
       ],
       "outward": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T19:30",
-              "arrival": "2025-08-14T19:53"
+              "time": "2026-08-13T19:30",
+              "arrival": "2026-08-13T19:53"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-15T19:30",
-              "arrival": "2025-08-15T19:53"
+              "time": "2026-08-14T19:30",
+              "arrival": "2026-08-14T19:53"
             },
             {
-              "time": "2025-08-15T20:40",
-              "arrival": "2025-08-15T21:03"
+              "time": "2026-08-14T20:40",
+              "arrival": "2026-08-14T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-16T19:30",
-              "arrival": "2025-08-16T19:53"
+              "time": "2026-08-15T19:30",
+              "arrival": "2026-08-15T19:53"
             },
             {
-              "time": "2025-08-16T20:40",
-              "arrival": "2025-08-16T21:03"
+              "time": "2026-08-15T20:40",
+              "arrival": "2026-08-15T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T10:45",
-              "arrival": "2025-08-18T11:08"
+              "time": "2026-08-17T10:45",
+              "arrival": "2026-08-17T11:08"
             },
             {
-              "time": "2025-08-18T15:45",
-              "arrival": "2025-08-18T16:08"
+              "time": "2026-08-17T15:45",
+              "arrival": "2026-08-17T16:08"
             }
           ],
           "laterDepartureOnDemand": false
@@ -301,37 +300,37 @@
       ],
       "returns": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T23:00"
+              "time": "2026-08-13T23:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-16T00:00"
+              "time": "2026-08-15T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-17T00:00"
+              "time": "2026-08-16T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T20:30"
+              "time": "2026-08-17T20:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -358,53 +357,53 @@
       ],
       "outward": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T19:34",
-              "arrival": "2025-08-14T19:53"
+              "time": "2026-08-13T19:34",
+              "arrival": "2026-08-13T19:53"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-15T19:34",
-              "arrival": "2025-08-15T19:53"
+              "time": "2026-08-14T19:34",
+              "arrival": "2026-08-14T19:53"
             },
             {
-              "time": "2025-08-15T20:44",
-              "arrival": "2025-08-15T21:03"
+              "time": "2026-08-14T20:44",
+              "arrival": "2026-08-14T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-16T19:34",
-              "arrival": "2025-08-16T19:53"
+              "time": "2026-08-15T19:34",
+              "arrival": "2026-08-15T19:53"
             },
             {
-              "time": "2025-08-16T20:44",
-              "arrival": "2025-08-16T21:03"
+              "time": "2026-08-15T20:44",
+              "arrival": "2026-08-15T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T10:49",
-              "arrival": "2025-08-18T11:08"
+              "time": "2026-08-17T10:49",
+              "arrival": "2026-08-17T11:08"
             },
             {
-              "time": "2025-08-18T15:49",
-              "arrival": "2025-08-18T16:08"
+              "time": "2026-08-17T15:49",
+              "arrival": "2026-08-17T16:08"
             }
           ],
           "laterDepartureOnDemand": false
@@ -412,37 +411,37 @@
       ],
       "returns": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T23:00"
+              "time": "2026-08-13T23:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-16T00:00"
+              "time": "2026-08-15T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-17T00:00"
+              "time": "2026-08-16T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T20:30"
+              "time": "2026-08-17T20:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -469,53 +468,53 @@
       ],
       "outward": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T19:39",
-              "arrival": "2025-08-14T19:53"
+              "time": "2026-08-13T19:39",
+              "arrival": "2026-08-13T19:53"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-15T19:39",
-              "arrival": "2025-08-15T19:53"
+              "time": "2026-08-14T19:39",
+              "arrival": "2026-08-14T19:53"
             },
             {
-              "time": "2025-08-15T20:49",
-              "arrival": "2025-08-15T21:03"
+              "time": "2026-08-14T20:49",
+              "arrival": "2026-08-14T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-16T19:39",
-              "arrival": "2025-08-16T19:53"
+              "time": "2026-08-15T19:39",
+              "arrival": "2026-08-15T19:53"
             },
             {
-              "time": "2025-08-16T20:49",
-              "arrival": "2025-08-16T21:03"
+              "time": "2026-08-15T20:49",
+              "arrival": "2026-08-15T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T10:54",
-              "arrival": "2025-08-18T11:08"
+              "time": "2026-08-17T10:54",
+              "arrival": "2026-08-17T11:08"
             },
             {
-              "time": "2025-08-18T15:54",
-              "arrival": "2025-08-18T16:08"
+              "time": "2026-08-17T15:54",
+              "arrival": "2026-08-17T16:08"
             }
           ],
           "laterDepartureOnDemand": false
@@ -523,37 +522,37 @@
       ],
       "returns": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T23:00"
+              "time": "2026-08-13T23:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-16T00:00"
+              "time": "2026-08-15T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-17T00:00"
+              "time": "2026-08-16T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T20:30"
+              "time": "2026-08-17T20:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -580,53 +579,53 @@
       ],
       "outward": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T19:41",
-              "arrival": "2025-08-14T19:53"
+              "time": "2026-08-13T19:41",
+              "arrival": "2026-08-13T19:53"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-15T19:41",
-              "arrival": "2025-08-15T19:53"
+              "time": "2026-08-14T19:41",
+              "arrival": "2026-08-14T19:53"
             },
             {
-              "time": "2025-08-15T20:51",
-              "arrival": "2025-08-15T21:03"
+              "time": "2026-08-14T20:51",
+              "arrival": "2026-08-14T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-16T19:41",
-              "arrival": "2025-08-16T19:53"
+              "time": "2026-08-15T19:41",
+              "arrival": "2026-08-15T19:53"
             },
             {
-              "time": "2025-08-16T20:51",
-              "arrival": "2025-08-16T21:03"
+              "time": "2026-08-15T20:51",
+              "arrival": "2026-08-15T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T10:56",
-              "arrival": "2025-08-18T11:08"
+              "time": "2026-08-17T10:56",
+              "arrival": "2026-08-17T11:08"
             },
             {
-              "time": "2025-08-18T15:56",
-              "arrival": "2025-08-18T16:08"
+              "time": "2026-08-17T15:56",
+              "arrival": "2026-08-17T16:08"
             }
           ],
           "laterDepartureOnDemand": false
@@ -634,37 +633,37 @@
       ],
       "returns": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T23:00"
+              "time": "2026-08-13T23:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-16T00:00"
+              "time": "2026-08-15T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-17T00:00"
+              "time": "2026-08-16T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T20:30"
+              "time": "2026-08-17T20:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -691,53 +690,53 @@
       ],
       "outward": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T19:43",
-              "arrival": "2025-08-14T19:53"
+              "time": "2026-08-13T19:43",
+              "arrival": "2026-08-13T19:53"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-15T19:43",
-              "arrival": "2025-08-15T19:53"
+              "time": "2026-08-14T19:43",
+              "arrival": "2026-08-14T19:53"
             },
             {
-              "time": "2025-08-15T20:53",
-              "arrival": "2025-08-15T21:03"
+              "time": "2026-08-14T20:53",
+              "arrival": "2026-08-14T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-16T19:43",
-              "arrival": "2025-08-16T19:53"
+              "time": "2026-08-15T19:43",
+              "arrival": "2026-08-15T19:53"
             },
             {
-              "time": "2025-08-16T20:53",
-              "arrival": "2025-08-16T21:03"
+              "time": "2026-08-15T20:53",
+              "arrival": "2026-08-15T21:03"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T10:58",
-              "arrival": "2025-08-18T11:08"
+              "time": "2026-08-17T10:58",
+              "arrival": "2026-08-17T11:08"
             },
             {
-              "time": "2025-08-18T15:58",
-              "arrival": "2025-08-18T16:08"
+              "time": "2026-08-17T15:58",
+              "arrival": "2026-08-17T16:08"
             }
           ],
           "laterDepartureOnDemand": false
@@ -745,37 +744,37 @@
       ],
       "returns": [
         {
-          "day": "2025-08-14",
+          "day": "2026-08-13",
           "departures": [
             {
-              "time": "2025-08-14T23:00"
+              "time": "2026-08-13T23:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-15",
+          "day": "2026-08-14",
           "departures": [
             {
-              "time": "2025-08-16T00:00"
+              "time": "2026-08-15T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-16",
+          "day": "2026-08-15",
           "departures": [
             {
-              "time": "2025-08-17T00:00"
+              "time": "2026-08-16T00:00"
             }
           ],
           "laterDepartureOnDemand": false
         },
         {
-          "day": "2025-08-18",
+          "day": "2026-08-17",
           "departures": [
             {
-              "time": "2025-08-18T20:30"
+              "time": "2026-08-17T20:30"
             }
           ],
           "laterDepartureOnDemand": false
