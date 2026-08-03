@@ -6,12 +6,13 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSl
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
+import com.jonasgerdes.stoppelmap.preparation.transportation.schomakerSundayDealPrices
 
 internal fun lohneMoorkamp() = createBusRoute {
     name = "Lohne (Voßberg - Moorkamp - Rießel)"
     operatorSlug = schomaker
     arrivalStationSlug = busbahnhofOst
-    fixedPrices = prices(adult = 400, children = 200, 3 to 14)
+    fixedPrices = prices(adult = 500, children = 250, 3 to 14) + schomakerSundayDealPrices
 
     returns {
         thursday {
@@ -29,14 +30,14 @@ internal fun lohneMoorkamp() = createBusRoute {
             "17:10" every 30.Minutes until "23:40"
         }
         monday {
-            "11:40" every 15.Minutes until "02:10"
+            "11:40" every 15.Minutes until "00:10"
         }
         tuesday {
-            "17:10" every 30.Minutes until "02:10"
+            "17:10" every 30.Minutes until "01:10"
         }
     }
 
-    addStation("Jägerstraße/Wangerooger Str.") {
+    addStation("Jägerstraße (Wangerooger Str.)") {
         outward {
             thursday {
                 "17:00" every 30.Minutes until "23:00"
@@ -61,14 +62,12 @@ internal fun lohneMoorkamp() = createBusRoute {
         }
     }
 
-    addStation("Voßberger Str./Reinekestr.", minutesAfterPrevious = 2)
-    addStation("Bakumer Str./Luchsweg", minutesAfterPrevious = 2)
+    addStation("Reinekestraße (Kreuzanlage)", minutesAfterPrevious = 2)
+    addStation("Luchsweg", minutesAfterPrevious = 2)
     addStation("Märschendorfer Str./Bruchweg", minutesAfterPrevious = 2)
-    addStation("Brandstraße/Stratmanns Hotel", minutesAfterPrevious = 1)
-    addStation("Brandstraße/Unter den Erlen", minutesAfterPrevious = 1)
-    addStation("Rießel/Dorfplatz", minutesAfterPrevious = 2)
-    addStation("Nasch", minutesAfterPrevious = 2) {
-        isNew = true
-    }
+    addStation("Brandstraße (Stratmanns Hotel)", minutesAfterPrevious = 1)
+    addStation("Unter den Erlen", minutesAfterPrevious = 1)
+    addStation("Rießel (Dorfplatz)", minutesAfterPrevious = 2)
+    addStation("Nasch", minutesAfterPrevious = 2)
 
 }

@@ -364,14 +364,18 @@ fun StationScope.pricesPerTrip(
 fun StationScope.prices(
     adult: Int,
     children: Int,
-    childrenAgeRange: Pair<Int?, Int>? = 3 to 11
+    childrenAgeRange: Pair<Int?, Int>? = 3 to 11,
+    additionalPrices: List<Fee>? = null
 ) {
     prices =
         com.jonasgerdes.stoppelmap.preparation.transportation.prices(
             adult,
             children,
             childrenAgeRange
-        )
+        ).let {
+            if (additionalPrices == null) it
+            else it + additionalPrices
+        }
 }
 
 

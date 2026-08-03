@@ -21,12 +21,12 @@ internal fun langenbergMuehlen() = createBusRoute {
             "00:50" every 60.Minutes until "03:50"
         }
         monday {
-            "12:00" every 120.Minutes until "02:00"
+            "12:00" every 120.Minutes until "00:00"
         }
     }
 
     addStation("Langenberg - Kirche") {
-        prices(500, 200, 3 to 14)
+        prices(600, 250, 3 to 14)
         outward {
             friday("19:00", "20:00", "21:00", "22:00")
             saturday("19:00", "20:00", "21:00", "22:00", "23:00")
@@ -35,21 +35,21 @@ internal fun langenbergMuehlen() = createBusRoute {
             }
         }
     }
-    addStation("Langenberg - Frilling", minutesAfterPrevious = 2) { prices(500, 200, 3 to 14) }
+    addStation("Langenberg - Frilling", minutesAfterPrevious = 2) { prices(600, 250, 3 to 14) }
     addStation("Steinfeld - Friedlandstraße", minutesAfterPrevious = 5) {
         prices(
-            500,
-            200,
+            600,
+            250,
             3 to 14
         )
     }
-    addStation("Steinfeld - Markt", minutesAfterPrevious = 3) { prices(500, 200, 3 to 14) }
-    addStation("Mühlen - Grundschule", minutesAfterPrevious = 10) { prices(500, 200, 3 to 14) }
-    addStation("Kroge - Grundschule", minutesAfterPrevious = 5) { prices(400, 200, 3 to 14) }
+    addStation("Steinfeld - Markt", minutesAfterPrevious = 3) { prices(600, 250, 3 to 14) }
+    addStation("Mühlen - Grundschule", minutesAfterPrevious = 10) { prices(600, 250, 3 to 14) }
+    addStation("Kroge - Grundschule", minutesAfterPrevious = 5) { prices(500, 250, 3 to 14) }
     addStation("Südlohne - Haltestelle DH-Str.", minutesAfterPrevious = 5) {
         prices(
-            400,
-            200,
+            500,
+            250,
             3 to 14
         )
     }

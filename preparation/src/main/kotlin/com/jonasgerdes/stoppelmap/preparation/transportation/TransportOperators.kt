@@ -1,7 +1,9 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation
 
+import com.jonasgerdes.stoppelmap.dto.data.Fee
 import com.jonasgerdes.stoppelmap.preparation.dsl.operator
 import com.jonasgerdes.stoppelmap.preparation.dsl.website
+import com.jonasgerdes.stoppelmap.preparation.localizedString
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.feldhaus
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.schomaker
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.vnn
@@ -32,4 +34,18 @@ val transportOperators = listOf(
     operator(slug = feldhaus, name = "Feldhaus Reisen") {
         website("https://www.feldhaus-reisen.de/linienverkehr/linienverkehr.html")
     },
+)
+
+val schomakerSundayDealPrices = listOf(
+    Fee(
+        name = localizedString(de = "Erwachsene (Sonntag)", en = "Adults (Sunday)"),
+        price = 300
+    ),
+    Fee(
+        name = localizedString(
+            de = "Kinder (Sonntag)",
+            en = "Children (Sunday)"
+        ),
+        price = 100,
+    ),
 )

@@ -6,12 +6,13 @@ import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSl
 import com.jonasgerdes.stoppelmap.preparation.transportation.addStation
 import com.jonasgerdes.stoppelmap.preparation.transportation.createBusRoute
 import com.jonasgerdes.stoppelmap.preparation.transportation.prices
+import com.jonasgerdes.stoppelmap.preparation.transportation.schomakerSundayDealPrices
 
 internal fun lohneStadt() = createBusRoute {
     name = "Lohne (Stadt)"
     operatorSlug = schomaker
     arrivalStationSlug = busbahnhofOst
-    fixedPrices = prices(adult = 400, children = 200, 3 to 14)
+    fixedPrices = prices(adult = 500, children = 250, 3 to 14) + schomakerSundayDealPrices
 
     returns {
         thursday {
@@ -29,14 +30,14 @@ internal fun lohneStadt() = createBusRoute {
             "17:15" every 30.Minutes until "23:45"
         }
         monday {
-            "11:45" every 15.Minutes until "02:15"
+            "11:45" every 15.Minutes until "00:15"
         }
         tuesday {
-            "17:15" every 30.Minutes until "02:15"
+            "17:15" every 30.Minutes until "01:15"
         }
     }
 
-    addStation("Busbahnhof, Falkenbergstraße") {
+    addStation("ZOB (Falkenbergstraße)") {
         outward {
             thursday {
                 "17:00" every 30.Minutes until "23:00"
@@ -62,12 +63,12 @@ internal fun lohneStadt() = createBusRoute {
     }
 
 
-    addStation("Brinkstraße, Landwehr", minutesAfterPrevious = 3)
-    addStation("Hamberg, Haltestelle", minutesAfterPrevious = 3)
-    addStation("Bergweg, Bruno Kleine", minutesAfterPrevious = 3)
-    addStation("Bergweg, Felta-Tankstelle", minutesAfterPrevious = 2)
-    addStation("Brägeler Straße, Imbiß Zerhusen", minutesAfterPrevious = 2)
-    addStation("Lindenstraße, Kino", minutesAfterPrevious = 2)
-    addStation("Lindenstraße, ehem. Schomaker", minutesAfterPrevious = 2)
-    addStation("Nordlohne - Gastw. Brinkmann", minutesAfterPrevious = 2)
+    addStation("Landwehr (Brinkstraße)", minutesAfterPrevious = 3)
+    addStation("Hamberg (Haltestelle)", minutesAfterPrevious = 3)
+    addStation("Bruno Kleine (Bergweg)", minutesAfterPrevious = 3)
+    addStation("Blau-Weiß-Halle (Bergweg)", minutesAfterPrevious = 2)
+    addStation("Imbiss Zerhusen (Brägeler Str.)", minutesAfterPrevious = 2)
+    addStation("Kino (Lindenstraße)", minutesAfterPrevious = 2)
+    addStation("Lindenstraße (ehem. Schomaker)", minutesAfterPrevious = 2)
+    addStation("Nordlohne - Brinkmann", minutesAfterPrevious = 2)
 }
