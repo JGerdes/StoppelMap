@@ -131,6 +131,7 @@ fun parseEvents(eventContainer: Elements?): List<Event>? {
 
 fun writeEventsToFile(
     descriptionFolder: File,
+    shortDescriptionFolder: File,
     eventsFile: File,
     eventsLocationFile: File,
     eventLocations: List<EventLocation>
@@ -145,10 +146,15 @@ fun writeEventsToFile(
 
     eventLocations.forEach { location ->
 
-        val file = File(descriptionFolder, "${location.slug}.html")
         if (location.description != null) {
+            val file = File(descriptionFolder, "${location.slug}.html")
             println("Write description of [${location.slug}] to $file (url was ${location.url})")
             file.writeText(location.description)
+        }
+        if (location.shortDescription != null) {
+            val file = File(shortDescriptionFolder, "${location.slug}.html")
+            println("Write short description of [${location.slug}] to $file (url was ${location.url})")
+            file.writeText(location.shortDescription)
         }
 
         events += location.events
@@ -190,12 +196,12 @@ class EventParser : KoinComponent {
     val settings: Settings by inject()
 
     suspend fun fetchAndParseEvents() {
-        val folder = settings.descriptionFolder.apply { mkdirs() }
         val eventsFile = settings.fetchedEventsFile.apply { createNewFile() }
         val marquees = parsePartyTentEvents()
 
         writeEventsToFile(
-            descriptionFolder = folder,
+            descriptionFolder = settings.descriptionFolder.apply { mkdirs() },
+            shortDescriptionFolder = settings.shortDescriptionFolder.apply { mkdirs() },
             eventsFile = eventsFile,
             eventLocations = marquees,
             eventsLocationFile = settings.eventLocationsFile

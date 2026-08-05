@@ -51,17 +51,16 @@ class PrepareStoppelMapData : KoinComponent {
 
         parseGeoData()
 
-        val geoEntities = parseGeoData.mapEntities.map {
-            val descriptionFile = File(settings.descriptionFolder, it.slug + ".html")
-            if (descriptionFile.exists()) {
-                val description = descriptionFile.readText().htmlToText()
-                if (description == null) it
-                else it.copy(
-                    description = mapOf(de to description)
-                )
-            } else {
-                it
-            }
+        val geoEntities = parseGeoData.mapEntities.map { entity ->
+            val description =
+                File(settings.descriptionFolder, entity.slug + ".html").takeIf { it.exists() }?.readText()?.htmlToText()
+            val shortDescription =
+                File(settings.shortDescriptionFolder, entity.slug + ".html").takeIf { it.exists() }?.readText()
+                    ?.htmlToText()
+            entity.copy(
+                description = description?.let { mapOf(de to it) } ?: entity.description,
+                shortDescription = shortDescription?.let { mapOf(de to it) } ?: entity.shortDescription
+            )
         }
 
         val scheduleData = prepareSchedule(

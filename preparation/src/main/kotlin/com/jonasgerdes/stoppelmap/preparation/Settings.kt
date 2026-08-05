@@ -13,7 +13,7 @@ data class Settings(
     val manualEventsFile: File,
     val crawledRoutesDirectory: File,
     val descriptionFolder: File,
-
+    val shortDescriptionFolder: File,
     val year: Int,
     val imageSettings: ImageSettings?,
 )

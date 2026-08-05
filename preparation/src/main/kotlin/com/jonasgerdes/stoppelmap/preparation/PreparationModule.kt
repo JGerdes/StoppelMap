@@ -29,6 +29,7 @@ val preparationModule = module {
             manualEventsFile = File(resources, "events/manual.json"),
             crawledRoutesDirectory = File(resources, "routes").also { if (it.exists().not()) it.mkdirs() },
             descriptionFolder = File(resources, "descriptions"),
+            shortDescriptionFolder = File(resources, "short_descriptions"),
             year = 2026,
             imageSettings = ImageSettings.fromEnv(),
         )

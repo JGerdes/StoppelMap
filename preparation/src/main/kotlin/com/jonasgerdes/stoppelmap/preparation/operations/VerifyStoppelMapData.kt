@@ -15,5 +15,10 @@ class VerifyStoppelMapData : KoinComponent {
                 System.err.println("ERR: No map entity for description ${file.nameWithoutExtension}")
             }
         }
+        settings.shortDescriptionFolder.listFiles().forEach { file ->
+            if (data.map.entities.none { it.slug == file.nameWithoutExtension }) {
+                System.err.println("ERR: No map entity for description ${file.nameWithoutExtension}")
+            }
+        }
     }
 }

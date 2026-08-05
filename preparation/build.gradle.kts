@@ -19,6 +19,12 @@ task("fetchEvents", JavaExec::class) {
     classpath = sourceSets["main"].runtimeClasspath
 }
 
+task("crawlDescriptions", JavaExec::class) {
+    group = "preparation"
+    mainClass.set("com.jonasgerdes.stoppelmap.preparation.map.crawler.CrawlRideDescriptionsKt")
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
 task("crawlBusRoutes", JavaExec::class) {
     group = "preparation"
     mainClass.set("com.jonasgerdes.stoppelmap.preparation.transportation.crawler.CrawlBusWebsitesKt")

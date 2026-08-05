@@ -26,6 +26,7 @@ data class MapEntity(
     val subType: SubTypeSlug? = null,
     val operator: OperatorSlug? = null,
     val aliases: List<Alias> = emptyList(),
+    val shortDescription: Localized<String>? = null,
     val description: Localized<String>? = null,
     val center: Location,
     val bbox: BoundingBox,
