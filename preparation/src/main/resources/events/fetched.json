@@ -170,6 +170,326 @@
         "isOfficial": false
     },
     {
+        "slug": "festzelt-bloemer_dj-rolf-brell_00",
+        "name": {
+            "de": "DJ Rolf Brell"
+        },
+        "start": "2026-08-13T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>DJ Rolf Brell von der Mobildisco Brell eröffnet unseren musikalischen Abend,&nbsp;</p>\n<p>Vereine willkommen, Happy Hour für ein gelungenes Opening</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_getraenkeausschank_01",
+        "name": {
+            "de": "Getränkeausschank"
+        },
+        "start": "2026-08-14T14:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>Getränkeausschank, angenehme Zeltatmosphäre, viele Sitzgelegenheiten</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_party-mit-dj-rolf-brell_02",
+        "name": {
+            "de": "Party mit DJ Rolf Brell"
+        },
+        "start": "2026-08-14T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>DJ Rolf Brell sorgt für beste Partylaune</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_kaffee-und-kuchen_03",
+        "name": {
+            "de": "Kaffee und Kuchen"
+        },
+        "start": "2026-08-15T14:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>frischer Kaffee und Kuchen, auch lactose- und glutenfrei, angenehme Zeltatmosphäre, viele Sitzgelegenheiten</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_musik-fuer-alle-mit-dj-rolf-brell_04",
+        "name": {
+            "de": "Musik für Alle mit DJ Rolf Brell"
+        },
+        "start": "2026-08-15T19:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>ab 19.00 Uhr startet DJ Rolf Brell, die musikalische Nacht beginnt</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_fruehstueck_05",
+        "name": {
+            "de": "Frühstück"
+        },
+        "start": "2026-08-16T09:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>Ab 9:00 Uhr kann bei Blömer`s gefrühstückt werden. Frische belegte Brötchen (div. Aufschnitt lactosefrei) und heißer Kaffee für einen genussvollen Sonntagsbeginn</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_black-sheep-linedancers_06",
+        "name": {
+            "de": "Black Sheep Linedancers"
+        },
+        "start": "2026-08-16T11:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>von 11:00 bis 17:00 Uhr veranstalten die Black Sheep Linedancers ihr Treffen und laden zum Mitmachen ein</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_kaffee-und-kuchen_07",
+        "name": {
+            "de": "Kaffee und Kuchen"
+        },
+        "start": "2026-08-16T13:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>ab 13:00 Uhr frischer Kuchen und Kaffee machen den Nachmittag gemütlich</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_happy-hour-und-dj-rolf_08",
+        "name": {
+            "de": "Happy Hour und DJ Rolf "
+        },
+        "start": "2026-08-16T18:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>DJ Rolf spielt Wunschlieder, das ist „Euer“ Abend</p>\n<p>Platz frei für alle, Musik, Happy Hour und Spaß, nicht nur für Gruppen</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_fruehstueck_09",
+        "name": {
+            "de": "Frühstück"
+        },
+        "start": "2026-08-17T09:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>Ab 9:00 Uhr Wachmacher Frühstück, mit frischen Brötchen, heißem Kaffee, der Grundstock für diesen Tag ( Gruppen unbedingt anmelden )</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_firmentreff-und-dj-rolf-brell_10",
+        "name": {
+            "de": "Firmentreff und DJ Rolf Brell"
+        },
+        "start": "2026-08-17T11:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>Firmentreff, der DJ startet gemütlich die Musik, beste Laune den ganzen Tag</p>\n<p>dank Ventilatoren gute Luft im Zelt</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-bloemer_familientag-kaffee-und-kuchen_11",
+        "name": {
+            "de": "Familientag / Kaffee und Kuchen"
+        },
+        "start": "2026-08-18T14:00",
+        "end": null,
+        "location": "festzelt-bloemer",
+        "description": {
+            "de": "<p>14:00 Kaffee und Kuchen zum letzten Mal.</p>\n<p><strong>Familientag</strong> mit ermäßigten Preisen</p>\n<p>Abends Musik nach Wunsch</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_markteroeffnung-mit-dj-laif-und-kurzauftritten-verschiedener-musikvereine_00",
+        "name": {
+            "de": "Markteröffnung mit DJ Laif und Kurzauftritten verschiedener Musikvereine "
+        },
+        "start": "2026-08-13T18:01",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_dj-laif-der-erfolgsgarant-fuer-beste-stimmung_01",
+        "name": {
+            "de": "DJ Laif – der Erfolgsgarant für beste Stimmung!"
+        },
+        "start": "2026-08-14T20:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_dj-laif-musik-vom-feinsten_02",
+        "name": {
+            "de": "DJ Laif – Musik vom Feinsten"
+        },
+        "start": "2026-08-15T20:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_familienfruehschoppen-mit-dem-kolping-orchester-vechta_03",
+        "name": {
+            "de": "Familienfrühschoppen mit dem Kolping-Orchester Vechta"
+        },
+        "start": "2026-08-16T11:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_south-o-burger-big-band_04",
+        "name": {
+            "de": "South-O-Burger Big Band"
+        },
+        "start": "2026-08-16T14:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_dr-beat-live-musik-zum-abtanzen_05",
+        "name": {
+            "de": "Dr. Beat Live – Musik zum Abtanzen"
+        },
+        "start": "2026-08-16T20:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_leckeres-fruehstueck-mit-frischen-brotspezialitaeten_06",
+        "name": {
+            "de": "Leckeres Frühstück mit frischen Brotspezialitäten"
+        },
+        "start": "2026-08-17T09:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": {
+            "de": "<p>Leckeres Frühstück mit frischen Brotspezialitäten, belegten Brötchen und verschiedenen Kaffeespezialitäten</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_dj-laif_07",
+        "name": {
+            "de": "DJ Laif"
+        },
+        "start": "2026-08-17T13:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "festzelt-grieshop_familientag-und-stimmungsvoller-marktausklang_08",
+        "name": {
+            "de": "Familientag und stimmungsvoller Marktausklang"
+        },
+        "start": "2026-08-18T14:00",
+        "end": null,
+        "location": "festzelt-grieshop",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
         "slug": "kombinat_dj-ansi_00",
         "name": {
             "de": "DJ Ansi"
