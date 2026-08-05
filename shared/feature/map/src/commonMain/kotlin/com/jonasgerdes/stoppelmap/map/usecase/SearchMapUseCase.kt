@@ -7,6 +7,8 @@ import com.jonasgerdes.stoppelmap.map.data.SubTypeRepository
 import com.jonasgerdes.stoppelmap.map.data.TagRepository
 import com.jonasgerdes.stoppelmap.map.model.MapIcon
 import com.jonasgerdes.stoppelmap.map.model.SearchResult
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlin.math.max
 
 class SearchMapUseCase(
@@ -15,25 +17,26 @@ class SearchMapUseCase(
     val offerRepository: OfferRepository,
     val tagRepository: TagRepository,
 ) {
-    suspend operator fun invoke(query: String): List<SearchResult> {
-        val cleanQuery = query.trim().lowercase()
-        return listOf(
-            searchByName(cleanQuery),
-            searchByAlias(cleanQuery),
-            searchByType(cleanQuery),
-            searchBySubType(cleanQuery),
-            searchByProduct(cleanQuery),
-            searchByTag(cleanQuery),
-        )
-            .flatten()
-            .distinctBy { it.term + it.resultEntities.joinToString { it.slug } }
-            .sortedWith { b, a -> // switched params to have desc sorting
-                when {
-                    a.score == b.score -> a.term.compareTo(b.term)
-                    else -> a.score.compareTo(b.score)
+    suspend operator fun invoke(query: String): List<SearchResult> =
+        withContext(Dispatchers.Default) {
+            val cleanQuery = query.trim().lowercase()
+            listOf(
+                searchByName(cleanQuery),
+                searchByAlias(cleanQuery),
+                searchByType(cleanQuery),
+                searchBySubType(cleanQuery),
+                searchByProduct(cleanQuery),
+                searchByTag(cleanQuery),
+            )
+                .flatten()
+                .distinctBy { it.term + it.resultEntities.joinToString { it.slug } }
+                .sortedWith { b, a -> // switched params to have desc sorting
+                    when {
+                        a.score == b.score -> a.term.compareTo(b.term)
+                        else -> a.score.compareTo(b.score)
+                    }
                 }
-            }
-    }
+        }
 
     private suspend fun searchByName(query: String): List<SearchResult> {
         val resultSlugs = mapEntityRepository.searchMapEntitiesByName(query)
@@ -51,16 +54,27 @@ class SearchMapUseCase(
 
     private suspend fun searchByAlias(query: String): List<SearchResult> {
         val byAlias = mapEntityRepository.searchByAlias(query)
-        val summaries = mapEntityRepository.getSummaryBySubType(byAlias.map { it.slug }.toSet())
+        val subTypeSummaries = mapEntityRepository.getSummaryBySubType(byAlias.map { it.slug }.toSet())
+        val entitySummaries = mapEntityRepository.getSummaryBySlugs(byAlias.map { it.slug }.toSet())
 
         return byAlias.mapNotNull {
-            summaries[it.slug]?.let { summaries ->
+            subTypeSummaries[it.slug]?.let { summaries ->
                 SearchResult(
                     term = it.alias,
                     icon = summaries.first().icon,
                     score = calculateScore(0.2f, query = query, term = it.alias),
                     resultEntities = summaries,
                     type = SearchResult.Type.Collection,
+                )
+            }
+        } + byAlias.mapNotNull { alias ->
+            entitySummaries.firstOrNull { it.slug == alias.slug }?.let { summary ->
+                SearchResult(
+                    term = alias.alias,
+                    icon = summary.icon,
+                    score = calculateScore(0.2f, query = query, term = alias.alias),
+                    resultEntities = listOf(summary),
+                    type = SearchResult.Type.SingleStall,
                 )
             }
         }

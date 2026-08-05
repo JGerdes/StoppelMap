@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preparation.operations
 
+import com.jonasgerdes.stoppelmap.data.shared.Locales
 import com.jonasgerdes.stoppelmap.dto.Locales.de
 import com.jonasgerdes.stoppelmap.dto.data.Alias
 import com.jonasgerdes.stoppelmap.dto.data.BoundingBox
@@ -16,6 +17,7 @@ import com.jonasgerdes.stoppelmap.preparation.definitions.SubTypeSlugs
 import com.jonasgerdes.stoppelmap.preparation.definitions.TagSlugs
 import com.jonasgerdes.stoppelmap.preparation.definitions.foodProducts
 import com.jonasgerdes.stoppelmap.preparation.definitions.gameSubTypes
+import com.jonasgerdes.stoppelmap.preparation.definitions.paymentOptions
 import com.jonasgerdes.stoppelmap.preparation.definitions.rideSubTypes
 import com.jonasgerdes.stoppelmap.preparation.definitions.typeAliases
 import com.jonasgerdes.stoppelmap.preparation.util.center
@@ -152,8 +154,14 @@ class ParseGeoData(
                     slug
                 }
             },
-            aliases = properties["alias"]?.splitBy(";", "|") {
-                Alias(string = it[0], locale = it.getOrNull(1))
+            aliases = properties["alias"]?.let { aliasString ->
+                if (aliasString.contains(';')) {
+                    aliasString.splitBy(";", "|") {
+                        Alias(string = it[0], locale = it.getOrNull(1))
+                    }
+                } else {
+                    listOf(Alias(aliasString, Locales.de), Alias(aliasString, Locales.en))
+                }
             } ?: emptyList(),
             description = properties["description"]?.let { mapOf(de to it) },
             center = Location(

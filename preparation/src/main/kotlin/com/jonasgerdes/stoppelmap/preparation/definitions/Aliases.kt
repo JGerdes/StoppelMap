@@ -38,7 +38,8 @@ val typeAliases = MapEntityType.entries.mapNotNull { type ->
         )
 
         MapEntityType.Info -> listOf(
-            Alias("Information"),
+            Alias("Information", de),
+            Alias("Information", en),
         )
 
         MapEntityType.Parking -> listOf(
@@ -52,7 +53,8 @@ val typeAliases = MapEntityType.entries.mapNotNull { type ->
             Alias("Toilette", de),
             Alias("Klo", de),
             Alias("Restroom", en),
-            Alias("WC"),
+            Alias("WC", de),
+            Alias("WC", en),
         )
 
         MapEntityType.Ride -> listOf(
@@ -67,7 +69,8 @@ val typeAliases = MapEntityType.entries.mapNotNull { type ->
 
         MapEntityType.Station -> null
         MapEntityType.Taxi -> listOf(
-            Alias("Taxi")
+            Alias("Taxi", de),
+            Alias("Taxi", en)
         )
 
         MapEntityType.RedCross -> null

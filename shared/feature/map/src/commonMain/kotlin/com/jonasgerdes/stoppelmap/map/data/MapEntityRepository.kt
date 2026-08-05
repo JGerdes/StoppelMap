@@ -40,7 +40,7 @@ class MapEntityRepository(
         mapEntityQueries.searchByName(query).executeAsList()
     }
 
-    suspend fun getSummaryBySlugs(slugs: Set<String>) = withContext(Dispatchers.IO) {
+    suspend fun getSummaryBySlugs(slugs: Set<String>): List<StallSummary> = withContext(Dispatchers.IO) {
         val entities = mapEntityQueries.getSummaryBySlug(slugs).executeAsList()
         val types = aliasQueries.getByReferenceSlug(entities.map { it.type.id }.toSet()).executeAsList()
             .groupBy({ it.referenceSlug }, { it.string })
