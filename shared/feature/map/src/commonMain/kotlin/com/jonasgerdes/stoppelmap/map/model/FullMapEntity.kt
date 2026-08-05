@@ -10,6 +10,7 @@ data class FullMapEntity(
     val type: MapEntityType,
     val subType: String?,
     val description: String?,
+    val shortDescription: String?,
     val location: Location,
     val bounds: BoundingBox,
     val icon: MapIcon,

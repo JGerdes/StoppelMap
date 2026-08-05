@@ -39,6 +39,13 @@ internal fun StoppelMapDatabase.addMapData(data: Map) {
                         "description"
                     )
                 },
+                shortDescriptionKey = mapEntity.shortDescription?.let {
+                    addLocalizedString(
+                        it,
+                        mapEntity.slug,
+                        "shortdescription"
+                    )
+                },
                 operator_ = mapEntity.operator,
                 priority = mapEntity.priority.toLong(),
                 isSearchable = mapEntity.isSearchable,

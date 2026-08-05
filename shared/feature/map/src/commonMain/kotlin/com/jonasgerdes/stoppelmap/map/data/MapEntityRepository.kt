@@ -106,6 +106,7 @@ class MapEntityRepository(
             subType = subType?.name?.takeIf { it != displayName },
             location = Location(lat = mapEntity.latitude, lng = mapEntity.longitude),
             description = mapEntity.description,
+            shortDescription = mapEntity.shortDescription,
             bounds = BoundingBox(
                 southLat = mapEntity.southLatitude,
                 westLng = mapEntity.westLongitude,

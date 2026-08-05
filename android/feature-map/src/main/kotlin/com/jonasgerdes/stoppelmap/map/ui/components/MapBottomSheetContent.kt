@@ -182,6 +182,9 @@ fun SingleMapEntityDetails(
     modifier: Modifier = Modifier,
 ) {
     Column(modifier, verticalArrangement = spacedBy(32.dp)) {
+        mapEntity.shortDescription?.let {
+            Text(it)
+        }
         if (mapEntity.images.isNotEmpty()) {
             if (mapEntity.images.size == 1) {
                 Row(
@@ -227,9 +230,6 @@ fun SingleMapEntityDetails(
                     )
                 }
             }
-        }
-        mapEntity.description?.let {
-            Text(it)
         }
         if (mapEntity.admissionFees.isNotEmpty()) {
             InfoCard {
@@ -336,6 +336,10 @@ fun SingleMapEntityDetails(
                     }
                 }
             }
+        }
+
+        mapEntity.description?.let {
+            Text(text = it)
         }
 
         if (mapEntity.websites.isNotEmpty()) {
