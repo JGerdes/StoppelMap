@@ -8,6 +8,7 @@ import com.jonasgerdes.stoppelmap.data.shared.Bounding_box
 import com.jonasgerdes.stoppelmap.data.shared.Fee
 import com.jonasgerdes.stoppelmap.data.shared.Location
 import com.jonasgerdes.stoppelmap.data.shared.Offer
+import com.jonasgerdes.stoppelmap.data.shared.Payment_option
 import com.jonasgerdes.stoppelmap.dto.data.Map
 import com.jonasgerdes.stoppelmap.dto.data.MapEntityType as DtoMapEntityType
 
@@ -97,6 +98,30 @@ internal fun StoppelMapDatabase.addMapData(data: Map) {
                         "fee"
                     ),
                     price = fee.price.toLong()
+                )
+            )
+        }
+        mapEntity.paymentOptions.forEachIndexed { index, option ->
+            payment_optionQueries.insert(
+                Payment_option(
+                    referenceSlug = mapEntity.slug,
+                    nameKey = addLocalizedString(
+                        option.name,
+                        mapEntity.slug,
+                        "payment_option",
+                        index.toString().padStart(2, '0'),
+                        "name"
+                    ),
+                    noteKey = option.note?.let { note ->
+                        addLocalizedString(
+                            note,
+                            mapEntity.slug,
+                            "payment_option",
+                            index.toString().padStart(2, '0'),
+                            "note"
+                        )
+                    },
+                    icon = option.icon,
                 )
             )
         }

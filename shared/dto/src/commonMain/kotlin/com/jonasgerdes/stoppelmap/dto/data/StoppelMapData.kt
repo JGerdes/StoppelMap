@@ -16,7 +16,7 @@ data class StoppelMapData(
     val schemaVersion: Int = StoppelMapData.schemaVersion
 
     companion object {
-        const val schemaVersion: Int = 2
+        const val schemaVersion: Int = 3
     }
 }
 

@@ -203,6 +203,13 @@ class ParseGeoData(
                         )
                     }
                 } ?: emptyList(),
+            paymentOptions = properties["paymentOptions"]?.split(";")
+                ?.mapNotNull { option ->
+                    paymentOptions[option] ?: option.removeSuffix(")").split('(').let { parts ->
+                        if (parts.size < 2) null
+                        else paymentOptions[parts[0]]?.copy(note = mapOf(Locales.de to parts[1]))
+                    }
+                } ?: emptyList(),
             images = properties["pictures"]?.split(";")
                 ?.map { image ->
                     val (url, blurHash, captions, copyrights, preferredTheme)

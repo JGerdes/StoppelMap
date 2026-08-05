@@ -66,6 +66,13 @@ data class Fee(
 )
 
 @Serializable
+data class PaymentOption(
+    val name: Localized<String>,
+    val note: Localized<String>? = null,
+    val icon: String? = null,
+)
+
+@Serializable
 data class PhoneNumber(
     val number: String,
     val formatted: String,

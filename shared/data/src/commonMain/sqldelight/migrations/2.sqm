@@ -1,0 +1,9 @@
+CREATE TABLE payment_option (
+    referenceSlug   TEXT NOT NULL,
+    nameKey         TEXT NOT NULL,
+    noteKey         TEXT,
+    icon            TEXT,
+    PRIMARY KEY (referenceSlug, nameKey, noteKey),
+    FOREIGN KEY(nameKey) REFERENCES localized_string(key),
+    FOREIGN KEY(noteKey) REFERENCES localized_string(key)
+);

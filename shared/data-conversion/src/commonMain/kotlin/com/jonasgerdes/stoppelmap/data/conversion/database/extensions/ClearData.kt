@@ -25,6 +25,7 @@ internal fun StoppelMapDatabase.clearData() {
     person_imageQueries.clear()
     phone_numberQueries.clear()
     productQueries.clear()
+    payment_optionQueries.clear()
     routeQueries.clear()
     serviceQueries.clear()
     stationQueries.clear()

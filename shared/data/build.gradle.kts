@@ -13,7 +13,7 @@ sqldelight {
             srcDirs.setFrom("src/commonMain/sqldelight")
             schemaOutputDirectory =
                 file("src/commonMain/sqldelight/com/jonasgerdes/stoppelmap/data/schema")
-            version = 1
+            version = 2
             verifyMigrations = true
         }
     }

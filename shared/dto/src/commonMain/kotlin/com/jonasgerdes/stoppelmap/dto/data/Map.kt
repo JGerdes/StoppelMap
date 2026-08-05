@@ -34,6 +34,7 @@ data class MapEntity(
     val offers: List<Offer> = emptyList(),
     val services: List<ServiceSlug> = emptyList(),
     val admissionFees: List<Fee> = emptyList(),
+    val paymentOptions: List<PaymentOption> = emptyList(),
     val images: List<Image> = emptyList(),
     val websites: List<Website> = emptyList(),
     val isSearchable: Boolean,
