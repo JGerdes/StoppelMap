@@ -56,6 +56,7 @@ val foodProducts = listOf(
     product(slug = "item_potatoes", de = "Kartoffeln", en = "Potatoes"),
     product(slug = "item_chinese", de = "Chinesisch", en = "Chinese"),
     product(slug = "item_spit_roast", de = "Spießbraten", en = "Spit roast"),
+    product(slug = "item_cheesesteak", de = "Cheesesteak", en = "Cheesesteak"),
     product(slug = "item_gyros", de = "Gyros", en = "Gyros"),
     product(slug = "item_kebap", de = "Kebap", en = "Kebap"),
     product(slug = "item_shashlik", de = "Schaschlik", en = "Shashlik"),

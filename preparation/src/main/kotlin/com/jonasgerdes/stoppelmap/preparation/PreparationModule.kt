@@ -20,7 +20,7 @@ val preparationModule = module {
         val staticServerDir = System.getenv("SERVER_STATIC_DIR")?.let { File(it) }
         Settings(
             databaseFile = File("database.db"),
-            geoJsonInput = File(resources, "stoma25.geojson"),
+            geoJsonInput = File(resources, "stoma26.geojson"),
             dataOutputDir = sharedAssets,
             staticServerDir = staticServerDir,
             tempDir = File("temp").also { it.mkdirs() },
