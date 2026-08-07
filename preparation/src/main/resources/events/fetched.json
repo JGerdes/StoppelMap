@@ -170,6 +170,116 @@
         "isOfficial": false
     },
     {
+        "slug": "die-flotte-das-partyschiff_breitner-live-auf-der-buehne_00",
+        "name": {
+            "de": "Breitner live auf der Bühne"
+        },
+        "start": "2026-08-13T21:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": {
+            "de": "<p>Mit seinem Mega-Hit&nbsp;<strong>„Baby Bell“</strong>&nbsp;und weiteren Partykrachern sorgt Breitner für echte Mallorca-Stimmung. Spätestens seit seinen Erfolgen auf den großen Partybühnen und seinen Millionen Streams gehört Breitner zu den angesagtesten Ballermann-Acts. Mitsingen, Mitfeiern und Eskalation garantiert!</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_dj-flow-musik-dj-fastbeat_01",
+        "name": {
+            "de": "DJ Flow Musik & DJ Fastbeat"
+        },
+        "start": "2026-08-14T20:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": {
+            "de": "<p>Party pur mit&nbsp;<strong>DJ Flow Musik</strong>&nbsp;&amp;&nbsp;<strong>DJ Fastbeat</strong>&nbsp;– die besten Schlager-, Party- und Ballermann-Hits bis tief in die Nacht.</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_volle-feierlaune-mit-dj-thom-k_02",
+        "name": {
+            "de": "Volle Feierlaune mit DJ Thom K"
+        },
+        "start": "2026-08-15T18:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": {
+            "de": "<p>Volle Feierlaune mit&nbsp;<strong>DJ Thom K</strong>&nbsp;– Stimmung, Hits und Party ohne Pause!</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_fruehschoppen_03",
+        "name": {
+            "de": "Frühschoppen"
+        },
+        "start": "2026-08-16T11:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": {
+            "de": "<p><strong>Frühschoppen</strong>&nbsp;mit bester Festzeltatmosphäre.</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_breitner_04",
+        "name": {
+            "de": "Breitner"
+        },
+        "start": "2026-08-16T19:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": {
+            "de": "<p>Noch einmal&nbsp;<strong>Breitner</strong>&nbsp;live auf unserer Bühne!</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_grosses-fruehstueck-fuer-vereine-firmen-cliquen_05",
+        "name": {
+            "de": "Großes Frühstück für Vereine, Firmen & Cliquen."
+        },
+        "start": "2026-08-17T10:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": null,
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
+        "slug": "die-flotte-das-partyschiff_calvin-kleinen_06",
+        "name": {
+            "de": "Calvin Kleinen"
+        },
+        "start": "2026-08-17T21:00",
+        "end": null,
+        "location": "die-flotte-das-partyschiff",
+        "description": {
+            "de": "<p><strong>Calvin Kleinen</strong>&nbsp;live mit seinem aktuellen Partyhit&nbsp;<strong>„Malle Maus“</strong>&nbsp;– der perfekte Abschluss für einen legendären Stoppelmarkt!</p>"
+        },
+        "participants": [],
+        "tags": [],
+        "websites": [],
+        "isOfficial": false
+    },
+    {
         "slug": "festzelt-bloemer_dj-rolf-brell_00",
         "name": {
             "de": "DJ Rolf Brell"
