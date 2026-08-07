@@ -1,6 +1,5 @@
 package com.jonasgerdes.stoppelmap.preparation.map.crawler
 
-import com.jonasgerdes.stoppelmap.preparation.schedule.utils.htmlToText
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.jsoup.Jsoup
@@ -49,7 +48,7 @@ class StoppelmarktDescriptionCrawler(
                         .removeSuffix("-1")
                         .removeSuffix("-2"),
                     url = locationUrl,
-                    shortDescription = it.select("p").firstOrNull()?.html()?.htmlToText()
+                    shortDescription = it.select("p").firstOrNull()?.html()
                 )
             }
     }
@@ -57,7 +56,7 @@ class StoppelmarktDescriptionCrawler(
     private fun fetchFullDescription(rideDescription: RideDescription): RideDescription {
         val detailBody = Jsoup.connect(baseUrl + rideDescription.url).get().body()
         val descriptionNodes = detailBody.select(".txtcnt p:not(.gm-style-mot)")
-        val description = descriptionNodes.html().htmlToText()
+        val description = descriptionNodes.outerHtml()
         return rideDescription.copy(description = description)
     }
 

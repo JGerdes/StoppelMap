@@ -19,6 +19,8 @@ import com.jonasgerdes.stoppelmap.preparation.definitions.subTypes
 import com.jonasgerdes.stoppelmap.preparation.definitions.tags
 import com.jonasgerdes.stoppelmap.preparation.definitions.typeAliases
 import com.jonasgerdes.stoppelmap.preparation.schedule.EventLocation
+import com.jonasgerdes.stoppelmap.preparation.schedule.utils.addPhoneLinks
+import com.jonasgerdes.stoppelmap.preparation.schedule.utils.cleanHtml
 import com.jonasgerdes.stoppelmap.preparation.schedule.utils.htmlToText
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateBusRoutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.generateTrainRoutes
@@ -53,7 +55,8 @@ class PrepareStoppelMapData : KoinComponent {
 
         val geoEntities = parseGeoData.mapEntities.map { entity ->
             val description =
-                File(settings.descriptionFolder, entity.slug + ".html").takeIf { it.exists() }?.readText()?.htmlToText()
+                File(settings.descriptionFolder, entity.slug + ".html").takeIf { it.exists() }?.readText()
+                    ?.addPhoneLinks()?.cleanHtml()
             val shortDescription =
                 File(settings.shortDescriptionFolder, entity.slug + ".html").takeIf { it.exists() }?.readText()
                     ?.htmlToText()
@@ -115,8 +118,8 @@ class PrepareStoppelMapData : KoinComponent {
         return Schedule(
             events = fetchedEvents.map {
                 it.copy(
-                    description = it.description?.entries?.mapNotNull { entry ->
-                        entry.value.htmlToText()?.let { entry.key to it }
+                    description = it.description?.entries?.map { entry ->
+                        entry.value.addPhoneLinks().cleanHtml().let { entry.key to it }
                     }?.takeIf { it.isNotEmpty() }?.toMap()
                 )
             },

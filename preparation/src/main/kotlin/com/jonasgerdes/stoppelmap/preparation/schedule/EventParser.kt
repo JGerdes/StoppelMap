@@ -97,7 +97,7 @@ suspend fun EventLocation.fillWithEvents(): EventLocation {
         }
 
     return copy(
-        description = body.select(".ce-bodytext p").map { it.html() }.joinToString("<br><br>"),
+        description = body.select(".ce-bodytext p").outerHtml(),
         events = events
     )
 }
