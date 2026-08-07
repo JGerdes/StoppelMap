@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.map.data
 
+import com.jonasgerdes.stoppelmap.base.extentions.parseFormat
 import com.jonasgerdes.stoppelmap.data.map.MapEntityType
 import com.jonasgerdes.stoppelmap.data.map.Map_entityQueries
 import com.jonasgerdes.stoppelmap.data.map.Map_entity_imageQueries
@@ -76,7 +77,7 @@ class MapEntityRepository(
         }
     }
 
-    suspend fun getDetailedMapEntity(slug: String): FullMapEntity? = withContext(Dispatchers.IO) {
+    suspend fun getDetailedMapEntity(slug: String): FullMapEntity? = withContext(Dispatchers.Default) {
         val mapEntity = mapEntityQueries.getFullBySlug(slug).executeAsList().firstOrNull() ?: return@withContext null
         val type =
             aliasQueries.getByReferenceSlug(setOf(mapEntity.type.id)).executeAsList().maxByOrNull { it.string.length }
@@ -105,7 +106,7 @@ class MapEntityRepository(
             type = mapEntity.type,
             subType = subType?.name?.takeIf { it != displayName },
             location = Location(lat = mapEntity.latitude, lng = mapEntity.longitude),
-            description = mapEntity.description,
+            description = mapEntity.description?.parseFormat(),
             shortDescription = mapEntity.shortDescription,
             bounds = BoundingBox(
                 southLat = mapEntity.southLatitude,

@@ -211,7 +211,9 @@ class StoppelMapActivity : ComponentActivity() {
                     onShareText = ::shareText,
                     onOpenUrl = ::openUrl,
                 )
-                scheduleDestinations()
+                scheduleDestinations(
+                    onOpenUrl = ::openUrl,
+                )
                 transportationDestinations(
                     navController = navController,
                     onDialPhoneNumber = ::dialPhoneNumber,

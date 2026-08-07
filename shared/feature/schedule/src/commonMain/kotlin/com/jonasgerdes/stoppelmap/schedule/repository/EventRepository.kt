@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
+import com.jonasgerdes.stoppelmap.base.extentions.parseFormat
 import com.jonasgerdes.stoppelmap.data.schedule.EventQueries
 import com.jonasgerdes.stoppelmap.data.shared.Localized_stringQueries
 import com.jonasgerdes.stoppelmap.data.shared.getLocalesForKeys
@@ -67,7 +68,7 @@ class EventRepository(
                             end = it.end,
                             locationSlug = it.locationSlug,
                             locationName = it.locationName,
-                            description = descriptionStrings[it.descriptionKey],
+                            description = descriptionStrings[it.descriptionKey]?.mapValues { it.value.parseFormat() },
                             isBookmarked = true
                         )
                     }
@@ -96,7 +97,7 @@ class EventRepository(
                 end = it.end,
                 locationSlug = it.locationSlug,
                 locationName = it.locationName,
-                description = descriptionStrings[it.descriptionKey],
+                description = descriptionStrings[it.descriptionKey]?.mapValues { it.value.parseFormat() },
                 isBookmarked = bookmarkedEventSlugs.contains(it.slug)
             )
         }
@@ -125,7 +126,7 @@ class EventRepository(
                     end = it.end,
                     locationSlug = it.locationSlug,
                     locationName = it.locationName,
-                    description = descriptionStrings[it.descriptionKey],
+                    description = descriptionStrings[it.descriptionKey]?.mapValues { it.value.parseFormat() },
                     isBookmarked = true,
                 )
             }
@@ -152,7 +153,7 @@ class EventRepository(
                     end = it.end,
                     locationSlug = it.locationSlug,
                     locationName = it.locationName,
-                    description = descriptionStrings[it.descriptionKey],
+                    description = descriptionStrings[it.descriptionKey]?.mapValues { it.value.parseFormat() },
                     isBookmarked = bookmarkedEventSlugs.contains(it.slug)
                 )
             }
@@ -177,7 +178,7 @@ class EventRepository(
                     name = nameStrings[it.nameKey] ?: mapOf("de" to it.nameKey), //TODO: Improve this
                     start = it.start,
                     end = it.end,
-                    description = descriptionStrings[it.descriptionKey],
+                    description = descriptionStrings[it.descriptionKey]?.mapValues { it.value.parseFormat() },
                     isBookmarked = bookmarkedEventSlugs.contains(it.slug)
                 )
             }

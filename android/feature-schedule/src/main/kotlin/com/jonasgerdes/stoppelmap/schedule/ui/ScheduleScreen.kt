@@ -71,6 +71,7 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun ScheduleScreen(
     modifier: Modifier = Modifier,
+    onOpenUrl: (url: String) -> Unit,
     viewModel: ScheduleViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -113,7 +114,8 @@ fun ScheduleScreen(
                         onBookmarkToggle = { slug, isBookmarked ->
                             if (isBookmarked) viewModel.onEventNotificationSchedule(slug, true)
                             else pendingBookmarkRemoval.value = slug
-                        }
+                        },
+                        onOpenUrl = onOpenUrl,
                     )
                 }
             },
@@ -233,6 +235,7 @@ fun ScheduleScreen(
                                                 notificationActive = it
                                             )
                                         },
+                                        onOpenUrl = onOpenUrl,
                                         showNotificationToggle = true,
                                         modifier = Modifier.fillMaxWidth(),
                                     )
@@ -274,6 +277,7 @@ fun ScheduleScreen(
 fun SheetContent(
     bookmarkedEvents: BookmarkedEvents.Some,
     onBookmarkToggle: (String, Boolean) -> Unit,
+    onOpenUrl: (url: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier.fillMaxWidth()) {
@@ -287,6 +291,7 @@ fun SheetContent(
                 EventCard(
                     event = event,
                     modifier = Modifier.fillMaxWidth(),
+                    onOpenUrl = onOpenUrl,
                     onBookmarkToggle = { onBookmarkToggle(event.slug, it) }
                 )
             }
@@ -302,6 +307,7 @@ fun SheetContent(
                     EventCard(
                         event = event,
                         modifier = Modifier.fillMaxWidth(),
+                        onOpenUrl = onOpenUrl,
                         onBookmarkToggle = { onBookmarkToggle(event.slug, it) }
                     )
                 }

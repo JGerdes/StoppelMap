@@ -148,6 +148,7 @@ fun HomeScreen(
                 ) { index, event ->
                     NextOfficialEventCard(
                         event = event,
+                        onOpenUrl = onUrlTap,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(

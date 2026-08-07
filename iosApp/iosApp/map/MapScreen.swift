@@ -315,8 +315,8 @@ struct SingleStallBottomSheetContent: View {
                 .tabViewStyle(PageTabViewStyle())
                 .cornerRadius(8)
             }
-            if let description = entity.description_ {
-                Text(description).fixedSize(
+            if let shortDescription = entity.shortDescription {
+                Text(shortDescription).fixedSize(
                     horizontal: false,
                     vertical: true
                 )
@@ -348,6 +348,13 @@ struct SingleStallBottomSheetContent: View {
                         }
                     }
                 }
+            }
+            if let description = entity.description_ {
+                let markdownString = LocalizedStringKey(description)
+                Text(markdownString).fixedSize(
+                    horizontal: false,
+                    vertical: true
+                )
             }
             if entity.websites.count > 0 {
                 VStack(alignment: .leading, spacing: 8) {

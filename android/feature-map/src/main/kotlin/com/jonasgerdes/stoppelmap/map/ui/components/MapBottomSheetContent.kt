@@ -55,6 +55,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -294,7 +297,14 @@ fun SingleMapEntityDetails(
                                     Text(localizedString(event.name))
                                     event.description?.let { description ->
                                         Text(
-                                            text = localizedString(description),
+                                            text = AnnotatedString.fromHtml(
+                                                htmlString = localizedString(description),
+                                                linkInteractionListener = {
+                                                    (it as? LinkAnnotation.Url)?.let {
+                                                        onOpenUrl(it.url)
+                                                    }
+                                                }
+                                            ),
                                             maxLines = if (selectedEvent == event.slug) Int.MAX_VALUE else 1,
                                             style = MaterialTheme.typography.bodySmall,
                                             overflow = TextOverflow.Ellipsis,
@@ -338,8 +348,17 @@ fun SingleMapEntityDetails(
             }
         }
 
-        mapEntity.description?.let {
-            Text(text = it)
+        mapEntity.description?.let { description ->
+            Text(
+                text = AnnotatedString.fromHtml(
+                    htmlString = description,
+                    linkInteractionListener = {
+                        (it as? LinkAnnotation.Url)?.let {
+                            onOpenUrl(it.url)
+                        }
+                    }
+                ),
+            )
         }
 
         if (mapEntity.websites.isNotEmpty()) {

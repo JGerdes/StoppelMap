@@ -12,23 +12,26 @@ import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
 @Composable
 fun NextOfficialEventCard(
     event: Event,
+    onOpenUrl: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     when (event.slug) {
-        "stoppelmarkt_feuerwerk" -> FireworkEventCard(event = event, modifier)
-        else -> EventCard(event = event, modifier = modifier)
+        "stoppelmarkt_feuerwerk" -> FireworkEventCard(event = event, onOpenUrl = onOpenUrl, modifier)
+        else -> EventCard(event = event, onOpenUrl = onOpenUrl, modifier = modifier)
     }
 }
 
 @Composable
 fun FireworkEventCard(
     event: Event,
+    onOpenUrl: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     StoppelMapTheme(themeSetting = ThemeSetting.Dark) {
         EventCard(
             event = event,
             headerImage = R.drawable.fireworks,
+            onOpenUrl = onOpenUrl,
             modifier = modifier
         )
     }

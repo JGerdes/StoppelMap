@@ -23,12 +23,16 @@ val scheduleNavigationTab = NavigationTab(
     startDestination = ScheduleDestination
 )
 
-fun NavGraphBuilder.scheduleDestinations() {
+fun NavGraphBuilder.scheduleDestinations(
+    onOpenUrl: (String) -> Unit,
+) {
     composable<ScheduleDestination> {
         ScheduleScreen(
+            onOpenUrl = onOpenUrl,
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
-        )
+                .background(MaterialTheme.colorScheme.background),
+
+            )
     }
 }

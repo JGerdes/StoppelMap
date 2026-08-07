@@ -20,6 +20,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -34,6 +37,7 @@ fun EventRow(
     onSelected: () -> Unit,
     isBookmarked: Boolean,
     onNotificationToggle: (active: Boolean) -> Unit,
+    onOpenUrl: (url: String) -> Unit,
     modifier: Modifier = Modifier,
     showNotificationToggle: Boolean = true,
     unSelectedBackgroundColor: Color? = null,
@@ -68,9 +72,16 @@ fun EventRow(
                 Text(text = it, style = MaterialTheme.typography.labelMedium)
             }
             Text(text = name, style = MaterialTheme.typography.bodyLarge)
-            description?.let {
+            description?.let { description ->
                 Text(
-                    text = it,
+                    text = AnnotatedString.fromHtml(
+                        htmlString = description,
+                        linkInteractionListener = {
+                            (it as? LinkAnnotation.Url)?.let {
+                                onOpenUrl(it.url)
+                            }
+                        }
+                    ),
                     maxLines = if (selected) Int.MAX_VALUE else 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodySmall,

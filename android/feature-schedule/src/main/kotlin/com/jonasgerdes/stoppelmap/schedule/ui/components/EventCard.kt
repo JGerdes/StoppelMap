@@ -16,6 +16,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.unit.dp
 import com.jonasgerdes.stoppelmap.schedule.model.Event
 import com.jonasgerdes.stoppelmap.theme.components.BookmarkIconButton
@@ -28,6 +31,7 @@ import java.util.Locale
 fun EventCard(
     event: Event,
     modifier: Modifier = Modifier,
+    onOpenUrl: (url: String) -> Unit,
     onBookmarkToggle: ((isBookmarked: Boolean) -> Unit)? = null,
     @DrawableRes headerImage: Int? = null,
 ) {
@@ -75,9 +79,16 @@ fun EventCard(
                     modifier = Modifier.padding(8.dp)
                 )
             }
-            event.description?.let {
+            event.description?.let { description ->
                 Text(
-                    text = localizedString(it),
+                    text = AnnotatedString.fromHtml(
+                        htmlString = localizedString(description),
+                        linkInteractionListener = {
+                            (it as? LinkAnnotation.Url)?.let {
+                                onOpenUrl(it.url)
+                            }
+                        }
+                    ),
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(end = 16.dp)
                 )

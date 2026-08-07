@@ -46,7 +46,8 @@ struct HomeScreen: View {
                                     }
                                     Text(event.name.localized()).font(.title)
                                     if let eventDescription = event.description_ {
-                                        Text(eventDescription.localized()).font(.caption)
+                                        let markdownString = LocalizedStringKey(eventDescription.localized())
+                                        Text(markdownString).font(.caption)
                                     }
                                 }
                                 .padding()

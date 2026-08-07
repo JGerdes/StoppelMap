@@ -100,7 +100,8 @@ struct EventRow: View {
                 }
                 Text(event.name.localized()).font(.headline)
                 if let description_ = event.description_ {
-                    Text(description_.localized())
+                    let markdownString = LocalizedStringResource(stringLiteral: description_.localized())
+                    Text(markdownString)
                         .lineLimit(selected ? nil : 1)
                         .font(.footnote)
                 }
