@@ -53,7 +53,25 @@ internal fun cloppenburg() = createBusRoute {
     addStation("Westeremstek, Kühling", minutesAfterPrevious = 6) {
         pricesPerTrip(oneWay = 550, roundTrip = 950)
     }
-    addStation("Emstek, Grundschule", minutesAfterPrevious = 4) {
+    addStation("Emstek, Grundschule") {
+        outward {
+            thursday("19:10", "20:15", "22:15")
+            friday {
+                "19:15" every 30.Minutes until "23:15"
+                "23:40" every 30.Minutes until "00:10"
+            }
+            saturday {
+                "19:15" every 30.Minutes until "23:15"
+                "23:40" every 30.Minutes until "00:10"
+            }
+            sunday("16:10", "18:10", "20:10", "22:10")
+            monday {
+                "09:45" every 30.Minutes until "11:15"
+                "11:15" every 60.Minutes until "20:15"
+                "20:15" every 30.Minutes until "22:15"
+            }
+            tuesday("16:10", "18:10", "20:10")
+        }
         pricesPerTrip(oneWay = 550, roundTrip = 950)
     }
     addStation("Drantum, Emsteker Str.", minutesAfterPrevious = 5) {
