@@ -1,5 +1,6 @@
 package com.jonasgerdes.stoppelmap.preparation.transportation.bus
 
+import com.jonasgerdes.stoppelmap.preparation.localizedString
 import com.jonasgerdes.stoppelmap.preparation.transportation.Minutes
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportMapEntitySlugs.busbahnhofWest
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.feldhaus
@@ -12,6 +13,10 @@ internal fun cloppenburg() = createBusRoute {
     name = "Cloppenburg"
     operatorSlug = feldhaus
     arrivalStationSlug = busbahnhofWest
+    additionalInfo = localizedString(
+        de = "Die Haltestelle Schneiderkrug, Kreuzung entfällt dieses Jahr aufgrund einer Baustelle.",
+        en = "Due to construction work, there's no stop at Schneiderkrug, Kreuzung this year."
+    )
 
     returns {
         thursday("23:00", "00:00", "01:00", "02:30")
@@ -57,7 +62,7 @@ internal fun cloppenburg() = createBusRoute {
     addStation("Bühren, Grundschule", minutesAfterPrevious = 5) {
         pricesPerTrip(oneWay = 500, roundTrip = 750)
     }
-    addStation("Schneiderkrug Kreuzung", minutesAfterPrevious = 4) {
+    /*addStation("Schneiderkrug Kreuzung", minutesAfterPrevious = 4) {
         pricesPerTrip(oneWay = 500, roundTrip = 750)
-    }
+    }*/
 }
