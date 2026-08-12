@@ -72,18 +72,13 @@ class TransportationOverviewViewModel(
                     }
             }
 
-    private val busRoutesState =
-        combine(
-            busRoutesRepository.getRouteSummaries(),
-            favouriteStations,
-            TransportationOverviewViewModel::BusRoutesState
-        )
 
     val state: StateFlow<ViewState> =
         combine(
             trainRoutesState,
-            busRoutesState,
+            busRoutesRepository.getRouteSummaries().map { BusRoutesState(it) },
             taxiServiceRepository.getTaxiServices().map { TaxiServicesState(it) },
+            favouriteStations,
             TransportationOverviewViewModel::ViewState
         )
             .stateIn(
@@ -96,14 +91,14 @@ class TransportationOverviewViewModel(
     @DefaultArgumentInterop.Enabled
     constructor(
         val trainRoutesState: TrainRoutesState = TrainRoutesState(emptyList()),
-        val busRoutesViewState: BusRoutesState = BusRoutesState(emptyList(), emptyList()),
+        val busRoutesViewState: BusRoutesState = BusRoutesState(emptyList()),
         val taxiServicesState: TaxiServicesState = TaxiServicesState(emptyList()),
+        val favouriteStations: List<BusRouteDetails.Station> = emptyList()
     )
 
     data class TrainRoutesState(val routes: List<RouteSummary>)
     data class BusRoutesState(
         val routes: List<RouteSummary>,
-        val favouriteStations: List<BusRouteDetails.Station>
     )
 
     data class TaxiServicesState(val services: List<TaxiService>)

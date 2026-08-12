@@ -27,6 +27,7 @@
 		2A6066452BB052900067FB33 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066442BB052900067FB33 /* MapView.swift */; };
 		2A6066472BB0572F0067FB33 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6066462BB0572F0067FB33 /* MapScreen.swift */; };
 		2A6873252BC9EE43008442FC /* StationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6873242BC9EE43008442FC /* StationScreen.swift */; };
+		2A6F469B302CB6E600C9B852 /* TransportationTrainOverviewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F469A302CB6E600C9B852 /* TransportationTrainOverviewPage.swift */; };
 		2A7781222BBB13E500C1FC25 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */; };
 		2A7781242BBB161D00C1FC25 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781232BBB161D00C1FC25 /* Utils.swift */; };
 		2A7781262BBB2F7200C1FC25 /* EventPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7781252BBB2F7200C1FC25 /* EventPage.swift */; };
@@ -115,6 +116,7 @@
 		2A6066442BB052900067FB33 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		2A6066462BB0572F0067FB33 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		2A6873242BC9EE43008442FC /* StationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationScreen.swift; sourceTree = "<group>"; };
+		2A6F469A302CB6E600C9B852 /* TransportationTrainOverviewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationTrainOverviewPage.swift; sourceTree = "<group>"; };
 		2A7781212BBB13E500C1FC25 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		2A7781232BBB161D00C1FC25 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2A7781252BBB2F7200C1FC25 /* EventPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPage.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				2A40405D2BC2FEEC00A5B072 /* TransportationOverviewScreen.swift */,
 				2A40405F2BC313C900A5B072 /* TransportationType.swift */,
 				2A4040612BC3145B00A5B072 /* TransportationBusOverviewPage.swift */,
+				2A6F469A302CB6E600C9B852 /* TransportationTrainOverviewPage.swift */,
 				2A84E39D2C62F4BA00189B97 /* TransportationTaxiOverviewPage.swift */,
 			);
 			path = overview;
@@ -575,6 +578,7 @@
 				2AE90B4E2BC87527007B7241 /* RouteScreen.swift in Sources */,
 				2A838B212C26D0D3005642A1 /* UnderConstrcutionPlaceholder.swift in Sources */,
 				2A58C0592BA4F81000FDA014 /* CountdownCard.swift in Sources */,
+				2A6F469B302CB6E600C9B852 /* TransportationTrainOverviewPage.swift in Sources */,
 				2A6066452BB052900067FB33 /* MapView.swift in Sources */,
 				2AD0F99E2C01281000FDB2A3 /* Fonts.swift in Sources */,
 				2A4040602BC313C900A5B072 /* TransportationType.swift in Sources */,

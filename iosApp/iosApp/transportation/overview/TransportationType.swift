@@ -3,6 +3,7 @@ import Shared
 
 enum TransportationType: CaseIterable {
     case bus
+    case train
     case taxi
 
     var titleStringDesc: ResourceStringDesc {
@@ -11,6 +12,8 @@ enum TransportationType: CaseIterable {
             Res.strings().transportation_overview_section_bus.desc()
         case .taxi:
             Res.strings().transportation_overview_section_taxi.desc()
+        case .train:
+            Res.strings().transportation_overview_section_train.desc()
         }
     }
     
@@ -20,6 +23,8 @@ enum TransportationType: CaseIterable {
             "bus.fill"
         case .taxi:
             "car"
+        case .train:
+            "tram.fill"
         }
     }
 }

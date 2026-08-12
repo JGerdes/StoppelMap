@@ -1,9 +1,9 @@
 import SwiftUI
 import Shared
 
-struct TransportationBusOverviewPage: View {
+struct TransportationTrainOverviewPage: View {
     
-    var viewState: TransportationOverviewViewModel.BusRoutesState
+    var viewState: TransportationOverviewViewModel.TrainRoutesState
     var onRouteTap: (String) -> Void
     var onStationTap: (String) -> Void
     

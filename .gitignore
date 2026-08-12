@@ -75,3 +75,4 @@ release.keystore
 xcodebuild.log
 xcuserdata/
 *.pbxuser
+/preparation/train-temp

@@ -5,7 +5,9 @@
 package com.jonasgerdes.stoppelmap.transportation.ui.overview
 
 import android.annotation.SuppressLint
+import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -13,38 +15,45 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Call
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.DirectionsBus
 import androidx.compose.material.icons.rounded.DirectionsTransit
 import androidx.compose.material.icons.rounded.LocalTaxi
+import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberBottomSheetScaffoldState
+import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -71,18 +80,98 @@ fun TransportationOverviewScreen(
     viewModel: TransportationOverviewViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val showTrainPage by remember {
+        derivedStateOf {
+            state.trainRoutesState.routes.isNotEmpty()
+        }
+    }
 
-    val pages = remember {
-        listOf(
+    val pages = remember(showTrainPage) {
+        listOfNotNull(
             Page.Bus,
+            if (showTrainPage) Page.Train else null,
             Page.Taxi,
         )
     }
 
     val pagerState = rememberPagerState(pageCount = { pages.size })
+
+    val showFavorites by remember {
+        derivedStateOf {
+            state.favouriteStations.isNotEmpty()
+        }
+    }
+    val sheetState = rememberStandardBottomSheetState(
+        initialValue = if (showFavorites) SheetValue.PartiallyExpanded else SheetValue.Hidden,
+        confirmValueChange = { it != SheetValue.Hidden || showFavorites.not() },
+        skipHiddenState = showFavorites,
+    )
+    val scaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = sheetState
+    )
+    LaunchedEffect(showFavorites) {
+        if (showFavorites) {
+            sheetState.show()
+        } else {
+            sheetState.hide()
+        }
+    }
+    var peekSheet by remember { mutableStateOf(false) }
+    LaunchedEffect(peekSheet) {
+        if (peekSheet) {
+            sheetState.partialExpand()
+            peekSheet = false
+        }
+    }
+    BackHandler(sheetState.targetValue == SheetValue.Expanded) {
+        peekSheet = true
+    }
+    val peekHeight = BottomSheetDefaults.SheetPeekHeight + 96.dp
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
-    Scaffold(
+    BottomSheetScaffold(
+        scaffoldState = scaffoldState,
+        sheetPeekHeight = peekHeight,
+        sheetContent = {
+            if (showFavorites) {
+                Column(Modifier.fillMaxWidth()) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        AnimatedVisibility(sheetState.targetValue == SheetValue.Expanded) {
+                            IconButton(
+                                onClick = { peekSheet = true }
+                            ) {
+                                Icon(
+                                    Icons.AutoMirrored.Rounded.ArrowBack,
+                                    stringResource(id = R.string.settings_topbar_navigateBack_contentDescription)
+                                )
+                            }
+                        }
+                        Text(
+                            stringResource(R.string.transportation_overview_section_favourite),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.padding(vertical = 16.dp, horizontal = 8.dp)
+                        )
+                    }
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        items(state.favouriteStations, key = { it.slug }) { station ->
+                            StopStationCard(
+                                station = station,
+                                modifier = Modifier
+                                    .clickable {
+                                        onStationTap(station.slug, station.name)
+                                    }
+                                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                            )
+                        }
+                    }
+                }
+            }
+        },
         topBar = {
             DataNoticeWrapper {
                 Column {
@@ -129,7 +218,10 @@ fun TransportationOverviewScreen(
         HorizontalPager(
             state = pagerState,
             modifier = Modifier
-                .padding(top = paddingValues.calculateTopPadding())
+                .padding(
+                    top = paddingValues.calculateTopPadding(),
+                    bottom = if (showFavorites) peekHeight else 0.dp
+                )
                 .fillMaxSize()
         ) { pageIndex ->
             when (pages[pageIndex]) {
@@ -139,7 +231,15 @@ fun TransportationOverviewScreen(
                     onRouteTap = onRouteTap,
                 )
 
-                Page.Train -> UnderConstructionPlaceholder()
+                Page.Train -> if (showTrainPage) {
+                    TrainPage(
+                        state.trainRoutesState,
+                        onRouteTap = onRouteTap
+                    )
+                } else {
+                    UnderConstructionPlaceholder()
+                }
+
                 Page.Taxi -> TaxiPage(
                     state = state.taxiServicesState,
                     onPhoneNumberTap = onPhoneNumberTap
@@ -180,36 +280,6 @@ fun BusPage(
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
-        if (state.favouriteStations.isNotEmpty()) {
-            item {
-                Text(
-                    stringResource(R.string.transportation_overview_section_favourite),
-                    style = MaterialTheme.typography.labelMedium,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .padding(top = 24.dp, bottom = 8.dp)
-                )
-            }
-        }
-        items(
-            items = state.favouriteStations,
-            key = { it.slug },
-            contentType = { ItemTypes.FavouriteStation }) { station ->
-            StopStationCard(
-                station = station,
-                modifier = Modifier
-                    .clickable {
-                        onStationTap(station.slug, station.name)
-                    }
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
-            )
-        }
-        if (state.favouriteStations.isNotEmpty()) {
-            item {
-                Spacer(modifier = Modifier.height(8.dp))
-                HorizontalDivider()
-            }
-        }
         items(
             items = state.routes,
             key = { it.slug },
@@ -298,7 +368,6 @@ fun TaxiPage(
 }
 
 enum class ItemTypes {
-    FavouriteStation,
     Route,
 }
 
