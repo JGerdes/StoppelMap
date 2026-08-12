@@ -26,6 +26,7 @@ val settingsModule = module {
     viewModel {
         SettingsViewModel(
             settingsRepository = get(),
+            getCurrentDataVersion = get(),
             appInfo = get(),
         )
     }

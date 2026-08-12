@@ -12,6 +12,7 @@ import com.jonasgerdes.stoppelmap.shared.dataupdate.repository.DataUpdateReposit
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.local.LocalAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteAppConfigSource
 import com.jonasgerdes.stoppelmap.shared.dataupdate.source.remote.RemoteStaticFileSource
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.GetCurrentDataVersionUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.GetDataNoticeUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateDataUseCase
 import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.UpdateRemoteAppConfigUseCase
@@ -105,6 +106,12 @@ val dataUpdateModule = module {
         GetDataNoticeUseCase(
             appConfigRepository = get(),
             appInfo = get(),
+        )
+    }
+
+    factory {
+        GetCurrentDataVersionUseCase(
+            dataUpdateRepository = get()
         )
     }
 }

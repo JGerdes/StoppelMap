@@ -7,6 +7,6 @@ import org.koin.dsl.module
 val homeModule = module {
     factory { GetRemoteMessagesUseCase(appConfigRepository = get(), appInfo = get()) }
     factory { GetPromotedEventsUseCase(eventRepository = get(), clockProvider = get()) }
-    factory { GetFeedbackEmailUrlUseCase(appInfo = get()) }
+    factory { GetFeedbackEmailUrlUseCase(appInfo = get(), getCurrentDataVersion = get()) }
     factory { GetHomeCardsUseCase(appConfigRepository = get(), appInfo = get()) }
 }

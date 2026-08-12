@@ -43,6 +43,7 @@ dependencies {
     implementation(project(":shared:resources"))
     implementation(project(":base"))
     implementation(project(":android:theme"))
+    implementation(project(":shared:feature:data-update"))
     implementation(project(":shared:feature:licenses"))
 
     implementation(libs.bundles.compose.ui)

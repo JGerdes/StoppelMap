@@ -39,6 +39,7 @@ kotlin {
 
             implementation(project(":shared:base"))
             implementation(project(":shared:resources"))
+            implementation(project(":shared:feature:data-update"))
         }
     }
 }

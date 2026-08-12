@@ -105,6 +105,7 @@
     </string>
     <string name="settings_info_title">App-Details</string>
     <string name="settings_info_version">Version</string>
+    <string name="settings_info_data_version">Daten-Version</string>
     <string name="settings_info_build_type">Build-Typ</string>
     <string name="settings_info_commit">Commit</string>
     <string name="settings_contributors_title">Mitwirkende</string>

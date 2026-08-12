@@ -198,6 +198,12 @@ fun SettingsScreen(
             }
             item {
                 ListItem(
+                    headlineContent = { Text(stringResource(R.string.settings_info_data_version)) },
+                    trailingContent = { Text(settingsState.dataVersion.toString()) },
+                )
+            }
+            item {
+                ListItem(
                     headlineContent = { Text(stringResource(R.string.settings_info_build_type)) },
                     trailingContent = { Text(settingsState.appInfo.buildType) },
                 )

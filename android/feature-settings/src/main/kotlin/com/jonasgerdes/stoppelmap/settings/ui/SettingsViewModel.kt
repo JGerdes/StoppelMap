@@ -7,6 +7,7 @@ import com.jonasgerdes.stoppelmap.base.model.AppInfo
 import com.jonasgerdes.stoppelmap.settings.data.DateOverride
 import com.jonasgerdes.stoppelmap.settings.data.LocationOverride
 import com.jonasgerdes.stoppelmap.settings.data.SettingsRepository
+import com.jonasgerdes.stoppelmap.shared.dataupdate.usecase.GetCurrentDataVersionUseCase
 import com.jonasgerdes.stoppelmap.theme.settings.ColorSchemeSetting
 import com.jonasgerdes.stoppelmap.theme.settings.MapColorSetting
 import com.jonasgerdes.stoppelmap.theme.settings.ThemeSetting
@@ -14,68 +15,72 @@ import com.jonasgerdes.stoppelmap.theme.util.supportsDarkTheme
 import com.jonasgerdes.stoppelmap.theme.util.supportsDynamicColor
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class SettingsViewModel(
     private val settingsRepository: SettingsRepository,
+    private val getCurrentDataVersion: GetCurrentDataVersionUseCase,
     private val appInfo: AppInfo,
 ) : ViewModel() {
 
     val state: StateFlow<ViewState> =
-        settingsRepository.getSettings()
-            .map { settings ->
-                Timber.d("Settings: $settings")
-                ViewState(
-                    appInfo = appInfo,
-                    themeSettings = listOfNotNull(
-                        ThemeSetting.Light,
-                        ThemeSetting.Dark,
-                        ThemeSetting.System.takeIf { Build.VERSION.SDK_INT.supportsDarkTheme() }
-                    ).map {
-                        ThemeSettingOption(
-                            themeSetting = it,
-                            isSelected = settings.themeSetting == it
-                        )
-                    },
-                    colorSchemeSettings = listOfNotNull(
-                        ColorSchemeSetting.Classic,
-                        ColorSchemeSetting.System.takeIf { Build.VERSION.SDK_INT.supportsDynamicColor() }
-                    ).map {
-                        ColorSchemeSettingOption(
-                            colorSchemeSetting = it,
-                            isSelected = settings.colorSchemeSetting == it
-                        )
-                    },
-                    mapColorSettings = listOfNotNull(
-                        MapColorSetting.Classic,
-                        MapColorSetting.AppScheme.takeIf { Build.VERSION.SDK_INT.supportsDynamicColor() }
-                    ).map {
-                        Option(
-                            value = it,
-                            isSelected = settings.mapColorSetting == it
-                        )
-                    },
-                    developerModeSettings = if (settings.developerModeActive) {
-                        DeveloperModeSettings.Active(
-                            dateOverrideOptions = DateOverride.values().map {
-                                Option(
-                                    value = it,
-                                    isSelected = it == settings.dateOverride
-                                )
-                            },
-                            locationOverrideOptions = LocationOverride.values().map {
-                                Option(
-                                    value = it,
-                                    isSelected = it == settings.locationOverride
-                                )
-                            }
-                        )
-                    } else DeveloperModeSettings.NotActive,
-                )
-            }
+        combine(
+            settingsRepository.getSettings(),
+            getCurrentDataVersion(),
+        ) { settings, dataVersion ->
+            Timber.d("Settings: $settings")
+            ViewState(
+                appInfo = appInfo,
+                dataVersion = dataVersion,
+                themeSettings = listOfNotNull(
+                    ThemeSetting.Light,
+                    ThemeSetting.Dark,
+                    ThemeSetting.System.takeIf { Build.VERSION.SDK_INT.supportsDarkTheme() }
+                ).map {
+                    ThemeSettingOption(
+                        themeSetting = it,
+                        isSelected = settings.themeSetting == it
+                    )
+                },
+                colorSchemeSettings = listOfNotNull(
+                    ColorSchemeSetting.Classic,
+                    ColorSchemeSetting.System.takeIf { Build.VERSION.SDK_INT.supportsDynamicColor() }
+                ).map {
+                    ColorSchemeSettingOption(
+                        colorSchemeSetting = it,
+                        isSelected = settings.colorSchemeSetting == it
+                    )
+                },
+                mapColorSettings = listOfNotNull(
+                    MapColorSetting.Classic,
+                    MapColorSetting.AppScheme.takeIf { Build.VERSION.SDK_INT.supportsDynamicColor() }
+                ).map {
+                    Option(
+                        value = it,
+                        isSelected = settings.mapColorSetting == it
+                    )
+                },
+                developerModeSettings = if (settings.developerModeActive) {
+                    DeveloperModeSettings.Active(
+                        dateOverrideOptions = DateOverride.values().map {
+                            Option(
+                                value = it,
+                                isSelected = it == settings.dateOverride
+                            )
+                        },
+                        locationOverrideOptions = LocationOverride.values().map {
+                            Option(
+                                value = it,
+                                isSelected = it == settings.locationOverride
+                            )
+                        }
+                    )
+                } else DeveloperModeSettings.NotActive,
+            )
+        }
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(),
@@ -121,6 +126,7 @@ class SettingsViewModel(
 
     data class ViewState(
         val appInfo: AppInfo,
+        val dataVersion: Long? = null,
         val themeSettings: List<ThemeSettingOption> = emptyList(),
         val colorSchemeSettings: List<ColorSchemeSettingOption> = emptyList(),
         val mapColorSettings: List<Option<MapColorSetting>> = emptyList(),

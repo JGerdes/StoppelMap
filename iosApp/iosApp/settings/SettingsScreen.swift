@@ -7,10 +7,18 @@ struct SettingsScreen: View {
             licensesRepository: $0.lincensesRepository
         )
     }
+    let appVersionViewModel = LicensesDependencies().with{
+        AppVersionViewModel(
+            getCurrentDataVersion: $0.getCurrentDataVersionUseCase
+        )
+    }
     let appInfo = LicensesDependencies().appInfo
     
     @State
     var licenseState: LicensesViewModel.ViewState = LicensesViewModel.ViewState()
+    
+    @State
+    var appVersionState: AppVersionViewModel.ViewState = AppVersionViewModel.ViewState(dataVersion: "???")
     
     var body: some View {
         NavigationStack {
@@ -26,6 +34,12 @@ struct SettingsScreen: View {
                                 Text(appInfo.versionName).font(.caption)
                                 Text(appInfo.versionCode.description).font(.caption)
                             }
+                        }
+                    )
+                    SettingsListItem(
+                        headlineText: Res.strings().settings_info_data_version.desc().localized(),
+                        trailingContent: {
+                            Text(appVersionState.dataVersion).font(.caption)
                         }
                     )
                     SettingsListItem(
@@ -112,6 +126,11 @@ struct SettingsScreen: View {
         .task {
             for await state in viewModel.state {
                 licenseState = state
+            }
+        }
+        .task {
+            for await state in appVersionViewModel.state {
+                appVersionState = state
             }
         }
     }
