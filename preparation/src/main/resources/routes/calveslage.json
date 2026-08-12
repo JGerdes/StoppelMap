@@ -7,19 +7,18 @@
     {
       "slug": "calveslage_lohe-baumann",
       "name": "Lohe, Baumann",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 350
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 220
+          "price": 400
         }
       ],
       "outward": [
@@ -37,12 +36,12 @@
           "day": "2026-08-14",
           "departures": [
             {
-              "time": "2026-08-14T19:33",
-              "arrival": "2026-08-14T19:53"
+              "time": "2026-08-14T16:03",
+              "arrival": "2026-08-14T16:23"
             },
             {
-              "time": "2026-08-14T20:43",
-              "arrival": "2026-08-14T21:03"
+              "time": "2026-08-14T20:03",
+              "arrival": "2026-08-14T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -51,12 +50,12 @@
           "day": "2026-08-15",
           "departures": [
             {
-              "time": "2026-08-15T19:33",
-              "arrival": "2026-08-15T19:53"
+              "time": "2026-08-15T16:03",
+              "arrival": "2026-08-15T16:23"
             },
             {
-              "time": "2026-08-15T20:43",
-              "arrival": "2026-08-15T21:03"
+              "time": "2026-08-15T20:03",
+              "arrival": "2026-08-15T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -65,12 +64,12 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T10:48",
-              "arrival": "2026-08-17T11:08"
+              "time": "2026-08-17T11:03",
+              "arrival": "2026-08-17T11:23"
             },
             {
-              "time": "2026-08-17T15:48",
-              "arrival": "2026-08-17T16:08"
+              "time": "2026-08-17T16:03",
+              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -81,7 +80,7 @@
           "day": "2026-08-13",
           "departures": [
             {
-              "time": "2026-08-13T23:00"
+              "time": "2026-08-13T22:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -108,7 +107,7 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T20:30"
+              "time": "2026-08-17T22:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -118,19 +117,18 @@
     {
       "slug": "calveslage_lohe-koenig",
       "name": "Lohe, König",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 350
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 220
+          "price": 400
         }
       ],
       "outward": [
@@ -148,12 +146,12 @@
           "day": "2026-08-14",
           "departures": [
             {
-              "time": "2026-08-14T19:32",
-              "arrival": "2026-08-14T19:53"
+              "time": "2026-08-14T16:02",
+              "arrival": "2026-08-14T16:23"
             },
             {
-              "time": "2026-08-14T20:42",
-              "arrival": "2026-08-14T21:03"
+              "time": "2026-08-14T20:02",
+              "arrival": "2026-08-14T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -162,12 +160,12 @@
           "day": "2026-08-15",
           "departures": [
             {
-              "time": "2026-08-15T19:32",
-              "arrival": "2026-08-15T19:53"
+              "time": "2026-08-15T16:02",
+              "arrival": "2026-08-15T16:23"
             },
             {
-              "time": "2026-08-15T20:42",
-              "arrival": "2026-08-15T21:03"
+              "time": "2026-08-15T20:02",
+              "arrival": "2026-08-15T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -176,12 +174,12 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T10:47",
-              "arrival": "2026-08-17T11:08"
+              "time": "2026-08-17T11:02",
+              "arrival": "2026-08-17T11:23"
             },
             {
-              "time": "2026-08-17T15:47",
-              "arrival": "2026-08-17T16:08"
+              "time": "2026-08-17T16:02",
+              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -192,7 +190,7 @@
           "day": "2026-08-13",
           "departures": [
             {
-              "time": "2026-08-13T23:00"
+              "time": "2026-08-13T22:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -219,7 +217,7 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T20:30"
+              "time": "2026-08-17T22:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -229,19 +227,18 @@
     {
       "slug": "calveslage_lohe-hoelscher",
       "name": "Lohe, Hölscher",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 350
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 220
+          "price": 400
         }
       ],
       "outward": [
@@ -259,12 +256,12 @@
           "day": "2026-08-14",
           "departures": [
             {
-              "time": "2026-08-14T19:30",
-              "arrival": "2026-08-14T19:53"
+              "time": "2026-08-14T16:00",
+              "arrival": "2026-08-14T16:23"
             },
             {
-              "time": "2026-08-14T20:40",
-              "arrival": "2026-08-14T21:03"
+              "time": "2026-08-14T20:00",
+              "arrival": "2026-08-14T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -273,12 +270,12 @@
           "day": "2026-08-15",
           "departures": [
             {
-              "time": "2026-08-15T19:30",
-              "arrival": "2026-08-15T19:53"
+              "time": "2026-08-15T16:00",
+              "arrival": "2026-08-15T16:23"
             },
             {
-              "time": "2026-08-15T20:40",
-              "arrival": "2026-08-15T21:03"
+              "time": "2026-08-15T20:00",
+              "arrival": "2026-08-15T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -287,12 +284,12 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T10:45",
-              "arrival": "2026-08-17T11:08"
+              "time": "2026-08-17T11:00",
+              "arrival": "2026-08-17T11:23"
             },
             {
-              "time": "2026-08-17T15:45",
-              "arrival": "2026-08-17T16:08"
+              "time": "2026-08-17T16:00",
+              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -303,7 +300,7 @@
           "day": "2026-08-13",
           "departures": [
             {
-              "time": "2026-08-13T23:00"
+              "time": "2026-08-13T22:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -330,7 +327,7 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T20:30"
+              "time": "2026-08-17T22:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -340,19 +337,18 @@
     {
       "slug": "calveslage_lohe-moeller",
       "name": "Lohe, Möller",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 350
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 220
+          "price": 400
         }
       ],
       "outward": [
@@ -370,12 +366,12 @@
           "day": "2026-08-14",
           "departures": [
             {
-              "time": "2026-08-14T19:34",
-              "arrival": "2026-08-14T19:53"
+              "time": "2026-08-14T16:04",
+              "arrival": "2026-08-14T16:23"
             },
             {
-              "time": "2026-08-14T20:44",
-              "arrival": "2026-08-14T21:03"
+              "time": "2026-08-14T20:04",
+              "arrival": "2026-08-14T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -384,12 +380,12 @@
           "day": "2026-08-15",
           "departures": [
             {
-              "time": "2026-08-15T19:34",
-              "arrival": "2026-08-15T19:53"
+              "time": "2026-08-15T16:04",
+              "arrival": "2026-08-15T16:23"
             },
             {
-              "time": "2026-08-15T20:44",
-              "arrival": "2026-08-15T21:03"
+              "time": "2026-08-15T20:03",
+              "arrival": "2026-08-15T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -398,12 +394,12 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T10:49",
-              "arrival": "2026-08-17T11:08"
+              "time": "2026-08-17T11:04",
+              "arrival": "2026-08-17T11:23"
             },
             {
-              "time": "2026-08-17T15:49",
-              "arrival": "2026-08-17T16:08"
+              "time": "2026-08-17T16:04",
+              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -414,7 +410,7 @@
           "day": "2026-08-13",
           "departures": [
             {
-              "time": "2026-08-13T23:00"
+              "time": "2026-08-13T22:29"
             }
           ],
           "laterDepartureOnDemand": false
@@ -441,7 +437,7 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T20:30"
+              "time": "2026-08-17T22:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -451,19 +447,18 @@
     {
       "slug": "calveslage_calveslage-rispenweg",
       "name": "Calveslage, Rispenweg",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 280
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 200
+          "price": 400
         }
       ],
       "outward": [
@@ -481,12 +476,12 @@
           "day": "2026-08-14",
           "departures": [
             {
-              "time": "2026-08-14T19:39",
-              "arrival": "2026-08-14T19:53"
+              "time": "2026-08-14T16:09",
+              "arrival": "2026-08-14T16:23"
             },
             {
-              "time": "2026-08-14T20:49",
-              "arrival": "2026-08-14T21:03"
+              "time": "2026-08-14T20:09",
+              "arrival": "2026-08-14T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -495,12 +490,12 @@
           "day": "2026-08-15",
           "departures": [
             {
-              "time": "2026-08-15T19:39",
-              "arrival": "2026-08-15T19:53"
+              "time": "2026-08-15T16:09",
+              "arrival": "2026-08-15T16:23"
             },
             {
-              "time": "2026-08-15T20:49",
-              "arrival": "2026-08-15T21:03"
+              "time": "2026-08-15T20:09",
+              "arrival": "2026-08-15T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -509,12 +504,12 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T10:54",
-              "arrival": "2026-08-17T11:08"
+              "time": "2026-08-17T11:09",
+              "arrival": "2026-08-17T11:23"
             },
             {
-              "time": "2026-08-17T15:54",
-              "arrival": "2026-08-17T16:08"
+              "time": "2026-08-17T16:09",
+              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -525,7 +520,7 @@
           "day": "2026-08-13",
           "departures": [
             {
-              "time": "2026-08-13T23:00"
+              "time": "2026-08-13T22:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -552,7 +547,7 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T20:30"
+              "time": "2026-08-17T22:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -562,19 +557,18 @@
     {
       "slug": "calveslage_calveslage-wiesenweg",
       "name": "Calveslage, Wiesenweg",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 280
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 200
+          "price": 400
         }
       ],
       "outward": [
@@ -592,12 +586,12 @@
           "day": "2026-08-14",
           "departures": [
             {
-              "time": "2026-08-14T19:41",
-              "arrival": "2026-08-14T19:53"
+              "time": "2026-08-14T16:11",
+              "arrival": "2026-08-14T16:23"
             },
             {
-              "time": "2026-08-14T20:51",
-              "arrival": "2026-08-14T21:03"
+              "time": "2026-08-14T20:11",
+              "arrival": "2026-08-14T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -606,12 +600,12 @@
           "day": "2026-08-15",
           "departures": [
             {
-              "time": "2026-08-15T19:41",
-              "arrival": "2026-08-15T19:53"
+              "time": "2026-08-15T16:11",
+              "arrival": "2026-08-15T16:23"
             },
             {
-              "time": "2026-08-15T20:51",
-              "arrival": "2026-08-15T21:03"
+              "time": "2026-08-15T20:11",
+              "arrival": "2026-08-15T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -620,12 +614,12 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T10:56",
-              "arrival": "2026-08-17T11:08"
+              "time": "2026-08-17T11:11",
+              "arrival": "2026-08-17T11:23"
             },
             {
-              "time": "2026-08-17T15:56",
-              "arrival": "2026-08-17T16:08"
+              "time": "2026-08-17T16:11",
+              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -636,7 +630,7 @@
           "day": "2026-08-13",
           "departures": [
             {
-              "time": "2026-08-13T23:00"
+              "time": "2026-08-13T22:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -663,7 +657,7 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T20:30"
+              "time": "2026-08-17T22:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -673,19 +667,18 @@
     {
       "slug": "calveslage_calveslage-bakumer-str",
       "name": "Calveslage, Bakumer Str.",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 280
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 200
+          "price": 400
         }
       ],
       "outward": [
@@ -703,12 +696,12 @@
           "day": "2026-08-14",
           "departures": [
             {
-              "time": "2026-08-14T19:43",
-              "arrival": "2026-08-14T19:53"
+              "time": "2026-08-14T16:13",
+              "arrival": "2026-08-14T16:23"
             },
             {
-              "time": "2026-08-14T20:53",
-              "arrival": "2026-08-14T21:03"
+              "time": "2026-08-14T20:13",
+              "arrival": "2026-08-14T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -717,12 +710,12 @@
           "day": "2026-08-15",
           "departures": [
             {
-              "time": "2026-08-15T19:43",
-              "arrival": "2026-08-15T19:53"
+              "time": "2026-08-15T16:13",
+              "arrival": "2026-08-15T16:23"
             },
             {
-              "time": "2026-08-15T20:53",
-              "arrival": "2026-08-15T21:03"
+              "time": "2026-08-15T20:13",
+              "arrival": "2026-08-15T20:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -731,12 +724,12 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T10:58",
-              "arrival": "2026-08-17T11:08"
+              "time": "2026-08-17T11:13",
+              "arrival": "2026-08-17T11:23"
             },
             {
-              "time": "2026-08-17T15:58",
-              "arrival": "2026-08-17T16:08"
+              "time": "2026-08-17T16:13",
+              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
@@ -747,7 +740,7 @@
           "day": "2026-08-13",
           "departures": [
             {
-              "time": "2026-08-13T23:00"
+              "time": "2026-08-13T22:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -774,7 +767,7 @@
           "day": "2026-08-17",
           "departures": [
             {
-              "time": "2026-08-17T20:30"
+              "time": "2026-08-17T22:00"
             }
           ],
           "laterDepartureOnDemand": false

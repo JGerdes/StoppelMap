@@ -5,21 +5,360 @@
   "additionalInfo": {},
   "stations": [
     {
-      "slug": "visbek_hagstedt-hagstedt",
-      "name": "Hagstedt, Hagstedt",
-      "isNew": false,
+      "slug": "visbek_holtrup-schule",
+      "name": "Holtrup, Schule",
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T20:15",
+              "arrival": "2026-08-14T20:20"
+            },
+            {
+              "time": "2026-08-14T21:15",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T22:15",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:35",
+              "arrival": "2026-08-14T23:40"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T12:07",
+              "arrival": "2026-08-15T12:50"
+            },
+            {
+              "time": "2026-08-15T15:50",
+              "arrival": "2026-08-15T15:54"
+            },
+            {
+              "time": "2026-08-15T16:07",
+              "arrival": "2026-08-15T16:20"
+            },
+            {
+              "time": "2026-08-15T19:15",
+              "arrival": "2026-08-15T19:20"
+            },
+            {
+              "time": "2026-08-15T20:15",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T21:15",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T22:15",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:35",
+              "arrival": "2026-08-15T23:40"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T09:15",
+              "arrival": "2026-08-17T09:20"
+            },
+            {
+              "time": "2026-08-17T11:15",
+              "arrival": "2026-08-17T11:20"
+            },
+            {
+              "time": "2026-08-17T14:15",
+              "arrival": "2026-08-17T14:20"
+            },
+            {
+              "time": "2026-08-17T16:15",
+              "arrival": "2026-08-17T16:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T02:00"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T16:04"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T02:00"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T13:10"
+            },
+            {
+              "time": "2026-08-17T15:10"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "visbek_hagstedt-mittlere-siedlungstr",
+      "name": "Hagstedt, Mittlere Siedlungstr.",
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 400
+        }
+      ],
+      "outward": [
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T19:50",
+              "arrival": "2026-08-14T20:19"
+            },
+            {
+              "time": "2026-08-14T20:50",
+              "arrival": "2026-08-14T21:20"
+            },
+            {
+              "time": "2026-08-14T21:50",
+              "arrival": "2026-08-14T22:20"
+            },
+            {
+              "time": "2026-08-14T23:10",
+              "arrival": "2026-08-14T23:40"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T12:44",
+              "arrival": "2026-08-15T12:50"
+            },
+            {
+              "time": "2026-08-15T15:14",
+              "arrival": "2026-08-15T15:54"
+            },
+            {
+              "time": "2026-08-15T16:44",
+              "arrival": "2026-08-15T16:50"
+            },
+            {
+              "time": "2026-08-15T18:50",
+              "arrival": "2026-08-15T19:20"
+            },
+            {
+              "time": "2026-08-15T19:50",
+              "arrival": "2026-08-15T20:20"
+            },
+            {
+              "time": "2026-08-15T20:50",
+              "arrival": "2026-08-15T21:20"
+            },
+            {
+              "time": "2026-08-15T21:50",
+              "arrival": "2026-08-15T22:20"
+            },
+            {
+              "time": "2026-08-15T23:10",
+              "arrival": "2026-08-15T23:40"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T08:50",
+              "arrival": "2026-08-17T09:20"
+            },
+            {
+              "time": "2026-08-17T10:50",
+              "arrival": "2026-08-17T11:20"
+            },
+            {
+              "time": "2026-08-17T13:50",
+              "arrival": "2026-08-17T14:20"
+            },
+            {
+              "time": "2026-08-17T15:50",
+              "arrival": "2026-08-17T16:20"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ],
+      "returns": [
+        {
+          "day": "2026-08-14",
+          "departures": [
+            {
+              "time": "2026-08-14T22:30"
+            },
+            {
+              "time": "2026-08-15T00:30"
+            },
+            {
+              "time": "2026-08-15T02:00"
+            },
+            {
+              "time": "2026-08-15T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-15",
+          "departures": [
+            {
+              "time": "2026-08-15T15:04"
+            },
+            {
+              "time": "2026-08-15T16:04"
+            },
+            {
+              "time": "2026-08-15T22:30"
+            },
+            {
+              "time": "2026-08-16T00:30"
+            },
+            {
+              "time": "2026-08-16T02:00"
+            },
+            {
+              "time": "2026-08-16T03:30"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        },
+        {
+          "day": "2026-08-17",
+          "departures": [
+            {
+              "time": "2026-08-17T13:10"
+            },
+            {
+              "time": "2026-08-17T15:10"
+            },
+            {
+              "time": "2026-08-17T20:30"
+            },
+            {
+              "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
+            }
+          ],
+          "laterDepartureOnDemand": false
+        }
+      ]
+    },
+    {
+      "slug": "visbek_hagstedt-hagstedt",
+      "name": "Hagstedt, Hagstedt",
+      "prices": [
+        {
+          "name": {
+            "de": "Erwachsene"
+          },
+          "price": 500
+        },
+        {
+          "name": {
+            "de": "Kinder (3–11 Jahre)"
+          },
+          "price": 400
         }
       ],
       "outward": [
@@ -28,19 +367,19 @@
           "departures": [
             {
               "time": "2026-08-14T19:51",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T20:51",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T21:51",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:11",
-              "arrival": "2026-08-14T23:45"
+              "arrival": "2026-08-14T23:39"
             }
           ],
           "laterDepartureOnDemand": false
@@ -62,23 +401,23 @@
             },
             {
               "time": "2026-08-15T18:51",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:20"
             },
             {
               "time": "2026-08-15T19:51",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T20:51",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T21:51",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:11",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -88,19 +427,19 @@
           "departures": [
             {
               "time": "2026-08-17T08:51",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T10:51",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T13:51",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T15:51",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -163,6 +502,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -172,19 +517,18 @@
     {
       "slug": "visbek_erlte-abzweig-meyerhoefen",
       "name": "Erlte, Abzweig Meyerhöfen",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
@@ -193,19 +537,19 @@
           "departures": [
             {
               "time": "2026-08-14T19:52",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T20:52",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T21:52",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:12",
-              "arrival": "2026-08-14T23:45"
+              "arrival": "2026-08-14T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -227,23 +571,23 @@
             },
             {
               "time": "2026-08-15T18:52",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:20"
             },
             {
               "time": "2026-08-15T19:52",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T20:52",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T21:52",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:12",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -253,19 +597,19 @@
           "departures": [
             {
               "time": "2026-08-17T08:52",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T10:52",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T13:52",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T15:52",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:19"
             }
           ],
           "laterDepartureOnDemand": false
@@ -328,6 +672,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -337,19 +687,18 @@
     {
       "slug": "visbek_erlte-hogeback",
       "name": "Erlte, Hogeback",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
@@ -358,19 +707,19 @@
           "departures": [
             {
               "time": "2026-08-14T19:55",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T20:55",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T21:55",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:15",
-              "arrival": "2026-08-14T23:45"
+              "arrival": "2026-08-14T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -392,23 +741,23 @@
             },
             {
               "time": "2026-08-15T18:55",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:19"
             },
             {
               "time": "2026-08-15T19:55",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T20:55",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T21:55",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:15",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -418,19 +767,19 @@
           "departures": [
             {
               "time": "2026-08-17T08:55",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T10:55",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T13:55",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T15:55",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -493,6 +842,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -502,19 +857,18 @@
     {
       "slug": "visbek_visbek-elektro-schulz",
       "name": "Visbek, Elektro Schulz",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
@@ -523,19 +877,19 @@
           "departures": [
             {
               "time": "2026-08-14T19:57",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T20:57",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T21:57",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:17",
-              "arrival": "2026-08-14T23:45"
+              "arrival": "2026-08-14T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -557,23 +911,23 @@
             },
             {
               "time": "2026-08-15T18:57",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:20"
             },
             {
               "time": "2026-08-15T19:57",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T20:57",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T21:57",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:17",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -583,19 +937,19 @@
           "departures": [
             {
               "time": "2026-08-17T08:57",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T10:57",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T13:57",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T15:57",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -658,6 +1012,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -667,19 +1027,18 @@
     {
       "slug": "visbek_visbek-markt",
       "name": "Visbek, Markt",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
@@ -688,19 +1047,19 @@
           "departures": [
             {
               "time": "2026-08-14T20:00",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T21:00",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T22:00",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:20",
-              "arrival": "2026-08-14T23:45"
+              "arrival": "2026-08-14T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -722,23 +1081,23 @@
             },
             {
               "time": "2026-08-15T19:00",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:20"
             },
             {
               "time": "2026-08-15T20:00",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T21:00",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T22:00",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:20",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -748,19 +1107,19 @@
           "departures": [
             {
               "time": "2026-08-17T09:00",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T11:00",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T14:00",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T16:00",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -823,6 +1182,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -832,19 +1197,18 @@
     {
       "slug": "visbek_visbek-zur-traenke",
       "name": "Visbek, Zur Tränke",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
@@ -853,19 +1217,19 @@
           "departures": [
             {
               "time": "2026-08-14T20:03",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T21:03",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T22:03",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:23",
-              "arrival": "2026-08-14T23:45"
+              "arrival": "2026-08-14T23:39"
             }
           ],
           "laterDepartureOnDemand": false
@@ -887,23 +1251,23 @@
             },
             {
               "time": "2026-08-15T19:03",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:20"
             },
             {
               "time": "2026-08-15T20:03",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T21:03",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T22:03",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:23",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -913,19 +1277,19 @@
           "departures": [
             {
               "time": "2026-08-17T09:03",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T11:03",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T14:03",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T16:03",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -988,6 +1352,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -997,19 +1367,18 @@
     {
       "slug": "visbek_astrup-witte",
       "name": "Astrup, Witte",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
@@ -1018,19 +1387,19 @@
           "departures": [
             {
               "time": "2026-08-14T20:06",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T21:06",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T22:06",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:26",
-              "arrival": "2026-08-14T23:45"
+              "arrival": "2026-08-14T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1040,23 +1409,23 @@
           "departures": [
             {
               "time": "2026-08-15T19:06",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:20"
             },
             {
               "time": "2026-08-15T20:06",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T21:06",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T22:06",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:26",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1066,19 +1435,19 @@
           "departures": [
             {
               "time": "2026-08-17T09:06",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T11:06",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T14:06",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T16:06",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1135,6 +1504,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1144,19 +1519,18 @@
     {
       "slug": "visbek_astrup-luebberding",
       "name": "Astrup, Lübberding",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
@@ -1165,19 +1539,19 @@
           "departures": [
             {
               "time": "2026-08-14T20:10",
-              "arrival": "2026-08-14T20:25"
+              "arrival": "2026-08-14T20:20"
             },
             {
               "time": "2026-08-14T21:10",
-              "arrival": "2026-08-14T21:25"
+              "arrival": "2026-08-14T21:20"
             },
             {
               "time": "2026-08-14T22:10",
-              "arrival": "2026-08-14T22:25"
+              "arrival": "2026-08-14T22:20"
             },
             {
               "time": "2026-08-14T23:30",
-              "arrival": "2026-08-14T23:25"
+              "arrival": "2026-08-14T23:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1199,23 +1573,23 @@
             },
             {
               "time": "2026-08-15T19:10",
-              "arrival": "2026-08-15T19:25"
+              "arrival": "2026-08-15T19:20"
             },
             {
               "time": "2026-08-15T20:10",
-              "arrival": "2026-08-15T20:25"
+              "arrival": "2026-08-15T20:20"
             },
             {
               "time": "2026-08-15T21:10",
-              "arrival": "2026-08-15T21:25"
+              "arrival": "2026-08-15T21:20"
             },
             {
               "time": "2026-08-15T22:10",
-              "arrival": "2026-08-15T22:25"
+              "arrival": "2026-08-15T22:20"
             },
             {
               "time": "2026-08-15T23:30",
-              "arrival": "2026-08-15T23:45"
+              "arrival": "2026-08-15T23:40"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1225,19 +1599,19 @@
           "departures": [
             {
               "time": "2026-08-17T09:10",
-              "arrival": "2026-08-17T09:23"
+              "arrival": "2026-08-17T09:20"
             },
             {
               "time": "2026-08-17T11:10",
-              "arrival": "2026-08-17T11:23"
+              "arrival": "2026-08-17T11:20"
             },
             {
               "time": "2026-08-17T14:10",
-              "arrival": "2026-08-17T14:23"
+              "arrival": "2026-08-17T14:20"
             },
             {
               "time": "2026-08-17T16:10",
-              "arrival": "2026-08-17T16:23"
+              "arrival": "2026-08-17T16:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1300,6 +1674,12 @@
             },
             {
               "time": "2026-08-17T21:30"
+            },
+            {
+              "time": "2026-08-17T22:30"
+            },
+            {
+              "time": "2026-08-18T00:00"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1309,44 +1689,21 @@
     {
       "slug": "visbek_norddoellen-frilling",
       "name": "Norddöllen, Frilling",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
-        {
-          "day": "2026-08-14",
-          "departures": [
-            {
-              "time": "2026-08-14T20:12",
-              "arrival": "2026-08-14T20:25"
-            },
-            {
-              "time": "2026-08-14T21:12",
-              "arrival": "2026-08-14T21:25"
-            },
-            {
-              "time": "2026-08-14T22:12",
-              "arrival": "2026-08-14T22:25"
-            },
-            {
-              "time": "2026-08-14T23:32",
-              "arrival": "2026-08-14T23:45"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
         {
           "day": "2026-08-15",
           "departures": [
@@ -1361,72 +1718,12 @@
             {
               "time": "2026-08-15T16:13",
               "arrival": "2026-08-15T16:50"
-            },
-            {
-              "time": "2026-08-15T19:12",
-              "arrival": "2026-08-15T19:25"
-            },
-            {
-              "time": "2026-08-15T20:12",
-              "arrival": "2026-08-15T20:25"
-            },
-            {
-              "time": "2026-08-15T21:12",
-              "arrival": "2026-08-15T21:25"
-            },
-            {
-              "time": "2026-08-15T22:12",
-              "arrival": "2026-08-15T22:25"
-            },
-            {
-              "time": "2026-08-15T23:32",
-              "arrival": "2026-08-15T23:45"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
-        {
-          "day": "2026-08-17",
-          "departures": [
-            {
-              "time": "2026-08-17T09:12",
-              "arrival": "2026-08-17T09:23"
-            },
-            {
-              "time": "2026-08-17T11:12",
-              "arrival": "2026-08-17T11:23"
-            },
-            {
-              "time": "2026-08-17T14:12",
-              "arrival": "2026-08-17T14:23"
-            },
-            {
-              "time": "2026-08-17T16:12",
-              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
         }
       ],
       "returns": [
-        {
-          "day": "2026-08-14",
-          "departures": [
-            {
-              "time": "2026-08-14T22:30"
-            },
-            {
-              "time": "2026-08-15T00:30"
-            },
-            {
-              "time": "2026-08-15T02:00"
-            },
-            {
-              "time": "2026-08-15T03:30"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
         {
           "day": "2026-08-15",
           "departures": [
@@ -1435,36 +1732,6 @@
             },
             {
               "time": "2026-08-15T16:04"
-            },
-            {
-              "time": "2026-08-15T22:30"
-            },
-            {
-              "time": "2026-08-16T00:30"
-            },
-            {
-              "time": "2026-08-16T02:00"
-            },
-            {
-              "time": "2026-08-16T03:30"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
-        {
-          "day": "2026-08-17",
-          "departures": [
-            {
-              "time": "2026-08-17T13:10"
-            },
-            {
-              "time": "2026-08-17T15:10"
-            },
-            {
-              "time": "2026-08-17T20:30"
-            },
-            {
-              "time": "2026-08-17T21:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1474,44 +1741,21 @@
     {
       "slug": "visbek_norddoellen-wempe",
       "name": "Norddöllen, Wempe",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [
-        {
-          "day": "2026-08-14",
-          "departures": [
-            {
-              "time": "2026-08-14T20:15",
-              "arrival": "2026-08-14T20:25"
-            },
-            {
-              "time": "2026-08-14T21:15",
-              "arrival": "2026-08-14T21:25"
-            },
-            {
-              "time": "2026-08-14T22:15",
-              "arrival": "2026-08-14T22:25"
-            },
-            {
-              "time": "2026-08-14T23:35",
-              "arrival": "2026-08-14T23:45"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
         {
           "day": "2026-08-15",
           "departures": [
@@ -1526,72 +1770,12 @@
             {
               "time": "2026-08-15T16:15",
               "arrival": "2026-08-15T16:50"
-            },
-            {
-              "time": "2026-08-15T19:15",
-              "arrival": "2026-08-15T19:25"
-            },
-            {
-              "time": "2026-08-15T20:15",
-              "arrival": "2026-08-15T20:25"
-            },
-            {
-              "time": "2026-08-15T21:15",
-              "arrival": "2026-08-15T21:25"
-            },
-            {
-              "time": "2026-08-15T22:15",
-              "arrival": "2026-08-15T22:25"
-            },
-            {
-              "time": "2026-08-15T23:35",
-              "arrival": "2026-08-15T23:45"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
-        {
-          "day": "2026-08-17",
-          "departures": [
-            {
-              "time": "2026-08-17T09:15",
-              "arrival": "2026-08-17T09:23"
-            },
-            {
-              "time": "2026-08-17T11:15",
-              "arrival": "2026-08-17T11:23"
-            },
-            {
-              "time": "2026-08-17T14:15",
-              "arrival": "2026-08-17T14:23"
-            },
-            {
-              "time": "2026-08-17T16:15",
-              "arrival": "2026-08-17T16:23"
             }
           ],
           "laterDepartureOnDemand": false
         }
       ],
       "returns": [
-        {
-          "day": "2026-08-14",
-          "departures": [
-            {
-              "time": "2026-08-14T22:30"
-            },
-            {
-              "time": "2026-08-15T00:30"
-            },
-            {
-              "time": "2026-08-15T02:00"
-            },
-            {
-              "time": "2026-08-15T03:30"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
         {
           "day": "2026-08-15",
           "departures": [
@@ -1600,36 +1784,6 @@
             },
             {
               "time": "2026-08-15T16:04"
-            },
-            {
-              "time": "2026-08-15T22:30"
-            },
-            {
-              "time": "2026-08-16T00:30"
-            },
-            {
-              "time": "2026-08-16T02:00"
-            },
-            {
-              "time": "2026-08-16T03:30"
-            }
-          ],
-          "laterDepartureOnDemand": false
-        },
-        {
-          "day": "2026-08-17",
-          "departures": [
-            {
-              "time": "2026-08-17T13:10"
-            },
-            {
-              "time": "2026-08-17T15:10"
-            },
-            {
-              "time": "2026-08-17T20:30"
-            },
-            {
-              "time": "2026-08-17T21:30"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1639,19 +1793,18 @@
     {
       "slug": "visbek_woestendoellen",
       "name": "Wöstendöllen",
-      "isNew": false,
       "prices": [
         {
           "name": {
             "de": "Erwachsene"
           },
-          "price": 480
+          "price": 500
         },
         {
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 290
+          "price": 400
         }
       ],
       "outward": [

@@ -133,6 +133,13 @@ class PrepareStoppelMapData : KoinComponent {
             .map {
                 Json { explicitNulls = false }.decodeFromStream<Route>(it.inputStream())
             }
+            .map {
+                it.copy(
+                    stations = it.stations
+                        .map { it.copy(outward = it.outward.filter { it.departures.isNotEmpty() }) }
+                        .filter { it.outward.isNotEmpty() }
+                )
+            }
 
     private fun generateMissingEventLocations(
         events: List<Event>,

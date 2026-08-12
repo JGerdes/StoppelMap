@@ -7,7 +7,6 @@
     {
       "slug": "vechta-telbrake_telbrake-fragge",
       "name": "Telbrake, Fragge",
-      "isNew": false,
       "prices": [
         {
           "name": {
@@ -19,7 +18,7 @@
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 180
+          "price": 200
         }
       ],
       "outward": [
@@ -169,24 +168,24 @@
           "day": "2026-08-16",
           "departures": [
             {
-              "time": "2026-08-16T14:26",
-              "arrival": "2026-08-16T14:36"
+              "time": "2026-08-16T14:16",
+              "arrival": "2026-08-16T14:26"
             },
             {
-              "time": "2026-08-16T16:26",
-              "arrival": "2026-08-16T16:36"
+              "time": "2026-08-16T16:16",
+              "arrival": "2026-08-16T16:26"
             },
             {
-              "time": "2026-08-16T18:26",
-              "arrival": "2026-08-16T18:36"
+              "time": "2026-08-16T18:16",
+              "arrival": "2026-08-16T18:26"
             },
             {
-              "time": "2026-08-16T20:26",
-              "arrival": "2026-08-16T20:36"
+              "time": "2026-08-16T20:16",
+              "arrival": "2026-08-16T20:26"
             },
             {
-              "time": "2026-08-16T21:26",
-              "arrival": "2026-08-16T21:36"
+              "time": "2026-08-16T21:16",
+              "arrival": "2026-08-16T21:26"
             }
           ],
           "laterDepartureOnDemand": false
@@ -489,6 +488,9 @@
             },
             {
               "time": "2026-08-18T02:20"
+            },
+            {
+              "time": "2026-08-18T03:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -525,7 +527,6 @@
     {
       "slug": "vechta-telbrake_telbrake-langer-damm",
       "name": "Telbrake, Langer Damm",
-      "isNew": false,
       "prices": [
         {
           "name": {
@@ -537,7 +538,7 @@
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 180
+          "price": 200
         }
       ],
       "outward": [
@@ -934,19 +935,16 @@
           "day": "2026-08-16",
           "departures": [
             {
-              "time": "2026-08-16T14:20"
+              "time": "2026-08-16T14:10"
             },
             {
-              "time": "2026-08-16T16:20"
+              "time": "2026-08-16T16:10"
             },
             {
-              "time": "2026-08-16T18:20"
+              "time": "2026-08-16T18:10"
             },
             {
-              "time": "2026-08-16T20:20"
-            },
-            {
-              "time": "2026-08-16T21:20"
+              "time": "2026-08-16T20:10"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1007,6 +1005,9 @@
             },
             {
               "time": "2026-08-18T02:20"
+            },
+            {
+              "time": "2026-08-18T03:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1043,7 +1044,6 @@
     {
       "slug": "vechta-telbrake_telbrake-straepel",
       "name": "Telbrake, Sträpel",
-      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1055,7 +1055,7 @@
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 180
+          "price": 200
         }
       ],
       "outward": [
@@ -1521,6 +1521,9 @@
             },
             {
               "time": "2026-08-18T02:20"
+            },
+            {
+              "time": "2026-08-18T03:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -1557,7 +1560,6 @@
     {
       "slug": "vechta-telbrake_telbrake-telbraker-str-graf-von-stauffenberg-str",
       "name": "Telbrake, Telbraker Str./Graf-von-Stauffenberg-Str.",
-      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1569,7 +1571,7 @@
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 180
+          "price": 200
         }
       ],
       "outward": [
@@ -2039,6 +2041,9 @@
             },
             {
               "time": "2026-08-18T02:20"
+            },
+            {
+              "time": "2026-08-18T03:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -2075,7 +2080,6 @@
     {
       "slug": "vechta-telbrake_telbrake-hoher-esch",
       "name": "Telbrake, Hoher Esch",
-      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2087,7 +2091,7 @@
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 180
+          "price": 200
         }
       ],
       "outward": [
@@ -2557,6 +2561,9 @@
             },
             {
               "time": "2026-08-18T02:20"
+            },
+            {
+              "time": "2026-08-18T03:20"
             }
           ],
           "laterDepartureOnDemand": false
@@ -2593,7 +2600,6 @@
     {
       "slug": "vechta-telbrake_oythe-treffpunkt",
       "name": "Oythe, Treffpunkt",
-      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2605,7 +2611,7 @@
           "name": {
             "de": "Kinder (3–11 Jahre)"
           },
-          "price": 180
+          "price": 200
         }
       ],
       "outward": [
@@ -3075,6 +3081,9 @@
             },
             {
               "time": "2026-08-18T02:20"
+            },
+            {
+              "time": "2026-08-18T03:20"
             }
           ],
           "laterDepartureOnDemand": false

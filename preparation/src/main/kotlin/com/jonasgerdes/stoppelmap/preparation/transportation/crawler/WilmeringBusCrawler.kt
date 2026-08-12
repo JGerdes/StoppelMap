@@ -73,10 +73,15 @@ class WilmeringBusCrawler(
             additionalInfo = mapOf(),
             ticketWebsites = listOf(),
             stations = document.select(".wp-block-buttons a")
-                .map {
-                    val (station, arrivalStation) = scrapeStation(url = it.attribute("href").value, slug)
-                    arrivalStation?.let { arrivalStationSlug = it }
-                    station
+                .mapNotNull {
+                    try {
+                        val (station, arrivalStation) = scrapeStation(url = it.attribute("href").value, slug)
+                        arrivalStation?.let { arrivalStationSlug = it }
+                        station
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        null
+                    }
                 },
             arrivalStationSlug = arrivalStationSlug!!,
         )
@@ -127,7 +132,7 @@ class WilmeringBusCrawler(
             day = day,
             departures = container.select(selector).mapNotNull {
                 val departureText = it.select(".fahrten__list__row__abfahrt h4").first()!!.text()
-                val time = parseTime(departureText, day)
+                val time = parseTime(departureText, day)!!
                 // Times after midnight are listed twice: Once for the previous day (with added braces)
                 // and once for the actual day it belongs to.
                 // We associate departure times with "departure days", not actual days. So filter for the latter.
@@ -146,12 +151,17 @@ class WilmeringBusCrawler(
         )
     }
 
-    private fun parseTime(text: String, date: LocalDate): LocalDateTime =
-        timeFormat.parse(timeRegex.find(text)!!.value).let {
-            LocalDateTime(
-                time = it,
-                date = if (it.hour < firstHourOfNextDay) date.plus(DatePeriod(days = 1)) else date
-            )
+    private fun parseTime(text: String, date: LocalDate): LocalDateTime? =
+        try {
+            timeFormat.parse(timeRegex.find(text.fixBrokenValues())!!.value).let {
+                LocalDateTime(
+                    time = it,
+                    date = if (it.hour < firstHourOfNextDay) date.plus(DatePeriod(days = 1)) else date
+                )
+            }
+        } catch (ex: Exception) {
+            IllegalArgumentException("Failed to parse time: [$text] (date: $date)", ex).printStackTrace()
+            null
         }
 
 
@@ -166,13 +176,12 @@ class WilmeringBusCrawler(
         if (slowMode) {
             print("Waiting")
             delay(1.seconds)
-            print(".")
-            delay(1.seconds)
-            print(".")
-            delay(1.seconds)
-            print(".")
-            delay(1.seconds)
             print("\n")
         }
     }
 }
+
+// Apparently data on the Wilmering website is entered manually and there are some typos
+private fun String.fixBrokenValues() =
+    replace("16550", "16:50")
+        .replace("229", "00:29")
