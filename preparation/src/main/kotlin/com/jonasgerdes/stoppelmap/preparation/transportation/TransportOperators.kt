@@ -5,6 +5,7 @@ import com.jonasgerdes.stoppelmap.preparation.dsl.operator
 import com.jonasgerdes.stoppelmap.preparation.dsl.website
 import com.jonasgerdes.stoppelmap.preparation.localizedString
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.feldhaus
+import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.nwb
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.schomaker
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.vnn
 import com.jonasgerdes.stoppelmap.preparation.transportation.TransportOperatorSlugs.wilmering
@@ -15,6 +16,7 @@ object TransportOperatorSlugs {
     val vnn = "operator_verkehrsbetriebe_vechta_nord"
     val feldhaus = "operator_feldhaus_reisen"
     val ols = "operator_ols"
+    val nwb = "nord_west_bahn"
 }
 
 val transportOperators = listOf(
@@ -33,6 +35,9 @@ val transportOperators = listOf(
     },
     operator(slug = feldhaus, name = "Feldhaus Reisen") {
         website("https://www.feldhaus-reisen.de/linienverkehr/linienverkehr.html")
+    },
+    operator(slug = nwb, name = "NordWestBahn") {
+        website("https://www.nordwestbahn.de/")
     },
 )
 

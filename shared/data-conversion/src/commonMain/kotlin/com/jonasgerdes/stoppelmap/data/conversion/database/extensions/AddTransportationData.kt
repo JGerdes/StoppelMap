@@ -11,74 +11,83 @@ import com.jonasgerdes.stoppelmap.data.transportation.Station
 import com.jonasgerdes.stoppelmap.data.transportation.TransportationType
 import com.jonasgerdes.stoppelmap.dto.data.DepartureDay
 import com.jonasgerdes.stoppelmap.dto.data.Transportation
+import com.jonasgerdes.stoppelmap.dto.data.Route as DtoRoute
 import com.jonasgerdes.stoppelmap.dto.data.Station as DtoStation
 
 internal fun StoppelMapDatabase.addTransportationData(transportation: Transportation) {
     transportation.busRoutes.forEach { route ->
-        routeQueries.insert(
-            Route(
-                slug = route.slug,
-                name = route.name,
-                operatorSlug = route.operator,
-                additionalInfoKey = route.additionalInfo?.let {
+        addRoute(route, TransportationType.Bus)
+    }
+    transportation.trainRoutes.forEach { route ->
+        addRoute(route, TransportationType.Train)
+    }
+}
+
+
+private fun StoppelMapDatabase.addRoute(route: DtoRoute, transportationType: TransportationType) {
+    routeQueries.insert(
+        Route(
+            slug = route.slug,
+            name = route.name,
+            operatorSlug = route.operator,
+            additionalInfoKey = route.additionalInfo?.let {
+                addLocalizedString(
+                    it,
+                    route.slug,
+                    "additional_info"
+                )
+            },
+            arivalStationSlug = route.arrivalStationSlug,
+            type = transportationType,
+        )
+    )
+    addWebsites(route.slug, route.ticketWebsites)
+    route.stations.forEach { station ->
+        stationQueries.insert(
+            Station(
+                slug = station.slug,
+                route = route.slug,
+                name = station.name,
+                annotateAsNew = station.isNew,
+                additionalInfoKey = station.additionalInfo?.let {
                     addLocalizedString(
                         it,
-                        route.slug,
-                        "additional_info"
+                        station.slug,
+                        "additionalInfo"
                     )
-                },
-                arivalStationSlug = route.arrivalStationSlug,
-                type = TransportationType.Bus,
+                }
             )
         )
-        addWebsites(route.slug, route.ticketWebsites)
-        route.stations.forEach { station ->
-            stationQueries.insert(
-                Station(
-                    slug = station.slug,
-                    route = route.slug,
-                    name = station.name,
-                    annotateAsNew = station.isNew,
-                    additionalInfoKey = station.additionalInfo?.let {
-                        addLocalizedString(
-                            it,
-                            station.slug,
-                            "additionalInfo"
-                        )
-                    }
+        station.location?.let {
+            locationQueries.insert(
+                Location(
+                    referenceSlug = station.slug,
+                    latitude = it.lat,
+                    longitude = it.lng
                 )
             )
-            station.location?.let {
-                locationQueries.insert(
-                    Location(
-                        referenceSlug = station.slug,
-                        latitude = it.lat,
-                        longitude = it.lng
-                    )
+        }
+        station.prices.forEachIndexed { index, fee ->
+            feeQueries.insert(
+                Fee(
+                    referenceSlug = station.slug,
+                    nameKey = addLocalizedString(
+                        fee.name,
+                        station.slug,
+                        "fee",
+                        index.toString().padStart(2, '0'),
+                        "name"
+                    ),
+                    price = fee.price.toLong(),
                 )
-            }
-            station.prices.forEachIndexed { index, fee ->
-                feeQueries.insert(
-                    Fee(
-                        referenceSlug = station.slug,
-                        nameKey = addLocalizedString(
-                            fee.name,
-                            station.slug,
-                            "fee",
-                            index.toString().padStart(2, '0'),
-                            "name"
-                        ),
-                        price = fee.price.toLong(),
-                    )
-                )
-            }
-            addWebsites(station.slug, station.ticketWebsites)
-            station.outward.forEach { departureDay ->
-                addDepartureDay(station, departureDay, DepartureType.Outward)
-            }
-            station.returns.forEach { departureDay ->
-                addDepartureDay(station, departureDay, DepartureType.Return)
-            }
+            )
+        }
+        addWebsites(station.slug, station.ticketWebsites)
+        station.outward.forEach { departureDay ->
+            addDepartureDay(station, departureDay, DepartureType.Outward)
+        }
+        station.returns.forEach { departureDay ->
+            addDepartureDay(station, departureDay, DepartureType.Return)
         }
     }
 }

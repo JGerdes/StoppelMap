@@ -98,8 +98,8 @@ class PrepareStoppelMapData : KoinComponent {
             ),
             schedule = scheduleData,
             transportation = Transportation(
-                busRoutes = generateBusRoutes() + readCrawledRoutes(settings.crawledRoutesDirectory),
-                trainRoutes = generateTrainRoutes(),
+                busRoutes = generateBusRoutes() + readCrawledRoutes(settings.crawledBusRoutesDirectory),
+                trainRoutes = generateTrainRoutes() + readCrawledRoutes(settings.crawledTrainRoutesDirectory),
                 taxiServices = taxiServices.map { it.slug },
                 isWorkInProgress = false,
             ),

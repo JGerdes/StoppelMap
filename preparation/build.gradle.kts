@@ -31,6 +31,12 @@ task("crawlBusRoutes", JavaExec::class) {
     classpath = sourceSets["main"].runtimeClasspath
 }
 
+task("crawlTrainRoutes", JavaExec::class) {
+    group = "preparation"
+    mainClass.set("com.jonasgerdes.stoppelmap.preparation.transportation.crawler.CrawlVbnTrainsKt")
+    classpath = sourceSets["main"].runtimeClasspath
+}
+
 java {
     targetCompatibility = JavaVersion.VERSION_17
 }
@@ -53,6 +59,11 @@ dependencies {
     implementation(libs.sqldelight.driver.sqlite)
     implementation(libs.gson)
     implementation(libs.jsoup)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.kotlinx.serialization.json.okio)
     implementation(libs.scrimage.core)
     implementation(libs.scrimage.webp)
     implementation(libs.blurhash.java)

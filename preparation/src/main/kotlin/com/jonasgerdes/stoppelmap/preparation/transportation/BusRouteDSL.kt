@@ -11,11 +11,11 @@ import com.jonasgerdes.stoppelmap.dto.data.Station
 import com.jonasgerdes.stoppelmap.dto.data.Website
 import com.jonasgerdes.stoppelmap.preparation.Settings
 import com.jonasgerdes.stoppelmap.preparation.localizedString
+import com.jonasgerdes.stoppelmap.preparation.util.calculateDatesForYear
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
-import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format.char
 import kotlinx.datetime.plus
@@ -407,27 +407,7 @@ private fun LocalDateTime.plus(duration: Duration) =
         .plus(duration)
         .toLocalDateTime(timeZoneStoppelmarkt)
 
-// TODO: Reuse SeasonProvider for this
-private fun calculateDatesForYear(year: Int): List<LocalDate> {
-    // On 15th of august it's always Stoppelmarkt.
-    // If 15th is a wednesday, the 16th will be first day of Stoppelmarkt
-    val anchorDay = LocalDate(year, Month.AUGUST, 15)
-    val anchorOffset = when (anchorDay.dayOfWeek) {
-        DayOfWeek.MONDAY -> -4
-        DayOfWeek.TUESDAY -> -5
-        DayOfWeek.WEDNESDAY -> 1
-        DayOfWeek.THURSDAY -> 0
-        DayOfWeek.FRIDAY -> -1
-        DayOfWeek.SATURDAY -> -2
-        DayOfWeek.SUNDAY -> -3
-    }
-
-    return (anchorOffset..anchorOffset + 5).map { offset ->
-        anchorDay.plus(DatePeriod(days = offset))
-    }
-}
-
-const val firstHourOfNextDay = 6
+const val firstHourOfNextDay = 5
 
 val Int.Minutes get() = toDuration(DurationUnit.MINUTES)
 

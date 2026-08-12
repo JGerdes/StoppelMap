@@ -31,7 +31,7 @@ data class Station(
     val slug: String,
     val name: String,
     val location: Location? = null,
-    val isNew: Boolean,
+    val isNew: Boolean = false,
     val additionalInfo: Localized<String>? = null,
     val prices: List<Fee> = emptyList(),
     val ticketWebsites: List<Website> = emptyList(),

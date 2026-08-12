@@ -44,10 +44,10 @@ data class Timetable(
     )
 
     enum class DaySegmentType(val startTimeInclusive: LocalTime, val endTimeExclusive: LocalTime) {
-        MORNING(LocalTime(6, 0), LocalTime(13, 0)),
+        MORNING(LocalTime(5, 0), LocalTime(13, 0)),
         AFTERNOON(LocalTime(13, 0), LocalTime(18, 0)),
         EVENING(LocalTime(18, 0), LocalTime(23, 0)),
-        NIGHT(LocalTime(23, 0), LocalTime(6, 0))
+        NIGHT(LocalTime(23, 0), LocalTime(5, 0))
     }
 }
 

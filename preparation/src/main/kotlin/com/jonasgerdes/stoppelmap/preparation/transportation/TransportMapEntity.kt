@@ -5,4 +5,5 @@ object TransportMapEntitySlugs {
     val busbahnhofNord = "busbahnhof_nord"
     val busbahnhofWest = "busbahnhof_west"
     val bushaltestelleOldenburgerstr = "bushaltestelle_oldenburgerstr"
+    val bahnhof = "bhf-vechta-stoppelmarkt"
 }
