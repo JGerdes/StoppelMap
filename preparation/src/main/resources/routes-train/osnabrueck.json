@@ -6,6 +6,7 @@
     {
       "slug": "Osnabrück-osnabrueck-hbf",
       "name": "Osnabrück Hbf",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -722,6 +723,7 @@
     {
       "slug": "Osnabrück-osnabrueck-altstadt",
       "name": "Osnabrück Altstadt",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -1438,6 +1440,7 @@
     {
       "slug": "Osnabrück-halen-bahnhof",
       "name": "Halen Bahnhof",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -2154,6 +2157,7 @@
     {
       "slug": "Osnabrück-achmer",
       "name": "Achmer",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -2870,6 +2874,7 @@
     {
       "slug": "Osnabrück-bramsche-hase-",
       "name": "Bramsche(Hase)",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -3586,6 +3591,7 @@
     {
       "slug": "Osnabrück-hesepe",
       "name": "Hesepe",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -4302,6 +4308,7 @@
     {
       "slug": "Osnabrück-rieste",
       "name": "Rieste",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -5018,6 +5025,7 @@
     {
       "slug": "Osnabrück-neuenkirchen-oldb-",
       "name": "Neuenkirchen(Oldb)",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -5767,6 +5775,7 @@
     {
       "slug": "Osnabrück-holdorf-oldb-",
       "name": "Holdorf(Oldb)",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -6522,6 +6531,7 @@
     {
       "slug": "Osnabrück-steinfeld-oldb-",
       "name": "Steinfeld(Oldb)",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -7277,6 +7287,7 @@
     {
       "slug": "Osnabrück-muehlen-oldb-",
       "name": "Mühlen(Oldb)",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -8032,6 +8043,7 @@
     {
       "slug": "Osnabrück-lohne-oldb-",
       "name": "Lohne(Oldb)",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -8829,6 +8841,7 @@
     {
       "slug": "Osnabrück-vechta",
       "name": "Vechta",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",

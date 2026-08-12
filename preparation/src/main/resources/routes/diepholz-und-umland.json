@@ -7,6 +7,7 @@
     {
       "slug": "diepholz-und-umland_diepholz-schulzentrum",
       "name": "Diepholz, Schulzentrum",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -153,6 +154,7 @@
     {
       "slug": "diepholz-und-umland_diepholz-abzweig-moorstr",
       "name": "Diepholz, Abzweig Moorstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -299,6 +301,7 @@
     {
       "slug": "diepholz-und-umland_diepholz-kk-markt-luederstr",
       "name": "Diepholz, Lüderstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -445,6 +448,7 @@
     {
       "slug": "diepholz-und-umland_diepholz-freibad",
       "name": "Diepholz, Freibad",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -591,6 +595,7 @@
     {
       "slug": "diepholz-und-umland_diepholz-bahnhof",
       "name": "Diepholz, Bahnhof",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -737,6 +742,7 @@
     {
       "slug": "diepholz-und-umland_diepholz-krankenhaus",
       "name": "Diepholz, Prinzhornstraße",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -883,6 +889,7 @@
     {
       "slug": "diepholz-und-umland_diepholz-marktplatz",
       "name": "Diepholz, Hindenburgstraße",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1029,6 +1036,7 @@
     {
       "slug": "diepholz-und-umland_jacobidrebber-friedhof",
       "name": "Jacobidrebber, Friedhof",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1136,6 +1144,7 @@
     {
       "slug": "diepholz-und-umland_mariendrebber-halfbrodt",
       "name": "Mariendrebber, Halfbrodt",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1243,6 +1252,7 @@
     {
       "slug": "diepholz-und-umland_aschen-milbe",
       "name": "Aschen, Milbe",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1350,6 +1360,7 @@
     {
       "slug": "diepholz-und-umland_schobrink-paradiek",
       "name": "Schobrink, Paradiek",
+      "isNew": false,
       "prices": [
         {
           "name": {

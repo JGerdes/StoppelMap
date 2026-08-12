@@ -7,6 +7,7 @@
     {
       "slug": "vechta-sued_an-der-hohen-bank",
       "name": "An der hohen Bank",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -488,6 +489,7 @@
     {
       "slug": "vechta-sued_tannenweg-toncoole",
       "name": "Tannenweg, Toncoole",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -969,6 +971,7 @@
     {
       "slug": "vechta-sued_evangelischer-friedhof",
       "name": "Evangelischer Friedhof",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1450,6 +1453,7 @@
     {
       "slug": "vechta-sued_universitaet",
       "name": "Universität",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1931,6 +1935,7 @@
     {
       "slug": "vechta-sued_windallee-immentum",
       "name": "Windallee/Immentum",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2412,6 +2417,7 @@
     {
       "slug": "vechta-sued_windallee-dominikanerweg",
       "name": "Windallee/Dominikanerweg",
+      "isNew": false,
       "prices": [
         {
           "name": {

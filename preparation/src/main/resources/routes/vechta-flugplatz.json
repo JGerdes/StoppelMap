@@ -7,6 +7,7 @@
     {
       "slug": "vechta-flugplatz_vechtaer-marsch-strassburger-str",
       "name": "Vechtaer Marsch/Straßburger Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -485,6 +486,7 @@
     {
       "slug": "vechta-flugplatz_vechtaer-marsch-dornierstr",
       "name": "Vechtaer Marsch/Dornierstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -966,6 +968,7 @@
     {
       "slug": "vechta-flugplatz_vechtaer-marsch",
       "name": "Vechtaer Marsch",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1444,6 +1447,7 @@
     {
       "slug": "vechta-flugplatz_vechtaer-marsch-wiener-str",
       "name": "Vechtaer Marsch/Wiener Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1922,6 +1926,7 @@
     {
       "slug": "vechta-flugplatz_stukenborg",
       "name": "Stukenborg",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2400,6 +2405,7 @@
     {
       "slug": "vechta-flugplatz_graskamp-herberskamp",
       "name": "Graskamp/Herberskamp",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2878,6 +2884,7 @@
     {
       "slug": "vechta-flugplatz_graskamp-hirsekamp",
       "name": "Graskamp/Hirsekamp",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -3356,6 +3363,7 @@
     {
       "slug": "vechta-flugplatz_sandeskamp-riedenkamp",
       "name": "Sandeskamp/Riedenkamp",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -3834,6 +3842,7 @@
     {
       "slug": "vechta-flugplatz_schweriner-str-petersburger-str",
       "name": "Schweriner Str./Petersburger Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -4315,6 +4324,7 @@
     {
       "slug": "vechta-flugplatz_allensteiner-str-fahrschule-moss",
       "name": "Allensteiner Str./Fahrschule Moss",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -4793,6 +4803,7 @@
     {
       "slug": "vechta-flugplatz_allensteiner-str-dresdener-str",
       "name": "Allensteiner Str./Dresdener Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {

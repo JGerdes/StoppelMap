@@ -7,6 +7,7 @@
     {
       "slug": "visbek_holtrup-schule",
       "name": "Holtrup, Schule",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -177,6 +178,7 @@
     {
       "slug": "visbek_hagstedt-mittlere-siedlungstr",
       "name": "Hagstedt, Mittlere Siedlungstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -347,6 +349,7 @@
     {
       "slug": "visbek_hagstedt-hagstedt",
       "name": "Hagstedt, Hagstedt",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -517,6 +520,7 @@
     {
       "slug": "visbek_erlte-abzweig-meyerhoefen",
       "name": "Erlte, Abzweig Meyerhöfen",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -687,6 +691,7 @@
     {
       "slug": "visbek_erlte-hogeback",
       "name": "Erlte, Hogeback",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -857,6 +862,7 @@
     {
       "slug": "visbek_visbek-elektro-schulz",
       "name": "Visbek, Elektro Schulz",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1027,6 +1033,7 @@
     {
       "slug": "visbek_visbek-markt",
       "name": "Visbek, Markt",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1197,6 +1204,7 @@
     {
       "slug": "visbek_visbek-zur-traenke",
       "name": "Visbek, Zur Tränke",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1367,6 +1375,7 @@
     {
       "slug": "visbek_astrup-witte",
       "name": "Astrup, Witte",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1519,6 +1528,7 @@
     {
       "slug": "visbek_astrup-luebberding",
       "name": "Astrup, Lübberding",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1689,6 +1699,7 @@
     {
       "slug": "visbek_norddoellen-frilling",
       "name": "Norddöllen, Frilling",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1741,6 +1752,7 @@
     {
       "slug": "visbek_norddoellen-wempe",
       "name": "Norddöllen, Wempe",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1793,6 +1805,7 @@
     {
       "slug": "visbek_woestendoellen",
       "name": "Wöstendöllen",
+      "isNew": false,
       "prices": [
         {
           "name": {

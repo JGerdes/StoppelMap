@@ -7,6 +7,7 @@
     {
       "slug": "calveslage_lohe-baumann",
       "name": "Lohe, Baumann",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -117,6 +118,7 @@
     {
       "slug": "calveslage_lohe-koenig",
       "name": "Lohe, König",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -227,6 +229,7 @@
     {
       "slug": "calveslage_lohe-hoelscher",
       "name": "Lohe, Hölscher",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -337,6 +340,7 @@
     {
       "slug": "calveslage_lohe-moeller",
       "name": "Lohe, Möller",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -447,6 +451,7 @@
     {
       "slug": "calveslage_calveslage-rispenweg",
       "name": "Calveslage, Rispenweg",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -557,6 +562,7 @@
     {
       "slug": "calveslage_calveslage-wiesenweg",
       "name": "Calveslage, Wiesenweg",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -667,6 +673,7 @@
     {
       "slug": "calveslage_calveslage-bakumer-str",
       "name": "Calveslage, Bakumer Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {

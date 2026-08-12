@@ -7,6 +7,7 @@
     {
       "slug": "vechta-telbrake_telbrake-fragge",
       "name": "Telbrake, Fragge",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -527,6 +528,7 @@
     {
       "slug": "vechta-telbrake_telbrake-langer-damm",
       "name": "Telbrake, Langer Damm",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1044,6 +1046,7 @@
     {
       "slug": "vechta-telbrake_telbrake-straepel",
       "name": "Telbrake, Sträpel",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1560,6 +1563,7 @@
     {
       "slug": "vechta-telbrake_telbrake-telbraker-str-graf-von-stauffenberg-str",
       "name": "Telbrake, Telbraker Str./Graf-von-Stauffenberg-Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2080,6 +2084,7 @@
     {
       "slug": "vechta-telbrake_telbrake-hoher-esch",
       "name": "Telbrake, Hoher Esch",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2600,6 +2605,7 @@
     {
       "slug": "vechta-telbrake_oythe-treffpunkt",
       "name": "Oythe, Treffpunkt",
+      "isNew": false,
       "prices": [
         {
           "name": {

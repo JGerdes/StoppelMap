@@ -6,6 +6,7 @@
     {
       "slug": "Bremen-bremen-hbf",
       "name": "Bremen Hbf",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -785,6 +786,7 @@
     {
       "slug": "Bremen-bremen-neustadt",
       "name": "Bremen Neustadt",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -1564,6 +1566,7 @@
     {
       "slug": "Bremen-delmenhorst",
       "name": "Delmenhorst",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -2343,6 +2346,7 @@
     {
       "slug": "Bremen-ganderkesee",
       "name": "Ganderkesee",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -3122,6 +3126,7 @@
     {
       "slug": "Bremen-brettorf",
       "name": "Brettorf",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -3901,6 +3906,7 @@
     {
       "slug": "Bremen-wildeshausen",
       "name": "Wildeshausen",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -4704,6 +4710,7 @@
     {
       "slug": "Bremen-rechterfeld",
       "name": "Rechterfeld",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -5513,6 +5520,7 @@
     {
       "slug": "Bremen-goldenstedt-oldb-",
       "name": "Goldenstedt(Oldb)",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",
@@ -6322,6 +6330,7 @@
     {
       "slug": "Bremen-lutten",
       "name": "Lutten",
+      "isNew": false,
       "outward": [
         {
           "day": "2026-08-13",

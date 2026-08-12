@@ -7,6 +7,7 @@
     {
       "slug": "bakum-und-essen_essen-grundschule",
       "name": "Essen, Grundschule",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -27,6 +28,7 @@
     {
       "slug": "bakum-und-essen_essen-bahnhof",
       "name": "Essen, Bahnhof",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -64,6 +66,7 @@
     {
       "slug": "bakum-und-essen_essen-markt",
       "name": "Essen, Grundschule",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -101,6 +104,7 @@
     {
       "slug": "bakum-und-essen_uptloh-tellmann",
       "name": "Uptloh, Tellmann",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -138,6 +142,7 @@
     {
       "slug": "bakum-und-essen_bevern-feuerwehr",
       "name": "Bevern, Feuerwehr",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -175,6 +180,7 @@
     {
       "slug": "bakum-und-essen_addrup-wernsing",
       "name": "Addrup, Wernsing",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -227,6 +233,7 @@
     {
       "slug": "bakum-und-essen_luesche-bueter",
       "name": "Lüsche, Büter",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -279,6 +286,7 @@
     {
       "slug": "bakum-und-essen_carum-ort",
       "name": "Carum, Ort",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -484,6 +492,7 @@
     {
       "slug": "bakum-und-essen_luesche-post",
       "name": "Lüsche, Post",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -697,6 +706,7 @@
     {
       "slug": "bakum-und-essen_hausstette-kreuz",
       "name": "Hausstette, Kreuz",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -910,6 +920,7 @@
     {
       "slug": "bakum-und-essen_hausstette-buehrmann",
       "name": "Hausstette, Bührmann",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1123,6 +1134,7 @@
     {
       "slug": "bakum-und-essen_hausstette-tiemerding",
       "name": "Hausstette, Tiemerding",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1336,6 +1348,7 @@
     {
       "slug": "bakum-und-essen_hausstette-schule",
       "name": "Hausstette, Schule",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1549,6 +1562,7 @@
     {
       "slug": "bakum-und-essen_hausstette-koops-muehle",
       "name": "Hausstette, Koops Mühle",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1762,6 +1776,7 @@
     {
       "slug": "bakum-und-essen_vestrup-kellermann",
       "name": "Vestrup, Kellermann",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1981,6 +1996,7 @@
     {
       "slug": "bakum-und-essen_vestrup-kirche",
       "name": "Vestrup, Kirche",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2200,6 +2216,7 @@
     {
       "slug": "bakum-und-essen_bakum-rathaus",
       "name": "Bakum, Rathaus",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2465,6 +2482,7 @@
     {
       "slug": "bakum-und-essen_bakum-kirchesch",
       "name": "Bakum, Kirchesch",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2730,6 +2748,7 @@
     {
       "slug": "bakum-und-essen_elmelage",
       "name": "Elmelage",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2995,6 +3014,7 @@
     {
       "slug": "bakum-und-essen_schledehausen-kreuz",
       "name": "Schledehausen, Kreuz",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -3260,6 +3280,7 @@
     {
       "slug": "bakum-und-essen_schledehausen-buessing",
       "name": "Schledehausen, Büssing",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -3525,6 +3546,7 @@
     {
       "slug": "bakum-und-essen_schledehausen-toebben",
       "name": "Schledehausen, Többen",
+      "isNew": false,
       "prices": [
         {
           "name": {

@@ -7,6 +7,7 @@
     {
       "slug": "vechta-west_atlas-weyhausen",
       "name": "Atlas Weyhausen",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -602,6 +603,7 @@
     {
       "slug": "vechta-west_dersastr-lohner-str",
       "name": "Dersastr., Lohner Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1191,6 +1193,7 @@
     {
       "slug": "vechta-west_dersastr-gerbertstr",
       "name": "Dersastr./Gerbertstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1780,6 +1783,7 @@
     {
       "slug": "vechta-west_achtern-diek",
       "name": "Achtern Diek",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2369,6 +2373,7 @@
     {
       "slug": "vechta-west_rombergstr-finanzamt",
       "name": "Rombergstr., Finanzamt",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2961,6 +2966,7 @@
     {
       "slug": "vechta-west_theodor-heuss-str-spielplatz",
       "name": "Theodor-Heuß-Str., Spielplatz",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -3550,6 +3556,7 @@
     {
       "slug": "vechta-west_theodor-heuss-str-stresemannstr",
       "name": "Theodor-Heuß-Str./Stresemannstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -4139,6 +4146,7 @@
     {
       "slug": "vechta-west_paulus-bastei-theodor-heuss-str",
       "name": "Paulus-Bastei/Theodor-Heuß-Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -4722,6 +4730,7 @@
     {
       "slug": "vechta-west_theodor-heuss-str-h-wilhelm-kopf-str",
       "name": "Theodor-Heuß-Str./H.-Wilhelm-Kopf-Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -5311,6 +5320,7 @@
     {
       "slug": "vechta-west_falkenrotter-str-mehl-kroeger",
       "name": "Falkenrotter Str., Mehl Kröger",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -5904,6 +5914,7 @@
     {
       "slug": "vechta-west_st-florian-str",
       "name": "St.-Florian-Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -6493,6 +6504,7 @@
     {
       "slug": "vechta-west_oyther-str-3",
       "name": "Oyther Str. 3",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -7082,6 +7094,7 @@
     {
       "slug": "vechta-west_dornbusch",
       "name": "Dornbusch",
+      "isNew": false,
       "prices": [
         {
           "name": {

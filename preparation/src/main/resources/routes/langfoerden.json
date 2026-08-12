@@ -7,6 +7,7 @@
     {
       "slug": "langfoerden_deindrup-kirschenweg",
       "name": "Deindrup, Kirschenweg",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -275,6 +276,7 @@
     {
       "slug": "langfoerden_deindrup-schule",
       "name": "Deindrup, Schule",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -546,6 +548,7 @@
     {
       "slug": "langfoerden_deindrup-spelgenweg",
       "name": "Deindrup, Spelgenweg",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -817,6 +820,7 @@
     {
       "slug": "langfoerden_spreda-dr-siemer",
       "name": "Spreda, Dr. Siemer",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1084,6 +1088,7 @@
     {
       "slug": "langfoerden_spreda-moormann",
       "name": "Spreda, Moormann",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1355,6 +1360,7 @@
     {
       "slug": "langfoerden_langfoerden-laurentiusplatz",
       "name": "Langförden, Laurentiusplatz",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1626,6 +1632,7 @@
     {
       "slug": "langfoerden_langfoerden-erzeugergrossmarkt",
       "name": "Langförden, Erzeugergroßmarkt",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1897,6 +1904,7 @@
     {
       "slug": "langfoerden_langfoerden-muehle",
       "name": "Langförden, Mühle",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2168,6 +2176,7 @@
     {
       "slug": "langfoerden_langfoerden-scheele",
       "name": "Langförden, Scheele",
+      "isNew": false,
       "prices": [
         {
           "name": {

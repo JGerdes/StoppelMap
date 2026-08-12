@@ -7,6 +7,7 @@
     {
       "slug": "vechta-stadt_sgundek",
       "name": "Sgundek",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -823,6 +824,7 @@
     {
       "slug": "vechta-stadt_am-schuetzenplatz",
       "name": "Am Schützenplatz",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -1636,6 +1638,7 @@
     {
       "slug": "vechta-stadt_muensterstr-wessel",
       "name": "Münsterstr., Wessel",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -2452,6 +2455,7 @@
     {
       "slug": "vechta-stadt_muensterstr-hagener-str",
       "name": "Münsterstr./Hagener Str.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -3268,6 +3272,7 @@
     {
       "slug": "vechta-stadt_burgstr-altes-finanzamt",
       "name": "Burgstr., Altes Finanzamt",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -4084,6 +4089,7 @@
     {
       "slug": "vechta-stadt_klingenhagen",
       "name": "Klingenhagen",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -4900,6 +4906,7 @@
     {
       "slug": "vechta-stadt_fuechteler-str-krusenschlopp",
       "name": "Füchteler Str./Krusenschlopp",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -5716,6 +5723,7 @@
     {
       "slug": "vechta-stadt_botenkamp-georgstr",
       "name": "Botenkamp/Georgstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {
@@ -6532,6 +6540,7 @@
     {
       "slug": "vechta-stadt_botenkamp-markusstr",
       "name": "Botenkamp/Markusstr.",
+      "isNew": false,
       "prices": [
         {
           "name": {

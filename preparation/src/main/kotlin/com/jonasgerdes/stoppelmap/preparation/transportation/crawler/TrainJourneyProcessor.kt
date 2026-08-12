@@ -112,7 +112,8 @@ class TrainJourneyProcessor() {
                                 it.startStop.routeName == routeName && it.stopsAt.any { it.name == stationName }
                             }.map {
                                 it.startStop
-                            }.mapAndGroupToDepartureDay(seasonDates)
+                            }.mapAndGroupToDepartureDay(seasonDates),
+                            isNew = false,
                         )
                     },
                 arrivalStationSlug = bahnhof
