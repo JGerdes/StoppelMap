@@ -31,7 +31,7 @@ fun AppUpdateCard(
     modifier: Modifier = Modifier
 ) {
     Card(modifier = modifier.animateContentSize()) {
-        Crossfade(targetState = updateState::class, animationSpec = spring()) { updateState ->
+        Crossfade(targetState = updateState, animationSpec = spring()) { updateState ->
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
